@@ -53,7 +53,7 @@
       #uncover("2-")[
         $theta tilde "Beta"(alpha, beta)$
         \
-        $y_i | theta tilde "Bernoulli"(theta), quad i = 1, dots, N$
+        $y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N$
       ]
     ]
   ],
@@ -102,7 +102,7 @@
           #align(center)[
             #stack(
               spacing: 0.2em,
-              text(size: 0.68em)[$y_i | theta tilde "Bernoulli"(theta)$],
+              text(size: 0.68em)[$y_i  tilde "Bernoulli"(theta)$],
               text(size: 0.68em, fill: palette.muted)[$i = 1, dots, N$],
             )
           ]
@@ -150,7 +150,7 @@
         #text(size: 1em)[
           $theta tilde "Beta"(alpha, beta)$
           \
-          $y_i | theta tilde "Bernoulli"(theta)$
+          $y_i tilde "Bernoulli"(theta)$
         ]
       ][
         #align(center + horizon)[
@@ -216,7 +216,7 @@
   pause,
 
   note([
-    Using conditional independence to factor problems into smaller, more tractable ones is a central shift with big, complex data.
+    In this course, graphs will allow us to factor complex problems into smaller, more tractable problems
   ]),
 )
 
@@ -224,50 +224,146 @@
   Introduce graphical-model notation through the familiar Beta-Binomial model. Emphasize the new types of graphs that are familiar from the previous course but not the heart of it.
 ]
 
-== Bayes updates a distribution, not just an estimate
+== Bayes' rule combines prior and likelihood
 
-#course-figure(
-  path("figures/coin_model__prior_likelihood_posterior.svg"),
-  source: "figures/coin_model__prior_likelihood_posterior.svg",
-  caption: [Bayesian updating for the familiar coin model],
-  width: 82%,
-  height: 9cm,
+#note[#text(size:0.9em)[#stack(spacing:0.7em,
+  [Model],
+  [$theta tilde "Beta"(alpha, beta)$],
+  [$y_i tilde "Bernoulli"(theta)$],
+)]]
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [ #pause
+      #align(center)[
+        #stack(
+          spacing: 1.0em,
+          text(weight: "semibold", fill: palette.accent)[Bayes' rule],
+          text(size: 1.3em)[$
+            p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
+            &prop p(y | theta) p(theta)$],
+
+        )
+      ]
+    ],
+  key-points: [
+    #pause
+    - *Prior:* $p(theta)$
+    - *Likelihood:* $p(y | theta)$
+    - *Posterior:* $p(theta | y)$
+    #pause
+    - We explored the posterior of $theta$
+      - Treating $p(y)$ as a normalizing constant
+  ],
 )
 
-#text(size: 0.8em)[
-  With a Beta prior and Binomial likelihood, the posterior is again Beta.
-  The old course used this example to make prior, likelihood, posterior,
-  and uncertainty concrete.
-]
-
 #speaker-note[
-  Remind them that with a uniform Beta(1,1) prior and 7 heads in 10 tosses,
-  the posterior is Beta(8,4). Do not derive conjugacy again unless the room needs it.
+  Connect the two model statements to Bayes' rule. The Bernoulli model supplies
+  the likelihood, the Beta model supplies the prior, and normalization turns
+  their product into the posterior distribution.
 ]
 
-== Evidence accumulates
+== Beta-Bernoulli conjugacy
 
-#course-figure(
-  path("figures/coin_model__sequential_updating.svg"),
-  source: "figures/coin_model__sequential_updating.svg",
-  caption: [Evidence accumulates under different priors],
-  width: 96%,
-  height: 7cm,
+#note[#text(size:0.9em)[#stack(spacing:0.7em,
+  [Model],
+  pad(left: 1em)[$theta tilde "Beta"(alpha, beta)$],
+  pad(left: 1em)[$y_i tilde "Bernoulli"(theta)$],
+  [Bayes rule],
+  pad(left: 1em)[$p(theta | y) &prop p(y | theta) p(theta)$],
+)]]
+
+#content-block(
+  layout: "top",
+  object-width: 68%,
+  object: [
+    Applying Bayes' rule to our model
+    #stack(
+      spacing: 0.9em,
+      text(size: 0.88em)[
+        #grid(
+          columns: (auto, 1fr),
+          column-gutter: 0.9em,
+          row-gutter: 0.75em,
+          align: (left, left),
+          uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Prior]],
+          uncover("2-")[$p(theta) = "Beta"(alpha, beta)$],
+          uncover("3-")[#text(weight: "semibold", fill: palette.accent)[Likelihood]],
+          uncover("3-")[$p(y | theta) = "Binomial"(N, theta)$],
+          uncover("5-")[#text(weight: "semibold", fill: palette.accent)[Posterior]],
+          uncover("5-")[$p(theta | y) = "Beta"(alpha + y, beta + N - y)$],
+        )
+      ],
+    )
+  ],
+  key-points-title: [#uncover("4-")[Conjugacy]],
+  key-points: [
+    #uncover("4-")[
+      #text(size: 0.85em)[
+        The prior and likelihood are conjugate when the posterior belongs to the
+        same distribution family as the prior.
+      ]
+    ]
+  ],
 )
 
-#key-points[
-  Bayesian learning means carrying uncertainty forward as new evidence arrives.
-  Different priors can matter strongly at first and less as evidence accumulates.
+#speaker-note[
+  Reactivate the definition of conjugacy. In the Beta-Binomial model, updating
+  adds the observed successes and failures to the two Beta parameters. There is
+  no need to derive the result here.
 ]
+
+== Bayes updates a distribution
+
+#content-block(
+  layout: "top",
+  object-width: 82%,
+  object: [
+    #course-figure(
+      path("figures/coin_model__prior_likelihood_posterior.svg"),
+      source: "figures/coin_model__prior_likelihood_posterior.svg",
+      caption: [Bayesian updating for the familiar coin model],
+      width: 100%,
+      height: 8.5cm,
+    )
+  ],
+  key-points: [
+    - The prior and the posterior are both probability distributions
+    - Their width expresses the uncertainty
+    - The uncertainty in the posterior is less than in the prior
+  ],
+)
 
 #speaker-note[
-  This deliberately echoes the sequential-updating sequence from the undergraduate
-  Models lecture: three priors, then repeated updates. The goal is recognition.
+  Connect the algebra on the previous slide to these distribution shapes. With
+  a Beta(2,2) prior and 7 heads in 10 tosses, the posterior is Beta(9,5).
 ]
 
-== The posterior was never the whole story
+== Summary: A familiar modeling language
 
-From the posterior we can ask about *future data*:
+#content-block(
+  key-points: [
+    - Probabilistic models link observed data to parameters
+    - Graphs show model variables and dependencies
+    - Bayes' rule combines prior and likelihood into a posterior
+    - Conjugacy makes some updates analytic
+    - Posterior width represents remaining uncertainty 
+    - Posterior uncertainty narrows with more data
+  ],
+)
+
+#speaker-note[
+  This is the pivot from the previous course to introducing the current course. The next section will establish what is the same and what is different.
+]
+
+#section-slide(
+  title: [From Bayesian Statistics to Machine Learning],
+  short-title: [Modelling in machine learning],
+  subtitle: [From parameter estimation to posterior prediction],
+)
+
+== From the posterior we can ask about future data
 
 #align(center)[
   $p(tilde(y) | D) = integral p(tilde(y) | theta) p(theta | D) d theta$

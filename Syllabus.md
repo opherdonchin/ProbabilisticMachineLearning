@@ -23,21 +23,21 @@ We will use a 13-meeting structure:
 
 ## Lecture Mapping
 
-| Lecture | Unit | Material | Murphy book chapters |
-|---|---|---|---|
-| 1 | Fundamentals | Probability + Bayesian statistics | Ch. 1, *Introduction*; Ch. 2, *Probability*; Ch. 3, *Statistics* |
-| 2 | Fundamentals | Graphical models + information theory | Ch. 4, *Graphical Models*; Ch. 5, *Information Theory* |
-| 3 | Fundamentals | Optimization | Ch. 6, *Optimization* |
-| 4 | Inference | Gaussian filtering/smoothing + message passing | Ch. 7, *Inference Algorithms: An Overview*; Ch. 8, *Gaussian Filtering and Smoothing*; Ch. 9, *Message Passing Algorithms* |
-| 5 | Inference | Variational inference | Ch. 10, *Variational Inference* |
-| 6 | Inference | Monte Carlo + MCMC | Ch. 11, *Monte Carlo Methods*; Ch. 12, *Markov Chain Monte Carlo* |
-| 7 | Prediction | GLMs + deep neural networks | Ch. 14, *Predictive Models: An Overview*; Ch. 15, *Generalized Linear Models*; Ch. 16, *Deep Neural Networks* |
-| 8 | Prediction | Bayesian neural networks + Gaussian processes | Ch. 17, *Bayesian Neural Networks*; Ch. 18, *Gaussian Processes* |
-| 9 | Generation | Generative modeling overview + VAEs | Ch. 20, *Generative Models: An Overview*; Ch. 21, *Variational Autoencoders* |
-| 10 | Generation | Autoregressive models + GANs | Ch. 22, *Autoregressive Models*; Ch. 23, *Normalizing Flows*; Ch. 24, *Energy-Based Models*; Ch. 25, *Diffusion Models*; Ch. 26, *Generative Adversarial Networks* |
-| 11 | Discovery | Latent factor models + state-space models | Ch. 27, *Discovery Methods: An Overview*; Ch. 28, *Latent Factor Models*; Ch. 29, *State-Space Models*; Ch. 30, *Graph Learning*; Ch. 31, *Nonparametric Bayesian Models* |
-| 12 | Discovery | Representation learning + interpretable ML | Ch. 32, *Representation Learning*; Ch. 33, *Interpretability* |
-| 13 | Integration | Project presentations / synthesis | — |
+| Lecture | Unit         | Material                                       | Murphy book chapters                                                                                                                                                      |
+| ------- | ------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1       | Fundamentals | Probability + Bayesian statistics              | Ch. 1, *Introduction*; Ch. 2, *Probability*; Ch. 3, *Statistics*                                                                                                          |
+| 2       | Fundamentals | Graphical models + information theory          | Ch. 4, *Graphical Models*; Ch. 5, *Information Theory*                                                                                                                    |
+| 3       | Fundamentals | Optimization                                   | Ch. 6, *Optimization*                                                                                                                                                     |
+| 4       | Inference    | Gaussian filtering/smoothing + message passing | Ch. 7, *Inference Algorithms: An Overview*; Ch. 8, *Gaussian Filtering and Smoothing*; Ch. 9, *Message Passing Algorithms*                                                |
+| 5       | Inference    | Variational inference                          | Ch. 10, *Variational Inference*                                                                                                                                           |
+| 6       | Inference    | Monte Carlo + MCMC                             | Ch. 11, *Monte Carlo Methods*; Ch. 12, *Markov Chain Monte Carlo*                                                                                                         |
+| 7       | Prediction   | GLMs + deep neural networks                    | Ch. 14, *Predictive Models: An Overview*; Ch. 15, *Generalized Linear Models*; Ch. 16, *Deep Neural Networks*                                                             |
+| 8       | Prediction   | Bayesian neural networks + Gaussian processes  | Ch. 17, *Bayesian Neural Networks*; Ch. 18, *Gaussian Processes*                                                                                                          |
+| 9       | Generation   | Generative modeling overview + VAEs            | Ch. 20, *Generative Models: An Overview*; Ch. 21, *Variational Autoencoders*                                                                                              |
+| 10      | Generation   | Autoregressive models + GANs                   | Ch. 22, *Autoregressive Models*; Ch. 23, *Normalizing Flows*; Ch. 24, *Energy-Based Models*; Ch. 25, *Diffusion Models*; Ch. 26, *Generative Adversarial Networks*        |
+| 11      | Discovery    | Latent factor models + state-space models      | Ch. 27, *Discovery Methods: An Overview*; Ch. 28, *Latent Factor Models*; Ch. 29, *State-Space Models*; Ch. 30, *Graph Learning*; Ch. 31, *Nonparametric Bayesian Models* |
+| 12      | Discovery    | Representation learning + interpretable ML     | Ch. 32, *Representation Learning*; Ch. 33, *Interpretability*                                                                                                             |
+| 13      | Integration  | Project presentations / synthesis              | —                                                                                                                                                                         |
 
 ## Course Format
 
@@ -46,16 +46,9 @@ The weekly structure is:
 - 2 hours lecture
 - 1 hour notebook-based self-work or guided work
 
-Notebooks will be central. They wll help students actually use ideas in code and should make the course feel concrete and relevant to MSc-level biomedical engineering work.
+## Assessment
 
-## Assessment Direction
-
-Still open, but current direction:
-
-- modest checked notebook/class work
-- one or two practical programming projects
-- possibly an exam, depending on institutional and student expectations
-
-The practical work should not collapse into generic classifier fitting. Ideally, projects should expose different modeling purposes, such as prediction and discovery or generation.
-
-- 
+- AI-based tutoring: 10%
+- Notebook submission: 10%
+- Project presentation: 30%
+- Final exam: 50%

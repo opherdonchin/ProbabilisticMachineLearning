@@ -1,0 +1,8 @@
+* text=auto
+
+# scripts must stay LF
+*.sh text eol=lf
+
+# vendored theme: byte-identical everywhere, no EOL rewriting
+Lectures/themes/**        -text
+Lectures/themes/**/*.typ  -text

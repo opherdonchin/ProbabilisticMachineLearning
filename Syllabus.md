@@ -4,26 +4,22 @@ Working basis for developing the course syllabus and first lecture.
 
 ## Course Frame
 
-The course will be based primarily on Kevin Murphy's *Probabilistic Machine Learning: Advanced Topics* and on Jimi Oke's Advanced Probabilistic Machine Learning course materials.
+The course will be based primarily on Kevin Murphy's *Probabilistic Machine Learning: Advanced Topics* covering selected material in chapters 1-33. The main intellectual goal is to present machine learning as a coherent extension of probabilistic and statistical modeling, rather than as a collection of ad hoc algorithms. The course should build naturally on the earlier Bayesian/statistics course. Students should see prediction, generation, and discovery as connected modeling tasks with shared probabilistic foundations. The key topics covered include:
 
-The main intellectual goal is to present machine learning as a coherent extension of probabilistic and statistical modeling, rather than as a collection of ad hoc algorithms.
+**Foundations of probabilistic and Bayesian machine learning:** probabilistic modeling, graphical models; optimization and approximate inference; Monte Carlo methods
 
-The course should build naturally on the earlier Bayesian/statistics course. Students should see prediction, generation, and discovery as connected modeling tasks with shared probabilistic foundations.
+**Predictive modeling:** generalized linear models; deep neural networks; Bayesian neural networks; Gaussian processes
 
-## Teaching Constraint
+**Generative modeling:** variational autoencoders; autoregressive models; generative adversarial networks
 
-Each lecture should stay within a single major course unit. We should not combine material from two different major units in one lecture.
-
-This means that some units or internal topics must be dropped or compressed.
+**Latent-variable and representation learning:** latent factor models; state-space models; representation learning; interpretable machine learning
 
 ## Chosen Course Shape
 
 We will use a 13-meeting structure:
 
 - 12 content lectures
-- 1 integration / project presentation / synthesis meeting
-
-The selected mapping is Choice A: drop the final Decision unit and preserve the core ML arc.
+- 1 project presentation
 
 ## Lecture Mapping
 
@@ -43,27 +39,14 @@ The selected mapping is Choice A: drop the final Decision unit and preserve the 
 | 12 | Discovery | Representation learning + interpretable ML | Ch. 32, *Representation Learning*; Ch. 33, *Interpretability* |
 | 13 | Integration | Project presentations / synthesis | — |
 
-## Major Cut
-
-The Decision unit is dropped from the main lecture sequence:
-
-- Decision-making under uncertainty
-- Reinforcement learning
-
-This is the cleanest cut because it preserves the central sequence:
-
-fundamentals -> inference -> prediction -> generation -> discovery
-
 ## Course Format
 
-The likely weekly structure is:
+The weekly structure is:
 
 - 2 hours lecture
 - 1 hour notebook-based self-work or guided work
 
-Notebooks should be central. They should help students actually use ideas in code and should make the course feel concrete and relevant to MSc-level biomedical engineering work.
-
-The course should avoid becoming a heavy weekly problem-set course. Israeli students may resist large amounts of semester work and may focus strongly on exams.
+Notebooks will be central. They wll help students actually use ideas in code and should make the course feel concrete and relevant to MSc-level biomedical engineering work.
 
 ## Assessment Direction
 
@@ -75,28 +58,4 @@ Still open, but current direction:
 
 The practical work should not collapse into generic classifier fitting. Ideally, projects should expose different modeling purposes, such as prediction and discovery or generation.
 
-## Lecture 1 Development
-
-Lecture 1 should be developed first as a diagnostic artifact.
-
-It should help clarify:
-
-- what the students need from the previous Bayesian/statistics course
-- what probability and Bayesian material must be reviewed
-- what can be assumed
-- what notebook format and workflow will work for the course
-- how much of Oke's material can be reused directly
-
-Lecture 1 should probably be honest about the course frame:
-
-This is a guided attempt to understand modern probabilistic machine learning as a coherent body of material, using Murphy as the spine and notebooks as the working medium.
-
-## Open Questions
-
-- Exact grading breakdown
-- Whether the exam is required or merely useful
-- Whether there will be one project or two
-- Whether notebook work is done fully in class or partially submitted afterward
-- How much mathematical derivation belongs in lecture versus notebook
-- How explicitly to require Murphy reading
-- What biomedical datasets or examples should anchor the practical work
+- 

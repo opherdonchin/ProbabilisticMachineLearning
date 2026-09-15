@@ -358,211 +358,528 @@
 ]
 
 #section-slide(
-  title: [From Bayesian Statistics to Machine Learning],
-  short-title: [Modelling in machine learning],
-  subtitle: [From parameter estimation to posterior prediction],
+  title: [From inference to machine-learning problems],
+  short-title: [Inference to ML problems],
+  subtitle: [Same probabilistic language, different organizing questions],
 )
 
-== From the posterior we can ask about future data
+== The posterior was the destination
 
-#align(center)[
-  $p(tilde(y) | D) = integral p(tilde(y) | theta) p(theta | D) d theta$
-]
-
-#course-figure(
-  path("figures/coin_model__posterior_predictive.svg"),
-  source: "figures/coin_model__posterior_predictive.svg",
-  caption: [Posterior uncertainty induces a predictive distribution],
-  width: 84%,
-  height: 5.5cm,
+#content-block(
+  layout: "top",
+  object-width: 60%,
+  object: [
+    #align(center)[
+      $p(theta | D)$
+    ]
+  ],
+  key-points: [
+    - Section 1 built a model, applied Bayes' rule, and studied $p(theta | D)$
+    #uncover("2-")[
+      - For many scientific questions, that posterior *is* the answer
+      - Is learning $theta$ always the end of the problem?
+    ]
+  ],
 )
-
-#key-points[
-  Inference asks what we know about unknown quantities.
-  Prediction asks what the model says will happen next.
-]
 
 #speaker-note[
-  This is the first genuine pivot. In the undergraduate course the posterior was
-  often the focal object. In probabilistic ML, it is frequently an intermediate
-  object used to construct a predictive or generative distribution.
+  Do not suggest that posterior prediction is new to them -- they have done it.
+  The question on the table is different: is the posterior over theta always
+  the object we ultimately care about? For a scientific inferential problem it
+  often is. The rest of this section is about problems where it is not.
 ]
 
-== And exact calculation was a luxury
+== A new case arrives
 
-For the coin model, many quantities can be calculated analytically.
-
-But we already learned another route:
-
-#align(center)[
-  $bb(E)_(theta | D)[f(theta)] approx 1 / S sum_(s=1)^S f(theta^(s))$
-]
-
-#course-figure(
-  path("figures/coin_model__sampling_monte_carlo.svg"),
-  source: "figures/coin_model__sampling_monte_carlo.svg",
-  caption: [Posterior samples approximate expectations and integrals],
-  width: 80%,
-  height: 4.7cm,
+#content-block(
+  layout: "top",
+  object-width: 74%,
+  object: [
+    #align(center)[
+      $D = {(x_i, y_i)}_(i=1)^N$
+      #v(0.6em)
+      #uncover("2-")[$"a new case: " x_*$]
+    ]
+  ],
+  key-points: [
+    - We fit or infer whatever is necessary from $D$
+    #uncover("2-")[
+      - so the system can do something useful with $x_*$ -- a case that was
+        never itself the object of the original inference
+    ]
+  ],
 )
 
 #note[
-  When models become high-dimensional, exact posteriors and exact predictive
-  integrals are usually unavailable. Computational inference stops being an
-  implementation detail and becomes a central part of the course.
+  Historically, machine learning grew out of tasks like pattern recognition,
+  vision, speech, and language, where the practical criterion was whether a
+  system worked on new, unseen cases -- not whether a fitted parameter had a
+  clean scientific interpretation.
 ]
 
-== So what actually changes?
+#speaker-note[
+  Generalization to new cases becomes explicit. This is the change in what
+  organizes the problem: the new case $x_*$, not $theta$, moves to center
+  stage. Large data and large models are a consequence of this pressure, not
+  the original motivation for it.
+]
+
+== Familiar regression notation, two different roles
+
+#content-block(
+  layout: "top",
+  object-width: 80%,
+  object: [
+    #align(center)[
+      $Y_i | X_i, theta tilde p(y | X_i, theta)$
+    ]
+  ],
+  key-points: [
+    #pause
+    #twocol[
+      *Dependent / independent*\
+      #text(size: 0.8em)[how the statistical model is built: $Y_i$ is given a
+        distribution; $X_i$ is conditioned on]
+    ][
+      *Input / output*\
+      #text(size: 0.8em)[the interface of the computational task: what is
+        supplied, what the system is asked to produce]
+    ]
+  ],
+)
+
+#note[
+  In ordinary supervised regression these usually line up -- independent
+  variable $arrow.r$ input, dependent variable $arrow.r$ output -- but they
+  are conceptually different roles.
+]
+
+#speaker-note[
+  Do not introduce "predictor / response" here -- it adds vocabulary without
+  adding a distinction they need. The point is that "dependent/independent"
+  describes how the model is built, while "input/output" describes what the
+  task asks of it. They usually coincide, which is exactly why it is easy to
+  stop noticing that they are different questions.
+]
+
+== What carries over
+
+#content-block(
+  key-points: [
+    #twocol[
+      - Probability distributions
+      - Conditional distributions
+      - Prior, likelihood, posterior
+      - Bayesian updating
+      - Latent variables
+    ][
+      - Hierarchical models
+      - Graphical models
+      - Posterior predictive distributions
+      - Sampling, MCMC, HMC
+      - Uncertainty
+    ]
+  ],
+)
+
+#key-points[The statistical grammar is familiar. Nothing on this list is being retired.]
+
+#speaker-note[
+  Read down the list and let it land as reassurance: every one of these
+  survives intact into probabilistic ML. What is about to change is the class
+  of problems we point this grammar at, not the grammar itself.
+]
+
+== What changes
 
 #grid(
   columns: (1fr, 1fr),
   gutter: 1.2em,
+  row-gutter: 0.6em,
   align: left + top,
 
-  [*The grammar carries over*], [*The pressure changes*],
+  [*Carries over*], [*Changes*],
 
-  [Joint and conditional distributions], [High-dimensional models],
+  [The grammar: distributions, conditioning, Bayes' rule], [The organizing question: often "how do we do well on new cases?"],
 
-  [Prior, likelihood, posterior], [Many latent quantities],
+  [$x$, $y$, $theta$, $z$ as familiar roles], [$x$, $y$, and $z$ can all be very high-dimensional],
 
-  [Prediction from a generative model], [Intractable sums and integrals],
+  [Parameters as meaningful quantities], [Parameters are often instrumental machinery, not the object of study],
 
-  [Sampling as approximation], [Multiple approximation strategies],
+  [Exact inference for simple conjugate models], [Exact inference becomes the exception rather than the rule],
+
+  [Point estimates as convenient summaries], [Optimization and approximate inference become central tools],
+
+  [More data sharpens a posterior], [Tasks reward models that can exploit more data and more compute],
 )
 
-#key-points[
-  The course is not replacing Bayesian statistics.
-  It is taking the same probabilistic grammar into problems where
-  prediction, representation, and computation become central.
+#speaker-note[
+  This is not "statistics does inference, ML does prediction" -- that framing
+  is too crude and historically misleading. These are six shifts in emphasis
+  and pressure, not a change of subject. Scale in particular is a reward for
+  tackling harder prediction/generation/discovery tasks, not the reason those
+  tasks exist.
 ]
 
-== The coin model as a map for today
+== A model is not a task
 
-#align(center)[
-  $"model" arrow.r "posterior" quad arrow.r "prediction" arrow.r "approximation" arrow.r "structure"$
-]
+#content-block(
+  layout: "top",
+  object-width: 80%,
+  object: [
+    #align(center)[
+      #course-diagram(
+        spacing: (3.6em, 2.4em),
+        node-stroke: 1.2pt + palette.dark,
+        node-fill: palette.paper,
+        edge-stroke: 1.2pt + palette.muted,
+        mark-scale: 65%,
 
-#text(size: 0.8em)[
-  We will keep reusing this pattern with richer distributions,
-  multivariate variables, latent structure, and models whose required
-  integrals cannot be solved exactly.
-]
+        graph-node(
+          (0, 1),
+          name: <a-model>,
+          shape: fletcher.shapes.pill,
+          width: 6em,
+          height: 2.2em,
+          stroke: 1.6pt + palette.accent,
+        )[Joint model],
+
+        graph-node((1, 0), name: <a-q1>, shape: fletcher.shapes.rect, width: 6.5em, height: 1.8em)[$p(y | x, D)$],
+        graph-node((1, 1), name: <a-q2>, shape: fletcher.shapes.rect, width: 6.5em, height: 1.8em)[$p(x | y, D)$],
+        graph-node((1, 2), name: <a-q3>, shape: fletcher.shapes.rect, width: 6.5em, height: 1.8em)[$p(z | x, D)$],
+
+        graph-edge(<a-model>, <a-q1>, "-|>"),
+        graph-edge(<a-model>, <a-q2>, "-|>"),
+        graph-edge(<a-model>, <a-q3>, "-|>"),
+      )
+    ]
+  ],
+  key-points: [
+    - A probabilistic model specifies distributions and relationships
+    - A task specifies which question we ask of that model
+    #uncover("2-")[- The same joint model can support several different operations -- and, later, a decision]
+  ],
+)
 
 #speaker-note[
-  From here move into the rest of Lecture 1:
-  model grammar -> transformations -> exponential families -> multivariate Gaussian
-  -> typical sets -> comparing distributions.
+  This is the bridge into the next section. Do not imply that every task
+  corresponds to a unique mathematical form of probability model -- the point
+  is the opposite: one sufficiently rich model can answer several different
+  questions. Murphy organizes the rest of the book around exactly these
+  questions: prediction, generation, discovery, and (beyond this course)
+  action.
 ]
 
+== Summary: From inference to machine-learning problems
 
-== What carries over, what changes
+#content-block(
+  key-points: [
+    - We are not abandoning Bayesian or statistical modeling
+    - Inference remains part of the machinery
+    - What changes is the class of problems and the criterion of success
+    - The same probabilistic grammar now serves broader computational tasks
+  ],
+)
 
+#align(center)[#text(weight: "semibold", fill: palette.accent)[So what do we actually want learned probabilistic models to do?]]
+
+#speaker-note[
+  This is the pivot into the next section. Do not resolve the question here --
+  let it hang and answer it with concrete, visually distinct examples.
+]
+
+#section-slide(
+  title: [What do we use learned models for?],
+  short-title: [Tasks: prediction, generation, discovery],
+  subtitle: [Prediction, generation, discovery -- and where this course stops],
+)
+
+== Four questions to ask of a fitted model
 
 #grid(
   columns: (1fr, 1fr),
-  gutter: 1.2em,
-  row-gutter: 0.5em,
+  row-gutter: 1.2em,
+  column-gutter: 1.2em,
   align: left + top,
 
-  [*What carries over*], [*What changes*],
+  [*Prediction*\ #text(size: 0.85em)[what should we say about a new case?]],
+  [*Generation*\ #text(size: 0.85em)[what should we produce?]],
 
-  [Probability and Bayesian reasoning], [Scale],
+  [*Discovery*\ #text(size: 0.85em)[what structure explains the data?]],
+  [*Action*\ #text(size: 0.85em)[what should we do?]],
+)
 
-  [Familiar statistical notation], [More compact notation],
+#key-points[Same grammar. Four different questions. The next several lectures build one task at a time.]
 
-  [Statistical modeling], [Prediction, generation, and discovery],
+#speaker-note[
+  The syllabus builds prediction (Lectures 7-8), generation (9-10), and
+  discovery (11-12) -- Murphy chapters up to 33. Action is Murphy's Part VI
+  and is flagged, not built, in this course. Use concrete examples from here
+  on; do not let this stay a dry four-item catalogue.
+]
+
+== Prediction: what should we say about a new case?
+
+#content-block(
+  layout: "side-left",
+  object-width: 58%,
+  object: [
+    #course-figure(
+      path("figures/task_examples_figures__prediction_iris_logistic.svg"),
+      source: "figures/task_examples_figures__prediction_iris_logistic.svg",
+      caption: [Posterior over the decision boundary, Iris petal measurements],
+      width: 100%,
+      height: 7.4cm,
+    )
+  ],
+  key-points: [
+    - Given measured features $x_*$, what should we say about the class $y_*$?
+    - The predictive object is $p(y_* | x_*, D)$ -- a full distribution
+    #uncover("2-")[- A loss function can later turn that distribution into a decision or a point estimate]
+  ],
 )
 
 #speaker-note[
-  This reworked version assumes the students' undergraduate Bayesian-first statistics course as real prior knowledge. Do not spend 45 minutes reteaching probability rules. Use the opening section to reactivate and diagnose.
+  Adapted from Murphy Fig. 15.8 (Ch. 15, logistic regression),
+  `logreg_iris_bayes_2d.ipynb`; see `task_examples_figures.ipynb` for
+  provenance. Stress that prediction does not mean "output a point" -- the
+  fan of posterior decision boundaries is the predictive distribution. Lectures
+  7-8 build the models (GLMs, deep nets, Bayesian neural nets, GPs) that scale
+  this idea.
 ]
 
-== The first lecture has one job
+== Generation: what should we produce?
 
-By the end of today, students should be able to read a compact model statement and say:
+#content-block(
+  layout: "top",
+  object-width: 84%,
+  object: [
+    #course-figure(
+      path("figures/task_examples_figures__generation_vae_samples.png"),
+      source: "figures/task_examples_figures__generation_vae_samples.png",
+      caption: [Training faces (top) and samples from a learned latent-variable model (bottom)],
+      width: 100%,
+      height: 4.9cm,
+    )
+  ],
+  key-points: [
+    #text(size: 0.88em)[
+      - $z tilde p(z)$, $quad x | z tilde p_theta (x | z)$
+      #uncover("2-")[
+        - new objects: sample $z^((s)) tilde p(z)$, decode $x^((s)) tilde p_theta (x | z^((s)))$
+        - retaining the distributional structure of the output is itself part of the task
+      ]
+    ]
+  ],
+)
 
-#align(center)[$
-  "What is observed?" quad "What is unknown?" quad "What is predicted?"
-$]
-
-#key-points[Probability is the language. Modeling is the grammar. Machine learning changes the scale and the task.]
-
-== What I will assume from the undergraduate course
-
-#twocol[
-  *Seen before*
-  - Probability distributions
-  - Bayes' rule and updating
-  - Likelihood / prior / posterior
-  - PyMC and posterior samples
-  - Posterior predictive checks
-][
-  *Also seen before*
-  - Hierarchical / partial-pooling models
-  - Normal and linear models
-  - ANOVA as regression structure
-  - Bayesian model comparison
-  - Reproducible workflow
+#note[
+  Especially compelling for high-dimensional structured outputs -- images,
+  text, audio, trajectories -- but that is what makes generation *motivating*,
+  not what *defines* it. A scalar distribution can be simulated too.
 ]
-
-#note[*Diagnostic checkpoint:* If these words feel completely unfamiliar, today's notebook tells us where review is needed.]
-
-== Distribution families: review, not a live catalogue
-
-You have seen the idea of distributions. This course needs fluent recognition, not memorized formula tables.
-
-#twocol[
-  *Self-study target*
-  - Bernoulli / categorical
-  - Binomial / multinomial
-  - Poisson / negative binomial
-  - Gaussian / Student / Laplace
-][
-  *When we use them*
-  - likelihoods for data types
-  - priors over parameters
-  - predictive distributions
-  - latent-state models
-]
-
-#key-points[A short self-study notebook or screencast will review distribution families as modeling building blocks. Lecture time is reserved for the structures we repeatedly manipulate.]
 
 #speaker-note[
-  Do not teach the catalogue now. Tell them explicitly that the catalogue is important but belongs in self-study. The purpose is to prevent anxiety: distributions are review material; the lecture is about how distributions become models.
+  Adapted from Murphy Fig. 21.2 (Ch. 21, VAEs), `celeba_vae_ae_comparison.ipynb`.
+  Name the substitution out loud: this is a lightweight CPU lecture
+  adaptation (Olivetti faces, a small fully-connected VAE, seconds of
+  training) standing in for a GPU-trained convolutional VAE on CelebA -- the
+  blur is a genuine property of pixel-wise VAE likelihoods, not a rendering
+  failure. Lectures 9-10 build VAEs, autoregressive models, flows,
+  energy-based models, diffusion, and GANs.
 ]
 
-== What is new in this course
+== Discovery: what structure explains the data?
 
-#triad[
-  *Scale*\
-  high-dimensional variables, large models, many latent quantities
-][
-  *Structure*\
-  graphical models, factorisations, conditional independence
-][
-  *Tasks*\
-  prediction, generation, discovery, representation
+#content-block(
+  layout: "side-left",
+  object-width: 58%,
+  object: [
+    #course-figure(
+      path("figures/task_examples_figures__discovery_gmm_clusters.svg"),
+      source: "figures/task_examples_figures__discovery_gmm_clusters.svg",
+      caption: [Unlabeled data and the latent grouping a mixture model infers],
+      width: 100%,
+      height: 6.6cm,
+    )
+  ],
+  key-points: [
+    #text(size: 0.88em)[
+      - $z tilde p(z)$, $quad x | z tilde p(x | z)$, then $p(z | x)$
+      - Not predicting a supplied label. Not synthesizing new data.
+      - Inferring hidden structure that organizes the observations
+    ]
+  ],
+)
+
+#speaker-note[
+  Adapted from Murphy Fig. 28.2 (Ch. 28, mixture models), `gmm_2d.ipynb`. This
+  should feel the most familiar of the four: it is posterior inference over a
+  latent variable, exactly as in Section 1, just with cluster membership in
+  place of a coin bias. Lectures 11-12 build latent factor models,
+  state-space models, and representation learning.
 ]
 
-#key-points[Advanced probabilistic ML is not a new statistics course; it is Bayesian/statistical modeling under new computational and modeling pressures.]
+== Generative model, or generation task?
 
-== The course arc
-
-#align(center)[
-  fundamentals $arrow.r$ inference $arrow.r$ prediction $arrow.r$ generation $arrow.r$ discovery
+#definition(
+  title: [Generative model $eq.not$ generation task],
+  label: [Careful],
+)[
+  Murphy Ch. 28 builds a generative model of $x$ -- a mixture model specifies
+  $p(x)$ via a latent $z$. But the *task* Ch. 28 cares about is posterior
+  inference of meaningful latent variables (discovery), not generating
+  realistic-looking samples.
 ]
 
-#v(1em)
+#key-points[A model being "generative" tells you it specifies a distribution over $x$. It does not tell you which task the model is being used for.]
 
-#twocol[
-  *Today*\
-  re-establish the common model language
-][
-  *Next time*\
-  graphical models + information theory
+#speaker-note[
+  This is the first of two terminology traps this section needs to close.
+  Land it clearly before moving to the second: task labels (prediction,
+  generation, discovery, action) and model labels (discriminative,
+  generative) are different axes.
 ]
 
-#note[Today's lecture should make the next lecture feel inevitable rather than disconnected.]
+== Careful: model type is not task type
+
+#content-block(
+  layout: "top",
+  object-width: 88%,
+  object: [
+    #text(size: 0.9em)[
+      #grid(
+        columns: (auto, 1fr),
+        column-gutter: 1em,
+        row-gutter: 0.85em,
+        align: (left, left),
+
+        text(weight: "semibold", fill: palette.accent)[Discriminative / conditional model],
+        [$p(y | x, theta)$ -- $x$ is conditioned on, never assigned a distribution],
+
+        text(weight: "semibold", fill: palette.accent)[Generative model],
+        [$p(x, y | theta) = p(y | theta) med p(x | y, theta)$],
+
+        [], uncover("2-")[still used for prediction, via Bayes' rule: $p(y | x, theta) prop p(x | y, theta) med p(y | theta)$],
+      )
+    ]
+  ],
+  key-points: [
+    #uncover("2-")[
+      - A generative model can solve a prediction task
+      - A conditional model $p(y | x)$ can support the generation task
+      - Do not read $p(y|x)$ as "prediction" and $p(x)$ as "generation"
+    ]
+  ],
+)
+
+#speaker-note[
+  The second terminology trap. Discriminative/generative describes how the
+  model factorizes the joint distribution. Prediction/generation/discovery/
+  action describes what question we are asking. The two axes cross freely --
+  a classical generative classifier is a standard way to solve a prediction
+  task.
+]
+
+== How much distribution does prediction need?
+
+#content-block(
+  layout: "top",
+  object-width: 88%,
+  object: [
+    #text(size: 0.88em)[
+      #grid(
+        columns: (auto, 1fr),
+        column-gutter: 1em,
+        row-gutter: 0.7em,
+        align: (left, left),
+
+        text(weight: "semibold", fill: palette.accent)[Prediction],
+        [$a^*(x) = op("argmin")_a bb(E)[L(Y, a) | X=x]$],
+        [], text(size: 0.85em)[squared error $arrow.r$ mean, absolute error $arrow.r$ median, 0-1 loss $arrow.r$ mode],
+
+        uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Generation]],
+        uncover("2-")[$Q_theta (dot | x) approx P(dot | x), quad Y^((s)) tilde Q_theta (dot | x)$],
+      )
+    ]
+  ],
+  key-points: [
+    Prediction asks for whatever functional of $p(y|x)$ a loss requires. Generation asks for enough of the distribution to sample from it.
+  ],
+)
+
+#note[
+  If a predictive system learns the full conditional distribution with a
+  proper scoring rule and we then sample from it, the boundary between
+  probabilistic forecasting and conditional generation can become thin --
+  especially for high-dimensional, structured outputs. Worth stating once,
+  not a hard boundary to defend.
+]
+
+#speaker-note[
+  Keep this modest. The goal is a careful, usable distinction, not a
+  philosophical thesis about prediction versus generation.
+]
+
+== Action: choosing what to do
+
+#content-block(
+  layout: "top",
+  object-width: 82%,
+  object: [
+    #align(center)[
+      #course-diagram(
+        spacing: (4.2em, 3em),
+        node-stroke: 1.2pt + palette.dark,
+        node-fill: palette.paper,
+        edge-stroke: 1.2pt + palette.muted,
+        mark-scale: 65%,
+
+        graph-node((0, 0.5), name: <b-state>, shape: circle, width: 2.8em, height: 2.8em)[Oil\ state],
+        graph-node((1, 0), name: <b-sound>, shape: fletcher.shapes.rect, width: 4.2em, height: 2em)[Sounding],
+        graph-node((2, 0.5), name: <b-drill>, shape: fletcher.shapes.rect, width: 4.2em, height: 2em)[Drill?],
+        graph-node((3, 0.5), name: <b-utility>, shape: fletcher.shapes.diamond, width: 3.8em, height: 2.8em)[Utility],
+
+        graph-edge(<b-state>, <b-sound>, "-|>", bend: 12deg),
+        graph-edge(<b-sound>, <b-drill>, "-|>"),
+        graph-edge(<b-drill>, <b-utility>, "-|>"),
+        graph-edge(<b-state>, <b-utility>, "-|>", bend: -20deg),
+      )
+    ]
+  ],
+  key-points: [
+    - A probability model tells us what is likely
+    - Choosing what to do needs preferences, costs, and an action rule
+    - $a^* = op("argmax")_a bb(E)[U(a, "state") | "information"]$
+  ],
+)
+
+#note[Murphy covers this in Part VI, from Ch. 34. This course stops at Ch. 33 -- see `Syllabus.md`.]
+
+#speaker-note[
+  Murphy's oil-wildcatter example (Ch. 34): sound before drilling, or drill
+  blind? A probability model over the oil state is not enough to answer that
+  -- you also need a utility function and a decision rule. This is the
+  cleanest place to show that action is a genuinely additional layer, and why
+  this course does not build it.
+]
+
+== Summary: What do we use learned models for?
+
+#content-block(
+  key-points: [
+    - Prediction, generation, and discovery are different questions asked of a fitted model -- not different kinds of model
+    - Discriminative / generative describes the model; prediction / generation / discovery / action describes the task
+    - Action needs utilities and a decision rule on top of a probability model -- outside this course (Murphy Part VI)
+    - Lectures 7-12 build prediction, generation, and discovery in turn
+  ],
+)
+
+#speaker-note[
+  Pivot back to careful notation: having motivated why the distinctions
+  matter, the next section fast-reactivates the joint/conditional grammar
+  that all four tasks are built from.
+]
 
 #section-slide(
   title: [The grammar of probabilistic models],
@@ -587,24 +904,6 @@ You have seen the idea of distributions. This course needs fluent recognition, n
 ]
 
 #key-points[Most confusion in probabilistic ML is confusion about which object a distribution is over.]
-
-== A model is a joint distribution plus a question
-
-#align(center)[$
-  p(D, theta, z, tilde(y))
-$]
-
-Different questions extract different conditionals:
-
-#table(
-  columns: (auto, 1fr),
-  inset: 8pt,
-  [*Question*], [*Typical conditional*],
-  [inference], [$p(theta, z | D)$],
-  [prediction], [$p(tilde(y) | D)$],
-  [latent discovery], [$p(z | x, D)$],
-  [generation], [$p(tilde(x) | D)$ or $p(tilde(x) | c, D)$],
-)
 
 == Factorisation is where assumptions live
 
@@ -1077,26 +1376,8 @@ $]
 #section-slide(
   title: [Looking forward: probability as ML infrastructure],
   short-title: [Looking forward],
-  subtitle: [Prediction, generation, discovery, and computational inference],
+  subtitle: [Latent variables, computational inference, and the bridge to Lecture 2],
 )
-
-== Prediction, generation, discovery
-
-#triad[
-  *Prediction*\
-  $p(y | x, D)$\
-  #text(size: 0.8em)[labels, regressions, decisions]
-][
-  *Generation*\
-  $p(x | D)$ or $p(x | c, D)$\
-  #text(size: 0.8em)[new plausible data]
-][
-  *Discovery*\
-  $p(z | x, D)$\
-  #text(size: 0.8em)[hidden structure]
-]
-
-#key-points[The same grammar supports all three tasks; what changes is the conditional we care about.]
 
 == Latent variables change the target
 

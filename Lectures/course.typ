@@ -409,6 +409,8 @@
 // Width and height are both optional: when both are set, `fit: "contain"`
 // treats them as a bounding box and preserves the image's aspect ratio.
 // If caption is omitted, the source path is the only caption line.
+// Set show-source: false for the individual panels of a composite figure, and
+// name the provenance once for the composite instead of four times over.
 //
 // Missing-file handling uses the context/query workaround discussed in:
 // https://github.com/typst/typst/issues/2025#issuecomment-2500280417
@@ -451,6 +453,7 @@
   caption: none,
   width: 100%,
   height: auto,
+  show-source: true,
 ) = align(center)[
   #stack(
     spacing: 0.28em,
@@ -461,8 +464,16 @@
       text(size: 0.41em, fill: palette.text, caption)
     },
 
-    text(size: 0.34em, fill: palette.muted)[#raw(_path-text(source))],
+    if show-source {
+      text(size: 0.34em, fill: palette.muted)[#raw(_path-text(source))]
+    },
   )
+]
+
+// The provenance line on its own, for a composite whose panels each set
+// show-source: false.
+#let figure-source(source) = align(center)[
+  #text(size: 0.34em, fill: palette.muted)[#raw(_path-text(source))]
 ]
 
 // -----------------------------------------------------------------------------

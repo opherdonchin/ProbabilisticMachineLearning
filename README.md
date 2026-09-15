@@ -10,12 +10,20 @@ in the repository's standard `.venv`.
 ```text
 uv sync --locked
 uv run python scripts/execute_notebook.py Lectures/L01_Probability_Statistics/coin_model.ipynb --expect-file figures/coin_model__prior_likelihood_posterior.svg --expect-file figures/coin_model__sequential_updating.svg --expect-file figures/coin_model__posterior_predictive.svg --expect-file figures/coin_model__sampling_monte_carlo.svg
+uv run python scripts/execute_notebook.py Lectures/L01_Probability_Statistics/task_examples_figures.ipynb --expect-file figures/task_examples_figures__prediction_iris_logistic.svg --expect-file figures/task_examples_figures__generation_vae_samples.png --expect-file figures/task_examples_figures__discovery_gmm_clusters.svg --expect-file figures/task_examples_figures__action_active_learning.svg --expect-file figures/task_examples_figures__iris_prediction.svg --expect-file figures/task_examples_figures__iris_generation.svg --expect-file figures/task_examples_figures__iris_discovery.svg --expect-file figures/task_examples_figures__iris_action.svg --expect-file figures/task_examples_figures__iris_four_questions.svg
 uv run jupyter lab
 ```
 
-To intentionally regenerate the figures produced by the first notebook, run
-the same notebook-check command with `--in-place` and review the resulting SVG
+To intentionally regenerate the figures produced by a notebook, run the same
+notebook-check command with `--in-place` and review the resulting figure
 changes.
+
+`task_examples_figures.ipynb` also pulls in `scikit-learn` and a CPU build of
+`torch`, on top of the NumPy/SciPy/Matplotlib baseline used by
+`coin_model.ipynb`; both are pinned in `pyproject.toml` (`torch` resolves from
+the `pytorch-cpu` extra index configured in `[tool.uv.sources]`). Only the VAE
+cell needs `torch`; every figure draws from its own seeded generator, so that
+cell can be skipped without changing any other figure.
 
 Before publishing a notebook, connect it to the course-target runtime through
 the official Google Colab VS Code extension and run every cell from a fresh

@@ -591,7 +591,7 @@
 #section-slide(
   title: [What do we use learned models for?],
   short-title: [Tasks: prediction, generation, discovery],
-  subtitle: [Prediction, generation, discovery -- and where this course stops],
+  subtitle: [Four questions, four domains -- and the same four questions of one dataset],
 )
 
 == Four questions to ask of a fitted model
@@ -616,6 +616,84 @@
   discovery (11-12) -- Murphy chapters up to 33. Action is Murphy's Part VI
   and is flagged, not built, in this course. Use concrete examples from here
   on; do not let this stay a dry four-item catalogue.
+]
+
+// A panel of the "same flowers, four questions" composite. The figures are
+// deliberately untitled so the question and the probabilistic object are set
+// in the deck's own type, and so the panels can be reused elsewhere.
+#let iris-panel(question, object, gloss, file) = stack(
+  spacing: 0.15em,
+  text(size: 0.58em, weight: "semibold", fill: palette.accent)[#question],
+  text(size: 0.52em)[
+    #object #h(0.7em) #text(fill: palette.muted)[#gloss]
+  ],
+  course-figure(path(file), width: 100%, height: 4.15cm, show-source: false),
+)
+
+== Same flowers, four different questions
+
+#align(center)[#block(width: 78%)[#grid(
+  columns: (1fr, 1fr),
+  column-gutter: 1.1em,
+  row-gutter: 0.35em,
+  align: top,
+
+  iris-panel(
+    [Which species is this flower?],
+    [$p(y | x, D)$],
+    [measurements $arrow.r$ class],
+    "figures/task_examples_figures__iris_prediction.svg",
+  ),
+
+  uncover("2-")[#iris-panel(
+    [What would another such flower look like?],
+    [$x tilde p(x | y, D)$],
+    [class $arrow.r$ measurements],
+    "figures/task_examples_figures__iris_generation.svg",
+  )],
+
+  uncover("3-")[#iris-panel(
+    [With the species hidden, what grouping is there?],
+    [$p(z | x, D)$],
+    [measurements $arrow.r$ latent grouping],
+    "figures/task_examples_figures__iris_discovery.svg",
+  )],
+
+  uncover("4-")[#iris-panel(
+    [Which flower should we label next?],
+    [$x_"next" = op("argmax")_x HH[p(y | x, D)]$],
+    [uncertainty $arrow.r$ what to do],
+    "figures/task_examples_figures__iris_action.svg",
+  )],
+)]]
+
+#figure-source("figures/task_examples_figures__iris_*.svg")
+
+#uncover("4-")[
+  #align(center)[#text(weight: "semibold", fill: palette.accent)[Same 100 flowers. Same two measurements. Only the question changed.]]
+]
+
+#speaker-note[
+  This is the centre of the section, and the one slide to slow down on. Build
+  it one panel at a time and say each question out loud before the panel
+  appears. The four probabilistic objects are deliberately different -- but do
+  not let anyone leave thinking that prediction *is* $p(y|x)$ and generation
+  *is* $p(x|y)$; that is the trap the next two "careful" slides close. What
+  this slide licenses is only the weaker and more useful claim: a task is
+  fixed by what is observed, what is unknown, and what we want the system to
+  do -- not by the dataset.
+
+  Details worth having ready. Generation: one Gaussian per species, fit by
+  maximum likelihood -- a teaching choice, not a claim about flower
+  morphology. Discovery: the mixture never sees a label, and its two clusters
+  happen to agree with the species for 96 of the 100 flowers, which is worth
+  mentioning *after* the point has landed, not before. Action: the model is
+  fit to ten labeled flowers only, and the ringed flower is the one that
+  maximizes predictive entropy over the ninety unlabeled ones -- the model is
+  not reporting its uncertainty, it is spending it.
+
+  Ask the room which of the four they would call "machine learning". All four.
+  See `task_examples_figures.ipynb`, Family B, for provenance.
 ]
 
 == Prediction: what should we say about a new case?
@@ -821,13 +899,56 @@
   philosophical thesis about prediction versus generation.
 ]
 
-== Action: choosing what to do
+== Action: where should we measure next?
+
+#content-block(
+  layout: "side-left",
+  object-width: 66%,
+  object: [
+    #course-figure(
+      path("figures/task_examples_figures__action_active_learning.svg"),
+      source: "figures/task_examples_figures__action_active_learning.svg",
+      caption: [A GP fit to what has been measured, and the acquisition function it maximizes],
+      width: 100%,
+      height: 8.8cm,
+    )
+  ],
+  key-points: [
+    #text(size: 0.82em)[
+      - Measurements are expensive; the model decides where the next one goes
+      - $x_"next" = op("argmax")_x alpha(x; D)$
+      - with $alpha(x) = sqrt(VV[f(x) | D])$
+      #uncover("2-")[
+        - Prediction, generation and discovery all *report* something
+        - Action *changes what happens next*
+      ]
+    ]
+  ],
+)
+
+#speaker-note[
+  Reproduces the active-learning half of Murphy Fig. 34.16 (Ch. 34.7),
+  `bayes_opt_vs_active_learning.ipynb`; the Bayesian-optimization comparison
+  is left out on purpose, and the JAX stack is replaced by a NumPy GP. See
+  `task_examples_figures.ipynb`, Family A.
+
+  Walk the figure in order: the black points are the two measurements we
+  started with, the red ones are the six the algorithm asked for, and the
+  bottom panel is what it was maximizing each time. The dotted line is the
+  query it would make next. Note that the six red points are not evenly
+  spaced -- they cluster where the function wiggles, because that is where the
+  posterior stayed wide. Same Iris active-learning move as two slides back,
+  in a completely different domain: there, which flower to label; here, where
+  to measure a function.
+]
+
+== Beyond acquisition: actions with consequences
 
 #content-block(
   layout: "top",
-  object-width: 82%,
+  object-width: 76%,
   object: [
-    #align(center)[
+    #align(center + horizon)[
       #course-diagram(
         spacing: (4.2em, 3em),
         node-stroke: 1.2pt + palette.dark,
@@ -848,9 +969,15 @@
     ]
   ],
   key-points: [
-    - A probability model tells us what is likely
-    - Choosing what to do needs preferences, costs, and an action rule
-    - $a^* = op("argmax")_a bb(E)[U(a, "state") | "information"]$
+    #twocol[
+      - Uncertainty alone told us where to *look*
+      - It cannot tell us what a wrong choice *costs*
+    ][
+      #uncover("2-")[
+        - That needs preferences and an action rule
+        - $a^* = op("argmax")_a EE[U(a, "state") | "information"]$
+      ]
+    ]
   ],
 )
 
@@ -858,19 +985,26 @@
 
 #speaker-note[
   Murphy's oil-wildcatter example (Ch. 34): sound before drilling, or drill
-  blind? A probability model over the oil state is not enough to answer that
-  -- you also need a utility function and a decision rule. This is the
-  cleanest place to show that action is a genuinely additional layer, and why
-  this course does not build it.
+  blind? This slide earns its place only by contrast with the previous one.
+  There, the acquisition function came for free from the posterior -- maximum
+  variance, maximum entropy. Here it does not: a dry hole and a missed
+  gusher are both errors, and nothing in the probability model says which one
+  hurts more. That is the extra ingredient, and it is where the course stops.
+
+  Say the boundary out loud: Murphy keeps going into decision theory,
+  bandits, reinforcement learning and causality. We stop at Ch. 33. Action is
+  on the map so that the map is honest, not because we will build it.
 ]
 
 == Summary: What do we use learned models for?
 
 #content-block(
   key-points: [
-    - Prediction, generation, and discovery are different questions asked of a fitted model -- not different kinds of model
+    - Prediction, generation, discovery and action are different questions asked of a fitted model -- not different kinds of model
+    - The four tasks arise in very different domains -- and all four can be asked of one small table of flower measurements
+    - A task is fixed by what is observed, what is unknown, and what we want done -- not by the dataset
     - Discriminative / generative describes the model; prediction / generation / discovery / action describes the task
-    - Action needs utilities and a decision rule on top of a probability model -- outside this course (Murphy Part VI)
+    - Action needs a rule for choosing, and utilities once choices have costs -- outside this course (Murphy Part VI)
     - Lectures 7-12 build prediction, generation, and discovery in turn
   ],
 )

@@ -226,3 +226,4 @@ Lectures/*/output/
 # Local reference material and packaged drafts
 Resources/
 Lectures/*.zip
+.vscode/settings.json

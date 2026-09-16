@@ -51,9 +51,9 @@
       ]
 
       #uncover("2-")[
-        $theta tilde "Beta"(alpha, beta)$
+        $ theta tilde "Beta"(alpha, beta) $
         \
-        $y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N$
+        $ y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N $
       ]
     ]
   ],
@@ -85,7 +85,7 @@
       [
         #align(center)[
           #text(size: 0.68em)[
-            $theta tilde "Beta"(alpha, beta)$
+            $ theta tilde "Beta"(alpha, beta) $
           ]
         ]
       ],
@@ -102,8 +102,8 @@
           #align(center)[
             #stack(
               spacing: 0.2em,
-              text(size: 0.68em)[$y_i  tilde "Bernoulli"(theta)$],
-              text(size: 0.68em, fill: palette.muted)[$i = 1, dots, N$],
+              text(size: 0.68em)[$ y_i  tilde "Bernoulli"(theta) $],
+              text(size: 0.68em, fill: palette.muted)[$ i = 1, dots, N $],
             )
           ]
         ]
@@ -148,9 +148,9 @@
     object: [
       #twocol[
         #text(size: 1em)[
-          $theta tilde "Beta"(alpha, beta)$
+          $ theta tilde "Beta"(alpha, beta) $
           \
-          $y_i tilde "Bernoulli"(theta)$
+          $ y_i tilde "Bernoulli"(theta) $
         ]
       ][
         #align(center + horizon)[
@@ -228,8 +228,8 @@
 
 #note[#text(size:0.9em)[#stack(spacing:0.7em,
   [Model],
-  [$theta tilde "Beta"(alpha, beta)$],
-  [$y_i tilde "Bernoulli"(theta)$],
+  [$ theta tilde "Beta"(alpha, beta) $],
+  [$ y_i tilde "Bernoulli"(theta) $],
 )]]
 
 #content-block(
@@ -268,10 +268,10 @@
 
 #note[#text(size:0.9em)[#stack(spacing:0.7em,
   [Model],
-  pad(left: 1em)[$theta tilde "Beta"(alpha, beta)$],
-  pad(left: 1em)[$y_i tilde "Bernoulli"(theta)$],
+  pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
+  pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
   [Bayes rule],
-  pad(left: 1em)[$p(theta | y) &prop p(y | theta) p(theta)$],
+  pad(left: 1em)[$ p(theta | y) &prop p(y | theta) p(theta) $],
 )]]
 
 #content-block(
@@ -288,11 +288,11 @@
           row-gutter: 0.75em,
           align: (left, left),
           uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Prior]],
-          uncover("2-")[$p(theta) = "Beta"(alpha, beta)$],
+          uncover("2-")[$ p(theta) = "Beta"(alpha, beta) $],
           uncover("3-")[#text(weight: "semibold", fill: palette.accent)[Likelihood]],
-          uncover("3-")[$p(y | theta) = "Binomial"(N, theta)$],
+          uncover("3-")[$ p(y | theta) = "Binomial"(N, theta) $],
           uncover("5-")[#text(weight: "semibold", fill: palette.accent)[Posterior]],
-          uncover("5-")[$p(theta | y) = "Beta"(alpha + y, beta + N - y)$],
+          uncover("5-")[$ p(theta | y) = "Beta"(alpha + y, beta + N - y) $],
         )
       ],
     )
@@ -363,20 +363,20 @@
   subtitle: [Same probabilistic language, different organizing questions],
 )
 
-== The posterior was the destination
+== Statistics focuses on the unknown parameters
 
 #content-block(
   layout: "top",
   object-width: 60%,
   object: [
     #align(center)[
-      $p(theta | D)$
+      $ p(theta | D) = frac(p(D | theta) p(theta), p(D)) $
     ]
   ],
   key-points: [
-    - Section 1 built a model, applied Bayes' rule, and studied $p(theta | D)$
+    - Get data $arrow.r$ build a model $arrow.r$ apply Bayes' rule $arrow.r$ interpret $theta$
+        - For many scientific questions, that posterior *is* the answer
     #uncover("2-")[
-      - For many scientific questions, that posterior *is* the answer
       - Is learning $theta$ always the end of the problem?
     ]
   ],
@@ -396,9 +396,9 @@
   object-width: 74%,
   object: [
     #align(center)[
-      $D = {(x_i, y_i)}_(i=1)^N$
+      $ D = {(x_i, y_i)}_(i=1)^N $
       #v(0.6em)
-      #uncover("2-")[$"a new case: " x_*$]
+      #uncover("2-")[$ "a new case: " x_* $]
     ]
   ],
   key-points: [
@@ -431,7 +431,7 @@
   object-width: 80%,
   object: [
     #align(center)[
-      $Y_i | X_i, theta tilde p(y | X_i, theta)$
+      $ Y_i | X_i, theta tilde p(y | X_i, theta) $
     ]
   ],
   key-points: [
@@ -836,7 +836,7 @@
         [$p(y | x, theta)$ -- $x$ is conditioned on, never assigned a distribution],
 
         text(weight: "semibold", fill: palette.accent)[Generative model],
-        [$p(x, y | theta) = p(y | theta) med p(x | y, theta)$],
+        [$ p(x, y | theta) = p(y | theta) med p(x | y, theta) $],
 
         [], uncover("2-")[still used for prediction, via Bayes' rule: $p(y | x, theta) prop p(x | y, theta) med p(y | theta)$],
       )
@@ -873,11 +873,11 @@
         align: (left, left),
 
         text(weight: "semibold", fill: palette.accent)[Prediction],
-        [$a^*(x) = op("argmin")_a bb(E)[L(Y, a) | X=x]$],
+        [$ a^*(x) = op("argmin")_a bb(E)[L(Y, a) | X=x] $],
         [], text(size: 0.85em)[squared error $arrow.r$ mean, absolute error $arrow.r$ median, 0-1 loss $arrow.r$ mode],
 
         uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Generation]],
-        uncover("2-")[$Q_theta (dot | x) approx P(dot | x), quad Y^((s)) tilde Q_theta (dot | x)$],
+        uncover("2-")[$ Q_theta (dot | x) approx P(dot | x), quad Y^((s)) tilde Q_theta (dot | x) $],
       )
     ]
   ],
@@ -1087,9 +1087,9 @@ $]
   - conditioning
   - Bayes' rule
 ][
-  #align(center)[$p(a,b)=p(a|b)p(b)$]
-  #align(center)[$p(a)=sum_b p(a,b)$]
-  #align(center)[$p(a|b)=frac(p(a,b), p(b))$]
+  #align(center)[$ p(a,b)=p(a|b)p(b) $]
+  #align(center)[$ p(a)=sum_b p(a,b) $]
+  #align(center)[$ p(a|b)=frac(p(a,b), p(b)) $]
 ]
 
 #key-points[Nearly every derivation in the course is product-rule plus sum-rule plus normalization.]
@@ -1167,8 +1167,8 @@ $]
   - posterior median
 ][
   *Full inferential object*
-  #align(center)[$p(theta | D)$]
-  #align(center)[$p(tilde(y) | D)$]
+  #align(center)[$ p(theta | D) $]
+  #align(center)[$ p(tilde(y) | D) $]
 ]
 
 #key-points[We will often optimize point objectives, but the probabilistic target is still a distribution.]
@@ -1245,13 +1245,13 @@ The coin model contains the whole course in miniature:
 
 #triad[
   *model*\
-  $p(D | theta) p(theta)$
+  $ p(D | theta) p(theta) $
 ][
   *inference*\
-  $p(theta | D)$
+  $ p(theta | D) $
 ][
   *prediction*\
-  $p(tilde(y) | D)$
+  $ p(tilde(y) | D) $
 ]
 
 #note[Later models change the variables and the algorithms, not the basic grammar.]
@@ -1390,11 +1390,11 @@ $]
 
 #twocol[
   *Diagonal covariance*
-  #align(center)[$Sigma = "diag"(sigma_1^2, dots, sigma_D^2)$]
+  #align(center)[$ Sigma = "diag"(sigma_1^2, dots, sigma_D^2) $]
   #text(size: 0.8em)[axis-aligned uncertainty]
 ][
   *Full covariance*
-  #align(center)[$Sigma_(i j) = "Cov"(X_i, X_j)$]
+  #align(center)[$ Sigma_(i j) = "Cov"(X_i, X_j) $]
   #text(size: 0.8em)[tilted / coupled uncertainty]
 ]
 
@@ -1497,12 +1497,12 @@ $]
   *Prediction*\
   fit $p_theta(y|x)$ so the predictive distribution assigns high probability to held-out data.
 
-  #align(center)[$- log p_theta(y | x)$]
+  #align(center)[$ - log p_theta(y | x) $]
 ][
   *Approximate inference*\
   choose an approximation $q(theta)$ close to the posterior $p(theta | D)$.
 
-  #align(center)[$D_"KL"(q(theta) || p(theta | D))$]
+  #align(center)[$ D_"KL"(q(theta) || p(theta | D)) $]
 ]
 
 #note[We will not catalogue divergences today. We will use this idea when we reach information theory and variational inference.]
@@ -1601,10 +1601,10 @@ $]
 
 #twocol[
   *Discrete*\
-  #align(center)[$p_X(a) = P(X = a)$]
+  #align(center)[$ p_X(a) = P(X = a) $]
 ][
   *Continuous*\
-  #align(center)[$P(a <= X <= b) = integral_a^b p_X(x) d x$]
+  #align(center)[$ P(a <= X <= b) = integral_a^b p_X(x) d x $]
 ]
 
 #note[*Common trap:* A density value is not a probability.]

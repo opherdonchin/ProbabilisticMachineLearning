@@ -1,7 +1,6 @@
 // Lecture 1 — Probabilistic Machine Learning
 #import "../course.typ": *
 #import "figures/beta_bernoulli_graph.typ": beta_bernoulli_graph
-#import "figures/early_ml_classification_examples.typ": early_ml_classification_examples
 #import "figures/input_output_function_schema.typ": input_output_function_schema
 
 #let lecture = (
@@ -379,11 +378,28 @@
   layout: "top",
   object-width: 94%,
   object: [
-    #early_ml_classification_examples()
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 1em,
+      align: top,
+
+      course-figure(
+        path("figures/fisher_1936__iris_discriminant_histograms.png"),
+        source: "Fisher (1936), Fig. 1, The Use of Multiple Measurements in Taxonomic Problems",
+        width: 100%,
+        height: 4.25cm,
+      ),
+      course-figure(
+        path("figures/rosenblatt_1958__perceptron_organization.png"),
+        source: "Rosenblatt (1958), Fig. 1, The Perceptron",
+        width: 100%,
+        height: 4.25cm,
+      ),
+    )
   ],
   key-points: [
-    - In both papers, the point is not to reproduce every detail of the input,
-      but to produce a useful response or representation.
+    - Fisher's discriminant and Rosenblatt's perceptron both turn a rich input
+      into a useful class or response.
     #uncover("2-")[
       - MacQueen adds the complementary unsupervised question: useful structure
         can be discovered from observations alone.
@@ -392,17 +408,15 @@
 )
 
 #speaker-note[
-  The figures are originals, not redraws: Fisher (1936), Fig. 1, shows the
-  Iris distributions of a discriminating linear function; Rosenblatt (1958),
-  Fig. 1, diagrams the organization of a perceptron. MacQueen's (1967)
-  original k-means paper describes partitioning an $N$-dimensional population
-  into $k$ sets, but has no equally useful diagram for this slide.
+  Fisher's original Fig. 1 shows the Iris distributions of a discriminating
+  linear function. Rosenblatt's original Fig. 1 diagrams the organization of
+  a perceptron. MacQueen's (1967) k-means paper describes partitioning an
+  $N$-dimensional population into $k$ sets, but has no equally useful diagram
+  for this slide.
 
   Use these as early landmarks, not as a claim that the disciplines had clean
-  boundaries. The shared teaching point is that complicated observations are
-  turned into a simpler, useful output or representation. PCA is an older
-  example of the representation side of the same broad idea. See
-  `figures/historical_sources.md` for full citations and source URLs.
+  boundaries. See `figures/historical_sources.md` for full citations and
+  source URLs.
 ]
 
 

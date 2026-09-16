@@ -1,5 +1,8 @@
 // Lecture 1 — Probabilistic Machine Learning
 #import "../course.typ": *
+#import "figures/beta_bernoulli_graph.typ": beta_bernoulli_graph
+#import "figures/early_ml_classification_examples.typ": early_ml_classification_examples
+#import "figures/input_output_function_schema.typ": input_output_function_schema
 
 #let lecture = (
   number: 1,
@@ -28,11 +31,12 @@
   a, b, c,
 )
 
-#section-slide(
-  title: [A familiar modeling language],
+#section-metadata(
   short-title: [Probabilistic modelling],
   subtitle: [Probablistic models update based on data],
 )
+
+= A familiar modeling language
 
 == The Beta-Binomial model
 
@@ -153,53 +157,7 @@
           $ y_i tilde "Bernoulli"(theta) $
         ]
       ][
-        #align(center + horizon)[
-          #course-diagram(
-            spacing: (4.2em, 3em),
-            node-stroke: 1.2pt + palette.dark,
-            node-fill: palette.paper,
-            edge-stroke: 1.4pt + palette.accent,
-            mark-scale: 70%,
-
-            graph-node(
-              (0, 0),
-              name: <hyperparameters>,
-              stroke: none,
-              fill: none,
-            )[
-              #stack(
-                spacing: 0.3em,
-                text(size: 1.2em)[$alpha, beta$],
-              )
-            ],
-
-            graph-node(
-              (0, 1),
-              name: <theta-node>,
-              shape: circle,
-              width: 2em,
-              height: 2em,
-            )[$theta$],
-
-            graph-node(
-              (0, 2),
-              name: <data-node>,
-              shape: circle,
-              width: 2em,
-              height: 2em,
-              fill: palette.accent.lighten(78%),
-            )[$y_i$],
-
-            graph-edge(<hyperparameters>, <theta-node>, "-|>"),
-            graph-edge(<theta-node>, <data-node>, "-|>"),
-
-            graph-node(
-              (0.1, 1.5),
-              stroke: none,
-              fill: none,
-            )[$i$],
-          )
-        ]
+        #beta_bernoulli_graph()
       ]
     ],
 
@@ -264,7 +222,7 @@
   their product into the posterior distribution.
 ]
 
-== Beta-Bernoulli conjugacy
+== Conjugacy permits simple calculations
 
 #note[#text(size:0.9em)[#stack(spacing:0.7em,
   [Model],
@@ -314,7 +272,7 @@
   no need to derive the result here.
 ]
 
-== Bayes updates a distribution
+== The posterior is a distribution representing uncertainty
 
 #content-block(
   layout: "top",
@@ -357,11 +315,12 @@
   This is the pivot from the previous course to introducing the current course. The next section will establish what is the same and what is different.
 ]
 
-#section-slide(
-  title: [From inference to machine-learning problems],
-  short-title: [Inference to ML problems],
+#section-metadata(
+  short-title: [From statistics to machine learning],
   subtitle: [Same probabilistic language, different organizing questions],
 )
+
+= From statistics to machine-learning problems
 
 == Statistics focuses on the unknown parameters
 
@@ -377,7 +336,7 @@
     - Get data $arrow.r$ build a model $arrow.r$ apply Bayes' rule $arrow.r$ interpret $theta$
         - For many scientific questions, that posterior *is* the answer
     #uncover("2-")[
-      - Is learning $theta$ always the end of the problem?
+      - Statistics arose from an interest in the underlying parameters in nature
     ]
   ],
 )
@@ -388,6 +347,65 @@
   the object we ultimately care about? For a scientific inferential problem it
   often is. The rest of this section is about problems where it is not.
 ]
+
+== Machine learning grew out of computer science
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #input_output_function_schema()
+  ],
+  key-points: [
+    - A computational task is an *input/output contract*
+      - Produce a function $f$ that maps input $x$ to output $y$
+      #uncover("2-")[
+      - Implementation is secondary to the requirement
+      - Multiple implementations may be possible
+      ]
+    #uncover("3-")[
+    - Machine learning developed in this context
+    ]
+  ],
+)
+
+#speaker-note[
+  It's worth emphasizing the relationship between science and engineering and the different questions they ask.
+]
+
+== Early machine learning grew out of classification problems
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #early_ml_classification_examples()
+  ],
+  key-points: [
+    - In both papers, the point is not to reproduce every detail of the input,
+      but to produce a useful response or representation.
+    #uncover("2-")[
+      - MacQueen adds the complementary unsupervised question: useful structure
+        can be discovered from observations alone.
+    ]
+  ],
+)
+
+#speaker-note[
+  The figures are originals, not redraws: Fisher (1936), Fig. 1, shows the
+  Iris distributions of a discriminating linear function; Rosenblatt (1958),
+  Fig. 1, diagrams the organization of a perceptron. MacQueen's (1967)
+  original k-means paper describes partitioning an $N$-dimensional population
+  into $k$ sets, but has no equally useful diagram for this slide.
+
+  Use these as early landmarks, not as a claim that the disciplines had clean
+  boundaries. The shared teaching point is that complicated observations are
+  turned into a simpler, useful output or representation. PCA is an older
+  example of the representation side of the same broad idea. See
+  `figures/historical_sources.md` for full citations and source URLs.
+]
+
+
 
 == A new case arrives
 
@@ -588,11 +606,12 @@
   let it hang and answer it with concrete, visually distinct examples.
 ]
 
-#section-slide(
-  title: [What do we use learned models for?],
+#section-metadata(
   short-title: [Tasks: prediction, generation, discovery],
   subtitle: [Four questions, four domains -- and the same four questions of one dataset],
 )
+
+= What do we use learned models for?
 
 == Four questions to ask of a fitted model
 
@@ -1015,11 +1034,12 @@
   that all four tasks are built from.
 ]
 
-#section-slide(
-  title: [The grammar of probabilistic models],
+#section-metadata(
   short-title: [Model grammar],
   subtitle: [Observed quantities, unknown quantities, predictions, and factorization],
 )
+
+= The grammar of probabilistic models
 
 == Three recurring model objects
 
@@ -1072,11 +1092,12 @@ $]
 
 #note[*Common trap:* A likelihood is not a probability distribution over $theta$ until it is multiplied by a prior and normalized.]
 
-#section-slide(
-  title: [Fast reactivation: probability and Bayes],
+#section-metadata(
   short-title: [Probability & Bayes],
   subtitle: [Only the probability machinery we will use repeatedly],
 )
+
+= Fast reactivation: probability and Bayes
 
 == Probability calculus in one slide
 
@@ -1173,11 +1194,12 @@ $]
 
 #key-points[We will often optimize point objectives, but the probabilistic target is still a distribution.]
 
-#section-slide(
-  title: [Anchor example: the coin model, compressed],
+#section-metadata(
   short-title: [Coin model],
   subtitle: [The full probabilistic workflow in one deliberately simple model],
 )
+
+= Anchor example: the coin model, compressed
 
 == Coin model: data and parameter
 
@@ -1256,11 +1278,12 @@ The coin model contains the whole course in miniature:
 
 #note[Later models change the variables and the algorithms, not the basic grammar.]
 
-#section-slide(
-  title: [Exponential families: the reusable structure],
+#section-metadata(
   short-title: [Exponential families],
   subtitle: [A common algebraic skeleton behind many probabilistic models],
 )
+
+= Exponential families: the reusable structure
 
 == The common form
 
@@ -1349,11 +1372,12 @@ Exponential-family structure reappears in:
 
 #note[The point is not to memorize the taxonomy. The point is to recognize when a model has algebra we can exploit.]
 
-#section-slide(
-  title: [From scalar uncertainty to multivariate structure],
+#section-metadata(
   short-title: [Multivariate Gaussian],
   subtitle: [Dependence, geometry, conditioning, and high-dimensional probability],
 )
+
+= From scalar uncertainty to multivariate structure
 
 == Why the multivariate Gaussian matters
 
@@ -1467,11 +1491,12 @@ $]
 
 #key-points[Precision form makes many updates additive and connects naturally to exponential-family notation.]
 
-#section-slide(
-  title: [Comparing distributions: the ML pressure point],
+#section-metadata(
   short-title: [Comparing distributions],
   subtitle: [Why divergences become training and approximation objectives],
 )
+
+= Comparing distributions: the ML pressure point
 
 == Divergences: when the object being compared is a distribution
 
@@ -1507,11 +1532,12 @@ $]
 
 #note[We will not catalogue divergences today. We will use this idea when we reach information theory and variational inference.]
 
-#section-slide(
-  title: [Looking forward: probability as ML infrastructure],
+#section-metadata(
   short-title: [Looking forward],
   subtitle: [Latent variables, computational inference, and the bridge to Lecture 2],
 )
+
+= Looking forward: probability as ML infrastructure
 
 == Latent variables change the target
 
@@ -1572,11 +1598,12 @@ Students should be able to answer:
 
 #align(center)[[Next: graphical models + information theory]]
 
-#section-slide(
-  title: [Reserve / expansion slides],
+#section-metadata(
   short-title: [Reserve],
   subtitle: [Material to use only if the room needs additional reactivation],
 )
+
+= Reserve / expansion slides
 
 == Reserve: probability space
 

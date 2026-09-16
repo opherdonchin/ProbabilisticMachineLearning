@@ -33,9 +33,67 @@
   institution: [Department of Biomedical Engineering, Ben-Gurion University],
 )
 
-// Section state is updated only by section-slide().
+// Section state is updated by the level-1 heading handler below.
 #let _section-number = state("pml-section-number", 0)
 #let _section-short-title = state("pml-section-short-title", [])
+#let _section-subtitle = state("pml-section-subtitle", none)
+
+#let section-metadata(
+  short-title: none,
+  subtitle: none,
+) = {
+  _section-short-title.update(short-title)
+  _section-subtitle.update(subtitle)
+}
+
+#let _course-section-slide(self: none, body) = touying-slide-wrapper(self => {
+  self = utils.merge-dicts(
+    self,
+    config-page(
+      margin: 2em,
+      header: none,
+      footer: none,
+    ),
+  )
+
+  let main-body = {
+    _section-number.update(n => n + 1)
+
+    context {
+      let n = _section-number.get()
+      let subtitle = _section-subtitle.get()
+
+      set align(left + horizon)
+
+      pad(left: 36pt)[
+        #stack(
+          spacing: 0.8em,
+
+          text(
+            size: 0.75em,
+            fill: palette.muted,
+            weight: "medium",
+          )[Section #n],
+
+          line(length: 40pt, stroke: 2pt + palette.accent),
+
+          text(
+            size: 32pt,
+            weight: "semibold",
+            fill: palette.dark,
+            utils.display-current-heading(level: 1),
+          ),
+
+          if subtitle != none {
+            text(size: 15pt, fill: palette.text, subtitle)
+          },
+        )
+      ]
+    }
+  }
+
+  touying-slide(self: self, main-body)
+})
 
 // -----------------------------------------------------------------------------
 // Ordinary slide chrome
@@ -137,6 +195,7 @@
     config-common(
       breakable: false,
       slide-fn: _course-slide,
+      new-section-slide-fn: _course-section-slide,
     ),
 
     config-store(
@@ -210,7 +269,7 @@
 
 #let section-slide(
   title: none,
-  short-title: title,
+  short-title: none,
   subtitle: none,
 ) = touying-slide-wrapper(self => {
     self = utils.merge-dicts(
@@ -225,8 +284,9 @@
     // Keep the state updates inside the explicit slide body. Emitting them
     // before touying-slide-wrapper creates an unintended empty first slide.
     let body = {
+      let resolved-short-title = if short-title == none { title } else { short-title }
       _section-number.update(n => n + 1)
-      _section-short-title.update(short-title)
+      _section-short-title.update(resolved-short-title)
 
       context {
         let n = _section-number.get()

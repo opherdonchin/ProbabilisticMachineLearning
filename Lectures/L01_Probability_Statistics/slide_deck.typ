@@ -30,6 +30,11 @@
   a, b, c,
 )
 
+// Keeps a reveal-only note in the same visual space as a course figure.
+#let figure-note(body) = block(width: 100%, height: 5.45cm)[
+  #align(center + horizon)[#note(body)]
+]
+
 #section-metadata(
   short-title: [Probabilistic modelling],
   subtitle: [Probablistic models update based on data],
@@ -383,24 +388,57 @@
       gutter: 1em,
       align: top,
 
-      course-figure(
-        path("figures/fisher_1936__iris_discriminant_histograms.png"),
-        source: "Fisher (1936), Fig. 1, The Use of Multiple Measurements in Taxonomic Problems",
-        width: 100%,
-        height: 4.25cm,
+      alternatives-match(
+        (
+          "1, 3-": [
+            #course-figure(
+              path("figures/fisher_1936__iris_discriminant_histograms.png"),
+              source: "Fisher (1936), Fig. 1, The Use of Multiple Measurements in Taxonomic Problems",
+              width: 100%,
+              height: 5cm,
+            )
+          ],
+          "2": [
+            #figure-note[
+              Every flower started as four numbers. Fisher learned one weighted
+              combination of those four numbers so that species became as
+              separated as possible. The histogram shows the flowers after that
+              learned projection.
+            ]
+          ],
+        ),
+        position: center + horizon,
+        stretch: true,
       ),
-      course-figure(
-        path("figures/rosenblatt_1958__perceptron_organization.png"),
-        source: "Rosenblatt (1958), Fig. 1, The Perceptron",
-        width: 100%,
-        height: 4.25cm,
+      alternatives-match(
+        (
+          "1": [
+            #figure-note[
+              Rosenblatt considered the perceptron a model of the vertebrate
+              visual system. He showed how neuron-like units could learn to
+              “recognize” classes of input patterns from experience.
+            ]
+          ],
+          "2-": [
+            #course-figure(
+              path("figures/rosenblatt_1958__perceptron_organization.png"),
+              source: "Rosenblatt (1958), Fig. 1, The Perceptron",
+              width: 100%,
+              height: 5cm,
+            )
+          ],
+        ),
+        position: center + horizon,
+        stretch: true,
       ),
     )
   ],
   key-points: [
-    - Fisher's discriminant and Rosenblatt's perceptron both turn a rich input
-      into a useful class or response.
-    #uncover("2-")[
+    #uncover("3-")[
+      - Fisher's discriminant and Rosenblatt's perceptron both turn a rich input
+        into a useful class or response.
+    ]
+    #uncover("4-")[
       - MacQueen adds the complementary unsupervised question: useful structure
         can be discovered from observations alone.
     ]

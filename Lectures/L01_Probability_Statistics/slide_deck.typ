@@ -30,9 +30,17 @@
   a, b, c,
 )
 
+// `course-figure` resolves file strings from Lectures/course.typ. Keep these
+// lecture-local assets addressable without relying on Typst's removed path().
+#let lecture-figure-path(file) = "L01_Probability_Statistics/" + file
+
 // Keeps a reveal-only note in the same visual space as a course figure.
 #let figure-note(body) = block(width: 100%, height: 5.45cm)[
-  #align(center + horizon)[#note(body)]
+  #align(center + horizon)[
+    #block(width: 88%)[
+      #note[#text(size: 0.72em)[#body]]
+    ]
+  ]
 ]
 
 #section-metadata(
@@ -99,7 +107,7 @@
       ],
       [
         #course-figure(
-          path("figures/coin_model__beta_distribution.svg"),
+          lecture-figure-path("figures/coin_model__beta_distribution.svg"),
           source: "figures/coin_model__beta_distribution.svg",
           width: 100%,
           height: 4cm,
@@ -119,7 +127,7 @@
       [
         #uncover("2-")[
           #course-figure(
-            path("figures/coin_model__bernoulli_likelihood.svg"),
+            lecture-figure-path("figures/coin_model__bernoulli_likelihood.svg"),
             source: "figures/coin_model__bernoulli_likelihood.svg",
             width: 100%,
             height: 4cm,
@@ -283,7 +291,7 @@
   object-width: 82%,
   object: [
     #course-figure(
-      path("figures/coin_model__prior_likelihood_posterior.svg"),
+      lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
       source: "figures/coin_model__prior_likelihood_posterior.svg",
       caption: [Bayesian updating for the familiar coin model],
       width: 100%,
@@ -392,7 +400,7 @@
         (
           "1, 3-": [
             #course-figure(
-              path("figures/fisher_1936__iris_discriminant_histograms.png"),
+              lecture-figure-path("figures/fisher_1936__iris_discriminant_histograms.png"),
               source: "Fisher (1936), Fig. 1, The Use of Multiple Measurements in Taxonomic Problems",
               width: 100%,
               height: 5cm,
@@ -408,7 +416,7 @@
           ],
         ),
         position: center + horizon,
-        stretch: true,
+        stretch: false,
       ),
       alternatives-match(
         (
@@ -421,7 +429,7 @@
           ],
           "2-": [
             #course-figure(
-              path("figures/rosenblatt_1958__perceptron_organization.png"),
+              lecture-figure-path("figures/rosenblatt_1958__perceptron_organization.png"),
               source: "Rosenblatt (1958), Fig. 1, The Perceptron",
               width: 100%,
               height: 5cm,
@@ -429,7 +437,7 @@
           ],
         ),
         position: center + horizon,
-        stretch: true,
+        stretch: false,
       ),
     )
   ],
@@ -698,7 +706,7 @@
   text(size: 0.52em)[
     #object #h(0.7em) #text(fill: palette.muted)[#gloss]
   ],
-  course-figure(path(file), width: 100%, height: 4.15cm, show-source: false),
+  course-figure(lecture-figure-path(file), width: 100%, height: 4.15cm, show-source: false),
 )
 
 == Same flowers, four different questions
@@ -774,7 +782,7 @@
   object-width: 58%,
   object: [
     #course-figure(
-      path("figures/task_examples_figures__prediction_iris_logistic.svg"),
+      lecture-figure-path("figures/task_examples_figures__prediction_iris_logistic.svg"),
       source: "figures/task_examples_figures__prediction_iris_logistic.svg",
       caption: [Posterior over the decision boundary, Iris petal measurements],
       width: 100%,
@@ -804,7 +812,7 @@
   object-width: 84%,
   object: [
     #course-figure(
-      path("figures/task_examples_figures__generation_vae_samples.png"),
+      lecture-figure-path("figures/task_examples_figures__generation_vae_samples.png"),
       source: "figures/task_examples_figures__generation_vae_samples.png",
       caption: [Training faces (top) and samples from a learned latent-variable model (bottom)],
       width: 100%,
@@ -845,7 +853,7 @@
   object-width: 58%,
   object: [
     #course-figure(
-      path("figures/task_examples_figures__discovery_gmm_clusters.svg"),
+      lecture-figure-path("figures/task_examples_figures__discovery_gmm_clusters.svg"),
       source: "figures/task_examples_figures__discovery_gmm_clusters.svg",
       caption: [Unlabeled data and the latent grouping a mixture model infers],
       width: 100%,
@@ -977,7 +985,7 @@
   object-width: 66%,
   object: [
     #course-figure(
-      path("figures/task_examples_figures__action_active_learning.svg"),
+      lecture-figure-path("figures/task_examples_figures__action_active_learning.svg"),
       source: "figures/task_examples_figures__action_active_learning.svg",
       caption: [A GP fit to what has been measured, and the acquisition function it maximizes],
       width: 100%,
@@ -987,7 +995,7 @@
   key-points: [
     #text(size: 0.82em)[
       - Measurements are expensive; the model decides where the next one goes
-      - $x_"next" = op("argmax")_x alpha(x; D)$
+      - $x_"next" = op("argmax")_x alpha(x, D)$
       - with $alpha(x) = sqrt(VV[f(x) | D])$
       #uncover("2-")[
         - Prediction, generation and discovery all *report* something

@@ -1656,7 +1656,7 @@ Students should be able to answer:
 - Multivariate Gaussian algebra is a central tool for dependence and conditioning.
 - The next step is graphical structure and information-theoretic objectives.
 
-#align(center)[[Next: graphical models + information theory]]
+#align(center)[[Next: graphical models]]
 
 #section-metadata(
   short-title: [Reserve],

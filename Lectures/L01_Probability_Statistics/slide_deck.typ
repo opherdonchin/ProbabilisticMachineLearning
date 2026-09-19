@@ -348,7 +348,7 @@
     - Get data $arrow.r$ build a model $arrow.r$ apply Bayes' rule $arrow.r$ interpret $theta$
         - For many scientific questions, that posterior *is* the answer
     #uncover("2-")[
-      - Statistics arose from an interest in the underlying parameters in nature
+        - Statistics arose from an interest in the underlying parameters in nature
     ]
   ],
 )
@@ -408,10 +408,9 @@
           ],
           "2": [
             #figure-note[
-              Every flower started as four numbers. Fisher learned one weighted
-              combination of those four numbers so that species became as
-              separated as possible. The histogram shows the flowers after that
-              learned projection.
+              Rosenblatt considered the perceptron a model of the vertebrate
+              visual system. He showed how neuron-like units could learn to
+              “recognize” classes of input patterns from experience.
             ]
           ],
         ),
@@ -422,9 +421,10 @@
         (
           "1": [
             #figure-note[
-              Rosenblatt considered the perceptron a model of the vertebrate
-              visual system. He showed how neuron-like units could learn to
-              “recognize” classes of input patterns from experience.
+              Every flower started as four numbers. Fisher learned one weighted
+              combination of those four numbers so that species became as
+              separated as possible. The histogram shows the flowers after that
+              learned projection.
             ]
           ],
           "2-": [
@@ -443,12 +443,11 @@
   ],
   key-points: [
     #uncover("3-")[
-      - Fisher's discriminant and Rosenblatt's perceptron both turn a rich input
-        into a useful class or response.
+      - Fisher's discriminant and Rosenblatt's perceptron share an interface
+        - complex input $arrow.r$ class or response
     ]
     #uncover("4-")[
-      - MacQueen adds the complementary unsupervised question: useful structure
-        can be discovered from observations alone.
+      - Machine learning asks how data can produce the required function $f$
     ]
   ],
 )
@@ -456,50 +455,145 @@
 #speaker-note[
   Fisher's original Fig. 1 shows the Iris distributions of a discriminating
   linear function. Rosenblatt's original Fig. 1 diagrams the organization of
-  a perceptron. MacQueen's (1967) k-means paper describes partitioning an
-  $N$-dimensional population into $k$ sets, but has no equally useful diagram
-  for this slide.
+  a perceptron.
 
   Use these as early landmarks, not as a claim that the disciplines had clean
   boundaries. See `figures/historical_sources.md` for full citations and
-  source URLs.
+  source URLs. End by separating two ideas that are easy to blur: a predictor
+  maps an input to a class, while learning is the process that produces that
+  predictor from examples.
 ]
 
-
-
-== A new case arrives
+== The prediction problem has two functions
 
 #content-block(
   layout: "top",
-  object-width: 74%,
+  object-width: 90%,
   object: [
-    #align(center)[
-      $ D = {(x_i, y_i)}_(i=1)^N $
-      #v(0.6em)
-      #uncover("2-")[$ "a new case: " x_* $]
-    ]
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 1.6em,
+      align: center + horizon,
+      [
+        #align(center)[
+          *Training*
+          #v(0.5em)
+          $ D = {(x_i, y_i)}_(i=1)^N quad arrow.r^(A) quad f_D $
+        ]
+      ],
+      [
+        #align(center)[
+          *Prediction*
+          #v(0.5em)
+          $ x_* quad arrow.r^(f_D) quad hat(y)_* in cal(Y) $
+        ]
+      ],
+    )
   ],
   key-points: [
-    - We fit or infer whatever is necessary from $D$
+    - The predictor $f_D$ takes a complex input and returns a class
     #uncover("2-")[
-      - so the system can do something useful with $x_*$ -- a case that was
-        never itself the object of the original inference
+      - The training algorithm $A$ is a separate function
+        - paired examples in, predictor out
+    ]
+    #uncover("3-")[
+      - Together, learning $f_D$ and applying it to a new input form the *prediction problem*
     ]
   ],
 )
 
-#note[
-  Historically, machine learning grew out of tasks like pattern recognition,
-  vision, speech, and language, where the practical criterion was whether a
-  system worked on new, unseen cases -- not whether a fitted parameter had a
-  clean scientific interpretation.
+#speaker-note[
+  The right-hand function is the one we deploy: an image, waveform, document,
+  or other complex object goes in, and a class comes out. The left-hand
+  function is training. Its output is itself a function. Keep these two maps
+  distinct because most of the course concerns how to construct the second map
+  so that the first one works on new cases.
+]
+
+== Probabilistic prediction keeps uncertainty about the class
+
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[
+      $ p(y_* | x_*, D)
+        = integral p(y_* | x_*, theta) p(theta | D) dif theta $
+      #v(0.7em)
+      #uncover("2-")[
+        $ hat(y)_* = arg max_(c in cal(Y)) p(y_* = c | x_*, D) $
+      ]
+    ]
+  ],
+  key-points: [
+    - The predictive distribution assigns probabilities to the possible classes
+    #uncover("2-")[
+      - A decision rule turns that distribution into a class when the task requires one
+    ]
+    #uncover("3-")[
+      - The training data affect the prediction through what they tell us about $theta$
+    ]
+  ],
+)
+
+#speaker-note[
+  In a probabilistic treatment, the deployed object need not return only one
+  label. It can return a distribution over labels. The integral carries
+  parameter uncertainty from the posterior into the prediction, while the
+  argmax is one possible decision rule. Later, other losses will imply other
+  decisions.
+]
+
+== Training performance cannot tell us whether prediction is solved
+
+#content-block(
+  layout: "top",
+  object-width: 88%,
+  object: [
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 1.6em,
+      align: center + horizon,
+      [
+        #align(center)[
+          *Used to produce $f_D$*
+          #v(0.45em)
+          $ D_"train" = {(x_i, y_i)}_(i=1)^N $
+        ]
+      ],
+      [
+        #align(center)[
+          *Used to evaluate $f_D$*
+          #v(0.45em)
+          $ D_"test" = {(x_j, y_j)}_(j=1)^M $
+        ]
+      ],
+    )
+  ],
+  key-points: [
+    - Good predictions on the training set may only show that the procedure fit those examples
+    #uncover("2-")[
+      - Prediction asks how $f_D$ performs on new input-class pairs
+    ]
+    #uncover("3-")[
+      - Because future cases are unknown, we estimate that performance with data withheld from training
+    ]
+  ],
+)
+
+#uncover("3-")[
+  #note[
+    Designing an evaluation that genuinely represents future use is a central
+    challenge in machine learning.
+  ]
 ]
 
 #speaker-note[
-  Generalization to new cases becomes explicit. This is the change in what
-  organizes the problem: the new case $x_*$, not $theta$, moves to center
-  stage. Large data and large models are a consequence of this pressure, not
-  the original motivation for it.
+  We cannot certify a predictor using the same observations that produced it.
+  A test set is the simplest approximation to the cases the system will face
+  later, but its value depends on whether it truly represents that future use.
+  This turns evaluation and generalization into central parts of the prediction
+  problem, not bookkeeping after training.
 ]
 
 == Familiar regression notation, two different roles

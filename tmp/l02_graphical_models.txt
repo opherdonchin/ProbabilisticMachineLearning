@@ -1,0 +1,3615 @@
+
+
+===== PDF PAGE 1 =====
+4 Graphical models
+4.1 Introduction
+Ib a s i c a l l yk n o wo ft w op r i n c i p l e sf o rt r e a t i n gc o m p l i c a t e ds y s t e m si ns i m p l ew a y s : t h eﬁ r s ti s
+the principle of modularity and the second is the principle of abstraction. I am an apologist
+for computational probability in machine learning because I believe that probability theory
+implements these two principles in deep and intriguing ways — namely through factorization
+and through averaging. Exploiting these two mechanisms as fully as possible seems to me to
+be the way forward in machine learning. — Michael Jordan, 1997 (quoted in [ Fre98]).
+Probabilistic graphical models (PGMs)p r o v i d eac o n v e n i e n tf o r m a l i s mf o rd e ﬁ n i n gj o i n t
+distributions on sets of random variables. In such graphs, the nodes represent random variables, and
+the (lack of) edges represent conditional independence (CI)a s s u m p t i o n sb e t w e e nt h e s ev a r i a b l e s .
+Ab e t t e rn a m ef o rt h e s em o d e l sw o u l db e“ i n d e p e n d e n c ed i a g r a m s ” ,b u tt h et e r m“ g r a p h i c a lm o d e l s ”
+is now entrenched.
+There are several kinds of graphical model, depending on whether the graph is directed, undirected,
+or some combination of directed and undirected, as we discuss in the sections below. More details on
+graphical models can be found in e.g., [ KF09a; Maa+25].
+4.2 Directed graphical models (Bayes nets)
+In this section, we discuss directed probabilistic graphical models, or DPGM, which are based
+on directed acyclic graphs or DAGs (graphs that do not have any directed cycles). PGMs
+based on a DAG are often called Bayesian networks or Bayes nets for short; however, there is
+nothing inherently “Bayesian” about Bayesian networks: they are just a way of deﬁning probability
+distributions. They are also sometimes called belief networks . The term “belief” here refers to
+subjective probability. However, the probabilities used in these models are no more (and no less)
+subjective than in any other kind of probabilistic model.
+4.2.1 Representing the joint distribution
+The key property of a DAG is that the nodes can be ordered such that parents come before children.
+This is called a topological ordering .G i v e n s u c h a n o r d e r , w e d e ﬁ n e t h eordered Markov
+property to be the assumption that a node is conditionally independent of all its predecessors in
+
+===== PDF PAGE 2 =====
+144 Chapter 4. Graphical models
+x1 x2 x3
+···
+(a)
+x1 x2 x3
+···
+(b)
+Figure 4.1: Illustration of ﬁrst and second order Markov models.
+the ordering given its parents, i.e.,
+xi → xpred(i)\pa(i)♣xpa(i) (4.1)
+where pa(i) are the parents of node i,a n d pred(i) are the predecessors of node i in the ordering.
+Consequently, we can represent the joint distribution as follows (assuming we use node ordering
+1: NG):
+p(x1:NG )= p(x1)p(x2♣x1)p(x3♣x1,x 2) ...p (xNG ♣x1,...,x NG →1)=
+NG∏
+i=1
+p(xi♣xpa(i)) (4.2)
+where p(xi♣xpa(i)) is the conditional probability distribution or CPD for node i. (The parameters
+of this distribution are omitted from the notation for brevity.)
+The key advantage of the representation used in Equation ( 4.2)i st h a tt h en u m b e ro fp a r a m e t e r s
+used to specify the joint distribution is substantially less, by virtue of the conditional independence
+assumptions that we have encoded in the graph, than an unstructured joint distribution. To see this,
+suppose all the variables are discrete and have K states each. Then an unstructured joint distribution
+needs O(KNG ) parameters to specify the probability of every conﬁguration. By contrast, with a
+DAG in which each node has at most NP parents, we only need O(NGKNP +1) parameters, which
+can be exponentially fewer if the DAG is sparse.
+We give some examples of DPGM’s in Section 4.2.2,a n di nS e c t i o n4.2.4,w ed i s c u s sh o wt or e a d
+o! other conditional independence properties from the graph.
+4.2.2 Examples
+In this section, we give several examples of models that can be usefully represented as DPGM’s.
+4.2.2.1 Markov chains
+We can represent the conditional indep endence assumptions of a ﬁrst-order Markov mo del using the
+chain-structured DPGM shown in Figure 4.1(a). Consider a variable at a single time step t,w h i c h
+we call the “present”. From the diagram, we see that information cannot ﬂow from the past, x1:t→1,
+to the future, xt+1:T ,e x c e p tv i at h ep r e s e n t ,xt.( W e f o r m a l i z e t h i s i n S e c t i o n4.2.4.) This means
+that the xt is a su"cient statistic for the past, so the model is ﬁrst-order Markov. This implies that
+the corresponding joint distribution can be written as follows:
+p(x1:T )= p(x1)p(x2♣x1)p(x3♣x2) ··· p(xT ♣xT →1)= p(x1)
+T∏
+t=2
+p(xt♣x1:t→1) (4.3)
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 3 =====
+4.2. Directed graphical models (Bayes nets) 145
+For discrete random variables, we can represent corresponding CPDs, p(xt = k♣xt→1 = j),a sa
+2d table, known as a conditional probability table or CPT, p(xt = k♣xt→1 = j)= ωjk , where
+0 ↑ ωjk ↑ 1 and ∑K
+k=1 ωjk =1 (i.e., each row sums to 1).
+The ﬁrst-order Markov assumption is quite restrictive. If we want to allow for dependencies two
+steps into the past, we can create a Markov model of order 2. This is shown in Figure 4.1(b). The
+corresponding joint distribution has the form
+p(x1:T )= p(x1,x 2)p(x3♣x1,x 2)p(x4♣x2,x 3) ··· p(xT ♣xT →2,x T →1)= p(x1,x 2)
+T∏
+t=3
+p(xt♣xt→2:t→1) (4.4)
+As we increase the order of the Markov model, we need to add more edges. In the limit, the DAG
+becomes fully connected (subject to being acyclic), as shown in Figure 22.1.H o w e v e r , i n t h i s c a s e ,
+there are no useful conditional independencies, so the graphical model has no value.
+4.2.2.2 The “student” network
+Figure 4.2 shows a model for capturing the inter dependencies between 5 discrete random variables
+related to a hypothetical student taking a class: D = di"culty of class (easy, hard), I = intelligence
+(low, high), G = grade (A, B, C), S = SAT score (bad, good), L = letter of recommendation (bad,
+good). (This is a simpliﬁcation of the “ student network”f r o m[ KF09a, p.281].) The chain rule
+tells us that we can represent the joint as follows:
+p(D, I, G, L, S)= p(L♣S, G, D, I) ↓ p(S♣G, D, I) ↓ p(G♣D, I) ↓ p(D♣I) ↓ p(I) (4.5)
+where we have ordered the nodes topologically as I, D, G, S, L. Note that L is conditionally
+independent of all the other nodes earlier in this ordering given its parent G,s ow ec a nr e p l a c e
+p(L♣S, G, D, I) by p(L♣G).W e c a n s i m p l i f y t h e o t h e r t e r m s i n a s i m i l a r w a y t o g e t
+p(D, I, G, L, S)= p(L♣G) ↓ p(S♣I) ↓ p(G♣D, I) ↓ p(D) ↓ p(I) (4.6)
+The ability to simplify a joint distribution in a product of small local pieces is the key idea behind
+graphical models.
+In addition to the graph structure, we need to specify the conditional probability distributions
+(CPDs) at each node. For discrete random variables, we can represent the CPD as a table, which
+means we have a separate row (i.e., a separate categorical distribution) for each conditioning case ,
+i.e., for each combination of parent values. We can represent the i’th CPT as follows:
+ωijk ↭ p(xi = k♣xpa(i) = j) (4.7)
+The matrix ωi,:,: is a row stochastic matrix ,t h a ts a t i s ﬁ e st h ep r o p e r t i e s0 ↑ ωijk ↑ 1 and∑Ki
+k=1 ωijk =1 for each row j.H e r e i indexes nodes, i ↔ [NG]; k indexes node states, k ↔ [Ki],
+where Ki is the number of states for node i;a n d j indexes joint parent states, j ↔ [Ji], where
+Ji = ∏
+p↑pa(i) Kp.
+The CPTs for the student network are shown next to each node in Figure 4.2.F o r e x a m p l e , w e s e e
+that if the class is hard ( D =1 )a n dt h es t u d e n th a sl o wi n t e l l i g e n c e(I =0 ), the distribution over
+grades A, B, and C we expect is p(G♣D =1 ,I = 0) = [0 .05, 0.25, 0.7];b u ti ft h es t u d e n ti si n t e l l i g e n t ,
+we get p(G♣D =1 ,I = 1) = [0 .5, 0.3, 0.2].
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 4 =====
+146 Chapter 4. Graphical models
+ Diff EasyHard0.600.40
+ Grade  ABCLow, Easy0.300.400.30Low, Hard0.050.250.70High, Easy0.900.080.02High, Hard0.500.300.20
+ Intel LowHigh0.700.30
+ SAT  BadGoodLow0.950.05High0.200.80
+ Letter  BadGoodA0.100.90B0.400.60C0.990.01
+Figure 4.2: The (simpliﬁed) student network. “Di! ” is the di"culty of the class. “Intel” is the intelligence
+of the student. “Grade” is the grade of the student in this class. “SAT” is the score of the student on the
+SAT exam. “Letter” is whether the teacher writes a good or bad letter of recommendation. The circles
+(nodes) represent random variables, the edges represent direct probabilistic dependencies. The tables inside
+each node represent the conditional probability distribution of the node given its parents. Generated by
+student_pgm.ipynb.
+The number of parameters in a CPT is O(Kp+1), where K is the number of states per node, and
+p is the number of parents. Later we will consider more parsimonious representations, with fewer
+learnable parameters. (We discuss parameter learning in Section 4.2.7.)
+Once we have speciﬁed the model, we can use it to answer probabilistic queries, as we discuss in
+Section 4.2.6. As an example, suppose we observe that the student gets a grade of C. The posterior
+probability that the student is intelligent is just p(I = High♣G = C)=0 .08,a ss h o w ni nF i g u r e4.8.
+However, now suppose we also observe that the student gets a good SAT score. Now the posterior
+probability that the student is intelligent has jumped to p(I = High♣G = C, S = Good)=0 .58,s i n c e
+we can explain the C grade by inferring it was a di"cult class (indeed, we ﬁnd p(D = Hard♣G =
+C, S = Good)=0 .76). This negative mutual interaction between multiple causes of some observations
+is called the explaining away e!ect, also known as Berkson’s paradox (see Section 4.2.4.2 for
+details).
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 5 =====
+4.2. Directed graphical models (Bayes nets) 147
+(a)
+ (b)
+Figure 4.3: (a) Hierarchical latent variable model with 2 layers. (b) Same as (a) but with autoregressive
+connections within each layer. The observed x variables are the shaded leaf nodes at the bottom. The unshaded
+nodes are the hidden z variables.
+4.2.2.3 Sigmoid belief nets
+In this section, we consider a deep generative model of the form shown in Figure 4.3a. This
+corresponds to the following joint distribution:
+p(x, z)= p(z2)p(z1♣z2)p(x♣z1)=
+K2∏
+k=1
+p(z2,k)
+K1∏
+k=1
+p(z1,k♣z2)
+D∏
+d=1
+p(xd♣z1) (4.8)
+where x denotes the visible leaf nodes, and zω denotes the hidden internal nodes. (We assume there
+are Kω hidden nodes at level ε,a n d D visible leaf nodes.)
+Now consider the special case where all the latent variables are binary, and all the latent CPDs are
+logistic regression models. That is,
+p(zω♣zω+1, ω)=
+Kω∏
+k=1
+Ber(zω,k♣ϑ(wT
+ω,kzω+1)) (4.9)
+where ϑ(u)=1 /(1 + e→u) is the sigmoid (logistic) function. The result is called a sigmoid belief
+net [Nea92].
+At the bottom layer, p(x♣z1, ω), we use whatever observation model is appropriate for the type of
+data we are dealing with. For example, for real valued data, we might use
+p(x♣z1, ω)=
+D∏
+d=1
+N (xd♣wT
+1,d,µz1, exp(wT
+1,d,ε z1)) (4.10)
+where w1,d,µ are the weights that control the mean of the d’th output, and w1,d,ε are the weights
+that control the variance of the d’th output.
+We can also add directed connections between the hidden variables within a layer, as shown in
+Figure 4.3b. This is called a deep autoregressive network or DARN model [ Gre+14], which
+combines ideas from latent variable modeling and autoregressive modeling.
+We discuss other forms of hierarchical generative models in Chapter 21.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 6 =====
+148 Chapter 4. Graphical models
+4.2.3 Gaussian Bayes nets
+Consider a DPGM where all the variables are real-valued, and all the CPDs have the following form,
+known as a linear Gaussian CPD :
+p(xi♣xpa(i))= N (xi♣µi + wT
+i xpa(i),ϑ 2
+i ) (4.11)
+As we show below, multiplying all these CPDs together results in a large joint Gaussian distribution
+of the form p(x)= N (x♣µ, !), where x ↔ RNG . This is called a directed Gaussian graphical
+model or a Gaussian Bayes net .
+We now explain how to derive µ and !, following [ SK89, App. B]. For convenience, we rewrite
+the CPDs in the following form:
+xi = µi +
+∑
+j↑pa(i)
+wi,j (xj ↗ µj )+ ϑizi (4.12)
+where zi ↘N (0, 1), ϑi is the conditional standard deviation of xi given its parents, wi,j is the strength
+of the j ≃ i edge, and µi is the local mean. 1
+It is easy to see that the global mean is just the concatenation of the local means, µ =( µ1,...,µ NG ).
+We now derive the global covariance, !.L e t S ↭ diag(ε) be a diagonal matrix containing the
+standard deviations. We can rewrite Equation ( 4.12) in matrix-vector form as follows:
+(x ↗ µ)= W(x ↗ µ)+ Sz (4.13)
+where W is the matrix of regression weights. Now let e be a vector of noise terms: e ↭ Sz.W e c a n
+rearrange this to get e =( I ↗ W)(x ↗ µ).S i n c eW is lower triangular (because wj,i =0 if j<i in
+the topological ordering), we have that I ↗ W is lower triangular with 1s on the diagonal. Hence
+
+
+e1
+e2
+...
+eNG
+
+ =
+
+
+1
+↗w2,1 1
+↗w3,2 ↗w3,1 1
+... . . .
+↗wNG,1 ↗wNG,2 ... ↗wNG,NG→1 1
+
+
+
+
+x1 ↗ µ1
+x2 ↗ µ2
+...
+xNG ↗ µNG
+
+ (4.14)
+Since I ↗ W is always invertible, we can write
+x ↗ µ =( I ↗ W)→1e ↭ Ue = USz (4.15)
+where we deﬁned U =( I ↗ W)→1.H e n c e t h e c o v a r i a n c e i s g i v e n b y
+! =C o v [x]=C o v [ x ↗ µ]=C o v [ USz]= US Cov [z] SUT = US2UT (4.16)
+since Cov [z]= I.
+1. If we do not subtract o! the parent’s mean (i.e., if we use xi = µi + ∑
+j→ pa(i) wi,j xj + ωizi), the derivation of ! is
+much messier, as can be seen by looking at [ Bis06,p 3 7 0 ] .
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 7 =====
+4.2. Directed graphical models (Bayes nets) 149
+4.2.4 Conditional independence properties
+We write xA →G xB ♣xC if A is conditionally independent of B given C in the graph G.( W e d i s c u s s
+how to determine whether such a CI property is implied by a given graph in the sections below.) Let
+I(G) be the set of all such CI statements encoded by the graph, and I(p) be the set of all such CI
+statements that hold true in some distribution p.W e s a y t h a tG is an I-map (independence map)
+for p,o rt h a t p is Markov wrt G,i ! I(G) ⇐ I(p). In other words, the graph is an I-map if it does
+not make any assertions of CI that are not true of the distribution. This allows us to use the graph
+as a safe proxy for p when reasoning about p’s CI properties. This is helpful for designing algorithms
+that work for large classes of distributions, regardless of their speciﬁc numerical parameters. Note
+that the fully connected graph is an I-map of all distributions, since it makes no CI assertions at all,
+as we show below. We therefore say G is a minimal I-map of p if G is an I-map of p,a n di ft h e r ei s
+no G↓⇐ G which is an I-map of p.
+We now turn to the question of how to derive I(G), i.e., which CI properties are entailed by a
+DAG.
+4.2.4.1 Global Markov properties (d-separation)
+We say an undirected path P is d-separated by a set of nodes C (containing the evidence) i! at
+least one of the following conditions hold:
+1. Pc o n t a i n sac h a i no rpipe, s ≃ m ≃ t or s ⇒ m ⇒ t, where m ↔ C
+2. Pc o n t a i n sat e n to rfork, s ⇑ m⇓ t, where m ↔ C
+3. Pc o n t a i n sacollider or v-structure, s ⇓ m⇑ t, where m is not in C and neither is any
+descendant of m.
+Next, we say that a set of nodes A is d-separated from a di!erent set of nodes B given a third
+observed set C i! each undirected path from every node a ↔ A to every node b ↔ B is d-separated by
+C. Finally, we deﬁne the CI properties of a DAG as follows:
+XA →G XB ♣XC ⇔↖ Ai sd - s e p a r a t e df r o mBg i v e nC ( 4 . 1 7 )
+This is called the (directed) global Markov property .
+The Bayes ball algorithm [Sha98]i sas i m p l ew a yt os e ei f A is d-separated from B given C,
+based on the above deﬁnition. The idea is this. We “shade” all nodes in C,i n d i c a t i n gt h a tt h e ya r e
+observed. We then place “balls” at each node in A,l e tt h e m“ b o u n c ea r o u n d ”a c c o r d i n gt os o m e
+rules, and then ask if any of the balls reach any of the nodes in B. The three main rules are shown
+in Figure 4.4.N o t i c e t h a t b a l l s c a n t r a v e l o p p o s i t e t o e d g e d i r e c t i o n s .W e s e e t h a t a b a l l c a n p a s s
+through a chain, but not if it is shaded in the middle. Similarly, a ball can pass through a fork, but
+not if it is shaded in the middle. However, a ball cannot pass through a v-structure, unless it is
+shaded in the middle.
+We can justify the 3 rules of Bayes ball as follows. First consider a chain structure X ≃ Y ≃ Z,
+which encodes
+p(x, y, z)= p(x)p(y♣x)p(z♣y) (4.18)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 8 =====
+150 Chapter 4. Graphical models
+XYZXYZZXYXYZXZYXZY
+(a)(b)(c)(d)(e)(f)Figure 4.4: Bayes ball rules. A shaded node is one we condition on. If there is an arrow hitting a bar, it
+means the ball cannot pass through; otherwise the ball can pass through.
+(a)(b)(c)
+XYXYXZYY’Figure 4.5: (a-b) Bayes ball boundary conditions. (c) Example of why we need boundary conditions. Y ↑ is an
+observed child of Y , rendering Y “e!ectively observed”, so the ball bounces back up on its way from X to Z.
+When we condition on y,a r e x and z independent? We have
+p(x, z♣y)= p(x, y, z)
+p(y) = p(x)p(y♣x)p(z♣y)
+p(y) = p(x, y)p(z♣y)
+p(y) = p(x♣y)p(z♣y) (4.19)
+and therefore X → Z ♣Y .S o o b s e r v i n g t h e m i d d l e n o d e o f c h a i n b r e a k s i t i n t w o ( a s i n a M a r k o v
+chain).
+Now consider the tent structure X ⇒ Y ≃ Z. The joint is
+p(x, y, z)= p(y)p(x♣y)p(z♣y) (4.20)
+When we condition on y,a r e x and z independent? We have
+p(x, z♣y)= p(x, y, z)
+p(y) = p(y)p(x♣y)p(z♣y)
+p(y) = p(x♣y)p(z♣y) (4.21)
+and therefore X → Z ♣Y .S o o b s e r v i n g a r o o t n o d e s e p a r a t e s i t s c h i l d r e n ( a s i n a n a i v e B a y e s
+classiﬁer: see Section 4.2.8.2).
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 9 =====
+4.2. Directed graphical models (Bayes nets) 151
+XYZ
+DI
+DI S
+DS
+DS I
+DS L , I
+DS G , I
+DS G , L , I
+DL G
+DL G , S
+DL G , I
+D L I, G, S
+Table 4.1: Conditional independence relationships implied by the student DAG (Figure 4.2). Each line has
+the form X → Y |Z. Generated by student_pgm.ipynb.
+Finally consider a v-structure X ≃ Y ⇒ Z. The joint is
+p(x, y, z)= p(x)p(z)p(y♣x, z) (4.22)
+When we condition on y,a r e x and z independent? We have
+p(x, z♣y)= p(x)p(z)p(y♣x, z)
+p(y) (4.23)
+so X ↙→Z♣Y .H o w e v e r , i n t h e u n c o n d i t i o n a l d i s t r i b u t i o n , w e h a v e
+p(x, z)= p(x)p(z) (4.24)
+so we see that X and Z are marginally independent. So we see that conditioning on a common
+child at the bottom of a v-structure makes its parents become dependent. This important e!ect is
+called explaining away, inter-causal reasoning ,o r Berkson’s paradox (see Section 4.2.4.2 for
+ad i s c u s s i o n ) .
+Finally, Bayes ball also needs the “boundary conditions” shown in Figure 4.5(a-b). These rules
+say that a ball hitting a hidden leaf stops, but a ball hitting an observed leaf “bounces back”. To
+understand where this rule comes from, consider Figure 4.5(c). Suppose Y ↓is a (possibly noisy) copy
+of Y . If we observe Y ↓,w ee ! e c t i v e l yo b s e r v eY as well, so the parents X and Z have to compete to
+explain this. So if we send a ball down X ≃ Y ≃ Y ↓,i ts h o u l d“ b o u n c eb a c k ”u pa l o n gY ↓≃ Y ≃ Z,
+in order to pass information between the parents. However, if Y and all its children are hidden, the
+ball does not bounce back.
+As an example of the CI statements encoded by a DAG, Table 4.1 shows some properties that
+follow from the student network in Figure 4.2.
+4.2.4.2 Explaining away (Berkson’s paradox)
+In this section, we give some examples of the explaining away phenomenon, also called Berkson’s
+paradox.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 10 =====
+152 Chapter 4. Graphical models
+ಜಜಜYDOXH
+
+
+
+
+
+QXPEHURIVDPSOHV
+[\]
+(a)
+ಜಜಜಜಜ[
+
+
+
+
+\ (b)
+ಜಜಜYDOXH
+
+
+
+
+
+
+QXPEHURIVDPSOHV
+[\]
+(c)
+ಜಜಜಜಜ[
+
+
+
+
+\ (d)
+Figure 4.6: Samples from a jointly Gaussian DPGM, p(x, y, z)= N (x|↑ 5, 1)N (y|5, 1)N (z|x + y, 1).( a )
+Unconditional marginal distributions, p(x), p(y), p(z). (b) Unconditional joint distribution, p(x, y).( c )
+Conditional marginal distribution, p(x|z> 2.5), p(y|z> 2.5), p(z|z> 2.5). (d) Conditional joint distribution,
+p(x, y|z> 2.5). Adapted from [ Clo20]. Generated by berksons_gaussian.ipynb.
+As a simple example (from [ PM18b,p 1 9 8 ] ) ,c o n s i d e rt o s s i n gt w oc o i n s1 0 0t i m e s . S u p p o s ey o u
+only record the outcome of the experiment if at least one coin shows up heads. You should expect
+to record about 75 entries. You will see that every time coin 1 is recorded as tails, coin 2 will be
+recorded as heads. If we ignore the way in which the data was collected, we might infer from the
+fact that coins 1 and 2 are correlated that there is a hidden common cause. However, the correct
+explanation is that the correlation is due to conditioning on a hidden common e!ect (namely the
+decision of whether to record the outcome or not, so we can censor tail-tail events). This is called
+selection bias .
+As another example of this, consider a Gaussian DPGM of the form
+p(x, y, z)= N (x♣↗ 5, 1)N (y♣5, 1)N (z♣x + y, 1) (4.25)
+The graph structure is X ≃ Z ⇒ Y , where Z is the child node. Some samples from the unconditional
+joint distribution p(x, y, z) are shown in Figure 4.6(a); we see that X and Y are uncorrelated. Now
+suppose we only select samples where z> 2.5.S o m e s a m p l e s f r o m t h e c o n d i t i o n a l j o i n t d i s t r i b u t i o n
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 11 =====
+4.2. Directed graphical models (Bayes nets) 153
+p(x, y♣z> 2.5) are shown in Figure 4.6(d); we see that now X and Y are correlated. This could cause
+us to erroneously conclude that there is a causal relationship, but in fact the dependency is caused
+by selection bias.
+4.2.4.3 Markov blankets
+The smallest set of nodes that renders a node i conditionally independent of all the other nodes in
+the graph is called i’s Markov blanket ; we will denote this by mb(i).B e l o w w e s h o w t h a t t h e
+Markov blanket of a node in a DPGM is equal to the parents, the children, and the co-parents,i . e . ,
+other nodes who are also parents of its children:
+mb(i) ↭ ch(i) ∝ pa(i) ∝ copa(i) (4.26)
+See Figure 4.7 for an illustration.
+To see why this is true, let us partition all the nodes into the target node Xi,i t sp a r e n t sU ,i t s
+children Y ,i t sc o p a r e n t sZ,a n dt h eo t h e rv a r i a b l e sO.L e t X→i be all the nodes except Xi. Then
+we have
+p(Xi♣X→i)= p(Xi,X →i)∑
+x p(Xi = x, X→i) (4.27)
+= p(Xi,U ,Y ,Z ,O )∑
+x p(Xi = x, U, Y, Z, O) (4.28)
+=
+p(Xi♣U )[∏
+j p(Yj ♣Xi,Z j )]P (U, Z, O)∑
+x p(Xi = x♣U )[∏
+j p(Yj ♣Xi = x, Zj )]P (U, Z, O) (4.29)
+=
+p(Xi♣U )[∏
+j p(Yj ♣Xi,Z j )]∑
+x p(Xi = x♣U )[∏
+j p(Yj ♣Xi = x, Zj )] (4.30)
+′ p(Xi♣pa(Xi))
+∏
+Yj ↑ch(Xi )
+p(Yj ♣pa(Yj ))) (4.31)
+where ch(Xi) are the children of Xi and pa(Yj ) are the parents of Yj .W e s e e t h a t t h e t e r m s t h a t d o
+not involve Xi cancel out from the numerator and denominator, so we are left with a product of
+terms that include Xi in their “scope”. Hence the full conditional for node i becomes
+p(xi♣x→i)= p(xi♣xmb(i)) ′ p(xi♣xpa(i))
+∏
+k↑ch(i)
+p(xk♣xpa(k)) (4.32)
+We will see applications of this in Gibbs sampling (Equation ( 12.19)), and mean ﬁeld variational
+inference (Equation ( 10.87)).
+4.2.4.4 Other Markov properties
+From the d-separation criterion, one can conclude that
+i → nd(i) ∩pa(i)♣pa(i) (4.33)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 12 =====
+154 Chapter 4. Graphical models
+Figure 4.7: Illustration of the Markov blanket of a node in a directed graphical model. The target node Xi is
+shown in gray, its parents U1:m are shown in green, its children Y1:n are shown in blue, and its coparents
+Z1:n,1:j are shown in red. Xi is conditionally independent of all the other variables in the model given these
+variables. Adapted from Figure 13.4b of [ RN19].
+where the non-descendants of a node nd(i) are all the nodes except for its descendants, nd(i)=
+{1,...,N G♦∩{ i ∝ desc(i)♦.E q u a t i o n (4.33)i sc a l l e dt h e( d i r e c t e d )local Markov property .F o r
+example, in Figure 4.23(a), we have nd(3) = {1, 2, 4♦,a n d pa(3) = 1 ,s o 3 → 2, 4♣1.
+A special case of this property is when we only look at predecessors of a node according to some
+topological ordering. We have
+i → pred(i) ∩pa(i)♣pa(i) (4.34)
+which follows since pred(i) ⇐ nd(i). This is called the ordered Markov property , which justiﬁes
+Equation ( 4.2). For example, in Figure 4.23(a), if we use the ordering 1, 2,..., 7.w e ﬁ n d pred(3) =
+{1, 2♦ and pa(3) = 1 ,s o 3 → 2♣1.
+We have now describ ed three Markov prop erties for DAGs: the directed global Markov prop erty
+Gi nE q u a t i o n(4.17), the directed local Markov property L in Equation ( 4.33), and the ordered
+Markov property O in Equation ( 4.34), It is obvious that G =↖ L =↖ O.W h a t i s l e s s o b v i o u s ,
+but nevertheless true, is that O =↖ L =↖ G (see e.g., [ KF09a]f o rt h ep r o o f ) . H e n c ea l lt h e s e
+properties are equivalent.
+Furthermore, any distribution p that is Markov wrt a graph can be factorized as in Equation ( 4.2);
+this is called the factorization property F. It is obvious that O =↖ F ,b u to n ec a ns h o wt h a t
+the converse also holds (see e.g., [ KF09a]f o rt h ep r o o f ) .
+4.2.5 Generation (sampling)
+It is easy to generate prior samples from a DPGM: we simply visit the nodes in topological order ,
+parents before children, and then sample a value for each node given the value of its parents. This
+will generate independent samples from the joint, (x1,...,x NG ) ↘ p(x♣ω). This is called ancestral
+sampling.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 13 =====
+4.2. Directed graphical models (Bayes nets) 155
+4.2.6 Inference
+In the context of PGMs, the term “ inference”r e f e r st ot h et a s ko fc o m p u t i n gt h ep o s t e r i o ro v e ra
+set of query nodes Q given the observed values for a set of visible nodes V , while marginalizing
+over the irrelevant nuisance variables, R = {1,...,N G♦∩{ Q, V ♦:
+pω(Q♣V )= pω(Q, V )
+pω(V ) =
+∑
+R pω(Q, V, R)
+pω(V ) (4.35)
+(If the variables are continuous, we should replace sums with integrals.) If Q is a single node, then
+pω(Q♣V ) is called the posterior marginal for node Q.
+As an example, suppose V = x is a sequence of observed sound waves, Q = z is the corresponding
+set of unknown spoken words, and R = r are random “non-semantic” factors associated with the
+signal, such as prosody or background noise. Our goal is to compute the posterior over the words
+given the sounds, while being invariant to the irrelevant factors:
+pω(z♣x)=
+∑
+r
+pω(z, r♣x)=
+∑
+r
+pω(z, r, x)
+pω(x) =
+∑
+r
+pω(z, r, x)∑
+z→,r→ pω(z↓, r↓, x) (4.36)
+As a simpliﬁcation, we can “lump” the random factors R into the query set Q to deﬁne the complete
+set of hidden variables H = Q ∝ R. In this case, the tasks simpiﬁes to
+pω(h♣x)= pω(h, x)
+pω(x) = pω(h, x)∑
+h→ pω(h↓, x) (4.37)
+The computational complexity of the inference task depends on the CI properties of the graph, as
+we discuss in Chapter 9. In general it is NP-hard (see Section 9.5.4), but for certain graph structures
+(such as chains, trees, and other sparse graphs), it can be solved e"ciently (in polynomial) time
+using dynamic programming (see Chapter 9). For cases where it is intractable, we can use standard
+methods for approximate Bayesian inference, which we review in Chapter 7.
+4.2.6.1 Example: inference in the student network
+As an example of inference in PGMs, consider the student network from Section 4.2.2.2.S u p p o s e w e
+observe that the student gets a grade of C. The posterior marginals are shown in Figure 4.8a.W e s e e
+that the low grade could be explained by the class being hard (since p(D = Hard♣G = C)=0 .63),
+but is more likely explained by the student having low intelligence (since p(I = High♣G = C)=0 .08).
+However, now suppose we also observe that the student gets a good SAT score. The new posterior
+marginals are shown in Figure 4.8b.N o w t h e p o s t e r i o r p r o b a b i l i t y t h a t t h e s t u d e n t i s i n t e l l i g e n t h a s
+jumped to p(I = High♣G = C, SAT = Good)=0 .58, since otherwise it would be di"cult to explain
+the good SAT score. Once we believe the student has high intelligence, we have to explain the C
+grade by assuming the class is hard, and indeed we ﬁnd that the probability that the class is hard
+has increased to p(D = Hard♣G = C)=0 .76. (This negative mutual interaction between multiple
+causes of some observations is called the explaining away e!ect, and is discussed in Section 4.2.4.2.)
+4.2.7 Learning
+So far, we have assumed that the structure G and parameters ω of the PGM are known. However, it
+is possible to learn both of these from data. For details on how to learn G from data, see Section 30.3.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 14 =====
+156 Chapter 4. Graphical models
+ Diff EasyHard0.370.63
+ Grade ABC0.00.01.0
+ Letter BadGood0.990.01
+ Intel LowHigh0.920.08
+ SAT BadGood0.890.11
+(a)
+ Diff EasyHard0.240.76
+ Grade ABC0.00.01.0
+ Letter BadGood0.990.01
+ Intel LowHigh0.420.58
+ SAT BadGood0.01.0 (b)
+Figure 4.8: Illustration of belief updating in the “Student” PGM. The histograms show the marginal distribution
+of each node. Nodes with shaded titles are clamped to an observed value. (a) Posterior after conditioning on
+Grade=C. (b) Posterior after also conditioning on SAT=Good. Generated by student_pgm.ipynb.
+θy
+y1 yN
+···
+x1 xN
+θx
+Figure 4.9: A DPGM representing the joint distribution p(y1:N , x1:N , ωy , ωx).H e r e ωx and ωy are global
+parameter nodes that are shared across the examples, whereas xn and yn are local variables.
+Here we focus on parameter learning ,i . e . ,c o m p u t i n gt h ep o s t e r i o rp(ω♣D,G ). (Henceforth we will
+drop the conditioning on G,s i n c ew ea s s u m et h eg r a p hs t r u c t u r ei sﬁ x e d . )
+We can compute the parameter p osterior p(ω♣D) by treating ω as “just another hidden variable”,
+and then performing inference. However, in the machine learning community, it is more common to
+just compute a point estimate of the parameters, such as the posterior mode, ˆω = argmax p(ω♣D).
+This approximation is often reasonable, since the parameters depend on all the data, rather than
+just a single datapoint, and are therefore less uncertain than other hidden variables.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 15 =====
+4.2. Directed graphical models (Bayes nets) 157
+4.2.7.1 Learning from complete data
+Figure 4.9 represents a graphical model for a typical supervised learning problem. We have N local
+variables, xn and yn,a n d2 global variables , corresponding to the parameters, which are shared
+across data samples. The local variables are observed (in the training set), so they are represented
+by solid (shaded) nodes. The global variables are not observed, and hence are represented by empty
+(unshaded) nodes. (The model represents a generative classiﬁer, so the edge is from yn to xn;i fw e
+are ﬁtting a discriminative classiﬁer, the edge would be from xn to yn,a n dt h ep a r a m e t e r sωy would
+represent the conditional probability p(y♣x);t h e r ew o u l db en oωx node in this case.)
+From the CI properties of Figure 4.9, it follows that the joint distribution factorizes into a product
+of terms, one per node:
+p(ω, D)= p(ωx)p(ωy )
+[ N∏
+n=1
+p(yn♣ωy )p(xn♣yn, ωx)
+]
+(4.38)
+=
+[
+p(ωy )
+N∏
+n=1
+p(yn♣ωy )
+][
+p(ωx)
+N∏
+n=1
+p(xn♣yn, ωx)
+]
+(4.39)
+′ [p(ωy )p(Dy ♣ωy )]
+[
+p(ωx)p(Dx|y ♣ωx)
+]
+(4.40)
+where Dy = {yn♦N
+n=1 is the data that is su"cient for estimating ωy and Dx|y = {(xn,y n)♦N
+n=1 is the
+data that is su"cient for ωx.
+From Equation ( 4.40), we see that the prior, likelihood, and posterior all decompose or factorize
+according to the graph structure. Thus we can compute the posterior for each parameter independently.
+In general, we have
+p(ω, D)=
+NG∏
+i=1
+p(ωi)p(Di♣ωi) (4.41)
+Hence the likelihood and prior factorizes, and thus so does the posterior. If we just want to compute
+the MLE, we can compute
+ˆω = argmax
+ω
+NG∏
+i=1
+p(Di♣ωi) (4.42)
+We can solve this for each no de indep endently, as we illustrate in Section 4.2.7.2.
+4.2.7.2 Example: computing the MLE for CPT s
+In this section, we illustrate how to compute the MLE for tabular CPDs. The likelihood is given by
+the following product of multinomials:
+p(D♣ω)=
+N∏
+n=1
+NG∏
+i=1
+p(xni♣xn,pa(i), ωi) (4.43)
+=
+N∏
+n=1
+NG∏
+i=1
+Ji∏
+j=1
+Ki∏
+k=1
+ω
+I(xni =k,xn,pa(i) =j)
+ijk (4.44)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 16 =====
+158 Chapter 4. Graphical models
+IDGSL
+00 200
+01 200
+00 111
+11 110
+10 011
+00 001
+11 211
+Table 4.2: Some fully observed training data for the student network.
+ID Ni,j,k ˆωi,j,k ωi,j,k
+00 [1, 1, 1] [ 1
+3 , 1
+3 , 1
+3 ][ 2
+6 , 2
+6 , 2
+6 ]
+01 [0, 0, 1] [ 0
+1 , 0
+1 , 1
+1 ][ 1
+4 , 1
+4 , 2
+4 ]
+10 [1, 0, 0] [ 1
+1 , 0
+1 , 0
+1 ][ 2
+4 , 1
+4 , 1
+4 ]
+11 [0, 1, 1] [0, 1
+2 , 1
+2 ][ 1
+5 , 2
+5 , 2
+5 ]
+Table 4.3: Su"cient statistics Nijk and corresponding MLE ˆωijk and posterior mean ωijk (with Dirichlet
+(1,1,1) prior) for node i = G in the student network. Each row corresponds to a di!erent joint conﬁguration
+of its parent nodes, coresponding to state j. The index k refers to the 3 possible values of the child node G.
+where
+ωijk ↭ p(xi = k♣xpa(i) = j) (4.45)
+Let us deﬁne the su"cient statistics for node i to be Nijk , which is the number of times that node i
+is in state k while its parents are in joint state j:
+Nijk ↭
+N∑
+n=1
+I
+(
+xn,i = k, xn,pa(i) = j
+
+(4.46)
+The MLE for a multinomial is given by the normalized empirical frequencies:
+ˆωijk = Nijk∑
+k→ Nijk→
+(4.47)
+For example, consider the student network from Section 4.2.2.2. In Table 4.2,w es h o ws o m es a m p l e
+training data. For example, the last line in the tabel encodes a student who is smart ( I =1 ), who
+takes a hard class ( D =1 ), gets a C ( G =2 ), but who does well on the SAT ( S =1 )a n dg e t sag o o d
+letter of recommendation ( L =1 ).
+In Table 4.3,w el i s tt h es u " c i e n ts t a t i s t i c sNijk and the MLE ˆωijk for node i = G, with parents
+(I,D ). A similar process can be used for the other nodes. Thus we see that ﬁtting a DPGM with
+tabular CPDs reduces to a simple counting problem.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 17 =====
+4.2. Directed graphical models (Bayes nets) 159
+θz
+z1 zN
+···
+x1 xN
+θx
+Figure 4.10: A DPGM representing the joint distribution p(z1:N , x1:N , ωz , ωx).T h e l o c a l v a r i a b l e szn are
+hidden, whereas xn are observed. This is typical for learning unsupervised latent variable models.
+However, we notice there are a lot of zeros in the su"cient statistics, due to the small sample size,
+resulting in extreme estimates for some of the probabilities ˆωijk .W e d i s c u s s a ( B a y e s i a n ) s o l u t i o n t o
+this in Section 4.2.7.3.
+4.2.7.3 Example: computing the posterior for CPT s
+In Section 4.2.7.2 we discussed how to compute the MLE for the CPTs in a discrete Bayes net. We
+also observed that this can su!er from the zero-count problem. In this section, we show how a
+Bayesian approach can solve this problem.
+Let us put a separate Dirichlet prior on each row of each CPT, i.e., ωij ↘ Dir(ϑ ij ). Then
+we can compute the posterior by simply adding the pseudocounts to the empirical counts to get
+ωij ♣D ↘Dir(Nij + ϑ ij ),w h e r eNij = {Nijk : k =1: Ki♦,a n d Nijk is the number of times that node
+i is in state k while its parents are in state j.H e n c e t h e p o s t e r i o r m e a n e s t i m a t e i s g i v e n b y
+ωijk = Nijk + ϖ ijk∑
+k→(Nijk→ + ϖ ijk→) (4.48)
+The MAP estimate has the same form, except we use ϖ ijk ↗ 1 instead of ϖ ijk .
+In Table 4.3,w ei l l u s t r a t et h i sa p p r o a c ha p p l i e dt ot h eG node in the student network, where we
+use a uniform Dirichlet prior, ϖ ijk =1 .
+4.2.7.4 Learning from incomplete data
+In Section 4.2.7.1, we explained that when we have complete data, the likelihood (and posterior)
+factorizes over CPDs, so we can estimate each CPD independently. Unfortunately, this is no longer
+the case when we have incomplete or missing data. To see this, consider Figure 4.10. The likelihood
+of the observed data can be written as follows:
+p(D♣ω)=
+∑
+z1:N
+[ N∏
+n=1
+p(zn♣ωz )p(xn♣zn, ωx)
+]
+(4.49)
+=
+N∏
+n=1
+∑
+zn
+p(zn♣ωz )p(xn♣zn, ωx) (4.50)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 18 =====
+160 Chapter 4. Graphical models
+Thus the log likelihood is given by
+ε(ω)=
+∑
+n
+log
+∑
+zn
+p(zn♣ωz )p(xn♣zn, ωx) (4.51)
+The log function does not distribute over the ∑
+zn operation, so the objective does not decompose
+over nodes. 2 Consequently, we can no longer compute the MLE or the posterior by solving separate
+problems per node.
+To solve this, we will resort to optimization methods. (We focus on the MLE case, and leave
+discussion of Bayesian inference for latent variable models to Part II.) In the sections below, we
+discuss how to use EM and SGD to ﬁnd a local optimum of the (non convex) log likelihood objective.
+4.2.7.5 Using EM to ﬁt CPT s in the incomplete data case
+Ap o p u l a rm e t h o df o re s t i m a t i n gt h ep a r a m e t e r so faD P G Mi nt h ep r e s e n c eo fm i s s i n gd a t ai st o
+the use the expectation maximization (EM) algorithm, as proposed in [ Lau95]. We describe EM
+in detail in Section 6.5.3,b u tt h eb a s i ci d e ai st oa l t e r n a t eb e t w e e ni n f e r r i n gt h el a t e n tv a r i a b l e s
+zn (the E or expectation step), and estimating the parameters given this completed dataset (the
+Mo rm a x i m i z a t i o ns t e p ) . R a t h e rt h a nr e t u r n i n gt h ef u l lp o s t e r i o rp(zn♣xn, ω(t)) in the E step, we
+instead return the expected su"cient statistics (ESS), which takes much less space. In the M step,
+we maximize the expected value of the log likelihood of the fully observed data using these ESS.
+As an example, suppose all the CPDs are tabular, as in the example in Section 4.2.7.2. The
+log-likelihood of the complete data is given by
+log p(D♣ω)=
+NG∑
+i=1
+Ji∑
+j=1
+Ki∑
+k=1
+Nijk log ωijk (4.52)
+and hence the expected complete data log-likelihood has the form
+E [log p(D♣ω)] =
+∑
+i
+∑
+j
+∑
+k
+N ijk log ωijk (4.53)
+where
+N ijk =
+N∑
+n=1
+E
+[
+I
+(
+xni = k, xn,pa(i) = j
+]
+=
+N∑
+n=1
+p(xni = k, xn,pa(i) = j♣Dn, ωold) (4.54)
+where Dn are all the visible variables in case n,a n d ωold are the parameters from the previous iteration.
+The quantity p(xni, xn,pa(i)♣Dn, ωold) is known as a family marginal ,a n dc a nb ec o m p u t e du s i n g
+any GM inference algorithm. The N ijk are the expected su!cient statistics (ESS), and constitute
+the output of the E step.
+2. We can also see this from the graphical model: ωx is no longer independent of ωz , because there is a path that
+connects them via the hidden nodes zn.( S e e S e c t i o n4.2.4 for an explanation of how to “read o!” such CI properties
+from a DPGM.)
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 19 =====
+4.2. Directed graphical models (Bayes nets) 161
+Given these ESS, the M step has the simple form
+ˆωijk = N ijk∑
+k→ N ijk→
+(4.55)
+We can modify this to perform MAP estimation with a Dirichlet prior by simply adding pseudocounts
+to the expected counts.
+The famous Baum-Welch algorithm is a special case of the above equations which arises when the
+DPGM is an HMM (see Section 29.4.1 for details).
+4.2.7.6 Using SGD to ﬁt CPT s in the incomplete data case
+The EM algorithm is a batch algorithm. To scale up to large datasets, it is more common to use
+stochastic gradient descent or SGD (see e.g., [ BC94; Bin+97]). To apply this, we need to compute
+the marginal likelihood of the observed data for each example:
+p(xn♣ω)=
+∑
+zn
+p(zn♣ωz )p(xn♣zn, ωx) (4.56)
+where ω =( ωz , ωx).) (We say that we have “ collapsed”t h em o d e lb ym a r g i n a l i z i n go u tzn.) We can
+then compute the log likelihood using
+ε(ω) = log p(D♣ω) = log
+N∏
+n=1
+p(xn♣ω)=
+N∑
+n=1
+log p(xn♣ω) (4.57)
+The gradient of this objective can be computed as follows:
+∞ωε(ω)=
+∑
+n
+∞ω log p(xn♣ω) (4.58)
+=
+∑
+n
+1
+p(xn♣ω) ∞ωp(xn♣ω) (4.59)
+=
+∑
+n
+1
+p(xn♣ω) ∞ω
+[ ∑
+zn
+p(zn, xn♣ω)
+]
+(4.60)
+=
+∑
+n
+∑
+zn
+p(zn, xn♣ω)
+p(xn♣ω) ∞ω log p(zn, xn♣ω) (4.61)
+=
+∑
+n
+∑
+zn
+p(zn♣xn, ω)∞ω log p(zn, xn♣ω) (4.62)
+We can now apply a minibatch approximation to this in the usual way.
+4.2.8 Plate notation
+To make the parameters of a PGM explicit, we can add them as no des to the graph, and treat them
+as hidden variables to be inferred. Figure 4.11(a) shows a simple example, in which we have N iid
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 20 =====
+162 Chapter 4. Graphical models
+θ
+x1
+...
+xN
+N
+θ
+xn
+Figure 4.11: Left: datapoints xn are conditionally independent given ω. Right: Same model, using plate
+notation. This represents the same model as the one on the left, except the repeated xn nodes are inside a
+box, known as a plate; the number in the lower right hand corner, N , speciﬁes the number of repetitions of
+the xn node.
+random variables, xn, all drawn from the same distribution with common parameter ω.W e d e n o t e
+this by
+xn ↘ p(x♣ω) (4.63)
+The corresponding joint distribution over the parameters and data D = {x1,..., xN ♦ has the form
+p(D, ω)= p(ω)p(D♣ω) (4.64)
+where p(ω) is the prior distribution for the parameters, and p(D♣ω) is the likelihood. By virtue of the
+iid assumption, the likelihood can be rewritten as follows:
+p(D♣ω)=
+N∏
+n=1
+p(xn♣ω) (4.65)
+Notice that the order of the data vectors is not important for deﬁning this model, i.e., we can permute
+the leaves of the DPGM. When this property holds, we say that the data is exchangeable.
+In Figure 4.11(a), we see that the x nodes are repeated N times. (The shaded nodes represent
+observed values, whereas the unshaded (hollow) nodes represent latent variables or parameters.) To
+avoid visual clutter, it is common to use a form of syntactic sugar called plates.T h i s i s a n o t a t i o n a l
+convention in which we draw a little box around the repeated variables, with the understanding that
+nodes within the box will get repeated when the model is unrolled. We often write the number of
+copies or repetitions in the bottom right corner of the box. This is illustrated in Figure 4.11(b).
+4.2.8.1 Example: factor analysis
+In Section 28.3.1, we discuss the factor analysis model, which has the form
+p(z)= N (z♣µ0, !0) (4.66)
+p(x♣z)= N (x♣Wz + µ, ”) (4.67)
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 21 =====
+4.2. Directed graphical models (Bayes nets) 163
+(a)
+µ
+Ψ Nxn
+zn
+W
+µ0 Σ0
+(b)
+Figure 4.12: (a) Factor analysis model illustrated as a DPGM. We show the components of z (top row) and x
+(bottom row) as individual scalar nodes. (b) Equivalent model, where z and x are collapsed to vector-valued
+nodes, and parameters are added, using plate notation.
+Y
+X1 X2 ···XD
+(a)
+D
+C
+N
+θdc
+xnd
+yn
+π
+(b)
+Figure 4.13: (a) Naive Bayes classiﬁer as a DPGM. (b) Model augmented with plate notation.
+where W is a D ↓ L matrix, known as the factor loading matrix, and ” is a diagonal D ↓ D covariance
+matrix.
+Note that z and x are both vectors. We can explicitly represent their components as scalar nodes
+as in Figure 4.12a.H e r e t h e d i r e c t e d e d g e s c o r r e s p o n d t o n o n - z e r o e n t r i e s i n t h eW matrix.
+We can also explicitly show the parameters of the model, using plate notation, as shown in
+Figure 4.12b.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 22 =====
+164 Chapter 4. Graphical models
+Y=1
+X1X2 X3
+X4
+(a)
+Y=2
+X1X2 X3
+X4
+(b)
+Figure 4.14: Tree-augmented naive Bayes classiﬁer for D =4 features. The tree topology can change depending
+on the value of y, as illustrated.
+4.2.8.2 Example: naive Bayes classiﬁer
+In some models, we have doubly indexed variables. For example, consider a naive Bayes classiﬁer .
+This is a simple generative classiﬁer, deﬁned as follows:
+p(x,y ♣ω)= p(y♣ϖ)
+D∏
+d=1
+p(xd♣y, ωd) (4.68)
+The fact that the features x1:D are considered conditionally independent given the class label y is
+where the term “naive” comes from. Nevertheless, this model often works surprisingly well, and is
+extremely easy to ﬁt.
+We can represent the conditional independence assumption as shown in Figure 4.13a.W e c a n
+represent the repetition over the dimension d with a plate. When we turn to infering the parameters
+ω =( ϖ, ω1:D,1:C ),w ea l s on e e dt or e p r e s e n tt h er e p e t i t i o no v e rd a t ac a s e sn. This is shown in
+Figure 4.13b.N o t e t h a t t h e p a r a m e t e rωdc depends on d and c, whereas the feature xnd depends on
+n and d. This is shown using nested plates to represent the shared d index.
+4.2.8.3 Example: relaxing the naive Bayes assumption
+We see from Figure 4.13a that the observed features are conditionally independent given the class
+label. We can of course allow for dependencies between the features, as illustrated in Figure 4.14.
+(We omit parameter nodes for simplicity.) If we enforce that the edges between the features forms a
+tree the model is known as a tree-augmented naive Bayes classiﬁer [FGG97], or TA Nmodel.
+(Trees are a restricted form of graphical model that have various computational advantages that we
+discuss later.) Note that the topology of the tree can change depending on the value of the class
+node y; in this case, the model is known as a Bayesian multi net ,a n dc a nb et h o u g h to fa sa
+supervised mixture of trees.
+4.3 Undirected graphical models (Markov random ﬁelds)
+Directed graphical models (Section 4.2)a r ev e r yu s e f u l . H o w e v e r ,f o rs o m ed o m a i n s ,b e i n gf o r c e dt o
+choose a direction for the edges, as required by a DAG, is rather awkward. For example, consider
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 23 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 165
+X1 X2 X3 X4 X5
+X6 X7 X8 X9 X10
+X11X12X13X14X15
+X16X17X18X19X20
+(a)
+X1 X2 X3 X4 X5
+X6 X7 X8 X9 X10
+X11X12X13X14X15
+X16X17X18X19X20
+(b)
+Figure 4.15: (a) A 2d lattice represented as a DAG. The dotted red node X8 is independent of all other nodes
+(black) given its Markov blanket, which include its parents (blue), children (green) and co-parents (orange).
+(b) The same model represented as a UPGM. The red node X8 is independent of the other black nodes given
+its neighbors (blue nodes).
+modeling an image. It is reasonable to assume that the intensity values of neighboring pixels are
+correlated. We can model this using a DAG with a 2d lattice topology as shown in Figure 4.15(a).
+This is known as a Markov mesh [AHK65]. However, its conditional independence properties are
+rather unnatural.
+An alternative is to use an undirected probabilistic graphical model ( UPGM), also called a
+Markov random ﬁeld (MRF)o r Markov network. These do not require us to specify edge
+orientations, and are much more natural for some problems such as image analysis and spatial
+statistics. For example, an undirected 2d lattice is shown in Figure 4.15(b); now the Markov blanket
+of each node is just its nearest neighbors, as we show in Section 4.3.6.
+Roughly speaking, the main advantages of UPGMs over DPGMs are: (1) they are symmetric and
+therefore more “natural” for certain domains, such as spatial or relational data; and (2) discriminative
+UPGMs (aka conditional random ﬁelds, or CRFs), which deﬁne conditional densities of the form
+p(y♣x),w o r kb e t t e rt h a nd i s c r i m i n a t i v eD G M s ,f o rr e a s o n sw ee x p l a i ni nS e c t i o n4.5.3. The main
+disadvantages of UPGMs compared to DPGMs are: (1) the parameters are less interpretable and
+less modular, for reasons we explain in Section 4.3.1;a n d( 2 )i ti sm o r ec o m p u t a t i o n a l l ye x p e n s i v et o
+estimate the parameters, for reasons we explain in Section 4.3.9.1.
+4.3.1 Representing the joint distribution
+Since there is no topological ordering associated with an undirected graph, we can’t use the chain
+rule to represent p(x1:NG ). So instead of associating CPDs with each node, we associate potential
+functionso r factorsw i t he a c hmaximal clique in the graph. 3 We will denote the potential
+function for clique c by ϱ c(xc; ωc), where ωc are its parameters. A potential function can be any
+non-negative function of its arguments (we give some examples below). We can use these functions
+to deﬁne the joint distribution as we explain in Section 4.3.1.1.
+3. A clique is a set of nodes that are all neighbors of each other. A maximal clique is a clique which cannot be
+made any larger without losing the clique property.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 24 =====
+166 Chapter 4. Graphical models
+4.3.1.1 Hammersley-Cli"ord theorem
+Suppose a joint distribution p satisﬁes the CI properties implied by the undirected graph G.( W e
+discuss how to derive these properties in Section 4.3.6.) Then the Hammersley-Cli"ord theorem
+tells us that p can be written as follows:
+p(x♣ω)= 1
+Z(ω)
+∏
+c↑C
+ϱ c(xc; ωc) (4.69)
+where C is the set of all the (maximal) cliques of the graph G,a n d Z(ω) is the partition function
+given by
+Z(ω) ↭
+∑
+x
+∏
+c↑C
+ϱ c(xc; ωc) (4.70)
+Note that the partition function is what ensures the overall distribution sums to 1. 4
+The Hammersley-Cli!ord theorem was never published, but a proof can be found in [ KF09a].
+(Note that the theorem only holds for positive distributions, i.e., ones where p(x♣ω) > 0 for all
+conﬁgurations x, which rules out some models with hard constraints.)
+4.3.1.2 Gibbs distribution
+The distribution in Equation ( 4.69) can be rewritten as follows:
+p(x♣ω)= 1
+Z(ω) exp(↗E (x; ω)) (4.71)
+where E(x) > 0 is the energy of state x,d e ﬁ n e db y
+E(x; ω)=
+∑
+c
+E(xc; ωc) (4.72)
+where xc are the variables in clique c.W e c a n s e e t h e e q u i v a l e n c e b y d e ﬁ n i n g t h e c l i q u e p o t e n t i a l s a s
+ϱ c(xc; ωc)=e x p (↗E (xc; ωc)) (4.73)
+We see that low energy is associated with high probability states.
+Equation ( 4.71) is known as the Gibbs distribution . This kind of probability model is also called
+an energy-based model . These are commonly used in physics and biochemistry. They are also
+used in ML to deﬁne generative models, as we discuss in Chapter 24.( S e e a l s o S e c t i o n4.4, where
+we discuss conditional random ﬁelds (CRFs), which are models of the form p(y♣x, ω), where the
+potential functions are conditioned on input features x.)
+4.3.2 F ully visible MRF s (Ising, Potts, Hopﬁeld, etc.)
+In this section, we discuss some UPGMs for 2d grids, that are used in statistical physics and computer
+vision. We then discuss extensions to other graph structures, which are useful for biological modeling
+and pattern completion.
+4. The partition function is denoted by Z because of the German word Zustandssumme, which means “sum over states”.
+This reﬂects the fact that a lot of pioneering working on MRFs was done by German (and Austrian) physicists, such as
+Boltzmann.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 25 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 167
+4.3.2.1 Ising models
+Consider the 2d lattice in Figure 4.15(b). We can represent the joint distribution as follows:
+p(x♣ω)= 1
+Z(ω)
+∏
+i↔j
+ϱ ij (xi,x j ; ω) (4.74)
+where i ↘ j means i and j are neighbors in the graph. This is called a 2d lattice model .
+An Ising model is a special case of the above, where the variables xi are binary. Such models
+are often used to represent magnetic materials. In particular, each node represents an atom, which
+can have a magnetic dipole, or spin, which is in one of two states, +1 and ↗1. In some magnetic
+systems, neighboring spins like to be similar; in other systems, they like to be dissimilar. We can
+capture this interaction by deﬁning the clique potentials as follows:
+ϱ ij (xi,x j ; ω)=
+
+eJij if xi = xj
+e→Jij if xi ↙= xj
+(4.75)
+where Jij is the coupling strength between nodes i and j. This is known as the Ising model . If
+two nodes are not connected in the graph, we set Jij =0 .W e a s s u m e t h a t t h e w e i g h t m a t r i x i s
+symmetric, so Jij = Jji .O f t e n w e a l s o a s s u m e a l l e d g e s h a v e t h e s a m e s t r e n g t h , s oJij = J for each
+(i, j) edge. Thus
+ϱ ij (xi,x j ; J)=
+
+eJ if xi = xj
+e→J if xi ↙= xj
+(4.76)
+It is more common to deﬁne the Ising model as an energy-based model, as follows:
+p(x♣ω)= 1
+Z(J) exp(↗E (x; J)) (4.77)
+E(x; J)= ↗J
+∑
+i↔j
+xixj (4.78)
+where E(x; J) is the energy, and where we exploited the fact that xixj = ↗1 if xi ↙= xj ,a n d xixj =+ 1
+if xi = xj . The magnitude of J controls the degree of coupling strength between neighboring sites.
+We can scale the coupling co e"cient J by a temperature term T to get J↓= J/T ,s oc o l d e rm e a n s
+more tightly coupled (larger J), and hotter means less tightly coupled (smaller J).
+If all of the weights are negative, J< 0,t h e nt h es p i n sw a n tt ob ed i ! e r e n tf r o mt h e i rn e i g h b o r s .
+This is called an antiferromagnetic system, and results in a frustrated system ,s i n c ei ti sn o t
+possible for all neighbors to be di!erent from each other in a 2d lattice. In the inﬁnite lattice, this
+gives rise to the checkerboard pattern shown in Figure 4.16.
+If all the edge weights are positive, J> 0,t h e nn e i g h b o r i n gs p i n sa r el i k e l yt ob ei nt h es a m e
+state, since if xi = xj ,t h ee n e r g yt e r mg e t sac o n t r i b u t i o no f↗J< 0,a n dl o w e re n e r g yc o r r e s p o n d s
+to higher probability. In the machine learning literature, this is called an associative Markov
+network. In the physics literature, this is called a ferromagnetic model. If J =1 ,t h ec o r r e s p o n d i n g
+probability distribution will have two modes, corresponding to the all +1 state and the all -1 state.
+These are called the ground states of the system.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 26 =====
+168 Chapter 4. Graphical models
+Figure 4.16: The two ground states for a small antiferromagnetic Ising model where J = ↑1.F r o m F i g u r e
+31.7 of [ Mac03].
+0 50 100
+x1
+0
+50
+100x2
+J=0.2
+(a)
+0 50 100
+x1
+0
+50
+100x2
+J=0.4
+(b)
+0 50 100
+x1
+0
+50
+100x2
+J= 10
+(c)
+Figure 4.17: Samples from an associative Ising model with varying J> 0. Generated by
+gibbs_demo_ising.ipynb. (Compare to Figure 31.2 of [ Mac03].)
+In addition to the well-separated conﬁgurations of minimum energy, there can be many local
+minima. The energy surface can become more or less bumpy depending on the temperature T .
+Figure 4.17 shows some samples from the Ising model for varying J↓> 0. (The samples were created
+using the Gibbs sampling method discussed in Section 12.3.3.) As the temperature reduces, the
+distribution becomes less entropic, and the “clumpiness” of the samples increases. One can show
+that, as the lattice size goes to inﬁnity, there is a critical temperature Jc below which many large
+clusters occur, and above which many small clusters occur. In the case of an isotropic square lattice
+model, one can show [ Geo88]t h a t
+Jc = 1
+2 log(1 +
+∈
+2) ∋ 0.44 (4.79)
+This rapid change in global behavior as we vary a parameter of the system is called a phase
+transition. This can be used to explain how natural systems, such as water, can suddenly go from
+solid to liquid, or from liquid to gas, when the temperature changes slightly. See e.g., [ Mac03,c h3 1 ]
+for further details on the statistical mechanics of Ising models.
+In addition to pairwise terms, it is standard to add unary terms , ϱ i(xi). In statistical physics,
+this is called an external ﬁeld . The resulting model is as follows:
+p(x♣ω)= 1
+Z(ω)
+∏
+i
+ϱ i(xi; ω)
+∏
+i↔j
+ϱ ij (xi,x j ; ω) (4.80)
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 27 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 169
+(a)
+ (b)
+ (c)
+Figure 4.18: Visualizing a sample from a 10-state Potts model of size 128 ↓ 128. The critical value is
+Jc = log(1 +
+↔
+10)=1 .426. for di!erent association strengths: (a) J =1 .40,( b ) J =1 .43,( c ) J =1 .46.
+Generated by gibbs_demo_potts.ipynb.
+The ϱ i terms can be thought of as a local bias term that is independent of the contributions of the
+neighboring nodes. For binary nodes, we can deﬁne this as follows:
+ϱ i(xi)=
+
+eϑ if xi =+ 1
+e→ϑ if xi = ↗1 (4.81)
+If we write this as an energy-based model, we have
+E(x♣ω)= ↗ϖ
+∑
+i
+xi ↗ J
+∑
+i↔j
+xixj (4.82)
+4.3.2.2 Potts models
+In Section 4.3.2.1, we discussed the Ising model, which is a simple 2d MRF for deﬁning distributions
+over binary variables. It is easy to generalize the Ising model to multiple discrete states, xi ↔
+{1, 2,...,K ♦. If we use the same potential function for every edge, we can write
+ϱ ij (xi = k, xj = k↓)= eJij (k,k→) (4.83)
+where Jij (k, k↓) is the energy if one node has state k and its neighbor has state k↓.A c o m m o n s p e c i a l
+case is
+ϱ ij (xi = k, xj = k↓)=
+
+eJ if k = k↓
+e0 if k ↙= k↓ (4.84)
+This is called the Potts model . The Potts model reduces to the Ising model if we deﬁne Jpotts =
+2Jising.
+If J> 0,t h e nn e i g h b o r i n gn o d e sa r ee n c o u r a g e dt oh a v et h es a m el a b e l ;t h i si sa ne x a m p l eo f
+an associative Markov model. Some samples from this model are shown in Figure 4.18.T h e p h a s e
+transition for a 2d Potts model occurs at the following value (see [ MS96]):
+Jc = log(1 +
+∈
+K) (4.85)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 28 =====
+170 Chapter 4. Graphical models
+We can extend this model to have local evidence for each node. If we write this as an energy-based
+model, we have
+E(x♣ω)= ↗
+∑
+i
+K∑
+k=1
+ϖ kI (xi = k) ↗ J
+∑
+i↔j
+I (xi = xj ) (4.86)
+4.3.2.3 Potts models for protein structure prediction
+One interesting application of Potts models arises in the area of protein structure prediction .
+The goal is to predict the 3d shape of a protein from its 1d sequence of amino acids. A common
+approach to this is known as direct coupling analysis (DCA). We give a brief summary below; for
+details, see [ Mor+11].
+First we compute a multiple sequence alignment (MSA) from a set of related amino acid
+sequences from the same protein family; this can be done using HMMs, as explained in Section 29.3.2.
+The MSA can be represented by an N ↓ T matrix X, where N is the number of sequences, T is the
+length of each sequence, and Xni ↔{ 1,...,V ♦ is the identity of the letter at location i in sequence n.
+For protein sequences, V = 21,r e p r e s e n t i n gt h e2 0a m i n oa c i d sp l u st h eg a pc h a r a c t e r .
+Once we have the MSA matrix X,w eﬁ tt h eP o t t sm o d e lu s i n gm a x i m u ml i k e l i h o o de s t i m a t i o n ,o r
+some approximation, such as pseudolikelihood [ Eke+13]; see Section 4.3.9 for details. 5 After ﬁtting
+the model, we select the edges with the highest Jij coe"cients, where i, j ↔{ 1,...,T ♦ are locations
+or residues in the protein. Since these locations are highly coupled, they are likely to be in physical
+contact, since interacting residues must coevolve to avoid destroying the function of the protein (see
+e.g., [ LHF17] for a review). This graph is called a contact map .
+Once the contact map is established, it can be used as input to a 3d structural prediction algorithm,
+such as [ Xu18]o rt h e alphafold system [ Eva+18], which won the 2018 CASP competition. Such
+methods use neural networks to learn functions of the form p(d(i, j)♣{c(i, j)♦), where d(i, j) is the 3d
+distance between residues i and j,a n d c(i, j) is the contact map.
+4.3.2.4 Hopﬁeld networks
+A Hopﬁeld network [Hop82] is a fully connected Ising model (Section 4.3.2.1) with a symmetric
+weight matrix, W = WT. The corresponding energy function has the form
+E(x)= ↗ 1
+2 xTWx (4.87)
+where xi ↔ {↗1, +1♦.
+The main application of Hopﬁeld networks is as an associative memory or content addressable
+memory [Kro+25]. The idea is this: suppose we train on a set of fully observed bit vectors,
+corresponding to patterns we want to memorize. (We discuss how to do this below). Then, at test
+time, we present a partial pattern to the network. We would like to estimate the missing variables;
+this is called pattern completion . That is, we want to compute
+x↗ = argmin
+x
+E(x) (4.88)
+5. To encourage the model to learn sparse connectivity, we can also compute a MAP estimate with a sparsity promoting
+prior, as discussed in [ IM17].
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 29 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 171
+Figure 4.19: Examples of how an associative memory can reconstruct images. These are binary images of
+size 150 ↓ 150 pixels. Top: training images. Middle row: partially visible test images. Bottom row: ﬁnal state
+estimate. Adapted from Figure 2.1 of [ HKP91]. Generated by hopﬁeld_demo.ipynb.
+We can solve this optimization problem using iterative conditional modes (ICM), in which we
+set each hidden variable to its most likely state given its neighbors. Picking the most probable state
+amounts to using the rule
+xt+1 = sgn(Wxt) (4.89)
+This can be seen as a deterministic version of Gibbs sampling (see Section 12.3.3).
+We illustrate this pro cess in Figure 4.19. In the top row, we show some training examples. In the
+middle row, we show a corrupted input, corresponding to the initial state x0. In the bottom row, we
+show the ﬁnal state after 30 iterations of ICM. The overall process can be thought of as retrieving a
+complete example from memory based on a piece of the example.
+To learn the weights W,w ec o u l du s et h em a x i m u ml i k e l i h o o de s t i m a t em e t h o dd e s c r i b e di n
+Section 4.3.9.1.( S e e a l s o [HSDK12].) However, a simpler heuristic method, proposed in [ Hop82], is
+to use the following outer product method :
+W =
+
+1
+N
+N∑
+n=1
+xnxT
+n
+
+↗ I (4.90)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 30 =====
+172 Chapter 4. Graphical models
+(a)
+x1 x2 x3 x4
+z1 z2 z3
+(b)
+Figure 4.20: (a) A general Boltzmann machine, with an arbitrary graph structure. The shaded (visible) nodes
+are partitioned into input and output, although the model is actually symmetric and deﬁnes a joint distribution
+on all the nodes. (b) A restricted Boltzmann machine with a bipartite structure. Note the lack of intra-layer
+connections.
+This normalizes the output product matrix by N , and then sets the diagonal to 0. This ensures the
+energy is low for patterns that match any of the examples in the training set. This is the technique we
+used in Figure 4.19.N o t e , h o w e v e r , t h a t t h i s m e t h o d n o t o n l y s t o r e s t h e o r i g i n a l p a t t e r m s b u t a l s o
+their inverses, and other linear combinations. Consequently there is a limit to how many examples
+the model can store before they start to “collide” in the memory. Hopﬁeld proved that, for random
+patterns, the network capacity is ↘ 0.14N .
+4.3.3 MRF s with latent variables (Boltzmann machines, etc.)
+In this section, we discuss MRFs which contain latent variables, as a way to represent high dimensional
+joint distributions in discrete spaces.
+4.3.3.1 V anilla Boltzmann machines
+MRFs in which all the variables are visible are limited in their expressive power, since the only way to
+model correlation between the variables is by directly adding an edge. An alternative approach is to
+introduce latent variables. A Boltzmann machine [AHS85] is like an Ising model (Section 4.3.2.1)
+with latent variables. In addition, the graph structure can be arbitrary (not just a lattice), and the
+binary states are xi ↔{ 0, 1♦ instead of xi ↔ {↗1, +1♦.W e u s u a l l y p a r t i t i o n t h e n o d e s i n t o h i d d e n
+nodes z and visible nodes x, as shown in Figure 4.20(a).
+4.3.3.2 Restricted Boltzmann machines (RBMs)
+Unfortunately, exact inference (and hence learning) in Boltzmann machines is intractable, and even
+approximate inference (e.g., Gibbs sampling, Section 12.3) can be slow. However, suppose we restrict
+the architecture so that the nodes are arranged in two layers, and so that there are no connections
+between nodes within the same layer (see Figure 4.20(b)). This model is known as a restricted
+Boltzmann machine (RBM)[ HT01; HS06a], or a harmonium [Smo86]. The RBM supports
+e"cient approximate inference, since the hidden nodes are conditionally independent given the visible
+nodes, i.e., p(z♣x)= ∏K
+k=1 p(zk♣x).N o t e t h i s i s i n c o n t r a s t t o a d i r e c t e d t w o - l a y e r m o d e l s , w h e r e t h e
+explaining away e!ect causes the latent variables to become “entangled” in the posterior even if they
+are independent in the prior.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 31 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 173
+Initial Parameters
+ Epoch 1 Parameters
+ Epoch 5 Parameters
+Figure 4.21: Some reconstructed images generated by a binary RBM ﬁt to MNIST. Generated by
+rbm_contrastive_divergence.ipynb.
+Visible Hidden Name Reference
+Binary Binary Binary RBM [ HS06a]
+Gaussian Binary Gaussian RBM [ WS05]
+Categorical Binary Categorical RBM [ SMH07]
+Multiple categorical Binary Replicated softmax/undirected LDA [ SH10]
+Gaussian Gaussian Undirected PCA [ MM01]
+Binary Gaussian Undirected binary PCA [ WS05]
+Table 4.4: Summary of di!erent kinds of RBM.
+Typically the hidden and visible nodes in an RBM are binary, so the energy terms have the form
+wdkxdzk. If zk =1 ,t h e nt h ek’th hidden unit adds a term of the form wT
+k x to the energy; this can
+be thought of as a “soft constraint”. If zk =0 ,t h eh i d d e nu n i ti sn o ta c t i v e ,a n dd o e sn o th a v e
+an opinion about this data example. By turning on di!erent combinations of constraints, we can
+create complex distributions on the visible data. This is an example of a product of experts
+(Section 24.1.1), since p(x♣z) ′ ∏
+k:zk =1 exp(wT
+k x).
+This can be thought of as a mixture model with an exponential number of hidden components,
+corresponding to 2H settings of z. That is, z is a distributed representation , whereas a standard
+mixture model uses a localist representation , where z ↔{ 1,K ♦,a n de a c hs e t t i n go fz corresponds
+to a complete prototype or exemplar wk to which x is compared, giving rise to a model of the form
+p(x♣z = k) ′ exp(wT
+k x).
+Many di!erent kinds of RBMs have been deﬁned, which use di!erent pairwise potential functions.
+See Table 4.4 for a summary. (Figure 4.21 gives an example of some images generated from an
+RBM ﬁt to the binarized MNIST dataset.) All of these are special cases of the exponential family
+harmonium [WRZH04]. See Supplementary Section 4.3 for more details.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 32 =====
+174 Chapter 4. Graphical models
+(a)
+ (b)
+Figure 4.22: (a) Deep Boltzmann machine. (b) Deep belief network. The top two layers deﬁne the prior
+in terms on an RBM. The remaining layers are a directed graphical model that “decodes” the prior into
+observable data.
+4.3.3.3 Deep Boltzmann machines
+We can make a “deep” version of an RBM by stacking multiple layers; this is called a deep Boltzmann
+machine [SH09]. For example, the two layer model in Figure 4.22(a) has the form
+p(x, z1, z2♣ω)= 1
+Z(W1, W2) exp
+(
+xTW1z1 + zT
+1 W2z2
+
+(4.91)
+where x are the visible nodes at the bottom, and we have dropped bias terms for brevity.
+4.3.3.4 Deep belief networks (DBNs)
+We can use an RBM as a prior over a latent distributed co de, and then use a DPGM “deco der” to
+convert this into the observed data, as shown in Figure 4.22(b). The corresponding joint distribution
+has the form
+p(x, z1, z2♣ω)= p(x♣z1, W1) 1
+Z(W2) exp
+(
+zT
+1 W2z2
+
+(4.92)
+In other words, it is an RBM on top of a DPGM. This combination has been called a deep belief
+network (DBN)[ HOT06a]. However, this name is confusing, since it is not actually a belief net.
+We will therefore call it a deep Boltzmann network (which conveniently has the same DBN
+abbreviation).
+DBNs can be trained in a simple greedy fashion, and support fast bottom-up inference (see
+[HOT06a]f o rd e t a i l s ) . D B N sp l a y e da ni m p o r t a n tr o l ei nt h eh i s t o r yo fd e e pl e a r n i n g ,s i n c et h e y
+were one of the ﬁrst deep models that could be successfully trained. However, they are no longer
+widely used, since the advent of better ways to train fully supervised deep neural networks (such as
+using ReLU units and the Adam optimizer), and the advent of e"cient ways to train deep DPGMs,
+such as the V AE (Section 21.2).
+4.3.4 Maximum entropy models
+In Section 2.4.7, we show that the exponential family is the distribution with maximum entropy,
+subject to the constraints that the expected value of the features (su"cient statistics) ϱ(x) match
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 33 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 175
+the empirical expectations. Thus the model has the form
+p(x♣ω)= 1
+Z(ω) exp
+(
+ωTϱ(x)
+
+(4.93)
+If the features ϱ(x) decompose according to a graph structure, we get a kind of MRF known as a
+maximum entropy model . This is a kind of energy based model (EBM), as we explain below.
+(See also [ Ou24].)
+4.3.4.1 Log-linear models
+Suppose the potential functions have the following log-linear form:
+ϱ c(xc; ωc)=e x p (ωT
+c ϱ(xc)) (4.94)
+where ϱ(xc) is a feature vector derived from the variables in clique c. Then the overall model is
+given by
+p(x♣ω)= 1
+Z(ω) exp
+∑
+c
+ωT
+c ϱ(xc)
+
+(4.95)
+For example, in a Gaussian graphical mo del (GGM), we have
+ϱ([xi,x j ]) = [ xi,x j ,x ixj ] (4.96)
+for xi ↔ R. And in an Ising model, we have
+ϱ([xi,x j ]) = [ xi,x j ,x ixj ] (4.97)
+for xi ↔ {↗1, +1♦. Thus both of these are maxent models. However, there are two key di!erences:
+ﬁrst, in a GGM, the variables are real-valued, not binary; second, in a GGM, the partition function
+Z(ω) can be computed in O(D3) time, whereas in a Boltzmann machine, computing the partition
+function can take O(2D ) time (see Section 9.5.4 for details).
+If the features ϱ are structured in a hierarchical way (capturing ﬁrst order interactions, and second
+order interactions, etc.), and all the variables x are categorical, the resulting model is known in
+statistics as a log-linear model .H o w e v e r , i n t h e M L c o m m u n i t y , t h e t e r m “ l o g - l i n e a r m o d e l ”i s
+often used to describe any model of the form Equation ( 4.95).
+4.3.4.2 F eature induction for a maxent spelling model
+In some applications, we assume the features ϱ(x) are known. However, it is possible to learn the
+features in a maxent model in an unsupervised way; this is known as feature induction .
+Ac o m m o na p p r o a c ht of e a t u r ei n d u c t i o n ,ﬁ r s tp r o p o s e di n[DDL97; ZWM97; Yui11], is to start
+with a base set of features, and then to continually create new feature combinations out of old ones,
+greedily adding the best ones to the model. This is called feature pursuit .
+As an example of this approach, [ DDL97]d e s c r i b eh o wt ob u i l dm o d e l st or e p r e s e n tE n g l i s h
+spelling. This can be formalized as a probability distribution over variable length strings, p(x♣ω),
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 34 =====
+176 Chapter 4. Graphical models
+where xt is a letter in the English alphabet. Initially the model has no features, which represents the
+uniform distribution. The algorithm starts by choosing to add the feature
+ς1(x)=
+∑
+i
+I (xi ↔{ a, . . . , z♦) (4.98)
+which checks if any letter is lowercase or not. After the feature is added, the parameters are (re)-ﬁt
+by maximum likelihood (a computationally di"cult problem, which we discuss in Section 4.3.9.1).
+For this feature, it turns out that ˆω1 =1 .944, which means that a word with a lowercase letter in any
+position is about e1.944 ∋ 7 times more likely than the same word without a lowercase letter in that
+position. Some samples from this model, generated using (annealed) Gibbs sampling (described in
+Section 12.3), are shown below. 6
+m, r, xevo, ijjiir, b, to, jz, gsr, wq, vf, x, ga, msmGh, pcp, d, oziVlal, hzagh, yzop, io,
+advzmxnv, ijv_bolft, x, emx, kayerf, mlj, rawzyb, jp, ag, ctdnnnbg, wgdw, t, kguv, cy,
+spxcq, uzflbbf, dxtkkn, cxwx, jpd, ztzh, lv, zhpkvnu, l^, r, qee, nynrx, atze4n, ik, se, w,
+lrh, hp+, yrqyka’h, zcngotcnx, igcump, zjcjs, lqpWiqu, cefmfhc, o, lb, fdcY, tzby, yopxmvk,
+by, fz„ t, govyccm, ijyiduwfzo, 6xr, duh, ejv, pk, pjw, l, fl, w
+The second feature added by the algorithm checks if two adjacent characters are lowercase:
+ς2(x)=
+∑
+i↔j
+I (xi ↔{ a, . . . , z♦,x j ↔{ a, . . . , z♦) (4.99)
+Now the model has the form
+p(x)= 1
+Z exp(ω1ς1(x)+ ω2ς2(x)) (4.100)
+Continuing in this way, the algorithm adds features for the strings s> and ing>, where > represents
+the end of word, and for various regular expressions such as [0-9],e t c . S o m es a m p l e sf r o mt h e
+model with 1000 features, generated using (annealed) Gibbs sampling, are shown below.
+was, reaser, in, there, to, will, „ was, by, homes, thing, be, reloverated, ther, which,
+conists, at, fores, anditing, with, Mr., proveral, the, „ ***, on’t, prolling, prothere, „
+mento, at, yaou, 1, chestraing, for, have, to, intrally, of, qut, ., best, compers, ***,
+cluseliment, uster, of, is, deveral, this, thise, of, offect, inatever, thifer,
+constranded, stater, vill, in, thase, in, youse, menttering, and, ., of, in, verate, of,
+to
+If we deﬁne a feature for every possible combination of letters, we can represent any probability
+distribution. However, this will overﬁt. The power of the maxent approach is that we can choose
+which features matter for the domain.
+An alternative approach is to introduce latent variables, that implicitly model correlations amongst
+the visible nodes, rather than explicitly having to learn feature functions. See Section 4.3.3 for an
+example of such a model.
+6. We thank John La!erty for sharing this example.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 35 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 177
+4.3.5 Gaussian MRF s
+In Section 4.2.3, we showed how to represent a multivariate Gaussian using a DPGM. In this section,
+we show how to represent a multivariate Gaussian using a UPGM. (For further details on GMRFs,
+see e.g., [ RH05].)
+4.3.5.1 Standard GMRF s
+A Gaussian graphical model (or GGM), also called a Gaussian MRF , is a pairwise MRF of
+the following form:
+p(x)= 1
+Z(ω)
+∏
+i↔j
+ϱ ij (xi,x j )
+∏
+i
+ϱ i(xi) (4.101)
+ϱ ij (xi,x j )=e x p (↗ 1
+2 xi!ij xj ) (4.102)
+ϱ i(xi)=e x p (↗ 1
+2 !iix2
+i + φixi) (4.103)
+Z(ω)=( 2 ↼)D/2♣#♣→ 1
+2 (4.104)
+The ϱ ij are edge potentials (pairwise terms), and each the ϱ i are node potentials or unary
+terms. (We could absorb the unary terms into the pairwise terms, but we have kept them separate
+for clarity.)
+The joint distribution can be rewritten in a more familiar form as follows:
+p(x) ′ exp[ςTx ↗ 1
+2 xT#x] (4.105)
+This is called the information form of a Gaussian; # = !→1 and ς = #µ are called the canonical
+parameters.
+If !ij =0 , there is no pairwise term connecting xi and xj ,a n dh e n c exi → xj ♣x→ij , where x→ij
+are all the nodes except for xi and xj .H e n c e t h e z e r o e n t r i e s i n# are called structural zeros .
+This means we can use ε1 regularization on the weights to learn a sparse graph, a method known as
+graphical lasso (see Supplementary Section 30.4.2).
+Note that the covariance matrix ! = #→1 can be dense even if the precision matrix # is sparse.
+For example, consider an AR(1) process with correlation parameter ↽.7 The precision matrix (for a
+graph with T =7 nodes) looks like this:
+# = 1
+⇀2
+
+
+1 ↗↽
+↗↽ 1+ ↽2 ↗↽
+↗↽ 1+ ↽2 ↗↽
+↗↽ 1+ ↽2 ↗↽
+↗↽ 1+ ↽2 ↗↽
+↗↽ 1+ ↽2 ↗↽
+↗↽ 1
+
+
+(4.106)
+7. This example is from https://dansblog.netlify.app/posts/2022-03-22-a-linear-mixed-effects-model/ .
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 36 =====
+178 Chapter 4. Graphical models
+But the covariance matrix is fully dense:
+#→1 = ⇀2
+
+
+↽↽ 2 ↽3 ↽4 ↽5 ↽6 ↽7
+↽2 ↽↽ 2 ↽3 ↽4 ↽5 ↽6
+↽3 ↽2 ↽↽ 2 ↽3 ↽4 ↽5
+↽4 ↽3 ↽2 ↽↽ 2 ↽3 ↽4
+↽5 ↽4 ↽3 ↽2 ↽↽ 2 ↽3
+↽6 ↽5 ↽4 ↽3 ↽2 ↽↽ 2
+↽7 ↽6 ↽5 ↽4 ↽3 ↽2 ↽
+
+
+(4.107)
+This follows because, in a chain structured UPGM, every pair of nodes is marginally correlated, even
+if they may be conditionally independent given a separator.
+4.3.5.2 Nonlinear Gaussian MRF s
+In this section, we consider a generalization of GGMs to handle the case of nonlinear models. Suppose
+the joint is given by a product of local factors, or clique potentials, ϱ c, each of which is deﬁned on a
+set or clique variables xc as follows:
+p(x)= 1
+Z
+∏
+c
+ϱ c(xc) (4.108)
+ϱ c(xc)=e x p (↗Ec(xc)) (4.109)
+Ec(xc)= 1
+2 (fc(xc) ↗ dc)T!→1
+c (fc(xc) ↗ dc) (4.110)
+where dc is an optional local evidence term for the c’th clique, and fc is some measurement function.
+Suppose the measurent function fc is linear, i.e.,
+fc(x)= Jcx + bc (4.111)
+In this case, the energy for clique c becomes
+Ec(xc)= 1
+2 xT
+c JT
+c !→1
+c Jc  
+!c
+xc + xT
+c JT
+c !→1
+c (bc ↗ dc)  
+→εc
++ 1
+2 (bc ↗ dc)!→1
+c (bc ↗ dc)
+  
+kc
+(4.112)
+= 1
+2 xT
+c #cxc ↗ ςT
+c xc + kc (4.113)
+which is a standard Gaussian factor. If fc is nonlinear, it is common to linearize the model around
+the current estimate x0
+c to get
+fc(xc) ∋ fc(x0
+c )+ Jc(xc ↗ x0
+c )= Jcxc +( fc(x0
+c ) ↗ Jcx0
+c )  
+bc
+(4.114)
+where Jc is the Jacobian of fc(xc) wrt xc. This gives us a “temporary” Gaussian factor that we can
+use for inference. This process can be iterated for improved accuracy.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 37 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 179
+4.3.5.3 INLA approximation
+GMRFs are often used to represent latent Gaussian models of the form p(y, x♣ω)= p(x♣ω) ∏
+i p(yi♣xi, ω),
+where p(x♣ω) is the GMRF prior over the latents, and yi are the observations for node i.( W e c a n
+optionally condition the model on covariates, which can be used to inﬂuence the prior mean of
+each latent node.) Estimating the parameters by sampling from, or maximizing, p(ω♣y),r e q u i r e s
+marginalizing out the latent x variables, which in general is computationally intractable. The seminal
+paper [ RMC09]i n t r o d u c e dt h eINLA approximation (“integrated nested Laplace approximation”),
+which we now discuss. (See Section 7.4.3 for an introduction to the Laplace approximation.)
+The ﬁrst observation is that the posterior over the parameters can be written as p(ω♣y)= p(y|ω)p(ω)
+p(y) ,
+where the likelihood is given by p(y♣ω)= p(y|x↑,ω)p(x↑|ω)
+p(x↑|y,ω) , where x↗ is any value. In INLA, the value
+x↗ is chosen as the mode of a Gaussian approximation to p(x♣y, ω).( W e d i s c u s s h o w t o c o m p u t e
+this mode below.) We can then use p(ω, y) to approximate the normalized posterior p(ω♣y) using
+e.g., HMC (assuming the computation of x↗ is di!erentiable). Alternatively, for low dimensional
+problems, we can use a grid approximation.
+We now discuss how to compute the x↗ term. Let f (x)= log p(y♣x, ω) be the log likelihood;
+the Laplace approximation of this, centered at x0,h a st h ef o r m ˆf (x♣x0)= f (x0)+( x ↗ x0)Tg0 +
+1
+2 (x ↗ x0)TH0(x ↗ x0), where g0 is the gradient of f at x0,a n d H0 is the Hessian. Note that
+H0 is diagonal, since we assume the likelihood function factorizes across nodes. The log prior has
+the form log p(x♣ω)= ↗ 1
+2 (x ↗ µ)T!→1(x ↗ µ).H e n c e t h e l o g j o i n t i s a p p r o x i m a t e d b yL(x♣x0)=
+log p(x♣ω)+ ˆf (x♣x0). Grouping the terms which are quadratic and linear in x,a n dd r o p p i n g
+constants independent of x,w eﬁ n d L(x♣x0)= ↗ 1
+2 xT(↗H0 + !→1)x + xT(!→1µ + g0 ↗ H0x0). This
+corresponds to the log of a Gaussian pdf, with precision #0 = !→1 ↗ H0 and precision-weighted
+mean ς0 = !→1µ + g0 ↗ H0x0.H e n c e t h e m a x i m u m o fL(x♣x0) is the mean of this Gaussian. given
+by x1 = #→1
+0 ς0, which can be computed by solving the corresponding sparse linear system. We
+can then iterate this until we ﬁnd the global maximum x↗.( N o t e t h a t t h e s p a r s i t y p a t t e r n o f t h e
+posterior precision is the same as the prior precision, since H0 is diagonal, so this pattern does not
+need to be recomputed across iterations.)
+Once we have access to an approximation to the posterior over parameters, p(ω♣y),w ec a nc o m p u t e
+approximate posterior marginals of each latent using p(xi♣y)=
+
+p(xi♣ω, y)p(ω♣y)dω. In INLA, this
+integral over ω is performed numerically by summing over a carefully selected set of points, similar
+to sigma point ﬁltering (see Section 8.4.1); obviously this only works when the dimensionality of ω
+is small. The p(xi♣ω, y) term is computed analytically based on an inner Laplace approximation of
+p(x♣ω, y), which lets us e"ciently marginalize over x→i.
+4.3.6 Conditional independence properties
+In this section, we explain how UPGMs encode conditional independence assumptions.
+4.3.6.1 Basic results
+UPGMs deﬁne CI relationships via simple graph separation as follows: given 3 sets of nodes A, B,
+and C,w es a y XA →G XB ♣XC i! C separates A from B in the graph G. This means that, when we
+remove all the nodes in C,i ft h e r ea r en op a t h sc o n n e c t i n ga n yn o d ei nA to any node in B,t h e n
+the CI property holds. This is called the global Markov property for UPGMs. For example, in
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 38 =====
+180 Chapter 4. Graphical models
+1
+2
+3
+5
+4
+6
+7
+(a)
+1
+2
+3
+5
+4
+6
+7
+(b)
+Figure 4.23: (a) A DPGM. (b) Its moralized version, represented as a UPGM.
+GLP
+p(x)>0
+Figure 4.24: Relationship between Markov properties of UPGMs.
+Figure 4.23(b), we have that {X1,X 2♦→{ X6,X 7♦♣{X3,X 4,X 5♦.
+The smallest set of nodes that renders a node t conditionally independent of all the other nodes in
+the graph is called t’s Markov blanket; we will denote this by mb(t).F o r m a l l y , t h e M a r k o v b l a n k e t
+satisﬁes the following property:
+t →V∩ cl(t)♣mb(t) (4.115)
+where cl(t) ↭ mb(t) ∝{ t♦ is the closure of node t,a n d V = {1,...,N G♦ is the set of all nodes.
+One can show that, in a UPGM, a node’s Markov blanket is its set of immediate neighbors. This
+is called the undirected local Markov property .F o r e x a m p l e , i n F i g u r e4.23(b), we have
+mb(X5)= {X2,X 3,X 4,X 6,X 7♦.
+From the lo cal Markov prop erty, we can easily see that two no des are conditionally indep endent
+given the rest if there is no direct edge between them. This is called the pairwise Markov property .
+In symbols, this is written as
+s → t♣V ∩ {s, t♦⇔ ↖ Gst =0 (4.116)
+where Gst =0 means there is no edge between s and t (so there is a 0 in the adjaceny matrix).
+Using the three Markov properties we have discussed, we can derive the following CI properties
+(amongst others) from the UPGM in Figure 4.23(b): X1 → X7♣rest (pairwise); X1 → rest♣X2,X 3
+(local); X1,X 2 → X6,X 7♣X3,X 4,X 5 (global).
+It is obvious that global Markov implies local Markov which implies pairwise Markov. What is less
+obvious is that pairwise implies global, and hence that all these Markov properties are the same,
+as illustrated in Figure 4.24 (see e.g., [ KF09a,p 1 1 9 ]f o rap r o o f ) .8 The importance of this result is
+that it is usually easier to empirically assess pairwise conditional independence; such pairwise CI
+statements can be used to construct a graph from which global CI statements can be extracted.
+8. This assumes p(x) > 0 for all x,i . e . ,t h a tp is a positive density. The restriction to positive densities arises because
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 39 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 181
+1
+2
+3
+5
+4
+(a)
+1
+2
+3
+5
+4
+(b)
+Figure 4.25: (a) The ancestral graph induced by the DAG in Figure 4.23(a) wrt U = {X2,X 4,X 5}.( b ) T h e
+moralized version of (a).
+4.3.6.2 An undirected alternative to d-separation
+We have seen that determinining CI relationships in UPGMs is much easier than in DPGMs, because
+we do not have to worry about the directionality of the edges. That is, we can use simple graph
+separation, instead of d-separation.
+In this section, we show how to convert a DPGM to a UPGM, so that we can infer CI relationships
+for the DPGM using simple graph separation. It is tempting to simply convert the DPGM to a
+UPGM by dropping the orientation of the edges, but this is clearly incorrect, since a v-structure
+A ≃ B ⇒ C has quite di!erent CI properties than the corresponding undirected chain A ↗ B ↗ C
+(e.g., the latter graph incorrectly states that A → C♣B). To avoid such incorrect CI statements, we
+can add edges between the “unmarried” parents A and C, and then drop the arrows from the edges,
+forming (in this case) a fully connected undirected graph. This process is called moralization.
+Figure 4.23 gives a larger example of moralization: we interconnect 2 and 3, since they have a
+common child 5, and we interconnect 4, 5, and 6, since they have a common child 7.
+Unfortunately, moralization loses some CI information, and therefore we cannot use the moralized
+UPGM to determine CI properties of the DPGM. For example, in Figure 4.23(a), using d-separation,
+we see that X4 → X5♣X2.A d d i n g a m o r a l i z a t i o n a r cX4 ↗ X5 would lose this fact (see Figure 4.23(b)).
+However, notice that the 4-5 moralization edge, due to the common child 7, is not needed if we do not
+observe 7 or any of its descendants. This suggests the following approach to determining if A → B♣C.
+First we form the ancestral graph of DAG G with respect to U = A ∝ B ∝ C. This means we
+remove all nodes from G that are not in U or are not ancestors of U .W e t h e n m o r a l i z e t h i s a n c e s t r a l
+graph, and apply the simple graph separation rules for UPGMs. For example, in Figure 4.25(a), we
+show the ancestral graph for Figure 4.23(a) using U = {X2,X 4,X 5♦. In Figure 4.25(b), we show the
+moralized version of this graph. It is clear that we now correctly conclude that X4 → X5♣X2.
+4.3.7 Generation (sampling)
+Unlike with DPGMs, it can be quite slow to sample from an UPGM, even from the unconditional
+prior, because there is no ordering of the variables. Furthermore, we cannot easily compute the
+probability of any conﬁguration unless we know the value of Z. Consequently it is common to use
+deterministic constraints can result in independencies present in the distribution that are not explicitly represented in
+the graph. See e.g., [ KF09a, p120] for some examples. Distributions with non-graphical CI properties are said to be
+unfaithful to the graph, so I(p) →= I(G).
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 40 =====
+182 Chapter 4. Graphical models
+x3 x4
+z3 z4
+x1 x2
+z1 z2
+Figure 4.26: A grid-structured MRF with hidden nodes zi and local evidence nodes xi.T h e p r i o rp(z) is an
+undirected Ising model, and the likelihood p(x|z)= ∏
+i p(xi|zi) is a directed fully factored model.
+MCMC methods for generating from an UPGM (see Chapter 12).
+In the special case of UPGMs with low treewidth and discrete or Gaussian potentials, it is
+possible to use the junction tree algorithm to draw samples using dynamic programming (see
+Supplementary Section 9.2.3).
+4.3.8 Inference
+We discuss inference in graphical models in detail in Chapter 9. In this section, we just give an
+example.
+Suppose we have an image composed of binary pixels, zi,b u tw eo n l yo b s e r v en o i s yv e r s i o n so ft h e
+pixels, xi.W e a s s u m e t h e j o i n t m o d e l h a s t h e f o r m
+p(x, z)= p(z)p(x♣z)=
+
+ 1
+Z
+∑
+i↔j
+ϱ ij (zi,z j )
+
+ ∏
+i
+p(xi♣zi) (4.117)
+where p(z) is an Ising model prior, and p(xi♣zi)= N (xi♣zi,ϑ 2),f o r zi ↔ {↗1, +1♦. This model uses a
+UPGM as a prior, and has directed edges for the likelihood, as shown in Figure 4.26;s u c hah y b r i d
+undirected-directed model is called a chain graph (even though it is not chain-structured).
+The inference task is to compute the posterior marginals p(zi♣x),o rt h ep o s t e r i o rM A Pe s t i m a t e ,
+argmaxz p(z♣x). The exact computation is intractable for large grids (for reasons explained in
+Section 9.5.4), so we must use approximate methods. There are many algorithms that we can use,
+including mean ﬁeld variational inference (Section 10.3.2), Gibbs sampling (Section 12.3.3), loopy
+belief propagation (Section 9.4), etc. In Figure 4.27,w es h o wt h er e s u l t so fv a r i a t i o n a li n f e r e n c e .
+4.3.9 Learning
+In this section, we discuss how to estimate the parameters for an MRF. As we will see, computing
+the MLE can be computationally expensive, even in the fully observed case, because of the need to
+deal with the partition function Z(ω).A n d c o m p u t i n g t h e p o s t e r i o r o v e r t h e p a r a m e t e r s ,p(ω♣D),
+is even harder, because of the additional normalizing constant p(D) —t h i sc a s eh a sb e e nc a l l e d
+doubly intractable [MGM06]. Consequently we will focus on point estimation methods such as
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 41 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 183
+sample 1, meanfieldH
+ 
+ 
+−0.8−0.6−0.4−0.200.20.40.60.8
+(a)
+mean after 15 sweeps of meanfieldH
+ 
+ 
+−0.8−0.6−0.4−0.200.20.40.60.8
+(b)
+Figure 4.27: Example of image denoising using mean ﬁeld variational inference. We use an Ising prior with
+Wij =1 and a Gaussian noise model with ε =2 . (a) Noisy image. (b) Result of inference. Generated by
+ising_image_denoise_demo.ipynb.
+MLE and MAP. (For one approach to Bayesian parameter inference in an MRF, based on persistent
+variational inference, see [ IM17].)
+4.3.9.1 Learning from complete data
+We will start by assuming there are no hidden variables or missing data during training (this is
+known as the complete data setting). For simplicity of presentation, we restrict our discusssion to
+the case of MRFs with log-linear potential functions. (See Section 24.2 for the general nonlinear case,
+where we discuss MLE for energy-based models.)
+In particular, we assume the distribution has the following form:
+p(x♣ω)= 1
+Z(ω) exp
+∑
+c
+ωT
+c ϱc(x)
+
+(4.118)
+where c indexes the cliques. The (averaged) log-likelihood of the full dataset becomes
+ε(ω) ↭ 1
+N
+∑
+n
+log p(xn♣ω)= 1
+N
+∑
+n
+[ ∑
+c
+ωT
+c ϱc(xn) ↗ log Z(ω)
+]
+(4.119)
+Its gradient is given by
+⇁ε
+⇁ωc
+= 1
+N
+∑
+n
+
+ϱc(xn) ↗ ⇁
+⇁ωc
+log Z(ω)
+
+(4.120)
+We know from Section 2.4.3 that the derivative of the log partition function wrt ωc is the expectation
+of the c’th feature vector under the model, i.e.,
+⇁ log Z(ω)
+⇁ωc
+= E [ϱc(x)♣ω]=
+∑
+x
+p(x♣ω)ϱc(x) (4.121)
+Hence the gradient of the log likelihood is
+⇁ε
+⇁ωc
+= 1
+N
+∑
+n
+[ϱc(xn)] ↗ E [ϱc(x)] (4.122)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 42 =====
+184 Chapter 4. Graphical models
+When the expected value of the features according to the data is equal to the expected value of
+the features according to the model, the gradient will be zero, so we get
+EpD [ϱc(x)] = Ep(x|ω) [ϱc(x)] (4.123)
+This is called moment matching .E v a l u a t i n g t h eEpD [ϱc(x)] term is called the clamped phase
+or positive phase ,s i n c ex is set to the observed values xn;e v a l u a t i n gt h eEp(x|ω) [ϱc(x)] term is
+called the unclamped phase or negative phase ,s i n c ex is free to vary, and is generated by the
+model.
+In the case of MRFs with tabular potentials (i.e., one feature per entry in the clique table), we
+can use an algorithm called iterative proportional ﬁtting or IPF [Fie70; BFH75; JP95]t os o l v e
+these equations in an iterative fashion. 9 But in general, we must use gradient methods to perform
+parameter estimation.
+4.3.9.2 Computational issues
+The biggest computational bottleneck in ﬁtting MRFs and CRFs using MLE is the cost of computing
+the derivative of the log partition function, log Z(ω), which is needed to compute the derivative of
+the log likelihood, as we saw in Section 4.3.9.1. To see why this is slow to compute, note that
+∞ω log Z(ω)= ∞ωZ(ω)
+Z(ω) = 1
+Z(ω) ∞ω
+
+˜p(x; ω)dx = 1
+Z(ω)
+
+∞ω ˜p(x; ω)dx (4.124)
+= 1
+Z(ω)
+
+˜p(x; ω)∞ω log ˜p(x; ω)dx =
+ ˜p(x; ω)
+Z(ω) ∞ω log ˜p(x; ω)dx (4.125)
+= Ex↔p(x;ω) [∞ω log ˜p(x; ω)] (4.126)
+where in Equation ( 4.125)w eu s e dt h ef a c tt h a t∞ω log ˜p(x; ω)= 1
+˜p(x;ω) ∞ω ˜p(x; ω) (this is known as
+the log-derivative trick). Thus we see that we need to draw samples from the model at each step
+of SGD training, just to estimate the gradient.
+In Section 24.2.1,w ed i s c u s sv a r i o u se " c i e n ts a m p l i n gm e t h o d s . H o w e v e r ,i ti sa l s op o s s i b l et o
+use alternative estimators which do not use the principle of maximum likelihood. For example, in
+Section 24.2.2 we discuss the technique of contrastive divergence. And in Section 4.3.9.3,w ed i s c u s s
+the technique of pseudolikelihood. (See also [ Sto17]f o rar e v i e wo fm a n ym e t h o d sf o rp a r a m e t e r
+estimation in MRFs.)
+4.3.9.3 Maximum pseudolikelihood estimation
+When ﬁtting fully visible MRFs (or CRFs), a simple alternative to maximizing the likelihood is to
+maximize the pseudo likelihood [Bes75], deﬁned as follows:
+εPL (ω) ↭ 1
+N
+N∑
+n=1
+D∑
+d=1
+log p(xnd♣xn,→d, ω) (4.127)
+9. In the case of decomposable graphs, IPF converges in a single iteration. Intuitively, this is because a decomposable
+graph can be converted to a DAG without any loss of information, as explained in Section 4.5,a n dw ek n o wt h a tw e
+can compute the MLE for tabular CPDs in closed form, just by normalizing the counts.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 43 =====
+4.3. Undirected graphical models (Markov random ﬁelds) 185
+(a)
+ (b)
+Figure 4.28: (a) A small 2d lattice. (b) The representation used by pseudo likelihood. Solid nodes are observed
+neighbors. Adapted from Figure 2.2 of [ Car03].
+That is, we optimize the product of the full conditionals, also known as the composite likelihood
+[Lin88a; DL10; VRF11]. Compare this to the objective for maximum likelihood:
+εML (ω)= 1
+N
+N∑
+n=1
+log p(xn♣ω) (4.128)
+In the case of Gaussian MRFs, PL is equivalent to ML [ Bes75], although this is not true in general.
+Nevertheless, it is a consistent estimator in the large sample limit [ LJ08].
+The PL approach is illustrated in Figure 4.28 for a 2d grid. We learn to predict each node, given all
+of its neighbors. This objective is generally fast to compute since each full conditional p(xd♣x→d, ω)
+only requires summing over the states of a single node, xd,i no r d e rt oc o m p u t et h el o c a ln o r m a l i z a t i o n
+constant. The PL approach is similar to ﬁtting each full conditional separately, except that, in PL,
+the parameters are tied between adjacent nodes.
+Experiments in [ PW05; HT09] suggest that PL works as well as exact ML for fully observed Ising
+models, but is much faster. In [ Eke+13], they use PL to ﬁtt Potts models to (aligned) protein
+sequence data. However, when ﬁtting RBMs, [ Mar+10]f o u n dt h a tP Li sw o r s et h a ns o m eo ft h e
+stochastic ML methods we discuss in Section 24.2.
+Another more subtle problem is that each node assumes that its neighbors have known values
+during training. If node j ↔ nbr(i) is a perfect predictor for node i (where nbr(i) is the set of
+neighbors), then j will learn to rely completely on node i,e v e na tt h ee x p e n s eo fi g n o r i n go t h e r
+potentially useful information, such as its local evidence, say yi.A t t e s t t i m e , t h e n e i g h b o r i n g n o d e s
+will not be observed, and performance will su!er. 10
+4.3.9.4 Learning from incomplete data
+In this section, we consider parameter estimation for MRFs (and CRFs) with hidden variables. Such
+incomplete data can arise for several reasons. For example, we may want to learn a model of
+the form p(z)p(x♣z) which lets us infer a “clean” image z from a noisy or corrupted version x. If
+we only observe x,t h em o d e li sc a l l e dahidden Gibbs random ﬁeld .S e e S e c t i o n10.3.2 for an
+10. Geo! Hinton has an analogy for this problem. Suppose we want to learn to denoise images of symmetric shapes,
+such as Greek vases. Each hidden pixel xi depends on its spatial neighbors, as well the noisy observation yi.S i n c e i t s
+symmetric counterpart xj will perfectly predict xi, the model will ignore yi and just rely on xj ,e v e nt h o u g hxj will
+not be available at test time.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 44 =====
+186 Chapter 4. Graphical models
+example. As another example, we may have a CRF in which the hidden variables are used to encode
+an unknown alignment between the inputs and outputs [ Qua+07], or to model missing parts of the
+input [ SRS10].
+We now discuss how to compute the MLE in such cases. For notational simplicity, we fo cus on
+unconditional models (MRFs, not CRFs), and we assume all the potentials are log-linear. In this
+case, the model has the following form:
+p(x, z♣ω)= exp(ωTϱ(x, z))
+Z(ω) = ˜p(x, z♣ω)
+Z(ω) (4.129)
+Z(ω)=
+∑
+x,z
+exp(ωTϱ(x, z)) (4.130)
+where ˜p(x, z♣ω) is the unnormalized distribution. We have dropped the sum over cliques c for brevity.
+The log likelihood is now given by
+ε(ω)= 1
+N
+N∑
+n=1
+log
+∑
+zn
+p(xn, zn♣ω)
+
+(4.131)
+= 1
+N
+N∑
+n=1
+log
+
+1
+Z(ω)
+∑
+zn
+˜p(xn, zn♣ω)
+
+(4.132)
+= 1
+N
+N∑
+n=1
+[
+log
+∑
+zn
+˜p(xn, zn♣ω)
+]
+↗ log Z(ω) (4.133)
+Note that
+log
+∑
+zn
+˜p(xn, zn♣ω) = log
+∑
+zn
+exp(ωTϱ(xn, zn)) ↭ log Z(ω, xn) (4.134)
+where Z(ω, xn) is the same as the partition function for the whole model, except that x is ﬁxed at
+xn. Thus the log likelihood is a di!erence of two partition functions, one where x is clamped to xn
+and z is unclamped, and one where both x and z are unclamped. The gradient of these log partition
+functions corresponds to the expected features, where (in the clamped case) we condition on x = xn.
+Hence
+⇁ε
+⇁ω = 1
+N
+∑
+n
+[
+Ez↔p(z|xn ,ω) [ϱ(xn, z)]
+]
+↗ E(z,x)↔p(z,x|ω) [ϱ(x, z)] (4.135)
+4.4 Conditional random ﬁelds (CRFs)
+A conditional random ﬁeld or CRF [LMP01]i saM a r k o vr a n d o mﬁ e l dd e ﬁ n e do nas e to fr e l a t e d
+label nodes y, whose joint probability is predicted conditional on a ﬁxed set of input nodes x.M o r e
+precisely, it corresponds to a model of the following form:
+p(y♣x, ω)= 1
+Z(x, ω)
+∏
+c
+ϱ c(yc; x, ω) (4.136)
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 45 =====
+4.4. Conditional random ﬁelds (CRFs) 187
+xt−1 xt xt+1
+yt−1
+yt
+yt+1
+Figure 4.29: A 1d conditional random ﬁeld (CRF) for sequence labeling.
+(Note how the partition function now depends on the inputs x as well as the parameters ω.) Now
+suppose the potential functions are log-linear and have the form
+ϱ c(yc; x, ω)=e x p (ωT
+c ϱc(x, yc)) (4.137)
+This is a conditional version of the maxent models we discussed in Section 4.3.4.O f c o u r s e , w e c a n
+also use nonlinear potential functions, such as DNNs.
+CRFs are useful because they capture dependencies amongst the output labels. They can therefore
+be used for structured prediction , where the output y ↔Y that we want to predict given the
+input x lives in some structured space, such as a sequence of labels, or labels associated with nodes
+on a graph. In such problems, there are often constraints on the set of valid values of the output y.
+For example, if we want to p erform sentence parsing, the output should satisfy the rules of grammar
+(e.g., noun phrase must precede verb phrase). See Section 4.4.1 for details on the application of CRFs
+to NLP. In some cases, the “constraints” are “soft”, rather than “hard”. For example, if we want to
+associate a label with each pixel in an image (a task called semantic segmentation), we might want
+to “encourage” the label at one location to be the same as its neighbors, unless the visual input
+strongly suggests a change in semantic content at this location (e.g., at the edge of an object). See
+Section 4.4.2 for details on the applications of CRFs to computer vision tasks.
+4.4.1 1d CRF s
+In this section, we focus on 1d CRFs deﬁned on chain-structured graphical models. The graphical
+model is shown in Figure 4.29. This deﬁnes a joint distribution over sequences, y1:T ,g i v e nas e to f
+inputs, x1:T , as follows:
+p(y1:T ♣x, ω)= 1
+Z(x, ω)
+T∏
+t=1
+ϱ (yt, xt; ω)
+T∏
+t=2
+ϱ (yt→1,y t; ω) (4.138)
+where ϱ (yt, xt; ω) are the node potentials and ϱ (yt,y t+1; ω) are the edge potentials. (We have assumed
+that the edge potentials are independent of the input x,b u tt h i sa s s u m p t i o ni sn o tr e q u i r e d . )
+Note that one could also consider an alternative way to deﬁne this conditional distribution, by
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 46 =====
+188 Chapter 4. Graphical models
+ Mrs.Greenspoketodayin NewY ork
+(a)
+(b)
+Greenchairstheﬁnancecommittee
+B-PERI-PEROTH OTH OTH B-LOCI-LOCB-PER OTHOTHOTHOTH
+itswithdrawalfromtheUALAirwaysroseafterannouncing
+KEY
+Begin person name
+Within person name
+Begin location name
+B-PER
+I-PER
+B-LOC
+Within location name
+Not an entitiy
+I-LOC
+OTH
+ British deal
+ADJ N V IN V PRP N IN NNDT
+B I O O O B I O I
+POS
+NPIB
+Begin noun phrase
+Within noun phrase
+Not a noun phrase
+Noun
+Adjective
+B
+I
+O
+N
+ADJ
+Verb
+Preposition
+Possesive pronoun
+Determiner (e.g., a, an, the)
+V
+IN
+PRP
+DT
+KEY
+Figure 4.30: A CRF for joint part of speech tagging and noun phrase segmentation. From Figure 4.E.1 of
+[KF09a]. Used with kind permission of Daphne Koller.
+using a discriminative directed Markov chain:
+p(y1:T ♣x, ω)= p(y1♣x1; ω)
+T∏
+t=2
+p(yt♣yt→1, xt; ω) (4.139)
+This is called a maximum entropy Markov model [MFP00]. However, it su!ers from a subtle
+ﬂaw compared to the CRF. In particular, in the directed model, each conditional p(yt♣yt→1, xt; ω),i s
+locally normalized , whereas in the CRF, the model is globally normalized due to the Z(x, ω)
+term. The latter allows information to propagate through the entire sequence, as we discuss in more
+detail in Section 4.5.3.
+CRFs were widely used in the natural language processing (NLP) community in the 1980s–2010s
+(see e.g., [ Smi11]), although recently they have been mostly replaced by RNNs and transformers (see
+e.g., [ Gol17]). Fortunately, we can get the best of both worlds by combining CRFs with DNNs, which
+allows us to combine data driven techniques with prior knowledge about constraints on the label
+space. We give some examples below.
+4.4.1.1 Noun phrase chunking
+Ac o m m o nt a s ki nN L Pi sinformation extraction , in which we try to parse a sentence into noun
+phrases (NP), such as names and addresses of people or businesses, as well as verb phrases , which
+describe who is doing what to whom (e.g., “British Airways rose”). In order to tackle this task, we
+can assign a part of speech tag to each word, where the tags correspond to Noun, Verb, Adjective,
+etc. In addition, to extract the span of each noun phrase, we can annotate words as being at the
+beginning (B) or inside (I) of a noun phrase, or outside (O) of one. See Figure 4.30 for an example.
+The connections between adjacent labels can encode constraints such as the fact that B (begin)
+must precede I (inside). For example, the sequences OBIIO and OBIOBIO are valid (corresponding to
+one NP of 3 words, and two adjacent NPs of 2 words), but OIBIO is not. This prior information can
+be encoded by deﬁning ϱ (yBIO
+t→1 = △,y BIO
+t = B, xt; ω) to be 0 for any value of * except O. We can
+encode similar grammatical rules for the POS tags.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 47 =====
+4.4. Conditional random ﬁelds (CRFs) 189
+ Mrs. Greenspoke today in New Y ork
+(a)
+(b)
+Greenchairs the ﬁnancecommittee
+B-PER I-PER OTH OTH OTH B-LOC I-LOC B-PER OTHOTHOTHOTH
+itswithdrawalfrom the UALAirwaysrose afterannouncing
+KEY
+Begin person name
+Within person name
+Begin location name
+B-PER
+I-PER
+B-LOC
+Within location name
+Not an entitiy
+I-LOC
+OTH
+ British deal
+ADJ N V IN V PRP N IN NNDT
+B I O O O B I O I
+POS
+NPIB
+Begin noun phrase
+Within noun phrase
+Not a noun phrase
+Noun
+Adjective
+B
+I
+O
+N
+ADJ
+Verb
+Preposition
+Possesive pronoun
+Determiner (e.g., a, an, the)
+V
+IN
+PRP
+DT
+KEY
+Figure 4.31: A skip-chain CRF for named entity recognition. From Figure 4.E.1 of [ KF09a]. Used with kind
+permission of Daphne Koller.
+Given this model, we can compute the MAP sequence of labels, and thereby extract the spans
+that are labeled as noun phrases. This is called noun phrase chunking .
+4.4.1.2 Named entity recognition
+In this section we consider the task of named entity extraction , in which we not only tag the noun
+phrases, but also classify them into di!erent types. A simple approach to this is to extend the BIO
+notation to {B-Per, I-Per, B-Loc, I-Loc, B-Org, I-Org, Other ♦.H o w e v e r , s o m e t i m e s i t i s a m b i g u o u s
+whether a word is a person, location, or something else. Proper nouns are particularly di"cult to
+deal with because they belong to an open class ,t h a ti s ,t h e r ei sa nu n b o u n d e dn u m b e ro fp o s s i b l e
+names, unlike the set of nouns and verbs, which is large but essentially ﬁxed. For example, “British
+Airways” is an organization, but “British Virgin Islands” is a location.
+We can get b etter p erformance by considering long-range correlations b etween words. For example,
+we might add a link between all occurrences of the same word, and force the word to have the same
+tag in each occurence. (The same technique can also be helpful for resolving the identity of pronouns.)
+This is known as a skip-chain CRF .S e eF i g u r e4.31 for an illustration, where we show that the
+word “Green” is interpeted as a person in both occurrences within the same sentence.
+We see that the graph structure itself changes depending on the input, which is an additional
+advantage of CRFs over generative models. Unfortunately, inference in this model is generally
+more expensive than in a simple chain with local connections because of the larger treewdith (see
+Section 9.5.2).
+4.4.1.3 Natural language parsing
+A generalization of chain-structured models for language is to use probabilistic grammars. In
+particular, a probabilistic context free grammar or PCFG in Chomsky normal form is a set of
+re-write or production rules of the form ϑ ≃ ϑ↓ϑ↓↓or ϑ ≃ x, where ϑ, ϑ↓,ϑ ↓↓↔ ” are non-terminals
+(analogous to parts of speech), and x ↔X are terminals, i.e., words. Each such rule has an associated
+probability. The resulting model deﬁnes a probability distribution over sequences of words. We can
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 48 =====
+190 Chapter 4. Graphical models
+2006/08/0314:15
+6 SVMLearningforInterdependentandStructuredOutputSpaces
+Figure1.2Naturallanguageparsing.
+eﬃcientcomputationofthediscriminantfunction,whichinthecaseof(1.5)isgiven
+by
+F(x,y;w)=
+⟨
+wol,
+lx∑
+t=1
+Φ(xt)⊗Λc(yt)
+⟩
++η
+⟨
+wll,
+lx−1∑
+t=1
+Λc(yt)⊗Λc(yt+1)
+⟩
+,
+(1.6)
+wherew=wol⊙wllistheconcatenationofweightsofthetwodependencytypes.
+AsindicatedinProposition1,theinnerproductofthejointfeaturemapdecom-
+posesintokernelsoverinputandoutputspaces
+⟨Ψ(x,y),Ψ(x′,y′)⟩=
+lx∑
+t=1
+lx′∑
+s=1
+δ(yt,¯ys)k(xt,¯xs)+η2
+lx−1∑
+t=1
+lx′−1∑
+s=1
+δ(yt,¯ys)δ(yt+1,ys+1).
+(1.7)
+whereweusedtheequality⟨Λc(σ),Λc(¯σ)⟩=δ(σ,¯σ).
+1.2.3WeightedContext-FreeGrammars
+Parsingisthetaskofpredictingalabeledtreeythatisaparticularconﬁguration
+ofgrammarrulesgeneratingagivensequencex=(x1,...,xl).Letusconsidera
+context-freegrammarinChomskyNormalForm.Therulesofthisgrammarareof
+theformσ→σ′σ′′,orσ→x,whereσ,σ′,σ′′∈Σarenon-terminals,andx∈Tare
+terminals.Similartothesequencecase,wedeﬁnethejointfeaturemapΨ(x,y)to
+containfeaturesrepresentinginter-dependenciesbetweenlabelsofthenodesofthe
+tree(e.g.ψσ→σ′σ′′viaΛc(yrs)⊗Λc(yrt)⊗Λc(y(t+1)s))andfeaturesrepresenting
+thedependenceoflabelstoobservations(e.g.ψσ→τviaΦc(xt)⊗Λc(yt)).Hereyrs
+denotesthelabeloftherootofasubtreespanningfromxrtoxs.Thisdeﬁnition
+leadstoequationssimilarto(1.5),(1.6)and(1.7).Extensionstothisrepresentation
+ispossible,forexamplebydeﬁninghigherorderfeaturesthatcanbeinducedusing
+kernelfunctionsoversub-trees(CollinsandDuﬀy,2002).
+Figure 4.32: Illustration of a simple parse tree based on a context free grammar in Chomsky normal form.
+The feature vector !(x, y) counts the number of times each production rule was used, and is used to deﬁne the
+energy of a particular tree structure, E(y|x)= ↑wT!(x, y). The probability distribution over trees is given
+by p(y|x) ↗ exp(↑E(y|x)).F r o m F i g u r e 5 . 2 o f [AHT07]. Used with kind permission of Yasemin Altun.
+x3 x4
+y3 y4
+x1 x2
+y1 y2
+Figure 4.33: A grid-structured CRF with label nodes yi and local evidence nodes xi.
+compute the probability of observing a particular sequence x = x1 ...x T by summing over all trees
+that generate it. This can be done in O(T 3) time using the inside-outside algorithm ;s e ee . g . ,
+[JM08; MS99; Eis16]f o rd e t a i l s .
+PCFGs are generative models. It is possible to make discriminative versions which encode
+the probability of a labeled tree, y,g i v e nas e q u e n c eo fw o r d s ,x, by using a CRF of the form
+p(y♣x) ′ exp(wT#(x, y)).F o r e x a m p l e , w e m i g h t d e ﬁ n e#(x, y) to count the number of times each
+production rule was used (which is analogous to the number of state transitions in a chain-structured
+model), as illustrated in Figure 4.32.W e c a n a l s o u s e a d e e p n e u r a l n e t t o d e ﬁ n e t h e f e a t u r e s , a s i n
+the neural CRF parser method of [ DK15b].
+4.4.2 2d CRF s
+It is also possible to apply CRFs to image processing problems, which are usually deﬁned on 2d
+grids, as illustrated in Figure 4.33. (Compare this to the generative model in Figure 4.26.) This
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 49 =====
+4.4. Conditional random ﬁelds (CRFs) 191
+Deep Convolutional Neural Network
+Input AeroplaneCoarse Score map
+Bi-linear InterpolationFully Connected CRFFinal Output
+Figure 4.34: A fully connected CRF is added to the output of a CNN, in order to increase the sharpness of
+the segmentation boundaries. From Figure 3 of [ Che+15]. Used with kind permission of Jay Chen.
+corresponds to the following conditional model:
+p(y♣x)= 1
+Z(x)
+
+∑
+i↔j
+ϱ ij (yi,y j )
+
+ ∏
+i
+p(yi♣xi) (4.140)
+In the sections below, we discuss some applications of this and other CRF models in computer vision.
+4.4.2.1 Semantic segmentation
+The task of semantic segmentation is to assign a label to every pixel in an image. We can easily
+solve this problem using a CNN with one softmax output node per pixel. However, this may fail to
+capture long-range dependencies, since convolution is a local operation.
+One way to get better results is to feed the output of the CNN into a CRF. Since the CNN already
+uses convolution, its outputs will usually already be locally smooth, so the beneﬁts from using a CRF
+with a local grid structure may be quite small. However, we can somtimes get better results if we
+use a fully connected CRF , which has connections between all the pixels. This can capture long
+range connections which the grid-structured CRF cannot. See Figure 4.34 for an illustration, and
+[Che+17a]f o rd e t a i l s .
+Unfortunately, exact inference in a fully connected CRF is intractable, but in the case of Gaussian
+potentials, it is possible to devise an e"cient mean ﬁeld algorithm, as described in [ KK11]. Interest-
+ingly, [Zhe+15]s h o w e dh o wt h em e a nﬁ e l du p d a t ee q u a t i o n sc a nb ei m p l e m e n t e du s i n gar e c u r r e n t
+neural network (see Section 16.3.4), allowing end-to-end training. Alternatively, if we are willing
+to use a ﬁnite number of iterations, we can just “unroll” the computation graph and treat it as a
+ﬁxed-sized feedforward circuit. The result is a graph-structured neural network, where the topology
+of the GNN is derived from the graphical model (cf., Section 9.4.10). The advantage of this compared
+to standard CRF methods is that we can train this entire model end-to-end using standard gradient
+descent methods; we no longer have to worry about the partition function (see Section 4.4.3), or
+the lack of convergence that can arise when combining approximate inference with standard CRF
+learning.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 50 =====
+192 Chapter 4. Graphical models
+Figure 4.35: Pictorial structures model for a face and body. Each body part corresponds to a node in the
+CRF whose state space represents the location of that part. The edges (springs) represent pairwise spatial
+constraints. The local evidence nodes are not shown. Adapted from a ﬁgure by Pedro Felzenszwalb.
+4.4.2.2 Deformable parts models
+Consider the problem of object detection ,i . e . ,ﬁ n d i n gt h el o c a t i o n ( s )o fa no b j e c to fag i v e nc l a s s
+(e.g., a person or a car) in an image. One way to tackle this is to train a binary classiﬁer that takes
+as input an image patch and speciﬁes if the patch contains the object or not. We can then apply this
+to every image patch, and return the locations where the classiﬁer has high conﬁdence detections;
+this is known as a sliding window detector ,a n dw o r k sq u i t ew e l lf o rr i g i do b j e c t ss u c ha sc a r s
+or frontal faces. Such an approach can be made e"cient by using convolutional neural networks
+(CNNs); see Section 16.3.2 for details.
+However, such methods can work poorly when there is occlusion, or when the shape is deformable,
+such as a person’s or animal’s body, because there is too much variation in the overall appearance.
+A natural strategy to deal with such problems is break the object into parts, and then to detect
+each part separately. But we still need to enforce spatial coherence of the parts. This can be done
+using a pairwise CRF, where node yi speciﬁes the location of part i in the image (assuming it is
+present), and where we connect adjacent parts by a potential function that encourages them to be
+close together. For example, we can use a pairwise potential of the form ϱ (yi,y j ♣x)= exp(↗d(yi,y j )),
+where yi ↔{ 1,...,K ♦ is the location of part i (a discretization of the 2d image plane), and d(yi,y j )
+is the distance between parts i and j.( W e c a n m a k e t h i s “ d i s t a n c e ”a l s o d e p e n d o n t h e i n p u t sx if
+we want, for example we may relax the distance penalty if we detect an edge.) In addition we will
+have a local evidence term of the form p(yi♣x), which can be any kind of discriminative classiﬁer,
+such as a CNN, which predicts the distribution over locations for part i given the image x. The
+overall model has the form
+p(y♣x)= 1
+Z(x)
+[ ∏
+i
+p(yi♣f (x)i)
+] 
+ ∏
+(i,j)↑E
+ϱ (yi,y j ♣x)
+
+ (4.141)
+where E is the set of edges in the CRF, and f (x)i is the i’th output of the CNN.
+We can think of this CRF as a series of parts connected by springs, where the energy of the system
+increases if the parts are moved too far from their expected relative distance. This is illustrated in
+Figure 4.35. The resulting model is known as a pictorial structure [FE73], or deformable parts
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 51 =====
+4.4. Conditional random ﬁelds (CRFs) 193
+model [Fel+10]. Furthermore, since this is a conditional model, we can make the spring strengths
+be image dependent.
+We can ﬁnd the globally optimal joint conﬁguration y↗ = argmaxy p(y♣x, ω) using brute force
+enumeration in O(KT ) time, where T is the number of nodes and K is the number of states (locations)
+per node. While T is often small, (e.g., just 10 body parts in Figure 4.35), K is often very large,
+since there are millions of possible locations in an image. By using tree-structured graphs, exact
+inference can be done in O(TK 2) time, as we explain in Section 9.3.2.F u r t h e r m o r e , b y e x p l o i t i n g
+the fact that the discrete states are ordinal, inference time can be further reduced to O(TK ),a s
+explained in [ Fel+10].
+Note that by “augmenting” standard deep neural network libaries with a dynamic programming
+inference “module”, we can represent DPMs as a kind of CNN, as shown in [ Gir+15]. The key
+property is that we can backpropagate gradients through the inference algorithm.
+4.4.3 Parameter estimation
+In this section, we discuss how to perform maximum likelihood estimation for CRFs. This is a small
+extension of the MRF case in Section 4.3.9.1.
+4.4.3.1 Log-linear potentials
+In this section we assume the log potential functions are linear in the parameters, i.e.,
+ϱ c(yc; x, ω)=e x p (ωT
+c ϱc(x, yc)) (4.142)
+Hence the log likelihood becomes
+ε(ω) ↭ 1
+N
+∑
+n
+log p(yn♣xn, ω)= 1
+N
+∑
+n
+[ ∑
+c
+ωT
+c ϱc(ync, xn) ↗ log Z(xn; ω)
+]
+(4.143)
+where
+Z(xn; ω)=
+∑
+y
+exp(ωTϱ(y, xn)) (4.144)
+is the partition function for example n.
+We know from Section 2.4.3 that the derivative of the log partition function yields the expected
+su"cient statistics, so the gradient of the log likelihood can be written as follows:
+⇁ε
+⇁ωc
+= 1
+N
+∑
+n
+
+ϱc(ync, xn) ↗ ⇁
+⇁ωc
+log Z(xn; ω)
+
+(4.145)
+= 1
+N
+∑
+n
+[
+ϱc(ync, xn) ↗ Ep(y|xn ,ω) [ϱc(y, xn)]
+]
+(4.146)
+Since the objective is convex, we can use a variety of solvers to ﬁnd the MLE, such as the
+stochastic meta descent method of [ Vis+06], which is a variant of SGD where the stepsize is adapted
+automatically.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 52 =====
+194 Chapter 4. Graphical models
+4.4.3.2 General case
+In the general case, a CRF can be written as follows:
+p(y♣x; ω)= exp(f (x, y; ω))
+Z(x; ω) = exp(f (x, y; ω))∑
+y→ exp(f (x, y↓; ω)) (4.147)
+where f (x, y; ω) is a scoring (negative energy) function, where high scores correspond to probable
+conﬁgurations. The gradient of the log likelihood is
+∞ωε(ω)= 1
+N
+N∑
+n=1
+∞ωf (xn, yn; ω) ↗∞ ω log Z(xn; ω) (4.148)
+Computing derivatives of the log partition function is tractable provided we can compute the
+corresponding expectations, as we discuss in Section 4.3.9.2.N o t e , h o w e v e r , t h a t w e n e e d t o c o m p u t e
+these derivatives for every training example, which is slower than the MRF case, where the log
+partition function is a constant independent of the observed data (but dependent on the model
+parameters).
+4.4.4 Other approaches to structured prediction
+Many other approaches to structured prediction have been proposed, going beyond CRFs. For
+example, max margin Markov networks [TGK03], and the closely relayed structural support
+vector machine [Tso+05], can be seen as non-probabilistic alternatives to CRFs. More recently,
+[BYM17]p r o p o s e dstructured prediction energy networks , which are a form of energy based
+model (Chapter 24), where we predict using an optimization procedure, ˆy(x)= argmin E(x, y).
+In addition, it is common to use graph neural networks (Section 16.3.6)a n ds e q u e n c e - t o - s e q u e n c e
+models such as transformers (Section 16.3.5)f o rt h i st a s k .
+4.5 Comparing directed and undirected PGMs
+In this section, we compare DPGMs and UPGMs in terms of their modeling power, we discuss how
+to convert from one to the other, and we and present a uniﬁed representation.
+4.5.1 CI properties
+Which model has more “expressive power”, a DPGM or a UPGM? To formalize the question, recall
+from Section 4.2.4 that G is an I-map of a distribution p if I(G) ⇐ I(p), meaning that all the CI
+statements encoded by the graph G are true of the distribution p.N o w d e ﬁ n eG to be perfect map
+of p if I(G)= I(p), in other words, the graph can represent all (and only) the CI properties of the
+distribution. It turns out that DPGMs and UPGMs are perfect maps for di!erent sets of distributions
+(see Figure 4.36). In this sense, neither is more powerful than the other as a representation language.
+As an example of some CI relationships that can be perfectly modeled by a DPGM but not a
+UPGM, consider a v-structure A ≃ C ⇒ B. This asserts that A → B,a n d A ↙→B♣C. If we drop
+the arrows, we get A ↗ C ↗ B, which asserts A → B♣C and A ↙→B, which is not consistent with
+the independence statements encoded by the DPGM. In fact, there is no UPGM that can precisely
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 53 =====
+4.5. Comparing directed and undirected PGMs 195
+Probabilistic ModelsGraphical ModelsDirectedUndirectedChordal
+Figure 4.36: DPGMs and UPGMs can perfectly represent di!erent sets of distributions. Some distributions
+can be perfectly represented by either DPGM’s or UPGMs; the corresponding graph must be chordal.
+C
+(a) (b) (c)
+A
+D BBD
+A
+C
+BD
+A
+C
+Figure 4.37: A UPGM and two failed attempts to represent it as a DPGM. From Figure 3.10 of [ KF09a].
+Used with kind permission of Daphne Koller.
+represent all and only the two CI statements encoded by a v-structure. In general, CI properties in
+UPGMs are monotonic, in the following sense: if A → B♣C,t h e nA → B♣(C ∝ D).B u t i n D P G M s ,
+CI properties can be non-monotonic, since conditioning on extra variables can eliminate conditional
+independencies due to explaining away.
+As an example of some CI relationships that can be perfectly modeled by a UPGM but not a
+DPGM, consider the 4-cycle shown in Figure 4.37(a). One attempt to model this with a DPGM is
+shown in Figure 4.37(b). This correctly asserts that A → C♣B, D.H o w e v e r , i t i n c o r r e c t l y a s s e r t s
+that B → D♣A.F i g u r e4.37(c) is another incorrect DPGM: it correctly encodes A → C♣B, D,b u t
+incorrectly encodes B → D. In fact there is no DPGM that can precisely represent all and only the
+CI statements encoded by this UPGM.
+Some distributions can be perfectly modeled by either a DPGM or a UPGM; the resulting graphs
+are called decomposable or chordal. Roughly speaking, this means the following: if we collapse
+together all the variables in each maximal clique, to make “mega-variables”, the resulting graph will
+be a tree. Of course, if the graph is already a tree (which includes chains as a special case), it will
+already be chordal.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 54 =====
+196 Chapter 4. Graphical models
+Coherence
+Diﬃculty
+Grade
+Intelligence
+SAT
+Letter
+Happy Job
+(a)
+Coherence
+Diﬃculty
+Grade
+Intelligence
+SAT
+Letter
+Happy
+Job
+(b)
+Figure 4.38: Left: the full student DPGM. Right: the equivalent UPGM. We add moralization arcs D-I, G-J,
+and L-S. Adapted from Figure 9.8 of [ KF09a].
+4.5.2 Converting between a directed and undirected model
+Although DPGMs and UPGMs are not in general equivalent, if we are willing to allow the graph to
+encode fewer CI properties than may strictly hold, then we can safely convert one to the other, as we
+explain below.
+4.5.2.1 Converting a DPGM to a UPGM
+We can easily convert a DPGM to a UPGM as follows. First, any “unmarried” parents that share a
+child must get “married”, by adding an edge between them; this process is known as moralization.
+Then we can drop the arrows, resulting in an undirected graph. The reason we need to do this is to
+ensure that the CI properties of the UGM match those of the DGM, as explained in Section 4.3.6.2.
+It also ensures there is a clique that can “store” the CPDs of each family.
+Let us consider an example from [ KF09a]. We will use the (full version of the student network
+shown in Figure 4.38(a). The corresponding joint has the following form:
+P (C, D, I, G, S, L, J, H) (4.149)
+= P (C)P (D♣C)P (I)P (G♣I,D )P (S♣I)P (L♣G)P (J♣L, S)P (H♣G, J) (4.150)
+Next, we deﬁne a potential or factor for every CPD, yielding
+p(C, D, I, G, S, L, J, H)= ϱ C (C)ϱ D (D, C)ϱ I (I)ϱ G(G, I, D) (4.151)
+ϱ S (S, I)ϱ L(L, G)ϱ J (J, L, S)ϱ H (H, G, J) (4.152)
+All the potentials are locally normalized , since they are CPDs, and hence there is no need
+for a global normalization constant, so Z =1 . The corresponding undirected graph is shown in
+Figure 4.38(b). We see that we have added D-I, G-J, and L-S moralization edges. 11
+11. We will see this example again in Section 9.5, where we use it to illustrate the variable elimination inference
+algorithm.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 55 =====
+4.5. Comparing directed and undirected PGMs 197
+D
+A
+B
+C
+(a)
+D E
+A
+C
+B (b)
+Figure 4.39: (a) An undirected graphical model. (b) A directed equivalent, obtained by adding a dummy
+observed child node.
+xt−1 xt xt+1
+yt−1
+yt
+yt+1
+(a)
+xt−1 xt xt+1
+yt−1
+yt
+yt+1
+(b)
+Figure 4.40: Two discriminative models for sequential data. (a) An undirected model (CRF). (b) A directed
+model (MEMM).
+4.5.2.2 Converting a UPGM to a DPGM
+To convert a UPGM to a DPGM, we pro ceed as follows. For each p otential function ϱ c(xc; ωc),w e
+create a “dummy node”, call it Yc, which is “clamped” to a special observed state, call it y↗
+c .W e
+then deﬁne p(Yc = y↗
+c ♣xc)= ϱ c(xc; ωc). This “local evidence” CPD encodes the same factor as in the
+DGM. The overall joint has the form pundir(x) ′ pdir(x, y↗).
+As an example, consider the UPGM in Figure 4.39(a), which deﬁnes the joint p(A, B, C, D)=
+ϱ (A, B, C, D)/Z.W e c a n r e p r e s e n t t h i s a s a D P G M b y a d d i n g a d u m m yE node, which is a child
+of all the other nodes. We set E =1 and deﬁne the CPD p(E =1 ♣A, B, C, D) ′ ϱ (A, B, C, D).B y
+conditioning on this observed child, all the parents become dependent, as in the UGM.
+4.5.3 Conditional directed vs undirected PGMs and the label bias problem
+Directed and undirected models behave somewhat di!erently in the conditional (discriminative)
+setting. As an example of this, let us compare the 1d undirected CRF in Figure 4.40a with the
+directed Markov chain in Figure 4.40b. (This latter model is called a maximum entropy Markov model
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 56 =====
+198 Chapter 4. Graphical models
+y3 y4
+x3 x4
+y1 y2
+x1 x2
+Figure 4.41: A grid-structured MRF with hidden nodes xi and local evidence nodes yi.T h e p r i o rp(x) is an
+undirected Ising model, and the likelihood p(y|x)= ∏
+i p(yi|xi) is a directed fully factored model.
+(MEMM), which is a reference to the connection with maxent models discussed in Section 4.3.4.)
+The MEMM su!ers from a subtle problem compared to the CRF known (rather obscurely) as the
+label bias problem [ LMP01]. The problem is that local features at time t do not inﬂuence states
+prior to time t. That is, yt→1 → xt♣yt,t h u sb l o c k i n gi n f o r m a t i o nﬂ o wb a c k w a r d si nt i m e .
+To understand what this means in practice, consider the part of speech tagging task which we
+discussed in Section 4.4.1.1.S u p p o s e w e s e e t h e w o r d “ b a n k s ” ; t h i s c o u l d b e a v e r b ( a s i n “ h e b a n k s
+at Chase”), or a noun (as in “the river banks were overﬂowing”). Locally the part of speech tag for
+the word is ambiguous. However, suppose that later in the sentence, we see the word “ﬁshing”; this
+gives us enough context to infer that the sense of “banks” is “river banks” and not “ﬁnancial banks”.
+However, in an MEMM the “ﬁshing” evidence will not ﬂow backwards, so we will not be able to infer
+the correct label for “banks”. The CRF does not have this problem.
+The label bias problem in MEMMs occurs because directed models are locally normalized ,
+meaning each CPD sums to 1. By contrast, MRFs and CRFs are globally normalized , which
+means that local factors do not need to sum to 1, since the partition function Z, which sums over all
+joint conﬁgurations, will ensure the model deﬁnes a valid distribution.
+However, this solution comes at a price: in a CRF, we do not get a valid probability distribution over
+y1:T until we have seen the whole sentence, since only then can we normalize over all conﬁgurations.
+Consequently, CRFs are not as useful as directed probabilistic graphical models (DPGM) for online
+or real-time inference. Furthermore, the fact that Z is a function of all the parameters makes CRFs
+less modular and much slower to train than DPGM’s, as we discuss in Section 4.4.3.
+4.5.4 Combining directed and undirected graphs
+We can also deﬁne graphical mo dels that contain directed and undirected edges. We discuss a few
+examples below.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 57 =====
+4.5. Comparing directed and undirected PGMs 199
+A
+C
+F
+D
+G
+E
+B
+I
+H
+Figure 4.42: A partially directed acyclic graph (PDAG). The chain components are {A}, {B}, {C, D, E},
+{F, G}, {H}, and {I}. Adapted from Figure 4.15 of [ KF09a].
+4.5.4.1 Chain graphs
+A chain graph is a PGM which may have both directed and undirected edges, but without any
+directed cycles. A simple example is shown in Figure 4.41, which deﬁnes the following joint model:
+p(x1:D , y1:D )= p(x1:D )p(y1:D ♣x1:D )=
+
+ 1
+Z
+∏
+i↔j
+ϱ ij (xi,x j )
+
+
+[ D∏
+i=1
+p(yi♣xi)
+]
+(4.153)
+In this example, the prior p(x) is speciﬁed by a UPGM, and the likelihood p(y♣x) is speciﬁed as a
+fully factorized DPGM.
+More generally, a chain graph can be deﬁned in terms of a partially directed acyclic graph
+(PDAG). This is a graph which can be decomposed into a directed graph of chain components ,
+where the nodes within each chain component are connected with each other only with undirected
+edges. See Figure 4.42 for an example.
+We can use a PDAG to deﬁne a joint distribution using ∏
+i p(Ci♣pa(Ci)), where each Ci is a chain
+component, and each CPD is a conditional random ﬁeld. For example, referring to Figure 4.42,w e
+have
+p(A, B, ..., I)= p(A)p(B)p(C, D, E♣A, B)p(F, G♣C, D)p(H)p(I♣C, E, H) (4.154)
+p(C, D, E♣A, B)= 1
+Z(A, B) ς(A, C)ς(B, E)ς(C, D)ς(D, E) (4.155)
+p(F, G♣C, D)= 1
+Z(C, D) ς(F, C)ς(G, D)ς(F, G) (4.156)
+For more details, see e.g., [ KF09a,S e c4 . 6 . 2 ] .
+4.5.4.2 Acyclic directed mixed graphs
+One can show [ Pea09b, p51] that every latent variable DPGM can be rewritten in a way such that
+every latent variable is a root node with exactly two observed children. This is called the projection
+of the latent variable PGM, and is observationally indistinguishable from the original model.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 58 =====
+200 Chapter 4. Graphical models
+Y4
+Y1
+Y2 Y3
+H2
+H1
+(a)
+Y4
+Y1
+Y2 Y3
+(b)
+Y4
+Y1
+Y2 Y3
+(c)
+Figure 4.43: (a) A DAG with two hidden variables (shaded). (b) The corresponding ADMG. The bidirected
+edges reﬂect correlation due to the hidden variable. (c) A Markov equivalent ADMG. From Figure 3 of [ SG09].
+Used with kind permission of Ricardo Silva.
+Each such latent variable root node induces a dependence between its two children. We can
+represent this with a directed arc. The resulting graph is called an acyclic directed mixed graph
+or ADMG.S e eF i g u r e4.43 for an example. (A mixed graph is one with undirected, unidirected,
+and bidirected edges.)
+One can determine CI properties of ADMGs using a technique called m-separation [Ric03].
+This is equivalent to d-separation in a graph where every bidirected edge Yi ▽ Yj is replaced by
+Yi ⇒ Xij ≃ Yj , where Xij is a hidden variable for that edge.
+The most common example of ADMGs is when everything is linear-Gaussian. This is known as a
+structural equation model and is discussed in Section 4.7.2.
+4.5.5 Comparing directed and undirected Gaussian PGMs
+In this section, we compare directed and undirected Gaussian graphical models. In Section 4.2.3,
+we saw that directed GGMs correspond to sparse regression matrices. In Section 4.3.5,w es a wt h a t
+undirected GGMs correspond to sparse precision matrices.
+The advantage of the DAG formulation is that we can make the regression weights W,a n dh e n c e!,
+be conditional on covariate information [ Pou04], without worrying about positive deﬁnite constraints.
+The disadavantage of the DAG formulation is its dependence on the order, although in certain
+domains, such as time series, there is already a natural ordering of the variables.
+It is actually possible to combine both directed and undirected representations, resulting in a
+model known as a (Gaussian) chain graph .F o r e x a m p l e , c o n s i d e r a d i s c r e t e - t i m e , s e c o n d - o r d e r
+Markov chain in which the observations are continuous, xt ↔ RD . The transition function can be
+represented as a (vector-valued) linear-Gaussian CPD:
+p(xt♣xt→1, xt→2, ω)= N (xt♣A1xt→1 + A2xt→2, !) (4.157)
+This is called a vector autoregressive or VA Rprocess of order 2. Such models are widely used in
+econometrics for time series forecasting.
+The time series aspect is most naturally modeled using a DPGM. However, if !→1 is sparse, then
+the correlation amongst the components within a time slice is most naturally modeled using a UPGM.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 59 =====
+4.5. Comparing directed and undirected PGMs 201
+Figure 4.44: A V AR(2) process represented as a dynamic chain graph. From [ DE00]. Used with kind
+permission of Rainer Dahlhaus.
+For example, supp ose we have
+A1 =
+
+
+3
+5 0 1
+5 00
+0 3
+5 0 ↗ 1
+5 0
+2
+5
+1
+3
+3
+5 00
+000 ↗ 1
+2
+1
+5
+00 1
+5 0 2
+5
+
+
+, A2 =
+
+
+00 ↗ 1
+5 00
+00 0 0 0
+00 0 0 0
+00 1
+5 0 1
+3
+00 0 0 ↗ 1
+5
+
+
+(4.158)
+and
+! =
+
+
+1 1
+2
+1
+3 00
+1
+2 1 ↗ 1
+3 00
+1
+3 ↗ 1
+3 10 0
+00 01 0
+00 00 1
+
+
+, !→1 =
+
+
+2.13 ↗1.47 ↗1.200
+↗1.47 2 .13 1 .20 0
+↗1.21 .21 .80 0
+00 0 1 0
+00 0 0 1
+
+
+(4.159)
+The resulting graphical model is illustrated in Figure 4.44. Zeros in the transition matrices A1 and
+A2 correspond to absent directed arcs from xt→1 and xt→2 into xt. Zeros in the precision matrix
+!→1 correspond to absent undirected arcs between nodes in xt.
+4.5.5.1 Covariance graphs
+Sometimes we have a sparse covariance matrix rather than a sparse precision matrix. This can
+be represented using a bi-directed graph , where each edge has arrows in both directions, as in
+Figure 4.45(a). Here nodes that are not connected are unconditionally independent. For example
+in Figure 4.45(a) we see that Y1 → Y3. In the Gaussian case, this means ”1,3 =” 3,1 =0 .( A
+graph representing a sparse covariance matrix is called a covariance graph,s e ee . g . ,[Pen13]). By
+contrast, if this were an undirected model, we would have that Y1 → Y3♣Y2,a n d !1,3 =! 3,1 =0 ,
+where # = !→1.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 60 =====
+202 Chapter 4. Graphical models
+Y1 Y2 Y3
+(a)
+Y1 Y2 Y3
+Z1 Z2 (b)
+Figure 4.45: (a) A bi-directed graph. (b) The equivalent DAG. Here the z nodes are latent confounders.
+Adapted from Figures 5.12–5.13 of [ Cho11].
+A bidirected graph can be converted to a DAG with latent variables, where each bidirected edge is
+replaced with a hidden variable representing a hidden common cause, or confounder,a si l l u s t r a t e d
+in Figure 4.45(b). The relevant CI properties can then be determined using d-separation.
+4.6 PGM extensions
+In this section, we discuss some extensions of the basic PGM framework.
+4.6.1 F actor graphs
+A factor graph [KFL01; Loe04]i sag r a p h i c a lr e p r e s e n t a t i o nt h a tu n i ﬁ e sd i r e c t e da n du n d i r e c t e d
+models. They come in two main “ﬂavors”. The original version uses a bipartite graph, where we have
+nodes for random variables and nodes for factors, as we discuss in Section 4.6.1.1.A n a l t e r n a t i v e
+form, known as a Forney factor graphs [For01]j u s th a sn o d e sf o rf a c t o r s ,a n dt h ev a r i a b l e sa r e
+associated with edges, as we explain in Section 4.6.1.2.
+4.6.1.1 Bipartite factor graphs
+A factor graph is an undirected bipartite graph with two kinds of nodes. Round nodes represent
+variables, square nodes represent factors, and there is an edge from each variable to every factor
+that mentions it. For example, consider the MRF in Figure 4.46(a). If we assume one potential per
+maximal clique, we get the factor graph in Figure 4.46(b), which represents the function
+f (x1,x 2,x 3,x 4)= f124(x1,x 2,x 4)f234(x2,x 3,x 4) (4.160)
+We can represent this in a top ologically equivalent way as in Figure 4.46(c).
+One advantage of factor graphs over UPGM diagrams is that they are more ﬁne-grained. For
+example, suppose we associate one potential per edge, rather than per clique. In this case, we get
+the factor graph in Figure 4.46(d), which represents the function
+f (x1,x 2,x 3,x 4)= f14(x1,x 4)f12(x1,x 2)f34(x3,x 4)f23(x2,x 3)f24(x2,x 4) (4.161)
+We can also convert a DPGM to a factor graph: just create one factor per CPD, and connect
+that factor to all the variables that use that CPD. For example, Figure 4.47 represents the following
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 61 =====
+4.6. PGM extensions 203
+0
+8
+x1
+x2
+x3
+x4
+(a)
+x1x2x3x4
+f124 f234
+(b)
+x3
+f234
+x4 x2
+f124
+x1
+(c)
+x3
+f34
+x4 f24 x2
+f23
+f14 f12
+x1
+(d)
+Figure 4.46: (a) A simple UPGM. (b) A factor graph representation assuming one potential per maximal
+clique. (c) Same as (b), but graph is visualized di!erently. (d) A factor graph representation assuming one
+potential per edge.
+x4 x5
+x3
+x1 x2
+(a)
+x4
+p(x4♣x3)
+x3
+p(x5♣x3)
+x5
+p(x3♣x1,x2)
+x1 x2
+p(x1) p(x2)
+(b)
+Figure 4.47: (a) A simple DPGM. (b) Its corresponding factor graph.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 62 =====
+204 Chapter 4. Graphical models
+X2X1 X3X4
+X5
+fafbfc
+fd
+(a)
+X1X2X3X4X5
+fPriorflik(b)
+Figure 4.48: A Forney factor graph. (a) Directed version. (b) Hierarchical version.
+factorization:
+f (x1,x 2,x 3,x 4,x 5)= f1(x1)f2(x2)f123(x1,x 2,x 3)f34(x3,x 4)f35(x3,x 5) (4.162)
+where we deﬁne f123(x1,x 2,x 3)= p(x3♣x1,x 2), etc. If each node has at most one parent (and hence
+the graph is a chain or simple tree), then there will be one factor per edge (root nodes can have their
+prior CPDs absorbed into their children’s factors). Such models are equivalent to pairwise MRFs.
+4.6.1.2 F orney factor graphs
+A Forney factor graph (FFG), also called a normal factor graph , is a graph in which nodes
+represent factors, and edges represent variables [ For01; Loe04; Loe+07; CL V19]. This is more similar
+to standard neural network diagrams, and electrical engineering diagrams, where signals (represented
+as electronic pulses, or tensors, or probability distributions) propagate along wires and are modiﬁed
+by functions represented as nodes.
+For example, consider the following factorized function:
+f (x1,...,x 5)= fa(x1)fb(x1,x 2)fc(x2,x 3,x 4)fd(x4,x 5) (4.163)
+We can visualize this as an FFG as in Figure 4.48a. The edge labeled x3 is called a half-edge,s i n c e
+it is only connected to one node; this is because x3 only participates in one factor. (Similarly for x5.)
+The directionality associated with the edges is a useful mnemonic device if there is a natural order in
+which the variables are generated. In addition, associating directions with each edge allows us to
+uniquely name “messages” that are sent along each edge, which will prove useful when we discuss
+inference algorithms in Section 9.3.
+In addition to being more similar to neural network diagrams, FFGs have the advantage over
+bipartite FGs in that they support hierarchical (compositional) construction, in which complex
+dependency structure between variables can be represented as a blackbox, with the input/output
+interface being represented by edges corresponding to the variables exposed by the blackbox. See
+Figure 4.48b for an example, which represents the function
+f (x1,...,x 5)= fprior(x1,x 2,x 3,x 4)flik(x4,x 5) (4.164)
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 63 =====
+4.6. PGM extensions 205
+(a)
+ (b)
+Figure 4.49: An FFG with an equality constraint node (left) and its corresponding simpliﬁed form (right).
+The factor fprior represents a (potentially complex) joint distribution p(x1,x 2,x 3,x 4),a n dt h ef a c t o r
+flik represents the likelihood term p(x5♣x4).S u c h m o d e l s a r e w i d e l y u s e d t o b u i l d e r r o r - c o r r e c t i n g
+codes (see Section 9.4.8).
+To allow for variables to participate in more than 2 factors, equality constraint no des are intro duced,
+as illustrated in Figure 4.49(a). Formally, this is a factor deﬁned as follows:
+f=(x, x1,x 2)= δ(x ↗ x1)δ(x ↗ x2) (4.165)
+where δ(u) is a Dirac delta if u is continuous, and a Kronecker delta if u is discrete. The e!ect of
+this factor is to ensure all the variables connected to the factor have the same value; intuitively, this
+factor acts like a “wire splitter”. Thus the function represented in Figure 4.49(a) is equivalent to the
+following:
+f (x, y1,y 2)= fx(x)fy|x(y1,x )fy|x(y2,x ) (4.166)
+This simpliﬁed form is represented in Figure 4.49(b), where we reuse the x variable across multiple
+edges. We have chosen the edge orientations to reﬂect our interpretation of the factors fy|x(y, x) as
+likelihood terms, p(y♣x).W e h a v e a l s o c h o s e n t o r e u s e t h e s a m efy|x factor for both y variables; this
+is an example of parameter tying .
+4.6.2 Probabilistic circuits
+A probabilistic circuit is a kind of graphical model that supports e"cient exact inference. It
+includes arithmetic circuits [Dar03; Dar09], sum-product networks (SPNs) [ PD11; SCPD22].
+and other kinds of model.
+Here we brieﬂy describe SPNs. An SPN is a probabilistic model, based on a directed tree-structured
+graph, in which terminal nodes represent univariate probability distributions and non-terminal nodes
+represent convex combinations (weighted sums) and products of probability functions. SPNs are
+similar to deep mixture models, in which we combine together dimensions. SPNs leverage context-
+speciﬁc independence to reduce the complexity of exact inference to time that is proportional to the
+number of links in the graph, as opposed to the treewidth of the graph (see Section 9.5.2).
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 64 =====
+206 Chapter 4. Graphical models
+SPNs are particularly useful for tasks such as missing data imputation of tabular data (see e.g.,
+[Cla20; Ver+19]). A recent extension of SPNs, known as einsum networks,i sp r o p o s e di n[Peh+20]
+(see Section 9.7.1 for details on the connection between einstein summation and PGM inference).
+4.6.3 Directed relational PGMs
+AB a y e s i a nn e t w o r kd e ﬁ n e saj o i n tp r o b a b i l i t yd i s t r i b u t i o no v e raﬁ x e dn u m b e ro fr a n d o mv a r i a b l e s .
+By using plate notation (Section 4.2.8), we can deﬁne models with certain kinds of repetitive structure,
+and tied parameters, but many models are not expressible in this way. For example, it is not possible
+to represent even a simple HMM using plate notation (see Figure 29.12). Various notational extensions
+of plates have been proposed to handle repeated structure (see e.g., [ HMK04; Die10]) but have not
+been widely adopted. The problem becomes worse when we have more complex domains, involving
+multiple objects which interact via multiple relationships. 12 Such models are called relational
+probability models or RPMs. In this section, we focus on directed RPMs; see Section 4.6.4 for
+the undirected case.
+As in ﬁrst order logic, RPMs have constant symbols (representing objects), function symbols
+(mapping one set of constants to another), and predicate symbols (representing relations between
+objects). We will assume that each function has a type signature .T o i l l u s t r a t e t h i s , c o n s i d e r a n
+example from [ RN19, Sec 15.1], which concerns online book reviews on sites such as Amazon. Suppose
+there are two types of objects, Book and Customer, and the following functions and predicates:
+Honest : Customer ≃{ True, False♦ (4.167)
+Kindess : Customer ≃{ 1, 2, 3, 4, 5♦ (4.168)
+Quality : Book ≃{ 1, 2, 3, 4, 5♦ (4.169)
+Recommendation : Customer ↓ Book ≃{ 1, 2, 3, 4, 5♦ (4.170)
+The constant symbols refer to speciﬁc objects. To keep things simple, we assume there are two
+books, B1 and B2,a n dt w oc u s t o m e r s ,C1 and C2. The basic random variables are obtained
+by instantiating each function with each possible combination of objects to create a set of ground
+terms. In this example, these variables are H(C1), Q(B1), R(C1,B 2),e t c . ( W eu s et h ea b b r e v i a t i o n s
+H, K, Q and R for the functions Honest, Kindness, Quality, and Recommendation. 13 )
+We now need to sp ecify the (conditional) distribution over these random variables. We deﬁne these
+distributions in terms of the generic indexed form of the variables, rather than the speciﬁc ground
+form. For example, we may use the following priors for the root nodes (variables with no parents):
+H(c) ↘ Cat(0.99, 0.01) (4.171)
+K(c) ↘ Cat(0.1, 0.1, 0.2, 0.3, 0.3) (4.172)
+Q(b) ↘ Cat(0.05, 0.2, 0.4, 0.2, 0.15) (4.173)
+For the recommendation no des, we need to deﬁne a conditional distribution of the form
+R(c, b) ↘ RecCPD(H(c),K (c),Q (b)) (4.174)
+12. See e.g., this blog post from Rob Zinkov: https://www.zinkov.com/posts/2013-07-28-stop-using-plates .
+13. A unary function of an object that returns a basic type, such as Boolean or an integer, is often called an attribute
+of that object.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 65 =====
+4.6. PGM extensions 207
+Q(Bj) R(Ci,Bj)
+H(Ci)
+K(Ci)
+(a)
+Q(B1)
+Q(B2)
+R(C1,B1)
+H(C1)
+R(C1,B2)
+K(C1)
+R(C2,B1)
+H(C2)
+R2(C2,B2)
+K(C2)
+(b)
+Figure 4.50: RPM for the book review domain. (a) Template for a generic customer Ci and book Bj pair. R
+is rating, Q is quality, H is honesty, and K is kindness. (b) Unrolled model for 2 books and 2 customers.
+where RecCPD is the conditional probability distribution (CPD) for the recommendation node. If
+represented as a conditional probability table (CPT), this has 2 ↓ 5 ↓ 5 = 50 rows, each with 5
+entries. This table can encode our assumptions about what kind of ratings a book receives based on
+the quality of the book, but also properties of the reviewer, such as their honest and kindness. (More
+sophisticated models of human raters in the context of crowd-sourced data collection can be found in
+e.g., [ LRC19].)
+We can convert the ab ove formulae into a graphical mo del “ template”, as shown in Figure 4.50a.
+Given a set of objects, we can “ unroll”t h et e m p l a t et oc r e a t ea“ground network ”, as shown in
+Figure 4.50b. There are C ↓ B +2 C + B random variables, with a corresonding joint state space
+(set of possible worlds )o fs i z e 2C 5C+B+BC , which can get quite large. However, if we are only
+interested in answering speciﬁc queries, we can dynamically unroll small pieces of the network that
+are relevant to that query [ GC90; Bre92].
+Let us assume that only a subset of the R(c, b) entries are observed, and we would like to
+predict the missing entries of this matrix. This is essentially a simpliﬁed recommender system .
+(Unfortunately it ignores key aspects of the problem, such as the content/topic of the books, and
+the interests/preferences of the customers.) We can use standard probabilistic inference methods for
+graphical models (which we discuss in Chapter 9)t os o l v et h i sp r o b l e m .
+Things get more interesting when we don’t know which objects are being referred to. For example,
+customer C1 might write a review of a book called “Probabilistic Machine Learning”, but do they
+mean edition 1 ( B1)o re d i t i o n2(B2)? To handle this kind of relational uncertainty ,w ec a na d d
+all possible referents as parents to each relation. This is illustrated in Figure 4.51, where now Q(B1)
+and Q(B2) are both parents of R(C1,B 1). This is necessary because their review score might either
+depend on Q(B1) or Q(B2), depending on which edition they are writing about. To disambiguate
+this, we create a new variable, L(Ci), which speciﬁes which version number of each book customer i
+is referring to. The new CPD for the recommendation node, p(R(c, b)♣H(c),K (c),Q (1 : B),L (c)),
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 66 =====
+208 Chapter 4. Graphical models
+Q(B1)
+Q(B2)
+R(C1,B1)
+H(C1)
+R(C1,B2)
+K(C1)
+L(C1)
+R(C2,B1)
+H(C2)
+R2(C2,B2)
+K(C2)
+L(C2)
+Figure 4.51: An extension of the book review RPM to handle identity uncertainty about which book a given
+customer is actually reviewing. The R(c, b) node now depends on all books, since we don ’t know which one is
+being referred to. We can select one of these parents based on the mapping speciﬁed by the user’s library, L(c).
+has the form
+R(c, b) ↘ RecCPT(H(c),K (c),Q (b↓)) where b↓= L(c) (4.175)
+This CPD acts like a multiplexer, where the L(c) node speciﬁes which of the parents Q(1 : B) to
+actually use.
+Although the above problem may seem contrived, identity uncertainty is a widespread problem
+in many areas, such as citation analysis, credit card histories, and object tracking (see Section 4.6.5).
+In particular, the problem of entity resolution or record linkage — which refers to the task
+of mapping particular strings (such as names) to particular objects (such as people) — is a whole
+ﬁeld of research (see e.g., https://en.wikipedia.org/wiki/Record_linkage for an overview and
+[SHF15]f o raB a y e s i a na p p r o a c h ) .
+4.6.4 Undirected relational PGMs
+We can create relational UGMs in a manner which is analogous to relational DGMs (Section 4.6.3).
+This is particularly useful in the discriminative setting, for the same reasons that undirected CRFs
+are preferable to conditional DGMs (see Section 4.4).
+4.6.4.1 Collective classiﬁcation
+As an example of a relational UGM, suppose we are interested in the problem of classifying web
+pages of a university into types (e.g., student, professor, admin, etc.) Obviously we can do this based
+on the contents of the page (e.g., words, pictures, layout, etc.) However, we might also suppose
+there is information in the hyper-link structure itself. For example, it might be likely for students to
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 67 =====
+4.6. PGM extensions 209
+Fr(A,A) Fr(B,B) Fr(B,A) Fr(A,B) Sm(A) Sm(B) Ca(A) Ca(B)
+1101 11 11
+1101 10 00
+1101 11 01
+Table 4.5: Some possible joint instantiations of the 8 variables in the smoking example.
+cite professors, and professors to cite other professors, but there may be no links between admin
+pages and students/professors. When faced with a web page whose label is ambiguous, we can bias
+our estimate based on the estimated labels of its neighbors, as in a CRF. This process is known as
+collective classiﬁcation (see e.g., [ Sen+08]). To specify the CRF structure for a web-graph of
+arbitrary size and shape, we just specify a template graph and potential functions, and then unroll
+the template appropriately to match the topology of the web, making use of parameter tying.
+4.6.4.2 Markov logic networks
+One particularly popular way of specifying relational UGMs is to use ﬁrst-order logic rather than
+a graphical description of the template. The result is known as a Markov logic network [RD06;
+Dom+06; DL09].
+For example, consider the sentences “Smoking causes cancer” and “If two people are friends, and
+one smokes, then so does the other”. We can write these sentences in ﬁrst-order logic as follows:
+̸x.Sm(x)= ↖ Ca(x) (4.176)
+̸x.̸y.F r(x, y) ∧ Sm(x)= ↖ Sm(y) (4.177)
+where Sm and Ca are predicates, and Fr is a relation.
+It is convenient to write all formulas in conjunctive normal form (CNF), also known as clausal
+form. In this case, we get
+¬Sm(x) ∀ Ca(x) (4.178)
+¬Fr (x, y) ∀¬ Sm(x) ∀ Sm(y) (4.179)
+The ﬁrst clause can be read as “Either x does not smoke or he has cancer”, which is logically equivalent
+to Equation ( 4.176). (Note that in a clause, any unbound variable, such as x,i sa s s u m e dt ob e
+universally quantiﬁed.)
+Suppose there are just two objects (people) in the world, Anna and Bob, which we will denote by
+constant symbols A and B.W e c a n t h e n c r e a t e 8 b i n a r y r a n d o m v a r i a b l e sSm(x), Ca(x),a n d
+Fr (x, y) for x, y ↔{ A, B♦. This deﬁnes 28 possible worlds , some of which are shown in Table 4.5.14
+Our goal is to deﬁne a probability distribution over these joint assignments. We can do this by
+creating a UGM with these variables, and adding a potential function to capture each logical rule or
+14. Note that we have not encoded the fact that Fr is a symmetric relation, so Fr (A, B) and Fr (B, A) might have
+di!erent values. Similarly, we have the “degenerate” nodes Fr (A) and Fr (B), since we did not enforce x →= y in
+Equation ( 4.177). (If we add such constraints, then the model compiler, which generates the ground network, should
+avoid creating redundant nodes.)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 68 =====
+210 Chapter 4. Graphical models
+Friends(A,A) Smokes(A) Smokes(B) Friends(B,B)
+Friends(A,B)
+Friends(B,A)
+Cancer(A) Cancer(B)
+Figure 4.52: An example of a ground Markov logic network represented as a pairwise MRF for 2 people.
+Adapted from Figure 2.1 from [ DL09]. Used with kind permission of Pedro Domingos.
+constraint. For example, we can encode the rule ¬Sm(x) ∀ Ca(x) by creating a potential function
+#(Sm(x),Ca (x)), where we deﬁne
+#(Sm(x),Ca (x)) =
+
+1 if ¬Sm(x) ∀ Ca(x)= T
+0 if ¬Sm(x) ∀ Ca(x)= F (4.180)
+The result is the UGM in Figure 4.52.
+The above approach will assign non-zero probability to all logically valid worlds. However, logical
+rules may not always be true. For example, smoking does not always cause cancer. We can relax the
+hard constraints by using non-zero potential functions. In particular, we can associate a weight with
+each rule, and thus get potentials such as
+#(Sm(x),Ca (x)) =
+
+ew if ¬Sm(x) ∀ Ca(x)= T
+e0 if ¬Sm(x) ∀ Ca(x)= F (4.181)
+where the value of w> 0 controls strongly we want to enforce the corresponding rule.
+The overall joint distribution has the form
+p(x)= 1
+Z(w) exp(
+∑
+i
+wini(x)) (4.182)
+where ni(x) is the number of instances of clause i which evaluate to true in assignment x.
+Given a grounded MLN model, we can then perform inference using standard methods. Of course,
+the ground models are often extremely large, so more e"cient inference methods, which avoid creating
+the full ground model (known as lifted inference ), must be used. See [ DL09; KNP11]f o rd e t a i l s .
+One way to gain tractability is to relax the discrete problem to a continuous one. This is the
+basic idea behind hinge-loss MRF s [Bac+15b], which support exact inference using scalable convex
+optimization. There is a template language for this model family known as probabilistic soft logic ,
+which has a similar “ﬂavor” to MLN, although it is not quite as expressive.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 69 =====
+4.6. PGM extensions 211
+Recently MLNs have been combined with DL in various ways. For example, [ Zha+20g]u s e s
+graph neural networks for inference. And [ WP18] uses MLNs for evidence fusion, where the noisy
+predictions come from DNNs trained using weak supervision.
+Finally, it is worth noting one subtlety which arises with undirected models, namely that the size
+of the unrolled model, which depends on the number of objects in the universe, can a!ect the results
+of inference, even if we have no data about the new objects. For example, consider an undirected
+chain of length T , with T hidden nodes zt and T observed nodes yt;c a l lt h i sm o d e lM1.N o w s u p p o s e
+we double the length of the chain to 2T , without adding more evidence; call this model M2.W e ﬁ n d
+that p(zt♣y1:T ,M 1) ↙= p(zt♣y1:T ,M 2),f o r t =1: T ,e v e nt h o u g hw eh a v en o ta d d e dn e wi n f o r m a t i o n ,
+due to the di!erent partition functions. This does not happen with a directed chain, because the
+newly added nodes can be marginalized out without a!ecting the original nodes, since the model is
+locally normalized and therefore modular. See [ JBB09; Poo+12]f o rf u r t h e rd i s c u s s i o n .
+4.6.5 Open-universe probability models
+In Section 4.6.3,w ed i s c u s s e dr e l a t i o n a lp r o b a b i l i t ym o d e l s ,a sw e l la st h et o p i co fi d e n t i t yu n c e r t a i n t y .
+However, we also implicitly made a closed world assumption ,n a m e l yt h a tt h es e to fa l lo b j e c t si s
+ﬁxed and speciﬁed ahead of time. In many real world problems, this is an unrealistic assumption.
+For example, in Section 29.9.3.5, we discuss the problem of tracking an unknown number of objects
+over time. As another example, consider the problem of enforcing the UN Comprehensive Nuclear
+Test Ban Treaty (CTBT). This requires monitoring seismic events, and determinining if they were
+caused by nature or man-made explosions. Thus the number of objects of each type, as well as their
+source, is uncertain [ ARS13],
+As another (more peaceful) example, suppose we want to perform citation matching , in which
+we want to know whether to cite an arxiv version of a paper or the version on some conference
+website. Are these the same object? It is often hard to tell, since the titles and author might be the
+same, yet the content may have been updated. It is often necessary to use subtle cues, such as the
+date stored in the meta-data, to infer if the two “textual measurements” refer to the same underlying
+object (paper) or not [ Pas+02].
+In problems such as these, the number of objects of each type, as well as their relationships, is
+uncertain. This requires the use of open-universe probability models or OUPM, which can
+generate new objects as well as their properties [ Rus15; MR10; LB19]. The ﬁrst formal language for
+OUPMs was BLOG [Mil+05], which stands for “Bayesian LOGic”. This used a general purpose, but
+slow, MCMC inference scheme to sample over possible worlds of variable size and shape. [ Las08;
+LLC20]d e s c r i b e sa n o t h e ro p e n - u n i v e r s em o d e l i n gl a n g u a g ec a l l e dmulti-entity Bayesian networks.
+Very recently, Faceb o ok has released theBean Machine library, available at https://beanmachine.
+org/, which supports more e"cient inference in OUPMs. Details can be found in [ Teh+20], as well
+as their blog post. 15
+4.6.6 Programs as probability models
+OUPMs, discussed in Section 4.6.5,l e tu sd e ﬁ n ep r o b a b i l i t ym o d e l so v e rc o m p l e xd y n a m i cs t a t e
+spaces of unbounded and variable size. The set of possible worlds correspond to objects and their
+15. See https://tinyurl.com/2svy5tmh.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 70 =====
+212 Chapter 4. Graphical models
+attributes and relationships. Another approach is to use a probabilistic programming language
+or PPL, in which we deﬁne the set of possible words as the set of execution traces generated by
+the program when it is endowed with a random choice mechanism. (This is a procedural approach
+to the problem, whereas OUPMs are a declarative approach .)
+The di!erence between a probabilistic programming language and a standard one was described in
+[Gor+14] as follows: “Probabilistic programs are usual functional or imperative programs with two
+added constructs: (1) the ability to draw values at random from distributions, and (2) the abiliy to
+condition values of variables in a program via observation”. The former is a way to deﬁne p(z, y),
+and the latter is the same as standard Bayesian conditioning p(z♣y).
+Some recent examples of PPLs include Gen [CT+19], Pyro [Bin+19]a n d Turi ng [GXG18].
+Inference in such models is often based on SMC, which we discuss in Chapter 13.F o r m o r e d e t a i l s
+on PPLs, see e.g. [ Mee+18].
+4.7 Structural causal models
+While probabilities encode our beliefs about a static world, causality tells us whether and how
+probabilities change when the world changes, be it by intervention or by act of imagination. —
+Judea Pearl [ PM18b].
+In this section, we discuss how we can use directed graphical model notation to represent causal
+models. We discuss causality in greater detail in Chapter 36,b u tw ei n t r o d u c es o m eb a s i ci d e a sa n d
+notation here, since it is foundational material that we will need in other parts of the book.
+The core idea behind causal models is to create a mechanistic model of the world in which we
+can reason about the e!ects of local changes. The canonical example is an electronic circuit: we
+can predict the e!ects of any action, such as “knocking out” a particular transistor, or changing the
+resistance level of a wire, by modifying the circuit locally, and then “re-running” it from the same
+initial conditions.
+We can generalize this idea to create a structural causal models or SCM [PGJ16], also called
+functional causal model [Sch19]. An SCM is a triple M =( U, V, F), where U = {Ui : i =1: N ♦
+is a set of unexplained or exogenous “noise” variables, which are passed as input to the model,
+V = {Vi : i =1: N ♦ is a set of endogeneous variables that are part of the model itself, and
+F = {fi : i =1: N ♦ is a set of deterministic functions of the form Vi = fi(Vpai ,U i), where pai are the
+parents of variable i,a n d Ui ↔U are the external inputs. We assume the equations can be structured
+in a recursive way, so the dependency graph of nodes given their parents is a DAG. Finally, we
+assume our model is causally su!cient , which means that V and U are all of the causally relevant
+factors (although they may not all be observed). This is called the “ causal Markov assumption ”.
+Of course, a model typically cannot represent all the variables that might inﬂuence observations or
+decisions. After all, models are abstractions of reality. The variables that we choose not to model
+explicitly in a functional way can be lumped into the unmodeled exogenous terms. To represent
+our ignorance about these terms, we can use a distribution p(U ) over their values. By “pushing”
+this external noise through the deterministic part of the model, we induce a distribution over the
+endogeneous variables, p(V), as in a probabilistic graphical model. However, SCMs make stronger
+assumptions than PGMs.
+We usually assume p(U ) is factorized (i.e., the Ui are independent); this is called a Markovian
+SCM. If the exogeneous noise terms are not independent, it would break the assumption that
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 71 =====
+4.7. Structural causal models 213
+X
+Z
+Y
+(a)
+X
+Z
+Y
+Ux Uz Uy
+Wxy
+WzyWxz
+(b)
+Figure 4.53: (a) PGM for modeling relationship between salary, education and debt. (b) Corresponding SCM.
+outcomes can be determined locally using deterministic functions. If there are believed to be
+dependencies between some of the Ui,w ec a na d de x t r ah i d d e np a r e n t st or e p r e s e n tt h i s ;t h i si so f t e n
+depicted as a bidirected or undirected edge connecting the Ui, and is known as a semi-Markovian
+SCM.
+4.7.1 Example: causal impact of education on wealth
+We now give a simple example of an SCM, based on [ PM18b,p 2 7 6 ] . S u p p o s ew ea r ei n t e r e s t e di n
+the causal e!ect of education on wealth. Let X represent the level of education of a person (on
+some numeric scale, say 0 = high school, 1 = college, 2 = graduate school), and Y represent their
+wealth (at some moment in time). In some cases we might expect that increasing X would increase Y
+(although it of course depends on the nature of the degree, the nature of the job, etc). Thus we add
+an edge from X to Y .H o w e v e r , g e t t i n g m o r e e d u c a t i o n c a n c o s t a l o t o f m o n e y ( i n c e r t a i n c o u n t r i e s ) ,
+which is a potentially confounding factor on wealth. Let Z be the debt incurred by a person based
+on their education. We add an edge from X to Z to reﬂect the fact that larger X means larger Z (in
+general), and we add an edge from Z to Y to reﬂect that larger Z means lower Y (in general).
+We can represent our structural assumptions graphically as shown in Figure 4.53b(a). The
+corresponding SCM has the form:
+X = fX (Ux) (4.183)
+Z = fZ (X, Uz ) (4.184)
+Y = fY (X, Z, Uy ) (4.185)
+for some set of functions fx,f y ,f z ,a n ds o m ep r i o rd i s t r i b u t i o np(Ux,U y ,U z ).W e c a n a l s o e x p l i c i t l y
+represent the exogeneous noise terms as shown in Figure 4.53b(b); this makes clear our assumption
+that the noise terms are a priori independent. (We return to this point later.)
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 72 =====
+214 Chapter 4. Graphical models
+X
+Z
+Y
+(a)
+X
+Z
+Y
+Az
+(b)
+Figure 4.54: An SCM in which we intervene on Z. (a) Hard intervention, in which we clamp Z and thus cut
+its incoming edges (shown as dotted). (b) Soft intervention, in which we change Z’s mechanism. The square
+node is an “action ” node, using the inﬂuence diagram notation from Section 34.2.
+4.7.2 Structural equation models
+A structural equation model [Bol89; BP13], also known as a path diagram ,i sas p e c i a lc a s eo f
+a structural causal model in which all the functional relationships are linear, and the prior on the
+noise terms is Gaussian. SEMs are widely used in economics and social science, due to the fact that
+they have a causal interpretation, yet they are computationally tractable.
+For example, let us make an SEM version of our education example. We have
+X = Ux (4.186)
+Z = cz + wxz X + Uz (4.187)
+Y = cy + wxy X + wzy Z + Uy (4.188)
+If we assume p(Ux)= N (Ux♣0,ϑ 2
+x), p(Uz )= N (Ux♣0,ϑ 2
+z ),a n d p(Uy )= N (Ux♣0,ϑ 2
+y ),t h e nt h em o d e l
+can be converted to the following Gaussian DGM:
+p(X)= N (X♣µx,ϑ 2
+x) (4.189)
+p(Z♣X)= N (Z♣cz + wxz X, ϑ2
+z ) (4.190)
+p(Y ♣X, Z)= N (Y ♣cy + wxy X + wzy Z, ϑ2
+y ) (4.191)
+We can relax the linearity assumption, to allow arbitrarily ﬂexible functions, and relax the Gaussian
+assumption, to allow any noise distribution. The resulting “nonparametric SEMs” are equivalent to
+structural causal models. (For a more detailed comparison between SEMs and SCMs, see [ Pea12;
+BP13; Shi00b].)
+4.7.3 Do operator and augmented DAGs
+One of the main advantages of SCMs is that they let us predict the e!ect of interventions, which
+are actions that change one or more local mechanisms. A simple intervention is to force a variable to
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 73 =====
+4.7. Structural causal models 215
+have a given value, e.g., we can force a gene to be “on” or “o!”. This is called a perfect intervention
+and is written as do(Xi = xi), where we have introduced new notation for the “do” operator (as
+in the verb “to do”). This notation means we actively clamp variable Xi to value xi (as opposed to
+just observing that it has this value). Since the value of Xi is now independent of its usual parents,
+we should “cut” the incoming edges to node Xi in the graph. This is called the “ graph surgery ”
+operation.
+In Figure 4.54a we illustrate this for our education SCM, where we force Z to have a given value.
+For example, we may set Z =0 ,b yp a y i n go !e v e r y o n e ’ ss t u d e n td e b t . N o t et h a tp(X♣do(Z = z)) ↙=
+p(X♣Z = z), since the intervention changes the model. For example, if we see someone with a debt of
+0, we may infer that they probably did not get higher education, i.e., p(X ∃ 1♣Z = 0) is small; but if
+we pay o! everyone’s college loans, then observing someone with no debt in this modiﬁed world should
+not change our beliefs about whether they got higher education, i.e., p(X ∃ 1♣do(Z = 0)) = p(X ∃ 1).
+In more realistic scenarios, we may not be able to set a variable to a speciﬁc value, but we may
+be able to change it from its current value in some way . F or example, we may be able to reduce
+everyone’s debt by some ﬁxed amount, say $= ↗10, 000. Thus we replace Z = fZ (X, Uz ) with
+Z = f ↓
+z (Z, Uz ), where f ↓
+z (Z, Uz )= fz (Z, Uz )+$ . This is called an additive intervention.
+To mo del this kind of scenario, we can add create an augmented DAG, in which every variable is
+augmented with an additional parent node, representing whether or not the variable’s mechanism is
+changed in some way [ Daw02; Daw15; CPD17]. These extra variables are represented by square nodes,
+and correspond to decision variables or actions, as in the inﬂuence diagram formalism (Section 34.2).
+The same formalism is used in MDPs for reinforcement learning (see Section 34.5).
+We give an example of this in Figure 4.54b, where we add the Az ↔{ 0, 1♦ node to specify whether
+we use the debt reduction policy or not. The modiﬁed mechanism for Z becomes
+Z = f ↓
+Z (X, Ux,A z )=
+
+fZ (X, Ux) if Az =0
+fZ (X, Ux)+$ if Az =1 (4.192)
+With this new deﬁnition, conditioning on the e!ects of an action can be performed using standard
+probabilistic inference. That is, p(Q♣do(Az = a),E = e)= p(Q♣Az = a, E = e), where Q is the query
+(e.g., the event X ∃ 1)a n d E are the (possibly empty) evidence variables. This is because the Az
+node has no parents, so it has no incoming edges to cut when we clamp it.
+Although the augmented DAG allows us to use standard notation (no explicit do operators) and
+inference machinery, the use of “surgical” interventions, which delete incoming edges to a node that
+is set to a value, results in a simpler graph, which can simplify many calculations, particularly in the
+non-parametric setting (see [ Pea09b, p361] for a discussion). It is therefore a useful abstraction, even
+if it is less general than the augmented DAG approach.
+4.7.4 Counterfactuals
+So far we have been focused on predicting the e"ects of causes ,s ow ec a nc h o o s et h eo p t i m a la c t i o n
+(e.g., if I have a headache, I have to decide should I take an aspirin or not). This can be tackled
+using standard techniques from Bayesian decision theory, as we have seen (see [ Daw00; Daw15; LR19;
+Roh21; DM22]f o rm o r ed e t a i l s ) .
+Now suppose we are interested in the causes of e"ects .F o r e x a m p l e , s u p p o s e I t o o k t h e a s p i r i n
+and my headache did go away. I might be interested in the counterfactual question “if I had not
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 74 =====
+216 Chapter 4. Graphical models
+Level Activity Questions Examples
+1:Association.
+p(Y |a)
+Seeing How would seeing A
+change my belief in Y ?
+Someone took aspirin, how
+likely is it their headache will
+be cured?
+2:Intervention.
+p(Y |do(a))
+Doing What if I do A? If I take aspirin, will my
+headache be cured?
+3:Counterfactuals.
+p(Y a|do(a↑),y ↑)
+Imagining Was it A that caused
+Y ?
+Would my headache b e cured
+had I not taken aspirin?
+Table 4.6: Pearl’s causal hierarchy. Adapted from Table 1 of [ Pea19].
+Y01
+U1
+Y11
+Y1
+A1=0
+✓
+Y02
+U2
+Y12
+Y2
+A2=1
+...
+Figure 4.55: Illustration of the potential outcomes framework as a SCM. The nodes with dashed edges are
+unobserved. In this example, for unit 1, we select action A1 =0 and observe Y1 = Y 0
+1 = y1, whereas for unit
+2, we select action A2 =1 and observe Y2 = Y 1
+2 = y2.
+taken the aspirin, would my headache have gone away anyway?”. This kind of reasoning is crucial for
+legal reasoning (see e.g., [ DMM17]), as well as for tasks like explainability and fairness.
+Counterfactual reasoning requires strictly more assumptions than reasoning about interventions
+(see e.g., [ DM22]). Indeed, Judea Pearl has proposed what he calls the causal hierarchy [Pea09b;
+PGJ16; PM18b; Bar+22], which has three levels of analysis, each more powerful than the last. but
+each making stronger assumptions. See Table 4.6 for a summary. 16
+In counterfactual reasoning, we want to answer questions of the type p(Y a→
+♣do(a),y ), which is read
+as: “what is the probability distribution over outcomes Y if I were to do a↓,g i v e nt h a tIh a v ea l r e a d y
+done a and observed outcome y”. (We can also condition on any other evidencee that was observed,
+such as covariates x.) The quantity Y a→
+is often called a potential outcome [Rub74], since it is
+the outcome that would occur in a hypothetical world in which you did a↓instead of a.( N o t e t h a t
+p(Y a→
+= y) is equivalent to p(Y = y♣do(a↓)),a n di sa ni n t e r v e n t i o n a lp r e d i c t i o n ,n o tac o u n t e r f a c t u a l
+one.)
+The assumptions behind the potential outcomes framework can be clearly expressed using a
+16. For some Python code that can tell you whether a given causal question (estimand) is identiﬁable (uniquely
+answerable) given your modeling assumptions, see https://y0.readthedocs.io/en/latest/ or https://www.pywhy.
+org/dowhy.
+“Probabilistic Machine Learning: Advanced Topics”. Online version. December 10, 2025
+
+===== PDF PAGE 75 =====
+4.7. Structural causal models 217
+structural causal model. We illustrate this in Figure 4.55 for a simple case where there are two
+possible actions. W e see that we have a set of “ units”, such as individual patients, indexed by
+subscripts. Each unit is associated with a hidden exogeneous random noise source, Ui,t h a tc a p t u r e s
+everything that is unique about that unit. This noise gets deterministically mapped to two potential
+outcomes, Y 0
+i and Y 1
+i , depending on which action is taken. For any given unit, we only get to observe
+one of the outcomes, namely the one corresponding to the action that was actually chosen. In
+Figure 4.55,u n i t1 chooses action A1 =0 ,s ow eg e tt os e e Y 0
+1 = y1, whereas unit 2 chooses action
+A2 =1 ,s ow eg e tt os e e Y 1
+2 = y2. The fact that we cannot simultaneously see both outcomes for the
+same unit is called the “ fundamental problem of causal inference ”[ Hol86].
+We will assume the noise sources are independent, which is known as the “stable unit treatment
+value assumption” or SUTV A. (This would not be true if the treatment on person j could somehow
+a!ect the outcome of person i,e . g . ,d u et os p r e a d i n gd i s e a s eo ri n f o r m a t i o nb e t w e e ni and j.) We
+also assume that the determinsistic mechanisms that map noise to outcomes are the same across
+all units (represented by the shared parameter vector ω in Figure 4.55). We need to make one ﬁnal
+assumption, namely that the exogeneous noise is not a!ected by our actions. (This is a formalization
+of the assumption known as “all else being equal”, or (in legal terms) “ ceteris paribus ”.)
+With the above assumptions, we can predict what the outcome for an individual unit would have
+been in the alternative universe where we picked the other action. The procedure is as follows. First
+we perform abduction17 using SCM G,t oi n f e rp(Ui♣Ai = a, Yi = yi), which is the posterior over
+the latent factors for unit i given the observed evidence in the actual world. Second we perform
+intervention, in which we modify the causal mechanisms of G by replacing Ai = a with Ai = a↓to
+get Ga→. Third we perform prediction, in which we propagate the distribution of the latent factors,
+p(Ui♣Ai = a, Yi = yi), through the modiﬁed SCM Ga→ to get p(Y a→
+i ♣Ai = a, Yi = yi).
+In Figure 4.55,w es e et h a tw eh a v et w oc o p i e so fe v e r yp o s s i b l eo u t c o m ev a r i a b l e ,t or e p r e s e n t
+the set of possible worlds. Of course, we only get to see one such world, based on the actions that
+we actually took. More generally, a model in which we “clone” all the deterministic variables, with
+the noise being held constant between the two branches of the graph for the same unit, is called a
+twin network [Pea09b]. We will see a more practical example in Section 29.12.6, where we discuss
+assessing the counterfactual causal impact of an intervention in a time series. See also [ RR11; RR13],
+who propose a related formalism known as single world intervention graph or SWIG.F o ra n
+implementation of counterfactual inference using the twin network approach, built on top of the Pyro
+probabilistic programming language, see https://github.com/BasisResearch/chirho.
+We see from the ab ove that the p otential outcomes framework is mathematically equivalent to
+structural causal models, but does not use graphical model notation. This has led to heated debate
+between the founders of the two schools of thought. 18. The SCM approach is more popular in
+computer science (see e.g., [ PJS17; Sch19; Sch+21b]), and the PO approach is more popular in
+economics (see e.g., [ AP09; Imb19]). Modern textbooks on causality usually use both formalisms
+(see e.g., [ HR20a; Nea20]).
+17. For a mapping y = f (x), abduction refers to estimating the hidden inputs x given (y, f ), induction refers to
+estimating the hidden function f given (x, y),a n d deduction refers to estimating the hidden output y given (x, f).
+18. The potential outcomes framework is based on the work of Donald Rubin, and others, and is therefore sometimes
+called the Rubin causal model (see e.g., https://en.wikipedia.org/wiki/Rubin_causal_model). The structural
+causal models framework is based on the work of Judea Pearl and others. See e.g., http://causality.cs.ucla.edu/
+blog/index.php/2012/12/03/judea-pearl-on-potential-outcomes/ for a discussion of the two.
+Author: Kevin P. Murphy. (C) MIT Press. CC-BY-NC-ND license
+
+===== PDF PAGE 76 =====

@@ -464,136 +464,300 @@
   predictor from examples.
 ]
 
-== The prediction problem has two functions
+
+== Machine learning defined
 
 #content-block(
   layout: "top",
-  object-width: 90%,
+  object-width: 100%,
+  object: [
+#grid(
+  columns: (0.6fr, 1.8fr),
+  gutter: 1.5em,
+  align: top,
+  [
+    #course-figure(
+      lecture-figure-path("figures/mitchell_1997__machine_learning_cover.jpg"),
+      source: "Tom M. Mitchell, Machine Learning (1997), cover",
+      width: 100%,
+      height: 7.7cm,
+    )
+  ],
+  [
+    #stack(
+      spacing: 0.85em,
+      align(left + top)[
+      #text(size: 0.85em)[
+        A computer program is said to *learn* from experience $E$ with respect
+        to some class of tasks $T$ and performance measure $P$, if its
+        performance at tasks in $T$, as measured by $P$, improves with
+        experience $E$.
+      ],      
+      ],
+      grid(
+        columns: (1fr, 1fr, 1fr),
+        gutter: 1em,
+        align: center + horizon,
+        [
+          #uncover("2-")[
+            *Training*
+            #v(0.05em)
+              #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+              #text(size: 0.9em)[$E$: Experience]
+          ]
+        ],
+        [
+          #uncover("3-")[
+            *Task*
+              #v(0.05em)
+              #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
+              #text(size: 0.9em)[$f_A$: Task function]
+          ]
+        ],
+        [
+          #uncover("4-")[
+            *Evaluation*
+              #v(0.05em)
+              #text(size: 0.7em)[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
+              #text(size: 0.9em)[$P$: Performance]
+          ]
+        ],
+      ),
+    )
+  ],
+)
+
+  ],
+  key-points: [
+  #uncover("5-")[
+    - Machine learning is a mapping from $(E, f_P) arrow.r f_T arrow.r f_A$
+      - That maximizes $f_A$ performance according to $P$]  ],
+)
+
+
+#speaker-note[
+  This is Mitchell's classic definition of machine learning from *Machine
+  Learning* (McGraw-Hill, 1997). The cover anchors the definition in the book;
+  the compact flow separates the three roles. Experience E is the data or
+  interaction used by a learning procedure A. Its product is a function. Task
+  T specifies what that function must do, and performance measure P says what
+  counts as improvement. The next slide makes this concrete for supervised
+  learning.
+]
+
+== Supervised learning
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
   object: [
     #grid(
       columns: (1fr, 1fr),
-      gutter: 1.6em,
+      gutter: 2.2em,
       align: center + horizon,
       [
         #align(center)[
           *Training*
-          #v(0.5em)
-          $ D = {(x_i, y_i)}_(i=1)^N quad arrow.r^(A) quad f_D $
+          #v(0.35em)
+          #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+          $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
+          #v(0.28em)
+          #text(size: 0.72em, fill: palette.muted)[paired examples $arrow.r$ learned predictor]
         ]
       ],
       [
         #align(center)[
           *Prediction*
-          #v(0.5em)
-          $ x_* quad arrow.r^(f_D) quad hat(y)_* in cal(Y) $
+          #v(0.35em)
+          #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
+          $ f_D: x_* quad arrow.r quad hat(y)_* $
+          #v(0.28em)
+          #text(size: 0.72em, fill: palette.muted)[new input $arrow.r$ predicted output]
         ]
       ],
     )
   ],
   key-points: [
-    - The predictor $f_D$ takes a complex input and returns a class
     #uncover("2-")[
-      - The training algorithm $A$ is a separate function
-        - paired examples in, predictor out
-    ]
-    #uncover("3-")[
-      - Together, learning $f_D$ and applying it to a new input form the *prediction problem*
+      In supervised learning:
+      - Experience is a training set $D = {(x_n, y_n)}$
+          - $x$: called feature, covariate, or predictor
+          - $y$: called label, target, or response
+      - Task is to produce a predictor $f_D$ that maps new $x_*$ to correct $y_*$
     ]
   ],
 )
 
 #speaker-note[
-  The right-hand function is the one we deploy: an image, waveform, document,
-  or other complex object goes in, and a class comes out. The left-hand
-  function is training. Its output is itself a function. Keep these two maps
-  distinct because most of the course concerns how to construct the second map
-  so that the first one works on new cases.
+  This follows the notation in Murphy, Book 1, Section 1.2. A learner is
+  described by the task T, the experience E, and the performance measure P.
+  Here the deployed function maps a new input to an output, while the learning
+  algorithm is a second function: it maps the training set to that predictor.
+  The next two slides specialize this general setup to classification.
 ]
 
-== Probabilistic prediction keeps uncertainty about the class
+== Classification: Iris flowers
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #stack(
+      spacing: 0.35em,
+      grid(
+        columns: (1fr, 1.35fr),
+        gutter: 1.1em,
+        align: center + horizon,
+        [
+          #grid(
+            columns: (1fr, 1fr, 1fr),
+            gutter: 0.38em,
+            [#align(center)[
+              #stack(spacing: 0.12em,
+                image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 2.15cm, fit: "contain"),
+                text(size: 0.36em, fill: palette.muted)[Setosa],
+              )
+            ]],
+            [#align(center)[
+              #stack(spacing: 0.12em,
+                image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 2.15cm, fit: "contain"),
+                text(size: 0.36em, fill: palette.muted)[Versicolor],
+              )
+            ]],
+            [#align(center)[
+              #stack(spacing: 0.12em,
+                image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 2.15cm, fit: "contain"),
+                text(size: 0.36em, fill: palette.muted)[Virginica],
+              )
+            ]],
+          )
+        ],
+        [#course-figure(
+          lecture-figure-path("figures/book1_fig1_2_image_classification.png"),
+          width: 100%, height: 4.6cm, show-source: false,
+        )],
+      ),
+      figure-source("Murphy (2025), Book 1, Figs. 1.1--1.2; Fig. 1.2 after cs231n.github.io"),
+    )
+  ],
+  key-points: [
+    - Classification has $C$ unordered, mutually exclusive classes: $cal(Y) = {1, dots, C}$
+    #uncover("2-")[
+      - Iris: $y in {"Setosa", "Versicolor", "Virginica"}$ and $x in RR^4$
+        - sepal length and width; petal length and width
+    ]
+    #uncover("3-")[
+      - Image pixels make $x$ a much higher-dimensional classification input
+    ]
+  ],
+)
+
+#speaker-note[
+  Murphy begins the classification example with three Iris subspecies, shown
+  in Figure 1.1. The four measurements make the Iris version low dimensional;
+  the image-classification example in Figure 1.2 makes the same input-output
+  task high dimensional. The flower photographs and the image-classification
+  illustration are reproduced from Murphy, Book 1 (online version, April 18,
+  2025). Figure 1.1 credits Dennis Kramb and SIGNA; Figure 1.2 credits Andrej
+  Karpathy and CS231n. See `figures/book1_section12_sources.md`.
+]
+
+== Exploratory data analysis
+
+#content-block(
+  layout: "side-left",
+  object-width: 61%,
+  object: [
+    #course-figure(
+      lecture-figure-path("figures/book1_fig1_3_iris_pairplot.png"),
+      source: "Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb",
+      width: 100%,
+      height: 7.3cm,
+    )
+  ],
+  key-points: [
+    - The Iris training set has 150 labeled examples, 50 in each class
+    #uncover("2-")[
+      - A pair plot shows every pair of features; its diagonal shows each feature's marginal distribution
+    ]
+    #uncover("3-")[
+      - Before fitting, inspect for visible patterns, outliers, and label noise
+    ]
+  ],
+)
+
+#speaker-note[
+  This is Figure 1.3 from Murphy, Book 1. It shows why Iris is a useful first
+  classification example: some feature pairs visibly separate Setosa from the
+  other classes, while Versicolor and Virginica overlap more. At this point we
+  only inspect the data. We deliberately omit Section 1.2.1.3 and its decision
+  tree, Figure 1.4, as requested. The source notebook is linked by the book as
+  `iris_plot.ipynb`; see `figures/book1_section12_sources.md`.
+]
+
+== Fitting: empirical risk minimization
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[
+      $ hat(theta) = arg min_theta L(theta)
+        = arg min_theta 1/N sum_(n=1)^N ell(y_n, f(x_n; theta)) $
+    ]
+  ],
+  key-points: [
+    - Choose a parameterized predictor $f(x; theta)$ and a loss $ell(y, f(x; theta))$
+    #uncover("2-")[
+      - Training maps $D_"train"$ to $hat(theta)$; the learned predictor is $f_D(x) = f(x; hat(theta))$
+    ]
+    #uncover("3-")[
+      - Empirical risk is average loss on the observed training examples
+    ]
+  ],
+)
+
+#speaker-note[
+  This is Murphy's Equation 1.6. The learning algorithm A introduced earlier
+  can be understood here as the procedure that solves, or approximates the
+  solution to, this optimization problem. The loss operationalizes the
+  performance measure P on training data. We have still not claimed that this
+  predictor will work on future cases.
+]
+
+== Probabilistic classification
 
 #content-block(
   layout: "top",
   object-width: 90%,
   object: [
     #align(center)[
-      $ p(y_* | x_*, D)
-        = integral p(y_* | x_*, theta) p(theta | D) dif theta $
-      #v(0.7em)
+      $ p(y = c | x; theta) = f_c(x; theta), quad f: cal(X) arrow [0, 1]^C $
+      #v(0.55em)
       #uncover("2-")[
-        $ hat(y)_* = arg max_(c in cal(Y)) p(y_* = c | x_*, D) $
+        $ 0 <= f_c(x; theta) <= 1 quad "and" quad sum_(c=1)^C f_c(x; theta) = 1 $
       ]
     ]
   ],
   key-points: [
-    - The predictive distribution assigns probabilities to the possible classes
+    - The predictor can return a conditional distribution over classes, not only one label
     #uncover("2-")[
-      - A decision rule turns that distribution into a class when the task requires one
+      - Uncertainty can come from limited knowledge of the mapping or randomness in the data
     ]
     #uncover("3-")[
-      - The training data affect the prediction through what they tell us about $theta$
+      - A class decision may use $hat(y) = arg max_(c in cal(Y)) f_c(x; theta)$
     ]
   ],
 )
 
 #speaker-note[
-  In a probabilistic treatment, the deployed object need not return only one
-  label. It can return a distribution over labels. The integral carries
-  parameter uncertainty from the posterior into the prediction, while the
-  argmax is one possible decision rule. Later, other losses will imply other
-  decisions.
-]
-
-== Training performance cannot tell us whether prediction is solved
-
-#content-block(
-  layout: "top",
-  object-width: 88%,
-  object: [
-    #grid(
-      columns: (1fr, 1fr),
-      gutter: 1.6em,
-      align: center + horizon,
-      [
-        #align(center)[
-          *Used to produce $f_D$*
-          #v(0.45em)
-          $ D_"train" = {(x_i, y_i)}_(i=1)^N $
-        ]
-      ],
-      [
-        #align(center)[
-          *Used to evaluate $f_D$*
-          #v(0.45em)
-          $ D_"test" = {(x_j, y_j)}_(j=1)^M $
-        ]
-      ],
-    )
-  ],
-  key-points: [
-    - Good predictions on the training set may only show that the procedure fit those examples
-    #uncover("2-")[
-      - Prediction asks how $f_D$ performs on new input-class pairs
-    ]
-    #uncover("3-")[
-      - Because future cases are unknown, we estimate that performance with data withheld from training
-    ]
-  ],
-)
-
-#uncover("3-")[
-  #note[
-    Designing an evaluation that genuinely represents future use is a central
-    challenge in machine learning.
-  ]
-]
-
-#speaker-note[
-  We cannot certify a predictor using the same observations that produced it.
-  A test set is the simplest approximation to the cases the system will face
-  later, but its value depends on whether it truly represents that future use.
-  This turns evaluation and generalization into central parts of the prediction
-  problem, not bookkeeping after training.
+  This follows Murphy's Equation 1.7. The conditional distribution represents
+  both a direct classification answer and the uncertainty attached to it.
+  Murphy distinguishes epistemic or model uncertainty from aleatoric or data
+  uncertainty. For this introductory alignment we use the model-conditional
+  form p(y given x; theta), rather than jumping ahead to the fully Bayesian
+  posterior predictive distribution. Maximum likelihood later fits theta by
+  minimizing the negative log probability assigned to the observed labels.
 ]
 
 == Familiar regression notation, two different roles
@@ -785,10 +949,12 @@
 #key-points[Same grammar. Four different questions. The next several lectures build one task at a time.]
 
 #speaker-note[
-  The syllabus builds prediction (Lectures 7-8), generation (9-10), and
-  discovery (11-12) -- Murphy chapters up to 33. Action is Murphy's Part VI
-  and is flagged, not built, in this course. Use concrete examples from here
-  on; do not let this stay a dry four-item catalogue.
+  Book 2 uses these four questions to organize its broad survey. In this
+  course they serve as an orientation, but the sustained teaching spine is
+  predictive modeling: classification, regression, neural networks,
+  calibration, out-of-distribution detection, and selective prediction. Use
+  concrete examples from here on; do not let this stay a dry four-item
+  catalogue.
 ]
 
 // A panel of the "same flowers, four questions" composite. The figures are

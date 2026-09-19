@@ -3,6 +3,34 @@
 Reviewer-facing notes on the work done to Lecture 1's Section 2 and Section 3.
 This document is not lecture content and is not referenced by `slide_deck.typ`.
 
+## Current syllabus alignment -- September 2026
+
+The syllabus in `advanced_statistics_2027_1_syllabus.typ` is the current
+source of truth. The historical revisions documented below introduced Murphy's
+four task categories as an orientation, following Book 2, Chapter 1. The
+current course uses that orientation selectively: Lecture 1 establishes the
+prediction problem, and Lectures 6--12 develop predictive modeling through
+generative and discriminative classification, regression and generalized linear
+models, neural networks, calibration, out-of-distribution detection, and
+selective prediction.
+
+Accordingly, references below to a later course sequence on generation and
+discovery are historical planning notes, not the current curriculum. The
+prediction sequence begins with supervised learning and classification; this
+pass ends at uncertainty in Book 1, Section 1.2.1.5. Estimation and the later
+evaluation material remain separate follow-on work.
+
+### Book 1 Section 1.2 alignment
+
+The Section 2 prediction sequence now follows the terminology and order of
+Book 1, Section 1.2 more closely: supervised learning; classification through
+the Iris and image examples; exploratory data analysis; empirical risk
+minimization; and probabilistic classification with uncertainty through
+Section 1.2.1.5. The decision-tree subsection (1.2.1.3) and Figure 1.4 are
+intentionally omitted. Estimation follows only after review. The reused book
+figures and their attributions are documented in
+`figures/book1_section12_sources.md`.
+
 It has two parts: the first revision, which replaced the provisional
 transition material with two new sections, and the second revision, which
 reworked Section 3 and its figure notebook.

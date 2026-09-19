@@ -9,6 +9,10 @@
   Information Storage and Organization in the Brain,” *Psychological Review*
   65 (1958), 386–408. Source scan:
   <https://homepages.math.uic.edu/~lreyzin/papers/rosenblatt58.pdf>.
+- `mitchell_1997__machine_learning_cover.jpg` is the cover of Tom M.
+  Mitchell, *Machine Learning* (McGraw-Hill, 1997), retrieved to match the
+  course-author-supplied cover image. Product-image source:
+  <https://www.ciceksepeti.com/machine-learning-mcgraw-hill-international-edit-by-mitchell-thom-m-1997-kcm38123180>.
 
 The cropped images are used in the lecture with source attribution. Retain
 these citations if the figures are reused or redistributed.

@@ -7,31 +7,64 @@ Use these standards when creating or editing lecture slides for this project.
 - Use Typst + Touying for lecture slides.
 - Use Touying version `0.7.4` for project-owned lecture themes and shared components.
 - Keep lecture content separate from reusable styling and layout logic.
-- Put shared visual style, layout helpers, and reusable slide components in a common course include such as `course/common.typ`.
+- Put shared visual style, layout helpers, and reusable slide components in the shared course include `Lectures/course.typ`. It sits on top of a vendored, read-only base theme in `Lectures/themes/`.
 - Lecture `.typ` files should focus on narrative, equations, figures, examples, and speaker notes rather than ad hoc styling.
 
 ## Shared course API
 
 Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
 
-Examples include:
+This list must stay in sync with what `Lectures/course.typ` actually exports. If you add, rename, or remove a component there, update this list in the same change — an API list that describes components which do not exist (or omits ones that do) is a standards-doc bug, not a minor omission.
 
-- `#takehome[...]`
-- `#bridge[...]`
-- `#warn[...]`
-- `#checkpoint[...]`
-- `#definition[...]`
-- `#example[...]`
-- `#eqbox[...]`
-- `#twocol[...] [...]`
-- `#triad[...] [...] [...]`
-- `#course-figure(...)`
-- `#maybe-image(...)`
-- `#section-slide(...)`
-- `#summary-slide(...)`
-- `#speaker-note[...]`
+Slide structure and composition:
 
-If a visual or layout pattern is used repeatedly, add or improve it in `common.typ` rather than reproducing it inside lecture files.
+- `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
+- `#twocol[...][...]`, `#triad[...][...][...]` — equal-width row layouts
+- `#section-slide(...)`, `#title-slide()`, `#focus-slide[...]`, `#ending-slide[...]`
+
+Cards and notes:
+
+- `#course-card(...)`, `#key-points[...]`
+- `#definition(...)`, `#method(...)`
+- `#note[...]` — margin/aside note
+
+Schematic diagrams (boxes-and-arrows flow figures):
+
+- `#schema-node(label, body, density: "normal")` — a labeled node box for a flow diagram cell. `density` picks a body-text preset from a small named vocabulary (currently `"normal"`, the default, for a short symbol-only line or two; `"prose"` for a smaller, left-aligned multi-line description) instead of a raw size number, so unrelated slides that pick the same density render identically.
+- `#schema-arrow` — a right-pointing arrow cell to place beside nodes in a grid
+- `#source-note[...]` — small muted caption/citation line for a schematic
+
+Figures:
+
+- `#course-figure(...)` — image with optional caption and source line; shows a labeled placeholder automatically when the file is missing, so a separate `maybe-image`-style wrapper is unnecessary
+- `#figure-source(...)` — the provenance line alone, for a composite figure whose panels each set `show-source: false`
+
+Speaker notes:
+
+- `#speaker-note[...]` — provided by Touying directly, not by `course.typ`
+
+Coordinate annotations:
+
+- `#callout(...)`, `#annotated-object(...)`
+
+### Do not duplicate a helper across lecture files
+
+If a visual or layout pattern is used more than once, it belongs in `course.typ`, not copied into a lecture file. Concretely:
+
+- The moment the same helper function (even a small one) appears — including by copy-paste — in a second lecture file, move it to `course.typ` and delete both local copies in the same change.
+- Before writing a new lecture-local helper, check this list and `course.typ` for an existing component that already covers the need. Do not reinvent an existing primitive under a new name (for example, a second muted-caption function alongside `figure-source`).
+- A helper is genuinely lecture-local only when it encodes a fact specific to that lecture, such as a fixed figure-directory prefix (`lecture-figure-path`) or a lecture-specific reveal pairing. Generic visual patterns (boxes, arrows, captions, layout grids) are course-wide by default.
+- Do not keep two definitions of the same helper in one file either (for example, a path-prefix helper defined twice under different names). If you find one, merge them.
+
+### Keep a set of sibling nodes consistent with one local forwarding function
+
+When a single grid has several `schema-node` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
+
+```typst
+#let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
+```
+
+This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-node` parameters, and it is scoped to the one slide that needs it.
 
 ## Speaker notes
 
@@ -46,7 +79,7 @@ If a visual or layout pattern is used repeatedly, add or improve it in `common.t
 - Save generated lecture figures as named files, preferably SVG for vector plots and diagrams.
 - Place generated assets in a predictable lecture-local directory such as `generated/`.
 - Typst should include generated files by path rather than screenshots or pasted raster copies.
-- Use `#maybe-image(...)` or an equivalent wrapper during development so missing figures produce a correctly sized labeled placeholder.
+- Use `#course-figure(...)` during development; it automatically renders a correctly sized, labeled placeholder when the file is missing, so no separate wrapper is needed.
 - Missing assets are acceptable during drafting but should be treated as errors before a lecture is considered final.
 
 ## Student-facing notebooks
@@ -64,6 +97,7 @@ If a visual or layout pattern is used repeatedly, add or improve it in `common.t
 - Keep mathematical slides readable: avoid excessive density, tiny text, or too many competing visual elements.
 - Prefer Typst-native explanatory diagrams for conceptual structure, equations, graphical models, and schematic relationships.
 - Prefer Python-generated figures for empirical, probabilistic, simulation, and data-driven graphics.
+- Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-node`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
 
 ## Content blocks and component arguments
 

@@ -88,7 +88,7 @@ A freshly opened ruled notebook. The theme evokes the clarity and focus of handw
 | Component | Signature | Visual Description |
 |-----------|-----------|-------------------|
 | Ruled Card | `ruled-card(title, body)` | Left-bordered card with 2.5pt `palette.accent` left stroke and opaque `palette.paper` fill. Title in 1.05em semibold `palette.dark`. 14pt left inset, 10pt vertical inset. Ends with `lazy-v(1fr)` for one-card-per-column height equalization. |
-| Margin Note | `margin-note(body)` | Left-bordered note block with 1.5pt `palette.muted` left stroke. Italic text in 0.9em `palette.text`. For asides and commentary. |
+| Margin Note | `margin-note(body)` | Thin 0.6pt `palette.muted` box with compact inset and left-aligned italic text in 0.9em `palette.text`. For asides and commentary. |
 | Divider | `divider()` | A 100%-width horizontal line in 0.6pt `palette.rule-line` inside a block with 8pt vertical inset. Mimics ruled notebook lines without sequential spacer nodes. |
 | Enum Styling | `set enum(numbering: ...)` | Numbered list via native `+` syntax. Large bold terracotta-colored numbers (22pt, `palette.accent`). Configured globally via `set enum` in theme init. |
 

@@ -72,7 +72,8 @@ Card with terracotta left border and opaque warm-paper fill. For grouping key co
 ```
 
 ### `#margin-note(body)`
-Italic aside with gray left border. For commentary and supplementary notes.
+Italic aside in a thin gray box, with left-aligned content. For commentary and
+supplementary notes.
 
 ```typst
 #margin-note[This is an aside or commentary.]

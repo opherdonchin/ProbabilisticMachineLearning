@@ -398,6 +398,24 @@
   block(width: width)[#object],
 )
 
+// Course-wide layout conveniences for pairing two or three blocks side by
+// side. Prefer these over a lecture-local grid() when the layout is just an
+// equal-width row; add a new named helper here rather than in a lecture file
+// if another repeated arrangement emerges.
+#let twocol(left, right) = grid(
+  columns: (1fr, 1fr),
+  gutter: 1.2em,
+  align: top,
+  left, right,
+)
+
+#let triad(a, b, c) = grid(
+  columns: (1fr, 1fr, 1fr),
+  gutter: 0.8em,
+  align: top,
+  a, b, c,
+)
+
 // A composable object + key-points unit. Put it in the normal body of a
 // heading-defined slide, optionally alongside other components:
 //   == Slide title
@@ -458,6 +476,73 @@
     []
   }
 }
+
+
+// -----------------------------------------------------------------------------
+// Schematic diagram primitives
+// -----------------------------------------------------------------------------
+//
+// A small vocabulary for the boxes-and-arrows schematics used across lectures
+// to lay out task/experience/model flows, typically inside a content-block
+// grid. Keep these course-wide: if a lecture needs a bespoke diagram box, it
+// most likely belongs here rather than as a lecture-local copy.
+//
+// Geometry (inset, radius) is expressed in `em` so schema-node scales
+// uniformly with whatever ambient text size a lecture wraps it in; only the
+// hairline stroke stays a fixed absolute thickness.
+//
+// `density` selects a body-text preset from a small, named vocabulary rather
+// than a raw size number, so unrelated slides that pick the same density
+// render identically instead of drifting to slightly different numbers:
+//   - "normal" (default): body inherits the ambient size, centered — fits a
+//     short symbol-only line or two.
+//   - "prose": smaller, left-aligned — fits a multi-line "Task: ... /
+//     Performance: ..."-style description without overflowing the node.
+// When a grid has several nodes that must look alike, define one local
+// forwarding function that fixes the density and call that for every node in
+// the grid, rather than repeating `density: "prose"` at each call site.
+
+#let _schema-node-density = (
+  normal: (size: 1em, align: center),
+  prose: (size: 0.62em, align: left),
+)
+
+#let schema-node(
+  label,
+  body,
+  fill: palette.accent.lighten(87%),
+  density: "normal",
+) = {
+  let d = _schema-node-density.at(density)
+  box(
+    width: 100%,
+    stroke: 0.8pt + palette.rule-line,
+    fill: fill,
+    radius: 0.25em,
+    inset: (x: 0.6em, y: 0.5em),
+  )[
+    #align(center)[
+      #stack(
+        spacing: 0.4em,
+        text(size: 0.6em, weight: "semibold", fill: palette.accent)[#label],
+        align(d.align)[#text(size: d.size)[#body]],
+      )
+    ]
+  ]
+}
+
+// A right-pointing arrow sized to sit beside `schema-node` cells in a grid.
+#let schema-arrow = align(center + horizon)[
+  #text(size: 1.35em, fill: palette.accent)[$arrow.r$]
+]
+
+// A small muted, centered caption/citation line, e.g. under a schematic or
+// a course-authored figure. `figure-source` below is a thin wrapper for
+// path-valued citations; call `source-note` directly for descriptive text
+// such as "Course schematic; Book 1 §1.2.2".
+#let source-note(body) = align(center)[
+  #text(size: 0.6em, fill: palette.muted)[#body]
+]
 
 // -----------------------------------------------------------------------------
 // Figures
@@ -525,16 +610,14 @@
     },
 
     if show-source {
-      text(size: 0.34em, fill: palette.muted)[#raw(_path-text(source))]
+      source-note(raw(_path-text(source)))
     },
   )
 ]
 
 // The provenance line on its own, for a composite whose panels each set
 // show-source: false.
-#let figure-source(source) = align(center)[
-  #text(size: 0.34em, fill: palette.muted)[#raw(_path-text(source))]
-]
+#let figure-source(source) = source-note(raw(_path-text(source)))
 
 // -----------------------------------------------------------------------------
 // Coordinate-based annotations

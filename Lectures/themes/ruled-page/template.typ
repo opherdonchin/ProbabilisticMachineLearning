@@ -200,11 +200,11 @@
 #let margin-note(body) = {
   block(
     width: 100%,
-    inset: (left: 16pt, y: 8pt, right: 8pt),
-    stroke: (left: 1.5pt + palette.muted),
+    inset: (x: 12pt, y: 8pt),
+    stroke: 0.6pt + palette.muted,
   )[
     #set text(size: 0.9em, style: "italic", fill: palette.text)
-    #body
+    #align(left)[#body]
     #lazy-v(1fr)
   ]
 }

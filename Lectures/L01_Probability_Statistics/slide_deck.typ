@@ -14,21 +14,8 @@
 
 #title-slide()
 
-// These are lecture-local structural conveniences only.
-// They intentionally carry no independent visual theme.
-#let twocol(left, right) = grid(
-  columns: (1fr, 1fr),
-  gutter: 1.2em,
-  align: top,
-  left, right,
-)
-
-#let triad(a, b, c) = grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 0.8em,
-  align: top,
-  a, b, c,
-)
+// `twocol` and `triad` are shared course components (see course.typ); import
+// them via `*` above rather than redefining them per lecture.
 
 // `course-figure` resolves file strings from Lectures/course.typ. Keep these
 // lecture-local assets addressable without relying on Typst's removed path().
@@ -43,12 +30,11 @@
   ]
 ]
 
-#section-metadata(
+#section-slide(
+  title: [A familiar modeling language],
   short-title: [Probabilistic modelling],
   subtitle: [Probablistic models update based on data],
 )
-
-= A familiar modeling language
 
 == The Beta-Binomial model
 
@@ -541,11 +527,11 @@
   the compact flow separates the three roles. Experience E is the data or
   interaction used by a learning procedure A. Its product is a function. Task
   T specifies what that function must do, and performance measure P says what
-  counts as improvement. The next slide makes this concrete for supervised
-  learning.
+  counts as improvement. The next slide makes one canonical pairing concrete:
+  supervised experience used to learn a predictor.
 ]
 
-== Supervised learning
+== Supervised experience supports prediction
 
 #content-block(
   layout: "top",
@@ -557,7 +543,7 @@
       align: center + horizon,
       [
         #align(center)[
-          *Training*
+          *Experience: paired examples*
           #v(0.35em)
           #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
           $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
@@ -567,7 +553,7 @@
       ],
       [
         #align(center)[
-          *Prediction*
+          *Task: prediction*
           #v(0.35em)
           #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
           $ f_D: x_* quad arrow.r quad hat(y)_* $
@@ -579,11 +565,11 @@
   ],
   key-points: [
     #uncover("2-")[
-      In supervised learning:
       - Experience is a training set $D = {(x_n, y_n)}$
           - $x$: called feature, covariate, or predictor
           - $y$: called label, target, or response
       - Task is to produce a predictor $f_D$ that maps new $x_*$ to correct $y_*$
+      - Performance is measured by a loss, introduced shortly
     ]
   ],
 )
@@ -591,9 +577,11 @@
 #speaker-note[
   This follows the notation in Murphy, Book 1, Section 1.2. A learner is
   described by the task T, the experience E, and the performance measure P.
-  Here the deployed function maps a new input to an output, while the learning
-  algorithm is a second function: it maps the training set to that predictor.
-  The next two slides specialize this general setup to classification.
+  Supervised experience is the canonical training regime for prediction, but
+  it is not identical to prediction. Here the deployed function maps a new
+  input to an output, while the learning algorithm maps paired examples to that
+  predictor. A loss will say how well the predictor performs. The next two
+  slides specialize this pairing to classification.
 ]
 
 == Classification: Iris flowers
@@ -605,83 +593,111 @@
     #stack(
       spacing: 0.35em,
       grid(
-        columns: (1fr, 1.35fr),
+        columns: (1.35fr, 1fr),
         gutter: 1.1em,
         align: center + horizon,
         [
           #grid(
             columns: (1fr, 1fr, 1fr),
-            gutter: 0.38em,
+            gutter: 0.3em,
             [#align(center)[
               #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 2.15cm, fit: "contain"),
-                text(size: 0.36em, fill: palette.muted)[Setosa],
+                image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 3cm, fit: "contain"),
+                text(size: 0.45em, fill: palette.muted)[Setosa],
               )
             ]],
             [#align(center)[
               #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 2.15cm, fit: "contain"),
-                text(size: 0.36em, fill: palette.muted)[Versicolor],
+                image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 3cm, fit: "contain"),
+                text(size: 0.45em, fill: palette.muted)[Versicolor],
               )
             ]],
             [#align(center)[
               #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 2.15cm, fit: "contain"),
-                text(size: 0.36em, fill: palette.muted)[Virginica],
+                image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 3cm, fit: "contain"),
+                text(size: 0.45em, fill: palette.muted)[Virginica],
               )
             ]],
           )
         ],
-        [#course-figure(
-          lecture-figure-path("figures/book1_fig1_2_image_classification.png"),
-          width: 100%, height: 4.6cm, show-source: false,
-        )],
+        [#align(center)[
+          #text(size: 0.45em, weight: "semibold")[
+            Table 1.1: subset of the Iris design matrix
+          ]
+          #v(0.28em)
+          #text(size: 0.45em)[
+            #table(
+              columns: (auto, auto, auto, auto, auto, auto),
+              align: center + horizon,
+              inset: (x: 3.5pt, y: 3pt),
+              table.header(
+                [*index*], [*sl*], [*sw*], [*pl*], [*pw*], [*label*],
+              ),
+              [0], [5.1], [3.5], [1.4], [0.2], [Setosa],
+              [1], [4.9], [3.0], [1.4], [0.2], [Setosa],
+              [dots], [dots], [dots], [dots], [dots], [dots],
+              [50], [7.0], [3.2], [4.7], [1.4], [Versicolor],
+              [dots], [dots], [dots], [dots], [dots], [dots],
+              [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
+            )
+          ]
+          #v(0.24em)
+          #text(size: 0.45em, fill: palette.muted)[
+            sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
+          ]
+        ]],
       ),
-      figure-source("Murphy (2025), Book 1, Figs. 1.1--1.2; Fig. 1.2 after cs231n.github.io"),
+      figure-source("Murphy (2025), Book 1, Fig. 1.1 and Table 1.1"),
     )
   ],
   key-points: [
-    - Classification has $C$ unordered, mutually exclusive classes: $cal(Y) = {1, dots, C}$
+    - Classification:   $y in {1, dots, C}$ 
+      - The classes are unordered and mutually exclusive
     #uncover("2-")[
-      - Iris: $y in {"Setosa", "Versicolor", "Virginica"}$ and $x in RR^4$
-        - sepal length and width; petal length and width
-    ]
-    #uncover("3-")[
-      - Image pixels make $x$ a much higher-dimensional classification input
+      - For the Iris dataset
+        - $y in {"Setosa", "Versicolor", "Virginica"}$
+        - $x in RR^4$
     ]
   ],
 )
 
 #speaker-note[
   Murphy begins the classification example with three Iris subspecies, shown
-  in Figure 1.1. The four measurements make the Iris version low dimensional;
-  the image-classification example in Figure 1.2 makes the same input-output
-  task high dimensional. The flower photographs and the image-classification
-  illustration are reproduced from Murphy, Book 1 (online version, April 18,
-  2025). Figure 1.1 credits Dennis Kramb and SIGNA; Figure 1.2 credits Andrej
-  Karpathy and CS231n. See `figures/book1_section12_sources.md`.
+  in Figure 1.1. Table 1.1 makes the training-set representation concrete:
+  each row gives four numeric measurements and the known species label. The
+  flower photographs are reproduced from Murphy, Book 1 (online version,
+  April 18, 2025); Figure 1.1 credits Dennis Kramb and SIGNA. The table is
+  recreated from Table 1.1. See `figures/book1_section12_sources.md`.
 ]
 
 == Exploratory data analysis
 
 #content-block(
   layout: "side-left",
-  object-width: 61%,
+  object-width: 50%,
   object: [
     #course-figure(
       lecture-figure-path("figures/book1_fig1_3_iris_pairplot.png"),
       source: "Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb",
       width: 100%,
-      height: 7.3cm,
+      height: 9cm,
     )
   ],
   key-points: [
-    - The Iris training set has 150 labeled examples, 50 in each class
+    #text(size: 0.85em)[
+    - Training set 
+      - 150 labeled examples
+      - 50 in each class
     #uncover("2-")[
-      - A pair plot shows every pair of features; its diagonal shows each feature's marginal distribution
+      - Pair plots shows every pair of features
+        - Diagonal shows marginal distributions
     ]
     #uncover("3-")[
-      - Before fitting, inspect for visible patterns, outliers, and label noise
+      - Always inspect data before modeling
+        - Structure
+        - Outliers
+        - Missing values
+    ]
     ]
   ],
 )
@@ -695,24 +711,39 @@
   `iris_plot.ipynb`; see `figures/book1_section12_sources.md`.
 ]
 
-== Fitting: empirical risk minimization
+== Performance: empirical risk minimization
 
 #content-block(
   layout: "top",
   object-width: 94%,
   object: [
     #align(center)[
-      $ hat(theta) = arg min_theta L(theta)
-        = arg min_theta 1/N sum_(n=1)^N ell(y_n, f(x_n; theta)) $
+      $ L(x,y ; theta) = ell(y, f(x; theta)) $
+      #uncover("2-")[
+        $ L(theta) = 1/N sum_(n=1)^N L(x_n, y_n ; theta) $
+      ]
+      #uncover("3-")[
+        $ hat(theta) = arg min_theta L(theta) $
+      ]
+      #uncover("4-")[
+        #v(0.55em)
+        #note[
+          #text(size: 0.72em)[
+            Given samples $D = {x^(1), dots, x^(N)}$ from $p(X)$, where $X in RR$,
+            the empirical distribution is
+            $hat(p)_N(x) = 1/N sum_(n=1)^N delta_(x^(n))(x)$.
+          ]
+        ]
+      ]
     ]
   ],
   key-points: [
-    - Choose a parameterized predictor $f(x; theta)$ and a loss $ell(y, f(x; theta))$
+    - The loss function: the cost of predicting $f(x; theta)$ when the true label is $y$
     #uncover("2-")[
-      - Training maps $D_"train"$ to $hat(theta)$; the learned predictor is $f_D(x) = f(x; hat(theta))$
+      - The empirical risk: loss evaluated on the training set
     ]
     #uncover("3-")[
-      - Empirical risk is average loss on the observed training examples
+      - Empirical risk minimization: minimizing the empirical loss
     ]
   ],
 )
@@ -722,1320 +753,1562 @@
   can be understood here as the procedure that solves, or approximates the
   solution to, this optimization problem. The loss operationalizes the
   performance measure P on training data. We have still not claimed that this
-  predictor will work on future cases.
+  predictor will work on future cases. The final reveal names the distribution
+  implicit in the average: an equal-weight mixture of point masses at the
+  observed values of a random variable.
 ]
 
-== Probabilistic classification
+
+== A loss function
+
+#content-block(
+  layout: "top",
+  object-width: 78%,
+  object: [
+    #align(center)[
+      $ L(x,y ; theta) = ell(y, f(x; theta)) $
+      $ ell(y, f(x; theta)) = ell_"01" (y, hat(y)) = II(y != hat(y)) $
+      #uncover("2-")[
+        #v(0.65em)
+        $ II(e) = cases(
+          1 "if " e " is true",
+          0 "if " e " is false",
+        ) $
+      ]
+    ]
+  ],
+  key-points: [
+    - A loss function assigns a cost to a prediction when the true label is known
+    #uncover("2-")[
+      - The zero-one loss is one for a misclassification and zero for a correct classification
+      - $II(e)$ is an indicator function: it evaluates whether condition $e$ holds
+    ]
+  ],
+)
+
+#speaker-note[
+  This follows Murphy's zero-one loss in Equation 1.5. The loss compares the
+  true label y with a proposed class decision hat(y). It charges one for any
+  mismatch and zero for a match, so averaging this loss over examples gives a
+  misclassification rate.
+
+  On the second reveal, define the indicator function carefully. It is not an
+  unknown probability: it is a deterministic function of a true-or-false
+  condition. In the expression above, the condition is that the prediction is
+  different from the observed label. More general loss functions can assign
+  different costs to different kinds of mistakes.
+]
+
+== A probabilistic perspective
 
 #content-block(
   layout: "top",
   object-width: 90%,
   object: [
     #align(center)[
-      $ p(y = c | x; theta) = f_c(x; theta), quad f: cal(X) arrow [0, 1]^C $
-      #v(0.55em)
+      $ p(x | y = c, theta) $
       #uncover("2-")[
-        $ 0 <= f_c(x; theta) <= 1 quad "and" quad sum_(c=1)^C f_c(x; theta) = 1 $
+        #v(0.65em)
+        $ p(y = c | x, theta) prop p(x | y = c, theta) p(y = c) $
+      ]
+      #uncover("3-")[
+        #v(0.65em)
+        $ hat(y) = arg max_(c in cal(Y)) p(y = c | x; theta) $
       ]
     ]
   ],
   key-points: [
-    - The predictor can return a conditional distribution over classes, not only one label
+    - The exploratory data analysis suggests:
+      - Features in each class have similar distributions
+      - Different classes have different distributions
     #uncover("2-")[
-      - Uncertainty can come from limited knowledge of the mapping or randomness in the data
+      - Bayes' rule converts those ingredients to posterior class probabilities
     ]
     #uncover("3-")[
-      - A class decision may use $hat(y) = arg max_(c in cal(Y)) f_c(x; theta)$
+      - A possible classifier: choose the class with maximum a posteriori probability
     ]
   ],
 )
 
 #speaker-note[
-  This follows Murphy's Equation 1.7. The conditional distribution represents
-  both a direct classification answer and the uncertainty attached to it.
-  Murphy distinguishes epistemic or model uncertainty from aleatoric or data
-  uncertainty. For this introductory alignment we use the model-conditional
-  form p(y given x; theta), rather than jumping ahead to the fully Bayesian
-  posterior predictive distribution. Maximum likelihood later fits theta by
-  minimizing the negative log probability assigned to the observed labels.
+  Connect this to the Iris pair plot: within each class, the features appear
+  to have a characteristic distribution, and those distributions differ
+  across classes. A generative classifier makes that intuition explicit by
+  modeling the class-conditional likelihood p(x given y=c, theta): how inputs
+  tend to look if the flower belongs to class c.
+
+  On the second reveal, Bayes' rule combines that likelihood with the class
+  prior p(y=c). The proportionality sign omits the normalizing constant, which
+  is the same for every candidate class c. The result is a posterior class
+  probability p(y=c given x, theta).
+
+  On the final reveal, choose the class with largest posterior probability.
+  This is the MAP class decision and is optimal under zero-one loss. Emphasize
+  that this is inference about a class label with parameters theta held fixed,
+  not yet Bayesian inference about uncertainty in theta. Present it as one
+  generative route to a predictive classifier, not as the only form a
+  probabilistic predictor can take.
 ]
 
-== Familiar regression notation, two different roles
+
+== Task, experience, and performance
 
 #content-block(
   layout: "top",
-  object-width: 80%,
+  object-width: 96%,
   object: [
-    #align(center)[
-      $ Y_i | X_i, theta tilde p(y | X_i, theta) $
-    ]
-  ],
-  key-points: [
-    #pause
-    #twocol[
-      *Dependent / independent*\
-      #text(size: 0.8em)[how the statistical model is built: $Y_i$ is given a
-        distribution; $X_i$ is conditioned on]
-    ][
-      *Input / output*\
-      #text(size: 0.8em)[the interface of the computational task: what is
-        supplied, what the system is asked to produce]
-    ]
-  ],
-)
-
-#note[
-  In ordinary supervised regression these usually line up -- independent
-  variable $arrow.r$ input, dependent variable $arrow.r$ output -- but they
-  are conceptually different roles.
-]
-
-#speaker-note[
-  Do not introduce "predictor / response" here -- it adds vocabulary without
-  adding a distinction they need. The point is that "dependent/independent"
-  describes how the model is built, while "input/output" describes what the
-  task asks of it. They usually coincide, which is exactly why it is easy to
-  stop noticing that they are different questions.
-]
-
-== What carries over
-
-#content-block(
-  key-points: [
-    #twocol[
-      - Probability distributions
-      - Conditional distributions
-      - Prior, likelihood, posterior
-      - Bayesian updating
-      - Latent variables
-    ][
-      - Hierarchical models
-      - Graphical models
-      - Posterior predictive distributions
-      - Sampling, MCMC, HMC
-      - Uncertainty
-    ]
-  ],
-)
-
-#key-points[The statistical grammar is familiar. Nothing on this list is being retired.]
-
-#speaker-note[
-  Read down the list and let it land as reassurance: every one of these
-  survives intact into probabilistic ML. What is about to change is the class
-  of problems we point this grammar at, not the grammar itself.
-]
-
-== What changes
-
-#grid(
-  columns: (1fr, 1fr),
-  gutter: 1.2em,
-  row-gutter: 0.6em,
-  align: left + top,
-
-  [*Carries over*], [*Changes*],
-
-  [The grammar: distributions, conditioning, Bayes' rule], [The organizing question: often "how do we do well on new cases?"],
-
-  [$x$, $y$, $theta$, $z$ as familiar roles], [$x$, $y$, and $z$ can all be very high-dimensional],
-
-  [Parameters as meaningful quantities], [Parameters are often instrumental machinery, not the object of study],
-
-  [Exact inference for simple conjugate models], [Exact inference becomes the exception rather than the rule],
-
-  [Point estimates as convenient summaries], [Optimization and approximate inference become central tools],
-
-  [More data sharpens a posterior], [Tasks reward models that can exploit more data and more compute],
-)
-
-#speaker-note[
-  This is not "statistics does inference, ML does prediction" -- that framing
-  is too crude and historically misleading. These are six shifts in emphasis
-  and pressure, not a change of subject. Scale in particular is a reward for
-  tackling harder prediction/generation/discovery tasks, not the reason those
-  tasks exist.
-]
-
-== A model is not a task
-
-#content-block(
-  layout: "top",
-  object-width: 80%,
-  object: [
-    #align(center)[
-      #course-diagram(
-        spacing: (3.6em, 2.4em),
-        node-stroke: 1.2pt + palette.dark,
-        node-fill: palette.paper,
-        edge-stroke: 1.2pt + palette.muted,
-        mark-scale: 65%,
-
-        graph-node(
-          (0, 1),
-          name: <a-model>,
-          shape: fletcher.shapes.pill,
-          width: 6em,
-          height: 2.2em,
-          stroke: 1.6pt + palette.accent,
-        )[Joint model],
-
-        graph-node((1, 0), name: <a-q1>, shape: fletcher.shapes.rect, width: 6.5em, height: 1.8em)[$p(y | x, D)$],
-        graph-node((1, 1), name: <a-q2>, shape: fletcher.shapes.rect, width: 6.5em, height: 1.8em)[$p(x | y, D)$],
-        graph-node((1, 2), name: <a-q3>, shape: fletcher.shapes.rect, width: 6.5em, height: 1.8em)[$p(z | x, D)$],
-
-        graph-edge(<a-model>, <a-q1>, "-|>"),
-        graph-edge(<a-model>, <a-q2>, "-|>"),
-        graph-edge(<a-model>, <a-q3>, "-|>"),
-      )
-    ]
-  ],
-  key-points: [
-    - A probabilistic model specifies distributions and relationships
-    - A task specifies which question we ask of that model
-    #uncover("2-")[- The same joint model can support several different operations -- and, later, a decision]
-  ],
-)
-
-#speaker-note[
-  This is the bridge into the next section. Do not imply that every task
-  corresponds to a unique mathematical form of probability model -- the point
-  is the opposite: one sufficiently rich model can answer several different
-  questions. Murphy organizes the rest of the book around exactly these
-  questions: prediction, generation, discovery, and (beyond this course)
-  action.
-]
-
-== Summary: From inference to machine-learning problems
-
-#content-block(
-  key-points: [
-    - We are not abandoning Bayesian or statistical modeling
-    - Inference remains part of the machinery
-    - What changes is the class of problems and the criterion of success
-    - The same probabilistic grammar now serves broader computational tasks
-  ],
-)
-
-#align(center)[#text(weight: "semibold", fill: palette.accent)[So what do we actually want learned probabilistic models to do?]]
-
-#speaker-note[
-  This is the pivot into the next section. Do not resolve the question here --
-  let it hang and answer it with concrete, visually distinct examples.
-]
-
-#section-metadata(
-  short-title: [Tasks: prediction, generation, discovery],
-  subtitle: [Four questions, four domains -- and the same four questions of one dataset],
-)
-
-= What do we use learned models for?
-
-== Four questions to ask of a fitted model
-
-#grid(
-  columns: (1fr, 1fr),
-  row-gutter: 1.2em,
-  column-gutter: 1.2em,
-  align: left + top,
-
-  [*Prediction*\ #text(size: 0.85em)[what should we say about a new case?]],
-  [*Generation*\ #text(size: 0.85em)[what should we produce?]],
-
-  [*Discovery*\ #text(size: 0.85em)[what structure explains the data?]],
-  [*Action*\ #text(size: 0.85em)[what should we do?]],
-)
-
-#key-points[Same grammar. Four different questions. The next several lectures build one task at a time.]
-
-#speaker-note[
-  Book 2 uses these four questions to organize its broad survey. In this
-  course they serve as an orientation, but the sustained teaching spine is
-  predictive modeling: classification, regression, neural networks,
-  calibration, out-of-distribution detection, and selective prediction. Use
-  concrete examples from here on; do not let this stay a dry four-item
-  catalogue.
-]
-
-// A panel of the "same flowers, four questions" composite. The figures are
-// deliberately untitled so the question and the probabilistic object are set
-// in the deck's own type, and so the panels can be reused elsewhere.
-#let iris-panel(question, object, gloss, file) = stack(
-  spacing: 0.15em,
-  text(size: 0.58em, weight: "semibold", fill: palette.accent)[#question],
-  text(size: 0.52em)[
-    #object #h(0.7em) #text(fill: palette.muted)[#gloss]
-  ],
-  course-figure(lecture-figure-path(file), width: 100%, height: 4.15cm, show-source: false),
-)
-
-== Same flowers, four different questions
-
-#align(center)[#block(width: 78%)[#grid(
-  columns: (1fr, 1fr),
-  column-gutter: 1.1em,
-  row-gutter: 0.35em,
-  align: top,
-
-  iris-panel(
-    [Which species is this flower?],
-    [$p(y | x, D)$],
-    [measurements $arrow.r$ class],
-    "figures/task_examples_figures__iris_prediction.svg",
-  ),
-
-  uncover("2-")[#iris-panel(
-    [What would another such flower look like?],
-    [$x tilde p(x | y, D)$],
-    [class $arrow.r$ measurements],
-    "figures/task_examples_figures__iris_generation.svg",
-  )],
-
-  uncover("3-")[#iris-panel(
-    [With the species hidden, what grouping is there?],
-    [$p(z | x, D)$],
-    [measurements $arrow.r$ latent grouping],
-    "figures/task_examples_figures__iris_discovery.svg",
-  )],
-
-  uncover("4-")[#iris-panel(
-    [Which flower should we label next?],
-    [$x_"next" = op("argmax")_x HH[p(y | x, D)]$],
-    [uncertainty $arrow.r$ what to do],
-    "figures/task_examples_figures__iris_action.svg",
-  )],
-)]]
-
-#figure-source("figures/task_examples_figures__iris_*.svg")
-
-#uncover("4-")[
-  #align(center)[#text(weight: "semibold", fill: palette.accent)[Same 100 flowers. Same two measurements. Only the question changed.]]
-]
-
-#speaker-note[
-  This is the centre of the section, and the one slide to slow down on. Build
-  it one panel at a time and say each question out loud before the panel
-  appears. The four probabilistic objects are deliberately different -- but do
-  not let anyone leave thinking that prediction *is* $p(y|x)$ and generation
-  *is* $p(x|y)$; that is the trap the next two "careful" slides close. What
-  this slide licenses is only the weaker and more useful claim: a task is
-  fixed by what is observed, what is unknown, and what we want the system to
-  do -- not by the dataset.
-
-  Details worth having ready. Generation: one Gaussian per species, fit by
-  maximum likelihood -- a teaching choice, not a claim about flower
-  morphology. Discovery: the mixture never sees a label, and its two clusters
-  happen to agree with the species for 96 of the 100 flowers, which is worth
-  mentioning *after* the point has landed, not before. Action: the model is
-  fit to ten labeled flowers only, and the ringed flower is the one that
-  maximizes predictive entropy over the ninety unlabeled ones -- the model is
-  not reporting its uncertainty, it is spending it.
-
-  Ask the room which of the four they would call "machine learning". All four.
-  See `task_examples_figures.ipynb`, Family B, for provenance.
-]
-
-== Prediction: what should we say about a new case?
-
-#content-block(
-  layout: "side-left",
-  object-width: 58%,
-  object: [
-    #course-figure(
-      lecture-figure-path("figures/task_examples_figures__prediction_iris_logistic.svg"),
-      source: "figures/task_examples_figures__prediction_iris_logistic.svg",
-      caption: [Posterior over the decision boundary, Iris petal measurements],
-      width: 100%,
-      height: 7.4cm,
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 1.5em,
+      align: center + horizon,
+      [#align(center)[
+        #text(size: 0.72em, weight: "semibold", fill: palette.accent)[Task]
+        #v(0.18em)
+        #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
+        #v(0.34em)
+        $ x in RR^4 arrow.r hat(y) in cal(Y) $
+        #v(0.12em)
+        #text(size: 0.48em, fill: palette.muted)[four measurements $arrow.r$ species]
+      ]],
+      [#uncover("2-")[
+        #align(center)[
+          #text(size: 0.72em, weight: "semibold", fill: palette.accent)[Experience]
+          #v(0.18em)
+          #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
+          #v(0.34em)
+          $ D = {(x_n, y_n)}_(n=1)^N $
+          #v(0.12em)
+          #text(size: 0.48em, fill: palette.muted)[150 labeled flowers]
+        ]
+      ]],
+      [#uncover("3-")[
+        #align(center)[
+          #text(size: 0.72em, weight: "semibold", fill: palette.accent)[Performance]
+          #v(0.18em)
+          #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
+          #v(0.34em)
+          $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
+          #v(0.12em)
+          #text(size: 0.48em, fill: palette.muted)[zero-one loss / misclassification rate]
+        ]
+      ]],
     )
   ],
   key-points: [
-    - Given measured features $x_*$, what should we say about the class $y_*$?
-    - The predictive object is $p(y_* | x_*, D)$ -- a full distribution
-    #uncover("2-")[- A loss function can later turn that distribution into a decision or a point estimate]
-  ],
-)
-
-#speaker-note[
-  Adapted from Murphy Fig. 15.8 (Ch. 15, logistic regression),
-  `logreg_iris_bayes_2d.ipynb`; see `task_examples_figures.ipynb` for
-  provenance. Stress that prediction does not mean "output a point" -- the
-  fan of posterior decision boundaries is the predictive distribution. Lectures
-  7-8 build the models (GLMs, deep nets, Bayesian neural nets, GPs) that scale
-  this idea.
-]
-
-== Generation: what should we produce?
-
-#content-block(
-  layout: "top",
-  object-width: 84%,
-  object: [
-    #course-figure(
-      lecture-figure-path("figures/task_examples_figures__generation_vae_samples.png"),
-      source: "figures/task_examples_figures__generation_vae_samples.png",
-      caption: [Training faces (top) and samples from a learned latent-variable model (bottom)],
-      width: 100%,
-      height: 4.9cm,
-    )
-  ],
-  key-points: [
-    #text(size: 0.88em)[
-      - $z tilde p(z)$, $quad x | z tilde p_theta (x | z)$
-      #uncover("2-")[
-        - new objects: sample $z^((s)) tilde p(z)$, decode $x^((s)) tilde p_theta (x | z^((s)))$
-        - retaining the distributional structure of the output is itself part of the task
-      ]
-    ]
-  ],
-)
-
-#note[
-  Especially compelling for high-dimensional structured outputs -- images,
-  text, audio, trajectories -- but that is what makes generation *motivating*,
-  not what *defines* it. A scalar distribution can be simulated too.
-]
-
-#speaker-note[
-  Adapted from Murphy Fig. 21.2 (Ch. 21, VAEs), `celeba_vae_ae_comparison.ipynb`.
-  Name the substitution out loud: this is a lightweight CPU lecture
-  adaptation (Olivetti faces, a small fully-connected VAE, seconds of
-  training) standing in for a GPU-trained convolutional VAE on CelebA -- the
-  blur is a genuine property of pixel-wise VAE likelihoods, not a rendering
-  failure. Lectures 9-10 build VAEs, autoregressive models, flows,
-  energy-based models, diffusion, and GANs.
-]
-
-== Discovery: what structure explains the data?
-
-#content-block(
-  layout: "side-left",
-  object-width: 58%,
-  object: [
-    #course-figure(
-      lecture-figure-path("figures/task_examples_figures__discovery_gmm_clusters.svg"),
-      source: "figures/task_examples_figures__discovery_gmm_clusters.svg",
-      caption: [Unlabeled data and the latent grouping a mixture model infers],
-      width: 100%,
-      height: 6.6cm,
-    )
-  ],
-  key-points: [
-    #text(size: 0.88em)[
-      - $z tilde p(z)$, $quad x | z tilde p(x | z)$, then $p(z | x)$
-      - Not predicting a supplied label. Not synthesizing new data.
-      - Inferring hidden structure that organizes the observations
-    ]
-  ],
-)
-
-#speaker-note[
-  Adapted from Murphy Fig. 28.2 (Ch. 28, mixture models), `gmm_2d.ipynb`. This
-  should feel the most familiar of the four: it is posterior inference over a
-  latent variable, exactly as in Section 1, just with cluster membership in
-  place of a coin bias. Lectures 11-12 build latent factor models,
-  state-space models, and representation learning.
-]
-
-== Generative model, or generation task?
-
-#definition(
-  title: [Generative model $eq.not$ generation task],
-  label: [Careful],
-)[
-  Murphy Ch. 28 builds a generative model of $x$ -- a mixture model specifies
-  $p(x)$ via a latent $z$. But the *task* Ch. 28 cares about is posterior
-  inference of meaningful latent variables (discovery), not generating
-  realistic-looking samples.
-]
-
-#key-points[A model being "generative" tells you it specifies a distribution over $x$. It does not tell you which task the model is being used for.]
-
-#speaker-note[
-  This is the first of two terminology traps this section needs to close.
-  Land it clearly before moving to the second: task labels (prediction,
-  generation, discovery, action) and model labels (discriminative,
-  generative) are different axes.
-]
-
-== Careful: model type is not task type
-
-#content-block(
-  layout: "top",
-  object-width: 88%,
-  object: [
-    #text(size: 0.9em)[
-      #grid(
-        columns: (auto, 1fr),
-        column-gutter: 1em,
-        row-gutter: 0.85em,
-        align: (left, left),
-
-        text(weight: "semibold", fill: palette.accent)[Discriminative / conditional model],
-        [$p(y | x, theta)$ -- $x$ is conditioned on, never assigned a distribution],
-
-        text(weight: "semibold", fill: palette.accent)[Generative model],
-        [$ p(x, y | theta) = p(y | theta) med p(x | y, theta) $],
-
-        [], uncover("2-")[still used for prediction, via Bayes' rule: $p(y | x, theta) prop p(x | y, theta) med p(y | theta)$],
-      )
-    ]
-  ],
-  key-points: [
+    - *Task:* predict the Iris species from four sepal and petal measurements
     #uncover("2-")[
-      - A generative model can solve a prediction task
-      - A conditional model $p(y | x)$ can support the generation task
-      - Do not read $p(y|x)$ as "prediction" and $p(x)$ as "generation"
+      - *Experience:* 150 labeled flowers, with 50 examples from each species
+    ]
+    #uncover("3-")[
+      - *Performance:* mean zero-one loss, the training misclassification rate
     ]
   ],
 )
 
 #speaker-note[
-  The second terminology trap. Discriminative/generative describes how the
-  model factorizes the joint distribution. Prediction/generation/discovery/
-  action describes what question we are asking. The two axes cross freely --
-  a classical generative classifier is a standard way to solve a prediction
-  task.
+  This is Mitchell's framework and the conceptual hinge for the rest of the
+  machine-learning discussion. Task is what the learned system must do.
+  Experience is what data, feedback, or interaction the learner receives.
+  Performance is how success is evaluated.
+
+  For Iris, the task is species prediction from four measurements, the
+  experience is 150 labeled flowers, and performance is mean zero-one loss.
+  Stress that these are separate axes. The same prediction task can be trained
+  from different experience regimes, and the same experience regime can
+  support different tasks. Low training loss also does not yet show that the
+  predictor will work on future flowers.
 ]
 
-== How much distribution does prediction need?
+== Summary: From statistics to machine learning
+
+#content-block(
+  key-points: [
+    - Statistics and computer science
+      - Statistics focused on the values of unknown parameters
+      - Computer science develops functions that map inputs to outputs
+    #uncover("2-")[
+    - Machine learning is a branch of computer science
+      - Where the function is learned from experience
+    ]
+    #uncover("3-")[
+    - A learning problem is defined by three ingredients: task, experience, and performance
+      - One canonical pairing uses supervised experience $D = {(x_n, y_n)}$ for prediction
+      - The experience regime and the task are related, but they are not the same taxonomy
+    ]
+  ],
+)
+
+#speaker-note[
+  This summary marks the conceptual change in emphasis. We still use the
+  probabilistic language students know, but now organize the problem around a
+  task, the experience available for learning, and a measure of performance.
+  Iris has made each piece concrete: a predictor maps four measurements to a
+  species; the training data provide labeled examples; and zero-one loss
+  measures classification errors.
+
+  Supervised learning is therefore one canonical pairing of experience and
+  task, not the master taxonomy for everything learned probabilistic systems
+  can do. The next section separates those two axes explicitly.
+
+  End on the final question. Minimizing loss on observed examples is a
+  well-defined procedure, but it is not yet evidence that the predictor will
+  work on future flowers. The next section shows that familiar regression
+  notation can play different roles depending on the task we are trying to
+  solve.
+]
+
+#section-metadata(
+  short-title: [ML problem classes],
+  subtitle: [Tasks, probability objects, and Gaussian inference],
+)
+
+= Classes of machine learning problems
+
+// Lecture 1 continuation after the machine-learning task taxonomy.
+// Slide bodies use equations, figures, and schematics; teaching prose stays in speaker notes.
+
+// `schema-node`, `schema-arrow`, and `source-note` are shared course
+// components (see course.typ); they are imported via `*` above.
+
+== Experience taxonomy
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #text(size: 0.85em)[
+      #grid(
+        columns: (1fr, 1fr),
+        column-gutter: 0.8em,
+        row-gutter: 0.7em,
+        align: center + horizon,
+        schema-node([Supervised], [$D = {(x_n, y_n)}$]),
+        uncover("2-")[
+          #schema-node([Unsupervised], [$D = {x_n}$])
+        ],
+        uncover("3-")[
+          #schema-node([Self-supervised], [$D = {x_n, f(x_n)} "or" {f(x_n), x_n}$])
+        ],
+        uncover("4-")[
+          #schema-node([Reinforcement / interaction], [
+            #stack(
+              spacing: 0.3em,
+              [$"decision": x(t) arrow.r a(t)$],
+              [$"action": (x(t), a(t)) arrow.r x(t+1)$],
+              [$"reward": x(t+1) arrow.r r(t+1)$],
+            )
+          ])
+        ],
+      )
+      #source-note[]
+    ]
+  ],
+  key-points: [#text(size: 0.75em)[
+    Experience describes what the learner gets to observe  ]
+  ],
+)
+
+#speaker-note[
+  These familiar Book 1 categories are primarily experience regimes. They
+  describe what the learner gets to observe: paired inputs and targets,
+  unlabeled observations, targets constructed from the observations, or a
+  stream of states, actions, rewards, and consequences. They do not by
+  themselves say what the learned system is ultimately for.
+]
+
+== Task taxonomy
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    // Every node in this grid states a Task/Performance pair; route them all
+    // through one wrapper so they stay visually consistent.
+    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.7em, ..body), density: "prose")
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 0.8em,
+      row-gutter: 0.7em,
+      align: center + horizon,
+
+      taxonomy-node(
+        [Prediction],
+        [Task: ${(x_n, y_n)} arrow.r hat(y) = f_D (x_*)$],
+        [Performance: $f_P ( y_*, hat(y) )$],
+      ),
+
+      uncover("2-")[
+        #taxonomy-node(
+          [Generation],
+          [Task: ${x_n} arrow.r ({c}, p_D (x | c)) arrow.r x_* ~ p_D (x | c)$],
+          [Performance: $f_P ( p (x | c), x_* )$],
+        )
+      ],
+
+      uncover("3-")[
+        #taxonomy-node(
+          [Discovery],
+          [Task: ${x_n} arrow.r ( {z}, f_D (x) ) arrow.r hat(z) = f_D (x_*)$],
+          [Performance: $f_P (hat(z), x_*)$],
+        )
+      ],
+
+      uncover("4-")[
+        #taxonomy-node(
+          [Action],
+          [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
+          [Performance: $f_P ({r_(t)})$],
+        )
+      ],
+    )
+  ],
+  key-points: [
+    #let task-focus(title, basic, performance, example) = stack(
+      spacing: 0.5em,
+      align(left, text(weight: "semibold", fill: palette.accent, title)),
+      grid(
+        columns: (7em, 1fr),
+        column-gutter: 0.65em,
+        row-gutter: 0.25em,
+        align: left,
+        [*Basic task*], basic,
+        [*Performance*], performance,
+        [*Example*], example,
+      ),
+    )
+
+    #text(size: 0.75em)[
+      #block(width: 100%, height: 3.1cm)[
+        #align(left + horizon)[
+          #only("1")[
+            #task-focus(
+              [Prediction],
+              [Map inputs to outputs],
+              [Successful prediction],
+              [Classification or regression],
+            )
+          ]
+
+          #only("2")[
+            #task-focus(
+              [Generation],
+              [Produce new examples],
+              [Similarity to the true distribution],
+              [Text or image synthesis],
+            )
+          ]
+
+          #only("3")[
+            #task-focus(
+              [Discovery],
+              [Find a representation of the data],
+              [Quality of the discovered representation],
+              [Clustering or dimensionality reduction],
+            )
+          ]
+
+          #only("4")[
+            #task-focus(
+              [Action],
+              [Choose actions to maximize future reward],
+              [Ability to achieve the desired outcome],
+              [Reinforcement learning],
+            )
+          ]
+
+          #only("5")[
+            #grid(
+              columns: (7em, 1fr),
+              column-gutter: 0.65em,
+              row-gutter: 0.25em,
+              align: left,
+              [*Prediction*], [Map inputs to outputs],
+              [*Generation*], [Produce new examples],
+              [*Discovery*], [Find a representation of the data],
+              [*Action*], [Choose actions to achieve desired outcomes],
+            )
+          ]
+        ]
+      ]
+    ]
+  ],
+)
+
+#speaker-note[
+  This is the Book 2 shift. The advanced course is not primarily organized
+  around the format of the training data. It is organized around what
+  probabilistic models let us do: prediction, generation, discovery, and
+  action. These are task or capability classes: they describe what the learned
+  system is being asked to accomplish. Walk through one task at a time using
+  the same three questions: what is the basic task, how is performance judged,
+  and what is a paradigmatic example? The final reveal compresses the four
+  classes to one line each so the organizing taxonomy remains visible.
+]
+
+== There are many combinations of experience and task 
+
+#content-block(
+  layout: "top",
+  object-width: 98%,
+  object: [
+    #align(center)[
+      #text(size: 0.46em)[
+        #table(
+          columns: (1.15fr, 1fr, 1fr, 1fr, 1fr),
+          align: (left, center, center, center, center),
+          inset: (x: 5pt, y: 5pt),
+          stroke: 0.6pt + palette.rule-line,
+          table.header(
+            [*Experience*], [*Prediction*], [*Generation*], [*Discovery*], [*Action*],
+          ),
+          [*Supervised*], [Classification], [—], [—], [Imitation learning],
+          [*Unsupervised*], [—], [Density modeling], [Clustering / PCA], [—],
+          [*Self-supervised*], [Next-token prediction], [Language generation], [Representation learning], [—],
+          [*Reinforcement / interaction*], [—], [—], [—], [Policy learning],
+        )
+      ]
+    ]
+  ],
+  key-points: [
+    #text(size: 0.7em)[
+      - Not every type of experience supports every task.
+      - Common pairings do exist.
+    ]
+  ]
+)
+
+#speaker-note[
+  Cross the two axes explicitly. Supervised experience is common for prediction,
+  but it can also support action through imitation learning. Unsupervised
+  experience can support generation or discovery. Self-supervised experience
+  can support prediction, generation, and representation discovery. Interactive
+  experience is the canonical route to policy learning.
+
+  The matrix is deliberately sparse. The point is not to catalogue every cell:
+  the same task may be trained from different experience regimes, and the same
+  experience regime can support different tasks. Performance remains the third
+  axis that decides what counts as success.
+]
+
+== Classification and regression
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      columns: (1fr, 0.22fr, 1fr),
+      gutter: 0.5em,
+      align: center + horizon,
+      schema-node([Classification], [
+        $y in {1, dots, C}$\
+        $x quad arrow.r quad hat(y)$
+      ]),
+      schema-arrow,
+      uncover("2-")[
+        #schema-node([Regression], [
+          $y in RR$\
+          $x quad arrow.r quad hat(y)$
+        ])
+      ],
+    )
+    #v(0.85em)
+    #align(center)[$D = {(x_n, y_n) : n = 1, dots, N}$]
+    #source-note[Course schematic; Book 1 §1.2.2]
+  ],
+)
+
+#speaker-note[
+  Both settings use paired examples. The visual contrast is the output space:
+  a finite set of unordered classes versus a real-valued target. Do not begin
+  fitting logistic or linear regression here.
+]
+
+== Training and generalization
+
+#content-block(
+  layout: "top",
+  object-width: 98%,
+  object: [
+    #grid(
+      columns: (1fr, 0.18fr, 0.75fr, 0.18fr, 1fr),
+      gutter: 0.3em,
+      align: center + horizon,
+      schema-node([$D_("train")$], [$L(theta; D_("train"))$]),
+      schema-arrow,
+      schema-node([$f_D$], [$x_* quad arrow.r quad hat(y)_*$], fill: palette.paper),
+      schema-arrow,
+      uncover("2-")[#schema-node([$D_("test")$], [$L(theta; D_("test"))$])],
+    )
+    #v(0.85em)
+    #align(center)[$
+      L(theta; D) = frac(1, |D|) sum_((x,y) in D) ell(y, f(x; theta))
+    $]
+    #source-note[Course schematic; Book 1 §1.2.3]
+  ],
+)
+
+#speaker-note[
+  The training loss belongs to the fitting procedure. The held-out loss checks
+  whether the learned function works on new cases. Keep the distinction visual
+  and defer formal ERM to Lecture 2.
+]
+
+== Discovery from unsupervised experience
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #grid(
+      columns: (1.1fr, 0.85fr),
+      gutter: 1.0em,
+      align: center + horizon,
+      [
+        #course-figure(
+          lecture-figure-path("figures/task_examples_figures__discovery_gmm_clusters.svg"),
+          source: "Murphy (2025), Book 1, Ch. 28; course adaptation",
+          width: 100%,
+          height: 6.5cm,
+          show-source: false,
+        )
+      ],
+      [
+        #stack(
+          spacing: 0.75em,
+          schema-node([Observed data], [$D = {x_n : n = 1, dots, N}$]),
+          uncover("2-")[
+            #align(center)[#text(size: 1.25em, fill: palette.accent)[↓]]
+            #schema-node([$z_n tilde p(z)$], [$"latent"$], fill: palette.paper)
+            #align(center)[#text(size: 1.25em, fill: palette.accent)[↓]]
+            #schema-node([$x_n | z_n tilde p(x | z_n, theta)$], [$"observed"$], fill: palette.paper)
+          ]
+        )
+      ],
+    )
+    #figure-source("Murphy (2025), Book 1, Ch. 28; course adaptation")
+  ],
+)
+
+#speaker-note[
+  The experience here is unlabeled observations D = {x_n}. The task is
+  discovery: infer latent structure that helps explain the observations. The
+  latent-variable form prepares mixtures, factor models, clustering, and
+  representation learning.
+
+  Performance is less straightforward than classification accuracy. Depending
+  on the purpose, we might use likelihood, held-out prediction, interpretability,
+  downstream usefulness, recovery of known structure, or scientific value.
+]
+
+== Action from interactive experience
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      columns: (1fr, 0.18fr, 1fr, 0.18fr, 1fr),
+      gutter: 0.35em,
+      align: center + horizon,
+      schema-node([$s_t$], [$"state"$]),
+      schema-arrow,
+      schema-node([$a_t = pi(s_t)$], [$"action"$], fill: palette.paper),
+      schema-arrow,
+      schema-node([$r_t$], [$"consequence"$]),
+    )
+    #v(0.85em)
+    #align(center)[$pi: cal(S) arrow.r cal(A)$]
+    #source-note[Course schematic; Book 1 §§1.3–1.4]
+  ],
+)
+
+#speaker-note[
+  Reinforcement learning is one experience regime commonly associated with
+  action: the learner interacts, observes consequences, and receives reward.
+  It is not identical to the action task. In the Book 2 framing, action also
+  includes decision theory, bandits, active learning, planning, and causal
+  decision-making.
+
+  Action requires a performance criterion such as reward, utility, regret, or
+  expected loss. This is only a map marker, not a reinforcement-learning
+  lecture.
+]
+
+== Data type is another axis
+
+#content-block(
+  layout: "top",
+  object-width: 98%,
+  object: [
+    #grid(
+      columns: (1fr, 1fr, 1fr, 1fr),
+      gutter: 0.65em,
+      align: center + horizon,
+      schema-node([Iris], [#stack(spacing: 0.12em, [$x in RR^4$], [$y in {1,2,3}$])]),
+      schema-node([Images], [#stack(spacing: 0.12em, [$x in [0,1]^(H times W times C)$], [$y in {1, dots, K}$])]),
+      schema-node([Text], [#stack(spacing: 0.12em, [$x = (w_1, dots, w_T)$], [$y$ or $x_(t+1)$])]),
+      schema-node([Sensor stream], [#stack(spacing: 0.12em, [$x_(1:T)$], [$z_(1:T)$])]),
+    )
+    #source-note[Course schematic; dataset examples named in the Lecture 1 coverage specification]
+  ],
+)
+
+#speaker-note[
+  Data modality is not the same as task. The same modality can support many
+  tasks. Images can be classified, generated, segmented, or used for
+  representation learning. Text can be predicted, generated, summarized, or
+  clustered. Sensor streams can support forecasting, state estimation, anomaly
+  detection, and control. Use these as recognition landmarks only; the course
+  will return to each data type when model assumptions and inference tools call
+  for it.
+]
+
+== Summary: Classes of machine-learning problems
+
+#content-block(
+  key-points: [
+    - A learning problem has three ingredients: task, experience, and performance
+    - Experience regimes: supervised, unsupervised, self-supervised, and interactive
+    - Task classes: prediction, generation, discovery, and action
+    - Performance depends on the task: loss, likelihood, calibration, sample quality, recovered structure, utility, reward, or regret
+    - Probabilistic models provide a common language across all three axes
+  ],
+)
+
+#speaker-note[
+  Close by naming the three axes once more. Supervised, unsupervised,
+  self-supervised, and reinforcement learning mostly classify the learner's
+  experience. Prediction, generation, discovery, and action classify what the
+  learned probabilistic system is asked to do. Performance says how success is
+  measured, and its form depends on the task.
+
+  Common pairings are useful conventions, not definitions. Probabilistic models
+  provide the shared language across all of these. The remaining lecture now
+  supplies probability objects for uncertainty, dependence, and conditioning.
+]
+
+#section-metadata(
+  short-title: [Moments],
+  subtitle: [Summaries, conditional summaries, and hidden structure],
+)
+
+= Moments and conditional moments
+
+== Expectation
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 1.3em,
+      align: center + horizon,
+      schema-node([Continuous], [$E[X] = integral x p(x) dif x$], fill: palette.paper),
+      schema-node([Discrete], [$E[X] = sum_x x p(x)$], fill: palette.paper),
+    )
+    #v(1.0em)
+    #align(center)[$E[a X + b] = a E[X] + b$]
+    #source-note[Course schematic; Book 1 §2.2.5]
+  ],
+)
+
+#speaker-note[
+  Reintroduce expectation as a model-based average. The discrete and
+  continuous forms are the same construction with different summation rules.
+]
+
+== Linearity of expectation
 
 #content-block(
   layout: "top",
   object-width: 88%,
   object: [
-    #text(size: 0.88em)[
+    #align(center)[
       #grid(
-        columns: (auto, 1fr),
-        column-gutter: 1em,
-        row-gutter: 0.7em,
-        align: (left, left),
-
-        text(weight: "semibold", fill: palette.accent)[Prediction],
-        [$ a^*(x) = op("argmin")_a bb(E)[L(Y, a) | X=x] $],
-        [], text(size: 0.85em)[squared error $arrow.r$ mean, absolute error $arrow.r$ median, 0-1 loss $arrow.r$ mode],
-
-        uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Generation]],
-        uncover("2-")[$ Q_theta (dot | x) approx P(dot | x), quad Y^((s)) tilde Q_theta (dot | x) $],
+        columns: (1fr, 0.2fr, 1fr),
+        gutter: 0.4em,
+        align: center + horizon,
+        schema-node([$X_1, dots, X_m$], [$"random quantities"$]),
+        schema-arrow,
+        schema-node([$sum_i X_i$], [$E[sum_i X_i] = sum_i E[X_i]$], fill: palette.paper),
       )
     ]
-  ],
-  key-points: [
-    Prediction asks for whatever functional of $p(y|x)$ a loss requires. Generation asks for enough of the distribution to sample from it.
-  ],
-)
-
-#note[
-  If a predictive system learns the full conditional distribution with a
-  proper scoring rule and we then sample from it, the boundary between
-  probabilistic forecasting and conditional generation can become thin --
-  especially for high-dimensional, structured outputs. Worth stating once,
-  not a hard boundary to defend.
-]
-
-#speaker-note[
-  Keep this modest. The goal is a careful, usable distinction, not a
-  philosophical thesis about prediction versus generation.
-]
-
-== Action: where should we measure next?
-
-#content-block(
-  layout: "side-left",
-  object-width: 66%,
-  object: [
-    #course-figure(
-      lecture-figure-path("figures/task_examples_figures__action_active_learning.svg"),
-      source: "figures/task_examples_figures__action_active_learning.svg",
-      caption: [A GP fit to what has been measured, and the acquisition function it maximizes],
-      width: 100%,
-      height: 8.8cm,
-    )
-  ],
-  key-points: [
-    #text(size: 0.82em)[
-      - Measurements are expensive; the model decides where the next one goes
-      - $x_"next" = op("argmax")_x alpha(x, D)$
-      - with $alpha(x) = sqrt(VV[f(x) | D])$
-      #uncover("2-")[
-        - Prediction, generation and discovery all *report* something
-        - Action *changes what happens next*
-      ]
-    ]
+    #v(0.9em)
+    #align(center)[$E[a X + b] = a E[X] + b$]
   ],
 )
 
 #speaker-note[
-  Reproduces the active-learning half of Murphy Fig. 34.16 (Ch. 34.7),
-  `bayes_opt_vs_active_learning.ipynb`; the Bayesian-optimization comparison
-  is left out on purpose, and the JAX stack is replaced by a NumPy GP. See
-  `task_examples_figures.ipynb`, Family A.
-
-  Walk the figure in order: the black points are the two measurements we
-  started with, the red ones are the six the algorithm asked for, and the
-  bottom panel is what it was maximizing each time. The dotted line is the
-  query it would make next. Note that the six red points are not evenly
-  spaced -- they cluster where the function wiggles, because that is where the
-  posterior stayed wide. Same Iris active-learning move as two slides back,
-  in a completely different domain: there, which flower to label; here, where
-  to measure a function.
+  Emphasize that linearity does not require independence. That detail will
+  become useful when expectations are nested inside models and algorithms.
 ]
 
-== Beyond acquisition: actions with consequences
+== Variance and second moments
 
 #content-block(
   layout: "top",
-  object-width: 76%,
+  object-width: 90%,
   object: [
-    #align(center + horizon)[
-      #course-diagram(
-        spacing: (4.2em, 3em),
-        node-stroke: 1.2pt + palette.dark,
-        node-fill: palette.paper,
-        edge-stroke: 1.2pt + palette.muted,
-        mark-scale: 65%,
-
-        graph-node((0, 0.5), name: <b-state>, shape: circle, width: 2.8em, height: 2.8em)[Oil\ state],
-        graph-node((1, 0), name: <b-sound>, shape: fletcher.shapes.rect, width: 4.2em, height: 2em)[Sounding],
-        graph-node((2, 0.5), name: <b-drill>, shape: fletcher.shapes.rect, width: 4.2em, height: 2em)[Drill?],
-        graph-node((3, 0.5), name: <b-utility>, shape: fletcher.shapes.diamond, width: 3.8em, height: 2.8em)[Utility],
-
-        graph-edge(<b-state>, <b-sound>, "-|>", bend: 12deg),
-        graph-edge(<b-sound>, <b-drill>, "-|>"),
-        graph-edge(<b-drill>, <b-utility>, "-|>"),
-        graph-edge(<b-state>, <b-utility>, "-|>", bend: -20deg),
-      )
-    ]
-  ],
-  key-points: [
-    #twocol[
-      - Uncertainty alone told us where to *look*
-      - It cannot tell us what a wrong choice *costs*
-    ][
-      #uncover("2-")[
-        - That needs preferences and an action rule
-        - $a^* = op("argmax")_a EE[U(a, "state") | "information"]$
-      ]
-    ]
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 1.1em,
+      align: center + horizon,
+      schema-node([Variance], [#stack(spacing: 0.12em, [$V[X] = E[(X - mu)^2]$], [$= E[X^2] - mu^2$])]),
+      schema-node([Second moment], [$E[X^2] = sigma^2 + mu^2$]),
+    )
+    #source-note[Course schematic; Book 1 §2.2.5]
   ],
 )
 
-#note[Murphy covers this in Part VI, from Ch. 34. This course stops at Ch. 33 -- see `Syllabus.md`.]
-
 #speaker-note[
-  Murphy's oil-wildcatter example (Ch. 34): sound before drilling, or drill
-  blind? This slide earns its place only by contrast with the previous one.
-  There, the acquisition function came for free from the posterior -- maximum
-  variance, maximum entropy. Here it does not: a dry hole and a missed
-  gusher are both errors, and nothing in the probability model says which one
-  hurts more. That is the extra ingredient, and it is where the course stops.
-
-  Say the boundary out loud: Murphy keeps going into decision theory,
-  bandits, reinforcement learning and causality. We stop at Ch. 33. Action is
-  on the map so that the map is honest, not because we will build it.
+  The alternative variance identity separates the second moment from the
+  squared mean. Name both now because covariance and Gaussian calculations
+  use the same pattern.
 ]
 
-== Summary: What do we use learned models for?
+== Conditional expectation
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #grid(
+      columns: (1fr, 0.22fr, 1fr, 0.22fr, 1fr),
+      gutter: 0.35em,
+      align: center + horizon,
+      schema-node([$Y$], [$"group / cause"$]),
+      schema-arrow,
+      schema-node([$p(X | Y)$], [$E[X | Y]$], fill: palette.paper),
+      schema-arrow,
+      schema-node([$p(X)$], [$E[X] = E_Y[E[X | Y]]$]),
+    )
+    #source-note[Course schematic; Book 1 §2.2.5]
+  ],
+)
+
+#speaker-note[
+  Conditional expectation is itself a function of the conditioning variable.
+  The outer expectation averages those conditional means using the marginal
+  distribution of the conditioning variable.
+]
+
+== Total variance
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$
+      V[X] = underbrace(E_Y[V[X | Y]])_("within") + underbrace(V_Y[E[X | Y]])_("between")
+    $]
+    #v(1.0em)
+    #grid(
+      columns: (1fr, 0.25fr, 1fr),
+      gutter: 0.45em,
+      align: center + horizon,
+      schema-node([$V[X | Y]$], [$"conditional spread"$]),
+      align(center + horizon)[#text(size: 1.2em, fill: palette.accent)[$+$]],
+      schema-node([$E[X | Y]$], [$"conditional location"$]),
+    )
+    #source-note[Course schematic; Book 1 §2.2.5]
+  ],
+)
+
+#speaker-note[
+  Introduce the within-plus-between decomposition without deriving it. It is a
+  compact map for mixtures, hierarchical models, posterior prediction, and
+  later Gaussian conditioning.
+]
+
+== Same summaries, different structure
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #grid(
+      columns: (1fr, 0.18fr, 1fr),
+      gutter: 0.45em,
+      align: center + horizon,
+      schema-node([Structure A], [#stack(spacing: 0.12em, [$bar(x), s_x^2, rho$], [$bullet quad bullet quad bullet quad bullet$])]),
+      align(center + horizon)[#text(size: 1.25em, fill: palette.accent)[$!=$]],
+      schema-node([Structure B], [#stack(spacing: 0.12em, [$bar(x), s_x^2, rho$], [$bullet quad quad bullet quad quad bullet$])]),
+    )
+    #v(0.85em)
+    #align(center)[$"summaries" quad != quad "full data geometry"$]
+    #source-note[Course schematic; Anscombe/Datasaurus design principle]
+  ],
+)
+
+#speaker-note[
+  The marks stand for deliberately different point configurations. Use this as
+  a warning: moments and correlations are powerful, but inspection and model
+  checking remain necessary.
+]
+
+== Summary: Moments and conditional moments
 
 #content-block(
   key-points: [
-    - Prediction, generation, discovery and action are different questions asked of a fitted model -- not different kinds of model
-    - The four tasks arise in very different domains -- and all four can be asked of one small table of flower measurements
-    - A task is fixed by what is observed, what is unknown, and what we want done -- not by the dataset
-    - Discriminative / generative describes the model; prediction / generation / discovery / action describes the task
-    - Action needs a rule for choosing, and utilities once choices have costs -- outside this course (Murphy Part VI)
-    - Lectures 7-12 build prediction, generation, and discovery in turn
+    - Expectation: $E[X]$
+    - Variance: $V[X] = E[X^2] - E[X]^2$
+    - Conditional expectation: $E[X | Y]$
+    - Total expectation: $E[X] = E_Y[E[X | Y]]$
+    - Total variance: within-condition variation plus between-condition variation
   ],
 )
 
 #speaker-note[
-  Pivot back to careful notation: having motivated why the distinctions
-  matter, the next section fast-reactivates the joint/conditional grammar
-  that all four tasks are built from.
+  These identities are the numerical grammar for the Gaussian material that
+  follows. Keep the students oriented toward conditioning, not derivation.
 ]
 
 #section-metadata(
-  short-title: [Model grammar],
-  subtitle: [Observed quantities, unknown quantities, predictions, and factorization],
+  short-title: [Categorical],
+  subtitle: [The probability language of multiclass labels],
 )
 
-= The grammar of probabilistic models
+= Categorical, multinomial, and softmax
 
-== Three recurring model objects
+== Categorical labels
 
-#triad[
-  *Observed data*\
-  $D$, $x$, $y$\
-  #text(size: 0.8em)[what we measured]
-][
-  *Unknown quantities*\
-  $theta$, $z$\
-  #text(size: 0.8em)[parameters and latent variables]
-][
-  *Future quantities*\
-  $tilde(y)$, $tilde(x)$\
-  #text(size: 0.8em)[what we want to predict or generate]
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$"Cat"(y | theta) = product_(c=1)^C theta_c^(I(y = c))$]
+    #v(0.9em)
+    #grid(
+      columns: (1fr, 0.2fr, 1fr),
+      gutter: 0.4em,
+      align: center + horizon,
+      schema-node([$y in {1, dots, C}$], [$"one label"$]),
+      schema-arrow,
+      schema-node([$theta in Delta^(C-1)$], [#stack(spacing: 0.12em, [$0 <= theta_c <= 1$], [$sum_c theta_c = 1$])]),
+    )
+  ],
+)
+
+#speaker-note[
+  The categorical distribution is the multiclass extension of Bernoulli. The
+  simplex constraints, rather than any fitting method, are the important new
+  object on this slide.
 ]
 
-#key-points[Most confusion in probabilistic ML is confusion about which object a distribution is over.]
+== One-hot encoding
 
-== Factorisation is where assumptions live
-
-The same joint distribution can be written as products of simpler terms.
-
-#align(center)[$
-  p(D, theta) = p(D | theta) p(theta)
-$]
-
-#align(center)[$
-  p(x, z) = p(x | z) p(z)
-$]
-
-#align(center)[$
-  p(y, x, theta) = p(y | x, theta) p(x) p(theta)
-$]
-
-#key-points[Model structure is not decoration; it is the set of independence and generative assumptions.]
-
-== Do not mix up these distributions
-
-#table(
-  columns: (auto, 1fr, 1fr),
-  inset: 8pt,
-  [*Expression*], [*Distribution over*], [*Role*],
-  [$p(y | theta)$], [data $y$], [sampling / observation model],
-  [$p(D | theta)$], [viewed as a function of $theta$], [likelihood],
-  [$p(theta)$], [parameter $theta$], [prior],
-  [$p(theta | D)$], [parameter $theta$], [posterior],
-  [$p(tilde(y) | D)$], [future data], [posterior predictive],
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #grid(
+      columns: (1fr, 0.2fr, 1fr),
+      gutter: 0.4em,
+      align: center + horizon,
+      schema-node([$y = 2$], [$"class index"$]),
+      schema-arrow,
+      schema-node([$bold(y) = (0, 1, 0)^T$], [$"one-hot vector"$]),
+    )
+    #v(0.9em)
+    #align(center)[$"Cat"(y | theta) = product_(c=1)^C theta_c^(y_c)$]
+  ],
 )
 
-#note[*Common trap:* A likelihood is not a probability distribution over $theta$ until it is multiplied by a prior and normalized.]
+#speaker-note[
+  One-hot notation lets the categorical probability be written as a product
+  with a single active class. It is convenient for vector-valued models later.
+]
+
+== Multinomial counts
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      columns: (1fr, 0.18fr, 1.4fr),
+      gutter: 0.4em,
+      align: center + horizon,
+      schema-node([$N = (N_1, dots, N_C)$], [$sum_c N_c = N$]),
+      schema-arrow,
+      schema-node([$"Mult"(N | N, theta)$], [$binom(N, N_1, dots, N_C) product_(c=1)^C theta_c^(N_c)$]),
+    )
+    #source-note[Course schematic; Book 1 §2.5]
+  ],
+)
+
+#speaker-note[
+  The categorical model describes one label. The multinomial describes the
+  counts after repeated categorical draws. The counts will return as sufficient
+  statistics in Lecture 2.
+]
+
+== Softmax
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #grid(
+      columns: (1fr, 0.2fr, 1.3fr, 0.2fr, 1fr),
+      gutter: 0.3em,
+      align: center + horizon,
+      schema-node([$a in RR^C$], [$"logits"$]),
+      schema-arrow,
+      uncover("2-")[
+        #schema-node([$"softmax"(a)_c = frac(exp(a_c), sum_(c') exp(a_(c')))$], [$"normalization"$], fill: palette.paper)
+      ],
+      uncover("2-")[#schema-arrow],
+      uncover("3-")[#schema-node([$theta in Delta^(C-1)$], [$"class probabilities"$])],
+    )
+  ],
+)
+
+#speaker-note[
+  Softmax is a map from arbitrary real-valued scores to a point on the
+  probability simplex. Do not derive cross-entropy or optimization here.
+]
+
+== Multiclass logistic notation
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$p(y | x; theta) = "Cat"(y | "softmax"(W x + b))$]
+    #v(0.9em)
+    #grid(
+      columns: (1fr, 0.18fr, 1fr, 0.18fr, 1fr),
+      gutter: 0.3em,
+      align: center + horizon,
+      schema-node([$x$], [$"features"$]),
+      schema-arrow,
+      schema-node([$W x + b$], [$"scores"$], fill: palette.paper),
+      schema-arrow,
+      schema-node([$p(y | x; theta)$], [$"categorical output"$]),
+    )
+  ],
+)
+
+#speaker-note[
+  Treat this as notation preparation. The slide connects features, a linear
+  score vector, softmax, and a categorical distribution without teaching the
+  fitting algorithm.
+]
+
+== Summary: Categorical, multinomial, and softmax
+
+#content-block(
+  key-points: [
+    - Categorical: one multiclass label
+    - One-hot vectors encode class membership
+    - Multinomial: counts from repeated categorical draws
+    - Softmax maps logits to the probability simplex
+    - $p(y | x; theta) = "Cat"(y | "softmax"(W x + b))$
+  ],
+)
+
+#speaker-note[
+  The categorical family gives the probability language for the classification
+  problems introduced earlier. It will later meet likelihood and log loss.
+]
 
 #section-metadata(
-  short-title: [Probability & Bayes],
-  subtitle: [Only the probability machinery we will use repeatedly],
+  short-title: [Empirical distribution],
+  subtitle: [Observed data as a distribution of point masses],
 )
 
-= Fast reactivation: probability and Bayes
+= Dirac delta and empirical distribution
 
-== Probability calculus in one slide
+== Point mass
 
-#twocol[
-  *Rules we use constantly*
-  - product rule
-  - sum / marginalisation rule
-  - conditioning
-  - Bayes' rule
-][
-  #align(center)[$ p(a,b)=p(a|b)p(b) $]
-  #align(center)[$ p(a)=sum_b p(a,b) $]
-  #align(center)[$ p(a|b)=frac(p(a,b), p(b)) $]
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$lim_(sigma -> 0) cal(N)(y | mu, sigma^2) = delta(y - mu)$]
+    #v(1em)
+    #grid(
+      columns: (1fr, 0.22fr, 1fr),
+      gutter: 0.45em,
+      align: center + horizon,
+      schema-node([$cal(N)(y | mu, sigma^2)$], [$sigma^2 " tends to " 0$]),
+      schema-arrow,
+      schema-node([$delta(y - mu)$], [$"all mass at " mu$]),
+    )
+  ],
+)
+
+#speaker-note[
+  Use the narrow-Gaussian limit as an intuition for a point mass. The purpose
+  is the empirical distribution, not distribution-theoretic details.
 ]
 
-#key-points[Nearly every derivation in the course is product-rule plus sum-rule plus normalization.]
+== Empirical distribution
 
-== Transforming variables: the equation we will need
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$p_D(y) = frac(1, N) sum_(n=1)^N delta(y - y_n)$]
+    #v(0.9em)
+    #grid(
+      columns: (1fr, 0.2fr, 1fr),
+      gutter: 0.4em,
+      align: center + horizon,
+      schema-node([$y_1, dots, y_N$], [$"observations"$]),
+      schema-arrow,
+      schema-node([$p_D$], [$1/N, 1/N, dots, 1/N$]),
+    )
+    #source-note[Course schematic; empirical-distribution definition in the coverage specification]
+  ],
+)
 
-If $y = g(x)$ is invertible, probability mass is preserved but density changes:
-
-#align(center)[$
-  p_y(y) = p_x(g^(-1)(y)) abs(frac(d g^(-1)(y), d y))
-$]
-
-In multiple dimensions:
-
-#align(center)[$
-  p_y(bold(y)) = p_x(g^(-1)(bold(y))) abs(det frac(partial g^(-1)(bold(y)), partial bold(y)))
-$]
-
-#key-points[Changing coordinates changes densities through the Jacobian. This is the root of reparameterization tricks and normalizing flows.]
-
-== Bayes' rule as workflow
-
-#align(center)[$
-  p(theta | D) = frac(p(D | theta) p(theta), p(D))
-$]
-
-#align(center)[$
-  p(D) = integral p(D | theta) p(theta) d theta
-$]
-
-#triad[
-  prior\
-  #text(size: 0.8em)[what values were plausible?]
-][
-  likelihood\
-  #text(size: 0.8em)[which values explain the data?]
-][
-  posterior\
-  #text(size: 0.8em)[what remains plausible?]
+#speaker-note[
+  The empirical distribution makes the observed dataset into a distribution:
+  equal mass at each observed value. Lecture 2 will use it as the bridge from
+  likelihood fitting to distribution matching.
 ]
 
-== Posterior prediction is the payoff
+== Summary: Empirical distribution
 
-#align(center)[$
-  p(tilde(y) | D) = integral p(tilde(y) | theta) p(theta | D) d theta
-$]
+#content-block(
+  key-points: [
+    - $delta(y - mu)$: a point mass at $mu$
+    - $p_D(y) = 1/N sum_n delta(y-y_n)$
+    - The empirical distribution records observations without smoothing
+  ],
+)
 
-#key-points[Prediction averages over uncertainty. It is not just plugging in one best parameter.]
-
-#note[This is the bridge from Bayesian statistics to machine learning: learn from data, then predict, generate, or infer hidden structure.]
-
-== Model checking: compare data to replicated data
-
-A fitted model implies new datasets:
-
-#align(center)[$
-  p(tilde(D) | D) = integral p(tilde(D) | theta) p(theta | D) d theta
-$]
-
-Choose a statistic or visual summary $T( dot )$ and compare:
-
-#align(center)[$
-  T(D) quad "vs." quad T(tilde(D))
-$]
-
-#key-points[Model comparison asks which model is better. Model checking asks whether the model is good enough to trust.]
-
-== Point estimates are not the model
-
-#twocol[
-  *Point summaries*
-  - MLE
-  - MAP
-  - posterior mean
-  - posterior median
-][
-  *Full inferential object*
-  #align(center)[$ p(theta | D) $]
-  #align(center)[$ p(tilde(y) | D) $]
+#speaker-note[
+  This is a short bridge section. The next section changes from scalar
+  variation to variation in several dimensions.
 ]
-
-#key-points[We will often optimize point objectives, but the probabilistic target is still a distribution.]
 
 #section-metadata(
-  short-title: [Coin model],
-  subtitle: [The full probabilistic workflow in one deliberately simple model],
+  short-title: [Covariance],
+  subtitle: [Joint variation as geometry],
 )
 
-= Anchor example: the coin model, compressed
+= Covariance, correlation, and dependence
 
-== Coin model: data and parameter
+== Covariance
 
-Let $y_n in {0,1}$, where 1 means heads.
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #grid(
+      columns: (1.1fr, 0.95fr),
+      gutter: 1.0em,
+      align: center + horizon,
+      [
+        #course-figure(
+          lecture-figure-path("figures/book1_fig1_3_iris_pairplot.png"),
+          source: "Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb",
+          width: 100%,
+          height: 6.4cm,
+          show-source: false,
+        )
+      ],
+      [
+        #stack(
+          spacing: 0.85em,
+          align(center)[$"Cov"[X,Y] = E[(X-E[X])(Y-E[Y])]$],
+          uncover("2-")[
+            #grid(
+              columns: (1fr, 1fr, 1fr),
+              gutter: 0.35em,
+              schema-node([$> 0$], [$+$]),
+              schema-node([$= 0$], [$0$], fill: palette.paper),
+              schema-node([$< 0$], [$-$]),
+            )
+          ]
+        )
+      ],
+    )
+    #figure-source("Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb")
+  ],
+)
 
-#align(center)[$
-  y_n | theta tilde "Ber"(theta)
-$]
-
-#align(center)[$
-  D = {y_1, dots, y_N}, quad theta = P(y_n = 1)
-$]
-
-#key-points[$D$ is observed. $theta$ is unknown. The model connects them.]
-
-== Likelihood: from observations to counts
-
-Assuming conditionally independent trials:
-
-#align(center)[$
-  p(D | theta) = product_(n=1)^N theta^(y_n) (1-theta)^(1-y_n)
-$]
-
-Let $N_1=sum_n y_n$ and $N_0=N-N_1$.
-
-#align(center)[$
-  p(D | theta) prop theta^(N_1) (1-theta)^(N_0)
-$]
-
-#key-points[The sequence has been compressed to sufficient statistics for this model.]
-
-== Beta prior and Beta posterior
-
-#align(center)[$
-  theta tilde "Beta"(alpha, beta)
-$]
-
-#align(center)[$
-  p(theta) prop theta^(alpha-1) (1-theta)^(beta-1)
-$]
-
-Combine prior and likelihood:
-
-#align(center)[$
-  theta | D tilde "Beta"(alpha + N_1, beta + N_0)
-$]
-
-#key-points[Conjugacy here is closure under updating: posterior has the same family as the prior.]
-
-== Predicting the next toss
-
-#align(center)[$
-  P(tilde(y)=1 | D) = integral theta p(theta | D) d theta
-$]
-
-#align(center)[$
-  P(tilde(y)=1 | D) = frac(alpha + N_1, alpha + beta + N)
-$]
-
-#key-points[The predictive probability is the posterior mean of the coin bias, not necessarily the MLE.]
-
-== Why keep this elementary example?
-
-The coin model contains the whole course in miniature:
-
-#triad[
-  *model*\
-  $ p(D | theta) p(theta) $
-][
-  *inference*\
-  $ p(theta | D) $
-][
-  *prediction*\
-  $ p(tilde(y) | D) $
+#speaker-note[
+  Covariance records co-variation around the means. The three symbolic panels
+  should anticipate the orientation of Gaussian contours on the next slides.
 ]
 
-#note[Later models change the variables and the algorithms, not the basic grammar.]
+== Covariance matrix
 
-#section-metadata(
-  short-title: [Exponential families],
-  subtitle: [A common algebraic skeleton behind many probabilistic models],
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$"Cov"[bold(x)] = E[(bold(x)-E[bold(x)])(bold(x)-E[bold(x)])^T] = Sigma$]
+    #v(0.9em)
+    #align(center)[$E[bold(x) bold(x)^T] = Sigma + mu mu^T$]
+    #v(0.8em)
+    #align(center)[$Sigma = mat(sigma_1^2, "Cov"[X_1,X_2]; "Cov"[X_2,X_1], sigma_2^2)$]
+  ],
 )
 
-= Exponential families: the reusable structure
-
-== The common form
-
-Many distributions we use can be written as:
-
-#align(center)[$
-  p(x | eta) = h(x) exp(eta^T T(x) - A(eta))
-$]
-
-#table(
-  columns: (auto, 1fr),
-  inset: 8pt,
-  [$T(x)$], [sufficient statistics: what the data contributes],
-  [$eta$], [natural parameters: the coordinates in which updates often simplify],
-  [$A(eta)$], [log-partition function: the normalization term],
-  [$h(x)$], [base measure: what is left over],
-)
-
-#key-points[The exponential family explains why many apparently different models have the same algebraic skeleton.]
-
-== Bernoulli as an exponential-family model
-
-Start with:
-
-#align(center)[$
-  p(y | theta) = theta^y (1-theta)^(1-y)
-$]
-
-Rewrite:
-
-#align(center)[$
-  p(y | eta) = exp(y eta - log(1 + exp(eta)))
-$]
-
-where:
-
-#align(center)[$
-  eta = log frac(theta, 1-theta), quad T(y)=y, quad A(eta)=log(1+exp(eta))
-$]
-
-#key-points[The log-odds is the natural parameter of the Bernoulli. This is why logistic models are so central.]
-
-== Data enter through sufficient statistics
-
-For independent observations:
-
-#align(center)[$
-  p(D | eta) = product_n h(y_n) exp(eta^T T(y_n) - A(eta))
-$]
-
-#align(center)[$
-  p(D | eta) prop exp(eta^T sum_n T(y_n) - N A(eta))
-$]
-
-#key-points[The full dataset often enters the likelihood through $sum_n T(y_n)$. That is the deeper version of "heads and tails are enough" in the coin model.]
-
-== Why the log-partition function matters
-
-The normalization term is not bookkeeping. Its derivatives encode moments:
-
-#align(center)[$
-  bb(E)_eta [T(X)] = nabla_eta A(eta)
-$]
-
-#align(center)[$
-  "Cov"_eta(T(X)) = nabla_eta^2 A(eta)
-$]
-
-#key-points[The same object that normalizes the distribution also gives means, variances, and local curvature. This is the bridge to Fisher information and optimization geometry.]
-
-== Why this matters for probabilistic ML
-
-Exponential-family structure reappears in:
-
-#twocol[
-  - generalized linear models
-  - conjugate priors
-  - variational inference
-  - message passing
-][
-  - natural-gradient ideas
-  - Fisher information
-  - Gaussian approximations
-  - maximum-entropy models
+#speaker-note[
+  The covariance matrix gathers every variance and covariance in one object.
+  The second-moment identity mirrors the scalar identity introduced earlier.
 ]
 
-#note[The point is not to memorize the taxonomy. The point is to recognize when a model has algebra we can exploit.]
+== Affine transformations
+
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #grid(
+      columns: (1fr, 0.22fr, 1fr),
+      gutter: 0.45em,
+      align: center + horizon,
+      schema-node([$bold(x)$], [$"random vector"$]),
+      schema-arrow,
+      schema-node([$A bold(x) + b$], [$"affine map"$], fill: palette.paper),
+    )
+    #v(0.95em)
+    #align(center)[$"Cov"[A bold(x) + b] = A "Cov"[bold(x)] A^T$]
+  ],
+)
+
+#speaker-note[
+  Linear transformations rotate and scale covariance geometry; adding a
+  constant changes the mean but not covariance. This is essential for the
+  linear Gaussian system at the end of the lecture.
+]
+
+== Correlation
+
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$rho = "corr"[X,Y] = frac("Cov"[X,Y], sqrt(V[X] V[Y]))$]
+    #v(0.9em)
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0.65em,
+      schema-node([$rho approx 1$], [$"aligned variation"$]),
+      schema-node([$rho approx 0$], [$"no linear association"$], fill: palette.paper),
+      schema-node([$rho approx -1$], [$"opposed variation"$]),
+    )
+  ],
+)
+
+#speaker-note[
+  Correlation rescales covariance into a unitless measure. Keep causation out
+  of the live narrative; a causal warning can remain a reserve discussion.
+]
+
+== Summary: Covariance and dependence
+
+#content-block(
+  key-points: [
+    - Covariance: joint variation around the means
+    - $Sigma$: covariance matrix
+    - $E[bold(x)bold(x)^T] = Sigma + mu mu^T$
+    - $"Cov"[A bold(x)+b] = A Sigma A^T$
+    - Correlation rescales covariance
+  ],
+)
+
+#speaker-note[
+  This section turns dependence into an object that can be transformed and
+  conditioned. The multivariate Gaussian packages that object into a reusable
+  probability model.
+]
 
 #section-metadata(
   short-title: [Multivariate Gaussian],
-  subtitle: [Dependence, geometry, conditioning, and high-dimensional probability],
+  subtitle: [Geometry, marginalization, and conditioning],
 )
 
-= From scalar uncertainty to multivariate structure
+= Multivariate Gaussian and conditioning
 
-== Why the multivariate Gaussian matters
+== Gaussian geometry
 
-Many later models reduce locally, approximately, or exactly to Gaussian algebra:
-
-#twocol[
-  - Gaussian processes
-  - Kalman filters
-  - Laplace approximations
-  - variational approximations
-][
-  - Bayesian linear models
-  - factor models
-  - state-space models
-  - neural-network uncertainty approximations
-]
-
-#key-points[The multivariate Gaussian is not just another distribution; it is a computational workhorse.]
-
-== Multivariate Gaussian: object and geometry
-
-#align(center)[$
-  bold(x) tilde cal(N)(bold(mu), Sigma)
-$]
-
-#align(center)[$
-  p(bold(x)) prop |Sigma|^(-1/2)
-  exp(-frac(1, 2)(bold(x)-bold(mu))^T Sigma^(-1)(bold(x)-bold(mu)))
-$]
-
-#key-points[$bold(mu)$ locates the cloud; $Sigma$ sets its size, orientation, and dependence structure.]
-
-== Covariance is geometry
-
-#twocol[
-  *Diagonal covariance*
-  #align(center)[$ Sigma = "diag"(sigma_1^2, dots, sigma_D^2) $]
-  #text(size: 0.8em)[axis-aligned uncertainty]
-][
-  *Full covariance*
-  #align(center)[$ Sigma_(i j) = "Cov"(X_i, X_j) $]
-  #text(size: 0.8em)[tilted / coupled uncertainty]
-]
-
-#key-points[Correlations are geometric constraints on plausible joint variation.]
-
-== Typical sets: high-dimensional Gaussians are not near the mode
-
-For $bold(x) ~ cal(N)(bold(0), I_D)$:
-
-#align(center)[$
-  R^2 = norm(bold(x))^2 = sum_(i=1)^D x_i^2 tilde chi^2_D
-$]
-
-#align(center)[$
-  bb(E)[R^2] = D, quad "Var"(R^2) = 2D, quad frac("sd"(R^2), bb(E)[R^2]) = sqrt(frac(2, D)) arrow.r 0
-$]
-
-#key-points[In high dimensions, most probability mass is in a thin shell. The mode can be a terrible guide to typical samples.]
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[$cal(N)(y | mu, Sigma) = frac(1, (2 pi)^(D/2) |Sigma|^(1/2)) exp(-frac(1,2)(y-mu)^T Sigma^(-1)(y-mu))$]
+    #v(0.8em)
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0.6em,
+      schema-node([$Sigma = sigma^2 I$], [$"spherical"$]),
+      uncover("2-")[
+        #schema-node([$Sigma = "diag"(sigma_1^2, sigma_2^2)$], [$"axis-aligned"$], fill: palette.paper)
+      ],
+      uncover("3-")[#schema-node([$Sigma_12 != 0$], [$"tilted"$])],
+    )
+  ],
+)
 
 #speaker-note[
-  They have seen the idea of typical sets before; this slide supplies the Murphy-style quantification. Emphasize that density and probability mass diverge in high dimension because volume matters.
+  Read the density through geometry. The mean locates the cloud; the covariance
+  determines its scale, axes, and dependence. Do not derive its normalizer.
 ]
 
-== Marginalization: ignore variables properly
+== Mahalanobis distance
 
-Partition:
+#content-block(
+  layout: "top",
+  object-width: 88%,
+  object: [
+    #align(center)[$Delta^2 = (y - mu)^T Sigma^(-1)(y - mu)$]
+    #v(0.9em)
+    #grid(
+      columns: (1fr, 0.2fr, 1fr),
+      gutter: 0.4em,
+      align: center + horizon,
+      schema-node([$y - mu$], [$"displacement"$]),
+      schema-arrow,
+      schema-node([$Sigma^(-1)$], [$"geometry-aware scaling"$]),
+    )
+  ],
+)
 
-#align(center)[$
-  bold(x) = mat(bold(x)_1; bold(x)_2), quad
-  Sigma = mat(Sigma_11, Sigma_12; Sigma_21, Sigma_22)
-$]
+#speaker-note[
+  The inverse covariance measures distance in units adapted to the Gaussian's
+  own geometry. Equal Mahalanobis distance means equal-density contours.
+]
 
-For a joint Gaussian:
+== Typical set
 
-#align(center)[$
-  p(bold(x)_1) = cal(N)(bold(x)_1 | bold(mu)_1, Sigma_11)
-$]
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$bold(x) tilde cal(N)(bold(0), I_D), quad R^2 = norm(bold(x))^2 = sum_(i=1)^D x_i^2$]
+    #v(0.85em)
+    #grid(
+      columns: (1fr, 0.25fr, 1fr),
+      gutter: 0.45em,
+      align: center + horizon,
+      schema-node([$E[R^2] = D$], [$"radius squared"$]),
+      align(center + horizon)[#text(size: 1.2em, fill: palette.accent)[$,$]],
+      schema-node([$"sd"(R^2) / E[R^2] = sqrt(2/D)$], [$"relative width"$]),
+    )
+  ],
+)
 
-#key-points[Gaussian marginalization is easy in moment form: keep the relevant block.]
+#speaker-note[
+  In high dimensions, probability mass concentrates in a shell away from the
+  mode. The equation quantifies why the relative shell thickness shrinks.
+]
 
-== Conditioning: use observations to update expectations
+== Gaussian blocks and marginals
 
-#align(center)[$
-  p(bold(x)_1 | bold(x)_2) = cal(N)(bold(x)_1 | bold(mu)_(1|2), Sigma_(1|2))
-$]
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$y = mat(y_1; y_2), quad mu = mat(mu_1; mu_2), quad Sigma = mat(Sigma_11, Sigma_12; Sigma_21, Sigma_22)$]
+    #v(0.9em)
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 1.0em,
+      schema-node([$p(y_1) = cal(N)(y_1 | mu_1, Sigma_11)$], [$"first marginal"$]),
+      schema-node([$p(y_2) = cal(N)(y_2 | mu_2, Sigma_22)$], [$"second marginal"$], fill: palette.paper),
+    )
+  ],
+)
 
-#align(center)[$
-  bold(mu)_(1|2) = bold(mu)_1 + Sigma_12 Sigma_22^(-1) (bold(x)_2 - bold(mu)_2)
-$]
+#speaker-note[
+  Partition the random vector, mean, and covariance consistently. Gaussian
+  marginalization is simple in this representation: retain the relevant mean
+  and covariance block.
+]
 
-#align(center)[$
-  Sigma_(1|2) = Sigma_11 - Sigma_12 Sigma_22^(-1) Sigma_21
-$]
+== Gaussian conditioning
 
-#key-points[Conditioning shifts the mean and removes uncertainty explained by the observed variables.]
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[$p(y_1 | y_2) = cal(N)(y_1 | mu_(1|2), Sigma_(1|2))$]
+    #uncover("2-")[
+      #v(0.75em)
+      #align(center)[$mu_(1|2) = mu_1 + Sigma_12 Sigma_22^(-1)(y_2 - mu_2)$]
+    ]
+    #uncover("3-")[
+      #v(0.45em)
+      #align(center)[$Sigma_(1|2) = Sigma_11 - Sigma_12 Sigma_22^(-1) Sigma_21$]
+    ]
+  ],
+)
 
-== Precision form: why inverse covariance appears everywhere
+#speaker-note[
+  Conditioning shifts the conditional mean according to the observed deviation
+  and subtracts the uncertainty explained by the observation. The result stays
+  Gaussian, which makes this a reusable inference operation.
+]
 
-Define:
+== Bivariate conditional
 
-#align(center)[$
-  Lambda = Sigma^(-1), quad eta = Sigma^(-1) bold(mu)
-$]
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$p(y_1 | y_2) = cal(N)(y_1 | mu_1 + rho frac(sigma_1, sigma_2)(y_2-mu_2), sigma_1^2(1-rho^2))$]
+    #v(0.85em)
+    #grid(
+      columns: (1fr, 0.18fr, 1fr, 0.18fr, 1fr),
+      gutter: 0.3em,
+      schema-node([$y_2 - mu_2$], [$"observation"$]),
+      schema-arrow,
+      schema-node([$rho sigma_1/sigma_2$], [$"mean shift"$], fill: palette.paper),
+      schema-arrow,
+      schema-node([$sigma_1^2(1-rho^2)$], [$"remaining variance"$]),
+    )
+  ],
+)
 
-Then the Gaussian can be written as:
+#speaker-note[
+  The bivariate special case makes the general block formula visible. If the
+  variables are uncorrelated, the observed value does not shift the conditional
+  mean and does not reduce its variance.
+]
 
-#align(center)[$
-  p(bold(x)) prop exp(eta^T bold(x) - frac(1, 2) bold(x)^T Lambda bold(x))
-$]
+== Conditioning as an inference machine
 
-#key-points[Precision form makes many updates additive and connects naturally to exponential-family notation.]
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #grid(
+      columns: (1fr, 0.18fr, 1fr, 0.18fr, 1fr),
+      gutter: 0.3em,
+      align: center + horizon,
+      schema-node([$p(y_1, y_2)$], [$"joint Gaussian"$]),
+      schema-arrow,
+      schema-node([$y_2$], [$"observed"$], fill: palette.paper),
+      schema-arrow,
+      schema-node([$p(y_1 | y_2)$], [$"Gaussian posterior"$]),
+    )
+    #v(0.8em)
+    #align(center)[$Sigma_(1|2) <= Sigma_11$]
+  ],
+)
+
+#speaker-note[
+  This slide names the reusable pattern. We start with a joint model, observe
+  one part, and infer the other. The posterior covariance cannot exceed the
+  marginal covariance in the positive-semidefinite ordering.
+]
+
+== Summary: Multivariate Gaussian and conditioning
+
+#content-block(
+  key-points: [
+    - $mu$: location; $Sigma$: scale, orientation, and dependence
+    - Mahalanobis distance follows covariance geometry
+    - High-dimensional Gaussian mass concentrates in a shell
+    - Marginals retain covariance blocks
+    - Conditionals are Gaussian with shifted mean and reduced covariance
+  ],
+)
+
+#speaker-note[
+  The multivariate Gaussian is the mathematical center of the lecture. The
+  next slide applies exactly this conditioning operation to missing entries.
+]
 
 #section-metadata(
-  short-title: [Comparing distributions],
-  subtitle: [Why divergences become training and approximation objectives],
+  short-title: [Missing values],
+  subtitle: [Inference about hidden entries by conditioning],
 )
 
-= Comparing distributions: the ML pressure point
+= Missing values as Gaussian conditioning
 
-== Divergences: when the object being compared is a distribution
+== Visible and hidden entries
 
-A divergence measures mismatch between distributions, not merely between point estimates.
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #grid(
+      columns: (1fr, 0.18fr, 1fr, 0.18fr, 1fr),
+      gutter: 0.3em,
+      align: center + horizon,
+      schema-node([$y = (y_v, y_h)$], [$"vector"$]),
+      schema-arrow,
+      schema-node([$y_v$], [$"visible"$], fill: palette.paper),
+      schema-arrow,
+      schema-node([$p(y_h | y_v, theta)$], [$"hidden entries"$]),
+    )
+    #v(0.85em)
+    #align(center)[$p(y_h | y_v, theta)$]
+  ],
+)
 
-#align(center)[$
-  D_"KL"(q || p) = bb(E)_(q(x)) [log frac(q(x), p(x))]
-$]
-
-#twocol[
-  *Statistics framing*\
-  estimate parameters, quantify uncertainty, check model adequacy
-][
-  *ML framing*\
-  learn predictive distributions, compare approximations, optimize scalable objectives
+#speaker-note[
+  Missing-value imputation is simply inference about the hidden partition of a
+  vector conditional on the visible partition. Avoid missingness mechanisms and
+  full imputation workflows here.
 ]
 
-#key-points[When the target is a predictive or posterior distribution, training and evaluation naturally become distribution-comparison problems.]
+== Summary: Missing values as conditioning
 
-== Two places divergences will appear
+#content-block(
+  key-points: [
+    - Partition a vector into visible entries $y_v$ and hidden entries $y_h$
+    - Infer hidden entries with $p(y_h | y_v, theta)$
+    - Gaussian conditioning supplies this distribution analytically
+  ],
+)
 
-#twocol[
-  *Prediction*\
-  fit $p_theta(y|x)$ so the predictive distribution assigns high probability to held-out data.
-
-  #align(center)[$ - log p_theta(y | x) $]
-][
-  *Approximate inference*\
-  choose an approximation $q(theta)$ close to the posterior $p(theta | D)$.
-
-  #align(center)[$ D_"KL"(q(theta) || p(theta | D)) $]
+#speaker-note[
+  This brief bridge positions missing values as another conditioning problem,
+  then moves to a model where the joint Gaussian is built from a latent state
+  and a linear observation model.
 ]
-
-#note[We will not catalogue divergences today. We will use this idea when we reach information theory and variational inference.]
 
 #section-metadata(
-  short-title: [Looking forward],
-  subtitle: [Latent variables, computational inference, and the bridge to Lecture 2],
+  short-title: [LGS],
+  subtitle: [Latent state, observation, and Gaussian posterior],
 )
 
-= Looking forward: probability as ML infrastructure
+= Linear Gaussian systems
 
-== Latent variables change the target
+== Linear Gaussian model
 
-#align(center)[$
-  p(z, x) = p(z) p(x | z)
-$]
-
-After observing $x$:
-
-#align(center)[$
-  p(z | x) = frac(p(x | z) p(z), p(x))
-$]
-
-#note[This is the logic behind mixture models, factor models, VAEs, state-space models, and representation learning.]
-
-== Why inference algorithms dominate the course
-
-Often the quantity we want is easy to write and hard to compute:
-
-#align(center)[$
-  p(theta, z | D) = frac(p(D, theta, z), integral sum_z p(D, theta, z) d theta)
-$]
-
-#key-points[The model gives the target distribution; inference algorithms are how we approximate it.]
-
-== Notebook bridge for today
-
-The first notebook should do five things:
-
-1. Recreate the beta-binomial update.
-2. Plot prior, likelihood, posterior, and posterior predictive samples.
-3. Show how posterior samples approximate integrals.
-4. Quantify the typical-set effect for a high-dimensional Gaussian.
-5. Introduce a small multivariate Gaussian conditioning example.
-
-#note[*Diagnostic checkpoint:* This tells us whether Lecture 2 can assume notation fluency or needs more scaffolding.]
-
-== Diagnostic questions before next time
-
-Students should be able to answer:
-
-- Is this expression over data, parameters, latent variables, or predictions?
-- Which factorization assumptions are being made?
-- What is being conditioned on?
-- What integral, sum, or Jacobian term is hard?
-- What approximation might be needed?
-- How would we check whether replicated data look like observed data?
-
-#key-points[These questions will work for almost every model in the course.]
-
-== Summary
-
-- We are building on a Bayesian-first undergraduate course, not repeating it.
-- Bayes' rule is now a modeling grammar for ML tasks.
-- Posterior predictive inference is the bridge to prediction.
-- Multivariate Gaussian algebra is a central tool for dependence and conditioning.
-- The next step is graphical structure and information-theoretic objectives.
-
-#align(center)[[Next: graphical models]]
-
-#section-metadata(
-  short-title: [Reserve],
-  subtitle: [Material to use only if the room needs additional reactivation],
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #grid(
+      columns: (1fr, 0.2fr, 1fr),
+      gutter: 0.4em,
+      align: center + horizon,
+      schema-node([$z tilde cal(N)(mu_z, Sigma_z)$], [$"latent state"$]),
+      uncover("2-")[#schema-arrow],
+      uncover("2-")[
+        #schema-node([$y | z tilde cal(N)(W z+b, Sigma_y)$], [$"observation"$], fill: palette.paper)
+      ],
+    )
+    #v(0.9em)
+    #align(center)[$p(z,y) = p(z)p(y|z)$]
+  ],
 )
 
-= Reserve / expansion slides
-
-== Reserve: probability space
-
-#align(center)[$
-  (Omega, cal(F), P), quad P: cal(F) -> [0,1]
-$]
-
-#triad[
-  *$Omega$*\
-  sample space
-][
-  *$cal(F)$*\
-  event space
-][
-  *$P$*\
-  probability measure
+#speaker-note[
+  This is the first complete inference machine. A Gaussian prior over the
+  state and a linear Gaussian observation model together imply a joint
+  Gaussian distribution.
 ]
 
-#key-points[Useful only if students are shaky on the mathematical foundation.]
+== Joint Gaussian form
 
-== Reserve: random variables and densities
-
-#twocol[
-  *Discrete*\
-  #align(center)[$ p_X(a) = P(X = a) $]
-][
-  *Continuous*\
-  #align(center)[$ P(a <= X <= b) = integral_a^b p_X(x) d x $]
-]
-
-#note[*Common trap:* A density value is not a probability.]
-
-== Reserve: common scalar distributions
-
-#table(
-  columns: (auto, 1fr),
-  inset: 8pt,
-  [*Distribution*], [*When it appears*],
-  [Bernoulli], [one binary outcome],
-  [Binomial], [count of successes],
-  [Categorical], [one class among $K$],
-  [Multinomial], [count vector across classes],
-  [Poisson], [counts per unit exposure],
-  [Gaussian], [continuous measurement/noise/approximation],
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[$mu = mat(mu_z; W mu_z + b)$]
+    #v(0.55em)
+    #align(center)[$Sigma = mat(Sigma_z, Sigma_z W^T; W Sigma_z, Sigma_y + W Sigma_z W^T)$]
+    #v(0.85em)
+    #align(center)[$mat(z; y) tilde cal(N)(mu, Sigma)$]
+  ],
 )
 
-== Reserve: credible intervals
-
-#align(center)[$
-  P(a <= theta <= b | D) = 0.95
-$]
-
-#twocol[
-  *Central interval*\
-  equal tail probability
-][
-  *HDI*\
-  shortest high-density region
+#speaker-note[
+  Show how the prior covariance propagates through the linear map and combines
+  with observation noise. Do not derive the block covariance on the slide.
 ]
 
-#key-points[The probability statement is about $theta$ conditional on the observed data and the model.]
+== Posterior state
 
-== Reserve: Dirichlet-multinomial
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[$p(z | y) = cal(N)(z | mu_(z|y), Sigma_(z|y))$]
+    #uncover("2-")[
+      #v(0.65em)
+      #align(center)[$Lambda_(z|y) = Sigma_z^(-1) + W^T Sigma_y^(-1) W$]
+    ]
+    #uncover("3-")[
+      #v(0.35em)
+      #align(center)[$Sigma_(z|y) = Lambda_(z|y)^(-1)$]
+    ]
+    #uncover("4-")[
+      #v(0.35em)
+      #align(center)[$mu_(z|y) = Sigma_(z|y)(W^T Sigma_y^(-1)(y-b) + Sigma_z^(-1) mu_z)$]
+    ]
+  ],
+)
 
-#align(center)[$
-  bold(theta) tilde "Dir"(bold(alpha))
-$]
+#speaker-note[
+  The posterior is Gaussian because this is just Gaussian conditioning. The
+  precision form makes the update look like added information from prior and
+  observation.
+]
 
-#align(center)[$
-  bold(theta) | D tilde "Dir"(bold(alpha) + bold(N))
-$]
+== Sensor fusion
 
-#key-points[This is the categorical/multinomial analogue of beta-binomial updating.]
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #grid(
+      columns: (1fr, 0.2fr, 1fr, 0.2fr, 1fr),
+      gutter: 0.3em,
+      align: center + horizon,
+      schema-node([Prior], [$cal(N)(z | mu_z, Sigma_z)$]),
+      align(center + horizon)[#text(size: 1.1em, fill: palette.accent)[$times$]],
+      schema-node([Measurement], [$cal(N)(y | W z+b, Sigma_y)$], fill: palette.paper),
+      align(center + horizon)[#text(size: 1.1em, fill: palette.accent)[$prop$]],
+      schema-node([Posterior], [$cal(N)(z | mu_(z|y), Sigma_(z|y))$]),
+    )
+    #v(0.8em)
+    #align(center)[$Sigma_(z|y)^(-1) = Sigma_z^(-1) + W^T Sigma_y^(-1) W$]
+  ],
+)
 
-== Reserve: Gaussian conjugacy in one line
+#speaker-note[
+  This is sensor fusion in probabilistic form. Reliable measurements contribute
+  more precision and shrink the posterior uncertainty more strongly.
+]
 
-Known variance, unknown mean:
+== Summary: Linear Gaussian systems
 
-#align(center)[$
-  y_n | mu tilde cal(N)(mu, sigma^2), quad mu tilde cal(N)(m_0, v_0)
-$]
+#content-block(
+  key-points: [
+    - Prior: $p(z) = cal(N)(z | mu_z, Sigma_z)$
+    - Observation: $p(y | z) = cal(N)(y | W z+b, Sigma_y)$
+    - Joint model: $p(z,y) = p(z)p(y|z)$
+    - Posterior: $p(z|y)$ is Gaussian
+    - Precision adds information from the prior and observation
+  ],
+)
 
-#align(center)[$
-  mu | D tilde cal(N)(m_N, v_N)
-$]
+#speaker-note[
+  This is the final worked architecture for Lecture 1. It assembles task
+  notation, moments, covariance, Gaussian geometry, and conditioning.
+]
 
-#key-points[Precision form makes the posterior update look like adding evidence.]
+== Lecture 1 summary
 
-== Reserve: Markov property
+#content-block(
+  key-points: [
+    - ML tasks specify observed quantities, unknown quantities, and required outputs
+    - Moments and conditional moments describe probabilistic summaries
+    - Categorical, multinomial, and softmax distributions describe labels
+    - Covariance gives multivariate geometry
+    - Gaussian marginalization and conditioning are reusable inference machinery
+    - Linear Gaussian systems provide the first complete inference machine
+  ],
+)
 
-#align(center)[$
-  p(x_(1:T)) = p(x_1) product_(t=2)^T p(x_t | x_(t-1))
-$]
-
-#key-points[A Markov chain is a structured joint distribution over a sequence.]
-
-== Reserve: transition matrix propagation
-
-#align(center)[$
-  pi_(t+1) = pi_t A, quad pi_(t+n) = pi_t A^n
-$]
-
-#align(center)[$
-  pi = pi A
-$]
-
-#key-points[Stationarity is a fixed point of repeated probabilistic transition.]
-
-== Revision notes
-
-- Basic probability is now reserve material, not the live spine.
-- The live spine is: model grammar $arrow.r$ Bayes/prediction $arrow.r$ multivariate Gaussian $arrow.r$ ML tasks.
-- Add notebook-generated plots after choosing the first coding example.
-- Consider moving precision-form slide to reserve if the class looks rusty.
-- Keep Markov chains for Lecture 2 unless needed as a sequence-model teaser.
+#speaker-note[
+  End by naming the linear Gaussian system as a composition of familiar pieces.
+  Lecture 2 will change focus: from probability objects and conditioning to
+  likelihood objectives, fitting, and exponential-family structure.
+]

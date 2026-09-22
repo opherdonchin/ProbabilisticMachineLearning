@@ -44,6 +44,13 @@ It intentionally delegates palette, typography, spacing, list styling, and most 
 
 Use these standards when creating or editing lecture slides for this project.
 
+## Agent Skills prerequisite
+
+AI agents must always use both the `typst-author` and `touying-author` skills from
+[apcamargo/typst-skills](https://github.com/apcamargo/typst-skills) when creating
+or editing lecture slides. Before continuing, check that both skills are installed
+in the current agent environment; if either is unavailable, inform the user.
+
 ## Core architecture
 
 - Use Typst + Touying for lecture slides.

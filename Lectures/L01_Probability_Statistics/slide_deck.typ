@@ -1554,9 +1554,9 @@
       columns: (1fr, 1fr, 1fr),
       gutter: 0.8em,
       align: center + horizon,
-      schema-node([Observed], [#stack(spacing: 0.12em, [$x_"obs"$], [$"features, measurements, context"$])], density: "prose"),
-      schema-node([Latent], [#stack(spacing: 0.12em, [$z$], [$"state, representation, missing value"$])], density: "prose", fill: palette.paper),
-      schema-node([Required], [#stack(spacing: 0.12em, [$y_*$], [$"prediction, sample, decision"$])], density: "prose"),
+      schema-node([Observed], [#stack(spacing: 0.2em, [$x_"obs"$], [$"features, measurements, context"$])], density: "prose"),
+      schema-node([Latent], [#stack(spacing: 0.2em, [$z$], [$"state, representation, missing value"$])], density: "prose", fill: palette.paper),
+      schema-node([Output], [#stack(spacing: 0.2em, [$y_*$], [$"prediction, sample, decision"$])], density: "prose"),
     )
     #v(0.8em)
     #align(center)[$p_D(x_"obs", z, y_*)$]
@@ -1565,7 +1565,7 @@
     - Inputs and outputs may be high-dimensional objects
     - Relevant quantities may be latent or only partly observed
     - Different tasks ask different questions of the same joint model
-    - Direct calculation with the full joint distribution quickly becomes expensive
+    - Direct calculation with the *full joint distribution* quickly becomes *expensive*
   ],
 )
 
@@ -1581,7 +1581,7 @@
   query directly from its full joint distribution.
 ]
 
-== A few probability operations answer many tasks
+== Key operations for simplifying distributions
 
 #content-block(
   layout: "top",
@@ -1593,23 +1593,23 @@
       align: center + horizon,
       schema-node(
         [Summarize],
-        [#stack(spacing: 0.2em, [$E[g(Y) | X=x]$], [$"prediction or expected performance"$])],
+        [#stack(spacing: 0.25em, [$E[g(Y) | X=x]$], [$"prediction or expected performance"$])],
         density: "prose",
       ),
       schema-node(
         [Marginalize],
-        [#stack(spacing: 0.2em, [$p(x) = integral p(x,z) dif z$], [$"remove variables outside the task"$])],
+        [#stack(spacing: 0.25em, [$p(x) = integral p(x,z) dif z$], [$"remove variables outside the task"$])],
         density: "prose",
         fill: palette.paper,
       ),
       schema-node(
         [Condition],
-        [#stack(spacing: 0.2em, [$p(z | x)$], [$"infer an unknown from observations"$])],
+        [#stack(spacing: 0.25em, [$p(z | x)$], [$"infer an unknown from observations"$])],
         density: "prose",
       ),
     )
     #v(0.85em)
-    #align(center)[$"one joint model" quad p_D(x,y,z) quad arrow.r quad "many task-specific answers"$]
+    #align(center)[$"one joint model" quad p_D (x,y,z) quad arrow.r quad "many task-specific answers"$]
   ],
   key-points: [
     - Predictions and performance measures often require conditional expectations
@@ -1642,30 +1642,40 @@
       align: center + horizon,
       schema-node(
         [Full joint],
-        [#stack(spacing: 0.18em, [$p(v_1, dots, v_m)$], [$"all dependencies represented directly"$])],
+        [#stack(spacing: 0.3em, [$p(v_1, dots, v_m)$], [$"all dependencies represented directly"$])],
         density: "prose",
       ),
-      schema-arrow,
-      schema-node(
-        [Structured joint],
-        [#stack(spacing: 0.18em, [$p(v_1, dots, v_m) = product_i p(v_i | v_("pa"(i)))$], [$"conditional independence exposes smaller pieces"$])],
-        density: "prose",
-        fill: palette.paper,
-      ),
+      [#uncover("2-")[#schema-arrow]],
+      [#uncover("2-")[
+        #schema-node(
+          [Structured joint],
+          [#stack(spacing: 0.3em, [$p(v_1, dots, v_m) = product_i p(v_i | v_("pa"(i)))$], [$"conditional independence exposes smaller pieces"$])],
+          density: "prose",
+          fill: palette.paper,
+        )
+      ]],
     )
     #v(0.8em)
     #grid(
       columns: (1fr, 1fr, 1fr),
       gutter: 0.7em,
-      schema-node([Dependence], [#stack(spacing: 0.12em, [$E[bold(x)], "Cov"[bold(x)]$], [$"multivariate summaries"$])], density: "prose"),
-      schema-node([Tractable family], [#stack(spacing: 0.12em, [$cal(N)(mu, Sigma)$], [$"analytic marginals and conditionals"$])], density: "prose", fill: palette.paper),
-      schema-node([Computation], [#stack(spacing: 0.12em, [$"exact when possible"$], [$"approximate when necessary"$])], density: "prose"),
+      schema-node([Dependence], [#stack(spacing: 0.3em, [$E[bold(x)], "Cov"[bold(x)]$], [$"multivariate summaries"$])], density: "prose"),
+      [#uncover("3-")[
+        #schema-node([Tractable family], [#stack(spacing: 0.3em, [$cal(N)(mu, Sigma)$], [$"analytic marginals and conditionals"$])], density: "prose", fill: palette.paper)
+      ]],
+      [#uncover("3-")[
+        #schema-node([Computation], [#stack(spacing: 0.3em, [$"exact when possible"$], [$"approximate when necessary"$])], density: "prose")
+      ]],
     )
   ],
   key-points: [
     - Covariance and multivariate models describe dependence among many variables
-    - Conditional independence reduces the joint model to local calculations
-    - The linear Gaussian system will combine these ideas in one tractable model
+    #uncover("2-")[
+      - Conditional independence reduces the joint model to local calculations
+    ]
+    #uncover("3-")[
+      - The linear Gaussian system will combine these ideas in one tractable model
+    ]
   ],
 )
 
@@ -1742,12 +1752,12 @@
       columns: (1fr, 1fr),
       gutter: 1.1em,
       align: center + horizon,
-      schema-node([Variance], [#stack(spacing: 0.12em, [$V[X] = E[(X - mu)^2]$], [$= E[X^2] - mu^2$])]),
+      schema-node([Variance], [#stack(spacing: 0.6em, [$V[X] = E[(X - mu)^2]$], [$= E[X^2] - mu^2$])]),
       schema-node([Second moment], [$E[X^2] = sigma^2 + mu^2$]),
     )
     #source-note[Course schematic; Book 1 §2.2.5]
   ],
-)
+),
 
 #speaker-note[
   The alternative variance identity separates the second moment from the
@@ -1762,16 +1772,20 @@
   object-width: 92%,
   object: [
     #grid(
-      columns: (1fr, 0.22fr, 1fr, 0.22fr, 1fr),
+      columns: (1fr, 0.22fr, 1fr, 0.22fr, 1.2fr),
       gutter: 0.35em,
       align: center + horizon,
-      schema-node([$Y$], [$"group / cause"$]),
+      schema-node([$Y$], [$"group or class"$]),
       schema-arrow,
       schema-node([$p(X | Y)$], [$E[X | Y]$], fill: palette.paper),
       schema-arrow,
-      schema-node([$p(X)$], [$E[X] = E_Y[E[X | Y]]$]),
+      schema-node([$p(X)$], [$E[X] = E_Y [E[X | Y]]$]),
     )
     #source-note[Course schematic; Book 1 §2.2.5]
+  ],
+  key-points: [
+    - We may condition on many different things, not just group
+    - $p(X | Y)$ is a function of $X$ and $Y$, and $E[X | Y]$ is a function of $Y$
   ],
 )
 

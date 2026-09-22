@@ -2,6 +2,10 @@
 
 These instructions apply to the entire repository.
 
+## Lecture slide authoring
+
+- Follow `Lectures/README.md` when creating or editing lecture slides
+
 ## Notebook runtime policy
 
 - Course notebooks are Colab-first. A notebook is not ready to publish until it

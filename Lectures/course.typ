@@ -267,62 +267,6 @@
   touying-slide(self: self, body)
 })
 
-#let section-slide(
-  title: none,
-  short-title: none,
-  subtitle: none,
-) = touying-slide-wrapper(self => {
-    self = utils.merge-dicts(
-      self,
-      config-page(
-        margin: 2em,
-        header: none,
-        footer: none,
-      ),
-    )
-
-    // Keep the state updates inside the explicit slide body. Emitting them
-    // before touying-slide-wrapper creates an unintended empty first slide.
-    let body = {
-      let resolved-short-title = if short-title == none { title } else { short-title }
-      _section-number.update(n => n + 1)
-      _section-short-title.update(resolved-short-title)
-
-      context {
-        let n = _section-number.get()
-
-        set align(left + horizon)
-
-        pad(left: 36pt)[
-          #stack(
-            spacing: 0.8em,
-
-            text(
-              size: 0.75em,
-              fill: palette.muted,
-              weight: "medium",
-            )[Section #n],
-
-            line(length: 40pt, stroke: 2pt + palette.accent),
-
-            text(
-              size: 32pt,
-              weight: "semibold",
-              fill: palette.dark,
-              title,
-            ),
-
-            if subtitle != none {
-              text(size: 15pt, fill: palette.text, subtitle)
-            },
-          )
-        ]
-      }
-    }
-
-    touying-slide(self: self, body)
-  })
-
 #let focus-slide(body) = ruled-focus-slide(body)
 #let ending-slide(body) = ruled-ending-slide(body)
 

@@ -1,7 +1,5 @@
 # First-pass shared Typst course layer
 
-This package is meant to be copied into `Lectures/`.
-
 Expected local theme path:
 
 ```text
@@ -42,14 +40,205 @@ It adds:
 
 It intentionally delegates palette, typography, spacing, list styling, and most component styling to Ruled Page.
 
-## Likely debugging points
+# # Slide Authoring Standards for Advanced Statistics 2027-1
 
-This first pass was produced without a Typst compiler in the current runtime. The most likely points for a VS Code/Tylina agent to check are:
+Use these standards when creating or editing lecture slides for this project.
 
-1. Whether the later `config-common` / `config-store` arguments passed through `ruled-page-theme.with(...)` override the theme defaults exactly as intended.
-2. Whether Typst resolves figure paths passed through `course-figure` relative to the lecture file or `course.typ`. If it resolves relative to `course.typ`, prefix paths with the lecture directory or add an asset-root parameter once.
-3. The missing-image fallback uses the known `context`/`query` workaround and may depend on compiler behavior.
-4. `annotated-object` currently uses a straight pointer line plus a target dot rather than a true arrowhead; keep or refine only if real slides need it.
-5. The migrated Lecture 1 source preserves most of the previous draft rather than redesigning every slide. Use it to discover which shared helpers are actually worth keeping.
+## Core architecture
 
-The intended workflow is to compile in Tylina/TinyMist, fix syntax/API details locally, and then update `course.typ` rather than patching each lecture independently.
+- Use Typst + Touying for lecture slides.
+- Use Touying version `0.7.4` for project-owned lecture themes and shared components.
+- Keep lecture content separate from reusable styling and layout logic.
+- Put shared visual style, layout helpers, and reusable slide components in the shared course include `Lectures/course.typ`. It sits on top of a vendored, read-only base theme in `Lectures/themes/`.
+- Lecture `.typ` files should focus on narrative, equations, figures, examples, and speaker notes rather than ad hoc styling.
+
+## Shared course API
+
+Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
+
+This list must stay in sync with what `Lectures/course.typ` actually exports. If you add, rename, or remove a component there, update this list in the same change — an API list that describes components which do not exist (or omits ones that do) is a standards-doc bug, not a minor omission.
+
+Slide structure and composition:
+
+- `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
+- `#twocol[...][...]`, `#triad[...][...][...]` — equal-width row layouts
+- `#section-metadata(short-title: [...], subtitle: [...])` followed by a level-1
+  heading (`= Section title`) — section divider and footer metadata
+- `#title-slide()`, `#focus-slide[...]`, `#ending-slide[...]`
+
+Create every section with this exact structure. Do not introduce or call a `section-slide` helper:
+
+```typst
+#section-metadata(
+  short-title: [From statistics to machine learning],
+  subtitle: [Same probabilistic language, different organizing questions],
+)
+
+= From statistics to machine-learning problems
+```
+
+Cards and notes:
+
+- `#course-card(...)`, `#key-points[...]`
+- `#definition(...)`, `#method(...)`
+- `#note[...]` — margin/aside note
+
+Schematic diagrams (boxes-and-arrows flow figures):
+
+- `#schema-node(label, body, density: "normal")` — a labeled node box for a flow diagram cell. `density` picks a body-text preset from a small named vocabulary (currently `"normal"`, the default, for a short symbol-only line or two; `"prose"` for a smaller, left-aligned multi-line description) instead of a raw size number, so unrelated slides that pick the same density render identically.
+- `#schema-arrow` — a right-pointing arrow cell to place beside nodes in a grid
+- `#source-note[...]` — small muted caption/citation line for a schematic
+
+Figures:
+
+- `#course-figure(...)` — image with optional caption and source line; shows a labeled placeholder automatically when the file is missing, so a separate `maybe-image`-style wrapper is unnecessary
+- `#figure-source(...)` — the provenance line alone, for a composite figure whose panels each set `show-source: false`
+
+Speaker notes:
+
+- `#speaker-note[...]` — provided by Touying directly, not by `course.typ`
+
+Coordinate annotations:
+
+- `#callout(...)`, `#annotated-object(...)`
+
+### Do not duplicate a helper across lecture files
+
+If a visual or layout pattern is used more than once, it belongs in `course.typ`, not copied into a lecture file. Concretely:
+
+- The moment the same helper function (even a small one) appears — including by copy-paste — in a second lecture file, move it to `course.typ` and delete both local copies in the same change.
+- Before writing a new lecture-local helper, check this list and `course.typ` for an existing component that already covers the need. Do not reinvent an existing primitive under a new name (for example, a second muted-caption function alongside `figure-source`).
+- A helper is genuinely lecture-local only when it encodes a fact specific to that lecture, such as a fixed figure-directory prefix (`lecture-figure-path`) or a lecture-specific reveal pairing. Generic visual patterns (boxes, arrows, captions, layout grids) are course-wide by default.
+- Do not keep two definitions of the same helper in one file either (for example, a path-prefix helper defined twice under different names). If you find one, merge them.
+
+### Keep a set of sibling nodes consistent with one local forwarding function
+
+When a single grid has several `schema-node` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
+
+```typst
+#let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
+```
+
+This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-node` parameters, and it is scoped to the one slide that needs it.
+
+## Speaker notes
+
+- Every substantive slide should have a meaningful `#speaker-note[...]`.
+- Speaker notes should record the intended argument, transition, emphasis, caveat, or teaching move.
+- Do not use speaker notes merely to restate the visible slide text.
+
+## Figures and computational provenance
+
+- Statistical, simulation, posterior, data-analysis, and model-generated figures should be created in Python notebooks.
+- Prefer one author-facing notebook per coherent conceptual construction, example dataset, or family of related figures rather than one giant lecture notebook or one notebook per individual figure.
+- Save generated lecture figures as named files, preferably SVG for vector plots and diagrams.
+- Place generated assets in a predictable lecture-local directory such as `generated/`.
+- Typst should include generated files by path rather than screenshots or pasted raster copies.
+- Use `#course-figure(...)` during development; it automatically renders a correctly sized, labeled placeholder when the file is missing, so no separate wrapper is needed.
+- Missing assets are acceptable during drafting but should be treated as errors before a lecture is considered final.
+
+## Student-facing notebooks
+
+- Each lecture should also have one separate student-facing notebook for the approximately one-hour computational component.
+- Student notebooks should be Colab-first and pedagogical: guided sequence, supplied code where appropriate, student modifications or implementation tasks, and interpretation/reflection questions.
+- Do not force the student notebook to double as the source of lecture figures.
+- Some duplication between student notebooks and author-facing figure notebooks is acceptable when it improves clarity and pedagogy.
+
+## Layout and styling discipline
+
+- Prefer reusable components and theme-level abstractions over ad hoc `rgb()`, manual fills, arbitrary spacing, or one-off boxes in lecture files.
+- Use repeated layouts deliberately when comparison, sequence, or conceptual continuity benefits from consistency.
+- Do not introduce visual variation solely for novelty.
+- Keep mathematical slides readable: avoid excessive density, tiny text, or too many competing visual elements.
+- Prefer Typst-native explanatory diagrams for conceptual structure, equations, graphical models, and schematic relationships.
+- Prefer Python-generated figures for empirical, probabilistic, simulation, and data-driven graphics.
+- Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-node`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
+
+## Content blocks and component arguments
+
+- Prefer Typst content blocks for user-facing text in reusable components, for example:
+  
+  ```typst
+  #card[Title][Body]
+  ```
+  
+  rather than passing visible slide copy as quoted strings.
+
+- Use strings for genuinely string-valued data such as file paths, URLs, enum/config values, and font names.
+
+## Drafting versus finalization
+
+During drafting:
+
+- placeholders are acceptable;
+- incomplete notes are acceptable;
+- draft-only TODO markers are acceptable;
+- visual review may be targeted.
+
+Before a lecture is considered final:
+
+- the Typst source must compile cleanly;
+- all required figures and assets must exist;
+- there should be no unintended overflow or clipped content;
+- slide count should be plausible for the intended lecture duration;
+- every substantive slide should have speaker notes;
+- the rendered deck should be visually reviewed.
+
+## Mechanical checks versus visual review
+
+Treat these as separate quality gates.
+
+### Mechanical checks
+
+Check that:
+
+- Typst compiles successfully;
+- no required files are missing;
+- there is no content overflow or layout failure;
+- expected output pages are generated;
+- figure paths and imports resolve correctly.
+
+### Visual review
+
+Inspect the rendered slides for:
+
+- legibility;
+- equation density;
+- figure readability;
+- visual hierarchy;
+- alignment and spacing;
+- sensible use of repeated layouts;
+- narrative flow across slides;
+- whether the intended teaching emphasis is visually apparent.
+
+Compilation alone is not sufficient evidence that a slide is good.
+
+## Narrative planning
+
+For substantial lecture revisions, plan the intellectual sequence before expanding every slide.
+
+Prefer:
+
+1. conceptual goal;
+2. sequence of claims or constructions;
+3. examples and figures needed;
+4. slide implementation.
+
+For long lectures, maintain a lightweight slide inventory or outline so that planning and execution remain separate.
+
+## Asset discipline
+
+- Use images and figures only when they serve the explanation.
+- Do not add decorative visuals merely because they are available.
+- Prefer original, reproducible, course-owned explanatory graphics when practical.
+- When reusing material from earlier course slides, redraw or regenerate it cleanly rather than relying on low-resolution screenshots where possible.
+
+## General principle
+
+The lecture source should read like the intellectual argument of the lecture.
+
+The shared include should carry the course's visual language and reusable mechanics.
+
+The notebooks should carry the computation.
+
+The final rendered deck should be reproducible, visually coherent, and easy to revise without duplicating styling or infrastructure across lectures.

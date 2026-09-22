@@ -11,19 +11,16 @@
 #show: course-theme.with(info: lecture)
 
 #title-slide()
-#section-metadata(
-  short-title: [Likelihood & Exponential Families],
-  subtitle: [From probabilistic models to fitting objectives and moment matching],
-)
 
 // `schema-node`, `schema-arrow`, and `source-note` are shared course
 // components (see course.typ); they are imported via `*` above.
 
-#section-slide(
-  title: [From posterior thinking to likelihood objectives],
+#section-metadata(
   short-title: [Likelihood objectives],
   subtitle: [Posterior notation, likelihood, and negative log likelihood],
 )
+
+= From posterior thinking to likelihood objectives
 
 == Posterior and likelihood
 

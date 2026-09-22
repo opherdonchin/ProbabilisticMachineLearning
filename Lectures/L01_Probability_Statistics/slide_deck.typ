@@ -30,11 +30,12 @@
   ]
 ]
 
-#section-slide(
-  title: [A familiar modeling language],
+#section-metadata(
   short-title: [Probabilistic modelling],
   subtitle: [Probablistic models update based on data],
 )
+
+= A familiar modeling language
 
 == The Beta-Binomial model
 
@@ -958,8 +959,8 @@
 ]
 
 #section-metadata(
-  short-title: [ML problem classes],
-  subtitle: [Tasks, probability objects, and Gaussian inference],
+  short-title: [ML taxonomies],
+  subtitle: [Experience regimes, task classes, and performance criteria],
 )
 
 = Classes of machine learning problems
@@ -1190,202 +1191,350 @@
   axis that decides what counts as success.
 ]
 
-== Classification and regression
-
-#content-block(
-  layout: "top",
-  object-width: 94%,
-  object: [
-    #grid(
-      columns: (1fr, 0.22fr, 1fr),
-      gutter: 0.5em,
-      align: center + horizon,
-      schema-node([Classification], [
-        $y in {1, dots, C}$\
-        $x quad arrow.r quad hat(y)$
-      ]),
-      schema-arrow,
-      uncover("2-")[
-        #schema-node([Regression], [
-          $y in RR$\
-          $x quad arrow.r quad hat(y)$
-        ])
-      ],
-    )
-    #v(0.85em)
-    #align(center)[$D = {(x_n, y_n) : n = 1, dots, N}$]
-    #source-note[Course schematic; Book 1 §1.2.2]
-  ],
-)
-
-#speaker-note[
-  Both settings use paired examples. The visual contrast is the output space:
-  a finite set of unordered classes versus a real-valued target. Do not begin
-  fitting logistic or linear regression here.
-]
-
-== Training and generalization
-
-#content-block(
-  layout: "top",
-  object-width: 98%,
-  object: [
-    #grid(
-      columns: (1fr, 0.18fr, 0.75fr, 0.18fr, 1fr),
-      gutter: 0.3em,
-      align: center + horizon,
-      schema-node([$D_("train")$], [$L(theta; D_("train"))$]),
-      schema-arrow,
-      schema-node([$f_D$], [$x_* quad arrow.r quad hat(y)_*$], fill: palette.paper),
-      schema-arrow,
-      uncover("2-")[#schema-node([$D_("test")$], [$L(theta; D_("test"))$])],
-    )
-    #v(0.85em)
-    #align(center)[$
-      L(theta; D) = frac(1, |D|) sum_((x,y) in D) ell(y, f(x; theta))
-    $]
-    #source-note[Course schematic; Book 1 §1.2.3]
-  ],
-)
-
-#speaker-note[
-  The training loss belongs to the fitting procedure. The held-out loss checks
-  whether the learned function works on new cases. Keep the distinction visual
-  and defer formal ERM to Lecture 2.
-]
-
-== Discovery from unsupervised experience
-
-#content-block(
-  layout: "top",
-  object-width: 96%,
-  object: [
-    #grid(
-      columns: (1.1fr, 0.85fr),
-      gutter: 1.0em,
-      align: center + horizon,
-      [
-        #course-figure(
-          lecture-figure-path("figures/task_examples_figures__discovery_gmm_clusters.svg"),
-          source: "Murphy (2025), Book 1, Ch. 28; course adaptation",
-          width: 100%,
-          height: 6.5cm,
-          show-source: false,
-        )
-      ],
-      [
-        #stack(
-          spacing: 0.75em,
-          schema-node([Observed data], [$D = {x_n : n = 1, dots, N}$]),
-          uncover("2-")[
-            #align(center)[#text(size: 1.25em, fill: palette.accent)[↓]]
-            #schema-node([$z_n tilde p(z)$], [$"latent"$], fill: palette.paper)
-            #align(center)[#text(size: 1.25em, fill: palette.accent)[↓]]
-            #schema-node([$x_n | z_n tilde p(x | z_n, theta)$], [$"observed"$], fill: palette.paper)
-          ]
-        )
-      ],
-    )
-    #figure-source("Murphy (2025), Book 1, Ch. 28; course adaptation")
-  ],
-)
-
-#speaker-note[
-  The experience here is unlabeled observations D = {x_n}. The task is
-  discovery: infer latent structure that helps explain the observations. The
-  latent-variable form prepares mixtures, factor models, clustering, and
-  representation learning.
-
-  Performance is less straightforward than classification accuracy. Depending
-  on the purpose, we might use likelihood, held-out prediction, interpretability,
-  downstream usefulness, recovery of known structure, or scientific value.
-]
-
-== Action from interactive experience
-
-#content-block(
-  layout: "top",
-  object-width: 94%,
-  object: [
-    #grid(
-      columns: (1fr, 0.18fr, 1fr, 0.18fr, 1fr),
-      gutter: 0.35em,
-      align: center + horizon,
-      schema-node([$s_t$], [$"state"$]),
-      schema-arrow,
-      schema-node([$a_t = pi(s_t)$], [$"action"$], fill: palette.paper),
-      schema-arrow,
-      schema-node([$r_t$], [$"consequence"$]),
-    )
-    #v(0.85em)
-    #align(center)[$pi: cal(S) arrow.r cal(A)$]
-    #source-note[Course schematic; Book 1 §§1.3–1.4]
-  ],
-)
-
-#speaker-note[
-  Reinforcement learning is one experience regime commonly associated with
-  action: the learner interacts, observes consequences, and receives reward.
-  It is not identical to the action task. In the Book 2 framing, action also
-  includes decision theory, bandits, active learning, planning, and causal
-  decision-making.
-
-  Action requires a performance criterion such as reward, utility, regret, or
-  expected loss. This is only a map marker, not a reinforcement-learning
-  lecture.
-]
-
-== Data type is another axis
-
-#content-block(
-  layout: "top",
-  object-width: 98%,
-  object: [
-    #grid(
-      columns: (1fr, 1fr, 1fr, 1fr),
-      gutter: 0.65em,
-      align: center + horizon,
-      schema-node([Iris], [#stack(spacing: 0.12em, [$x in RR^4$], [$y in {1,2,3}$])]),
-      schema-node([Images], [#stack(spacing: 0.12em, [$x in [0,1]^(H times W times C)$], [$y in {1, dots, K}$])]),
-      schema-node([Text], [#stack(spacing: 0.12em, [$x = (w_1, dots, w_T)$], [$y$ or $x_(t+1)$])]),
-      schema-node([Sensor stream], [#stack(spacing: 0.12em, [$x_(1:T)$], [$z_(1:T)$])]),
-    )
-    #source-note[Course schematic; dataset examples named in the Lecture 1 coverage specification]
-  ],
-)
-
-#speaker-note[
-  Data modality is not the same as task. The same modality can support many
-  tasks. Images can be classified, generated, segmented, or used for
-  representation learning. Text can be predicted, generated, summarized, or
-  clustered. Sensor streams can support forecasting, state estimation, anomaly
-  detection, and control. Use these as recognition landmarks only; the course
-  will return to each data type when model assumptions and inference tools call
-  for it.
-]
-
-== Summary: Classes of machine-learning problems
+== Summary: Two taxonomies, three ingredients
 
 #content-block(
   key-points: [
-    - A learning problem has three ingredients: task, experience, and performance
-    - Experience regimes: supervised, unsupervised, self-supervised, and interactive
-    - Task classes: prediction, generation, discovery, and action
-    - Performance depends on the task: loss, likelihood, calibration, sample quality, recovered structure, utility, reward, or regret
-    - Probabilistic models provide a common language across all three axes
+    - *Learning problem* = task + experience + performance
+    - *Experience regimes:* supervised, unsupervised, self-supervised, interactive
+    - *Task classes:* prediction, generation, discovery, action
+    - Probabilistic modeling provides a unifying language
   ],
 )
 
 #speaker-note[
-  Close by naming the three axes once more. Supervised, unsupervised,
-  self-supervised, and reinforcement learning mostly classify the learner's
-  experience. Prediction, generation, discovery, and action classify what the
-  learned probabilistic system is asked to do. Performance says how success is
-  measured, and its form depends on the task.
+  Close the taxonomy section by naming the distinction one last time.
+  Experience says what information reaches the learner. Task says what the
+  resulting system must accomplish. Performance says what counts as success.
 
-  Common pairings are useful conventions, not definitions. Probabilistic models
-  provide the shared language across all of these. The remaining lecture now
-  supplies probability objects for uncertainty, dependence, and conditioning.
+  The matrix showed that these axes cross. A familiar pairing can be useful
+  without becoming a definition: supervised data often supports prediction,
+  for example, but supervised experience is not identical to prediction.
+]
+
+#section-metadata(
+  short-title: [Problem examples],
+  subtitle: [The same dataset can pose different learning problems],
+)
+
+= From datasets to learning problems
+
+== Popular datasets
+
+#content-block(
+  layout: "top",
+  object-width: 100%,
+  object: [
+    #let dataset-card(title, sample, age, tasks) = block(
+      width: 100%,
+      height: 3.8cm,
+      stroke: 0.8pt + palette.rule-line,
+      fill: palette.paper,
+      radius: 0.25em,
+      inset: (x: 0.6em, y: 0.48em),
+    )[
+      #stack(
+        spacing: 0.28em,
+        text(size: 0.66em, weight: "semibold", fill: palette.accent)[#title],
+        block(width: 100%, height: 1.95cm, fill: white, inset: 0.12em)[
+          #align(center + horizon)[#sample]
+        ],
+        grid(
+          columns: (2.7em, 1fr),
+          column-gutter: 0.35em,
+          row-gutter: 0.08em,
+          text(size: 0.42em, weight: "semibold", fill: palette.accent)[AGE],
+          text(size: 0.46em)[#age],
+          text(size: 0.42em, weight: "semibold", fill: palette.accent)[TASKS],
+          text(size: 0.46em)[#tasks],
+        ),
+      )
+    ]
+
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 0.5em,
+      align: top,
+      dataset-card(
+        [Iris],
+        grid(
+          columns: 3,
+          gutter: 0.18em,
+          image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 1.7cm, fit: "contain"),
+          image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 1.7cm, fit: "contain"),
+          image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 1.7cm, fit: "contain"),
+        ),
+        [Since 1936 -- about 90 years],
+        [species prediction; clustering; visualization],
+      ),
+      dataset-card(
+        [MNIST],
+        image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 1.78cm, fit: "contain"),
+        [Since 1998 -- about 28 years],
+        [digit classification; representation learning; generation],
+      ),
+      dataset-card(
+        [CIFAR-10],
+        image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 1.78cm, fit: "contain"),
+        [Since 2009 -- about 17 years],
+        [object classification; robustness; generation],
+      ),
+      dataset-card(
+        [IMDB movie reviews],
+        image("figures/book1_table1_3_imdb.png", width: 100%, height: 1.55cm, fit: "contain"),
+        [Since 2011 -- about 15 years],
+        [sentiment classification; text representation],
+      ),
+    )
+    #source-note[Murphy (2025), Book 1, Figs. 1.1, 1.12a, 1.13b, and Table 1.3]
+  ],
+  key-points: [ #text(size:0.75em)[
+    - Machine learning is built around a small number of canonical datasets
+      - These four datasets are commonly used
+    - Each dataset supports multiple tasks
+    - Datasets support benchmarks that make comparisons easy
+  ] ],
+)
+
+#speaker-note[
+  These four datasets are the landmarks the rest of this section returns to.
+  Iris we have already used, for prediction — but the same 150 flowers also
+  support clustering and two-dimensional visualization, so even our first
+  example was never tied to one task. Longevity as a benchmark makes
+  comparisons across methods and years easy, but also means that
+  state-of-the-art benchmark performance should not be confused with having
+  solved the broader task. Ages: Iris (Fisher, 1936), MNIST (LeCun et al.,
+  1998), CIFAR-10 (Krizhevsky, 2009), IMDB (Maas et al., 2011). Reproduced
+  from the corresponding Chapter 1 figures and table in Murphy, Book 1
+  (online version, April 18, 2025).
+
+  The next three slides unpack MNIST, CIFAR-10, and IMDB one at a time. Each
+  instantiates the same task-taxonomy schemas — prediction, discovery,
+  generation — from two slides ago, so their right-hand sides can be compared
+  directly against that taxonomy slide.
+]
+
+== MNIST: the same taxonomy, one dataset
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      columns: (0.85fr, 1.15fr),
+      gutter: 1.0em,
+      align: center + horizon,
+      [
+        #image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 4.6cm, fit: "contain")
+        #v(0.3em)
+        #align(center)[#text(size: 0.85em)[$x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$]]
+      ],
+      [
+        #stack(
+          spacing: 0.55em,
+          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
+          uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
+          uncover("3-")[#schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)],
+        )
+      ],
+    )
+    #source-note[Murphy (2025), Book 1, Fig. 1.12a]
+  ],
+)
+
+#speaker-note[
+  Same three right-hand sides as the task taxonomy slide, now with a concrete
+  dataset substituted in. MNIST is not "the digit-classification dataset":
+  the 70,000 images support prediction (digit image to label), discovery (an
+  unsupervised representation z of what makes digits similar, with no labels
+  involved), and generation (new, plausible digit images, optionally
+  conditioned on a target class c). Point back explicitly to the task
+  taxonomy slide — these are the same three formulas, x and y swapped in for
+  the dataset at hand.
+]
+
+== CIFAR-10: higher-dimensional inputs, the same questions
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      columns: (0.85fr, 1.15fr),
+      gutter: 1.0em,
+      align: center + horizon,
+      [
+        #image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 4.6cm, fit: "contain")
+        #v(0.3em)
+        #align(center)[$x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$]
+      ],
+      [
+        #stack(
+          spacing: 0.65em,
+          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
+          uncover("2-")[
+            #grid(
+              columns: (1fr, 0.2fr, 1fr),
+              gutter: 0.3em,
+              align: center + horizon,
+              schema-node([$D_("train")$], [$L(theta; D_("train"))$], fill: palette.paper),
+              schema-arrow,
+              schema-node([$D_("test")$], [$L(theta; D_("test"))$], fill: palette.paper),
+            )
+          ],
+        )
+      ],
+    )
+    #source-note[Murphy (2025), Book 1, Fig. 1.13b]
+  ],
+)
+
+#speaker-note[
+  Formally this is the same prediction schema as MNIST, just with a
+  higher-dimensional, three-channel input. What changes is not the task
+  definition but its difficulty: a low loss is easy to reach on 50,000
+  training images and says little on its own about the held-out 10,000. This
+  revives the training-versus-held-out distinction from the earlier ERM
+  discussion and attaches it to the dataset where it actually bites —
+  CIFAR-10 is also a standard benchmark for robustness and distribution
+  shift, which is a generalization question dressed up as a dataset.
+]
+
+== IMDB reviews: text as sequence data
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      rows: (0.85fr, 1.15fr),
+      gutter: 1.0em,
+      align: center + horizon,
+      [
+        #image("figures/book1_table1_3_imdb.png", width: 100%, height: 8cm, fit: "contain")
+        #v(0.3em)
+        #align(center)[#text(size: 0.85em)[$x_n = (w_1, dots, w_T), quad y_n in {"pos", "neg"}$]]
+      ],
+      [
+        #stack(
+          spacing: 0.55em,
+          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
+          uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
+          uncover("3-")[#schema-node([Generation], [$w_t tilde p_D (w_t | w_(<t))$], fill: palette.paper)],
+        )
+      ],
+    )
+    #source-note[Murphy (2025), Book 1, Table 1.3]
+  ],
+)
+
+#speaker-note[
+  IMDB looks like ordinary supervised prediction — a review maps to positive
+  or negative — but x is now a variable-length sequence of words rather than
+  a fixed vector, so the input space itself needs a modeling decision before
+  any of the three schemas apply. Discovery gives a text representation z,
+  e.g. an embedding, useful beyond sentiment. Generation here is language
+  modeling: predicting the next word from its predecessors, the same
+  p_D(x | c) idea as image generation, just factored token by token. This is
+  a preview, not a sequence-modeling lecture.
+]
+
+== Learning problems become probabilistic queries
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    // Same grid as the task taxonomy slide, shown all at once: this is a
+    // recap under a new reading, not a first teaching pass.
+    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.7em, ..body), density: "prose")
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: 0.8em,
+      row-gutter: 0.7em,
+      align: center + horizon,
+
+      taxonomy-node(
+        [Prediction],
+        [Task: ${(x_n, y_n)} arrow.r hat(y) = f_D (x_*)$],
+        [Performance: $f_P ( y_*, hat(y) )$],
+      ),
+
+      taxonomy-node(
+        [Generation],
+        [Task: ${x_n} arrow.r ({c}, p_D (x | c)) arrow.r x_* ~ p_D (x | c)$],
+        [Performance: $f_P ( p (x | c), x_* )$],
+      ),
+
+      taxonomy-node(
+        [Discovery],
+        [Task: ${x_n} arrow.r ( {z}, f_D (x) ) arrow.r hat(z) = f_D (x_*)$],
+        [Performance: $f_P (hat(z), x_*)$],
+      ),
+
+      taxonomy-node(
+        [Action],
+        [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
+        [Performance: $f_P ({r_(t)})$],
+      ),
+    )
+  ],
+  key-points: [
+    - Every task invokes probablity models: $p_D (y|x)$, $p_D (x|c)$, $p_D (z|x)$
+    - Performances are expectations over future cases: $f_P = E[dot]$
+    - We return to the probablistic modeling tools of Bayesian statistics
+  ],
+)
+
+#speaker-note[
+  This is the same grid as the task taxonomy slide two sections back — same
+  four tasks, same Task/Performance lines, now shown all at once rather than
+  built up, because the point here is a recap under a new reading, not a
+  first teaching pass.
+
+  Read $hat(y) = f_D (x_*)$ not as a bare function call but as the summary a
+  probabilistic model reports for $p_D (y | x)$. Generation's task line
+  already says this out loud — $x_* tilde p_D (x | c)$ — and discovery is the
+  same idea with z in place of y. Every Performance line, written $f_P (dot)$
+  here, is in every case an expectation over future cases, not the training
+  average computed earlier for Iris and CIFAR-10.
+
+  That is why the lecture now returns to probability, and why the next
+  slides should not feel like a detour into definitions. Expectation is the
+  first way of extracting an answer from a distribution. Conditional
+  expectation is the prototype of prediction. Gaussian conditioning, at the
+  end of this lecture, becomes the first worked example of turning one of
+  these queries into a closed-form answer.
+]
+
+== Summary: From datasets to learning problems
+
+#content-block(
+  key-points: [
+    - A dataset is not a task
+    - A learning problem names variables and a query
+      - prediction: summarize $p_D (y_* | x_*)$
+      - discovery: infer $p_D (z_* | x_*)$
+      - generation: sample from $p_D (x | c)$
+  ],
+)
+
+#speaker-note[
+  This section did not add a fifth taxonomy: it showed the same task schemas
+  concretely on four familiar datasets, then recast them as probabilistic
+  queries on the previous slide. A task is fixed by what query we ask of the
+  variables a dataset provides — not by which dataset happens to supply x
+  and y.
+
+  Action is not orphaned here: it already got its own schema on the task
+  taxonomy slide two sections ago, and stays a map marker until later
+  coursework, since none of these four landmark datasets is naturally an
+  action problem.
+
+  The rest of the lecture rebuilds the probability machinery — expectation,
+  conditional expectation, variance, covariance, Gaussian conditioning —
+  needed to actually answer $p_D (y_* | x_*)$, $p_D (z_* | x_*)$, and
+  $p_D (x | c)$.
 ]
 
 #section-metadata(
@@ -1393,7 +1542,148 @@
   subtitle: [Summaries, conditional summaries, and hidden structure],
 )
 
-= Moments and conditional moments
+= Probability for Machine learning
+
+== Machine-learning queries are large and structured
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0.8em,
+      align: center + horizon,
+      schema-node([Observed], [#stack(spacing: 0.12em, [$x_"obs"$], [$"features, measurements, context"$])], density: "prose"),
+      schema-node([Latent], [#stack(spacing: 0.12em, [$z$], [$"state, representation, missing value"$])], density: "prose", fill: palette.paper),
+      schema-node([Required], [#stack(spacing: 0.12em, [$y_*$], [$"prediction, sample, decision"$])], density: "prose"),
+    )
+    #v(0.8em)
+    #align(center)[$p_D(x_"obs", z, y_*)$]
+  ],
+  key-points: [
+    - Inputs and outputs may be high-dimensional objects
+    - Relevant quantities may be latent or only partly observed
+    - Different tasks ask different questions of the same joint model
+    - Direct calculation with the full joint distribution quickly becomes expensive
+  ],
+)
+
+#speaker-note[
+  The preceding section established that a dataset does not determine a task.
+  This slide adds the source of the mathematical difficulty. The variables in
+  a machine-learning model may be long vectors, images, or sequences. Some are
+  observed, some remain hidden, and the task selects which unknown quantity we
+  need from the joint model.
+
+  The Bayesian language has not changed. What has changed is the size and
+  structure of the probability model, and therefore the cost of answering a
+  query directly from its full joint distribution.
+]
+
+== A few probability operations answer many tasks
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0.7em,
+      align: center + horizon,
+      schema-node(
+        [Summarize],
+        [#stack(spacing: 0.2em, [$E[g(Y) | X=x]$], [$"prediction or expected performance"$])],
+        density: "prose",
+      ),
+      schema-node(
+        [Marginalize],
+        [#stack(spacing: 0.2em, [$p(x) = integral p(x,z) dif z$], [$"remove variables outside the task"$])],
+        density: "prose",
+        fill: palette.paper,
+      ),
+      schema-node(
+        [Condition],
+        [#stack(spacing: 0.2em, [$p(z | x)$], [$"infer an unknown from observations"$])],
+        density: "prose",
+      ),
+    )
+    #v(0.85em)
+    #align(center)[$"one joint model" quad p_D(x,y,z) quad arrow.r quad "many task-specific answers"$]
+  ],
+  key-points: [
+    - Predictions and performance measures often require conditional expectations
+    - Latent variables must be inferred or averaged out
+    - Prediction, discovery, generation, and imputation reuse these operations
+  ],
+)
+
+#speaker-note[
+  Organize the probability review around operations rather than definitions.
+  An expectation extracts the summary required by a task. Marginalization
+  removes variables that are not part of the requested answer. Conditioning
+  uses observed quantities to update uncertainty about unobserved quantities.
+
+  Latent variables do not require a separate kind of probability. They make
+  marginalization and conditioning unavoidable, and they often require us to
+  average a prediction over latent uncertainty rather than plug in one latent
+  estimate.
+]
+
+== Structure makes the calculations possible
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #grid(
+      columns: (1fr, 0.16fr, 1.25fr),
+      gutter: 0.35em,
+      align: center + horizon,
+      schema-node(
+        [Full joint],
+        [#stack(spacing: 0.18em, [$p(v_1, dots, v_m)$], [$"all dependencies represented directly"$])],
+        density: "prose",
+      ),
+      schema-arrow,
+      schema-node(
+        [Structured joint],
+        [#stack(spacing: 0.18em, [$p(v_1, dots, v_m) = product_i p(v_i | v_("pa"(i)))$], [$"conditional independence exposes smaller pieces"$])],
+        density: "prose",
+        fill: palette.paper,
+      ),
+    )
+    #v(0.8em)
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0.7em,
+      schema-node([Dependence], [#stack(spacing: 0.12em, [$E[bold(x)], "Cov"[bold(x)]$], [$"multivariate summaries"$])], density: "prose"),
+      schema-node([Tractable family], [#stack(spacing: 0.12em, [$cal(N)(mu, Sigma)$], [$"analytic marginals and conditionals"$])], density: "prose", fill: palette.paper),
+      schema-node([Computation], [#stack(spacing: 0.12em, [$"exact when possible"$], [$"approximate when necessary"$])], density: "prose"),
+    )
+  ],
+  key-points: [
+    - Covariance and multivariate models describe dependence among many variables
+    - Conditional independence reduces the joint model to local calculations
+    - The linear Gaussian system will combine these ideas in one tractable model
+  ],
+)
+
+#speaker-note[
+  This is the roadmap for the probability material. Covariance and multivariate
+  distributions describe structured variation. Conditional independence tells
+  us which apparent dependencies can be omitted, and factorization converts
+  that information into smaller calculations.
+
+  The multivariate Gaussian is important because the required marginal and
+  conditional distributions remain available in closed form. The lecture will
+  end with a linear Gaussian system, where a latent state, a structured joint
+  distribution, and conditioning produce an efficient posterior calculation.
+  Later models will preserve the same logic even when they require numerical
+  approximation.
+]
+
+
 
 == Expectation
 
@@ -1401,10 +1691,7 @@
   layout: "top",
   object-width: 92%,
   object: [
-    #grid(
-      columns: (1fr, 1fr),
-      gutter: 1.3em,
-      align: center + horizon,
+    #twocol(
       schema-node([Continuous], [$E[X] = integral x p(x) dif x$], fill: palette.paper),
       schema-node([Discrete], [$E[X] = sum_x x p(x)$], fill: palette.paper),
     )

@@ -347,8 +347,8 @@ revision above for its current structure.
 
 | What | Where |
 |---|---|
-| Section 2 source | `slide_deck.typ`, from `#section-slide(title: [From inference to machine-learning problems], ...)` |
-| Section 3 source | `slide_deck.typ`, from `#section-slide(title: [What do we use learned models for?], ...)` |
+| Section 2 source | `slide_deck.typ`, from `#section-metadata(...)` and `= From statistics to machine-learning problems` |
+| Section 3 source | `slide_deck.typ`, from `#section-metadata(...)` and `= Classes of machine learning problems` |
 | Figure notebook | `task_examples_figures.ipynb` |
 | Generated figures | `figures/task_examples_figures__*.{svg,png}` |
 | Shared-layer change | `Lectures/course.typ` (`course-figure` `show-source`, `figure-source`) |

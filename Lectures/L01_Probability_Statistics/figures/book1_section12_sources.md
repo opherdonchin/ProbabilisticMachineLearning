@@ -12,6 +12,15 @@
   source, page 4. The book identifies the generating notebook as
   `iris_plot.ipynb`; its official lookup entry is
   <https://probml.github.io/notebooks#iris_plot.ipynb>.
+- `book1_fig1_12a_mnist.png` is the MNIST panel from Figure 1.12, page 19.
+- `book1_fig1_13b_cifar10.png` is the CIFAR-10 panel from Figure 1.13,
+  page 20.
+- `book1_table1_3_imdb.png` is the pair of review snippets in Table 1.3,
+  page 22.
+
+The three dataset-gallery crops above were rendered from the course copy at
+180 dpi and trimmed to the data examples only; their labels, captions, and
+interpretive text remain native Typst content in the lecture deck.
 
 The lecture reproduces these figures to follow the supplied Book 1 reading.
 Retain the on-slide source lines and speaker-note attribution if the assets are

@@ -1538,13 +1538,13 @@
 ]
 
 #section-metadata(
-  short-title: [Probability],
-  subtitle: [Queries, structure, and moments for machine learning],
+  short-title: [Probability summaries],
+  subtitle: [Expectations, moments, and conditioning],
 )
 
 = Probability for machine learning
 
-== Machine-learning questions are probabilistic queries
+== Large learning problems still ask familiar probability questions
 
 #content-block(
   layout: "top",
@@ -1554,30 +1554,38 @@
       columns: (1fr, 1fr, 1fr),
       gutter: 0.8em,
       align: center + horizon,
-      schema-node([Observed], [#stack(spacing: 0.2em, [$x_"obs"$], [$"features, measurements, context"$])], density: "prose"),
-      schema-node([Latent], [#stack(spacing: 0.2em, [$z$], [$"state, representation, missing value"$])], density: "prose", fill: palette.paper),
-      schema-node([Target], [#stack(spacing: 0.2em, [$y_*$], [$"prediction, sample, decision"$])], density: "prose"),
+      schema-node(
+        [Observed],
+        [#stack(spacing: 0.2em, [$x_"obs"$], [$"features, measurements, context"$])],
+        density: "prose",
+      ),
+      schema-node(
+        [Latent],
+        [#stack(spacing: 0.2em, [$z$], [$"state, representation, missing value"$])],
+        density: "prose",
+        fill: palette.paper,
+      ),
+      schema-node(
+        [Target],
+        [#stack(spacing: 0.2em, [$y_*$], [$"prediction, sample, decision"$])],
+        density: "prose",
+      ),
     )
     #v(0.8em)
     #align(center)[$p_D(x_"obs", z, y_*)$]
   ],
   key-points: [
-    - Inputs and outputs may be high-dimensional objects
-    - Relevant quantities may be latent or only partly observed
-    - Different tasks ask different questions of the same joint model
-    - Direct calculation with the *full joint distribution* quickly becomes *expensive*
+    - The variables may be high-dimensional, latent, or only partly observed
+    - The task determines which quantity we need from the joint distribution
+    - The probability language is familiar even when the model is large
   ],
 )
 
 #speaker-note[
-  The preceding sections established that a dataset does not determine a task.
-  This slide adds the probability formulation. A machine-learning model may
-  contain long vectors, images, sequences, and hidden variables. The task tells
-  us which unknown quantity we need from their joint distribution.
-
-  The Bayesian language has not changed. What has changed is the size and
-  structure of the probability model, and therefore the cost of answering a
-  query directly from the full joint distribution.
+  The previous section turned learning problems into probabilistic queries.
+  Keep that result and change only the scale of the problem: the variables may
+  now be vectors, images, sequences, or latent states. We still need familiar
+  probability operations to extract the particular answer required by the task.
 ]
 
 == A few operations answer many tasks
@@ -1592,154 +1600,92 @@
       align: center + horizon,
       schema-node(
         [Summarize],
-        [#stack(spacing: 0.25em, [$E[g(Y) | X=x]$], [$"prediction or expected performance"$])],
+        [#stack(spacing: 0.25em, [$E[g(Y) | X=x]$], [$"extract a useful quantity"$])],
         density: "prose",
       ),
       schema-node(
         [Marginalize],
-        [#stack(spacing: 0.25em, [$p(x) = integral p(x,z) dif z$], [$"remove variables outside the task"$])],
+        [#stack(spacing: 0.25em, [$p(x) = integral p(x,z) dif z$], [$"average out unwanted variables"$])],
         density: "prose",
         fill: palette.paper,
       ),
       schema-node(
         [Condition],
-        [#stack(spacing: 0.25em, [$p(z | x)$], [$"infer an unknown from observations"$])],
+        [#stack(spacing: 0.25em, [$p(z | x)$], [$"update using observations"$])],
         density: "prose",
       ),
     )
     #v(0.85em)
-    #align(center)[$"one joint model" quad p_D (x,y,z) quad arrow.r quad "many task-specific answers"$]
+    #align(center)[$"one joint model" quad arrow.r quad "many task-specific answers"$]
   ],
   key-points: [
-    - Predictions and performance measures often require conditional expectations
-    - Latent variables must be inferred or averaged out
-    - Prediction, discovery, generation, and imputation reuse these operations
+    - Prediction and performance often require expectations
+    - Latent variables are inferred or averaged out
+    - The same few operations recur across different learning tasks
   ],
 )
 
 #speaker-note[
-  Organize the probability review around operations rather than definitions.
-  An expectation extracts the summary required by a task. Marginalization
-  removes variables that are not part of the requested answer. Conditioning
-  uses observed quantities to update uncertainty about unobserved quantities.
-
-  Latent variables do not require a separate kind of probability. They make
-  marginalization and conditioning unavoidable, and they often require us to
-  average a prediction over latent uncertainty rather than plug in one latent
-  estimate.
+  This is the roadmap for the probability review. Do not teach marginalization
+  or conditioning in full here. The point is that many apparently different
+  machine-learning questions repeatedly use the same small set of operations.
 ]
 
-== Structure makes the queries tractable
-
-#content-block(
-  layout: "top",
-  object-width: 96%,
-  object: [
-    #grid(
-      columns: (1fr, 0.16fr, 1.25fr),
-      gutter: 0.35em,
-      align: center + horizon,
-      schema-node(
-        [Full joint],
-        [#stack(spacing: 0.3em, [$p(v_1, dots, v_m)$], [$"all dependencies represented directly"$])],
-        density: "prose",
-      ),
-      [#uncover("2-")[#schema-arrow]],
-      [#uncover("2-")[
-        #schema-node(
-          [Structured joint],
-          [#stack(spacing: 0.3em, [$p(v_1, dots, v_m) = product_i p(v_i | v_("pa"(i)))$], [$"conditional independence exposes smaller pieces"$])],
-          density: "prose",
-          fill: palette.paper,
-        )
-      ]],
-    )
-    #v(0.8em)
-    #grid(
-      columns: (1fr, 1fr, 1fr),
-      gutter: 0.7em,
-      schema-node([Dependence], [#stack(spacing: 0.3em, [$E[bold(x)], "Cov"[bold(x)]$], [$"multivariate summaries"$])], density: "prose"),
-      [#uncover("3-")[
-        #schema-node([Tractable family], [#stack(spacing: 0.3em, [$cal(N)(mu, Sigma)$], [$"analytic marginals and conditionals"$])], density: "prose", fill: palette.paper)
-      ]],
-      [#uncover("3-")[
-        #schema-node([Computation], [#stack(spacing: 0.3em, [$"exact when possible"$], [$"approximate when necessary"$])], density: "prose")
-      ]],
-    )
-  ],
-  key-points: [
-    - Covariance and multivariate models describe dependence among many variables
-    #uncover("2-")[
-      - Conditional independence reduces the joint model to local calculations
-    ]
-    #uncover("3-")[
-      - The linear Gaussian system will combine these ideas in one tractable model
-    ]
-  ],
-)
-
-#speaker-note[
-  This is the roadmap for the probability material. Covariance and multivariate
-  distributions describe structured variation. Conditional independence tells
-  us which apparent dependencies can be omitted, and factorization converts
-  that information into smaller calculations.
-
-  The multivariate Gaussian is important because the required marginal and
-  conditional distributions remain available in closed form. The lecture will
-  end with a linear Gaussian system, where a latent state, a structured joint
-  distribution, and conditioning produce an efficient posterior calculation.
-  Later models will preserve the same logic even when they require numerical
-  approximation.
-]
-
-
-
-== Expectation
+== Expectation summarizes a distribution
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
     #twocol(
-      schema-node([Continuous], [$E[X] = integral x p(x) dif x$], fill: palette.paper),
-      schema-node([Discrete], [$E[X] = sum_x x p(x)$], fill: palette.paper),
+      schema-node(
+        [Continuous],
+        [$E[g(X)] = integral g(x) p(x) dif x$],
+        fill: palette.paper,
+      ),
+      schema-node(
+        [Discrete],
+        [$E[g(X)] = sum_x g(x) p(x)$],
+        fill: palette.paper,
+      ),
     )
     #v(1.0em)
-    #align(center)[$E[a X + b] = a E[X] + b$]
-    #source-note[Course schematic; Book 1 §2.2.5]
+    #align(center)[$mu = E[X]$]
+    #source-note[Course schematic; Murphy, Book 1 §2.2.5]
+  ],
+  key-points: [
+    - Expectation is a probability-weighted average
+    - Choosing $g(x)=x$ gives the mean
   ],
 )
 
 #speaker-note[
-  Reintroduce expectation as a model-based average. The discrete and
-  continuous forms are the same construction with different summation rules.
-  Emphasize that the affine and sum identities do not require independence.
+  Introduce expectation as a model-based summary, not as a new statistical
+  estimator. The discrete and continuous forms are the same idea with different
+  summation rules. Using a general function $g$ prepares the way for moments
+  without adding another concept yet.
 ]
 
-== Linearity of expectation
+== Linearity makes expectations easy to combine
 
 #content-block(
   layout: "top",
-  object-width: 88%,
+  object-width: 90%,
   object: [
-    #align(center)[
-      #grid(
-        columns: (1fr, 0.2fr, 1fr),
-        gutter: 0.4em,
-        align: center + horizon,
-        schema-node([$X_1, dots, X_m$], [$"random quantities"$]),
-        schema-arrow,
-        schema-node([$sum_i X_i$], [$E[sum_i X_i] = sum_i E[X_i]$], fill: palette.paper),
-      )
-    ]
+    #align(center)[$E[aX + b] = aE[X] + b$]
     #v(0.9em)
-    #align(center)[$E[a X + b] = a E[X] + b$]
+    #align(center)[$E[sum_i X_i] = sum_i E[X_i]$]
+  ],
+  key-points: [
+    - Expectations of sums are sums of expectations
+    - Independence is not required
   ],
 )
 
 #speaker-note[
-  Emphasize that linearity does not require independence. That detail will
-  become useful when expectations are nested inside models and algorithms.
+  Keep this slide separate from the definition of expectation. The teaching
+  move is computational: expectation respects linear combinations even when the
+  random variables are dependent.
 ]
 
 == Variance records spread around the mean
@@ -1752,59 +1698,118 @@
       columns: (1fr, 1fr),
       gutter: 1.1em,
       align: center + horizon,
-      schema-node([Variance], [#stack(spacing: 0.6em, [$V[X] = E[(X - mu)^2]$], [$= E[X^2] - mu^2$])]),
-      schema-node([Second moment], [$E[X^2] = sigma^2 + mu^2$]),
+      schema-node(
+        [Variance],
+        [#stack(spacing: 0.55em, [$V[X] = E[(X-mu)^2]$], [$= E[X^2] - mu^2$])],
+      ),
+      schema-node(
+        [Second raw moment],
+        [$E[X^2] = V[X] + mu^2$],
+        fill: palette.paper,
+      ),
     )
-    #source-note[Course schematic; Book 1 §2.2.5]
+    #source-note[Course schematic; Murphy, Book 1 §2.2.5]
   ],
-),
+  key-points: [
+    - Variance measures squared distance from the mean
+    - The second raw moment contains both spread and location
+  ],
+)
 
 #speaker-note[
-  Variance is the second central moment: it records spread after the location
-  of the distribution has been removed. The alternative identity separates the
-  second moment from the squared mean; name both now because covariance and
-  Gaussian calculations use the same pattern.
+  The alternative variance identity introduces $E[X^2]$ naturally. Do not yet
+  generalize to higher moments; the next slide names the pattern students have
+  now seen twice.
 ]
 
-== Conditioning creates task-specific summaries
+== Moments organize these distribution summaries
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
     #grid(
-      columns: (1fr, 0.22fr, 1fr, 0.22fr, 1.2fr),
-      gutter: 0.35em,
+      columns: (1fr, 1fr),
+      gutter: 1.0em,
       align: center + horizon,
-      schema-node([$Y$], [$"group or class"$]),
-      schema-arrow,
-      schema-node([$p(X | Y)$], [$E[X | Y]$], fill: palette.paper),
-      schema-arrow,
-      schema-node([$p(X)$], [$E[X] = E_Y [E[X | Y]]$]),
+      schema-node(
+        [Raw moments],
+        [#stack(
+          spacing: 0.5em,
+          [$m_k = E[X^k]$],
+          [$m_1 = E[X]$],
+          [$m_2 = E[X^2]$],
+        )],
+      ),
+      schema-node(
+        [Central moments],
+        [#stack(
+          spacing: 0.5em,
+          [$mu_k = E[(X-E[X])^k]$],
+          [$mu_2 = V[X]$],
+        )],
+        fill: palette.paper,
+      ),
     )
-    #source-note[Course schematic; Book 1 §2.2.5]
   ],
   key-points: [
-    - We may condition on many different things, not just group
-    - $p(X | Y)$ is a function of $X$ and $Y$, and $E[X | Y]$ is a function of $Y$
+    - A moment is a property of a probability distribution
+    - Mean and variance are particular moments
   ],
 )
 
 #speaker-note[
-  Conditional expectation is itself a function of the conditioning variable.
-  The outer expectation averages those conditional means using the marginal
-  distribution of the conditioning variable. This is the prototype of a
-  prediction: a different observed value of $Y$ gives a different summary.
+  This slide supplies the missing vocabulary. Students have already seen the
+  first raw moment, second raw moment, and second central moment. Name the
+  general pattern without opening a catalogue of skewness, kurtosis, or moment
+  generating functions.
 ]
 
-== Total variance
+== Conditioning makes a summary depend on what we know
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #grid(
+      columns: (1fr, 0.22fr, 1.2fr),
+      gutter: 0.4em,
+      align: center + horizon,
+      schema-node([$Y=y$], [$"observed information"$]),
+      schema-arrow,
+      schema-node(
+        [$p(X | Y=y)$],
+        [$E[X | Y=y]$],
+        fill: palette.paper,
+      ),
+    )
+    #v(0.9em)
+    #align(center)[$E[X] = E_Y[E[X | Y]]$]
+  ],
+  key-points: [
+    - $E[X | Y]$ is itself a function of the conditioning variable $Y$
+    - Averaging the conditional means recovers the overall mean
+  ],
+)
+
+#speaker-note[
+  Move from unconditional to conditional summaries. The key conceptual point is
+  that $E[X|Y]$ is not one number until $Y$ is specified; it is a function of
+  what has been observed. The law of total expectation reconnects the
+  conditional and marginal views.
+]
+
+== Total variance separates within- and between-condition variation
 
 #content-block(
   layout: "top",
   object-width: 94%,
   object: [
     #align(center)[$
-      V[X] = underbrace(E_Y[V[X | Y]])_("within") + underbrace(V_Y[E[X | Y]])_("between")
+      V[X] =
+      underbrace(E_Y[V[X | Y]])_("within")
+      +
+      underbrace(V_Y[E[X | Y]])_("between")
     $]
     #v(1.0em)
     #grid(
@@ -1813,75 +1818,77 @@
       align: center + horizon,
       schema-node([$V[X | Y]$], [$"conditional spread"$]),
       align(center + horizon)[#text(size: 1.2em, fill: palette.accent)[$+$]],
-      schema-node([$E[X | Y]$], [$"conditional location"$]),
+      schema-node([$E[X | Y]$], [$"changing conditional means"$]),
     )
-    #source-note[Course schematic; Book 1 §2.2.5]
+    #source-note[Course schematic; Murphy, Book 1 §2.2.5]
   ],
 )
 
 #speaker-note[
-  Introduce the within-plus-between decomposition without deriving it. It is a
-  compact map for mixtures, hierarchical models, posterior prediction, and
-  later Gaussian conditioning. The same decomposition separates uncertainty
-  inside a group from uncertainty about which group we are in.
+  Introduce the within-plus-between decomposition without deriving it. It shows
+  how conditional summaries combine to reconstruct an unconditional one and
+  will recur in hierarchical and Gaussian settings.
 ]
 
 == Summary: Probability for machine learning
 
 #content-block(
   key-points: [
-    - A learning problem becomes a *query* about a structured joint distribution
-    - Marginalization removes variables; conditioning uses observations; expectation extracts summaries
-    - Moments describe location, spread, and within-versus-between variation
-    - Structure turns an otherwise expensive full-joint calculation into reusable local calculations
+    - Expectations and moments summarize a probability distribution
+    - Conditioning makes those summaries depend on observed information
+    - Total expectation and total variance combine conditional pieces
+    - These are properties of the model; statistics asks how to learn them from data
   ],
 )
 
 #speaker-note[
-  The probability review has one purpose: to make the machine-learning queries
-  from the previous section precise. We will repeatedly ask for a marginal, a
-  conditional, or a summary such as an expectation. Moments provide the
-  vocabulary for those summaries, and structure makes their calculation
-  manageable. The next section turns from describing a population model to
-  asking what can be learned when we observe a finite dataset.
+  Synthesize rather than enumerate formulas. The transition is the important
+  final line: so far the distribution has been treated as given. We now ask
+  what can be learned about its unknown quantities from a finite sample.
 ]
 
 #section-metadata(
-  short-title: [Probability → statistics],
-  subtitle: [From population quantities to estimators and fitted models],
+  short-title: [From probability to statistics],
+  subtitle: [Estimating unknown quantities from observed data],
 )
 
 = From probability to statistics
 
-== A dataset is a random object before it is observed
+== Probability describes a model; statistics learns from data
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
-    #align(center)[$y_n tilde p(y | theta), quad n = 1, dots, N$]
-    #uncover("2-")[
-      #v(0.75em)
-      #align(center)[$D = (y_1, dots, y_N) tilde p(D | theta)$]
-    ]
-    #uncover("3-")[
-      #v(0.75em)
-      #align(center)[$p(D | theta) = product_(n=1)^N p(y_n | theta)$]
-    ]
+    #grid(
+      columns: (1fr, 0.22fr, 1fr),
+      gutter: 0.45em,
+      align: center + horizon,
+      schema-node(
+        [Population model],
+        [#stack(spacing: 0.4em, [$Y tilde p(y | theta)$], [$"unknown " theta$])],
+      ),
+      schema-arrow,
+      schema-node(
+        [Observed sample],
+        [$D = (y_1, dots, y_N)$],
+        fill: palette.paper,
+      ),
+    )
+    #v(0.9em)
+    #align(center)[$"What can " D " tell us about " theta "?"$]
   ],
   key-points: [
-    - Before observation, the dataset has a distribution
-    - After observation, $D$ is fixed data that can update our uncertainty
-    - Independence is a modeling assumption, not a property of the data table itself
+    - Probability describes possible data given a model
+    - Statistics uses observed data to learn unknown population quantities
   ],
 )
 
 #speaker-note[
-  Make the change of viewpoint explicit. Before we collect the data, the
-  entire dataset is a random object. After collection, we condition on the
-  realized values and use them as evidence. The product form is shown only as
-  a common independent-sampling example; dependent data need a different joint
-  model. This is the point where probability becomes a language for statistics.
+  Make the section break explicit. The probability review treated the
+  distribution as known and asked what summaries or conditionals follow from
+  it. Statistics reverses the direction of the question: we have observed data
+  and want to learn about an unknown feature or parameter of the model.
 ]
 
 == A statistic is a function of the observed data
@@ -1894,29 +1901,53 @@
       columns: (1fr, 0.2fr, 1fr),
       gutter: 0.45em,
       align: center + horizon,
-      schema-node([Random sample], [$D = (y_1, dots, y_N)$]),
+      schema-node([Data], [$D = (y_1, dots, y_N)$]),
       schema-arrow,
-      schema-node([Statistic], [$S(D)$], fill: palette.paper),
+      schema-node([Statistic], [$T(D)$], fill: palette.paper),
     )
-    #v(0.85em)
-    #align(center)[$overline(y) = frac(1, N) sum_(n=1)^N y_n$]
+    #v(0.8em)
+    #align(center)[$overline(y) = frac(1, N) sum_(n=1)^N y_n quad "or" quad N_1 = sum_(n=1)^N y_n$]
   ],
   key-points: [
-    - A statistic is computed from the sample; it is not an unknown parameter
-    - The sample mean is a statistic that summarizes location
-    - Other statistics summarize spread, dependence, or shape
+    - A statistic is computed from the observed sample
+    - Its definition does not contain an unknown parameter
   ],
 )
 
 #speaker-note[
-  Students already know many statistics operationally. Name the abstraction
-  now: a statistic is any function of the observed sample. The sample mean is
-  not the population mean; it is a random quantity before data are observed and
-  a number after they are observed. This distinction prevents us from using
-  the same symbol for a population quantity and its data-based estimate.
+  Students already know sample means and counts. Give those familiar objects the
+  general name statistic. The definition is intentionally broad: at this point
+  a statistic is simply a function of the data, not necessarily an estimator.
 ]
 
-== Estimators use statistics to learn parameters
+== An estimator is a statistic aimed at an unknown quantity
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[$D quad arrow.r quad hat(theta)(D)$]
+    #v(0.9em)
+    #twocol(
+      schema-node([Target], [$theta$], fill: palette.paper),
+      schema-node([Estimator], [$hat(theta)(D)$]),
+    )
+  ],
+  key-points: [
+    - The estimator is the rule $D arrow.r hat(theta)(D)$
+    - The estimate is the value produced for the dataset we actually observed
+    - Different estimation principles can target the same parameter
+  ],
+)
+
+#speaker-note[
+  Keep the direction of the mapping explicit: data go into the estimator and an
+  estimate comes out. The unknown parameter is the target, not the input. This
+  prepares the next slides, where method of moments, MLE, and MAP are presented
+  as different rules for constructing that map.
+]
+
+== Sample moments estimate population moments
 
 #content-block(
   layout: "top",
@@ -1926,218 +1957,171 @@
       columns: (1fr, 0.2fr, 1fr),
       gutter: 0.45em,
       align: center + horizon,
-      schema-node([Parameter], [$theta$], fill: palette.paper),
+      schema-node(
+        [Population moment],
+        [$m_k = E[X^k]$],
+        fill: palette.paper,
+      ),
       schema-arrow,
-      schema-node([Estimator], [$hat(theta) = T(D)$]),
+      schema-node(
+        [Sample moment],
+        [$hat(m)_k = frac(1, N) sum_(n=1)^N x_n^k$],
+      ),
     )
-    #v(0.85em)
-    #align(center)[$hat(mu) = overline(y), quad hat(sigma)^2 = frac(1, N) sum_(n=1)^N (y_n - overline(y))^2$]
+    #v(0.9em)
+    #align(center)[$E[Y] = theta quad "for Bernoulli data, while" quad overline(y) = frac(N_1, N)$]
   ],
   key-points: [
-    - An estimator is a statistic with a target: an unknown parameter
-    - Different estimators can use the same data and answer different questions
-    - Estimation is about the model parameters; probabilistic inference is about unknown variables conditional on a model
+    - A population moment is a property of the distribution
+    - A sample moment is a statistic computed from observed data
   ],
 )
 
 #speaker-note[
-  Put the distinction at the center of the lecture. An estimator is a rule that
-  maps data to a parameter value. The plug-in estimates of a Gaussian mean and
-  variance are familiar examples. Later, Gaussian conditioning will infer a
-  latent state $z$ from an observation $y$; that is probabilistic inference,
-  not parameter estimation. The two operations use the same probability model
-  but answer different questions.
+  This is the bridge the previous version was missing. The notation on the two
+  sides deliberately parallels the probability section. For Bernoulli data the
+  first population moment is the success probability itself, while the first
+  sample moment is the observed fraction of successes.
 ]
 
-== The empirical distribution records what we observed
-
-#content-block(
-  layout: "top",
-  object-width: 94%,
-  object: [
-    #align(center)[$p_D(y) = frac(1, N) sum_(n=1)^N delta(y - y_n)$]
-    #v(0.55em)
-    #align(center, text(size: 0.8em)[The PMF places equal mass on each observation; the CDF accumulates that mass.])
-    #v(0.45em)
-    #grid(
-      columns: (1fr, 1fr),
-      gutter: 0.65em,
-      align: center + horizon,
-      [
-        #course-figure(
-          lecture-figure-path("figures/book1_fig2_18a_empirical_pmf.png"),
-          source: "Murphy (2025), Book 1, Fig. 2.18A",
-          width: 100%,
-          height: 3.45cm,
-          show-source: false,
-        )
-      ],
-      [
-        #course-figure(
-          lecture-figure-path("figures/book1_fig2_18b_empirical_cdf.png"),
-          source: "Murphy (2025), Book 1, Fig. 2.18B",
-          width: 100%,
-          height: 3.45cm,
-          show-source: false,
-        )
-      ],
-    )
-    #figure-source("Murphy (2025), Book 1, Fig. 2.18A–B; official book figure files")
-  ],
-  key-points: [
-    - The empirical distribution gives each observation mass $1/N$
-    - It is a data-based distribution, not a smooth population model
-    - Lecture 2 will use it to connect likelihood fitting to distribution matching
-  ],
-)
-
-#speaker-note[
-  The empirical distribution is the most literal statistic-to-distribution
-  bridge: it turns the observed sample into equal point masses. The PMF view
-  shows where the mass is placed; the CDF view shows how that mass accumulates.
-  Keep the distinction clear: $p_D$ records the data, while $p(y | theta)$ is
-  a model for how data could have been generated.
-]
-
-== Likelihood asks which parameters make the data plausible
+== Method of moments matches model and sample moments
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
-    #align(center)[$L(theta; D) := p(D | theta)$]
-    #uncover("2-")[
-      #v(0.8em)
-      #align(center)[$D quad arrow.r quad L(theta; D) quad arrow.r quad "compare parameter values"$]
-    ]
+    #align(center)[$m_k(theta) = hat(m)_k$]
+    #v(0.95em)
+    #grid(
+      columns: (1fr, 0.2fr, 1fr),
+      gutter: 0.45em,
+      align: center + horizon,
+      schema-node(
+        [Bernoulli model],
+        [$E_theta[Y] = theta$],
+        fill: palette.paper,
+      ),
+      schema-arrow,
+      schema-node(
+        [Method of moments],
+        [$hat(theta)_"MOM" = overline(y) = frac(N_1, N)$],
+      ),
+    )
+    #source-note[Murphy, Book 1 §4.4.1]
   ],
   key-points: [
-    - Fix the observed dataset and vary the parameter
-    - The likelihood is a function of $theta$, not a new probability distribution over $theta$
-    - It converts a generative model into an estimation objective
+    - Choose parameter values whose model moments equal the empirical moments
+    - The choice of moments defines an estimation rule
   ],
 )
 
 #speaker-note[
-  Likelihood is the same joint model viewed after the data have been observed.
-  We hold $D$ fixed and ask which parameter values make those observations more
-  or less compatible with the model. Be precise about the roles: $p(D | theta)$
-  is a probability distribution over possible data when $theta$ is fixed, and a
-  likelihood function of $theta$ when $D$ is fixed. Full likelihood derivations
-  are deferred; the conceptual change of viewpoint is the goal here.
+  Method of moments is the direct continuation of the previous slide. For the
+  Bernoulli model there is one parameter and the first moment is enough. Do not
+  generalize into a survey of moment estimators; the purpose is to establish one
+  principled way to construct $D arrow.r hat(theta)$.
 ]
 
-== MLE chooses the best-fitting parameter value
+== Maximum likelihood uses the sampling model instead
 
 #content-block(
   layout: "top",
-  object-width: 90%,
+  object-width: 94%,
   object: [
     #align(center)[$hat(theta)_"MLE" = arg max_(theta) p(D | theta)$]
+    #v(0.85em)
+    #align(center)[$p(D | theta) prop theta^(N_1) (1-theta)^(N-N_1)$]
+    #uncover("2-")[
+      #v(0.75em)
+      #align(center)[$hat(theta)_"MLE" = frac(N_1, N) = hat(theta)_"MOM"$]
+    ]
+  ],
+  key-points: [
+    - MLE uses the likelihood rather than selected moments
+    #uncover("2-")[
+      - For Bernoulli data the two principles happen to give the same estimate
+    ]
+  ],
+)
+
+#speaker-note[
+  Present MLE as a sibling of method of moments, not as its consequence. The
+  objective is different: MLE uses the probability of the whole observed sample
+  under each parameter value. For this simple model both rules lead to the same
+  numerical estimate, which makes the conceptual comparison unusually clean.
+]
+
+== MAP adds prior information to a point estimate
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$
+      hat(theta)_"MAP"
+      = arg max_(theta) p(theta | D)
+      = arg max_(theta) p(D | theta) p(theta)
+    $]
     #v(0.9em)
     #grid(
-      columns: (1fr, 0.2fr, 1fr),
-      gutter: 0.45em,
+      columns: (1fr, 0.18fr, 1fr),
+      gutter: 0.4em,
       align: center + horizon,
-      schema-node([Model], [$p(D | theta)$]),
-      schema-arrow,
-      schema-node([Point estimate], [$hat(theta)_"MLE"$], fill: palette.paper),
+      schema-node([Likelihood], [$p(D | theta)$]),
+      align(center + horizon)[#text(size: 1.05em, fill: palette.accent)[$times$]],
+      schema-node([Prior], [$p(theta)$], fill: palette.paper),
+    )
+    #uncover("2-")[
+      #v(0.75em)
+      #align(center)[$p(theta) prop 1 quad arrow.r quad hat(theta)_"MAP" = hat(theta)_"MLE"$]
+    ]
+  ],
+  key-points: [
+    - MAP is another estimator: it returns the posterior mode
+    #uncover("2-")[
+      - A uniform prior reduces MAP to MLE
+      - The full posterior retains uncertainty that a single MAP estimate discards
+    ]
+  ],
+)
+
+#speaker-note[
+  Reconnect directly to the Beta-Bernoulli material from the start of the
+  lecture. Bayes' rule is already familiar; MAP simply keeps the maximizing
+  parameter value instead of the full posterior distribution. The final point
+  is a reminder, not a new Bayesian-inference lesson: a point estimate cannot
+  represent posterior width.
+]
+
+== Summary: Different estimators answer the same fitting question
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #grid(
+      columns: (1fr, 1.3fr),
+      gutter: 0.75em,
+      align: center + horizon,
+      schema-node([Method of moments], [$m_k(theta) = hat(m)_k$]),
+      schema-node([Maximum likelihood], [$max_theta p(D | theta)$], fill: palette.paper),
+      schema-node([MAP], [$max_theta p(D | theta) p(theta)$], fill: palette.paper),
+      schema-node([Common goal], [$D arrow.r hat(theta)$]),
     )
   ],
   key-points: [
-    - MLE is one estimator: choose the parameter with the largest likelihood
-    - The estimate depends on the observed dataset
-    - For a Gaussian, the fitted parameters describe the location and spread of the sample
+    - Statistics provides rules for turning data into estimates of unknown quantities
+    - MOM, MLE, and MAP use different principles to construct that rule
+    - In Gaussian models, moments and fitted parameters will meet again
   ],
 )
 
 #speaker-note[
-  This is a compact reactivation of maximum likelihood, not a new optimization
-  unit. The important bridge is that familiar sample summaries arise as fitted
-  parameters for familiar models. In a Gaussian model, the mean and variance
-  are not arbitrary descriptive numbers: they are the parameters selected by a
-  particular estimation criterion. Algebra can be supplied in recorded support.
-]
-
-== MAP keeps prior information in the estimate
-
-#content-block(
-  layout: "top",
-  object-width: 92%,
-  object: [
-    #align(center)[$hat(theta)_"MAP" = arg max_(theta) p(theta | D)$]
-    #uncover("2-")[
-      #v(0.65em)
-      #align(center)[$= arg max_(theta) p(D | theta) p(theta)$]
-    ]
-    #uncover("3-")[
-      #v(0.65em)
-      #align(center)[$"data fit" times "prior plausibility"$]
-    ]
-  ],
-  key-points: [
-    - MLE uses the likelihood alone
-    - MAP combines the likelihood with a prior over parameters
-    - The Bayesian posterior remains richer than its single MAP value
-  ],
-)
-
-#speaker-note[
-  MAP is included to connect the statistical bridge to the Bayesian material
-  students already know. It is a point estimate obtained from the posterior,
-  whereas Bayesian inference keeps the entire posterior distribution. Keep the
-  distinction visible: using a prior does not turn a point estimate into a full
-  uncertainty analysis.
-]
-
-== Covariance is the multivariate second moment
-
-#content-block(
-  layout: "top",
-  object-width: 92%,
-  object: [
-    #align(center)[$"Cov"[bold(x)] = E[(bold(x) - mu)(bold(x) - mu)^T] = Sigma$]
-    #uncover("2-")[
-      #v(0.8em)
-      #align(center)[$E[bold(x) bold(x)^T] = Sigma + mu mu^T$]
-    ]
-    #uncover("3-")[
-      #v(0.8em)
-      #align(center)[$"Cov"[A bold(x) + b] = A Sigma A^T$]
-    ]
-  ],
-  key-points: [
-    - The covariance matrix records scale, orientation, and dependence
-    - Its diagonal contains marginal variances; its off-diagonal entries record co-variation
-    - Affine transformations carry covariance into the multivariate Gaussian calculations ahead
-  ],
-)
-
-#speaker-note[
-  Lift the scalar variance identity into vector form. Covariance is the
-  multivariate second-moment object that will parameterize the Gaussian. The
-  affine transformation rule is the reason covariance matrices propagate so
-  cleanly through linear systems. Avoid opening a separate correlation or
-  causation discussion here; the next section uses this geometry directly.
-]
-
-== Summary: From probability to statistics
-
-#content-block(
-  key-points: [
-    - *Probability:* specify a model and describe possible data or future outcomes
-    - *Statistics:* observe data and learn about unknown parameters, structure, or predictions
-    - Statistics are functions of data; estimators target parameters
-    - MLE and MAP choose parameter values, while Gaussian conditioning will infer unknown variables
-  ],
-)
-
-#speaker-note[
-  Close the bridge with the distinction that organizes the rest of the deck.
-  Estimation supplies or learns the parameters. Once a model is specified, its
-  joint distribution supports probabilistic inference about latent or missing
-  variables. The next section makes the covariance and Gaussian geometry
-  explicit, then turns conditioning into a reusable inference machine.
+  End on the organizing idea rather than another formula. All three methods are
+  estimators, but they use different information and objectives. This is enough
+  estimation machinery for now. Later Gaussian material will make the connection
+  especially concrete because mean and covariance are both distributional
+  summaries and model parameters that can be estimated from data.
 ]
 
 #section-metadata(
@@ -2328,42 +2312,23 @@
   object-width: 94%,
   object: [
     #align(center)[$p_D(y) = frac(1, N) sum_(n=1)^N delta(y - y_n)$]
-    #v(0.6em)
-    #align(center, text(size: 0.8em)[The PMF places equal mass on each observation; the CDF accumulates that mass.])
-    #v(0.55em)
+    #v(0.9em)
     #grid(
-      columns: (1fr, 1fr),
-      gutter: 0.65em,
+      columns: (1fr, 0.2fr, 1fr),
+      gutter: 0.4em,
       align: center + horizon,
-      [
-        #course-figure(
-          lecture-figure-path("figures/book1_fig2_18a_empirical_pmf.png"),
-          source: "Murphy (2025), Book 1, Fig. 2.18A",
-          width: 100%,
-          height: 4.15cm,
-          show-source: false,
-        )
-      ],
-      [
-        #course-figure(
-          lecture-figure-path("figures/book1_fig2_18b_empirical_cdf.png"),
-          source: "Murphy (2025), Book 1, Fig. 2.18B",
-          width: 100%,
-          height: 4.15cm,
-          show-source: false,
-        )
-      ],
+      schema-node([$y_1, dots, y_N$], [$"observations"$]),
+      schema-arrow,
+      schema-node([$p_D$], [$1/N, 1/N, dots, 1/N$]),
     )
-    #figure-source("Murphy (2025), Book 1, Fig. 2.18A–B; official book figure files")
+    #source-note[Course schematic; empirical-distribution definition in the coverage specification]
   ],
 )
 
 #speaker-note[
   The empirical distribution makes the observed dataset into a distribution:
-  equal mass at each observed value. The left panel shows that empirical PMF
-  against a smooth population curve; the right panel shows its accumulating
-  CDF. Lecture 2 will use this object as the bridge from likelihood fitting to
-  distribution matching.
+  equal mass at each observed value. Lecture 2 will use it as the bridge from
+  likelihood fitting to distribution matching.
 ]
 
 == Summary: Empirical distribution
@@ -2394,26 +2359,42 @@
   layout: "top",
   object-width: 96%,
   object: [
-    #align(center)[$"Cov"[X,Y] = E[(X-E[X])(Y-E[Y])]$]
-    #v(0.55em)
-    #align(center)[
-      #course-figure(
-        lecture-figure-path("figures/book1_fig3_1_covariance_gallery.png"),
-        source: "Murphy (2025), Book 1, Fig. 3.1",
-        width: 92%,
-        height: 5.45cm,
-        show-source: false,
-      )
-    ]
-    #figure-source("Murphy (2025), Book 1, Fig. 3.1; covariance-pattern gallery")
+    #grid(
+      columns: (1.1fr, 0.95fr),
+      gutter: 1.0em,
+      align: center + horizon,
+      [
+        #course-figure(
+          lecture-figure-path("figures/book1_fig1_3_iris_pairplot.png"),
+          source: "Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb",
+          width: 100%,
+          height: 6.4cm,
+          show-source: false,
+        )
+      ],
+      [
+        #stack(
+          spacing: 0.85em,
+          align(center)[$"Cov"[X,Y] = E[(X-E[X])(Y-E[Y])]$],
+          uncover("2-")[
+            #grid(
+              columns: (1fr, 1fr, 1fr),
+              gutter: 0.35em,
+              schema-node([$> 0$], [$+$]),
+              schema-node([$= 0$], [$0$], fill: palette.paper),
+              schema-node([$< 0$], [$-$]),
+            )
+          ]
+        )
+      ],
+    )
+    #figure-source("Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb")
   ],
 )
 
 #speaker-note[
-  Covariance records co-variation around the means. Read the first row as a
-  controlled change in linear association, then use the remaining panels to
-  make the key limitation explicit: zero covariance does not guarantee
-  independence. This will matter when we introduce Gaussian geometry.
+  Covariance records co-variation around the means. The three symbolic panels
+  should anticipate the orientation of Gaussian contours on the next slides.
 ]
 
 == Covariance matrix

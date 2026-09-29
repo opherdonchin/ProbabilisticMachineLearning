@@ -59,6 +59,86 @@ in the current agent environment; if either is unavailable, inform the user.
 - Put shared visual style, layout helpers, and reusable slide components in the shared course include `Lectures/course.typ`. It sits on top of a vendored, read-only base theme in `Lectures/themes/`.
 - Lecture `.typ` files should focus on narrative, equations, figures, examples, and speaker notes rather than ad hoc styling.
 
+## Coverage and source authority
+
+- The authoritative source for slide coverage is the current agreed lecture or
+  section plan from the discussion with the user, or an explicit construction
+  brief supplied for that section.
+- The syllabus and textbooks support that plan: use them to verify terminology,
+  notation, equations, examples, provenance, and relevant background. Do not
+  expand slide coverage merely because a topic appears in the syllabus or in an
+  assigned reading.
+- Treat a textbook as a coverage authority only when the user explicitly asks
+  to follow, reproduce, or cover particular textbook material.
+- If the current construction brief differs from the syllabus, an older plan, or
+  a textbook's organization, follow the current construction brief for slide
+  construction. Flag documentation that may need updating rather than silently
+  reconciling the discrepancy inside the slides.
+- Do not restore previously removed material simply because it is nearby in the
+  source text. Every included topic must have a role in the current lecture
+  argument.
+
+## Intellectual construction of a lecture
+
+A lecture is an argument, not a list of topics. Before implementing slides,
+identify:
+
+1. what students can be assumed to know when the section begins;
+2. the question, tension, or problem that motivates the section;
+3. the sequence of conceptual moves needed to address it;
+4. the concrete example or examples that carry the argument;
+5. what students should understand or be able to do when the section ends;
+6. how that endpoint prepares the next section or later course material.
+
+Include material because it advances that argument, not merely because it is
+mathematically adjacent or available in the source material.
+
+### Each section should have one job
+
+A section should answer one identifiable question or accomplish one conceptual
+transition. Start a new section when the kind of question changes substantially,
+for example when moving from properties of probability distributions to
+estimating unknown quantities from observed data.
+
+Every slide in a section should have a clear answer to: "Why does this slide
+occur here?" A technically correct slide that does not advance the section's
+argument should be moved or removed.
+
+### Prefer cumulative examples
+
+Within a section, reuse an established example when it can support the next
+conceptual move. Introduce a new example only when the change itself teaches
+something.
+
+Abstract structure should normally be motivated by a concrete case or used to
+synthesize cases students have already seen. Avoid introducing an abstraction
+and several unfamiliar examples at the same time.
+
+## Slide-level content discipline
+
+Control conceptual density, not only visual density.
+
+- A substantive slide should normally make one principal conceptual move.
+  Several equations, bullets, or visual elements are appropriate when they work
+  together to make that one move.
+- Split a slide when it asks students simultaneously to learn multiple new
+  definitions, follow a derivation and interpret a new concept, absorb both a
+  general principle and a substantially new example, track several new pieces of
+  notation, or understand both a main result and an important caveat.
+- Conversely, do not split one simple argument across multiple slides merely to
+  reduce word count.
+- Treat the densest successful slides elsewhere in the course as an upper bound,
+  not as the default target.
+
+### Slide titles should carry the argument
+
+Prefer claim or question titles over topic labels when practical. A title such
+as "Linearity makes expectations easy to combine" tells the student what the
+slide is doing more clearly than "Linearity of expectation."
+
+A topic title is still appropriate when defining or introducing that topic is
+itself the purpose of the slide.
+
 ## Shared course API
 
 Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
@@ -150,6 +230,10 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 - Student notebooks should be Colab-first and pedagogical: guided sequence, supplied code where appropriate, student modifications or implementation tasks, and interpretation/reflection questions.
 - Do not force the student notebook to double as the source of lecture figures.
 - Some duplication between student notebooks and author-facing figure notebooks is acceptable when it improves clarity and pedagogy.
+- Do not assume that the student notebook must determine the lecture architecture
+  during early slide planning. The relationship between lecture and self-work may
+  be decided later, once the role of the computational component is clear, unless
+  the user explicitly asks to co-design them.
 
 ## Layout and styling discipline
 
@@ -191,9 +275,25 @@ Before a lecture is considered final:
 - every substantive slide should have speaker notes;
 - the rendered deck should be visually reviewed.
 
-## Mechanical checks versus visual review
+## Intellectual, mechanical, and visual review
 
 Treat these as separate quality gates.
+
+### Intellectual review
+
+Before polishing layout, review the deck for:
+
+- the purpose and endpoint of each section;
+- the logical dependency between slides;
+- whether terminology and notation are introduced before they are used;
+- whether each slide contains one manageable conceptual move;
+- whether any slide is present only because the source material contains it;
+- unnecessary repetition or unjustified jumps in abstraction;
+- whether examples persist long enough to provide scaffolding;
+- whether summaries synthesize rather than merely repeat;
+- whether section transitions explain why the next question arises;
+- whether the planned slide count is credible for the available teaching time.
+
 
 ### Mechanical checks
 
@@ -222,16 +322,21 @@ Compilation alone is not sufficient evidence that a slide is good.
 
 ## Narrative planning
 
-For substantial lecture revisions, plan the intellectual sequence before expanding every slide.
+For substantial lecture revisions, plan the intellectual sequence before
+expanding every slide. Work from the authoritative coverage decision above, not
+from the order of a textbook chapter.
 
 Prefer:
 
-1. conceptual goal;
+1. conceptual goal and section endpoint;
 2. sequence of claims or constructions;
-3. examples and figures needed;
-4. slide implementation.
+3. motivating and cumulative examples;
+4. equations and figures needed;
+5. slide implementation.
 
-For long lectures, maintain a lightweight slide inventory or outline so that planning and execution remain separate.
+For long lectures, maintain a lightweight slide inventory or outline so that
+planning and execution remain separate. Revisit the outline when a new slide
+changes the section's purpose, dependency structure, or time budget.
 
 ## Asset discipline
 

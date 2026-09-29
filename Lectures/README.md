@@ -139,6 +139,12 @@ slide is doing more clearly than "Linearity of expectation."
 A topic title is still appropriate when defining or introducing that topic is
 itself the purpose of the slide.
 
+### Close sections without foreshadowing
+
+- A section summary or final slide must close the section's own argument: synthesize its claims, name its endpoint, or state the result students should retain.
+- Do not use summary bullets or speaker notes to preview the next section, promise later material, or explain what the next slide or lecture will do. If a transition is needed, begin the next section with it or use a dedicated bridge slide whose job is explicitly to make that transition.
+- During review, inspect the last substantive slide and the summary slide as endpoints. Remove phrases such as "next section," "next slide," "later," "will return," or "will meet again" when they point outside the current section; replace them with a statement about what the current section established.
+
 ## Shared course API
 
 Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
@@ -323,7 +329,8 @@ Inspect the rendered slides for:
 - subscripts and superscripts attach only to the intended symbols, and a following bracketed argument remains on the baseline rather than becoming part of the attachment;
 - sensible use of repeated layouts;
 - narrative flow across slides;
-- whether the intended teaching emphasis is visually apparent.
+- whether the intended teaching emphasis is visually apparent;
+- whether summary and final slides feel like endpoints rather than previews of what comes next.
 
 Compilation alone is not sufficient evidence that a slide is good.
 

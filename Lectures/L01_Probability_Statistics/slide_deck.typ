@@ -311,7 +311,9 @@
 )
 
 #speaker-note[
-  This is the pivot from the previous course to introducing the current course. The next section will establish what is the same and what is different.
+  Close by naming the shared probabilistic vocabulary: models, graphs, Bayes'
+  rule, conjugacy, and posterior uncertainty all describe how data inform
+  unknown quantities.
 ]
 
 #section-metadata(
@@ -528,8 +530,8 @@
   the compact flow separates the three roles. Experience E is the data or
   interaction used by a learning procedure A. Its product is a function. Task
   T specifies what that function must do, and performance measure P says what
-  counts as improvement. The next slide makes one canonical pairing concrete:
-  supervised experience used to learn a predictor.
+  counts as improvement. A canonical pairing is supervised experience used to
+  learn a predictor.
 ]
 
 == Supervised experience supports prediction
@@ -581,8 +583,8 @@
   Supervised experience is the canonical training regime for prediction, but
   it is not identical to prediction. Here the deployed function maps a new
   input to an output, while the learning algorithm maps paired examples to that
-  predictor. A loss will say how well the predictor performs. The next two
-  slides specialize this pairing to classification.
+  predictor. A loss says how well the predictor performs. Classification makes
+  this pairing concrete.
 ]
 
 == Classification: Iris flowers
@@ -754,8 +756,8 @@
   can be understood here as the procedure that solves, or approximates the
   solution to, this optimization problem. The loss operationalizes the
   performance measure P on training data. We have still not claimed that this
-  predictor will work on future cases. The final reveal names the distribution
-  implicit in the average: an equal-weight mixture of point masses at the
+  predictor will work on future cases. The distribution implicit in the average
+  is an equal-weight mixture of point masses at the
   observed values of a random variable.
 ]
 
@@ -940,22 +942,17 @@
 )
 
 #speaker-note[
-  This summary marks the conceptual change in emphasis. We still use the
-  probabilistic language students know, but now organize the problem around a
-  task, the experience available for learning, and a measure of performance.
-  Iris has made each piece concrete: a predictor maps four measurements to a
-  species; the training data provide labeled examples; and zero-one loss
-  measures classification errors.
+  This summary closes the conceptual change in emphasis. Statistics contributed
+  unknown parameters; computer science contributed input-output functions; and
+  machine learning learns those functions from experience and evaluates their
+  performance. Iris made the three ingredients concrete: a predictor maps four
+  measurements to a species, labeled examples provide experience, and zero-one
+  loss measures classification errors.
 
-  Supervised learning is therefore one canonical pairing of experience and
-  task, not the master taxonomy for everything learned probabilistic systems
-  can do. The next section separates those two axes explicitly.
-
-  End on the final question. Minimizing loss on observed examples is a
-  well-defined procedure, but it is not yet evidence that the predictor will
-  work on future flowers. The next section shows that familiar regression
-  notation can play different roles depending on the task we are trying to
-  solve.
+  Supervised learning is one canonical pairing of experience and task, not a
+  definition of every learned probabilistic system. The section ends with the
+  distinction between the learning rule, the information available to it, and
+  the criterion used to judge it.
 ]
 
 #section-metadata(
@@ -1297,7 +1294,7 @@
 )
 
 #speaker-note[
-  These four datasets are the landmarks the rest of this section returns to.
+  These four datasets provide landmarks for comparing tasks in this section.
   Iris we have already used, for prediction — but the same 150 flowers also
   support clustering and two-dimensional visualization, so even our first
   example was never tied to one task. Longevity as a benchmark makes
@@ -1308,10 +1305,9 @@
   from the corresponding Chapter 1 figures and table in Murphy, Book 1
   (online version, April 18, 2025).
 
-  The next three slides unpack MNIST, CIFAR-10, and IMDB one at a time. Each
-  instantiates the same task-taxonomy schemas — prediction, discovery,
-  generation — from two slides ago, so their right-hand sides can be compared
-  directly against that taxonomy slide.
+  MNIST, CIFAR-10, and IMDB instantiate the same task-taxonomy schemas —
+  prediction, discovery, and generation — so their right-hand sides can be
+  compared directly against the taxonomy.
 ]
 
 == MNIST: the same taxonomy, one dataset
@@ -1435,8 +1431,8 @@
   any of the three schemas apply. Discovery gives a text representation z,
   e.g. an embedding, useful beyond sentiment. Generation here is language
   modeling: predicting the next word from its predecessors, the same
-  p_D(x | c) idea as image generation, just factored token by token. This is
-  a preview, not a sequence-modeling lecture.
+  p_D(x | c) idea as image generation, just factored token by token. Keep this
+  as a brief sequence-data example, not a sequence-modeling lecture.
 ]
 
 == Learning problems become probabilistic queries
@@ -1482,7 +1478,7 @@
   key-points: [
     - Every task invokes probability models: $p_D (y|x)$, $p_D (x|c)$, $p_D (z|x)$
     - Performances are expectations over future cases: $f_P = E[dot]$
-    - We return to the probabilistic modeling tools of Bayesian statistics
+    - Probability models provide a common language for all four task schemas
   ],
 )
 
@@ -1499,12 +1495,10 @@
   here, is in every case an expectation over future cases, not the training
   average computed earlier for Iris and CIFAR-10.
 
-  That is why the lecture now returns to probability, and why the next
-  slides should not feel like a detour into definitions. Expectation is the
-  first way of extracting an answer from a distribution. Conditional
-  expectation is the prototype of prediction. Gaussian conditioning, at the
-  end of this lecture, becomes the first worked example of turning one of
-  these queries into a closed-form answer.
+  The common structure is now explicit: a task asks for a quantity, and a
+  probability model supplies the distributional object from which that
+  quantity is extracted. Expectation is one central way to summarize such an
+  answer; conditional expectation specializes it to observed information.
 ]
 
 == Summary: From datasets to learning problems
@@ -1527,14 +1521,11 @@
   and y.
 
   Action is not orphaned here: it already got its own schema on the task
-  taxonomy slide two sections ago, and stays a map marker until later
-  coursework, since none of these four landmark datasets is naturally an
-  action problem.
+  taxonomy slide two sections ago, but none of these four landmark datasets is
+  naturally an action problem. The section ends with a query-centered view of
+  learning: the variables come from the dataset, while the task is determined
+  by the quantity we ask for.
 
-  The rest of the lecture rebuilds the probability machinery — expectation,
-  conditional expectation, variance, covariance, Gaussian conditioning —
-  needed to actually answer $p_D (y_* | x_*)$, $p_D (z_* | x_*)$, and
-  $p_D (x | c)$.
 ]
 
 #section-metadata(
@@ -1662,8 +1653,8 @@
 #speaker-note[
   Introduce expectation as a model-based summary, not as a new statistical
   estimator. The discrete and continuous forms are the same idea with different
-  summation rules. Using a general function $g$ prepares the way for moments
-  without adding another concept yet.
+  summation rules. Using a general function $g$ states the same summary idea
+  for many possible quantities without adding another concept yet.
 ]
 
 == Linearity makes expectations easy to combine
@@ -1717,9 +1708,9 @@
 )
 
 #speaker-note[
-  The alternative variance identity introduces $E[X^2]$ naturally. Do not yet
-  generalize to higher moments; the next slide names the pattern students have
-  now seen twice.
+  The alternative variance identity introduces $E[X^2]$ naturally. Together,
+  the mean, variance, and raw second moment show that distribution summaries can
+  be organized by the powers of the random variable they average.
 ]
 
 == Moments organize these distribution summaries
@@ -1826,8 +1817,8 @@
 
 #speaker-note[
   Introduce the within-plus-between decomposition without deriving it. It shows
-  how conditional summaries combine to reconstruct an unconditional one and
-  will recur in hierarchical and Gaussian settings.
+  how conditional summaries combine to reconstruct an unconditional one. It is
+  a general decomposition of within-condition and between-condition variation.
 ]
 
 == Summary: Probability for machine learning
@@ -1837,14 +1828,16 @@
     - Expectations and moments summarize a probability distribution
     - Conditioning makes those summaries depend on observed information
     - Total expectation and total variance combine conditional pieces
-    - These are properties of the model; statistics asks how to learn them from data
+    - These identities are properties of a distribution treated as given
   ],
 )
 
 #speaker-note[
-  Synthesize rather than enumerate formulas. The transition is the important
-  final line: so far the distribution has been treated as given. We now ask
-  what can be learned about its unknown quantities from a finite sample.
+  Synthesize rather than enumerate formulas. Expectations and moments summarize
+  a distribution, conditioning makes those summaries depend on information we
+  have observed, and the total-expectation and total-variance identities
+  recombine conditional pieces. The section closes on the model side of this
+  distinction: the distribution is treated as given.
 ]
 
 #section-metadata(
@@ -1943,8 +1936,8 @@
 #speaker-note[
   Keep the direction of the mapping explicit: data go into the estimator and an
   estimate comes out. The unknown parameter is the target, not the input. This
-  prepares the next slides, where method of moments, MLE, and MAP are presented
-  as different rules for constructing that map.
+  slide establishes the data-to-estimate map that any estimation principle must
+  instantiate.
 ]
 
 == Sample moments estimate population moments
@@ -2112,16 +2105,16 @@
   key-points: [
     - Statistics provides rules for turning data into estimates of unknown quantities
     - MOM, MLE, and MAP use different principles to construct that rule
-    - In Gaussian models, moments and fitted parameters will meet again
+    - A point estimate gives one value, while the posterior retains uncertainty
   ],
 )
 
 #speaker-note[
   End on the organizing idea rather than another formula. All three methods are
-  estimators, but they use different information and objectives. This is enough
-  estimation machinery for now. Later Gaussian material will make the connection
-  especially concrete because mean and covariance are both distributional
-  summaries and model parameters that can be estimated from data.
+  estimators, but they use different information and objectives. Method of
+  moments matches summaries, likelihood scores the observed sample, and MAP
+  combines likelihood with a prior. Together they show three ways to construct
+  a rule from data to an estimate.
 ]
 
 #section-metadata(
@@ -2177,7 +2170,7 @@
 
 #speaker-note[
   One-hot notation lets the categorical probability be written as a product
-  with a single active class. It is convenient for vector-valued models later.
+  with a single active class. It is convenient for vector-valued models.
 ]
 
 == Multinomial counts
@@ -2200,8 +2193,8 @@
 
 #speaker-note[
   The categorical model describes one label. The multinomial describes the
-  counts after repeated categorical draws. The counts will return as sufficient
-  statistics in Lecture 2.
+  counts after repeated categorical draws. Counts are the natural summary of
+  repeated categorical outcomes.
 ]
 
 == Softmax
@@ -2271,7 +2264,9 @@
 
 #speaker-note[
   The categorical family gives the probability language for the classification
-  problems introduced earlier. It will later meet likelihood and log loss.
+  problems introduced earlier: a single label, a one-hot representation,
+  repeated counts, and normalized logits are different views of multiclass
+  outcomes.
 ]
 
 #section-metadata(
@@ -2327,8 +2322,8 @@
 
 #speaker-note[
   The empirical distribution makes the observed dataset into a distribution:
-  equal mass at each observed value. Lecture 2 will use it as the bridge from
-  likelihood fitting to distribution matching.
+  equal mass at each observed value. It represents the sample without adding
+  smoothing or a parametric assumption.
 ]
 
 == Summary: Empirical distribution
@@ -2342,8 +2337,9 @@
 )
 
 #speaker-note[
-  This is a short bridge section. The next section changes from scalar
-  variation to variation in several dimensions.
+  This short section closes by identifying the empirical distribution as a
+  distributional representation of observed data, with equal point masses and
+  no smoothing.
 ]
 
 #section-metadata(
@@ -2394,7 +2390,7 @@
 
 #speaker-note[
   Covariance records co-variation around the means. The three symbolic panels
-  should anticipate the orientation of Gaussian contours on the next slides.
+  show how the sign of covariance describes the orientation of joint variation.
 ]
 
 == Covariance matrix
@@ -2478,8 +2474,8 @@
 
 #speaker-note[
   This section turns dependence into an object that can be transformed and
-  conditioned. The multivariate Gaussian packages that object into a reusable
-  probability model.
+  conditioned. Covariance records joint variation, affine maps transform it,
+  and correlation expresses the same dependence on a unit-free scale.
 ]
 
 #section-metadata(
@@ -2675,8 +2671,9 @@
 )
 
 #speaker-note[
-  The multivariate Gaussian is the mathematical center of the lecture. The
-  next slide applies exactly this conditioning operation to missing entries.
+  The section's endpoint is the Gaussian conditioning rule: marginals retain
+  covariance blocks, while conditioning shifts the mean and reduces remaining
+  uncertainty according to the observed variables.
 ]
 
 #section-metadata(
@@ -2724,9 +2721,10 @@
 )
 
 #speaker-note[
-  This brief bridge positions missing values as another conditioning problem,
-  then moves to a model where the joint Gaussian is built from a latent state
-  and a linear observation model.
+  This brief section concludes that missing-value inference is Gaussian
+  conditioning on hidden entries. The visible/hidden partition states the
+  problem cleanly, and the conditional distribution supplies the imputation
+  target.
 ]
 
 #section-metadata(
@@ -2868,6 +2866,6 @@
 
 #speaker-note[
   End by naming the linear Gaussian system as a composition of familiar pieces.
-  Lecture 2 will change focus: from probability objects and conditioning to
-  likelihood objectives, fitting, and exponential-family structure.
+  The lecture has moved from learning tasks and data to probability objects and
+  conditioning, ending with a complete inference machine.
 ]

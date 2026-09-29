@@ -1823,32 +1823,6 @@
   later Gaussian conditioning.
 ]
 
-== Same summaries, different structure
-
-#content-block(
-  layout: "top",
-  object-width: 96%,
-  object: [
-    #grid(
-      columns: (1fr, 0.18fr, 1fr),
-      gutter: 0.45em,
-      align: center + horizon,
-      schema-node([Structure A], [#stack(spacing: 0.12em, [$bar(x), s_x^2, rho$], [$bullet quad bullet quad bullet quad bullet$])]),
-      align(center + horizon)[#text(size: 1.25em, fill: palette.accent)[$!=$]],
-      schema-node([Structure B], [#stack(spacing: 0.12em, [$bar(x), s_x^2, rho$], [$bullet quad quad bullet quad quad bullet$])]),
-    )
-    #v(0.85em)
-    #align(center)[$"summaries" quad != quad "full data geometry"$]
-    #source-note[Course schematic; Anscombe/Datasaurus design principle]
-  ],
-)
-
-#speaker-note[
-  The marks stand for deliberately different point configurations. Use this as
-  a warning: moments and correlations are powerful, but inspection and model
-  checking remain necessary.
-]
-
 == Summary: Moments and conditional moments
 
 #content-block(

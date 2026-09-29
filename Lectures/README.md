@@ -245,6 +245,11 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 - Prefer Python-generated figures for empirical, probabilistic, simulation, and data-driven graphics.
 - Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-node`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
 
+### Typst math attachment spacing
+
+- In Typst math, an ungrouped subscript or superscript can consume the following expression until the next space. When a script is followed by a separate bracketed expression, add a space: write `$E_Y [V[X | Y]]$` and `$E_theta [Y]$`, not `$E_Y[V[X | Y]]$` or `$E_theta[Y]$`.
+- During source review, search math for `_` and `^`, especially when an attachment is immediately followed by `[...]`, another identifier, or a separate grouped expression. Use explicit parentheses after `_` or `^` when the attachment itself contains multiple terms, as in `sum_(n=1)^N`.
+
 ## Content blocks and component arguments
 
 - Prefer Typst content blocks for user-facing text in reusable components, for example:
@@ -304,6 +309,7 @@ Check that:
 - there is no content overflow or layout failure;
 - expected output pages are generated;
 - figure paths and imports resolve correctly.
+- Math source has been checked for unintended subscript/superscript grouping, especially an attachment immediately followed by a bracketed expression.
 
 ### Visual review
 
@@ -314,6 +320,7 @@ Inspect the rendered slides for:
 - figure readability;
 - visual hierarchy;
 - alignment and spacing;
+- subscripts and superscripts attach only to the intended symbols, and a following bracketed argument remains on the baseline rather than becoming part of the attachment;
 - sensible use of repeated layouts;
 - narrative flow across slides;
 - whether the intended teaching emphasis is visually apparent.

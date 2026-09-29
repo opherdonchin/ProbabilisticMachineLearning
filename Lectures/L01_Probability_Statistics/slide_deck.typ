@@ -1784,7 +1784,7 @@
       ),
     )
     #v(0.9em)
-    #align(center)[$E[X] = E_Y[E[X | Y]]$]
+    #align(center)[$E[X] = E_Y [E[X | Y]]$]
   ],
   key-points: [
     - $E[X | Y]$ is itself a function of the conditioning variable $Y$
@@ -1807,9 +1807,9 @@
   object: [
     #align(center)[$
       V[X] =
-      underbrace(E_Y[V[X | Y]])_("within")
+      underbrace(E_Y [V[X | Y]])_("within")
       +
-      underbrace(V_Y[E[X | Y]])_("between")
+      underbrace(V_Y [E[X | Y]])_("between")
     $]
     #v(1.0em)
     #grid(
@@ -1998,7 +1998,7 @@
       align: center + horizon,
       schema-node(
         [Bernoulli model],
-        [$E_theta[Y] = theta$],
+        [$E_theta [Y] = theta$],
         fill: palette.paper,
       ),
       schema-arrow,

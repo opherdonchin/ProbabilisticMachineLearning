@@ -32,7 +32,7 @@
 
 #section-metadata(
   short-title: [Probabilistic modelling],
-  subtitle: [Probablistic models update based on data],
+  subtitle: [Probabilistic models update based on data],
 )
 
 = A familiar modeling language
@@ -63,7 +63,7 @@
   key-points: [
     - A statistical model has data and unknown parameters
     #uncover("2-")[
-      - How could observed data ($y$) could have been generated.
+      - How could observed data ($y$) have been generated.
       - What does it tell us about the parameters ($theta$)
     ]
   ],
@@ -1480,9 +1480,9 @@
     )
   ],
   key-points: [
-    - Every task invokes probablity models: $p_D (y|x)$, $p_D (x|c)$, $p_D (z|x)$
+    - Every task invokes probability models: $p_D (y|x)$, $p_D (x|c)$, $p_D (z|x)$
     - Performances are expectations over future cases: $f_P = E[dot]$
-    - We return to the probablistic modeling tools of Bayesian statistics
+    - We return to the probabilistic modeling tools of Bayesian statistics
   ],
 )
 
@@ -1672,7 +1672,7 @@
   layout: "top",
   object-width: 90%,
   object: [
-    #align(center)[$E[aX + b] = aE[X] + b$]
+    #align(center)[$E[a X + b] = a E[X] + b$]
     #v(0.9em)
     #align(center)[$E[sum_i X_i] = sum_i E[X_i]$]
   ],

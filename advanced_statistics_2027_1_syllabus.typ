@@ -127,9 +127,9 @@ The course grade is based on four components:
   1,
   [21.10.2026],
   [Probability and statistics review and extension],
-  [Machine-learning tasks; probabilistic modeling; MLE, MAP and regularization; multivariate Gaussian models; exponential families; exchangeability; empirical Bayes and model averaging.],
-  [Ch. 1; §§2.1--2.6, 3.1--3.3, 3.6, 4.1--4.3 and 4.5--4.7.],
-  [Ch. 1; §§2.3--2.4, 3.2.5, 3.7 and 3.8.2.],
+  [Machine-learning tasks; probabilistic modeling; statistics and estimators; moments; MLE and MAP; Gaussian and multivariate Gaussian models; conditioning and linear Gaussian systems.],
+  [Ch. 1; §§2.1--2.6, 3.1--3.3, 4.1--4.2 and 4.6.],
+  [Ch. 1; §2.3.],
 )
 
 #lecture(

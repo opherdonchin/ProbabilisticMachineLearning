@@ -2,6 +2,23 @@
 
 These instructions apply to the entire repository.
 
+## Repository history and cleanup
+
+- Keep the working tree focused on current source, current documentation, and
+  current generated artifacts. Do not keep superseded drafts, `old` copies,
+  archive folders, revision summaries, or other historical source material in
+  the repository merely to preserve history.
+- Git history is the archive. When committed material becomes obsolete, delete
+  it rather than marking it superseded or moving it to an archive location.
+- If superseded work exists only as uncommitted changes and is worth preserving,
+  commit it first, then delete it in a subsequent commit. This makes the history
+  recoverable without leaving stale material in the current tree.
+- Before deleting a file, check for current references to it and update or remove
+  those references in the same change.
+- Generated artifacts that no longer correspond to current source should be
+  regenerated or removed; do not knowingly leave stale generated outputs beside
+  updated source.
+
 ## Lecture slide authoring
 
 - Follow `Lectures/README.md` when creating or editing lecture slides
@@ -27,7 +44,7 @@ These instructions apply to the entire repository.
 - Always execute notebooks from a clean kernel, top to bottom. Do not accept a
   pass that depends on hidden state or out-of-order execution.
 - In notebook Markdown cells, write display math with `$$ ... $$`, never with
-  `\[ ... \]`. Continue to use `$ ... $` for inline math.
+  `\\[ ... \\]`. Continue to use `$ ... $` for inline math.
 
 ## Updating the uv environment
 

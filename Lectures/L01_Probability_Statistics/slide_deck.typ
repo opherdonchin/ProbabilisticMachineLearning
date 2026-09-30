@@ -1564,6 +1564,15 @@
     )
     #uncover("2-")[
       #v(0.8em)
+      #grid(
+        columns: (1fr, 1fr, 1fr),
+        gutter: 0.8em,
+        align: center + horizon,
+        [#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
+        [#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
+        [#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
+      )
+      #v(0.35em)
       #align(center)[Joint distribution: $p_D (x_"obs", z, y_*)$]
       #v(0.8em)
     ]
@@ -1597,25 +1606,41 @@
       columns: (1fr, 1fr, 1fr),
       gutter: 0.7em,
       align: center + horizon,
-      schema-node(
-        [Summarize],
-        [#stack(spacing: 0.25em, [$E[g(Y) | X=x]$], [$"extract a useful quantity"$])],
-        density: "prose",
-      ),
-      schema-node(
-        [Marginalize],
-        [#stack(spacing: 0.25em, [$p(x) = integral p(x,z) dif z$], [$"average out unwanted variables"$])],
-        density: "prose",
-        fill: palette.paper,
-      ),
-      schema-node(
-        [Condition],
-        [#stack(spacing: 0.25em, [$p(z | x)$], [$"update using observations"$])],
-        density: "prose",
-      ),
+      [
+        #stack(
+          spacing: 0.35em,
+          align(center)[#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
+          schema-node(
+            [Summarize],
+            [#stack(spacing: 0.25em, [$integral g(y_*) p_D (y_* | x_"obs", z) dif y_*$], [$"extract a useful quantity"$])],
+            density: "prose",
+          ),
+        )
+      ],
+      uncover("2-")[
+        #stack(
+          spacing: 0.35em,
+          align(center)[#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
+          schema-node(
+            [Marginalize],
+            [#stack(spacing: 0.25em, [$p_D (x_"obs", y_*) = integral p_D (x_"obs", z, y_*) dif z$], [$"average out unwanted variables"$])],
+            density: "prose",
+            fill: palette.paper,
+          ),
+        )
+      ],
+      uncover("3-")[
+        #stack(
+          spacing: 0.35em,
+          align(center)[#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
+          schema-node(
+            [Condition],
+            [#stack(spacing: 0.25em, [$p_D (z | x_"obs", y_*) = frac(p_D (x_"obs", z, y_*), integral p_D (x_"obs", z', y_*) dif z')$], [$"update using observations"$])],
+            density: "prose",
+          ),
+        )
+      ],
     )
-    #v(0.85em)
-    #align(center)[$"one joint model" quad arrow.r quad "many task-specific answers"$]
   ],
   key-points: [
     - Prediction and performance often require expectations
@@ -1625,9 +1650,10 @@
 )
 
 #speaker-note[
-  This is the roadmap for the probability review. Do not teach marginalization
-  or conditioning in full here. The point is that many apparently different
-  machine-learning questions repeatedly use the same small set of operations.
+  Reveal one operation at a time from the joint distribution. Use lowercase
+  notation consistently: expectation summarizes the target, marginalization
+  integrates out the latent variable, and conditioning normalizes the joint to
+  update the latent variable given the observed and target values.
 ]
 
 == Expectation summarizes a distribution

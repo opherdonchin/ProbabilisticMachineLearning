@@ -223,7 +223,8 @@ __marimo__/
 output/
 Lectures/*/output/
 
-# Local reference material and packaged drafts
-Resources/
+# Local reference material and packaged drafts; keep the source-link index
+Resources/*
+!Resources/README.md
 Lectures/*.zip
 .vscode/settings.json

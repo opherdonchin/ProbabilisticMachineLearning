@@ -1564,15 +1564,6 @@
     )
     #uncover("2-")[
       #v(0.8em)
-      #grid(
-        columns: (1fr, 1fr, 1fr),
-        gutter: 0.8em,
-        align: center + horizon,
-        [#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
-        [#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
-        [#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
-      )
-      #v(0.35em)
       #align(center)[Joint distribution: $p_D (x_"obs", z, y_*)$]
       #v(0.8em)
     ]
@@ -1606,38 +1597,36 @@
       columns: (1fr, 1fr, 1fr),
       gutter: 0.7em,
       align: center + horizon,
-      [
-        #stack(
+      schema-node(
+        [Summarize],
+        [#stack(
           spacing: 0.35em,
-          align(center)[#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
-          schema-node(
-            [Summarize],
-            [#stack(spacing: 0.25em, [$integral g(y_*) p_D (y_* | x_"obs", z) dif y_*$], [$"extract a useful quantity"$])],
-            density: "prose",
-          ),
-        )
-      ],
+          [$integral g(y_*) p_D (y_* | x_"obs", z) dif y_*$],
+          [weighted summary of the target],
+        )],
+        density: "prose",
+      ),
       uncover("2-")[
-        #stack(
-          spacing: 0.35em,
-          align(center)[#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
-          schema-node(
-            [Marginalize],
-            [#stack(spacing: 0.25em, [$p_D (x_"obs", y_*) = integral p_D (x_"obs", z, y_*) dif z$], [$"average out unwanted variables"$])],
-            density: "prose",
-            fill: palette.paper,
-          ),
+        #schema-node(
+          [Marginalize],
+          [#stack(
+            spacing: 0.35em,
+            [$p_D (y_* | x_"obs") = integral p_D (z, y_* | x_"obs") dif z$],
+            [average out the latent variable],
+          )],
+          density: "prose",
+          fill: palette.paper,
         )
       ],
       uncover("3-")[
-        #stack(
-          spacing: 0.35em,
-          align(center)[#text(size: 1.25em, fill: palette.accent)[$arrow.b$]],
-          schema-node(
-            [Condition],
-            [#stack(spacing: 0.25em, [$p_D (z | x_"obs", y_*) = frac(p_D (x_"obs", z, y_*), integral p_D (x_"obs", z', y_*) dif z')$], [$"update using observations"$])],
-            density: "prose",
-          ),
+        #schema-node(
+          [Condition],
+          [#stack(
+            spacing: 0.35em,
+            [$p_D (z | x_"obs", y_*) = frac(p_D (z, y_* | x_"obs"), integral p_D (z', y_* | x_"obs") dif z')$],
+            [infer the latent variable],
+          )],
+          density: "prose",
         )
       ],
     )
@@ -1650,10 +1639,10 @@
 )
 
 #speaker-note[
-  Reveal one operation at a time from the joint distribution. Use lowercase
-  notation consistently: expectation summarizes the target, marginalization
-  integrates out the latent variable, and conditioning normalizes the joint to
-  update the latent variable given the observed and target values.
+  Reveal one operation at a time from the joint distribution. The first integral
+  summarizes the target for given observed and latent values. The second
+  integrates out the latent variable; the third normalizes the joint to infer
+  that variable given the observed and target values.
 ]
 
 == Expectation summarizes a distribution

@@ -1949,6 +1949,11 @@
   subtitle: [Estimating unknown quantities from observed data],
 )
 
+// We should introduce the univariate Gaussian here 
+// book 1 2.6.2 Eq 2.112 
+// book 2 2.2.2.1 Eq 2.28
+// book 1 2.6.5 Eq 2.124 2.125 2.126 2.127 2.128
+
 = Inverse probability
 
 == The goal is to learn from data
@@ -2251,13 +2256,13 @@
     #align(center)[$"NLL"(theta) = -log product_(n=1)^N p(y_n | theta)$]
     #uncover("2-")[
       #v(0.8em)
-      #align(center)[$= -log product_(n=1)^N theta^(I(y_n=1)) (1-theta)^(I(y_n=0))$]
+      #align(center)[$= -log product_(n=1)^N theta^(II(y_n=1)) (1-theta)^(II(y_n=0))$]
     ]
     #source-note[Murphy, Book 1 §4.2.3, Eqs. 4.20–4.21]
   ],
   key-points: [
     - Reuse the coin model: $y_n=1$ for heads, $y_n=0$ for tails
-    #uncover("2-")[- $I(A)$ equals one when $A$ is true and zero otherwise]
+    #uncover("2-")[- $II(A)$ equals one when $A$ is true and zero otherwise]
   ],
 )
 
@@ -2908,6 +2913,13 @@
   short-title: [Categorical],
   subtitle: [The probability language of multiclass labels],
 )
+
+// Here we want to introduce multivariate Gaussians and get all the way 
+// to Gaussian linear systems
+// Best is to follow the develoopment in book 2 2.3 (skipping 2.3.2.3 and 2.3.3.6)
+// This can be supported by the development in book 1: 
+//   3.1.1, 3.1.2, 3.2.1, 3.2.2, 3.2.3, 3.2.4, 3.3.1, 3.3.2
+// The lecture will end at this point. It's ok to use slides from later sections to help form these sections. Things we want to delete from here (= Categorical, multinomial, and softmax) can be put into a separate remainders file that we should keep tucked away somewhere perhaps in Lectures/ main directory so that remainders slides can be found easily.
 
 = Categorical, multinomial, and softmax
 

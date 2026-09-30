@@ -1547,36 +1547,43 @@
       align: center + horizon,
       schema-node(
         [Observed],
-        [#stack(spacing: 0.2em, [$x_"obs"$], [$"features, measurements, context"$])],
+        [$x_"obs"$: features, measurements, context],
         density: "prose",
       ),
       schema-node(
         [Latent],
-        [#stack(spacing: 0.2em, [$z$], [$"state, representation, missing value"$])],
+        [$z$: state, representation, missing value],
         density: "prose",
         fill: palette.paper,
       ),
       schema-node(
         [Target],
-        [#stack(spacing: 0.2em, [$y_*$], [$"prediction, sample, decision"$])],
+        [$y_*$: prediction, sample, decision],
         density: "prose",
       ),
     )
-    #v(0.8em)
-    #align(center)[$p_D(x_"obs", z, y_*)$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[Joint distribution: $p_D (x_"obs", z, y_*)$]
+      #v(0.8em)
+    ]
   ],
   key-points: [
     - The variables may be high-dimensional, latent, or only partly observed
-    - The task determines which quantity we need from the joint distribution
-    - The probability language is familiar even when the model is large
+    #uncover("2-")[
+      - The task determines which quantity we need from the joint distribution
+    ]
+    #uncover("3-")[
+      - The probability language is familiar even when the model is large
+    ]
   ],
 )
 
 #speaker-note[
-  The previous section turned learning problems into probabilistic queries.
-  Keep that result and change only the scale of the problem: the variables may
-  now be vectors, images, sequences, or latent states. We still need familiar
-  probability operations to extract the particular answer required by the task.
+  Reveal the observed, latent, and target variables first. Then add their joint
+  distribution and ask which quantity the task requires. End by naming the
+  continuity: the variables may be high-dimensional, latent, or partly
+  observed, but the probability language is unchanged.
 ]
 
 == A few operations answer many tasks
@@ -1585,6 +1592,7 @@
   layout: "top",
   object-width: 96%,
   object: [
+    #align(center)[Joint distribution: $p_D (x_"obs", z, y_*)$]
     #grid(
       columns: (1fr, 1fr, 1fr),
       gutter: 0.7em,

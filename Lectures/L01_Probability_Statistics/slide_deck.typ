@@ -2112,6 +2112,18 @@
 
 = Methods of building estimators
 
+// Starting from here we will need to redo the slides. I want to create a slide deck based on this material from book 1:
+// 4.1
+// 4.2.1 All the equations
+// 4.2.3 Eqs. 4.20 4.21 4.23 4.24 4.25
+// 4.2.5 All eqs except 4.38
+// 4.3 One slide just to get the idea and the definition (not including 4.3.1 and on)
+// 4.4.1 including careful development of 4.4.1.1 and 4.4.1.2
+// 4.5.1 I want to introduce regularization after explaining MAP not the other way around. Note that we have alraeady done beta binomial earlier and can use work that was done there
+// 4.5 Requires a careful introduction
+// 4.7.2 A familiar idea, does not need extensive development
+// This will probably need to be turned into multiple sections. That is acceptable.
+
 == Maximum likelihood uses the sampling model
 
 #content-block(

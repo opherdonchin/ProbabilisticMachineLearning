@@ -254,7 +254,9 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 ### Typst math attachment spacing
 
 - In Typst math, an ungrouped subscript or superscript can consume the following expression until the next space. When a script is followed by a separate bracketed expression, add a space: write `$E_Y [V[X | Y]]$` and `$E_theta [Y]$`, not `$E_Y[V[X | Y]]$` or `$E_theta[Y]$`.
+- The same rule applies to a scripted symbol followed by a parenthesized argument: write `$p_D (z | x_"obs")$`, not `$p_D(z | x_"obs")$`. Group a compound attachment explicitly, as in `$sum_(i=1)^n X_i$`.
 - During source review, search math for `_` and `^`, especially when an attachment is immediately followed by `[...]`, another identifier, or a separate grouped expression. Use explicit parentheses after `_` or `^` when the attachment itself contains multiple terms, as in `sum_(n=1)^N`.
+- Before handing off a changed lecture deck, run `python scripts/check_typst_math_attachments.py Lectures/L01_Probability_Statistics/slide_deck.typ` (substitute the edited deck path). It flags likely run-ons inside math, including `p_D(` and `E_Y[`. Review each result; the check is intentionally focused and does not replace visual review.
 
 ## Content blocks and component arguments
 

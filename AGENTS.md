@@ -22,6 +22,11 @@ These instructions apply to the entire repository.
 ## Lecture slide authoring
 
 - Follow `Lectures/README.md` when creating or editing lecture slides
+- After editing a lecture `.typ` file, run
+  `python scripts/check_typst_math_attachments.py <edited-file>` and fix any
+  run-on math attachments introduced by the edit. Report pre-existing hits
+  separately rather than silently changing unrelated slides. This focused
+  source check still applies when full compile or visual review is deferred.
 
 ## Notebook runtime policy
 

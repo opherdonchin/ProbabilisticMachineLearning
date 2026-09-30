@@ -30,10 +30,7 @@
   ]
 ]
 
-#section-metadata(
-  short-title: [Probabilistic modelling],
-  subtitle: [Probabilistic models update based on data],
-)
+
 
 = A familiar modeling language
 
@@ -58,6 +55,11 @@
         \
         $ y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N $
       ]
+      #uncover("3-")[
+        #v(0.65em)
+        Code heads as $y_i = 1$ and tails as $y_i = 0$\
+        $N_1 = sum_(i=1)^N y_i, quad N_0 = N - N_1$
+      ]
     ]
   ],
   key-points: [
@@ -66,11 +68,16 @@
       - How could observed data ($y$) have been generated.
       - What does it tell us about the parameters ($theta$)
     ]
+    #uncover("3-")[
+      - $N_1$ and $N_0$ count heads and tails in the observed sample
+    ]
   ],
 )
 
 #speaker-note[
-  The first step in reactivating the undergraduate course is to remind them of the language of models.
+  Reactivate the familiar coin model and distinguish the individual binary
+  outcomes from their aggregate counts. Each $y_i$ is a Bernoulli outcome;
+  $N_1$ and $N_0$ count observed heads and tails.
 ]
 
 == Models are built out of distributions
@@ -127,7 +134,7 @@
     #text(size: 0.82em)[
       - Beta for continuous variables on $[0,1]$.
       #uncover("2-")[
-        - Bernoulli four the number of counts in a yes/no process.
+        - Bernoulli for each yes/no outcome; Binomial for the count $N_1$.
       ]
       #uncover("3-")[
         - Distributions are parameterized families
@@ -247,9 +254,9 @@
           uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Prior]],
           uncover("2-")[$ p(theta) = "Beta"(alpha, beta) $],
           uncover("3-")[#text(weight: "semibold", fill: palette.accent)[Likelihood]],
-          uncover("3-")[$ p(y | theta) = "Binomial"(N, theta) $],
+          uncover("3-")[$ p(y | theta) prop theta^(N_1) (1-theta)^(N_0) $],
           uncover("5-")[#text(weight: "semibold", fill: palette.accent)[Posterior]],
-          uncover("5-")[$ p(theta | y) = "Beta"(alpha + y, beta + N - y) $],
+          uncover("5-")[$ p(theta | y) = "Beta"(alpha + N_1, beta + N_0) $],
         )
       ],
     )
@@ -267,8 +274,9 @@
 
 #speaker-note[
   Reactivate the definition of conjugacy. In the Beta-Binomial model, updating
-  adds the observed successes and failures to the two Beta parameters. There is
-  no need to derive the result here.
+  adds the observed counts $N_1$ and $N_0$ to the two Beta parameters. The
+  individual $y_i$ are Bernoulli; their aggregate $N_1$ has a Binomial sampling
+  distribution. There is no need to derive the result here.
 ]
 
 == The posterior is a distribution representing uncertainty
@@ -1601,7 +1609,7 @@
         [Summarize],
         [#stack(
           spacing: 0.55em,
-          [$integral g(y_*) p_D (y_* | x_"obs", z) dif y_*$],
+          [$s(x_"obs") = integral.double g(y_*) p_D (z, y_* | x_"obs") dif z dif y_*$],
           [weighted summary of the target],
         )],
         density: "prose",
@@ -1623,8 +1631,8 @@
           [Condition],
           [#stack(
             spacing: 0.55em,
-            [$p_D (z | x_"obs", y_*) = frac(p_D (z, y_* | x_"obs"), integral p_D (z', y_* | x_"obs") dif z')$],
-            [infer the latent variable],
+            [$p_D (z | x_"obs") = frac(p_D (x_"obs", z), integral p_D (x_"obs", z') dif z')$],
+            [infer the latent variable from observations],
           )],
           density: "prose",
         )
@@ -1640,12 +1648,72 @@
 
 #speaker-note[
   Reveal one operation at a time from the joint distribution. The first integral
-  summarizes the target for given observed and latent values. The second
-  integrates out the latent variable; the third normalizes the joint to infer
-  that variable given the observed and target values.
+  summarizes the target by averaging over both target and latent variables. The
+  second integrates out the latent variable; the third normalizes the marginal
+  joint to infer that variable from the observed values.
 ]
 
-== Expectation summarizes a distribution
+// Compact reminders of the three operations introduced in this lecture.
+#let operation-cue(label, formula, fill: palette.accent.lighten(87%)) = align(right)[
+  #box(width: 32%)[
+    #text(size: 0.56em)[
+      #schema-node(label, formula, fill: fill)
+    ]
+  ]
+]
+
+#let summarize-formula = [$E[g(X)] = integral g(x) p(x) dif x$]
+#let marginalize-formula = [$p(x) = integral p(x, y) dif y \ p(y) = integral p(x, y) dif x$]
+#let condition-formula = [$ p(x | y) = frac(p(x, y), p(y)) $]
+
+#let summarize-cue = operation-cue([Summarize], summarize-formula)
+#let marginalize-cue = operation-cue(
+  [Marginalize],
+  marginalize-formula,
+  fill: palette.paper,
+)
+#let condition-cue = operation-cue([Condition], condition-formula)
+
+== Generalize the operations using generic random variables 
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[$X$ and $Y$ have joint density $p(x, y)$]
+    #v(0.6em)
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0.7em,
+      align: center + horizon,
+      schema-node([Summarize], summarize-formula, density: "prose"),
+      schema-node([Marginalize], marginalize-formula, density: "prose", fill: palette.paper),
+      schema-node([Condition], condition-formula, density: "prose"),
+    )
+  ],
+  key-points: [
+    - The same operations apply to any pair of random variables $X$ and $Y$
+    - Lowercase $x$ and $y$ are possible values; conditioning fixes $Y=y$
+
+    - The normalizer  is another marginal
+  ],
+)
+
+#speaker-note[
+  Make the notation change explicit. The observed, latent, and target roles in
+  the previous slide motivated the operations; $X$ and $Y$ now stand for any
+  pair of random variables. The three formulas are generic versions of the
+  same operations. For discrete variables, replace integrals with sums.
+]
+
+#section-metadata(
+  short-title: [Probabilistic modelling],
+  subtitle: [Probabilistic models update based on data],
+)
+
+== Expectation is a summarizing integral
+
+#summarize-cue
 
 #content-block(
   layout: "top",
@@ -1654,7 +1722,7 @@
     #twocol(
       schema-node(
         [Continuous],
-        [$E[g(X)] = integral g(x) p(x) dif x$],
+        summarize-formula,
         fill: palette.paper,
       ),
       schema-node(
@@ -1680,7 +1748,9 @@
   for many possible quantities without adding another concept yet.
 ]
 
-== Linearity makes expectations easy to combine
+== Integrals create linearity
+
+#summarize-cue
 
 #content-block(
   layout: "top",
@@ -1689,20 +1759,26 @@
     #align(center)[$E[a X + b] = a E[X] + b$]
     #v(0.9em)
     #align(center)[$E[sum_i X_i] = sum_i E[X_i]$]
+    #v(1.5em)
+    #align(center)[$E[product_(i=1)^n X_i] = product_(i=1)^n E[X_i]$ for independent $X_1, dots, X_n$]
   ],
   key-points: [
     - Expectations of sums are sums of expectations
-    - Independence is not required
+    - Independence is not required for sums
+    - Expectations of products factor when the variables are independent
   ],
 )
 
 #speaker-note[
   Keep this slide separate from the definition of expectation. The teaching
   move is computational: expectation respects linear combinations even when the
-  random variables are dependent.
+  random variables are dependent. Contrast this with products: their expectations
+  factor under independence, not by linearity.
 ]
 
-== Variance records spread around the mean
+== Variance is another integral
+
+#summarize-cue
 
 #content-block(
   layout: "top",
@@ -1725,7 +1801,6 @@
     #source-note[Course schematic; Murphy, Book 1 §2.2.5]
   ],
   key-points: [
-    - Variance measures squared distance from the mean
     - The second raw moment contains both spread and location
   ],
 )
@@ -1736,7 +1811,9 @@
   be organized by the powers of the random variable they average.
 ]
 
-== Moments organize these distribution summaries
+== Mean and variance are the first two moments 
+
+#summarize-cue
 
 #content-block(
   layout: "top",
@@ -1750,17 +1827,17 @@
         [Raw moments],
         [#stack(
           spacing: 0.5em,
-          [$m_k = E[X^k]$],
           [$m_1 = E[X]$],
           [$m_2 = E[X^2]$],
+          [$m_k = E[X^k]$],
         )],
       ),
       schema-node(
         [Central moments],
         [#stack(
           spacing: 0.5em,
+          [$mu_2 =  E[(X-E[X])^2] = V[X]$],
           [$mu_k = E[(X-E[X])^k]$],
-          [$mu_2 = V[X]$],
         )],
         fill: palette.paper,
       ),
@@ -1768,7 +1845,7 @@
   ],
   key-points: [
     - A moment is a property of a probability distribution
-    - Mean and variance are particular moments
+    - Central moments are moments of deviation from the mean
   ],
 )
 
@@ -1779,7 +1856,9 @@
   generating functions.
 ]
 
-== Conditioning makes a summary depend on what we know
+== Conditioning is a special case of summarizing
+
+#condition-cue
 
 #content-block(
   layout: "top",
@@ -1792,7 +1871,7 @@
       schema-node([$Y=y$], [$"observed information"$]),
       schema-arrow,
       schema-node(
-        [$p(X | Y=y)$],
+        [$p(x | y)$],
         [$E[X | Y=y]$],
         fill: palette.paper,
       ),
@@ -1814,6 +1893,8 @@
 ]
 
 == Total variance separates within- and between-condition variation
+
+#marginalize-cue
 
 #content-block(
   layout: "top",
@@ -1864,13 +1945,13 @@
 ]
 
 #section-metadata(
-  short-title: [From probability to statistics],
+  short-title: [From data to unknowns],
   subtitle: [Estimating unknown quantities from observed data],
 )
 
-= From probability to statistics
+= Inverse probability
 
-== Probability describes a model; statistics learns from data
+== The goal is to learn from data
 
 #content-block(
   layout: "top",
@@ -1907,33 +1988,50 @@
   and want to learn about an unknown feature or parameter of the model.
 ]
 
-== A statistic is a function of the observed data
+== A statistic is something calculated on observed data
 
 #content-block(
   layout: "top",
   object-width: 94%,
   object: [
-    #grid(
-      columns: (1fr, 0.2fr, 1fr),
-      gutter: 0.45em,
-      align: center + horizon,
-      schema-node([Data], [$D = (y_1, dots, y_N)$]),
-      schema-arrow,
-      schema-node([Statistic], [$T(D)$], fill: palette.paper),
-    )
+    #align(center)[$D arrow.r T(D)$]
     #v(0.8em)
-    #align(center)[$overline(y) = frac(1, N) sum_(n=1)^N y_n quad "or" quad N_1 = sum_(n=1)^N y_n$]
+    #grid(
+      columns: (1fr, 1fr),
+      gutter: 0.9em,
+      align: center + horizon,
+      schema-node(
+        [Continuous measurements],
+        [#stack(
+          spacing: 0.45em,
+          [$D_x = (x_1, dots, x_N)$],
+          [$overline(x) = frac(1, N) sum_(n=1)^N x_n$],
+        )],
+      ),
+      schema-node(
+        [Bernoulli tosses, Binomial count],
+        [#stack(
+          spacing: 0.45em,
+          [$D_y = (y_1, dots, y_N)$],
+          [Each $y_n$ is $0$ or $1$],
+          [$N_1 = sum_(n=1)^N y_n, quad N_0 = N - N_1$],
+        )],
+        fill: palette.paper,
+      ),
+    )
   ],
   key-points: [
-    - A statistic is computed from the observed sample
-    - Its definition does not contain an unknown parameter
+    - The sample mean and coin counts are both statistics computed from data
+    - A statistic's definition must not contain an unknown parameter
   ],
 )
 
 #speaker-note[
-  Students already know sample means and counts. Give those familiar objects the
-  general name statistic. The definition is intentionally broad: at this point
-  a statistic is simply a function of the data, not necessarily an estimator.
+  Use $x_n$ for continuous measurements and $y_n$ for binary coin outcomes so
+  the change of sampling model is visible. The count $N_1$ is Binomial under
+  the coin model, while its observed value is computed from the binary sample.
+  Both the sample mean and the counts are statistics: functions of data, not
+  necessarily estimators.
 ]
 
 == An estimator is a statistic aimed at an unknown quantity
@@ -1950,9 +2048,9 @@
     )
   ],
   key-points: [
-    - The estimator is the rule $D arrow.r hat(theta)(D)$
-    - The estimate is the value produced for the dataset we actually observed
-    - Different estimation principles can target the same parameter
+    - $theta$ will generally be an integral over the distribution as before
+    - The estimate $hat(theta)$ is calculated on the data
+      - Different estimates can target the same parameter
   ],
 )
 
@@ -1972,32 +2070,75 @@
     #grid(
       columns: (1fr, 0.2fr, 1fr),
       gutter: 0.45em,
+      row-gutter: 0.9em,
       align: center + horizon,
       schema-node(
-        [Population moment],
+        [Population raw moment],
         [$m_k = E[X^k]$],
         fill: palette.paper,
       ),
       schema-arrow,
       schema-node(
-        [Sample moment],
+        [Sample raw moment],
         [$hat(m)_k = frac(1, N) sum_(n=1)^N x_n^k$],
       ),
+      schema-node(
+        [Population central moment],
+        [$mu_k = E[(X - E[X])^k]$],
+        fill: palette.paper,
+      ),
+      schema-arrow,
+      schema-node(
+        [Sample central moment],
+        [$hat(mu)_k = frac(1, N) sum_(n=1)^N (x_n - overline(x))^k$],
+      ),
     )
-    #v(0.9em)
-    #align(center)[$E[Y] = theta quad "for Bernoulli data, while" quad overline(y) = frac(N_1, N)$]
+  ],
+
+)
+
+#speaker-note[
+  Compare each population moment with the matching function of the observed
+  sample. Raw moments average powers; central moments first subtract the
+  population mean $E[X]$ or the sample mean $overline(x)$. The sample formula
+  uses $1/N$ because it defines a sample central moment, not the unbiased
+  sample variance estimator.
+]
+
+#section-metadata(
+  short-title: [Principles for building estimators],
+  subtitle: [Methods of estimation],
+)
+
+= Methods of building estimators
+
+== Maximum likelihood uses the sampling model
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$hat(theta)_"MLE" = arg max_(theta) p(D | theta)$]
+    #v(0.85em)
+    #align(center)[$p(D | theta) prop theta^(N_1) (1-theta)^(N_0)$]
+    #uncover("2-")[
+      #v(0.75em)
+      #align(center)[$hat(theta)_"MLE" = frac(N_1, N) = hat(theta)_"MOM"$]
+    ]
   ],
   key-points: [
-    - A population moment is a property of the distribution
-    - A sample moment is a statistic computed from observed data
+    - MLE uses the likelihood rather than selected moments
+    #uncover("2-")[
+      - For Bernoulli data the two principles happen to give the same estimate
+    ]
   ],
 )
 
 #speaker-note[
-  This is the bridge the previous version was missing. The notation on the two
-  sides deliberately parallels the probability section. For Bernoulli data the
-  first population moment is the success probability itself, while the first
-  sample moment is the observed fraction of successes.
+  Present MLE as a sibling of method of moments, not as its consequence. The
+  objective is different: MLE uses the probability of the whole observed sample
+  under each parameter value. For this simple model both rules lead to the same
+  numerical estimate, which makes the conceptual comparison unusually clean.
 ]
 
 == Method of moments matches model and sample moments
@@ -2036,35 +2177,6 @@
   Bernoulli model there is one parameter and the first moment is enough. Do not
   generalize into a survey of moment estimators; the purpose is to establish one
   principled way to construct $D arrow.r hat(theta)$.
-]
-
-== Maximum likelihood uses the sampling model instead
-
-#content-block(
-  layout: "top",
-  object-width: 94%,
-  object: [
-    #align(center)[$hat(theta)_"MLE" = arg max_(theta) p(D | theta)$]
-    #v(0.85em)
-    #align(center)[$p(D | theta) prop theta^(N_1) (1-theta)^(N-N_1)$]
-    #uncover("2-")[
-      #v(0.75em)
-      #align(center)[$hat(theta)_"MLE" = frac(N_1, N) = hat(theta)_"MOM"$]
-    ]
-  ],
-  key-points: [
-    - MLE uses the likelihood rather than selected moments
-    #uncover("2-")[
-      - For Bernoulli data the two principles happen to give the same estimate
-    ]
-  ],
-)
-
-#speaker-note[
-  Present MLE as a sibling of method of moments, not as its consequence. The
-  objective is different: MLE uses the probability of the whole observed sample
-  under each parameter value. For this simple model both rules lead to the same
-  numerical estimate, which makes the conceptual comparison unusually clean.
 ]
 
 == MAP adds prior information to a point estimate

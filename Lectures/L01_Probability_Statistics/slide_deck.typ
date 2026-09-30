@@ -1586,7 +1586,7 @@
   observed, but the probability language is unchanged.
 ]
 
-== A few operations answer many tasks
+== A few key operations underlie many machine learning tasks
 
 #content-block(
   layout: "top",
@@ -1600,7 +1600,7 @@
       schema-node(
         [Summarize],
         [#stack(
-          spacing: 0.35em,
+          spacing: 0.55em,
           [$integral g(y_*) p_D (y_* | x_"obs", z) dif y_*$],
           [weighted summary of the target],
         )],
@@ -1610,7 +1610,7 @@
         #schema-node(
           [Marginalize],
           [#stack(
-            spacing: 0.35em,
+            spacing: 0.55em,
             [$p_D (y_* | x_"obs") = integral p_D (z, y_* | x_"obs") dif z$],
             [average out the latent variable],
           )],
@@ -1622,7 +1622,7 @@
         #schema-node(
           [Condition],
           [#stack(
-            spacing: 0.35em,
+            spacing: 0.55em,
             [$p_D (z | x_"obs", y_*) = frac(p_D (z, y_* | x_"obs"), integral p_D (z', y_* | x_"obs") dif z')$],
             [infer the latent variable],
           )],
@@ -1632,9 +1632,9 @@
     )
   ],
   key-points: [
-    - Prediction and performance often require expectations
+    - Almost all machine learning tasks require an integral
     - Latent variables are inferred or averaged out
-    - The same few operations recur across different learning tasks
+    - Much methodology addresses computing these integrals efficiently
   ],
 )
 

@@ -1,0 +1,96 @@
+# Slide authoring implementation reference
+
+Use this alongside [`README.md`](README.md). This file records mechanics;
+the standards in `README.md` govern the teaching sequence and visual decisions.
+
+## Shared course API
+
+Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
+
+This list must stay in sync with what `Lectures/course.typ` actually exports. If you add, rename, or remove a component there, update this list in the same change — an API list that describes components which do not exist (or omits ones that do) is a standards-doc bug, not a minor omission.
+
+Slide structure and composition:
+
+- `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
+- `#twocol[...][...]`, `#triad[...][...][...]` — equal-width row layouts
+- `#section-metadata(short-title: [...], subtitle: [...])` followed by a level-1
+  heading (`= Section title`) — section divider and footer metadata
+- `#title-slide()`, `#focus-slide[...]`, `#ending-slide[...]`
+
+Create every section with this exact structure. Do not introduce or call a `section-slide` helper:
+
+```typst
+#section-metadata(
+  short-title: [From statistics to machine learning],
+  subtitle: [Same probabilistic language, different organizing questions],
+)
+
+= From statistics to machine-learning problems
+```
+
+Place `section-metadata` immediately before its level-1 heading, with no slide
+or other content between them. Check the rendered footer on the slide before
+and after every section divider; metadata must not change the previous slide.
+
+Cards and notes:
+
+- `#course-card(...)`, `#key-points[...]`
+- `#definition(...)`, `#method(...)`
+- `#note[...]` — margin/aside note
+
+Schematic diagrams (boxes-and-arrows flow figures):
+
+- `#schema-node(label, body, density: "normal")` — a labeled node box for a flow diagram cell. `density` picks a body-text preset from a small named vocabulary (currently `"normal"`, the default, for a short symbol-only line or two; `"prose"` for a smaller, left-aligned multi-line description) instead of a raw size number, so unrelated slides that pick the same density render identically.
+- `#schema-arrow` — a right-pointing arrow cell to place beside nodes in a grid
+- `#source-note[...]` — small muted caption/citation line for a schematic
+
+Figures:
+
+- `#course-figure(...)` — image with optional caption and source line; shows a labeled placeholder automatically when the file is missing, so a separate `maybe-image`-style wrapper is unnecessary
+- `#figure-source(...)` — the provenance line alone, for a composite figure whose panels each set `show-source: false`
+
+Speaker notes:
+
+- `#speaker-note[...]` — provided by Touying directly, not by `course.typ`
+
+Coordinate annotations:
+
+- `#callout(...)`, `#annotated-object(...)`
+
+### Promote stable shared helpers
+
+Check `course.typ` before adding a lecture-local helper. Promote a pattern when
+it is used across lectures, its behavior has stabilized, and centralizing it
+will make future slides easier to write or correct. A second use is a prompt to
+review the pattern, not an automatic reason to enlarge the shared API.
+
+- Reuse an existing shared component when it covers the need; do not reinvent
+  an equivalent primitive under another name.
+- Keep one-off teaching constructions local, even when they use a general
+  layout primitive such as a grid or stack.
+- A path prefix or a reveal pairing specific to one lecture can remain local.
+- When promoting a helper, move the implementation and update this API list in
+  the same change.
+- Do not keep two definitions of the same helper in one file either (for example, a path-prefix helper defined twice under different names). If you find one, merge them.
+
+### Keep a set of sibling nodes consistent with one local forwarding function
+
+When a single grid has several `schema-node` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
+
+```typst
+#let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
+```
+
+This local function holds no independent visual logic. It forwards one shared
+choice to sibling nodes so a later edit cannot make them drift apart.
+
+## Student-facing notebooks
+
+- Each lecture should also have one separate student-facing notebook for the approximately one-hour computational component.
+- Student notebooks should be Colab-first and pedagogical: guided sequence, supplied code where appropriate, student modifications or implementation tasks, and interpretation/reflection questions.
+- Do not force the student notebook to double as the source of lecture figures.
+- Some duplication between student notebooks and author-facing figure notebooks is acceptable when it improves clarity and pedagogy.
+- Do not assume that the student notebook must determine the lecture architecture
+  during early slide planning. The relationship between lecture and self-work may
+  be decided later, once the role of the computational component is clear, unless
+  the user explicitly asks to co-design them.

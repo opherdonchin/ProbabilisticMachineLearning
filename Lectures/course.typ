@@ -37,13 +37,15 @@
 #let _section-number = state("pml-section-number", 0)
 #let _section-short-title = state("pml-section-short-title", [])
 #let _section-subtitle = state("pml-section-subtitle", none)
+#let _pending-section-short-title = state("pml-pending-section-short-title", [])
+#let _pending-section-subtitle = state("pml-pending-section-subtitle", none)
 
 #let section-metadata(
   short-title: none,
   subtitle: none,
 ) = {
-  _section-short-title.update(short-title)
-  _section-subtitle.update(subtitle)
+  _pending-section-short-title.update(short-title)
+  _pending-section-subtitle.update(subtitle)
 }
 
 #let _course-section-slide(self: none, body) = touying-slide-wrapper(self => {
@@ -61,7 +63,13 @@
 
     context {
       let n = _section-number.get()
-      let subtitle = _section-subtitle.get()
+      let short-title = _pending-section-short-title.get()
+      let subtitle = _pending-section-subtitle.get()
+
+      // Activate the pending metadata on the divider, after the preceding
+      // content slide has ended, so its footer retains the old section label.
+      _section-short-title.update(short-title)
+      _section-subtitle.update(subtitle)
 
       set align(left + horizon)
 

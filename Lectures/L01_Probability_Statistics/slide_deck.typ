@@ -2106,163 +2106,803 @@
 ]
 
 #section-metadata(
-  short-title: [Principles for building estimators],
-  subtitle: [Methods of estimation],
+  short-title: [Likelihood estimation],
+  subtitle: [From a sampling model to a fitted parameter],
 )
 
 = Methods of building estimators
 
-// Starting from here we will need to redo the slides. I want to create a slide deck based on this material from book 1:
-// 4.1
-// 4.2.1 All the equations
-// 4.2.3 Eqs. 4.20 4.21 4.23 4.24 4.25
-// 4.2.5 All eqs except 4.38
-// 4.3 One slide just to get the idea and the definition (not including 4.3.1 and on)
-// 4.4.1 including careful development of 4.4.1.1 and 4.4.1.2
-// 4.5.1 I want to introduce regularization after explaining MAP not the other way around. Note that we have alraeady done beta binomial earlier and can use work that was done there
-// 4.5 Requires a careful introduction
-// 4.7.2 A familiar idea, does not need extensive development
-// This will probably need to be turned into multiple sections. That is acceptable.
+#speaker-note[
+  The previous section distinguished a population quantity from a statistic
+  computed on data. We now need a rule for choosing a parameter value. Begin
+  with likelihood, then compare it with other rules.
+]
 
-== Maximum likelihood uses the sampling model
+== Model fitting chooses an objective
 
 #content-block(
   layout: "top",
-  object-width: 94%,
+  object-width: 90%,
   object: [
-    #align(center)[$hat(theta)_"MLE" = arg max_(theta) p(D | theta)$]
-    #v(0.85em)
-    #align(center)[$p(D | theta) prop theta^(N_1) (1-theta)^(N_0)$]
-    #uncover("2-")[
-      #v(0.75em)
-      #align(center)[$hat(theta)_"MLE" = frac(N_1, N) = hat(theta)_"MOM"$]
-    ]
+    #align(center)[$D arrow.r L(theta) arrow.r hat(theta) = arg min_(theta) L(theta)$]
+    #v(0.8em)
+    #align(center)[The data determine an objective; optimizing it produces a point estimate.]
+    #source-note[Murphy, Book 1 §4.1, Eq. 4.1]
   ],
   key-points: [
-    - MLE uses the likelihood rather than selected moments
-    #uncover("2-")[
-      - For Bernoulli data the two principles happen to give the same estimate
-    ]
+    - Different estimation methods choose different objectives
+    - A point estimate alone does not describe uncertainty about its value
   ],
 )
 
 #speaker-note[
-  Present MLE as a sibling of method of moments, not as its consequence. The
-  objective is different: MLE uses the probability of the whole observed sample
-  under each parameter value. For this simple model both rules lead to the same
-  numerical estimate, which makes the conceptual comparison unusually clean.
+  Book 1 calls this model fitting or training. The earlier data-to-estimate map
+  now acquires a concrete middle step: an objective built from the sample.
+  Optimization produces one value; inference about its uncertainty is a
+  separate question.
 ]
 
-== Method of moments matches model and sample moments
+== Maximum likelihood scores the observed sample
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
-    #align(center)[$m_k(theta) = hat(m)_k$]
-    #v(0.95em)
-    #grid(
-      columns: (1fr, 0.2fr, 1fr),
-      gutter: 0.45em,
-      align: center + horizon,
-      schema-node(
-        [Bernoulli model],
-        [$E_theta [Y] = theta$],
-        fill: palette.paper,
-      ),
-      schema-arrow,
-      schema-node(
-        [Method of moments],
-        [$hat(theta)_"MOM" = overline(y) = frac(N_1, N)$],
-      ),
-    )
-    #source-note[Murphy, Book 1 §4.4.1]
+    #align(center)[$hat(theta)_"MLE" = arg max_(theta) p(D | theta)$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[$p(D | theta) = product_(n=1)^N p(y_n | x_n, theta)$]
+    ]
+    #source-note[Murphy, Book 1 §4.2.1, Eqs. 4.2–4.3]
   ],
   key-points: [
-    - Choose parameter values whose model moments equal the empirical moments
-    - The choice of moments defines an estimation rule
+    - Choose the parameter that makes the observed data most likely
+    #uncover("2-")[
+      - The product assumes independent cases under the same conditional model
+    ]
   ],
 )
 
 #speaker-note[
-  Method of moments is the direct continuation of the previous slide. For the
-  Bernoulli model there is one parameter and the first moment is enough. Do not
-  generalize into a survey of moment estimators; the purpose is to establish one
-  principled way to construct $D arrow.r hat(theta)$.
+  Define likelihood as a function of theta with the observed data held fixed.
+  In the supervised form, x_n is given and y_n is modeled. The product uses
+  conditional independence across cases, often called the iid assumption.
 ]
 
-== MAP adds prior information to a point estimate
+== Logs turn the likelihood product into a sum
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[$ell(theta) = log p(D | theta) = sum_(n=1)^N log p(y_n | x_n, theta)$]
+    #uncover("2-")[
+      #v(0.9em)
+      #align(center)[$hat(theta)_"MLE" = arg max_(theta) sum_(n=1)^N log p(y_n | x_n, theta)$]
+    ]
+    #source-note[Murphy, Book 1 §4.2.1, Eqs. 4.4–4.5]
+  ],
+  key-points: [
+    - The logarithm preserves the maximizing parameter
+    #uncover("2-")[- Each case now contributes one additive term]
+  ],
+)
+
+#speaker-note[
+  The log is monotone, so it does not change the maximizer. Its practical
+  advantage is that independent cases become additive contributions. Keep the
+  distinction between the likelihood and the log likelihood explicit.
+]
+
+== Negative log likelihood gives a minimization objective
+
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$"NLL"(theta) = -log p(D | theta) = -sum_(n=1)^N log p(y_n | x_n, theta)$]
+    #v(0.85em)
+    #align(center)[$hat(theta)_"MLE" = arg min_(theta) "NLL"(theta)$]
+    #source-note[Murphy, Book 1 §4.2.1, Eq. 4.6]
+  ],
+  key-points: [
+    - Maximizing likelihood and minimizing NLL choose the same parameter
+    - NLL is the loss form used by many optimization algorithms
+  ],
+)
+
+#speaker-note[
+  Connect the generic objective from §4.1 to a specific choice: negative log
+  likelihood. The sign changes maximization into minimization but does not
+  change the chosen parameter.
+]
+
+== The modeled variables determine the likelihood
 
 #content-block(
   layout: "top",
   object-width: 94%,
   object: [
+    #align(center)[*No given input*]
+    #align(center)[$hat(theta)_"MLE" = arg min_(theta) -sum_(n=1)^N log p(y_n | theta)$]
+    #v(0.8em)
+    #align(center)[*Model inputs and outputs jointly*]
+    #align(center)[$hat(theta)_"MLE" = arg min_(theta) -sum_(n=1)^N log p(y_n, x_n | theta)$]
+    #source-note[Murphy, Book 1 §4.2.1, Eqs. 4.7–4.8]
+  ],
+  key-points: [
+    - The earlier conditional NLL models $y_n$ given $x_n$
+    - An unconditional or joint model changes the probability inside the sum
+  ],
+)
+
+#speaker-note[
+  These are the two remaining forms in Book 1 §4.2.1. Do not call the
+  unconditional case less probabilistic: the difference is which variables the
+  model generates. Keep the same NLL principle visible across all three forms.
+]
+
+== Bernoulli likelihood starts with individual tosses
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$"NLL"(theta) = -log product_(n=1)^N p(y_n | theta)$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[$= -log product_(n=1)^N theta^(I(y_n=1)) (1-theta)^(I(y_n=0))$]
+    ]
+    #source-note[Murphy, Book 1 §4.2.3, Eqs. 4.20–4.21]
+  ],
+  key-points: [
+    - Reuse the coin model: $y_n=1$ for heads, $y_n=0$ for tails
+    #uncover("2-")[- $I(A)$ equals one when $A$ is true and zero otherwise]
+  ],
+)
+
+#speaker-note[
+  Return to the Beta-Bernoulli example from the start of the lecture. The
+  indicators select theta for a head and 1-theta for a tail. This is a
+  likelihood for the individual Bernoulli observations, even though its value
+  can later be summarized by the two counts.
+]
+
+== The two coin counts summarize the likelihood
+
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$N_1 = sum_(n=1)^N I(y_n=1), quad N_0 = sum_(n=1)^N I(y_n=0)$]
+    #v(0.8em)
+    #align(center)[$"NLL"(theta) = -[N_1 log theta + N_0 log(1-theta)]$]
+    #source-note[Murphy, Book 1 §4.2.3, Eq. 4.23]
+  ],
+  key-points: [
+    - Once the model is fixed, the order of heads and tails does not affect this likelihood
+    - $N=N_0+N_1$ is the sample size
+  ],
+)
+
+#speaker-note[
+  Explain the step from a product over tosses to counts without adding the
+  intermediate equation omitted from the requested coverage. For this model,
+  N_1 and N_0 contain the data information needed for estimating theta.
+]
+
+== The likelihood estimate is the observed head fraction
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[$frac(d, d theta) "NLL"(theta) = -frac(N_1, theta) + frac(N_0, 1-theta)$]
+    #uncover("2-")[
+      #v(0.85em)
+      #align(center)[$hat(theta)_"MLE" = frac(N_1, N_0+N_1) = frac(N_1, N)$]
+    ]
+    #source-note[Murphy, Book 1 §4.2.3, Eqs. 4.24–4.25]
+  ],
+  key-points: [
+    - Set the interior derivative to zero and solve for $theta$
+    #uncover("2-")[- The boundary cases give zero or one when all tosses agree]
+  ],
+)
+
+#speaker-note[
+  Work through the algebra aloud: N_1(1-theta)=N_0 theta, then theta=N_1/N.
+  The derivative argument assumes an interior solution. If all observations are
+  heads or all tails, the optimum is at the boundary; the same fraction still
+  gives the MLE.
+]
+
+== Gaussian likelihood fits location and spread
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$Y_n tilde cal(N)(mu, sigma^2)$]
+    #v(0.75em)
+    #align(center)[$"NLL"(mu,sigma^2) = -sum_(n=1)^N log (frac(1, sqrt(2 pi sigma^2)) exp(-frac((y_n-mu)^2, 2 sigma^2)))$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[$= frac(1, 2 sigma^2) sum_(n=1)^N (y_n-mu)^2 + frac(N,2) log(2 pi sigma^2)$]
+    ]
+    #source-note[Murphy, Book 1 §4.2.5, Eqs. 4.32–4.33]
+  ],
+  key-points: [
+    - The NLL balances residual size with the proposed variance
+  ],
+)
+
+#speaker-note[
+  Contrast with the Bernoulli: now theta has two components, location and
+  spread. The expanded NLL shows why making sigma arbitrarily large does not
+  remove the cost of the residuals: the log variance term also rises.
+]
+
+== Stationarity gives the Gaussian mean estimate
+
+#content-block(
+  layout: "top",
+  object-width: 90%,
+  object: [
+    #align(center)[$frac(partial, partial mu) "NLL"(mu,sigma^2)=0, quad frac(partial, partial sigma^2) "NLL"(mu,sigma^2)=0$]
+    #uncover("2-")[
+      #v(0.9em)
+      #align(center)[$hat(mu)_"MLE" = frac(1,N) sum_(n=1)^N y_n = overline(y)$]
+    ]
+    #source-note[Murphy, Book 1 §4.2.5, Eqs. 4.34–4.35]
+  ],
+  key-points: [
+    - The optimum must be stationary in both parameters
+    #uncover("2-")[- The fitted Gaussian is centered at the sample mean]
+  ],
+)
+
+#speaker-note[
+  Differentiate with respect to mu first. The common sigma factor cancels,
+  leaving the average of the observed values. The variance equation is solved
+  on the next slide; this is one joint optimization problem, not two unrelated
+  rules.
+]
+
+== Gaussian MLE uses the average squared deviation
+
+#content-block(
+  layout: "top",
+  object-width: 93%,
+  object: [
+    #align(center)[$s^2 = frac(1,N) sum_(n=1)^N y_n^2$]
+    #v(0.75em)
     #align(center)[$
-      hat(theta)_"MAP"
-      = arg max_(theta) p(theta | D)
-      = arg max_(theta) p(D | theta) p(theta)
+      hat(sigma^2)_"MLE"
+      = frac(1,N) sum_(n=1)^N (y_n-hat(mu)_"MLE")^2
+      = frac(1,N) sum_(n=1)^N (y_n^2+hat(mu)_"MLE"^2-2 y_n hat(mu)_"MLE")
     $]
-    #v(0.9em)
-    #grid(
-      columns: (1fr, 0.18fr, 1fr),
-      gutter: 0.4em,
-      align: center + horizon,
-      schema-node([Likelihood], [$p(D | theta)$]),
-      align(center + horizon)[#text(size: 1.05em, fill: palette.accent)[$times$]],
-      schema-node([Prior], [$p(theta)$], fill: palette.paper),
-    )
     #uncover("2-")[
       #v(0.75em)
-      #align(center)[$p(theta) prop 1 quad arrow.r quad hat(theta)_"MAP" = hat(theta)_"MLE"$]
+      #align(center)[$hat(sigma^2)_"MLE" = s^2 - overline(y)^2$]
     ]
+    #source-note[Murphy, Book 1 §4.2.5, Eqs. 4.36–4.37]
   ],
   key-points: [
-    - MAP is another estimator: it returns the posterior mode
-    #uncover("2-")[
-      - A uniform prior reduces MAP to MLE
-      - The full posterior retains uncertainty that a single MAP estimate discards
-    ]
+    - This MLE averages over $N$ observed values
+    #uncover("2-")[- The first two sample raw moments determine both estimates]
   ],
 )
 
 #speaker-note[
-  Reconnect directly to the Beta-Bernoulli material from the start of the
-  lecture. Bayes' rule is already familiar; MAP simply keeps the maximizing
-  parameter value instead of the full posterior distribution. The final point
-  is a reminder, not a new Bayesian-inference lesson: a point estimate cannot
-  represent posterior width.
+  Equation 4.36 is shown as both the deviation form and its expanded form;
+  Equation 4.37 defines s squared. Substitute the sample mean to obtain
+  s squared minus y-bar squared. Do not add Book 1 Eq. 4.38, which the brief
+  explicitly excludes.
 ]
 
-== Summary: Different estimators answer the same fitting question
+== Likelihood turns a sampling model into fitted parameters
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #twocol[
+      *Bernoulli*\
+      $hat(theta)_"MLE" = N_1/N$
+    ][
+      *Gaussian*\
+      $hat(mu)_"MLE" = overline(y)$\
+      $hat(sigma^2)_"MLE" = s^2-overline(y)^2$
+    ]
+  ],
+  key-points: [
+    - The model determines the likelihood; the observed sample determines its maximum
+    - The resulting estimates are functions of the data
+  ],
+)
+
+#speaker-note[
+  Close the section by connecting the worked examples to the estimator
+  definition immediately before it. Their formulas differ because their
+  sampling models differ. Both return point estimates from the observed data.
+]
+
+#section-metadata(
+  short-title: [Risk and moments],
+  subtitle: [Two other ways to define a fitting objective],
+)
+
+= Empirical risk and moment matching
+
+#speaker-note[
+  MLE is one objective. This section broadens the choice once through a loss
+  function and once through equations that match population and sample moments.
+]
+
+== Empirical risk replaces log loss with another loss
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[$L(theta) = frac(1,N) sum_(n=1)^N ell(y_n, theta; x_n)$]
+    #v(0.85em)
+    #align(center)[$hat(theta)_"ERM" = arg min_(theta) L(theta)$]
+    #source-note[Murphy, Book 1 §4.3, Eq. 4.60]
+  ],
+  key-points: [
+    - Empirical risk is the average loss on the observed sample
+    - Negative log likelihood is one possible loss; the task may motivate another
+  ],
+)
+
+#speaker-note[
+  This is only the definition and idea from §4.3. Students have already seen
+  a loss function earlier in the lecture. Do not enter the later examples of
+  0–1 loss or surrogate losses here.
+]
+
+== Method of moments solves matching equations
+
+#content-block(
+  layout: "top",
+  object-width: 93%,
+  object: [
+    #align(center)[$m_k (theta) = E_theta [Y^k], quad hat(m)_k = frac(1,N) sum_(n=1)^N y_n^k$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[$m_k (theta) = hat(m)_k, quad k=1,dots,K$]
+    ]
+    #source-note[Murphy, Book 1 §4.4.1, Eq. 4.68]
+  ],
+  key-points: [
+    - Use as many moment equations as parameters to be estimated
+    #uncover("2-")[- Solve for the parameters whose model moments match the sample moments]
+  ],
+)
+
+#speaker-note[
+  Book 1 uses mu_k for a raw moment here; these slides retain m_k from the
+  preceding probability section, where mu_k denoted a central moment. Only
+  the notation changes. Computational ease is a reason to try moment matching,
+  but it can have costs.
+]
+
+== Gaussian moments recover the likelihood estimates
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[Match each model moment to its sample counterpart.]
+    #v(0.65em)
+    #align(center)[$E[Y] = mu = overline(y)$]
+    #v(0.8em)
+    #align(center)[$E[Y^2] = sigma^2 + mu^2 = s^2$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[$hat(mu)_"MOM" = overline(y), quad hat(sigma^2)_"MOM" = s^2-overline(y)^2$]
+    ]
+    #source-note[Murphy, Book 1 §4.4.1.1, Eqs. 4.69–4.70]
+  ],
+  key-points: [
+    - Match the first two raw moments to estimate two parameters
+    #uncover("2-")[- For this Gaussian model, MOM and MLE coincide]
+  ],
+)
+
+#speaker-note[
+  Work from the first moment to mu, then use the second moment to solve for
+  sigma squared. The agreement with MLE is specific to this model, not a
+  general property of method of moments.
+]
+
+== A uniform model has two unknown endpoints
 
 #content-block(
   layout: "top",
   object-width: 94%,
   object: [
-    #grid(
-      columns: (1fr, 1.3fr),
-      gutter: 0.75em,
-      align: center + horizon,
-      schema-node([Method of moments], [$m_k(theta) = hat(m)_k$]),
-      schema-node([Maximum likelihood], [$max_theta p(D | theta)$], fill: palette.paper),
-      schema-node([MAP], [$max_theta p(D | theta) p(theta)$], fill: palette.paper),
-      schema-node([Common goal], [$D arrow.r hat(theta)$]),
-    )
+    #align(center)[$Y tilde "Unif"(theta_1,theta_2), quad p(y|theta) = frac(1,theta_2-theta_1) I(theta_1 <= y <= theta_2)$]
+    #v(0.8em)
+    #twocol[
+      *First raw moment*\
+      $m_1 = E[Y] = frac(theta_1+theta_2,2)$
+    ][
+      *Second raw moment*\
+      $m_2 = E[Y^2] = frac(theta_1^2+theta_1 theta_2+theta_2^2,3)$
+    ]
+    #source-note[Murphy, Book 1 §4.4.1.2, Eqs. 4.71–4.73]
   ],
   key-points: [
-    - Statistics provides rules for turning data into estimates of unknown quantities
-    - MOM, MLE, and MAP use different principles to construct that rule
-    - A point estimate gives one value, while the posterior retains uncertainty
+    - Two unknown endpoints require two moment equations
   ],
 )
 
 #speaker-note[
-  End on the organizing idea rather than another formula. All three methods are
-  estimators, but they use different information and objectives. Method of
-  moments matches summaries, likelihood scores the observed sample, and MAP
-  combines likelihood with a prior. Together they show three ways to construct
-  a rule from data to an estimate.
+  The uniform density is zero outside the endpoints. The first moment locates
+  the midpoint; the second gives information about spread. Keep that support
+  constraint in mind when the estimates are checked against actual observations.
 ]
+
+== Inverting the moments gives endpoint estimates
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[$theta_1 = m_1 - sqrt(3(m_2-m_1^2))$]
+    #v(0.75em)
+    #align(center)[$theta_2 = 2m_1-theta_1 = m_1 + sqrt(3(m_2-m_1^2))$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[Replace $m_1,m_2$ with the observed sample moments.]
+    ]
+    #source-note[Murphy, Book 1 §4.4.1.2, Eq. 4.74]
+  ],
+  key-points: [
+    - The midpoint is the mean; the half-width comes from the variance
+    #uncover("2-")[- An algebraic solution still needs a model check]
+  ],
+)
+
+#speaker-note[
+  Show the symmetry of the two estimates around m_1. The half-width is
+  sqrt(3 times the population variance). Then insert the empirical moments to
+  get an estimator. The next slide tests whether it defines a plausible
+  sampling model for the actual data.
+]
+
+== Moment matching can contradict an observation
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[$D=(0,0,0,0,1), quad hat(m)_1=hat(m)_2=0.2$]
+    #v(0.75em)
+    #align(center)[$hat(theta)_1 approx -0.493, quad hat(theta)_2 approx 0.893$]
+    #uncover("2-")[
+      #v(0.85em)
+      #align(center)[The fitted interval ends at $0.893$, but the sample contains $1$.]
+    ]
+    #source-note[Murphy, Book 1 §4.4.1.2]
+  ],
+  key-points: [
+    - The method-of-moments estimate assigns zero probability to an observed value
+    #uncover("2-")[- Matching selected summaries need not fit the full sample]
+  ],
+)
+
+#speaker-note[
+  Calculate the mean and second raw moment directly: one of five values is 1,
+  so both equal 1/5. Substitution gives the displayed endpoints. The upper
+  endpoint is below the observed maximum; this is a concrete failure, not a
+  small numerical discrepancy.
+]
+
+== Uniform likelihood must contain every observation
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$p(D | theta) = (theta_2-theta_1)^(-N) I(y_((1)) >= theta_1) I(y_((N)) <= theta_2)$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[$Delta=theta_2-theta_1, quad frac(d, d Delta) log p(D|theta) = -frac(N,Delta) < 0$]
+    ]
+    #uncover("3-")[
+      #v(0.75em)
+      #align(center)[$hat(theta)_1 = y_((1)), quad hat(theta)_2 = y_((N))$]
+    ]
+    #source-note[Murphy, Book 1 §4.4.1.2, Eqs. 4.75–4.77]
+  ],
+  key-points: [
+    - The indicators enforce support for the smallest and largest observations
+    #uncover("3-")[- Among valid intervals, likelihood chooses the narrowest one]
+  ],
+)
+
+#speaker-note[
+  Ordered observations are denoted y_(1) and y_(N). For any interval that
+  contains them, the log likelihood decreases with its width. Therefore the
+  MLE places its endpoints at the observed minimum and maximum. For the five
+  values on the previous slide, it returns [0,1].
+]
+
+== The objective determines which data features matter
+
+#content-block(
+  layout: "top",
+  object-width: 93%,
+  object: [
+    #twocol[
+      *Moments*\
+      Match selected averages to model expectations.
+    ][
+      *Likelihood*\
+      Score the probability of the whole observed sample.
+    ]
+  ],
+  key-points: [
+    - The Gaussian example gave the same estimates by both routes
+    - The uniform example exposed a support failure of moment matching
+  ],
+)
+
+#speaker-note[
+  Close the section with the principle established by the examples. ERM allows
+  a chosen loss; MOM matches selected summaries; MLE follows the full sampling
+  model. There is no need to claim one objective is always best.
+]
+
+#section-metadata(
+  short-title: [MAP and regularization],
+  subtitle: [Point estimation with a prior, then a broader penalty view],
+)
+
+= MAP and regularization
+
+#speaker-note[
+  First derive MAP from the familiar posterior, using the coin model. Only
+  after that introduce regularization as a wider way to modify a fitting
+  objective. This order is deliberate: the prior is not introduced as a penalty.
+]
+
+== A perfect fit to three tosses makes a brittle prediction
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #align(center)[$D=(1,1,1), quad hat(theta)_"MLE" = 3/3 = 1$]
+    #uncover("2-")[
+      #v(0.9em)
+      #align(center)[$p(y_"next"=0 | hat(theta)_"MLE") = 0$]
+    ]
+    #source-note[Murphy, Book 1 §4.5]
+  ],
+  key-points: [
+    - Three observed heads do not establish that tails are impossible
+    #uncover("2-")[- This training fit is overconfident about unseen tosses]
+  ],
+)
+
+#speaker-note[
+  Reuse the coin model. The MLE fits these three observations exactly, but its
+  plug-in prediction puts zero probability on a tail. The issue is learning
+  from a small sample and then generalizing beyond it, not a failure of the
+  Bernoulli model itself.
+]
+
+== MAP chooses one value from the posterior
+
+#content-block(
+  layout: "top",
+  object-width: 93%,
+  object: [
+    #align(center)[$p(theta | D) prop p(D | theta) p(theta)$]
+    #uncover("2-")[
+      #v(0.85em)
+      #align(center)[$hat(theta)_"MAP" = arg max_(theta) p(theta | D) = arg max_(theta) [log p(D|theta)+log p(theta)]$]
+    ]
+    #source-note[Murphy, Book 1 §4.5, Eq. 4.92]
+  ],
+  key-points: [
+    - The posterior combines the same likelihood with a prior
+    #uncover("2-")[- MAP reports its mode, so it remains a point estimator]
+  ],
+)
+
+#speaker-note[
+  Students already know the posterior from the opening Beta-Bernoulli slides.
+  MAP is the parameter value at its peak. The normalizing probability of D
+  does not depend on theta, so it drops out of the argmax. A posterior mode
+  does not communicate the posterior's width.
+]
+
+== The Beta prior changes the coin objective
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$theta tilde "Beta"(alpha,beta), quad alpha,beta>1$]
+    #v(0.8em)
+    #align(center)[$ell_"MAP" (theta) = log p(D|theta)+log p(theta)$]
+    #uncover("2-")[
+      #v(0.75em)
+      #align(center)[$= [N_1 log theta+N_0 log(1-theta)] + [(alpha-1) log theta+(beta-1) log(1-theta)]$]
+    ]
+    #source-note[Murphy, Book 1 §4.5.1, Eqs. 4.93–4.94; $alpha,beta$ notation as earlier]
+  ],
+  key-points: [
+    - The prior changes the objective before a point estimate is chosen
+    #uncover("2-")[- Its two shape parameters contribute to the two log terms]
+  ],
+)
+
+#speaker-note[
+  Use alpha and beta to match the opening slides; Book 1 writes a and b.
+  The log posterior has exactly the same theta-dependent terms as the earlier
+  conjugate update. Alpha and beta greater than one keep an interior mode in
+  the examples shown.
+]
+
+== The posterior mode smooths the observed fraction
+
+#content-block(
+  layout: "top",
+  object-width: 93%,
+  object: [
+    #align(center)[$hat(theta)_"MAP" = frac(N_1+alpha-1, N_1+N_0+alpha+beta-2)$]
+    #uncover("2-")[
+      #v(0.8em)
+      #align(center)[$alpha=beta=2 quad arrow.r quad hat(theta)_"MAP" = frac(N_1+1, N+2)$]
+    ]
+    #uncover("3-")[
+      #v(0.75em)
+      #align(center)[$D=(1,1,1): quad hat(theta)_"MLE"=1, quad hat(theta)_"MAP"=4/5$]
+    ]
+    #source-note[Murphy, Book 1 §4.5.1, Eqs. 4.95–4.96]
+  ],
+  key-points: [
+    - The $"Beta"(2,2)$ prior yields add-one smoothing
+    #uncover("3-")[- The MAP plug-in prediction leaves a nonzero chance of tails]
+  ],
+)
+
+#speaker-note[
+  Differentiate the log posterior from the previous slide or invoke the
+  familiar Beta posterior: Beta(alpha+N_1,beta+N_0). For an interior Beta mode,
+  subtract one from each shape parameter and divide by their sum minus two.
+  With three heads, the mode is 4/5, so a future tail receives probability 1/5.
+  This does not make MAP a substitute for the full posterior predictive.
+]
+
+== Regularization adds a penalty to empirical risk
+
+#content-block(
+  layout: "top",
+  object-width: 93%,
+  object: [
+    #align(center)[$L(theta;lambda) = [frac(1,N) sum_(n=1)^N ell(y_n,theta;x_n)] + lambda C(theta)$]
+    #v(0.8em)
+    #align(center)[$lambda >= 0$]
+    #source-note[Murphy, Book 1 §4.5, Eq. 4.89]
+  ],
+  key-points: [
+    - Training loss rewards fit to observed cases
+    - $C(theta)$ expresses a preference among models; $lambda$ sets its strength
+  ],
+)
+
+#speaker-note[
+  Introduce the name regularization only now, after MAP is concrete. A
+  regularized objective adds a penalty to the empirical loss. The penalty can
+  favor less extreme or less complex fitted parameters and may improve
+  predictions on future data. Avoid saying that every penalty is a prior.
+]
+
+== A negative log prior is one regularizer
+
+#content-block(
+  layout: "top",
+  object-width: 94%,
+  object: [
+    #align(center)[$C(theta) = -log p(theta)$]
+    #v(0.65em)
+    #align(center)[$L(theta;lambda) = -frac(1,N) sum_(n=1)^N log p(y_n|x_n,theta) - lambda log p(theta)$]
+    #uncover("2-")[
+      #v(0.75em)
+      #align(center)[$N L(theta;1/N) = -[log p(D|theta)+log p(theta)]$]
+    ]
+    #source-note[Murphy, Book 1 §4.5, Eqs. 4.90–4.91]
+  ],
+  key-points: [
+    - With log loss and matching scaling, minimizing this objective gives MAP
+    #uncover("2-")[- MAP is one interpretation of regularized fitting]
+  ],
+)
+
+#speaker-note[
+  In the displayed average-loss convention, lambda=1/N gives the exact MAP
+  objective for the original prior. Book 1 uses an equivalent rescaling of
+  the prior to show the same relationship. The conceptual connection is that
+  the log prior contributes a penalty term to a negative log likelihood.
+]
+
+== A prior can temper a small sample's extreme fit
+
+#content-block(
+  layout: "top",
+  object-width: 92%,
+  object: [
+    #twocol[
+      *Maximum likelihood*\
+      Three heads: $hat(theta)=1$\
+      Next-tail probability: $0$
+    ][
+      *MAP with $"Beta"(2,2)$*\
+      Three heads: $hat(theta)=4/5$\
+      Next-tail probability: $1/5$
+    ]
+  ],
+  key-points: [
+    - The prior changes a point estimate in a transparent direction
+    - Its strength matters most when the dataset is small
+  ],
+)
+
+#speaker-note[
+  End with the same example that opened the section. The table compares
+  plug-in predictions using two point estimates; it does not compare full
+  Bayesian posterior predictions. With more observations, the fixed Beta
+  prior's contribution becomes smaller relative to the likelihood.
+]
+
+#section-metadata(
+  short-title: [Sampling variation],
+  subtitle: [How an estimator changes across repeated datasets],
+)
+
+= Sampling variation of the MLE
+
+#speaker-note[
+  This is a familiar frequentist idea and receives only a short reminder.
+  It concerns variation of a procedure across hypothetical datasets, not the
+  posterior distribution of a parameter given the observed dataset.
+]
+
+== With enough data, an MLE often varies approximately normally
+
+#content-block(
+  layout: "top",
+  object-width: 93%,
+  object: [
+    #align(center)[$hat(theta)_"MLE" (tilde(D)) approx cal(N)(theta^*, [N F(theta^*)]^(-1))$]
+    #v(0.75em)
+    #align(center)[$F(theta) = E_theta [(nabla_theta log p(Y|theta))(nabla_theta log p(Y|theta))^T]$]
+    #source-note[Murphy, Book 1 §4.7.2, Eqs. 4.219–4.220]
+  ],
+  key-points: [
+    - $theta^*$ is the fixed true parameter; $F$ is Fisher information
+    - Repeated datasets produce different estimates around $theta^*$
+    - The approximation needs an identifiable, regular model and a large sample
+  ],
+)
+
+#speaker-note[
+  State the scope: this is a large-sample approximation under regularity and
+  identifiability conditions, not a guarantee for every model or small sample.
+  Fisher information measures how sensitive the data distribution is to the
+  parameter. The covariance scales roughly as 1/N. Students have encountered
+  sampling variation before, so do not derive the matrix result here.
+]
+
+
 
 #section-metadata(
   short-title: [Categorical],

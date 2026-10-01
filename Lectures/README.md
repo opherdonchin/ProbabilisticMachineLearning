@@ -14,6 +14,11 @@ Lectures/
 └── L01_Probability_Statistics/
     ├── slide_deck.typ
     ├── coin_model.ipynb
+    ├── gaussian_geometry_figures.ipynb
+    ├── generated/
+    │   ├── gaussian_contours.svg
+    │   ├── gaussian_shell_radius.svg
+    │   └── gaussian_spread.svg
     └── figures/
         ├── coin_model__beta_distribution.svg
         ├── coin_model__bernoulli_likelihood.svg

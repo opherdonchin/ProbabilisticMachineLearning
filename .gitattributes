@@ -1,5 +1,9 @@
 * text=auto
 
+# Generated presentation artifacts are binary; regenerate them after merging
+# their source instead of attempting line-by-line PDF conflict resolution.
+*.pdf binary
+
 # scripts must stay LF
 *.sh text eol=lf
 

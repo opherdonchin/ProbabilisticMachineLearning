@@ -68,6 +68,7 @@ This list must stay in sync with what `Lectures/course.typ` actually exports. If
 Slide structure and composition:
 
 - `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
+- `#recall-block(from: [...], ...)` — carried-forward knowledge from an assigned recording or an earlier lecture; requires provenance content, adds a compact `Carry forward` marker (customizable with `label:`), and delegates all layout arguments to `content-block`
 - `#twocol[...][...]`, `#triad[...][...][...]` — equal-width row layouts
 - `#section-metadata(short-title: [...], subtitle: [...])` followed by a level-1
   heading (`= Section title`) — section divider and footer metadata

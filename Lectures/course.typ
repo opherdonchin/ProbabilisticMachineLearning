@@ -430,6 +430,72 @@
 }
 
 
+// Carried-forward knowledge: the provenance is separate from the current
+// slide title and from any key-points title. Only this header uses smaller,
+// muted text; content-block keeps its ordinary typography and geometry.
+#let _recall-header(label, from) = block(
+  width: 100%,
+  stroke: (bottom: 0.6pt + palette.rule-line),
+  inset: (bottom: 0.35em),
+)[
+  #set text(size: 0.68em, fill: palette.muted)
+  #grid(
+    columns: (auto, 1fr),
+    column-gutter: 0.8em,
+    align: left + top,
+    text(weight: "semibold", fill: palette.accent, label),
+    from,
+  )
+]
+
+// `from:` is required author-supplied provenance and accepts Typst content.
+// Typst named parameters need a default; the assertion enforces this contract.
+// All layout arguments have the same meaning and defaults as content-block.
+//
+// Material supplied by an assigned recording:
+//   #recall-block(
+//     from: [Recorded: Probability review],
+//     object: [$ E[A X + b] = A E[X] + b $],
+//   )
+//
+// Material recalled from an earlier lecture:
+//   #recall-block(
+//     from: [Lecture 1: Gaussian conditioning],
+//     layout: "side-left",
+//     object: [$ E[X | Y = y] = mu_(X | y) $],
+//     key-points: [The conditional mean depends on the observed value $y$.],
+//   )
+#let recall-block(
+  from: none,
+  label: [Carry forward],
+  layout: "bottom",
+  object-width: auto,
+  object: none,
+  key-points: none,
+  key-points-title: none,
+) = {
+  assert(from != none, message: "recall-block requires provenance via from: [...]")
+
+  if object != none or key-points != none {
+    block(width: 100%, breakable: false)[
+      #stack(
+        spacing: 0.55em,
+        _recall-header(label, from),
+        content-block(
+          layout: layout,
+          object-width: object-width,
+          object: object,
+          key-points: key-points,
+          key-points-title: key-points-title,
+        ),
+      )
+    ]
+  } else {
+    []
+  }
+}
+
+
 // -----------------------------------------------------------------------------
 // Schematic diagram primitives
 // -----------------------------------------------------------------------------

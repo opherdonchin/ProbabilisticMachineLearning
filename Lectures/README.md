@@ -162,6 +162,17 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 - Prefer Python-generated figures for empirical, probabilistic, simulation, and data-driven graphics.
 - Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-node`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
 
+## Progressive disclosure and reveal planning
+
+- **Use reveals by default for staged explanations.** New or substantially revised slides introducing several concepts, developing a derivation, or working through an example should normally build progressively. Keep single-point slides, recaps, reference material, and comparisons requiring simultaneous inspection static.
+- **Design the complete final slide first.** Establish the content, visual hierarchy, and layout with everything visible. Then choose the pedagogical reveal sequence within that layout. Begin with meaningful context, assumptions, or a question. Each subsequent reveal should advance one teaching step. Usually one to three additional reveals suffice; avoid clicks that merely expose individual words.
+- **Synchronize related content.** Reveal each equation, figure component, label, and corresponding interpretation together. Preserve earlier material needed to understand the next step.
+- **Time key points deliberately.** Show orienting context immediately, interpretations with their supporting content, and concluding takeaways when justified. When asking students to predict, conceal the answer everywhere until the response step.
+- **Prefer cumulative `uncover` sequences.** Use explicit reveal numbers when coordinating separate regions. Reserve `pause` for simple sequential flow and `only` or alternatives for intentional replacement.
+- **Keep the layout stable.** Reserve space for hidden content and check that equations, figures, and bullets do not shift between states. Keep essential results available in the final handout state.
+- **Record the teaching cues in speaker notes.** Explain consequential pauses, prediction questions, and reveal order.
+- **Verify presentation and handout modes.** Inspect every state of changed slides with handout mode off, then check the final handout. Check overflow, premature answers, stray bullets, redundant clicks, and missing content.
+
 ## Content blocks and component arguments
 
 - Prefer Typst content blocks for user-facing text in reusable components, for example:

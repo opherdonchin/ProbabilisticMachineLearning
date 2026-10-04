@@ -2391,7 +2391,7 @@
       course-card(title: [Linear Gaussian model])[
         #text(size: 0.8em)[
           #stack(
-            spacing: 0.55em,
+            spacing: 0.42em,
             [$z tilde cal(N)(mu_z,Sigma_z)$],
             [$y=W z+b+epsilon$],
             [$epsilon tilde cal(N)(0,Omega)$],
@@ -2402,7 +2402,7 @@
       course-card(title: [Affine Gaussian rules])[
         #text(size: 0.8em)[
           #stack(
-            spacing: 0.55em,
+            spacing: 0.42em,
             [$u=A x+c$],
             [$E[u]=A E[x]+c$],
             [$"Cov"[u]=A "Cov"[x] A^T$],
@@ -2411,11 +2411,11 @@
       ],
     )
     #uncover("2-")[
-      #v(0.45em)
+      #v(0.15em)
       #course-card(title: [Joint Gaussian])[
         #text(size: 0.76em)[
           #stack(
-            spacing: 0.55em,
+            spacing: 0.42em,
             [$mat(z;y) tilde cal(N)(mat(mu_z;mu_y), mat(Sigma_(z z),Sigma_(z y);Sigma_(y z),Sigma_(y y)))$],
             [$mu_y=W mu_z+b, quad Sigma_(z z)=Sigma_z$],
             [$Sigma_(z y)=Sigma_z W^T=Sigma_(y z)^T$],

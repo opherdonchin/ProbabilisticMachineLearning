@@ -2438,7 +2438,7 @@
               #stack(
                 spacing: 0.5em,
                 [$B=Sigma_12 Sigma_22^(-1)$],
-                [$r=x_1-mu_1-B(x_2-mu_2)$],
+                [$r=x_1-mu_(1|2)=x_1-mu_1-B(x_2-mu_2)$],
                 uncover("3-")[
                   $E[r]=0$,
                   $ "Cov"[r,x_2] &= Sigma_12-B Sigma_22 \
@@ -2452,7 +2452,7 @@
                   $E[r | x_2]=E[r]=0$
                 ],
                 uncover("4-")[
-                  $E[x_1 | x_2]=mu_1+B(x_2-mu_2)$
+                  $E[x_1 | x_2]=mu_(1|2)$
                 ],
               )
             ]
@@ -2478,10 +2478,14 @@
   assume Sigma22 is invertible. Begin at the prior location mu1. The observed
   deviation x2-mu2 is the innovation, and the update responds to it linearly.
 
-  On reveal 2, abbreviate the response matrix by B and define the centered
-  residual r. Choosing B=Sigma12 Sigma22^(-1) will remove its association with
-  x2. Reveal the innovation key point with this subtraction. B maps deviations
-  in the observed block to corrections in the unobserved block.
+  On reveal 2, abbreviate the response matrix by B and define the residual
+  directly as $r=x_1-mu_(1|2)$: deviation from the proposed conditional mean on
+  the left. At this point $mu_(1|2)$ names the candidate expression
+  mu1+B(x2-mu2); the proof verifies that it is the conditional expectation.
+  Thus r=(x1-mu1)-B(x2-mu2), so it is centered before conditioning as well.
+  Choosing B=Sigma12 Sigma22^(-1) removes its association with x2. Reveal the
+  innovation key point with this subtraction. B maps observed deviations to
+  corrections in the unobserved block.
 
   On reveal 3, compute Cov(r,x2)=Sigma12-B Sigma22=0. The pair (r,x2) is an
   affine transformation of the original joint Gaussian, so it is jointly
@@ -2492,8 +2496,9 @@
 
   On reveal 4, independence gives E[r|x2]=E[r]=0; the last equality follows
   because r is a difference of centered variables. Rearrange the residual
-  definition as x1=mu1+B(x2-mu2)+r, hold x2 fixed, and take its conditional
-  expectation. Substitute B to recover the displayed mean update. Reveal the
+  definition as $x_1=mu_(1|2)+r$, hold x2 fixed, and take its conditional
+  expectation. This verifies the proposed mean, rather than assuming that a
+  residual already has zero conditional expectation by its name. Reveal the
   response key point with this conclusion. If Sigma12 is zero, there is no
   update; if x2 equals mu2, there is no mean shift even for correlated blocks.
 
@@ -2530,12 +2535,12 @@
               #stack(
                 spacing:0.9em,
                 [$B=Sigma_12 Sigma_22^(-1)$],
-                [$r=x_1-mu_1-B(x_2-mu_2)$],
+                [$r=x_1-mu_(1|2)$],
                 [From the mean proof: $r$ and $x_2$ are independent],
                 uncover("3-")[
                   #stack(
                     spacing: 0.8em,
-                  [Because $mu_1 + B(x_2-mu_2)$ is constant],                  
+                  [Given $x_2$, the mean $mu_(1|2)$ is constant],
                   [$Sigma_(1|2)="Cov"[x_1 | x_2]="Cov"[r]$],
 
                   )
@@ -2572,11 +2577,11 @@
   covariance so the required block inverses exist. The base key point refers
   to variance in every direction, not to an entrywise ordering of matrices.
 
-  On reveal 2, recall exactly the B and r from the mean proof. That slide
+  On reveal 2, recall exactly the B and $r=x_1-mu_(1|2)$ from the mean proof. That slide
   established that r and x2 are independent using their joint Gaussian law
   and zero cross-covariance. Reuse that result rather than re-proving it.
 
-  On reveal 3, hold x2 fixed in x1=mu1+B(x2-mu2)+r. The first two terms are
+  On reveal 3, hold x2 fixed in $x_1=mu_(1|2)+r$. The conditional mean is
   now a constant shift, so the conditional covariance is Cov(r|x2). Independence
   makes this Cov(r). Before conditioning, the same decomposition has independent
   random parts B(x2-mu2) and r, whose covariances add. The affine covariance
@@ -2679,73 +2684,84 @@
   observed value. Reuse this numerical intuition when reading the matrix rule.
 ]
 
-== Missing values turn conditioning into a learning problem
-
-Need to build
-
-// BUILD PROMPT
-// Role: apply this section's conditional rule to a recognizable learning task,
-// after the scalar worked example and before explaining why the rule works.
-// Students should connect observing part of a vector with a distribution over
-// its missing part, and distinguish that distribution from a point prediction.
-// Keep the joint Gaussian's mu and Sigma known; fitting them is outside this
-// section and belongs to the later treatment of estimation.
-//
-// Design the complete object first: a small feature vector with observed
-// entries and one visibly missing entry, an arrow to p(x_miss | x_obs), and
-// two outputs labeled conditional mean and conditional covariance. Reuse the
-// preceding example: the observed coordinate is 1.5 and the missing coordinate
-// has conditional law N(1.2, 0.36). Label 0.36 as a variance, not a standard
-// deviation. The displayed vector is one case, not a training dataset.
-// Pair the object with the familiar task/experience/performance vocabulary:
-// reconstruct a missing value; use the observed coordinates as available
-// information under a known model; evaluate prediction with squared error.
-// State that the conditional mean minimizes conditional expected squared loss,
-// while conditional covariance reports what remains uncertain. Contrast briefly
-// with ignoring the observed coordinate, which would give the marginal N(0,1).
-//
-// After the final layout works, reveal the conditional distribution with its
-// uncertainty interpretation, then the point prediction 1.2 with the squared-
-// error key point. Hide that prediction during any initial prediction question.
-// In speaker notes, connect to the self-work notebook and explain the handoff:
-// we have used the update; the Schur-complement and quadratic-decomposition
-// slides next identify the remaining covariance and explain the Gaussian form.
-// Keep those algebraic explanations off this application slide.
-
-== A Schur complement names the remaining covariance
+== The Schur complement is the residual covariance
 
 #content-block(
   layout: "top",
-  object-width: 92%,
+  object-width: 96%,
   object: [
-    #align(center)[$S = Sigma_11-Sigma_12 Sigma_22^(-1) Sigma_21$]
-    #v(0.75em)
-    #uncover("2-")[
-      #align(center)[$Sigma_(1|2)=S, quad r=x_1-mu_1-Sigma_12 Sigma_22^(-1)(x_2-mu_2)$]
+    #twocol[
+      #course-card(title: [Conditional Gaussian])[
+        #text(size: 0.84em)[
+          #stack(
+            spacing: 0.7em,
+            [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$],
+            [$S=Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1) Sigma_21$],
+            [$(x_1 | x_2) tilde cal(N)(mu_(1|2),S)$],
+          )
+        ]
+      ]
+    ][
+      #course-card(title: [Centered residual])[
+        #text(size: 0.84em)[
+          #stack(
+            spacing: 0.7em,
+            [$r=x_1-mu_(1|2)$],
+            uncover("2-")[$r tilde cal(N)(0,S)$],
+            uncover("2-")[The residual $r$ is independent of $x_2$],
+          )
+        ]
+      ]
     ]
+    #uncover("3-")[#align(center)[#text(size: 0.84em)[
+      Remove the part predicted by $x_2$:
+      $ "Cov"[mat(r; x_2)] = mat(S,0; 0,Sigma_22) $
+    ]]]
     #source-note[Murphy, Book 2 §2.3.1.5, Eqs. 2.91, 2.102–2.103]
   ],
   key-points: [
     #stack(
       spacing: 0.35em,
-      [
-        - $S$ is the Schur complement of $Sigma_22$ in $Sigma$
-      ],
       uncover("2-")[
-        - $r$ is the unexplained part of $x_1$ after observing $x_2$
+        - $S$ measures the uncertainty left after subtracting the conditional mean
+      ],
+      uncover("3-")[
+        - Block elimination leaves $S$: the *Schur complement of $Sigma_22$ in $Sigma$*
       ],
     )
   ],
 )
 
 #speaker-note[
-  Name the remaining covariance first. On step 2 introduce the residual
-  about the conditional mean, preparing the two pieces of the next proof.
+  Collect the two conditioning results already proved: $mu_(1|2)$ is the
+  conditional mean and S is shorthand for $Sigma_(1|2)$. Place their Gaussian
+  law beside the same residual $r=x_1-mu_(1|2)$ introduced in the mean proof.
+  The mean is a function of x2; r is defined jointly with the random x2 before
+  a value is fixed. Assume a positive-definite joint covariance throughout.
 
-  Give the two recurring algebraic pieces names before showing the proof.
-  The Schur complement is the conditional covariance. The residual is x1
-  centered at its conditional mean. Neither definition requires students to
-  invert the full covariance by hand.
+  On reveal 2, shift the conditional Gaussian to zero mean. Subtracting its
+  mean preserves its covariance, giving r|x2 distributed as N(0,S). The earlier
+  proof established r independent of x2, so the unconditional law is also
+  r distributed as N(0,S). These are the same uncertainty expressed around
+  the conditional center or around zero. Show the uncertainty key point here.
+
+  On reveal 3, explain the algebraic name. For a block matrix with blocks
+  A,B,C,D and invertible D, block elimination leaves A-B D^(-1) C as the
+  remaining block; this is called the Schur complement of D. Here D is
+  Sigma22 and the remaining block is S. More concretely, multiply centered
+  coordinates by T with block rows [I,-B] and [0,I], where B=Sigma12 Sigma22^(-1).
+  Their covariance becomes T Sigma T^T, with diagonal blocks S and Sigma22
+  and zero cross blocks, as displayed. This removes the predictable coupling
+  to x2; it is not the operation of marginalizing x2, which leaves Sigma11.
+  The transformation explains the word complement as the block left after
+  eliminating the other block's coupling. The name honors Issai Schur.
+
+  Naming reference: https://www.cfm.brown.edu/people/dobrush/cs52/python/Part2/partition.html
+  Block-elimination reference: https://www.cs.cornell.edu/courses/cs6210/2025fa/lec/2025-09-15.html
+  Keep the history and full multiplication in notes. The useful content for
+  this lecture is that S is exactly the covariance of the independent residual.
+  Lead into the next slide: r and S specify the conditional Gaussian exponent
+  r^T S^(-1) r, while the observed block supplies the marginal exponent.
 ]
 
 == The joint quadratic separates into conditional and marginal parts
@@ -2754,15 +2770,13 @@ Need to build
   layout: "top",
   object-width: 95%,
   object: [
+    #align(center)[$p(x_1,x_2)=p(x_1 | x_2)p(x_2)$]
     #align(center)[$(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
     #v(0.55em)
     #uncover("2-")[
       #align(center)[$= r^T S^(-1)r+(x_2-mu_2)^T Sigma_22^(-1)(x_2-mu_2)$]
     ]
     #v(0.6em)
-    #uncover("3-")[
-      #align(center)[$p(x_1,x_2)=p(x_1 | x_2)p(x_2)$]
-    ]
     #source-note[Murphy, Book 2 §2.3.1.5, Eqs. 2.94–2.103]
   ],
   key-points: [
@@ -2777,6 +2791,7 @@ Need to build
 )
 
 #speaker-note[
+  Recall $r=x_1-mu_(1|2)$ and $S="Cov"[r]=Sigma_(1|2)$ from the preceding slide.
   Start with the joint quadratic. Step 2 shows its decomposition and
   interprets both terms; step 3 turns the sum in the exponent into the
   conditional-times-marginal factorization of the density.
@@ -2789,40 +2804,64 @@ Need to build
 
 == Summary: Marginals and conditionals of a Gaussian
 
-Need to build
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[#text(size: 0.85em)[
+      $mat(x_1; x_2) tilde cal(N)(mat(mu_1; mu_2), mat(Sigma_11,Sigma_12; Sigma_21,Sigma_22))$
+    ]]
+    #twocol[
+      #course-card(title: [Ignore $x_2$: marginalize])[
+        #text(size: 0.82em)[
+          #stack(
+            spacing: 0.75em,
+            [$x_1 tilde cal(N)(mu_1,Sigma_11)$],
+          )
+        ]
+      ]
+    ][
+      #course-card(title: [Observe $x_2=a$: condition])[
+        #text(size: 0.82em)[
+          #stack(
+            spacing: 0.75em,
+            [$(x_1 | x_2=a) tilde cal(N)(mu_(1|2),S)$],
+            [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(a-mu_2)$],
+            [$S=Sigma_11-Sigma_12 Sigma_22^(-1) Sigma_21$],
+          )
+        ]
+      ]
+    ]
+    #source-note[Murphy, Book 2 §2.3.1: Gaussian marginals and conditionals]
+  ],
+  key-points: [
+    - Conditioning gives a mean and remaining uncertainty: $S=Sigma_(1|2)$
+    - The observed value changes the mean; $S$ depends only on the covariance blocks
+    - If $Sigma_12=0$, observing $x_2$ gives the same law as ignoring it
+  ],
+)
 
-// BUILD PROMPT
-// Role: close "Marginals and conditionals of a Gaussian" by answering its two
-// questions: what distribution remains when coordinates are ignored, and what
-// distribution remains when their values are observed? The previous section
-// established what mu and Sigma mean. This recap consolidates how their blocks
-// answer queries, including a missing-value task, without fitting parameters.
-//
-// Complete layout: begin with one known joint Gaussian partitioned into groups
-// x1 and x2, then branch into two equally weighted comparison panels. On the
-// left, "Ignore x2" gives p(x1)=N(mu1,Sigma11): keep the matching blocks. On
-// the right, "Observe x2=a" gives p(x1|x2=a)=N(mu_(1|2),Sigma_(1|2)): adjust
-// the mean using a-mu2 and cross-covariance, and subtract the explained part
-// from Sigma11. Use the familiar mean and covariance update formulas only if
-// they fit at readable size; the comparison and its interpretation have priority
-// over repeating every formula. Label the remaining covariance S to recall the
-// Schur complement, and reserve the quadratic proof for speaker notes.
-//
-// Key points: ignoring and observing are different operations; conditioning
-// gives both an estimate and its uncertainty; under squared error the missing-
-// value prediction is the conditional mean. Connect the covariance reduction
-// to the dependence between groups, noting that it can be zero. The conditional
-// mean depends on the observed value, whereas the conditional covariance for
-// fixed observed coordinates does not. Keep both branches visible together:
-// this is a static comparison/recap, not another staged derivation.
-//
-// End with the next section's question: what if our observation is a noisy
-// linear measurement of an unknown state? In speaker notes explain that we
-// will construct a joint Gaussian for state and measurement, then reuse this
-// exact conditioning operation. Avoid implying that noisy measurements need
-// a different conditioning rule. Leave the measurement model and information-
-// form interpretation to "Linear Gaussian systems"; do not reopen geometry,
-// covariance definitions, or full block-matrix proofs on this summary.
+#speaker-note[
+  Keep this recap static so students can compare both queries at once. Begin
+  with the known joint Gaussian at the top, then ask what information each
+  branch uses. Marginalization averages over the second group; conditioning
+  uses its observed value a. Neither operation fits the model parameters.
+  Assume a positive-definite joint covariance, as in the preceding proofs.
+
+  Recall that the conditional mean is the starting mean plus a response to
+  a-mu2. S is the Schur complement of Sigma22 and the covariance of the
+  independent residual from the earlier proof. The covariance reduction is
+  positive semidefinite: uncertainty cannot increase in any direction, but
+  there need not be a strict decrease. If Sigma12 is zero, the groups are
+  independent and both branches give the same law. If a equals mu2, the mean
+  stays put even when the covariance is reduced. For fixed observed coordinates,
+  changing a changes the mean but not S. Do not repeat the quadratic proof.
+
+  Close by asking students to identify the blocks used by each operation.
+  The section's result is that a known joint Gaussian answers both queries
+  exactly: retain matching blocks when marginalizing, and update the mean
+  and covariance when conditioning. Keep the recap entirely retrospective.
+]
 
 #section-metadata(
   short-title: [Linear Gaussian systems],
@@ -2831,67 +2870,144 @@ Need to build
 
 = Linear Gaussian systems
 
-== From exact observations to noisy measurements
 
-Need to build
-
-// BUILD PROMPT: Pick up the question closing "Marginals and conditionals of a
-// Gaussian". We can already condition a known joint law on the exact value of
-// an observed coordinate. Now the measured value is a noisy linear function
-// of an unknown state: the uncertainty concerns its relationship to the state,
-// even though we know the recorded measurement. Show a simple state -> noisy
-// measurement schematic and ask how to infer the state. The new work is to
-// construct their joint Gaussian using the affine rules from "Joint Gaussian
-// distributions and geometry"; posterior inference will reuse the conditioning
-// rule from the section just completed. Keep this as a single-question bridge.
-// Defer the generative equations and noise assumptions to the next slide.
-
-== A linear Gaussian system defines a latent state and an observation
+== A linear Gaussian system is a model of state and measurement
 
 #content-block(
   layout: "top",
-  object-width: 93%,
+  object-width: 96%,
   object: [
-    #align(center)[$z tilde cal(N)(mu_z,Sigma_z), quad y | z tilde cal(N)(W z+b,Omega)$]
-    #v(0.8em)
-    #uncover("2-")[
-      #align(center)[$y=W z+b+epsilon, quad epsilon tilde cal(N)(0,Omega)$]
-    ]
+    #grid(
+      columns: (0.8fr, 1.2fr), gutter: 1em, align: horizon,
+      align(center)[
+        #course-diagram(
+          spacing: (3.3em, 2.1em),
+          node-stroke: 1.2pt + palette.dark,
+          node-fill: palette.paper,
+          edge-stroke: 1.4pt + palette.accent,
+          mark-scale: 70%,
+          graph-node((0, 0), name: <state>, shape: circle, width: 2em, height: 2em)[$z$],
+          graph-node((1, 0), name: <measurement>, shape: circle, width: 2em, height: 2em,
+            fill: palette.accent.lighten(78%))[$y$],
+          graph-node((0, 0.8), stroke: none, fill: none)[#text(size: 0.65em)[Latent state]],
+          graph-node((1, 0.8), stroke: none, fill: none)[#text(size: 0.65em)[Observed]],
+          graph-edge(<state>, <measurement>, "-|>"),
+        )
+      ],
+      [#course-card(title: [A prior and a measurement law])[
+        #text(size: 0.85em)[
+          $ z tilde cal(N)(mu_z,Sigma_z) $
+          $ y | z tilde cal(N)(W z+b,Omega) $
+          $ p(z,y)=p(z)p(y | z) $
+        ]
+      ]],
+    )
+    #uncover("2-")[#align(center)[#text(size: 0.85em)[
+      $ y=W z+b+epsilon, quad epsilon tilde cal(N)(0,Omega) $
+      Noise $epsilon$ is independent of the state $z$.
+    ]]]
     #source-note[Murphy, Book 2 §2.3.2, Eqs. 2.118–2.119]
   ],
   key-points: [
     #stack(
       spacing: 0.35em,
-      [
-        - $z in RR^L$ is unknown; $y in RR^D$ is observed
-      ],
-      uncover("2-")[
-        - $W$ maps state to measurement; $Omega$ describes measurement noise
-      ],
+      [- This model specifies how an unknown state generates a noisy measurement],
+      uncover("2-")[- Here the parameters $mu_z, Sigma_z, W, b, Omega$ are given],
     )
   ],
 )
 
 #speaker-note[
-  Begin with the prior and the conditional observation law. On step 2
-  write the same model as an affine map plus independent Gaussian noise,
-  pairing that equation with the roles of W and Omega.
+  Introduce a generative probability model, not an inference algorithm.
+  Read the directed edge from the latent state z to the measured y: the model
+  specifies a state prior and the conditional measurement law. The shaded y
+  node marks the variable available in the inference problem. It remains a
+  random variable when predicting measurements before seeing them.
 
-  Distinguish the random latent state from the noise, which is independent of
-  it. The conditional equation says what measurements would look like for a
-  given state. The same system can represent many state and observation sizes.
+  On step 2, write the equivalent affine equation with independent Gaussian
+  noise. W maps an L-dimensional state to a D-dimensional measurement, b is
+  an offset, and Omega is noise covariance. Assume positive-definite Sigma_z
+  and Omega throughout the inverse-based formulas in this section.
+  All model parameters are given; no fitting procedure has been introduced.
+  The next slide asks which distributions this one model lets us compute.
 ]
 
-== The joint mean and covariance follow from affine rules
+== Three tasks ask for three distributions from the same model
 
 #content-block(
   layout: "top",
-  object-width: 94%,
+  object-width: 96%,
   object: [
-    #align(center)[$E[mat(z;y)]=mat(mu_z;W mu_z+b)$]
-    #v(0.7em)
+    #stack(
+      spacing: 0.65em,
+      [#course-card(title: [Joint task: describe state and measurement together])[
+        #text(size: 0.85em)[$p(z,y)$ #h(1em) Construct the joint Gaussian with *affine rules*]
+      ]],
+      uncover("2-")[#course-card(title: [Prediction task: what measurements are plausible?])[
+        #text(size: 0.85em)[$p(y)=integral p(z,y) dif z$ #h(1em) *Marginalize* the unknown state]
+      ]],
+      uncover("3-")[#course-card(title: [Inference task: what state explains the measurement?])[
+        #text(size: 0.85em)[$p(z | y)=p(z,y)/p(y)$ #h(1em) *Condition* on the observed measurement]
+      ]],
+    )
+  ],
+  key-points: [
+    #stack(
+      spacing: 0.35em,
+      [- The model is fixed; the task determines which distribution we need],
+      uncover("3-")[- Gain and precision forms will express the same inference solution],
+    )
+  ],
+)
+
+#speaker-note[
+  Make the problems explicit before doing their algebra. The joint task asks
+  how z and y vary together; its solution supplies the blocks needed for both
+  other queries. The generative specification p(z)p(y|z) is already known;
+  the first job is to collect it into a multivariate Gaussian.
+
+  Reveal prediction next: no value of y is supplied, and z is integrated out.
+  Reveal inference last: a measured y is supplied, and we seek a distribution
+  over z. This is the same marginalization-versus-conditioning distinction
+  developed in the previous section. Gain and precision are alternative
+  representations of this posterior, not additional distributions or tasks.
+]
+
+== Joint task: construct the state and measurement law
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[#text(size: 0.8em)[Find $p(z,y)$: apply the affine rules to $(z,epsilon)$.]]
+    #twocol[
+      #course-card(title: [Linear Gaussian model])[
+        #text(size: 0.8em)[
+          #stack(
+            spacing: 0.45em,
+            [$z tilde cal(N)(mu_z,Sigma_z)$],
+            [$y=W z+b+epsilon$],
+            [$epsilon tilde cal(N)(0,Omega)$, independent of $z$],
+          )
+        ]
+      ]
+    ][
+      #course-card(title: [Affine rules])[
+        #text(size: 0.8em)[
+          #stack(
+            spacing: 0.45em,
+            [$u=A x+c$],
+            [$E[u]=A E[x]+c$],
+            [$"Cov"[u]=A "Cov"[x] A^T$],
+          )
+        ]
+      ]
+    ]
     #uncover("2-")[
-      #align(center)[$"Cov"[mat(z;y)]=mat(Sigma_z,Sigma_z W^T;W Sigma_z,W Sigma_z W^T+Omega)$]
+      #align(center)[#text(size: 0.82em)[
+        $ E[mat(z;y)]=mat(mu_z;W mu_z+b) $
+        $ "Cov"[mat(z;y)]=mat(Sigma_z,Sigma_z W^T;W Sigma_z,W Sigma_z W^T+Omega) $
+      ]]
     ]
     #source-note[Murphy, Book 2 §2.3.2.1, Eq. 2.120]
   ],
@@ -2907,9 +3023,15 @@ Need to build
 )
 
 #speaker-note[
-  Use linearity to obtain the joint mean first. Ask where the noise
-  enters the covariance, then reveal the block matrix and its two key
-  points together on step 2.
+  Solve the joint task announced on the task slide.
+  On the base slide, recall the two model equations and the independent noise
+  assumption alongside the affine mean and covariance rules. Ask students to
+  predict the joint moments, especially where the noise covariance enters.
+  On step 2, reveal both joint equations and their two interpretations together.
+
+  Apply the affine rules to the augmented vector (z,epsilon): its mean is
+  (mu_z,0) and its covariance is block diagonal with blocks Sigma_z and Omega.
+  The map to (z,y) has block rows [I,0] and [W,I], with offset (0,b).
 
   Derive the lower-right block with y=Wz+b+epsilon: independent noise adds
   Omega to W Sigma_z W^T. Derive the cross block using covariance of z and
@@ -2917,12 +3039,13 @@ Need to build
   the joint-uncertainty section.
 ]
 
-== The system predicts observations before seeing them
+== Prediction task: marginalize the unknown state
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
+    #align(center)[$ p(y)=integral p(z,y) dif z $]
     #align(center)[$m=W mu_z+b, quad S=W Sigma_z W^T+Omega$]
     #v(0.85em)
     #uncover("2-")[
@@ -2945,6 +3068,8 @@ Need to build
 )
 
 #speaker-note[
+  Solve the prediction task by keeping the y blocks of the joint Gaussian.
+  Here S denotes measurement covariance, not the preceding section's residual covariance.
   Name the predictive moments from the joint blocks first. Step 2
   collects them into the marginal density and explains what it can score.
 
@@ -2954,7 +3079,7 @@ Need to build
   rule and can be used as a marginal likelihood.
 ]
 
-== Gaussian conditioning gives the posterior state
+== Inference task: condition on the measurement
 
 #content-block(
   layout: "top",
@@ -2995,12 +3120,13 @@ Need to build
   formula to memorize.
 ]
 
-== The gain writes the same update as prediction plus correction
+== Inference solution: gain times innovation
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
+    #align(center)[#text(size: 0.8em)[How strongly should $y-m$ correct our estimate of $z$?]]
     #align(center)[$K=Sigma_z W^T S^(-1)$]
     #v(0.7em)
     #uncover("2-")[
@@ -3031,12 +3157,13 @@ Need to build
   observations to L-dimensional states.
 ]
 
-== Information form uses precision instead of covariance
+== Inference solution: switch to precision coordinates
 
 #content-block(
   layout: "top",
   object-width: 92%,
   object: [
+    #align(center)[#text(size: 0.8em)[How can we express $p(z | y)$ so prior and measurement contributions add?]]
     #align(center)[$Lambda=Sigma^(-1), quad eta=Lambda mu$]
     #v(0.65em)
     #uncover("2-")[
@@ -3075,12 +3202,13 @@ Need to build
   simple.
 ]
 
-== Precision form adds prior and data information
+== Inference solution: add prior and measurement information
 
 #content-block(
   layout: "top",
   object-width: 94%,
   object: [
+    #align(center)[#text(size: 0.8em)[Find the same $p(z | y)$ by combining prior and measurement information.]]
     #align(center)[$Sigma_(z|y)^(-1)=Sigma_z^(-1)+W^T Omega^(-1)W$]
     #v(0.75em)
     #uncover("2-")[
@@ -3112,17 +3240,19 @@ Need to build
   depending on whether L or D is smaller.
 ]
 
-== A scalar update shows how noise controls trust
+== Inference example: estimate a state from one measurement
 
 #content-block(
   layout: "top",
   object-width: 91%,
   object: [
+    #align(center)[#text(size: 0.8em)[Given $y=1$, find $p(z | y=1)$ and a squared-error estimate of $z$.]]
     #align(center)[$z tilde cal(N)(0,1), quad y | z tilde cal(N)(z,0.25), quad y=1$]
     #uncover("2-")[
       #v(0.75em)
       #align(center)[$Sigma_(z|y)=frac(1,1+4)=0.2, quad mu_(z|y)=0.2(4)=0.8$]
     ]
+    #uncover("2-")[#align(center)[$p(z | y=1)=cal(N)(z | 0.8,0.2), quad hat(z)=0.8$]]
     #source-note[Worked example from Murphy, Book 1 §3.3.1 and Book 2 §2.3.2.2]
   ],
   key-points: [
@@ -3130,7 +3260,7 @@ Need to build
       spacing: 0.35em,
       uncover("2-")[
         - A precise observation moves the posterior mean toward the measurement
-        - The posterior variance is smaller than either starting variance
+        - Under squared error, report the posterior mean: $hat(z)=0.8$
       ],
     )
   ],
@@ -3141,21 +3271,116 @@ Need to build
   likelihood, and observation. Reveal the numerical update and both
   interpretations together on step 2.
 
+  The loss is squared state-estimation error. For this loss, the conditional
+  mean minimizes posterior expected loss; uncertainty is still given by 0.2.
   Have students predict whether the posterior mean is nearer zero or one.
   Prior precision is one and observation precision is four, so the answer is
   four-fifths of the way toward y=1. The variance 0.2 comes from total
   precision five. The example grounds the matrix formulas without a new model.
 ]
 
-== The system turns an observation into a distribution over unknowns
+== Summary: Linear Gaussian tasks and solutions
 
-Need to build
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #align(center)[#text(size: 0.85em)[$z tilde cal(N)(mu_z,Sigma_z), quad y=W z+b+epsilon$]]
+    #triad[
+      #course-card(title: [Joint])[
+        $p(z,y)$ \
+        #text(size: 0.8em)[Affine rules build the joint mean and covariance]
+      ]
+    ][
+      #course-card(title: [Prediction])[
+        $p(y)$ \
+        #text(size: 0.8em)[Marginalization keeps the measurement blocks]
+      ]
+    ][
+      #course-card(title: [Inference])[
+        $p(z | y)$ \
+        #text(size: 0.8em)[Conditioning gives a state estimate and uncertainty]
+      ]
+    ]
+    #align(center)[#text(size: 0.82em)[
+      *Two forms of the same posterior:*
+      $ mu_(z|y)=mu_z+K(y-m) $
+      $ Sigma_(z|y)^(-1)=Sigma_z^(-1)+W^T Omega^(-1)W $
+    ]]
+  ],
+  key-points: [
+    - One model answers different tasks through different probability queries
+    - Gain corrects a prediction; precision adds prior and measurement information
+  ],
+)
 
-// BUILD PROMPT: Revise the current LGS summary into the technical payoff of Lecture 1. Show the complete chain: prior state + linear noisy observation -> joint Gaussian -> predictive marginal -> posterior by conditioning. Preserve both complementary interpretations: gain times innovation in moment form, and addition of information in precision form. Do not introduce Gaussian potentials or message passing.
+#speaker-note[
+  Keep this summary static and retrospective. Read the three tasks with the
+  operation that solved each. The joint law was constructed from the independent
+  state and noise; the prediction was a marginal; the inverse problem was a
+  conditional. In the recalled model, epsilon is independent Gaussian noise
+  with zero mean and covariance Omega.
 
-== Close the loop: task, inference, and performance
+  Recall m=W mu_z+b, S=W Sigma_z W^T+Omega, and K=Sigma_z W^T S^(-1).
+  The two displayed identities highlight complementary interpretations of
+  the same posterior, not separate inference algorithms with different answers.
+  The scalar example verified both views with mean 0.8 and variance 0.2.
+  Conclude with what was solved; do not introduce a new topic or future task.
+]
 
-Need to build
+== Summary: Task, experience, and performance
 
-// BUILD PROMPT: Return explicitly to the conceptual framework from the first half. A learning problem specifies task, experience, and performance; the probabilistic model turns that into a query; marginalization/conditioning produce the relevant distribution; the performance criterion determines the reported action or prediction (use the conditional mean under squared error as the running example). Point directly to the self-work notebook, where students will use Gaussian conditioning for missing-value inference with known parameters.
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #triad[
+      #course-card(title: [Task])[
+        #text(size: 0.8em)[
+          Estimate the state from a measurement.
+          $y arrow.r p(z | y) arrow.r hat(z)$
+        ]
+      ]
+    ][
+      #course-card(title: [Experience])[
+        #text(size: 0.8em)[
+          Training examples can determine the model parameters.
+          $D={(y_n,z_n)}_(n=1)^N$
+        ]
+      ]
+    ][
+      #course-card(title: [Performance])[
+        #text(size: 0.8em)[
+          Evaluate estimates on held-out cases.
+          $ell(z,hat(z))=norm(z-hat(z))^2$
+        ]
+      ]
+    ]
+    #align(center)[#text(size: 0.85em)[
+      For squared error, the posterior gives the estimate:
+      $ hat(z)=E[z | y]=mu_(z|y) $
+    ]]
+  ],
+  key-points: [
+    - This section solved inference with given parameters; it did not fit the model
+    - Learning requires performance on the task to improve with experience
+  ],
+)
 
+#speaker-note[
+  Close the section by applying the earlier task/experience/performance
+  definition to the state-estimation problem we have just solved. Keep all
+  three visible so their roles can be compared. Task: estimate z from y.
+  Performance: squared error on held-out pairs. The conditional mean is the
+  optimal action for posterior expected squared error under the assumed model.
+  It need not be optimal for a different loss or a misspecified model.
+
+  Experience means training examples used to determine a predictive procedure,
+  not simply the y supplied at inference time. Paired (y,z) examples are one
+  possible supervised experience regime, recalled from the earlier framework.
+  Such data could determine the model parameters; we have not fitted them here.
+  Do not claim empirical improvement or a completed learning algorithm.
+  Conditioning an already specified model is the inference component that
+  can be used inside a learned system. This distinguishes the task we solved
+  from the additional requirement in Mitchell's definition of learning.
+]

@@ -232,7 +232,55 @@ Inspect the rendered slides for:
 
 Compilation alone is not sufficient evidence that a slide is good.
 
+## Efficient iteration for local slide edits
+
+- Read the target slide and its immediate neighbors first. Expand context only
+  when a mathematical dependency, section change, or shared component requires it.
+- Reuse the build command below instead of writing new compilation and extraction
+  scripts for each edit. It checks math attachments, compiles both full-deck modes,
+  renders selected slides and all their reveals, compares final reveals with the
+  handout, and detects changes to the entry source during the run.
+- Inspect every changed reveal and handout; open only the previews listed in the
+  current `report.json`. The report's mechanical pass is not visual approval.
+  Check mathematical correctness and narrative continuity separately.
+- Once checks pass, stop unless new edits or a specific concern justify another
+  pass. Broaden visual review for shared styles, figure changes, or section
+  restructuring. Regenerate distribution artifacts at delivery checkpoints;
+  do not claim older exports are current.
+- Keep tool output and completion reports concise. Do not reread unchanged
+  instructions already available in the current conversation. Batch related
+  edits and checks, preserving concurrent user changes.
+
+From the repository root:
+
+```powershell
+uv --no-config --cache-dir tmp/uv-cache run scripts/review_slides.py Lectures/L01_Probability_Statistics/slide_deck_revised.typ --slide "The Schur complement is the residual covariance"
+```
+
+Repeat `--slide` for multiple titles. The script uses pinned, isolated tooling
+dependencies and leaves the notebook environment and lecture source untouched.
+The workspace-local cache avoids sandbox access errors in the user cache. Add
+`--offline` before the script path when these tooling dependencies are cached.
+Current review PDFs and PNGs are in `build/slide-review/<lecture>/<entry>/`.
+It supports the course's explicit `config-common(handout: true/false)` setting
+and plain-text slide headings; it fails visibly if it cannot locate a title.
+
+For delegated layout review, use [the reusable review prompt](slide_layout_review.md).
+Supply exact slide titles, the current render report, and explicit read-only or
+layout-only permission. Prefer a lower-cost model for this bounded review; the
+author remains responsible for mathematics and the teaching argument.
+
 ## Narrative planning
+
+- Summary slides look back only: consolidate the completed section's ideas,
+  results, and distinctions. Do not preview the next section or end with a
+  forward-looking question; put transitions on separate slides.
+- For a model-based inference section, establish the model (including a graphical
+  description), state the tasks as probability queries, then present solutions
+  explicitly tied to those tasks. Separate model and task slides when needed
+  for readability. Distinguish inference with given parameters from learning.
+- Use transition slides only when they do conceptual work, such as posing a
+  substantive problem. Avoid slides that merely announce what comes next.
 
 For substantial lecture revisions, plan the intellectual sequence before expanding every slide.
 

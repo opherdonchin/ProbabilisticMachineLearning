@@ -81,14 +81,7 @@
   ],
 )
 
-#speaker-note[
-  Begin with data and the unknown bias. Reveal the model and its two questions
-  together on step 2, then introduce the coding and counts on step 3.
 
-  Reactivate the familiar coin model and distinguish the individual binary
-  outcomes from their aggregate counts. Each $y_i$ is a Bernoulli outcome;
-  $N_1$ and $N_0$ count observed heads and tails.
-]
 
 == Models are built out of distributions
 
@@ -153,9 +146,7 @@
   ],
 )
 
-#speaker-note[
-  Reactivate distributions are parameterized families and start remembering a few that they know.
-]
+
 
 == Models can be drawn as graphs
 
@@ -194,9 +185,7 @@
   ]),
 )
 
-#speaker-note[
-  Introduce graphical-model notation through the familiar Beta-Binomial model. Emphasize the new types of graphs that are familiar from the previous course but not the heart of it.
-]
+
 
 == Bayes' rule combines prior and likelihood
 
@@ -239,14 +228,7 @@
   ],
 )
 
-#speaker-note[
-  Begin with the familiar model. Step 2 reveals Bayes' rule and names its
-  three distributions together; step 3 interprets the normalizing constant.
 
-  Connect the two model statements to Bayes' rule. The Bernoulli model supplies
-  the likelihood, the Beta model supplies the prior, and normalization turns
-  their product into the posterior distribution.
-]
 
 == Conjugacy permits simple calculations
 
@@ -292,16 +274,7 @@
   ],
 )
 
-#speaker-note[
-  Start with the prior and likelihood already in view. Ask what family the
-  posterior belongs to; reveal the update on step 2, then name and define
-  conjugacy on step 3. The definition follows the example it describes.
 
-  Reactivate the definition of conjugacy. In the Beta-Binomial model, updating
-  adds the observed counts $N_1$ and $N_0$ to the two Beta parameters. The
-  individual $y_i$ are Bernoulli; their aggregate $N_1$ has a Binomial sampling
-  distribution. There is no need to derive the result here.
-]
 
 == The posterior is a distribution representing uncertainty
 
@@ -331,13 +304,7 @@
   ],
 )
 
-#speaker-note[
-  Keep the prior, likelihood, and posterior visible together for comparison.
-  Identify the curves first; on step 2 interpret their widths in this example.
 
-  Connect the algebra on the previous slide to these distribution shapes. With
-  a Beta(2,2) prior and 7 heads in 10 tosses, the posterior is Beta(9,5).
-]
 
 == Summary: A familiar modeling language
 
@@ -352,11 +319,7 @@
   ],
 )
 
-#speaker-note[
-  Close by naming the shared probabilistic vocabulary: models, graphs, Bayes'
-  rule, conjugacy, and posterior uncertainty all describe how data inform
-  unknown quantities.
-]
+
 
 #section-metadata(
   short-title: [From statistics to machine learning],
@@ -389,12 +352,7 @@
   ],
 )
 
-#speaker-note[
-  Do not suggest that posterior prediction is new to them -- they have done it.
-  The question on the table is different: is the posterior over theta always
-  the object we ultimately care about? For a scientific inferential problem it
-  often is. The rest of this section is about problems where it is not.
-]
+
 
 == Machine learning grew out of computer science
 
@@ -422,9 +380,7 @@
   ],
 )
 
-#speaker-note[
-  It's worth emphasizing the relationship between science and engineering and the different questions they ask.
-]
+
 
 == Early machine learning grew out of classification problems
 
@@ -498,17 +454,7 @@
   ],
 )
 
-#speaker-note[
-  Fisher's original Fig. 1 shows the Iris distributions of a discriminating
-  linear function. Rosenblatt's original Fig. 1 diagrams the organization of
-  a perceptron.
 
-  Use these as early landmarks, not as a claim that the disciplines had clean
-  boundaries. See `figures/historical_sources.md` for full citations and
-  source URLs. End by separating two ideas that are easy to blur: a predictor
-  maps an input to a class, while learning is the process that produces that
-  predictor from examples.
-]
 
 
 == Machine learning defined
@@ -581,15 +527,7 @@
 )
 
 
-#speaker-note[
-  This is Mitchell's classic definition of machine learning from *Machine
-  Learning* (McGraw-Hill, 1997). The cover anchors the definition in the book;
-  the compact flow separates the three roles. Experience E is the data or
-  interaction used by a learning procedure A. Its product is a function. Task
-  T specifies what that function must do, and performance measure P says what
-  counts as improvement. A canonical pairing is supervised experience used to
-  learn a predictor.
-]
+
 
 == Supervised experience supports prediction
 
@@ -641,19 +579,7 @@
   ],
 )
 
-#speaker-note[
-  Read the training examples and their notation on the base slide. Reveal
-  the deployed predictor with its task key point on step 2, then introduce
-  performance on step 3 to motivate the loss function.
 
-  This follows the notation in Murphy, Book 1, Section 1.2. A learner is
-  described by the task T, the experience E, and the performance measure P.
-  Supervised experience is the canonical training regime for prediction, but
-  it is not identical to prediction. Here the deployed function maps a new
-  input to an output, while the learning algorithm maps paired examples to that
-  predictor. A loss says how well the predictor performs. Classification makes
-  this pairing concrete.
-]
 
 == Classification: Iris flowers
 
@@ -737,17 +663,7 @@
   ],
 )
 
-#speaker-note[
-  Begin with the flowers and the idea of a class label. Reveal the design
-  matrix and the matching feature/label notation together on step 2.
 
-  Murphy begins the classification example with three Iris subspecies, shown
-  in Figure 1.1. Table 1.1 makes the training-set representation concrete:
-  each row gives four numeric measurements and the known species label. The
-  flower photographs are reproduced from Murphy, Book 1 (online version,
-  April 18, 2025); Figure 1.1 credits Dennis Kramb and SIGNA. The table is
-  recreated from Table 1.1. See `figures/book1_section12_sources.md`.
-]
 
 == Exploratory data analysis
 
@@ -781,14 +697,7 @@
   ],
 )
 
-#speaker-note[
-  This is Figure 1.3 from Murphy, Book 1. It shows why Iris is a useful first
-  classification example: some feature pairs visibly separate Setosa from the
-  other classes, while Versicolor and Virginica overlap more. At this point we
-  only inspect the data. We deliberately omit Section 1.2.1.3 and its decision
-  tree, Figure 1.4, as requested. The source notebook is linked by the book as
-  `iris_plot.ipynb`; see `figures/book1_section12_sources.md`.
-]
+
 
 == Performance: empirical risk minimization
 
@@ -832,15 +741,7 @@
   ],
 )
 
-#speaker-note[
-  This is Murphy's Equation 1.6. The learning algorithm A introduced earlier
-  can be understood here as the procedure that solves, or approximates the
-  solution to, this optimization problem. The loss operationalizes the
-  performance measure P on training data. We have still not claimed that this
-  predictor will work on future cases. The distribution implicit in the average
-  is an equal-weight mixture of point masses at the
-  observed values of a random variable.
-]
+
 
 
 == A loss function
@@ -875,18 +776,7 @@
   ],
 )
 
-#speaker-note[
-  This follows Murphy's zero-one loss in Equation 1.5. The loss compares the
-  true label y with a proposed class decision hat(y). It charges one for any
-  mismatch and zero for a match, so averaging this loss over examples gives a
-  misclassification rate.
 
-  On the second reveal, define the indicator function carefully. It is not an
-  unknown probability: it is a deterministic function of a true-or-false
-  condition. In the expression above, the condition is that the prediction is
-  different from the observed label. More general loss functions can assign
-  different costs to different kinds of mistakes.
-]
 
 == A probabilistic perspective
 
@@ -924,25 +814,7 @@
   ],
 )
 
-#speaker-note[
-  Connect this to the Iris pair plot: within each class, the features appear
-  to have a characteristic distribution, and those distributions differ
-  across classes. A generative classifier makes that intuition explicit by
-  modeling the class-conditional likelihood p(x given y=c, theta): how inputs
-  tend to look if the flower belongs to class c.
 
-  On the second reveal, Bayes' rule combines that likelihood with the class
-  prior p(y=c). The proportionality sign omits the normalizing constant, which
-  is the same for every candidate class c. The result is a posterior class
-  probability p(y=c given x, theta).
-
-  On the final reveal, choose the class with largest posterior probability.
-  This is the MAP class decision and is optimal under zero-one loss. Emphasize
-  that this is inference about a class label with parameters theta held fixed,
-  not yet Bayesian inference about uncertainty in theta. Present it as one
-  generative route to a predictive classifier, not as the only form a
-  probabilistic predictor can take.
-]
 
 
 == Task, experience, and performance
@@ -1004,19 +876,7 @@
   ],
 )
 
-#speaker-note[
-  This is Mitchell's framework and the conceptual hinge for the rest of the
-  machine-learning discussion. Task is what the learned system must do.
-  Experience is what data, feedback, or interaction the learner receives.
-  Performance is how success is evaluated.
 
-  For Iris, the task is species prediction from four measurements, the
-  experience is 150 labeled flowers, and performance is mean zero-one loss.
-  Stress that these are separate axes. The same prediction task can be trained
-  from different experience regimes, and the same experience regime can
-  support different tasks. Low training loss also does not yet show that the
-  predictor will work on future flowers.
-]
 
 == Summary: From statistics to machine learning
 
@@ -1042,19 +902,7 @@
   ],
 )
 
-#speaker-note[
-  This summary closes the conceptual change in emphasis. Statistics contributed
-  unknown parameters; computer science contributed input-output functions; and
-  machine learning learns those functions from experience and evaluates their
-  performance. Iris made the three ingredients concrete: a predictor maps four
-  measurements to a species, labeled examples provide experience, and zero-one
-  loss measures classification errors.
 
-  Supervised learning is one canonical pairing of experience and task, not a
-  definition of every learned probabilistic system. The section ends with the
-  distinction between the learning rule, the information available to it, and
-  the criterion used to judge it.
-]
 
 #section-metadata(
   short-title: [ML taxonomies],
@@ -1107,13 +955,7 @@
   ],
 )
 
-#speaker-note[
-  These familiar Book 1 categories are primarily experience regimes. They
-  describe what the learner gets to observe: paired inputs and targets,
-  unlabeled observations, targets constructed from the observations, or a
-  stream of states, actions, rewards, and consequences. They do not by
-  themselves say what the learned system is ultimately for.
-]
+
 
 == Task taxonomy
 
@@ -1233,16 +1075,7 @@
   ],
 )
 
-#speaker-note[
-  This is the Book 2 shift. The advanced course is not primarily organized
-  around the format of the training data. It is organized around what
-  probabilistic models let us do: prediction, generation, discovery, and
-  action. These are task or capability classes: they describe what the learned
-  system is being asked to accomplish. Walk through one task at a time using
-  the same three questions: what is the basic task, how is performance judged,
-  and what is a paradigmatic example? The final reveal compresses the four
-  classes to one line each so the organizing taxonomy remains visible.
-]
+
 
 == There are many combinations of experience and task 
 
@@ -1276,18 +1109,7 @@
   ]
 )
 
-#speaker-note[
-  Cross the two axes explicitly. Supervised experience is common for prediction,
-  but it can also support action through imitation learning. Unsupervised
-  experience can support generation or discovery. Self-supervised experience
-  can support prediction, generation, and representation discovery. Interactive
-  experience is the canonical route to policy learning.
 
-  The matrix is deliberately sparse. The point is not to catalogue every cell:
-  the same task may be trained from different experience regimes, and the same
-  experience regime can support different tasks. Performance remains the third
-  axis that decides what counts as success.
-]
 
 == Summary: Two taxonomies, three ingredients
 
@@ -1300,15 +1122,7 @@
   ],
 )
 
-#speaker-note[
-  Close the taxonomy section by naming the distinction one last time.
-  Experience says what information reaches the learner. Task says what the
-  resulting system must accomplish. Performance says what counts as success.
 
-  The matrix showed that these axes cross. A familiar pairing can be useful
-  without becoming a definition: supervised data often supports prediction,
-  for example, but supervised experience is not identical to prediction.
-]
 
 #section-metadata(
   short-title: [Problem examples],
@@ -1394,22 +1208,7 @@
   ] ],
 )
 
-#speaker-note[
-  These four datasets provide landmarks for comparing tasks in this section.
-  Iris we have already used, for prediction — but the same 150 flowers also
-  support clustering and two-dimensional visualization, so even our first
-  example was never tied to one task. Longevity as a benchmark makes
-  comparisons across methods and years easy, but also means that
-  state-of-the-art benchmark performance should not be confused with having
-  solved the broader task. Ages: Iris (Fisher, 1936), MNIST (LeCun et al.,
-  1998), CIFAR-10 (Krizhevsky, 2009), IMDB (Maas et al., 2011). Reproduced
-  from the corresponding Chapter 1 figures and table in Murphy, Book 1
-  (online version, April 18, 2025).
 
-  MNIST, CIFAR-10, and IMDB instantiate the same task-taxonomy schemas —
-  prediction, discovery, and generation — so their right-hand sides can be
-  compared directly against the taxonomy.
-]
 
 == MNIST: the same taxonomy, one dataset
 
@@ -1439,16 +1238,7 @@
   ],
 )
 
-#speaker-note[
-  Same three right-hand sides as the task taxonomy slide, now with a concrete
-  dataset substituted in. MNIST is not "the digit-classification dataset":
-  the 70,000 images support prediction (digit image to label), discovery (an
-  unsupervised representation z of what makes digits similar, with no labels
-  involved), and generation (new, plausible digit images, optionally
-  conditioned on a target class c). Point back explicitly to the task
-  taxonomy slide — these are the same three formulas, x and y swapped in for
-  the dataset at hand.
-]
+
 
 == CIFAR-10: higher-dimensional inputs, the same questions
 
@@ -1486,16 +1276,7 @@
   ],
 )
 
-#speaker-note[
-  Formally this is the same prediction schema as MNIST, just with a
-  higher-dimensional, three-channel input. What changes is not the task
-  definition but its difficulty: a low loss is easy to reach on 50,000
-  training images and says little on its own about the held-out 10,000. This
-  revives the training-versus-held-out distinction from the earlier ERM
-  discussion and attaches it to the dataset where it actually bites —
-  CIFAR-10 is also a standard benchmark for robustness and distribution
-  shift, which is a generalization question dressed up as a dataset.
-]
+
 
 == IMDB reviews: text as sequence data
 
@@ -1525,16 +1306,7 @@
   ],
 )
 
-#speaker-note[
-  IMDB looks like ordinary supervised prediction — a review maps to positive
-  or negative — but x is now a variable-length sequence of words rather than
-  a fixed vector, so the input space itself needs a modeling decision before
-  any of the three schemas apply. Discovery gives a text representation z,
-  e.g. an embedding, useful beyond sentiment. Generation here is language
-  modeling: predicting the next word from its predecessors, the same
-  p_D(x | c) idea as image generation, just factored token by token. Keep this
-  as a brief sequence-data example, not a sequence-modeling lecture.
-]
+
 
 == Learning problems become probabilistic queries
 
@@ -1583,24 +1355,7 @@
   ],
 )
 
-#speaker-note[
-  This is the same grid as the task taxonomy slide two sections back — same
-  four tasks, same Task/Performance lines, now shown all at once rather than
-  built up, because the point here is a recap under a new reading, not a
-  first teaching pass.
 
-  Read $hat(y) = f_D (x_*)$ not as a bare function call but as the summary a
-  probabilistic model reports for $p_D (y | x)$. Generation's task line
-  already says this out loud — $x_* tilde p_D (x | c)$ — and discovery is the
-  same idea with z in place of y. Every Performance line, written $f_P (dot)$
-  here, is in every case an expectation over future cases, not the training
-  average computed earlier for Iris and CIFAR-10.
-
-  The common structure is now explicit: a task asks for a quantity, and a
-  probability model supplies the distributional object from which that
-  quantity is extracted. Expectation is one central way to summarize such an
-  answer; conditional expectation specializes it to observed information.
-]
 
 == Summary: From datasets to learning problems
 
@@ -1614,20 +1369,7 @@
   ],
 )
 
-#speaker-note[
-  This section did not add a fifth taxonomy: it showed the same task schemas
-  concretely on four familiar datasets, then recast them as probabilistic
-  queries on the previous slide. A task is fixed by what query we ask of the
-  variables a dataset provides — not by which dataset happens to supply x
-  and y.
 
-  Action is not orphaned here: it already got its own schema on the task
-  taxonomy slide two sections ago, but none of these four landmark datasets is
-  naturally an action problem. The section ends with a query-centered view of
-  learning: the variables come from the dataset, while the task is determined
-  by the quantity we ask for.
-
-]
 
 // ============================================================================
 // STRUCTURAL REBUILD — Lecture 1
@@ -1693,12 +1435,7 @@
   ],
 )
 
-#speaker-note[
-  Reveal the observed, latent, and target variables first. Then add their joint
-  distribution and ask which quantity the task requires. End by naming the
-  continuity: the variables may be high-dimensional, latent, or partly
-  observed, but the probability language is unchanged.
-]
+
 
 == A few key operations underlie many machine learning tasks
 
@@ -1761,16 +1498,7 @@
   ],
 )
 
-#speaker-note[
-  The first key point accompanies summarization. Keep the remaining key
-  points hidden until step 3, when marginalization and conditioning are both
-  visible and their shared computational requirement can be compared.
 
-  Reveal one operation at a time from the joint distribution. The first integral
-  summarizes the target by averaging over both target and latent variables. The
-  second integrates out the latent variable; the third normalizes the marginal
-  joint to infer that variable from the observed values.
-]
 
 // Compact reminders of the three operations introduced in this lecture.
 #let operation-cue(label, formula, fill: palette.accent.lighten(87%)) = align(right)[
@@ -1818,12 +1546,7 @@
   ],
 )
 
-#speaker-note[
-  Make the notation change explicit. The observed, latent, and target roles in
-  the previous slide motivated the operations; $X$ and $Y$ now stand for any
-  pair of random variables. The three formulas are generic versions of the
-  same operations. For discrete variables, replace integrals with sums.
-]
+
 
 
 
@@ -1862,26 +1585,7 @@
   ],
 )
 
-#speaker-note[
-  Instantiate the generic joint density from the preceding section with a
-  familiar family. This section's goal is to read and transform a Gaussian
-  using its mean and covariance; the next section will use those parameters
-  to marginalize and condition. Begin with only the scalar density and its parameter key
-  point. On reveal 2, show the vector density, its label, and the matching
-  parameter key point together. The scalar Gaussian is the D=1 case: a mean
-  becomes a mean vector, and a variance becomes a covariance matrix.
-  Orient students to the parameters without deriving or memorizing the density.
-  In each expression, the exponent measures displacement from the mean and the
-  denominator makes the density integrate to one. In the vector case, the
-  determinant and the factor (2π)^(D/2) supply the normalization.
-  Assume sigma²>0 and positive definite Σ so these ordinary densities exist.
-  Singular Gaussian laws require a different treatment.
-  On reveal 3, show the payoff: means, marginals, and conditionals have exact
-  formulas with geometric interpretations. Arbitrary nonlinear expectations
-  need not have closed forms. Lead into the next slide by applying the same summarize,
-  marginalize, and condition operations to this concrete joint model; then
-  unpack covariance and the geometry of the exponent in the following slides.
-]
+
 
 == The three operations in multivariate Gaussian systems
 
@@ -1946,38 +1650,7 @@
   ],
 )
 
-#speaker-note[
-  Use the density just introduced as a concrete setting for the three generic
-  operations from the preceding section. This slide is the roadmap across
-  two sections: describe the joint law and its geometry here, then work out
-  marginalization and conditioning in the next section. All three panels use the same
-  bivariate Gaussian, with zero mean, unit marginal variances, and correlation
-  0.8. The ellipses are equal-density contours, not sample paths or hard bounds.
 
-  Begin with summarization. The dot is the mean vector; the covariance describes
-  the cloud's spread and orientation. The vector integral averages every point
-  against its joint density. The next slide introduces covariance as another
-  expectation, of the centered outer product, and unpacks it entry by entry.
-
-  On reveal 2, show the marginal panel, its integral, and its key point together.
-  At each fixed x1, integrate vertically over all x2 values. The highlighted
-  column illustrates that operation; it is not a finite-bin approximation.
-  The resulting one-dimensional density is shown underneath. Ignoring x2 does
-  not mean setting x2 to zero or taking a horizontal slice through the cloud.
-
-  On reveal 3, show conditioning. Here x2 is observed at a=1.5. Hold it fixed,
-  take the horizontal slice, and divide by its area to obtain a density in x1.
-  The dummy variable u in the denominator ranges over possible x1 values.
-  The solid conditional curve shifts right and narrows relative to the dashed
-  marginal: its mean is 1.2 and its variance is 0.36. We will derive these rules
-  and revisit these numbers later; the present aim is to distinguish the
-  operations geometrically. Both curves integrate to one after normalization.
-
-  Close by returning to the first panel: for Gaussians, these operations can be
-  expressed using the mean and covariance. In the rest of this section, make
-  precise what those parameters record and how they control the geometry.
-  The next section will partition them into blocks to marginalize and condition.
-]
 
 == Covariance summarizes joint variation
 
@@ -2026,32 +1699,7 @@
   ],
 )
 
-#speaker-note[
-  Begin with one covariance entry and the signs of centered deviations.
-  Step 2 collects those entries into the outer product and the explicit
-  matrix, with its diagonal/off-diagonal interpretation. Reserve the
-  independence caveat for step 3 before moving to correlation.
 
-  Return to the summarize operation: covariance is an expectation of products
-  of centered coordinates. Carry forward scalar variance: i=j gives the squared
-  deviation of one coordinate. For i≠j, the product of deviations is positive
-  when they share a sign and negative when their signs differ. Averaging those
-  products gives one entry; the outer product collects every pair at once.
-  Read the three-coordinate matrix on the right entry by entry using the same
-  definition on the left. Setting i=j recovers a variance on the diagonal;
-  exchanging i and j leaves the covariance unchanged. The next slide writes
-  these same entries as marginal variances and correlation times their scales.
-  Expanding gives Cov[X_i,X_j]=E[X_i X_j]-mu_i mu_j, the entrywise version of
-  the displayed matrix identity. Rearranging it gives
-  E[xxᵀ]=Σ+μμᵀ, which will generate the joint Gaussian covariance later.
-  The matrix is symmetric because covariance is symmetric, and it is positive
-  semidefinite because aᵀΣa=V[aᵀx]≥0 for every direction a. These properties
-  make it a valid description of spread in every direction. For the Gaussian
-  model just introduced, the mean and covariance determine the joint law.
-  Keep the caveat that zero covariance does not imply independence. To lead
-  into correlation, ask what happens if one coordinate changes units: the
-  covariance changes too, motivating division by the two standard deviations.
-]
 
 == Correlation separates direction from units
 
@@ -2079,15 +1727,7 @@
   ],
 )
 
-#speaker-note[
-  Define unit-free correlation first. On step 2 reconstruct the covariance
-  matrix using the coordinate scales and the correlation for each pair.
 
-  Each coordinate pair has its own correlation. The two-coordinate case
-  used in the conditioning examples keeps the matching two-by-two block.
-  Correlation is covariance standardized by the two marginal
-  standard deviations; it does not encode a slope or all forms of dependence.
-]
 
 == Affine maps carry Gaussian means and covariances
 
@@ -2134,19 +1774,7 @@
   )
 ])
 
-#speaker-note[
-  State the affine map and its moment rules first, with A and b fixed.
-  On reveal 2, introduce d, rewrite y, and subtract its mean. The cancellation
-  of b motivates showing the shift key point at this step.
-  On reveal 3, expand the covariance, reverse the order when transposing Ad,
-  and pull the fixed matrices outside the expectation. Pause before identifying
-  the remaining E[ddᵀ] with Σ from the preceding covariance definition.
-  On reveal 4, make that substitution and show the linear-map key point as
-  the geometric interpretation of the completed result.
-  These moment identities hold for any input
-  with finite second moments; Gaussian inputs also remain Gaussian under the
-  map. This is the main route to the joint law of a linear Gaussian system.
-]
+
 
 == Mahalanobis distance uses the cloud's own scale
 
@@ -2174,14 +1802,7 @@
   ],
 )
 
-#speaker-note[
-  Recall the quadratic expression in the Gaussian density introduced at the
-  start of this section. Ask why the same physical displacement may be
-  unsurprising in one direction but extreme in another. The inverse covariance
-  rescales the direction.
-  Reveal the spherical special case only after students interpret the general
-  quadratic form.
-]
+
 
 == Covariance controls the contour shape
 
@@ -2205,14 +1826,7 @@
   ],
 )
 
-#speaker-note[
-  Read the three covariance families from general to restricted. A full matrix
-  has D(D+1)/2 free entries, a diagonal matrix D, and a spherical matrix one.
-  These restrictions change the density contours and the model's flexibility.
-  The figure is generated by gaussian_geometry_figures.ipynb.
-  The section summary now brings these shape descriptions together with the
-  center, unit-free correlation, distance, and affine transformation rules.
-]
+
 
 == Summary: Joint Gaussian geometry
 
@@ -2255,34 +1869,7 @@
   ],
 )
 
-#speaker-note[
-  Close the section by reading one joint Gaussian through all the vocabulary
-  we have developed. Keep this recap static: students need to compare the
-  symbols and their geometric meanings simultaneously, not learn new rules.
-  Use the same zero-mean, unit-marginal-variance example with correlation 0.8
-  as in the three-operations overview. Point first to mu, then to the shape
-  encoded by Sigma. Correlation standardizes its off-diagonal entries; it is
-  derived from covariance, not an additional independent model parameter.
 
-  The arrow points from mu to x. The marked point lies on the contour with
-  squared Mahalanobis distance 2.5; every point on that ellipse has the same
-  density in this Gaussian. The ellipses are neither hard bounds nor statements
-  that all distributions are determined by their first two moments. Assume
-  positive-definite Sigma for the inverse in the distance formula. Recall that
-  diagonal and spherical covariance restrict the shape in these coordinates.
-
-  Finish the recap at the affine strip: moving or linearly transforming the
-  cloud preserves the Gaussian family and propagates the same two parameters.
-  A rank-deficient map can give a degenerate Gaussian; the moment rules still
-  hold. The proof belongs to the earlier affine slide, so do not repeat it.
-
-  Then change the question. We now know how to describe the whole vector.
-  What if we ignore some coordinates, or know the values of some coordinates?
-  Identify these as marginalization and conditioning from the earlier roadmap.
-  The next section uses known mean and covariance blocks to answer those
-  queries, ending with missing-value prediction and its remaining uncertainty.
-  The immediate first step is to partition variables and parameters together.
-]
 
 #section-metadata(
   short-title: [Marginals and conditionals],
@@ -2318,20 +1905,7 @@
   ],
 )
 
-#speaker-note[
-  Open the section with its goal: obtain a marginal or a conditional from a
-  known joint Gaussian. The preceding section supplies mu and Sigma and their
-  meaning; no parameter estimation is needed here. We will distinguish
-  ignoring a group from observing it, calculate the resulting mean and
-  covariance, and use the conditional for missing-value prediction.
 
-  Partition the coordinates and means first. Step 2 reveals the matching
-  covariance blocks and both of their interpretations together.
-
-  Treat the block partition as bookkeeping. The symbols refer to two groups
-  of coordinates, not necessarily two scalar variables. Point to how every
-  mean and covariance block follows the same partition of x.
-]
 
 == Marginalization keeps the matching blocks
 
@@ -2387,32 +1961,7 @@
   )
 ])
 
-#speaker-note[
-  Begin with the joint Gaussian assumption and the first marginal as the
-  claim to prove. The base key point interprets the integral: we keep x1
-  and sum over all values of x2, without observing or setting x2 to zero.
-  The matching partition of x, mu, and Sigma is carried from the previous slide.
 
-  On reveal 2, introduce the selector P=[I,0]. If x1 has d1 coordinates and
-  x2 has d2, I is d1 by d1 and the zero block is d1 by d2. Multiplying by P
-  retains x1. Apply the affine Gaussian result from the preceding section,
-  with A=P and b=0: x1 is Gaussian with mean P mu and covariance P Sigma P^T.
-  This closure property is essential: matching two moments alone would not
-  establish the marginal distribution for an arbitrary joint law.
-
-  On reveal 3, identify the mean block and multiply the covariance on the
-  left by P to keep its first block row. The remaining multiplication by
-  P^T keeps that row's first block. Pause for students to finish the product
-  and predict the marginal of x2; keep the second marginal hidden everywhere.
-
-  On reveal 4, show Sigma11 as the covariance, the second marginal obtained
-  by the selector [0,I], and the cross-covariance interpretation together.
-  No assumption that Sigma12 is zero was made: the groups may be correlated.
-  The linear-image proof identifies the same distribution defined by the
-  marginal integral, without evaluating that integral directly. Lead into
-  conditioning by asking what changes when x2 is observed instead of ignored;
-  the next slide uses the cross-covariance to respond to its observed deviation.
-]
 
 == Conditioning shifts the mean by an observed deviation
 
@@ -2473,42 +2022,7 @@
   )
 ])
 
-#speaker-note[
-  State the conditional Gaussian and its mean update as the claim to prove.
-  Carry forward the joint Gaussian assumption and matching covariance blocks;
-  assume Sigma22 is invertible. Begin at the prior location mu1. The observed
-  deviation x2-mu2 is the innovation, and the update responds to it linearly.
 
-  On reveal 2, abbreviate the response matrix by B and define the residual
-  directly as $r=x_1-mu_(1|2)$: deviation from the proposed conditional mean on
-  the left. At this point $mu_(1|2)$ names the candidate expression
-  mu1+B(x2-mu2); the proof verifies that it is the conditional expectation.
-  Thus r=(x1-mu1)-B(x2-mu2), so it is centered before conditioning as well.
-  Choosing B=Sigma12 Sigma22^(-1) removes its association with x2. Reveal the
-  innovation key point with this subtraction. B maps observed deviations to
-  corrections in the unobserved block.
-
-  On reveal 3, compute Cov(r,x2)=Sigma12-B Sigma22=0. The pair (r,x2) is an
-  affine transformation of the original joint Gaussian, so it is jointly
-  Gaussian. In this family, zero cross-covariance gives independence: its
-  block-diagonal covariance makes the joint Gaussian density factorize.
-  This is precisely where Gaussianity matters. Zero covariance alone would
-  not justify the next step for an arbitrary joint distribution.
-
-  On reveal 4, independence gives E[r|x2]=E[r]=0; the last equality follows
-  because r is a difference of centered variables. Rearrange the residual
-  definition as $x_1=mu_(1|2)+r$, hold x2 fixed, and take its conditional
-  expectation. This verifies the proposed mean, rather than assuming that a
-  residual already has zero conditional expectation by its name. Reveal the
-  response key point with this conclusion. If Sigma12 is zero, there is no
-  update; if x2 equals mu2, there is no mean shift even for correlated blocks.
-
-  The independent residual also explains why the conditional law is Gaussian:
-  it is the Gaussian r shifted by mu1+B(x2-mu2). This slide establishes the
-  center. The next slide identifies its remaining covariance, which is the
-  covariance of r. Later, the Schur complement and quadratic decomposition
-  name and interpret the same residual and covariance.
-]
 
 == Conditioning removes explained covariance
 
@@ -2572,37 +2086,7 @@
   )
 ])
 
-#speaker-note[
-  Read the first update as marginal minus explained covariance, the claim to
-  prove. Carry forward the joint Gaussian model and its positive-definite
-  covariance so the required block inverses exist. The base key point refers
-  to variance in every direction, not to an entrywise ordering of matrices.
 
-  On reveal 2, recall exactly the B and $r=x_1-mu_(1|2)$ from the mean proof. That slide
-  established that r and x2 are independent using their joint Gaussian law
-  and zero cross-covariance. Reuse that result rather than re-proving it.
-
-  On reveal 3, hold x2 fixed in $x_1=mu_(1|2)+r$. The conditional mean is
-  now a constant shift, so the conditional covariance is Cov(r|x2). Independence
-  makes this Cov(r). Before conditioning, the same decomposition has independent
-  random parts B(x2-mu2) and r, whose covariances add. The affine covariance
-  rule gives Sigma11=B Sigma22 B^T+Cov(r); both cross terms vanish. This identifies
-  B Sigma22 B^T as the covariance of the part predicted from x2.
-
-  On reveal 4, subtract that explained part and substitute B. Since Sigma22
-  is symmetric, B Sigma22 B^T=Sigma12 Sigma22^(-1) Sigma21. Reveal the reverse
-  conditioning formula and the values-independent key point with the result.
-  Exchanging the two blocks gives the second rule without repeating the proof.
-
-  The explained covariance is positive semidefinite: along any direction a,
-  a^T B Sigma22 B^T a is the variance of a^T B x2 and is nonnegative. Thus the
-  conditional variance cannot exceed the marginal variance in any direction.
-  There may be no reduction in some directions, including when Sigma12 is zero.
-  For fixed model parameters and a fixed observed block, changing the observed
-  value changes the mean but leaves this residual covariance unchanged.
-  The next slide specializes both updates to two scalar coordinates; later the
-  Schur complement gives this same remaining covariance a standard name.
-]
 
 == The bivariate formula gives intuition
 
@@ -2635,20 +2119,7 @@
   ],
 )
 
-#speaker-note[
-  Read the conditional law, then its separate mean and standard-deviation
-  formulas. The second argument of N is a variance throughout this deck, so
-  it is sigma_(1|2)^2, while the last line displays sigma_(1|2) itself.
-  Assume positive marginal standard deviations and correlation strictly between
-  -1 and 1 for a nondegenerate joint Gaussian. Begin with the mean shift. Ask students to use the formulas to
-  reason about zero and strong correlation, then reveal those interpretations
-  together on step 2.
 
-  Substitute the two-coordinate covariance block from the previous section into
-  the block formula. The scalar expression lets students reason about sign,
-  units, and remaining variance. For a joint Gaussian, zero correlation also
-  gives independence; that is special to this family.
-]
 
 == One observed coordinate can change both the estimate and its uncertainty
 
@@ -2674,16 +2145,7 @@
   ],
 )
 
-#speaker-note[
-  Show only the numerical assumptions on the base slide. Keep both answer
-  key points hidden during the prediction pause; reveal them with the
-  calculation on step 2.
 
-  Ask for the direction of the mean change and whether uncertainty rises or
-  falls before revealing the calculation. The 0.8 correlation transfers part
-  of the 1.5 deviation; the remaining variance is independent of the exact
-  observed value. Reuse this numerical intuition when reading the matrix rule.
-]
 
 == The Schur complement is the residual covariance
 
@@ -2733,37 +2195,7 @@
   ],
 )
 
-#speaker-note[
-  Collect the two conditioning results already proved: $mu_(1|2)$ is the
-  conditional mean and S is shorthand for $Sigma_(1|2)$. Place their Gaussian
-  law beside the same residual $r=x_1-mu_(1|2)$ introduced in the mean proof.
-  The mean is a function of x2; r is defined jointly with the random x2 before
-  a value is fixed. Assume a positive-definite joint covariance throughout.
 
-  On reveal 2, shift the conditional Gaussian to zero mean. Subtracting its
-  mean preserves its covariance, giving r|x2 distributed as N(0,S). The earlier
-  proof established r independent of x2, so the unconditional law is also
-  r distributed as N(0,S). These are the same uncertainty expressed around
-  the conditional center or around zero. Show the uncertainty key point here.
-
-  On reveal 3, explain the algebraic name. For a block matrix with blocks
-  A,B,C,D and invertible D, block elimination leaves A-B D^(-1) C as the
-  remaining block; this is called the Schur complement of D. Here D is
-  Sigma22 and the remaining block is S. More concretely, multiply centered
-  coordinates by T with block rows [I,-B] and [0,I], where B=Sigma12 Sigma22^(-1).
-  Their covariance becomes T Sigma T^T, with diagonal blocks S and Sigma22
-  and zero cross blocks, as displayed. This removes the predictable coupling
-  to x2; it is not the operation of marginalizing x2, which leaves Sigma11.
-  The transformation explains the word complement as the block left after
-  eliminating the other block's coupling. The name honors Issai Schur.
-
-  Naming reference: https://www.cfm.brown.edu/people/dobrush/cs52/python/Part2/partition.html
-  Block-elimination reference: https://www.cs.cornell.edu/courses/cs6210/2025fa/lec/2025-09-15.html
-  Keep the history and full multiplication in notes. The useful content for
-  this lecture is that S is exactly the covariance of the independent residual.
-  Lead into the next slide: r and S specify the conditional Gaussian exponent
-  r^T S^(-1) r, while the observed block supplies the marginal exponent.
-]
 
 == The joint quadratic separates into conditional and marginal parts
 
@@ -2791,17 +2223,7 @@
   ],
 )
 
-#speaker-note[
-  Recall $r=x_1-mu_(1|2)$ and $S="Cov"[r]=Sigma_(1|2)$ from the preceding slide.
-  Start with the joint quadratic. Step 2 shows its decomposition and
-  interprets both terms; step 3 turns the sum in the exponent into the
-  conditional-times-marginal factorization of the density.
 
-  This is the proof idea behind the moment-form conditioning rule. Block
-  inversion rewrites the joint exponent as two Gaussian exponents. Their
-  factors become p(x1|x2) and p(x2). Keep the detailed matrix multiplication
-  in the book; the two terms and their interpretation are the live result.
-]
 
 == Summary: Marginals and conditionals of a Gaussian
 
@@ -2842,27 +2264,7 @@
   ],
 )
 
-#speaker-note[
-  Keep this recap static so students can compare both queries at once. Begin
-  with the known joint Gaussian at the top, then ask what information each
-  branch uses. Marginalization averages over the second group; conditioning
-  uses its observed value a. Neither operation fits the model parameters.
-  Assume a positive-definite joint covariance, as in the preceding proofs.
 
-  Recall that the conditional mean is the starting mean plus a response to
-  a-mu2. S is the Schur complement of Sigma22 and the covariance of the
-  independent residual from the earlier proof. The covariance reduction is
-  positive semidefinite: uncertainty cannot increase in any direction, but
-  there need not be a strict decrease. If Sigma12 is zero, the groups are
-  independent and both branches give the same law. If a equals mu2, the mean
-  stays put even when the covariance is reduced. For fixed observed coordinates,
-  changing a changes the mean but not S. Do not repeat the quadratic proof.
-
-  Close by asking students to identify the blocks used by each operation.
-  The section's result is that a known joint Gaussian answers both queries
-  exactly: retain matching blocks when marginalizing, and update the mean
-  and covariance when conditioning. Keep the recap entirely retrospective.
-]
 
 #section-metadata(
   short-title: [Linear Gaussian systems],
@@ -2904,61 +2306,113 @@
   ],
 )
 
-#speaker-note[
-  Introduce a generative probability model, not an inference algorithm.
-  Read the directed edge from the latent state z to the measured y: the model
-  specifies a state prior and the conditional measurement law. The shaded y
-  node marks the variable available in the inference problem. It remains a
-  random variable when predicting measurements before seeing them.
 
-  On step 2, write the equivalent affine equation with independent Gaussian
-  noise. W maps an L-dimensional state to a D-dimensional measurement, b is
-  an offset, and Omega is noise covariance. Assume positive-definite Sigma_z
-  and Omega throughout the inverse-based formulas in this section.
-  All model parameters are given; no fitting procedure has been introduced.
-  The next slide asks which distributions this one model lets us compute.
-]
 
-== All three of our operations work on Linear Gaussian systems
+== One linear Gaussian system supports different questions
 
 #content-block(
   layout: "top",
   object-width: 96%,
   object: [
-    #stack(
-      spacing: 0.65em,
-      [#course-card(title: [Summarize])[
-        #text(size: 0.85em)[$p(z,y)$ #h(1em) Construct the joint Gaussian with *affine rules*]
-      ]],
-      uncover("2-")[#course-card(title: [Prediction task: what measurements are plausible?])[
-        #text(size: 0.85em)[$p(y)=integral p(z,y) dif z$ #h(1em) *Marginalize* the unknown state]
-      ]],
-      uncover("3-")[#course-card(title: [Inference task: what state explains the measurement?])[
-        #text(size: 0.85em)[$p(z | y)=p(z,y)/p(y)$ #h(1em) *Condition* on the observed measurement]
-      ]],
+    #align(center)[
+      $z tilde cal(N)(mu_z, Sigma_z), quad
+       y | z tilde cal(N)(W z + b, Omega)$
+    ]
+    #v(0.7em)
+
+    #grid(
+      columns: (1fr, 1fr, 1fr),
+      gutter: 0.7em,
+      align: top,
+      uncover("1-")[
+        #course-card(title: [Condition])[
+          #text(size: 0.85em)[
+            $p(z | y) = frac(p(y | z) p(z), p(y))$
+          ]
+        ]
+      ],
+
+      uncover("2-")[
+        #course-card(title: [Summarize])[
+          #text(size: 0.85em)[
+            $E[g(z) | y] = integral g(z) p(z | y) dif z$
+          ]
+        ]
+      ],
+
+      uncover("3-")[
+        #course-card(title: [Marginalize])[
+          #text(size: 0.85em)[
+            $p(y) = integral p(y | z) p(z) dif z$
+          ]
+        ]
+      ],
     )
+
+    #source-note[Murphy, Book 2 §2.3.2]
+  ],
+
+  key-points: [
+    #uncover("1-")[
+      - Conditioning asks what we can learn from an observed measurement
+        - What is the distribution of the hidden state after seeing a measurement?
+    ]
+
+    #uncover("2-")[
+      - Summarizing turns a distribution into a quantity
+        - What is our estimate of the hidden state?
+    ]
+
+    #uncover("3-")[
+      - Marginalization averages over an unknown variable to predict another
+        - What is the distribution of a measurement before it is observed?
+    ]
+  ],
+)
+
+
+
+
+== Inference often combines the operations
+
+#content-block(
+  layout: "top",
+  object-width: 96%,
+  object: [
+    #course-card[
+  #grid(
+    columns: (1fr, auto, 1fr, auto, 1fr),
+    column-gutter: 0.55em,
+    row-gutter: 0.55em,
+    align: center + horizon,
+
+    text(weight: "semibold")[Noisy measurement], [],
+    text(weight: "semibold")[Condition], [],
+    uncover("2-")[#text(weight: "semibold")[Summarize]],
+
+    [$y$], [$arrow.r$], [$p(z | y)$],
+    uncover("2-")[$arrow.r$],
+    uncover("2-")[$hat(z)=E[z | y]$],
+  )
+    ]
+
+    #source-note[Murphy, Book 2 §2.3.2.2–2.3.2.3, Fig. 2.10]
   ],
   key-points: [
     #stack(
       spacing: 0.35em,
-      [- The model is fixed; the task determines which distribution we need],
-      uncover("3-")[- Gain and precision forms will express the same inference solution],
+      [- Conditioning gives the posterior distribution over plausible states],
+      uncover("2-")[
+        - Summarize the posterior by its mean
+      ],
+      uncover("3-")[
+        - The operations combine: first obtain a distribution, then extract a quantity
+      ],
     )
   ],
 )
 
-#speaker-note[
-  Make the problems explicit before doing their algebra. The joint task asks
-  how z and y vary together; its solution supplies the blocks needed for both
-  other queries. The generative specification p(z)p(y|z) is already known;
-  the first job is to collect it into a multivariate Gaussian.
 
-  Reveal prediction next: no value of y is supplied, and z is integrated out.
-  Reveal inference last: a measured y is supplied, and we seek a distribution
-  over z. This is the same marginalization-versus-conditioning distinction
-  developed in the previous section. Gain and precision are alternative
-  representations of this posterior, not additional distributions or tasks.
-]
 
 == Joint task: construct the state and measurement law
 
@@ -3009,22 +2463,7 @@
   ],
 )
 
-#speaker-note[
-  Solve the joint task announced on the task slide.
-  On the base slide, recall the two model equations and the independent noise
-  assumption alongside the affine mean and covariance rules. Ask students to
-  predict the joint moments, especially where the noise covariance enters.
-  On step 2, reveal both joint equations and their two interpretations together.
 
-  Apply the affine rules to the augmented vector (z,epsilon): its mean is
-  (mu_z,0) and its covariance is block diagonal with blocks Sigma_z and Omega.
-  The map to (z,y) has block rows [I,0] and [W,I], with offset (0,b).
-
-  Derive the lower-right block with y=Wz+b+epsilon: independent noise adds
-  Omega to W Sigma_z W^T. Derive the cross block using covariance of z and
-  Wz. These are precisely the affine and cross-covariance facts introduced in
-  the joint-uncertainty section.
-]
 
 == Prediction task: marginalize the unknown state
 
@@ -3054,17 +2493,7 @@
   ],
 )
 
-#speaker-note[
-  Solve the prediction task by keeping the y blocks of the joint Gaussian.
-  Here S denotes measurement covariance, not the preceding section's residual covariance.
-  Name the predictive moments from the joint blocks first. Step 2
-  collects them into the marginal density and explains what it can score.
 
-  This is the marginal of the joint distribution, before any particular y is
-  observed. In the posterior update, y-m will be the prediction error or
-  innovation. The same density p(y) is the normalizing evidence for Bayes'
-  rule and can be used as a marginal likelihood.
-]
 
 == Inference task: condition on the measurement
 
@@ -3096,16 +2525,7 @@
   ],
 )
 
-#speaker-note[
-  State the posterior query first. Step 2 substitutes the joint blocks
-  into the conditional mean; step 3 does the same for covariance. Pair each
-  formula with its interpretation so the two operations remain distinct.
 
-  Plug the joint blocks from Eq. 2.120 into the general conditional Gaussian
-  rule. This is Bayes' rule for Gaussians: a Gaussian prior and linear Gaussian
-  likelihood yield a Gaussian posterior. Do not present this as an unrelated
-  formula to memorize.
-]
 
 == Inference solution: gain times innovation
 
@@ -3134,15 +2554,7 @@
   ],
 )
 
-#speaker-note[
-  Name the gain and its role first. Step 2 rewrites both updates with K;
-  use the compact form to discuss how observation noise changes trust.
 
-  The Kalman gain is just a name for the block-conditioning coefficient.
-  The covariance expression uses KSK^T=Sigma_z W^T S^-1 W Sigma_z. Emphasize
-  the structure of the update and the dimensions: K maps D-dimensional
-  observations to L-dimensional states.
-]
 
 == Inference solution: switch to precision coordinates
 
@@ -3175,19 +2587,7 @@
   ],
 )
 
-#speaker-note[
-  Define the new parameters first. Step 2 recovers the familiar moments
-  to establish equivalence; step 3 exposes the log-density terms that will
-  make information addition possible.
 
-  Reparameterize the same normalized Gaussian; no new distribution has been
-  introduced. Completing the square recovers the moment parameters. The
-  normalizing constant is
-  $exp(-frac(1,2)eta^T Lambda^(-1)eta) /
-  ((2 pi)^(D/2) |Lambda^(-1)|^(1/2))$.
-  The x-dependent terms are what make Gaussian combination and conditioning
-  simple.
-]
 
 == Inference solution: add prior and measurement information
 
@@ -3216,16 +2616,7 @@
   ],
 )
 
-#speaker-note[
-  First add the quadratic coefficients to obtain posterior precision.
-  Step 2 combines the precision-weighted means and identifies the result
-  with the posterior already obtained in gain form.
 
-  Show the correspondence with information-form multiplication: quadratic
-  coefficients add. The matrix inversion lemma connects this state-space form
-  to the observation-space gain form. Either may be computationally better,
-  depending on whether L or D is smaller.
-]
 
 == Inference example: estimate a state from one measurement
 
@@ -3253,18 +2644,7 @@
   ],
 )
 
-#speaker-note[
-  Keep both conclusions hidden while students predict from the prior,
-  likelihood, and observation. Reveal the numerical update and both
-  interpretations together on step 2.
 
-  The loss is squared state-estimation error. For this loss, the conditional
-  mean minimizes posterior expected loss; uncertainty is still given by 0.2.
-  Have students predict whether the posterior mean is nearer zero or one.
-  Prior precision is one and observation precision is four, so the answer is
-  four-fifths of the way toward y=1. The variance 0.2 comes from total
-  precision five. The example grounds the matrix formulas without a new model.
-]
 
 == Summary: Linear Gaussian tasks and solutions
 
@@ -3301,19 +2681,7 @@
   ],
 )
 
-#speaker-note[
-  Keep this summary static and retrospective. Read the three tasks with the
-  operation that solved each. The joint law was constructed from the independent
-  state and noise; the prediction was a marginal; the inverse problem was a
-  conditional. In the recalled model, epsilon is independent Gaussian noise
-  with zero mean and covariance Omega.
 
-  Recall m=W mu_z+b, S=W Sigma_z W^T+Omega, and K=Sigma_z W^T S^(-1).
-  The two displayed identities highlight complementary interpretations of
-  the same posterior, not separate inference algorithms with different answers.
-  The scalar example verified both views with mean 0.8 and variance 0.2.
-  Conclude with what was solved; do not introduce a new topic or future task.
-]
 
 == Summary: Task, experience, and performance
 
@@ -3353,21 +2721,3 @@
     - Learning requires performance on the task to improve with experience
   ],
 )
-
-#speaker-note[
-  Close the section by applying the earlier task/experience/performance
-  definition to the state-estimation problem we have just solved. Keep all
-  three visible so their roles can be compared. Task: estimate z from y.
-  Performance: squared error on held-out pairs. The conditional mean is the
-  optimal action for posterior expected squared error under the assumed model.
-  It need not be optimal for a different loss or a misspecified model.
-
-  Experience means training examples used to determine a predictive procedure,
-  not simply the y supplied at inference time. Paired (y,z) examples are one
-  possible supervised experience regime, recalled from the earlier framework.
-  Such data could determine the model parameters; we have not fitted them here.
-  Do not claim empirical improvement or a completed learning algorithm.
-  Conditioning an already specified model is the inference component that
-  can be used inside a learned system. This distinguishes the task we solved
-  from the additional requirement in Mitchell's definition of learning.
-]

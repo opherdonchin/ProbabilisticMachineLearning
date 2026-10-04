@@ -7,81 +7,150 @@ The purpose is not to document the entire curriculum. It is to prevent two oppos
 - quizzing students repeatedly on syntax or concepts already established;
 - assuming fluency with new notation, APIs, packages, or computational idioms that have not yet been introduced.
 
-When uncertain whether a construct is familiar, scaffold it rather than assume it.
+Use three states:
 
-## Course-entry background
+1. **Assume familiar** — may normally be used without explicit scaffolding.
+2. **Previously encountered — scaffold when needed** — students have seen this before, but notebook authors should not yet assume independent fluency.
+3. **New / not yet established** — if required in a notebook, introduce it explicitly.
 
-Students are first-year MSc students in Biomedical Engineering.
+A construct does **not** move to "assume familiar" merely because it appeared once. Promotion should be deliberate and based on repeated use or an explicit course decision.
 
-They enter this course with:
+## Course-entry baseline
+
+Students are first-year MSc students in Biomedical Engineering. They enter this course after:
 
 - a mathematics-department probability course;
 - an undergraduate Bayesian-first statistics course;
-- experience with Bayesian inference and probabilistic modeling;
-- experience using PyMC/ArviZ for Bayesian analysis;
-- prior exposure to graphical models, MCMC, and HMC.
+- practical use of PyMC and ArviZ;
+- prior work with Bayesian inference, probabilistic programming, graphical models, MCMC, and HMC.
 
-For notebook authoring, therefore:
+### Assume familiar at course entry
 
-- treat routine Bayesian conditioning and posterior reasoning as familiar;
-- treat routine PyMC model construction and sampling as broadly familiar;
-- do not assume familiarity with every PyMC distribution, missing-data mechanism, advanced coordinate pattern, or recently introduced API;
-- do not assume familiarity with machine-learning libraries or numerical linear-algebra idioms merely because they are standard to practitioners.
+#### Probability and Bayesian reasoning
+
+- random variables and probability distributions;
+- conditional probability;
+- Bayes' rule;
+- expectation and variance;
+- covariance and correlation at a basic level;
+- prior, likelihood, posterior, and posterior predictive distributions;
+- posterior uncertainty and interval summaries;
+- Bayesian conditioning as updating information.
+
+#### Statistical modeling
+
+- basic regression modeling;
+- the distinction between observed quantities, parameters, and deterministic model quantities;
+- hierarchical modeling and partial pooling at a conceptual level;
+- the idea of generative probabilistic models;
+- graphical-model notation at a basic level.
+
+#### PyMC / ArviZ
+
+- `pm.Model`;
+- common scalar PyMC distributions;
+- `observed=...`;
+- `pm.Deterministic` at a basic level;
+- `pm.sample`;
+- posterior draws and chains;
+- basic ArviZ summaries and posterior plots;
+- HDIs;
+- the idea of `InferenceData`.
+
+#### MCMC concepts
+
+- why posterior sampling is used;
+- Monte Carlo approximation;
+- multiple chains;
+- MCMC at a conceptual level;
+- HMC/NUTS at a conceptual level;
+- R-hat, ESS, divergences, and trace/mixing diagnostics at a basic practical level.
+
+#### Python
+
+- basic Python syntax;
+- NumPy arrays and indexing;
+- elementary NumPy arithmetic;
+- matrix multiplication with `@`;
+- basic Matplotlib plotting.
+
+### Previously encountered — scaffold when needed at course entry
+
+Students may have seen these, but authors should not assume effortless independent use:
+
+- multivariate Gaussian distributions;
+- covariance matrices beyond simple pairwise covariance;
+- matrix dimension reasoning in nontrivial expressions;
+- extracting and reshaping multivariate posterior samples;
+- more advanced ArviZ operations;
+- non-centered hierarchical parameterizations;
+- LOO / ELPD / Pareto-$k$;
+- interaction terms and more elaborate GLMs;
+- Bambi formula syntax;
+- posterior predictive diagnostics beyond the basic idea.
+
+### New / not yet established at course entry
+
+Do not assume familiarity with:
+
+- machine-learning libraries such as scikit-learn, PyTorch, or JAX unless introduced later;
+- numerical linear-algebra idioms merely because they are standard to practitioners;
+- arbitrary PyMC distributions or advanced APIs;
+- PyTensor internals;
+- missing-data mechanisms in PyMC;
+- advanced coordinate/indexing patterns;
+- tensor reshaping and broadcasting beyond ordinary NumPy use.
 
 ## Lecture 1: Probability, statistics, and Gaussian systems
 
-### Mathematical notation/concepts established in lecture
+### Assume familiar and reused
 
-Authors may rely on the lecture introducing or refreshing:
+Authors may use without generic re-teaching:
+
+- Bayesian conditioning and posterior reasoning;
+- covariance/correlation at a basic level;
+- NumPy arrays and slicing;
+- matrix multiplication with `@`;
+- `pm.Model`;
+- ordinary observed PyMC variables;
+- `pm.sample`;
+- posterior samples and basic summaries;
+- basic plotting.
+
+### Previously encountered — scaffold when needed
+
+- multivariate Gaussian distributions;
+- covariance matrices;
+- matrix shape reasoning;
+- manipulating multivariate posterior samples.
+
+### New in Lecture 1 / first notebook sequence
+
+The lecture introduces or refreshes the mathematical material, and the notebook may apply it without derivation:
 
 - partitioned multivariate Gaussian notation;
 - covariance blocks $\Sigma_{11}$, $\Sigma_{12}$, $\Sigma_{21}$, $\Sigma_{22}$;
-- marginal and conditional Gaussian distributions;
-- conditional mean and covariance;
-- the Schur complement as the remaining conditional covariance;
+- conditional Gaussian mean and covariance;
+- the Schur complement as conditional covariance;
 - linear-Gaussian-system notation;
-- posterior mean/covariance for a linear-Gaussian system.
+- exact posterior mean/covariance for a linear-Gaussian system.
 
-These equations should normally be **applied** in the notebook rather than re-derived.
+Computational constructs likely new and deserving explicit scaffolding:
 
-### Computational constructs that may be new and deserve scaffolding
-
-Unless already established earlier in the notebook, treat these as potentially unfamiliar:
-
-- `np.block` for assembling block matrices;
+- `np.block`;
 - `np.linalg.solve` as preferable to explicitly computing a matrix inverse;
-- shape reasoning for block-matrix operations;
 - `pm.MvNormal` in a missing-data setting;
-- PyMC's handling of missing entries through `np.nan` in observed data;
-- extracting and comparing a multivariate posterior sample with an exact analytic Gaussian posterior.
+- PyMC handling of `np.nan` entries in observed data;
+- comparing a Monte Carlo multivariate posterior with an exact analytic Gaussian posterior.
 
-### Computational constructs that need not be re-taught generically
+## Maintenance after each notebook
 
-Assume broad familiarity with:
+After a notebook is finalized, produce a knowledge-state change report and update this file separately.
 
-- `numpy` arrays and elementary arithmetic;
-- basic Matplotlib plotting;
-- `pm.Model`;
-- common scalar PyMC random variables;
-- `pm.sample`;
-- the idea of posterior samples and posterior summaries.
+Typical transition:
 
-If a notebook uses one of these in a substantively new way, scaffold the new use rather than quiz the generic syntax.
+`new` -> `previously encountered — scaffold when needed` -> `assume familiar`
 
-## Maintenance format for later lectures
+Do not automatically advance the second transition.
 
-Append a section for each lecture or notebook sequence with three headings:
-
-### Mathematical notation/concepts established
-
-What later notebooks may treat as conceptually available.
-
-### Computational constructs newly introduced
-
-APIs, packages, array/tensor operations, plotting idioms, or model-building patterns first taught here.
-
-### Computational constructs now assumed familiar
-
-Items that future notebooks should normally stop quizzing explicitly.
-
-Keep entries concrete enough to guide question granularity.
+For each later lecture or notebook sequence, record only concrete items that affect question design. Keep the file operational rather than encyclopedic.

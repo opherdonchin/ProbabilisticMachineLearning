@@ -228,3 +228,6 @@ Resources/*
 !Resources/README.md
 Lectures/*.zip
 .vscode/settings.json
+# pixi environments
+.pixi/*
+!.pixi/config.toml

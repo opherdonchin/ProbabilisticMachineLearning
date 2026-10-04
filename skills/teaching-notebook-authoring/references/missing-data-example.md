@@ -1,214 +1,202 @@
 # Example: decomposing the Lecture 1 Gaussian missing-data solution
 
-This reference illustrates the intended **question granularity and sequencing**. It is not a substitute for the actual Lecture 1 notebook and should not be copied mechanically when the worked solution changes.
+This reference illustrates intended **question granularity, notation management, and current-library scaffolding**. It is not a substitute for the actual Lecture 1 notebook and should not be copied mechanically when the worked solution changes.
 
 ## Worked-solution path
 
-The technical solution has the following structure:
+The technical solution is:
 
-1. Define a joint Gaussian vector $x=(x_1,x_2)$ with known $\mu$ and $\Sigma$.
-2. Generate one complete observation.
-3. Hide $x_1$ and retain $x_2$ as observed.
-4. Infer $p(x_1\mid x_2,\mu,\Sigma)$ with PyMC.
-5. Rewrite the same joint Gaussian as a linear-Gaussian system with latent $z=x_1$ and observation $y=x_2$.
-6. Use the lecture's linear-Gaussian posterior equations to compute the exact posterior mean and covariance.
-7. Plot the PyMC and exact posteriors with the same graphical grammar.
-8. Compare them directly.
+1. define a joint Gaussian vector $x=(x_1,x_2)$ with known $\mu$ and $\Sigma$;
+2. generate one complete observation;
+3. hide $x_1$ and retain $x_2$ as observed;
+4. infer the missing block with PyMC;
+5. rewrite the same joint Gaussian as a linear-Gaussian system (LGS) with latent $z=x_1$ and observation $y=x_2$;
+6. use the lecture's LGS posterior equations to compute the exact posterior mean and covariance;
+7. display and compare the sampled and exact posteriors.
 
-The teaching-notebook author should **unpack this path**, not invent a different one.
+The teaching-notebook author should unpack this path, not invent a different solution.
 
-## Important setup decision
+## Give the synthetic construction as setup
 
-The particular compound-symmetry covariance construction used in the worked solution is an author-created device for producing a controlled example. It is not itself a central Lecture 1 learning objective.
+The compound-symmetry covariance model is an author-created device for generating a controlled example, not a central Lecture 1 learning objective.
 
-Therefore do **not** begin by asking students to reconstruct the covariance model line by line.
+Provide one coherent setup block that:
 
-Instead, provide one coherent given setup block that:
-
-- states $x_1=(x_{11},x_{12},x_{13})^T\in\mathbb R^3$;
-- states $x_2=(x_{21},x_{22},x_{23},x_{24})^T\in\mathbb R^4$;
+- defines $x_1=(x_{11},x_{12},x_{13})^T\in\mathbb R^3$;
+- defines $x_2=(x_{21},x_{22},x_{23},x_{24})^T\in\mathbb R^4$;
 - gives $\mu_1$ and $\mu_2$;
-- explains the covariance construction and what $\sigma_1,\sigma_2,\rho_1,\rho_2,\kappa$ mean;
-- gives the formulas for $\Sigma_{11}$, $\Sigma_{22}$, and $\Sigma_{12}$;
-- supplies the code that constructs the four covariance blocks;
-- generates the complete observation and splits it into hidden $x_1$ and observed $x_2$.
+- explains $\sigma_1,\sigma_2,\rho_1,\rho_2,\kappa$;
+- gives the formulas for $\Sigma_{11}$, $\Sigma_{22}$, $\Sigma_{12}$ and $\Sigma_{21}$;
+- supplies code constructing the four covariance blocks.
 
-Students can simply run that block.
+Begin numbered student work after those blocks exist.
 
-Then ask questions about the mathematical objects the setup created.
+## Early questions should use coherent local units
 
-## Example early sequence
+### Block dimensions
 
-### Given setup
+**Question:** The setup defines $x_1\in\mathbb R^3$ and $x_2\in\mathbb R^4$. What are the shapes of $\Sigma_{11}$, $\Sigma_{12}$, $\Sigma_{21}$ and $\Sigma_{22}$?
 
-For example, visibly establish:
+### One concrete covariance-and-correlation question
 
-$$
-x_1=(x_{11},x_{12},x_{13})^T\in\mathbb R^3,
-\qquad
-x_2=(x_{21},x_{22},x_{23},x_{24})^T\in\mathbb R^4.
-$$
+Do not split the normalization into a second numbered item.
 
-Use the supplied covariance construction
+**Question:** Using the supplied cross-covariance formula, calculate $\operatorname{Cov}(X_{11},X_{21})$ and then the corresponding $\operatorname{Corr}(X_{11},X_{21})$.
 
-$$
-\Sigma_{11}=\sigma_1^2[(1-\rho_1)I_3+\rho_1J_3],
-$$
+### Assemble and check the full covariance matrix
 
-$$
-\Sigma_{22}=\sigma_2^2[(1-\rho_2)I_4+\rho_2J_4],
-$$
-
-$$
-\Sigma_{12}=\kappa\sigma_1\sigma_2\sqrt{\rho_1\rho_2}\,\mathbf 1_3\mathbf 1_4^T,
-\qquad
-\Sigma_{21}=\Sigma_{12}^T.
-$$
-
-Use the worked-solution values
-
-$$
-\sigma_1=1,
-\quad
-\sigma_2=1.2,
-\quad
-\rho_1=0.70,
-\quad
-\rho_2=0.80,
-\quad
-\kappa=0.90.
-$$
-
-Provide the code that creates these blocks and the simulated observation.
-
-### Question: dimensions
-
-**Question:** The setup defines $x_1\in\mathbb R^3$ and $x_2\in\mathbb R^4$. What are the shapes of $\Sigma_{11}$, $\Sigma_{12}$, $\Sigma_{21}$, and $\Sigma_{22}$?
-
-**Answer:**
-
-- $\Sigma_{11}$ is $3\times3$;
-- $\Sigma_{12}$ is $3\times4$;
-- $\Sigma_{21}$ is $4\times3$;
-- $\Sigma_{22}$ is $4\times4$.
-
-### Question: concrete cross-covariance
-
-**Question:** Using the supplied formula for $\Sigma_{12}$, calculate $\operatorname{Cov}(X_{11},X_{21})$ for the parameter values above.
-
-**Answer:**
-
-Every entry of $\Sigma_{12}$ is
-
-$$
-\kappa\sigma_1\sigma_2\sqrt{\rho_1\rho_2}
-=0.90(1)(1.2)\sqrt{0.70\cdot0.80}
-\approx0.808.
-$$
-
-Therefore
-
-$$
-\operatorname{Cov}(X_{11},X_{21})\approx0.808.
-$$
-
-### Question: corresponding correlation
-
-**Question:** What is the corresponding correlation between $X_{11}$ and $X_{21}$?
-
-**Answer:**
-
-$$
-\operatorname{Corr}(X_{11},X_{21})
-=\frac{0.808}{(1)(1.2)}
-\approx0.674.
-$$
-
-### Question: assemble the full covariance matrix
-
-Do not split API recognition from implementation unless API recognition matters by itself.
+Give the API by name and ask for the task-specific construction plus its immediate sanity check.
 
 **Question:** Using `np.block`, construct
 
 $$
-\Sigma=
-\begin{pmatrix}
+\Sigma=\begin{pmatrix}
 \Sigma_{11}&\Sigma_{12}\\
 \Sigma_{21}&\Sigma_{22}
-\end{pmatrix}
+\end{pmatrix},
 $$
 
-from the four covariance blocks already defined.
+print its shape, and check that the dimensions make sense from $x_1\in\mathbb R^3$ and $x_2\in\mathbb R^4$.
 
-**Answer:**
+Do not split function identification, matrix construction and shape checking into separate questions.
 
-```python
-Sigma = np.block([
-    [Sigma11, Sigma12],
-    [Sigma21, Sigma22],
-])
-```
+## Connect the concrete problem to the lecture's task schema
 
-## Asking about supplied code after it appears
+Before asking for $p(x_1\mid x_2)$, re-establish the relevant lecture framing.
 
-It is valid to give the complete setup code and then ask students to read it.
+For example, reproduce the lecture's generic forms:
 
-For example, after supplying
+$$
+\text{prediction: } p_D(y_*\mid x_*),
+\qquad
+\text{discovery: } p_D(z_*\mid x_*),
+$$
 
-```python
-x_complete = rng.multivariate_normal(mean=mu, cov=Sigma)
-x1_true = x_complete[:n1]
-x2_obs = x_complete[n1:]
-```
+where the lecture includes a missing value among possible latent $z$ variables.
 
-ask:
+Then use two questions:
 
-**Question:** Which part of `x_complete` is being treated as missing, and which part remains observed?
+1. **Which task class describes reconstructing an unobserved part of the vector from the observed part?**
+2. **Map the generic variables to this example and write the specific probability query.**
 
-**Answer:** The first three entries are stored as `x1_true` and will be hidden; the final four entries are stored as `x2_obs` and remain observed.
-
-This is preferable to asking students to invent the simulation setup when the simulation itself is not the learning objective.
-
-## Connect PyMC to the probability target
-
-**Question:** After hiding $x_1$ and observing $x_2$, what probability distribution are we asking PyMC to sample from?
-
-**Answer:**
+In the controlled known-Gaussian example, the final query is
 
 $$
 p(x_1\mid x_2,\mu,\Sigma).
 $$
 
-The students know ordinary observed PyMC variables, but this missing-data use is new.
+This preserves the connection between the notebook and the lecture taxonomy instead of introducing a conditional distribution without context.
 
-**Question:** In the supplied vector `x_partial`, the missing entries are represented by `np.nan`. When `x_partial` is passed as `observed` to `pm.MvNormal`, what does PyMC do with those entries?
+## Treat current PyMC behavior as new when it changed after the prior course
 
-**Answer:** PyMC treats the `np.nan` positions as unobserved components and samples them conditional on the observed components.
+Students used PyMC and ArviZ previously, but the current course stack may differ from what they learned.
 
-Then ask students to construct the task-specific `pm.MvNormal` model if that coding step is useful, while supplying routine `pm.sample` boilerplate.
+For unfamiliar library-specific behavior, provide official documentation rather than asking students to guess.
 
-## Map the same problem into the lecture's LGS notation
+For missing values, point students to the current PyMC introductory documentation that explains automatic imputation of masked/NaN observed values. Ask them to use that source to answer what happens when `np.nan` values are passed to an observed random variable.
 
-**Question:** In the lecture's linear-Gaussian system
+## Scaffold extension of an existing model
+
+Ordinary `pm.Model` construction is familiar, but extending an already-created model in a later context may not be.
+
+A useful pattern is:
+
+```python
+coords = {"component": component_names}
+model = pm.Model(coords=coords)
+```
+
+Then explain as **[GIVEN]** that re-entering
+
+```python
+with model:
+    ...
+```
+
+adds new PyMC variables to the existing model.
+
+Ask students to extend the supplied model with the task-specific `pm.MvNormal` rather than making them reconstruct unrelated boilerplate.
+
+## Use the current inference-results representation
+
+Sample into a variable named `idata`, then ask students to inspect:
+
+```python
+type(idata)
+```
+
+and the variables in the `posterior` group.
+
+The current PyMC/ArviZ stack uses `xarray.DataTree`, whereas students previously encountered `InferenceData`. Treat that change as new course knowledge rather than assuming continuity from the old API.
+
+Do not add a separate question asking how many values one draw of the missing variable contains unless that fact serves a later conceptual need.
+
+## Prefer native ArviZ operations
+
+Do not manually reshape chain/draw arrays merely to get posterior samples.
+
+Prefer:
+
+```python
+arviz_base.extract(...)
+```
+
+for sample extraction and
+
+```python
+arviz_stats.summary(...)
+```
+
+for posterior means, standard deviations, intervals and diagnostics.
+
+If a later comparison needs the actual sample array, extract it through ArviZ first and only then use NumPy for a calculation that ArviZ does not directly provide.
+
+## Manage the Gaussian-to-LGS notation transition explicitly
+
+The partitioned-Gaussian section uses
 
 $$
-z\sim\mathcal N(\mu_z,\Sigma_z),\qquad y\mid z\sim\mathcal N(Wz+b,\Omega),
+(x_1,x_2),\quad
+(\mu_1,\mu_2),\quad
+\Sigma_{11},\Sigma_{12},\Sigma_{21},\Sigma_{22}.
 $$
 
-which variables in our missing-data problem should play the roles of $z$ and $y$?
+The LGS section uses
 
-**Answer:** Set $z=x_1$ and $y=x_2$.
+$$
+z,\quad y,\quad \mu_z,\quad \Sigma_z,\quad W,\quad b,\quad \Omega.
+$$
 
-**Question:** The lecture gives
+Before doing LGS calculations, ask students to establish the mapping
+
+$$
+z=x_1,
+\qquad
+y=x_2,
+\qquad
+\mu_z=\mu_1,
+\qquad
+\Sigma_z=\Sigma_{11}.
+$$
+
+Then explicitly say that the notebook is switching to **LGS notation** for the next block.
+
+### Identify $W$ and $b$ clearly
+
+Use the conditional Gaussian observation model
 
 $$
 E[x_2\mid x_1]
-=\mu_2+\Sigma_{21}\Sigma_{11}^{-1}(x_1-\mu_1).
+=\mu_2+\Sigma_{21}\Sigma_{11}^{-1}(x_1-\mu_1)
 $$
 
-Comparing this with $E[y\mid z]=Wz+b$, what are $W$ and $b$?
+and ask students to rewrite it in the LGS form
 
-**Answer:**
+$$
+E[y\mid z]=Wz+b.
+$$
+
+This gives
 
 $$
 W=\Sigma_{21}\Sigma_{11}^{-1},
@@ -216,56 +204,101 @@ W=\Sigma_{21}\Sigma_{11}^{-1},
 b=\mu_2-W\mu_1.
 $$
 
-For the implementation, give the relevant API in the question rather than asking trivia about its name:
+### Make $\Omega$ student work
 
-**Question:** Use `np.linalg.solve(A, B)` to compute $A^{-1}B$ without explicitly forming an inverse. Use it to construct $W=\Sigma_{21}\Sigma_{11}^{-1}$ from `Sigma11` and `Sigma12`.
+Use two questions:
 
-**Answer:**
+1. write, in Markdown math, the conditional covariance of $x_2\mid x_1$ and identify it with $\Omega$;
+2. use `np.linalg.solve` to implement that expression in code.
 
-```python
-W = np.linalg.solve(Sigma11, Sigma12).T
-```
-
-## Use prediction before manipulation
-
-**Question:** In
+The answer is
 
 $$
-\mu_{1\mid2}=\mu_1+\Sigma_{12}\Sigma_{22}^{-1}(x_2-\mu_2),
+\Omega
+=\Sigma_{22}-\Sigma_{21}\Sigma_{11}^{-1}\Sigma_{12}.
 $$
 
-what should happen to the posterior mean if $\Sigma_{12}=0$?
+### Verify the translation once, in LGS notation
 
-**Answer:** The update term becomes zero, so the conditional mean remains $\mu_1$ regardless of the observed value of $x_2$.
+After $W,b,\Omega$ exist, remain in LGS notation and compute
 
-Then perform the manipulation and show that this happens.
+$$
+m=W\mu_z+b,
+\qquad
+S=W\Sigma_zW^T+\Omega.
+$$
 
-**Question:** If the cross-group dependence becomes stronger while the marginal scales remain fixed, what should happen to the posterior uncertainty about $x_1$ after observing $x_2$?
+Give `np.allclose` by name and ask students to verify
 
-**Answer:** The observed block carries more information about the missing block, so the conditional covariance should become smaller.
+$$
+m=\mu_2,
+\qquad
+S=\Sigma_{22}.
+$$
 
-Then change the relevant parameter and inspect the result.
+This check confirms that the LGS observation marginal reproduces the original $x_2$ marginal. Do not repeatedly alternate notation after this point.
 
-## Compare the two methods directly
+## Use lecture terminology only when it is actually present
 
-**Question:** If the PyMC model and the linear-Gaussian equations describe the same joint Gaussian, what should we expect when we compare their posterior means and covariances?
+Lecture 1 explicitly calls the observed deviation an **innovation**. Under the partitioned-Gaussian notation it is
 
-**Answer:** They should agree up to Monte Carlo error in the PyMC samples.
+$$
+x_2-\mu_2,
+$$
 
-Then display:
+and under the LGS mapping it is the same quantity written
 
-- PyMC posterior in the chosen common plot format;
-- exact LGS posterior in the same format;
-- one direct comparison plot or table;
-- numerical differences in posterior means/covariances.
+$$
+y-m.
+$$
+
+If the term is used in the notebook, remind students of this equivalence at the notation transition rather than introducing it as unexplained new jargon.
+
+## Exact posterior section
+
+Supply the lecture LGS equations and ask students to implement them:
+
+$$
+\mu_{z\mid y}
+=\mu_z+\Sigma_zW^TS^{-1}(y-m),
+$$
+
+$$
+\Sigma_{z\mid y}
+=\Sigma_z-\Sigma_zW^TS^{-1}W\Sigma_z.
+$$
+
+Use `np.linalg.solve` in code instead of explicit inverses.
+
+After calculation, simply display the exact posterior mean, covariance and marginal SDs. Do not manufacture extra questions about obvious consequences unless they test an important misconception.
+
+## Comparison section
+
+Keep the comparison short.
+
+Use native ArviZ summaries for the PyMC posterior and compare them with the exact LGS mean/SD. Display the two posterior plots with the same visual grammar.
+
+Do not automatically add:
+
+- a prediction that the two methods should agree;
+- a separate question about Monte Carlo convergence with more samples;
+- posterior-correlation calculations;
+- generic interpretation questions.
+
+Add such material only if it serves a specific learning objective.
 
 ## What not to ask here
 
 Avoid:
 
-- questions that require an arbitrary setup fact not supplied beforehand;
-- decomposing the synthetic covariance construction into line-by-line coding exercises;
+- questions that require setup facts not supplied beforehand;
+- line-by-line reconstruction of the synthetic covariance generator;
+- separate questions for covariance and its immediately related correlation when one coherent calculation is enough;
 - separate "which function?" and "now use the function" questions when one task-specific coding prompt is enough;
-- ambiguous code blocks whose status as given or student-written is unclear;
-- generic prompts such as "Interpret the posterior," "Discuss the covariance matrix," or "What did you learn?";
-- re-teaching generic `pm.Model` or `pm.sample` syntax unless the current use is genuinely new.
+- library-behavior questions without a supplied documentation source or example;
+- manual chain/draw reshaping when native ArviZ extraction exists;
+- manual posterior summaries when native ArviZ summaries exist;
+- casual back-and-forth between $(x_1,x_2)$ notation and $(z,y)$ notation;
+- generic prompts such as "Interpret the posterior";
+- prediction questions inserted mechanically before routine computations;
+- re-teaching generic `pm.sample` syntax while ignoring meaningful changes in the object it now returns.

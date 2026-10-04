@@ -14,50 +14,164 @@ The technical solution has the following structure:
 6. Use the lecture's linear-Gaussian posterior equations to compute the exact posterior mean and covariance.
 7. Plot the PyMC and exact posteriors with the same graphical grammar.
 8. Compare them directly.
-9. Manipulate cross-group dependence and predict the consequence.
 
 The teaching-notebook author should **unpack this path**, not invent a different one.
 
-## Example question sequence
+## Important setup decision
 
-### Introduce the block structure
+The particular compound-symmetry covariance construction used in the worked solution is an author-created device for producing a controlled example. It is not itself a central Lecture 1 learning objective.
 
-**Question:** Which coordinates of $x$ are going to be treated as missing, and which will remain observed?
+Therefore do **not** begin by asking students to reconstruct the covariance model line by line.
 
-**Answer:** $x_1$ will be hidden and inferred; $x_2$ will remain observed.
+Instead, provide one coherent given setup block that:
 
-**Question:** If $x_1\in\mathbb{R}^{n_1}$ and $x_2\in\mathbb{R}^{n_2}$, what are the shapes of $\Sigma_{11}$, $\Sigma_{12}$, $\Sigma_{21}$, and $\Sigma_{22}$?
+- states $x_1=(x_{11},x_{12},x_{13})^T\in\mathbb R^3$;
+- states $x_2=(x_{21},x_{22},x_{23},x_{24})^T\in\mathbb R^4$;
+- gives $\mu_1$ and $\mu_2$;
+- explains the covariance construction and what $\sigma_1,\sigma_2,\rho_1,\rho_2,\kappa$ mean;
+- gives the formulas for $\Sigma_{11}$, $\Sigma_{22}$, and $\Sigma_{12}$;
+- supplies the code that constructs the four covariance blocks;
+- generates the complete observation and splits it into hidden $x_1$ and observed $x_2$.
+
+Students can simply run that block.
+
+Then ask questions about the mathematical objects the setup created.
+
+## Example early sequence
+
+### Given setup
+
+For example, visibly establish:
+
+$$
+x_1=(x_{11},x_{12},x_{13})^T\in\mathbb R^3,
+\qquad
+x_2=(x_{21},x_{22},x_{23},x_{24})^T\in\mathbb R^4.
+$$
+
+Use the supplied covariance construction
+
+$$
+\Sigma_{11}=\sigma_1^2[(1-\rho_1)I_3+\rho_1J_3],
+$$
+
+$$
+\Sigma_{22}=\sigma_2^2[(1-\rho_2)I_4+\rho_2J_4],
+$$
+
+$$
+\Sigma_{12}=\kappa\sigma_1\sigma_2\sqrt{\rho_1\rho_2}\,\mathbf 1_3\mathbf 1_4^T,
+\qquad
+\Sigma_{21}=\Sigma_{12}^T.
+$$
+
+Use the worked-solution values
+
+$$
+\sigma_1=1,
+\quad
+\sigma_2=1.2,
+\quad
+\rho_1=0.70,
+\quad
+\rho_2=0.80,
+\quad
+\kappa=0.90.
+$$
+
+Provide the code that creates these blocks and the simulated observation.
+
+### Question: dimensions
+
+**Question:** The setup defines $x_1\in\mathbb R^3$ and $x_2\in\mathbb R^4$. What are the shapes of $\Sigma_{11}$, $\Sigma_{12}$, $\Sigma_{21}$, and $\Sigma_{22}$?
 
 **Answer:**
 
-- $\Sigma_{11}$ is $n_1\times n_1$;
-- $\Sigma_{12}$ is $n_1\times n_2$;
-- $\Sigma_{21}$ is $n_2\times n_1$;
-- $\Sigma_{22}$ is $n_2\times n_2$.
+- $\Sigma_{11}$ is $3\times3$;
+- $\Sigma_{12}$ is $3\times4$;
+- $\Sigma_{21}$ is $4\times3$;
+- $\Sigma_{22}$ is $4\times4$.
 
-**Question:** Which covariance block determines whether observing $x_2$ can shift our mean prediction for $x_1$?
+### Question: concrete cross-covariance
 
-**Answer:** $\Sigma_{12}$ (equivalently $\Sigma_{21}=\Sigma_{12}^T$) carries the cross-covariance between the missing and observed blocks.
+**Question:** Using the supplied formula for $\Sigma_{12}$, calculate $\operatorname{Cov}(X_{11},X_{21})$ for the parameter values above.
 
-### Introduce a new NumPy operation only when needed
+**Answer:**
 
-**Question:** We have built the four covariance blocks separately. Which NumPy function can assemble them into one block matrix with the layout
+Every entry of $\Sigma_{12}$ is
+
+$$
+\kappa\sigma_1\sigma_2\sqrt{\rho_1\rho_2}
+=0.90(1)(1.2)\sqrt{0.70\cdot0.80}
+\approx0.808.
+$$
+
+Therefore
+
+$$
+\operatorname{Cov}(X_{11},X_{21})\approx0.808.
+$$
+
+### Question: corresponding correlation
+
+**Question:** What is the corresponding correlation between $X_{11}$ and $X_{21}$?
+
+**Answer:**
+
+$$
+\operatorname{Corr}(X_{11},X_{21})
+=\frac{0.808}{(1)(1.2)}
+\approx0.674.
+$$
+
+### Question: assemble the full covariance matrix
+
+Do not split API recognition from implementation unless API recognition matters by itself.
+
+**Question:** Using `np.block`, construct
 
 $$
 \Sigma=
 \begin{pmatrix}
-\Sigma_{11} & \Sigma_{12}\\
-\Sigma_{21} & \Sigma_{22}
-\end{pmatrix}?
+\Sigma_{11}&\Sigma_{12}\\
+\Sigma_{21}&\Sigma_{22}
+\end{pmatrix}
 $$
 
-**Answer:** `np.block`.
+from the four covariance blocks already defined.
 
-Then show the concrete code.
+**Answer:**
 
-### Connect PyMC to the probability target
+```python
+Sigma = np.block([
+    [Sigma11, Sigma12],
+    [Sigma21, Sigma22],
+])
+```
 
-**Question:** After hiding $x_1$, what probability distribution are we asking PyMC to sample from?
+## Asking about supplied code after it appears
+
+It is valid to give the complete setup code and then ask students to read it.
+
+For example, after supplying
+
+```python
+x_complete = rng.multivariate_normal(mean=mu, cov=Sigma)
+x1_true = x_complete[:n1]
+x2_obs = x_complete[n1:]
+```
+
+ask:
+
+**Question:** Which part of `x_complete` is being treated as missing, and which part remains observed?
+
+**Answer:** The first three entries are stored as `x1_true` and will be hidden; the final four entries are stored as `x2_obs` and remain observed.
+
+This is preferable to asking students to invent the simulation setup when the simulation itself is not the learning objective.
+
+## Connect PyMC to the probability target
+
+**Question:** After hiding $x_1$ and observing $x_2$, what probability distribution are we asking PyMC to sample from?
 
 **Answer:**
 
@@ -65,13 +179,15 @@ $$
 p(x_1\mid x_2,\mu,\Sigma).
 $$
 
-**Question:** The students know ordinary observed PyMC variables, but this missing-data use may be new. How can we mark the missing entries in the observed vector supplied to `pm.MvNormal`?
+The students know ordinary observed PyMC variables, but this missing-data use is new.
 
-**Answer:** Put `np.nan` in the missing positions of the observed array; PyMC then treats those entries as unobserved variables.
+**Question:** In the supplied vector `x_partial`, the missing entries are represented by `np.nan`. When `x_partial` is passed as `observed` to `pm.MvNormal`, what does PyMC do with those entries?
 
-Then show the actual code rather than asking students to reconstruct unrelated PyMC boilerplate.
+**Answer:** PyMC treats the `np.nan` positions as unobserved components and samples them conditional on the observed components.
 
-### Map the same problem into the lecture's LGS notation
+Then ask students to construct the task-specific `pm.MvNormal` model if that coding step is useful, while supplying routine `pm.sample` boilerplate.
+
+## Map the same problem into the lecture's LGS notation
 
 **Question:** In the lecture's linear-Gaussian system
 
@@ -83,66 +199,56 @@ which variables in our missing-data problem should play the roles of $z$ and $y$
 
 **Answer:** Set $z=x_1$ and $y=x_2$.
 
-**Question:** Which distribution from the joint Gaussian gives the required observation model $p(x_2\mid x_1)$?
-
-**Answer:** The conditional Gaussian distribution of $x_2$ given $x_1$.
-
-**Question:** Comparing
+**Question:** The lecture gives
 
 $$
 E[x_2\mid x_1]
-=\mu_2+\Sigma_{21}\Sigma_{11}^{-1}(x_1-\mu_1)
+=\mu_2+\Sigma_{21}\Sigma_{11}^{-1}(x_1-\mu_1).
 $$
 
-with
-
-$$
-E[y\mid z]=Wz+b,
-$$
-
-what must $W$ be?
+Comparing this with $E[y\mid z]=Wz+b$, what are $W$ and $b$?
 
 **Answer:**
 
 $$
-W=\Sigma_{21}\Sigma_{11}^{-1}.
-$$
-
-**Question:** What should $b$ be so that $W\mu_1+b=\mu_2$?
-
-**Answer:**
-
-$$
+W=\Sigma_{21}\Sigma_{11}^{-1},
+\qquad
 b=\mu_2-W\mu_1.
 $$
 
-**Question:** We could write `Sigma21 @ np.linalg.inv(Sigma11)`, but which NumPy operation should we prefer to solve the corresponding linear system without explicitly computing an inverse?
+For the implementation, give the relevant API in the question rather than asking trivia about its name:
 
-**Answer:** `np.linalg.solve`.
+**Question:** Use `np.linalg.solve(A, B)` to compute $A^{-1}B$ without explicitly forming an inverse. Use it to construct $W=\Sigma_{21}\Sigma_{11}^{-1}$ from `Sigma11` and `Sigma12`.
 
-### Use prediction before manipulation
+**Answer:**
 
-**Question:** In the conditional-mean equation
+```python
+W = np.linalg.solve(Sigma11, Sigma12).T
+```
+
+## Use prediction before manipulation
+
+**Question:** In
 
 $$
 \mu_{1\mid2}=\mu_1+\Sigma_{12}\Sigma_{22}^{-1}(x_2-\mu_2),
 $$
 
-what should happen to the posterior mean if we set $\Sigma_{12}=0$?
+what should happen to the posterior mean if $\Sigma_{12}=0$?
 
-**Answer:** The update term becomes zero, so the conditional mean should remain $\mu_1$ regardless of the observed value of $x_2$.
+**Answer:** The update term becomes zero, so the conditional mean remains $\mu_1$ regardless of the observed value of $x_2$.
 
 Then perform the manipulation and show that this happens.
 
-**Question:** If we strengthen the cross-group covariance while keeping the marginal scales comparable, what should happen to the uncertainty about $x_1$ after observing $x_2$?
+**Question:** If the cross-group dependence becomes stronger while the marginal scales remain fixed, what should happen to the posterior uncertainty about $x_1$ after observing $x_2$?
 
-**Answer:** The observed block should carry more information about the missing block, so the conditional covariance should decrease.
+**Answer:** The observed block carries more information about the missing block, so the conditional covariance should become smaller.
 
-Then change the relevant covariance parameter and inspect the result.
+Then change the relevant parameter and inspect the result.
 
-### Compare the two methods directly
+## Compare the two methods directly
 
-**Question:** If the PyMC model and the linear-Gaussian equations describe the same joint Gaussian, what should we expect when we compare the two posterior means and covariances?
+**Question:** If the PyMC model and the linear-Gaussian equations describe the same joint Gaussian, what should we expect when we compare their posterior means and covariances?
 
 **Answer:** They should agree up to Monte Carlo error in the PyMC samples.
 
@@ -155,12 +261,11 @@ Then display:
 
 ## What not to ask here
 
-Avoid generic prompts such as:
+Avoid:
 
-- "Interpret the posterior."
-- "Discuss the covariance matrix."
-- "What did you learn?"
-
-Prefer questions whose answers make a checkable commitment about the mathematical mechanism.
-
-Also avoid re-teaching generic `pm.Model` or `pm.sample` syntax unless the notebook uses them in a genuinely new way.
+- questions that require an arbitrary setup fact not supplied beforehand;
+- decomposing the synthetic covariance construction into line-by-line coding exercises;
+- separate "which function?" and "now use the function" questions when one task-specific coding prompt is enough;
+- ambiguous code blocks whose status as given or student-written is unclear;
+- generic prompts such as "Interpret the posterior," "Discuss the covariance matrix," or "What did you learn?";
+- re-teaching generic `pm.Model` or `pm.sample` syntax unless the current use is genuinely new.

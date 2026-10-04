@@ -45,17 +45,20 @@ Students are first-year MSc students in Biomedical Engineering. They enter this 
 - the idea of generative probabilistic models;
 - graphical-model notation at a basic level.
 
-#### PyMC / ArviZ
+#### PyMC / ArviZ concepts and older course idioms
 
 - `pm.Model`;
 - common scalar PyMC distributions;
 - `observed=...`;
 - `pm.Deterministic` at a basic level;
-- `pm.sample`;
+- `pm.sample` as the standard posterior-sampling operation;
 - posterior draws and chains;
 - basic ArviZ summaries and posterior plots;
 - HDIs;
-- the idea of `InferenceData`.
+- the idea of a structured inference-results object;
+- `InferenceData` as the representation used in their previous course.
+
+Do **not** infer from this that the current PyMC/ArviZ return types and modular ArviZ 1.x APIs are familiar. Those changed after the previous course.
 
 #### MCMC concepts
 
@@ -87,7 +90,8 @@ Students may have seen these, but authors should not assume effortless independe
 - LOO / ELPD / Pareto-$k$;
 - interaction terms and more elaborate GLMs;
 - Bambi formula syntax;
-- posterior predictive diagnostics beyond the basic idea.
+- posterior predictive diagnostics beyond the basic idea;
+- creating a PyMC model object and re-entering its `with model:` context later to add additional variables, even if ordinary `with pm.Model():` construction is familiar.
 
 ### New / not yet established at course entry
 
@@ -99,7 +103,12 @@ Do not assume familiarity with:
 - PyTensor internals;
 - missing-data mechanisms in PyMC;
 - advanced coordinate/indexing patterns;
-- tensor reshaping and broadcasting beyond ordinary NumPy use.
+- tensor reshaping and broadcasting beyond ordinary NumPy use;
+- `xarray.DataTree` as the current PyMC/ArviZ inference-results representation;
+- the modular ArviZ 1.x packages and names such as `arviz_base`, `arviz_stats`, and `arviz_plots`;
+- `arviz_base.extract`;
+- `arviz_stats.summary` in its current modular form;
+- `np.allclose` unless introduced in the notebook.
 
 ## Lecture 1: Probability, statistics, and Gaussian systems
 
@@ -111,18 +120,21 @@ Authors may use without generic re-teaching:
 - covariance/correlation at a basic level;
 - NumPy arrays and slicing;
 - matrix multiplication with `@`;
-- `pm.Model`;
+- `pm.Model` as a modeling container;
 - ordinary observed PyMC variables;
-- `pm.sample`;
-- posterior samples and basic summaries;
+- `pm.sample` as the operation used to draw posterior samples;
+- the concept of posterior samples and basic summaries;
 - basic plotting.
+
+Do not assume the current return type of `pm.sample` is familiar merely because the function itself is familiar.
 
 ### Previously encountered — scaffold when needed
 
 - multivariate Gaussian distributions;
 - covariance matrices;
 - matrix shape reasoning;
-- manipulating multivariate posterior samples.
+- manipulating multivariate posterior samples;
+- extending an already-created PyMC model through a later model context.
 
 ### New in Lecture 1 / first notebook sequence
 
@@ -139,8 +151,13 @@ Computational constructs likely new and deserving explicit scaffolding:
 
 - `np.block`;
 - `np.linalg.solve` as preferable to explicitly computing a matrix inverse;
+- `np.allclose` if used for a numerical equivalence check;
 - `pm.MvNormal` in a missing-data setting;
 - PyMC handling of `np.nan` entries in observed data;
+- `xarray.DataTree` as the current return container from `pm.sample` under the current PyMC/ArviZ stack;
+- inspecting the groups and variables in that DataTree;
+- `arviz_base.extract` for extracting/combining posterior samples;
+- `arviz_stats.summary` for native posterior summaries;
 - comparing a Monte Carlo multivariate posterior with an exact analytic Gaussian posterior.
 
 ## Maintenance after each notebook

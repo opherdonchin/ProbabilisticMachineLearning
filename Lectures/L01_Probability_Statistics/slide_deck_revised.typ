@@ -2,6 +2,7 @@
 #import "../course.typ": *
 #import "figures/beta_bernoulli_graph.typ": beta_bernoulli_graph
 #import "figures/input_output_function_schema.typ": input_output_function_schema
+#import "figures/linear_gaussian_graph.typ": linear_gaussian_graph
 
 #let lecture = (
   number: 1,
@@ -2879,21 +2880,7 @@
   object: [
     #grid(
       columns: (0.8fr, 1.2fr), gutter: 1em, align: horizon,
-      align(center)[
-        #course-diagram(
-          spacing: (3.3em, 2.1em),
-          node-stroke: 1.2pt + palette.dark,
-          node-fill: palette.paper,
-          edge-stroke: 1.4pt + palette.accent,
-          mark-scale: 70%,
-          graph-node((0, 0), name: <state>, shape: circle, width: 2em, height: 2em)[$z$],
-          graph-node((1, 0), name: <measurement>, shape: circle, width: 2em, height: 2em,
-            fill: palette.accent.lighten(78%))[$y$],
-          graph-node((0, 0.8), stroke: none, fill: none)[#text(size: 0.65em)[Latent state]],
-          graph-node((1, 0.8), stroke: none, fill: none)[#text(size: 0.65em)[Observed]],
-          graph-edge(<state>, <measurement>, "-|>"),
-        )
-      ],
+      linear_gaussian_graph(),
       [#course-card(title: [A prior and a measurement law])[
         #text(size: 0.85em)[
           $ z tilde cal(N)(mu_z,Sigma_z) $
@@ -2932,7 +2919,7 @@
   The next slide asks which distributions this one model lets us compute.
 ]
 
-== Three tasks ask for three distributions from the same model
+== All three of our operations work on Linear Gaussian systems
 
 #content-block(
   layout: "top",
@@ -2940,7 +2927,7 @@
   object: [
     #stack(
       spacing: 0.65em,
-      [#course-card(title: [Joint task: describe state and measurement together])[
+      [#course-card(title: [Summarize])[
         #text(size: 0.85em)[$p(z,y)$ #h(1em) Construct the joint Gaussian with *affine rules*]
       ]],
       uncover("2-")[#course-card(title: [Prediction task: what measurements are plausible?])[

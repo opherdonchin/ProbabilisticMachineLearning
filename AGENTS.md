@@ -28,6 +28,21 @@ These instructions apply to the entire repository.
   separately rather than silently changing unrelated slides. This focused
   source check still applies when full compile or visual review is deferred.
 
+## Teaching notebook authoring
+
+- For an end-to-end new teaching notebook, read and follow
+  `skills/build-teaching-notebook/SKILL.md`. It deliberately separates creation
+  of a technically correct worked solution from pedagogical decomposition into
+  solved Q&A and student self-work notebooks.
+- If only the worked computational example is being developed or validated,
+  follow `skills/worked-solution-authoring/SKILL.md`.
+- If a validated worked solution already exists and the task is to turn it into
+  course pedagogy, follow `skills/teaching-notebook-authoring/SKILL.md` and its
+  references, especially the cumulative student-knowledge file.
+- The solved Q&A notebook is the pedagogical source of truth. Generate the
+  student self-work version from it with `scripts/make_self_work_notebook.py`
+  rather than maintaining an independently edited student narrative.
+
 ## Notebook runtime policy
 
 - Course notebooks are Colab-first. A notebook is not ready to publish until it

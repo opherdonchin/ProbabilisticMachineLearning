@@ -2414,310 +2414,516 @@
 
 
 
-== Joint task: construct the state and measurement law
+== A linear Gaussian model is also a joint Gaussian
 
 #content-block(
   layout: "top",
   object-width: 96%,
   object: [
-    #align(center)[#text(size: 0.8em)[Find $p(z,y)$: apply the affine rules to $(z,epsilon)$.]]
-    #twocol[
-      #course-card(title: [Linear Gaussian model])[
-        #text(size: 0.8em)[
+    #grid(
+      columns: (0.85fr, 1.15fr), gutter: 1em, align: top,
+      [#course-card(title: [Linear Gaussian model])[
+        #text(size: 0.82em)[
           #stack(
-            spacing: 0.45em,
+            spacing: 0.65em,
             [$z tilde cal(N)(mu_z,Sigma_z)$],
             [$y=W z+b+epsilon$],
-            [$epsilon tilde cal(N)(0,Omega)$, independent of $z$],
+            [$epsilon tilde cal(N)(0,Omega)$],
+            [Noise $epsilon$ is independent of $z$],
           )
         ]
-      ]
-    ][
-      #course-card(title: [Affine rules])[
-        #text(size: 0.8em)[
-          #stack(
-            spacing: 0.45em,
-            [$u=A x+c$],
-            [$E[u]=A E[x]+c$],
-            [$"Cov"[u]=A "Cov"[x] A^T$],
-          )
+      ]],
+      [#course-card(title: [Joint Gaussian])[
+        #text(size: 0.82em)[
+          #uncover("2-")[
+            $ mat(z;y) tilde cal(N)(mu,Sigma) $
+            $ mu=mat(mu_z;W mu_z+b) $
+          ]
+          #uncover("3-")[
+            $ Sigma=mat(Sigma_z,Sigma_z W^T;W Sigma_z,W Sigma_z W^T+Omega) $
+          ]
         ]
-      ]
-    ]
-    #uncover("2-")[
-      #align(center)[#text(size: 0.82em)[
-        $ E[mat(z;y)]=mat(mu_z;W mu_z+b) $
-        $ "Cov"[mat(z;y)]=mat(Sigma_z,Sigma_z W^T;W Sigma_z,W Sigma_z W^T+Omega) $
-      ]]
-    ]
+      ]],
+    )
     #source-note[Murphy, Book 2 §2.3.2.1, Eq. 2.120]
   ],
   key-points: [
     #stack(
       spacing: 0.35em,
-      uncover("2-")[
-        - $"Cov"[z,y]=Sigma_z W^T$ links state and measurement
-        - Measurement variance combines projected state uncertainty and noise
-      ],
+      [- The affine-Gaussian rules construct $p(z,y)$ from the model],
+      uncover("2-")[- Stack the state mean and the predicted measurement mean],
+      uncover("3-")[- Independent noise adds $Omega$ to the measurement covariance],
     )
   ],
 )
 
-
-
-== Prediction task: marginalize the unknown state
+== Bayes' rule for Gaussians
 
 #content-block(
   layout: "top",
-  object-width: 92%,
+  object-width: 98%,
   object: [
-    #align(center)[$ p(y)=integral p(z,y) dif z $]
-    #align(center)[$m=W mu_z+b, quad S=W Sigma_z W^T+Omega$]
-    #v(0.85em)
-    #uncover("2-")[
-      #align(center)[$p(y)=cal(N)(y | m,S)$]
-    ]
-    #source-note[Murphy, Book 2 §2.3.2.2, Eq. 2.129]
-  ],
-  key-points: [
-    #stack(
-      spacing: 0.35em,
-      [
-        - $m$ is the predicted measurement
-        - $S$ combines uncertainty in the state with sensor noise
-      ],
-      uncover("2-")[
-        - $p(y)$ scores how plausible an observed measurement is under the model
-      ],
-    )
-  ],
-)
+    #twocol[
+      #text(size: 0.86em)[
+      #stack(
+        spacing: 0.55em,
+        course-card(title: [Model and joint Gaussian])[
+        #text(size: 0.9em)[
+          $ mat(z;y) tilde cal(N)(mat(mu_z;mu_y),mat(Sigma_(z z),Sigma_(z y);Sigma_(y z),Sigma_(y y))) $
+          #stack(
+            spacing: 0.55em,
+            [$mu_y=W mu_z+b, quad Sigma_(z z)=Sigma_z$],
+            [$Sigma_(z y)=Sigma_z W^T=Sigma_(y z)^T$],
+            [$Sigma_(y y)=W Sigma_z W^T+Omega$],
+          )
+        ]
+        ],
+        course-card(title: [Gaussian conditioning rule])[
+        #text(size: 0.9em)[
+          #stack(
+            spacing: 0.8em,
+            [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$],
+            [$Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1)Sigma_21$],
+          )
+        ]
+        ],
+      )
+      ]
+    ][
 
-
-
-== Inference task: condition on the measurement
-
-#content-block(
-  layout: "top",
-  object-width: 94%,
-  object: [
-    #align(center)[$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$]
-    #v(0.65em)
-    #uncover("2-")[
-      #align(center)[$mu_(z|y)=mu_z+Sigma_z W^T S^(-1)(y-m)$]
-    ]
-    #v(0.55em)
-    #uncover("3-")[
-      #align(center)[$Sigma_(z|y)=Sigma_z-Sigma_z W^T S^(-1)W Sigma_z$]
+      #course-card(title: [Apply: $x_1=z$, $x_2=y$])[
+        #v(1.5em)
+        #text(size: 0.85em)[
+          #stack(
+            spacing: 1.5em,
+            [$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$],
+            uncover("2-")[$mu_(z|y)=mu_z+Sigma_(z y) Sigma_(y y)^(-1)(y-mu_y)$],
+            uncover("3-")[$Sigma_(z|y)=Sigma_(z z)-Sigma_(z y) Sigma_(y y)^(-1)Sigma_(y z)$],
+          )
+        ]
+      ]
     ]
     #source-note[Murphy, Book 2 §2.3.2.2, Eq. 2.121]
   ],
   key-points: [
     #stack(
       spacing: 0.35em,
-      uncover("2-")[
-        - The posterior mean responds to the innovation $y-m$
-      ],
+      [- Apply the Gaussian conditioning rule to the joint blocks],
+      uncover("2-")[- The mean responds to observed minus predicted measurement],
+      uncover("3-")[- The covariance subtracts the uncertainty explained by the measurement],
+    )
+  ],
+)
+
+== Bayes' rule as an update formula
+
+#content-block(
+  layout: "top",
+  object-width: 98%,
+  object: [
+    #twocol[
+      #text(size: 0.92em)[
+        #stack(
+          spacing: 0.3em,
+          course-card(title: [Model and joint Gaussian])[
+            #text(size: 0.92em)[
+              $mat(z;y) tilde 
+              cal(N)(mat(mu_z;mu_y),mat(Sigma_(z z),Sigma_(z y);Sigma_(y z),Sigma_(y y)))
+              quad mu_y=W mu_z+b$
+              #stack(
+                spacing: 0.75em,
+                [$Sigma_(z z)=Sigma_z quad Sigma_(z y)=Sigma_z W^T$],
+                [$Sigma_(y y)=W Sigma_z W^T+Omega$],
+              )
+            ]
+          ],
+          course-card(title: [Posterior after observing $y$])[
+            #text(size: 0.92em)[
+              #stack(
+                spacing: 0.75em,
+                [$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$],
+                v(1.5em),
+                [$mu_(z|y)=mu_z+Sigma_(z y) Sigma_(y y)^(-1)(y-mu_y)$],
+                [$Sigma_(z|y)=Sigma_(z z)-Sigma_(z y) Sigma_(y y)^(-1)Sigma_(y z)$],
+              )
+            ]
+          ],
+        )
+      ]
+    ][
+      #course-card(title: [Update the posterior mean])[
+        #text(size: 0.85em)[
+          #stack(
+            spacing: 1.3em,
+            uncover("2-")[$K=Sigma_(z y) Sigma_(y y)^(-1)$],
+            uncover("3-")[$mu_(z|y)=mu_z+K(y-mu_y)$],
+          )
+        ]
+      ]
+    ]
+  ],
+  key-points: [
+    #stack(
+      spacing: 0.35em,
+      uncover("2-")[- $K$ is the gain: it sets the size of the correction],
       uncover("3-")[
-        - The posterior covariance subtracts explained uncertainty
+        - Read Bayes' rule as an update:
+          - Prior estimate $mu_z$ + gain $K$ $times$ prediction error $y-mu_y$.
       ],
     )
   ],
 )
 
 
-
-== Inference solution: gain times innovation
+== The scalar Gaussian update
 
 #content-block(
   layout: "top",
-  object-width: 92%,
+  object-width: 98%,
   object: [
-    #align(center)[#text(size: 0.8em)[How strongly should $y-m$ correct our estimate of $z$?]]
-    #align(center)[$K=Sigma_z W^T S^(-1)$]
-    #v(0.7em)
-    #uncover("2-")[
-      #align(center)[$mu_(z|y)=mu_z+K(y-m), quad Sigma_(z|y)=Sigma_z-K S K^T$]
-    ]
-    #source-note[Murphy, Book 2 §2.3.2.2, Eqs. 2.122–2.126]
+    #grid(
+      columns: (0.7fr, 1.3fr),
+      gutter: 0.8em,
+      align: top,
+      text(size: 0.78em)[
+          #stack(
+            spacing: 0.8em,
+            [$y ~ cal(N)(W z + b, Omega)$],
+            [$mu_(z|y)=mu_z+K(y-mu_y)$],
+            [$K=Sigma_(z y) Sigma_(y y)^(-1)$],
+        )
+      ],
+      stack(
+        spacing: 0.8em,
+        [$y,z in RR quad W=1, b=0 quad Omega=sigma_epsilon^2$],
+        v(1.5em),
+        [$z tilde cal(N)(mu_z,sigma_z^2)$],
+        [$y = z + epsilon$],
+        [$epsilon ~ cal(N)(0,sigma_epsilon^2)$],
+      ),      
+    )
+    #stack(spacing: 0.8em,
+      [$mu_y = E[ z + epsilon ] = mu_z$],
+      [$Sigma_(z y) = "Cov"(z, z+epsilon) = sigma_z^2$],
+      [$Sigma(y y) = "Var"(z + epsilon) = sigma_z^2 + sigma_epsilon^2$]
+    )
   ],
   key-points: [
     #stack(
       spacing: 0.35em,
-      [
-        - $K$ converts a measurement error into a state correction
-      ],
-      uncover("2-")[
-        - Less reliable observations contribute a smaller correction
-      ],
+      uncover("2-")[- The gain $K$ is a fraction of the prediction error used to update the estimate],
+      uncover("3-")[- More measurement noise gives smaller $K$; more prior uncertainty gives larger $K$],
     )
   ],
 )
 
 
+== The update is weighted by relative uncertainty
 
-== Inference solution: switch to precision coordinates
+#let estimate-track(left, right) = align(center)[
+  $mu_z$ #h(0.15em)
+  #text(fill: palette.muted)[●#left]
+  #text(fill: palette.accent)[◆]
+  #text(fill: palette.muted)[#right●]
+  #h(0.15em) $y$
+]
 
-#content-block(
-  layout: "top",
-  object-width: 92%,
-  object: [
-    #align(center)[#text(size: 0.8em)[How can we express $p(z | y)$ so prior and measurement contributions add?]]
-    #align(center)[$Lambda=Sigma^(-1), quad eta=Lambda mu$]
-    #v(0.65em)
-    #uncover("2-")[
-      #align(center)[$mu=Lambda^(-1)eta, quad Sigma=Lambda^(-1)$]
-    ]
-    #v(0.65em)
-    #uncover("3-")[
-      #align(center)[$log p(bold(x)) = bold(x)^T eta-frac(1,2) bold(x)^T Lambda bold(x)+"constant"$]
-    ]
-    #source-note[Murphy, Book 2 §2.3.1.4, Eqs. 2.80–2.83]
-  ],
-  key-points: [
-    #stack(
-      spacing: 0.35em,
-      [
-        - $Lambda$ is the precision matrix; $eta$ is the precision-weighted mean
-      ],
-      uncover("3-")[
-        - Expanding the Gaussian exponent exposes a linear and a quadratic term
-      ],
-    )
-  ],
-)
-
-
-
-== Inference solution: add prior and measurement information
-
-#content-block(
-  layout: "top",
-  object-width: 94%,
-  object: [
-    #align(center)[#text(size: 0.8em)[Find the same $p(z | y)$ by combining prior and measurement information.]]
-    #align(center)[$Sigma_(z|y)^(-1)=Sigma_z^(-1)+W^T Omega^(-1)W$]
-    #v(0.75em)
-    #uncover("2-")[
-      #align(center)[$mu_(z|y)=Sigma_(z|y)(Sigma_z^(-1)mu_z+W^T Omega^(-1)(y-b))$]
-    ]
-    #source-note[Murphy, Book 2 §2.3.2.2, Eqs. 2.127–2.128]
-  ],
-  key-points: [
-    #stack(
-      spacing: 0.35em,
-      [
-        - Posterior precision is prior precision plus measurement information
-      ],
-      uncover("2-")[
-        - This is the same posterior as the gain form
-      ],
-    )
-  ],
-)
-
-
-
-== Inference example: estimate a state from one measurement
-
-#content-block(
-  layout: "top",
-  object-width: 91%,
-  object: [
-    #align(center)[#text(size: 0.8em)[Given $y=1$, find $p(z | y=1)$ and a squared-error estimate of $z$.]]
-    #align(center)[$z tilde cal(N)(0,1), quad y | z tilde cal(N)(z,0.25), quad y=1$]
-    #uncover("2-")[
-      #v(0.75em)
-      #align(center)[$Sigma_(z|y)=frac(1,1+4)=0.2, quad mu_(z|y)=0.2(4)=0.8$]
-    ]
-    #uncover("2-")[#align(center)[$p(z | y=1)=cal(N)(z | 0.8,0.2), quad hat(z)=0.8$]]
-    #source-note[Worked example from Murphy, Book 1 §3.3.1 and Book 2 §2.3.2.2]
-  ],
-  key-points: [
-    #stack(
-      spacing: 0.35em,
-      uncover("2-")[
-        - A precise observation moves the posterior mean toward the measurement
-        - Under squared error, report the posterior mean: $hat(z)=0.8$
-      ],
-    )
-  ],
-)
-
-
-
-== Summary: Linear Gaussian tasks and solutions
-
-#content-block(
-  layout: "top",
-  object-width: 96%,
-  object: [
-    #align(center)[#text(size: 0.85em)[$z tilde cal(N)(mu_z,Sigma_z), quad y=W z+b+epsilon$]]
-    #triad[
-      #course-card(title: [Joint])[
-        $p(z,y)$ \
-        #text(size: 0.8em)[Affine rules build the joint mean and covariance]
+#stack(
+  spacing: 0.45em,
+  grid(
+    columns: (0.7fr, 1.3fr),
+    gutter: 0.8em,
+    course-card(title: [From Bayes' rule])[
+      #text(size: 0.78em)[
+        #stack(
+          spacing: 0.8em,
+          [$mu_(z|y)=mu_z+K(y-mu_y)$],
+          [$K=Sigma_(z y) Sigma_(y y)^(-1)$],
+        )
       ]
-    ][
-      #course-card(title: [Prediction])[
-        $p(y)$ \
-        #text(size: 0.8em)[Marginalization keeps the measurement blocks]
+    ],
+    course-card(title: [Scalar measurement])[
+      #text(size: 0.78em)[
+        #grid(
+          columns: (1fr, 1fr),
+          gutter: 0.8em,
+          align: top,
+          stack(
+            spacing: 0.55em,
+            [$y ~ cal(N)(W z + b, Omega)$],
+            v(1.5em),
+            [$y,z in RR quad W=1, b=0 quad Omega=sigma_epsilon^2$],
+            v(1.5em),
+            [$z tilde cal(N)(mu_z,sigma_z^2)$],
+            [$y = z + epsilon quad epsilon ~ cal(N)(0,sigma_epsilon^2)$],
+          ),
+          stack(
+            spacing: 0.75em,
+            [$z|y ~ cal(N)(mu_(z|y),sigma_(z|y))$],
+            [$mu_(z|y)=mu_z+K(y-mu_z)$],
+            [$K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)$],
+          ),
+        )
       ]
-    ][
-      #course-card(title: [Inference])[
-        $p(z | y)$ \
-        #text(size: 0.8em)[Conditioning gives a state estimate and uncertainty]
-      ]
-    ]
-    #align(center)[#text(size: 0.82em)[
-      *Two forms of the same posterior:*
-      $ mu_(z|y)=mu_z+K(y-m) $
-      $ Sigma_(z|y)^(-1)=Sigma_z^(-1)+W^T Omega^(-1)W $
-    ]]
-  ],
-  key-points: [
-    - One model answers different tasks through different probability queries
-    - Gain corrects a prediction; precision adds prior and measurement information
-  ],
-)
-
-
-
-== Summary: Task, experience, and performance
-
-#content-block(
-  layout: "top",
-  object-width: 96%,
-  object: [
-    #triad[
-      #course-card(title: [Task])[
-        #text(size: 0.8em)[
-          Estimate the state from a measurement.
-          $y arrow.r p(z | y) arrow.r hat(z)$
-        ]
-      ]
-    ][
-      #course-card(title: [Experience])[
-        #text(size: 0.8em)[
-          Training examples can determine the model parameters.
-          $D={(y_n,z_n)}_(n=1)^N$
-        ]
-      ]
-    ][
-      #course-card(title: [Performance])[
-        #text(size: 0.8em)[
-          Evaluate estimates on held-out cases.
-          $ell(z,hat(z))=norm(z-hat(z))^2$
+    ],
+  ),
+  v(0.9em),
+  
+  triad[
+    #uncover("4-")[
+      #course-card(title: [Precise measurement])[
+        #text(size: 0.75em)[
+          #stack(
+            spacing: 0.3em,
+            [$sigma_epsilon^2 << sigma_z^2 quad K approx 1$],
+            estimate-track([─────], [─]),
+            [#align(center)[Trust the measurement]],
+          )
         ]
       ]
     ]
-    #align(center)[#text(size: 0.85em)[
-      For squared error, the posterior gives the estimate:
-      $ hat(z)=E[z | y]=mu_(z|y) $
-    ]]
+  ][
+    #uncover("5-")[
+      #course-card(title: [Equal uncertainty])[
+        #text(size: 0.75em)[
+          #stack(
+            spacing: 0.3em,
+            [$sigma_epsilon^2=sigma_z^2 quad K=frac(1,2)$],
+            estimate-track([───], [───]),
+            [#align(center)[Split the difference]],
+          )
+        ]
+      ]
+    ]
+  ][
+    #uncover("6-")[
+      #course-card(title: [Noisy measurement])[
+        #text(size: 0.75em)[
+          #stack(
+            spacing: 0.3em,
+            [$sigma_epsilon^2 >> sigma_z^2 quad K approx 0$],
+            estimate-track([─], [─────]),
+            [#align(center)[Trust the prior]],
+          )
+        ]
+      ]
+    ]
   ],
-  key-points: [
-    - This section solved inference with given parameters; it did not fit the model
-    - Learning requires performance on the task to improve with experience
+  key-points[
+    #stack(
+      spacing: 0.25em,
+      [- $K$ is the fraction of the prediction error used to update the estimate],
+      uncover("4-")[- The orange diamond marks the posterior mean $mu_(z|y)$],
+      uncover("6-")[- More measurement noise gives smaller $K$; more prior uncertainty gives larger $K$],
+    )
   ],
 )
+
+
+== Inference often combines conditioning and summarizing
+
+Not built yet
+
+// Build this as a simple process slide.
+//
+// Repeat the result from the conditioning slides:
+//
+//   p(z | y) = N(z | mu_(z|y), Sigma_(z|y))
+//
+// Then introduce/repeat the definition of a conditional expectation:
+//
+//   E[z | y] = integral z p(z | y) dz
+//
+// For a Gaussian:
+//
+//   E[z | y] = mu_(z|y)
+//
+// Show the process visually:
+//
+//   observed y
+//      |
+//   CONDITION
+//      v
+//   p(z | y) = N(mu_(z|y), Sigma_(z|y))
+//      |
+//   SUMMARIZE
+//      v
+//   z_hat = E[z | y] = mu_(z|y)
+//
+// Reveal sequence:
+// 1. Measurement -> conditional distribution.
+// 2. Repeat conditional-expectation formula.
+// 3. Posterior -> posterior mean.
+//
+// Keep this slide conceptually simple. No new matrix algebra.
+//
+// If desired, mention only in speaker notes that under squared-error loss the posterior mean is the optimal point estimate.
+//
+// Main teaching point:
+// Conditioning returns a distribution; summarizing extracts a useful quantity from that distribution.
+// The two operations naturally occur sequentially.
+
+
+== Sensor fusion combines measurements according to their uncertainty
+
+Not built yet
+
+// Use Murphy Book 2 §2.3.2.3 and Fig. 2.10 as the application.
+//
+// First repeat the operation developed on the previous slide:
+//
+//   measurements -> p(z | measurements) -> E[z | measurements]
+//
+// Then introduce the sensor-fusion model:
+//
+//   z = unknown 2D state
+//   x | z ~ N(z, Sigma_x)
+//   y | z ~ N(z, Sigma_y)
+//
+// State the inferential sequence explicitly:
+//
+//   CONDITION:
+//     p(z | x, y)
+//
+//   SUMMARIZE:
+//     z_hat = E[z | x, y]
+//
+// The slide should be primarily visual.
+//
+// Prefer a clean recreation/adaptation of Murphy Fig. 2.10 showing three cases:
+//
+// 1. Equal sensor uncertainty:
+//      posterior mean lies between the two measurements.
+//
+// 2. One sensor is more precise:
+//      posterior mean moves toward the more precise sensor.
+//
+// 3. Direction-dependent uncertainty:
+//      each sensor influences the estimate most strongly along the direction in which it is more precise.
+//
+// Reveal the three cases sequentially.
+//
+// Do not derive the full matrix posterior on this slide.
+//
+// If needed, include a small note that x and y can be stacked into one observation vector, so this is the same linear Gaussian system already solved.
+//
+// Explicitly connect this slide to the scalar slide:
+// the same uncertainty weighting now works across multiple sensors and multiple spatial directions.
+//
+// Main teaching point:
+// Sensor fusion is an application of condition -> summarize, with uncertainty controlling how strongly each measurement contributes.
+
+
+== The same model can also predict measurements
+
+Not built yet
+
+// Return explicitly to marginalization.
+//
+// Repeat the linear Gaussian model:
+//
+//   z ~ N(mu_z, Sigma_z)
+//   y | z ~ N(W z + b, Omega)
+//
+// Also repeat the joint-distribution relationship:
+//
+//   p(z,y) = p(z) p(y | z)
+//
+// Ask:
+//
+//   Before observing y, what distribution of measurements does the model predict?
+//
+// Repeat the generic marginalization rule:
+//
+//   p(y) = integral p(z,y) dz
+//
+// Then apply it:
+//
+//   p(y) = N(y | mu_y, Sigma_yy)
+//
+// Repeat the definitions already established earlier:
+//
+//   mu_y = W mu_z + b
+//   Sigma_yy = W Sigma_z W^T + Omega
+//
+// Preferred layout:
+// - left/top: generic marginalization operation;
+// - right/bottom: result for the linear Gaussian system.
+//
+// Reveal sequence:
+// 1. Repeat model and marginalization rule.
+// 2. Show p(y) is Gaussian.
+// 3. Show/repeat mu_y and Sigma_yy.
+//
+// Explicitly note that these are the same mu_y and Sigma_yy that appeared inside the conditioning update.
+//
+// Do not introduce Murphy's alternative symbols m and S.
+//
+// Main teaching point:
+// The same joint Gaussian answers another question through marginalization:
+// what measurements are plausible before any particular measurement is observed?
+
+
+== Summary: one model, three probability operations
+
+Not built yet
+
+// Build a sparse synthesis slide using only notation already established.
+//
+// At the top repeat the model:
+//
+//   z ~ N(mu_z, Sigma_z)
+//   y | z ~ N(W z + b, Omega)
+//
+// Then show:
+//
+//   -> one joint Gaussian p(z,y)
+//
+// Below this, show three parallel branches.
+//
+// MARGINALIZE
+//
+// Repeat the operation:
+//   p(y) = integral p(z,y) dz
+//
+// Result:
+//   p(y) = N(mu_y, Sigma_yy)
+//
+// Question:
+//   What measurements should we expect?
+//
+//
+// CONDITION
+//
+// Repeat the operation:
+//   p(z | y)
+//
+// Result:
+//   p(z | y) = N(mu_(z|y), Sigma_(z|y))
+//
+// Question:
+//   What does an observed measurement tell us about the state?
+//
+//
+// SUMMARIZE
+//
+// Repeat the operation:
+//   E[z | y] = integral z p(z | y) dz
+//
+// Result:
+//   E[z | y] = mu_(z|y)
+//
+// Question:
+//   What single state estimate should we report?
+//
+//
+// Reveal the three branches sequentially.
+//
+// Do not repeat the full formulas for the posterior mean or covariance here.
+// The purpose is synthesis, not calculation.
+//
+// Final takeaway:
+// Linear Gaussian systems are especially useful because the joint distribution is Gaussian and marginalization, conditioning, and expectation remain analytic.
+//
+// Optional small forward reference:
+// Repeating Gaussian prediction and conditioning through time leads to the Kalman filter.

@@ -27,6 +27,8 @@ MODE = re.compile(r"config-common\(handout:\s*(?:true|false)\)")
 
 
 def normalized(text):
+    text = text.translate(str.maketrans({"\u2018": "'", "\u2019": "'",
+                                        "\u201c": '"', "\u201d": '"'}))
     return " ".join(text.split())
 
 

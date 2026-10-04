@@ -30,7 +30,7 @@ Students should be able to:
 5. understand what the answer does in the immediate context;
 6. continue to the next question without losing the overall mathematical thread.
 
-Fine granularity is therefore a feature, not a sign of overscaffolding. But fine granularity does **not** mean turning every line of setup or every syntax atom into a separate exercise.
+Fine granularity is therefore a feature, not a sign of overscaffolding. But fine granularity means **small coherent conceptual or computational units**, not one question per algebraic step, output, or syntax atom.
 
 ## What changes from the Short Bayes Course
 
@@ -43,8 +43,8 @@ This course is about coherent understanding of machine-learning methods within a
 - mapping lecture notation into computation;
 - applying a supplied equation to concrete quantities;
 - identifying which term or parameter controls a behavior;
-- predicting the consequence of a manipulation;
-- choosing a manipulation to obtain a desired consequence;
+- connecting a lecture-level task schema to the specific computational problem;
+- predicting the consequence of a manipulation when that prediction tests an important mechanism;
 - connecting two equivalent formulations of the same method;
 - new computational syntax or libraries when they are genuinely unfamiliar.
 
@@ -68,7 +68,21 @@ Concepts, notation, APIs, packages, or computational idioms that need explicit i
 
 Use `skills/teaching-notebook-authoring/references/student-knowledge.md` as the source of truth, together with the current lecture material. Do not infer arbitrary familiarity from professional convention.
 
-This report is an authoring contract: question granularity should visibly reflect it.
+The report is an authoring contract: question granularity should visibly reflect it.
+
+When a library has changed since the students' previous course, explicitly record the old familiar concept and the new current representation/API separately. Do not treat an old API as evidence that the new one is familiar.
+
+## Verify current APIs before authoring
+
+For fast-moving packages such as PyMC, ArviZ, scikit-learn, PyTorch, or JAX:
+
+1. identify the course-target package version or current runtime;
+2. verify relevant behavior against the official documentation for that version;
+3. prefer current native APIs over remembered older idioms;
+4. note meaningful version drift in the knowledge report;
+5. do not build exercises around behavior that has only been assumed from memory.
+
+If official documentation and an API reference disagree, prefer a current worked example/source implementation or verify by running the course environment before final publication.
 
 ## Author the solved notebook first
 
@@ -103,12 +117,7 @@ Before writing numbered questions, identify material that is merely infrastructu
 
 When such material is not itself a learning objective, provide it as one coherent **given setup block** rather than decomposing it into many exercises.
 
-A given setup block may contain:
-
-- explanatory Markdown;
-- mathematical definitions;
-- code that students simply run;
-- the resulting dataset or model state.
+A given setup block may contain explanatory Markdown, mathematical definitions, code students simply run, and the resulting data/model state.
 
 It is often better to begin the numbered work **after** the relevant state has already been constructed.
 
@@ -118,10 +127,7 @@ It is also valid to provide a block of code first and then ask questions about w
 
 A student should never have to guess an arbitrary modeling or setup choice that exists only in the author's head or in the worked solution.
 
-Before asking a question, check that all information needed to answer it is either:
-
-- contained in the question itself; or
-- visibly established in immediately preceding notebook material.
+Before asking a question, check that all information needed to answer it is either contained in the question itself or visibly established in immediately preceding notebook material.
 
 Bad example:
 
@@ -141,20 +147,43 @@ For every instructional item, it should be clear whether the student is expected
 
 - answer in prose or mathematics;
 - write and run code;
-- modify existing code;
+- modify or extend existing code;
+- consult supplied documentation;
 - predict a result before a supplied cell is run;
 - inspect a supplied result;
 - simply run a given cell.
 
 Do not place an unexplained code block after an answer if it is unclear whether that code is part of the answer, a given cell, or a separate task.
 
-When a question expects code, say so explicitly, e.g.:
+### 5. Use coherent local units, not atomic microsteps
 
-> Using `np.block`, construct the full covariance matrix $\Sigma$ from the four blocks already defined.
+A single question may contain several tightly coupled actions when they form one natural operation.
 
-Then the answer cell should contain the runnable code.
+Good examples:
 
-### 5. Identify transitions in the solution
+- calculate a covariance and then normalize it to the corresponding correlation;
+- construct a covariance matrix, print its shape, and check that the shape matches the mathematical dimensions;
+- call a summary function and identify the requested quantities in its output;
+- add one model component and inspect the resulting model state.
+
+Do not split these into separate questions merely because each action could be numbered independently.
+
+The useful test is: **would separating the steps teach a distinct concept?** If not, keep them together.
+
+### 6. Anchor specialized problems to the lecture's framing
+
+When a notebook instantiates an abstract schema introduced in lecture, establish that schema before asking for the special case.
+
+For example, if the lecture defines probabilistic task forms such as prediction or discovery, either:
+
+- refer to the relevant slide/section by title and reproduce the needed mathematical schema; or
+- provide the relevant generic distributions directly in the notebook.
+
+Then ask the student to map the current variables into that schema.
+
+Do not jump directly to a specialized target such as $p(x_1\mid x_2)$ if recognizing the task form is itself part of the intended connection to the lecture.
+
+### 7. Identify transitions in the solution
 
 Read the worked solution from top to bottom and mark transitions such as:
 
@@ -164,153 +193,141 @@ Read the worked solution from top to bottom and mark transitions such as:
 - mapping symbols to variables;
 - computing a new quantity;
 - introducing unfamiliar syntax;
-- making a prediction;
 - performing a manipulation;
 - comparing two routes.
 
 Each transition is a candidate for one or more questions, but not every implementation line deserves its own question.
 
-### 6. Break transitions into locally answerable questions
+### 8. Prefer concrete mathematical referents
 
-Prefer questions with a narrow target.
+Ask for concrete quantities, objects, or transformations rather than vague discussion.
 
-Good examples:
+Prefer:
 
-- The setup defines $x_1\in\mathbb R^3$ and $x_2\in\mathbb R^4$. What is the shape of $\Sigma_{12}$?
-- Using the covariance definition above, calculate $\operatorname{Cov}(X_{11},X_{21})$ for the supplied parameter values.
-- Which covariance block determines whether observing $x_2$ can shift our mean prediction for $x_1$?
-- Which term in the conditional-mean equation is the innovation?
-- If $\Sigma_{12}=0$, what should happen to the conditional mean?
-- In the lecture's linear-Gaussian notation, which variable here should play the role of $z$?
-- Using `np.linalg.solve`, implement the matrix expression $W=\Sigma_{21}\Sigma_{11}^{-1}$ without explicitly forming an inverse.
-- Which parameter should we change if we want the observation to carry less information about the latent variable?
+- $\operatorname{Cov}(X_{11},X_{21})$;
+- the shape of $\Sigma_{12}$;
+- the exact equation for $\Omega$;
+- which variable is $z$ and which is $y$;
+- the code that evaluates a specified matrix expression.
 
-A question may be mathematically simple. Simplicity is appropriate when it lets students maintain continuity and successfully use AI assistance.
+Avoid vague prompts about "the covariance", "the relationship", or "what this means" unless a more specific question is impossible.
 
-However, prefer **concrete mathematical referents** over vague prompts. Ask for $\operatorname{Cov}(X_{11},X_{21})$, a matrix shape, a specific term, or a specific predicted change rather than asking broadly about "the covariance" or "the relationship between the groups."
+### 9. Fine-grained does not mean syntax-fragmented
 
-### 7. Fine-grained does not mean syntax-fragmented
+Do not normally split a single small coding action into:
 
-Do not normally split a single small coding action into questions such as:
+1. identify a function;
+2. then call the same function.
 
-1. What NumPy function should we use?
-2. Now use that function to construct the matrix.
+When an API name is useful support, give it in the question and ask the student to use it:
 
-Instead, when the API name itself is useful support, give it in the question and ask the student to use it:
+> Using `np.block`, construct $\Sigma$ from the four covariance blocks, print its shape, and check that the result has the dimensions expected from the block structure.
 
-> Using `np.block`, construct
-> $$
-> \Sigma=\begin{pmatrix}\Sigma_{11}&\Sigma_{12}\\\Sigma_{21}&\Sigma_{22}\end{pmatrix}.
-> $$
+Split API identification from implementation only when selecting the API is itself an explicit learning objective.
 
-This mirrors the productive Short Course pattern: provide enough API information that the student or an AI can generate the relevant code, while leaving the task-specific construction to the student.
+### 10. Make unfamiliar API behavior discoverable
 
-Split API identification from implementation only when recognizing or selecting the API is itself an explicit learning objective.
+Students should not be expected to infer library-specific behavior from a function name.
 
-### 8. Teach unfamiliar syntax at the right granularity
+When a question asks about unfamiliar behavior — for example how PyMC treats missing values or what object `pm.sample` returns — use one of these patterns:
 
-Syntax questions are appropriate when the syntax is new and serves the method.
+1. provide a direct official-documentation link and ask students to answer from that documentation;
+2. provide the relevant behavior as a **[GIVEN]** explanation, then ask them to apply it;
+3. provide a minimal example and ask them to inspect its result.
 
-Examples may include:
+Prefer official package documentation over generic web search results.
 
-- a NumPy block-matrix operation;
-- `np.linalg.solve`;
-- new scikit-learn estimator APIs;
-- tensor reshaping or broadcasting;
-- new PyTorch/JAX constructs;
-- unfamiliar PyMC functionality such as a distribution or missing-data mechanism.
+If the behavior changed since the students' previous course, make that change explicit.
 
-Before asking such questions, consult `skills/teaching-notebook-authoring/references/student-knowledge.md`. Do not repeatedly quiz syntax already established as familiar.
+### 11. Scaffold unfamiliar code structure, not only unfamiliar function names
 
-For unfamiliar syntax, prefer one of these patterns:
+A programming idiom can be unfamiliar even when every individual function is familiar.
 
-1. **Give the API, ask for the task-specific code.**
-   Example: "Use `np.linalg.solve(A, B)` to compute $A^{-1}B$ without explicitly inverting $A$. Apply it to compute $W$."
+Examples include:
 
-2. **Give a complete code construction, then ask what a specific line/object does.**
-   Use this when the code is mostly setup and the conceptual reading is more important than reproduction.
+- extending an existing PyMC model in a later `with model:` block;
+- using coordinates/dimensions in a new way;
+- working with an `xarray.DataTree` instead of the older `InferenceData` representation;
+- selecting variables from a labeled multidimensional object.
 
-3. **Give a minimal example, then ask students to adapt it.**
+When such a structure is required, provide enough initial code or a minimal example to establish the idiom, state what can be extended or modified, and then ask the student to add the task-specific component.
 
-Do not assume that introducing an unfamiliar API requires a separate trivia question about its name.
+### 12. Prefer native library operations over manual plumbing
 
-### 9. Provide background before questioning an author-created construction
+Before writing custom extraction, reshaping, summaries, diagnostics, or plotting code, check whether the current library provides a native operation that expresses the intended task clearly.
 
-If the worked solution uses a construction that is not already part of the lecture — for example a custom compound-symmetry covariance model used to generate synthetic data — explain the construction before asking students to calculate with it.
+Examples include:
 
-The explanation should establish:
+- `arviz_base.extract` for combining posterior sample dimensions or extracting variables;
+- `arviz_stats.summary` for posterior means, SDs, intervals, ESS, and R-hat;
+- current ArviZ plotting functions for standard posterior displays.
 
-- what the parameters mean;
-- the relevant mathematical formula;
-- which variables or blocks it defines;
-- any constraints needed for the construction.
+Use native operations by default when they make the statistical operation clearer and reduce incidental array manipulation.
 
-Then questions may ask students to compute concrete quantities from it or identify consequences.
+Use manual NumPy/xarray code only when that manipulation is itself part of the lesson or when no suitable native API exists.
+
+### 13. Provide background before questioning an author-created construction
+
+If the worked solution uses a construction that is not already part of the lecture — for example a custom covariance model used to generate synthetic data — explain the construction before asking students to calculate with it.
+
+The explanation should establish what the parameters mean, the relevant mathematical formula, which variables or blocks it defines, and any necessary constraints.
 
 Do not ask students to reverse-engineer an arbitrary setup choice from code unless reading that code is itself the objective.
 
-### 10. Apply lecture mathematics; do not turn the notebook into a derivation exercise
+### 14. Apply lecture mathematics; do not turn the notebook into a derivation exercise
 
-The lecture normally supplies the mathematical result. The notebook should make students:
-
-- recognize its components;
-- map symbols to the current example;
-- evaluate it;
-- implement it;
-- compare it with another formulation;
-- manipulate inputs or parameters and predict consequences.
+The lecture normally supplies the mathematical result. The notebook should make students recognize its components, map symbols to the current example, evaluate it, implement it, and connect it to other formulations.
 
 Do not require a derivation merely because one exists. A derivation belongs in the notebook only when deriving that result is itself an explicit learning objective.
 
-### 11. Prefer prediction and intervention to generic interpretation
+### 15. Manage notation changes explicitly
 
-Avoid generic prompts such as:
+When two equivalent formulations use different notation, do not oscillate casually between them.
 
-- "Interpret this plot."
-- "What does this result mean?"
-- "Discuss the posterior."
+At each transition:
 
-Such questions are often underspecified and can reward plausible prose without testing the model's mechanism.
+1. state which notation is currently active;
+2. give an explicit mapping between the two systems;
+3. keep a block of calculations within one notation where possible;
+4. translate back only when there is a specific reason.
 
-Prefer a commitment that can be checked in the next cell:
+For example, when moving from a partitioned Gaussian $(x_1,x_2)$ to an LGS $(z,y)$, give a mapping such as
 
-- What do you predict will happen if we set the cross-covariance to zero?
-- Which parameter must increase to make the posterior wider?
-- If we remove this feature, which term in the score function disappears?
-- Which manipulation should make the two clusters harder to distinguish?
+$$
+z=x_1,\qquad y=x_2,\qquad \mu_z=\mu_1,\qquad \Sigma_z=\Sigma_{11}.
+$$
 
-Then **perform the manipulation** and show the result immediately afterward.
+Then derive/identify the LGS quantities in one coherent section rather than repeatedly switching names sentence by sentence.
 
-Questions about consequences are especially useful when the next cell provides empirical or numerical feedback.
+### 16. Use prediction selectively
 
-### 12. Follow the method, not a generic methodology template
+Avoid generic interpretation prompts such as "Interpret this plot" or "Discuss the posterior".
+
+A prediction question is useful when it tests an important mechanism and the next computation gives immediate feedback, for example:
+
+- setting cross-covariance to zero should remove the mean update;
+- increasing observation noise should widen a posterior;
+- removing a feature should change a specified score term.
+
+Do **not** insert prediction questions merely because a result is about to be computed. If seeing the numerical result directly is clearer and no important misconception is being tested, just compute and inspect it.
+
+Prediction is a tool, not a required notebook rhythm.
+
+### 17. Follow the method, not a generic methodology template
 
 Do not impose a Bayesian-workflow sequence on every notebook.
 
 Use priors, prior predictive checks, diagnostics, posterior predictive checks, or other methodological stages only when they illuminate the machine-learning method being taught.
 
-The default structure should follow:
+The default structure should follow the lecture, the book's method sequence, and the worked example's computational logic.
 
-- the lecture;
-- the book's method sequence;
-- the worked example's computational logic.
+### 18. Keep comparable results visually comparable
 
-This course teaches methods. Methodological workflow appears where it reveals something important about those methods.
+If two approaches answer the same question, use the same graphical grammar for both and add a direct comparison only when it materially helps.
 
-### 13. Keep comparable results visually comparable
+Use consistent variable ordering, interval type/probability, axis limits, point-estimate convention, and plot geometry.
 
-If two approaches answer the same question, use the same graphical grammar for both and add a direct comparison when useful.
-
-For example:
-
-- same variables and ordering;
-- same interval type and probability;
-- same axis limits;
-- same point-estimate convention;
-- same plot geometry;
-- an explicit difference/comparison plot or table.
-
-Do not make students infer agreement from two unrelated-looking displays.
+Do not add comparison calculations or displays simply because they are possible; each should answer a clear question in the notebook.
 
 ## Student-knowledge tracking
 
@@ -320,19 +337,20 @@ At the start of authoring:
 
 1. read `skills/teaching-notebook-authoring/references/student-knowledge.md`;
 2. produce the required three-category knowledge report;
-3. identify which required mathematical and computational constructs are already familiar;
+3. identify required constructs that are already familiar;
 4. identify previously encountered constructs that still need scaffolding;
 5. identify constructs newly introduced in this lecture/notebook;
-6. scaffold the latter two categories at appropriate granularity;
-7. avoid re-teaching familiar constructs unless the current use is genuinely different.
+6. identify any relevant version drift since the prior course;
+7. scaffold the latter categories at appropriate granularity;
+8. avoid re-teaching familiar constructs unless the current use is genuinely different.
 
 After the notebook is finalized, produce a **knowledge-state change report** with:
 
-- items newly introduced in this notebook that should now move to "previously encountered — scaffold when needed";
-- any items deliberately promoted from "previously encountered" to "assume familiar";
+- items newly introduced that should now move to "previously encountered — scaffold when needed";
+- any items deliberately promoted to "assume familiar";
 - items whose status should not change.
 
-Do **not** automatically promote a construct to "assume familiar" merely because it appeared once. Promotion should be deliberate and supported by repeated use or an explicit course decision.
+Do **not** automatically promote a construct to "assume familiar" merely because it appeared once.
 
 Then update `skills/teaching-notebook-authoring/references/student-knowledge.md` as a separate final authoring step.
 
@@ -345,9 +363,9 @@ The typical instructional rhythm is:
 3. optional `given` material needed for the next step;
 4. the next question.
 
-But substantial setup may precede the numbered questions, and a supplied code block may precede questions that ask students to understand or manipulate it.
+But substantial setup may precede the numbered questions, and a supplied code block may precede questions that ask students to understand, extend, or manipulate it.
 
-Use `given-answer` on a question when the answer itself should remain visible in the student version because it establishes shared information rather than testing student work.
+Use `given-answer` when an answer should remain visible in the student version because it establishes shared information rather than testing student work.
 
 In authoring reports and dry runs, visibly mark such answers as **[GIVEN]** even when notebook tags are not shown.
 
@@ -373,21 +391,24 @@ Do not independently rewrite or simplify the student version after generating it
 
 ## Validation
 
-Before considering the pair complete:
+Before considering the pair complete, check the following.
 
 ### Solved notebook
 
 - Does it run top to bottom under repository runtime rules?
-- Does it reproduce the worked solution's substantive numerical results and figures?
+- Does it reproduce the worked solution's substantive results and figures?
 - Does each question have a complete answer immediately available in the solved version?
-- Does each question have a locally clear target?
 - Is every question answerable from information visible before the answer cell?
-- Is the expected student action clear: prose, math, code, modification, prediction, inspection, or simply running a given cell?
+- Is the expected student action clear?
 - Has non-instructional setup been bundled rather than pointlessly decomposed?
-- Are new APIs scaffolded according to current student knowledge without syntax trivia fragmentation?
-- Does the sequence follow the lecture's notation and method?
-- Are manipulations preceded by explicit predictions where appropriate?
-- Are comparable methods displayed comparably?
+- Are tightly coupled actions kept together when separating them would teach nothing new?
+- Are specialized probability targets anchored to the lecture's task framing where appropriate?
+- Are unfamiliar APIs either documented, demonstrated, or explicitly given?
+- Were fast-moving APIs checked against the current course environment/documentation?
+- Are native library operations used in preference to unnecessary manual plumbing?
+- Are notation changes explicitly mapped and locally consistent?
+- Are prediction questions used only when they test an important mechanism?
+- Are comparable methods displayed comparably without redundant comparison work?
 
 ### Student notebook
 
@@ -397,21 +418,27 @@ Before considering the pair complete:
 - Can a student work linearly from top to bottom?
 - Would pasting an individual question into an AI chat normally produce enough context for a useful answer?
 - Are answer placeholders of the appropriate type present?
-- Is it always clear which supplied code should simply be run and which code the student is expected to write?
+- Is it always clear which supplied code should simply be run and which code the student is expected to write or extend?
+- If a question depends on external documentation, is the exact documentation source supplied?
 
 ## Anti-patterns
 
 Avoid:
 
-- replacing many small questions with a few large tasks because the students are graduate students;
-- asking a question before the notebook has supplied the facts needed to answer it;
+- replacing many small questions with a few large tasks merely because the students are graduate students;
+- splitting one coherent operation into several numbered microsteps that teach no distinct concepts;
+- asking a question before the notebook supplies the facts needed to answer it;
 - using the answer cell to reveal setup assumptions that should have appeared before the question;
 - decomposing arbitrary setup into exercises merely because it appears in the worked solution;
-- splitting "which function?" and "now call the function" into separate questions when one task-specific coding question would suffice;
+- splitting "which function?" and "now call the function" when one task-specific coding question suffices;
+- asking students to infer undocumented library behavior;
+- relying on obsolete APIs because students used them in an earlier course;
+- manually reshaping/summarizing posterior objects when a clear current ArviZ/PyMC operation exists and the reshaping itself is not the lesson;
 - ambiguous code blocks whose status as given code or student work is unclear;
+- casually switching back and forth between two notational systems;
 - generic interpretation questions used merely because "reflection" seems pedagogically desirable;
+- prediction questions inserted mechanically before every result;
 - unnecessary mathematical derivations;
-- syntax quizzes for constructs students already know;
 - hiding central method code in abstractions;
 - imposing a prior/fit/PPC workflow when the method does not need it;
 - inventing a second student-notebook narrative independent of the solved notebook;

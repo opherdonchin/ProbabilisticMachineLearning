@@ -34,7 +34,7 @@ Do not use it to:
 - write a slide-by-slide outline;
 - perform section-level or slide-level drafting that belongs to later skills.
 
-The approximate time allocations in the scope are constraints for later drafting, not slide counts.
+The approximate time allocations in the scope are constraints for later drafting, not slide counts. Scope-stage timing is a planning estimate, not a validated rehearsal time.
 
 ## Required sources
 
@@ -48,7 +48,8 @@ Use, when available:
 - the relevant parts of Murphy Book 1;
 - the relevant parts of Murphy Book 2;
 - an authoritative course syllabus, if one exists;
-- any current instructor instructions or decisions in the conversation.
+- any current instructor instructions or decisions in the conversation;
+- actual timing, rehearsal, or instructor pacing reports from previous lectures, if available.
 
 Do not infer the starting point from an old plan when actual lecture artifacts exist.
 
@@ -106,6 +107,7 @@ Identify, concisely:
 - material primarily covered by lecture, notebook, or recording;
 - deferred material that may be relevant now;
 - the pacing and coverage density of the previous lecture;
+- any actual timing or instructor pacing evidence that can calibrate the new lecture;
 - notation and mathematical conventions that should carry forward;
 - what students can reasonably be assumed to know at the beginning of the new lecture.
 
@@ -124,7 +126,8 @@ Useful categories include:
 - prerequisite assumptions;
 - dissatisfaction with the previous lecture or nominal syllabus;
 - preference for a Book 1 or Book 2 treatment;
-- later material that should be prepared for but not yet taught.
+- later material that should be prepared for but not yet taught;
+- willingness to move self-contained mathematical developments into an assigned recording if the eventual live lecture becomes too dense.
 
 If these have already been supplied in the conversation, summarize them and ask only about genuinely unresolved points. Never ask the instructor to repeat an answer already available.
 
@@ -132,7 +135,7 @@ If these have already been supplied in the conversation, summarize them and ask 
 
 Normally propose 3-6 plausible trajectories.
 
-Alternatives must differ pedagogically, not cosmetically. They may differ in endpoint, amount of backfill, which book provides the main exposition, whether a topic is deferred, or how directly the lecture prepares the notebook.
+Alternatives must differ pedagogically, not cosmetically. They may differ in endpoint, amount of backfill, which book provides the main exposition, whether a topic is deferred, whether a mathematical development is live or recorded, or how directly the lecture prepares the notebook.
 
 For each path, state compactly:
 
@@ -142,6 +145,7 @@ For each path, state compactly:
 - likely notebook endpoint, if any;
 - important inclusions;
 - important deferrals or jumps;
+- likely recording opportunities when they materially affect feasibility;
 - why this path is worth considering.
 
 Do not produce a slide outline at this stage.
@@ -159,6 +163,7 @@ Include:
 - prerequisite burden and required backfill;
 - feasibility in the available lecture time;
 - alignment with previous lectures in pacing, amount of material, mathematical depth, and conceptual continuity;
+- whether any valuable but self-contained mathematical development is a plausible recording candidate;
 - implications for later lectures when they are material to the choice.
 
 Expose real tradeoffs. Do not manufacture a numerical score unless it genuinely clarifies the decision.
@@ -177,12 +182,13 @@ Useful moves include:
 - identifying material that should be derived carefully versus catalogued briefly;
 - testing whether an intervening topic can be deferred safely;
 - looking for a stronger application or notebook endpoint nearby in the books;
+- identifying mathematically valuable developments that could move to recording if slide drafting later shows the live lecture is too dense;
 - checking whether a proposed route creates an awkward burden for the following lecture;
 - revising priorities when the instructor reacts to an alternative.
 
 Do not rush from the first promising idea to a frozen scope.
 
-Once a preferred route is clear, summarize the proposed coverage and any remaining choices that would materially affect the lecture. Resolve those before building the final scope.
+Once a preferred route is clear, summarize the proposed coverage and any remaining choices that would materially affect the lecture. Resolve those before building the final scope, except choices explicitly marked for later validation such as `Recording candidate` decisions that depend on the eventual slide extent.
 
 # Build the Lecture Scope iteratively
 
@@ -218,7 +224,29 @@ Separate genuinely new material from review or scaffolding when that distinction
 
 ### Approximate time
 
-Give a realistic time allocation. Treat this as a constraint on later drafting and as a check on whether the scope fits the lecture.
+Give a realistic live-teaching time allocation. Treat this as a constraint on later drafting and as a check on whether the scope fits the lecture.
+
+Do not imply false precision. When timing materially affects feasibility, state the basis and confidence of the estimate. Prefer evidence in this order:
+
+1. measured teaching or rehearsal time for closely comparable material;
+2. instructor reports of actual pacing in previous lectures;
+3. comparison with similarly dense segments in existing course lectures;
+4. complexity-based judgment using the number and depth of derivations, worked examples, conceptual transitions, reveals, and expected discussion;
+5. generic timing heuristics only as a last resort.
+
+Leave realistic room for transitions, questions, interaction, and slippage rather than budgeting every available minute as content delivery.
+
+A `Recording candidate` remains part of the live-time budget until the instructor actually decides to move it out of the live lecture. Material marked `Recording` is excluded from the live-time budget, but the time needed to introduce or summarize it live must still be counted.
+
+### Recording note, when relevant
+
+Mark self-contained material as one of:
+
+- `Live` — currently intended for substantive live treatment;
+- `Recording candidate` — currently retained live, but a plausible item to move to recording if later extent validation shows the lecture is too dense;
+- `Recording` — the instructor has decided the primary development belongs in a recording; state what, if anything, remains live.
+
+Do not move core prerequisite reasoning into a recording merely to solve a timing problem. A recording should carry detail that can be separated without breaking the live intellectual chain.
 
 ### Summary
 
@@ -227,6 +255,39 @@ End the segment by consolidating what students should carry forward from it.
 Summaries belong at the end of segments.
 
 Review the entire intellectual arc with the instructor before proceeding.
+
+## Timing and extent validation
+
+Scope-stage timing is provisional. Validate lecture extent repeatedly as the artifact becomes more concrete.
+
+### At scope stage
+
+- Sum planned live time across intellectual-arc segments.
+- Check the total against the actual live-teaching window, not the nominal course-meeting length if part of the meeting belongs to a notebook, break, discussion, or other activity.
+- Inspect whether the mathematical depth implied by the spine is consistent with the time allocation.
+- Compare overall density with previous lectures.
+- Flag the lecture as `comfortable`, `tight`, or `overfull` rather than disguising uncertainty behind precise minute totals.
+- Record any `Recording candidate` material that could relieve pressure later, but continue counting it as live.
+
+### During section and slide drafting
+
+Re-estimate timing when the real teaching structure becomes visible. Use:
+
+- actual number of conceptual steps;
+- number and length of derivations;
+- worked examples and numerical calculations;
+- staged reveals and figure interpretation;
+- speaker-note content;
+- planned questions or student interaction;
+- transitions and summaries.
+
+If the drafted lecture is materially denser than the scope estimate, revise scope decisions rather than simply assuming faster delivery. At this stage, `Recording candidate` items can be revisited with the instructor.
+
+### Before teaching, when possible
+
+A rehearsal, partial rehearsal, or instructor timing report is the strongest validation. Use it to revise the live plan and to inform timing estimates for later lectures.
+
+If no measured timing evidence exists, say so. Do not describe complexity-based estimates as validated timings.
 
 ## 6b. Mathematical spine
 
@@ -237,7 +298,8 @@ For each item specify:
 - the mathematical object, definition, equation, result, or derivation;
 - where it enters the intellectual arc;
 - why it matters later in the lecture or course;
-- the intended treatment depth.
+- the intended treatment depth;
+- intended delivery status: `Live`, `Recording candidate`, `Recording`, or `Notebook` when relevant.
 
 Treatment depth must be explicit. Useful labels include:
 
@@ -251,6 +313,8 @@ Treatment depth must be explicit. Useful labels include:
 - `Apply` - use an already-established result in a new setting.
 
 Use more than one label when appropriate, but do not add labels for decoration.
+
+If only part of a mathematical item may move to recording, state the split explicitly, for example: `Live: result and interpretation; Recording candidate: full derivation`.
 
 The mathematical spine is selective. It is not a list of every equation in the source sections.
 
@@ -267,7 +331,8 @@ Specify:
 - what new mathematical or computational work the notebook adds;
 - what students will manipulate, estimate, simulate, compare, or implement;
 - the notebook's conceptual endpoint;
-- how the notebook extends rather than simply repeats the lecture.
+- how the notebook extends rather than simply repeats the lecture;
+- whether any definite recording is prerequisite to the notebook.
 
 If the notebook handoff exposes a gap in the intellectual arc or mathematical spine, revise those earlier parts.
 
@@ -285,7 +350,8 @@ For each example specify:
 - teaching purpose;
 - relevant part of the mathematical spine;
 - relation to the notebook, if any;
-- treatment level: `Work through`, `Compare`, or `Brief`.
+- treatment level: `Work through`, `Compare`, or `Brief`;
+- delivery status if the example is tied to a recording decision.
 
 Prefer a small number of examples with distinct pedagogical jobs over a catalogue of similar examples.
 
@@ -305,9 +371,10 @@ Include:
 - central lecture goal or question;
 - lecture endpoint;
 - notebook endpoint, when applicable;
+- any definite required recording and its role, when applicable;
 - a small number of learning outcomes that are genuinely supported by the agreed scope.
 
-Do not inflate the learning outcomes beyond what the lecture and notebook actually establish.
+Do not inflate the learning outcomes beyond what the lecture, notebook, and any required recording actually establish.
 
 # Assemble and freeze the scope
 
@@ -318,7 +385,10 @@ Check that:
 - the contract matches the actual arc;
 - the mathematical spine contains the mathematics required by the arc and notebook;
 - examples serve identified purposes;
-- time allocations fit the available lecture time;
+- live time allocations fit the available lecture time with realistic room for interaction and slippage;
+- timing confidence and evidence are represented honestly;
+- `Recording candidate` material is still counted in the live scope;
+- definite `Recording` decisions state what remains live and what students are expected to get from the recording;
 - transitions occur at segment beginnings;
 - summaries occur at segment ends;
 - notation and depth align with previous lectures;
@@ -336,8 +406,9 @@ After the instructor agrees to the scope:
 
 - identify the curriculum-boundary changes implied by the agreed scope;
 - identify sections expected to become `Covered`, `Deferred`, or `Skipped`;
-- distinguish primary `Lecture`, `Notebook`, and `Recording` coverage;
-- record mere mentions only as comments, not as coverage.
+- distinguish primary `Lecture`, `Notebook`, and definite `Recording` coverage;
+- record mere mentions only as comments, not as coverage;
+- do not treat `Recording candidate` as recording coverage until the instructor makes that decision and the recording is part of the course plan.
 
 Updating the canonical ledger is a separate bookkeeping action. If the current task includes that action, update it only after scope agreement; otherwise state the proposed ledger changes succinctly for later use.
 
@@ -368,9 +439,11 @@ The skill is complete when:
 - multiple plausible routes were considered unless the instructor explicitly fixed the route;
 - the selected route was evaluated against coherence, endpoint, book progression, time, prerequisites, notebook integration, and prior-lecture alignment;
 - the intellectual arc has been agreed;
-- the mathematical spine has been agreed, including treatment depth;
+- the mathematical spine has been agreed, including treatment depth and any recording status;
 - the notebook handoff has been agreed;
 - the concrete examples have been agreed;
 - the final lecture contract accurately summarizes the agreed scope;
 - the assembled Lecture Scope contains no premature slide or notebook drafting;
+- scope-stage timing has been labeled honestly as estimated rather than validated unless actual timing evidence exists;
+- likely later timing-validation points and any `Recording candidate` decisions are visible to downstream drafting;
 - material-ledger implications are clear enough to update separately.

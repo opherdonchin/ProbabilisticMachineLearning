@@ -23,6 +23,10 @@ These instructions apply to the entire repository.
 
 - When deciding what a new lecture should cover before drafting slides or a
   notebook, read and follow `skills/lecture-scope/SKILL.md`.
+- Also read `skills/lecture-scope/references/timing-calibration.md` when judging
+  lecture extent, mathematical density, source-page compression, or possible
+  recording candidates. Its current numbers are provisional priors and should
+  be replaced or sharpened as actual course timing data accumulate.
 - The scope process must use actual previous course artifacts and
   `Lectures/material_ledger.md`, explore alternative routes with the instructor,
   and establish an agreed intellectual arc, mathematical spine, notebook handoff,

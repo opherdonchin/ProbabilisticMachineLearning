@@ -34,6 +34,21 @@ These instructions apply to the entire repository.
 - Do not collapse scope development into slide-level or notebook drafting. Those
   are downstream authoring tasks with separate constraints.
 
+## Slide-level organization
+
+- When an already-scoped lecture section needs to be turned into an ordered
+  sequence of slide-level teaching moves, read and follow
+  `skills/slide-level-organization/SKILL.md` before detailed visual design or
+  Typst implementation.
+- Treat slide titles and order as the primary output. Use brief intention and
+  design notes to disambiguate the teaching moves rather than prematurely
+  designing finished layouts.
+- The process is iterative: clarification with the instructor, a complete
+  organization draft, critique/backpressure, and revision. Do not silently
+  change section scope, treatment depth, source coverage, endpoint, or extent;
+  surface such pressure explicitly while still completing a provisional full
+  organization when reasonably possible.
+
 ## Lecture slide authoring
 
 - Follow `Lectures/README.md` when creating or editing lecture slides

@@ -18,6 +18,46 @@ Review harness:
 
 `Lectures/L01_Probability_Statistics/review/`
 
+## Agent topology and reasoning level
+
+Use exactly this agent tree:
+
+```text
+root coordinator
+├── Noa reviewer
+├── Amir reviewer
+├── Maya reviewer
+├── Eitan reviewer
+└── Yael reviewer
+```
+
+The five reviewers must be direct children of the root coordinator.
+
+Do not create any additional analytic, synthesis, or helper agents. In particular:
+
+- reviewers must not spawn subagents of their own;
+- the coordinator must not spawn a sixth critic or synthesis agent;
+- no reviewer may delegate any part of its reading or report to another agent.
+
+### Reasoning effort
+
+The substantive review task should be run at **High reasoning effort**.
+
+If the environment allows the coordinator and child agents to use different reasoning levels:
+
+- run the root coordinator at **Medium** reasoning effort;
+- run each of the five reviewers at **High** reasoning effort.
+
+If child agents inherit the root agent's reasoning setting and cannot be configured independently, run the root coordinator at **High** so that all five reviewers inherit High.
+
+Do not deliberately reduce the five reviewers to a lightweight or low-reasoning model for speed. Prefer the strongest general/agentic model available in the current Codex environment that supports the required visual/file workflow.
+
+Do not use Extra High / XHigh merely because it is available. The goal is a careful but plausible student/consultant reading of the lecture, not maximal post-hoc reconstruction of every implication.
+
+Run all five direct-child reviewers concurrently if the environment supports at least five concurrent subagents. If concurrency is lower, run them as five distinct isolated child contexts without changing any reviewer's inputs.
+
+The root coordinator's role is procedural only: prepare the common lecture rendering, dispatch the five isolated reviews, collect their files, and perform the mechanical checks specified below. It must not read the lecture in order to form its own critique and must not interpret, compare, summarize, rank, or reconcile the reports.
+
 ## Step 1 — prepare one common rendered lecture
 
 Compile the current `slide_deck.typ` to a temporary PDF specifically for this review run. Do not modify the lecture source merely to make the review easier.
@@ -30,7 +70,7 @@ Do not give student reviewers access to Typst source or speaker notes. They are 
 
 ## Step 2 — spawn exactly five independent subagents
 
-Spawn exactly five subagents in parallel if possible, otherwise as five distinct isolated subagent contexts.
+Spawn exactly five direct-child subagents, following the topology and reasoning-level requirements above.
 
 Assign one reviewer to each persona:
 
@@ -52,6 +92,7 @@ Do NOT give a reviewer any other reviewer's output.
 Do NOT pass messages between reviewers.
 Do NOT let a reviewer read `review/README.md` or this orchestration prompt if doing so would expose the identities or design of the other reviewers.
 Do NOT ask reviewers to seek consensus.
+Do NOT allow reviewers to spawn or consult further agents.
 
 If the subagent framework automatically exposes the entire repository, explicitly instruct each subagent that it is forbidden to open:
 

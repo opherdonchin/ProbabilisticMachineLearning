@@ -33,6 +33,35 @@
 ]
 
 
+// Section summaries deliberately reuse one or two visual anchors from the
+// section, followed by a small set of key points that were already taught.
+#let section-summary-visual(body) = block(
+  width: 100%,
+  height: 5.6cm,
+  stroke: 0.7pt + palette.rule-line,
+  fill: palette.paper,
+  radius: 0.25em,
+  inset: (x: 0.55em, y: 0.45em),
+)[
+  #align(center + horizon)[#body]
+]
+
+#let section-summary-takeaways(body) = block(
+  width: 100%,
+  fill: palette.accent.lighten(91%),
+  radius: 0.25em,
+  inset: (x: 0.65em, y: 0.42em),
+)[
+  #grid(
+    columns: (6.5em, 1fr),
+    column-gutter: 0.55em,
+    align: (left + top, left + top),
+    text(size: 0.58em, weight: "semibold", fill: palette.accent)[TAKE HOME],
+    text(size: 0.69em)[#body],
+  )
+]
+
+
 
 = A familiar modeling language
 
@@ -216,13 +245,11 @@
     #stack(
       spacing: 0.35em,
       uncover("2-")[
-        - *Prior:* $p(theta)$
-        - *Likelihood:* $p(y | theta)$
-        - *Posterior:* $p(theta | y)$
+        - Bayes' rule combines prior and likelihood into a posterior
+          - *Prior:* $p(theta)$; *Likelihood:* $p(y | theta)$; *Posterior:* $p(theta | y)$
       ],
       uncover("3-")[
-        - We explored the posterior of $theta$
-          - Treating $p(y)$ as a normalizing constant
+        - We explored the posterior of $theta$, treating $p(y)$ as a normalizing constant
       ],
     )
   ],
@@ -297,7 +324,7 @@
         - The prior and the posterior are both probability distributions
       ],
       uncover("2-")[
-        - Their width expresses the uncertainty
+        - Posterior width represents remaining uncertainty
         - The uncertainty in the posterior is less than in the prior
       ],
     )
@@ -309,16 +336,28 @@
 == Summary: A familiar modeling language
 
 #content-block(
-  key-points: [
-    - Probabilistic models link observed data to parameters
-    - Graphs show model variables and dependencies
-    - Bayes' rule combines prior and likelihood into a posterior
-    - Conjugacy makes some updates analytic
-    - Posterior width represents remaining uncertainty 
-    - Posterior uncertainty narrows with more data
+  layout: "top",
+  object-width: 98%,
+  object: [
+    #section-summary-visual[
+      #course-figure(
+        lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
+        width: 92%,
+        height: 4.75cm,
+        show-source: false,
+      )
+    ]
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.22em,
+        [- A statistical model has data and unknown parameters],
+        [- Bayes' rule combines prior and likelihood into a posterior],
+        [- Posterior width represents remaining uncertainty],
+      )
+    ]
   ],
 )
-
 
 
 #section-metadata(
@@ -864,7 +903,8 @@
     #stack(
       spacing: 0.35em,
       [
-        - *Task:* predict the Iris species from four sepal and petal measurements
+        - A learning problem is defined by three ingredients: task, experience, and performance
+          - *Task:* predict the Iris species from four sepal and petal measurements
       ],
       uncover("2-")[
         - *Experience:* 150 labeled flowers, with 50 examples from each species
@@ -881,27 +921,41 @@
 == Summary: From statistics to machine learning
 
 #content-block(
-  key-points: [
-    #stack(
-      spacing: 0.35em,
-      [
-        - Statistics and computer science
-          - Statistics focused on the values of unknown parameters
-          - Computer science develops functions that map inputs to outputs
-      ],
-      uncover("2-")[
-        - Machine learning is a branch of computer science
-          - Where the function is learned from experience
-      ],
-      uncover("3-")[
-        - A learning problem is defined by three ingredients: task, experience, and performance
-          - One canonical pairing uses supervised experience $D = {(x_n, y_n)}$ for prediction
-          - The experience regime and the task are related, but they are not the same taxonomy
-      ],
-    )
+  layout: "top",
+  object-width: 98%,
+  object: [
+    #section-summary-visual[
+      #grid(
+        columns: (1fr, 1fr, 1fr),
+        gutter: 0.75em,
+        align: center + horizon,
+        course-card(title: [Training])[
+          #text(size: 0.72em)[
+            #stack(spacing: 0.35em, [$f_T: "E" arrow.r f_A$], [$E$: experience])
+          ]
+        ],
+        course-card(title: [Task])[
+          #text(size: 0.72em)[
+            #stack(spacing: 0.35em, [$f_A: "In" arrow.r "Out"$], [$f_A$: learned function])
+          ]
+        ],
+        course-card(title: [Evaluation])[
+          #text(size: 0.72em)[
+            #stack(spacing: 0.35em, [$f_P: ("In","Out") arrow.r P$], [$P$: performance])
+          ]
+        ],
+      )
+    ]
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.22em,
+        [- Machine learning asks how data can produce the required function $f$],
+        [- A learning problem is defined by three ingredients: task, experience, and performance],
+      )
+    ]
   ],
 )
-
 
 
 #section-metadata(
@@ -1004,6 +1058,8 @@
     )
   ],
   key-points: [
+    #text(size: 0.72em)[Task describes what the learned system must do.]
+    #v(0.18em)
     #let task-focus(title, basic, performance, example) = stack(
       spacing: 0.5em,
       align(left, text(weight: "semibold", fill: palette.accent, title)),
@@ -1114,14 +1170,51 @@
 == Summary: Two taxonomies, three ingredients
 
 #content-block(
-  key-points: [
-    - *Learning problem* = task + experience + performance
-    - *Experience regimes:* supervised, unsupervised, self-supervised, interactive
-    - *Task classes:* prediction, generation, discovery, action
-    - Probabilistic modeling provides a unifying language
+  layout: "top",
+  object-width: 98%,
+  object: [
+    #section-summary-visual[
+      #grid(
+        columns: (1fr, 1fr),
+        gutter: 0.7em,
+        align: top,
+        course-card(title: [Experience: what the learner observes])[
+          #text(size: 0.56em)[
+            #grid(
+              columns: (1fr, 1fr),
+              gutter: 0.35em,
+              schema-node([Supervised], [$D={(x_n,y_n)}$], density: "prose"),
+              schema-node([Unsupervised], [$D={x_n}$], density: "prose", fill: palette.paper),
+              schema-node([Self-supervised], [$x_n, f(x_n)$], density: "prose", fill: palette.paper),
+              schema-node([Interaction], [$x_t arrow.r a_t arrow.r r_(t+1)$], density: "prose"),
+            )
+          ]
+        ],
+        course-card(title: [Task: what the system must do])[
+          #text(size: 0.56em)[
+            #grid(
+              columns: (1fr, 1fr),
+              gutter: 0.35em,
+              schema-node([Prediction], [$x_* arrow.r hat(y)_*$], density: "prose"),
+              schema-node([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
+              schema-node([Discovery], [$x_* arrow.r hat(z)_*$], density: "prose", fill: palette.paper),
+              schema-node([Action], [$x_t arrow.r a_t$], density: "prose"),
+            )
+          ]
+        ],
+      )
+    ]
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.22em,
+        [- Experience describes what the learner gets to observe],
+        [- Task describes what the learned system must do],
+        [- Not every type of experience supports every task; common pairings do exist],
+      )
+    ]
   ],
 )
-
 
 
 #section-metadata(
@@ -1201,9 +1294,8 @@
     #source-note[Murphy (2025), Book 1, Figs. 1.1, 1.12a, 1.13b, and Table 1.3]
   ],
   key-points: [ #text(size:0.75em)[
-    - Machine learning is built around a small number of canonical datasets
-      - These four datasets are commonly used
-    - Each dataset supports multiple tasks
+    - Machine learning uses common datasets for practice and example problems
+    - The same dataset can support different learning tasks
     - Datasets support benchmarks that make comparisons easy
   ] ],
 )
@@ -1349,9 +1441,9 @@
     )
   ],
   key-points: [
-    - Every task invokes probability models: $p_D (y|x)$, $p_D (x|c)$, $p_D (z|x)$
+    - A learning problem is specified by the variables available and the query we want answered
     - Performances are expectations over future cases: $f_P = E[dot]$
-    - Probability models provide a common language for all four task schemas
+    - Probabilistic notation gives a common language for expressing those queries
   ],
 )
 
@@ -1360,193 +1452,98 @@
 == Summary: From datasets to learning problems
 
 #content-block(
-  key-points: [
-    - A dataset is not a task
-    - A learning problem names variables and a query
-      - prediction: summarize $p_D (y_* | x_*)$
-      - discovery: infer $p_D (z_* | x_*)$
-      - generation: sample from $p_D (x | c)$
-  ],
-)
-
-
-
-// ============================================================================
-// STRUCTURAL REBUILD — Lecture 1
-// BUILD PROMPT comments identify the slides still to be developed.
-// Completed slides below include their content, reveal sequence, and teaching notes.
-// Estimation, probability-review, high-dimensional-Gaussian, and Gaussian-potential
-// material has been removed from this working deck according to the disposition map.
-// ============================================================================
-
-#section-metadata(
-  short-title: [Probability queries],
-  subtitle: [From learning problems to exact probabilistic operations],
-)
-
-= Probability for machine learning
-
-== Large learning problems still ask familiar probability questions
-
-#content-block(
   layout: "top",
-  object-width: 94%,
+  object-width: 98%,
   object: [
-    #grid(
-      columns: (1fr, 1fr, 1fr),
-      gutter: 0.8em,
-      align: center + horizon,
-      schema-node(
-        [Observed],
-        [$x_"obs"$: features, measurements, context],
-        density: "prose",
-      ),
-      schema-node(
-        [Latent],
-        [$z$: state, representation, missing value],
-        density: "prose",
-        fill: palette.paper,
-      ),
-      schema-node(
-        [Target],
-        [$y_*$: prediction, sample, decision],
-        density: "prose",
-      ),
-    )
-    #uncover("2-")[
-      #v(0.8em)
-      #align(center)[Joint distribution: $p_D (x_"obs", z, y_*)$]
-      #v(0.8em)
+    #section-summary-visual[
+      #grid(
+        columns: (0.95fr, 1.05fr),
+        gutter: 0.8em,
+        align: center + horizon,
+        course-card(title: [Common practice datasets])[
+          #grid(
+            columns: (1fr, 1fr),
+            gutter: 0.25em,
+            [#stack(spacing: 0.08em, image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[Iris])],
+            [#stack(spacing: 0.08em, image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[MNIST])],
+            [#stack(spacing: 0.08em, image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[CIFAR-10])],
+            [#stack(spacing: 0.08em, image("figures/book1_table1_3_imdb.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[IMDB])],
+          )
+        ],
+        course-card(title: [One dataset, different tasks])[
+          #grid(
+            columns: (0.56fr, 0.44fr),
+            gutter: 0.35em,
+            align: center + horizon,
+            image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 2.65cm, fit: "contain"),
+            text(size: 0.55em)[
+              #stack(
+                spacing: 0.32em,
+                schema-node([Prediction], [$hat(y)=f_D(x_*)$], density: "prose"),
+                schema-node([Discovery], [$hat(z)=f_D(x_*)$], density: "prose", fill: palette.paper),
+                schema-node([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
+              )
+            ],
+          )
+        ],
+      )
+    ]
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.18em,
+        [- Machine learning uses common datasets for practice and example problems],
+        [- The same dataset can support different learning tasks],
+        [- A learning problem is specified by the variables available and the query we want answered],
+        [- Probabilistic notation gives a common language for expressing those queries],
+      )
     ]
   ],
-  key-points: [
-    #stack(
-      spacing: 0.35em,
-      [
-        - The variables may be high-dimensional, latent, or only partly observed
-      ],
-      uncover("2-")[
-        - The task determines which quantity we need from the joint distribution
-      ],
-      uncover("3-")[
-        - The probability language is familiar even when the model is large
-      ],
-    )
-  ],
 )
 
 
-
-== A few key operations underlie many machine learning tasks
+== Summary: Probability for machine learning
 
 #content-block(
   layout: "top",
-  object-width: 96%,
+  object-width: 98%,
   object: [
-    #align(center)[Joint distribution: $p_D (x_"obs", z, y_*)$]
-    #grid(
-      columns: (1fr, 1fr, 1fr),
-      gutter: 0.7em,
-      align: center + horizon,
-      schema-node(
-        [Summarize],
-        [#stack(
-          spacing: 0.55em,
-          [$s(x_"obs") = integral.double g(y_*) p_D (z, y_* | x_"obs") dif z dif y_*$],
-          [weighted summary of the target],
-        )],
-        density: "prose",
-      ),
-      uncover("2-")[
-        #schema-node(
+    #section-summary-visual[
+      #align(center)[Joint distribution: $p_D(x_"obs",z,y_*)$]
+      #v(0.45em)
+      #grid(
+        columns: (1fr, 1fr, 1fr),
+        gutter: 0.55em,
+        align: center + horizon,
+        schema-node(
+          [Summarize],
+          [$E[g(X)] = integral g(x) p(x) dif x$],
+          density: "prose",
+        ),
+        schema-node(
           [Marginalize],
-          [#stack(
-            spacing: 0.55em,
-            [$p_D (y_* | x_"obs") = integral p_D (z, y_* | x_"obs") dif z$],
-            [average out the latent variable],
-          )],
+          [$p(x) = integral p(x,y) dif y$],
           density: "prose",
           fill: palette.paper,
-        )
-      ],
-      uncover("3-")[
-        #schema-node(
+        ),
+        schema-node(
           [Condition],
-          [#stack(
-            spacing: 0.55em,
-            [$p_D (z | x_"obs") = frac(p_D (x_"obs", z), integral p_D (x_"obs", z') dif z')$],
-            [infer the latent variable from observations],
-          )],
+          [$p(x|y) = frac(p(x,y),p(y))$],
           density: "prose",
-        )
-      ],
-    )
-  ],
-  key-points: [
-    #stack(
-      spacing: 0.35em,
-      [
-        - Almost all machine learning tasks require an integral
-      ],
-      uncover("3-")[
-        - Latent variables are inferred or averaged out
-      ],
-      uncover("3-")[
-        - Much methodology addresses computing these integrals efficiently
-      ],
-    )
-  ],
-)
-
-
-
-// Compact reminders of the three operations introduced in this lecture.
-#let operation-cue(label, formula, fill: palette.accent.lighten(87%)) = align(right)[
-  #box(width: 32%)[
-    #text(size: 0.56em)[
-      #schema-node(label, formula, fill: fill)
+        ),
+      )
     ]
-  ]
-]
-
-#let summarize-formula = [$E[g(X)] = integral g(x) p(x) dif x$]
-#let marginalize-formula = [$p(x) = integral p(x, y) dif y \ p(y) = integral p(x, y) dif x$]
-#let condition-formula = [$ p(x | y) = frac(p(x, y), p(y)) $]
-
-#let summarize-cue = operation-cue([Summarize], summarize-formula)
-#let marginalize-cue = operation-cue(
-  [Marginalize],
-  marginalize-formula,
-  fill: palette.paper,
-)
-#let condition-cue = operation-cue([Condition], condition-formula)
-
-== Generalize the operations using generic random variables 
-
-#content-block(
-  layout: "top",
-  object-width: 96%,
-  object: [
-    #align(center)[$X$ and $Y$ have joint density $p(x, y)$]
-    #v(0.6em)
-    #grid(
-      columns: (1fr, 1fr, 1fr),
-      gutter: 0.7em,
-      align: center + horizon,
-      schema-node([Summarize], summarize-formula, density: "prose"),
-      schema-node([Marginalize], marginalize-formula, density: "prose", fill: palette.paper),
-      schema-node([Condition], condition-formula, density: "prose"),
-    )
-  ],
-  key-points: [
-    - The same operations apply to any pair of random variables $X$ and $Y$
-    - Lowercase $x$ and $y$ are possible values; conditioning fixes $Y=y$
-
-    - The normalizer  is another marginal
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.22em,
+        [- The task determines which quantity we need from the joint distribution],
+        [- A small set of recurring operations—summarize, marginalize, condition—answers many of those questions],
+        [- Integrals are a central tool for answering these queries],
+      )
+    ]
   ],
 )
-
-
 
 
 
@@ -1832,43 +1829,41 @@
 
 #content-block(
   layout: "top",
-  object-width: 96%,
+  object-width: 98%,
   object: [
-    #align(center)[$bold(x) tilde cal(N)(mu,Sigma)$]
-    #grid(
-      columns: (0.85fr, 1.15fr),
-      gutter: 1em,
-      align: horizon,
-      course-figure(
-        lecture-figure-path("generated/gaussian_geometry__summary.svg"),
-        width: 100%, height: 5.5cm, show-source: false,
-      ),
-      align(left, text(size: 0.8em)[
-        #stack(
-          spacing: 0.7em,
-          [*Location:* $mu$ is the center],
-          [
-            *Variation:* $Sigma$ sets scale and orientation \
-            $rho_(i j) = frac(Sigma_(i j), sigma_i sigma_j)$ removes units
-          ],
-          [
-            *Distance:* $d_Sigma^2=(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$ \
-            One contour: equal distance and equal density
-          ],
-        )
-      ]),
-    )
-    #align(center)[#text(size: 0.8em)[
-      *Affine maps:* $bold(y)=A bold(x)+b quad arrow.r quad mu_y=A mu+b, quad Sigma_y=A Sigma A^T$
-    ]]
-    #source-note[Figure: `gaussian_geometry_figures.ipynb`]
-  ],
-  key-points: [
-    - Mean and covariance determine a Gaussian's joint law and geometry
-    - Next: ignore some coordinates, or condition on observed ones
+    #section-summary-visual[
+      #grid(
+        columns: (1.15fr, 0.85fr),
+        gutter: 0.8em,
+        align: center + horizon,
+        course-figure(
+          lecture-figure-path("generated/gaussian_contours.svg"),
+          width: 100%,
+          height: 4.35cm,
+          show-source: false,
+        ),
+        course-card(title: [Affine map])[
+          #text(size: 0.75em)[
+            #stack(
+              spacing: 0.55em,
+              [$bold(y)=A bold(x)+b$],
+              [$E[bold(y)]=A mu+b$],
+              [$"Cov"[bold(y)]=A Sigma A^T$],
+            )
+          ]
+        ],
+      )
+    ]
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.22em,
+        [- Mean vector $mu$ locates the cloud; covariance $Sigma$ sets its shape],
+        [- A linear map changes the scale, orientation, and dimension of variation],
+      )
+    ]
   ],
 )
-
 
 
 #section-metadata(
@@ -2014,9 +2009,7 @@
     key-points: [
       #stack(
         spacing: 0.35em,
-        [- Start at the prior mean $mu_1$],
-        uncover("2-")[- Respond to the innovation $x_2-mu_2$],
-        uncover("4-")[- Cross-covariance and observed variance determine the response],
+        [- Conditioning shifts the mean according to the observed deviation $x_2-mu_2$, cross-covariance, and observed variance],
       )
     ],
   )
@@ -2229,41 +2222,45 @@
 
 #content-block(
   layout: "top",
-  object-width: 96%,
+  object-width: 98%,
   object: [
-    #align(center)[#text(size: 0.85em)[
-      $mat(x_1; x_2) tilde cal(N)(mat(mu_1; mu_2), mat(Sigma_11,Sigma_12; Sigma_21,Sigma_22))$
-    ]]
-    #twocol[
-      #course-card(title: [Ignore $x_2$: marginalize])[
-        #text(size: 0.82em)[
-          #stack(
-            spacing: 0.75em,
-            [$x_1 tilde cal(N)(mu_1,Sigma_11)$],
-          )
-        ]
-      ]
-    ][
-      #course-card(title: [Observe $x_2=a$: condition])[
-        #text(size: 0.82em)[
-          #stack(
-            spacing: 0.75em,
-            [$(x_1 | x_2=a) tilde cal(N)(mu_(1|2),S)$],
-            [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(a-mu_2)$],
-            [$S=Sigma_11-Sigma_12 Sigma_22^(-1) Sigma_21$],
-          )
-        ]
-      ]
+    #section-summary-visual[
+      #grid(
+        columns: (0.8fr, 1.2fr),
+        gutter: 0.8em,
+        align: center + horizon,
+        course-card(title: [Marginalize])[
+          #text(size: 0.77em)[
+            #stack(
+              spacing: 0.65em,
+              [$p(x_1)=integral p(x_1,x_2) dif x_2$],
+              [$x_1 tilde cal(N)(mu_1,Sigma_11)$],
+            )
+          ]
+        ],
+        course-card(title: [Condition])[
+          #text(size: 0.72em)[
+            #stack(
+              spacing: 0.62em,
+              [$p(x_1|x_2)=cal(N)(x_1|mu_(1|2),Sigma_(1|2))$],
+              [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$],
+              [$Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1)Sigma_21$],
+            )
+          ]
+        ],
+      )
     ]
-    #source-note[Murphy, Book 2 §2.3.1: Gaussian marginals and conditionals]
-  ],
-  key-points: [
-    - Conditioning gives a mean and remaining uncertainty: $S=Sigma_(1|2)$
-    - The observed value changes the mean; $S$ depends only on the covariance blocks
-    - If $Sigma_12=0$, observing $x_2$ gives the same law as ignoring it
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.22em,
+        [- Marginalizing $x_2$ integrates over all its possible values],
+        [- Conditioning shifts the mean according to the observed deviation, cross-covariance, and observed variance],
+        [- Conditioning cannot increase variance in any direction],
+      )
+    ]
   ],
 )
-
 
 
 #section-metadata(
@@ -2806,64 +2803,46 @@
 
 
 
-== Summary: one model, three probability operations
+== Summary: Linear Gaussian systems
 
 #content-block(
   layout: "top",
   object-width: 98%,
   object: [
-    #align(center)[#text(size: 0.8em)[
-      $z tilde cal(N)(mu_z,Sigma_z), quad y | z tilde cal(N)(W z+b,Omega)
-      quad arrow.r quad p(z,y)$
-    ]]
-    #v(0.5em)
-    #triad[
-      #uncover("1-")[
-        #course-card(title: [Marginalize])[
-          #text(size: 0.72em)[
+    #section-summary-visual[
+      #grid(
+        columns: (0.72fr, 1.28fr),
+        gutter: 0.75em,
+        align: center + horizon,
+        course-card(title: [Linear Gaussian model])[
+          #text(size: 0.75em)[
             #stack(
-              spacing: 0.45em,
-              [$p(y)=integral p(z,y) dif z$],
-              [$=cal(N)(y | mu_y,Sigma_(y y))$],
-              [What measurements should we expect?],
+              spacing: 0.65em,
+              [$z tilde cal(N)(mu_z,Sigma_z)$],
+              [$y | z tilde cal(N)(W z+b,Omega)$],
+              [$p(z,y)=p(z)p(y|z)$],
             )
           ]
-        ]
-      ]
-    ][
-      #uncover("2-")[
-        #course-card(title: [Condition])[
-          #text(size: 0.72em)[
-            #stack(
-              spacing: 0.45em,
-              [$p(z | y)$],
-              [$=cal(N)(z | mu_(z|y),Sigma_(z|y))$],
-              [What does the measurement tell us about the state?],
-            )
-          ]
-        ]
-      ]
-    ][
-      #uncover("3-")[
-        #course-card(title: [Summarize])[
-          #text(size: 0.72em)[
-            #stack(
-              spacing: 0.45em,
-              [$E[z | y]=integral z p(z | y) dif z$],
-              [$=mu_(z|y)$],
-              [What single estimate should we report?],
-            )
-          ]
-        ]
-      ]
+        ],
+        course-figure(
+          lecture-figure-path("generated/sensor_fusion_schematic.svg"),
+          width: 100%,
+          height: 4.55cm,
+          show-source: false,
+        ),
+      )
     ]
-    #source-note[Murphy, Book 2 §2.3.2]
-  ],
-  key-points: [
-    #uncover("3-")[- Linear Gaussian systems remain analytic under affine transformation, marginalization, conditioning, and expectation]
+    #v(0.35em)
+    #section-summary-takeaways[
+      #stack(
+        spacing: 0.22em,
+        [- The model plus affine-Gaussian rules determine the full joint distribution],
+        [- Posterior estimate = prior estimate + gain $times$ prediction error],
+        [- More measurement noise gives smaller $K$; more prior uncertainty gives larger $K$],
+      )
+    ]
   ],
 )
-
 
 
 == Lecture 1: four visual anchors

@@ -19,6 +19,17 @@ These instructions apply to the entire repository.
   regenerated or removed; do not knowingly leave stale generated outputs beside
   updated source.
 
+## Lecture scope development
+
+- When deciding what a new lecture should cover before drafting slides or a
+  notebook, read and follow `skills/lecture-scope/SKILL.md`.
+- The scope process must use actual previous course artifacts and
+  `Lectures/material_ledger.md`, explore alternative routes with the instructor,
+  and establish an agreed intellectual arc, mathematical spine, notebook handoff,
+  concrete examples, and lecture contract.
+- Do not collapse scope development into slide-level or notebook drafting. Those
+  are downstream authoring tasks with separate constraints.
+
 ## Lecture slide authoring
 
 - Follow `Lectures/README.md` when creating or editing lecture slides

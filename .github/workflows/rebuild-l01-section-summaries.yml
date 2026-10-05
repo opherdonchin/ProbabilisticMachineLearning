@@ -19,41 +19,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Align patch with current conditional-mean block
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('scripts/rebuild_l01_section_summaries.py')
-          s = p.read_text()
-          needle = "replace_once(\n'''    #stack(\n      spacing: 0.35em,\n      [- Start at the prior mean"
-          start = s.index(needle)
-          marker = "\n\n\n# ---------------------------------------------------------------------------\n# Section summaries."
-          end = s.index(marker, start)
-          s = s[:start] + s[end:]
-          p.write_text(s)
-          PY
-
       - name: Rebuild section summaries
-        run: |
-          python scripts/rebuild_l01_section_summaries.py
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('Lectures/L01_Probability_Statistics/slide_deck.typ')
-          s = p.read_text()
-          old = '''      #stack(
-        spacing: 0.35em,
-        [- Start at the prior mean $mu_1$],
-        uncover("2-")[- Respond to the innovation $x_2-mu_2$],
-        uncover("4-")[- Cross-covariance and observed variance determine the response],
-      )'''
-          new = '''      #stack(
-        spacing: 0.35em,
-        [- Conditioning shifts the mean according to the observed deviation $x_2-mu_2$, cross-covariance, and observed variance],
-      )'''
-          if s.count(old) != 1:
-              raise RuntimeError(f'conditional-mean key point: expected one match, found {s.count(old)}')
-          p.write_text(s.replace(old, new, 1))
-          PY
+        run: python scripts/run_l01_section_summary_rebuild.py
 
       - uses: typst-community/setup-typst@v4
 
@@ -76,6 +43,6 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add Lectures/L01_Probability_Statistics/slide_deck.typ
-          git rm scripts/rebuild_l01_section_summaries.py
+          git rm scripts/rebuild_l01_section_summaries.py scripts/run_l01_section_summary_rebuild.py
           git commit -m 'Rebuild Lecture 1 section summaries'
           git push

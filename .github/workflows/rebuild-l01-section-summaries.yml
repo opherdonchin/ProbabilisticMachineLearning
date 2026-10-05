@@ -43,8 +43,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add Lectures/L01_Probability_Statistics/slide_deck.typ
-          git rm scripts/rebuild_l01_section_summaries.py scripts/run_l01_section_summary_rebuild.py
+          git rm -f scripts/rebuild_l01_section_summaries.py scripts/run_l01_section_summary_rebuild.py
           git commit -m 'Rebuild Lecture 1 section summaries'
           git push
 
-# one-time authoring workflow; remove after visual QA (rerun 3)
+# one-time authoring workflow; remove after visual QA (final rerun)

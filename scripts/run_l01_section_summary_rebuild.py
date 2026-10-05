@@ -41,8 +41,56 @@ if text.count(old) != 1:
     raise RuntimeError(f'conditional-mean key point: expected one match, found {text.count(old)}')
 text = text.replace(old, new, 1)
 
-# Typst requires multiplication by juxtaposition to be written with whitespace.
-text = text.replace('cal(N)(Wz+b,Omega)', 'cal(N)(W z+b,Omega)')
+# The graphical-model helper is intentionally large on its teaching slide and
+# does not fit cleanly inside a compact summary card. On the section summary,
+# use the already-taught model equations as the first visual anchor and retain
+# the sensor-fusion figure as the second.
+old_visual = '''    #section-summary-visual[
+      #grid(
+        columns: (0.72fr, 1.28fr),
+        gutter: 0.75em,
+        align: center + horizon,
+        course-card(title: [State and measurement])[
+          #stack(
+            spacing: 0.35em,
+            linear_gaussian_graph(),
+            text(size: 0.6em)[$z tilde cal(N)(mu_z,Sigma_z), quad y|z tilde cal(N)(Wz+b,Omega)$],
+          )
+        ],
+        course-figure(
+          lecture-figure-path("generated/sensor_fusion_schematic.svg"),
+          width: 100%,
+          height: 4.55cm,
+          show-source: false,
+        ),
+      )
+    ]'''
+new_visual = '''    #section-summary-visual[
+      #grid(
+        columns: (0.72fr, 1.28fr),
+        gutter: 0.75em,
+        align: center + horizon,
+        course-card(title: [Linear Gaussian model])[
+          #text(size: 0.75em)[
+            #stack(
+              spacing: 0.65em,
+              [$z tilde cal(N)(mu_z,Sigma_z)$],
+              [$y | z tilde cal(N)(W z+b,Omega)$],
+              [$p(z,y)=p(z)p(y|z)$],
+            )
+          ]
+        ],
+        course-figure(
+          lecture-figure-path("generated/sensor_fusion_schematic.svg"),
+          width: 100%,
+          height: 4.55cm,
+          show-source: false,
+        ),
+      )
+    ]'''
+if text.count(old_visual) != 1:
+    raise RuntimeError(f'Linear Gaussian summary visual: expected one match, found {text.count(old_visual)}')
+text = text.replace(old_visual, new_visual, 1)
 
 probability_summary = r'''== Summary: Probability for machine learning
 

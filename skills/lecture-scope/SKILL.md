@@ -49,7 +49,8 @@ Use, when available:
 - the relevant parts of Murphy Book 2;
 - an authoritative course syllabus, if one exists;
 - any current instructor instructions or decisions in the conversation;
-- actual timing, rehearsal, or instructor pacing reports from previous lectures, if available.
+- actual timing, rehearsal, or instructor pacing reports from previous lectures, if available;
+- instructor-specific delivery-rate experience from comparable courses, used only as a rough calibration.
 
 Do not infer the starting point from an old plan when actual lecture artifacts exist.
 
@@ -229,10 +230,12 @@ Give a realistic live-teaching time allocation. Treat this as a constraint on la
 Do not imply false precision. When timing materially affects feasibility, state the basis and confidence of the estimate. Prefer evidence in this order:
 
 1. measured teaching or rehearsal time for closely comparable material;
-2. instructor reports of actual pacing in previous lectures;
-3. comparison with similarly dense segments in existing course lectures;
-4. complexity-based judgment using the number and depth of derivations, worked examples, conceptual transitions, reveals, and expected discussion;
-5. generic timing heuristics only as a last resort.
+2. instructor judgment about the length and pacing of an existing lecture in this course, especially when its slide structure and mathematical density can be compared directly;
+3. instructor reports of actual pacing in previous lectures or comparable courses;
+4. instructor-specific slide-delivery experience from comparable teaching, used as a rough prior rather than a fixed conversion rate;
+5. comparison with similarly dense segments in existing course lectures;
+6. complexity-based judgment using the number and depth of derivations, worked examples, conceptual transitions, reveals, and expected discussion;
+7. generic timing heuristics only as a last resort.
 
 Leave realistic room for transitions, questions, interaction, and slippage rather than budgeting every available minute as content delivery.
 
@@ -260,12 +263,24 @@ Review the entire intellectual arc with the instructor before proceeding.
 
 Scope-stage timing is provisional. Validate lecture extent repeatedly as the artifact becomes more concrete.
 
+### Current provisional course calibration
+
+Until this course has measured timing data, use the following instructor-specific anchors as rough calibration rather than as hard limits:
+
+- The instructor judges the current Lecture 1 deck to be about the right live-lecture length for this course.
+- At the time this calibration was recorded, `Lectures/L01_Probability_Statistics/slide_deck_revised.typ` contained 61 `==` content-slide headings. Recount if the deck changes. This is not necessarily identical to rendered-page count because Touying section handling, reveals, overlays, and subslides differ from ordinary PowerPoint slides.
+- The instructor reports typically teaching roughly 60-80 PowerPoint slides in a three-hour undergraduate lecture.
+
+These anchors may not agree exactly. Treat the current Lecture 1 deck as the stronger course-specific benchmark, and the 60-80-slide undergraduate experience as a wider plausibility range for the instructor's delivery pace. Do not convert either into a rigid slides-per-minute rule. Mathematical derivation slides, visual/example slides, staged reveals, and discussion-heavy slides consume very different amounts of time.
+
+At scope stage, use these anchors mainly to detect obviously implausible extent. During slide drafting, use them as a coarse length check alongside mathematical density and speaker-note content.
+
 ### At scope stage
 
 - Sum planned live time across intellectual-arc segments.
 - Check the total against the actual live-teaching window, not the nominal course-meeting length if part of the meeting belongs to a notebook, break, discussion, or other activity.
 - Inspect whether the mathematical depth implied by the spine is consistent with the time allocation.
-- Compare overall density with previous lectures.
+- Compare overall density with previous lectures, especially the current L01 benchmark.
 - Flag the lecture as `comfortable`, `tight`, or `overfull` rather than disguising uncertainty behind precise minute totals.
 - Record any `Recording candidate` material that could relieve pressure later, but continue counting it as live.
 
@@ -279,7 +294,10 @@ Re-estimate timing when the real teaching structure becomes visible. Use:
 - staged reveals and figure interpretation;
 - speaker-note content;
 - planned questions or student interaction;
-- transitions and summaries.
+- transitions and summaries;
+- total content-slide count relative to the current L01 deck and the instructor's broader 60-80-slide experience.
+
+Slide count is only a coarse extent signal. A lecture with substantially fewer but much denser mathematical slides may still be longer than L01; a lecture with more short visual or transition slides may still be comfortable.
 
 If the drafted lecture is materially denser than the scope estimate, revise scope decisions rather than simply assuming faster delivery. At this stage, `Recording candidate` items can be revisited with the instructor.
 

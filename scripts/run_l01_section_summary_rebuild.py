@@ -41,6 +41,9 @@ if text.count(old) != 1:
     raise RuntimeError(f'conditional-mean key point: expected one match, found {text.count(old)}')
 text = text.replace(old, new, 1)
 
+# Typst requires multiplication by juxtaposition to be written with whitespace.
+text = text.replace('cal(N)(Wz+b,Omega)', 'cal(N)(W z+b,Omega)')
+
 probability_summary = r'''== Summary: Probability for machine learning
 
 #content-block(

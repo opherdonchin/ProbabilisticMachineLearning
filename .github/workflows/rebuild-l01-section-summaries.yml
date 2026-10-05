@@ -46,3 +46,5 @@ jobs:
           git rm scripts/rebuild_l01_section_summaries.py scripts/run_l01_section_summary_rebuild.py
           git commit -m 'Rebuild Lecture 1 section summaries'
           git push
+
+# one-time authoring workflow; remove after visual QA

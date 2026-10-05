@@ -47,4 +47,4 @@ jobs:
           git commit -m 'Rebuild Lecture 1 section summaries'
           git push
 
-# one-time authoring workflow; remove after visual QA (rerun 2)
+# one-time authoring workflow; remove after visual QA (rerun 3)

@@ -11,8 +11,8 @@ Inspect every specified slide in every handout and reveal state represented by
 the report and renders. Check that layout stays stable and legible, content does
 not overlap, equations are not clipped, related equations and key points appear
 together, answers do not appear before their reveal, and static retrospective
-summary slides look back without introducing new material. Use the relevant
-speaker notes only as needed to understand intended reveal timing.
+summary slides look back without introducing new material. Infer intended
+reveal timing from the slide content and source.
 
 Preserve mathematical content, meaning, and the user's concurrent work. Report
 content or mathematical concerns without changing semantics. Do not claim that

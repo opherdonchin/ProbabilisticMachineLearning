@@ -23,5 +23,5 @@ The three dataset-gallery crops above were rendered from the course copy at
 interpretive text remain native Typst content in the lecture deck.
 
 The lecture reproduces these figures to follow the supplied Book 1 reading.
-Retain the on-slide source lines and speaker-note attribution if the assets are
-reused or redistributed.
+Retain the on-slide source lines and this attribution if the assets are reused
+or redistributed.

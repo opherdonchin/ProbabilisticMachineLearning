@@ -243,8 +243,8 @@ In particular:
   most a short live bridge from Gaussian conditioning;
 - the live endpoint is linear Gaussian inference, not exponential-family theory.
 
-The slide deck remains concept-first: one conceptual move per slide, modest
-equation density, and meaningful speaker notes. Long derivations belong in
+The slide deck remains concept-first: one conceptual move per slide and modest
+equation density. Long derivations belong in
 recorded support, reserve slides, or the notebook when computation is the point.
 
 = Completion criteria

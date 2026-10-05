@@ -912,7 +912,7 @@
 = Classes of machine learning problems
 
 // Lecture 1 continuation after the machine-learning task taxonomy.
-// Slide bodies use equations, figures, and schematics; teaching prose stays in speaker notes.
+// Slide bodies use equations, figures, and schematics to carry the teaching argument.
 
 // `schema-node`, `schema-arrow`, and `source-note` are shared course
 // components (see course.typ); they are imported via `*` above.
@@ -2370,12 +2370,6 @@
   ],
 )
 
-#speaker-note[
-  Use this slide as an orientation map, not as three separate derivations. The
-  model stays fixed; the probability query changes with the question. The next
-  slides solve these questions by first constructing the joint Gaussian and
-  then reusing the marginalization and conditioning rules already established.
-]
 
 
 == A linear Gaussian model defines a joint Gaussian
@@ -2435,13 +2429,6 @@
   ],
 )
 
-#speaker-note[
-  This is the payoff from the earlier affine-map material. Stack the state and
-  measurement into one vector. Since both are affine functions of jointly
-  Gaussian quantities, their joint law is Gaussian. Emphasize the three blocks
-  we will reuse: the predicted measurement mean mu_y, the cross-covariance
-  Sigma_zy, and the measurement covariance Sigma_yy.
-]
 
 
 == Bayes' rule for Gaussians
@@ -2501,12 +2488,6 @@
   ],
 )
 
-#speaker-note[
-  Do not derive Bayes' rule from products of Gaussian densities here. We already
-  proved the general Gaussian conditioning rule. Identify x_1 with z and x_2
-  with y, then substitute the joint blocks from the previous slide. This is the
-  short proof Murphy uses in Book 2.
-]
 
 
 == Bayes' rule as an update formula
@@ -2549,12 +2530,6 @@
   ],
 )
 
-#speaker-note[
-  Read the posterior mean as an update rather than as a matrix formula. The
-  prediction error is y-mu_y: what was observed minus what the model expected
-  to observe. K determines how much that discrepancy changes the state estimate.
-  The next two slides make the role of K transparent in one dimension.
-]
 
 
 == The scalar Gaussian update
@@ -2623,14 +2598,6 @@
   ],
 )
 
-#speaker-note[
-  Define the scalar symbols explicitly rather than introducing new notation by
-  fiat: sigma_z^2 is the scalar version of Sigma_z, while sigma_epsilon^2 is
-  the scalar version of the measurement-noise covariance Omega. Since
-  y=z+epsilon and z is independent of epsilon, Cov(z,y)=Var(z), while Var(y)
-  adds the two variances. Substituting these moments into the generic gain gives
-  the uncertainty ratio used on the next slide.
-]
 
 
 == The update is weighted by relative uncertainty
@@ -2706,13 +2673,6 @@
   ],
 )
 
-#speaker-note[
-  Keep this slide visual. Hold mu_z and the observed y fixed and vary only the
-  relative uncertainties. When measurement noise is small, K is near one and
-  the posterior mean moves almost all the way to y. Equal variances give the
-  midpoint. Large measurement noise makes K small, so the prior mean moves very
-  little. This is the one-dimensional intuition that sensor fusion generalizes.
-]
 
 
 == Inference often combines conditioning and summarizing
@@ -2749,14 +2709,6 @@
   ],
 )
 
-#speaker-note[
-  This is deliberately a process slide, not another derivation. Conditioning
-  answers which states remain plausible after observing y. If the downstream
-  task needs one estimate, summarize that posterior. Under squared-error loss
-  the posterior mean is the Bayes estimator, but the important point here is
-  that conditioning and summarizing are sequential operations, not competing
-  alternatives.
-]
 
 
 == Sensor fusion combines measurements according to their uncertainty
@@ -2802,14 +2754,6 @@
   ],
 )
 
-#speaker-note[
-  This is Murphy's sensor-fusion example and the first real application of the
-  condition-then-summarize pipeline. The scalar gain intuition survives in
-  multiple dimensions: a more precise source has more influence. In the third
-  panel reliability is directional, so the posterior can be closer to one
-  sensor horizontally and the other vertically. Algebraically x and y can be
-  stacked into one observation vector and handled by the same LGS formula.
-]
 
 
 == The same model can also predict measurements
@@ -2860,14 +2804,6 @@
   ],
 )
 
-#speaker-note[
-  Return explicitly to the third operation from the orientation slide. Here we
-  are not inferring z. We integrate z out and ask what measurements the model
-  predicts before one is observed. The result reuses the same predicted mean
-  and measurement covariance that appeared in Bayes' rule; evaluating this
-  density at an observed y tells us how plausible that measurement was under
-  the model.
-]
 
 
 == Summary: one model, three probability operations
@@ -2928,13 +2864,6 @@
   ],
 )
 
-#speaker-note[
-  Close the lecture by returning to the three operations introduced before the
-  Gaussian material. One model supplies all three answers. The special value of
-  the linear Gaussian case is closure: each operation remains analytic. A useful
-  forward reference is that repeating Gaussian prediction and conditioning over
-  time gives the Kalman filter, which appears later in the course.
-]
 
 
 == Lecture 1: four visual anchors
@@ -3015,14 +2944,3 @@
     #source-note[Visual anchors from Lecture 1: MNIST tasks, three probability operations, Gaussian conditioning, and sensor fusion]
   ],
 )
-
-#speaker-note[
-  Use this as a visual memory slide, not a list of everything covered. The four
-  anchors are deliberately selective. First, the same dataset can support
-  different learning questions. Second, those questions translate into a small
-  set of probability operations. Third, for Gaussians, conditioning has a closed
-  form that updates both mean and covariance. Fourth, the linear Gaussian sensor
-  fusion example shows the practical interpretation: measurements are combined
-  according to their uncertainty.
-]
-

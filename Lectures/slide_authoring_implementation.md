@@ -49,10 +49,6 @@ Figures:
 - `#course-figure(...)` — image with optional caption and source line; shows a labeled placeholder automatically when the file is missing, so a separate `maybe-image`-style wrapper is unnecessary
 - `#figure-source(...)` — the provenance line alone, for a composite figure whose panels each set `show-source: false`
 
-Speaker notes:
-
-- `#speaker-note[...]` — provided by Touying directly, not by `course.typ`
-
 Coordinate annotations:
 
 - `#callout(...)`, `#annotated-object(...)`

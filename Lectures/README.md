@@ -57,7 +57,7 @@ in the current agent environment; if either is unavailable, inform the user.
 - Use Touying version `0.7.4` for project-owned lecture themes and shared components.
 - Keep lecture content separate from reusable styling and layout logic.
 - Put shared visual style, layout helpers, and reusable slide components in the shared course include `Lectures/course.typ`. It sits on top of a vendored, read-only base theme in `Lectures/themes/`.
-- Lecture `.typ` files should focus on narrative, equations, figures, examples, and speaker notes rather than ad hoc styling.
+- Lecture `.typ` files should focus on narrative, equations, figures, and examples rather than ad hoc styling.
 
 ## Shared course API
 
@@ -102,10 +102,6 @@ Figures:
 - `#course-figure(...)` — image with optional caption and source line; shows a labeled placeholder automatically when the file is missing, so a separate `maybe-image`-style wrapper is unnecessary
 - `#figure-source(...)` — the provenance line alone, for a composite figure whose panels each set `show-source: false`
 
-Speaker notes:
-
-- `#speaker-note[...]` — provided by Touying directly, not by `course.typ`
-
 Coordinate annotations:
 
 - `#callout(...)`, `#annotated-object(...)`
@@ -131,9 +127,7 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 
 ## Speaker notes
 
-- Every substantive slide should have a meaningful `#speaker-note[...]`.
-- Speaker notes should record the intended argument, transition, emphasis, caveat, or teaching move.
-- Do not use speaker notes merely to restate the visible slide text.
+- Do not add speaker notes unless the instructor explicitly requests them.
 
 ## Figures and computational provenance
 
@@ -170,7 +164,7 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 - **Time key points deliberately.** Show orienting context immediately, interpretations with their supporting content, and concluding takeaways when justified. When asking students to predict, conceal the answer everywhere until the response step.
 - **Prefer cumulative `uncover` sequences.** Use explicit reveal numbers when coordinating separate regions. Reserve `pause` for simple sequential flow and `only` or alternatives for intentional replacement.
 - **Keep the layout stable.** Reserve space for hidden content and check that equations, figures, and bullets do not shift between states. Keep essential results available in the final handout state.
-- **Record the teaching cues in speaker notes.** Explain consequential pauses, prediction questions, and reveal order.
+- **Make reveal timing clear from the slide content.** Keep consequential pauses and prediction questions legible in the reveal sequence.
 - **Verify presentation and handout modes.** Inspect every state of changed slides with handout mode off, then check the final handout. Check overflow, premature answers, stray bullets, redundant clicks, and missing content.
 
 ## Content blocks and component arguments
@@ -200,7 +194,6 @@ Before a lecture is considered final:
 - all required figures and assets must exist;
 - there should be no unintended overflow or clipped content;
 - slide count should be plausible for the intended lecture duration;
-- every substantive slide should have speaker notes;
 - the rendered deck should be visually reviewed.
 
 ## Mechanical checks versus visual review

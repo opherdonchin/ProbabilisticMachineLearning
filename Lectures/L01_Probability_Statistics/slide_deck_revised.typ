@@ -912,7 +912,7 @@
 = Classes of machine learning problems
 
 // Lecture 1 continuation after the machine-learning task taxonomy.
-// Slide bodies use equations, figures, and schematics; teaching prose stays in speaker notes.
+// Slide bodies use equations, figures, and schematics to carry the teaching argument.
 
 // `schema-node`, `schema-arrow`, and `source-note` are shared course
 // components (see course.typ); they are imported via `*` above.

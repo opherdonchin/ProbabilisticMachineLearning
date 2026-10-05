@@ -54,9 +54,22 @@ probability_summary = r'''== Summary: Probability for machine learning
         columns: (1fr, 1fr, 1fr),
         gutter: 0.55em,
         align: center + horizon,
-        schema-node([Summarize], summarize-formula, density: "prose"),
-        schema-node([Marginalize], marginalize-formula, density: "prose", fill: palette.paper),
-        schema-node([Condition], condition-formula, density: "prose"),
+        schema-node(
+          [Summarize],
+          [$E[g(X)] = integral g(x) p(x) dif x$],
+          density: "prose",
+        ),
+        schema-node(
+          [Marginalize],
+          [$p(x) = integral p(x,y) dif y$],
+          density: "prose",
+          fill: palette.paper,
+        ),
+        schema-node(
+          [Condition],
+          [$p(x|y) = frac(p(x,y),p(y))$],
+          density: "prose",
+        ),
       )
     ]
     #v(0.35em)

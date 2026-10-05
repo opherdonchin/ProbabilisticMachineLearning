@@ -52,6 +52,8 @@ Use, when available:
 - actual timing, rehearsal, or instructor pacing reports from previous lectures, if available;
 - instructor-specific delivery-rate experience from comparable courses, used only as a rough calibration.
 
+When estimating lecture extent, also read `references/timing-calibration.md`. Its counts and coefficients are provisional course-specific priors, not universal rules.
+
 Do not infer the starting point from an old plan when actual lecture artifacts exist.
 
 Treat the material ledger as the canonical record of curriculum boundaries and prior section dispositions. A section that was merely mentioned is not thereby covered.
@@ -265,15 +267,16 @@ Scope-stage timing is provisional. Validate lecture extent repeatedly as the art
 
 ### Current provisional course calibration
 
-Until this course has measured timing data, use the following instructor-specific anchors as rough calibration rather than as hard limits:
+Until this course has measured timing data, use the instructor-specific anchors and feature definitions in `references/timing-calibration.md` as rough calibration rather than as hard limits.
 
-- The instructor judges the current Lecture 1 deck to be about the right live-lecture length for this course.
-- At the time this calibration was recorded, `Lectures/L01_Probability_Statistics/slide_deck_revised.typ` contained 61 `==` content-slide headings. Recount if the deck changes. This is not necessarily identical to rendered-page count because Touying section handling, reveals, overlays, and subslides differ from ordinary PowerPoint slides.
-- The instructor reports typically teaching roughly 60-80 PowerPoint slides in a three-hour undergraduate lecture.
+In particular:
 
-These anchors may not agree exactly. Treat the current Lecture 1 deck as the stronger course-specific benchmark, and the 60-80-slide undergraduate experience as a wider plausibility range for the instructor's delivery pace. Do not convert either into a rigid slides-per-minute rule. Mathematical derivation slides, visual/example slides, staged reveals, and discussion-heavy slides consume very different amounts of time.
-
-At scope stage, use these anchors mainly to detect obviously implausible extent. During slide drafting, use them as a coarse length check alongside mathematical density and speaker-note content.
+- treat the current L01 deck as the strongest course-specific extent benchmark;
+- use the instructor's broader 60-80-slide undergraduate experience only as a wider plausibility range;
+- distinguish new equation/result families from carried-forward equations and derivational algebra;
+- count raw figures separately from slide-level visual/schema groups;
+- count only source pages substantively traversed by the scope rather than the numeric span between first and last citation;
+- use the prototype slide-extent equation in the calibration reference only as an independent warning signal, never as a target that overrides pedagogical judgment.
 
 ### At scope stage
 
@@ -281,6 +284,7 @@ At scope stage, use these anchors mainly to detect obviously implausible extent.
 - Check the total against the actual live-teaching window, not the nominal course-meeting length if part of the meeting belongs to a notebook, break, discussion, or other activity.
 - Inspect whether the mathematical depth implied by the spine is consistent with the time allocation.
 - Compare overall density with previous lectures, especially the current L01 benchmark.
+- When enough detail exists, estimate `K`, `P`, `E_new`, `E_carry`, `E_deriv`, and `V` using the definitions in the calibration reference and compute the prototype slide-count estimate. Report the range and uncertainty; do not turn this into a slide outline.
 - Flag the lecture as `comfortable`, `tight`, or `overfull` rather than disguising uncertainty behind precise minute totals.
 - Record any `Recording candidate` material that could relieve pressure later, but continue counting it as live.
 
@@ -289,8 +293,11 @@ At scope stage, use these anchors mainly to detect obviously implausible extent.
 Re-estimate timing when the real teaching structure becomes visible. Use:
 
 - actual number of conceptual steps;
-- number and length of derivations;
+- new equation/result families;
+- carried-forward equation blocks;
+- number and length of derivational blocks;
 - worked examples and numerical calculations;
+- selected visual/schema groups and the slides they occupy;
 - staged reveals and figure interpretation;
 - speaker-note content;
 - planned questions or student interaction;
@@ -334,6 +341,8 @@ Use more than one label when appropriate, but do not add labels for decoration.
 
 If only part of a mathematical item may move to recording, state the split explicitly, for example: `Live: result and interpretation; Recording candidate: full derivation`.
 
+When a previously established equation is needed again to make a subsequent derivation or specialization legible, treat it as carried-forward support rather than as new mathematical content. Downstream slide design may use the course's existing `Carry forward` visual language or a lighter same-lecture variant; this scope skill should record the dependency but not design the block.
+
 The mathematical spine is selective. It is not a list of every equation in the source sections.
 
 Review the mathematical spine with the instructor before proceeding.
@@ -370,6 +379,8 @@ For each example specify:
 - relation to the notebook, if any;
 - treatment level: `Work through`, `Compare`, or `Brief`;
 - delivery status if the example is tied to a recording decision.
+
+When inspecting source material, distinguish figures/schemas that are merely available from those actually selected for teaching. Estimate slide cost using selected visual/schema groups rather than raw image-file count.
 
 Prefer a small number of examples with distinct pedagogical jobs over a catalogue of similar examples.
 

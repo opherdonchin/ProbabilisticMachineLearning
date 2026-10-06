@@ -8,11 +8,11 @@ Use `skills/slide-level-organization/SKILL.md` on **one section at a time**. The
 
 **Lecture trajectory**
 
-Exponential-family representation → moments from the log-partition function → learning by moment matching → empirical Gamma fit → categorical counts → transition counts and Markov learning.
+Exponential-family representation → Gaussian canonical derivation → moments from the log-partition function → MLE as moment matching → maximum-entropy characterization → empirical Gamma fit → categorical counts → transition counts and Markov learning.
 
 **Live-time target**
 
-Approximately 100–120 minutes total. Recording candidates remain in the live budget until explicitly moved.
+Approximately 100–120 minutes total. Section 2 is deliberately self-contained so that it can later be moved to a recording with minimal disruption. Recording candidates remain in the live budget until explicitly moved.
 
 **Starting assumptions**
 
@@ -26,6 +26,7 @@ Approximately 100–120 minutes total. Recording candidates remain in the live b
 - Stop Markov-chain coverage before §2.6.4 stationary distributions.
 - Book 2 §2.6.3 parameter estimation is the bridge to the student notebook.
 - Sparse-data smoothing / Dirichlet-MAP treatment is optional notebook extension, not required live scope.
+- Section-summary slides should be explicitly labeled as summaries in the slide-organization handoff.
 
 ---
 
@@ -39,7 +40,7 @@ Introduce the exponential-family representation as a useful common coordinate sy
 
 ### Entry condition / transition in
 
-Lecture 1 ended with Gaussians in ordinary and precision coordinates. Students also know Bernoulli/binomial models well. Begin from those familiar objects and show that their apparently different forms share a common representation.
+Lecture 1 ended with familiar probabilistic models and Gaussian information/precision coordinates. Begin from Bernoulli as a simple known distribution and ask whether apparently different families can share one algebraic form.
 
 ### Endpoint
 
@@ -50,7 +51,7 @@ Students can identify the roles of
 - natural parameter `η`;
 - log-partition function `A(η)`;
 
-and understand conceptually why natural parameters and sufficient statistics are useful descriptions of a distribution family.
+and understand conceptually why this representation is useful.
 
 ### Sources
 
@@ -62,39 +63,92 @@ and understand conceptually why natural parameters and sufficient statistics are
 - General exponential-family form.
 - Meaning of `h(x)`, `T(x)`, `η`, and `A(η)`.
 - Bernoulli in canonical/exponential-family form.
-- Gaussian connection to the precision/information coordinates already encountered in Lecture 1.
+- Brief forward pointer that Gaussian models also fit the same representation; the full algebra belongs to Section 2.
 
 ### Mathematical treatment constraints
 
 - General exponential-family form — **State + Motivate**.
 - Bernoulli canonical form — **Work through**.
-- Gaussian exponential-family representation — **Recognize / connect to Lecture 1**, not a second full derivation.
-- Full Gaussian canonical algebra — **Recording candidate** if extent later requires relief; still counted live for now.
+- Gaussian — **Mention / bridge only** in this section.
 
 ### Carry-forward / prerequisites
 
 - Bernoulli/binomial likelihoods.
-- Gaussian precision coordinates from Lecture 1.
-
-### Empirical application / required figure
-
-No empirical application is currently assigned to this section. Mathematical examples here are scaffolding, not counted as empirical examples.
+- Familiarity with Gaussian precision coordinates from Lecture 1.
 
 ### Boundary / exclusions
 
-Do not yet develop derivatives of `A(η)`, mean parameters, dataset likelihoods, MLE, or categorical distributions.
+Do not perform the Gaussian canonical derivation here. Do not yet develop derivatives of `A(η)`, dataset likelihoods, MLE, or categorical distributions.
 
 ### Extent
 
-Approximately 15–18 minutes.
+Approximately 10–12 minutes.
 
 ### Take-home
 
-Apparently different familiar distributions can share one mathematical architecture.
+Apparently different distributions can share one mathematical architecture that separates data statistics, parameters, and normalization.
 
 ---
 
-## Section 2 — The log-partition function connects parameters to moments
+## Section 2 — A Gaussian can be rewritten in exponential-family coordinates
+
+**Status:** Ready for slide organization. **Whole-section recording candidate.**
+
+### Purpose / role
+
+Work through the full Gaussian-to-exponential-family algebra in one self-contained place. This gives students a substantial familiar example, connects directly to Lecture 1 precision/information coordinates, and makes the material easy to remove intact to a recording later.
+
+### Entry condition / transition in
+
+Section 1 established the general exponential-family form using Bernoulli. Students already know the multivariate Gaussian density and precision matrix from Lecture 1.
+
+### Endpoint
+
+Students can see explicitly how the multivariate Gaussian density is rearranged into exponential-family form and identify its sufficient statistics, natural parameters, and log-partition term.
+
+### Sources
+
+- Murphy Book 2 §2.4.2.5 (multivariate Gaussian exponential-family example).
+- Lecture 1 Gaussian precision/information-form material as carry-forward context.
+
+### Assigned content
+
+- Start from the multivariate Gaussian density.
+- Introduce `Λ = Σ^{-1}`.
+- Expand the quadratic form `(x-μ)^T Λ (x-μ)`.
+- Separate data-dependent terms from parameter-only terms.
+- Identify sufficient statistics involving `x` and `xx^T`.
+- Identify natural parameters corresponding to `Λμ` and `-½Λ`.
+- Identify the normalizing/log-partition term sufficiently to complete the mapping.
+- Connect the result back to Lecture 1 information/precision coordinates.
+
+### Mathematical treatment constraints
+
+- Gaussian canonical rewrite — **Derive fully enough that every term in the exponential-family representation has an identifiable origin**.
+- Matrix symmetry/vectorization technicalities — **Mention only if needed**; do not let them become the topic.
+- The point is the representation and connection to prior Gaussian work, not new Gaussian inference.
+
+### Carry-forward / prerequisites
+
+- Multivariate Gaussian density.
+- Precision matrix `Λ = Σ^{-1}`.
+- Quadratic-form algebra from Lecture 1.
+
+### Boundary / exclusions
+
+Do not derive Gaussian conditioning or linear-Gaussian inference again. Do not yet use derivatives of the log-partition function.
+
+### Extent
+
+Approximately 8–10 minutes.
+
+### Take-home
+
+The Gaussian precision/information form from Lecture 1 is exactly an exponential-family natural-parameter representation.
+
+---
+
+## Section 3 — The log-partition function connects parameters to moments
 
 **Status:** Ready for slide organization.
 
@@ -104,7 +158,7 @@ Show why the exponential-family representation is computationally useful rather 
 
 ### Entry condition / transition in
 
-Students now know the exponential-family form and the roles of `T(x)`, `η`, and `A(η)`. The next question is what the log-partition function buys us.
+Students now know the exponential-family form and have seen it instantiated in both Bernoulli and Gaussian models. The next question is what the log-partition function buys us.
 
 ### Endpoint
 
@@ -112,7 +166,7 @@ Students understand
 
 `∇A(η) = Eη[T(X)]`
 
-and understand that the curvature of `A` is related to uncertainty in the sufficient statistics. They also understand natural parameters and mean parameters as two descriptions of the same family.
+and that the curvature of `A` is related to uncertainty in the sufficient statistics. They also understand natural parameters and mean parameters as two descriptions of the same family.
 
 ### Sources
 
@@ -123,7 +177,7 @@ and understand that the curvature of `A` is related to uncertainty in the suffic
 - First derivative of the log-partition function gives expected sufficient statistics.
 - Second derivative gives covariance of sufficient statistics.
 - Natural parameters versus mean parameters.
-- Bernoulli as the running mathematical instance.
+- Bernoulli as a compact check of the first-derivative result.
 
 ### Mathematical treatment constraints
 
@@ -136,36 +190,33 @@ and understand that the curvature of `A` is related to uncertainty in the suffic
 
 - Exponential-family form from Section 1.
 - Bernoulli canonical representation from Section 1.
-
-### Empirical application / required figure
-
-No empirical application is currently assigned to this section.
+- Gaussian example from Section 2 may be referenced but is not required for the derivation.
 
 ### Boundary / exclusions
 
-Stop before dataset likelihood, sufficient statistics for a sample, and MLE.
+Stop before sample likelihood, sufficient statistics for a dataset, and MLE.
 
 ### Extent
 
-Approximately 18–22 minutes.
+Approximately 18–20 minutes.
 
 ### Take-home
 
-Derivatives of the log-partition function recover moments of the sufficient statistics.
+Derivatives of the log-partition function convert natural parameters into moments of the sufficient statistics.
 
 ---
 
-## Section 3 — Learning an exponential-family model means matching model moments to data
+## Section 4 — Learning an exponential-family model means matching model moments to data
 
 **Status:** Ready for slide organization.
 
 ### Purpose / role
 
-Turn the exponential-family representation into a general learning rule. This is the mathematical center of the lecture.
+Turn the exponential-family representation into a general maximum-likelihood learning rule. This is the main estimation section of the lecture.
 
 ### Entry condition / transition in
 
-Section 2 established that model moments are derivatives of `A(η)`. Now introduce observed data and ask how those parameters are learned.
+Section 3 established that model moments are derivatives of `A(η)`. Now introduce observed data and ask how `η` should be chosen from a sample.
 
 ### Endpoint
 
@@ -173,16 +224,15 @@ Students can derive the IID exponential-family likelihood, see why the data ente
 
 `∇η ℓ(η) = Σn T(xn) - N Eη[T(X)]`,
 
-hence the MLE moment-matching condition
+hence
 
 `Eη̂[T(X)] = (1/N) Σn T(xn)`.
 
-Students should also understand the maximum-entropy interpretation as an explanation for why exponential families arise under moment constraints.
+They can recognize Bernoulli MLE as the simplest specialization of the same rule.
 
 ### Sources
 
 - Murphy Book 2 §2.4.5.
-- Murphy Book 2 §2.4.7.
 - Murphy Book 1 §4.2 as familiar MLE scaffolding where useful.
 
 ### Assigned content
@@ -191,35 +241,29 @@ Students should also understand the maximum-entropy interpretation as an explana
 - Aggregate sufficient statistics.
 - Likelihood gradient.
 - MLE as moment matching.
-- Bernoulli MLE as a familiar specialization if useful for checking the general rule.
-- Maximum-entropy interpretation of the exponential family.
+- Bernoulli MLE as a familiar specialization/check.
 
 ### Mathematical treatment constraints
 
 - Dataset likelihood and sufficient-statistic reduction — **Derive**.
 - Exponential-family MLE → moment matching — **Derive carefully live**.
-- Likelihood Hessian / concavity consequence — **Brief / State**, not a separate major development.
-- Maximum-entropy result — **Motivate + Proof sketch live**.
-- Full Lagrange-multiplier maximum-entropy derivation — **Recording candidate**; still counted live until moved.
+- Bernoulli specialization — **Apply / check**.
+- Concavity of the regular exponential-family log likelihood — **Optional brief consequence only, not a separate teaching move**. It follows from convexity of `A`; it is not the bridge to maximum entropy.
 
 ### Carry-forward / prerequisites
 
-- `∇A(η) = E[T(X)]` from Section 2.
+- `∇A(η) = E[T(X)]` from Section 3.
 - Familiar Bernoulli MLE intuition from prior statistics.
-
-### Empirical application / required figure
-
-No full empirical application is required inside this section. The next section is reserved for a dedicated real-data application of the general result.
 
 ### Boundary / exclusions
 
-- Do not turn Bernoulli/Gaussian specializations into the main empirical example here.
-- Do not introduce categorical distributions merely as another catalogue example here.
-- End with the general learning rule in a form that can be applied immediately to a less-trivial family.
+- Do not introduce maximum entropy here; it is a separate characterization in Section 5.
+- Do not turn Bernoulli/Gaussian specializations into the main empirical example.
+- End with the general learning rule in a form that can be reused directly later.
 
 ### Extent
 
-Approximately 22–27 minutes.
+Approximately 16–18 minutes.
 
 ### Take-home
 
@@ -227,31 +271,84 @@ For an exponential-family model, maximum likelihood matches model expectations o
 
 ---
 
-## Section 4 — Maximum likelihood fits a Gamma model to rainfall data
+## Section 5 — Moment constraints and maximum entropy lead to exponential families
 
 **Status:** Ready for slide organization.
 
 ### Purpose / role
 
-Apply the Section 3 learning rule to a genuinely nontrivial two-parameter exponential family and real data. Make the sufficient-statistic reduction concrete before moving on to categorical models.
+Present maximum entropy as a separate answer to a separate question: if only some expected feature values are known, what distribution should we choose without adding unsupported structure?
 
 ### Entry condition / transition in
 
-Section 3 established the abstract rule
+Section 4 showed how to estimate parameters when an exponential family is already specified. Now reverse the direction: start from constraints on expected features and ask what form the distribution itself should take.
 
-`Eη̂[T(X)] = (1/N) Σn T(xn)`.
+### Endpoint
 
-Now ask what that rule actually looks like for a real dataset when the sufficient statistics are not simply `x` or `(x, x²)`.
+Students understand that
+
+- moment/feature constraints express what is assumed known;
+- minimizing KL to a reference distribution `q(x)` chooses the least-committed distribution satisfying those constraints;
+- with uniform `q`, this becomes maximum entropy;
+- the Lagrange-multiplier solution has exponential-family form.
+
+### Sources
+
+- Murphy Book 2 §2.4.7.
+
+### Assigned content
+
+- Expected-feature constraints `E[f_k(X)] = F_k`.
+- Minimum KL to a prior/reference distribution `q(x)` as the general principle.
+- Maximum entropy as the uniform-reference special case.
+- Lagrange-multiplier proof sketch yielding exponential-family form.
+
+### Mathematical treatment constraints
+
+- Conceptual setup — **Motivate**.
+- KL / maximum-entropy equivalence for uniform `q` — **State + Explain**.
+- Lagrange derivation — **Proof sketch live**.
+- Full functional-derivative/calculus-of-variations detail — **Recording candidate** if desired; not required for the live conceptual result.
+
+### Carry-forward / prerequisites
+
+- Exponential-family form from Section 1.
+- Entropy and KL divergence from prior coursework / review.
+
+### Boundary / exclusions
+
+Do not present this as a consequence of log-likelihood concavity. Do not introduce full convex-duality / Legendre-transform machinery unless the scope is explicitly expanded. The deep duality is real but is not required for this lecture.
+
+### Extent
+
+Approximately 8–10 minutes.
+
+### Take-home
+
+Moment constraints are the assumptions in a maximum-entropy problem; the least-committed distribution satisfying them has exponential-family form.
+
+---
+
+## Section 6 — Maximum likelihood fits a Gamma model to rainfall data
+
+**Status:** Ready for slide organization.
+
+### Purpose / role
+
+Apply the Section 4 learning rule to a genuinely nontrivial two-parameter exponential family and real data. Make the sufficient-statistic reduction concrete without turning the example into another long derivation.
+
+### Entry condition / transition in
+
+Section 4 established the abstract MLE moment-matching rule. Section 5 provided an alternative characterization of why exponential families arise. Now return to estimation and ask what the learning rule looks like on real, non-Gaussian data.
 
 ### Endpoint
 
 Students should be able to see, in a concrete fit, that
 
-- the Gamma family can be written as an exponential family with sufficient statistics involving `x` and `log x`;
-- the entire rainfall sample affects the Gamma likelihood through the aggregate statistics `Σ xi` and `Σ log xi`;
-- Gamma MLE therefore matches the model expectations of `X` and `log X` to their empirical averages;
-- exponential-family “moment matching” means matching expectations of the sufficient statistics;
-- the fitted Gamma distribution can be interpreted against the observed skewed rainfall data.
+- the Gamma family can be written with sufficient statistics involving `x` and `log x`;
+- the rainfall sample affects the Gamma likelihood through `Σ xi` and `Σ log xi`;
+- Gamma MLE applies the general moment-matching principle;
+- the resulting fitted Gamma distribution captures important structure in the observed skewed data.
 
 ### Primary empirical source
 
@@ -268,60 +365,57 @@ The MIT dataset is described as average rainfall from summer storms measured by 
 
 - Chris Fonnesbeck, *Statistical Data Modeling* Jupyter notebook. Uses NOAA Nashville precipitation data and a Gamma model and includes an MLE fit: https://gist.github.com/fonnesbeck/5850483
 - SciPy Gamma distribution reference: https://docs.scipy.org/doc/scipy/tutorial/stats/continuous_gamma.html
-- SciPy distribution-fitting interface/reference, including Gamma parameterization: https://docs.scipy.org/doc/scipy/tutorial/stats/probability_distributions.html
+- SciPy distribution-fitting reference: https://docs.scipy.org/doc/scipy/tutorial/stats/probability_distributions.html
 
 These references are for exposition and implementation guidance. The course can reproduce the figures/code independently in Python; there is no requirement to reuse the source code verbatim.
 
 ### Assigned content
 
 - Show the positive, right-skewed rainfall data.
-- Introduce the two-parameter Gamma density in a parameterization compatible with the exponential-family derivation.
-- Identify the sufficient-statistic vector, e.g. `T(x) = (log x, x)` up to ordering/sign conventions.
-- Show that the sample enters the likelihood through `Σ log xi` and `Σ xi`.
-- Connect the general MLE moment-matching condition from Section 3 to the Gamma case.
+- Introduce the two-parameter Gamma model only as much as needed for the fit.
+- Identify `T(x) = (log x, x)` up to ordering/sign conventions.
+- Show that the sample enters through `Σ log xi` and `Σ xi`.
+- Apply the general MLE moment-matching result.
 - Show the fitted distribution against the observed data.
 
 ### Mathematical treatment constraints
 
-- Gamma exponential-family representation — **Work through enough to identify `T(x)` and `η`; do not turn this into another general derivation**.
-- Reduction of the Gamma likelihood to `Σ xi` and `Σ log xi` — **Work / Apply**.
-- Gamma MLE equations — **Apply the general Section 3 result**; do not require a closed-form solution for the shape parameter.
-- Digamma-function appearance may be **State / acknowledge** as the consequence of differentiating `log Γ(α)`; it should not become a new mathematical branch.
+- Gamma exponential-family representation — **Work only enough to identify `T(x)` and `η`**.
+- Sample reduction and MLE equations — **Apply** the general Section 4 result.
+- Digamma-function appearance — **State / acknowledge** only.
+- Numerical root finding / optimizer details — **Omit** from the lecture argument.
 
 ### Carry-forward / prerequisites
 
 - General exponential-family form from Section 1.
-- `∇A(η) = E[T(X)]` from Section 2.
-- General MLE moment-matching condition from Section 3.
+- `∇A(η) = E[T(X)]` from Section 3.
+- General MLE moment-matching condition from Section 4.
 
 ### Empirical application / required figures
 
-This section is itself the empirical application.
+This section is itself the empirical application. Preserve the compact chain
 
-At minimum, the slide organization should preserve the empirical chain
+`rainfall data → Gamma sufficient statistics → fitted Gamma model → comparison with data`.
 
-`rainfall data → skewed empirical distribution → Gamma model → sufficient statistics → fitted parameters/model → comparison with data`.
-
-A histogram/density view and at least one visual representation of the fitted Gamma model are strongly desirable.
+A histogram/density view with the fitted Gamma overlaid is strongly desirable.
 
 ### Boundary / exclusions
 
-- Do not turn this into a general survey of Gamma-distribution properties.
+- Do not survey Gamma-distribution properties.
 - Do not require hand solution of the nonlinear shape-parameter MLE.
-- Do not let numerical optimization machinery become the topic; the point is the sufficient-statistic structure and the meaning of the fitted model.
-- End by returning to the general lesson before changing domains to categorical data.
+- Do not let numerical optimization become the topic.
 
 ### Extent
 
-Approximately 10–15 minutes.
+Approximately 7–9 minutes.
 
 ### Take-home
 
-A nontrivial real dataset can be compressed to a small sufficient-statistic vector for parameter estimation, and exponential-family MLE matches the model expectations of those statistics to their empirical values.
+A nontrivial real dataset can be compressed to a small sufficient-statistic vector that determines a useful maximum-likelihood fit.
 
 ---
 
-## Section 5 — Categorical distributions extend the same learning rule to multiple outcomes
+## Section 7 — Categorical distributions extend the same learning rule to multiple outcomes
 
 **Status:** Ready for slide organization.
 
@@ -335,7 +429,7 @@ Students now understand exponential-family MLE as moment matching and have seen 
 
 ### Endpoint
 
-Students understand categorical indicator sufficient statistics, the natural-parameter / softmax representation, multinomial counts, and why MLE yields normalized category counts.
+Students understand categorical indicator sufficient statistics, the natural-parameter / softmax representation, and why a sample of categorical observations reduces to counts whose normalized values are the MLE probabilities.
 
 ### Sources
 
@@ -347,25 +441,18 @@ Students understand categorical indicator sufficient statistics, the natural-par
 - Categorical distribution as a `K`-outcome extension of Bernoulli.
 - Indicator-vector sufficient statistics.
 - Natural parameters / softmax relation.
-- Multinomial or count representation where useful.
-- Categorical MLE as normalized counts.
+- Category counts and categorical MLE as one combined count-and-normalize step.
 
 ### Mathematical treatment constraints
 
 - Categorical sufficient statistics — **Motivate + State**.
-- Softmax from natural parameters — **Develop selectively**; do not reproduce every algebraic detail unless needed for the argument.
-- Multinomial/count representation — **Brief**.
-- Categorical MLE — **Apply the general moment-matching result**, rather than performing a wholly independent MLE derivation from scratch.
+- Softmax from natural parameters — **Develop selectively**.
+- Count aggregation + categorical MLE — **Combine in one teaching move and apply general moment matching**, rather than deriving MLE independently.
 
 ### Carry-forward / prerequisites
 
 - Bernoulli as the familiar binary case.
-- Moment-matching result from Section 3.
-- Section 4 as evidence that the same learning principle works beyond trivial familiar distributions.
-
-### Empirical application / required figure
-
-No separate empirical application is required here. The normalized-count result should set up the actual text-data application in Section 6.
+- Moment-matching result from Section 4.
 
 ### Boundary / exclusions
 
@@ -373,25 +460,25 @@ No sequence dependence yet. End with one categorical distribution learned from c
 
 ### Extent
 
-Approximately 12–15 minutes.
+Approximately 10–12 minutes.
 
 ### Take-home
 
-Normalized category counts are the categorical instance of exponential-family moment matching.
+For categorical data, exponential-family learning reduces to count and normalize.
 
 ---
 
-## Section 6 — A Markov model learns one categorical distribution for each preceding state
+## Section 8 — A Markov model learns one categorical distribution for each preceding state
 
 **Status:** Ready for slide organization.
 
 ### Purpose / role
 
-Turn the lecture's general estimation machinery into a concrete learned sequence model and establish the notebook handoff.
+Turn categorical estimation into a learned sequence model and establish the notebook handoff.
 
 ### Entry condition / transition in
 
-Section 5 established how to estimate one categorical distribution from counts. A Markov model repeats that conditional categorical model for every preceding state/context.
+Section 7 established how to estimate one categorical distribution from counts. A Markov model repeats that conditional categorical model for every preceding state/context.
 
 ### Endpoint
 
@@ -428,12 +515,10 @@ Students can
 
 ### Carry-forward / prerequisites
 
-- Categorical MLE as normalized counts from Section 5.
-- General sufficient-statistic / moment-matching logic from Section 3.
+- Categorical MLE as normalized counts from Section 7.
+- General sufficient-statistic / moment-matching logic from Section 4.
 
 ### Empirical application / required figures
-
-This application is fixed:
 
 **Character-level text modeling.** Use actual text counts to show
 
@@ -456,7 +541,7 @@ Optional notebook extension: sparse counts and Dirichlet/MAP smoothing.
 
 ### Extent
 
-Approximately 20–25 minutes.
+Approximately 20–24 minutes.
 
 ### Take-home
 
@@ -467,5 +552,7 @@ A learned first-order Markov chain is a structured collection of categorical con
 ## Open section-design issues
 
 No section currently has a blocking section-design issue.
+
+The main deliberate flexibility is Section 2: it is designed as a complete live section but can later be moved wholesale to a recording.
 
 If slide organization exposes scope, extent, prerequisite, source, or neighboring-section pressure, return that pressure here rather than silently changing the section contract.

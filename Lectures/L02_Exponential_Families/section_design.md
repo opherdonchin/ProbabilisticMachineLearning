@@ -8,11 +8,11 @@ Use `skills/slide-level-organization/SKILL.md` on **one section at a time**. The
 
 **Lecture trajectory**
 
-Exponential-family representation → moments from the log-partition function → learning by moment matching → categorical counts → transition counts and Markov learning.
+Exponential-family representation → moments from the log-partition function → learning by moment matching → empirical Gamma fit → categorical counts → transition counts and Markov learning.
 
 **Live-time target**
 
-Approximately 90–110 minutes total. Recording candidates remain in the live budget until explicitly moved.
+Approximately 100–120 minutes total. Recording candidates remain in the live budget until explicitly moved.
 
 **Starting assumptions**
 
@@ -157,7 +157,7 @@ Derivatives of the log-partition function recover moments of the sufficient stat
 
 ## Section 3 — Learning an exponential-family model means matching model moments to data
 
-**Status:** **One open upstream issue before final slide organization:** select the empirical data application.
+**Status:** Ready for slide organization.
 
 ### Purpose / role
 
@@ -209,24 +209,17 @@ Students should also understand the maximum-entropy interpretation as an explana
 
 ### Empirical application / required figure
 
-**Required but not yet selected.**
-
-The application must be a genuine empirical example in the course sense:
-
-`actual data → sufficient statistics → fitted distribution/model → interpretation`.
-
-A merely mathematical instantiation such as “Bernoulli is an exponential-family member” does not satisfy this requirement.
-
-Current candidate: fit a Gaussian to an actual measured variable (possibly an Iris measurement) and show how empirical sufficient statistics determine the fitted model. This is a candidate, not an agreed decision.
+No full empirical application is required inside this section. The next section is reserved for a dedicated real-data application of the general result.
 
 ### Boundary / exclusions
 
+- Do not turn Bernoulli/Gaussian specializations into the main empirical example here.
 - Do not introduce categorical distributions merely as another catalogue example here.
-- Reserve categorical estimation for Section 4, where it becomes the bridge to Markov models.
+- End with the general learning rule in a form that can be applied immediately to a less-trivial family.
 
 ### Extent
 
-Approximately 25–30 minutes.
+Approximately 22–27 minutes.
 
 ### Take-home
 
@@ -234,7 +227,104 @@ For an exponential-family model, maximum likelihood matches model expectations o
 
 ---
 
-## Section 4 — Categorical distributions extend the same learning rule to multiple outcomes
+## Section 4 — Gamma rainfall data make sufficient statistics visible in a real fit
+
+**Status:** Ready for slide organization.
+
+### Purpose / role
+
+Apply the Section 3 learning rule to a genuinely nontrivial two-parameter exponential family and real data. Make the sufficient-statistic reduction concrete before moving on to categorical models.
+
+### Entry condition / transition in
+
+Section 3 established the abstract rule
+
+`Eη̂[T(X)] = (1/N) Σn T(xn)`.
+
+Now ask what that rule actually looks like for a real dataset when the sufficient statistics are not simply `x` or `(x, x²)`.
+
+### Endpoint
+
+Students should be able to see, in a concrete fit, that
+
+- the Gamma family can be written as an exponential family with sufficient statistics involving `x` and `log x`;
+- the entire rainfall sample affects the Gamma likelihood through the aggregate statistics `Σ xi` and `Σ log xi`;
+- Gamma MLE therefore matches the model expectations of `X` and `log X` to their empirical averages;
+- exponential-family “moment matching” means matching expectations of the sufficient statistics, not necessarily matching the ordinary mean and variance;
+- the fitted Gamma distribution can be interpreted against the observed skewed rainfall data.
+
+### Primary empirical source
+
+MIT 18.443 *Statistics for Applications*, R Project 2: Le Cam–Neyman precipitation data.
+
+- Project index and downloadable R materials: https://ocw.mit.edu/courses/18-443-statistics-for-applications-spring-2015/pages/projects/
+- R script/output with both method-of-moments and MLE Gamma fits: https://live.ocw.mit.edu/ans7870/18/18.443/s15/projects/Rproject2_script2_gamma_MOMwithMLE.html
+- Earlier MOM-only script/output: https://ocw.mit.edu/ans7870/18/18.443/s15/projects/Rproject2_script1_gamma_MOM.html
+- MIT lecture notes introducing the Gamma rainfall example: https://ocw.mit.edu/courses/18-443-statistics-for-applications-spring-2015/6408c60bd43d4da05fc6837a12341c29_MIT18_443S15_LEC2.pdf
+- MIT MLE lecture notes with a worked two-parameter Gamma likelihood: https://ocw.mit.edu/courses/18-443-statistics-for-applications-spring-2015/2a08e2ffa8c87f3187d3969cc24c168b_MIT18_443S15_LEC4.pdf
+
+The MIT dataset is described as average rainfall from summer storms measured by a network of rain gauges in southern Illinois, 1960–1964. Their R fit reports approximately `shape = 0.4408`, `rate = 1.9648` by MLE.
+
+### Related Python / notebook references
+
+- Chris Fonnesbeck, *Statistical Data Modeling* Jupyter notebook. Uses NOAA Nashville precipitation data and a Gamma model, with method-of-moments and MLE comparison: https://gist.github.com/fonnesbeck/5850483
+- SciPy Gamma distribution reference: https://docs.scipy.org/doc/scipy/tutorial/stats/continuous_gamma.html
+- SciPy distribution-fitting interface/reference, including Gamma parameterization: https://docs.scipy.org/doc/scipy/tutorial/stats/probability_distributions.html
+
+These references are for exposition and implementation guidance. The course can reproduce the figures/code independently in Python; there is no requirement to reuse the source code verbatim.
+
+### Assigned content
+
+- Show the positive, right-skewed rainfall data.
+- Introduce the two-parameter Gamma density in a parameterization compatible with the exponential-family derivation.
+- Identify the sufficient-statistic vector, e.g. `T(x) = (log x, x)` up to ordering/sign conventions.
+- Show that the sample enters the likelihood through `Σ log xi` and `Σ xi`.
+- Connect the general MLE moment-matching condition from Section 3 to the Gamma case.
+- Show the fitted distribution against the observed data.
+- Optionally contrast with ordinary method-of-moments fitting to emphasize that EF moment matching is about sufficient statistics, not arbitrary raw moments.
+
+### Mathematical treatment constraints
+
+- Gamma exponential-family representation — **Work through enough to identify `T(x)` and `η`; do not turn this into another general derivation**.
+- Reduction of the Gamma likelihood to `Σ xi` and `Σ log xi` — **Work / Apply**.
+- Gamma MLE equations — **Apply the general Section 3 result**; do not require a closed-form solution for the shape parameter.
+- Digamma-function appearance may be **State / acknowledge** as the consequence of differentiating `log Γ(α)`; it should not become a new mathematical branch.
+- Method-of-moments comparison — **Optional but pedagogically attractive**, especially if it helps distinguish raw moments from sufficient-statistic expectations.
+
+### Carry-forward / prerequisites
+
+- General exponential-family form from Section 1.
+- `∇A(η) = E[T(X)]` from Section 2.
+- General MLE moment-matching condition from Section 3.
+
+### Empirical application / required figures
+
+This section is itself the empirical application.
+
+At minimum, the slide organization should preserve the empirical chain
+
+`rainfall data → skewed empirical distribution → Gamma model → sufficient statistics → fitted parameters/model → comparison with data`.
+
+A histogram/density view and at least one visual representation of the fitted Gamma model are strongly desirable.
+
+### Boundary / exclusions
+
+- Do not turn this into a general survey of Gamma-distribution properties.
+- Do not require hand solution of the nonlinear shape-parameter MLE.
+- Do not let numerical optimization machinery become the topic; the point is the sufficient-statistic structure and the meaning of the fitted model.
+- End by returning to the general lesson before changing domains to categorical data.
+
+### Extent
+
+Approximately 10–15 minutes.
+
+### Take-home
+
+A nontrivial real dataset can be compressed to a small sufficient-statistic vector for parameter estimation, and exponential-family MLE matches the model expectations of those statistics to their empirical values.
+
+---
+
+## Section 5 — Categorical distributions extend the same learning rule to multiple outcomes
 
 **Status:** Ready for slide organization.
 
@@ -244,7 +334,7 @@ Extend the Bernoulli/exponential-family machinery just far enough that Markov-ch
 
 ### Entry condition / transition in
 
-Students now understand exponential-family MLE as moment matching. Move from a binary outcome to `K` mutually exclusive outcomes.
+Students now understand exponential-family MLE as moment matching and have seen it applied to a nontrivial real-data fit. Move from continuous positive data to `K` mutually exclusive outcomes.
 
 ### Endpoint
 
@@ -274,10 +364,11 @@ Students understand categorical indicator sufficient statistics, the natural-par
 
 - Bernoulli as the familiar binary case.
 - Moment-matching result from Section 3.
+- Section 4 as evidence that the same learning principle works beyond trivial familiar distributions.
 
 ### Empirical application / required figure
 
-No separate empirical application is required here. The normalized-count result should set up the actual text-data application in Section 5.
+No separate empirical application is required here. The normalized-count result should set up the actual text-data application in Section 6.
 
 ### Boundary / exclusions
 
@@ -293,7 +384,7 @@ Normalized category counts are the categorical instance of exponential-family mo
 
 ---
 
-## Section 5 — A Markov model learns one categorical distribution for each preceding state
+## Section 6 — A Markov model learns one categorical distribution for each preceding state
 
 **Status:** Ready for slide organization.
 
@@ -303,7 +394,7 @@ Turn the lecture's general estimation machinery into a concrete learned sequence
 
 ### Entry condition / transition in
 
-Section 4 established how to estimate one categorical distribution from counts. A Markov model repeats that conditional categorical model for every preceding state/context.
+Section 5 established how to estimate one categorical distribution from counts. A Markov model repeats that conditional categorical model for every preceding state/context.
 
 ### Endpoint
 
@@ -340,7 +431,7 @@ Students can
 
 ### Carry-forward / prerequisites
 
-- Categorical MLE as normalized counts from Section 4.
+- Categorical MLE as normalized counts from Section 5.
 - General sufficient-statistic / moment-matching logic from Section 3.
 
 ### Empirical application / required figures
@@ -376,10 +467,8 @@ A learned first-order Markov chain is a structured collection of categorical con
 
 ---
 
-## Open section-design issue
+## Open section-design issues
 
-Only one issue should block a clean section-by-section slide-organization pass:
+No section currently has a blocking section-design issue.
 
-1. **Section 3 empirical application:** select a concrete dataset/application that visibly demonstrates `data → sufficient statistics → fitted exponential-family model → interpretation`.
-
-All other sections have enough section-level specification to begin slide organization. If slide organization exposes scope, extent, prerequisite, or neighboring-section pressure, return that pressure here rather than silently changing the section contract.
+If slide organization exposes scope, extent, prerequisite, source, or neighboring-section pressure, return that pressure here rather than silently changing the section contract.

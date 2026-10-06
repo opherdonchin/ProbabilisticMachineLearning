@@ -227,7 +227,7 @@ For an exponential-family model, maximum likelihood matches model expectations o
 
 ---
 
-## Section 4 — We can use methods of moments to fit a Gamma distribution
+## Section 4 — Maximum likelihood fits a Gamma model to rainfall data
 
 **Status:** Ready for slide organization.
 
@@ -250,7 +250,7 @@ Students should be able to see, in a concrete fit, that
 - the Gamma family can be written as an exponential family with sufficient statistics involving `x` and `log x`;
 - the entire rainfall sample affects the Gamma likelihood through the aggregate statistics `Σ xi` and `Σ log xi`;
 - Gamma MLE therefore matches the model expectations of `X` and `log X` to their empirical averages;
-- exponential-family “moment matching” means matching expectations of the sufficient statistics, not necessarily matching the ordinary mean and variance;
+- exponential-family “moment matching” means matching expectations of the sufficient statistics;
 - the fitted Gamma distribution can be interpreted against the observed skewed rainfall data.
 
 ### Primary empirical source
@@ -258,8 +258,7 @@ Students should be able to see, in a concrete fit, that
 MIT 18.443 *Statistics for Applications*, R Project 2: Le Cam–Neyman precipitation data.
 
 - Project index and downloadable R materials: https://ocw.mit.edu/courses/18-443-statistics-for-applications-spring-2015/pages/projects/
-- R script/output with both method-of-moments and MLE Gamma fits: https://live.ocw.mit.edu/ans7870/18/18.443/s15/projects/Rproject2_script2_gamma_MOMwithMLE.html
-- Earlier MOM-only script/output: https://ocw.mit.edu/ans7870/18/18.443/s15/projects/Rproject2_script1_gamma_MOM.html
+- R script/output containing the Gamma MLE fit: https://live.ocw.mit.edu/ans7870/18/18.443/s15/projects/Rproject2_script2_gamma_MOMwithMLE.html
 - MIT lecture notes introducing the Gamma rainfall example: https://ocw.mit.edu/courses/18-443-statistics-for-applications-spring-2015/6408c60bd43d4da05fc6837a12341c29_MIT18_443S15_LEC2.pdf
 - MIT MLE lecture notes with a worked two-parameter Gamma likelihood: https://ocw.mit.edu/courses/18-443-statistics-for-applications-spring-2015/2a08e2ffa8c87f3187d3969cc24c168b_MIT18_443S15_LEC4.pdf
 
@@ -267,7 +266,7 @@ The MIT dataset is described as average rainfall from summer storms measured by 
 
 ### Related Python / notebook references
 
-- Chris Fonnesbeck, *Statistical Data Modeling* Jupyter notebook. Uses NOAA Nashville precipitation data and a Gamma model, with method-of-moments and MLE comparison: https://gist.github.com/fonnesbeck/5850483
+- Chris Fonnesbeck, *Statistical Data Modeling* Jupyter notebook. Uses NOAA Nashville precipitation data and a Gamma model and includes an MLE fit: https://gist.github.com/fonnesbeck/5850483
 - SciPy Gamma distribution reference: https://docs.scipy.org/doc/scipy/tutorial/stats/continuous_gamma.html
 - SciPy distribution-fitting interface/reference, including Gamma parameterization: https://docs.scipy.org/doc/scipy/tutorial/stats/probability_distributions.html
 
@@ -281,7 +280,6 @@ These references are for exposition and implementation guidance. The course can 
 - Show that the sample enters the likelihood through `Σ log xi` and `Σ xi`.
 - Connect the general MLE moment-matching condition from Section 3 to the Gamma case.
 - Show the fitted distribution against the observed data.
-- Optionally contrast with ordinary method-of-moments fitting to emphasize that EF moment matching is about sufficient statistics, not arbitrary raw moments.
 
 ### Mathematical treatment constraints
 
@@ -289,7 +287,6 @@ These references are for exposition and implementation guidance. The course can 
 - Reduction of the Gamma likelihood to `Σ xi` and `Σ log xi` — **Work / Apply**.
 - Gamma MLE equations — **Apply the general Section 3 result**; do not require a closed-form solution for the shape parameter.
 - Digamma-function appearance may be **State / acknowledge** as the consequence of differentiating `log Γ(α)`; it should not become a new mathematical branch.
-- Method-of-moments comparison — **Optional but pedagogically attractive**, especially if it helps distinguish raw moments from sufficient-statistic expectations.
 
 ### Carry-forward / prerequisites
 

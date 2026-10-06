@@ -227,7 +227,7 @@ For an exponential-family model, maximum likelihood matches model expectations o
 
 ---
 
-## Section 4 — Gamma rainfall data make sufficient statistics visible in a real fit
+## Section 4 — We can use methods of moments to fit a Gamma distribution
 
 **Status:** Ready for slide organization.
 

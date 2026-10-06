@@ -10,9 +10,9 @@ Current trajectory:
 
 Exponential-family representation → moments from the log-partition function → learning by moment matching → Gamma rainfall application → categorical counts → Markov learning from transition counts.
 
-Proposed content-slide count: **41** (excluding title and section-divider slides).
+Proposed content-slide count: **45** (excluding title and section-divider slides).
 
-The organization is intentionally less dense in slide count than Lecture 1 because Sections 2–4 contain sustained derivations and worked mathematical development.
+The organization is intentionally less slide-dense than Lecture 1 through the derivation-heavy middle sections.
 
 ---
 
@@ -220,17 +220,17 @@ None yet. Revisit only if timing/slide design confirms the extent pressure.
 
 ---
 
-# Section 4 — We can use methods of moments to fit a Gamma distribution
+# Section 4 — Maximum likelihood fits a Gamma model to rainfall data
 
 ## Working specification
 
 - **Purpose:** apply the general learning machinery to real, positive, skewed rainfall data using a nontrivial two-parameter family.
-- **Endpoint:** students see the Gamma sufficient statistics, the compression to `Σx` and `Σlog x`, the fitted model, and the distinction between sufficient-statistic moment matching and ordinary raw-moment fitting.
+- **Endpoint:** students see the Gamma sufficient statistics, the compression to `Σx` and `Σlog x`, and a fitted model obtained by applying the Section 3 MLE moment-matching result.
 - **Primary source:** MIT 18.443 rainfall/Gamma project; related Python precipitation example from Chris Fonnesbeck.
-- **Treatment:** Gamma EF representation Work enough to identify `T` and `η`; likelihood reduction Work/Apply; MLE equations Apply Section 3; digamma State; ordinary MOM comparison optional but pedagogically attractive.
+- **Treatment:** Gamma EF representation Work enough to identify `T` and `η`; likelihood reduction Work/Apply; MLE equations Apply Section 3; digamma State.
 - **Extent:** ~10–15 minutes.
 
-No clarification is required to produce a complete draft, but the section title creates a terminology tension noted below.
+No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
@@ -244,37 +244,30 @@ No clarification is required to produce a complete draft, but the section title 
 
 **Intention / goal:** Introduce the two-parameter Gamma model as a plausible model for the rainfall distribution and show what changing its parameters does to shape and scale.
 
-### 3. Ordinary method of moments fits the Gamma from simple sample moments
+### 3. Gamma sufficient statistics are `x` and `log x`
 
-**Intention / goal:** Present the conventional method-of-moments route used in the MIT example: equate ordinary theoretical moments to empirical moments to obtain a direct parameter estimate. This makes the section title literal and gives a concrete baseline fit.
+**Intention / goal:** Rewrite the Gamma model in exponential-family form and identify the nontrivial sufficient-statistic vector. The key surprise is the appearance of `log x`.
 
-### 4. Gamma sufficient statistics are `x` and `log x`
+### 4. The rainfall likelihood depends only on `Σx` and `Σlog x`
 
-**Intention / goal:** Rewrite the Gamma model in exponential-family form and identify the nontrivial sufficient-statistic vector. The key surprise is the appearance of `log x` rather than a second raw power of `x`.
+**Intention / goal:** Make the sample-level reduction concrete. Hundreds of observations enter the likelihood for the Gamma parameters through two aggregate statistics.
 
-### 5. Exponential-family MLE matches `x` and `log x`, not mean and variance
+### 5. Gamma MLE matches the model's `x` and `log x` moments to the data
 
-**Intention / goal:** Apply Section 3 directly. Show that the likelihood depends on `Σxi` and `Σlog xi`, so EF-MLE matches expectations of those sufficient statistics. Acknowledge the digamma equation without making numerical root-finding the lesson.
+**Intention / goal:** Apply Section 3 directly. Show the two moment-matching equations and acknowledge the digamma term without making numerical root-finding the lesson.
 
-### 6. The MOM and MLE fits use different summaries of the same rainfall data
+### 6. The fitted Gamma model captures the skew in the rainfall data
 
-**Intention / goal:** Compare the two fitted Gamma models and make the conceptual distinction explicit: ordinary method of moments chooses convenient raw moments; exponential-family MLE matches the expectations of the family's sufficient statistics.
-
-**Design note:** Prefer simultaneous comparison over serial derivations.
-
-### 7. A small set of summaries is enough to fit a useful rainfall model
-
-**Intention / goal:** Return to the empirical distribution and fitted curves. Consolidate the sufficient-statistic lesson and close the application before changing domains to categorical data.
+**Intention / goal:** Return to the empirical distribution with the fitted model overlaid. Consolidate the lesson that a small sufficient-statistic vector can determine a useful fit to real data.
 
 ## Issues / critique
 
-- **Terminology / emphasis pressure:** the section title foregrounds “methods of moments,” but its section contract is primarily intended to illustrate the Section 3 exponential-family MLE result. Ordinary MOM and EF moment matching are related but not identical procedures.
-- **Draft choice:** make ordinary MOM a real teaching move (Slide 3), then use it as the contrast that clarifies EF-MLE (Slides 4–6). This preserves the title while still fulfilling the section contract.
-- **Extent pressure:** seven slides in 10–15 minutes is moderately tight but plausible if the Gamma algebra is kept to identification/application rather than a fresh general derivation.
+- Six slides for 10–15 minutes is plausible because the section applies previously derived machinery rather than deriving a new general result.
+- The primary conceptual burden is distinguishing the raw dataset from the low-dimensional sufficient statistic through which it affects the fit.
 
 ## Upstream change requests
 
-None required, but instructor should confirm that the title intentionally wants ordinary MOM to receive this much prominence. If not, Slides 3 and 6 should be reduced and the section title reconsidered upstream rather than silently changed here.
+None.
 
 ---
 
@@ -407,7 +400,7 @@ and hand off explicitly to the one-hour notebook.
 
 - Ten slides for 20–25 minutes is plausible because several are empirical/visual rather than algebra-heavy.
 - Slides 6 and 7 should remain separate teaching moves: raw counts answer “what did the data contain?” while normalized rows answer “what model did we learn?”. Combining them would weaken the lecture's central count-to-model transition.
-- Sequence scoring (Slide 8) and generation (Slide 9) are also distinct uses of the same fitted model and justify separate slides.
+- Sequence scoring (Slide 8) and generation (Slide 9) are distinct uses of the same fitted model and justify separate slides.
 
 ## Upstream change requests
 
@@ -424,7 +417,7 @@ The titles recover a coherent lecture argument:
 1. familiar distributions share a representation;
 2. the log-partition function maps natural parameters to moments;
 3. likelihood learning matches those model moments to empirical statistics;
-4. Gamma rainfall shows the distinction on real data;
+4. Gamma rainfall makes that learning rule concrete on real data;
 5. categorical models reduce learning to normalized counts;
 6. Markov models repeat that categorical learning rule across conditioning states.
 
@@ -435,13 +428,13 @@ Proposed content slides by section:
 - Section 1: 6
 - Section 2: 7
 - Section 3: 10
-- Section 4: 7
+- Section 4: 6
 - Section 5: 6
 - Section 6: 10
 
-**Total: 46 content slides.**
+**Total: 45 content slides.**
 
-This is somewhat larger than the initial ~41-slide rough target but still plausible against the 100–120 minute scope and the Lecture 1 course-specific calibration. The reason is visible rather than hidden: Sections 3 and 4 each need more teaching moves than the coarse scope estimate suggested.
+This is larger than the initial low-30s prototype estimate, but the discrepancy is explainable rather than hidden: the slide-level pass gives separate teaching moves to the Section 3 derivations, the Gamma empirical application, and the Markov data-to-model sequence.
 
 The lecture is derivation-heavy through Section 3, then becomes progressively more empirical/visual. That change of texture is desirable, but the first ~55–65 minutes may feel mathematically dense.
 
@@ -451,20 +444,15 @@ The lecture is derivation-heavy through Section 3, then becomes progressively mo
 
 Keeping the full live MLE derivation, Hessian consequence, and maximum-entropy proof sketch produces ten slides. If rehearsal shows the lecture running long, the already-identified maximum-entropy derivation recording candidate is the cleanest place to recover time without damaging later dependencies.
 
-### Terminology / emphasis pressure — Section 4
-
-The current title foregrounds “methods of moments,” while the lecture's mathematical spine foregrounds exponential-family MLE moment matching. The draft resolves this provisionally by teaching ordinary MOM first and then contrasting it with EF-MLE. Instructor approval is needed before that emphasis is treated as final.
-
 ### Gaussian-detail pressure — Section 1
 
 The current contract simultaneously says Gaussian treatment should be recognition rather than re-derivation and calls the full Gaussian algebra a recording candidate that remains live until moved. The draft follows the recognition-level treatment. Resolve this before final approval if the full algebra is intended to consume live time.
 
 ## Open issues / explicit assumptions
 
-1. Section 4's current title is treated as intentional and therefore ordinary Gamma method-of-moments receives one substantive teaching slide plus a later comparison slide.
-2. Full Gaussian canonical algebra is not given a separate live slide in Section 1.
-3. Recording candidates remain conceptually live in the scope, but only material compatible with each section's stated treatment depth is instantiated as a slide-level move here.
+1. Full Gaussian canonical algebra is not given a separate live slide in Section 1.
+2. Recording candidates remain conceptually live in the scope, but only material compatible with each section's stated treatment depth is instantiated as a slide-level move here.
 
 ## Upstream change requests
 
-No automatic changes have been made to `section_design.md`. The three pressures above should be reviewed by the instructor before this organization is considered approved.
+No automatic changes beyond the approved correction of the Gamma-section method terminology. The two pressures above should be reviewed before this organization is considered approved.

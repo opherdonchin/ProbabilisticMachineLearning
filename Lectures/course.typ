@@ -362,10 +362,11 @@
   from: none,
   body,
   label: [Carried forward],
-  size: fs("m"),
+  size: none,
   width: 100%,
 ) = {
   assert(from != none, message: "recall-card requires provenance via from: [...]")
+  let resolved-size = if size == none { fs("m") } else { size }
   block(
     width: width,
     breakable: false,
@@ -383,7 +384,7 @@
         text(size: 0.68em, weight: "semibold", fill: palette.accent, label),
         text(size: 0.68em, fill: palette.muted, from),
       ),
-      text(size: size, body),
+      text(size: resolved-size, body),
     )
   ]
 }
@@ -401,8 +402,10 @@
 
 #let section-summary-takeaways(
   body,
-  size: fs("xs"),
-) = block(
+  size: none,
+) = {
+  let resolved-size = if size == none { fs("xs") } else { size }
+  block(
   width: 100%,
   fill: palette.accent.lighten(91%),
   radius: 0.25em,
@@ -413,9 +416,10 @@
     column-gutter: 0.55em,
     align: (left + top, left + top),
     text(size: 0.58em, weight: "semibold", fill: palette.accent)[TAKE HOME],
-    text(size: size, body),
+    text(size: resolved-size, body),
   )
 ]
+}
 
 // Usage:
 //   #key-points[Body without a title]

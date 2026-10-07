@@ -212,9 +212,10 @@
   body: body,
 )
 
-#let reveal-step(labels, purpose: none) = (
+#let reveal-step(labels, purpose: none, emphasize: false) = (
   labels: labels,
   purpose: purpose,
+  emphasize: emphasize,
 )
 
 #let reveal-cumulative(
@@ -630,20 +631,21 @@
     ]
   } else if reveal.kind == "cumulative" {
     let cells = (
-      [*State*], [*Change*], [*Teaching purpose*],
-      [OPEN], _labels-text(reveal.initial), [Initial meaningful context],
+      [*State*], [*Change*], [*Attention*], [*Teaching purpose*],
+      [OPEN], _labels-text(reveal.initial), [—], [Initial meaningful context],
     )
 
     let n = 2
     for step in reveal.then {
       cells.push([STATE #n])
       cells.push([+ #_labels-text(step.labels)])
+      cells.push(if step.emphasize { [entry emphasis] } else { [—] })
       cells.push(if step.purpose == none { [] } else { step.purpose })
       n += 1
     }
 
     grid(
-      columns: (auto, auto, 1fr),
+      columns: (auto, auto, auto, 1fr),
       column-gutter: 0.9em,
       row-gutter: 0.4em,
       align: left + top,

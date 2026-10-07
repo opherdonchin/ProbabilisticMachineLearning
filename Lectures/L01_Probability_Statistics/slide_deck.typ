@@ -313,7 +313,7 @@
       #course-image(
         lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
         width: 100%,
-        height: 8.5cm,
+        height: 8.4cm,
       )
     ]
   ],
@@ -377,7 +377,7 @@
   ],
   key-points: [
     #stack(
-      spacing: sp("s"),
+      spacing: sp("xs"),
       [
         - Get data $arrow.r$ build a model $arrow.r$ apply Bayes' rule $arrow.r$ interpret $theta$
           - For many scientific questions, that posterior *is* the answer
@@ -2932,7 +2932,7 @@
       bordered-card(title: [Gaussian conditioning])[
         #block(height: 3.25cm)[
           #stack(
-            spacing: sp("s"),
+            spacing: sp("xs"),
             text(size: 0.62em, weight: "semibold")[Observation changes estimate and uncertainty.],
             text(size: 0.58em)[
               $mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$

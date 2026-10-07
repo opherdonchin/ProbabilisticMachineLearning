@@ -203,7 +203,7 @@
           width: 50%,
         )[
           #stack(
-            spacing: sp("s"),
+            spacing: sp("xs"),
             [Model],
             [$ theta tilde "Beta"(alpha, beta) $],
             [$ y_i tilde "Bernoulli"(theta) $],
@@ -254,7 +254,7 @@
           width: 50%,
         )[
           #stack(
-            spacing: sp("s"),
+            spacing: sp("xs"),
             [Model],
             pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
             pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
@@ -2509,7 +2509,7 @@
   ],
   key-points: [
     #stack(
-      spacing: sp("s"),
+      spacing: sp("xs"),
       [- Apply the Gaussian conditioning rule to the joint blocks],
       uncover("2-")[- The mean responds to observed minus predicted measurement],
       uncover("3-")[- The covariance subtracts the uncertainty explained by the measurement],

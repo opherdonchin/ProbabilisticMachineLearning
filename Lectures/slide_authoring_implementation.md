@@ -38,21 +38,18 @@ Cards and notes:
 - `#card[...]` — default, visually unmarked presentation card.
 - `#bordered-card(...)` — ordinary visibly bounded card.
 - `#recall-card(from: [...], ...)[...]` — carried-forward material with required provenance; use inside `content-block.object`, not as a peer of `content-block`.
-- `#figure-card[...]` — framed figure presentation object.
+- `#figure-card(from: [...], caption: [...])[...]` — complete figure presentation object; owns frame, optional caption, and optional provenance.
 - `#key-points[...]`, `#definition(...)`, `#method(...)`
 - `#note[...]` — margin/aside note
 - For now, deck source expresses card font sizes and internal spacing with named `fs(...)` and `sp(...)` choices. A later audit will decide which recurring combinations deserve card-level density variants.
 
-Schematic diagrams (boxes-and-arrows flow figures):
+Figures and schemas:
 
-- `#schema-card(label, body, density: "normal")` — labeled schematic card. Its current `density` choices also encode alignment, so do not mechanically merge them with the future general card-density vocabulary.
-- `#schema-arrow` — a right-pointing arrow cell to place beside schema cards in a grid
-- `#source-note[...]` — small muted caption/citation line for a schematic
-
-Figures:
-
-- `#course-figure(...)` — image with optional caption and source line; shows a labeled placeholder automatically when the file is missing, so a separate `maybe-image`-style wrapper is unnecessary
-- `#figure-source(...)` — the provenance line alone, for a composite figure whose panels each set `show-source: false`
+- `#figure-card(from: [...], caption: [...])[...]` is the complete figure presentation object. Imported, generated, and composite figures use the same card.
+- `#schema-card(from: [...], caption: [...])[...]` is the complete conceptual-diagram presentation object. Imported and Typst-drawn schemas use the same card.
+- `#schema-node(label, body, density: "normal")` and `#schema-arrow` are drawing primitives inside a schema, not presentation cards. The node density choices remain schematic-specific.
+- `#course-image(...)` is only an asset loader with sizing/aspect-ratio/missing-file behavior. Caption and provenance belong to the outer figure/schema card.
+- `#source-note[...]` is for provenance in exceptional compositions that do not use a figure/schema card, including special summary architectures.
 
 Coordinate annotations:
 
@@ -76,10 +73,10 @@ review the pattern, not an automatic reason to enlarge the shared API.
 
 ### Keep a set of sibling nodes consistent with one local forwarding function
 
-When a single grid has several `schema-card` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-card`, and call that function for every node in the grid:
+When a single grid has several `schema-card` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
 
 ```typst
-#let taxonomy-card(label, ..body) = schema-card(label, stack(spacing: 0.35em, ..body), density: "prose")
+#let taxonomy-card(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
 ```
 
 This local function holds no independent visual logic. It forwards one shared

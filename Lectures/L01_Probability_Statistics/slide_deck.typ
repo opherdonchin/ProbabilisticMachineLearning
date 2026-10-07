@@ -513,23 +513,22 @@
   layout: "top",
   object-width: 100%,
   object: [
-#grid(
+#twocol(
   columns: (0.6fr, 1.8fr),
   gutter: 1.5em,
   align: top,
-  [
-    #figure-card(
-      from: [Tom M. Mitchell, _Machine Learning_ (1997), cover],
-    )[
-      #course-image(
-        lecture-figure-path("figures/mitchell_1997__machine_learning_cover.jpg"),
-        width: 100%,
-        height: 7.7cm,
-      )
-    ]
-  ],
-  [
-    #card[
+)[
+  #figure-card(
+    from: [Tom M. Mitchell, _Machine Learning_ (1997), cover],
+  )[
+    #course-image(
+      lecture-figure-path("figures/mitchell_1997__machine_learning_cover.jpg"),
+      width: 100%,
+      height: 7.7cm,
+    )
+  ]
+][
+  #card[
       #stack(
         spacing: 0.85em,
         align(left + top)[
@@ -570,9 +569,8 @@
           ],
         ),
       )
-    ]
-  ],
-)
+  ]
+]
 
   ],
   key-points: [

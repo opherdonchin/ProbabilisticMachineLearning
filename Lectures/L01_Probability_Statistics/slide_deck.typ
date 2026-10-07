@@ -2792,22 +2792,24 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
+    #twocol(
       columns: cols("left"),
       gutter: sp("l"),
       align: top,
-      bordered-card(title: [Two noisy measurements of one state])[
+    )[
+      #bordered-card(title: [Two noisy measurements of one state])[
         #text(size: fs("m"))[
           $z tilde cal(N)(mu_z,Sigma_z)$
           $x | z tilde cal(N)(z,Sigma_x), quad y | z tilde cal(N)(z,Sigma_y)$
         ]
-      ],
-      bordered-card(title: [Same two operations])[
+      ]
+    ][
+      #bordered-card(title: [Same two operations])[
         #text(size: fs("m"))[
           $p(z | x,y) quad arrow.r quad E[z | x,y]$
         ]
-      ],
-    )
+      ]
+    ]
     #uncover("2-")[
       #v(sp("s"))
       #schema-card(

@@ -15,11 +15,6 @@
 
 #title-slide()
 
-#section-metadata(
-  short-title: [Common exponential-family form],
-  subtitle: [Separate data statistics, natural parameters, and normalization],
-)
-
 = Exponential families give familiar distributions a common form
 
 == Different distributions can share the same algebraic structure
@@ -44,9 +39,9 @@
         #bordered-card(title: [Gaussian])[
           #align(center)[
             #text(size: fs("s"))[
-              $ cal(N)(x | mu, Sigma)
-                = 1 / sqrt((2 pi)^d det Sigma)
-                  exp(-1/2 (x-mu)^T Sigma^(-1) (x-mu)) $
+              $ cal(N)(x | mu, sigma^2)
+                = 1 / sqrt(2 pi sigma^2)
+                  exp(-(x-mu)^2 / (2 sigma^2)) $
             ]
           ]
         ]
@@ -222,17 +217,20 @@
     )[
       #recall-card(
         from: [Previous slide: Bernoulli exponential-family mapping],
-        label: [Probability and natural coordinates],
         size: fs("l"),
       )[
-        #align(center)[
-          #stack(
-            spacing: sp("s"),
-            [$ eta = log(mu/(1-mu)) $],
-            [$ mu = sigma(eta) = 1 / (1 + e^(-eta)) $],
-            [$ mu in (0,1) quad arrow.l.r quad eta in RR $],
-          )
-        ]
+        #stack(
+          spacing: sp("s"),
+          [*Probability and natural coordinates*],
+          align(center)[
+            #stack(
+              spacing: sp("s"),
+              [$ eta = log(mu/(1-mu)) $],
+              [$ mu = sigma(eta) = 1 / (1 + e^(-eta)) $],
+              [$ mu in (0,1) quad arrow.l.r quad eta in RR $],
+            )
+          ],
+        )
       ]
     ][
       #uncover("2-")[

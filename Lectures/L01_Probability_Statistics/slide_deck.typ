@@ -2445,11 +2445,12 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
+    #twocol(
       columns: cols("right"),
       gutter: 0.9em,
       align: top,
-      bordered-card(title: [Linear Gaussian model])[
+    )[
+      #bordered-card(title: [Linear Gaussian model])[
         #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
@@ -2459,8 +2460,9 @@
             [#text(size: fs("l"), fill: palette.muted)[$epsilon$ is independent of $z$]],
           )
         ]
-      ],
-      bordered-card(title: [Affine Gaussian rules])[
+      ]
+    ][
+      #bordered-card(title: [Affine Gaussian rules])[
         #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
@@ -2469,8 +2471,8 @@
             [$"Cov"[u]=A "Cov"[x] A^T$],
           )
         ]
-      ],
-    )
+      ]
+    ]
     #uncover("2-")[
       #v(0.15em)
       #bordered-card(title: [Joint Gaussian])[

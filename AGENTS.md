@@ -49,14 +49,37 @@ These instructions apply to the entire repository.
   surface such pressure explicitly while still completing a provisional full
   organization when reasonably possible.
 
+## Slide design
+
+- After slide-level organization is approved and before Typst implementation,
+  read and follow `skills/slide-design/SKILL.md`.
+- Slide Design owns the student-visible explanation: exact or near-final visible
+  content, mathematical/visual objects, semantic grouping, hierarchy, asset
+  briefs, and reveal choreography.
+- Do not silently change slide titles, order, count, section scope, or treatment
+  depth during design. Surface split/merge, density, reveal, asset, summary, or
+  continuity pressure explicitly.
+- The normal persistent handoff is a lecture-local `slide_design.md` precise
+  enough that a downstream authoring agent does not need to invent substantive
+  content or visual meaning.
+
 ## Lecture slide authoring
 
-- Follow `Lectures/README.md` when creating or editing lecture slides
+- After slide design is approved, read and follow
+  `skills/slide-authoring/SKILL.md` and the current standards in
+  `Lectures/README.md`.
+- Slide Authoring owns faithful Typst/Touying realization, lecture-local assets,
+  reveal mechanics, source readability, compilation, and visual validation. It
+  does not silently redesign the teaching sequence or student-visible meaning.
+- Use the live `Lectures/course.typ` and current authoring references; numbered
+  checkpoint files are frozen references rather than the API to import.
 - After editing a lecture `.typ` file, run
   `python scripts/check_typst_math_attachments.py <edited-file>` and fix any
   run-on math attachments introduced by the edit. Report pre-existing hits
   separately rather than silently changing unrelated slides. This focused
   source check still applies when full compile or visual review is deferred.
+- Do not add speaker notes during slide development; speaker notes are a later
+  production-stage task after the visible deck is stable.
 
 ## Teaching notebook authoring
 

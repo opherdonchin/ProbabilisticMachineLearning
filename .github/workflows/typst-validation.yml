@@ -20,11 +20,11 @@ jobs:
       - name: Compile pass 00 reference
         run: |
           mkdir -p build/typst-validation
-          typst compile Lectures/L01_Probability_Statistics/slide_deck_00.typ build/typst-validation/slide_deck_00.pdf
+          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_00.typ build/typst-validation/slide_deck_00.pdf
 
       - name: Compile live Lecture 1
         run: |
-          typst compile Lectures/L01_Probability_Statistics/slide_deck.typ build/typst-validation/slide_deck.pdf
+          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck.typ build/typst-validation/slide_deck.pdf
 
       - name: Upload compiled decks
         uses: actions/upload-artifact@v4

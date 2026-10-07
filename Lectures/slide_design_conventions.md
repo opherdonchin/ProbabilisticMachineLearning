@@ -317,9 +317,28 @@ For staged explanations, cumulative construction is the default:
 
 Use replacement/focus only when replacement itself serves the teaching move.
 
-Design-level reveal descriptions should express semantic states and persistence,
-not Touying syntax. Exact `uncover`, `only`, `alternatives-match`, callback,
-and repeat mechanics belong to authoring.
+Transient **entry emphasis** is a separate design decision from reveal timing.
+Use it when students are likely to need help locating the newly added material
+among content that remains visible, especially in cumulative derivations,
+sequential constructions, or slides where old and new objects have similar
+visual weight.
+
+Do not make entry emphasis automatic for every reveal. Omit it when the new
+material is already visually dominant, when several highlighted regions would
+compete, or when simultaneous comparison is the teaching operation.
+
+In structured design reveals, request it with
+`reveal-step(..., emphasize: true)`. The design document renders this as
+`entry emphasis`. For intra-object reveals that still require a
+`design-reveal`, state explicitly which newly added subparts receive transient
+entry emphasis.
+
+Entry emphasis is temporary: it applies only on the state where the material
+first appears. Later states and the handout show the same material normally.
+
+Design-level reveal descriptions should express semantic states, persistence,
+and attention intent—not Touying syntax. Exact `uncover`, `step`, `only`,
+`alternatives-match`, callback, and repeat mechanics belong to authoring.
 
 The final state must remain coherent as a handout.
 

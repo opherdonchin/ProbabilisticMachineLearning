@@ -159,15 +159,15 @@
     object-width: 55%,
 
     object: [
-      #twocol[
-        #text(size: 1em)[
-          $ theta tilde "Beta"(alpha, beta) $
-          \
-          $ y_i tilde "Bernoulli"(theta) $
-        ]
-      ][
-        #schema-card[
-          #beta_bernoulli_graph()
+      #schema-card[
+        #twocol[
+          #text(size: 1em)[
+            $ theta tilde "Beta"(alpha, beta) $
+            \
+            $ y_i tilde "Bernoulli"(theta) $
+          ]
+        ][
+            #beta_bernoulli_graph()
         ]
       ]
     ],

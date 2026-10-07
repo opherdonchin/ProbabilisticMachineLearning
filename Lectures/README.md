@@ -67,9 +67,9 @@ This list must stay in sync with what `Lectures/course.typ` actually exports. If
 
 Slide structure and composition:
 
+- Ordinary teaching slides normally use one `#content-block(...)`. Its `object:` region composes presentation cards and layout primitives; its `key-points:` region states the conclusions or interpretations. Section-summary and other special-purpose slides may use a different architecture when that better matches their pedagogical role.
 - `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
-- `#recall-block(from: [...], ...)` — carried-forward knowledge from an assigned recording or an earlier lecture; requires provenance content, adds a compact `Carry forward` marker (customizable with `label:`), and delegates all layout arguments to `content-block`
-- `#twocol[...][...]`, `#triad[...][...][...]` — equal-width row layouts
+- `#twocol[...][...]`, `#triad[...][...][...]` — standard row layouts; use `cols(...)` and `sp(...)` for named column ratios and spacing choices
 - `#section-metadata(short-title: [...], subtitle: [...])` followed by a level-1
   heading (`= Section title`) — section divider and footer metadata
 - `#title-slide()`, `#focus-slide[...]`, `#ending-slide[...]`
@@ -87,14 +87,18 @@ Create every section with this exact structure. Do not introduce or call a `sect
 
 Cards and notes:
 
-- `#course-card(...)`, `#key-points[...]`
-- `#definition(...)`, `#method(...)`
+- `#card[...]` — the default presentation card. It is intentionally unmarked in the current implementation; use it to identify a substantial semantic unit even when no visible boundary is wanted.
+- `#bordered-card(...)` — ordinary card with visible Ruled Page chrome.
+- `#recall-card(from: [...], ...)[...]` — previously established material brought into the current argument; provenance is required. It belongs inside the `object:` region of an ordinary `content-block`.
+- `#figure-card[...]` — neutral frame for an imported or otherwise visually bounded figure object.
+- `#key-points[...]`, `#definition(...)`, `#method(...)`
 - `#note[...]` — margin/aside note
+- During the current authoring stage, font size and internal spacing choices remain explicit in the deck through named `fs(...)` and `sp(...)` values. Do not infer a final card-density API yet.
 
 Schematic diagrams (boxes-and-arrows flow figures):
 
-- `#schema-node(label, body, density: "normal")` — a labeled node box for a flow diagram cell. `density` picks a body-text preset from a small named vocabulary (currently `"normal"`, the default, for a short symbol-only line or two; `"prose"` for a smaller, left-aligned multi-line description) instead of a raw size number, so unrelated slides that pick the same density render identically.
-- `#schema-arrow` — a right-pointing arrow cell to place beside nodes in a grid
+- `#schema-card(label, body, density: "normal")` — a labeled card for a flow-diagram cell. Its existing `density` parameter is specific to schematic content and currently distinguishes short centered content from smaller left-aligned prose.
+- `#schema-arrow` — a right-pointing arrow cell to place beside schema cards in a grid
 - `#source-note[...]` — small muted caption/citation line for a schematic
 
 Figures:
@@ -117,13 +121,13 @@ If a visual or layout pattern is used more than once, it belongs in `course.typ`
 
 ### Keep a set of sibling nodes consistent with one local forwarding function
 
-When a single grid has several `schema-node` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
+When a single grid has several `schema-card` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-card`, and call that function for every node in the grid:
 
 ```typst
-#let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
+#let taxonomy-card(label, ..body) = schema-card(label, stack(spacing: 0.35em, ..body), density: "prose")
 ```
 
-This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-node` parameters, and it is scoped to the one slide that needs it.
+This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-card` parameters, and it is scoped to the one slide that needs it.
 
 ## Speaker notes
 
@@ -154,7 +158,7 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 - Keep mathematical slides readable: avoid excessive density, tiny text, or too many competing visual elements.
 - Prefer Typst-native explanatory diagrams for conceptual structure, equations, graphical models, and schematic relationships.
 - Prefer Python-generated figures for empirical, probabilistic, simulation, and data-driven graphics.
-- Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-node`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
+- Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-card`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
 
 ## Progressive disclosure and reveal planning
 

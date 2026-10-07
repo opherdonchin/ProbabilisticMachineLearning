@@ -158,8 +158,7 @@
   ),
   key-points: (
     key-points(label: "takeaway")[
-      - $h(x)$ and $T(x)$ are data-side functions; $eta$ and $A(eta)$ are parameter-side terms.
-      - The two sides meet in the linear pairing $eta^T T(x)$.
+      - Data-side $h(x), T(x)$ meet parameter-side $eta, A(eta)$ through the linear pairing $eta^T T(x)$.
     ],
   ),
   reveal: reveal-cumulative(
@@ -172,7 +171,7 @@
   ),
   summary-candidates: (
     summary-key-point-candidate(
-      [$h(x)$ and $T(x)$ are data-side functions; $eta$ and $A(eta)$ are parameter-side terms.],
+      [Data-side $h(x), T(x)$ meet parameter-side $eta, A(eta)$ through $eta^T T(x)$.],
       from: "takeaway",
     ),
   ),

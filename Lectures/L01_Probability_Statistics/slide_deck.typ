@@ -513,23 +513,23 @@
   layout: "top",
   object-width: 100%,
   object: [
-#twocol(
-  columns: (0.6fr, 1.8fr),
-  gutter: 1.5em,
-  align: top,
-)[
-  #figure-card(
-    from: [Tom M. Mitchell, _Machine Learning_ (1997), cover],
-  )[
-    #course-image(
-      lecture-figure-path("figures/mitchell_1997__machine_learning_cover.jpg"),
-      width: 100%,
-      height: 7.7cm,
-    )
-  ]
-][
-  #card[
-      #stack(
+    #twocol(
+      columns: (0.6fr, 1.8fr),
+      gutter: 1.5em,
+      align: top,
+    )[
+      #figure-card(
+        from: [Tom M. Mitchell, _Machine Learning_ (1997), cover],
+      )[
+        #course-image(
+          lecture-figure-path("figures/mitchell_1997__machine_learning_cover.jpg"),
+          width: 100%,
+          height: 7.7cm,
+        )
+      ]
+    ][
+      #card[
+        #stack(
         spacing: 0.85em,
         align(left + top)[
         #text(size: fs("l"))[
@@ -568,10 +568,9 @@
             ]
           ],
         ),
-      )
-  ]
-]
-
+        )
+      ]
+    ]
   ],
   key-points: [
   #uncover("5-")[
@@ -1352,7 +1351,7 @@
       gutter: 1.0em,
       align: center + horizon,
     )[
-        #figure-card(from: [Murphy (2025), Book 1, Fig. 1.12a])[
+      #figure-card(from: [Murphy (2025), Book 1, Fig. 1.12a])[
           #course-image(
             lecture-figure-path("figures/book1_fig1_12a_mnist.png"),
             width: 100%,
@@ -1363,7 +1362,7 @@
         ]
     ][
       #schema-card[
-          #stack(
+        #stack(
           spacing: sp("m"),
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
@@ -1386,7 +1385,7 @@
       gutter: 1.0em,
       align: center + horizon,
     )[
-        #figure-card(from: [Murphy (2025), Book 1, Fig. 1.13b])[
+      #figure-card(from: [Murphy (2025), Book 1, Fig. 1.13b])[
           #course-image(
             lecture-figure-path("figures/book1_fig1_13b_cifar10.png"),
             width: 100%,
@@ -1397,7 +1396,7 @@
         ]
     ][
       #schema-card[
-          #stack(
+        #stack(
           spacing: 0.65em,
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[

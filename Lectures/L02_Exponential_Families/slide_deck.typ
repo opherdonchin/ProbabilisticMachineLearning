@@ -89,7 +89,7 @@
     #stack(
       spacing: sp("m"),
 
-      #card[
+      card[
         #align(center)[
           #stack(
             spacing: sp("xs"),
@@ -105,7 +105,7 @@
         ]
       ],
 
-      #grid(
+      grid(
         columns: cols("equal"),
         gutter: sp("s"),
         row-gutter: sp("s"),
@@ -183,7 +183,7 @@
         ]
       ],
 
-      #uncover("3-")[
+      uncover("3-")[
         #bordered-card(title: [Match terms to the general form])[
           #align(center)[
             #stack(

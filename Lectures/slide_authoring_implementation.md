@@ -12,7 +12,7 @@ This list must stay in sync with what `Lectures/course.typ` actually exports. If
 Slide structure and composition:
 
 - Ordinary teaching slides normally use one `#content-block(...)`. Its `object:` region composes cards and layout primitives; its `key-points:` region carries the conclusions or interpretations. Section-summary and other special-purpose slides may deliberately use another architecture.
-- `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
+- `#content-block(...)` — object + key-points composition. `layout: "top"` is the normal/default arrangement; use `"bottom"`, `"side-left"`, or `"side-right"` only when the slide argument calls for them.
 - `#twocol[...][...]`, `#triad[...][...][...]` — standard row layouts; `cols(...)` and `sp(...)` provide named layout choices
 - Treat grouping and layout as separate decisions. Use cards when content forms a meaningful semantic or visual unit; a card may itself contain `twocol`, `triad`, `grid`, or other layout.
 - Prefer `twocol` and `triad` whenever they express the intended two- or three-column geometry clearly, regardless of whether their children are cards or unboxed content. Use raw `grid` when the required geometry is not naturally expressed by the current layout helpers—for example tables/matrices, multi-row or 2×2 arrangements, fixed replacement geometry, or more intricate schematic structure.
@@ -40,10 +40,11 @@ Cards and notes:
 - `#card[...]` — default, visually unmarked presentation card.
 - `#bordered-card(...)` — ordinary visibly bounded card.
 - `#recall-card(from: [...], ...)[...]` — carried-forward material with required provenance; use inside `content-block.object`, not as a peer of `content-block`.
+- The normal recall-card body size is `fs("m")`; override it only when the carried-forward material clearly benefits from a larger or smaller presentation.
 - `#figure-card(from: [...], caption: [...])[...]` — complete figure presentation object; owns frame, optional caption, and optional provenance.
 - `#key-points[...]`, `#definition(...)`, `#method(...)`
 - `#note[...]` — margin/aside note
-- For now, deck source expresses card font sizes and internal spacing with named `fs(...)` and `sp(...)` choices. A later audit will decide which recurring combinations deserve card-level density variants.
+- For now, deck source expresses card font sizes and internal spacing with named `fs(...)` and `sp(...)` choices. The scales are calibrated together: same-name choices should form a sensible default density, while `sp("xxs")` is reserved for optical/micro spacing. A later audit will decide which recurring combinations deserve card-level density variants.
 
 Figures and schemas:
 

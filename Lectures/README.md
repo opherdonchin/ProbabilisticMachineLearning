@@ -1,46 +1,39 @@
-# First-pass shared Typst course layer
+# Slide Authoring Standards for Advanced Statistics 2027-1
 
-Expected local theme path:
+This is the canonical authoring standard for the course. It supersedes earlier
+standalone drafts such as `advanced_statistics_slide_authoring_standards.md`
+when those drafts disagree with the repository.
+
+## Shared Typst course layer
+
+The expected theme path is:
 
 ```text
 Lectures/themes/ruled-page/template.typ
 ```
 
-Files:
-
-```text
-Lectures/
-├── course.typ
-└── L01_Probability_Statistics/
-    ├── slide_deck.typ
-    ├── coin_model.ipynb
-    └── figures/
-        ├── coin_model__beta_distribution.svg
-        ├── coin_model__bernoulli_likelihood.svg
-        ├── coin_model__prior_likelihood_posterior.svg
-        ├── coin_model__sequential_updating.svg
-        ├── coin_model__posterior_predictive.svg
-        └── coin_model__sampling_monte_carlo.svg
-```
+A lecture normally lives under `Lectures/LXX_.../` with its `slide_deck.typ`,
+lecture-local figures and author notebooks, and a separate student-facing
+notebook where appropriate.
 
 ## Design intent
 
-`course.typ` is deliberately a thin course-specific layer over SeaSlides Ruled Page.
+`course.typ` is deliberately a thin course-specific layer over SeaSlides Ruled
+Page. It carries the visual language and mechanics that future lecture authors
+should not have to re-decide.
 
 It adds:
 
-- lecture metadata and title-slide ordering;
-- muted lecture identity in the ordinary-slide header;
-- current section at footer left and slide X/Y at footer right;
-- numbered section slides with full title, short footer title, and subtitle;
-- `content-slide` with `top`, `bottom`, `side-left`, and `side-right` composition;
-- semantic wrappers `key-points`, `note`, `definition`, and `method`;
-- `course-image` as a low-level asset loader with missing-file fallback, composed inside figure/schema cards;
-- lightweight coordinate-based annotations.
+- lecture metadata, title-slide ordering, section dividers, headers, and footers;
+- `content-block` for ordinary object + key-points composition;
+- calibrated `fs(...)`, `sp(...)`, and `cols(...)` scales plus simple row layouts;
+- semantic presentation objects such as `card`, `bordered-card`,
+  `recall-card`, `figure-card`, and `schema-card`;
+- a recognizable section-summary architecture;
+- low-level figure/schema loading, provenance, and diagram primitives.
 
-It intentionally delegates palette, typography, spacing, list styling, and most component styling to Ruled Page.
-
-# # Slide Authoring Standards for Advanced Statistics 2027-1
+It continues to delegate the base palette, page geometry, base typography, list
+styling, and most theme styling to Ruled Page.
 
 Use these standards when creating or editing lecture slides for this project.
 
@@ -63,7 +56,7 @@ in the current agent environment; if either is unavailable, inform the user.
 
 Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
 
-This list must stay in sync with what `Lectures/course.typ` actually exports. If you add, rename, or remove a component there, update this list in the same change — an API list that describes components which do not exist (or omits ones that do) is a standards-doc bug, not a minor omission.
+This section documents the intended author-facing API, not every private implementation helper. When an exported helper is meant for normal lecture authoring, document it here and state whether it is an established convention or still provisional.
 
 Slide structure and composition:
 
@@ -74,7 +67,7 @@ Slide structure and composition:
 - Prefer `twocol` and `triad` whenever they express the intended two- or three-column geometry clearly, regardless of whether their children are cards or unboxed content. Use raw `grid` when the required geometry is not naturally expressed by the current layout helpers—for example tables/matrices, multi-row or 2×2 arrangements, fixed replacement geometry, or more intricate schematic structure.
 - `#section-metadata(short-title: [...], subtitle: [...])` followed by a level-1
   heading (`= Section title`) — section divider and footer metadata
-- `#title-slide()`, `#focus-slide[...]`, `#ending-slide[...]`
+- `#title-slide()` — established course title slide. `#focus-slide[...]` and `#ending-slide[...]` remain available theme conveniences, but are provisional until later lectures demonstrate a recurring need.
 
 Create every section with this exact structure. Do not introduce or call a `section-slide` helper:
 
@@ -89,21 +82,31 @@ Create every section with this exact structure. Do not introduce or call a `sect
 
 Cards and notes:
 
-- `#card[...]` — the default presentation card. It is intentionally unmarked in the current implementation; use it to identify a substantial semantic unit even when no visible boundary is wanted.
+- `#card[...]` — the default presentation card. It is intentionally unmarked; use it to identify a substantial semantic or visual unit even when no visible boundary is wanted.
 - `#bordered-card(...)` — ordinary card with visible Ruled Page chrome.
 - `#recall-card(from: [...], ...)[...]` — previously established material brought into the current argument; provenance is required. It belongs inside the `object:` region of an ordinary `content-block`.
 - The normal recall-card body size is `fs("m")`; override it only when the carried-forward material clearly benefits from a larger or smaller presentation.
-- Standalone recall cards normally use `#align(left)[#recall-card(from: [...], width: 50%)[...]]`. Judge longer content in the rendered slide before widening it. Within a `twocol` or other column layout, omit `width:` so the card fills its column (the default is `100%`).
+- Standalone recall cards normally use a parent alignment/width composition such as `#align(left)[#block(width: 50%)[#recall-card(...) [...]]]`. Within a `twocol` or other column layout, let the card fill its allocated column.
 - `#figure-card(from: [...], caption: [...])[...]` — complete figure presentation object. It owns the figure frame, optional caption, and optional provenance. Its body may be a single image or a composite.
-- `#key-points[...]`, `#definition(...)`, `#method(...)`
-- `#note[...]` — margin/aside note
-- During the current authoring stage, font size and internal spacing choices remain explicit through named `fs(...)` and `sp(...)` values. The two scales are calibrated as a family: matching labels should give a coherent density. Use `xxs` spacing for deliberately optical/micro gaps; do not use it as the normal item spacing for `fs("xs")` text. Do not infer a final card-density API yet.
+- `#note[...]` — margin/aside note.
+- During authoring, font size and internal spacing choices remain explicit through named `fs(...)` and `sp(...)` values. The two scales are calibrated as a family: matching labels should give a coherent density. Use `xxs` spacing for deliberately optical/micro gaps; do not use it as the normal item spacing for `fs("xs")` text. Do not invent a general card-density API until later lectures provide evidence.
+
+Section summaries:
+
+- `#section-summary-visual[...]` and `#section-summary-takeaways[...]` form the current course-level summary convention.
+- A section summary looks backward: reuse a small number of already-taught visual anchors and state short conclusions that the section has already established. Do not introduce a new argument on a summary slide.
+- Section summaries are a special slide architecture. They need not imitate the ordinary card grammar merely for consistency.
+
+Available but provisional:
+
+- `#focus-slide[...]`, `#ending-slide[...]`, `#key-points[...]`, `#definition(...)`, `#method(...)`, `#callout(...)`, and `#annotated-object(...)` remain available, but L01 did not establish them as recurring course conventions. Keep them simple and let later lectures determine whether they deserve promotion, redesign, or removal.
 
 Figures and schemas:
 
 - `#figure-card(from: [...], caption: [...])[...]` classifies a complete figure by its pedagogical role. Imported, course-generated, and composite figures use the same outer card; how the visual was produced is an implementation detail.
 - `#schema-card(from: [...], caption: [...])[...]` classifies a complete conceptual diagram. The body may be an imported image, a generated asset, inline Typst, or a standalone `.typ` helper.
 - `#schema-node(label, body, density: "normal")` and `#schema-arrow` are lower-level drawing primitives used *inside* Typst-drawn schemas. They are not presentation cards. `schema-node` retains its existing schematic-specific density vocabulary.
+- `#course-diagram`, `#graph-node`, and `#graph-edge` are low-level Fletcher/Touying primitives for standalone Typst diagrams such as graphical models; they are implementation vocabulary beneath a `schema-card`, not alternative presentation-card types.
 - `#course-image(...)` is a low-level image loader only: sizing, aspect-ratio preservation, and missing-file placeholder. It does not own caption or provenance.
 - `#source-note[...]` remains available for small provenance/citation lines in compositions that are not figure/schema cards (for example special summary architectures).
 - Use `from:` on a figure/schema card when the card has meaningful external, adapted, or computational provenance. Course-authored diagrams may omit it when no displayed attribution is useful.
@@ -112,28 +115,35 @@ Coordinate annotations:
 
 - `#callout(...)`, `#annotated-object(...)`
 
-### Do not duplicate a helper across lecture files
+### Promote stable shared helpers
 
-If a visual or layout pattern is used more than once, it belongs in `course.typ`, not copied into a lecture file. Concretely:
+Check `course.typ` before adding a lecture-local helper. Reuse an existing component when it already covers the need.
 
-- The moment the same helper function (even a small one) appears — including by copy-paste — in a second lecture file, move it to `course.typ` and delete both local copies in the same change.
-- Before writing a new lecture-local helper, check this list and `course.typ` for an existing component that already covers the need. Do not reinvent an existing primitive under a new name (for example, a second muted-caption function alongside `source-note`).
-- A helper is genuinely lecture-local only when it encodes a fact specific to that lecture, such as a fixed figure-directory prefix (`lecture-figure-path`) or a lecture-specific reveal pairing. Generic visual patterns (boxes, arrows, captions, layout grids) are course-wide by default.
-- Do not keep two definitions of the same helper in one file either (for example, a path-prefix helper defined twice under different names). If you find one, merge them.
+Promote a pattern when its behavior is stable and centralizing it will reduce future authoring choices or make cross-lecture correction easier. Repetition is evidence, not an automatic promotion rule: a second use should trigger review, while one-off teaching constructions and lecture-specific vocabulary may remain local.
+
+- A path prefix, a lecture-specific reveal pairing, or a local forwarding function may remain lecture-local.
+- Generic visual logic should not be copied under multiple names.
+- When a helper is promoted, move the implementation and update the authoring docs in the same change.
+- Do not keep duplicate definitions of the same helper in one file.
 
 ### Keep a set of sibling nodes consistent with one local forwarding function
 
-When a single grid has several `schema-node` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
+When one grid has several `schema-node` cells that must look alike, a slide-local forwarding function can fix their shared choices without inventing a new course component:
 
 ```typst
-#let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
+#let taxonomy-node(label, ..body) = schema-node(
+  label,
+  stack(spacing: sp("xs"), ..body),
+  density: "prose",
+)
 ```
 
-This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-node` parameters, and it is scoped to the one slide that needs it.
+Such a function contains no independent visual logic; it only keeps sibling nodes consistent. It can remain local even if a similar forwarding pattern appears elsewhere.
 
 ## Speaker notes
 
-- Do not add speaker notes unless the instructor explicitly requests them.
+- Do not add speaker notes during slide development.
+- Speaker notes are a later production-stage artifact, generated after the visible slide deck is stable. Add them only when the instructor explicitly asks to enter that production stage.
 
 ## Figures and computational provenance
 

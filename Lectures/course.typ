@@ -362,7 +362,7 @@
   from: none,
   body,
   label: [Carried forward],
-  size: 1em,
+  size: fs("m"),
   width: 100%,
 ) = {
   assert(from != none, message: "recall-card requires provenance via from: [...]")
@@ -401,7 +401,7 @@
 
 #let section-summary-takeaways(
   body,
-  size: 1em,
+  size: fs("xs"),
 ) = block(
   width: 100%,
   fill: palette.accent.lighten(91%),
@@ -465,11 +465,12 @@
 // Canonical course spacing and column ratios. Use these for ordinary layout
 // relationships; raw lengths remain available for deliberate optical tuning.
 #let _spacing = (
-  xs: 0.22em,
-  s: 0.35em,
-  m: 0.55em,
+  xxs: 0.22em,
+  xs: 0.35em,
+  s: 0.45em,
+  m: 0.6em,
   l: 0.8em,
-  xl: 1.2em,
+  xl: 1.1em,
 )
 #let sp(size) = _spacing.at(size)
 
@@ -531,7 +532,7 @@
 //   == Slide title
 //   #stack(spacing: 0.7em, content-block(...), note([Supporting note]))
 #let content-block(
-  layout: "bottom",
+  layout: "top",
   object-width: auto,
   object: none,
   key-points: none,

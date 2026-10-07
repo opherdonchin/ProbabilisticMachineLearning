@@ -19,46 +19,17 @@
 // `twocol` and `triad` are shared course components (see course.typ); import
 // them via `*` above rather than redefining them per lecture.
 
-// `course-figure` resolves file strings from Lectures/course.typ. Keep these
+// `course-image` resolves file strings from Lectures/course.typ. Keep these
 // lecture-local assets addressable without relying on Typst's removed path().
 #let lecture-figure-path(file) = "L01_Probability_Statistics/" + file
 
 // Keeps a reveal-only note in the same visual space as a course figure.
-#let figure-note(body) = block(width: 100%, height: 5.45cm)[
+#let figure-note-card(body) = block(width: 100%, height: 5.45cm)[
   #align(center + horizon)[
     #block(width: 88%)[
-      #note[#text(size: 0.72em)[#body]]
+      #note[#text(size: fs("s"))[#body]]
     ]
   ]
-]
-
-
-// Section summaries deliberately reuse one or two visual anchors from the
-// section, followed by a small set of key points that were already taught.
-#let section-summary-visual(body) = block(
-  width: 100%,
-  height: 5.6cm,
-  stroke: 0.7pt + palette.rule-line,
-  fill: palette.paper,
-  radius: 0.25em,
-  inset: (x: 0.55em, y: 0.45em),
-)[
-  #align(center + horizon)[#body]
-]
-
-#let section-summary-takeaways(body) = block(
-  width: 100%,
-  fill: palette.accent.lighten(91%),
-  radius: 0.25em,
-  inset: (x: 0.65em, y: 0.42em),
-)[
-  #grid(
-    columns: (6.5em, 1fr),
-    column-gutter: 0.55em,
-    align: (left + top, left + top),
-    text(size: 0.58em, weight: "semibold", fill: palette.accent)[TAKE HOME],
-    text(size: 0.69em)[#body],
-  )
 ]
 
 
@@ -68,34 +39,35 @@
 == The Beta-Binomial model
 
 #content-block(
-  layout: "top",
   object-width: 82%,
 
   object: [
-    #align(center)[
-      #twocol[
-        *Observed*\
-        the coin tosses $y_1, dots, y_N$
-      ][
-        *Unknown*\
-        the coin bias $theta$
-      ]
-
-      #uncover("2-")[
-        $ theta tilde "Beta"(alpha, beta) $
-        \
-        $ y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N $
-      ]
-      #uncover("3-")[
-        #v(0.65em)
-        Code heads as $y_i = 1$ and tails as $y_i = 0$\
-        $N_1 = sum_(i=1)^N y_i, quad N_0 = N - N_1$
-      ]
+    #card[
+      #align(center)[
+            #twocol[
+              *Observed*\
+              the coin tosses $y_1, dots, y_N$
+            ][
+              *Unknown*\
+              the coin bias $theta$
+            ]
+      
+            #uncover("2-")[
+              $ theta tilde "Beta"(alpha, beta) $
+              \
+              $ y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N $
+            ]
+            #uncover("3-")[
+              #v(0.65em)
+              Code heads as $y_i = 1$ and tails as $y_i = 0$\
+              $N_1 = sum_(i=1)^N y_i, quad N_0 = N - N_1$
+            ]
+          ]
     ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - A statistical model has data and unknown parameters
       ],
@@ -118,52 +90,52 @@
   layout: "side-left",
   object-width: 60%,
   object: [
-    #grid(
-      columns: (28%, 1fr),
-      column-gutter: 1.2em,
-      row-gutter: 0.25em,
-      align: center + horizon,
-
-      [
-        #align(center)[
-          #text(size: 0.68em)[
-            $ theta tilde "Beta"(alpha, beta) $
-          ]
-        ]
-      ],
-      [
-        #course-figure(
-          lecture-figure-path("figures/coin_model__beta_distribution.svg"),
-          source: "figures/coin_model__beta_distribution.svg",
-          width: 100%,
-          height: 4cm,
-        )
-      ],
-      [
-        #uncover("2-")[
-          #align(center)[
-            #stack(
-              spacing: 0.2em,
-              text(size: 0.68em)[$ y_i  tilde "Bernoulli"(theta) $],
-              text(size: 0.68em, fill: palette.muted)[$ i = 1, dots, N $],
-            )
-          ]
-        ]
-      ],
-      [
-        #uncover("2-")[
-          #course-figure(
-            lecture-figure-path("figures/coin_model__bernoulli_likelihood.svg"),
-            source: "figures/coin_model__bernoulli_likelihood.svg",
-            width: 100%,
-            height: 4cm,
+    #figure-card[
+      #grid(
+            columns: (28%, 1fr),
+            column-gutter: sp("xl"),
+            row-gutter: sp("xxs"),
+            align: center + horizon,
+      
+            [
+              #align(center)[
+                #text(size: fs("xs"))[
+                  $ theta tilde "Beta"(alpha, beta) $
+                ]
+              ]
+            ],
+            [
+              #course-image(
+                lecture-figure-path("figures/coin_model__beta_distribution.svg"),
+                width: 100%,
+                height: 4cm,
+              )
+            ],
+            [
+              #uncover("2-")[
+                #align(center)[
+                  #stack(
+                    spacing: sp("xs"),
+                    text(size: fs("xs"))[$ y_i  tilde "Bernoulli"(theta) $],
+                    text(size: fs("xs"), fill: palette.muted)[$ i = 1, dots, N $],
+                  )
+                ]
+              ]
+            ],
+            [
+              #uncover("2-")[
+                #course-image(
+                  lecture-figure-path("figures/coin_model__bernoulli_likelihood.svg"),
+                  width: 100%,
+                  height: 4cm,
+                )
+              ]
+            ],
           )
-        ]
-      ],
-    )
+    ]
   ],
   key-points: [
-    #text(size: 0.82em)[
+    #text(size: fs("l"))[
       - Beta for continuous variables on $[0,1]$.
       #uncover("2-")[
         - Bernoulli for each yes/no outcome; Binomial for the count $N_1$.
@@ -180,20 +152,22 @@
 == Models can be drawn as graphs
 
 #stack(
-  spacing: 0.7em,
+  spacing: sp("l"),
   content-block(
     layout: "side-left",
     object-width: 55%,
 
     object: [
-      #twocol[
-        #text(size: 1em)[
-          $ theta tilde "Beta"(alpha, beta) $
-          \
-          $ y_i tilde "Bernoulli"(theta) $
+      #schema-card[
+        #twocol[
+          #text(size: 1em)[
+            $ theta tilde "Beta"(alpha, beta) $
+            \
+            $ y_i tilde "Bernoulli"(theta) $
+          ]
+        ][
+            #beta_bernoulli_graph()
         ]
-      ][
-        #beta_bernoulli_graph()
       ]
     ],
 
@@ -207,43 +181,55 @@
     ],
   ),
 
-  pause,
-
-  note([
-    In this course, graphs will allow us to factor complex problems into smaller, more tractable problems
-  ]),
+  uncover("3-")[
+    #note[
+      In this course, graphs will allow us to factor complex problems into smaller, more tractable problems
+    ]
+  ],
 )
 
 
 
 == Bayes' rule combines prior and likelihood
 
-#note[#text(size:0.9em)[#stack(spacing:0.7em,
-  [Model],
-  [$ theta tilde "Beta"(alpha, beta) $],
-  [$ y_i tilde "Bernoulli"(theta) $],
-)]]
-
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #uncover("2-")[
-      #align(center)[
-        #stack(
-          spacing: 1.0em,
-          text(weight: "semibold", fill: palette.accent)[Bayes' rule],
-          text(size: 1.3em)[$
-            p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
-            &prop p(y | theta) p(theta)$],
-
-        )
-      ]
-    ]
+    #stack(
+      spacing: sp("l"),
+      align(left)[
+        #block(width: 50%)[
+          #recall-card(
+            from: [Earlier in this section: Beta–Bernoulli model],
+            size: fs("xl"),
+          )[
+            #stack(
+              spacing: sp("xs"),
+              [Model],
+              [$ theta tilde "Beta"(alpha, beta) $],
+              [$ y_i tilde "Bernoulli"(theta) $],
+            )
+          ]
+        ]
+      ],
+      uncover("2-")[
+        #card[
+          #align(center)[
+            #stack(
+              spacing: sp("l"),
+              text(weight: "semibold", fill: palette.accent)[Bayes' rule],
+              text(size: 1.3em)[$
+                p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
+                &prop p(y | theta) p(theta)
+              $],
+            )
+          ]
+        ]
+      ],
+    )
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("l"),
       uncover("2-")[
         - Bayes' rule combines prior and likelihood into a posterior
           - *Prior:* $p(theta)$; *Likelihood:* $p(y | theta)$; *Posterior:* $p(theta | y)$
@@ -259,41 +245,56 @@
 
 == Conjugacy permits simple calculations
 
-#note[#text(size:0.9em)[#stack(spacing:0.7em,
-  [Model],
-  pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
-  pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
-  [Bayes rule],
-  pad(left: 1em)[$ p(theta | y) &prop p(y | theta) p(theta) $],
-)]]
-
 #content-block(
-  layout: "top",
-  object-width: 68%,
   object: [
-    Applying Bayes' rule to our model
     #stack(
-      spacing: 0.9em,
-      text(size: 0.88em)[
-        #grid(
-          columns: (auto, 1fr),
-          column-gutter: 0.9em,
-          row-gutter: 0.65em,
-          align: (left, left),
-          [#text(weight: "semibold", fill: palette.accent)[Prior]],
-          [$ p(theta) = "Beta"(alpha, beta) $],
-          [#text(weight: "semibold", fill: palette.accent)[Likelihood]],
-          [$ p(y | theta) prop theta^(N_1) (1-theta)^(N_0) $],
-          uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Posterior]],
-          uncover("2-")[$ p(theta | y) = "Beta"(alpha + N_1, beta + N_0) $],
-        )
+      spacing: sp("m"),
+      align(left)[
+        #block(width: 50%)[
+          #recall-card(
+            from: [Earlier in this section: model and Bayes' rule],
+          )[
+            #stack(
+              spacing: sp("xs"),
+              [Model],
+              pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
+              pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
+              [Bayes rule],
+              pad(left: 1em)[$ p(theta | y) &prop p(y | theta) p(theta) $],
+            )
+          ]
+        ]
+      ],
+      align(center)[
+        #block(width: 68%)[
+          #card[
+            Applying Bayes' rule to our model
+            #stack(
+              spacing: 0.9em,
+              text(size: fs("xl"))[
+                #grid(
+                  columns: (auto, 1fr),
+                  column-gutter: 0.9em,
+                  row-gutter: 0.65em,
+                  align: (left, left),
+                  [#text(weight: "semibold", fill: palette.accent)[Prior]],
+                  [$ p(theta) = "Beta"(alpha, beta) $],
+                  [#text(weight: "semibold", fill: palette.accent)[Likelihood]],
+                  [$ p(y | theta) prop theta^(N_1) (1-theta)^(N_0) $],
+                  uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Posterior]],
+                  uncover("2-")[$ p(theta | y) = "Beta"(alpha + N_1, beta + N_0) $],
+                )
+              ],
+            )
+          ]
+        ]
       ],
     )
   ],
   key-points-title: [#uncover("3-")[Conjugacy]],
   key-points: [
     #uncover("3-")[
-      #text(size: 0.85em)[
+      #text(size: fs("l"))[
         The prior and likelihood are conjugate when the posterior belongs to the
         same distribution family as the prior.
       ]
@@ -306,20 +307,21 @@
 == The posterior is a distribution representing uncertainty
 
 #content-block(
-  layout: "top",
   object-width: 82%,
   object: [
-    #course-figure(
-      lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
-      source: "figures/coin_model__prior_likelihood_posterior.svg",
+    #figure-card(
       caption: [Bayesian updating for the familiar coin model],
-      width: 100%,
-      height: 8.5cm,
-    )
+    )[
+      #course-image(
+        lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
+        width: 100%,
+        height: 8.4cm,
+      )
+    ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - The prior and the posterior are both probability distributions
       ],
@@ -336,21 +338,18 @@
 == Summary: A familiar modeling language
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
-      #course-figure(
+      #course-image(
         lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
         width: 92%,
         height: 4.75cm,
-        show-source: false,
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.22em,
+        spacing: sp("xs"),
         [- A statistical model has data and unknown parameters],
         [- Bayes' rule combines prior and likelihood into a posterior],
         [- Posterior width represents remaining uncertainty],
@@ -370,16 +369,17 @@
 == Statistics focuses on the unknown parameters
 
 #content-block(
-  layout: "top",
   object-width: 60%,
   object: [
-    #align(center)[
-      $ p(theta | D) = frac(p(D | theta) p(theta), p(D)) $
+    #card[
+      #align(center)[
+            $ p(theta | D) = frac(p(D | theta) p(theta), p(D)) $
+          ]
     ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("xs"),
       [
         - Get data $arrow.r$ build a model $arrow.r$ apply Bayes' rule $arrow.r$ interpret $theta$
           - For many scientific questions, that posterior *is* the answer
@@ -396,14 +396,14 @@
 == Machine learning grew out of computer science
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #input_output_function_schema()
+    #schema-card[
+      #input_output_function_schema()
+    ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - A computational task is an *input/output contract*
           - Produce a function $f$ that maps input $x$ to output $y$
@@ -424,11 +424,9 @@
 == Early machine learning grew out of classification problems
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
     #grid(
-      columns: (1fr, 1fr),
+      columns: cols("equal"),
       // Reserve the complete figure-and-caption row across replacements.
       rows: (6.5cm,),
       gutter: 1em,
@@ -437,15 +435,18 @@
       alternatives-match(
         (
           "1, 3-": [
-            #course-figure(
-              lecture-figure-path("figures/fisher_1936__iris_discriminant_histograms.png"),
-              source: "Fisher (1936), Fig. 1, The Use of Multiple Measurements in Taxonomic Problems",
-              width: 100%,
-              height: 5cm,
-            )
+            #figure-card(
+              from: [Fisher (1936), Fig. 1, _The Use of Multiple Measurements in Taxonomic Problems_],
+            )[
+              #course-image(
+                lecture-figure-path("figures/fisher_1936__iris_discriminant_histograms.png"),
+                width: 100%,
+                height: 5cm,
+              )
+            ]
           ],
           "2": [
-            #figure-note[
+            #figure-note-card[
               Rosenblatt considered the perceptron a model of the vertebrate
               visual system. He showed how neuron-like units could learn to
               “recognize” classes of input patterns from experience.
@@ -458,7 +459,7 @@
       alternatives-match(
         (
           "1": [
-            #figure-note[
+            #figure-note-card[
               Every flower started as four numbers. Fisher learned one weighted
               combination of those four numbers so that species became as
               separated as possible. The histogram shows the flowers after that
@@ -466,12 +467,15 @@
             ]
           ],
           "2-": [
-            #course-figure(
-              lecture-figure-path("figures/rosenblatt_1958__perceptron_organization.png"),
-              source: "Rosenblatt (1958), Fig. 1, The Perceptron",
-              width: 100%,
-              height: 5cm,
-            )
+            #figure-card(
+              from: [Rosenblatt (1958), Fig. 1, _The Perceptron_],
+            )[
+              #course-image(
+                lecture-figure-path("figures/rosenblatt_1958__perceptron_organization.png"),
+                width: 100%,
+                height: 5cm,
+              )
+            ]
           ],
         ),
         position: left + top,
@@ -481,7 +485,7 @@
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       uncover("3-")[
         - Fisher's discriminant and Rosenblatt's perceptron share an interface
           - complex input $arrow.r$ class or response
@@ -496,113 +500,116 @@
 
 
 
+
 == Machine learning defined
 
 #content-block(
-  layout: "top",
   object-width: 100%,
   object: [
-#grid(
-  columns: (0.6fr, 1.8fr),
-  gutter: 1.5em,
-  align: top,
-  [
-    #course-figure(
-      lecture-figure-path("figures/mitchell_1997__machine_learning_cover.jpg"),
-      source: "Tom M. Mitchell, Machine Learning (1997), cover",
-      width: 100%,
-      height: 7.7cm,
-    )
-  ],
-  [
-    #stack(
-      spacing: 0.85em,
-      align(left + top)[
-      #text(size: 0.85em)[
-        A computer program is said to *learn* from experience $E$ with respect
-        to some class of tasks $T$ and performance measure $P$, if its
-        performance at tasks in $T$, as measured by $P$, improves with
-        experience $E$.
-      ],      
-      ],
-      grid(
-        columns: (1fr, 1fr, 1fr),
-        gutter: 1em,
-        align: center + horizon,
-        [
-          #uncover("2-")[
-            *Training*
-            #v(0.05em)
-              #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
-              #text(size: 0.9em)[$E$: Experience]
-          ]
-        ],
-        [
-          #uncover("3-")[
-            *Task*
-              #v(0.05em)
-              #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
-              #text(size: 0.9em)[$f_A$: Task function]
-          ]
-        ],
-        [
-          #uncover("4-")[
-            *Evaluation*
-              #v(0.05em)
-              #text(size: 0.7em)[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
-              #text(size: 0.9em)[$P$: Performance]
-          ]
-        ],
-      ),
-    )
-  ],
-)
-
+    #twocol(
+      columns: (0.6fr, 1.8fr),
+      gutter: 1.5em,
+      align: top,
+    )[
+      #figure-card(
+        from: [Tom M. Mitchell, _Machine Learning_ (1997), cover],
+      )[
+        #course-image(
+          lecture-figure-path("figures/mitchell_1997__machine_learning_cover.jpg"),
+          width: 100%,
+          height: 7.7cm,
+        )
+      ]
+    ][
+      #card[
+        #stack(
+          spacing: 0.85em,
+          align(left + top)[
+            #text(size: fs("l"))[
+              A computer program is said to *learn* from experience $E$ with respect
+              to some class of tasks $T$ and performance measure $P$, if its
+              performance at tasks in $T$, as measured by $P$, improves with
+              experience $E$.
+            ]
+          ],
+          grid(
+            columns: cols("three"),
+            gutter: 1em,
+            align: center + horizon,
+            [
+              #uncover("2-")[
+                *Training*
+                #v(0.05em)
+                #text(size: fs("s"))[$ f_T: "E" quad arrow.r quad f_A $]
+                #text(size: fs("xl"))[$E$: Experience]
+              ]
+            ],
+            [
+              #uncover("3-")[
+                *Task*
+                #v(0.05em)
+                #text(size: fs("s"))[$ f_A: "In" quad arrow.r quad "Out" $]
+                #text(size: fs("xl"))[$f_A$: Task function]
+              ]
+            ],
+            [
+              #uncover("4-")[
+                *Evaluation*
+                #v(0.05em)
+                #text(size: fs("s"))[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
+                #text(size: fs("xl"))[$P$: Performance]
+              ]
+            ],
+          ),
+        )
+      ]
+    ]
   ],
   key-points: [
-  #uncover("5-")[
-    - Machine learning is a mapping from $(E, f_P) arrow.r f_T arrow.r f_A$
-      - That maximizes $f_A$ performance according to $P$]  ],
+    #uncover("5-")[
+      - Machine learning is a mapping from $(E, f_P) arrow.r f_T arrow.r f_A$
+        - That maximizes $f_A$ performance according to $P$
+    ]
+  ],
 )
-
-
 
 
 == Supervised experience supports prediction
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #grid(
-      columns: (1fr, 1fr),
+    #twocol(
       gutter: 2.2em,
       align: center + horizon,
-      [
+    )[
+      #card[
         #align(center)[
           *Experience: paired examples*
-          #v(0.35em)
-          #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+          #v(sp("s"))
+          #text(size: fs("s"))[$ f_T: "E" quad arrow.r quad f_A $]
           $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
           #v(0.28em)
-          #text(size: 0.72em, fill: palette.muted)[paired examples $arrow.r$ learned predictor]
+          #text(size: fs("s"), fill: palette.muted)[paired examples $arrow.r$ learned predictor]
         ]
-      ],
-      uncover("2-")[
-        #align(center)[
-          *Task: prediction*
-          #v(0.35em)
-          #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
-          $ f_D: x_* quad arrow.r quad hat(y)_* $
-          #v(0.28em)
-          #text(size: 0.72em, fill: palette.muted)[new input $arrow.r$ predicted output]
+      ]
+    ][
+      #uncover("2-")[
+        #card[
+          #align(center)[
+            *Task: prediction*
+            #v(sp("s"))
+            #text(size: fs("s"))[$ f_A: "In" quad arrow.r quad "Out" $]
+            $ f_D: x_* quad arrow.r quad hat(y)_* $
+            #v(0.28em)
+            #text(size: fs("s"), fill: palette.muted)[new input $arrow.r$ predicted output]
+          ]
         ]
-      ],
-    )
+      ]
+    ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - Experience is a training set $D = {(x_n, y_n)}$
           - $x$: called feature, covariate, or predictor
@@ -623,72 +630,80 @@
 == Classification: Iris flowers
 
 #content-block(
-  layout: "top",
   object-width: 92%,
   object: [
-    #stack(
-      spacing: 0.35em,
-      grid(
-        columns: (1.35fr, 1fr),
-        gutter: 1.1em,
-        align: center + horizon,
-        [
-          #grid(
-            columns: (1fr, 1fr, 1fr),
-            gutter: 0.3em,
-            [#align(center)[
-              #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 3cm, fit: "contain"),
-                text(size: 0.45em, fill: palette.muted)[Setosa],
-              )
-            ]],
-            [#align(center)[
-              #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 3cm, fit: "contain"),
-                text(size: 0.45em, fill: palette.muted)[Versicolor],
-              )
-            ]],
-            [#align(center)[
-              #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 3cm, fit: "contain"),
-                text(size: 0.45em, fill: palette.muted)[Virginica],
-              )
-            ]],
-          )
-        ],
-        uncover("2-")[#align(center)[
-          #text(size: 0.45em, weight: "semibold")[
-            Table 1.1: subset of the Iris design matrix
-          ]
-          #v(0.28em)
-          #text(size: 0.45em)[
-            #table(
-              columns: (auto, auto, auto, auto, auto, auto),
-              align: center + horizon,
-              inset: (x: 3.5pt, y: 3pt),
-              table.header(
-                [*index*], [*sl*], [*sw*], [*pl*], [*pw*], [*label*],
-              ),
-              [0], [5.1], [3.5], [1.4], [0.2], [Setosa],
-              [1], [4.9], [3.0], [1.4], [0.2], [Setosa],
-              [dots], [dots], [dots], [dots], [dots], [dots],
-              [50], [7.0], [3.2], [4.7], [1.4], [Versicolor],
-              [dots], [dots], [dots], [dots], [dots], [dots],
-              [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
+    #twocol(
+      columns: (1.35fr, 1fr),
+      gutter: 1.1em,
+      align: center + horizon,
+    )[
+      #figure-card(
+        from: [Murphy (2025), Book 1, Fig. 1.1],
+      )[
+        #grid(
+          columns: cols("three"),
+          gutter: 0.3em,
+          [#align(center)[
+            #stack(
+              spacing: 0.12em,
+              image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 3cm, fit: "contain"),
+              text(size: 0.45em, fill: palette.muted)[Setosa],
             )
+          ]],
+          [#align(center)[
+            #stack(
+              spacing: 0.12em,
+              image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 3cm, fit: "contain"),
+              text(size: 0.45em, fill: palette.muted)[Versicolor],
+            )
+          ]],
+          [#align(center)[
+            #stack(
+              spacing: 0.12em,
+              image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 3cm, fit: "contain"),
+              text(size: 0.45em, fill: palette.muted)[Virginica],
+            )
+          ]],
+        )
+      ]
+    ][
+      #uncover("2-")[
+        #figure-card(
+          from: [Murphy (2025), Book 1, Table 1.1],
+        )[
+          #align(center)[
+            #text(size: 0.45em, weight: "semibold")[
+              Table 1.1: subset of the Iris design matrix
+            ]
+            #v(0.28em)
+            #text(size: 0.45em)[
+              #table(
+                columns: (auto, auto, auto, auto, auto, auto),
+                align: center + horizon,
+                inset: (x: 3.5pt, y: 3pt),
+                table.header(
+                  [*index*], [*sl*], [*sw*], [*pl*], [*pw*], [*label*],
+                ),
+                [0], [5.1], [3.5], [1.4], [0.2], [Setosa],
+                [1], [4.9], [3.0], [1.4], [0.2], [Setosa],
+                [dots], [dots], [dots], [dots], [dots], [dots],
+                [50], [7.0], [3.2], [4.7], [1.4], [Versicolor],
+                [dots], [dots], [dots], [dots], [dots], [dots],
+                [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
+              )
+            ]
+            #v(sp("xxs"))
+            #text(size: 0.45em, fill: palette.muted)[
+              sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
+            ]
           ]
-          #v(0.24em)
-          #text(size: 0.45em, fill: palette.muted)[
-            sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
-          ]
-        ]],
-      ),
-      figure-source("Murphy (2025), Book 1, Fig. 1.1 and Table 1.1"),
-    )
+        ]
+      ]
+    ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - Classification: $y in {1, dots, C}$
           - The classes are unordered and mutually exclusive
@@ -710,15 +725,18 @@
   layout: "side-left",
   object-width: 50%,
   object: [
-    #course-figure(
-      lecture-figure-path("figures/book1_fig1_3_iris_pairplot.png"),
-      source: "Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb",
-      width: 100%,
-      height: 9cm,
-    )
+    #figure-card(
+      from: [Murphy (2025), Book 1, Fig. 1.3; generated by `iris_plot.ipynb`],
+    )[
+      #course-image(
+        lecture-figure-path("figures/book1_fig1_3_iris_pairplot.png"),
+        width: 100%,
+        height: 9cm,
+      )
+    ]
   ],
   key-points: [
-    #text(size: 0.85em)[
+    #text(size: fs("l"))[
     - Training set 
       - 150 labeled examples
       - 50 in each class
@@ -741,32 +759,32 @@
 == Performance: empirical risk minimization
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #align(center)[
-      $ L(x,y ; theta) = ell(y, f(x; theta)) $
-      #uncover("2-")[
-        $ L(theta) = 1/N sum_(n=1)^N L(x_n, y_n ; theta) $
-      ]
-      #uncover("3-")[
-        $ hat(theta) = arg min_theta L(theta) $
-      ]
-      #uncover("4-")[
-        #v(0.55em)
-        #note[
-          #text(size: 0.72em)[
-            Given samples $D = {x^(1), dots, x^(N)}$ from $p(X)$, where $X in RR$,
-            the empirical distribution is
-  $hat(p)_N (x) = 1/N sum_(n=1)^N delta_(x^(n))(x)$.
+    #card[
+      #align(center)[
+            $ L(x,y ; theta) = ell(y, f(x; theta)) $
+            #uncover("2-")[
+              $ L(theta) = 1/N sum_(n=1)^N L(x_n, y_n ; theta) $
+            ]
+            #uncover("3-")[
+              $ hat(theta) = arg min_theta L(theta) $
+            ]
+            #uncover("4-")[
+              #v(sp("m"))
+              #note[
+                #text(size: fs("s"))[
+                  Given samples $D = {x^(1), dots, x^(N)}$ from $p(X)$, where $X in RR$,
+                  the empirical distribution is
+        $hat(p)_N (x) = 1/N sum_(n=1)^N delta_(x^(n))(x)$.
+                ]
+              ]
+            ]
           ]
-        ]
-      ]
     ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - The loss function: the cost of predicting $f(x; theta)$ when the true label is $y$
       ],
@@ -786,24 +804,25 @@
 == A loss function
 
 #content-block(
-  layout: "top",
   object-width: 78%,
   object: [
-    #align(center)[
-      $ L(x,y ; theta) = ell(y, f(x; theta)) $
-      $ ell(y, f(x; theta)) = ell_"01" (y, hat(y)) = II(y != hat(y)) $
-      #uncover("2-")[
-        #v(0.65em)
-        $ II(e) = cases(
-          1 "if " e " is true",
-          0 "if " e " is false",
-        ) $
-      ]
+    #card[
+      #align(center)[
+            $ L(x,y ; theta) = ell(y, f(x; theta)) $
+            $ ell(y, f(x; theta)) = ell_"01" (y, hat(y)) = II(y != hat(y)) $
+            #uncover("2-")[
+              #v(0.65em)
+              $ II(e) = cases(
+                1 "if " e " is true",
+                0 "if " e " is false",
+              ) $
+            ]
+          ]
     ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - A loss function assigns a cost to a prediction when the true label is known
       ],
@@ -820,24 +839,25 @@
 == A probabilistic perspective
 
 #content-block(
-  layout: "top",
   object-width: 90%,
   object: [
-    #align(center)[
-      $ p(x | y = c, theta) $
-      #uncover("2-")[
-        #v(0.65em)
-        $ p(y = c | x, theta) prop p(x | y = c, theta) p(y = c) $
-      ]
-      #uncover("3-")[
-        #v(0.65em)
-        $ hat(y) = arg max_(c in cal(Y)) p(y = c | x; theta) $
-      ]
+    #card[
+      #align(center)[
+            $ p(x | y = c, theta) $
+            #uncover("2-")[
+              #v(0.65em)
+              $ p(y = c | x, theta) prop p(x | y = c, theta) p(y = c) $
+            ]
+            #uncover("3-")[
+              #v(0.65em)
+              $ hat(y) = arg max_(c in cal(Y)) p(y = c | x; theta) $
+            ]
+          ]
     ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - The exploratory data analysis suggests:
           - Features in each class have similar distributions
@@ -859,49 +879,55 @@
 == Task, experience, and performance
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #grid(
-      columns: (1fr, 1fr, 1fr),
+    #triad(
       gutter: 1.5em,
       align: center + horizon,
-      [#align(center)[
-        #text(size: 0.72em, weight: "semibold", fill: palette.accent)[Task]
-        #v(0.18em)
-        #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
-        #v(0.34em)
-        $ x in RR^4 arrow.r hat(y) in cal(Y) $
-        #v(0.12em)
-        #text(size: 0.48em, fill: palette.muted)[four measurements $arrow.r$ species]
-      ]],
-      [#uncover("2-")[
+    )[
+      #card[
         #align(center)[
-          #text(size: 0.72em, weight: "semibold", fill: palette.accent)[Experience]
-          #v(0.18em)
-          #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
+          #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Task]
+          #v(sp("xxs"))
+          #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
           #v(0.34em)
-          $ D = {(x_n, y_n)}_(n=1)^N $
+          $ x in RR^4 arrow.r hat(y) in cal(Y) $
           #v(0.12em)
-          #text(size: 0.48em, fill: palette.muted)[150 labeled flowers]
+          #text(size: 0.48em, fill: palette.muted)[four measurements $arrow.r$ species]
         ]
-      ]],
-      [#uncover("3-")[
-        #align(center)[
-          #text(size: 0.72em, weight: "semibold", fill: palette.accent)[Performance]
-          #v(0.18em)
-          #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
-          #v(0.34em)
-          $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
-          #v(0.12em)
-          #text(size: 0.48em, fill: palette.muted)[zero-one loss / misclassification rate]
+      ]
+    ][
+      #uncover("2-")[
+        #card[
+          #align(center)[
+            #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Experience]
+            #v(sp("xxs"))
+            #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
+            #v(0.34em)
+            $ D = {(x_n, y_n)}_(n=1)^N $
+            #v(0.12em)
+            #text(size: 0.48em, fill: palette.muted)[150 labeled flowers]
+          ]
         ]
-      ]],
-    )
+      ]
+    ][
+      #uncover("3-")[
+        #card[
+          #align(center)[
+            #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Performance]
+            #v(sp("xxs"))
+            #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
+            #v(0.34em)
+            $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
+            #v(0.12em)
+            #text(size: 0.48em, fill: palette.muted)[zero-one loss / misclassification rate]
+          ]
+        ]
+      ]
+    ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - A learning problem is defined by three ingredients: task, experience, and performance
           - *Task:* predict the Iris species from four sepal and petal measurements
@@ -921,35 +947,33 @@
 == Summary: From statistics to machine learning
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
       #grid(
-        columns: (1fr, 1fr, 1fr),
-        gutter: 0.75em,
+        columns: cols("three"),
+        gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Training])[
-          #text(size: 0.72em)[
-            #stack(spacing: 0.35em, [$f_T: "E" arrow.r f_A$], [$E$: experience])
+        bordered-card(title: [Training])[
+          #text(size: fs("s"))[
+            #stack(spacing: sp("s"), [$f_T: "E" arrow.r f_A$], [$E$: experience])
           ]
         ],
-        course-card(title: [Task])[
-          #text(size: 0.72em)[
-            #stack(spacing: 0.35em, [$f_A: "In" arrow.r "Out"$], [$f_A$: learned function])
+        bordered-card(title: [Task])[
+          #text(size: fs("s"))[
+            #stack(spacing: sp("s"), [$f_A: "In" arrow.r "Out"$], [$f_A$: learned function])
           ]
         ],
-        course-card(title: [Evaluation])[
-          #text(size: 0.72em)[
-            #stack(spacing: 0.35em, [$f_P: ("In","Out") arrow.r P$], [$P$: performance])
+        bordered-card(title: [Evaluation])[
+          #text(size: fs("s"))[
+            #stack(spacing: sp("s"), [$f_P: ("In","Out") arrow.r P$], [$P$: performance])
           ]
         ],
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.22em,
+        spacing: sp("xs"),
         [- Machine learning asks how data can produce the required function $f$],
         [- A learning problem is defined by three ingredients: task, experience, and performance],
       )
@@ -974,14 +998,13 @@
 == Experience taxonomy
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #text(size: 0.85em)[
-      #grid(
-        columns: (1fr, 1fr),
-        column-gutter: 0.8em,
-        row-gutter: 0.7em,
+    #schema-card[
+      #text(size: fs("l"))[
+        #grid(
+        columns: cols("equal"),
+        column-gutter: sp("l"),
+        row-gutter: sp("l"),
         align: center + horizon,
         schema-node([Supervised], [$D = {(x_n, y_n)}$]),
         uncover("2-")[
@@ -1000,8 +1023,8 @@
             )
           ])
         ],
-      )
-      #source-note[]
+        )
+      ]
     ]
   ],
   key-points: [#text(size: 0.75em)[
@@ -1014,16 +1037,15 @@
 == Task taxonomy
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
     // Every node in this grid states a Task/Performance pair; route them all
     // through one wrapper so they stay visually consistent.
-    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.7em, ..body), density: "prose")
-    #grid(
-      columns: (1fr, 1fr),
-      column-gutter: 0.8em,
-      row-gutter: 0.7em,
+    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: sp("l"), ..body), density: "prose")
+    #schema-card[
+      #grid(
+        columns: cols("equal"),
+      column-gutter: sp("l"),
+      row-gutter: sp("l"),
       align: center + horizon,
 
       taxonomy-node(
@@ -1055,18 +1077,19 @@
           [Performance: $f_P ({r_(t)})$],
         )
       ],
-    )
+      )
+    ]
   ],
   key-points: [
-    #text(size: 0.72em)[Task describes what the learned system must do.]
-    #v(0.18em)
+    #text(size: fs("s"))[Task describes what the learned system must do.]
+    #v(sp("xxs"))
     #let task-focus(title, basic, performance, example) = stack(
       spacing: 0.5em,
       align(left, text(weight: "semibold", fill: palette.accent, title)),
       grid(
         columns: (7em, 1fr),
         column-gutter: 0.65em,
-        row-gutter: 0.25em,
+        row-gutter: sp("xxs"),
         align: left,
         [*Basic task*], basic,
         [*Performance*], performance,
@@ -1117,7 +1140,7 @@
             #grid(
               columns: (7em, 1fr),
               column-gutter: 0.65em,
-              row-gutter: 0.25em,
+              row-gutter: sp("xxs"),
               align: left,
               [*Prediction*], [Map inputs to outputs],
               [*Generation*], [Produce new examples],
@@ -1136,29 +1159,29 @@
 == There are many combinations of experience and task 
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
-    #align(center)[
-      #text(size: 1em)[
-        #table(
-          columns: (1.15fr, 1fr, 1fr, 1fr, 1fr),
-          align: (left, center, center, center, center),
-          inset: (x: 5pt, y: 5pt),
-          stroke: 0.6pt + palette.rule-line,
-          table.header(
-            [*Experience*], [*Prediction*], [*Generation*], [*Discovery*], [*Action*],
-          ),
-          [*Supervised*], [Classification], [—], [—], [Imitation learning],
-          [*Unsupervised*], [—], [Density modeling], [Clustering / PCA], [—],
-          [*Self-supervised*], [Next-token prediction], [Language generation], [Representation learning], [—],
-          [*Reinforcement / interaction*], [—], [—], [—], [Policy learning],
-        )
-      ]
+    #card[
+      #align(center)[
+            #text(size: 1em)[
+              #table(
+                columns: (1.15fr, 1fr, 1fr, 1fr, 1fr),
+                align: (left, center, center, center, center),
+                inset: (x: 5pt, y: 5pt),
+                stroke: 0.6pt + palette.rule-line,
+                table.header(
+                  [*Experience*], [*Prediction*], [*Generation*], [*Discovery*], [*Action*],
+                ),
+                [*Supervised*], [Classification], [—], [—], [Imitation learning],
+                [*Unsupervised*], [—], [Density modeling], [Clustering / PCA], [—],
+                [*Self-supervised*], [Next-token prediction], [Language generation], [Representation learning], [—],
+                [*Reinforcement / interaction*], [—], [—], [—], [Policy learning],
+              )
+            ]
+          ]
     ]
   ],
   key-points: [
-    #text(size: 0.7em)[
+    #text(size: fs("s"))[
       - Not every type of experience supports every task.
       - Common pairings do exist.
     ]
@@ -1170,19 +1193,17 @@
 == Summary: Two taxonomies, three ingredients
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
       #grid(
-        columns: (1fr, 1fr),
-        gutter: 0.7em,
+        columns: cols("equal"),
+        gutter: sp("l"),
         align: top,
-        course-card(title: [Experience: what the learner observes])[
-          #text(size: 0.56em)[
+        bordered-card(title: [Experience: what the learner observes])[
+          #text(size: fs("xxs"))[
             #grid(
-              columns: (1fr, 1fr),
-              gutter: 0.35em,
+              columns: cols("equal"),
+              gutter: sp("s"),
               schema-node([Supervised], [$D={(x_n,y_n)}$], density: "prose"),
               schema-node([Unsupervised], [$D={x_n}$], density: "prose", fill: palette.paper),
               schema-node([Self-supervised], [$x_n, f(x_n)$], density: "prose", fill: palette.paper),
@@ -1190,11 +1211,11 @@
             )
           ]
         ],
-        course-card(title: [Task: what the system must do])[
-          #text(size: 0.56em)[
+        bordered-card(title: [Task: what the system must do])[
+          #text(size: fs("xxs"))[
             #grid(
-              columns: (1fr, 1fr),
-              gutter: 0.35em,
+              columns: cols("equal"),
+              gutter: sp("s"),
               schema-node([Prediction], [$x_* arrow.r hat(y)_*$], density: "prose"),
               schema-node([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
               schema-node([Discovery], [$x_* arrow.r hat(z)_*$], density: "prose", fill: palette.paper),
@@ -1204,10 +1225,10 @@
         ],
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.22em,
+        spacing: sp("xs"),
         [- Experience describes what the learner gets to observe],
         [- Task describes what the learned system must do],
         [- Not every type of experience supports every task; common pairings do exist],
@@ -1227,7 +1248,6 @@
 == Popular datasets
 
 #content-block(
-  layout: "top",
   object-width: 100%,
   object: [
     #let dataset-card(title, sample, age, tasks) = block(
@@ -1240,13 +1260,13 @@
     )[
       #stack(
         spacing: 0.28em,
-        text(size: 0.66em, weight: "semibold", fill: palette.accent)[#title],
+        text(size: fs("xs"), weight: "semibold", fill: palette.accent)[#title],
         block(width: 100%, height: 1.95cm, fill: white, inset: 0.12em)[
           #align(center + horizon)[#sample]
         ],
         grid(
           columns: (2.7em, 1fr),
-          column-gutter: 0.35em,
+          column-gutter: sp("s"),
           row-gutter: 0.08em,
           text(size: 0.42em, weight: "semibold", fill: palette.accent)[AGE],
           text(size: 0.46em)[#age],
@@ -1257,14 +1277,14 @@
     ]
 
     #grid(
-      columns: (1fr, 1fr),
+      columns: cols("equal"),
       gutter: 0.5em,
       align: top,
       dataset-card(
         [Iris],
         grid(
           columns: 3,
-          gutter: 0.18em,
+          gutter: sp("xxs"),
           image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 1.7cm, fit: "contain"),
           image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 1.7cm, fit: "contain"),
           image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 1.7cm, fit: "contain"),
@@ -1302,31 +1322,43 @@
 
 
 
+
 == MNIST: the same taxonomy, one dataset
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #grid(
-      columns: (0.85fr, 1.15fr),
+    #twocol(
+      columns: cols("right"),
       gutter: 1.0em,
       align: center + horizon,
-      [
-        #image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 4.6cm, fit: "contain")
-        #v(0.3em)
-        #align(center)[#text(size: 0.85em)[$x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$]]
-      ],
-      [
-        #stack(
-          spacing: 0.55em,
-          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
-          uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
-          uncover("3-")[#schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)],
+    )[
+      #figure-card(from: [Murphy (2025), Book 1, Fig. 1.12a])[
+        #course-image(
+          lecture-figure-path("figures/book1_fig1_12a_mnist.png"),
+          width: 100%,
+          height: 4.6cm,
         )
-      ],
-    )
-    #source-note[Murphy (2025), Book 1, Fig. 1.12a]
+        #v(0.3em)
+        #align(center)[
+          #text(size: fs("l"))[
+            $x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$
+          ]
+        ]
+      ]
+    ][
+      #schema-card[
+        #stack(
+          spacing: sp("m"),
+          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
+          uncover("2-")[
+            #schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)
+          ],
+          uncover("3-")[
+            #schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)
+          ],
+        )
+      ]
+    ]
   ],
 )
 
@@ -1335,19 +1367,25 @@
 == CIFAR-10: higher-dimensional inputs, the same questions
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #grid(
-      columns: (0.85fr, 1.15fr),
+    #twocol(
+      columns: cols("right"),
       gutter: 1.0em,
       align: center + horizon,
-      [
-        #image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 4.6cm, fit: "contain")
+    )[
+      #figure-card(from: [Murphy (2025), Book 1, Fig. 1.13b])[
+        #course-image(
+          lecture-figure-path("figures/book1_fig1_13b_cifar10.png"),
+          width: 100%,
+          height: 4.6cm,
+        )
         #v(0.3em)
-        #align(center)[$x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$]
-      ],
-      [
+        #align(center)[
+          $x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$
+        ]
+      ]
+    ][
+      #schema-card[
         #stack(
           spacing: 0.65em,
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
@@ -1362,39 +1400,42 @@
             )
           ],
         )
-      ],
-    )
-    #source-note[Murphy (2025), Book 1, Fig. 1.13b]
+      ]
+    ]
   ],
 )
-
 
 
 == IMDB reviews: text as sequence data
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
     #grid(
       rows: (0.85fr, 1.15fr),
       gutter: 1.0em,
       align: center + horizon,
       [
-        #image("figures/book1_table1_3_imdb.png", width: 100%, height: 8cm, fit: "contain")
-        #v(0.3em)
-        #align(center)[#text(size: 0.85em)[$x_n = (w_1, dots, w_T), quad y_n in {"pos", "neg"}$]]
+        #figure-card(from: [Murphy (2025), Book 1, Table 1.3])[
+          #course-image(
+            lecture-figure-path("figures/book1_table1_3_imdb.png"),
+            width: 100%,
+            height: 8cm,
+          )
+          #v(0.3em)
+          #align(center)[#text(size: fs("l"))[$x_n = (w_1, dots, w_T), quad y_n in {"pos", "neg"}$]]
+        ]
       ],
       [
-        #stack(
-          spacing: 0.55em,
+        #schema-card[
+          #stack(
+          spacing: sp("m"),
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
           uncover("3-")[#schema-node([Generation], [$w_t tilde p_D (w_t | w_(<t))$], fill: palette.paper)],
         )
+        ]
       ],
     )
-    #source-note[Murphy (2025), Book 1, Table 1.3]
   ],
 )
 
@@ -1403,16 +1444,15 @@
 == Learning problems become probabilistic queries
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
     // Same grid as the task taxonomy slide, shown all at once: this is a
     // recap under a new reading, not a first teaching pass.
-    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.7em, ..body), density: "prose")
-    #grid(
-      columns: (1fr, 1fr),
-      column-gutter: 0.8em,
-      row-gutter: 0.7em,
+    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: sp("l"), ..body), density: "prose")
+    #schema-card[
+      #grid(
+        columns: cols("equal"),
+      column-gutter: sp("l"),
+      row-gutter: sp("l"),
       align: center + horizon,
 
       taxonomy-node(
@@ -1438,7 +1478,8 @@
         [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
         [Performance: $f_P ({r_(t)})$],
       ),
-    )
+      )
+    ]
   ],
   key-points: [
     - A learning problem is specified by the variables available and the query we want answered
@@ -1452,28 +1493,26 @@
 == Summary: From datasets to learning problems
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
       #grid(
         columns: (0.95fr, 1.05fr),
-        gutter: 0.8em,
+        gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Common practice datasets])[
+        bordered-card(title: [Common practice datasets])[
           #grid(
-            columns: (1fr, 1fr),
-            gutter: 0.25em,
+            columns: cols("equal"),
+            gutter: sp("xxs"),
             [#stack(spacing: 0.08em, image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[Iris])],
             [#stack(spacing: 0.08em, image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[MNIST])],
             [#stack(spacing: 0.08em, image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[CIFAR-10])],
             [#stack(spacing: 0.08em, image("figures/book1_table1_3_imdb.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[IMDB])],
           )
         ],
-        course-card(title: [One dataset, different tasks])[
+        bordered-card(title: [One dataset, different tasks])[
           #grid(
             columns: (0.56fr, 0.44fr),
-            gutter: 0.35em,
+            gutter: sp("s"),
             align: center + horizon,
             image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 2.65cm, fit: "contain"),
             text(size: 0.55em)[
@@ -1488,10 +1527,10 @@
         ],
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.18em,
+        spacing: sp("xs"),
         [- Machine learning uses common datasets for practice and example problems],
         [- The same dataset can support different learning tasks],
         [- A learning problem is specified by the variables available and the query we want answered],
@@ -1505,15 +1544,13 @@
 == Summary: Probability for machine learning
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
       #align(center)[Joint distribution: $p_D(x_"obs",z,y_*)$]
       #v(0.45em)
       #grid(
-        columns: (1fr, 1fr, 1fr),
-        gutter: 0.55em,
+        columns: cols("three"),
+        gutter: sp("m"),
         align: center + horizon,
         schema-node(
           [Summarize],
@@ -1533,10 +1570,10 @@
         ),
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.22em,
+        spacing: sp("xs"),
         [- The task determines which quantity we need from the joint distribution],
         [- A small set of recurring operations—summarize, marginalize, condition—answers many of those questions],
         [- Integrals are a central tool for answering these queries],
@@ -1557,24 +1594,24 @@
 == Gaussians: a concrete example
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #grid(
-      columns: (auto, 1fr),
-      column-gutter: 1em,
-      row-gutter: 1em,
-      align: (left + horizon, center + horizon),
-      [*One variable*],
-      [$ cal(N)(x | mu,sigma^2) = frac(exp(-frac((x-mu)^2,2 sigma^2)), sqrt(2 pi sigma^2)) $],
-      uncover("2-")[*$D$ coordinates*],
-      uncover("2-")[$ cal(N)(bold(x) | mu,Sigma) = frac(exp(-frac(1,2)(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)), (2 pi)^(D/2) |Sigma|^(1/2)) $],
-    )
-    #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.71; scalar case: $D=1$]
+    #card[
+      #grid(
+            columns: (auto, 1fr),
+            column-gutter: 1em,
+            row-gutter: 1em,
+            align: (left + horizon, center + horizon),
+            [*One variable*],
+            [$ cal(N)(x | mu,sigma^2) = frac(exp(-frac((x-mu)^2,2 sigma^2)), sqrt(2 pi sigma^2)) $],
+            uncover("2-")[*$D$ coordinates*],
+            uncover("2-")[$ cal(N)(bold(x) | mu,Sigma) = frac(exp(-frac(1,2)(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)), (2 pi)^(D/2) |Sigma|^(1/2)) $],
+          )
+          #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.71; scalar case: $D=1$]
+    ]
   ],
   key-points: [
     #stack(
-      spacing: 0.7em,
+      spacing: sp("l"),
       [- One variable: mean $mu$ and variance $sigma^2$],
       uncover("2-")[- Mean vector $mu in RR^D$ locates the cloud; covariance $Sigma in RR^(D times D)$ sets its shape],
       uncover("3-")[- Gaussian means, marginals, and conditionals have closed forms],
@@ -1587,59 +1624,60 @@
 == The three operations in multivariate Gaussian systems
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
-    #align(center)[One joint Gaussian: $p(bold(x)) = cal(N)(bold(x) | mu, Sigma)$]
-    #grid(
-      columns: (1fr, 1fr, 1fr),
-      gutter: 0.8em,
-      align: center + top,
-      [
-        #stack(
-          spacing: 0.3em,
-          align(center)[*Summarize*],
-          course-figure(
-            lecture-figure-path("generated/gaussian_operations__summarize.svg"),
-            width: 100%, height: 4.7cm, show-source: false,
-          ),
-          text(size: 0.74em)[
-            $ mu = integral bold(x) p(bold(x)) dif bold(x) $
-          ],
-        )
-      ],
-      uncover("2-")[
-        #stack(
-          spacing: 0.3em,
-          align(center)[*Marginalize*],
-          course-figure(
-            lecture-figure-path("generated/gaussian_operations__marginalize.svg"),
-            width: 100%, height: 4.7cm, show-source: false,
-          ),
-          text(size: 0.74em)[
-            $ p(x_1) = integral p(x_1,x_2) dif x_2 $
-          ],
-        )
-      ],
-      uncover("3-")[
-        #stack(
-          spacing: 0.3em,
-          align(center)[*Condition*],
-          course-figure(
-            lecture-figure-path("generated/gaussian_operations__condition.svg"),
-            width: 100%, height: 4.7cm, show-source: false,
-          ),
-          text(size: 0.74em)[
-            $ p(x_1 | x_2=a) = frac(p(x_1,a), integral p(u,a) dif u) $
-          ],
-        )
-      ],
-    )
-    #source-note[Figures: `gaussian_geometry_figures.ipynb`]
+    #figure-card(
+      from: [Course figures generated by `gaussian_geometry_figures.ipynb`],
+    )[
+      #align(center)[One joint Gaussian: $p(bold(x)) = cal(N)(bold(x) | mu, Sigma)$]
+          #grid(
+            columns: cols("three"),
+            gutter: sp("l"),
+            align: center + top,
+            [
+              #stack(
+                spacing: 0.3em,
+                align(center)[*Summarize*],
+                course-image(
+                  lecture-figure-path("generated/gaussian_operations__summarize.svg"),
+                  width: 100%, height: 4.7cm,
+                ),
+                text(size: fs("s"))[
+                  $ mu = integral bold(x) p(bold(x)) dif bold(x) $
+                ],
+              )
+            ],
+            uncover("2-")[
+              #stack(
+                spacing: 0.3em,
+                align(center)[*Marginalize*],
+                course-image(
+                  lecture-figure-path("generated/gaussian_operations__marginalize.svg"),
+                  width: 100%, height: 4.7cm,
+                ),
+                text(size: fs("s"))[
+                  $ p(x_1) = integral p(x_1,x_2) dif x_2 $
+                ],
+              )
+            ],
+            uncover("3-")[
+              #stack(
+                spacing: 0.3em,
+                align(center)[*Condition*],
+                course-image(
+                  lecture-figure-path("generated/gaussian_operations__condition.svg"),
+                  width: 100%, height: 4.7cm,
+                ),
+                text(size: fs("s"))[
+                  $ p(x_1 | x_2=a) = frac(p(x_1,a), integral p(u,a) dif u) $
+                ],
+              )
+            ],
+          )
+    ]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [- *Summarize:* describe the center and spread with $mu$ and $Sigma$],
       uncover("2-")[- *Marginalize:* integrate over the coordinate we ignore],
       uncover("3-")[- *Condition:* fix an observed coordinate and normalize the slice],
@@ -1652,37 +1690,37 @@
 == Covariance summarizes joint variation
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #align(center)[For a vector $bold(x)$ with mean $mu = E[bold(x)]$]
-    #v(0.75em)
-    #twocol[
-      $ Sigma_(i j) &= "Cov"[X_i,X_j] \
-        &= E[(X_i-mu_i)(X_j-mu_j)] $
-
-      #uncover("2-")[
-        $ Sigma &= E[(bold(x)-mu)(bold(x)-mu)^T] \
-          &= E[bold(x)bold(x)^T] - mu mu^T $
-      ]
-    ][
-      #uncover("2-")[#align(center)[
-        For three coordinates
-        #text(size: 0.8em)[
-        $ Sigma = mat(
-          V[X_1], "Cov"[X_1,X_2], "Cov"[X_1,X_3];
-          "Cov"[X_2,X_1], V[X_2], "Cov"[X_2,X_3];
-          "Cov"[X_3,X_1], "Cov"[X_3,X_2], V[X_3];
-          delim: "[",
-        ) $
-        ]
-      ]]
+    #card[
+      #align(center)[For a vector $bold(x)$ with mean $mu = E[bold(x)]$]
+          #v(sp("l"))
+          #twocol[
+            $ Sigma_(i j) &= "Cov"[X_i,X_j] \
+              &= E[(X_i-mu_i)(X_j-mu_j)] $
+      
+            #uncover("2-")[
+              $ Sigma &= E[(bold(x)-mu)(bold(x)-mu)^T] \
+                &= E[bold(x)bold(x)^T] - mu mu^T $
+            ]
+          ][
+            #uncover("2-")[#align(center)[
+              For three coordinates
+              #text(size: fs("m"))[
+              $ Sigma = mat(
+                V[X_1], "Cov"[X_1,X_2], "Cov"[X_1,X_3];
+                "Cov"[X_2,X_1], V[X_2], "Cov"[X_2,X_3];
+                "Cov"[X_3,X_1], "Cov"[X_3,X_2], V[X_3];
+                delim: "[",
+              ) $
+              ]
+            ]]
+          ]
+          #source-note[Murphy, Book 1 §3.1.1, Eqs. 3.1–3.4]
     ]
-    #source-note[Murphy, Book 1 §3.1.1, Eqs. 3.1–3.4]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - Positive / negative covariance: deviations tend to have the same / opposite signs
       ],
@@ -1701,19 +1739,20 @@
 == Correlation separates direction from units
 
 #content-block(
-  layout: "top",
   object-width: 91%,
   object: [
-    #align(center)[$rho_(i j) = frac("Cov"[X_i,X_j], sigma_i sigma_j), quad -1 <= rho_(i j) <= 1$]
-    #v(0.85em)
-    #uncover("2-")[
-      #align(center)[$Sigma = mat(sigma_1^2, rho_12 sigma_1 sigma_2, rho_13 sigma_1 sigma_3; rho_12 sigma_1 sigma_2, sigma_2^2, rho_23 sigma_2 sigma_3; rho_13 sigma_1 sigma_3, rho_23 sigma_2 sigma_3, sigma_3^2; delim: "[")$]
+    #card[
+      #align(center)[$rho_(i j) = frac("Cov"[X_i,X_j], sigma_i sigma_j), quad -1 <= rho_(i j) <= 1$]
+          #v(0.85em)
+          #uncover("2-")[
+            #align(center)[$Sigma = mat(sigma_1^2, rho_12 sigma_1 sigma_2, rho_13 sigma_1 sigma_3; rho_12 sigma_1 sigma_2, sigma_2^2, rho_23 sigma_2 sigma_3; rho_13 sigma_1 sigma_3, rho_23 sigma_2 sigma_3, sigma_3^2; delim: "[")$]
+          ]
+          #source-note[Murphy, Book 1 §3.1.2, Eq. 3.7; Book 2 §2.3.1.1, Eq. 2.73]
     ]
-    #source-note[Murphy, Book 1 §3.1.2, Eq. 3.7; Book 2 §2.3.1.1, Eq. 2.73]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - $rho_(i j)$ describes the direction and strength of linear association
       ],
@@ -1728,12 +1767,7 @@
 
 == Affine maps carry Gaussian means and covariances
 
-#slide(repeat: 4, self => [
-  #let uncover = utils.uncover.with(self: self)
-
-  #content-block(
-    layout: "top",
-    object-width: 96%,
+#content-block(
     object: [
       #twocol[
         #align(center)[
@@ -1746,7 +1780,7 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Covariance proof])[
+          #bordered-card(title: [Covariance proof])[
             #stack(
               spacing: 0.4em,
               [Center: $bold(d) = bold(x)-mu$],
@@ -1769,26 +1803,24 @@
       #uncover("4-")[- A linear map changes the scale, orientation, and dimension of variation]
     ],
   )
-])
-
-
 
 == Mahalanobis distance uses the cloud's own scale
 
 #content-block(
-  layout: "top",
   object-width: 92%,
   object: [
-    #align(center)[$d_Sigma (bold(x),mu)^2 = (bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
-    #uncover("2-")[
-      #v(0.85em)
-      #align(center)[$Sigma = sigma^2 I_D quad arrow.r quad d_Sigma^2 = frac(norm(bold(x)-mu)^2, sigma^2)$]
+    #card[
+      #align(center)[$d_Sigma (bold(x),mu)^2 = (bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
+          #uncover("2-")[
+            #v(0.85em)
+            #align(center)[$Sigma = sigma^2 I_D quad arrow.r quad d_Sigma^2 = frac(norm(bold(x)-mu)^2, sigma^2)$]
+          ]
+          #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.72]
     ]
-    #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.72]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - Equal Mahalanobis distances trace equal-density contours
       ],
@@ -1804,17 +1836,17 @@
 == Covariance controls the contour shape
 
 #content-block(
-  layout: "top",
   object-width: 95%,
   object: [
-    #course-figure(
-      lecture-figure-path("generated/gaussian_contours.svg"),
-      source: "Course rendering of Murphy, Book 2, Fig. 2.8",
-      width: 100%,
-      height: 5.5cm,
-      show-source: false,
-    )
-    #source-note[Course rendering of Murphy, Book 2, Fig. 2.8]
+    #figure-card(
+      from: [Course rendering of Murphy, Book 2, Fig. 2.8],
+    )[
+      #course-image(
+            lecture-figure-path("generated/gaussian_contours.svg"),
+            width: 100%,
+            height: 5.5cm,
+          )
+    ]
   ],
   key-points: [
     - A full covariance can rotate the principal axes
@@ -1828,24 +1860,21 @@
 == Summary: Joint Gaussian geometry
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
       #grid(
-        columns: (1.15fr, 0.85fr),
-        gutter: 0.8em,
+        columns: cols("left"),
+        gutter: sp("l"),
         align: center + horizon,
-        course-figure(
+        course-image(
           lecture-figure-path("generated/gaussian_contours.svg"),
           width: 100%,
           height: 4.35cm,
-          show-source: false,
         ),
-        course-card(title: [Affine map])[
+        bordered-card(title: [Affine map])[
           #text(size: 0.75em)[
             #stack(
-              spacing: 0.55em,
+              spacing: sp("m"),
               [$bold(y)=A bold(x)+b$],
               [$E[bold(y)]=A mu+b$],
               [$"Cov"[bold(y)]=A Sigma A^T$],
@@ -1854,10 +1883,10 @@
         ],
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.22em,
+        spacing: sp("xs"),
         [- Mean vector $mu$ locates the cloud; covariance $Sigma$ sets its shape],
         [- A linear map changes the scale, orientation, and dimension of variation],
       )
@@ -1876,19 +1905,19 @@
 == Partition the variables and their parameters together
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #align(center)[$bold(x)=mat(x_1; x_2), quad mu=mat(mu_1; mu_2)$]
-    #v(0.7em)
-    #uncover("2-")[
-      #align(center)[$Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22), quad Sigma_21=Sigma_12^T$]
+    #card[
+      #align(center)[$bold(x)=mat(x_1; x_2), quad mu=mat(mu_1; mu_2)$]
+          #v(sp("l"))
+          #uncover("2-")[
+            #align(center)[$Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22), quad Sigma_21=Sigma_12^T$]
+          ]
+          #source-note[Murphy, Book 2 §2.3.1.3, Eq. 2.75]
     ]
-    #source-note[Murphy, Book 2 §2.3.1.3, Eq. 2.75]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - $x_1$ and $x_2$ can each be vectors
       ],
@@ -1904,12 +1933,7 @@
 
 == Marginalization keeps the matching blocks
 
-#slide(repeat: 4, self => [
-  #let uncover = utils.uncover.with(self: self)
-
-  #content-block(
-    layout: "top",
-    object-width: 96%,
+#content-block(
     object: [
       #twocol[
         #align(center)[
@@ -1925,9 +1949,9 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Marginal proof])[
+          #bordered-card(title: [Marginal proof])[
             #stack(
-              spacing: 0.45em,
+              spacing: sp("s"),
               [Select $x_1$: $P=mat(I,0,delim: "["), quad x_1=P bold(x)$],
               [By the affine rule: \
                 $x_1 tilde cal(N)(P mu,P Sigma P^T)$],
@@ -1946,7 +1970,7 @@
     ],
     key-points: [
       #stack(
-        spacing: 0.35em,
+        spacing: sp("s"),
         [- Marginalizing $x_2$ integrates over all its possible values],
         uncover("4-")[
           - Cross-covariance affects conditioning, not the marginal of $x_1$
@@ -1954,18 +1978,15 @@
       )
     ],
   )
-])
-
-
 
 == Conditioning shifts the mean by an observed deviation
 
 #slide(repeat: 4, self => [
+  // States 3–4 are nested inside the state-2 proof, so Touying cannot infer
+  // the full repeat count from the outer slide structure.
   #let uncover = utils.uncover.with(self: self)
 
   #content-block(
-    layout: "top",
-    object-width: 96%,
     object: [
       #twocol[
         #align(center)[
@@ -1978,8 +1999,8 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Mean proof])[
-            #text(size: 0.84em)[
+          #bordered-card(title: [Mean proof])[
+            #text(size: fs("l"))[
               #stack(
                 spacing: 0.5em,
                 [$B=Sigma_12 Sigma_22^(-1)$],
@@ -2008,28 +2029,20 @@
     ],
     key-points: [
       #stack(
-        spacing: 0.35em,
+        spacing: sp("s"),
         [- Conditioning shifts the mean according to the observed deviation $x_2-mu_2$, cross-covariance, and observed variance],
       )
     ],
   )
 ])
-
-
-
 == Conditioning removes explained covariance
 
-#slide(repeat: 4, self => [
-  #let uncover = utils.uncover.with(self: self)
-
-  #content-block(
-    layout: "top",
-    object-width: 96%,
+#content-block(
     object: [
       #twocol[
         #align(center)[
           #stack(
-            spacing: 1.2em,
+            spacing: sp("xl"),
             [$Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1) Sigma_21$],
             uncover("4-")[
               $Sigma_(2|1)=Sigma_22-Sigma_21 Sigma_11^(-1) Sigma_12$
@@ -2038,8 +2051,8 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Covariance proof])[
-            #text(size: 0.84em)[
+          #bordered-card(title: [Covariance proof])[
+            #text(size: fs("l"))[
               #stack(
                 spacing:0.9em,
                 [$B=Sigma_12 Sigma_22^(-1)$],
@@ -2047,7 +2060,7 @@
                 [From the mean proof: $r$ and $x_2$ are independent],
                 uncover("3-")[
                   #stack(
-                    spacing: 0.8em,
+                    spacing: sp("l"),
                   [Given $x_2$, the mean $mu_(1|2)$ is constant],
                   [$Sigma_(1|2)="Cov"[x_1 | x_2]="Cov"[r]$],
 
@@ -2069,7 +2082,7 @@
     ],
     key-points: [
       #stack(
-        spacing: 0.35em,
+        spacing: sp("s"),
         [- Conditioning cannot increase variance in any direction],
         uncover("4-")[
           - In a Gaussian, this covariance depends on which variables are observed, not their values
@@ -2077,30 +2090,28 @@
       )
     ],
   )
-])
-
-
 
 == The bivariate formula gives intuition
 
 #content-block(
-  layout: "top",
   object-width: 93%,
   object: [
-    #align(center)[
-      #stack(
-        spacing: 1.5em,
-        [$x_1, x_2 in RR$],
-        [$( X_1 | X_2=x_2 ) tilde cal(N)(mu_(1|2), sigma_(1|2)^2)$],
-        [$mu_(1|2) = mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2)$],
-        [$sigma_(1|2) = sigma_1 sqrt(1-rho^2)$],
-      )
+    #card[
+      #align(center)[
+            #stack(
+              spacing: 1.5em,
+              [$x_1, x_2 in RR$],
+              [$( X_1 | X_2=x_2 ) tilde cal(N)(mu_(1|2), sigma_(1|2)^2)$],
+              [$mu_(1|2) = mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2)$],
+              [$sigma_(1|2) = sigma_1 sqrt(1-rho^2)$],
+            )
+          ]
+          #source-note[Murphy, Book 1 §3.2.4; Book 2 §2.3.1.3]
     ]
-    #source-note[Murphy, Book 1 §3.2.4; Book 2 §2.3.1.3]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [
         - Positive $rho$ moves the estimate in the observed direction
       ],
@@ -2117,19 +2128,20 @@
 == One observed coordinate can change both the estimate and its uncertainty
 
 #content-block(
-  layout: "top",
   object-width: 91%,
   object: [
-    #align(center)[$x_1|2 ~ cal(N)(mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2), (1-rho^2) sigma_1^2) \ x_1 ~ cal(N)(0, 1), quad x_2 ~ cal(N)(0, 1), quad rho=0.8$]
-    #uncover("2-")[
-      #v(0.8em)
-      #align(center)[$x_2=1.5 \ x_1 | x_2=1.5 tilde cal(N)(0.8(1.5),1-0.8^2)=cal(N)(1.2,0.36)$]
+    #card[
+      #align(center)[$x_1|2 ~ cal(N)(mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2), (1-rho^2) sigma_1^2) \ x_1 ~ cal(N)(0, 1), quad x_2 ~ cal(N)(0, 1), quad rho=0.8$]
+          #uncover("2-")[
+            #v(sp("l"))
+            #align(center)[$x_2=1.5 \ x_1 | x_2=1.5 tilde cal(N)(0.8(1.5),1-0.8^2)=cal(N)(1.2,0.36)$]
+          ]
+          #source-note[Worked example of Murphy, Book 2 §2.3.1.3, Eq. 2.78]
     ]
-    #source-note[Worked example of Murphy, Book 2 §2.3.1.3, Eq. 2.78]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       uncover("2-")[
         - The observed value lies above its mean, so the conditional mean rises
         - The variance falls from $1$ to $0.36$
@@ -2143,14 +2155,12 @@
 == The Schur complement is the residual covariance
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
     #twocol[
-      #course-card(title: [Conditional Gaussian])[
-        #text(size: 0.84em)[
+      #bordered-card(title: [Conditional Gaussian])[
+        #text(size: fs("l"))[
           #stack(
-            spacing: 0.7em,
+            spacing: sp("l"),
             [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$],
             [$S=Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1) Sigma_21$],
             [$(x_1 | x_2) tilde cal(N)(mu_(1|2),S)$],
@@ -2158,10 +2168,10 @@
         ]
       ]
     ][
-      #course-card(title: [Centered residual])[
-        #text(size: 0.84em)[
+      #bordered-card(title: [Centered residual])[
+        #text(size: fs("l"))[
           #stack(
-            spacing: 0.7em,
+            spacing: sp("l"),
             [$r=x_1-mu_(1|2)$],
             uncover("2-")[$r tilde cal(N)(0,S)$],
             uncover("2-")[The residual $r$ is independent of $x_2$],
@@ -2169,7 +2179,7 @@
         ]
       ]
     ]
-    #uncover("3-")[#align(center)[#text(size: 0.84em)[
+    #uncover("3-")[#align(center)[#text(size: fs("l"))[
       Remove the part predicted by $x_2$:
       $ "Cov"[mat(r; x_2)] = mat(S,0; 0,Sigma_22) $
     ]]]
@@ -2177,7 +2187,7 @@
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       uncover("2-")[
         - $S$ measures the uncertainty left after subtracting the conditional mean
       ],
@@ -2193,21 +2203,22 @@
 == The joint quadratic separates into conditional and marginal parts
 
 #content-block(
-  layout: "top",
   object-width: 95%,
   object: [
-    #align(center)[$p(x_1,x_2)=p(x_1 | x_2)p(x_2)$]
-    #align(center)[$(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
-    #v(0.55em)
-    #uncover("2-")[
-      #align(center)[$= r^T S^(-1)r+(x_2-mu_2)^T Sigma_22^(-1)(x_2-mu_2)$]
+    #card[
+      #align(center)[$p(x_1,x_2)=p(x_1 | x_2)p(x_2)$]
+          #align(center)[$(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
+          #v(sp("m"))
+          #uncover("2-")[
+            #align(center)[$= r^T S^(-1)r+(x_2-mu_2)^T Sigma_22^(-1)(x_2-mu_2)$]
+          ]
+          #v(0.6em)
+          #source-note[Murphy, Book 2 §2.3.1.5, Eqs. 2.94–2.103]
     ]
-    #v(0.6em)
-    #source-note[Murphy, Book 2 §2.3.1.5, Eqs. 2.94–2.103]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       uncover("2-")[
         - The first quadratic describes $x_1$ after seeing $x_2$
         - The second describes the marginal distribution of $x_2$
@@ -2221,16 +2232,14 @@
 == Summary: Marginals and conditionals of a Gaussian
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
       #grid(
-        columns: (0.8fr, 1.2fr),
-        gutter: 0.8em,
+        columns: cols("right"),
+        gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Marginalize])[
-          #text(size: 0.77em)[
+        bordered-card(title: [Marginalize])[
+          #text(size: fs("m"))[
             #stack(
               spacing: 0.65em,
               [$p(x_1)=integral p(x_1,x_2) dif x_2$],
@@ -2238,10 +2247,10 @@
             )
           ]
         ],
-        course-card(title: [Condition])[
-          #text(size: 0.72em)[
+        bordered-card(title: [Condition])[
+          #text(size: fs("s"))[
             #stack(
-              spacing: 0.62em,
+              spacing: sp("m"),
               [$p(x_1|x_2)=cal(N)(x_1|mu_(1|2),Sigma_(1|2))$],
               [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$],
               [$Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1)Sigma_21$],
@@ -2250,10 +2259,10 @@
         ],
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.22em,
+        spacing: sp("xs"),
         [- Marginalizing $x_2$ integrates over all its possible values],
         [- Conditioning shifts the mean according to the observed deviation, cross-covariance, and observed variance],
         [- Conditioning cannot increase variance in any direction],
@@ -2274,29 +2283,37 @@
 == A linear Gaussian system is a model of state and measurement
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #grid(
-      columns: (0.8fr, 1.2fr), gutter: 1em, align: horizon,
-      linear_gaussian_graph(),
-      [#course-card(title: [A prior and a measurement law])[
-        #text(size: 0.85em)[
+    #twocol(
+      columns: cols("right"),
+      gutter: 1em,
+      align: horizon,
+    )[
+      #schema-card[
+        #linear_gaussian_graph()
+      ]
+    ][
+      #bordered-card(title: [A prior and a measurement law])[
+        #text(size: fs("l"))[
           $ z tilde cal(N)(mu_z,Sigma_z) $
           $ y | z tilde cal(N)(W z+b,Omega) $
           $ p(z,y)=p(z)p(y | z) $
         ]
-      ]],
-    )
-    #uncover("2-")[#align(center)[#text(size: 0.85em)[
-      $ y=W z+b+epsilon, quad epsilon tilde cal(N)(0,Omega) $
-      Noise $epsilon$ is independent of the state $z$.
-    ]]]
+      ]
+    ]
+    #uncover("2-")[
+      #card[
+        #align(center)[#text(size: fs("l"))[
+          $ y=W z+b+epsilon, quad epsilon tilde cal(N)(0,Omega) $
+          Noise $epsilon$ is independent of the state $z$.
+        ]]
+      ]
+    ]
     #source-note[Murphy, Book 2 §2.3.2, Eqs. 2.118–2.119]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [- This model specifies how an unknown state generates a noisy measurement],
       uncover("2-")[- Here the parameters $mu_z, Sigma_z, W, b, Omega$ are given],
     )
@@ -2308,52 +2325,48 @@
 == One linear Gaussian system supports different questions
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #align(center)[
-      $z tilde cal(N)(mu_z, Sigma_z), quad
-       y | z tilde cal(N)(W z + b, Omega)$
+    #card[
+      #align(center)[
+        $z tilde cal(N)(mu_z, Sigma_z), quad
+         y | z tilde cal(N)(W z + b, Omega)$
+      ]
     ]
-    #v(0.7em)
+    #v(sp("l"))
 
-    #grid(
-      columns: (1fr, 1fr, 1fr),
-      gutter: 0.7em,
+    #triad(
+      gutter: sp("l"),
       align: top,
-      uncover("1-")[
-        #course-card(title: [Condition])[
-          #text(size: 0.85em)[
-            $p(z | y) = frac(p(y | z) p(z), p(y))$
-          ]
+    )[
+      #bordered-card(title: [Condition])[
+        #text(size: fs("l"))[
+          $p(z | y) = frac(p(y | z) p(z), p(y))$
         ]
-      ],
-
-      uncover("2-")[
-        #course-card(title: [Summarize])[
-          #text(size: 0.85em)[
+      ]
+    ][
+      #uncover("2-")[
+        #bordered-card(title: [Summarize])[
+          #text(size: fs("l"))[
             $E[g(z) | y] = integral g(z) p(z | y) dif z$
           ]
         ]
-      ],
-
-      uncover("3-")[
-        #course-card(title: [Marginalize])[
-          #text(size: 0.85em)[
+      ]
+    ][
+      #uncover("3-")[
+        #bordered-card(title: [Marginalize])[
+          #text(size: fs("l"))[
             $p(y) = integral p(y | z) p(z) dif z$
           ]
         ]
-      ],
-    )
+      ]
+    ]
 
     #source-note[Murphy, Book 2 §2.3.2]
   ],
 
   key-points: [
-    #uncover("1-")[
-      - Conditioning asks what we can learn from an observed measurement
-        - What is the distribution of the hidden state after seeing a measurement?
-    ]
+    - Conditioning asks what we can learn from an observed measurement
+      - What is the distribution of the hidden state after seeing a measurement?
 
     #uncover("2-")[
       - Summarizing turns a distribution into a quantity
@@ -2372,26 +2385,26 @@
 == A linear Gaussian model defines a joint Gaussian
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #grid(
-      columns: (0.85fr, 1.15fr),
+    #twocol(
+      columns: cols("right"),
       gutter: 0.9em,
       align: top,
-      course-card(title: [Linear Gaussian model])[
-        #text(size: 0.8em)[
+    )[
+      #bordered-card(title: [Linear Gaussian model])[
+        #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
             [$z tilde cal(N)(mu_z,Sigma_z)$],
             [$y=W z+b+epsilon$],
             [$epsilon tilde cal(N)(0,Omega)$],
-            [#text(size: 0.82em, fill: palette.muted)[$epsilon$ is independent of $z$]],
+            [#text(size: fs("l"), fill: palette.muted)[$epsilon$ is independent of $z$]],
           )
         ]
-      ],
-      course-card(title: [Affine Gaussian rules])[
-        #text(size: 0.8em)[
+      ]
+    ][
+      #bordered-card(title: [Affine Gaussian rules])[
+        #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
             [$u=A x+c$],
@@ -2399,12 +2412,12 @@
             [$"Cov"[u]=A "Cov"[x] A^T$],
           )
         ]
-      ],
-    )
+      ]
+    ]
     #uncover("2-")[
       #v(0.15em)
-      #course-card(title: [Joint Gaussian])[
-        #text(size: 0.76em)[
+      #bordered-card(title: [Joint Gaussian])[
+        #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
             [$mat(z;y) tilde cal(N)(mat(mu_z;mu_y), mat(Sigma_(z z),Sigma_(z y);Sigma_(y z),Sigma_(y y)))$],
@@ -2419,7 +2432,7 @@
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [- The model plus affine-Gaussian rules determine the full joint distribution],
       uncover("2-")[- Once $p(z,y)$ is known, the Gaussian marginal and conditioning rules apply directly],
     )
@@ -2431,28 +2444,26 @@
 == Bayes' rule for Gaussians
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #twocol[
-      #text(size: 0.86em)[
+      #text(size: fs("l"))[
       #stack(
-        spacing: 0.55em,
-        course-card(title: [Model and joint Gaussian])[
-        #text(size: 0.9em)[
+        spacing: sp("m"),
+        bordered-card(title: [Model and joint Gaussian])[
+        #text(size: fs("xl"))[
           $ mat(z;y) tilde cal(N)(mat(mu_z;mu_y),mat(Sigma_(z z),Sigma_(z y);Sigma_(y z),Sigma_(y y))) $
           #stack(
-            spacing: 0.55em,
+            spacing: sp("m"),
             [$mu_y=W mu_z+b, quad Sigma_(z z)=Sigma_z$],
             [$Sigma_(z y)=Sigma_z W^T=Sigma_(y z)^T$],
             [$Sigma_(y y)=W Sigma_z W^T+Omega$],
           )
         ]
         ],
-        course-card(title: [Gaussian conditioning rule])[
-        #text(size: 0.9em)[
+        bordered-card(title: [Gaussian conditioning rule])[
+        #text(size: fs("xl"))[
           #stack(
-            spacing: 0.8em,
+            spacing: sp("l"),
             [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$],
             [$Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1)Sigma_21$],
           )
@@ -2461,9 +2472,9 @@
       )
       ]
     ][
-      #course-card(title: [Apply: $x_1=z$, $x_2=y$])[
+      #bordered-card(title: [Apply: $x_1=z$, $x_2=y$])[
         #v(1.5em)
-        #text(size: 0.85em)[
+        #text(size: fs("l"))[
           #stack(
             spacing: 1.5em,
             [$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$],
@@ -2477,7 +2488,7 @@
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("xs"),
       [- Apply the Gaussian conditioning rule to the joint blocks],
       uncover("2-")[- The mean responds to observed minus predicted measurement],
       uncover("3-")[- The covariance subtracts the uncertainty explained by the measurement],
@@ -2490,24 +2501,23 @@
 == Bayes' rule as an update formula
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
     #twocol[
-      #course-card(title: [From Gaussian conditioning])[
-        #text(size: 0.82em)[
-          #stack(
-            spacing: 0.7em,
-            [$mu_(z|y)=mu_z+Sigma_(z y) Sigma_(y y)^(-1)(y-mu_y)$],
-            [$mu_y=W mu_z+b$],
-            [$Sigma_(z y)=Sigma_z W^T$],
-            [$Sigma_(y y)=W Sigma_z W^T+Omega$],
-          )
-        ]
+      #recall-card(
+        from: [Earlier: Gaussian conditioning],
+        size: fs("l"),
+      )[
+        #stack(
+          spacing: sp("l"),
+          [$mu_(z|y)=mu_z+Sigma_(z y) Sigma_(y y)^(-1)(y-mu_y)$],
+          [$mu_y=W mu_z+b$],
+          [$Sigma_(z y)=Sigma_z W^T$],
+          [$Sigma_(y y)=W Sigma_z W^T+Omega$],
+        )
       ]
     ][
-      #course-card(title: [Define the gain])[
-        #text(size: 0.9em)[
+      #bordered-card(title: [Define the gain])[
+        #text(size: fs("xl"))[
           #stack(
             spacing: 1.0em,
             uncover("2-")[$K=Sigma_(z y) Sigma_(y y)^(-1)$],
@@ -2520,7 +2530,7 @@
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       uncover("2-")[- $K$ is the gain: it converts a measurement discrepancy into a state correction],
       uncover("3-")[- Posterior estimate = prior estimate + gain $times$ prediction error],
     )
@@ -2532,59 +2542,63 @@
 == The scalar Gaussian update
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
-    #grid(
-      columns: (0.82fr, 1.18fr),
+    #twocol(
+      columns: cols("right"),
       gutter: 0.9em,
       align: top,
-      course-card(title: [Carry forward])[
-        #text(size: 0.8em)[
-          #stack(
-            spacing: 0.7em,
-            [$mu_(z|y)=mu_z+K(y-mu_y)$],
-            [$K=Sigma_(z y) Sigma_(y y)^(-1)$],
-          )
-        ]
-      ],
-      course-card(title: [Scalar specialization])[
-        #text(size: 0.78em)[
+    )[
+      #recall-card(
+        from: [Earlier: Gaussian update formula],
+      )[
+        #stack(
+          spacing: sp("l"),
+          [$mu_(z|y)=mu_z+K(y-mu_y)$],
+          [$K=Sigma_(z y) Sigma_(y y)^(-1)$],
+        )
+      ]
+    ][
+      #bordered-card(title: [Scalar specialization])[
+        #text(size: fs("m"))[
           #stack(
             spacing: 0.5em,
             [$y,z in RR, quad W=1, quad b=0$],
             [$Sigma_z=sigma_z^2, quad Omega=sigma_epsilon^2$],
             [$z tilde cal(N)(mu_z,sigma_z^2)$],
             [$y=z+epsilon, quad epsilon tilde cal(N)(0,sigma_epsilon^2)$],
-            [#text(size: 0.82em, fill: palette.muted)[$epsilon$ is independent of $z$]],
+            [#text(size: fs("l"), fill: palette.muted)[$epsilon$ is independent of $z$]],
           )
         ]
-      ],
-    )
+      ]
+    ]
     #uncover("2-")[
       #v(0.45em)
-      #grid(
-        columns: (1fr, 1fr, 1fr),
-        gutter: 0.55em,
+      #triad(
+        gutter: sp("m"),
         align: center + horizon,
-        course-card(title: [Predicted mean])[
-          #text(size: 0.72em)[$mu_y=E[z+epsilon]=mu_z$]
-        ],
-        course-card(title: [Cross-covariance])[
-          #text(size: 0.72em)[$Sigma_(z y)="Cov"[z,z+epsilon]=sigma_z^2$]
-        ],
-        course-card(title: [Measurement variance])[
-          #text(size: 0.72em)[$Sigma_(y y)="Var"[z+epsilon]=sigma_z^2+sigma_epsilon^2$]
-        ],
-      )
+      )[
+        #bordered-card(title: [Predicted mean])[
+          #text(size: fs("s"))[$mu_y=E[z+epsilon]=mu_z$]
+        ]
+      ][
+        #bordered-card(title: [Cross-covariance])[
+          #text(size: fs("s"))[$Sigma_(z y)="Cov"[z,z+epsilon]=sigma_z^2$]
+        ]
+      ][
+        #bordered-card(title: [Measurement variance])[
+          #text(size: fs("s"))[$Sigma_(y y)="Var"[z+epsilon]=sigma_z^2+sigma_epsilon^2$]
+        ]
+      ]
     ]
     #uncover("3-")[
       #v(0.45em)
-      #align(center)[
-        #text(size: 0.9em)[
-          $K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)
-          quad arrow.r quad
-          mu_(z|y)=mu_z+K(y-mu_z)$
+      #card[
+        #align(center)[
+          #text(size: fs("xl"))[
+            $K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)
+            quad arrow.r quad
+            mu_(z|y)=mu_z+K(y-mu_z)$
+          ]
         ]
       ]
     ]
@@ -2608,23 +2622,23 @@
 ]
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
-    #align(center)[
-      #stack(
-        spacing: 0.4em,
-        text(size: 0.9em)[$mu_(z|y)=mu_z+K(y-mu_z), quad K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)$],
-        text(size: 0.62em, fill: palette.muted)[◆ = posterior mean $mu_(z|y)$],
-      )
+    #card[
+      #align(center)[
+        #stack(
+          spacing: 0.4em,
+          text(size: fs("xl"))[$mu_(z|y)=mu_z+K(y-mu_z), quad K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)$],
+          text(size: 0.62em, fill: palette.muted)[◆ = posterior mean $mu_(z|y)$],
+        )
+      ]
     ]
-    #v(0.55em)
+    #v(sp("m"))
     #triad[
       #uncover("2-")[
-        #course-card(title: [Precise measurement])[
-          #text(size: 0.73em)[
+        #bordered-card(title: [Precise measurement])[
+          #text(size: fs("s"))[
             #stack(
-              spacing: 0.35em,
+              spacing: sp("s"),
               [$sigma_epsilon^2 << sigma_z^2 quad K approx 1$],
               estimate-track([─────], [─]),
               [#align(center)[Trust the measurement]],
@@ -2634,10 +2648,10 @@
       ]
     ][
       #uncover("3-")[
-        #course-card(title: [Equal uncertainty])[
-          #text(size: 0.73em)[
+        #bordered-card(title: [Equal uncertainty])[
+          #text(size: fs("s"))[
             #stack(
-              spacing: 0.35em,
+              spacing: sp("s"),
               [$sigma_epsilon^2=sigma_z^2 quad K=frac(1,2)$],
               estimate-track([───], [───]),
               [#align(center)[Split the difference]],
@@ -2647,10 +2661,10 @@
       ]
     ][
       #uncover("4-")[
-        #course-card(title: [Noisy measurement])[
-          #text(size: 0.73em)[
+        #bordered-card(title: [Noisy measurement])[
+          #text(size: fs("s"))[
             #stack(
-              spacing: 0.35em,
+              spacing: sp("s"),
               [$sigma_epsilon^2 >> sigma_z^2 quad K approx 0$],
               estimate-track([─], [─────]),
               [#align(center)[Trust the prior]],
@@ -2663,7 +2677,7 @@
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [- $K$ is the fraction of the prediction error used in the correction],
       uncover("4-")[- More measurement noise gives smaller $K$; more prior uncertainty gives larger $K$],
     )
@@ -2675,31 +2689,32 @@
 == Inference often combines conditioning and summarizing
 
 #content-block(
-  layout: "top",
-  object-width: 94%,
   object: [
-    #course-card(title: [Condition, then summarize])[
+    #schema-card(
+      from: [Murphy, Book 2 §2.3.2.2–2.3.2.3],
+    )[
       #grid(
         columns: (1fr, auto, 1.35fr, auto, 1.25fr),
         column-gutter: 0.45em,
-        row-gutter: 0.35em,
+        row-gutter: sp("s"),
         align: center + horizon,
-        [#align(center)[#stack(spacing: 0.2em, [*Observed*], [$y$])]],
+        [#align(center)[#stack(spacing: sp("xs"), [*Observed*], [$y$])]],
         [$arrow.r$],
-        [#align(center)[#stack(spacing: 0.2em, [*Condition*], [$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$])]],
+        [#align(center)[#stack(spacing: sp("xs"), [*Condition*], [$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$])]],
         uncover("2-")[$arrow.r$],
-        uncover("2-")[#align(center)[#stack(spacing: 0.2em, [*Summarize*], [$hat(z)=E[z | y]=mu_(z|y)$])]],
+        uncover("2-")[#align(center)[#stack(spacing: sp("xs"), [*Summarize*], [$hat(z)=E[z | y]=mu_(z|y)$])]],
       )
     ]
     #uncover("2-")[
       #v(0.65em)
-      #align(center)[#text(size: 0.85em)[$E[z | y]=integral z p(z | y) dif z$]]
+      #card[
+        #align(center)[#text(size: fs("l"))[$E[z | y]=integral z p(z | y) dif z$]]
+      ]
     ]
-    #source-note[Murphy, Book 2 §2.3.2.2–2.3.2.3]
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [- Conditioning preserves the whole posterior distribution and its uncertainty],
       uncover("2-")[- Summarizing extracts a quantity from that posterior; for a Gaussian the mean is $mu_(z|y)$],
     )
@@ -2711,35 +2726,37 @@
 == Sensor fusion combines measurements according to their uncertainty
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
-    #grid(
-      columns: (1.15fr, 0.85fr),
-      gutter: 0.8em,
+    #twocol(
+      columns: cols("left"),
+      gutter: sp("l"),
       align: top,
-      course-card(title: [Two noisy measurements of one state])[
-        #text(size: 0.76em)[
+    )[
+      #bordered-card(title: [Two noisy measurements of one state])[
+        #text(size: fs("m"))[
           $z tilde cal(N)(mu_z,Sigma_z)$
           $x | z tilde cal(N)(z,Sigma_x), quad y | z tilde cal(N)(z,Sigma_y)$
         ]
-      ],
-      course-card(title: [Same two operations])[
-        #text(size: 0.76em)[
+      ]
+    ][
+      #bordered-card(title: [Same two operations])[
+        #text(size: fs("m"))[
           $p(z | x,y) quad arrow.r quad E[z | x,y]$
         ]
-      ],
-    )
-    #uncover("2-")[
-      #v(0.35em)
-      #course-figure(
-        lecture-figure-path("generated/sensor_fusion_schematic.svg"),
-        width: 100%,
-        height: 5.2cm,
-        show-source: false,
-      )
+      ]
     ]
-    #source-note[Course schematic after Murphy, Book 2 §2.3.2.3, Fig. 2.10; `sensor_fusion_figure.ipynb`]
+    #uncover("2-")[
+      #v(sp("s"))
+      #schema-card(
+        from: [Course schematic after Murphy, Book 2 §2.3.2.3, Fig. 2.10; `sensor_fusion_figure.ipynb`],
+      )[
+        #course-image(
+          lecture-figure-path("generated/sensor_fusion_schematic.svg"),
+          width: 100%,
+          height: 5.2cm,
+        )
+      ]
+    ]
   ],
   key-points: [
     #stack(
@@ -2756,14 +2773,12 @@
 == The same model can also predict measurements
 
 #content-block(
-  layout: "top",
-  object-width: 96%,
   object: [
     #twocol[
-      #course-card(title: [Model and joint])[
-        #text(size: 0.78em)[
+      #bordered-card(title: [Model and joint])[
+        #text(size: fs("m"))[
           #stack(
-            spacing: 0.55em,
+            spacing: sp("m"),
             [$z tilde cal(N)(mu_z,Sigma_z)$],
             [$y | z tilde cal(N)(W z+b,Omega)$],
             [$p(z,y)=p(z)p(y | z)$],
@@ -2771,10 +2786,10 @@
         ]
       ]
     ][
-      #course-card(title: [Marginalization rule])[
-        #text(size: 0.78em)[
+      #bordered-card(title: [Marginalization rule])[
+        #text(size: fs("m"))[
           #stack(
-            spacing: 0.75em,
+            spacing: sp("l"),
             [$p(y)=integral p(z,y) dif z$],
             [$= integral p(y | z)p(z) dif z$],
           )
@@ -2782,11 +2797,13 @@
       ]
     ]
     #uncover("2-")[
-      #v(0.55em)
-      #align(center)[
-        #text(size: 0.9em)[
-          $p(y)=cal(N)(y | mu_y,Sigma_(y y))$
-          $mu_y=W mu_z+b, quad Sigma_(y y)=W Sigma_z W^T+Omega$
+      #v(sp("m"))
+      #card[
+        #align(center)[
+          #text(size: fs("xl"))[
+            $p(y)=cal(N)(y | mu_y,Sigma_(y y))$
+            $mu_y=W mu_z+b, quad Sigma_(y y)=W Sigma_z W^T+Omega$
+          ]
         ]
       ]
     ]
@@ -2794,7 +2811,7 @@
   ],
   key-points: [
     #stack(
-      spacing: 0.35em,
+      spacing: sp("s"),
       [- Before observing $y$, marginalization gives the distribution of possible measurements],
       uncover("2-")[- These are the same $mu_y$ and $Sigma_(y y)$ that appear inside the conditioning update],
     )
@@ -2806,15 +2823,13 @@
 == Summary: Linear Gaussian systems
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #section-summary-visual[
       #grid(
         columns: (0.72fr, 1.28fr),
-        gutter: 0.75em,
+        gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Linear Gaussian model])[
+        bordered-card(title: [Linear Gaussian model])[
           #text(size: 0.75em)[
             #stack(
               spacing: 0.65em,
@@ -2824,18 +2839,17 @@
             )
           ]
         ],
-        course-figure(
+        course-image(
           lecture-figure-path("generated/sensor_fusion_schematic.svg"),
           width: 100%,
           height: 4.55cm,
-          show-source: false,
         ),
       )
     ]
-    #v(0.35em)
+    #v(sp("s"))
     #section-summary-takeaways[
       #stack(
-        spacing: 0.22em,
+        spacing: sp("xs"),
         [- The model plus affine-Gaussian rules determine the full joint distribution],
         [- Posterior estimate = prior estimate + gain $times$ prediction error],
         [- More measurement noise gives smaller $K$; more prior uncertainty gives larger $K$],
@@ -2848,26 +2862,24 @@
 == Lecture 1: four visual anchors
 
 #content-block(
-  layout: "top",
-  object-width: 98%,
   object: [
     #grid(
-      columns: (1fr, 1fr),
-      gutter: 0.55em,
+      columns: cols("equal"),
+      gutter: sp("m"),
       align: top,
-      course-card(title: [One dataset, several questions])[
+      bordered-card(title: [One dataset, several questions])[
         #block(height: 3.25cm)[
           #stack(
-            spacing: 0.24em,
+            spacing: sp("xxs"),
             text(size: 0.62em, weight: "semibold")[A dataset is not a task.],
             grid(
               columns: (0.55fr, 0.45fr),
-              gutter: 0.35em,
+              gutter: sp("s"),
               align: center + horizon,
               image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 2.05cm, fit: "contain"),
               text(size: 0.53em)[
                 #stack(
-                  spacing: 0.22em,
+                  spacing: sp("xxs"),
                   [$x arrow.r hat(y)$  Prediction],
                   [$x arrow.r hat(z)$  Discovery],
                   [$x_* tilde p(x | c)$  Generation],
@@ -2877,15 +2889,15 @@
           )
         ]
       ],
-      course-card(title: [Three probability operations])[
+      bordered-card(title: [Three probability operations])[
         #block(height: 3.25cm)[
           #stack(
             spacing: 0.30em,
             text(size: 0.62em, weight: "semibold")[The task determines the operation.],
-            text(size: 0.56em)[
+            text(size: fs("xxs"))[
               #grid(
                 columns: (5.7em, 1fr),
-                column-gutter: 0.35em,
+                column-gutter: sp("s"),
                 row-gutter: 0.28em,
                 align: (right + horizon, left + horizon),
                 [*Summarize*], [$E[g(X)] = integral g(x) p(x) dif x$],
@@ -2896,24 +2908,24 @@
           )
         ]
       ],
-      course-card(title: [Gaussian conditioning])[
+      bordered-card(title: [Gaussian conditioning])[
         #block(height: 3.25cm)[
           #stack(
-            spacing: 0.35em,
+            spacing: sp("xs"),
             text(size: 0.62em, weight: "semibold")[Observation changes estimate and uncertainty.],
-            text(size: 0.58em)[
+            text(size: fs("xxs"))[
               $mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$
             ],
-            text(size: 0.58em)[
+            text(size: fs("xxs"))[
               $Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1)Sigma_21$
             ],
           )
         ]
       ],
-      course-card(title: [Sensor fusion])[
+      bordered-card(title: [Sensor fusion])[
         #block(height: 3.25cm)[
           #stack(
-            spacing: 0.24em,
+            spacing: sp("xxs"),
             text(size: 0.62em, weight: "semibold")[Uncertainty controls how evidence is combined.],
             image("generated/sensor_fusion_schematic.svg", width: 100%, height: 2.15cm, fit: "contain"),
           )

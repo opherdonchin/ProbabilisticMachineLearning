@@ -275,8 +275,46 @@
   touying-slide(self: self, body)
 })
 
+// Theme conveniences retained for future lectures. L01 does not yet provide
+// enough evidence to treat these as established course conventions.
 #let focus-slide(body) = ruled-focus-slide(body)
 #let ending-slide(body) = ruled-ending-slide(body)
+
+// -----------------------------------------------------------------------------
+// Course scales
+// -----------------------------------------------------------------------------
+
+// Canonical course spacing, font sizes, and column ratios. The size labels are
+// calibrated as a family: using the same label for text and ordinary internal
+// spacing should produce a coherent density. Use xxs for deliberately optical
+// micro-spacing rather than for normal text-item separation.
+#let _spacing = (
+  xxs: 0.22em,
+  xs: 0.35em,
+  s: 0.45em,
+  m: 0.6em,
+  l: 0.8em,
+  xl: 1.1em,
+)
+#let sp(size) = _spacing.at(size)
+
+#let _font-sizes = (
+  xxs: 0.58em,
+  xs: 0.68em,
+  s: 0.72em,
+  m: 0.78em,
+  l: 0.84em,
+  xl: 0.9em,
+)
+#let fs(size) = _font-sizes.at(size)
+
+#let _columns = (
+  equal: (1fr, 1fr),
+  left: (3fr, 2fr),
+  right: (2fr, 3fr),
+  three: (1fr, 1fr, 1fr),
+)
+#let cols(layout) = _columns.at(layout)
 
 // -----------------------------------------------------------------------------
 // Semantic course components
@@ -294,16 +332,132 @@
   #lazy-v(1fr)
 ]
 
-#let course-card(body, title: none) = if title == none {
+// Default presentation object. Intentionally unmarked in this pass: the
+// wrapper gives lecture source a stable semantic unit without imposing chrome.
+#let card(body) = body
+
+#let bordered-card(body, title: none) = if title == none {
   _untitled-ruled-card(body)
 } else {
   ruled-card(title, body)
 }
 
+
+#let source-note(body) = align(center)[
+  #text(size: fs("xxs"), fill: palette.muted)[#body]
+]
+
+// Figure cards own figure-level presentation: frame, caption, and provenance.
+// Their body may be one image, a composite, or any other figure content.
+#let figure-card(
+  body,
+  from: none,
+  caption: none,
+) = block(
+  width: 100%,
+  breakable: false,
+  stroke: 0.8pt + palette.rule-line,
+  fill: palette.paper,
+  radius: 0.25em,
+  inset: (x: 0.5em, y: 0.45em),
+)[
+  #stack(
+    spacing: 0.28em,
+    body,
+    if caption != none {
+      text(size: 0.41em, fill: palette.text, caption)
+    },
+    if from != none {
+      source-note(from)
+    },
+  )
+]
+
+// Schema cards identify a whole conceptual diagram. The body may be drawn
+// directly in Typst, delegated to a standalone .typ helper, or loaded from an
+// image asset. Provenance belongs here rather than in the rendering mechanism.
+#let schema-card(
+  body,
+  from: none,
+  caption: none,
+) = block(
+  width: 100%,
+  breakable: false,
+)[
+  #stack(
+    spacing: 0.28em,
+    body,
+    if caption != none {
+      text(size: 0.41em, fill: palette.text, caption)
+    },
+    if from != none {
+      source-note(from)
+    },
+  )
+]
+
+#let recall-card(
+  from: none,
+  body,
+  label: [Carried forward],
+  size: fs("m"),
+) = {
+  assert(from != none, message: "recall-card requires provenance via from: [...]")
+  block(
+    width: 100%,
+    breakable: false,
+    stroke: 0.8pt + palette.rule-line,
+    fill: palette.paper,
+    radius: 0.25em,
+    inset: (x: 0.6em, y: 0.5em),
+  )[
+    #stack(
+      spacing: sp("xs"),
+      grid(
+        columns: (auto, 1fr),
+        column-gutter: 0.55em,
+        align: left + top,
+        text(size: fs("xs"), weight: "semibold", fill: palette.accent, label),
+        text(size: fs("xs"), fill: palette.muted, from),
+      ),
+      text(size: size, body),
+    )
+  ]
+}
+
+#let section-summary-visual(body) = block(
+  width: 100%,
+  height: 5.5cm,
+  stroke: 0.7pt + palette.rule-line,
+  fill: palette.paper,
+  radius: 0.25em,
+  inset: (x: 0.55em, y: 0.45em),
+)[
+  #align(center + horizon)[#body]
+]
+
+#let section-summary-takeaways(
+  body,
+  size: fs("xs"),
+) = block(
+  width: 100%,
+  fill: palette.accent.lighten(91%),
+  radius: 0.25em,
+  inset: (x: 0.65em, y: 0.42em),
+)[
+  #grid(
+    columns: (6.5em, 1fr),
+    column-gutter: 0.55em,
+    align: (left + top, left + top),
+    text(size: fs("xxs"), weight: "semibold", fill: palette.accent)[TAKE HOME],
+    text(size: size, body),
+  )
+]
+
 // Usage:
 //   #key-points[Body without a title]
 //   #key-points(title: [Optional title])[Body]
-#let _key-points(body, title: none) = course-card(body, title: title)
+#let _key-points(body, title: none) = bordered-card(body, title: title)
 #let key-points(body, title: none) = _key-points(body, title: title)
 
 #let note(body) = margin-note(body)
@@ -323,11 +477,13 @@
   title,
 )
 
+// Semantic wrappers below are available but not yet validated as recurring
+// course conventions; keep them simple until later lectures provide evidence.
 #let definition(
   title: none,
   label: [Definition],
   body,
-) = course-card(
+) = bordered-card(
   body,
   title: if title == none { none } else { _semantic-title(label, title) },
 )
@@ -336,7 +492,7 @@
   title: none,
   label: [Method],
   body,
-) = course-card(
+) = bordered-card(
   body,
   title: if title == none { none } else { _semantic-title(label, title) },
 )
@@ -354,17 +510,29 @@
 // side. Prefer these over a lecture-local grid() when the layout is just an
 // equal-width row; add a new named helper here rather than in a lecture file
 // if another repeated arrangement emerges.
-#let twocol(left, right) = grid(
-  columns: (1fr, 1fr),
-  gutter: 1.2em,
+#let twocol(
+  left,
+  right,
+  columns: cols("equal"),
+  gutter: sp("l"),
   align: top,
+) = grid(
+  columns: columns,
+  gutter: gutter,
+  align: align,
   left, right,
 )
 
-#let triad(a, b, c) = grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 0.8em,
+#let triad(
+  a,
+  b,
+  c,
+  gutter: sp("l"),
   align: top,
+) = grid(
+  columns: cols("three"),
+  gutter: gutter,
+  align: align,
   a, b, c,
 )
 
@@ -373,7 +541,7 @@
 //   == Slide title
 //   #stack(spacing: 0.7em, content-block(...), note([Supporting note]))
 #let content-block(
-  layout: "bottom",
+  layout: "top",
   object-width: auto,
   object: none,
   key-points: none,
@@ -382,7 +550,7 @@
   let is-side = layout == "side-left" or layout == "side-right"
 
   let resolved-width = if object-width == auto {
-    if is-side { 58% } else { 82% }
+    if is-side { 58% } else { 96% }
   } else {
     object-width
   }
@@ -420,76 +588,10 @@
   } else if object != none {
     _object-box(
       object,
-      if object-width == auto { 82% } else { object-width },
+      resolved-width,
     )
   } else if key-points != none {
     _key-points(key-points, title: key-points-title)
-  } else {
-    []
-  }
-}
-
-
-// Carried-forward knowledge: the provenance is separate from the current
-// slide title and from any key-points title. Only this header uses smaller,
-// muted text; content-block keeps its ordinary typography and geometry.
-#let _recall-header(label, from) = block(
-  width: 100%,
-  stroke: (bottom: 0.6pt + palette.rule-line),
-  inset: (bottom: 0.35em),
-)[
-  #set text(size: 0.68em, fill: palette.muted)
-  #grid(
-    columns: (auto, 1fr),
-    column-gutter: 0.8em,
-    align: left + top,
-    text(weight: "semibold", fill: palette.accent, label),
-    from,
-  )
-]
-
-// `from:` is required author-supplied provenance and accepts Typst content.
-// Typst named parameters need a default; the assertion enforces this contract.
-// All layout arguments have the same meaning and defaults as content-block.
-//
-// Material supplied by an assigned recording:
-//   #recall-block(
-//     from: [Recorded: Probability review],
-//     object: [$ E[A X + b] = A E[X] + b $],
-//   )
-//
-// Material recalled from an earlier lecture:
-//   #recall-block(
-//     from: [Lecture 1: Gaussian conditioning],
-//     layout: "side-left",
-//     object: [$ E[X | Y = y] = mu_(X | y) $],
-//     key-points: [The conditional mean depends on the observed value $y$.],
-//   )
-#let recall-block(
-  from: none,
-  label: [Carry forward],
-  layout: "bottom",
-  object-width: auto,
-  object: none,
-  key-points: none,
-  key-points-title: none,
-) = {
-  assert(from != none, message: "recall-block requires provenance via from: [...]")
-
-  if object != none or key-points != none {
-    block(width: 100%, breakable: false)[
-      #stack(
-        spacing: 0.55em,
-        _recall-header(label, from),
-        content-block(
-          layout: layout,
-          object-width: object-width,
-          object: object,
-          key-points: key-points,
-          key-points-title: key-points-title,
-        ),
-      )
-    ]
   } else {
     []
   }
@@ -500,10 +602,11 @@
 // Schematic diagram primitives
 // -----------------------------------------------------------------------------
 //
-// A small vocabulary for the boxes-and-arrows schematics used across lectures
-// to lay out task/experience/model flows, typically inside a content-block
-// grid. Keep these course-wide: if a lecture needs a bespoke diagram box, it
-// most likely belongs here rather than as a lecture-local copy.
+// A schema-card is the presentation object for a complete conceptual diagram.
+// schema-node and schema-arrow are lower-level cells used to draw such a
+// diagram. Keep these roles separate: an imported schema image and a Typst-
+// drawn schema use the same outer schema-card, while only the latter needs
+// schema-node/schema-arrow internally.
 //
 // Geometry (inset, radius) is expressed in `em` so schema-node scales
 // uniformly with whatever ambient text size a lecture wraps it in; only the
@@ -515,9 +618,9 @@
 //   - "normal" (default): body inherits the ambient size, centered — fits a
 //     short symbol-only line or two.
 //   - "prose": smaller, left-aligned — fits a multi-line "Task: ... /
-//     Performance: ..."-style description without overflowing the node.
-// When a grid has several nodes that must look alike, define one local
-// forwarding function that fixes the density and call that for every node in
+//     Performance: ..."-style description without overflowing the card.
+// When a grid has several cards that must look alike, define one local
+// forwarding function that fixes the density and call that for every card in
 // the grid, rather than repeating `density: "prose"` at each call site.
 
 #let _schema-node-density = (
@@ -554,26 +657,14 @@
   #text(size: 1.35em, fill: palette.accent)[$arrow.r$]
 ]
 
-// A small muted, centered caption/citation line, e.g. under a schematic or
-// a course-authored figure. `figure-source` below is a thin wrapper for
-// path-valued citations; call `source-note` directly for descriptive text
-// such as "Course schematic; Book 1 §1.2.2".
-#let source-note(body) = align(center)[
-  #text(size: 0.6em, fill: palette.muted)[#body]
-]
-
 // -----------------------------------------------------------------------------
 // Figures
 // -----------------------------------------------------------------------------
 //
-// A path value keeps the caller's directory as its base, so lecture decks can
-// pass path("figures/plot.svg"). A bare string is instead resolved relative to
-// this shared module. `source` controls the path shown in the provenance line.
-// Width and height are both optional: when both are set, `fit: "contain"`
-// treats them as a bounding box and preserves the image's aspect ratio.
-// If caption is omitted, the source path is the only caption line.
-// Set show-source: false for the individual panels of a composite figure, and
-// name the provenance once for the composite instead of four times over.
+// course-image is intentionally a low-level asset loader. A path value keeps
+// the caller's directory as its base; width and height define a containing box
+// while preserving aspect ratio. Caption and provenance belong to the outer
+// figure-card or schema-card, not to the image loader.
 //
 // Missing-file handling uses the context/query workaround discussed in:
 // https://github.com/typst/typst/issues/2025#issuecomment-2500280417
@@ -610,32 +701,13 @@
   }
 }
 
-#let course-figure(
+#let course-image(
   path,
-  source: path,
-  caption: none,
   width: 100%,
   height: auto,
-  show-source: true,
 ) = align(center)[
-  #stack(
-    spacing: 0.28em,
-
-    _image-or-placeholder(path, width: width, height: height),
-
-    if caption != none {
-      text(size: 0.41em, fill: palette.text, caption)
-    },
-
-    if show-source {
-      source-note(raw(_path-text(source)))
-    },
-  )
+  #_image-or-placeholder(path, width: width, height: height)
 ]
-
-// The provenance line on its own, for a composite whose panels each set
-// show-source: false.
-#let figure-source(source) = source-note(raw(_path-text(source)))
 
 // -----------------------------------------------------------------------------
 // Coordinate-based annotations
@@ -645,6 +717,8 @@
 // object's bounding box. This first implementation intentionally stays simple.
 // It draws a pointer line and a small target marker when arrow: true.
 
+// Coordinate annotations are available as low-level utilities, but remain
+// provisional until a later lecture demonstrates a recurring need.
 #let callout(
   target: none,
   label-at: none,

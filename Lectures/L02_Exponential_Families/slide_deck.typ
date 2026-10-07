@@ -162,7 +162,7 @@
     #stack(
       spacing: sp("m"),
 
-      #card[
+      card[
         #align(center)[
           #stack(
             spacing: sp("s"),

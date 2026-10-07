@@ -7,10 +7,10 @@
 
 #set page(
   paper: "a4",
-  margin: (x: 18mm, y: 16mm),
+  margin: (x: 12mm, y: 11mm),
 )
-#set text(size: 10.5pt)
-#set par(leading: 0.65em)
+#set text(size: 9.2pt)
+#set par(leading: 0.52em)
 
 #let design-accent = rgb("#315c7d")
 #let design-muted = rgb("#666666")
@@ -345,8 +345,8 @@
   )[
     #block(
       width: 100%,
-      height: 17mm,
-      inset: 6pt,
+      height: 11mm,
+      inset: 4pt,
       stroke: stroke,
       radius: 3pt,
       fill: fill,
@@ -436,7 +436,7 @@
   block(
     width: 100%,
     breakable: true,
-    inset: 8pt,
+    inset: 5pt,
     stroke: stroke,
     radius: 3pt,
     fill: fill,
@@ -453,14 +453,14 @@
       ],
       text(size: 8pt, fill: design-muted)[#obj.kind],
     )
-    #v(5pt)
+    #v(3pt)
     #obj.body
     #if obj.caption != none {
-      v(4pt)
+      v(2pt)
       text(size: 8.5pt, fill: design-muted, obj.caption)
     }
     #if obj.from != none {
-      v(3pt)
+      v(2pt)
       text(size: 8pt, fill: design-muted)[From: #obj.from]
     }
   ]
@@ -522,6 +522,7 @@
 
 #let slide-design(
   title: none,
+  section: none,
   teaching-move: none,
   layout: none,
   cards: (),
@@ -543,45 +544,57 @@
   _validate(objects, layout, reveal)
 
   pagebreak(weak: true)
-  heading(title, level: 2)
 
-  text(size: 9pt, fill: design-muted)[Teaching move]
+  if section != none {
+    text(size: 8pt, weight: "medium", fill: design-accent)[#section]
+    v(2pt)
+  }
+  text(size: 15pt, weight: "bold")[#title]
+
+  v(2pt)
+  text(size: 7.8pt, weight: "medium", fill: design-muted)[Teaching move]
   parbreak()
   teaching-move
 
-  v(8pt)
-  heading([Layout sketch], level: 3)
+  v(5pt)
+  text(size: 10.5pt, weight: "bold")[Layout sketch]
+  v(2pt)
   _render-layout(layout)
 
-  v(8pt)
-  heading([Content objects], level: 3)
+  v(5pt)
+  text(size: 10.5pt, weight: "bold")[Content objects]
+  v(2pt)
   stack(
-    spacing: 6pt,
+    spacing: 4pt,
     ..objects.map(_render-object),
   )
 
-  v(8pt)
-  heading([Reveal sketch], level: 3)
+  v(5pt)
+  text(size: 10.5pt, weight: "bold")[Reveal sketch]
+  v(2pt)
   _render-reveal(reveal)
 
   if rationale != none {
-    v(8pt)
-    heading([Rationale], level: 3)
+    v(5pt)
+    text(size: 10.5pt, weight: "bold")[Rationale]
+    v(2pt)
     rationale
   }
 
   if constraints != none {
-    v(8pt)
-    heading([Design constraints], level: 3)
+    v(5pt)
+    text(size: 10.5pt, weight: "bold")[Design constraints]
+    v(2pt)
     constraints
   }
 
   if backpressure != none {
-    v(8pt)
-    heading([Backpressure], level: 3)
+    v(5pt)
+    text(size: 10.5pt, weight: "bold")[Backpressure]
+    v(2pt)
     block(
       width: 100%,
-      inset: 8pt,
+      inset: 6pt,
       stroke: 1.2pt + design-accent,
       fill: design-warn,
       radius: 3pt,

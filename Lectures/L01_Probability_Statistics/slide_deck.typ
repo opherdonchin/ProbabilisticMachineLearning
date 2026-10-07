@@ -189,33 +189,36 @@
 
 == Bayes' rule combines prior and likelihood
 
-#carry-forward(
-  from: [Earlier in this section: Beta–Bernoulli model],
-  size: fs("xl"),
-)[
-  #stack(
-    spacing: sp("l"),
-    [Model],
-    [$ theta tilde "Beta"(alpha, beta) $],
-    [$ y_i tilde "Bernoulli"(theta) $],
-  )
-]
-
 #content-block(
   layout: "top",
   object: [
-    #uncover("2-")[
-      #align(center)[
+    #stack(
+      spacing: sp("l"),
+      recall-card(
+        from: [Earlier in this section: Beta–Bernoulli model],
+        size: fs("xl"),
+      )[
         #stack(
-          spacing: 1.0em,
-          text(weight: "semibold", fill: palette.accent)[Bayes' rule],
-          text(size: 1.3em)[$
-            p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
-            &prop p(y | theta) p(theta)$],
-
+          spacing: sp("l"),
+          [Model],
+          [$ theta tilde "Beta"(alpha, beta) $],
+          [$ y_i tilde "Bernoulli"(theta) $],
         )
-      ]
-    ]
+      ],
+      uncover("2-")[
+        #card[
+          #align(center)[
+            #stack(
+              spacing: 1.0em,
+              text(weight: "semibold", fill: palette.accent)[Bayes' rule],
+              text(size: 1.3em)[$
+                p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
+                &prop p(y | theta) p(theta)$],
+            )
+          ]
+        ]
+      ],
+    )
   ],
   key-points: [
     #stack(
@@ -235,40 +238,47 @@
 
 == Conjugacy permits simple calculations
 
-#carry-forward(
-  from: [Earlier in this section: model and Bayes' rule],
-  size: fs("m"),
-)[
-  #stack(
-    spacing: sp("s"),
-    [Model],
-    pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
-    pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
-    [Bayes rule],
-    pad(left: 1em)[$ p(theta | y) &prop p(y | theta) p(theta) $],
-  )
-]
-
 #content-block(
   layout: "top",
-  object-width: 68%,
   object: [
-    Applying Bayes' rule to our model
     #stack(
-      spacing: 0.9em,
-      text(size: 0.88em)[
-        #grid(
-          columns: (auto, 1fr),
-          column-gutter: 0.9em,
-          row-gutter: 0.65em,
-          align: (left, left),
-          [#text(weight: "semibold", fill: palette.accent)[Prior]],
-          [$ p(theta) = "Beta"(alpha, beta) $],
-          [#text(weight: "semibold", fill: palette.accent)[Likelihood]],
-          [$ p(y | theta) prop theta^(N_1) (1-theta)^(N_0) $],
-          uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Posterior]],
-          uncover("2-")[$ p(theta | y) = "Beta"(alpha + N_1, beta + N_0) $],
+      spacing: sp("l"),
+      recall-card(
+        from: [Earlier in this section: model and Bayes' rule],
+        size: fs("m"),
+      )[
+        #stack(
+          spacing: sp("s"),
+          [Model],
+          pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
+          pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
+          [Bayes rule],
+          pad(left: 1em)[$ p(theta | y) &prop p(y | theta) p(theta) $],
         )
+      ],
+      align(center)[
+        #block(width: 68%)[
+          #card[
+            Applying Bayes' rule to our model
+            #stack(
+              spacing: 0.9em,
+              text(size: 0.88em)[
+                #grid(
+                  columns: (auto, 1fr),
+                  column-gutter: 0.9em,
+                  row-gutter: 0.65em,
+                  align: (left, left),
+                  [#text(weight: "semibold", fill: palette.accent)[Prior]],
+                  [$ p(theta) = "Beta"(alpha, beta) $],
+                  [#text(weight: "semibold", fill: palette.accent)[Likelihood]],
+                  [$ p(y | theta) prop theta^(N_1) (1-theta)^(N_0) $],
+                  uncover("2-")[#text(weight: "semibold", fill: palette.accent)[Posterior]],
+                  uncover("2-")[$ p(theta | y) = "Beta"(alpha + N_1, beta + N_0) $],
+                )
+              ],
+            )
+          ]
+        ]
       ],
     )
   ],
@@ -912,17 +922,17 @@
         columns: cols("three"),
         gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Training])[
+        bordered-card(title: [Training])[
           #text(size: fs("s"))[
             #stack(spacing: sp("s"), [$f_T: "E" arrow.r f_A$], [$E$: experience])
           ]
         ],
-        course-card(title: [Task])[
+        bordered-card(title: [Task])[
           #text(size: fs("s"))[
             #stack(spacing: sp("s"), [$f_A: "In" arrow.r "Out"$], [$f_A$: learned function])
           ]
         ],
-        course-card(title: [Evaluation])[
+        bordered-card(title: [Evaluation])[
           #text(size: fs("s"))[
             #stack(spacing: sp("s"), [$f_P: ("In","Out") arrow.r P$], [$P$: performance])
           ]
@@ -951,7 +961,7 @@
 // Lecture 1 continuation after the machine-learning task taxonomy.
 // Slide bodies use equations, figures, and schematics to carry the teaching argument.
 
-// `schema-node`, `schema-arrow`, and `source-note` are shared course
+// `schema-card`, `schema-arrow`, and `source-note` are shared course
 // components (see course.typ); they are imported via `*` above.
 
 == Experience taxonomy
@@ -965,15 +975,15 @@
         column-gutter: sp("l"),
         row-gutter: sp("l"),
         align: center + horizon,
-        schema-node([Supervised], [$D = {(x_n, y_n)}$]),
+        schema-card([Supervised], [$D = {(x_n, y_n)}$]),
         uncover("2-")[
-          #schema-node([Unsupervised], [$D = {x_n}$])
+          #schema-card([Unsupervised], [$D = {x_n}$])
         ],
         uncover("3-")[
-          #schema-node([Self-supervised], [$D = {x_n, f(x_n)} "or" {f(x_n), x_n}$])
+          #schema-card([Self-supervised], [$D = {x_n, f(x_n)} "or" {f(x_n), x_n}$])
         ],
         uncover("4-")[
-          #schema-node([Reinforcement / interaction], [
+          #schema-card([Reinforcement / interaction], [
             #stack(
               spacing: 0.3em,
               [$"decision": x(t) arrow.r a(t)$],
@@ -1000,21 +1010,21 @@
   object: [
     // Every node in this grid states a Task/Performance pair; route them all
     // through one wrapper so they stay visually consistent.
-    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: sp("l"), ..body), density: "prose")
+    #let taxonomy-card(label, ..body) = schema-card(label, stack(spacing: sp("l"), ..body), density: "prose")
     #grid(
       columns: cols("equal"),
       column-gutter: sp("l"),
       row-gutter: sp("l"),
       align: center + horizon,
 
-      taxonomy-node(
+      taxonomy-card(
         [Prediction],
         [Task: ${(x_n, y_n)} arrow.r hat(y) = f_D (x_*)$],
         [Performance: $f_P ( y_*, hat(y) )$],
       ),
 
       uncover("2-")[
-        #taxonomy-node(
+        #taxonomy-card(
           [Generation],
           [Task: ${x_n} arrow.r ({c}, p_D (x | c)) arrow.r x_* ~ p_D (x | c)$],
           [Performance: $f_P ( p (x | c), x_* )$],
@@ -1022,7 +1032,7 @@
       ],
 
       uncover("3-")[
-        #taxonomy-node(
+        #taxonomy-card(
           [Discovery],
           [Task: ${x_n} arrow.r ( {z}, f_D (x) ) arrow.r hat(z) = f_D (x_*)$],
           [Performance: $f_P (hat(z), x_*)$],
@@ -1030,7 +1040,7 @@
       ],
 
       uncover("4-")[
-        #taxonomy-node(
+        #taxonomy-card(
           [Action],
           [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
           [Performance: $f_P ({r_(t)})$],
@@ -1157,27 +1167,27 @@
         columns: cols("equal"),
         gutter: sp("l"),
         align: top,
-        course-card(title: [Experience: what the learner observes])[
+        bordered-card(title: [Experience: what the learner observes])[
           #text(size: 0.56em)[
             #grid(
               columns: cols("equal"),
               gutter: sp("s"),
-              schema-node([Supervised], [$D={(x_n,y_n)}$], density: "prose"),
-              schema-node([Unsupervised], [$D={x_n}$], density: "prose", fill: palette.paper),
-              schema-node([Self-supervised], [$x_n, f(x_n)$], density: "prose", fill: palette.paper),
-              schema-node([Interaction], [$x_t arrow.r a_t arrow.r r_(t+1)$], density: "prose"),
+              schema-card([Supervised], [$D={(x_n,y_n)}$], density: "prose"),
+              schema-card([Unsupervised], [$D={x_n}$], density: "prose", fill: palette.paper),
+              schema-card([Self-supervised], [$x_n, f(x_n)$], density: "prose", fill: palette.paper),
+              schema-card([Interaction], [$x_t arrow.r a_t arrow.r r_(t+1)$], density: "prose"),
             )
           ]
         ],
-        course-card(title: [Task: what the system must do])[
+        bordered-card(title: [Task: what the system must do])[
           #text(size: 0.56em)[
             #grid(
               columns: cols("equal"),
               gutter: sp("s"),
-              schema-node([Prediction], [$x_* arrow.r hat(y)_*$], density: "prose"),
-              schema-node([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
-              schema-node([Discovery], [$x_* arrow.r hat(z)_*$], density: "prose", fill: palette.paper),
-              schema-node([Action], [$x_t arrow.r a_t$], density: "prose"),
+              schema-card([Prediction], [$x_* arrow.r hat(y)_*$], density: "prose"),
+              schema-card([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
+              schema-card([Discovery], [$x_* arrow.r hat(z)_*$], density: "prose", fill: palette.paper),
+              schema-card([Action], [$x_t arrow.r a_t$], density: "prose"),
             )
           ]
         ],
@@ -1298,9 +1308,9 @@
       [
         #stack(
           spacing: sp("m"),
-          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
-          uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
-          uncover("3-")[#schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)],
+          schema-card([Prediction], [$hat(y) = f_D (x_*)$]),
+          uncover("2-")[#schema-card([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
+          uncover("3-")[#schema-card([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)],
         )
       ],
     )
@@ -1327,15 +1337,15 @@
       [
         #stack(
           spacing: 0.65em,
-          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
+          schema-card([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[
             #grid(
               columns: (1fr, 0.2fr, 1fr),
               gutter: 0.3em,
               align: center + horizon,
-              schema-node([$D_("train")$], [$L(theta; D_("train"))$], fill: palette.paper),
+              schema-card([$D_("train")$], [$L(theta; D_("train"))$], fill: palette.paper),
               schema-arrow,
-              schema-node([$D_("test")$], [$L(theta; D_("test"))$], fill: palette.paper),
+              schema-card([$D_("test")$], [$L(theta; D_("test"))$], fill: palette.paper),
             )
           ],
         )
@@ -1364,9 +1374,9 @@
       [
         #stack(
           spacing: sp("m"),
-          schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
-          uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
-          uncover("3-")[#schema-node([Generation], [$w_t tilde p_D (w_t | w_(<t))$], fill: palette.paper)],
+          schema-card([Prediction], [$hat(y) = f_D (x_*)$]),
+          uncover("2-")[#schema-card([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
+          uncover("3-")[#schema-card([Generation], [$w_t tilde p_D (w_t | w_(<t))$], fill: palette.paper)],
         )
       ],
     )
@@ -1383,32 +1393,32 @@
   object: [
     // Same grid as the task taxonomy slide, shown all at once: this is a
     // recap under a new reading, not a first teaching pass.
-    #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: sp("l"), ..body), density: "prose")
+    #let taxonomy-card(label, ..body) = schema-card(label, stack(spacing: sp("l"), ..body), density: "prose")
     #grid(
       columns: cols("equal"),
       column-gutter: sp("l"),
       row-gutter: sp("l"),
       align: center + horizon,
 
-      taxonomy-node(
+      taxonomy-card(
         [Prediction],
         [Task: ${(x_n, y_n)} arrow.r hat(y) = f_D (x_*)$],
         [Performance: $f_P ( y_*, hat(y) )$],
       ),
 
-      taxonomy-node(
+      taxonomy-card(
         [Generation],
         [Task: ${x_n} arrow.r ({c}, p_D (x | c)) arrow.r x_* ~ p_D (x | c)$],
         [Performance: $f_P ( p (x | c), x_* )$],
       ),
 
-      taxonomy-node(
+      taxonomy-card(
         [Discovery],
         [Task: ${x_n} arrow.r ( {z}, f_D (x) ) arrow.r hat(z) = f_D (x_*)$],
         [Performance: $f_P (hat(z), x_*)$],
       ),
 
-      taxonomy-node(
+      taxonomy-card(
         [Action],
         [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
         [Performance: $f_P ({r_(t)})$],
@@ -1434,7 +1444,7 @@
         columns: (0.95fr, 1.05fr),
         gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Common practice datasets])[
+        bordered-card(title: [Common practice datasets])[
           #grid(
             columns: cols("equal"),
             gutter: sp("xs"),
@@ -1444,7 +1454,7 @@
             [#stack(spacing: 0.08em, image("figures/book1_table1_3_imdb.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[IMDB])],
           )
         ],
-        course-card(title: [One dataset, different tasks])[
+        bordered-card(title: [One dataset, different tasks])[
           #grid(
             columns: (0.56fr, 0.44fr),
             gutter: sp("s"),
@@ -1453,9 +1463,9 @@
             text(size: 0.55em)[
               #stack(
                 spacing: 0.32em,
-                schema-node([Prediction], [$hat(y)=f_D(x_*)$], density: "prose"),
-                schema-node([Discovery], [$hat(z)=f_D(x_*)$], density: "prose", fill: palette.paper),
-                schema-node([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
+                schema-card([Prediction], [$hat(y)=f_D(x_*)$], density: "prose"),
+                schema-card([Discovery], [$hat(z)=f_D(x_*)$], density: "prose", fill: palette.paper),
+                schema-card([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
               )
             ],
           )
@@ -1488,18 +1498,18 @@
         columns: cols("three"),
         gutter: sp("m"),
         align: center + horizon,
-        schema-node(
+        schema-card(
           [Summarize],
           [$E[g(X)] = integral g(x) p(x) dif x$],
           density: "prose",
         ),
-        schema-node(
+        schema-card(
           [Marginalize],
           [$p(x) = integral p(x,y) dif y$],
           density: "prose",
           fill: palette.paper,
         ),
-        schema-node(
+        schema-card(
           [Condition],
           [$p(x|y) = frac(p(x,y),p(y))$],
           density: "prose",
@@ -1715,7 +1725,7 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Covariance proof])[
+          #bordered-card(title: [Covariance proof])[
             #stack(
               spacing: 0.4em,
               [Center: $bold(d) = bold(x)-mu$],
@@ -1810,7 +1820,7 @@
           height: 4.35cm,
           show-source: false,
         ),
-        course-card(title: [Affine map])[
+        bordered-card(title: [Affine map])[
           #text(size: 0.75em)[
             #stack(
               spacing: sp("m"),
@@ -1891,7 +1901,7 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Marginal proof])[
+          #bordered-card(title: [Marginal proof])[
             #stack(
               spacing: 0.45em,
               [Select $x_1$: $P=mat(I,0,delim: "["), quad x_1=P bold(x)$],
@@ -1943,7 +1953,7 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Mean proof])[
+          #bordered-card(title: [Mean proof])[
             #text(size: fs("l"))[
               #stack(
                 spacing: 0.5em,
@@ -2002,7 +2012,7 @@
         ]
       ][
         #uncover("2-")[
-          #course-card(title: [Covariance proof])[
+          #bordered-card(title: [Covariance proof])[
             #text(size: fs("l"))[
               #stack(
                 spacing:0.9em,
@@ -2110,7 +2120,7 @@
   layout: "top",
   object: [
     #twocol[
-      #course-card(title: [Conditional Gaussian])[
+      #bordered-card(title: [Conditional Gaussian])[
         #text(size: fs("l"))[
           #stack(
             spacing: sp("l"),
@@ -2121,7 +2131,7 @@
         ]
       ]
     ][
-      #course-card(title: [Centered residual])[
+      #bordered-card(title: [Centered residual])[
         #text(size: fs("l"))[
           #stack(
             spacing: sp("l"),
@@ -2191,7 +2201,7 @@
         columns: cols("right"),
         gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Marginalize])[
+        bordered-card(title: [Marginalize])[
           #text(size: 0.77em)[
             #stack(
               spacing: 0.65em,
@@ -2200,7 +2210,7 @@
             )
           ]
         ],
-        course-card(title: [Condition])[
+        bordered-card(title: [Condition])[
           #text(size: fs("s"))[
             #stack(
               spacing: 0.62em,
@@ -2241,7 +2251,7 @@
     #grid(
       columns: cols("right"), gutter: 1em, align: horizon,
       linear_gaussian_graph(),
-      [#course-card(title: [A prior and a measurement law])[
+      [#bordered-card(title: [A prior and a measurement law])[
         #text(size: fs("l"))[
           $ z tilde cal(N)(mu_z,Sigma_z) $
           $ y | z tilde cal(N)(W z+b,Omega) $
@@ -2282,7 +2292,7 @@
       gutter: sp("l"),
       align: top,
       uncover("1-")[
-        #course-card(title: [Condition])[
+        #bordered-card(title: [Condition])[
           #text(size: fs("l"))[
             $p(z | y) = frac(p(y | z) p(z), p(y))$
           ]
@@ -2290,7 +2300,7 @@
       ],
 
       uncover("2-")[
-        #course-card(title: [Summarize])[
+        #bordered-card(title: [Summarize])[
           #text(size: fs("l"))[
             $E[g(z) | y] = integral g(z) p(z | y) dif z$
           ]
@@ -2298,7 +2308,7 @@
       ],
 
       uncover("3-")[
-        #course-card(title: [Marginalize])[
+        #bordered-card(title: [Marginalize])[
           #text(size: fs("l"))[
             $p(y) = integral p(y | z) p(z) dif z$
           ]
@@ -2338,7 +2348,7 @@
       columns: cols("right"),
       gutter: 0.9em,
       align: top,
-      course-card(title: [Linear Gaussian model])[
+      bordered-card(title: [Linear Gaussian model])[
         #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
@@ -2349,7 +2359,7 @@
           )
         ]
       ],
-      course-card(title: [Affine Gaussian rules])[
+      bordered-card(title: [Affine Gaussian rules])[
         #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
@@ -2362,7 +2372,7 @@
     )
     #uncover("2-")[
       #v(0.15em)
-      #course-card(title: [Joint Gaussian])[
+      #bordered-card(title: [Joint Gaussian])[
         #text(size: fs("m"))[
           #stack(
             spacing: 0.42em,
@@ -2396,7 +2406,7 @@
       #text(size: 0.86em)[
       #stack(
         spacing: sp("m"),
-        course-card(title: [Model and joint Gaussian])[
+        bordered-card(title: [Model and joint Gaussian])[
         #text(size: fs("xl"))[
           $ mat(z;y) tilde cal(N)(mat(mu_z;mu_y),mat(Sigma_(z z),Sigma_(z y);Sigma_(y z),Sigma_(y y))) $
           #stack(
@@ -2407,7 +2417,7 @@
           )
         ]
         ],
-        course-card(title: [Gaussian conditioning rule])[
+        bordered-card(title: [Gaussian conditioning rule])[
         #text(size: fs("xl"))[
           #stack(
             spacing: sp("l"),
@@ -2419,7 +2429,7 @@
       )
       ]
     ][
-      #course-card(title: [Apply: $x_1=z$, $x_2=y$])[
+      #bordered-card(title: [Apply: $x_1=z$, $x_2=y$])[
         #v(1.5em)
         #text(size: fs("l"))[
           #stack(
@@ -2451,7 +2461,7 @@
   layout: "top",
   object: [
     #twocol[
-      #carry-forward(
+      #recall-card(
         from: [Earlier: Gaussian conditioning],
         size: fs("l"),
       )[
@@ -2464,7 +2474,7 @@
         )
       ]
     ][
-      #course-card(title: [Define the gain])[
+      #bordered-card(title: [Define the gain])[
         #text(size: fs("xl"))[
           #stack(
             spacing: 1.0em,
@@ -2496,7 +2506,7 @@
       columns: cols("right"),
       gutter: 0.9em,
       align: top,
-      carry-forward(
+      recall-card(
         from: [Earlier: Gaussian update formula],
         size: fs("m"),
       )[
@@ -2506,7 +2516,7 @@
           [$K=Sigma_(z y) Sigma_(y y)^(-1)$],
         )
       ],
-      course-card(title: [Scalar specialization])[
+      bordered-card(title: [Scalar specialization])[
         #text(size: fs("m"))[
           #stack(
             spacing: 0.5em,
@@ -2525,13 +2535,13 @@
         columns: cols("three"),
         gutter: sp("m"),
         align: center + horizon,
-        course-card(title: [Predicted mean])[
+        bordered-card(title: [Predicted mean])[
           #text(size: fs("s"))[$mu_y=E[z+epsilon]=mu_z$]
         ],
-        course-card(title: [Cross-covariance])[
+        bordered-card(title: [Cross-covariance])[
           #text(size: fs("s"))[$Sigma_(z y)="Cov"[z,z+epsilon]=sigma_z^2$]
         ],
-        course-card(title: [Measurement variance])[
+        bordered-card(title: [Measurement variance])[
           #text(size: fs("s"))[$Sigma_(y y)="Var"[z+epsilon]=sigma_z^2+sigma_epsilon^2$]
         ],
       )
@@ -2578,7 +2588,7 @@
     #v(sp("m"))
     #triad[
       #uncover("2-")[
-        #course-card(title: [Precise measurement])[
+        #bordered-card(title: [Precise measurement])[
           #text(size: fs("s"))[
             #stack(
               spacing: sp("s"),
@@ -2591,7 +2601,7 @@
       ]
     ][
       #uncover("3-")[
-        #course-card(title: [Equal uncertainty])[
+        #bordered-card(title: [Equal uncertainty])[
           #text(size: fs("s"))[
             #stack(
               spacing: sp("s"),
@@ -2604,7 +2614,7 @@
       ]
     ][
       #uncover("4-")[
-        #course-card(title: [Noisy measurement])[
+        #bordered-card(title: [Noisy measurement])[
           #text(size: fs("s"))[
             #stack(
               spacing: sp("s"),
@@ -2634,7 +2644,7 @@
 #content-block(
   layout: "top",
   object: [
-    #course-card(title: [Condition, then summarize])[
+    #bordered-card(title: [Condition, then summarize])[
       #grid(
         columns: (1fr, auto, 1.35fr, auto, 1.25fr),
         column-gutter: 0.45em,
@@ -2673,13 +2683,13 @@
       columns: cols("left"),
       gutter: sp("l"),
       align: top,
-      course-card(title: [Two noisy measurements of one state])[
+      bordered-card(title: [Two noisy measurements of one state])[
         #text(size: fs("m"))[
           $z tilde cal(N)(mu_z,Sigma_z)$
           $x | z tilde cal(N)(z,Sigma_x), quad y | z tilde cal(N)(z,Sigma_y)$
         ]
       ],
-      course-card(title: [Same two operations])[
+      bordered-card(title: [Same two operations])[
         #text(size: fs("m"))[
           $p(z | x,y) quad arrow.r quad E[z | x,y]$
         ]
@@ -2714,7 +2724,7 @@
   layout: "top",
   object: [
     #twocol[
-      #course-card(title: [Model and joint])[
+      #bordered-card(title: [Model and joint])[
         #text(size: fs("m"))[
           #stack(
             spacing: sp("m"),
@@ -2725,7 +2735,7 @@
         ]
       ]
     ][
-      #course-card(title: [Marginalization rule])[
+      #bordered-card(title: [Marginalization rule])[
         #text(size: fs("m"))[
           #stack(
             spacing: sp("l"),
@@ -2767,7 +2777,7 @@
         columns: (0.72fr, 1.28fr),
         gutter: sp("l"),
         align: center + horizon,
-        course-card(title: [Linear Gaussian model])[
+        bordered-card(title: [Linear Gaussian model])[
           #text(size: 0.75em)[
             #stack(
               spacing: 0.65em,
@@ -2807,7 +2817,7 @@
       columns: cols("equal"),
       gutter: sp("m"),
       align: top,
-      course-card(title: [One dataset, several questions])[
+      bordered-card(title: [One dataset, several questions])[
         #block(height: 3.25cm)[
           #stack(
             spacing: sp("xs"),
@@ -2829,7 +2839,7 @@
           )
         ]
       ],
-      course-card(title: [Three probability operations])[
+      bordered-card(title: [Three probability operations])[
         #block(height: 3.25cm)[
           #stack(
             spacing: 0.30em,
@@ -2848,7 +2858,7 @@
           )
         ]
       ],
-      course-card(title: [Gaussian conditioning])[
+      bordered-card(title: [Gaussian conditioning])[
         #block(height: 3.25cm)[
           #stack(
             spacing: sp("s"),
@@ -2862,7 +2872,7 @@
           )
         ]
       ],
-      course-card(title: [Sensor fusion])[
+      bordered-card(title: [Sensor fusion])[
         #block(height: 3.25cm)[
           #stack(
             spacing: sp("xs"),

@@ -166,7 +166,9 @@
           $ y_i tilde "Bernoulli"(theta) $
         ]
       ][
-        #beta_bernoulli_graph()
+        #schema-card[
+          #beta_bernoulli_graph()
+        ]
       ]
     ],
 
@@ -394,7 +396,7 @@
 #content-block(
   layout: "top",
   object: [
-    #card[
+    #schema-card[
       #input_output_function_schema()
     ]
   ],
@@ -995,8 +997,9 @@
 #content-block(
   layout: "top",
   object: [
-    #text(size: fs("l"))[
-      #grid(
+    #schema-card[
+      #text(size: fs("l"))[
+        #grid(
         columns: cols("equal"),
         column-gutter: sp("l"),
         row-gutter: sp("l"),
@@ -1018,8 +1021,8 @@
             )
           ])
         ],
-      )
-      #source-note[]
+        )
+      ]
     ]
   ],
   key-points: [#text(size: 0.75em)[
@@ -1037,8 +1040,9 @@
     // Every node in this grid states a Task/Performance pair; route them all
     // through one wrapper so they stay visually consistent.
     #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: sp("l"), ..body), density: "prose")
-    #grid(
-      columns: cols("equal"),
+    #schema-card[
+      #grid(
+        columns: cols("equal"),
       column-gutter: sp("l"),
       row-gutter: sp("l"),
       align: center + horizon,
@@ -1072,7 +1076,8 @@
           [Performance: $f_P ({r_(t)})$],
         )
       ],
-    )
+      )
+    ]
   ],
   key-points: [
     #text(size: fs("s"))[Task describes what the learned system must do.]
@@ -1329,22 +1334,27 @@
       gutter: 1.0em,
       align: center + horizon,
       [
-        #card[
-          #image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 4.6cm, fit: "contain")
+        #figure-card(from: [Murphy (2025), Book 1, Fig. 1.12a])[
+          #course-image(
+            lecture-figure-path("figures/book1_fig1_12a_mnist.png"),
+            width: 100%,
+            height: 4.6cm,
+          )
           #v(0.3em)
           #align(center)[#text(size: fs("l"))[$x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$]]
         ]
       ],
       [
-        #stack(
+        #schema-card[
+          #stack(
           spacing: sp("m"),
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
           uncover("3-")[#schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)],
         )
+        ]
       ],
     )
-    #source-note[Murphy (2025), Book 1, Fig. 1.12a]
   ],
 )
 
@@ -1360,14 +1370,19 @@
       gutter: 1.0em,
       align: center + horizon,
       [
-        #card[
-          #image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 4.6cm, fit: "contain")
+        #figure-card(from: [Murphy (2025), Book 1, Fig. 1.13b])[
+          #course-image(
+            lecture-figure-path("figures/book1_fig1_13b_cifar10.png"),
+            width: 100%,
+            height: 4.6cm,
+          )
           #v(0.3em)
           #align(center)[$x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$]
         ]
       ],
       [
-        #stack(
+        #schema-card[
+          #stack(
           spacing: 0.65em,
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[
@@ -1381,9 +1396,9 @@
             )
           ],
         )
+        ]
       ],
     )
-    #source-note[Murphy (2025), Book 1, Fig. 1.13b]
   ],
 )
 
@@ -1399,22 +1414,27 @@
       gutter: 1.0em,
       align: center + horizon,
       [
-        #card[
-          #image("figures/book1_table1_3_imdb.png", width: 100%, height: 8cm, fit: "contain")
+        #figure-card(from: [Murphy (2025), Book 1, Table 1.3])[
+          #course-image(
+            lecture-figure-path("figures/book1_table1_3_imdb.png"),
+            width: 100%,
+            height: 8cm,
+          )
           #v(0.3em)
           #align(center)[#text(size: fs("l"))[$x_n = (w_1, dots, w_T), quad y_n in {"pos", "neg"}$]]
         ]
       ],
       [
-        #stack(
+        #schema-card[
+          #stack(
           spacing: sp("m"),
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
           uncover("3-")[#schema-node([Generation], [$w_t tilde p_D (w_t | w_(<t))$], fill: palette.paper)],
         )
+        ]
       ],
     )
-    #source-note[Murphy (2025), Book 1, Table 1.3]
   ],
 )
 
@@ -1428,8 +1448,9 @@
     // Same grid as the task taxonomy slide, shown all at once: this is a
     // recap under a new reading, not a first teaching pass.
     #let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: sp("l"), ..body), density: "prose")
-    #grid(
-      columns: cols("equal"),
+    #schema-card[
+      #grid(
+        columns: cols("equal"),
       column-gutter: sp("l"),
       row-gutter: sp("l"),
       align: center + horizon,
@@ -1457,7 +1478,8 @@
         [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
         [Performance: $f_P ({r_(t)})$],
       ),
-    )
+      )
+    ]
   ],
   key-points: [
     - A learning problem is specified by the variables available and the query we want answered
@@ -2303,7 +2325,7 @@
   object: [
     #grid(
       columns: cols("right"), gutter: 1em, align: horizon,
-      card[#linear_gaussian_graph()],
+      schema-card[#linear_gaussian_graph()],
       [#bordered-card(title: [A prior and a measurement law])[
         #text(size: fs("l"))[
           $ z tilde cal(N)(mu_z,Sigma_z) $
@@ -2762,7 +2784,9 @@
     )
     #uncover("2-")[
       #v(sp("s"))
-      #card[
+      #schema-card(
+        from: [Course schematic after Murphy, Book 2 §2.3.2.3, Fig. 2.10; `sensor_fusion_figure.ipynb`],
+      )[
         #course-image(
           lecture-figure-path("generated/sensor_fusion_schematic.svg"),
           width: 100%,
@@ -2770,7 +2794,6 @@
         )
       ]
     ]
-    #source-note[Course schematic after Murphy, Book 2 §2.3.2.3, Fig. 2.10; `sensor_fusion_figure.ipynb`]
   ],
   key-points: [
     #stack(

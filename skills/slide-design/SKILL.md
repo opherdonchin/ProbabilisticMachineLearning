@@ -172,6 +172,40 @@ These constructs are explicit evidence of unfinished or exceptional design work.
 
 Do not generalize every escape-hatch use immediately. Repetition across real slides is evidence for extending `design.typ`.
 
+# Section design-notes page
+
+Every designed section should begin with one rendered `section-design-notes(...)` page before the first slide-design unit.
+
+Its job is to make section-level design commitments visible without duplicating the upstream section-design artifact. It should normally state:
+
+- **Purpose:** the conceptual job this section performs in the lecture.
+- **Entry / assumed context:** what students already know or what the preceding section has established.
+- **Endpoint:** what students should be able to recognize, explain, or use by the end.
+- **Narrative arc:** the ordered argument across the section, expressed at the level of teaching moves rather than slide layouts.
+- **Visual and notation anchors:** representations, notation, figures, schemas, equations, or motifs that should recur or remain stable.
+- **Summary design brief:** what story the summary should retell and what compression or selection principles should govern it.
+- **Continuity / handoff:** what the following section should inherit.
+- **Constraints / open pressure:** known density, asset, timing, or representation issues that may affect design.
+
+The notes page is a design contract for the section, not a prose lecture outline and not a replacement for `section_design.md`.
+
+# Summary responsibility is shared
+
+Summary design begins before the summary slide.
+
+For every ordinary slide, the slide designer may nominate:
+
+- a visual object that would be a useful retrospective anchor;
+- a key point that would remain important at section end.
+
+Use the design-stage summary-candidate constructs for these nominations. A nomination is not a requirement that the summary include the object.
+
+The summary-slide designer then reviews the candidate pool across the section and selects a **small coherent combination** that best retells the section's argument. Selection should optimize narrative coverage, visual continuity, and hierarchy rather than frequency or exhaustive inclusion.
+
+The summary designer may recombine or compact already-established anchors, but must not introduce a new conceptual argument merely to make the summary elegant.
+
+When useful, record the selection rationale in the summary slide's design rationale: what was selected, what was deliberately omitted, and why the chosen combination tells the section story better.
+
 # Normal slide-design rendering
 
 A `slide-design(...)` unit should normally render in this order:
@@ -180,7 +214,8 @@ A `slide-design(...)` unit should normally render in this order:
 2. **layout sketch** using object labels;
 3. **labeled content objects**, with real equations, wording, figures, and schemas where available;
 4. **reveal sketch** using the same labels;
-5. rationale, constraints, unresolved design items, and upstream pressure when needed.
+5. **summary candidates**, when the slide nominates any;
+6. rationale, constraints, unresolved design items, and upstream pressure when needed.
 
 One design unit corresponds conceptually to one eventual slide. It need not be forced onto exactly one physical document page.
 
@@ -222,11 +257,15 @@ Show steps that carry conceptual meaning. Do not animate every algebraic motion.
 
 Section summaries reuse already-established visual anchors and conclusions; they do not introduce new argument.
 
+Ordinary slide designers should think prospectively about which objects and conclusions may deserve reuse. Summary designers should think retrospectively about which nominations, taken together, actually tell the section's story. These are complementary responsibilities.
+
 # Design process
 
-## 1. Establish the section contract
+## 1. Establish the section contract and write the design-notes page
 
 Extract ordered slide titles, intentions, treatment depth, required mathematics/examples/assets, section endpoint, and neighboring dependencies. Distinguish approved decisions from design inference.
+
+Write the section's `section-design-notes(...)` page before detailed slide design. Use it to establish the section purpose, endpoint, narrative arc, visual/notation anchors, summary brief, continuity, and known constraints.
 
 ## 2. Design the whole section first in pseudo-Typst
 
@@ -239,6 +278,7 @@ For every proposed slide, write a provisional `slide-design(...)` specification 
 - ordinary semantic object names where appropriate;
 - abstract layout;
 - abstract reveal structure;
+- summary visual/key-point nominations when a slide establishes a strong candidate;
 - `design-*` escape hatches where needed.
 
 The purpose of pseudo-Typst is to expose what the design language actually needs.
@@ -265,11 +305,19 @@ Early sections are allowed to change `design.typ` substantially. The purpose is 
 
 Do not prematurely stabilize the API.
 
-## 6. Review the section as a visual argument
+## 6. Design the summary from the candidate pool
+
+Review the visual and key-point nominations from the ordinary slides.
+
+Select the smallest combination that retells the section's argument coherently. Prefer visual anchors students have already inspected, and reuse earlier key-point wording when it remains accurate. Do not treat every nomination as an obligation.
+
+Record summary-selection rationale when the choice is not obvious.
+
+## 7. Review the section as a visual argument
 
 Check notation, continuity, reuse of visual anchors, simultaneity, persistence, summary integrity, and transitions from the preceding slide.
 
-## 7. Apply backpressure explicitly
+## 8. Apply backpressure explicitly
 
 If design exposes an organization problem, record:
 
@@ -310,7 +358,7 @@ importing:
 
 `Lectures/design.typ`
 
-A section is ready for production when every approved slide has a design unit, visible content is exact or near-final, layout and reveal intent are structurally explicit, object identities are stable, remaining `design-*` escape hatches are resolved or explicitly delegated, and upstream pressure is recorded rather than silently absorbed.
+A section is ready for production when it begins with a section design-notes page, every approved slide has a design unit, visible content is exact or near-final, layout and reveal intent are structurally explicit, object identities are stable, summary nominations have been considered and the summary selection is deliberate, remaining `design-*` escape hatches are resolved or explicitly delegated, and upstream pressure is recorded rather than silently absorbed.
 
 # Quality tests
 
@@ -328,6 +376,9 @@ Before treating a section design as ready for production, check:
 - **Continuity:** does the slide begin from what the preceding slide established?
 - **No silent organization change:** are split/merge/reorder pressures explicit?
 - **Representation completeness:** do layout, content objects, and reveal all refer to the same stable labels?
+- **Section contract:** does the section begin with a useful design-notes page?
+- **Summary nominations:** did ordinary slides nominate strong anchors without over-nominating everything?
+- **Summary selection:** does the summary use a small coherent subset that retells the section rather than merely listing it?
 
 # General principle
 

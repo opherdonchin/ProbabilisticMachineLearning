@@ -294,7 +294,11 @@
   #lazy-v(1fr)
 ]
 
-#let course-card(body, title: none) = if title == none {
+// Default presentation object. Intentionally unmarked in this pass: the
+// wrapper gives lecture source a stable semantic unit without imposing chrome.
+#let card(body) = body
+
+#let bordered-card(body, title: none) = if title == none {
   _untitled-ruled-card(body)
 } else {
   ruled-card(title, body)
@@ -309,13 +313,13 @@
   inset: (x: 0.5em, y: 0.45em),
 )[#body]
 
-#let carry-forward(
+#let recall-card(
   from: none,
   body,
   label: [Carried forward],
   size: 1em,
 ) = {
-  assert(from != none, message: "carry-forward requires provenance via from: [...]")
+  assert(from != none, message: "recall-card requires provenance via from: [...]"
   block(
     width: 100%,
     breakable: false,
@@ -370,7 +374,7 @@
 // Usage:
 //   #key-points[Body without a title]
 //   #key-points(title: [Optional title])[Body]
-#let _key-points(body, title: none) = course-card(body, title: title)
+#let _key-points(body, title: none) = bordered-card(body, title: title)
 #let key-points(body, title: none) = _key-points(body, title: title)
 
 #let note(body) = margin-note(body)
@@ -394,7 +398,7 @@
   title: none,
   label: [Definition],
   body,
-) = course-card(
+) = bordered-card(
   body,
   title: if title == none { none } else { _semantic-title(label, title) },
 )
@@ -403,7 +407,7 @@
   title: none,
   label: [Method],
   body,
-) = course-card(
+) = bordered-card(
   body,
   title: if title == none { none } else { _semantic-title(label, title) },
 )
@@ -539,7 +543,7 @@
 
 
 // -----------------------------------------------------------------------------
-// Schematic diagram primitives
+// Schematic diagram cards
 // -----------------------------------------------------------------------------
 //
 // A small vocabulary for the boxes-and-arrows schematics used across lectures
@@ -547,7 +551,7 @@
 // grid. Keep these course-wide: if a lecture needs a bespoke diagram box, it
 // most likely belongs here rather than as a lecture-local copy.
 //
-// Geometry (inset, radius) is expressed in `em` so schema-node scales
+// Geometry (inset, radius) is expressed in `em` so schema-card scales
 // uniformly with whatever ambient text size a lecture wraps it in; only the
 // hairline stroke stays a fixed absolute thickness.
 //
@@ -558,22 +562,22 @@
 //     short symbol-only line or two.
 //   - "prose": smaller, left-aligned — fits a multi-line "Task: ... /
 //     Performance: ..."-style description without overflowing the node.
-// When a grid has several nodes that must look alike, define one local
+// When a grid has several cards that must look alike, define one local
 // forwarding function that fixes the density and call that for every node in
 // the grid, rather than repeating `density: "prose"` at each call site.
 
-#let _schema-node-density = (
+#let _schema-card-density = (
   normal: (size: 1em, align: center),
   prose: (size: 0.62em, align: left),
 )
 
-#let schema-node(
+#let schema-card(
   label,
   body,
   fill: palette.accent.lighten(87%),
   density: "normal",
 ) = {
-  let d = _schema-node-density.at(density)
+  let d = _schema-card-density.at(density)
   box(
     width: 100%,
     stroke: 0.8pt + palette.rule-line,
@@ -591,7 +595,7 @@
   ]
 }
 
-// A right-pointing arrow sized to sit beside `schema-node` cells in a grid.
+// A right-pointing arrow sized to sit beside `schema-card` cells in a grid.
 #let schema-arrow = align(center + horizon)[
   #text(size: 1.35em, fill: palette.accent)[$arrow.r$]
 ]

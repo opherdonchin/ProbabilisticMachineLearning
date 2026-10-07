@@ -100,7 +100,7 @@
   reveal: reveal-cumulative(
     initial: ("bernoulli", "gaussian"),
     then: (
-      reveal-step(("shared",), purpose: [Expose the common algebraic target.]),
+      reveal-step(("shared",), emphasize: true, purpose: [Expose the common algebraic target.]),
       reveal-step(("takeaway",), purpose: [State the common-structure claim.]),
     ),
   ),
@@ -163,8 +163,8 @@
   reveal: reveal-cumulative(
     initial: ("formula",),
     then: (
-      reveal-step(("h", "T"), purpose: [Identify the data-side pieces.]),
-      reveal-step(("eta", "A"), purpose: [Identify the parameter-side pieces.]),
+      reveal-step(("h", "T"), emphasize: true, purpose: [Identify the data-side pieces.]),
+      reveal-step(("eta", "A"), emphasize: true, purpose: [Identify the parameter-side pieces.]),
       reveal-step(("takeaway",), purpose: [Name the reusable structure.]),
     ),
   ),
@@ -211,7 +211,9 @@
   reveal: design-reveal[
     Inside `derivation`, reveal the three displayed algebra lines cumulatively:
     ordinary Bernoulli probability → exponential rewrite → collect the coefficient
-    of $x$. Keep earlier lines visible. Then reveal `mapping`, followed by
+    of $x$. Transiently emphasize each newly added algebra line on its entry
+    state, then let it settle to normal while remaining visible. Reveal
+    `mapping` next with the same entry emphasis, followed by the plain
     `takeaway`. The mapping should not appear before the coefficient of $x$ is
     visible.
   ],
@@ -263,7 +265,7 @@
   reveal: reveal-cumulative(
     initial: ("coordinates",),
     then: (
-      reveal-step(("normalizer",), purpose: [Show what the normalizer becomes in natural coordinates.]),
+      reveal-step(("normalizer",), emphasize: true, purpose: [Show what the normalizer becomes in natural coordinates.]),
       reveal-step(("takeaway",), purpose: [Interpret the coordinate change.]),
     ),
   ),

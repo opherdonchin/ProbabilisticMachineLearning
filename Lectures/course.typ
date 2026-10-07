@@ -305,13 +305,58 @@
 }
 
 
-#let figure-card(body) = block(
+#let source-note(body) = align(center)[
+  #text(size: 0.6em, fill: palette.muted)[#body]
+]
+
+// Figure cards own figure-level presentation: frame, caption, and provenance.
+// Their body may be one image, a composite, or any other figure content.
+#let figure-card(
+  body,
+  from: none,
+  caption: none,
+) = block(
   width: 100%,
+  breakable: false,
   stroke: 0.8pt + palette.rule-line,
   fill: palette.paper,
   radius: 0.25em,
   inset: (x: 0.5em, y: 0.45em),
-)[#body]
+)[
+  #stack(
+    spacing: 0.28em,
+    body,
+    if caption != none {
+      text(size: 0.41em, fill: palette.text, caption)
+    },
+    if from != none {
+      source-note(from)
+    },
+  )
+]
+
+// Schema cards identify a whole conceptual diagram. The body may be drawn
+// directly in Typst, delegated to a standalone .typ helper, or loaded from an
+// image asset. Provenance belongs here rather than in the rendering mechanism.
+#let schema-card(
+  body,
+  from: none,
+  caption: none,
+) = block(
+  width: 100%,
+  breakable: false,
+)[
+  #stack(
+    spacing: 0.28em,
+    body,
+    if caption != none {
+      text(size: 0.41em, fill: palette.text, caption)
+    },
+    if from != none {
+      source-note(from)
+    },
+  )
+]
 
 #let recall-card(
   from: none,
@@ -543,15 +588,16 @@
 
 
 // -----------------------------------------------------------------------------
-// Schematic diagram cards
+// Schematic diagram primitives
 // -----------------------------------------------------------------------------
 //
-// A small vocabulary for the boxes-and-arrows schematics used across lectures
-// to lay out task/experience/model flows, typically inside a content-block
-// grid. Keep these course-wide: if a lecture needs a bespoke diagram box, it
-// most likely belongs here rather than as a lecture-local copy.
+// A schema-card is the presentation object for a complete conceptual diagram.
+// schema-node and schema-arrow are lower-level cells used to draw such a
+// diagram. Keep these roles separate: an imported schema image and a Typst-
+// drawn schema use the same outer schema-card, while only the latter needs
+// schema-node/schema-arrow internally.
 //
-// Geometry (inset, radius) is expressed in `em` so schema-card scales
+// Geometry (inset, radius) is expressed in `em` so schema-node scales
 // uniformly with whatever ambient text size a lecture wraps it in; only the
 // hairline stroke stays a fixed absolute thickness.
 //
@@ -566,18 +612,18 @@
 // forwarding function that fixes the density and call that for every card in
 // the grid, rather than repeating `density: "prose"` at each call site.
 
-#let _schema-card-density = (
+#let _schema-node-density = (
   normal: (size: 1em, align: center),
   prose: (size: 0.62em, align: left),
 )
 
-#let schema-card(
+#let schema-node(
   label,
   body,
   fill: palette.accent.lighten(87%),
   density: "normal",
 ) = {
-  let d = _schema-card-density.at(density)
+  let d = _schema-node-density.at(density)
   box(
     width: 100%,
     stroke: 0.8pt + palette.rule-line,
@@ -595,31 +641,19 @@
   ]
 }
 
-// A right-pointing arrow sized to sit beside `schema-card` cells in a grid.
+// A right-pointing arrow sized to sit beside `schema-node` cells in a grid.
 #let schema-arrow = align(center + horizon)[
   #text(size: 1.35em, fill: palette.accent)[$arrow.r$]
-]
-
-// A small muted, centered caption/citation line, e.g. under a schematic or
-// a course-authored figure. `figure-source` below is a thin wrapper for
-// path-valued citations; call `source-note` directly for descriptive text
-// such as "Course schematic; Book 1 §1.2.2".
-#let source-note(body) = align(center)[
-  #text(size: 0.6em, fill: palette.muted)[#body]
 ]
 
 // -----------------------------------------------------------------------------
 // Figures
 // -----------------------------------------------------------------------------
 //
-// A path value keeps the caller's directory as its base, so lecture decks can
-// pass path("figures/plot.svg"). A bare string is instead resolved relative to
-// this shared module. `source` controls the path shown in the provenance line.
-// Width and height are both optional: when both are set, `fit: "contain"`
-// treats them as a bounding box and preserves the image's aspect ratio.
-// If caption is omitted, the source path is the only caption line.
-// Set show-source: false for the individual panels of a composite figure, and
-// name the provenance once for the composite instead of four times over.
+// course-image is intentionally a low-level asset loader. A path value keeps
+// the caller's directory as its base; width and height define a containing box
+// while preserving aspect ratio. Caption and provenance belong to the outer
+// figure-card or schema-card, not to the image loader.
 //
 // Missing-file handling uses the context/query workaround discussed in:
 // https://github.com/typst/typst/issues/2025#issuecomment-2500280417
@@ -656,32 +690,13 @@
   }
 }
 
-#let course-figure(
+#let course-image(
   path,
-  source: path,
-  caption: none,
   width: 100%,
   height: auto,
-  show-source: true,
 ) = align(center)[
-  #stack(
-    spacing: 0.28em,
-
-    _image-or-placeholder(path, width: width, height: height),
-
-    if caption != none {
-      text(size: 0.41em, fill: palette.text, caption)
-    },
-
-    if show-source {
-      source-note(raw(_path-text(source)))
-    },
-  )
+  #_image-or-placeholder(path, width: width, height: height)
 ]
-
-// The provenance line on its own, for a composite whose panels each set
-// show-source: false.
-#let figure-source(source) = source-note(raw(_path-text(source)))
 
 // -----------------------------------------------------------------------------
 // Coordinate-based annotations

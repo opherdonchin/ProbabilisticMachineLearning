@@ -1,8 +1,8 @@
 // Lecture 1 — Probabilistic Machine Learning
 #import "../course_00.typ": *
-#import "figures/beta_bernoulli_graph.typ": beta_bernoulli_graph
+#import "figures/beta_bernoulli_graph_00.typ": beta_bernoulli_graph
 #import "figures/input_output_function_schema.typ": input_output_function_schema
-#import "figures/linear_gaussian_graph.typ": linear_gaussian_graph
+#import "figures/linear_gaussian_graph_00.typ": linear_gaussian_graph
 
 #let lecture = (
   number: 1,

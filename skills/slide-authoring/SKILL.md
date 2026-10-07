@@ -103,15 +103,15 @@ When design source already uses production-ready semantic names such as `card`, 
 
 The design-stage wrapper/rendering may disappear, but do not gratuitously rename or reinterpret the object.
 
-## Use IDs to connect structure
+## Use labels to connect structure
 
-Object IDs in the design artifact connect:
+Object labels in the design artifact connect:
 
 - the abstract layout sketch;
 - the actual content object;
 - the reveal specification.
 
-Use those identities to lower the design. IDs need not survive as production API parameters if they are no longer useful, but their mapping must remain unambiguous during authoring.
+Use those labels to lower the design. Labels need not survive as production API parameters if they are no longer useful, but their mapping must remain unambiguous during authoring.
 
 ## First production pass should be mechanical where possible
 

@@ -57,7 +57,7 @@ These instructions apply to the entire repository.
   normally `slide_design.typ`, using the constrained design API in
   `Lectures/design.typ` when available.
 - Preserve approved title/order/count unless explicit backpressure is accepted.
-- Use stable object IDs across layout, content objects, and reveal
+- Use stable object labels across layout, content objects, and reveal
   specifications. Reuse ordinary semantic names such as `card`,
   `figure-card`, `schema-card`, and `recall-card` when those concepts are
   already production-ready.

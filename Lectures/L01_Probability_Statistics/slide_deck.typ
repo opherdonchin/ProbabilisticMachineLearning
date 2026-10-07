@@ -269,7 +269,7 @@
             Applying Bayes' rule to our model
             #stack(
               spacing: 0.9em,
-              text(size: 0.88em)[
+              text(size: fs("xl"))[
                 #grid(
                   columns: (auto, 1fr),
                   column-gutter: 0.9em,
@@ -538,7 +538,7 @@
               #uncover("2-")[
                 *Training*
                 #v(0.05em)
-                #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+                #text(size: fs("s"))[$ f_T: "E" quad arrow.r quad f_A $]
                 #text(size: fs("xl"))[$E$: Experience]
               ]
             ],
@@ -546,7 +546,7 @@
               #uncover("3-")[
                 *Task*
                 #v(0.05em)
-                #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
+                #text(size: fs("s"))[$ f_A: "In" quad arrow.r quad "Out" $]
                 #text(size: fs("xl"))[$f_A$: Task function]
               ]
             ],
@@ -554,7 +554,7 @@
               #uncover("4-")[
                 *Evaluation*
                 #v(0.05em)
-                #text(size: 0.7em)[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
+                #text(size: fs("s"))[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
                 #text(size: fs("xl"))[$P$: Performance]
               ]
             ],
@@ -584,7 +584,7 @@
         #align(center)[
           *Experience: paired examples*
           #v(sp("s"))
-          #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+          #text(size: fs("s"))[$ f_T: "E" quad arrow.r quad f_A $]
           $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
           #v(0.28em)
           #text(size: fs("s"), fill: palette.muted)[paired examples $arrow.r$ learned predictor]
@@ -596,7 +596,7 @@
           #align(center)[
             *Task: prediction*
             #v(sp("s"))
-            #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
+            #text(size: fs("s"))[$ f_A: "In" quad arrow.r quad "Out" $]
             $ f_D: x_* quad arrow.r quad hat(y)_* $
             #v(0.28em)
             #text(size: fs("s"), fill: palette.muted)[new input $arrow.r$ predicted output]
@@ -1179,7 +1179,7 @@
     ]
   ],
   key-points: [
-    #text(size: 0.7em)[
+    #text(size: fs("s"))[
       - Not every type of experience supports every task.
       - Common pairings do exist.
     ]
@@ -1198,7 +1198,7 @@
         gutter: sp("l"),
         align: top,
         bordered-card(title: [Experience: what the learner observes])[
-          #text(size: 0.56em)[
+          #text(size: fs("xxs"))[
             #grid(
               columns: cols("equal"),
               gutter: sp("s"),
@@ -1210,7 +1210,7 @@
           ]
         ],
         bordered-card(title: [Task: what the system must do])[
-          #text(size: 0.56em)[
+          #text(size: fs("xxs"))[
             #grid(
               columns: cols("equal"),
               gutter: sp("s"),
@@ -1258,7 +1258,7 @@
     )[
       #stack(
         spacing: 0.28em,
-        text(size: 0.66em, weight: "semibold", fill: palette.accent)[#title],
+        text(size: fs("xs"), weight: "semibold", fill: palette.accent)[#title],
         block(width: 100%, height: 1.95cm, fill: white, inset: 0.12em)[
           #align(center + horizon)[#sample]
         ],
@@ -1639,7 +1639,7 @@
                   lecture-figure-path("generated/gaussian_operations__summarize.svg"),
                   width: 100%, height: 4.7cm,
                 ),
-                text(size: 0.74em)[
+                text(size: fs("s"))[
                   $ mu = integral bold(x) p(bold(x)) dif bold(x) $
                 ],
               )
@@ -1652,7 +1652,7 @@
                   lecture-figure-path("generated/gaussian_operations__marginalize.svg"),
                   width: 100%, height: 4.7cm,
                 ),
-                text(size: 0.74em)[
+                text(size: fs("s"))[
                   $ p(x_1) = integral p(x_1,x_2) dif x_2 $
                 ],
               )
@@ -1665,7 +1665,7 @@
                   lecture-figure-path("generated/gaussian_operations__condition.svg"),
                   width: 100%, height: 4.7cm,
                 ),
-                text(size: 0.74em)[
+                text(size: fs("s"))[
                   $ p(x_1 | x_2=a) = frac(p(x_1,a), integral p(u,a) dif u) $
                 ],
               )
@@ -1958,7 +1958,7 @@
         #uncover("2-")[
           #bordered-card(title: [Marginal proof])[
             #stack(
-              spacing: 0.45em,
+              spacing: sp("s"),
               [Select $x_1$: $P=mat(I,0,delim: "["), quad x_1=P bold(x)$],
               [By the affine rule: \
                 $x_1 tilde cal(N)(P mu,P Sigma P^T)$],
@@ -2256,7 +2256,7 @@
         gutter: sp("l"),
         align: center + horizon,
         bordered-card(title: [Marginalize])[
-          #text(size: 0.77em)[
+          #text(size: fs("m"))[
             #stack(
               spacing: 0.65em,
               [$p(x_1)=integral p(x_1,x_2) dif x_2$],
@@ -2267,7 +2267,7 @@
         bordered-card(title: [Condition])[
           #text(size: fs("s"))[
             #stack(
-              spacing: 0.62em,
+              spacing: sp("m"),
               [$p(x_1|x_2)=cal(N)(x_1|mu_(1|2),Sigma_(1|2))$],
               [$mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$],
               [$Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1)Sigma_21$],
@@ -2467,7 +2467,7 @@
 #content-block(
   object: [
     #twocol[
-      #text(size: 0.86em)[
+      #text(size: fs("l"))[
       #stack(
         spacing: sp("m"),
         bordered-card(title: [Model and joint Gaussian])[
@@ -2915,7 +2915,7 @@
           #stack(
             spacing: 0.30em,
             text(size: 0.62em, weight: "semibold")[The task determines the operation.],
-            text(size: 0.56em)[
+            text(size: fs("xxs"))[
               #grid(
                 columns: (5.7em, 1fr),
                 column-gutter: sp("s"),
@@ -2934,10 +2934,10 @@
           #stack(
             spacing: sp("xs"),
             text(size: 0.62em, weight: "semibold")[Observation changes estimate and uncertainty.],
-            text(size: 0.58em)[
+            text(size: fs("xxs"))[
               $mu_(1|2)=mu_1+Sigma_12 Sigma_22^(-1)(x_2-mu_2)$
             ],
-            text(size: 0.58em)[
+            text(size: fs("xxs"))[
               $Sigma_(1|2)=Sigma_11-Sigma_12 Sigma_22^(-1)Sigma_21$
             ],
           )

@@ -105,28 +105,28 @@
         row-gutter: sp("s"),
         align: top,
 
-        uncover("2-")[
+        step(2)[
           #bordered-card(title: [$h(x)$ — base measure])[
             #text(size: fs("m"))[
               Fixed part of the density that may depend on $x$ but not on $eta$.
             ]
           ]
         ],
-        uncover("2-")[
+        step(2)[
           #bordered-card(title: [$T(x)$ — sufficient statistics])[
             #text(size: fs("m"))[
               The data are represented through the vector $T(x)$.
             ]
           ]
         ],
-        uncover("3-")[
+        step(3)[
           #bordered-card(title: [$eta$ — natural parameters])[
             #text(size: fs("m"))[
               Coordinates for the distribution that pair linearly with $T(x)$.
             ]
           ]
         ],
-        uncover("3-")[
+        step(3)[
           #bordered-card(title: [$A(eta)$ — log-partition function])[
             #text(size: fs("m"))[
               The parameter-dependent normalizer that makes the density integrate
@@ -163,12 +163,12 @@
             text(size: fs("xl"))[
               $ "Ber"(x | mu) = mu^x (1-mu)^(1-x) $
             ],
-            uncover("2-")[
+            step(2)[
               #text(size: fs("xl"))[
                 $ = exp(x log mu + (1-x) log(1-mu)) $
               ]
             ],
-            uncover("3-")[
+            step(3)[
               #text(size: fs("xl"))[
                 $ = exp(x log(mu/(1-mu)) + log(1-mu)) $
               ]
@@ -197,7 +197,7 @@
     )
   ],
   key-points: [
-    #uncover("4-")[
+    #uncover("5-")[
       Rewriting the same Bernoulli probability exposes
       $T(x)=x$ and $eta=log(mu/(1-mu))$; the probability model itself is unchanged.
     ]
@@ -232,7 +232,7 @@
         )
       ]
     ][
-      #uncover("2-")[
+      #step(2)[
         #bordered-card(title: [Normalization in natural coordinates])[
           #align(center)[
             #stack(

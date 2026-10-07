@@ -68,7 +68,7 @@ This list must stay in sync with what `Lectures/course.typ` actually exports. If
 Slide structure and composition:
 
 - Ordinary teaching slides normally use one `#content-block(...)`. Its `object:` region composes presentation cards and layout primitives; its `key-points:` region states the conclusions or interpretations. Section-summary and other special-purpose slides may use a different architecture when that better matches their pedagogical role.
-- `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
+- `#content-block(...)` — object + key-points composition. `layout: "top"` is the normal/default arrangement; use `"bottom"`, `"side-left"`, or `"side-right"` only when the slide argument calls for them.
 - `#twocol[...][...]`, `#triad[...][...][...]` — standard row layouts; use `cols(...)` and `sp(...)` for named column ratios and spacing choices
 - Treat grouping and layout as separate decisions. Use cards when content forms a meaningful semantic or visual unit; a card may itself contain `twocol`, `triad`, `grid`, or other layout.
 - Prefer `twocol` and `triad` whenever they express the intended two- or three-column geometry clearly, regardless of whether their children are cards or unboxed content. Use raw `grid` when the required geometry is not naturally expressed by the current layout helpers—for example tables/matrices, multi-row or 2×2 arrangements, fixed replacement geometry, or more intricate schematic structure.
@@ -92,11 +92,12 @@ Cards and notes:
 - `#card[...]` — the default presentation card. It is intentionally unmarked in the current implementation; use it to identify a substantial semantic unit even when no visible boundary is wanted.
 - `#bordered-card(...)` — ordinary card with visible Ruled Page chrome.
 - `#recall-card(from: [...], ...)[...]` — previously established material brought into the current argument; provenance is required. It belongs inside the `object:` region of an ordinary `content-block`.
+- The normal recall-card body size is `fs("m")`; override it only when the carried-forward material clearly benefits from a larger or smaller presentation.
 - Standalone recall cards normally use `#align(left)[#recall-card(from: [...], width: 50%)[...]]`. Judge longer content in the rendered slide before widening it. Within a `twocol` or other column layout, omit `width:` so the card fills its column (the default is `100%`).
 - `#figure-card(from: [...], caption: [...])[...]` — complete figure presentation object. It owns the figure frame, optional caption, and optional provenance. Its body may be a single image or a composite.
 - `#key-points[...]`, `#definition(...)`, `#method(...)`
 - `#note[...]` — margin/aside note
-- During the current authoring stage, font size and internal spacing choices remain explicit in the deck through named `fs(...)` and `sp(...)` values. Do not infer a final card-density API yet.
+- During the current authoring stage, font size and internal spacing choices remain explicit through named `fs(...)` and `sp(...)` values. The two scales are calibrated as a family: matching labels should give a coherent density. Use `xxs` spacing for deliberately optical/micro gaps; do not use it as the normal item spacing for `fs("xs")` text. Do not infer a final card-density API yet.
 
 Figures and schemas:
 

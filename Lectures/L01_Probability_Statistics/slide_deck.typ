@@ -43,25 +43,27 @@
   object-width: 82%,
 
   object: [
-    #align(center)[
-      #twocol[
-        *Observed*\
-        the coin tosses $y_1, dots, y_N$
-      ][
-        *Unknown*\
-        the coin bias $theta$
-      ]
-
-      #uncover("2-")[
-        $ theta tilde "Beta"(alpha, beta) $
-        \
-        $ y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N $
-      ]
-      #uncover("3-")[
-        #v(0.65em)
-        Code heads as $y_i = 1$ and tails as $y_i = 0$\
-        $N_1 = sum_(i=1)^N y_i, quad N_0 = N - N_1$
-      ]
+    #card[
+      #align(center)[
+            #twocol[
+              *Observed*\
+              the coin tosses $y_1, dots, y_N$
+            ][
+              *Unknown*\
+              the coin bias $theta$
+            ]
+      
+            #uncover("2-")[
+              $ theta tilde "Beta"(alpha, beta) $
+              \
+              $ y_i  tilde "Bernoulli"(theta), quad i = 1, dots, N $
+            ]
+            #uncover("3-")[
+              #v(0.65em)
+              Code heads as $y_i = 1$ and tails as $y_i = 0$\
+              $N_1 = sum_(i=1)^N y_i, quad N_0 = N - N_1$
+            ]
+          ]
     ]
   ],
   key-points: [
@@ -89,49 +91,51 @@
   layout: "side-left",
   object-width: 60%,
   object: [
-    #grid(
-      columns: (28%, 1fr),
-      column-gutter: sp("xl"),
-      row-gutter: sp("xs"),
-      align: center + horizon,
-
-      [
-        #align(center)[
-          #text(size: fs("xs"))[
-            $ theta tilde "Beta"(alpha, beta) $
-          ]
-        ]
-      ],
-      [
-        #course-figure(
-          lecture-figure-path("figures/coin_model__beta_distribution.svg"),
-          source: "figures/coin_model__beta_distribution.svg",
-          width: 100%,
-          height: 4cm,
-        )
-      ],
-      [
-        #uncover("2-")[
-          #align(center)[
-            #stack(
-              spacing: sp("xs"),
-              text(size: fs("xs"))[$ y_i  tilde "Bernoulli"(theta) $],
-              text(size: fs("xs"), fill: palette.muted)[$ i = 1, dots, N $],
-            )
-          ]
-        ]
-      ],
-      [
-        #uncover("2-")[
-          #course-figure(
-            lecture-figure-path("figures/coin_model__bernoulli_likelihood.svg"),
-            source: "figures/coin_model__bernoulli_likelihood.svg",
-            width: 100%,
-            height: 4cm,
+    #card[
+      #grid(
+            columns: (28%, 1fr),
+            column-gutter: sp("xl"),
+            row-gutter: sp("xs"),
+            align: center + horizon,
+      
+            [
+              #align(center)[
+                #text(size: fs("xs"))[
+                  $ theta tilde "Beta"(alpha, beta) $
+                ]
+              ]
+            ],
+            [
+              #course-figure(
+                lecture-figure-path("figures/coin_model__beta_distribution.svg"),
+                source: "figures/coin_model__beta_distribution.svg",
+                width: 100%,
+                height: 4cm,
+              )
+            ],
+            [
+              #uncover("2-")[
+                #align(center)[
+                  #stack(
+                    spacing: sp("xs"),
+                    text(size: fs("xs"))[$ y_i  tilde "Bernoulli"(theta) $],
+                    text(size: fs("xs"), fill: palette.muted)[$ i = 1, dots, N $],
+                  )
+                ]
+              ]
+            ],
+            [
+              #uncover("2-")[
+                #course-figure(
+                  lecture-figure-path("figures/coin_model__bernoulli_likelihood.svg"),
+                  source: "figures/coin_model__bernoulli_likelihood.svg",
+                  width: 100%,
+                  height: 4cm,
+                )
+              ]
+            ],
           )
-        ]
-      ],
-    )
+    ]
   ],
   key-points: [
     #text(size: fs("l"))[
@@ -301,13 +305,15 @@
   layout: "top",
   object-width: 82%,
   object: [
-    #course-figure(
-      lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
-      source: "figures/coin_model__prior_likelihood_posterior.svg",
-      caption: [Bayesian updating for the familiar coin model],
-      width: 100%,
-      height: 8.5cm,
-    )
+    #card[
+      #course-figure(
+            lecture-figure-path("figures/coin_model__prior_likelihood_posterior.svg"),
+            source: "figures/coin_model__prior_likelihood_posterior.svg",
+            caption: [Bayesian updating for the familiar coin model],
+            width: 100%,
+            height: 8.5cm,
+          )
+    ]
   ],
   key-points: [
     #stack(
@@ -364,8 +370,10 @@
   layout: "top",
   object-width: 60%,
   object: [
-    #align(center)[
-      $ p(theta | D) = frac(p(D | theta) p(theta), p(D)) $
+    #card[
+      #align(center)[
+            $ p(theta | D) = frac(p(D | theta) p(theta), p(D)) $
+          ]
     ]
   ],
   key-points: [
@@ -389,7 +397,9 @@
 #content-block(
   layout: "top",
   object: [
-    #input_output_function_schema()
+    #card[
+      #input_output_function_schema()
+    ]
   ],
   key-points: [
     #stack(
@@ -568,31 +578,33 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
-      columns: cols("equal"),
-      gutter: 2.2em,
-      align: center + horizon,
-      [
-        #align(center)[
-          *Experience: paired examples*
-          #v(sp("s"))
-          #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
-          $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
-          #v(0.28em)
-          #text(size: fs("s"), fill: palette.muted)[paired examples $arrow.r$ learned predictor]
-        ]
-      ],
-      uncover("2-")[
-        #align(center)[
-          *Task: prediction*
-          #v(sp("s"))
-          #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
-          $ f_D: x_* quad arrow.r quad hat(y)_* $
-          #v(0.28em)
-          #text(size: fs("s"), fill: palette.muted)[new input $arrow.r$ predicted output]
-        ]
-      ],
-    )
+    #card[
+      #grid(
+            columns: cols("equal"),
+            gutter: 2.2em,
+            align: center + horizon,
+            [
+              #align(center)[
+                *Experience: paired examples*
+                #v(sp("s"))
+                #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+                $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
+                #v(0.28em)
+                #text(size: fs("s"), fill: palette.muted)[paired examples $arrow.r$ learned predictor]
+              ]
+            ],
+            uncover("2-")[
+              #align(center)[
+                *Task: prediction*
+                #v(sp("s"))
+                #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
+                $ f_D: x_* quad arrow.r quad hat(y)_* $
+                #v(0.28em)
+                #text(size: fs("s"), fill: palette.muted)[new input $arrow.r$ predicted output]
+              ]
+            ],
+          )
+    ]
   ],
   key-points: [
     #stack(
@@ -620,65 +632,67 @@
   layout: "top",
   object-width: 92%,
   object: [
-    #stack(
-      spacing: sp("s"),
-      grid(
-        columns: (1.35fr, 1fr),
-        gutter: 1.1em,
-        align: center + horizon,
-        [
-          #grid(
-            columns: cols("three"),
-            gutter: 0.3em,
-            [#align(center)[
-              #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 3cm, fit: "contain"),
-                text(size: 0.45em, fill: palette.muted)[Setosa],
-              )
-            ]],
-            [#align(center)[
-              #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 3cm, fit: "contain"),
-                text(size: 0.45em, fill: palette.muted)[Versicolor],
-              )
-            ]],
-            [#align(center)[
-              #stack(spacing: 0.12em,
-                image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 3cm, fit: "contain"),
-                text(size: 0.45em, fill: palette.muted)[Virginica],
-              )
-            ]],
-          )
-        ],
-        uncover("2-")[#align(center)[
-          #text(size: 0.45em, weight: "semibold")[
-            Table 1.1: subset of the Iris design matrix
-          ]
-          #v(0.28em)
-          #text(size: 0.45em)[
-            #table(
-              columns: (auto, auto, auto, auto, auto, auto),
+    #card[
+      #stack(
+            spacing: sp("s"),
+            grid(
+              columns: (1.35fr, 1fr),
+              gutter: 1.1em,
               align: center + horizon,
-              inset: (x: 3.5pt, y: 3pt),
-              table.header(
-                [*index*], [*sl*], [*sw*], [*pl*], [*pw*], [*label*],
-              ),
-              [0], [5.1], [3.5], [1.4], [0.2], [Setosa],
-              [1], [4.9], [3.0], [1.4], [0.2], [Setosa],
-              [dots], [dots], [dots], [dots], [dots], [dots],
-              [50], [7.0], [3.2], [4.7], [1.4], [Versicolor],
-              [dots], [dots], [dots], [dots], [dots], [dots],
-              [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
-            )
-          ]
-          #v(sp("xs"))
-          #text(size: 0.45em, fill: palette.muted)[
-            sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
-          ]
-        ]],
-      ),
-      figure-source("Murphy (2025), Book 1, Fig. 1.1 and Table 1.1"),
-    )
+              [
+                #grid(
+                  columns: cols("three"),
+                  gutter: 0.3em,
+                  [#align(center)[
+                    #stack(spacing: 0.12em,
+                      image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 3cm, fit: "contain"),
+                      text(size: 0.45em, fill: palette.muted)[Setosa],
+                    )
+                  ]],
+                  [#align(center)[
+                    #stack(spacing: 0.12em,
+                      image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 3cm, fit: "contain"),
+                      text(size: 0.45em, fill: palette.muted)[Versicolor],
+                    )
+                  ]],
+                  [#align(center)[
+                    #stack(spacing: 0.12em,
+                      image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 3cm, fit: "contain"),
+                      text(size: 0.45em, fill: palette.muted)[Virginica],
+                    )
+                  ]],
+                )
+              ],
+              uncover("2-")[#align(center)[
+                #text(size: 0.45em, weight: "semibold")[
+                  Table 1.1: subset of the Iris design matrix
+                ]
+                #v(0.28em)
+                #text(size: 0.45em)[
+                  #table(
+                    columns: (auto, auto, auto, auto, auto, auto),
+                    align: center + horizon,
+                    inset: (x: 3.5pt, y: 3pt),
+                    table.header(
+                      [*index*], [*sl*], [*sw*], [*pl*], [*pw*], [*label*],
+                    ),
+                    [0], [5.1], [3.5], [1.4], [0.2], [Setosa],
+                    [1], [4.9], [3.0], [1.4], [0.2], [Setosa],
+                    [dots], [dots], [dots], [dots], [dots], [dots],
+                    [50], [7.0], [3.2], [4.7], [1.4], [Versicolor],
+                    [dots], [dots], [dots], [dots], [dots], [dots],
+                    [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
+                  )
+                ]
+                #v(sp("xs"))
+                #text(size: 0.45em, fill: palette.muted)[
+                  sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
+                ]
+              ]],
+            ),
+            figure-source("Murphy (2025), Book 1, Fig. 1.1 and Table 1.1"),
+          )
+    ]
   ],
   key-points: [
     #stack(
@@ -739,24 +753,26 @@
 #content-block(
   layout: "top",
   object: [
-    #align(center)[
-      $ L(x,y ; theta) = ell(y, f(x; theta)) $
-      #uncover("2-")[
-        $ L(theta) = 1/N sum_(n=1)^N L(x_n, y_n ; theta) $
-      ]
-      #uncover("3-")[
-        $ hat(theta) = arg min_theta L(theta) $
-      ]
-      #uncover("4-")[
-        #v(sp("m"))
-        #note[
-          #text(size: fs("s"))[
-            Given samples $D = {x^(1), dots, x^(N)}$ from $p(X)$, where $X in RR$,
-            the empirical distribution is
-  $hat(p)_N (x) = 1/N sum_(n=1)^N delta_(x^(n))(x)$.
+    #card[
+      #align(center)[
+            $ L(x,y ; theta) = ell(y, f(x; theta)) $
+            #uncover("2-")[
+              $ L(theta) = 1/N sum_(n=1)^N L(x_n, y_n ; theta) $
+            ]
+            #uncover("3-")[
+              $ hat(theta) = arg min_theta L(theta) $
+            ]
+            #uncover("4-")[
+              #v(sp("m"))
+              #note[
+                #text(size: fs("s"))[
+                  Given samples $D = {x^(1), dots, x^(N)}$ from $p(X)$, where $X in RR$,
+                  the empirical distribution is
+        $hat(p)_N (x) = 1/N sum_(n=1)^N delta_(x^(n))(x)$.
+                ]
+              ]
+            ]
           ]
-        ]
-      ]
     ]
   ],
   key-points: [
@@ -784,16 +800,18 @@
   layout: "top",
   object-width: 78%,
   object: [
-    #align(center)[
-      $ L(x,y ; theta) = ell(y, f(x; theta)) $
-      $ ell(y, f(x; theta)) = ell_"01" (y, hat(y)) = II(y != hat(y)) $
-      #uncover("2-")[
-        #v(0.65em)
-        $ II(e) = cases(
-          1 "if " e " is true",
-          0 "if " e " is false",
-        ) $
-      ]
+    #card[
+      #align(center)[
+            $ L(x,y ; theta) = ell(y, f(x; theta)) $
+            $ ell(y, f(x; theta)) = ell_"01" (y, hat(y)) = II(y != hat(y)) $
+            #uncover("2-")[
+              #v(0.65em)
+              $ II(e) = cases(
+                1 "if " e " is true",
+                0 "if " e " is false",
+              ) $
+            ]
+          ]
     ]
   ],
   key-points: [
@@ -818,16 +836,18 @@
   layout: "top",
   object-width: 90%,
   object: [
-    #align(center)[
-      $ p(x | y = c, theta) $
-      #uncover("2-")[
-        #v(0.65em)
-        $ p(y = c | x, theta) prop p(x | y = c, theta) p(y = c) $
-      ]
-      #uncover("3-")[
-        #v(0.65em)
-        $ hat(y) = arg max_(c in cal(Y)) p(y = c | x; theta) $
-      ]
+    #card[
+      #align(center)[
+            $ p(x | y = c, theta) $
+            #uncover("2-")[
+              #v(0.65em)
+              $ p(y = c | x, theta) prop p(x | y = c, theta) p(y = c) $
+            ]
+            #uncover("3-")[
+              #v(0.65em)
+              $ hat(y) = arg max_(c in cal(Y)) p(y = c | x; theta) $
+            ]
+          ]
     ]
   ],
   key-points: [
@@ -856,42 +876,44 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
-      columns: cols("three"),
-      gutter: 1.5em,
-      align: center + horizon,
-      [#align(center)[
-        #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Task]
-        #v(sp("xs"))
-        #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
-        #v(0.34em)
-        $ x in RR^4 arrow.r hat(y) in cal(Y) $
-        #v(0.12em)
-        #text(size: 0.48em, fill: palette.muted)[four measurements $arrow.r$ species]
-      ]],
-      [#uncover("2-")[
-        #align(center)[
-          #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Experience]
-          #v(sp("xs"))
-          #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
-          #v(0.34em)
-          $ D = {(x_n, y_n)}_(n=1)^N $
-          #v(0.12em)
-          #text(size: 0.48em, fill: palette.muted)[150 labeled flowers]
-        ]
-      ]],
-      [#uncover("3-")[
-        #align(center)[
-          #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Performance]
-          #v(sp("xs"))
-          #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
-          #v(0.34em)
-          $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
-          #v(0.12em)
-          #text(size: 0.48em, fill: palette.muted)[zero-one loss / misclassification rate]
-        ]
-      ]],
-    )
+    #card[
+      #grid(
+            columns: cols("three"),
+            gutter: 1.5em,
+            align: center + horizon,
+            [#align(center)[
+              #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Task]
+              #v(sp("xs"))
+              #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
+              #v(0.34em)
+              $ x in RR^4 arrow.r hat(y) in cal(Y) $
+              #v(0.12em)
+              #text(size: 0.48em, fill: palette.muted)[four measurements $arrow.r$ species]
+            ]],
+            [#uncover("2-")[
+              #align(center)[
+                #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Experience]
+                #v(sp("xs"))
+                #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
+                #v(0.34em)
+                $ D = {(x_n, y_n)}_(n=1)^N $
+                #v(0.12em)
+                #text(size: 0.48em, fill: palette.muted)[150 labeled flowers]
+              ]
+            ]],
+            [#uncover("3-")[
+              #align(center)[
+                #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Performance]
+                #v(sp("xs"))
+                #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
+                #v(0.34em)
+                $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
+                #v(0.12em)
+                #text(size: 0.48em, fill: palette.muted)[zero-one loss / misclassification rate]
+              ]
+            ]],
+          )
+    ]
   ],
   key-points: [
     #stack(
@@ -1129,22 +1151,24 @@
 #content-block(
   layout: "top",
   object: [
-    #align(center)[
-      #text(size: 1em)[
-        #table(
-          columns: (1.15fr, 1fr, 1fr, 1fr, 1fr),
-          align: (left, center, center, center, center),
-          inset: (x: 5pt, y: 5pt),
-          stroke: 0.6pt + palette.rule-line,
-          table.header(
-            [*Experience*], [*Prediction*], [*Generation*], [*Discovery*], [*Action*],
-          ),
-          [*Supervised*], [Classification], [—], [—], [Imitation learning],
-          [*Unsupervised*], [—], [Density modeling], [Clustering / PCA], [—],
-          [*Self-supervised*], [Next-token prediction], [Language generation], [Representation learning], [—],
-          [*Reinforcement / interaction*], [—], [—], [—], [Policy learning],
-        )
-      ]
+    #card[
+      #align(center)[
+            #text(size: 1em)[
+              #table(
+                columns: (1.15fr, 1fr, 1fr, 1fr, 1fr),
+                align: (left, center, center, center, center),
+                inset: (x: 5pt, y: 5pt),
+                stroke: 0.6pt + palette.rule-line,
+                table.header(
+                  [*Experience*], [*Prediction*], [*Generation*], [*Discovery*], [*Action*],
+                ),
+                [*Supervised*], [Classification], [—], [—], [Imitation learning],
+                [*Unsupervised*], [—], [Density modeling], [Clustering / PCA], [—],
+                [*Self-supervised*], [Next-token prediction], [Language generation], [Representation learning], [—],
+                [*Reinforcement / interaction*], [—], [—], [—], [Policy learning],
+              )
+            ]
+          ]
     ]
   ],
   key-points: [
@@ -1542,17 +1566,19 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
-      columns: (auto, 1fr),
-      column-gutter: 1em,
-      row-gutter: 1em,
-      align: (left + horizon, center + horizon),
-      [*One variable*],
-      [$ cal(N)(x | mu,sigma^2) = frac(exp(-frac((x-mu)^2,2 sigma^2)), sqrt(2 pi sigma^2)) $],
-      uncover("2-")[*$D$ coordinates*],
-      uncover("2-")[$ cal(N)(bold(x) | mu,Sigma) = frac(exp(-frac(1,2)(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)), (2 pi)^(D/2) |Sigma|^(1/2)) $],
-    )
-    #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.71; scalar case: $D=1$]
+    #card[
+      #grid(
+            columns: (auto, 1fr),
+            column-gutter: 1em,
+            row-gutter: 1em,
+            align: (left + horizon, center + horizon),
+            [*One variable*],
+            [$ cal(N)(x | mu,sigma^2) = frac(exp(-frac((x-mu)^2,2 sigma^2)), sqrt(2 pi sigma^2)) $],
+            uncover("2-")[*$D$ coordinates*],
+            uncover("2-")[$ cal(N)(bold(x) | mu,Sigma) = frac(exp(-frac(1,2)(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)), (2 pi)^(D/2) |Sigma|^(1/2)) $],
+          )
+          #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.71; scalar case: $D=1$]
+    ]
   ],
   key-points: [
     #stack(
@@ -1571,52 +1597,54 @@
 #content-block(
   layout: "top",
   object: [
-    #align(center)[One joint Gaussian: $p(bold(x)) = cal(N)(bold(x) | mu, Sigma)$]
-    #grid(
-      columns: cols("three"),
-      gutter: sp("l"),
-      align: center + top,
-      [
-        #stack(
-          spacing: 0.3em,
-          align(center)[*Summarize*],
-          course-figure(
-            lecture-figure-path("generated/gaussian_operations__summarize.svg"),
-            width: 100%, height: 4.7cm, show-source: false,
-          ),
-          text(size: 0.74em)[
-            $ mu = integral bold(x) p(bold(x)) dif bold(x) $
-          ],
-        )
-      ],
-      uncover("2-")[
-        #stack(
-          spacing: 0.3em,
-          align(center)[*Marginalize*],
-          course-figure(
-            lecture-figure-path("generated/gaussian_operations__marginalize.svg"),
-            width: 100%, height: 4.7cm, show-source: false,
-          ),
-          text(size: 0.74em)[
-            $ p(x_1) = integral p(x_1,x_2) dif x_2 $
-          ],
-        )
-      ],
-      uncover("3-")[
-        #stack(
-          spacing: 0.3em,
-          align(center)[*Condition*],
-          course-figure(
-            lecture-figure-path("generated/gaussian_operations__condition.svg"),
-            width: 100%, height: 4.7cm, show-source: false,
-          ),
-          text(size: 0.74em)[
-            $ p(x_1 | x_2=a) = frac(p(x_1,a), integral p(u,a) dif u) $
-          ],
-        )
-      ],
-    )
-    #source-note[Figures: `gaussian_geometry_figures.ipynb`]
+    #card[
+      #align(center)[One joint Gaussian: $p(bold(x)) = cal(N)(bold(x) | mu, Sigma)$]
+          #grid(
+            columns: cols("three"),
+            gutter: sp("l"),
+            align: center + top,
+            [
+              #stack(
+                spacing: 0.3em,
+                align(center)[*Summarize*],
+                course-figure(
+                  lecture-figure-path("generated/gaussian_operations__summarize.svg"),
+                  width: 100%, height: 4.7cm, show-source: false,
+                ),
+                text(size: 0.74em)[
+                  $ mu = integral bold(x) p(bold(x)) dif bold(x) $
+                ],
+              )
+            ],
+            uncover("2-")[
+              #stack(
+                spacing: 0.3em,
+                align(center)[*Marginalize*],
+                course-figure(
+                  lecture-figure-path("generated/gaussian_operations__marginalize.svg"),
+                  width: 100%, height: 4.7cm, show-source: false,
+                ),
+                text(size: 0.74em)[
+                  $ p(x_1) = integral p(x_1,x_2) dif x_2 $
+                ],
+              )
+            ],
+            uncover("3-")[
+              #stack(
+                spacing: 0.3em,
+                align(center)[*Condition*],
+                course-figure(
+                  lecture-figure-path("generated/gaussian_operations__condition.svg"),
+                  width: 100%, height: 4.7cm, show-source: false,
+                ),
+                text(size: 0.74em)[
+                  $ p(x_1 | x_2=a) = frac(p(x_1,a), integral p(u,a) dif u) $
+                ],
+              )
+            ],
+          )
+          #source-note[Figures: `gaussian_geometry_figures.ipynb`]
+    ]
   ],
   key-points: [
     #stack(
@@ -1635,30 +1663,32 @@
 #content-block(
   layout: "top",
   object: [
-    #align(center)[For a vector $bold(x)$ with mean $mu = E[bold(x)]$]
-    #v(sp("l"))
-    #twocol[
-      $ Sigma_(i j) &= "Cov"[X_i,X_j] \
-        &= E[(X_i-mu_i)(X_j-mu_j)] $
-
-      #uncover("2-")[
-        $ Sigma &= E[(bold(x)-mu)(bold(x)-mu)^T] \
-          &= E[bold(x)bold(x)^T] - mu mu^T $
-      ]
-    ][
-      #uncover("2-")[#align(center)[
-        For three coordinates
-        #text(size: fs("m"))[
-        $ Sigma = mat(
-          V[X_1], "Cov"[X_1,X_2], "Cov"[X_1,X_3];
-          "Cov"[X_2,X_1], V[X_2], "Cov"[X_2,X_3];
-          "Cov"[X_3,X_1], "Cov"[X_3,X_2], V[X_3];
-          delim: "[",
-        ) $
-        ]
-      ]]
+    #card[
+      #align(center)[For a vector $bold(x)$ with mean $mu = E[bold(x)]$]
+          #v(sp("l"))
+          #twocol[
+            $ Sigma_(i j) &= "Cov"[X_i,X_j] \
+              &= E[(X_i-mu_i)(X_j-mu_j)] $
+      
+            #uncover("2-")[
+              $ Sigma &= E[(bold(x)-mu)(bold(x)-mu)^T] \
+                &= E[bold(x)bold(x)^T] - mu mu^T $
+            ]
+          ][
+            #uncover("2-")[#align(center)[
+              For three coordinates
+              #text(size: fs("m"))[
+              $ Sigma = mat(
+                V[X_1], "Cov"[X_1,X_2], "Cov"[X_1,X_3];
+                "Cov"[X_2,X_1], V[X_2], "Cov"[X_2,X_3];
+                "Cov"[X_3,X_1], "Cov"[X_3,X_2], V[X_3];
+                delim: "[",
+              ) $
+              ]
+            ]]
+          ]
+          #source-note[Murphy, Book 1 §3.1.1, Eqs. 3.1–3.4]
     ]
-    #source-note[Murphy, Book 1 §3.1.1, Eqs. 3.1–3.4]
   ],
   key-points: [
     #stack(
@@ -1684,12 +1714,14 @@
   layout: "top",
   object-width: 91%,
   object: [
-    #align(center)[$rho_(i j) = frac("Cov"[X_i,X_j], sigma_i sigma_j), quad -1 <= rho_(i j) <= 1$]
-    #v(0.85em)
-    #uncover("2-")[
-      #align(center)[$Sigma = mat(sigma_1^2, rho_12 sigma_1 sigma_2, rho_13 sigma_1 sigma_3; rho_12 sigma_1 sigma_2, sigma_2^2, rho_23 sigma_2 sigma_3; rho_13 sigma_1 sigma_3, rho_23 sigma_2 sigma_3, sigma_3^2; delim: "[")$]
+    #card[
+      #align(center)[$rho_(i j) = frac("Cov"[X_i,X_j], sigma_i sigma_j), quad -1 <= rho_(i j) <= 1$]
+          #v(0.85em)
+          #uncover("2-")[
+            #align(center)[$Sigma = mat(sigma_1^2, rho_12 sigma_1 sigma_2, rho_13 sigma_1 sigma_3; rho_12 sigma_1 sigma_2, sigma_2^2, rho_23 sigma_2 sigma_3; rho_13 sigma_1 sigma_3, rho_23 sigma_2 sigma_3, sigma_3^2; delim: "[")$]
+          ]
+          #source-note[Murphy, Book 1 §3.1.2, Eq. 3.7; Book 2 §2.3.1.1, Eq. 2.73]
     ]
-    #source-note[Murphy, Book 1 §3.1.2, Eq. 3.7; Book 2 §2.3.1.1, Eq. 2.73]
   ],
   key-points: [
     #stack(
@@ -1758,12 +1790,14 @@
   layout: "top",
   object-width: 92%,
   object: [
-    #align(center)[$d_Sigma (bold(x),mu)^2 = (bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
-    #uncover("2-")[
-      #v(0.85em)
-      #align(center)[$Sigma = sigma^2 I_D quad arrow.r quad d_Sigma^2 = frac(norm(bold(x)-mu)^2, sigma^2)$]
+    #card[
+      #align(center)[$d_Sigma (bold(x),mu)^2 = (bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
+          #uncover("2-")[
+            #v(0.85em)
+            #align(center)[$Sigma = sigma^2 I_D quad arrow.r quad d_Sigma^2 = frac(norm(bold(x)-mu)^2, sigma^2)$]
+          ]
+          #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.72]
     ]
-    #source-note[Murphy, Book 2 §2.3.1.1, Eq. 2.72]
   ],
   key-points: [
     #stack(
@@ -1786,14 +1820,16 @@
   layout: "top",
   object-width: 95%,
   object: [
-    #course-figure(
-      lecture-figure-path("generated/gaussian_contours.svg"),
-      source: "Course rendering of Murphy, Book 2, Fig. 2.8",
-      width: 100%,
-      height: 5.5cm,
-      show-source: false,
-    )
-    #source-note[Course rendering of Murphy, Book 2, Fig. 2.8]
+    #card[
+      #course-figure(
+            lecture-figure-path("generated/gaussian_contours.svg"),
+            source: "Course rendering of Murphy, Book 2, Fig. 2.8",
+            width: 100%,
+            height: 5.5cm,
+            show-source: false,
+          )
+          #source-note[Course rendering of Murphy, Book 2, Fig. 2.8]
+    ]
   ],
   key-points: [
     - A full covariance can rotate the principal axes
@@ -1856,12 +1892,14 @@
 #content-block(
   layout: "top",
   object: [
-    #align(center)[$bold(x)=mat(x_1; x_2), quad mu=mat(mu_1; mu_2)$]
-    #v(sp("l"))
-    #uncover("2-")[
-      #align(center)[$Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22), quad Sigma_21=Sigma_12^T$]
+    #card[
+      #align(center)[$bold(x)=mat(x_1; x_2), quad mu=mat(mu_1; mu_2)$]
+          #v(sp("l"))
+          #uncover("2-")[
+            #align(center)[$Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22), quad Sigma_21=Sigma_12^T$]
+          ]
+          #source-note[Murphy, Book 2 §2.3.1.3, Eq. 2.75]
     ]
-    #source-note[Murphy, Book 2 §2.3.1.3, Eq. 2.75]
   ],
   key-points: [
     #stack(
@@ -2061,16 +2099,18 @@
   layout: "top",
   object-width: 93%,
   object: [
-    #align(center)[
-      #stack(
-        spacing: 1.5em,
-        [$x_1, x_2 in RR$],
-        [$( X_1 | X_2=x_2 ) tilde cal(N)(mu_(1|2), sigma_(1|2)^2)$],
-        [$mu_(1|2) = mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2)$],
-        [$sigma_(1|2) = sigma_1 sqrt(1-rho^2)$],
-      )
+    #card[
+      #align(center)[
+            #stack(
+              spacing: 1.5em,
+              [$x_1, x_2 in RR$],
+              [$( X_1 | X_2=x_2 ) tilde cal(N)(mu_(1|2), sigma_(1|2)^2)$],
+              [$mu_(1|2) = mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2)$],
+              [$sigma_(1|2) = sigma_1 sqrt(1-rho^2)$],
+            )
+          ]
+          #source-note[Murphy, Book 1 §3.2.4; Book 2 §2.3.1.3]
     ]
-    #source-note[Murphy, Book 1 §3.2.4; Book 2 §2.3.1.3]
   ],
   key-points: [
     #stack(
@@ -2094,12 +2134,14 @@
   layout: "top",
   object-width: 91%,
   object: [
-    #align(center)[$x_1|2 ~ cal(N)(mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2), (1-rho^2) sigma_1^2) \ x_1 ~ cal(N)(0, 1), quad x_2 ~ cal(N)(0, 1), quad rho=0.8$]
-    #uncover("2-")[
-      #v(sp("l"))
-      #align(center)[$x_2=1.5 \ x_1 | x_2=1.5 tilde cal(N)(0.8(1.5),1-0.8^2)=cal(N)(1.2,0.36)$]
+    #card[
+      #align(center)[$x_1|2 ~ cal(N)(mu_1 + rho frac(sigma_1,sigma_2)(x_2-mu_2), (1-rho^2) sigma_1^2) \ x_1 ~ cal(N)(0, 1), quad x_2 ~ cal(N)(0, 1), quad rho=0.8$]
+          #uncover("2-")[
+            #v(sp("l"))
+            #align(center)[$x_2=1.5 \ x_1 | x_2=1.5 tilde cal(N)(0.8(1.5),1-0.8^2)=cal(N)(1.2,0.36)$]
+          ]
+          #source-note[Worked example of Murphy, Book 2 §2.3.1.3, Eq. 2.78]
     ]
-    #source-note[Worked example of Murphy, Book 2 §2.3.1.3, Eq. 2.78]
   ],
   key-points: [
     #stack(
@@ -2169,14 +2211,16 @@
   layout: "top",
   object-width: 95%,
   object: [
-    #align(center)[$p(x_1,x_2)=p(x_1 | x_2)p(x_2)$]
-    #align(center)[$(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
-    #v(sp("m"))
-    #uncover("2-")[
-      #align(center)[$= r^T S^(-1)r+(x_2-mu_2)^T Sigma_22^(-1)(x_2-mu_2)$]
+    #card[
+      #align(center)[$p(x_1,x_2)=p(x_1 | x_2)p(x_2)$]
+          #align(center)[$(bold(x)-mu)^T Sigma^(-1)(bold(x)-mu)$]
+          #v(sp("m"))
+          #uncover("2-")[
+            #align(center)[$= r^T S^(-1)r+(x_2-mu_2)^T Sigma_22^(-1)(x_2-mu_2)$]
+          ]
+          #v(0.6em)
+          #source-note[Murphy, Book 2 §2.3.1.5, Eqs. 2.94–2.103]
     ]
-    #v(0.6em)
-    #source-note[Murphy, Book 2 §2.3.1.5, Eqs. 2.94–2.103]
   ],
   key-points: [
     #stack(

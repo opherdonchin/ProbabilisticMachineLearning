@@ -446,7 +446,7 @@
 
 #let section-summary-takeaways(
   body,
-  size: fs("xs"),
+  size: fs("l"),
 ) = block(
   width: 100%,
   fill: palette.accent.lighten(91%),
@@ -457,7 +457,7 @@
     columns: (6.5em, 1fr),
     column-gutter: 0.55em,
     align: (left + top, left + top),
-    text(size: fs("xxs"), weight: "semibold", fill: palette.accent)[TAKE HOME],
+    text(size: fs("s"), weight: "semibold", fill: palette.accent)[TAKE HOME],
     text(size: size, body),
   )
 ]

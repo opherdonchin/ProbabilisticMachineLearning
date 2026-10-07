@@ -29,13 +29,13 @@
   ),
   cards: (
     card(
-      id: "bernoulli",
+      label: "bernoulli",
       title: [Bernoulli],
     )[
       $ "Ber"(x | mu) = mu^x (1 - mu)^(1-x), quad x in {0,1} $
     ],
     card(
-      id: "gaussian",
+      label: "gaussian",
       title: [Gaussian],
     )[
       $ cal(N)(x | mu, Sigma)
@@ -43,14 +43,14 @@
           exp(-1/2 (x-mu)^T Sigma^(-1) (x-mu)) $
     ],
     schema-card(
-      id: "shared",
+      label: "shared",
       caption: [One coordinate system can expose the same kinds of pieces in both families.],
     )[
       $ p(x | eta) = h(x) exp(eta^T T(x) - A(eta)) $
     ],
   ),
   key-points: (
-    key-points(id: "takeaway")[
+    key-points(label: "takeaway")[
       - The representation is useful when it separates *what the data contribute*
         from *how the distribution is parameterized*.
       - We will first make those pieces explicit, then recover them in Bernoulli.
@@ -84,27 +84,27 @@
     dominant: "formula",
   ),
   cards: (
-    card(id: "formula", title: [Exponential-family form])[
+    card(label: "formula", title: [Exponential-family form])[
       $ p(x | eta)
         = 1 / Z(eta) h(x) exp(eta^T T(x))
         = h(x) exp(eta^T T(x) - A(eta)) $
             $ A(eta) = log Z(eta) $
     ],
-    bordered-card(id: "h", title: [$h(x)$ — base measure])[
+    bordered-card(label: "h", title: [$h(x)$ — base measure])[
       Fixed part of the density that may depend on $x$ but not on $eta$.
     ],
-    bordered-card(id: "T", title: [$T(x)$ — sufficient statistics])[
+    bordered-card(label: "T", title: [$T(x)$ — sufficient statistics])[
       The data are represented through the vector $T(x)$.
     ],
-    bordered-card(id: "eta", title: [$eta$ — natural parameters])[
+    bordered-card(label: "eta", title: [$eta$ — natural parameters])[
       Coordinates for the distribution that pair linearly with $T(x)$.
     ],
-    bordered-card(id: "A", title: [$A(eta)$ — log-partition function])[
+    bordered-card(label: "A", title: [$A(eta)$ — log-partition function])[
       The parameter-dependent normalizer that makes the density integrate or sum to one.
     ],
   ),
   key-points: (
-    key-points(id: "takeaway")[
+    key-points(label: "takeaway")[
       - The central interaction is the linear pairing $eta^T T(x)$.
       - The same four roles will recur even when the familiar parameterization changes.
     ],
@@ -132,13 +132,13 @@
     dominant: "derivation",
   ),
   cards: (
-    card(id: "derivation", title: [Start from the familiar Bernoulli model])[
+    card(label: "derivation", title: [Start from the familiar Bernoulli model])[
       $ "Ber"(x | mu)
         = mu^x (1-mu)^(1-x) $
             $ = exp(x log mu + (1-x) log(1-mu)) $
             $ = exp(x log(mu/(1-mu)) + log(1-mu)) $
     ],
-    bordered-card(id: "mapping", title: [Match terms to the general form])[
+    bordered-card(label: "mapping", title: [Match terms to the general form])[
       $ T(x) = x, quad
         eta = log(mu/(1-mu)), quad
         h(x) = 1 $
@@ -146,7 +146,7 @@
     ],
   ),
   key-points: (
-    key-points(id: "takeaway")[
+    key-points(label: "takeaway")[
       The exponential-family representation is obtained by regrouping the same
       Bernoulli probability; no new probability model has been introduced.
     ],
@@ -174,7 +174,7 @@
   ),
   cards: (
     recall-card(
-      id: "coordinates",
+      label: "coordinates",
       from: [Previous slide: Bernoulli exponential-family mapping],
       title: [Probability and natural coordinates],
     )[
@@ -182,13 +182,13 @@
             $ mu = sigma(eta) = 1 / (1 + e^(-eta)) $
             $ mu in (0,1) quad longleftrightarrow quad eta in RR $
     ],
-    bordered-card(id: "normalizer", title: [Normalization in natural coordinates])[
+    bordered-card(label: "normalizer", title: [Normalization in natural coordinates])[
       $ A(eta) = log(1 + e^eta) $
             $ p(x | eta) = exp(x eta - A(eta)) $
     ],
   ),
   key-points: (
-    key-points(id: "takeaway")[
+    key-points(label: "takeaway")[
       - $eta$ is the *log odds*: a constrained probability becomes an unconstrained real coordinate.
       - $A(eta)$ supplies exactly the normalization required in that coordinate system.
     ],
@@ -213,7 +213,7 @@
     takeaways: "summary-takeaways",
   ),
   cards: (
-    section-summary-visual(id: "summary-visual")[
+    section-summary-visual(label: "summary-visual")[
       $ p(x | eta) = h(x) exp(eta^T T(x) - A(eta)) $
             #summary-map(
         ([$h(x)$], [$1$]),
@@ -222,7 +222,7 @@
         ([$A(eta)$], [$log(1+e^eta)$]),
       )
     ],
-    section-summary-takeaways(id: "summary-takeaways")[
+    section-summary-takeaways(label: "summary-takeaways")[
       - Exponential-family form separates base measure, sufficient statistics,
         natural parameters, and normalization.
       - For Bernoulli, the natural parameter is the log odds.

@@ -345,6 +345,25 @@
 // Slide-level content composition
 // -----------------------------------------------------------------------------
 
+// Canonical course spacing and column ratios. Use these for ordinary layout
+// relationships; raw lengths remain available for deliberate optical tuning.
+#let _spacing = (
+  xs: 0.22em,
+  s: 0.35em,
+  m: 0.55em,
+  l: 0.8em,
+  xl: 1.2em,
+)
+#let sp(size) = _spacing.at(size)
+
+#let _columns = (
+  equal: (1fr, 1fr),
+  left: (3fr, 2fr),
+  right: (2fr, 3fr),
+  three: (1fr, 1fr, 1fr),
+)
+#let cols(layout) = _columns.at(layout)
+
 #let _object-box(object, width) = align(
   center,
   block(width: width)[#object],
@@ -354,17 +373,29 @@
 // side. Prefer these over a lecture-local grid() when the layout is just an
 // equal-width row; add a new named helper here rather than in a lecture file
 // if another repeated arrangement emerges.
-#let twocol(left, right) = grid(
-  columns: (1fr, 1fr),
-  gutter: 1.2em,
+#let twocol(
+  left,
+  right,
+  columns: cols("equal"),
+  gutter: sp("l"),
   align: top,
+) = grid(
+  columns: columns,
+  gutter: gutter,
+  align: align,
   left, right,
 )
 
-#let triad(a, b, c) = grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 0.8em,
+#let triad(
+  a,
+  b,
+  c,
+  gutter: sp("l"),
   align: top,
+) = grid(
+  columns: cols("three"),
+  gutter: gutter,
+  align: align,
   a, b, c,
 )
 
@@ -382,7 +413,7 @@
   let is-side = layout == "side-left" or layout == "side-right"
 
   let resolved-width = if object-width == auto {
-    if is-side { 58% } else { 82% }
+    if is-side { 58% } else { 96% }
   } else {
     object-width
   }
@@ -420,7 +451,7 @@
   } else if object != none {
     _object-box(
       object,
-      if object-width == auto { 82% } else { object-width },
+      resolved-width,
     )
   } else if key-points != none {
     _key-points(key-points, title: key-points-title)

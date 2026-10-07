@@ -78,7 +78,7 @@ Slide Design owns:
 - simultaneous versus progressive presentation;
 - reveal teaching sequence and persistence;
 - figure/schema role;
-- summary content.
+- summary content and the selected retrospective visual anchors/key points.
 
 Slide Authoring may decide:
 
@@ -92,6 +92,8 @@ Slide Authoring may decide:
 - optical tuning that does not change meaning.
 
 If an implementation choice changes what students attend to, compare, infer, or retain, it is a design change and must not be made silently.
+
+For section summaries, preserve the design-stage selection of retrospective anchors. Production may compact or align the selected material, but it must not substitute a different set of visuals or takeaways merely because another composition is easier.
 
 # Design-to-production lowering
 

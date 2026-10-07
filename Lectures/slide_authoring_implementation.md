@@ -11,8 +11,9 @@ This list must stay in sync with what `Lectures/course.typ` actually exports. If
 
 Slide structure and composition:
 
+- Ordinary teaching slides normally use one `#content-block(...)`. Its `object:` region composes cards and layout primitives; its `key-points:` region carries the conclusions or interpretations. Section-summary and other special-purpose slides may deliberately use another architecture.
 - `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
-- `#twocol[...][...]`, `#triad[...][...][...]` — equal-width row layouts
+- `#twocol[...][...]`, `#triad[...][...][...]` — standard row layouts; `cols(...)` and `sp(...)` provide named layout choices
 - `#section-metadata(short-title: [...], subtitle: [...])` followed by a level-1
   heading (`= Section title`) — section divider and footer metadata
 - `#title-slide()`, `#focus-slide[...]`, `#ending-slide[...]`
@@ -34,14 +35,18 @@ and after every section divider; metadata must not change the previous slide.
 
 Cards and notes:
 
-- `#course-card(...)`, `#key-points[...]`
-- `#definition(...)`, `#method(...)`
+- `#card[...]` — default, visually unmarked presentation card.
+- `#bordered-card(...)` — ordinary visibly bounded card.
+- `#recall-card(from: [...], ...)[...]` — carried-forward material with required provenance; use inside `content-block.object`, not as a peer of `content-block`.
+- `#figure-card[...]` — framed figure presentation object.
+- `#key-points[...]`, `#definition(...)`, `#method(...)`
 - `#note[...]` — margin/aside note
+- For now, deck source expresses card font sizes and internal spacing with named `fs(...)` and `sp(...)` choices. A later audit will decide which recurring combinations deserve card-level density variants.
 
 Schematic diagrams (boxes-and-arrows flow figures):
 
-- `#schema-node(label, body, density: "normal")` — a labeled node box for a flow diagram cell. `density` picks a body-text preset from a small named vocabulary (currently `"normal"`, the default, for a short symbol-only line or two; `"prose"` for a smaller, left-aligned multi-line description) instead of a raw size number, so unrelated slides that pick the same density render identically.
-- `#schema-arrow` — a right-pointing arrow cell to place beside nodes in a grid
+- `#schema-card(label, body, density: "normal")` — labeled schematic card. Its current `density` choices also encode alignment, so do not mechanically merge them with the future general card-density vocabulary.
+- `#schema-arrow` — a right-pointing arrow cell to place beside schema cards in a grid
 - `#source-note[...]` — small muted caption/citation line for a schematic
 
 Figures:
@@ -71,10 +76,10 @@ review the pattern, not an automatic reason to enlarge the shared API.
 
 ### Keep a set of sibling nodes consistent with one local forwarding function
 
-When a single grid has several `schema-node` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
+When a single grid has several `schema-card` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-card`, and call that function for every node in the grid:
 
 ```typst
-#let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
+#let taxonomy-card(label, ..body) = schema-card(label, stack(spacing: 0.35em, ..body), density: "prose")
 ```
 
 This local function holds no independent visual logic. It forwards one shared

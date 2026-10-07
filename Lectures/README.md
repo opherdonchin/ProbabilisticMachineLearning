@@ -176,12 +176,13 @@ Such a function contains no independent visual logic; it only keeps sibling node
 
 - **Use reveals by default for staged explanations.** New or substantially revised slides introducing several concepts, developing a derivation, or working through an example should normally build progressively. Keep single-point slides, recaps, reference material, and comparisons requiring simultaneous inspection static.
 - **Design the complete final slide first.** Establish the content, visual hierarchy, and layout with everything visible. Then choose the pedagogical reveal sequence within that layout. Begin with meaningful context, assumptions, or a question. Each subsequent reveal should advance one teaching step. Usually one to three additional reveals suffice; avoid clicks that merely expose individual words.
-- **Synchronize related content.** Reveal each equation, figure component, label, and corresponding interpretation together. Preserve earlier material needed to understand the next step.
-- **Time key points deliberately.** Show orienting context immediately, interpretations with their supporting content, and concluding takeaways when justified. When asking students to predict, conceal the answer everywhere until the response step.
-- **Prefer cumulative `uncover` sequences.** Use explicit reveal numbers when coordinating separate regions. Reserve `pause` for simple sequential flow and `only` or alternatives for intentional replacement.
-- **Keep the layout stable.** Reserve space for hidden content and check that equations, figures, and bullets do not shift between states. Keep essential results available in the final handout state.
-- **Make reveal timing clear from the slide content.** Keep consequential pauses and prediction questions legible in the reveal sequence.
-- **Verify presentation and handout modes.** Inspect every state of changed slides with handout mode off, then check the final handout. Check overflow, premature answers, stray bullets, redundant clicks, and missing content.
+- **State 1 is implicit.** Content visible when the slide first appears stays unwrapped. Do not write `uncover("1-")` merely to label the initial state.
+- **Use cumulative `uncover("N-")` as the normal timing mechanism.** Explicit state numbers make timing readable across the object and key-points regions. Use the same state number when a visual/equation and its interpretation belong to the same teaching step.
+- **Interpretation may deliberately trail construction.** It is fine to reveal a result first and a synthesis or takeaway on a later state when the pedagogy is “build/derive, then interpret.”
+- **Use replacement only when replacement is the teaching operation.** Reserve `only` and `alternatives-match` for temporary focus or mutually replacing content, and provide stable surrounding geometry so the slide does not jump.
+- **Avoid `pause` in ordinary course slides.** Explicit numbered states are easier to coordinate and review. Likewise, use callback-style `#slide(repeat: ..., self => ...)` only when some technical requirement genuinely needs callback animation; ordinary `uncover` markup should rely on Touying's normal reveal handling.
+- **Keep the layout stable.** `uncover` should normally reserve space for hidden content. Check that equations, figures, and bullets do not shift between states and that essential results remain present in the final handout state.
+- **Verify presentation and handout modes.** Inspect every state of changed slides with handout mode off, then check the final handout. Check overflow, premature answers, stray bullets, redundant clicks, replacement-state geometry, and missing content.
 
 ## Content blocks and component arguments
 

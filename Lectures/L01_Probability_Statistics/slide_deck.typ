@@ -1803,7 +1803,6 @@
       #uncover("4-")[- A linear map changes the scale, orientation, and dimension of variation]
     ],
   )
-)
 
 == Mahalanobis distance uses the cloud's own scale
 
@@ -1979,7 +1978,6 @@
       )
     ],
   )
-)
 
 == Conditioning shifts the mean by an observed deviation
 
@@ -2031,7 +2029,6 @@
       )
     ],
   )
-)
 
 == Conditioning removes explained covariance
 
@@ -2088,7 +2085,6 @@
       )
     ],
   )
-)
 
 == The bivariate formula gives intuition
 

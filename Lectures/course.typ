@@ -300,6 +300,73 @@
   ruled-card(title, body)
 }
 
+
+#let figure-card(body) = block(
+  width: 100%,
+  stroke: 0.8pt + palette.rule-line,
+  fill: palette.paper,
+  radius: 0.25em,
+  inset: (x: 0.5em, y: 0.45em),
+)[#body]
+
+#let carry-forward(
+  from: none,
+  body,
+  label: [Carried forward],
+  size: 1em,
+) = {
+  assert(from != none, message: "carry-forward requires provenance via from: [...]")
+  block(
+    width: 100%,
+    breakable: false,
+    stroke: 0.8pt + palette.rule-line,
+    fill: palette.paper,
+    radius: 0.25em,
+    inset: (x: 0.6em, y: 0.5em),
+  )[
+    #stack(
+      spacing: 0.35em,
+      grid(
+        columns: (auto, 1fr),
+        column-gutter: 0.55em,
+        align: left + top,
+        text(size: 0.68em, weight: "semibold", fill: palette.accent, label),
+        text(size: 0.68em, fill: palette.muted, from),
+      ),
+      text(size: size, body),
+    )
+  ]
+}
+
+#let section-summary-visual(body) = block(
+  width: 100%,
+  height: 5.6cm,
+  stroke: 0.7pt + palette.rule-line,
+  fill: palette.paper,
+  radius: 0.25em,
+  inset: (x: 0.55em, y: 0.45em),
+)[
+  #align(center + horizon)[#body]
+]
+
+#let section-summary-takeaways(
+  body,
+  size: 1em,
+) = block(
+  width: 100%,
+  fill: palette.accent.lighten(91%),
+  radius: 0.25em,
+  inset: (x: 0.65em, y: 0.42em),
+)[
+  #grid(
+    columns: (6.5em, 1fr),
+    column-gutter: 0.55em,
+    align: (left + top, left + top),
+    text(size: 0.58em, weight: "semibold", fill: palette.accent)[TAKE HOME],
+    text(size: size, body),
+  )
+]
+
 // Usage:
 //   #key-points[Body without a title]
 //   #key-points(title: [Optional title])[Body]
@@ -355,6 +422,16 @@
   xl: 1.2em,
 )
 #let sp(size) = _spacing.at(size)
+
+#let _font-sizes = (
+  xxs: 0.58em,
+  xs: 0.68em,
+  s: 0.72em,
+  m: 0.78em,
+  l: 0.84em,
+  xl: 0.9em,
+)
+#let fs(size) = _font-sizes.at(size)
 
 #let _columns = (
   equal: (1fr, 1fr),
@@ -455,72 +532,6 @@
     )
   } else if key-points != none {
     _key-points(key-points, title: key-points-title)
-  } else {
-    []
-  }
-}
-
-
-// Carried-forward knowledge: the provenance is separate from the current
-// slide title and from any key-points title. Only this header uses smaller,
-// muted text; content-block keeps its ordinary typography and geometry.
-#let _recall-header(label, from) = block(
-  width: 100%,
-  stroke: (bottom: 0.6pt + palette.rule-line),
-  inset: (bottom: 0.35em),
-)[
-  #set text(size: 0.68em, fill: palette.muted)
-  #grid(
-    columns: (auto, 1fr),
-    column-gutter: 0.8em,
-    align: left + top,
-    text(weight: "semibold", fill: palette.accent, label),
-    from,
-  )
-]
-
-// `from:` is required author-supplied provenance and accepts Typst content.
-// Typst named parameters need a default; the assertion enforces this contract.
-// All layout arguments have the same meaning and defaults as content-block.
-//
-// Material supplied by an assigned recording:
-//   #recall-block(
-//     from: [Recorded: Probability review],
-//     object: [$ E[A X + b] = A E[X] + b $],
-//   )
-//
-// Material recalled from an earlier lecture:
-//   #recall-block(
-//     from: [Lecture 1: Gaussian conditioning],
-//     layout: "side-left",
-//     object: [$ E[X | Y = y] = mu_(X | y) $],
-//     key-points: [The conditional mean depends on the observed value $y$.],
-//   )
-#let recall-block(
-  from: none,
-  label: [Carry forward],
-  layout: "bottom",
-  object-width: auto,
-  object: none,
-  key-points: none,
-  key-points-title: none,
-) = {
-  assert(from != none, message: "recall-block requires provenance via from: [...]")
-
-  if object != none or key-points != none {
-    block(width: 100%, breakable: false)[
-      #stack(
-        spacing: 0.55em,
-        _recall-header(label, from),
-        content-block(
-          layout: layout,
-          object-width: object-width,
-          object: object,
-          key-points: key-points,
-          key-points-title: key-points-title,
-        ),
-      )
-    ]
   } else {
     []
   }

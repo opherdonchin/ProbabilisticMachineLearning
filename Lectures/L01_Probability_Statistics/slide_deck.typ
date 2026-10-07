@@ -237,10 +237,10 @@
 
 #carry-forward(
   from: [Earlier in this section: model and Bayes' rule],
-  size: fs("xl"),
+  size: fs("l"),
 )[
   #stack(
-    spacing: sp("l"),
+    spacing: sp("m"),
     [Model],
     pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
     pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],

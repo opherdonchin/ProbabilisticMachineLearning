@@ -2605,11 +2605,12 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
+    #twocol(
       columns: cols("right"),
       gutter: 0.9em,
       align: top,
-      recall-card(
+    )[
+      #recall-card(
         from: [Earlier: Gaussian update formula],
         size: fs("m"),
       )[
@@ -2618,8 +2619,9 @@
           [$mu_(z|y)=mu_z+K(y-mu_y)$],
           [$K=Sigma_(z y) Sigma_(y y)^(-1)$],
         )
-      ],
-      bordered-card(title: [Scalar specialization])[
+      ]
+    ][
+      #bordered-card(title: [Scalar specialization])[
         #text(size: fs("m"))[
           #stack(
             spacing: 0.5em,
@@ -2630,24 +2632,26 @@
             [#text(size: fs("l"), fill: palette.muted)[$epsilon$ is independent of $z$]],
           )
         ]
-      ],
-    )
+      ]
+    ]
     #uncover("2-")[
       #v(0.45em)
-      #grid(
-        columns: cols("three"),
+      #triad(
         gutter: sp("m"),
         align: center + horizon,
-        bordered-card(title: [Predicted mean])[
+      )[
+        #bordered-card(title: [Predicted mean])[
           #text(size: fs("s"))[$mu_y=E[z+epsilon]=mu_z$]
-        ],
-        bordered-card(title: [Cross-covariance])[
+        ]
+      ][
+        #bordered-card(title: [Cross-covariance])[
           #text(size: fs("s"))[$Sigma_(z y)="Cov"[z,z+epsilon]=sigma_z^2$]
-        ],
-        bordered-card(title: [Measurement variance])[
+        ]
+      ][
+        #bordered-card(title: [Measurement variance])[
           #text(size: fs("s"))[$Sigma_(y y)="Var"[z+epsilon]=sigma_z^2+sigma_epsilon^2$]
-        ],
-      )
+        ]
+      ]
     ]
     #uncover("3-")[
       #v(0.45em)

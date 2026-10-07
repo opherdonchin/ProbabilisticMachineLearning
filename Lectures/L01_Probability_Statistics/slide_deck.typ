@@ -589,32 +589,33 @@
 #content-block(
   layout: "top",
   object: [
-    #card[
-      #grid(
-            columns: cols("equal"),
-            gutter: 2.2em,
-            align: center + horizon,
-            [
-              #align(center)[
-                *Experience: paired examples*
-                #v(sp("s"))
-                #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
-                $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
-                #v(0.28em)
-                #text(size: fs("s"), fill: palette.muted)[paired examples $arrow.r$ learned predictor]
-              ]
-            ],
-            uncover("2-")[
-              #align(center)[
-                *Task: prediction*
-                #v(sp("s"))
-                #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
-                $ f_D: x_* quad arrow.r quad hat(y)_* $
-                #v(0.28em)
-                #text(size: fs("s"), fill: palette.muted)[new input $arrow.r$ predicted output]
-              ]
-            ],
-          )
+    #twocol(
+      gutter: 2.2em,
+      align: center + horizon,
+    )[
+      #card[
+        #align(center)[
+          *Experience: paired examples*
+          #v(sp("s"))
+          #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+          $ f_T: D = {(x_i, y_i)}_(i=1)^N quad arrow.r quad f_D $
+          #v(0.28em)
+          #text(size: fs("s"), fill: palette.muted)[paired examples $arrow.r$ learned predictor]
+        ]
+      ]
+    ][
+      #uncover("2-")[
+        #card[
+          #align(center)[
+            *Task: prediction*
+            #v(sp("s"))
+            #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
+            $ f_D: x_* quad arrow.r quad hat(y)_* $
+            #v(0.28em)
+            #text(size: fs("s"), fill: palette.muted)[new input $arrow.r$ predicted output]
+          ]
+        ]
+      ]
     ]
   ],
   key-points: [

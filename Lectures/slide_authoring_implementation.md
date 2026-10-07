@@ -23,6 +23,9 @@ intermediate representation rather than as a rough deck.
   visual anchors and takeaways are reused. Production may tune composition but
   should not silently substitute a different retrospective story.
 
+`section-design-notes(...)` pages and ordinary-slide summary nominations are
+design-only metadata; they are not production slides or visible slide content.
+
 `design.typ` is not a dependency of the production deck. Its role ends at the
 design handoff.
 

@@ -426,7 +426,7 @@
 
 #let section-summary-visual(body) = block(
   width: 100%,
-  height: 5.6cm,
+  height: 5.5cm,
   stroke: 0.7pt + palette.rule-line,
   fill: palette.paper,
   radius: 0.25em,

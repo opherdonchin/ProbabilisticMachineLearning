@@ -90,21 +90,19 @@ Cards and notes:
 - `#card[...]` — the default presentation card. It is intentionally unmarked in the current implementation; use it to identify a substantial semantic unit even when no visible boundary is wanted.
 - `#bordered-card(...)` — ordinary card with visible Ruled Page chrome.
 - `#recall-card(from: [...], ...)[...]` — previously established material brought into the current argument; provenance is required. It belongs inside the `object:` region of an ordinary `content-block`.
-- `#figure-card[...]` — neutral frame for an imported or otherwise visually bounded figure object.
+- `#figure-card(from: [...], caption: [...])[...]` — complete figure presentation object. It owns the figure frame, optional caption, and optional provenance. Its body may be a single image or a composite.
 - `#key-points[...]`, `#definition(...)`, `#method(...)`
 - `#note[...]` — margin/aside note
 - During the current authoring stage, font size and internal spacing choices remain explicit in the deck through named `fs(...)` and `sp(...)` values. Do not infer a final card-density API yet.
 
-Schematic diagrams (boxes-and-arrows flow figures):
+Figures and schemas:
 
-- `#schema-card(label, body, density: "normal")` — a labeled card for a flow-diagram cell. Its existing `density` parameter is specific to schematic content and currently distinguishes short centered content from smaller left-aligned prose.
-- `#schema-arrow` — a right-pointing arrow cell to place beside schema cards in a grid
-- `#source-note[...]` — small muted caption/citation line for a schematic
-
-Figures:
-
-- `#course-figure(...)` — image with optional caption and source line; shows a labeled placeholder automatically when the file is missing, so a separate `maybe-image`-style wrapper is unnecessary
-- `#figure-source(...)` — the provenance line alone, for a composite figure whose panels each set `show-source: false`
+- `#figure-card(from: [...], caption: [...])[...]` classifies a complete figure by its pedagogical role. Imported, course-generated, and composite figures use the same outer card; how the visual was produced is an implementation detail.
+- `#schema-card(from: [...], caption: [...])[...]` classifies a complete conceptual diagram. The body may be an imported image, a generated asset, inline Typst, or a standalone `.typ` helper.
+- `#schema-node(label, body, density: "normal")` and `#schema-arrow` are lower-level drawing primitives used *inside* Typst-drawn schemas. They are not presentation cards. `schema-node` retains its existing schematic-specific density vocabulary.
+- `#course-image(...)` is a low-level image loader only: sizing, aspect-ratio preservation, and missing-file placeholder. It does not own caption or provenance.
+- `#source-note[...]` remains available for small provenance/citation lines in compositions that are not figure/schema cards (for example special summary architectures).
+- Use `from:` on a figure/schema card when the card has meaningful external, adapted, or computational provenance. Course-authored diagrams may omit it when no displayed attribution is useful.
 
 Coordinate annotations:
 
@@ -115,19 +113,19 @@ Coordinate annotations:
 If a visual or layout pattern is used more than once, it belongs in `course.typ`, not copied into a lecture file. Concretely:
 
 - The moment the same helper function (even a small one) appears — including by copy-paste — in a second lecture file, move it to `course.typ` and delete both local copies in the same change.
-- Before writing a new lecture-local helper, check this list and `course.typ` for an existing component that already covers the need. Do not reinvent an existing primitive under a new name (for example, a second muted-caption function alongside `figure-source`).
+- Before writing a new lecture-local helper, check this list and `course.typ` for an existing component that already covers the need. Do not reinvent an existing primitive under a new name (for example, a second muted-caption function alongside `source-note`).
 - A helper is genuinely lecture-local only when it encodes a fact specific to that lecture, such as a fixed figure-directory prefix (`lecture-figure-path`) or a lecture-specific reveal pairing. Generic visual patterns (boxes, arrows, captions, layout grids) are course-wide by default.
 - Do not keep two definitions of the same helper in one file either (for example, a path-prefix helper defined twice under different names). If you find one, merge them.
 
 ### Keep a set of sibling nodes consistent with one local forwarding function
 
-When a single grid has several `schema-card` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-card`, and call that function for every node in the grid:
+When a single grid has several `schema-card` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
 
 ```typst
-#let taxonomy-card(label, ..body) = schema-card(label, stack(spacing: 0.35em, ..body), density: "prose")
+#let taxonomy-card(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
 ```
 
-This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-card` parameters, and it is scoped to the one slide that needs it.
+This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-node` parameters, and it is scoped to the one slide that needs it.
 
 ## Speaker notes
 
@@ -140,7 +138,7 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 - Save generated lecture figures as named files, preferably SVG for vector plots and diagrams.
 - Place generated assets in a predictable lecture-local directory such as `generated/`.
 - Typst should include generated files by path rather than screenshots or pasted raster copies.
-- Use `#course-figure(...)` during development; it automatically renders a correctly sized, labeled placeholder when the file is missing, so no separate wrapper is needed.
+- Use `#course-image(...)` inside the appropriate `figure-card` or `schema-card` during development; it automatically renders a correctly sized, labeled placeholder when the file is missing, so no separate wrapper is needed.
 - Missing assets are acceptable during drafting but should be treated as errors before a lecture is considered final.
 
 ## Student-facing notebooks
@@ -158,7 +156,7 @@ This is a narrow, named exception to "do not duplicate a helper": the function h
 - Keep mathematical slides readable: avoid excessive density, tiny text, or too many competing visual elements.
 - Prefer Typst-native explanatory diagrams for conceptual structure, equations, graphical models, and schematic relationships.
 - Prefer Python-generated figures for empirical, probabilistic, simulation, and data-driven graphics.
-- Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-card`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
+- Reusable components that a lecture may wrap in an ambient `#text(size: ...)` (such as `schema-node`) must express their own geometry — inset, radius, gaps — in `em` rather than fixed `pt` values. A component whose padding is hard-coded in points will not visibly shrink or grow when a caller changes the surrounding text size, which silently defeats the caller's intent. Fixed-`pt` hairline strokes are fine.
 
 ## Progressive disclosure and reveal planning
 

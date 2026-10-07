@@ -1383,11 +1383,11 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
+    #twocol(
       columns: cols("right"),
       gutter: 1.0em,
       align: center + horizon,
-      [
+    )[
         #figure-card(from: [Murphy (2025), Book 1, Fig. 1.13b])[
           #course-image(
             lecture-figure-path("figures/book1_fig1_13b_cifar10.png"),
@@ -1397,9 +1397,8 @@
           #v(0.3em)
           #align(center)[$x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$]
         ]
-      ],
-      [
-        #schema-card[
+    ][
+      #schema-card[
           #stack(
           spacing: 0.65em,
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
@@ -1414,9 +1413,8 @@
             )
           ],
         )
-        ]
-      ],
-    )
+      ]
+    ]
   ],
 )
 

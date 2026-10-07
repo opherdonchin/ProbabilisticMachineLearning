@@ -9,10 +9,9 @@
   author: "Opher Donchin",
 )
 
-= Section 1 — Exponential families give familiar distributions a common form
-
 #slide-design(
   title: [Different distributions can share the same algebraic structure],
+  section: [Section 1 — Exponential families give familiar distributions a common form],
   teaching-move: [
     Motivate exponential-family coordinates by placing two familiar distributions
     beside a single shared algebraic skeleton.

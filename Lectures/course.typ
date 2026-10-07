@@ -65,10 +65,18 @@
       let n = _section-number.get()
       let short-title = _pending-section-short-title.get()
       let subtitle = _pending-section-subtitle.get()
+      let resolved-short-title = if short-title == none or short-title == [] {
+        utils.display-current-heading(level: 1)
+      } else {
+        short-title
+      }
 
       // Activate the pending metadata on the divider, after the preceding
       // content slide has ended, so its footer retains the old section label.
-      _section-short-title.update(short-title)
+      // If the first section omits section-metadata immediately after the
+      // explicit title slide, fall back to its heading instead of creating an
+      // otherwise-empty metadata slide just to populate the footer.
+      _section-short-title.update(resolved-short-title)
       _section-subtitle.update(subtitle)
 
       set align(left + horizon)

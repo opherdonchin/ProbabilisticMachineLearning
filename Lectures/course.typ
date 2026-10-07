@@ -561,9 +561,9 @@
 //   - "normal" (default): body inherits the ambient size, centered — fits a
 //     short symbol-only line or two.
 //   - "prose": smaller, left-aligned — fits a multi-line "Task: ... /
-//     Performance: ..."-style description without overflowing the node.
+//     Performance: ..."-style description without overflowing the card.
 // When a grid has several cards that must look alike, define one local
-// forwarding function that fixes the density and call that for every node in
+// forwarding function that fixes the density and call that for every card in
 // the grid, rather than repeating `density: "prose"` at each call site.
 
 #let _schema-card-density = (

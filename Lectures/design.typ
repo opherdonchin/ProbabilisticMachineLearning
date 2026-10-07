@@ -2,7 +2,7 @@
 //
 // This is intentionally more opinionated than course.typ. It renders a
 // document-oriented design specification rather than a slide deck. Semantic
-// object names are kept close to production names; spatial and reveal choices
+// object names stay close to production names; spatial and reveal choices
 // remain abstract and are rendered as sketches.
 
 #set page(
@@ -15,57 +15,67 @@
 #let design-accent = rgb("#315c7d")
 #let design-muted = rgb("#666666")
 #let design-rule = rgb("#c8ced3")
-#let design-paper = rgb("#f7f8f9")
 #let design-warn = rgb("#fff3cf")
+
+#let _require(value, message) = {
+  assert(value != none, message: message)
+  value
+}
 
 #let _object(
   kind,
-  id,
   body,
+  label: none,
   title: none,
   from: none,
   caption: none,
   unresolved: false,
-) = (
-  kind: kind,
-  id: id,
-  body: body,
-  title: title,
-  from: from,
-  caption: caption,
-  unresolved: unresolved,
-)
+) = {
+  let label = _require(label, "design object requires label: [...]")
+  (
+    kind: kind,
+    label: label,
+    body: body,
+    title: title,
+    from: from,
+    caption: caption,
+    unresolved: unresolved,
+  )
+}
 
-#let card(body, id, title: none) =
-  _object("card", id, body, title: title)
+#let card(body, label: none, title: none) =
+  _object("card", body, label: label, title: title)
 
-#let bordered-card(body, id, title: none) =
-  _object("bordered-card", id, body, title: title)
+#let bordered-card(body, label: none, title: none) =
+  _object("bordered-card", body, label: label, title: title)
 
 #let recall-card(
   body,
-  id,
-  from:,
+  label: none,
+  from: none,
   title: none,
-  label: [Carried forward],
-) = _object(
-  "recall-card",
-  id,
-  body,
-  title: if title == none { label } else { title },
-  from: from,
-)
+  heading: [Carried forward],
+) = {
+  let from = _require(from, "recall-card requires from: [...]")
+  _object(
+    "recall-card",
+    body,
+    label: label,
+    title: if title == none { heading } else { title },
+    from: from,
+  )
+}
 
 #let figure-card(
   body,
-  id,
+  label: none,
   from: none,
   caption: none,
   title: none,
 ) = _object(
   "figure-card",
-  id,
   body,
+  label: label,
   title: title,
   from: from,
   caption: caption,
@@ -73,104 +83,134 @@
 
 #let schema-card(
   body,
-  id,
+  label: none,
   from: none,
   caption: none,
   title: none,
 ) = _object(
   "schema-card",
-  id,
   body,
+  label: label,
   title: title,
   from: from,
   caption: caption,
 )
 
-#let key-points(body, id, title: [Key points]) =
-  _object("key-points", id, body, title: title)
+#let key-points(body, label: none, title: [Key points]) =
+  _object("key-points", body, label: label, title: title)
 
-#let section-summary-visual(body, id, title: [Summary visual]) =
-  _object("section-summary-visual", id, body, title: title)
+#let section-summary-visual(body, label: none, title: [Summary visual]) =
+  _object("section-summary-visual", body, label: label, title: title)
 
-#let section-summary-takeaways(body, id, title: [Summary takeaways]) =
-  _object("section-summary-takeaways", id, body, title: title)
+#let section-summary-takeaways(body, label: none, title: [Summary takeaways]) =
+  _object("section-summary-takeaways", body, label: label, title: title)
 
-#let design-card(body, id, title: [Unresolved card]) =
-  _object("design-card", id, body, title: title, unresolved: true)
+#let design-card(body, label: none, title: [Unresolved card]) =
+  _object(
+    "design-card",
+    body,
+    label: label,
+    title: title,
+    unresolved: true,
+  )
 
-#let design-content(body, id, title: [Unresolved content]) =
-  _object("design-content", id, body, title: title, unresolved: true)
+#let design-content(body, label: none, title: [Unresolved content]) =
+  _object(
+    "design-content",
+    body,
+    label: label,
+    title: title,
+    unresolved: true,
+  )
 
-#let layout-cell(id, colspan: 1, rowspan: 1) = (
-  id: id,
+#let layout-cell(label, colspan: 1, rowspan: 1) = (
+  label: label,
   colspan: colspan,
   rowspan: rowspan,
 )
 
 #let layout-grid(
-  columns,
-  cells,
+  columns: none,
+  cells: none,
   dominant: none,
-) = (
-  kind: "grid",
-  columns: columns,
-  cells: cells,
-  dominant: dominant,
-)
+) = {
+  let columns = _require(columns, "layout-grid requires columns:")
+  let cells = _require(cells, "layout-grid requires cells:")
+  (
+    kind: "grid",
+    columns: columns,
+    cells: cells,
+    dominant: dominant,
+  )
+}
 
 #let layout-stack(
-  items,
+  items: none,
   key-points: none,
   dominant: none,
-) = (
-  kind: "stack",
-  items: items,
-  key-points: key-points,
-  dominant: dominant,
-)
+) = {
+  let items = _require(items, "layout-stack requires items:")
+  (
+    kind: "stack",
+    items: items,
+    key-points: key-points,
+    dominant: dominant,
+  )
+}
 
 #let layout-side(
-  left,
-  right,
+  left: none,
+  right: none,
   key-points: none,
   dominant: none,
-) = (
-  kind: "side",
-  left: left,
-  right: right,
-  key-points: key-points,
-  dominant: dominant,
-)
+) = {
+  let left = _require(left, "layout-side requires left:")
+  let right = _require(right, "layout-side requires right:")
+  (
+    kind: "side",
+    left: left,
+    right: right,
+    key-points: key-points,
+    dominant: dominant,
+  )
+}
 
 #let layout-summary(
-  visual,
-  takeaways,
-) = (
-  kind: "summary",
-  visual: visual,
-  takeaways: takeaways,
-  dominant: visual,
-)
+  visual: none,
+  takeaways: none,
+) = {
+  let visual = _require(visual, "layout-summary requires visual:")
+  let takeaways = _require(takeaways, "layout-summary requires takeaways:")
+  (
+    kind: "summary",
+    visual: visual,
+    takeaways: takeaways,
+    dominant: visual,
+  )
+}
 
 #let design-layout(body) = (
   kind: "free",
   body: body,
 )
 
-#let reveal-step(ids, purpose: none) = (
-  ids: ids,
+#let reveal-step(labels, purpose: none) = (
+  labels: labels,
   purpose: purpose,
 )
 
-#let reveal-cumulative(initial, then) = (
+#let reveal-cumulative(
+  initial: (),
+  then: (),
+) = (
   kind: "cumulative",
   initial: initial,
   then: then,
 )
 
-#let reveal-static(ids) = (
+#let reveal-static(labels) = (
   kind: "static",
-  ids: ids,
+  labels: labels,
 )
 
 #let design-reveal(body) = (
@@ -180,33 +220,35 @@
 
 #let summary-map(..pairs) = {
   let pairs = pairs.pos()
+  let cells = ()
+  for pair in pairs {
+    cells.push(strong(pair.at(0)))
+    cells.push(pair.at(1))
+  }
   grid(
     columns: (auto, 1fr),
     column-gutter: 1em,
     row-gutter: 0.35em,
     align: left + horizon,
-    ..pairs.map(pair => (
-      [#strong(pair.at(0))],
-      pair.at(1),
-    )).flatten(),
+    ..cells,
   )
 }
 
-#let _layout-ids(layout) = {
+#let _layout-labels(layout) = {
   if layout.kind == "grid" {
-    layout.cells.map(cell => cell.id)
+    layout.cells.map(cell => cell.label)
   } else if layout.kind == "stack" {
-    let ids = layout.items
+    let labels = layout.items
     if layout.key-points != none {
-      ids += (layout.key-points,)
+      labels += (layout.key-points,)
     }
-    ids
+    labels
   } else if layout.kind == "side" {
-    let ids = (layout.left, layout.right)
+    let labels = (layout.left, layout.right)
     if layout.key-points != none {
-      ids += (layout.key-points,)
+      labels += (layout.key-points,)
     }
-    ids
+    labels
   } else if layout.kind == "summary" {
     (layout.visual, layout.takeaways)
   } else {
@@ -214,59 +256,69 @@
   }
 }
 
-#let _reveal-ids(reveal) = {
+#let _reveal-labels(reveal) = {
   if reveal.kind == "static" {
-    reveal.ids
+    reveal.labels
   } else if reveal.kind == "cumulative" {
-    let ids = reveal.initial
+    let labels = reveal.initial
     for step in reveal.then {
-      ids += step.ids
+      labels += step.labels
     }
-    ids
+    labels
   } else {
     ()
   }
 }
 
 #let _validate(objects, layout, reveal) = {
-  let ids = objects.map(obj => obj.id)
+  let labels = objects.map(obj => obj.label)
   let seen = ()
-  for id in ids {
+
+  for label in labels {
     assert(
-      not id in seen,
-      message: "duplicate slide-design object id: " + id,
+      not (label in seen),
+      message: "duplicate slide-design object label: " + label,
     )
-    seen.push(id)
+    seen.push(label)
   }
 
-  let layout-ids = _layout-ids(layout)
-  for id in layout-ids {
+  let layout-labels = _layout-labels(layout)
+  for label in layout-labels {
     assert(
-      id in ids,
-      message: "layout references unknown object id: " + id,
+      label in labels,
+      message: "layout references unknown object label: " + label,
     )
   }
 
   if layout.kind != "free" {
-    for id in ids {
+    for label in labels {
       assert(
-        id in layout-ids,
-        message: "object is defined but not placed in layout: " + id,
+        label in layout-labels,
+        message: "object is defined but not placed in layout: " + label,
       )
     }
   }
 
-  let reveal-ids = _reveal-ids(reveal)
-  for id in reveal-ids {
+  let reveal-labels = _reveal-labels(reveal)
+  for label in reveal-labels {
     assert(
-      id in ids,
-      message: "reveal references unknown object id: " + id,
+      label in labels,
+      message: "reveal references unknown object label: " + label,
     )
   }
 }
 
-#let _label-box(id, dominant: false, colspan: 1, rowspan: 1) = {
-  let stroke = if dominant { 1.5pt + design-accent } else { 0.7pt + design-rule }
+#let _label-box(
+  label,
+  dominant: false,
+  colspan: 1,
+  rowspan: 1,
+) = {
+  let stroke = if dominant {
+    1.5pt + design-accent
+  } else {
+    0.7pt + design-rule
+  }
   let fill = if dominant { rgb("#edf4f8") } else { white }
 
   grid.cell(
@@ -275,8 +327,7 @@
   )[
     #block(
       width: 100%,
-      height: 100%,
-      min-height: 17mm,
+      height: 17mm,
       inset: 6pt,
       stroke: stroke,
       radius: 3pt,
@@ -287,7 +338,7 @@
           size: 9pt,
           weight: if dominant { "bold" } else { "medium" },
           fill: if dominant { design-accent } else { black },
-        )[#id]
+        )[#label]
       ]
     ]
   ]
@@ -295,40 +346,45 @@
 
 #let _render-layout(layout) = {
   if layout.kind == "grid" {
+    let cells = layout.cells.map(cell => _label-box(
+      cell.label,
+      dominant: cell.label == layout.dominant,
+      colspan: cell.colspan,
+      rowspan: cell.rowspan,
+    ))
     grid(
       columns: layout.columns,
       gutter: 5pt,
-      ..layout.cells.map(cell => _label-box(
-        cell.id,
-        dominant: cell.id == layout.dominant,
-        colspan: cell.colspan,
-        rowspan: cell.rowspan,
-      )),
+      ..cells,
     )
   } else if layout.kind == "stack" {
-    stack(
-      spacing: 5pt,
-      ..layout.items.map(id => _label-box(
-        id,
-        dominant: id == layout.dominant,
-      )),
-      if layout.key-points != none {
-        _label-box(layout.key-points, dominant: layout.key-points == layout.dominant)
-      },
-    )
+    let boxes = layout.items.map(label => _label-box(
+      label,
+      dominant: label == layout.dominant,
+    ))
+    if layout.key-points != none {
+      boxes.push(_label-box(
+        layout.key-points,
+        dominant: layout.key-points == layout.dominant,
+      ))
+    }
+    stack(spacing: 5pt, ..boxes)
   } else if layout.kind == "side" {
+    let cells = (
+      _label-box(layout.left, dominant: layout.left == layout.dominant),
+      _label-box(layout.right, dominant: layout.right == layout.dominant),
+    )
+    if layout.key-points != none {
+      cells.push(_label-box(
+        layout.key-points,
+        dominant: layout.key-points == layout.dominant,
+        colspan: 2,
+      ))
+    }
     grid(
       columns: (1fr, 1fr),
       gutter: 5pt,
-      _label-box(layout.left, dominant: layout.left == layout.dominant),
-      _label-box(layout.right, dominant: layout.right == layout.dominant),
-      if layout.key-points != none {
-        _label-box(
-          layout.key-points,
-          dominant: layout.key-points == layout.dominant,
-          colspan: 2,
-        )
-      },
+      ..cells,
     )
   } else if layout.kind == "summary" {
     stack(
@@ -352,9 +408,12 @@
 }
 
 #let _render-object(obj) = {
-  let unresolved = obj.unresolved
-  let stroke = if unresolved { 1.2pt + design-accent } else { 0.7pt + design-rule }
-  let fill = if unresolved { design-warn } else { white }
+  let stroke = if obj.unresolved {
+    1.2pt + design-accent
+  } else {
+    0.7pt + design-rule
+  }
+  let fill = if obj.unresolved { design-warn } else { white }
 
   block(
     width: 100%,
@@ -369,7 +428,7 @@
       gutter: 0.8em,
       align: (left + horizon, right + horizon),
       [
-        #text(size: 8.5pt, weight: "bold", fill: design-accent)[#obj.id]
+        #text(size: 8.5pt, weight: "bold", fill: design-accent)[#obj.label]
         #if obj.title != none {
           [ #text(size: 8.5pt, fill: design-muted)[— #obj.title]]
         }
@@ -389,11 +448,11 @@
   ]
 }
 
-#let _ids-text(ids) = {
-  if ids.len() == 0 {
+#let _labels-text(labels) = {
+  if labels.len() == 0 {
     [—]
   } else {
-    ids.join(", ")
+    labels.join(", ")
   }
 }
 
@@ -405,24 +464,19 @@
       stroke: 0.7pt + design-rule,
       radius: 3pt,
     )[
-      *Static:* #_ids-text(reveal.ids)
+      *Static:* #_labels-text(reveal.labels)
     ]
   } else if reveal.kind == "cumulative" {
-    let rows = (
-      (
-        [OPEN],
-        _ids-text(reveal.initial),
-        [Initial meaningful context],
-      ),
+    let cells = (
+      [*State*], [*Change*], [*Teaching purpose*],
+      [OPEN], _labels-text(reveal.initial), [Initial meaningful context],
     )
 
     let n = 2
     for step in reveal.then {
-      rows.push((
-        [STATE #n],
-        [+ #_ids-text(step.ids)],
-        if step.purpose == none { [] } else { step.purpose },
-      ))
+      cells.push([STATE #n])
+      cells.push([+ #_labels-text(step.labels)])
+      cells.push(if step.purpose == none { [] } else { step.purpose })
       n += 1
     }
 
@@ -431,8 +485,7 @@
       column-gutter: 0.9em,
       row-gutter: 0.4em,
       align: left + top,
-      table.header([*State*], [*Change*], [*Teaching purpose*]),
-      ..rows.flatten(),
+      ..cells,
     )
   } else {
     block(
@@ -450,55 +503,64 @@
 }
 
 #let slide-design(
-  title,
-  teaching-move,
-  layout,
+  title: none,
+  teaching-move: none,
+  layout: none,
   cards: (),
   key-points: (),
-  reveal,
+  reveal: none,
   rationale: none,
   constraints: none,
   backpressure: none,
 ) = {
+  let title = _require(title, "slide-design requires title:")
+  let teaching-move = _require(
+    teaching-move,
+    "slide-design requires teaching-move:",
+  )
+  let layout = _require(layout, "slide-design requires layout:")
+  let reveal = _require(reveal, "slide-design requires reveal:")
   let objects = cards + key-points
+
   _validate(objects, layout, reveal)
 
   pagebreak(weak: true)
-  heading(level: 2, title)
+  heading(title, level: 2)
+
   text(size: 9pt, fill: design-muted)[Teaching move]
   parbreak()
   teaching-move
 
   v(8pt)
-  heading(level: 3)[Layout sketch]
+  heading([Layout sketch], level: 3)
   _render-layout(layout)
 
   v(8pt)
-  heading(level: 3)[Content objects]
+  heading([Content objects], level: 3)
   stack(
     spacing: 6pt,
     ..objects.map(_render-object),
   )
 
   v(8pt)
-  heading(level: 3)[Reveal sketch]
+  heading([Reveal sketch], level: 3)
   _render-reveal(reveal)
 
   if rationale != none {
     v(8pt)
-    heading(level: 3)[Rationale]
+    heading([Rationale], level: 3)
     rationale
   }
 
   if constraints != none {
     v(8pt)
-    heading(level: 3)[Design constraints]
+    heading([Design constraints], level: 3)
     constraints
   }
 
   if backpressure != none {
     v(8pt)
-    heading(level: 3)[Backpressure]
+    heading([Backpressure], level: 3)
     block(
       width: 100%,
       inset: 8pt,

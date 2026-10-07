@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - slide-authoring-refactor
   pull_request:
     branches:
       - main
@@ -38,6 +39,24 @@ jobs:
           PY
           typst compile --root . Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ build/typst-validation/slide_deck_presentation.pdf
           rm Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ
+
+      - name: Compile authoring reference handout
+        run: |
+          typst compile --root . Lectures/authoring_reference.typ build/typst-validation/authoring_reference.pdf
+
+      - name: Compile authoring reference presentation reveals
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source = Path("Lectures/authoring_reference.typ")
+          temporary = source.with_name(".authoring_reference_presentation.typ")
+          text = source.read_text(encoding="utf-8")
+          needle = "config-common(handout: true)"
+          assert text.count(needle) == 1, "expected one explicit handout setting"
+          temporary.write_text(text.replace(needle, "config-common(handout: false)"), encoding="utf-8")
+          PY
+          typst compile --root . Lectures/.authoring_reference_presentation.typ build/typst-validation/authoring_reference_presentation.pdf
+          rm Lectures/.authoring_reference_presentation.typ
 
       - name: Upload compiled decks
         uses: actions/upload-artifact@v4

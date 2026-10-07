@@ -264,7 +264,7 @@ Compilation alone is not sufficient evidence that a slide is good.
 From the repository root:
 
 ```powershell
-uv --no-config --cache-dir tmp/uv-cache run scripts/review_slides.py Lectures/L01_Probability_Statistics/slide_deck_revised.typ --slide "The Schur complement is the residual covariance"
+uv --no-config --cache-dir tmp/uv-cache run scripts/review_slides.py Lectures/L01_Probability_Statistics/slide_deck.typ --slide "The Schur complement is the residual covariance"
 ```
 
 Repeat `--slide` for multiple titles. The script uses pinned, isolated tooling

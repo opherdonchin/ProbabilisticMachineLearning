@@ -36,10 +36,12 @@
     - Keep $mu$ for Bernoulli probability and $eta$ for the natural parameter.
   ],
   summary-brief: [
-    Ordinary slides nominate reusable visuals and key points as they are
-    established. The summary designer selects a small combination that best
-    retells the section's argument; selection is not by vote or by exhaustive
-    coverage. Prefer already-taught anchors and do not introduce a new argument.
+    Retell the section as *shared template → Bernoulli mapping → natural-coordinate
+    interpretation*. Prefer the general exponential-family equation and the
+    Bernoulli correspondence as the visual anchors. Use takeaways for the
+    data-side/parameter-side split and the log-odds interpretation. Do not add
+    Gaussian algebra here; the Gaussian remains only the familiar bridge into
+    Section 2.
   ],
   continuity: [
     The section should end with a representation students can immediately reuse
@@ -119,17 +121,15 @@
 #slide-design(
   title: [Exponential families separate data statistics from natural parameters],
   teaching-move: [
-    State the general form and establish the distinct roles of
-    $h(x)$, $T(x)$, $eta$, and $A(eta)$ before specializing it.
+    State the general form, then organize its four named roles into the
+    data-side and parameter-side pieces asserted by the title.
   ],
   layout: layout-grid(
     columns: 2,
     cells: (
       layout-cell("formula", colspan: 2),
-      layout-cell("h"),
-      layout-cell("T"),
-      layout-cell("eta"),
-      layout-cell("A"),
+      layout-cell("data-side"),
+      layout-cell("parameter-side"),
       layout-cell("takeaway", colspan: 2),
     ),
     dominant: "formula",
@@ -139,38 +139,40 @@
       $ p(x | eta)
         = 1 / Z(eta) h(x) exp(eta^T T(x))
         = h(x) exp(eta^T T(x) - A(eta)) $
-            $ A(eta) = log Z(eta) $
+      $ A(eta) = log Z(eta) $
     ],
-    bordered-card(label: "h", title: [$h(x)$ — base measure])[
-      Fixed part of the density that may depend on $x$ but not on $eta$.
+    bordered-card(label: "data-side", title: [Data-side functions])[
+      #stack(
+        spacing: 0.45em,
+        [$ h(x) $ — *base measure*: fixed with respect to $eta$],
+        [$ T(x) $ — *sufficient statistics*: the data representation paired with $eta$],
+      )
     ],
-    bordered-card(label: "T", title: [$T(x)$ — sufficient statistics])[
-      The data are represented through the vector $T(x)$.
-    ],
-    bordered-card(label: "eta", title: [$eta$ — natural parameters])[
-      Coordinates for the distribution that pair linearly with $T(x)$.
-    ],
-    bordered-card(label: "A", title: [$A(eta)$ — log-partition function])[
-      The parameter-dependent normalizer that makes the density integrate or sum to one.
+    bordered-card(label: "parameter-side", title: [Parameter-side coordinates])[
+      #stack(
+        spacing: 0.45em,
+        [$ eta $ — *natural parameters*: coordinates that pair linearly with $T(x)$],
+        [$ A(eta) $ — *log-partition function*: the parameter-dependent normalizer],
+      )
     ],
   ),
   key-points: (
     key-points(label: "takeaway")[
-      - $h(x)$ and $T(x)$ are data-side terms; $eta$ and $A(eta)$ are parameter-side terms.
-      - Their central interaction is the linear pairing $eta^T T(x)$.
+      - $h(x)$ and $T(x)$ are data-side functions; $eta$ and $A(eta)$ are parameter-side terms.
+      - The two sides meet in the linear pairing $eta^T T(x)$.
     ],
   ),
   reveal: reveal-cumulative(
     initial: ("formula",),
     then: (
-      reveal-step(("h", "T"), emphasize: true, purpose: [Identify the data-side pieces.]),
-      reveal-step(("eta", "A"), emphasize: true, purpose: [Identify the parameter-side pieces.]),
-      reveal-step(("takeaway",), purpose: [Name the reusable structure.]),
+      reveal-step(("data-side",), emphasize: true, purpose: [Identify the two data-side roles together.]),
+      reveal-step(("parameter-side",), emphasize: true, purpose: [Identify the two parameter-side roles together.]),
+      reveal-step(("takeaway",), purpose: [State the separation and the linear interaction.]),
     ),
   ),
   summary-candidates: (
     summary-key-point-candidate(
-      [$h(x)$ and $T(x)$ are data-side terms; $eta$ and $A(eta)$ are parameter-side terms.],
+      [$h(x)$ and $T(x)$ are data-side functions; $eta$ and $A(eta)$ are parameter-side terms.],
       from: "takeaway",
     ),
   ),
@@ -232,41 +234,54 @@
 #slide-design(
   title: [Bernoulli log odds are its natural parameter],
   teaching-move: [
-    Interpret the Bernoulli natural coordinate and the log-partition function so
-    that the new parameterization feels meaningful rather than arbitrary.
+    Carry forward only the natural-parameter result from the derivation, then
+    interpret it as an invertible change of coordinates before identifying the
+    normalizer in those coordinates.
   ],
-  layout: layout-side(
-    left: "coordinates",
-    right: "normalizer",
-    key-points: "takeaway",
+  layout: layout-grid(
+    columns: 2,
+    cells: (
+      layout-cell("eta-recall", colspan: 2),
+      layout-cell("coordinates"),
+      layout-cell("normalizer"),
+      layout-cell("takeaway", colspan: 2),
+    ),
     dominant: "coordinates",
   ),
   cards: (
     recall-card(
-      label: "coordinates",
+      label: "eta-recall",
       from: [Previous slide: Bernoulli exponential-family mapping],
-      title: [Probability and natural coordinates],
+      title: [Carried forward],
     )[
       $ eta = log(mu/(1-mu)) $
-            $ mu = sigma(eta) = 1 / (1 + e^(-eta)) $
-            $ mu in (0,1) quad arrow.l.r quad eta in RR $
+    ],
+    schema-card(
+      label: "coordinates",
+      caption: [The natural parameter is an unconstrained coordinate for the same Bernoulli family.],
+    )[
+      #stack(
+        spacing: 0.55em,
+        [$ eta = "logit"(mu) quad arrow.l.r quad mu = sigma(eta) = 1/(1+e^(-eta)) $],
+        [$ mu in (0,1) quad arrow.l.r quad eta in RR $],
+      )
     ],
     bordered-card(label: "normalizer", title: [Normalization in natural coordinates])[
       $ A(eta) = log(1 + e^eta) $
-            $ p(x | eta) = exp(x eta - A(eta)) $
+      $ p(x | eta) = exp(x eta - A(eta)) $
     ],
   ),
   key-points: (
     key-points(label: "takeaway")[
-      - $eta$ is the *log odds*, mapping $mu in (0,1)$ to an unconstrained real coordinate.
-      - $A(eta)=log(1+e^eta)$ normalizes Bernoulli in those coordinates.
+      - $eta$ is the *log odds*: it maps a constrained probability to an unconstrained real coordinate.
+      - $A(eta)=log(1+e^eta)$ normalizes Bernoulli in that coordinate system.
     ],
   ),
   reveal: reveal-cumulative(
-    initial: ("coordinates",),
+    initial: ("eta-recall", "coordinates"),
     then: (
-      reveal-step(("normalizer",), emphasize: true, purpose: [Show what the normalizer becomes in natural coordinates.]),
-      reveal-step(("takeaway",), purpose: [Interpret the coordinate change.]),
+      reveal-step(("normalizer",), emphasize: true, purpose: [Add the normalization term once the coordinate change is understood.]),
+      reveal-step(("takeaway",), purpose: [State the interpretation of the natural coordinate.]),
     ),
   ),
   summary-candidates: (
@@ -302,9 +317,9 @@
       )
     ],
     section-summary-takeaways(label: "summary-takeaways")[
-      - Exponential-family form separates data-side terms from parameter-side terms.
-      - For Bernoulli, $T(x)=x$ and $eta=log(mu/(1-mu))$.
-      - The natural parameter is log odds: $mu in (0,1) arrow.l.r eta in RR$.
+      - The exponential-family form separates data-side functions from parameter-side coordinates.
+      - Bernoulli has $h(x)=1$, $T(x)=x$, $eta=log(mu/(1-mu))$, and $A(eta)=log(1+e^eta)$.
+      - Its natural parameter is log odds: $mu in (0,1) arrow.l.r eta in RR$.
     ],
   ),
   key-points: (),
@@ -314,5 +329,12 @@
     nominated visual anchors. Together they tell the section's general → specific
     story directly. Keep the log-odds interpretation in the takeaways rather than
     adding a third visual, which would weaken the summary's hierarchy.
+  ],
+  backpressure: [
+    The organization-stage intention says this summary should also point forward
+    to the Gaussian, while the course summary convention says summaries should
+    remain retrospective. This design keeps the visible summary retrospective.
+    If a visible Gaussian handoff is required, add an explicit bridge treatment
+    rather than turning a take-home bullet into roadmap language.
   ],
 )

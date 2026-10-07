@@ -353,7 +353,7 @@
     #v(sp("s"))
     #section-summary-takeaways(size: fs("xs"))[
       #stack(
-        spacing: sp("xs"),
+        spacing: sp("s"),
         [- A statistical model has data and unknown parameters],
         [- Bayes' rule combines prior and likelihood into a posterior],
         [- Posterior width represents remaining uncertainty],

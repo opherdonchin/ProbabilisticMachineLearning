@@ -198,6 +198,7 @@
   object: [
     #stack(
       spacing: sp("l"),
+      two-col([
       recall-card(
         from: [Earlier in this section: Beta–Bernoulli model],
         size: fs("xl"),
@@ -208,7 +209,8 @@
           [$ theta tilde "Beta"(alpha, beta) $],
           [$ y_i tilde "Bernoulli"(theta) $],
         )
-      ],
+      ]
+      ][]),
       uncover("2-")[
         #card[
           #align(center)[

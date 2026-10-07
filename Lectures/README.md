@@ -35,7 +35,7 @@ It adds:
 - numbered section slides with full title, short footer title, and subtitle;
 - `content-slide` with `top`, `bottom`, `side-left`, and `side-right` composition;
 - semantic wrappers `key-points`, `note`, `definition`, and `method`;
-- `course-figure` with path provenance and missing-file fallback;
+- `course-image` as a low-level asset loader with missing-file fallback, composed inside figure/schema cards;
 - lightweight coordinate-based annotations.
 
 It intentionally delegates palette, typography, spacing, list styling, and most component styling to Ruled Page.
@@ -119,10 +119,10 @@ If a visual or layout pattern is used more than once, it belongs in `course.typ`
 
 ### Keep a set of sibling nodes consistent with one local forwarding function
 
-When a single grid has several `schema-card` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
+When a single grid has several `schema-node` cells that must look alike (for example, four task categories that all state a Task/Performance pair), do not repeat the same formatting override at every node call — that repetition is exactly how nodes silently drift out of sync when one call gets edited and a sibling is missed. Instead, define one local function at the top of that `object:` block that fixes the shared choice and forwards everything else to `schema-node`, and call that function for every node in the grid:
 
 ```typst
-#let taxonomy-card(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
+#let taxonomy-node(label, ..body) = schema-node(label, stack(spacing: 0.35em, ..body), density: "prose")
 ```
 
 This is a narrow, named exception to "do not duplicate a helper": the function holds no independent visual logic (no stroke, fill, or box geometry of its own), it only forwards a fixed choice of already-shared `schema-node` parameters, and it is scoped to the one slide that needs it.

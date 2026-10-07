@@ -196,41 +196,41 @@
 #content-block(
   layout: "top",
   object: [
-#stack(
-  spacing: sp("l"),
-  align(center)[
-    #block(width: 50%)[
-      #recall-card(
-        from: [Earlier in this section: Beta–Bernoulli model],
-        size: fs("xl"),
-      )[
-        #stack(
-          spacing: sp("l"),
-          [Model],
-          [$ theta tilde "Beta"(alpha, beta) $],
-          [$ y_i tilde "Bernoulli"(theta) $],
-        )
-      ]
-    ]
+    #stack(
+      spacing: sp("l"),
+      align(left)[
+        #recall-card(
+          from: [Earlier in this section: Beta–Bernoulli model],
+          size: fs("xl"),
+          width: 50%,
+        )[
+          #stack(
+            spacing: sp("s"),
+            [Model],
+            [$ theta tilde "Beta"(alpha, beta) $],
+            [$ y_i tilde "Bernoulli"(theta) $],
+          )
+        ]
+      ],
+      uncover("2-")[
+        #card[
+          #align(center)[
+            #stack(
+              spacing: sp("l"),
+              text(weight: "semibold", fill: palette.accent)[Bayes' rule],
+              text(size: 1.3em)[$
+                p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
+                &prop p(y | theta) p(theta)
+              $],
+            )
+          ]
+        ]
+      ],
+    )
   ],
-  uncover("2-")[
-    #card[
-      #align(center)[
-        #stack(
-          spacing: 1.0em,
-          text(weight: "semibold", fill: palette.accent)[Bayes' rule],
-          text(size: 1.3em)[$
-            p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
-            &prop p(y | theta) p(theta)
-          $],
-        )
-      ]
-    ]
-  ],
-)  ],
   key-points: [
     #stack(
-      spacing: sp("s"),
+      spacing: sp("l"),
       uncover("2-")[
         - Bayes' rule combines prior and likelihood into a posterior
           - *Prior:* $p(theta)$; *Likelihood:* $p(y | theta)$; *Posterior:* $p(theta | y)$
@@ -250,19 +250,22 @@
   layout: "top",
   object: [
     #stack(
-      spacing: sp("l"),
-      recall-card(
-        from: [Earlier in this section: model and Bayes' rule],
-        size: fs("m"),
-      )[
-        #stack(
-          spacing: sp("s"),
-          [Model],
-          pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
-          pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
-          [Bayes rule],
-          pad(left: 1em)[$ p(theta | y) &prop p(y | theta) p(theta) $],
-        )
+      spacing: sp("m"),
+      align(left)[
+        #recall-card(
+          from: [Earlier in this section: model and Bayes' rule],
+          size: fs("m"),
+          width: 50%,
+        )[
+          #stack(
+            spacing: sp("s"),
+            [Model],
+            pad(left: 1em)[$ theta tilde "Beta"(alpha, beta) $],
+            pad(left: 1em)[$ y_i tilde "Bernoulli"(theta) $],
+            [Bayes rule],
+            pad(left: 1em)[$ p(theta | y) &prop p(y | theta) p(theta) $],
+          )
+        ]
       ],
       align(center)[
         #block(width: 68%)[

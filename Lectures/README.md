@@ -90,6 +90,7 @@ Cards and notes:
 - `#card[...]` — the default presentation card. It is intentionally unmarked in the current implementation; use it to identify a substantial semantic unit even when no visible boundary is wanted.
 - `#bordered-card(...)` — ordinary card with visible Ruled Page chrome.
 - `#recall-card(from: [...], ...)[...]` — previously established material brought into the current argument; provenance is required. It belongs inside the `object:` region of an ordinary `content-block`.
+- Standalone recall cards normally use `#align(left)[#recall-card(from: [...], width: 50%)[...]]`. Judge longer content in the rendered slide before widening it. Within a `twocol` or other column layout, omit `width:` so the card fills its column (the default is `100%`).
 - `#figure-card(from: [...], caption: [...])[...]` — complete figure presentation object. It owns the figure frame, optional caption, and optional provenance. Its body may be a single image or a composite.
 - `#key-points[...]`, `#definition(...)`, `#method(...)`
 - `#note[...]` — margin/aside note

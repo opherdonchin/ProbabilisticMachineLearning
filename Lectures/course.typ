@@ -275,6 +275,8 @@
   touying-slide(self: self, body)
 })
 
+// Theme conveniences retained for future lectures. L01 does not yet provide
+// enough evidence to treat these as established course conventions.
 #let focus-slide(body) = ruled-focus-slide(body)
 #let ending-slide(body) = ruled-ending-slide(body)
 
@@ -342,7 +344,7 @@
 
 
 #let source-note(body) = align(center)[
-  #text(size: 0.6em, fill: palette.muted)[#body]
+  #text(size: fs("xxs"), fill: palette.muted)[#body]
 ]
 
 // Figure cards own figure-level presentation: frame, caption, and provenance.
@@ -416,8 +418,8 @@
         columns: (auto, 1fr),
         column-gutter: 0.55em,
         align: left + top,
-        text(size: 0.68em, weight: "semibold", fill: palette.accent, label),
-        text(size: 0.68em, fill: palette.muted, from),
+        text(size: fs("xs"), weight: "semibold", fill: palette.accent, label),
+        text(size: fs("xs"), fill: palette.muted, from),
       ),
       text(size: size, body),
     )
@@ -448,7 +450,7 @@
     columns: (6.5em, 1fr),
     column-gutter: 0.55em,
     align: (left + top, left + top),
-    text(size: 0.58em, weight: "semibold", fill: palette.accent)[TAKE HOME],
+    text(size: fs("xxs"), weight: "semibold", fill: palette.accent)[TAKE HOME],
     text(size: size, body),
   )
 ]
@@ -476,6 +478,8 @@
   title,
 )
 
+// Semantic wrappers below are available but not yet validated as recurring
+// course conventions; keep them simple until later lectures provide evidence.
 #let definition(
   title: none,
   label: [Definition],
@@ -714,6 +718,8 @@
 // object's bounding box. This first implementation intentionally stays simple.
 // It draws a pointer line and a small target marker when arrow: true.
 
+// Coordinate annotations are available as low-level utilities, but remain
+// provisional until a later lecture demonstrates a recurring need.
 #let callout(
   target: none,
   label-at: none,

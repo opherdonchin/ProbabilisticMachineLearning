@@ -279,6 +279,42 @@
 #let ending-slide(body) = ruled-ending-slide(body)
 
 // -----------------------------------------------------------------------------
+// Course scales
+// -----------------------------------------------------------------------------
+
+// Canonical course spacing, font sizes, and column ratios. The size labels are
+// calibrated as a family: using the same label for text and ordinary internal
+// spacing should produce a coherent density. Use xxs for deliberately optical
+// micro-spacing rather than for normal text-item separation.
+#let _spacing = (
+  xxs: 0.22em,
+  xs: 0.35em,
+  s: 0.45em,
+  m: 0.6em,
+  l: 0.8em,
+  xl: 1.1em,
+)
+#let sp(size) = _spacing.at(size)
+
+#let _font-sizes = (
+  xxs: 0.58em,
+  xs: 0.68em,
+  s: 0.72em,
+  m: 0.78em,
+  l: 0.84em,
+  xl: 0.9em,
+)
+#let fs(size) = _font-sizes.at(size)
+
+#let _columns = (
+  equal: (1fr, 1fr),
+  left: (3fr, 2fr),
+  right: (2fr, 3fr),
+  three: (1fr, 1fr, 1fr),
+)
+#let cols(layout) = _columns.at(layout)
+
+// -----------------------------------------------------------------------------
 // Semantic course components
 // -----------------------------------------------------------------------------
 //
@@ -362,11 +398,10 @@
   from: none,
   body,
   label: [Carried forward],
-  size: none,
+  size: fs("m"),
   width: 100%,
 ) = {
   assert(from != none, message: "recall-card requires provenance via from: [...]")
-  let resolved-size = if size == none { fs("m") } else { size }
   block(
     width: width,
     breakable: false,
@@ -376,7 +411,7 @@
     inset: (x: 0.6em, y: 0.5em),
   )[
     #stack(
-      spacing: 0.35em,
+      spacing: sp("xs"),
       grid(
         columns: (auto, 1fr),
         column-gutter: 0.55em,
@@ -384,7 +419,7 @@
         text(size: 0.68em, weight: "semibold", fill: palette.accent, label),
         text(size: 0.68em, fill: palette.muted, from),
       ),
-      text(size: resolved-size, body),
+      text(size: size, body),
     )
   ]
 }
@@ -402,10 +437,8 @@
 
 #let section-summary-takeaways(
   body,
-  size: none,
-) = {
-  let resolved-size = if size == none { fs("xs") } else { size }
-  block(
+  size: fs("xs"),
+) = block(
   width: 100%,
   fill: palette.accent.lighten(91%),
   radius: 0.25em,
@@ -416,10 +449,9 @@
     column-gutter: 0.55em,
     align: (left + top, left + top),
     text(size: 0.58em, weight: "semibold", fill: palette.accent)[TAKE HOME],
-    text(size: resolved-size, body),
+    text(size: size, body),
   )
 ]
-}
 
 // Usage:
 //   #key-points[Body without a title]
@@ -465,36 +497,6 @@
 // -----------------------------------------------------------------------------
 // Slide-level content composition
 // -----------------------------------------------------------------------------
-
-// Canonical course spacing and column ratios. Use these for ordinary layout
-// relationships; raw lengths remain available for deliberate optical tuning.
-#let _spacing = (
-  xxs: 0.22em,
-  xs: 0.35em,
-  s: 0.45em,
-  m: 0.6em,
-  l: 0.8em,
-  xl: 1.1em,
-)
-#let sp(size) = _spacing.at(size)
-
-#let _font-sizes = (
-  xxs: 0.58em,
-  xs: 0.68em,
-  s: 0.72em,
-  m: 0.78em,
-  l: 0.84em,
-  xl: 0.9em,
-)
-#let fs(size) = _font-sizes.at(size)
-
-#let _columns = (
-  equal: (1fr, 1fr),
-  left: (3fr, 2fr),
-  right: (2fr, 3fr),
-  three: (1fr, 1fr, 1fr),
-)
-#let cols(layout) = _columns.at(layout)
 
 #let _object-box(object, width) = align(
   center,

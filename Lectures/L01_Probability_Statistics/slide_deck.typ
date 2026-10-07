@@ -507,6 +507,7 @@
 
 
 
+
 == Machine learning defined
 
 #content-block(
@@ -530,55 +531,55 @@
     ][
       #card[
         #stack(
-        spacing: 0.85em,
-        align(left + top)[
-        #text(size: fs("l"))[
-          A computer program is said to *learn* from experience $E$ with respect
-          to some class of tasks $T$ and performance measure $P$, if its
-          performance at tasks in $T$, as measured by $P$, improves with
-          experience $E$.
-        ],      
-        ],
-        grid(
-          columns: cols("three"),
-          gutter: 1em,
-          align: center + horizon,
-          [
-            #uncover("2-")[
-              *Training*
-              #v(0.05em)
-                #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
-                #text(size: fs("xl"))[$E$: Experience]
+          spacing: 0.85em,
+          align(left + top)[
+            #text(size: fs("l"))[
+              A computer program is said to *learn* from experience $E$ with respect
+              to some class of tasks $T$ and performance measure $P$, if its
+              performance at tasks in $T$, as measured by $P$, improves with
+              experience $E$.
             ]
           ],
-          [
-            #uncover("3-")[
-              *Task*
+          grid(
+            columns: cols("three"),
+            gutter: 1em,
+            align: center + horizon,
+            [
+              #uncover("2-")[
+                *Training*
+                #v(0.05em)
+                #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+                #text(size: fs("xl"))[$E$: Experience]
+              ]
+            ],
+            [
+              #uncover("3-")[
+                *Task*
                 #v(0.05em)
                 #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
                 #text(size: fs("xl"))[$f_A$: Task function]
-            ]
-          ],
-          [
-            #uncover("4-")[
-              *Evaluation*
+              ]
+            ],
+            [
+              #uncover("4-")[
+                *Evaluation*
                 #v(0.05em)
                 #text(size: 0.7em)[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
                 #text(size: fs("xl"))[$P$: Performance]
-            ]
-          ],
-        ),
+              ]
+            ],
+          ),
         )
       ]
     ]
   ],
   key-points: [
-  #uncover("5-")[
-    - Machine learning is a mapping from $(E, f_P) arrow.r f_T arrow.r f_A$
-      - That maximizes $f_A$ performance according to $P$]  ],
+    #uncover("5-")[
+      - Machine learning is a mapping from $(E, f_P) arrow.r f_T arrow.r f_A$
+        - That maximizes $f_A$ performance according to $P$
+    ]
+  ],
 )
-
-
 
 
 == Supervised experience supports prediction
@@ -1341,6 +1342,7 @@
 
 
 
+
 == MNIST: the same taxonomy, one dataset
 
 #content-block(
@@ -1352,21 +1354,29 @@
       align: center + horizon,
     )[
       #figure-card(from: [Murphy (2025), Book 1, Fig. 1.12a])[
-          #course-image(
-            lecture-figure-path("figures/book1_fig1_12a_mnist.png"),
-            width: 100%,
-            height: 4.6cm,
-          )
-          #v(0.3em)
-          #align(center)[#text(size: fs("l"))[$x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$]]
+        #course-image(
+          lecture-figure-path("figures/book1_fig1_12a_mnist.png"),
+          width: 100%,
+          height: 4.6cm,
+        )
+        #v(0.3em)
+        #align(center)[
+          #text(size: fs("l"))[
+            $x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$
+          ]
         ]
+      ]
     ][
       #schema-card[
         #stack(
           spacing: sp("m"),
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
-          uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
-          uncover("3-")[#schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)],
+          uncover("2-")[
+            #schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)
+          ],
+          uncover("3-")[
+            #schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)
+          ],
         )
       ]
     ]
@@ -1386,14 +1396,16 @@
       align: center + horizon,
     )[
       #figure-card(from: [Murphy (2025), Book 1, Fig. 1.13b])[
-          #course-image(
-            lecture-figure-path("figures/book1_fig1_13b_cifar10.png"),
-            width: 100%,
-            height: 4.6cm,
-          )
-          #v(0.3em)
-          #align(center)[$x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$]
+        #course-image(
+          lecture-figure-path("figures/book1_fig1_13b_cifar10.png"),
+          width: 100%,
+          height: 4.6cm,
+        )
+        #v(0.3em)
+        #align(center)[
+          $x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$
         ]
+      ]
     ][
       #schema-card[
         #stack(
@@ -1414,7 +1426,6 @@
     ]
   ],
 )
-
 
 
 == IMDB reviews: text as sequence data

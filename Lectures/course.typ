@@ -319,7 +319,7 @@
   label: [Carried forward],
   size: 1em,
 ) = {
-  assert(from != none, message: "recall-card requires provenance via from: [...]"
+  assert(from != none, message: "recall-card requires provenance via from: [...]")
   block(
     width: 100%,
     breakable: false,

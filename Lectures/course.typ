@@ -324,6 +324,57 @@
 )
 #let cols(layout) = _columns.at(layout)
 
+// Transiently emphasize material on the subslide where it first appears.
+//
+// step(n)[...] has the same cumulative visibility semantics as
+// uncover(str(n) + "-")[...], but in presentation mode it highlights the
+// body only on subslide n. Later subslides show the body normally. Handout mode
+// always shows the settled, unhighlighted form.
+//
+// The emphasis uses visual outset rather than inset so it does not consume
+// additional layout space or move neighboring content between subslides.
+#let _step-emphasis(body) = block(
+  width: 100%,
+  inset: 0pt,
+  outset: (x: 0.22em, y: 0.12em),
+  radius: 0.16em,
+  fill: palette.accent.transparentize(91%),
+  stroke: 0.7pt + palette.accent.transparentize(35%),
+)[#body]
+
+#let _step-render(self: none, n: none, body: none) = {
+  let visible = utils.uncover(
+    self: self,
+    str(n) + "-",
+    body,
+  )
+
+  if self.handout {
+    visible
+  } else {
+    utils.effect(
+      self: self,
+      _step-emphasis,
+      n,
+      visible,
+    )
+  }
+}
+
+#let step(n, body) = {
+  assert(
+    type(n) == int and n >= 1,
+    message: "step: n must be a positive integer",
+  )
+
+  touying-fn-wrapper(
+    _step-render,
+    last-subslide: n,
+    n: n,
+    body: body,
+  )
+}
+
 // -----------------------------------------------------------------------------
 // Semantic course components
 // -----------------------------------------------------------------------------

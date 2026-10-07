@@ -24,7 +24,7 @@
 #let lecture-figure-path(file) = "L01_Probability_Statistics/" + file
 
 // Keeps a reveal-only note in the same visual space as a course figure.
-#let figure-note(body) = block(width: 100%, height: 5.45cm)[
+#let figure-note-card(body) = block(width: 100%, height: 5.45cm)[
   #align(center + horizon)[
     #block(width: 88%)[
       #note[#text(size: fs("s"))[#body]]
@@ -446,7 +446,7 @@
             ]
           ],
           "2": [
-            #figure-note[
+            #figure-note-card[
               Rosenblatt considered the perceptron a model of the vertebrate
               visual system. He showed how neuron-like units could learn to
               “recognize” classes of input patterns from experience.
@@ -459,7 +459,7 @@
       alternatives-match(
         (
           "1": [
-            #figure-note[
+            #figure-note-card[
               Every flower started as four numbers. Fisher learned one weighted
               combination of those four numbers so that species became as
               separated as possible. The histogram shows the flowers after that
@@ -520,46 +520,48 @@
     ]
   ],
   [
-    #stack(
-      spacing: 0.85em,
-      align(left + top)[
-      #text(size: fs("l"))[
-        A computer program is said to *learn* from experience $E$ with respect
-        to some class of tasks $T$ and performance measure $P$, if its
-        performance at tasks in $T$, as measured by $P$, improves with
-        experience $E$.
-      ],      
-      ],
-      grid(
-        columns: cols("three"),
-        gutter: 1em,
-        align: center + horizon,
-        [
-          #uncover("2-")[
-            *Training*
-            #v(0.05em)
-              #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
-              #text(size: fs("xl"))[$E$: Experience]
-          ]
+    #card[
+      #stack(
+        spacing: 0.85em,
+        align(left + top)[
+        #text(size: fs("l"))[
+          A computer program is said to *learn* from experience $E$ with respect
+          to some class of tasks $T$ and performance measure $P$, if its
+          performance at tasks in $T$, as measured by $P$, improves with
+          experience $E$.
+        ],      
         ],
-        [
-          #uncover("3-")[
-            *Task*
+        grid(
+          columns: cols("three"),
+          gutter: 1em,
+          align: center + horizon,
+          [
+            #uncover("2-")[
+              *Training*
               #v(0.05em)
-              #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
-              #text(size: fs("xl"))[$f_A$: Task function]
-          ]
-        ],
-        [
-          #uncover("4-")[
-            *Evaluation*
-              #v(0.05em)
-              #text(size: 0.7em)[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
-              #text(size: fs("xl"))[$P$: Performance]
-          ]
-        ],
-      ),
-    )
+                #text(size: 0.7em)[$ f_T: "E" quad arrow.r quad f_A $]
+                #text(size: fs("xl"))[$E$: Experience]
+            ]
+          ],
+          [
+            #uncover("3-")[
+              *Task*
+                #v(0.05em)
+                #text(size: 0.7em)[$ f_A: "In" quad arrow.r quad "Out" $]
+                #text(size: fs("xl"))[$f_A$: Task function]
+            ]
+          ],
+          [
+            #uncover("4-")[
+              *Evaluation*
+                #v(0.05em)
+                #text(size: 0.7em)[$ f_P: ("In", "Out") quad arrow.r quad "P" $]
+                #text(size: fs("xl"))[$P$: Performance]
+            ]
+          ],
+        ),
+      )
+    ]
   ],
 )
 
@@ -1325,9 +1327,11 @@
       gutter: 1.0em,
       align: center + horizon,
       [
-        #image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 4.6cm, fit: "contain")
-        #v(0.3em)
-        #align(center)[#text(size: fs("l"))[$x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$]]
+        #card[
+          #image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 4.6cm, fit: "contain")
+          #v(0.3em)
+          #align(center)[#text(size: fs("l"))[$x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$]]
+        ]
       ],
       [
         #stack(
@@ -1354,9 +1358,11 @@
       gutter: 1.0em,
       align: center + horizon,
       [
-        #image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 4.6cm, fit: "contain")
-        #v(0.3em)
-        #align(center)[$x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$]
+        #card[
+          #image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 4.6cm, fit: "contain")
+          #v(0.3em)
+          #align(center)[$x_n in RR^(32 times 32 times 3), quad y_n in {1, dots, 10}$]
+        ]
       ],
       [
         #stack(
@@ -1391,9 +1397,11 @@
       gutter: 1.0em,
       align: center + horizon,
       [
-        #image("figures/book1_table1_3_imdb.png", width: 100%, height: 8cm, fit: "contain")
-        #v(0.3em)
-        #align(center)[#text(size: fs("l"))[$x_n = (w_1, dots, w_T), quad y_n in {"pos", "neg"}$]]
+        #card[
+          #image("figures/book1_table1_3_imdb.png", width: 100%, height: 8cm, fit: "contain")
+          #v(0.3em)
+          #align(center)[#text(size: fs("l"))[$x_n = (w_1, dots, w_T), quad y_n in {"pos", "neg"}$]]
+        ]
       ],
       [
         #stack(
@@ -2294,7 +2302,7 @@
   object: [
     #grid(
       columns: cols("right"), gutter: 1em, align: horizon,
-      linear_gaussian_graph(),
+      card[#linear_gaussian_graph()],
       [#bordered-card(title: [A prior and a measurement law])[
         #text(size: fs("l"))[
           $ z tilde cal(N)(mu_z,Sigma_z) $
@@ -2303,10 +2311,14 @@
         ]
       ]],
     )
-    #uncover("2-")[#align(center)[#text(size: fs("l"))[
-      $ y=W z+b+epsilon, quad epsilon tilde cal(N)(0,Omega) $
-      Noise $epsilon$ is independent of the state $z$.
-    ]]]
+    #uncover("2-")[
+      #card[
+        #align(center)[#text(size: fs("l"))[
+          $ y=W z+b+epsilon, quad epsilon tilde cal(N)(0,Omega) $
+          Noise $epsilon$ is independent of the state $z$.
+        ]]
+      ]
+    ]
     #source-note[Murphy, Book 2 §2.3.2, Eqs. 2.118–2.119]
   ],
   key-points: [
@@ -2325,9 +2337,11 @@
 #content-block(
   layout: "top",
   object: [
-    #align(center)[
-      $z tilde cal(N)(mu_z, Sigma_z), quad
-       y | z tilde cal(N)(W z + b, Omega)$
+    #card[
+      #align(center)[
+        $z tilde cal(N)(mu_z, Sigma_z), quad
+         y | z tilde cal(N)(W z + b, Omega)$
+      ]
     ]
     #v(sp("l"))
 
@@ -2592,11 +2606,13 @@
     ]
     #uncover("3-")[
       #v(0.45em)
-      #align(center)[
-        #text(size: fs("xl"))[
-          $K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)
-          quad arrow.r quad
-          mu_(z|y)=mu_z+K(y-mu_z)$
+      #card[
+        #align(center)[
+          #text(size: fs("xl"))[
+            $K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)
+            quad arrow.r quad
+            mu_(z|y)=mu_z+K(y-mu_z)$
+          ]
         ]
       ]
     ]
@@ -2622,12 +2638,14 @@
 #content-block(
   layout: "top",
   object: [
-    #align(center)[
-      #stack(
-        spacing: 0.4em,
-        text(size: fs("xl"))[$mu_(z|y)=mu_z+K(y-mu_z), quad K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)$],
-        text(size: 0.62em, fill: palette.muted)[◆ = posterior mean $mu_(z|y)$],
-      )
+    #card[
+      #align(center)[
+        #stack(
+          spacing: 0.4em,
+          text(size: fs("xl"))[$mu_(z|y)=mu_z+K(y-mu_z), quad K=frac(sigma_z^2,sigma_z^2+sigma_epsilon^2)$],
+          text(size: 0.62em, fill: palette.muted)[◆ = posterior mean $mu_(z|y)$],
+        )
+      ]
     ]
     #v(sp("m"))
     #triad[
@@ -2703,7 +2721,9 @@
     ]
     #uncover("2-")[
       #v(0.65em)
-      #align(center)[#text(size: fs("l"))[$E[z | y]=integral z p(z | y) dif z$]]
+      #card[
+        #align(center)[#text(size: fs("l"))[$E[z | y]=integral z p(z | y) dif z$]]
+      ]
     ]
     #source-note[Murphy, Book 2 §2.3.2.2–2.3.2.3]
   ],
@@ -2741,12 +2761,14 @@
     )
     #uncover("2-")[
       #v(sp("s"))
-      #course-figure(
-        lecture-figure-path("generated/sensor_fusion_schematic.svg"),
-        width: 100%,
-        height: 5.2cm,
-        show-source: false,
-      )
+      #card[
+        #course-figure(
+          lecture-figure-path("generated/sensor_fusion_schematic.svg"),
+          width: 100%,
+          height: 5.2cm,
+          show-source: false,
+        )
+      ]
     ]
     #source-note[Course schematic after Murphy, Book 2 §2.3.2.3, Fig. 2.10; `sensor_fusion_figure.ipynb`]
   ],
@@ -2791,10 +2813,12 @@
     ]
     #uncover("2-")[
       #v(sp("m"))
-      #align(center)[
-        #text(size: fs("xl"))[
-          $p(y)=cal(N)(y | mu_y,Sigma_(y y))$
-          $mu_y=W mu_z+b, quad Sigma_(y y)=W Sigma_z W^T+Omega$
+      #card[
+        #align(center)[
+          #text(size: fs("xl"))[
+            $p(y)=cal(N)(y | mu_y,Sigma_(y y))$
+            $mu_y=W mu_z+b, quad Sigma_(y y)=W Sigma_z W^T+Omega$
+          ]
         ]
       ]
     ]

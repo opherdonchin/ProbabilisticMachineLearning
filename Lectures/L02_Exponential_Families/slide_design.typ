@@ -169,10 +169,6 @@
     ),
   ),
   summary-candidates: (
-    summary-visual-candidate(
-      "formula",
-      reason: [This is the compact reusable form that later sections will repeatedly instantiate.],
-    ),
     summary-key-point-candidate(
       [$h(x)$ and $T(x)$ are data-side terms; $eta$ and $A(eta)$ are parameter-side terms.],
       from: "takeaway",

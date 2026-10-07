@@ -43,11 +43,19 @@
   )
 }
 
-#let card(body, label: none, title: none) =
-  _object("card", body, label: label, title: title)
+#let card(body, label: none, title: none) = _object(
+  "card",
+  body,
+  label: label,
+  title: title,
+)
 
-#let bordered-card(body, label: none, title: none) =
-  _object("bordered-card", body, label: label, title: title)
+#let bordered-card(body, label: none, title: none) = _object(
+  "bordered-card",
+  body,
+  label: label,
+  title: title,
+)
 
 #let recall-card(
   body,
@@ -96,17 +104,28 @@
   caption: caption,
 )
 
-#let key-points(body, label: none, title: [Key points]) =
-  _object("key-points", body, label: label, title: title)
+#let key-points(body, label: none, title: [Key points]) = _object(
+  "key-points",
+  body,
+  label: label,
+  title: title,
+)
 
-#let section-summary-visual(body, label: none, title: [Summary visual]) =
-  _object("section-summary-visual", body, label: label, title: title)
+#let section-summary-visual(body, label: none, title: [Summary visual]) = _object(
+  "section-summary-visual",
+  body,
+  label: label,
+  title: title,
+)
 
-#let section-summary-takeaways(body, label: none, title: [Summary takeaways]) =
-  _object("section-summary-takeaways", body, label: label, title: title)
+#let section-summary-takeaways(body, label: none, title: [Summary takeaways]) = _object(
+  "section-summary-takeaways",
+  body,
+  label: label,
+  title: title,
+)
 
-#let design-card(body, label: none, title: [Unresolved card]) =
-  _object(
+#let design-card(body, label: none, title: [Unresolved card]) = _object(
     "design-card",
     body,
     label: label,
@@ -114,8 +133,7 @@
     unresolved: true,
   )
 
-#let design-content(body, label: none, title: [Unresolved content]) =
-  _object(
+#let design-content(body, label: none, title: [Unresolved content]) = _object(
     "design-content",
     body,
     label: label,

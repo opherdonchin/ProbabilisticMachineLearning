@@ -52,6 +52,32 @@ in the current agent environment; if either is unavailable, inform the user.
 - Put shared visual style, layout helpers, and reusable slide components in the shared course include `Lectures/course.typ`. It sits on top of a vendored, read-only base theme in `Lectures/themes/`.
 - Lecture `.typ` files should focus on narrative, equations, figures, and examples rather than ad hoc styling.
 
+## Design-stage representation
+
+Detailed slide design is developed before production in a lecture-local
+`slide_design.typ` that imports `Lectures/design.typ`.
+
+The design language is deliberately more constrained than `course.typ`:
+
+- use real or near-final mathematics, wording, figures, and semantic objects;
+- reuse stable semantic names such as `card`, `bordered-card`,
+  `recall-card`, `figure-card`, `schema-card`, and `key-points`;
+- give every object used by layout or reveal a stable `label:`;
+- express spatial relationships with abstract layout specifications whose
+  rendered output is a labeled sketch, not the final slide geometry;
+- express temporal relationships with abstract reveal specifications whose
+  rendered output is a reveal sketch, not Touying state syntax;
+- use `design-card`, `design-content`, `design-layout`, and
+  `design-reveal` as conspicuous escape hatches when a design is not yet
+  expressible in the constrained vocabulary.
+
+The normal rendered order for a slide-design unit is layout sketch, labeled
+content objects, then reveal sketch. A design may use real content while still
+leaving exact widths, spacing, and Touying mechanics to production.
+
+Production authoring lowers the approved design into `slide_deck.typ`. Do not
+import `design.typ` into the production deck.
+
 ## Shared course API
 
 Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
@@ -69,7 +95,8 @@ Slide structure and composition:
   heading (`= Section title`) — section divider and footer metadata
 - `#title-slide()` — established course title slide. `#focus-slide[...]` and `#ending-slide[...]` remain available theme conveniences, but are provisional until later lectures demonstrate a recurring need.
 
-Create every section with this exact structure. Do not introduce or call a `section-slide` helper:
+For sections after the first, use this structure. Do not introduce or call a
+`section-slide` helper:
 
 ```typst
 #section-metadata(
@@ -79,6 +106,12 @@ Create every section with this exact structure. Do not introduce or call a `sect
 
 = From statistics to machine-learning problems
 ```
+
+The first section immediately after an explicit `#title-slide()` may omit
+`section-metadata`. Emitting metadata content between the explicit title slide
+and the first level-1 heading creates an otherwise-empty ordinary slide in
+Touying. When metadata is omitted there, `course.typ` uses the section heading
+itself as the footer short title.
 
 Cards and notes:
 

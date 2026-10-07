@@ -280,9 +280,36 @@ Translate the approved design reveal into Touying mechanics.
 ### Normal cumulative reveal
 
 - State 1 is implicit and remains unwrapped.
-- Use explicit `uncover("2-")`, `uncover("3-")`, and so on.
+- Use explicit `uncover("2-")`, `uncover("3-")`, and so on for plain
+  cumulative appearance.
 - The same state number may coordinate object and interpretation regions.
 - Interpretation may trail construction when explicitly designed that way.
+
+### Transient entry emphasis
+
+When the approved design marks a reveal step for entry emphasis, use the shared
+course helper:
+
+```typst
+#step(2)[
+  ...
+]
+```
+
+`step(n)[...]` means:
+
+- hidden before state `n`, with space reserved like `uncover`;
+- visible and transiently emphasized on presentation state `n`;
+- visible normally on all later states;
+- visible normally in handout mode, including when `n` is the final reveal.
+
+Use `uncover` when the design requests appearance without transient emphasis.
+Do not substitute `step` merely because a region is new.
+
+The course implementation uses a zero-inset visual outset so the emphasis does
+not intentionally change layout geometry. Still inspect the affected reveal
+states: large cards, nested blocks, or unusual containers may expose optical or
+clipping issues.
 
 ### Replacement
 

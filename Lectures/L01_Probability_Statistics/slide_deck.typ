@@ -2337,17 +2337,23 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
-      columns: cols("right"), gutter: 1em, align: horizon,
-      schema-card[#linear_gaussian_graph()],
-      [#bordered-card(title: [A prior and a measurement law])[
+    #twocol(
+      columns: cols("right"),
+      gutter: 1em,
+      align: horizon,
+    )[
+      #schema-card[
+        #linear_gaussian_graph()
+      ]
+    ][
+      #bordered-card(title: [A prior and a measurement law])[
         #text(size: fs("l"))[
           $ z tilde cal(N)(mu_z,Sigma_z) $
           $ y | z tilde cal(N)(W z+b,Omega) $
           $ p(z,y)=p(z)p(y | z) $
         ]
-      ]],
-    )
+      ]
+    ]
     #uncover("2-")[
       #card[
         #align(center)[#text(size: fs("l"))[

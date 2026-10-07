@@ -39,7 +39,7 @@ Slide Authoring may decide:
 - low-level annotation placement;
 - asset implementation details;
 - Typst/Touying source structure;
-- reveal syntax;
+- reveal syntax, using `step(n)[...]` when the design requests transient entry emphasis and `uncover` for plain cumulative appearance;
 - optical tuning;
 - lecture-local implementation helpers;
 - production API proposals supported by repeated evidence.
@@ -97,6 +97,10 @@ Create or reuse required figures and schematics according to `slide_authoring_co
 ### 5. Implement reveal mechanics
 
 Translate approved semantic reveal states into Touying syntax while preserving intended timing, persistence, stable geometry, and final handout completeness.
+
+When a reveal step is marked for transient entry emphasis, lower it with the
+shared `step(n)[...]` helper. Use ordinary `uncover` when no entry emphasis
+is specified. Do not decide this distinction during authoring.
 
 Do not add or remove teaching clicks merely because another implementation is easier.
 

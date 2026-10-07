@@ -644,67 +644,73 @@
   layout: "top",
   object-width: 92%,
   object: [
-    #figure-card(
-      from: [Murphy (2025), Book 1, Fig. 1.1 and Table 1.1],
+    #twocol(
+      columns: (1.35fr, 1fr),
+      gutter: 1.1em,
+      align: center + horizon,
     )[
-      #stack(
-            spacing: sp("s"),
-            grid(
-              columns: (1.35fr, 1fr),
-              gutter: 1.1em,
-              align: center + horizon,
-              [
-                #grid(
-                  columns: cols("three"),
-                  gutter: 0.3em,
-                  [#align(center)[
-                    #stack(spacing: 0.12em,
-                      image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 3cm, fit: "contain"),
-                      text(size: 0.45em, fill: palette.muted)[Setosa],
-                    )
-                  ]],
-                  [#align(center)[
-                    #stack(spacing: 0.12em,
-                      image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 3cm, fit: "contain"),
-                      text(size: 0.45em, fill: palette.muted)[Versicolor],
-                    )
-                  ]],
-                  [#align(center)[
-                    #stack(spacing: 0.12em,
-                      image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 3cm, fit: "contain"),
-                      text(size: 0.45em, fill: palette.muted)[Virginica],
-                    )
-                  ]],
-                )
-              ],
-              uncover("2-")[#align(center)[
-                #text(size: 0.45em, weight: "semibold")[
-                  Table 1.1: subset of the Iris design matrix
-                ]
-                #v(0.28em)
-                #text(size: 0.45em)[
-                  #table(
-                    columns: (auto, auto, auto, auto, auto, auto),
-                    align: center + horizon,
-                    inset: (x: 3.5pt, y: 3pt),
-                    table.header(
-                      [*index*], [*sl*], [*sw*], [*pl*], [*pw*], [*label*],
-                    ),
-                    [0], [5.1], [3.5], [1.4], [0.2], [Setosa],
-                    [1], [4.9], [3.0], [1.4], [0.2], [Setosa],
-                    [dots], [dots], [dots], [dots], [dots], [dots],
-                    [50], [7.0], [3.2], [4.7], [1.4], [Versicolor],
-                    [dots], [dots], [dots], [dots], [dots], [dots],
-                    [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
-                  )
-                ]
-                #v(sp("xs"))
-                #text(size: 0.45em, fill: palette.muted)[
-                  sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
-                ]
-              ]],
-            ),
-          )
+      #figure-card(
+        from: [Murphy (2025), Book 1, Fig. 1.1],
+      )[
+        #grid(
+          columns: cols("three"),
+          gutter: 0.3em,
+          [#align(center)[
+            #stack(
+              spacing: 0.12em,
+              image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 3cm, fit: "contain"),
+              text(size: 0.45em, fill: palette.muted)[Setosa],
+            )
+          ]],
+          [#align(center)[
+            #stack(
+              spacing: 0.12em,
+              image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 3cm, fit: "contain"),
+              text(size: 0.45em, fill: palette.muted)[Versicolor],
+            )
+          ]],
+          [#align(center)[
+            #stack(
+              spacing: 0.12em,
+              image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 3cm, fit: "contain"),
+              text(size: 0.45em, fill: palette.muted)[Virginica],
+            )
+          ]],
+        )
+      ]
+    ][
+      #uncover("2-")[
+        #figure-card(
+          from: [Murphy (2025), Book 1, Table 1.1],
+        )[
+          #align(center)[
+            #text(size: 0.45em, weight: "semibold")[
+              Table 1.1: subset of the Iris design matrix
+            ]
+            #v(0.28em)
+            #text(size: 0.45em)[
+              #table(
+                columns: (auto, auto, auto, auto, auto, auto),
+                align: center + horizon,
+                inset: (x: 3.5pt, y: 3pt),
+                table.header(
+                  [*index*], [*sl*], [*sw*], [*pl*], [*pw*], [*label*],
+                ),
+                [0], [5.1], [3.5], [1.4], [0.2], [Setosa],
+                [1], [4.9], [3.0], [1.4], [0.2], [Setosa],
+                [dots], [dots], [dots], [dots], [dots], [dots],
+                [50], [7.0], [3.2], [4.7], [1.4], [Versicolor],
+                [dots], [dots], [dots], [dots], [dots], [dots],
+                [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
+              )
+            ]
+            #v(sp("xs"))
+            #text(size: 0.45em, fill: palette.muted)[
+              sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
+            ]
+          ]
+        ]
+      ]
     ]
   ],
   key-points: [

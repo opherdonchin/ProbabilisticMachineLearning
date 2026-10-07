@@ -2388,34 +2388,34 @@
     ]
     #v(sp("l"))
 
-    #grid(
-      columns: cols("three"),
+    #triad(
       gutter: sp("l"),
       align: top,
-      uncover("1-")[
+    )[
+      #uncover("1-")[
         #bordered-card(title: [Condition])[
           #text(size: fs("l"))[
             $p(z | y) = frac(p(y | z) p(z), p(y))$
           ]
         ]
-      ],
-
-      uncover("2-")[
+      ]
+    ][
+      #uncover("2-")[
         #bordered-card(title: [Summarize])[
           #text(size: fs("l"))[
             $E[g(z) | y] = integral g(z) p(z | y) dif z$
           ]
         ]
-      ],
-
-      uncover("3-")[
+      ]
+    ][
+      #uncover("3-")[
         #bordered-card(title: [Marginalize])[
           #text(size: fs("l"))[
             $p(y) = integral p(y | z) p(z) dif z$
           ]
         ]
-      ],
-    )
+      ]
+    ]
 
     #source-note[Murphy, Book 2 §2.3.2]
   ],

@@ -28,7 +28,7 @@ The design document therefore uses **real content but abstract geometry**:
 - real or near-final prose;
 - real figures when available;
 - real semantic grouping;
-- stable object IDs;
+- stable object labels;
 - abstract layout sketches;
 - abstract reveal sketches.
 
@@ -104,11 +104,11 @@ The active template may render the same semantic name differently at different s
 
 Do not invent names such as `design-figure-card` merely because the rendering stage differs.
 
-# IDs are the connective tissue
+# Labels are the connective tissue
 
-Every object that participates in layout or reveal structure should have a short stable ID or label.
+Every object that participates in layout or reveal structure should have a short stable label.
 
-The same ID is used in:
+The same label is used in:
 
 1. the layout specification;
 2. the labeled content-object rendering;
@@ -116,7 +116,7 @@ The same ID is used in:
 
 This identity is the invariant that lets production lower the design mechanically.
 
-Where practical, `design.typ` should detect duplicate IDs, unknown layout references, unknown reveal references, important objects never placed, and contradictory structured reveal specifications.
+Where practical, `design.typ` should detect duplicate labels, unknown layout references, unknown reveal references, important objects never placed, and contradictory structured reveal specifications.
 
 # Layout specification
 
@@ -126,7 +126,7 @@ A design layout may use a small predefined vocabulary corresponding to recurring
 
 The layout answers questions such as:
 
-- which object IDs occupy which regions;
+- which object labels occupy which regions;
 - which objects are peers;
 - which object is dominant;
 - which regions span rows or columns;
@@ -134,7 +134,7 @@ The layout answers questions such as:
 
 It should not normally specify centimeters, exact percentages or ratios, production gutters, or exact Typst `grid` / `content-block` code.
 
-The rendered design document should show a **layout sketch containing IDs**, rather than execute the actual slide layout.
+The rendered design document should show a **layout sketch containing labels**, rather than execute the actual slide layout.
 
 # Reveal specification
 
@@ -146,7 +146,7 @@ Prefer a small structured vocabulary such as:
 - cumulative construction;
 - deliberate replacement/focus.
 
-Reveal states refer to the same stable object IDs used by layout.
+Reveal states refer to the same stable object labels used by layout.
 
 The design must make clear:
 
@@ -177,9 +177,9 @@ Do not generalize every escape-hatch use immediately. Repetition across real sli
 A `slide-design(...)` unit should normally render in this order:
 
 1. slide title and teaching move;
-2. **layout sketch** using object IDs;
+2. **layout sketch** using object labels;
 3. **labeled content objects**, with real equations, wording, figures, and schemas where available;
-4. **reveal sketch** using the same IDs;
+4. **reveal sketch** using the same labels;
 5. rationale, constraints, unresolved design items, and upstream pressure when needed.
 
 One design unit corresponds conceptually to one eventual slide. It need not be forced onto exactly one physical document page.
@@ -234,7 +234,7 @@ Before perfecting the design API, draft the section as if the desired vocabulary
 
 For every proposed slide, write a provisional `slide-design(...)` specification containing:
 
-- stable object IDs;
+- stable object labels;
 - real or near-final visible content;
 - ordinary semantic object names where appropriate;
 - abstract layout;
@@ -257,7 +257,7 @@ Do not distort the slide design to fit the API. Do not make the API broad merely
 
 The design artifact is itself a review object.
 
-Check whether layout sketches communicate intended relationships, IDs resolve, real equations and figures expose density problems, the reveal sketch matches the intended teaching sequence, and unresolved `design-*` constructs are conspicuous.
+Check whether layout sketches communicate intended relationships, labels resolve, real equations and figures expose density problems, the reveal sketch matches the intended teaching sequence, and unresolved `design-*` constructs are conspicuous.
 
 ## 5. Iterate section and template together
 
@@ -327,7 +327,7 @@ Before treating a section design as ready for production, check:
 - **Density:** is the real content plausibly slide-legible?
 - **Continuity:** does the slide begin from what the preceding slide established?
 - **No silent organization change:** are split/merge/reorder pressures explicit?
-- **Representation completeness:** do layout, content objects, and reveal all refer to the same stable IDs?
+- **Representation completeness:** do layout, content objects, and reveal all refer to the same stable labels?
 
 # General principle
 

@@ -57,6 +57,10 @@ in the current agent environment; if either is unavailable, inform the user.
 Detailed slide design is developed before production in a lecture-local
 `slide_design.typ` that imports `Lectures/design.typ`.
 
+Each section begins with a `section-design-notes(...)` page recording the
+section purpose, entry assumptions, endpoint, narrative arc, recurring
+visual/notation anchors, summary brief, continuity, and known constraints.
+
 The design language is deliberately more constrained than `course.typ`:
 
 - use real or near-final mathematics, wording, figures, and semantic objects;
@@ -69,11 +73,15 @@ The design language is deliberately more constrained than `course.typ`:
   rendered output is a reveal sketch, not Touying state syntax;
 - use `design-card`, `design-content`, `design-layout`, and
   `design-reveal` as conspicuous escape hatches when a design is not yet
-  expressible in the constrained vocabulary.
+  expressible in the constrained vocabulary;
+- allow ordinary slides to nominate summary visual/key-point candidates;
+  summary-slide design selects a small coherent subset that best retells the
+  section rather than including every nomination.
 
 The normal rendered order for a slide-design unit is layout sketch, labeled
-content objects, then reveal sketch. A design may use real content while still
-leaving exact widths, spacing, and Touying mechanics to production.
+content objects, reveal sketch, then any summary candidates. A design may use
+real content while still leaving exact widths, spacing, and Touying mechanics
+to production.
 
 Production authoring lowers the approved design into `slide_deck.typ`. Do not
 import `design.typ` into the production deck.
@@ -127,6 +135,7 @@ Cards and notes:
 Section summaries:
 
 - `#section-summary-visual[...]` and `#section-summary-takeaways[...]` form the current course-level summary convention.
+- Summary takeaways default to `fs("l")` for normal classroom readability; use a smaller override only when the summary genuinely requires it.
 - A section summary looks backward: reuse a small number of already-taught visual anchors and state short conclusions that the section has already established. Do not introduce a new argument on a summary slide.
 - Section summaries are a special slide architecture. They need not imitate the ordinary card grammar merely for consistency.
 

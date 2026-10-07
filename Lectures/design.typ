@@ -236,6 +236,97 @@
   body: body,
 )
 
+#let summary-visual-candidate(label, reason: none) = (
+  kind: "visual",
+  label: label,
+  reason: reason,
+)
+
+#let summary-key-point-candidate(body, from: none, reason: none) = (
+  kind: "key-point",
+  body: body,
+  from: from,
+  reason: reason,
+)
+
+#let _notes-block(title, body) = block(
+  width: 100%,
+  breakable: true,
+  inset: 6pt,
+  stroke: 0.7pt + design-rule,
+  radius: 3pt,
+  fill: white,
+)[
+  #text(size: 8pt, weight: "bold", fill: design-accent)[#title]
+  #v(2pt)
+  #body
+]
+
+#let section-design-notes(
+  title: none,
+  purpose: none,
+  entry: none,
+  endpoint: none,
+  arc: none,
+  anchors: none,
+  summary-brief: none,
+  continuity: none,
+  constraints: none,
+) = {
+  let title = _require(title, "section-design-notes requires title:")
+  let purpose = _require(purpose, "section-design-notes requires purpose:")
+  let endpoint = _require(endpoint, "section-design-notes requires endpoint:")
+  let arc = _require(arc, "section-design-notes requires arc:")
+  let anchors = _require(anchors, "section-design-notes requires anchors:")
+  let summary-brief = _require(
+    summary-brief,
+    "section-design-notes requires summary-brief:",
+  )
+
+  pagebreak(weak: true)
+  text(size: 8pt, weight: "medium", fill: design-accent)[SECTION DESIGN NOTES]
+  v(2pt)
+  text(size: 16pt, weight: "bold")[#title]
+
+  v(5pt)
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 5pt,
+    _notes-block([Purpose], purpose),
+    _notes-block([Endpoint], endpoint),
+  )
+
+  if entry != none {
+    v(5pt)
+    _notes-block([Entry / assumed context], entry)
+  }
+
+  v(5pt)
+  _notes-block([Narrative arc], arc)
+
+  v(5pt)
+  grid(
+    columns: (1fr, 1fr),
+    gutter: 5pt,
+    _notes-block([Visual and notation anchors], anchors),
+    _notes-block([Summary design brief], summary-brief),
+  )
+
+  if continuity != none or constraints != none {
+    v(5pt)
+    grid(
+      columns: (1fr, 1fr),
+      gutter: 5pt,
+      if continuity == none { [] } else {
+        _notes-block([Continuity / handoff], continuity)
+      },
+      if constraints == none { [] } else {
+        _notes-block([Constraints / open pressure], constraints)
+      },
+    )
+  }
+}
+
 #let summary-map(..pairs) = {
   let pairs = pairs.pos()
   let cells = ()
@@ -323,6 +414,23 @@
       label in labels,
       message: "reveal references unknown object label: " + label,
     )
+  }
+}
+
+#let _validate-summary-candidates(objects, candidates) = {
+  let labels = objects.map(obj => obj.label)
+  for candidate in candidates {
+    if candidate.kind == "visual" {
+      assert(
+        candidate.label in labels,
+        message: "summary visual candidate references unknown object label: " + candidate.label,
+      )
+    } else if candidate.kind == "key-point" and candidate.from != none {
+      assert(
+        candidate.from in labels,
+        message: "summary key-point candidate references unknown source label: " + candidate.from,
+      )
+    }
   }
 }
 
@@ -474,6 +582,47 @@
   }
 }
 
+#let _render-summary-candidates(candidates) = {
+  let rows = ()
+  for candidate in candidates {
+    if candidate.kind == "visual" {
+      rows.push(
+        [
+          #text(size: 7.5pt, weight: "bold", fill: design-accent)[VISUAL]
+          #h(0.5em)
+          #text(size: 7.8pt)[#candidate.label]
+          #if candidate.reason != none {
+            [ — #text(size: 7.5pt, fill: design-muted)[#candidate.reason]]
+          }
+        ],
+      )
+    } else {
+      rows.push(
+        [
+          #text(size: 7.5pt, weight: "bold", fill: design-accent)[KEY POINT]
+          #if candidate.from != none {
+            [ #text(size: 7.5pt, fill: design-muted)[(#candidate.from)]]
+          }
+          [ #candidate.body]
+          #if candidate.reason != none {
+            [ — #text(size: 7.5pt, fill: design-muted)[#candidate.reason]]
+          }
+        ],
+      )
+    }
+  }
+
+  block(
+    width: 100%,
+    inset: 5pt,
+    stroke: 0.7pt + design-rule,
+    radius: 3pt,
+    fill: rgb("#fbfcfd"),
+  )[
+    #stack(spacing: 2pt, ..rows)
+  ]
+}
+
 #let _render-reveal(reveal) = {
   if reveal.kind == "static" {
     block(
@@ -528,6 +677,7 @@
   cards: (),
   key-points: (),
   reveal: none,
+  summary-candidates: (),
   rationale: none,
   constraints: none,
   backpressure: none,
@@ -542,6 +692,7 @@
   let objects = cards + key-points
 
   _validate(objects, layout, reveal)
+  _validate-summary-candidates(objects, summary-candidates)
 
   pagebreak(weak: true)
 
@@ -573,6 +724,13 @@
   text(size: 10.5pt, weight: "bold")[Reveal sketch]
   v(2pt)
   _render-reveal(reveal)
+
+  if summary-candidates.len() > 0 {
+    v(4pt)
+    text(size: 9pt, weight: "bold")[Summary candidates]
+    v(2pt)
+    _render-summary-candidates(summary-candidates)
+  }
 
   if rationale != none {
     v(4pt)

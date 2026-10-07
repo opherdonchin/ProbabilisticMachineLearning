@@ -9,6 +9,49 @@
   author: "Opher Donchin",
 )
 
+#section-design-notes(
+  title: [Section 1 — Exponential families give familiar distributions a common form],
+  purpose: [
+    Introduce exponential-family representation as a useful common coordinate
+    system by starting from distributions students already know rather than from
+    an abstract definition alone.
+  ],
+  entry: [
+    Students know the Bernoulli model well from prior Bayesian statistics and
+    have just reviewed Gaussian distributions in Lecture 1.
+  ],
+  endpoint: [
+    Students can read $p(x|eta)=h(x) exp(eta^T T(x)-A(eta))$, identify the four
+    roles, derive the Bernoulli representation, and explain why Bernoulli's
+    natural parameter is log odds.
+  ],
+  arc: [
+    1. Familiar distributions look different but admit a common algebraic form.    2. Name the four recurring roles in that form.    3. Recover those roles by algebraically rewriting Bernoulli.    4. Interpret the Bernoulli natural coordinate and its normalizer.    5. Compress the section into a general-form → Bernoulli-specialization story.
+  ],
+  anchors: [
+    - Primary anchor: $p(x|eta)=h(x) exp(eta^T T(x)-A(eta))$.
+    - Secondary anchor: the Bernoulli correspondence
+      $T(x)=x$, $eta=log(mu/(1-mu))$, $h(x)=1$, $A(eta)=log(1+e^eta)$.
+    - Interpretive anchor: $mu in (0,1) arrow.l.r eta in RR$.
+    - Keep $mu$ for Bernoulli probability and $eta$ for the natural parameter.
+  ],
+  summary-brief: [
+    Ordinary slides nominate reusable visuals and key points as they are
+    established. The summary designer selects a small combination that best
+    retells the section's argument; selection is not by vote or by exhaustive
+    coverage. Prefer already-taught anchors and do not introduce a new argument.
+  ],
+  continuity: [
+    The section should end with a representation students can immediately reuse
+    when the Gaussian is derived in the next section.
+  ],
+  constraints: [
+    The opening Gaussian is motivational only; do not let its algebra dominate.
+    The Bernoulli derivation should feel like regrouping a familiar model, not
+    like introducing a new probability law.
+  ],
+)
+
 #slide-design(
   title: [Different distributions can share the same algebraic structure],
   section: [Section 1 — Exponential families give familiar distributions a common form],
@@ -50,16 +93,25 @@
   ),
   key-points: (
     key-points(label: "takeaway")[
-      - The representation is useful when it separates *what the data contribute*
-        from *how the distribution is parameterized*.
-      - We will first make those pieces explicit, then recover them in Bernoulli.
+      - Familiar distributions can look very different in their usual parameterizations.
+      - Exponential-family form rewrites them using one common algebraic structure.
     ],
   ),
   reveal: reveal-cumulative(
     initial: ("bernoulli", "gaussian"),
     then: (
       reveal-step(("shared",), purpose: [Expose the common algebraic target.]),
-      reveal-step(("takeaway",), purpose: [State why the change of coordinates is useful.]),
+      reveal-step(("takeaway",), purpose: [State the common-structure claim.]),
+    ),
+  ),
+  summary-candidates: (
+    summary-visual-candidate(
+      "shared",
+      reason: [The general exponential-family equation is the section's main visual anchor.],
+    ),
+    summary-key-point-candidate(
+      [Exponential-family form gives familiar distributions one common algebraic structure.],
+      from: "takeaway",
     ),
   ),
 )
@@ -104,8 +156,8 @@
   ),
   key-points: (
     key-points(label: "takeaway")[
-      - The central interaction is the linear pairing $eta^T T(x)$.
-      - The same four roles will recur even when the familiar parameterization changes.
+      - $h(x)$ and $T(x)$ are data-side terms; $eta$ and $A(eta)$ are parameter-side terms.
+      - Their central interaction is the linear pairing $eta^T T(x)$.
     ],
   ),
   reveal: reveal-cumulative(
@@ -114,6 +166,16 @@
       reveal-step(("h", "T"), purpose: [Identify the data-side pieces.]),
       reveal-step(("eta", "A"), purpose: [Identify the parameter-side pieces.]),
       reveal-step(("takeaway",), purpose: [Name the reusable structure.]),
+    ),
+  ),
+  summary-candidates: (
+    summary-visual-candidate(
+      "formula",
+      reason: [This is the compact reusable form that later sections will repeatedly instantiate.],
+    ),
+    summary-key-point-candidate(
+      [$h(x)$ and $T(x)$ are data-side terms; $eta$ and $A(eta)$ are parameter-side terms.],
+      from: "takeaway",
     ),
   ),
 )
@@ -146,8 +208,8 @@
   ),
   key-points: (
     key-points(label: "takeaway")[
-      The exponential-family representation is obtained by regrouping the same
-      Bernoulli probability; no new probability model has been introduced.
+      Rewriting the same Bernoulli probability exposes
+      $T(x)=x$ and $eta=log(mu/(1-mu))$; the probability model itself is unchanged.
     ],
   ),
   reveal: design-reveal[
@@ -157,6 +219,16 @@
     `takeaway`. The mapping should not appear before the coefficient of $x$ is
     visible.
   ],
+  summary-candidates: (
+    summary-visual-candidate(
+      "mapping",
+      reason: [The Bernoulli correspondence is the section's clearest worked specialization.],
+    ),
+    summary-key-point-candidate(
+      [Rewriting Bernoulli exposes $T(x)=x$ and $eta=log(mu/(1-mu))$ without changing the model.],
+      from: "takeaway",
+    ),
+  ),
 )
 
 #slide-design(
@@ -188,8 +260,8 @@
   ),
   key-points: (
     key-points(label: "takeaway")[
-      - $eta$ is the *log odds*: a constrained probability becomes an unconstrained real coordinate.
-      - $A(eta)$ supplies exactly the normalization required in that coordinate system.
+      - $eta$ is the *log odds*, mapping $mu in (0,1)$ to an unconstrained real coordinate.
+      - $A(eta)=log(1+e^eta)$ normalizes Bernoulli in those coordinates.
     ],
   ),
   reveal: reveal-cumulative(
@@ -199,13 +271,23 @@
       reveal-step(("takeaway",), purpose: [Interpret the coordinate change.]),
     ),
   ),
+  summary-candidates: (
+    summary-visual-candidate(
+      "coordinates",
+      reason: [The interval-to-real-line mapping gives the natural parameter an immediate interpretation.],
+    ),
+    summary-key-point-candidate(
+      [$eta$ is log odds, mapping $mu in (0,1)$ to $eta in RR$.],
+      from: "takeaway",
+    ),
+  ),
 )
 
 #slide-design(
   title: [One representation exposes the same ingredients across families],
   teaching-move: [
-    Consolidate the four pieces of exponential-family structure and retain the
-    Bernoulli mapping as the first worked example before moving to the Gaussian.
+    Retell the section as a general-form → Bernoulli-specialization →
+    natural-coordinate argument using only already-established anchors.
   ],
   layout: layout-summary(
     visual: "summary-visual",
@@ -222,12 +304,17 @@
       )
     ],
     section-summary-takeaways(label: "summary-takeaways")[
-      - Exponential-family form separates base measure, sufficient statistics,
-        natural parameters, and normalization.
-      - For Bernoulli, the natural parameter is the log odds.
-      - The Gaussian will provide a richer test of the same representation.
+      - Exponential-family form separates data-side terms from parameter-side terms.
+      - For Bernoulli, $T(x)=x$ and $eta=log(mu/(1-mu))$.
+      - The natural parameter is log odds: $mu in (0,1) arrow.l.r eta in RR$.
     ],
   ),
   key-points: (),
   reveal: reveal-static(("summary-visual", "summary-takeaways")),
+  rationale: [
+    Select the general formula and the Bernoulli correspondence from the
+    nominated visual anchors. Together they tell the section's general → specific
+    story directly. Keep the log-odds interpretation in the takeaways rather than
+    adding a third visual, which would weaken the summary's hierarchy.
+  ],
 )

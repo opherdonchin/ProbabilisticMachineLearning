@@ -612,15 +612,10 @@
     }
   }
 
-  block(
-    width: 100%,
-    inset: 5pt,
-    stroke: 0.7pt + design-rule,
-    radius: 3pt,
-    fill: rgb("#fbfcfd"),
-  )[
-    #stack(spacing: 2pt, ..rows)
-  ]
+  stack(
+    spacing: 1pt,
+    ..rows,
+  )
 }
 
 #let _render-reveal(reveal) = {
@@ -726,9 +721,9 @@
   _render-reveal(reveal)
 
   if summary-candidates.len() > 0 {
-    v(4pt)
-    text(size: 9pt, weight: "bold")[Summary candidates]
-    v(2pt)
+    v(3pt)
+    text(size: 8.5pt, weight: "bold")[Summary candidates]
+    v(1pt)
     _render-summary-candidates(summary-candidates)
   }
 

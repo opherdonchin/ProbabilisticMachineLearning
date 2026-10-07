@@ -1349,11 +1349,11 @@
 #content-block(
   layout: "top",
   object: [
-    #grid(
+    #twocol(
       columns: cols("right"),
       gutter: 1.0em,
       align: center + horizon,
-      [
+    )[
         #figure-card(from: [Murphy (2025), Book 1, Fig. 1.12a])[
           #course-image(
             lecture-figure-path("figures/book1_fig1_12a_mnist.png"),
@@ -1363,18 +1363,16 @@
           #v(0.3em)
           #align(center)[#text(size: fs("l"))[$x_n in {0, dots, 255}^(28 times 28), quad y_n in {0, dots, 9}$]]
         ]
-      ],
-      [
-        #schema-card[
+    ][
+      #schema-card[
           #stack(
           spacing: sp("m"),
           schema-node([Prediction], [$hat(y) = f_D (x_*)$]),
           uncover("2-")[#schema-node([Discovery], [$hat(z) = f_D (x_*)$], fill: palette.paper)],
           uncover("3-")[#schema-node([Generation], [$x_* tilde p_D (x | c)$], fill: palette.paper)],
         )
-        ]
-      ],
-    )
+      ]
+    ]
   ],
 )
 

@@ -86,9 +86,9 @@
         = 1 / sqrt(2 pi sigma^2)
           exp(-(x-mu)^2 / (2 sigma^2)) $
     ],
-    schema-card(
+    card(
       label: "shared",
-      caption: [One coordinate system can expose the same kinds of pieces in both families.],
+      title: [Shared exponential-family form],
     )[
       $ p(x | eta) = h(x) exp(eta^T T(x) - A(eta)) $
     ],
@@ -143,16 +143,16 @@
     ],
     bordered-card(label: "data-side", title: [Data-side functions])[
       #stack(
-        spacing: 0.45em,
+        spacing: 0.35em,
         [$ h(x) $ — *base measure*: fixed with respect to $eta$],
-        [$ T(x) $ — *sufficient statistics*: the data representation paired with $eta$],
+        [$ T(x) $ — *sufficient statistics*: the data representation],
       )
     ],
-    bordered-card(label: "parameter-side", title: [Parameter-side coordinates])[
+    bordered-card(label: "parameter-side", title: [Parameter-side terms])[
       #stack(
-        spacing: 0.45em,
-        [$ eta $ — *natural parameters*: coordinates that pair linearly with $T(x)$],
-        [$ A(eta) $ — *log-partition function*: the parameter-dependent normalizer],
+        spacing: 0.35em,
+        [$ eta $ — *natural parameters*: pair linearly with $T(x)$],
+        [$ A(eta) $ — *log-partition function*: normalizes the distribution],
       )
     ],
   ),

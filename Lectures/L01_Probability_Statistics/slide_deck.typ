@@ -196,10 +196,11 @@
 #content-block(
   layout: "top",
   object: [
-    #stack(
-      spacing: sp("l"),
-      two-col([
-      recall-card(
+#stack(
+  spacing: sp("l"),
+  align(center)[
+    #block(width: 50%)[
+      #recall-card(
         from: [Earlier in this section: Beta–Bernoulli model],
         size: fs("xl"),
       )[
@@ -210,22 +211,23 @@
           [$ y_i tilde "Bernoulli"(theta) $],
         )
       ]
-      ][]),
-      uncover("2-")[
-        #card[
-          #align(center)[
-            #stack(
-              spacing: 1.0em,
-              text(weight: "semibold", fill: palette.accent)[Bayes' rule],
-              text(size: 1.3em)[$
-                p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
-                &prop p(y | theta) p(theta)$],
-            )
-          ]
-        ]
-      ],
-    )
+    ]
   ],
+  uncover("2-")[
+    #card[
+      #align(center)[
+        #stack(
+          spacing: 1.0em,
+          text(weight: "semibold", fill: palette.accent)[Bayes' rule],
+          text(size: 1.3em)[$
+            p(theta | y) &= frac(p(y | theta) p(theta), p(y)) \
+            &prop p(y | theta) p(theta)
+          $],
+        )
+      ]
+    ]
+  ],
+)  ],
   key-points: [
     #stack(
       spacing: sp("s"),

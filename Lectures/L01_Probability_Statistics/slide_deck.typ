@@ -1643,7 +1643,7 @@
                 align(center)[*Summarize*],
                 course-image(
                   lecture-figure-path("generated/gaussian_operations__summarize.svg"),
-                  width: 100%, height: 4.7cm, show-source: false,
+                  width: 100%, height: 4.7cm,
                 ),
                 text(size: 0.74em)[
                   $ mu = integral bold(x) p(bold(x)) dif bold(x) $
@@ -1656,7 +1656,7 @@
                 align(center)[*Marginalize*],
                 course-image(
                   lecture-figure-path("generated/gaussian_operations__marginalize.svg"),
-                  width: 100%, height: 4.7cm, show-source: false,
+                  width: 100%, height: 4.7cm,
                 ),
                 text(size: 0.74em)[
                   $ p(x_1) = integral p(x_1,x_2) dif x_2 $
@@ -1669,7 +1669,7 @@
                 align(center)[*Condition*],
                 course-image(
                   lecture-figure-path("generated/gaussian_operations__condition.svg"),
-                  width: 100%, height: 4.7cm, show-source: false,
+                  width: 100%, height: 4.7cm,
                 ),
                 text(size: 0.74em)[
                   $ p(x_1 | x_2=a) = frac(p(x_1,a), integral p(u,a) dif u) $

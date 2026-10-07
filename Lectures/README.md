@@ -70,6 +70,8 @@ Slide structure and composition:
 - Ordinary teaching slides normally use one `#content-block(...)`. Its `object:` region composes presentation cards and layout primitives; its `key-points:` region states the conclusions or interpretations. Section-summary and other special-purpose slides may use a different architecture when that better matches their pedagogical role.
 - `#content-block(...)` — object + key-points composition, with `layout: "top" | "bottom" | "side-left" | "side-right"`
 - `#twocol[...][...]`, `#triad[...][...][...]` — standard row layouts; use `cols(...)` and `sp(...)` for named column ratios and spacing choices
+- When two or three peer semantic units appear side by side, make each unit a presentation card and arrange the cards with `twocol` or `triad`. Do not wrap a raw two-/three-column grid of peer units in one generic `card`.
+- Use raw `grid` when the geometry itself carries structure that `twocol`/`triad` do not express: tables or matrices, multi-row/2×2 layouts, fixed replacement geometry, or the internal construction of a figure/schema card.
 - `#section-metadata(short-title: [...], subtitle: [...])` followed by a level-1
   heading (`= Section title`) — section divider and footer metadata
 - `#title-slide()`, `#focus-slide[...]`, `#ending-slide[...]`

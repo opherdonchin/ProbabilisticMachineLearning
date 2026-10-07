@@ -19,6 +19,9 @@ intermediate representation rather than as a rough deck.
   choices, and optical alignment be tuned.
 - A remaining `design-*` construct is explicit unresolved or delegated design
   work; do not silently reinterpret it as a production choice.
+- The design-stage summary selection is authoritative at the level of which
+  visual anchors and takeaways are reused. Production may tune composition but
+  should not silently substitute a different retrospective story.
 
 `design.typ` is not a dependency of the production deck. Its role ends at the
 design handoff.
@@ -74,6 +77,7 @@ Cards and notes:
 Section summaries:
 
 - `#section-summary-visual[...]` and `#section-summary-takeaways[...]` implement the current section-summary convention.
+- `#section-summary-takeaways[...]` defaults to `fs("l")`; smaller text is an explicit exception, not the baseline.
 - Summaries look backward, reuse already-taught anchors, and state already-established conclusions. They are special architecture and need not imitate ordinary card composition merely for consistency.
 
 Available but provisional:

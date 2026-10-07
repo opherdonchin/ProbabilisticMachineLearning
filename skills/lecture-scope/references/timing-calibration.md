@@ -49,7 +49,7 @@ The distinction is visible in L01 itself. For example, the scalar Gaussian updat
 
 ### Carried-forward presentation convention
 
-The course already has a `#recall-block(...)` component with an unobtrusive `Carry forward` marker for knowledge carried from an earlier lecture or recording. The same visual language can inform a lighter-weight convention for equations carried from earlier slides in the same lecture.
+The course already has a `#recall-card(from: [...])[...]` component with an unobtrusive `Carry forward` marker for knowledge carried from an earlier lecture or recording. The same visual language can inform a lighter-weight convention for equations carried from earlier slides in the same lecture.
 
 Do not force every repeated equation into a labeled block. Use the marker when repetition is pedagogically deliberate and recognition of the carried result helps students understand the next transformation or specialization.
 

@@ -401,11 +401,10 @@
   body,
   label: [Carried forward],
   size: fs("m"),
-  width: 100%,
 ) = {
   assert(from != none, message: "recall-card requires provenance via from: [...]")
   block(
-    width: width,
+    width: 100%,
     breakable: false,
     stroke: 0.8pt + palette.rule-line,
     fill: palette.paper,

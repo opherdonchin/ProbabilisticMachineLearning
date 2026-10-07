@@ -90,16 +90,16 @@
         = h(x) exp(eta^T T(x) - A(eta)) $
             $ A(eta) = log Z(eta) $
     ],
-    card(id: "h", title: [$h(x)$ — base measure])[
+    bordered-card(id: "h", title: [$h(x)$ — base measure])[
       Fixed part of the density that may depend on $x$ but not on $eta$.
     ],
-    card(id: "T", title: [$T(x)$ — sufficient statistics])[
+    bordered-card(id: "T", title: [$T(x)$ — sufficient statistics])[
       The data are represented through the vector $T(x)$.
     ],
-    card(id: "eta", title: [$eta$ — natural parameters])[
+    bordered-card(id: "eta", title: [$eta$ — natural parameters])[
       Coordinates for the distribution that pair linearly with $T(x)$.
     ],
-    card(id: "A", title: [$A(eta)$ — log-partition function])[
+    bordered-card(id: "A", title: [$A(eta)$ — log-partition function])[
       The parameter-dependent normalizer that makes the density integrate or sum to one.
     ],
   ),
@@ -182,7 +182,7 @@
             $ mu = sigma(eta) = 1 / (1 + e^(-eta)) $
             $ mu in (0,1) quad longleftrightarrow quad eta in RR $
     ],
-    card(id: "normalizer", title: [Normalization in natural coordinates])[
+    bordered-card(id: "normalizer", title: [Normalization in natural coordinates])[
       $ A(eta) = log(1 + e^eta) $
             $ p(x | eta) = exp(x eta - A(eta)) $
     ],
@@ -216,10 +216,10 @@
     section-summary-visual(id: "summary-visual")[
       $ p(x | eta) = h(x) exp(eta^T T(x) - A(eta)) $
             #summary-map(
-        ("h(x)", "$1$"),
-        ("T(x)", "$x$"),
-        ("eta", "$log(mu/(1-mu))$"),
-        ("A(eta)", "$log(1+e^eta)$"),
+        ([$h(x)$], [$1$]),
+        ([$T(x)$], [$x$]),
+        ([$eta$], [$log(mu/(1-mu))$]),
+        ([$A(eta)$], [$log(1+e^eta)$]),
       )
     ],
     section-summary-takeaways(id: "summary-takeaways")[

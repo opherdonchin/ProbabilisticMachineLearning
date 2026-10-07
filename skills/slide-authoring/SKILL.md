@@ -99,6 +99,10 @@ For section summaries, preserve the design-stage selection of retrospective anch
 
 The design document is not a rough deck. Treat it as a constrained intermediate representation.
 
+A `section-design-notes(...)` page is design metadata, **not a production slide**. Read it as the section-level realization contract and do not lower it into the deck.
+
+Likewise, ordinary-slide summary nominations are design metadata. They do not become visible content on those slides; only the summary designer's selected retrospective anchors belong on the production summary slide.
+
 ## Preserve stable semantic objects
 
 When design source already uses production-ready semantic names such as `card`, `bordered-card`, `recall-card`, `figure-card`, `schema-card`, or `key-points`, preserve their semantic role.

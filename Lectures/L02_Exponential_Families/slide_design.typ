@@ -5,8 +5,8 @@
 #import "../design.typ": *
 
 #set document(
-  title: [Lecture 2 — slide design],
-  author: [Opher Donchin],
+  title: "Lecture 2 — slide design",
+  author: "Opher Donchin",
 )
 
 = Section 1 — Exponential families give familiar distributions a common form

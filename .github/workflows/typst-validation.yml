@@ -34,6 +34,10 @@ jobs:
         run: |
           typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_04.typ build/typst-validation/slide_deck_04.pdf
 
+      - name: Compile pass 05 snapshot
+        run: |
+          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_05.typ build/typst-validation/slide_deck_05.pdf
+
       - name: Upload compiled decks
         uses: actions/upload-artifact@v4
         with:

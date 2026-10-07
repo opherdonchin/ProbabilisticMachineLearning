@@ -36,15 +36,15 @@
   unresolved: unresolved,
 )
 
-#let card(body, id:, title: none) =
+#let card(body, id, title: none) =
   _object("card", id, body, title: title)
 
-#let bordered-card(body, id:, title: none) =
+#let bordered-card(body, id, title: none) =
   _object("bordered-card", id, body, title: title)
 
 #let recall-card(
   body,
-  id:,
+  id,
   from:,
   title: none,
   label: [Carried forward],
@@ -58,7 +58,7 @@
 
 #let figure-card(
   body,
-  id:,
+  id,
   from: none,
   caption: none,
   title: none,
@@ -73,7 +73,7 @@
 
 #let schema-card(
   body,
-  id:,
+  id,
   from: none,
   caption: none,
   title: none,
@@ -86,19 +86,19 @@
   caption: caption,
 )
 
-#let key-points(body, id:, title: [Key points]) =
+#let key-points(body, id, title: [Key points]) =
   _object("key-points", id, body, title: title)
 
-#let section-summary-visual(body, id:, title: [Summary visual]) =
+#let section-summary-visual(body, id, title: [Summary visual]) =
   _object("section-summary-visual", id, body, title: title)
 
-#let section-summary-takeaways(body, id:, title: [Summary takeaways]) =
+#let section-summary-takeaways(body, id, title: [Summary takeaways]) =
   _object("section-summary-takeaways", id, body, title: title)
 
-#let design-card(body, id:, title: [Unresolved card]) =
+#let design-card(body, id, title: [Unresolved card]) =
   _object("design-card", id, body, title: title, unresolved: true)
 
-#let design-content(body, id:, title: [Unresolved content]) =
+#let design-content(body, id, title: [Unresolved content]) =
   _object("design-content", id, body, title: title, unresolved: true)
 
 #let layout-cell(id, colspan: 1, rowspan: 1) = (
@@ -108,8 +108,8 @@
 )
 
 #let layout-grid(
-  columns:,
-  cells:,
+  columns,
+  cells,
   dominant: none,
 ) = (
   kind: "grid",
@@ -119,7 +119,7 @@
 )
 
 #let layout-stack(
-  items:,
+  items,
   key-points: none,
   dominant: none,
 ) = (
@@ -130,8 +130,8 @@
 )
 
 #let layout-side(
-  left:,
-  right:,
+  left,
+  right,
   key-points: none,
   dominant: none,
 ) = (
@@ -143,8 +143,8 @@
 )
 
 #let layout-summary(
-  visual:,
-  takeaways:,
+  visual,
+  takeaways,
 ) = (
   kind: "summary",
   visual: visual,
@@ -162,7 +162,7 @@
   purpose: purpose,
 )
 
-#let reveal-cumulative(initial:, then:) = (
+#let reveal-cumulative(initial, then) = (
   kind: "cumulative",
   initial: initial,
   then: then,
@@ -450,12 +450,12 @@
 }
 
 #let slide-design(
-  title:,
-  teaching-move:,
-  layout:,
+  title,
+  teaching-move,
+  layout,
   cards: (),
   key-points: (),
-  reveal:,
+  reveal,
   rationale: none,
   constraints: none,
   backpressure: none,

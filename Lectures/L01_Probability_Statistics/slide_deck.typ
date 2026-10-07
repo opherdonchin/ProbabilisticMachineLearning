@@ -896,43 +896,49 @@
 #content-block(
   layout: "top",
   object: [
-    #card[
-      #grid(
-            columns: cols("three"),
-            gutter: 1.5em,
-            align: center + horizon,
-            [#align(center)[
-              #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Task]
-              #v(sp("xs"))
-              #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
-              #v(0.34em)
-              $ x in RR^4 arrow.r hat(y) in cal(Y) $
-              #v(0.12em)
-              #text(size: 0.48em, fill: palette.muted)[four measurements $arrow.r$ species]
-            ]],
-            [#uncover("2-")[
-              #align(center)[
-                #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Experience]
-                #v(sp("xs"))
-                #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
-                #v(0.34em)
-                $ D = {(x_n, y_n)}_(n=1)^N $
-                #v(0.12em)
-                #text(size: 0.48em, fill: palette.muted)[150 labeled flowers]
-              ]
-            ]],
-            [#uncover("3-")[
-              #align(center)[
-                #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Performance]
-                #v(sp("xs"))
-                #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
-                #v(0.34em)
-                $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
-                #v(0.12em)
-                #text(size: 0.48em, fill: palette.muted)[zero-one loss / misclassification rate]
-              ]
-            ]],
-          )
+    #triad(
+      gutter: 1.5em,
+      align: center + horizon,
+    )[
+      #card[
+        #align(center)[
+          #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Task]
+          #v(sp("xs"))
+          #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
+          #v(0.34em)
+          $ x in RR^4 arrow.r hat(y) in cal(Y) $
+          #v(0.12em)
+          #text(size: 0.48em, fill: palette.muted)[four measurements $arrow.r$ species]
+        ]
+      ]
+    ][
+      #uncover("2-")[
+        #card[
+          #align(center)[
+            #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Experience]
+            #v(sp("xs"))
+            #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
+            #v(0.34em)
+            $ D = {(x_n, y_n)}_(n=1)^N $
+            #v(0.12em)
+            #text(size: 0.48em, fill: palette.muted)[150 labeled flowers]
+          ]
+        ]
+      ]
+    ][
+      #uncover("3-")[
+        #card[
+          #align(center)[
+            #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Performance]
+            #v(sp("xs"))
+            #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
+            #v(0.34em)
+            $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
+            #v(0.12em)
+            #text(size: 0.48em, fill: palette.muted)[zero-one loss / misclassification rate]
+          ]
+        ]
+      ]
     ]
   ],
   key-points: [

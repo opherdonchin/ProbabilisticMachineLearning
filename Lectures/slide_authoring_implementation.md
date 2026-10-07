@@ -3,6 +3,26 @@
 Use this alongside [`README.md`](README.md). This file records mechanics;
 the standards in `README.md` govern the teaching sequence and visual decisions.
 
+## Design-to-production lowering
+
+When an approved `slide_design.typ` exists, treat it as a constrained
+intermediate representation rather than as a rough deck.
+
+- Object `label:` values connect the design layout sketch, semantic content
+  objects, and reveal sketch.
+- Preserve production-ready semantic roles such as `card`, `recall-card`,
+  `figure-card`, and `schema-card`.
+- First instantiate the real production layout, place the corresponding
+  labeled object bodies, and implement the reveal specification around those
+  same objects.
+- Only after that first lowering pass should exact widths, spacing, font-scale
+  choices, and optical alignment be tuned.
+- A remaining `design-*` construct is explicit unresolved or delegated design
+  work; do not silently reinterpret it as a production choice.
+
+`design.typ` is not a dependency of the production deck. Its role ends at the
+design handoff.
+
 ## Shared course API
 
 Prefer a small stable vocabulary of reusable course components rather than one-off formatting in individual lecture files.
@@ -20,7 +40,8 @@ Slide structure and composition:
   heading (`= Section title`) — section divider and footer metadata
 - `#title-slide()` is established. `#focus-slide[...]` and `#ending-slide[...]` remain available but provisional until later lectures provide recurring use cases.
 
-Create every section with this exact structure. Do not introduce or call a `section-slide` helper:
+For sections after the first, use this structure. Do not introduce or call a
+`section-slide` helper:
 
 ```typst
 #section-metadata(
@@ -34,6 +55,11 @@ Create every section with this exact structure. Do not introduce or call a `sect
 Place `section-metadata` immediately before its level-1 heading, with no slide
 or other content between them. Check the rendered footer on the slide before
 and after every section divider; metadata must not change the previous slide.
+
+For the first section immediately after `#title-slide()`, omit
+`section-metadata` rather than creating an otherwise-empty ordinary slide.
+The shared course layer falls back to the level-1 heading for that section's
+footer short title.
 
 Cards and notes:
 

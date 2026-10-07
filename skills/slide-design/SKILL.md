@@ -41,6 +41,7 @@ Slide Design may decide:
 - carried-forward context;
 - simultaneity versus progression;
 - reveal teaching states and persistence;
+- transient entry emphasis when the newly revealed material needs an attention cue;
 - key points / interpretation;
 - summary nominations and summary selection;
 - asset briefs;
@@ -130,7 +131,7 @@ For each slide specify:
 - labeled content objects;
 - exact or near-final content;
 - abstract layout;
-- reveal structure;
+- reveal structure, including any transient entry emphasis;
 - key points;
 - summary candidates when justified;
 - unresolved design constructs explicitly.
@@ -161,6 +162,7 @@ Check:
 - real equation/figure density;
 - layout relationships;
 - reveal state logic;
+- whether requested entry emphasis helps locate the new material without adding competing chrome;
 - persistence;
 - summary nominations;
 - unresolved escape hatches;

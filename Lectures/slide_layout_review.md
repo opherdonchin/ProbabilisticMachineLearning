@@ -29,8 +29,9 @@ command, with `--offline` when dependencies are cached. Do not use system Python
 or the notebook environment for its rendering dependencies.
 
 Do not make broad repository reads, use the web, add helpers/assets/dependencies,
-or create commits. If editing, follow the installed `typst-author` and
-`touying-author` skills and the lecture standards in `Lectures/README.md`.
+or create commits. If editing, follow `skills/slide-authoring/SKILL.md` and
+`Lectures/slide_authoring_conventions.md`. The approved slide design remains
+authoritative for student-visible meaning and hierarchy.
 
 Return a concise report of issues, each identified by slide title and state,
 with fix status and checks run. Separate unresolved issues from fixed ones.

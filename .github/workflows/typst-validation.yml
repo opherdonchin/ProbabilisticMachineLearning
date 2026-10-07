@@ -3,7 +3,10 @@ name: Typst validation
 on:
   push:
     branches:
-      - slide-authoring-refactor
+      - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -17,13 +20,9 @@ jobs:
         with:
           typst-version: "0.15.0"
 
-      - name: Compile pass 00 reference
-        run: |
-          mkdir -p build/typst-validation
-          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_00.typ build/typst-validation/slide_deck_00.pdf
-
       - name: Compile live Lecture 1 handout
         run: |
+          mkdir -p build/typst-validation
           typst compile --root . Lectures/L01_Probability_Statistics/slide_deck.typ build/typst-validation/slide_deck.pdf
 
       - name: Compile live Lecture 1 presentation reveals
@@ -39,22 +38,6 @@ jobs:
           PY
           typst compile --root . Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ build/typst-validation/slide_deck_presentation.pdf
           rm Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ
-
-      - name: Compile pass 03 snapshot
-        run: |
-          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_03.typ build/typst-validation/slide_deck_03.pdf
-
-      - name: Compile pass 04 snapshot
-        run: |
-          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_04.typ build/typst-validation/slide_deck_04.pdf
-
-      - name: Compile pass 05 snapshot
-        run: |
-          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_05.typ build/typst-validation/slide_deck_05.pdf
-
-      - name: Compile pass 06 snapshot
-        run: |
-          typst compile --root . Lectures/L01_Probability_Statistics/slide_deck_06.typ build/typst-validation/slide_deck_06.pdf
 
       - name: Upload compiled decks
         uses: actions/upload-artifact@v4

@@ -38,9 +38,9 @@
       label: "gaussian",
       title: [Gaussian],
     )[
-      $ cal(N)(x | mu, Sigma)
-        = 1 / sqrt((2 pi)^d det Sigma)
-          exp(-1/2 (x-mu)^T Sigma^(-1) (x-mu)) $
+      $ cal(N)(x | mu, sigma^2)
+        = 1 / sqrt(2 pi sigma^2)
+          exp(-(x-mu)^2 / (2 sigma^2)) $
     ],
     schema-card(
       label: "shared",

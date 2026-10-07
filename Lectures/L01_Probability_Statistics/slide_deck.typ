@@ -39,7 +39,6 @@
 == The Beta-Binomial model
 
 #content-block(
-  layout: "top",
   object-width: 82%,
 
   object: [
@@ -95,7 +94,7 @@
       #grid(
             columns: (28%, 1fr),
             column-gutter: sp("xl"),
-            row-gutter: sp("xs"),
+            row-gutter: sp("xxs"),
             align: center + horizon,
       
             [
@@ -194,7 +193,6 @@
 == Bayes' rule combines prior and likelihood
 
 #content-block(
-  layout: "top",
   object: [
     #stack(
       spacing: sp("l"),
@@ -247,14 +245,12 @@
 == Conjugacy permits simple calculations
 
 #content-block(
-  layout: "top",
   object: [
     #stack(
       spacing: sp("m"),
       align(left)[
         #recall-card(
           from: [Earlier in this section: model and Bayes' rule],
-          size: fs("m"),
           width: 50%,
         )[
           #stack(
@@ -309,7 +305,6 @@
 == The posterior is a distribution representing uncertainty
 
 #content-block(
-  layout: "top",
   object-width: 82%,
   object: [
     #figure-card(
@@ -341,7 +336,6 @@
 == Summary: A familiar modeling language
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #course-image(
@@ -351,9 +345,9 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
-        spacing: sp("s"),
+        spacing: sp("xs"),
         [- A statistical model has data and unknown parameters],
         [- Bayes' rule combines prior and likelihood into a posterior],
         [- Posterior width represents remaining uncertainty],
@@ -373,7 +367,6 @@
 == Statistics focuses on the unknown parameters
 
 #content-block(
-  layout: "top",
   object-width: 60%,
   object: [
     #card[
@@ -401,7 +394,6 @@
 == Machine learning grew out of computer science
 
 #content-block(
-  layout: "top",
   object: [
     #schema-card[
       #input_output_function_schema()
@@ -430,7 +422,6 @@
 == Early machine learning grew out of classification problems
 
 #content-block(
-  layout: "top",
   object: [
     #grid(
       columns: cols("equal"),
@@ -511,7 +502,6 @@
 == Machine learning defined
 
 #content-block(
-  layout: "top",
   object-width: 100%,
   object: [
     #twocol(
@@ -585,7 +575,6 @@
 == Supervised experience supports prediction
 
 #content-block(
-  layout: "top",
   object: [
     #twocol(
       gutter: 2.2em,
@@ -639,7 +628,6 @@
 == Classification: Iris flowers
 
 #content-block(
-  layout: "top",
   object-width: 92%,
   object: [
     #twocol(
@@ -702,7 +690,7 @@
                 [149], [5.9], [3.0], [5.1], [1.8], [Virginica],
               )
             ]
-            #v(sp("xs"))
+            #v(sp("xxs"))
             #text(size: 0.45em, fill: palette.muted)[
               sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
             ]
@@ -769,7 +757,6 @@
 == Performance: empirical risk minimization
 
 #content-block(
-  layout: "top",
   object: [
     #card[
       #align(center)[
@@ -815,7 +802,6 @@
 == A loss function
 
 #content-block(
-  layout: "top",
   object-width: 78%,
   object: [
     #card[
@@ -851,7 +837,6 @@
 == A probabilistic perspective
 
 #content-block(
-  layout: "top",
   object-width: 90%,
   object: [
     #card[
@@ -892,7 +877,6 @@
 == Task, experience, and performance
 
 #content-block(
-  layout: "top",
   object: [
     #triad(
       gutter: 1.5em,
@@ -901,7 +885,7 @@
       #card[
         #align(center)[
           #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Task]
-          #v(sp("xs"))
+          #v(sp("xxs"))
           #text(size: 0.48em, fill: palette.muted)[What must the learned system do?]
           #v(0.34em)
           $ x in RR^4 arrow.r hat(y) in cal(Y) $
@@ -914,7 +898,7 @@
         #card[
           #align(center)[
             #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Experience]
-            #v(sp("xs"))
+            #v(sp("xxs"))
             #text(size: 0.48em, fill: palette.muted)[What data, feedback, or interaction is available?]
             #v(0.34em)
             $ D = {(x_n, y_n)}_(n=1)^N $
@@ -928,7 +912,7 @@
         #card[
           #align(center)[
             #text(size: fs("s"), weight: "semibold", fill: palette.accent)[Performance]
-            #v(sp("xs"))
+            #v(sp("xxs"))
             #text(size: 0.48em, fill: palette.muted)[How is success evaluated?]
             #v(0.34em)
             $ L(theta) = 1/N sum_(n=1)^N II(y_n eq.not f(x_n; theta)) $
@@ -961,7 +945,6 @@
 == Summary: From statistics to machine learning
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #grid(
@@ -986,7 +969,7 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
         [- Machine learning asks how data can produce the required function $f$],
@@ -1013,7 +996,6 @@
 == Experience taxonomy
 
 #content-block(
-  layout: "top",
   object: [
     #schema-card[
       #text(size: fs("l"))[
@@ -1053,7 +1035,6 @@
 == Task taxonomy
 
 #content-block(
-  layout: "top",
   object: [
     // Every node in this grid states a Task/Performance pair; route them all
     // through one wrapper so they stay visually consistent.
@@ -1099,14 +1080,14 @@
   ],
   key-points: [
     #text(size: fs("s"))[Task describes what the learned system must do.]
-    #v(sp("xs"))
+    #v(sp("xxs"))
     #let task-focus(title, basic, performance, example) = stack(
       spacing: 0.5em,
       align(left, text(weight: "semibold", fill: palette.accent, title)),
       grid(
         columns: (7em, 1fr),
         column-gutter: 0.65em,
-        row-gutter: sp("xs"),
+        row-gutter: sp("xxs"),
         align: left,
         [*Basic task*], basic,
         [*Performance*], performance,
@@ -1157,7 +1138,7 @@
             #grid(
               columns: (7em, 1fr),
               column-gutter: 0.65em,
-              row-gutter: sp("xs"),
+              row-gutter: sp("xxs"),
               align: left,
               [*Prediction*], [Map inputs to outputs],
               [*Generation*], [Produce new examples],
@@ -1176,7 +1157,6 @@
 == There are many combinations of experience and task 
 
 #content-block(
-  layout: "top",
   object: [
     #card[
       #align(center)[
@@ -1211,7 +1191,6 @@
 == Summary: Two taxonomies, three ingredients
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #grid(
@@ -1245,7 +1224,7 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
         [- Experience describes what the learner gets to observe],
@@ -1267,7 +1246,6 @@
 == Popular datasets
 
 #content-block(
-  layout: "top",
   object-width: 100%,
   object: [
     #let dataset-card(title, sample, age, tasks) = block(
@@ -1304,7 +1282,7 @@
         [Iris],
         grid(
           columns: 3,
-          gutter: sp("xs"),
+          gutter: sp("xxs"),
           image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 1.7cm, fit: "contain"),
           image("figures/book1_fig1_1b_versicolor.png", width: 100%, height: 1.7cm, fit: "contain"),
           image("figures/book1_fig1_1c_virginica.png", width: 100%, height: 1.7cm, fit: "contain"),
@@ -1346,7 +1324,6 @@
 == MNIST: the same taxonomy, one dataset
 
 #content-block(
-  layout: "top",
   object: [
     #twocol(
       columns: cols("right"),
@@ -1388,7 +1365,6 @@
 == CIFAR-10: higher-dimensional inputs, the same questions
 
 #content-block(
-  layout: "top",
   object: [
     #twocol(
       columns: cols("right"),
@@ -1431,7 +1407,6 @@
 == IMDB reviews: text as sequence data
 
 #content-block(
-  layout: "top",
   object: [
     #grid(
       rows: (0.85fr, 1.15fr),
@@ -1467,7 +1442,6 @@
 == Learning problems become probabilistic queries
 
 #content-block(
-  layout: "top",
   object: [
     // Same grid as the task taxonomy slide, shown all at once: this is a
     // recap under a new reading, not a first teaching pass.
@@ -1517,7 +1491,6 @@
 == Summary: From datasets to learning problems
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #grid(
@@ -1527,7 +1500,7 @@
         bordered-card(title: [Common practice datasets])[
           #grid(
             columns: cols("equal"),
-            gutter: sp("xs"),
+            gutter: sp("xxs"),
             [#stack(spacing: 0.08em, image("figures/book1_fig1_1a_setosa.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[Iris])],
             [#stack(spacing: 0.08em, image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[MNIST])],
             [#stack(spacing: 0.08em, image("figures/book1_fig1_13b_cifar10.png", width: 100%, height: 1.25cm, fit: "contain"), text(size: 0.42em)[CIFAR-10])],
@@ -1553,7 +1526,7 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
         [- Machine learning uses common datasets for practice and example problems],
@@ -1569,7 +1542,6 @@
 == Summary: Probability for machine learning
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #align(center)[Joint distribution: $p_D(x_"obs",z,y_*)$]
@@ -1597,7 +1569,7 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
         [- The task determines which quantity we need from the joint distribution],
@@ -1620,7 +1592,6 @@
 == Gaussians: a concrete example
 
 #content-block(
-  layout: "top",
   object: [
     #card[
       #grid(
@@ -1651,7 +1622,6 @@
 == The three operations in multivariate Gaussian systems
 
 #content-block(
-  layout: "top",
   object: [
     #figure-card(
       from: [Course figures generated by `gaussian_geometry_figures.ipynb`],
@@ -1718,7 +1688,6 @@
 == Covariance summarizes joint variation
 
 #content-block(
-  layout: "top",
   object: [
     #card[
       #align(center)[For a vector $bold(x)$ with mean $mu = E[bold(x)]$]
@@ -1768,7 +1737,6 @@
 == Correlation separates direction from units
 
 #content-block(
-  layout: "top",
   object-width: 91%,
   object: [
     #card[
@@ -1801,7 +1769,6 @@
   #let uncover = utils.uncover.with(self: self)
 
   #content-block(
-    layout: "top",
     object: [
       #twocol[
         #align(center)[
@@ -1844,7 +1811,6 @@
 == Mahalanobis distance uses the cloud's own scale
 
 #content-block(
-  layout: "top",
   object-width: 92%,
   object: [
     #card[
@@ -1874,7 +1840,6 @@
 == Covariance controls the contour shape
 
 #content-block(
-  layout: "top",
   object-width: 95%,
   object: [
     #figure-card(
@@ -1899,7 +1864,6 @@
 == Summary: Joint Gaussian geometry
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #grid(
@@ -1924,7 +1888,7 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
         [- Mean vector $mu$ locates the cloud; covariance $Sigma$ sets its shape],
@@ -1945,7 +1909,6 @@
 == Partition the variables and their parameters together
 
 #content-block(
-  layout: "top",
   object: [
     #card[
       #align(center)[$bold(x)=mat(x_1; x_2), quad mu=mat(mu_1; mu_2)$]
@@ -1978,7 +1941,6 @@
   #let uncover = utils.uncover.with(self: self)
 
   #content-block(
-    layout: "top",
     object: [
       #twocol[
         #align(center)[
@@ -2033,7 +1995,6 @@
   #let uncover = utils.uncover.with(self: self)
 
   #content-block(
-    layout: "top",
     object: [
       #twocol[
         #align(center)[
@@ -2091,7 +2052,6 @@
   #let uncover = utils.uncover.with(self: self)
 
   #content-block(
-    layout: "top",
     object: [
       #twocol[
         #align(center)[
@@ -2151,7 +2111,6 @@
 == The bivariate formula gives intuition
 
 #content-block(
-  layout: "top",
   object-width: 93%,
   object: [
     #card[
@@ -2186,7 +2145,6 @@
 == One observed coordinate can change both the estimate and its uncertainty
 
 #content-block(
-  layout: "top",
   object-width: 91%,
   object: [
     #card[
@@ -2214,7 +2172,6 @@
 == The Schur complement is the residual covariance
 
 #content-block(
-  layout: "top",
   object: [
     #twocol[
       #bordered-card(title: [Conditional Gaussian])[
@@ -2263,7 +2220,6 @@
 == The joint quadratic separates into conditional and marginal parts
 
 #content-block(
-  layout: "top",
   object-width: 95%,
   object: [
     #card[
@@ -2293,7 +2249,6 @@
 == Summary: Marginals and conditionals of a Gaussian
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #grid(
@@ -2322,7 +2277,7 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
         [- Marginalizing $x_2$ integrates over all its possible values],
@@ -2345,7 +2300,6 @@
 == A linear Gaussian system is a model of state and measurement
 
 #content-block(
-  layout: "top",
   object: [
     #twocol(
       columns: cols("right"),
@@ -2388,7 +2342,6 @@
 == One linear Gaussian system supports different questions
 
 #content-block(
-  layout: "top",
   object: [
     #card[
       #align(center)[
@@ -2453,7 +2406,6 @@
 == A linear Gaussian model defines a joint Gaussian
 
 #content-block(
-  layout: "top",
   object: [
     #twocol(
       columns: cols("right"),
@@ -2513,7 +2465,6 @@
 == Bayes' rule for Gaussians
 
 #content-block(
-  layout: "top",
   object: [
     #twocol[
       #text(size: 0.86em)[
@@ -2571,7 +2522,6 @@
 == Bayes' rule as an update formula
 
 #content-block(
-  layout: "top",
   object: [
     #twocol[
       #recall-card(
@@ -2613,7 +2563,6 @@
 == The scalar Gaussian update
 
 #content-block(
-  layout: "top",
   object: [
     #twocol(
       columns: cols("right"),
@@ -2622,7 +2571,6 @@
     )[
       #recall-card(
         from: [Earlier: Gaussian update formula],
-        size: fs("m"),
       )[
         #stack(
           spacing: sp("l"),
@@ -2695,7 +2643,6 @@
 ]
 
 #content-block(
-  layout: "top",
   object: [
     #card[
       #align(center)[
@@ -2763,7 +2710,6 @@
 == Inference often combines conditioning and summarizing
 
 #content-block(
-  layout: "top",
   object: [
     #schema-card(
       from: [Murphy, Book 2 §2.3.2.2–2.3.2.3],
@@ -2801,7 +2747,6 @@
 == Sensor fusion combines measurements according to their uncertainty
 
 #content-block(
-  layout: "top",
   object: [
     #twocol(
       columns: cols("left"),
@@ -2849,7 +2794,6 @@
 == The same model can also predict measurements
 
 #content-block(
-  layout: "top",
   object: [
     #twocol[
       #bordered-card(title: [Model and joint])[
@@ -2900,7 +2844,6 @@
 == Summary: Linear Gaussian systems
 
 #content-block(
-  layout: "top",
   object: [
     #section-summary-visual[
       #grid(
@@ -2925,7 +2868,7 @@
       )
     ]
     #v(sp("s"))
-    #section-summary-takeaways(size: fs("xs"))[
+    #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
         [- The model plus affine-Gaussian rules determine the full joint distribution],
@@ -2940,7 +2883,6 @@
 == Lecture 1: four visual anchors
 
 #content-block(
-  layout: "top",
   object: [
     #grid(
       columns: cols("equal"),
@@ -2949,7 +2891,7 @@
       bordered-card(title: [One dataset, several questions])[
         #block(height: 3.25cm)[
           #stack(
-            spacing: sp("xs"),
+            spacing: sp("xxs"),
             text(size: 0.62em, weight: "semibold")[A dataset is not a task.],
             grid(
               columns: (0.55fr, 0.45fr),
@@ -2958,7 +2900,7 @@
               image("figures/book1_fig1_12a_mnist.png", width: 100%, height: 2.05cm, fit: "contain"),
               text(size: 0.53em)[
                 #stack(
-                  spacing: sp("xs"),
+                  spacing: sp("xxs"),
                   [$x arrow.r hat(y)$  Prediction],
                   [$x arrow.r hat(z)$  Discovery],
                   [$x_* tilde p(x | c)$  Generation],
@@ -3004,7 +2946,7 @@
       bordered-card(title: [Sensor fusion])[
         #block(height: 3.25cm)[
           #stack(
-            spacing: sp("xs"),
+            spacing: sp("xxs"),
             text(size: 0.62em, weight: "semibold")[Uncertainty controls how evidence is combined.],
             image("generated/sensor_fusion_schematic.svg", width: 100%, height: 2.15cm, fit: "contain"),
           )

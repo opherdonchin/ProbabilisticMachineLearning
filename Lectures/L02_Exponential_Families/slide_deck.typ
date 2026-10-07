@@ -65,11 +65,10 @@
       #stack(
         spacing: sp("xs"),
         [
-          - The representation is useful when it separates *what the data contribute*
-            from *how the distribution is parameterized*.
+          - Familiar distributions can look very different in their usual parameterizations.
         ],
         [
-          - We will first make those pieces explicit, then recover them in Bernoulli.
+          - Exponential-family form rewrites them using one common algebraic structure.
         ],
       )
     ]
@@ -142,8 +141,8 @@
     #uncover("4-")[
       #stack(
         spacing: sp("xs"),
-        [- The central interaction is the linear pairing $eta^T T(x)$.],
-        [- The same four roles recur even when the familiar parameterization changes.],
+        [- $h(x)$ and $T(x)$ are data-side terms; $eta$ and $A(eta)$ are parameter-side terms.],
+        [- Their central interaction is the linear pairing $eta^T T(x)$.],
       )
     ]
   ],
@@ -199,8 +198,8 @@
   ],
   key-points: [
     #uncover("4-")[
-      The exponential-family representation is obtained by regrouping the same
-      Bernoulli probability; no new probability model has been introduced.
+      Rewriting the same Bernoulli probability exposes
+      $T(x)=x$ and $eta=log(mu/(1-mu))$; the probability model itself is unchanged.
     ]
   ],
 )
@@ -251,12 +250,11 @@
       #stack(
         spacing: sp("xs"),
         [
-          - $eta$ is the *log odds*: a constrained probability becomes an
-            unconstrained real coordinate.
+          - $eta$ is the *log odds*, mapping $mu in (0,1)$ to an unconstrained
+            real coordinate.
         ],
         [
-          - $A(eta)$ supplies exactly the normalization required in that
-            coordinate system.
+          - $A(eta)=log(1+e^eta)$ normalizes Bernoulli in those coordinates.
         ],
       )
     ]
@@ -294,12 +292,9 @@
     #section-summary-takeaways[
       #stack(
         spacing: sp("xs"),
-        [
-          - Exponential-family form separates base measure, sufficient statistics,
-            natural parameters, and normalization.
-        ],
-        [- For Bernoulli, the natural parameter is the log odds.],
-        [- The Gaussian will provide a richer test of the same representation.],
+        [- Exponential-family form separates data-side terms from parameter-side terms.],
+        [- For Bernoulli, $T(x)=x$ and $eta=log(mu/(1-mu))$.],
+        [- The natural parameter is log odds: $mu in (0,1) arrow.l.r eta in RR$.],
       )
     ]
   ],

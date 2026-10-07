@@ -181,11 +181,11 @@
     ],
   ),
 
-  pause,
-
-  note([
-    In this course, graphs will allow us to factor complex problems into smaller, more tractable problems
-  ]),
+  uncover("3-")[
+    #note[
+      In this course, graphs will allow us to factor complex problems into smaller, more tractable problems
+    ]
+  ],
 )
 
 
@@ -1767,10 +1767,7 @@
 
 == Affine maps carry Gaussian means and covariances
 
-#slide(repeat: 4, self => [
-  #let uncover = utils.uncover.with(self: self)
-
-  #content-block(
+#content-block(
     object: [
       #twocol[
         #align(center)[
@@ -1806,9 +1803,7 @@
       #uncover("4-")[- A linear map changes the scale, orientation, and dimension of variation]
     ],
   )
-])
-
-
+)
 
 == Mahalanobis distance uses the cloud's own scale
 
@@ -1939,10 +1934,7 @@
 
 == Marginalization keeps the matching blocks
 
-#slide(repeat: 4, self => [
-  #let uncover = utils.uncover.with(self: self)
-
-  #content-block(
+#content-block(
     object: [
       #twocol[
         #align(center)[
@@ -1987,16 +1979,11 @@
       )
     ],
   )
-])
-
-
+)
 
 == Conditioning shifts the mean by an observed deviation
 
-#slide(repeat: 4, self => [
-  #let uncover = utils.uncover.with(self: self)
-
-  #content-block(
+#content-block(
     object: [
       #twocol[
         #align(center)[
@@ -2044,16 +2031,11 @@
       )
     ],
   )
-])
-
-
+)
 
 == Conditioning removes explained covariance
 
-#slide(repeat: 4, self => [
-  #let uncover = utils.uncover.with(self: self)
-
-  #content-block(
+#content-block(
     object: [
       #twocol[
         #align(center)[
@@ -2106,9 +2088,7 @@
       )
     ],
   )
-])
-
-
+)
 
 == The bivariate formula gives intuition
 
@@ -2357,11 +2337,9 @@
       gutter: sp("l"),
       align: top,
     )[
-      #uncover("1-")[
-        #bordered-card(title: [Condition])[
-          #text(size: fs("l"))[
-            $p(z | y) = frac(p(y | z) p(z), p(y))$
-          ]
+      #bordered-card(title: [Condition])[
+        #text(size: fs("l"))[
+          $p(z | y) = frac(p(y | z) p(z), p(y))$
         ]
       ]
     ][
@@ -2386,10 +2364,8 @@
   ],
 
   key-points: [
-    #uncover("1-")[
-      - Conditioning asks what we can learn from an observed measurement
-        - What is the distribution of the hidden state after seeing a measurement?
-    ]
+    - Conditioning asks what we can learn from an observed measurement
+      - What is the distribution of the hidden state after seeing a measurement?
 
     #uncover("2-")[
       - Summarizing turns a distribution into a quantity

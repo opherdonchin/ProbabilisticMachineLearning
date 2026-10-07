@@ -49,14 +49,40 @@ These instructions apply to the entire repository.
   surface such pressure explicitly while still completing a provisional full
   organization when reasonably possible.
 
+## Slide design
+
+- After slide-level organization is approved, read and follow
+  `skills/slide-design/SKILL.md` before production authoring.
+- Design one section at a time as a lecture-local Typst design document,
+  normally `slide_design.typ`, using the constrained design API in
+  `Lectures/design.typ` when available.
+- Preserve approved title/order/count unless explicit backpressure is accepted.
+- Use stable object IDs across layout, content objects, and reveal
+  specifications. Reuse ordinary semantic names such as `card`,
+  `figure-card`, `schema-card`, and `recall-card` when those concepts are
+  already production-ready.
+- Use explicit `design-*` escape hatches for unresolved or exceptional design
+  material rather than hiding uncertainty in production-looking code.
+- For early sections, design the section first in pseudo-Typst, then evolve
+  `design.typ` to support the real designs; iterate the design and template
+  together rather than prematurely freezing the API.
+
 ## Lecture slide authoring
 
-- Follow `Lectures/README.md` when creating or editing lecture slides
+- After slide design is approved, read and follow
+  `skills/slide-authoring/SKILL.md` and `Lectures/README.md`.
+- Treat `slide_design.typ` as a constrained intermediate representation:
+  lower its labeled semantic objects, abstract layout, and reveal structure
+  into the flexible production API without silently redesigning the slide.
+- Exact geometry, spacing, and Touying mechanics belong to production;
+  student-visible meaning, hierarchy, simultaneity, and reveal teaching logic
+  belong to design.
 - After editing a lecture `.typ` file, run
   `python scripts/check_typst_math_attachments.py <edited-file>` and fix any
   run-on math attachments introduced by the edit. Report pre-existing hits
   separately rather than silently changing unrelated slides. This focused
   source check still applies when full compile or visual review is deferred.
+- Do not write speaker notes during slide development.
 
 ## Teaching notebook authoring
 

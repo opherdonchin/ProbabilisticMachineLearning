@@ -63,6 +63,12 @@ These instructions apply to the entire repository.
   already production-ready.
 - Use explicit `design-*` escape hatches for unresolved or exceptional design
   material rather than hiding uncertainty in production-looking code.
+- Begin each designed section with a `section-design-notes(...)` page that
+  records purpose, endpoint, narrative arc, visual/notation anchors, summary
+  brief, continuity, and known constraints.
+- Ordinary slide designers may nominate summary visual/key-point candidates.
+  The summary-slide designer selects a small coherent subset that best retells
+  the section; nominations are not obligations.
 - For early sections, design the section first in pseudo-Typst, then evolve
   `design.typ` to support the real designs; iterate the design and template
   together rather than prematurely freezing the API.

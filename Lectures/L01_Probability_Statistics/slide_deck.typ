@@ -1981,7 +1981,12 @@
 
 == Conditioning shifts the mean by an observed deviation
 
-#content-block(
+#slide(repeat: 4, self => [
+  // States 3–4 are nested inside the state-2 proof, so Touying cannot infer
+  // the full repeat count from the outer slide structure.
+  #let uncover = utils.uncover.with(self: self)
+
+  #content-block(
     object: [
       #twocol[
         #align(center)[
@@ -2029,7 +2034,7 @@
       )
     ],
   )
-
+])
 == Conditioning removes explained covariance
 
 #content-block(

@@ -230,7 +230,7 @@
             spacing: sp("s"),
             [$ eta = log(mu/(1-mu)) $],
             [$ mu = sigma(eta) = 1 / (1 + e^(-eta)) $],
-            [$ mu in (0,1) quad longleftrightarrow quad eta in RR $],
+            [$ mu in (0,1) quad arrow.l.r quad eta in RR $],
           )
         ]
       ]

@@ -16,13 +16,6 @@
 
 #title-slide()
 
-#section-metadata(
-  short-title: [Ordinary slides],
-  subtitle: [Object, interpretation, cards, and composition],
-)
-
-= Ordinary teaching slides
-
 == Object and interpretation
 
 #content-block(
@@ -233,13 +226,6 @@
   ],
 )
 
-
-#section-metadata(
-  short-title: [Reveal structure],
-  subtitle: [Cumulative construction and exceptional replacement],
-)
-
-= Reveal structure
 
 == Cumulative reveal is the normal timing pattern
 

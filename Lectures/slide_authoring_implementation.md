@@ -98,6 +98,15 @@ When a single grid has several `schema-node` cells that must look alike (for exa
 This local function holds no independent visual logic. It forwards one shared
 choice to sibling nodes so a later edit cannot make them drift apart.
 
+## Reveal mechanics
+
+- Initial slide content is state 1 and remains unwrapped.
+- Use `uncover("2-")`, `uncover("3-")`, and so on for ordinary cumulative builds.
+- Coordinate the same state number across object and key-points regions when the content belongs to one teaching step; later interpretation is allowed when intentional.
+- Use `only` or `alternatives-match` only for genuine replacement/focus and reserve stable geometry around the replacement region.
+- Do not mix ordinary numbered reveals with `pause`. Avoid callback `#slide(repeat: ..., self => ...)` unless callback context is technically necessary.
+- No course-level reveal helper is currently needed: the native Touying state notation is more legible than an additional symbolic layer.
+
 ## Speaker notes
 
 Do not add speaker notes during slide development. Speaker notes are generated

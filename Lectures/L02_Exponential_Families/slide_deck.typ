@@ -177,7 +177,7 @@
         ]
       ],
 
-      uncover("3-")[
+      step(4)[
         #bordered-card(title: [Match terms to the general form])[
           #align(center)[
             #stack(

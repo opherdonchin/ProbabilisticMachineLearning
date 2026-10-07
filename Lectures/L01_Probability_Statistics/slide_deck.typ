@@ -2755,17 +2755,23 @@
 #content-block(
   layout: "top",
   object: [
-    #bordered-card(title: [Condition, then summarize])[
-      #grid(
-        columns: (1fr, auto, 1.35fr, auto, 1.25fr),
-        column-gutter: 0.45em,
-        row-gutter: sp("s"),
-        align: center + horizon,
-        [#align(center)[#stack(spacing: sp("xs"), [*Observed*], [$y$])]],
-        [$arrow.r$],
-        [#align(center)[#stack(spacing: sp("xs"), [*Condition*], [$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$])]],
-        uncover("2-")[$arrow.r$],
-        uncover("2-")[#align(center)[#stack(spacing: sp("xs"), [*Summarize*], [$hat(z)=E[z | y]=mu_(z|y)$])]],
+    #schema-card(
+      from: [Murphy, Book 2 §2.3.2.2–2.3.2.3],
+    )[
+      #stack(
+        spacing: sp("s"),
+        text(weight: "semibold", fill: palette.accent)[Condition, then summarize],
+        grid(
+          columns: (1fr, auto, 1.35fr, auto, 1.25fr),
+          column-gutter: 0.45em,
+          row-gutter: sp("s"),
+          align: center + horizon,
+          [#align(center)[#stack(spacing: sp("xs"), [*Observed*], [$y$])]],
+          [$arrow.r$],
+          [#align(center)[#stack(spacing: sp("xs"), [*Condition*], [$p(z | y)=cal(N)(z | mu_(z|y),Sigma_(z|y))$])]],
+          uncover("2-")[$arrow.r$],
+          uncover("2-")[#align(center)[#stack(spacing: sp("xs"), [*Summarize*], [$hat(z)=E[z | y]=mu_(z|y)$])]],
+        ),
       )
     ]
     #uncover("2-")[
@@ -2774,7 +2780,6 @@
         #align(center)[#text(size: fs("l"))[$E[z | y]=integral z p(z | y) dif z$]]
       ]
     ]
-    #source-note[Murphy, Book 2 §2.3.2.2–2.3.2.3]
   ],
   key-points: [
     #stack(

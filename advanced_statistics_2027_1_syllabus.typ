@@ -34,10 +34,10 @@
 
 #let label(body) = text(font: "Noto Sans", size: 8.7pt, weight: "bold", fill: muted, body)
 
-#let lecture(number, date, title, topics, book1, book2) = block(
-  breakable: false,
-  above: 0.28em,
-  below: 0.95em,
+#let lecture(number, date, title, topics, book2, book1, notebook, skill) = block(
+  breakable: true,
+  above: 0.32em,
+  below: 0.9em,
 )[
   #grid(
     columns: (1fr, auto),
@@ -49,13 +49,15 @@
   #text(font: "Noto Sans", size: 10.2pt, weight: "semibold", fill: blue)[#title]
   #v(3pt)
   #grid(
-    columns: (18mm, 1fr),
+    columns: (24mm, 1fr),
     column-gutter: 5pt,
     row-gutter: 3pt,
     align: (left, left),
     [#label[Topics]], [#topics],
-    [#label[Book 1]], [#book1],
     [#label[Book 2]], [#book2],
+    [#label[Book 1]], [#book1],
+    [#label[Notebook]], [#notebook],
+    [#label[Skills]], [#skill],
   )
 ]
 
@@ -83,23 +85,25 @@
 
 = Syllabus
 
-An introduction to machine learning from a probabilistic and theoretically driven perspective. The course follows the approach of the undergraduate statistics course (367-1-4361 Statistical Computation and Analysis), placing probabilistic modeling and Bayesian uncertainty propagation at the center. The focus is on how methods relate to each other and to the underlying model of the data.Conceptual development is accompanied by practical work in which students fit models, examine their predictions, diagnose common failures, and interpret uncertainty.
+This course develops modern machine learning through probabilistic models and the computations needed to use them. We describe a task by a joint probability distribution and a query: a posterior, marginal, predictive distribution, integral, expectation, or decision. The structure of a distribution and the required computation motivate exact algorithms, simplifying assumptions, or approximate inference. Students learn how those mathematical choices produce useful predictive, generative and scientific models.
 
-Topics include probability and statistical foundations; graphical models and Bayesian decision theory; entropy, KL divergence, and mutual information; automatic differentiation and stochastic optimization; generative and discriminative classification; logistic regression; ridge and lasso regression; splines and generalized additive models; generalized linear models; multilayer perceptrons; backpropagation; neural-network training and regularization; Bayesian neural networks; convolutional neural networks; calibration; out-of-distribution detection; and selective prediction.
+The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 is used selectively when it gives needed background or a more pedagogical derivation. The course progresses from exponential families and graphical models through optimization, EM, structured exact inference, VI and MCMC to GLMs, neural networks and VAEs.
 
-Practical work will use Python within Colab, principally NumPy, SciPy, scikit-learn, PyMC, ArviZ, and PyTorch. Each weekly meeting combines a two-hour lecture with approximately one hour of notebook-based guided or independent work.
+Each meeting includes approximately two hours of mathematical lecture and one hour of guided notebook work. Lectures and notebooks have complementary jobs: the lecture establishes mathematics, while the notebook solves a particular application and builds transferable skills.
+
+**Software progression.** Students enter with experience in Python, NumPy, PyMC, Bambi and ArviZ. The course introduces PyTorch early for automatic differentiation and optimization, develops scikit-learn and SciPy skills, and later reuses PyTorch to train neural and generative models. JAX is not required.
 
 = Additional materials
 
-1. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
-2. Kevin P. Murphy, _Probabilistic Machine Learning: Advanced Topics_, MIT Press, 2023 (Book 2). #link("https://probml.github.io/pml-book/book2.html")[Online edition].
-3. Course slides, notebooks, exercises, project guidance, and supplementary readings will be distributed through the course site and the #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[public course repository].
+1. Kevin P. Murphy, _Probabilistic Machine Learning: Advanced Topics_, MIT Press, 2023 (Book 2). #link("https://probml.github.io/pml-book/book2.html")[Online edition].
+2. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
+3. Course notes, exercises, notebook solutions and project materials: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[course repository].
 
-The schedule identifies the sections used to prepare and support each lecture; it does not imply that every derivation or example in those sections will be presented in class.
+Section references below indicate preparation material rather than exact class coverage. Notebook applications are current plans; candidate exercises are subject to lecture scoping, runtime validation and available class time.
 
 = Prerequisites
 
-There are no formal prerequisites. A background in mathematical probability, Bayesian statistics, linear algebra, regression, and Python programming will be helpful. Students who have not taken 367-1-4361 Statistical Computation and Analysis, or equivalent coursework, should consult the instructor before registering. Mathematical material will be refreshed and extended when it is needed in the course.
+There are no formal prerequisites. The expected preparation is a mathematical probability course, basic linear algebra, Python programming and a Bayesian-first undergraduate statistics course (such as 367-1-4361 Statistical Computation and Analysis). Students should have encountered basic regression, DAGs, hierarchical Bayesian models, and posterior inference/diagnostics with PyMC, Bambi and ArviZ; the course extends rather than reteaches them. Students without equivalent preparation should consult the instructor.
 
 = Course requirements and grading
 
@@ -126,116 +130,235 @@ The course grade is based on four components:
 #lecture(
   1,
   [21.10.2026],
-  [Probability and statistics review and extension],
-  [Machine-learning tasks; probabilistic modeling; statistics and estimators; moments; MLE and MAP; Gaussian and multivariate Gaussian models; conditioning and linear Gaussian systems.],
-  [Ch. 1; §§2.1--2.6, 3.1--3.3, 4.1--4.2 and 4.6.],
-  [Ch. 1; §2.3.],
+  [Probabilistic ML and Gaussian systems],
+  [Machine-learning task framing; probabilistic models; Bayes review; covariance and correlation; multivariate Gaussians; conditioning; missing-data inference; linear Gaussian systems.],
+  [
+    - 2.1.5–2.1.6 Conditional probability; Bayes
+    - 2.2.1.1 Bernoulli and binomial
+    - 2.2.4.1 Beta distribution
+    - 2.3.1.1 Gaussian joint distribution
+    - 2.3.1.3–2.3.1.5 Gaussian conditionals; information form
+    - 2.3.2.1–2.3.2.2 Linear-Gaussian systems
+    - 3.2.1 Coin-flipping Bayes
+    - 3.4–3.4.1 Conjugate priors; binomial
+  ],
+  [
+    - 1.1–1.5 ML tasks and datasets
+    - 2.3 Bayes’ rule
+    - 2.4.1 Bernoulli; binomial
+    - 2.7.4 Beta distribution
+    - 3.1.1–3.1.3 Covariance; correlation
+    - 3.2.1–3.3.4 Multivariate and linear Gaussians
+    - 4.3–4.3.1 Empirical risk
+    - 4.6.1–4.6.2 Beta-binomial Bayes
+  ],
+  [Gaussian inference to impute missing measurements.],
+  [Multivariate NumPy linear algebra and cross-checking posterior computations.],
 )
 
 #lecture(
   2,
   [28.10.2026],
-  [Graphical models and Bayesian decision theory],
-  [Factorization and conditional independence; plate notation; graphical models as probabilistic abstractions; loss, utility, classification and probabilistic prediction.],
-  [§§5.1--5.1.6.],
-  [§§4.1, 4.2.1, 4.2.4, 4.2.8 and selected material from §4.5.1.],
+  [Exponential families and learning from sufficient statistics],
+  [Exponential-family representation; Gaussian canonical form; derivatives of the log-partition function; natural and mean parameters; MLE as moment matching; maximum entropy; Gamma fit; categorical counts; Markov-chain learning.],
+  [
+    - 2.2.1.2 Categorical distribution
+    - 2.4.1–2.4.2 Exponential-family form; examples
+    - 2.4.3–2.4.4 Log partition; moments
+    - 2.4.5 MLE; moment matching
+    - 2.4.7 Maximum entropy
+    - 2.6.1–2.6.3 Markov chains; language models
+  ],
+  [],
+  [Estimate a character-bigram model and generate names.],
+  [Probability estimation and numerical scoring with NumPy/SciPy.],
 )
 
 #lecture(
   3,
   [04.11.2026],
-  [Information theory for probabilistic prediction],
-  [Entropy, cross-entropy, perplexity, KL divergence, forward and reverse KL, mutual information, sufficient statistics, and connections to likelihood and Bayesian inference.],
-  [§§6.1.1--6.1.5, 6.2.1--6.2.2, 6.2.5--6.2.6, 6.3.1--6.3.4 and 6.3.8--6.3.9.],
-  [§§2.7.1--2.7.2, 5.1.3, 5.1.6--5.1.8 and 5.3.3--5.3.4.],
+  [Graphical models],
+  [Compact DAG review; undirected factorization and potentials; partition functions; Ising/Potts interactions; local Markov properties; comparison with directed graphs; factor graphs as preparation for later message passing.],
+  [
+    - 4.2.1–4.2.4 Directed graphs; independence
+    - 4.3.1–4.3.6 MRFs; potentials; Ising; CI
+    - 4.3.7–4.3.9 Sampling; inference; learning
+    - 4.5 Directed vs undirected models
+    - 4.6.1 Factor graphs
+  ],
+  [
+    - 3.6.1 Graph representation
+    - 3.6.2 Graphical inference
+  ],
+  [Use an Ising model to restore a noisy image (candidate).],
+  [Implementing local conditional probability updates from a graph in NumPy.],
 )
 
 #lecture(
   4,
   [11.11.2026],
-  [Mathematical preparation for optimization],
-  [Eigendecomposition and SVD as geometric tools; gradients, Jacobians and Hessians; computation graphs; local, global, convex and nonconvex optimization.],
-  [§§7.4.1--7.4.4, 7.5.1--7.5.3, 7.8 and 8.1.],
-  [§§6.2--6.2.2.],
+  [Information, objectives, and optimization],
+  [Entropy, KL and cross-entropy as objectives; derivatives and stochastic optimization; PyTorch tensor/autograd fundamentals; categorical likelihood and multinomial softmax as a concrete optimization application.],
+  [
+    - 5.1.3–5.1.8 KL divergence; MLE; Bayes
+    - 5.2.4 Cross-entropy; perplexity
+    - 6.1–6.2 Optimization; autodiff
+    - 6.3.1–6.3.3 Stochastic gradient optimization
+  ],
+  [
+    - 6.1.1–6.1.5 Entropy; cross-entropy
+    - 6.2.6 Forward vs reverse KL
+    - 7.8 Matrix calculus
+    - 8.1–8.2 Optimization; gradient descent
+    - 8.3.1 Newton’s method
+    - 8.4.1–8.4.3 Stochastic gradient descent
+  ],
+  [Fit a three-class Iris softmax classifier with PyTorch.],
+  [PyTorch tensor shapes, autograd, losses and gradient-based optimizers.],
 )
 
 #lecture(
   5,
   [18.11.2026],
-  [Gradient-based model fitting],
-  [First-order methods, learning rates, momentum, Newton's method as a conceptual contrast, stochastic gradient descent, automatic differentiation, and optimization of finite-sum objectives.],
-  [§§8.2, 8.3.1 and 8.4.],
-  [§§6.3.1--6.3.3.],
+  [Latent-variable learning and EM],
+  [Mixture models; latent assignments; complete vs observed likelihood; EM as alternating inference and optimization; expected sufficient statistics; relation to exponential-family moment matching.],
+  [
+    - 6.5.1–6.5.6 Bound optimization; EM
+    - 28.2 Mixture models
+  ],
+  [
+    - 3.5 Gaussian and Bernoulli mixtures
+    - 8.7.1–8.7.3 Bound optimization; EM for GMMs
+  ],
+  [Learn with EM from missing Gaussian data or segment MRI tissue (two candidates).],
+  [Writing explicit E/M iterations and verifying against existing fitters.],
 )
 
 #lecture(
   6,
   [25.11.2026],
-  [Generative classification],
-  [Gaussian discriminant analysis; linear and quadratic decision boundaries; naive Bayes; generative versus discriminative modeling; missing features; scoring and calibration.],
-  [§§9.1--9.2.5 and 9.3--9.4.],
-  [§§14.1--14.2.2.],
+  [Inference as computation],
+  [Posterior, marginal, predictive and expected-value queries as sums / integrals; exact vs approximate inference; MAP; grid and Laplace approximation; variational inference, MCMC and SMC as contrasting strategies; how structural assumptions and computational budget determine the method.],
+  [
+    - 7.1–7.2 Inference queries; latent patterns
+    - 7.3 Exact inference
+    - 7.4.1–7.4.7 Approximate inference
+    - 7.5 Evaluating inference
+  ],
+  [],
+  [Compare a grid posterior for Bayesian logistic regression against MAP and Laplace.],
+  [Numerical integration, optimization and approximation checks using SciPy.],
 )
 
 #lecture(
   7,
   [02.12.2026],
-  [Discriminative classification and Bayesian logistic regression],
-  [Binary and multinomial logistic regression; MLE and MAP; standardization; class imbalance; priors; posterior approximation and posterior predictive probabilities.],
-  [§§10.1--10.2.4, 10.2.7--10.2.8, 10.3.1--10.3.5 and 10.5.],
-  [§§15.3.3--15.3.7.],
+  [Exact inference in structured sequence models],
+  [Dynamic programming / message passing; hidden Markov models; forward-backward and Viterbi as exact summation / maximization over exponentially many latent-state sequences; Gaussian filtering as the continuous analogue; selected Kalman filtering if scope permits.],
+  [
+    - 8.1–8.2 Gaussian filtering; Kalman smoothing
+    - 9.1–9.2 Message passing; HMM inference
+  ],
+  [],
+  [Forecast a time series with a Kalman filter (candidate, Oke PS2).],
+  [Representing and testing structured state-space inference without JAX.],
 )
 
 #lecture(
   8,
   [09.12.2026],
-  [Regularized linear models and generalized linear models],
-  [Ridge and lasso; sparsity and regularization paths; splines and generalized additive models; robust regression; multicollinearity; Bayesian shrinkage and variable selection; binomial and Poisson GLMs.],
-  [§§11.3, 11.4.1--11.4.5, 11.5--11.6, 11.7.6--11.7.7 and 12.1--12.3.],
-  [§§15.2.5--15.2.8.],
+  [Variational inference and amortized inference],
+  [Variational approximation as optimization; ELBO; mean-field structure; coordinate ascent; black-box / stochastic VI; reparameterization; amortized inference as learning a map from observations to approximate posteriors.],
+  [
+    - 10.1 Variational objectives; amortization
+    - 10.2 Gradient-based VI
+    - 10.3 Coordinate-ascent VI
+    - 10.4 Structured variational posteriors
+  ],
+  [],
+  [Compare a variational regression posterior against an MCMC reference.],
+  [Specifying and diagnosing variational approximation with PyMC or PyTorch.],
 )
 
 #lecture(
   9,
   [16.12.2026],
-  [Multilayer perceptrons and backpropagation],
-  [Nonlinear representations; activation functions; depth; forward and reverse differentiation; vector-Jacobian products; backpropagation and computation graphs.],
-  [§§13.1--13.2.5 and 13.3.],
-  [§§16.1, 16.2.1--16.2.2 and 16.3.1.],
+  [Monte Carlo and MCMC],
+  [Monte Carlo approximation of integrals; proposal-based sampling; Metropolis-Hastings; Gibbs sampling; Hamiltonian Monte Carlo; diagnostics and the relation between sampling cost, posterior geometry and effective information.],
+  [
+    - 11.1–11.2 Monte Carlo integration
+    - 11.4–11.5 Rejection; importance sampling
+    - 12.1–12.3 Metropolis-Hastings; Gibbs
+    - 12.5 Hamiltonian Monte Carlo
+  ],
+  [],
+  [Evaluate Metropolis proposals on a multimodal mixture target.],
+  [Implementing Markov transition proposals and measuring sampling efficiency.],
 )
 
 #lecture(
   10,
   [23.12.2026],
-  [Neural-network training, regularization and predictive uncertainty],
-  [Learning rates; gradient pathologies; initialization; residual connections; early stopping; weight decay; dropout; overparameterization; MC dropout and deep ensembles as practical uncertainty methods.],
-  [§§13.4.1--13.4.5, 13.5.1--13.5.5 and 13.5.7.],
-  [§§17.2.1, 17.3.1 and 17.3.9--17.3.10.],
+  [Classical probabilistic prediction: GLMs and regularization],
+  [Binary and multinomial logistic regression; linear / generalized linear models; MLE / MAP; ridge and lasso as structural assumptions / priors; calibration and posterior predictive uncertainty where appropriate. Generative-vs-discriminative classification is included only if it earns space.],
+  [
+    - 14.2 Predictive scoring; calibration
+    - 15.1 GLM form; links; estimation
+    - 15.2 Linear regression; priors
+    - 15.3 Logistic regression; uncertainty
+  ],
+  [
+    - 9.1–9.4 LDA; naive Bayes; classifier types
+    - 10.2–10.3 Logistic regression
+    - 11.3–11.4 Ridge; lasso
+  ],
+  [Classify handwritten digits with L1/L2 regularization (alternative: Oke Poisson GLM).],
+  [scikit-learn estimators, preprocessing, penalties and predictive evaluation.],
 )
 
 #lecture(
   11,
   [30.12.2026],
-  [Convolutional neural networks],
-  [Convolution, padding, stride and channels; pooling; normalization; residual and dropout layers; constructing and fitting a convolutional classifier.],
-  [§§14.1 and 14.2.1--14.2.4.],
-  [§§16.2.3--16.2.6 and 16.3.2.],
+  [Neural networks as probabilistic conditional models],
+  [MLPs; nonlinear function approximation; activations and depth; backpropagation / reverse-mode autodiff; optimization and initialization; regularization; softmax / cross-entropy viewed as a probabilistic conditional model rather than a separate conceptual framework.],
+  [
+    - 16.1–16.2 Neural-network building blocks
+    - 16.3 MLPs; CNNs; autoencoders; sequences
+  ],
+  [
+    - 13.2 MLPs; nonlinearities
+    - 13.3 Backpropagation
+    - 13.4 Network training
+    - 13.5.1–13.5.4 Early stopping; weight decay; dropout
+    - 13.5.6 SGD regularization
+  ],
+  [Fit a neural model that predicts both conditional mean and variance.],
+  [PyTorch nn.Module, nonlinear layers and probability-distribution outputs.],
 )
 
 #lecture(
   12,
   [06.01.2027],
-  [CNN architectures, image classification and uncertainty],
-  [The progression from LeNet and AlexNet to Inception, ResNet and DenseNet; practical image classification; out-of-distribution inputs; selective prediction and the limits of predictive confidence.],
-  [§§14.3.1--14.3.5, with particular emphasis on §14.3.4.],
-  [§§17.4.6 and 19.3.2--19.3.3.],
+  [Variational autoencoders: neural latent-variable models],
+  [Latent-variable generative model; encoder / decoder networks; amortized variational posterior; ELBO; reparameterization; reconstruction and KL terms; posterior collapse as a failure mode; VAE as a synthesis of graphical models, information objectives, optimization, VI and neural networks.],
+  [
+    - 21.1–21.2 VAE model; ELBO; inference network
+    - 21.3 VAE variants
+    - 21.4 Posterior collapse
+  ],
+  [],
+  [Train a VAE for mobility variables (Oke PS4) or MNIST.],
+  [PyTorch encoder/decoder networks, reparameterization and ELBO diagnostics.],
 )
 
 #lecture(
   13,
   [13.01.2027],
   [Project presentations and course synthesis],
-  [Student project presentations connecting probabilistic assumptions, computation, prediction, evaluation, uncertainty and scientific interpretation.],
-  [No new sections; projects may draw on Chs. 1--14.],
-  [No new sections; relevant previously assigned sections may be used.],
+  [Student project presentations connecting probabilistic assumptions, computation, prediction, evaluation, uncertainty and scientific interpretation. No additional substantive lecture topic is committed at this stage.],
+  [],
+  [],
+  [Student project presentations.],
+  [Scientific presentation and computational reproducibility.],
 )
+

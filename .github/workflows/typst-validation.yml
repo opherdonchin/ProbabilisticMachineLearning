@@ -39,7 +39,12 @@ jobs:
           typst compile --root . Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ build/typst-validation/slide_deck_presentation.pdf
           rm Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ
 
-      - name: Upload compiled decks
+      - name: Compile course syllabus documents
+        run: |
+          typst compile --root . syllabus_plan.typ build/typst-validation/syllabus_plan.pdf
+          typst compile --root . advanced_statistics_2027_1_syllabus.typ build/typst-validation/advanced_statistics_2027_1_syllabus.pdf
+
+      - name: Upload compiled Typst documents
         uses: actions/upload-artifact@v4
         with:
           name: typst-validation

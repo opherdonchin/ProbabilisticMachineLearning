@@ -44,7 +44,7 @@ The course is organized around four recurring ideas:
 
 *Book 2 is the primary curricular spine.* Book 1 is supplementary rather than co-equal: a Book 1 section is retained only when it supplies necessary background, offers a more pedagogical development, gives a useful worked example, or provides an alternative treatment that may materially improve the lecture.
 
-#note[*Status:* L1 delivered; L2 has an agreed scope; L3--L12 are tentative; L13 is reserved for project presentations / synthesis. Book sections are preparation and support ranges, not a promise to teach every subsection. Book 1 references remain provisional; coverage is not a final reading assignment.]
+#note[*Status:* L1 delivered; L2 has an agreed scope; L3--L12 are tentative; L13 is reserved for project presentations / synthesis. Book sections are preparation and support ranges, not a promise to teach every subsection. Book 1 references remain provisional; coverage is not a final reading assignment. Notebook links identify existing worked references to inspect, not code already validated or adopted for this course.]
 
 #v(0.5em)
 
@@ -60,7 +60,7 @@ The course is organized around four recurring ideas:
     hdr[Topics covered],
     hdr[Book 2 — primary],
     hdr[Book 1 — supplemental],
-    hdr[Proposed applied notebook problem],
+    hdr[Concrete notebook problem and solved reference],
   ),
 
   [1],
@@ -87,7 +87,7 @@ The course is organized around four recurring ideas:
     - 4.3–4.3.1 Empirical risk
     - 4.6.1–4.6.2 Beta-binomial Bayes
   ],
-  [*Gaussian missing-data inference.* Use conditional MVN structure to impute missing measurements and propagate uncertainty. Existing solution notebook: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/main/InClass/Solutions/lecture1_missing_data.ipynb")[lecture1_missing_data.ipynb].],
+  [*Gaussian measurement imputation (already delivered).* Condition a multivariate Gaussian on observed measurements, infer missing values and their uncertainty. Reference: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/lecture-3-prep/InClass/Solutions/lecture1_missing_data.ipynb")[Existing L1 solved notebook].],
 
   [2],
   [*Exponential families and learning from sufficient statistics* \
@@ -102,7 +102,7 @@ The course is organized around four recurring ideas:
     - 2.6.1–2.6.3 Markov chains; language models
   ],
   [],
-  [*Character-level Markov model.* Sequence → transition counts → fitted transition matrix → scoring / generation. Planned from Book 2 §§2.6.2--2.6.3. Current lecture scope: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/main/Lectures/L02_Exponential_Families/section_design.md")[L02 section design].],
+  [*Baby-name character bigram model.* Count character transitions in the names corpus, normalize the transition matrix, compute sequence NLL and generate new names. Reference: #link("https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/makemore/makemore_part1_bigrams.ipynb")[Karpathy’s solved bigram notebook].],
 
   [3],
   [*Graphical models* \
@@ -119,7 +119,7 @@ The course is organized around four recurring ideas:
     - 3.6.1 Graph representation
     - 3.6.2 Graphical inference
   ],
-  [*Small medical diagnostic Bayes net.* Specify the joint from a graph, identify implied independences, compute selected conditionals by enumeration, and verify collider / explaining-away behavior by simulation. Primary support: Book 2 §§4.2.2--4.2.4.],
+  [*Sprinkler Bayesian network.* Build Cloudy–Rain–Sprinkler–Wet–Slippery, recover the joint factorization, test d-separation, and calculate how evidence of wet grass changes beliefs about rain. Reference: #link("https://github.com/probml/pyprobml/blob/master/notebooks/book1/03/sprinkler_pgm.ipynb")[Murphy’s sprinkler_pgm notebook].],
 
   [4],
   [*Information, objectives, and optimization* \
@@ -139,7 +139,7 @@ The course is organized around four recurring ideas:
     - 8.3.1 Newton’s method
     - 8.4.1–8.4.3 Stochastic gradient descent
   ],
-  [*Fit the same probabilistic classifier from its objective.* Derive negative log likelihood / cross-entropy, inspect the gradient, then fit with autodiff + SGD and compare optimization trajectories / held-out predictive loss. Natural candidate: multinomial logistic regression on Iris or another compact biomedical-style dataset.],
+  [*Iris binary logistic regression from its NLL.* Derive the gradient, check it with PyTorch autodiff, train by minibatch SGD, and compare with scikit-learn and full-batch optimization. Reference: #link("https://github.com/probml/pyprobml/blob/master/notebooks/book1/10/logreg_pytorch.ipynb")[Murphy’s worked PyTorch notebook].],
 
   [5],
   [*Latent-variable learning and EM* \
@@ -153,7 +153,7 @@ The course is organized around four recurring ideas:
     - 3.5 Gaussian and Bernoulli mixtures
     - 8.7.1–8.7.3 Bound optimization; EM for GMMs
   ],
-  [*Gaussian mixture model with EM.* Fit a mixture to Old Faithful or another two-cluster dataset; inspect responsibilities, E/M steps, likelihood ascent, sensitivity to initialization, and predictive density.],
+  [*Two-component GMM for Old Faithful eruptions.* Fit Gaussian-mixture weights, means, and covariances by explicit E/M updates; inspect the responsibility assignments and fitted clusters. Reference: #link("https://github.com/kitteltom/old-faithful-EM/blob/main/EM_gaussian_mixture.ipynb")[Old Faithful EM worked notebook].],
 
   [6],
   [*Inference as computation* \
@@ -166,7 +166,7 @@ The course is organized around four recurring ideas:
     - 7.5 Evaluating inference
   ],
   [],
-  [*One posterior, several approximations.* Use a low-dimensional model with a tractable reference posterior and compare grid / exact evaluation, MAP, Laplace and Monte Carlo approximations on the same predictive quantity. Primary support: Book 2 §§7.4.1--7.4.5.],
+  [*One-dimensional Bayesian logistic posterior.* Simulate binary observations, evaluate the exact posterior on a grid, calculate the MAP/Laplace approximation, and compare approximate posterior density and moments. Reference: #link("https://stat238.berkeley.edu/spring-2026/codelecturethirtysix238spring2026/")[Berkeley Stat 238 worked solution (§1)].],
 
   [7],
   [*Exact inference in structured sequence models* \
@@ -177,7 +177,7 @@ The course is organized around four recurring ideas:
     - 9.1–9.2 Message passing; HMM inference
   ],
   [],
-  [*Hidden-state sequence inference.* Infer latent states in a noisy sequential dataset, compare filtering, smoothing and Viterbi, and inspect how chain structure makes exact inference practical. Support: Book 2 §§9.2.1--9.2.6.],
+  [*The occasionally dishonest casino HMM.* Generate loaded/fair dice rolls, estimate hidden states by filtering and smoothing, and compare with the Viterbi path. Reference: #link("https://probml.github.io/dynamax/notebooks/hmm/casino_hmm_inference.html")[Dynamax worked inference notebook].],
 
   [8],
   [*Variational inference and amortized inference* \
@@ -190,7 +190,7 @@ The course is organized around four recurring ideas:
     - 10.4 Structured variational posteriors
   ],
   [],
-  [*VI versus a reference posterior.* Fit a small latent-variable or hierarchical model with VI and a high-quality reference method; compare posterior means, uncertainty, speed and failure modes.],
+  [*Terrain ruggedness and log-GDP regression.* Use the African/non-African interaction regression to compare full/diagonal Gaussian VI with HMC, including coefficient posteriors and posterior predictions. Reference: #link("https://github.com/probml/pyprobml/blob/master/notebooks/book2/10/linreg_bayes_svi_hmc.ipynb")[Murphy’s Pyro SVI-vs-HMC notebook].],
 
   [9],
   [*Monte Carlo and MCMC* \
@@ -203,7 +203,7 @@ The course is organized around four recurring ideas:
     - 12.5 Hamiltonian Monte Carlo
   ],
   [],
-  [*Bayesian model with PyMC / HMC.* Fit a small logistic or hierarchical model, inspect posterior samples, R-hat / ESS / divergences, and compute posterior predictive quantities from samples. Compare with a simpler approximation from L6 or L8 when possible.],
+  [*Eight Schools: centered vs noncentered HMC.* Fit the same hierarchical treatment-effect model twice and use divergences and posterior summaries to diagnose the centered parameterization. Reference: #link("https://www.pymc.io/projects/examples/en/latest/diagnostics_and_criticism/Diagnosing_biased_Inference_with_Divergences.html")[PyMC’s solved Eight Schools diagnostic].],
 
   [10],
   [*Classical probabilistic prediction: GLMs and regularization* \
@@ -220,7 +220,7 @@ The course is organized around four recurring ideas:
     - 10.2–10.3 Logistic regression
     - 11.3–11.4 Ridge; lasso
   ],
-  [*Applied predictive model comparison.* Fit regularized logistic / GLM models to a biomedical-style dataset, compare predictive performance and calibration, and interpret how priors / penalties alter the fitted model.],
+  [*Handwritten-digit logistic regression with L1/L2 regularization.* Classify digits 0–4 against 5–9; vary regularization strength and compare L1, L2 and elastic-net coefficient sparsity and test scores. Reference: #link("https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html")[scikit-learn's L1/L2 worked example].],
 
   [11],
   [*Neural networks as probabilistic conditional models* \
@@ -237,7 +237,7 @@ The course is organized around four recurring ideas:
     - 13.5.1–13.5.4 Early stopping; weight decay; dropout
     - 13.5.6 SGD regularization
   ],
-  [*Logistic regression → MLP on the same task.* Refit the L10 prediction problem with a small PyTorch network, compare flexibility, overfitting, calibration and regularization, and trace how the probabilistic objective remains the same while the parameterization changes.],
+  [*Fashion-MNIST MLP classifier.* Train and evaluate a multilayer perceptron with softmax/logit output and cross-entropy loss; inspect test classifications. Reference: #link("https://docs.pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html")[PyTorch Fashion-MNIST worked tutorial].],
 
   [12],
   [*Variational autoencoders: neural latent-variable models* \
@@ -249,14 +249,14 @@ The course is organized around four recurring ideas:
     - 21.4 Posterior collapse
   ],
   [],
-  [*VAE on MNIST / Fashion-MNIST or another compact image dataset.* Train a small encoder-decoder, inspect latent space and reconstructions, generate samples, and diagnose KL / reconstruction behavior.],
+  [*Convolutional VAE on MNIST.* Fit a VAE encoder and decoder with reconstruction-plus-KL loss; inspect digit reconstructions, generated samples and a two-dimensional latent embedding. Reference: #link("https://github.com/probml/pyprobml/blob/master/notebooks/misc/vae_mnist_pytorch.ipynb")[Murphy’s MNIST VAE PyTorch notebook].],
 
   [13],
   [*Project presentations and course synthesis*],
   [Student project presentations connecting probabilistic assumptions, computation, prediction, evaluation, uncertainty and scientific interpretation. No additional substantive lecture topic is committed at this stage.],
   [],
   [],
-  [No separate notebook. Project demonstrations should make the model, target query, computational strategy and predictive evaluation explicit.],
+  [No notebook — project presentations and synthesis.],
 )
 
 = Deferred-material watchlist

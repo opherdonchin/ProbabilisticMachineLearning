@@ -1,11 +1,11 @@
 # Lecture 3 section design — Graphical Models
 
 **Status:** Proposed section organization for instructor review; not yet approved for slide-level organization.  
-**Authoritative scope:** [lecture_scope.md](lecture_scope.md) on \`lecture-3-authoring\`.  
+**Authoritative scope:** [lecture_scope.md](lecture_scope.md) on `lecture-3-authoring`.  
 **Primary text:** Murphy, *Probabilistic Machine Learning: Advanced Topics* (Book 2), Chapter 4.  
 **Intended delivery:** Approximately two hours of live lecture, followed by a separate one-hour student notebook.
 
-This document partitions the agreed scope into **section-level contracts**. It defines section boundaries, intellectual jobs, prerequisites, mathematical treatment, examples, endpoints, and provisional live times. It is **not** a slide inventory or a notebook specification. Once these boundaries are approved, use \`skills/slide-level-organization/SKILL.md\` on one section at a time. Do not infer that a section heading, example, or equation here requires exactly one slide.
+This document partitions the agreed scope into **section-level contracts**. It defines section boundaries, intellectual jobs, prerequisites, mathematical treatment, examples, endpoints, and provisional live times. It is **not** a slide inventory or a notebook specification. Once these boundaries are approved, use `skills/slide-level-organization/SKILL.md` on one section at a time. Do not infer that a section heading, example, or equation here requires exactly one slide.
 
 The scope file governs any apparent conflict. In particular, the lecture/notebook boundary at the Ising-image application must not move without an explicit upstream scope decision.
 
@@ -315,7 +315,7 @@ A simple binary energy model can encode a spatial preference for local agreement
 
 **End result:** A runnable but imperfect restoration method and a precise distinction among locally improving MAP updates, global MAP, and posterior marginals. Do **not** claim every global MAP problem is intractable: attractive binary pairwise models may admit exact graph-cut methods.
 
-**Authoring sequence:** Validate an instructor worked solution before writing the teaching notebook. Murphy's \`ising_image_denoise_demo.ipynb\` is related but relies on mean-field/Gibbs methods reserved for later; do not copy it as the exercise solution. Preserve the one-hour constraint by supplying data preparation, notation, plotting, small code interfaces, and verification aids, **not** the model derivations. Follow the repository's worked-solution and teaching-notebook skills when those later stages are explicitly requested. No prerequisite recording and no PyTorch/JAX/MCMC/VI requirement.
+**Authoring sequence:** Validate an instructor worked solution before writing the teaching notebook. Murphy's `ising_image_denoise_demo.ipynb` is related but relies on mean-field/Gibbs methods reserved for later; do not copy it as the exercise solution. Preserve the one-hour constraint by supplying data preparation, notation, plotting, small code interfaces, and verification aids, **not** the model derivations. Follow the repository's worked-solution and teaching-notebook skills when those later stages are explicitly requested. No prerequisite recording and no PyTorch/JAX/MCMC/VI requirement.
 
 ## Example and figure shortlist for later slide organization
 
@@ -345,4 +345,4 @@ Prefer few examples reused for different questions over an unconnected gallery. 
 
 **Upstream scope changes requested:** None. This plan is intended to realize the frozen scope without adding or dropping major content.
 
-**Curriculum ledger:** Do not update \`Lectures/material_ledger.md\` merely because the section plan exists. Record actual lecture and notebook coverage when those deliverables are completed.
+**Curriculum ledger:** Do not update `Lectures/material_ledger.md` merely because the section plan exists. Record actual lecture and notebook coverage when those deliverables are completed.

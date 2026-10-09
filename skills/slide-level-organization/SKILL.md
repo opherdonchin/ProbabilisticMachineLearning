@@ -22,7 +22,7 @@ Do not silently resolve consequential ambiguities. Do not, however, stop midway 
 
 ## What this skill is not
 
-This skill does not decide what the lecture is fundamentally about. That belongs to `../lecture-scope/SKILL.md` and, when available, the section-planning stage.
+This skill does not decide what the lecture is fundamentally about. That belongs to `../lecture-scope/SKILL.md`. The intervening `../section-design/SKILL.md` owns the section's intellectual job, entry state, endpoint, boundaries, modularity, and major assigned material.
 
 Do not use this skill to:
 
@@ -44,7 +44,7 @@ A section may arrive with some or all of the following:
 
 - section title;
 - section purpose or role in the lecture;
-- the relevant Lecture Scope or Section Plan;
+- the agreed Lecture Scope and the specific Section Design contract (usually `section_design.md`);
 - exact source sections, pages, exercises, or other authoritative material;
 - a suggested slide extent and/or live-teaching time;
 - a required endpoint;
@@ -90,7 +90,7 @@ It may **recommend**, but must not silently enact, changes to:
 - expected section extent;
 - assumptions about student prerequisites;
 - material assigned to neighboring sections;
-- the Lecture Scope or Section Plan.
+- the Lecture Scope or Section Design contract.
 
 When such a recommendation arises, preserve the current specification in the draft as far as reasonably possible, state the provisional choice made, and record the proposed upstream change explicitly.
 
@@ -295,9 +295,11 @@ Do not treat the first internally coherent draft as final merely because it is p
 
 # Backpressure
 
-Backpressure is a normal output of this skill, not a failure condition.
+Backpressure is a normal output of this skill, not a failure condition. Read `../shared/backpressure.md` for issue ownership, severity, and the distinction between **preview feasibility** and **execution backpressure**.
 
-A downstream organization attempt may reveal that the upstream specification needs reconsideration. Make such pressure explicit and continue with a provisional full organization whenever reasonably possible.
+When organizing slides for a real section, this is **execution backpressure**. If the section's single intellectual job, entry/endpoint, source assignment, modularity, or boundary fails, return the issue to **Section Design**. Escalate to **Lecture Scope** only when repairing it requires a lecture-level change. Changes solely to the teaching-move granularity, summaries, or slide count within an agreed section are owned here.
+
+A downstream organization attempt may reveal that the upstream specification needs reconsideration. Make such pressure explicit and continue with a provisional full organization whenever reasonably possible. If no coherent provisional sequence is possible, report the blocker instead of pretending to complete it.
 
 Use concise categories when helpful:
 
@@ -331,10 +333,13 @@ A coherent organization suggests moving material into or out of an adjacent sect
 
 For each backpressure item state:
 
-1. the pressure;
-2. the provisional choice used to complete the current organization;
-3. the proposed change;
-4. what would change in the slide sequence if the instructor accepts it.
+1. owning stage and severity (`blocking`, `advisory`, or `downstream-owned`);
+2. the specific pressure and evidence;
+3. the provisional choice used to complete the organization, or why none is safe;
+4. the smallest proposed change;
+5. what would change in the slide sequence if the instructor accepts it.
+
+Do not request a revision of Section Design merely because two slides should be combined, one derivation needs two slides, or a summary should be explicitly labeled.
 
 Example:
 
@@ -347,11 +352,11 @@ Do not silently implement the proposed upstream change.
 
 # Relationship to neighboring skills
 
-## Upstream: Lecture Scope and Section Planning
+## Upstream: Lecture Scope and Section Design
 
 Lecture Scope defines the lecture-level intellectual territory, mathematical spine, examples, notebook handoff, and lecture contract.
 
-Section Planning, when available, defines what this section is supposed to accomplish and how it fits the lecture-level argument.
+Section Design defines this section's purpose, entry condition, endpoint, assigned mathematical treatment and sources, boundaries, and place in the lecture-level argument. Work on **one approved section at a time**. When a section contract is not yet available, clarify the missing contract rather than silently inventing it.
 
 Slide-Level Organization should operationalize those decisions as teaching moves. If the sequence cannot do so coherently, apply explicit backpressure rather than quietly redesigning the section.
 

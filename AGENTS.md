@@ -86,14 +86,26 @@ These instructions apply to the entire repository.
   surface such pressure explicitly while still completing a provisional full
   organization when reasonably possible.
 
+## Slide design
+
+- After slide-level organization is approved, read and follow
+  `skills/slide-design/SKILL.md`.
+- Use `Lectures/slide_design_conventions.md` for course-wide design
+  conventions and `Lectures/design.typ` for the executable constrained design
+  language.
+- The normal persistent artifact is lecture-local `slide_design.typ`.
+- Preserve approved organization and section scope unless explicit backpressure
+  is accepted.
+
 ## Lecture slide authoring
 
-- Follow `Lectures/README.md` when creating or editing lecture slides
-- After editing a lecture `.typ` file, run
-  `python scripts/check_typst_math_attachments.py <edited-file>` and fix any
-  run-on math attachments introduced by the edit. Report pre-existing hits
-  separately rather than silently changing unrelated slides. This focused
-  source check still applies when full compile or visual review is deferred.
+- After slide design is approved, read and follow
+  `skills/slide-authoring/SKILL.md`.
+- Use `Lectures/slide_authoring_conventions.md` for course-wide production
+  conventions and `Lectures/course.typ` for the live production API.
+- Treat approved `slide_design.typ` as the student-visible design source of
+  truth. Do not silently redesign while lowering it to `slide_deck.typ`.
+- Do not write speaker notes during visible-slide development.
 
 ## Teaching notebook authoring
 

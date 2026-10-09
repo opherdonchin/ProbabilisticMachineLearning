@@ -74,7 +74,7 @@ When an actual deck already exists, inspect enough of it to understand the local
 - prior results that can be carried forward rather than redeveloped;
 - recurring pedagogical structures already used in the course.
 
-Use `Lectures/README.md` for current course-wide slide-authoring conventions and `Lectures/material_ledger.md` when curriculum state matters.
+Use `Lectures/README.md` only for the current slide-system pipeline and `Lectures/material_ledger.md` when curriculum state matters. Do not import production geometry or authoring mechanics into organization. When a brief design note needs course design vocabulary, consult `Lectures/slide_design_conventions.md`.
 
 Do not treat an old outline, abandoned draft, or source-book table of contents as more authoritative than the current instructor decision, agreed scope, or actual delivered material.
 
@@ -103,6 +103,43 @@ It may **recommend**, but must not silently enact, changes to:
 - the Lecture Scope or Section Design contract.
 
 When such a recommendation arises, preserve the current specification in the draft as far as reasonably possible, state the provisional choice made, and record the proposed upstream change explicitly.
+
+# Handoff to Slide Design
+
+The approved organization is a contract for the downstream design stage.
+
+For each slide, the handoff should make recoverable:
+
+- final-style title;
+- position in the section;
+- teaching move / intention;
+- special role when relevant, such as summary, comparison, derivation, example, or recap;
+- required equation, example, figure, or source when the upstream section contract makes it mandatory;
+- brief design constraints only when they materially preserve the teaching move.
+
+Design notes should describe pedagogical relationships rather than finished composition.
+
+Good organization-level constraints include:
+
+- compare A and B simultaneously;
+- keep a previously established equation available as context;
+- let the derivation unfold progressively;
+- revisit a previously taught visual anchor;
+- static summary.
+
+Leave these to Slide Design:
+
+- exact visible wording beyond what is needed to define the teaching move;
+- semantic object decomposition;
+- key-point wording;
+- detailed visual hierarchy;
+- abstract layout specification;
+- reveal-state structure;
+- summary visual/key-point selection.
+
+Leave exact geometry and Typst/Touying mechanics to Slide Authoring.
+
+The organization artifact should contain enough information that Slide Design can explain every slide's intellectual job without reverse-engineering it from the source book.
 
 # Core organizational principle
 

@@ -39,6 +39,32 @@ jobs:
           typst compile --root . Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ build/typst-validation/slide_deck_presentation.pdf
           rm Lectures/L01_Probability_Statistics/.slide_deck_presentation.typ
 
+      - name: Compile Lecture 2 design document
+        run: |
+          typst compile --root . Lectures/L02_Exponential_Families/slide_design.typ build/typst-validation/l02_slide_design.pdf
+
+      - name: Check Lecture 2 Typst math attachments
+        run: |
+          python scripts/check_typst_math_attachments.py Lectures/L02_Exponential_Families/slide_deck.typ
+
+      - name: Compile Lecture 2 Section 1 handout
+        run: |
+          typst compile --root . Lectures/L02_Exponential_Families/slide_deck.typ build/typst-validation/l02_section1_handout.pdf
+
+      - name: Compile Lecture 2 Section 1 presentation reveals
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source = Path("Lectures/L02_Exponential_Families/slide_deck.typ")
+          temporary = source.with_name(".slide_deck_presentation.typ")
+          text = source.read_text(encoding="utf-8")
+          needle = "config-common(handout: true)"
+          assert text.count(needle) == 1, "expected one explicit handout setting"
+          temporary.write_text(text.replace(needle, "config-common(handout: false)"), encoding="utf-8")
+          PY
+          typst compile --root . Lectures/L02_Exponential_Families/.slide_deck_presentation.typ build/typst-validation/l02_section1_presentation.pdf
+          rm Lectures/L02_Exponential_Families/.slide_deck_presentation.typ
+
       - name: Compile course syllabus documents
         run: |
           typst compile --root . syllabus_plan.typ build/typst-validation/syllabus_plan.pdf

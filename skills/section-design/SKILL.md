@@ -11,6 +11,16 @@ Use this skill after Lecture Scope has identified the lecture's destination, rou
 
 The section sequence is constructed forward with a visible global horizon. Section contracts are provisionally settled one at a time, checked against the remaining lecture, and revisable for named reasons. Do not confuse sequential design with irreversible greedy decisions.
 
+## Operating modes and interaction
+
+Use `build` (default), `feasibility-review`, or `revision`; follow `../shared/backpressure.md`. The sequential construction procedure below applies only to **Build**.
+
+- **Build:** construct one intellectual section after another from the evolving student state; involve the instructor selectively; maintain contracts, global checks, and controlled backtracking. If coordinated, return consequential pedagogical questions to the coordinator (`../lecture-development/SKILL.md`) to present to the instructor.
+- **Feasibility Review:** receive a **provisional five-part Lecture Scope**, examine whether its route, prerequisites, mathematics depths, applications, notebook handoff, and time budget appear workable as a sequence. Report a verdict, evidence, risks, and minimum Scope-level repairs, while explicitly distinguishing questions Section Design can settle later. Do **not** create section contracts or mutate the Scope. This is the preview review described below.
+- **Revision:** receive a previously approved section contract and specific execution backpressure (usually from Slide-Level Organization), plus any instructor decision. Diagnose ownership, recommend the **smallest** change in boundaries, dependencies, treatment allocation, or modularity; apply only approved consequential changes, then update affected neighboring contracts and carried-forward student state. Escalate genuine lecture-level changes to Scope; do not alter Scope unilaterally or draft slide sequences.
+
+In coordinated work the coordinator schedules reviews and mediates instructor decisions; standalone Section Design may request review and consult the instructor directly.
+
 ## Responsibilities and boundaries
 
 Own:
@@ -33,9 +43,9 @@ Use `Lectures/L02_Exponential_Families/section_design.md` as an example **output
 
 If the Scope is absent, internally inconsistent, or provisional in a way that changes section structure, clarify or send backpressure rather than inventing a new lecture-level scope. Source order is evidence about the material, not an instruction to preserve its sequence.
 
-## Review mode: feasibility backpressure to Lecture Scope
+## Feasibility-review procedure: backpressure to Lecture Scope
 
-When invoked by the Scope Builder **before scope approval**, perform a lightweight feasibility review, not full Section Design.
+When invoked by the **coordinator**, or directly by a standalone Scope Builder, **before scope approval**, perform a lightweight feasibility review, not full Section Design.
 
 Check whether a plausible sequence of intellectual moves can:
 - start from what students actually know and reach the defined endpoint;
@@ -45,7 +55,7 @@ Check whether a plausible sequence of intellectual moves can:
 
 Use a rough dependency/route sketch if necessary, **without producing section titles, a final partition, or slide moves**. Report only material concerns and their owners. Distinguish a genuine Scope conflict from a choice Section Design can make later. Return a short verdict: `feasible`, `feasible with advisory risks`, or `blocked`; for each issue give evidence, minimum repair, and impact. An absence of identified blockers is not a guarantee that later Section Design will succeed.
 
-## Construction mode
+## Build mode: sequential construction
 
 ### 1. Establish the global horizon
 

@@ -15,6 +15,16 @@ The primary question is:
 
 Work one section at a time unless the instructor explicitly asks otherwise.
 
+## Operating modes
+
+Use `build` (default), `feasibility-review`, or `revision`. The shared mode/result/ownership contract is `../shared/backpressure.md` **once PR #4's upstream workflow is integrated**; until then, follow the equivalent boundaries here. Under the Lecture Development Coordinator (`../lecture-development/SKILL.md` after integration), return decisions and review results through the coordinator, not a second instructor-facing conversation.
+
+- **Build:** the section-first visual design procedure below; produce the approved student-visible explanation in `slide_design.typ` without silently revising the slide sequence.
+- **Feasibility Review:** inspect a **provisional slide organization**, its section purpose, required mathematics, examples, figures, and time/extent assumptions. Assess whether each teaching move can plausibly be expressed in readable visual content and coherent reveal states using the constrained design language. Examine possible information density, simultaneous comparisons, summary dependencies, and asset feasibility. Return a verdict (`feasible`, `feasible-with-risks`, or `blocked`) and stage-owned issues with evidence and smallest repair. **Do not** draft slides, generate `slide_design.typ`, choose finished layouts, or change slide titles/order.
+- **Revision:** given an approved design plus **specific** Slide Authoring backpressure or instructor change, revise only affected design units/content, semantics, visuals, or reveals; preserve unchallenged teaching moves. Send changes to slide count/title/order back to Slide-Level Organization and changes to section endpoints/depth to the appropriate owner. Report which production slides now need rebuilding or revalidation.
+
+Independent feasibility reviews are preferable where delegation exists, but a same-agent review must be labeled as such. A preview cannot replace actual design review or production render validation.
+
 ## Required references
 
 Before designing, read:

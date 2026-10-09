@@ -27,15 +27,17 @@ Confirm the skill file is available in the active repository revision before ass
 
 1. Identify the lecture, request, current stage, authoritative branch/files, prior approvals, and current instructor constraints. Inspect current course artifacts and the live repository rather than trusting stale summaries.
 2. Check whether an approved upstream artifact already exists. Resume at the earliest stage with a genuine unresolved problem; do not repeat completed planning merely to rerun the workflow.
-3. Maintain a small **live workflow register** (in the conversation, or a lecture-local `development_state.md` if a durable cross-session handoff is needed). Include only:
-   - current stage and exact artifact path/revision;
-   - accepted decisions and the instructor's unresolved questions;
-   - review verdicts with reviewed versions and outstanding blockers;
-   - affected downstream artifacts that must be revalidated after an upstream change;
-   - next action/owner and approval status.
-4. The register is an index and status record, **not** a competing source of truth for Scope, section contracts, slide organization, design, or implementation. Avoid duplicate prose and historical logs; remove temporary workflow files when no longer operationally useful.
+3. For **multi-stage work or work expected to span conversations**, use a small, committed lecture-local `development_state.md` as the **default** workflow register. Do not rely on chat memory as the sole durable record of approvals, exclusions, or the authoritative branch. For a short self-contained single-stage task, a conversational register may suffice. If the repository has no suitable writable location, report the limitation and carry an explicit text handoff.
+4. The register is an **index**, not a competing curriculum authority or chronological log. Keep these compact fields, updating them at material checkpoints and before a conversation ends:
+   - **Repository and revision:** exact working branch, relevant artifact paths, and their last-reviewed commit/blob revisions;
+   - **Stage and status:** current specialist/stage, `proposed | instructor-approved | downstream-validated`, and precise scope (whole lecture or named sections/slides);
+   - **Accepted instructor decisions:** short statements **with provenance** (current discussion, prior documented decision, or approved artifact); do not silently promote inferred preferences to approvals;
+   - **Open instructor decisions and blockers:** owner, evidence, smallest repair, and whether progress is safe without them;
+   - **Review evidence:** who/what reviewed each artifact and revision, and whether review was independent, same-context, or not yet run;
+   - **Impact and next action:** downstream artifacts to revalidate, next owner/action, and any notebook/recording boundary that must not move.
+5. **On every resume, read and reconcile** the register with current repository HEAD, authoritative files, relevant instructor messages, and live PR/branch state. If the register is stale or contradictory, label the conflict and seek resolution before propagating a change. Never overwrite a more recent accepted decision using an older register. Update only affected fields; preserve accepted unrelated decisions. Remove the register only after the workflow has truly concluded and no cross-session continuity is required.
 
-If an artifact's revision changes, treat approvals and reviews tied to its earlier substantive content as potentially stale; invalidate **only affected** downstream work.
+If an artifact's revision changes, treat approvals and reviews tied to its earlier substantive content as potentially stale; invalidate **only affected** downstream work. Where upstream work lives on a divergent branch, record a **reconciliation checklist** of instructor decisions and conflicting files before merging or cherry-picking. Do not treat newer process instructions as permission to change older accepted lecture content. Do not merge branches without authorization.
 
 ## Dispatching work to specialists
 

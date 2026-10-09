@@ -19,6 +19,22 @@ These instructions apply to the entire repository.
   regenerated or removed; do not knowingly leave stale generated outputs beside
   updated source.
 
+## Lecture development coordination
+
+- For a multi-stage lecture-development task, read and follow
+  `skills/lecture-development/SKILL.md`. It coordinates stages and the
+  instructor interaction; it does not replace the specialist skills.
+- Specialists support `build`, `feasibility-review`, and `revision` modes.
+  The coordinator dispatches reviews and routes decisions when active. For a
+  single-stage request, use the relevant specialist directly.
+- Give a delegated specialist its exact mode, inputs, artifact versions, and
+  bounded scope. Referencing a skill file does not itself spawn an agent;
+  use real delegation where available, otherwise run serially and disclose
+  that feasibility checks were not independent.
+- Preserve decisions in their owning artifacts. Instructor approval is needed
+  for consequential pedagogical changes; a feasibility review is not approval.
+  Use `skills/shared/backpressure.md` for handoff and escalation rules.
+
 ## Lecture scope development
 
 - When deciding what a new lecture should cover before drafting slides or a

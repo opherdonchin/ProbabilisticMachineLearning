@@ -5,6 +5,16 @@ description: Develop an agreed lecture scope from prior course material, Murphy 
 
 # Develop a lecture scope
 
+## Operating modes
+
+Use `build` (default), `feasibility-review`, or `revision` as specified by the Lecture Development Coordinator (`../lecture-development/SKILL.md`) or an explicit user request. Follow the shared result contract in `../shared/backpressure.md`. The full five-part iterative process below is **Build mode only**.
+
+- **Build:** investigate actual prior lecture artifacts, material ledger, books, and instructor goals; compare forward paths; obtain decisions and produce the five-part Lecture Scope. When coordinated, return consequential questions to the coordinator rather than opening a parallel instructor conversation.
+- **Feasibility Review:** review an instructor's **proposed lecture brief, goals, or provisional course-level constraints** against the actual course boundary, syllabus, source support, conceptual prerequisites, notebook expectations, and lecture time. Return `feasible`, `feasible-with-risks`, or `blocked` with stage-owned concerns and minimum repairs. **Do not** draft the intellectual arc, mathematical spine, full Scope, sections, or slides. If no meaningful brief exists to review, report that limitation.
+- **Revision:** given a specific backpressure item and the current approved Scope, inspect the relevant evidence, propose the smallest Scope-level change, and modify only affected Scope fields **after instructor approval where consequential**. Preserve unaffected outcomes, covered/deferred decisions, and mathematical depths. Identify section and slide artifacts now requiring revalidation. Do not rebuild the entire scope or redesign sections.
+
+When operating standalone, interact with the instructor as described below. When coordinated, the coordinator arranges specialist reviews and instructor checkpoints.
+
 Use this skill when deciding what a lecture should cover and how its intellectual structure should work before any slide-level, visual, Typst, or notebook authoring begins.
 
 The purpose of this skill is not to generate a lecture plan in one pass. It is to guide an iterative instructor-agent process that explores alternative routes through the material, evaluates tradeoffs, converges on a coherent scope, and records that scope in a form that downstream drafting skills can use.
@@ -33,6 +43,8 @@ Do not use it to:
 - implement the student notebook;
 - write a slide-by-slide outline;
 - perform section-level or slide-level drafting that belongs to later skills.
+
+Exception: before scope approval, **obtain** a lightweight Section Design feasibility review, not a section design. The coordinator dispatches this review when active; in standalone mode request it directly. Follow `../shared/backpressure.md` and the review mode of `../section-design/SKILL.md`.
 
 The approximate time allocations in the scope are constraints for later drafting, not slide counts. Scope-stage timing is a planning estimate, not a validated rehearsal time.
 
@@ -201,7 +213,7 @@ Build and review each part separately. If a later part reveals a structural prob
 
 Build this first.
 
-Divide the lecture into a small number of major conceptual segments, not slides.
+Identify a small number of **provisional macro-level conceptual segments or milestones**, not slides and not finalized Section Design boundaries. These describe the intellectual route and its approximate time envelope; the Section Designer may split, combine, or shift them while preserving the instructor-approved coverage, mathematical depth, endpoint, examples, and live-time envelope. Scope segments are **not** a commitment to the number, titles, or exact boundaries of lecture sections.
 
 For each segment include:
 
@@ -425,6 +437,27 @@ Check that:
 - the notebook has a clear handoff;
 - the scope does not contain slide-level drafting.
 
+## Section Design feasibility review before approval
+
+After assembling the five-part provisional Lecture Scope and checking its internal consistency, obtain **one preview feasibility review** using the review mode in `../section-design/SKILL.md` and `../shared/backpressure.md`. If the coordinator is active, signal that the artifact is ready and let the coordinator commission and adjudicate the review; otherwise request it yourself. Do this **before final instructor approval / freezing**, not as a substitute for the Scope Builder's own analysis.
+
+Ask:
+
+> Can a plausible sequence of coherent intellectual moves carry students from the stated starting state to the lecture and notebook endpoints, given the mathematical treatment depths, required examples, source constraints, and live-time budget? Identify obstacles and the smallest repairs. Do not design sections or slides.
+
+Review for:
+- missing or reversed prerequisites and student-state assumptions;
+- required treatment or empirical applications that cannot plausibly fit the live time;
+- a destination that is inaccessible from the proposed intellectual arc;
+- mismatches among coverage, source support, mathematical spine, examples, and notebook handoff;
+- recording/removability conflicts that make the proposed route fragile.
+
+Classify findings as **blocking**, **advisory**, or **downstream-owned**. Only repair decisions owned by Lecture Scope here. Do not force the Section Designer to pick titles, section counts, exact boundaries, or teaching moves to justify its verdict.
+
+Discuss consequential blocking changes with the instructor, revise the relevant part(s) of the Scope, and re-review only if a substantial revision invalidates the preview. Record remaining advisory risks for downstream stages. Then obtain instructor approval and freeze the agreed scope.
+
+A successful preview is **not** evidence that later section construction, slide organization, or actual timing will succeed. Accept execution backpressure later from Section Design or Slide-Level Organization and revise Scope-level decisions when warranted, rather than requiring downstream skills to work around them silently.
+
 Treat the agreed scope as the source of truth for downstream lecture-drafting skills.
 
 ## Material-ledger implications
@@ -473,6 +506,7 @@ The skill is complete when:
 - the concrete examples have been agreed;
 - the final lecture contract accurately summarizes the agreed scope;
 - the assembled Lecture Scope contains no premature slide or notebook drafting;
+- a lightweight Section Design feasibility preview has been performed or explicitly waived by the instructor, with blocking Scope-level issues resolved and advisory risks recorded;
 - scope-stage timing has been labeled honestly as estimated rather than validated unless actual timing evidence exists;
 - likely later timing-validation points and any `Recording candidate` decisions are visible to downstream drafting;
 - material-ledger implications are clear enough to update separately.

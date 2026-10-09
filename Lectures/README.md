@@ -9,10 +9,10 @@ substitute for the stage-specific skill and conventions document.
 
 The full lecture-development pipeline is **Lecture Scope → Section Design →
 Slide-Level Organization → Slide Design → Slide Authoring**, coordinated by
-`skills/lecture-development/SKILL.md` when the coordinator skill is available. In coordinated work, each specialist has **Build**, **Feasibility
-Review**, and **Revision** modes; the coordinator dispatches reviews and handles
-instructor decisions. `skills/shared/backpressure.md` (when available) defines issue ownership
-and return paths. This directory primarily documents the three downstream
+`skills/lecture-development/SKILL.md`. In coordinated work, each specialist
+has **Build**, **Feasibility Review**, and **Revision** modes; the coordinator
+dispatches reviews and handles instructor decisions.
+`skills/shared/backpressure.md` defines issue ownership and return paths. This directory primarily documents the three downstream
 slide-system stages.
 
 | Stage | Process / authority | Course conventions | Executable layer | Persistent artifact |

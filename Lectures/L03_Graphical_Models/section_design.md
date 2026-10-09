@@ -26,19 +26,20 @@ The structural through-line is: **What restrictions on a joint distribution are 
 
 ### Extent and emphasis
 
-Plan **about 100 minutes of substantive live exposition in a 120-minute lecture window**, leaving roughly 20 minutes for questions, worked graph queries, transitions, and delivery variability. The allocations below are provisional complexity estimates, **not measured or guaranteed times**.
+Plan **about 101 minutes of substantive live exposition in a 120-minute lecture window**, leaving roughly 20 minutes for questions, worked graph queries, transitions, and delivery variability. The allocations below are provisional complexity estimates, **not measured or guaranteed times**.
 
 | Section | Live minutes (provisional) |
 |---|---:|
-| 1. From Markov chains to Bayesian networks | 19 |
-| 2. Conditional independence in directed graphs | 20 |
-| 3. Reading independence from an entire DAG | 20 |
-| 4. Undirected graphical models: local interactions and global normalization | 18 |
-| 5. What directed and undirected graphs say about independence | 14 |
-| 6. The Ising model: a probabilistic model of spatial interaction | 9 |
-| **Substantive total** | **100** |
+| 1. From Markov chains to DAG factorization | 8 |
+| 2. Bayesian networks in practice: the student network | 12 |
+| 3. Conditional independence in directed graphs | 20 |
+| 4. Reading independence from an entire DAG | 20 |
+| 5. Undirected graphical models: local interactions and global normalization | 18 |
+| 6. What directed and undirected graphs say about independence | 14 |
+| 7. The Ising model: a probabilistic model of spatial interaction | 9 |
+| **Substantive total** | **101** |
 
-The demanding work is in Sections 2–3, where students learn genuinely new CI reasoning, and Sections 4–5, where they learn a different factorization and separation language. Protect those derivations and applications over adding more model families. L01's 61 content slides / 70 rendered pages are an extent benchmark, **not** an L03 target or a slide allocation. Re-estimate the workload from actual teaching moves at the next stage. No recording is required or assigned.
+The demanding work is in Sections 3–4, where students learn genuinely new CI reasoning, and Sections 5–6, where they learn a different factorization and separation language. Protect those derivations and applications over adding more model families. L01's 61 content slides / 70 rendered pages are an extent benchmark, **not** an L03 target or a slide allocation. Re-estimate the workload from actual teaching moves at the next stage. No recording is required or assigned.
 
 ### Whole-lecture boundary
 
@@ -50,52 +51,90 @@ The demanding work is in Sections 2–3, where students learn genuinely new CI r
 
 ---
 
-## Section 1 — From Markov chains to Bayesian networks
+## Section 1 — From Markov chains to DAG factorization
 
-**Status:** Proposed for section-boundary review.
+**Status:** Proposed for section-boundary review; split approved in principle, pending instructor review of details.
 
 ### Purpose / role
 
-Transform the L02 Markov-chain factorization from a special sequence model into a general statement about representing a joint distribution through **small, locally normalized conditional distributions**. Establish the distinction between a chain-rule identity and the extra conditional-independence assumptions expressed by a DAG. Make the quantitative gain from a sparse graph tangible, not just pictorial.
+Generalize the first-order Markov chain from L02 into the parent-based factorization of an arbitrary directed acyclic graph (DAG). Establish the essential distinction: the **probability chain rule is an identity**, whereas replacing earlier variables with a smaller parent set imposes **additional conditional-independence assumptions**. Set up the need for concrete small conditional distributions, without working a full network yet.
 
 ### Entry condition / transition in
 
-Recall the learned L02 Markov chain and its first-order factorization. Ask what changes when a sequence is replaced by an arbitrary collection of dependent variables, and why one should not simply store the unrestricted joint table.
+Recall the learned L02 Markov chain and its first-order factorization. Ask what happens when we move from sequential variables to an arbitrary collection of dependent variables, and whether the chain rule by itself gives a compact model.
 
 ### Endpoint
 
-Students can write a DAG's parent-based factorization, identify its CPDs/CPTs, and explain why a bounded number of parents reduces parameter requirements. They can also read a simple plate as shorthand for repeated observations.
+Students can recover the unrestricted chain rule, write a DAG factorization for a topological ordering, and explain in words and notation what additional independence assumptions make that factorization valid. They recognize the Markov chain as a special DAG.
 
 ### Sources and example jobs
 
 - L02 Section 8, Book 2 §§2.6 and 4.2.2.1, and Fig. 4.1: **carry forward** first-order Markov structure.
-- Book 2 §§4.2.1–4.2.2.2, especially the **student network**, Fig. 4.2: **work through** a genuinely non-chain DAG with multiple parents and local CPDs; reuse that network later for CI.
-- Book 2 §4.2.8, Fig. 4.11: **briefly interpret** one repeated-observation plate and its product factorization.
+- Book 2 §4.2.1: **derive/contrast** unrestricted chain-rule and parent-based factorization. Set up the student network for Section 2 without working its CPDs here.
 
 ### Assigned content and mathematical treatment
 
 - First-order Markov factorization — **Recall + Apply**:
   \(p(x_{1:T})=p(x_1)\prod_{t=2}^{T}p(x_t\mid x_{t-1})\).
-- Unrestricted probability chain rule — **State/Recover** for a topological ordering, followed by the *additional* ordered Markov assumption — **Derive + Contrast**:
-  \(p(x_{1:D})=\prod_{i=1}^{D}p(x_i\mid x_{1:i-1})\)
-  versus \(p(x_{1:D})=\prod_{i=1}^{D}p(x_i\mid x_{\mathrm{pa}(i)})\).
-- Local normalization of each CPD/CPT; student-network factorization — **Work** with the actual network.
-- Sparse-graph parameter advantage — **Motivate + Compare** generic scaling \(O(K^D)\) versus \(O(DK^{m+1})\) for bounded indegree \(m\), distinguishing order-of-growth illustration from an exact parameter count.
-- Plate notation — **Recognize + Interpret**, including a simple IID product; no extended plate lesson.
+- Unrestricted probability chain rule — **State/Recover** for a topological ordering:
+  \(p(x_{1:D})=\prod_{i=1}^{D}p(x_i\mid x_{1:i-1})\).
+- Additional ordered Markov assumption — **Derive + Contrast**: for a DAG with \(\mathrm{pa}(i)\subseteq\{1,\ldots,i-1\}\), replace each full-prefix conditional with a parent conditional:
+  \(p(x_{1:D})=\prod_{i=1}^{D}p(x_i\mid x_{\mathrm{pa}(i)})\).
+  Make clear this equality requires the modeling assumption, not just the chain rule.
 
 ### Boundary / exclusions
 
-Do not begin the systematic CI motif treatment, d-separation, CPT parameter learning, or ancestral sampling. A student-network collider may be visible in the diagram; the *effect of conditioning* on it belongs to Section 2.
+Do not work the student network's specific CPDs, parameter counts, or plate notation until Section 2. Do not begin the directed CI motifs, d-separation, CPT learning, or ancestral sampling.
 
 ### Take-home
 
-The chain rule is always valid. A sparse DAG factorization is a **modeling restriction** that can make a large joint distribution compact and interpretable.
+The chain rule always holds. A DAG factorization asserts extra conditional-independence structure that can make the joint distribution simpler.
 
-**Extent:** ~19 minutes.
+**Extent:** ~8 minutes.
 
 ---
 
-## Section 2 — Conditional independence in directed graphs
+## Section 2 — Bayesian networks in practice: the student network
+
+**Status:** Proposed for section-boundary review; new section from the approved split.
+
+### Purpose / role
+
+Make the abstract DAG factorization operational using Murphy's **student network**: read a non-chain graph, identify each variable's parents, write and interpret its **locally normalized CPD/CPT**, and quantify how sparsity reduces the size of a joint model. Establish a reusable network to revisit in Sections 3–4. Finish with a brief introduction to plate notation as shorthand for repeated observations.
+
+### Entry condition / transition in
+
+Section 1 established the parent-based factorization. Ask how we would actually specify the joint distribution for a small DAG with multiple parents, instead of storing an unrestricted joint probability table.
+
+### Endpoint
+
+Students can work the student-network factorization, identify the local CPDs/CPTs and their normalization, and explain the parameter-count advantage of sparse parents. They can recognize one simple plate and translate it into an IID product.
+
+### Sources and example jobs
+
+- Book 2 §4.2.2.2, especially Fig. 4.2: **work through** the student network as a genuinely non-chain DAG with multiple parents and local CPDs; reuse the same network later for CI and explaining away.
+- Book 2 §4.2.8, Fig. 4.11: **briefly interpret** one repeated-observation plate and its product factorization.
+
+### Assigned content and mathematical treatment
+
+- Student-network graph and joint distribution — **Work**: identify the parent set of each variable and write its complete parent-based factorization.
+- Local CPDs/CPTs — **Interpret + Check**: each conditional distribution is normalized locally for a fixed parent configuration; contrast with the unrestricted joint table.
+- Sparse-graph parameter advantage — **Motivate + Compare** generic scaling \(O(K^D)\) versus \(O(DK^{m+1})\) for bounded indegree \(m\), distinguishing this order-of-growth illustration from an exact parameter count. Make the advantage tangible using the network.
+- Plate notation — **Recognize + Interpret** a simple IID repetition and corresponding product; do not start a broader plate lesson.
+
+### Boundary / exclusions
+
+Do not systematically analyze the network's pipe, fork, or collider implications yet: **conditioning and explaining away belong to Section 3**. General d-separation and Markov blankets belong to Section 4. No CPT estimation, ancestral sampling, or extended plate models.
+
+### Take-home
+
+A sparse DAG can specify a large joint distribution through a small collection of locally normalized CPDs. The student network will remain our common example for subsequent independence reasoning.
+
+**Extent:** ~12 minutes.
+
+---
+
+## Section 3 — Conditional independence in directed graphs
 
 **Status:** Proposed for section-boundary review.
 
@@ -105,7 +144,7 @@ Show that a graph's local factorization is more than a storage trick: it also im
 
 ### Entry condition / transition in
 
-Section 1 produced local CPD factorizations. Ask what those factorizations assert about dependence between variables and how observing a variable changes the answer.
+Section 2 produced local CPD factorizations. Ask what those factorizations assert about dependence between variables and how observing a variable changes the answer.
 
 ### Endpoint
 
@@ -114,7 +153,7 @@ Students can correctly reason through pipe/chain, fork, and collider patterns, i
 ### Sources and example jobs
 
 - Book 2 §4.2.4, selected Figs. 4.4–4.8: **work through** small motif distributions and their conditional independence statements.
-- The student network from Section 1: **revisit** as a meaningful collider / explaining-away query rather than adding an unrelated new network.
+- The student network from Section 2: **revisit** as a meaningful collider / explaining-away query rather than adding an unrelated new network.
 
 ### Assigned content and mathematical treatment
 
@@ -125,7 +164,7 @@ Students can correctly reason through pipe/chain, fork, and collider patterns, i
 
 ### Boundary / exclusions
 
-Keep attention on **single-path motifs** and their worked conditionals. Section 3 generalizes these rules across multiple paths and introduces collider descendants, d-separation, and directed Markov blankets. Do not teach a full path-search algorithm or causal intervention interpretation.
+Keep attention on **single-path motifs** and their worked conditionals. Section 4 generalizes these rules across multiple paths and introduces collider descendants, d-separation, and directed Markov blankets. Do not teach a full path-search algorithm or causal intervention interpretation.
 
 ### Take-home
 
@@ -135,7 +174,7 @@ Conditioning blocks pipes and forks but can open colliders. This reversal is why
 
 ---
 
-## Section 3 — Reading independence from an entire DAG
+## Section 4 — Reading independence from an entire DAG
 
 **Status:** Proposed for section-boundary review.
 
@@ -145,7 +184,7 @@ Generalize the three local motif rules into a rigorous, usable criterion for gra
 
 ### Entry condition / transition in
 
-Section 2 handled one path at a time. Now ask whether two nodes are independent when *several* paths might connect them, with observed variables occurring at different places along those paths.
+Section 3 handled one path at a time. Now ask whether two nodes are independent when *several* paths might connect them, with observed variables occurring at different places along those paths.
 
 ### Endpoint
 
@@ -175,7 +214,7 @@ D-separation turns a DAG into a language for **guaranteed** conditional independ
 
 ---
 
-## Section 4 — Undirected graphical models: local interactions and global normalization
+## Section 5 — Undirected graphical models: local interactions and global normalization
 
 **Status:** Proposed for section-boundary review.
 
@@ -195,7 +234,7 @@ Students can read an MRF as a graph of local interactions, build and interpret a
 
 - Book 2 §4.3 introduction, especially Fig. 4.15: **compare** directed and undirected image lattices to motivate why local interactions deserve their own graphical language.
 - Book 2 §4.3.1: **work** a small generic clique/pairwise-potential example. Keep this separate from the image-restoration model students must construct.
-- Book 2 §4.3.2.1 supplies context for the eventual Ising specialization, but the Ising definition itself is reserved for Section 6.
+- Book 2 §4.3.2.1 supplies context for the eventual Ising specialization, but the Ising definition itself is reserved for Section 7.
 
 ### Assigned content and mathematical treatment
 
@@ -210,7 +249,7 @@ Students can read an MRF as a graph of local interactions, build and interpret a
 
 ### Boundary / exclusions
 
-Use an **abstract local-potential example**, not a worked Ising-image prior/likelihood factorization. Defer MRF CI/separation and Hammersley–Clifford until Section 5. No physical-thermodynamics detour, learning, or inference algorithms.
+Use an **abstract local-potential example**, not a worked Ising-image prior/likelihood factorization. Defer MRF CI/separation and Hammersley–Clifford until Section 6. No physical-thermodynamics detour, learning, or inference algorithms.
 
 ### Take-home
 
@@ -220,7 +259,7 @@ Undirected models describe local interactions through **potentials**, but their 
 
 ---
 
-## Section 5 — What directed and undirected graphs say about independence
+## Section 6 — What directed and undirected graphs say about independence
 
 **Status:** Proposed for section-boundary review.
 
@@ -230,7 +269,7 @@ Teach how CI is read from an undirected graph and why this is a genuinely **diff
 
 ### Entry condition / transition in
 
-Section 4 supplied an undirected factorization and its global normalizer. Ask what independences are expressed by the absence/presence of undirected paths, and whether a DAG could always encode the same ones.
+Section 5 supplied an undirected factorization and its global normalizer. Ask what independences are expressed by the absence/presence of undirected paths, and whether a DAG could always encode the same ones.
 
 ### Endpoint
 
@@ -240,7 +279,7 @@ Students can use ordinary undirected graph separation, identify the neighbor Mar
 
 - Book 2 §§4.3.1 (Hammersley–Clifford) and 4.3.6.1 (separation properties): **state and apply** the relevant results.
 - Book 2 §4.5.1 and Fig. 4.37: **work and compare** the undirected four-cycle.
-- Directed collider already studied in Section 2: **reuse** for the converse contrast.
+- Directed collider already studied in Section 3: **reuse** for the converse contrast.
 
 ### Assigned content and mathematical treatment
 
@@ -262,7 +301,7 @@ D-separation and ordinary graph separation define **complementary graphical inde
 
 ---
 
-## Section 6 — The Ising model: a probabilistic model of spatial interaction
+## Section 7 — The Ising model: a probabilistic model of spatial interaction
 
 **Status:** Proposed for section-boundary review.
 
@@ -272,7 +311,7 @@ Finish with one concrete undirected family that makes local potentials, energy, 
 
 ### Entry condition / transition in
 
-Sections 4–5 established MRF factorization, normalization, and separation. Now instantiate these ideas in a minimal binary interaction model whose parameter has an immediate interpretation.
+Sections 5–6 established MRF factorization, normalization, and separation. Now instantiate these ideas in a minimal binary interaction model whose parameter has an immediate interpretation.
 
 ### Endpoint
 
@@ -287,7 +326,7 @@ Students can recognize and interpret a binary Ising distribution, explain what p
 
 - Binary spins \(z_i\in\{-1,+1\}\) and pairwise-neighbor interactions — **Define**:
   \(p(z\mid J)\propto\exp\!\left(J\sum_{(i,j)\in E}z_i z_j\right)\).
-  Explain this as the uniform-coupling, zero-field model; its normalizer is inherited from Section 4.
+  Explain this as the uniform-coupling, zero-field model; its normalizer is inherited from Section 5.
 - Coupling sign and magnitude, and representative configurations — **Interpret + Compare**: \(J>0\) rewards agreement; \(J<0\) rewards disagreement; larger \(|J|\) strengthens the interaction.
 - Noisy-image restoration — **Motivate as a question only**: given noisy observations and a preference for neighboring clean pixels to agree, what should be inferred, and how might one compute it?
 
@@ -323,11 +362,12 @@ These are candidate **teaching functions**, not an instruction to make slides fo
 
 | Section | Candidate | Role |
 |---|---|---|
-| 1 | Book 2 Figs. 4.1, 4.2, and 4.11 | Sequence → general DAG; student CPDs; compact plate |
-| 2–3 | Selected Book 2 Figs. 4.4–4.8, plus student network | CI motifs → multi-path queries → blanket |
-| 4 | Book 2 Fig. 4.15 | Directional lattice vs undirected spatial interactions |
-| 5 | Book 2 Fig. 4.37 and Section 2's collider | Exact four-cycle/collider CI-language contrasts |
-| 6 | Book 2 Fig. 4.17 and brief §4.3.8 application | Ising configurations and the *unsolved* denoising motivation |
+| 1 | Book 2 Fig. 4.1 | Markov chain → generic DAG factorization |
+| 2 | Book 2 Figs. 4.2 and 4.11 | Student CPDs, parameter economy; compact plate |
+| 3–4 | Selected Book 2 Figs. 4.4–4.8, plus student network | CI motifs → multi-path queries → blanket |
+| 5 | Book 2 Fig. 4.15 | Directional lattice vs undirected spatial interactions |
+| 6 | Book 2 Fig. 4.37 and Section 3's collider | Exact four-cycle/collider CI-language contrasts |
+| 7 | Book 2 Fig. 4.17 and brief §4.3.8 application | Ising configurations and the *unsolved* denoising motivation |
 
 Prefer few examples reused for different questions over an unconnected gallery. At slide organization, select only the figures that earn teaching time. Create/read assets under the repository authoring conventions; no assets are authorized at this section-planning stage.
 
@@ -335,13 +375,13 @@ Prefer few examples reused for different questions over an unconnected gallery. 
 
 **Intellectual sequence:** The progression is dependency-respecting: students first factor DAGs, then learn local motifs, then general d-separation; MRF potentials precede MRF separation; the four-cycle contrast only occurs after both languages are established; Ising is interpreted after general energy models. The final notebook question introduces new mathematics rather than repeating the last lecture section.
 
-**Extent pressure:** This is **plausible but tight**, consistent with the scope estimate, especially if the Section 2 explaining-away calculation, Section 3 multipath query, and Section 5 four-cycle comparison are all worked rather than asserted. Provisional choice: preserve all three and the Ising endpoint, but avoid extra graphs, proof digressions, and additional model families. If later slide organization exceeds the live budget, report the pressure explicitly; do **not** silently move the essential CI and factorization work to a recording or notebook.
+**Extent pressure:** This is **plausible but tight** at ~101 substantive minutes, consistent with the scope estimate, especially if the Section 3 explaining-away calculation, Section 4 multipath query, and Section 6 four-cycle comparison are all worked rather than asserted. Provisional choice: preserve all three and the Ising endpoint, but avoid extra graphs, proof digressions, and additional model families. If later slide organization exceeds the live budget, report the pressure explicitly; do **not** silently move the essential CI and factorization work to a recording or notebook.
 
-**Presentation balance:** Section 1 carries substantial material (chain rule, student network, parameter advantage, plate); its planned plate is intentionally brief. Section 5 is dense despite a short allocation; the Hammersley–Clifford statement receives no proof so the four-cycle comparison remains substantive. Section 6 is deliberately short because the restoration derivation belongs to the notebook.
+**Presentation balance:** Section 1 isolates the chain-rule-versus-DAG argument; Section 2 works the student network, parameter advantage, and intentionally brief plate. The split creates a clearer transition but adds no new subject matter. Section 6 is dense despite a short allocation; the Hammersley–Clifford statement receives no proof so the four-cycle comparison remains substantive. Section 7 is deliberately short because the restoration derivation belongs to the notebook.
 
 **Notation / epistemic precision:** Directed arrows need not imply causation; d-separation entails CI but graphical connection need not imply actual dependence; positivity qualifies Hammersley–Clifford; clique potentials are globally, not locally, normalized; local ICM convergence does not assert global MAP optimality.
 
-**Open instructor decisions:** Confirm six section boundaries and relative emphasis. The ~100-minute total and section times are estimates to reassess after section-level slide organization and any actual pacing evidence; no current recording is assigned.
+**Open instructor decisions:** Review the seven section boundaries and relative emphasis. The ~101-minute total and section times are estimates to reassess after section-level slide organization and any actual pacing evidence; no current recording is assigned.
 
 **Upstream scope changes requested:** None. This plan is intended to realize the frozen scope without adding or dropping major content.
 

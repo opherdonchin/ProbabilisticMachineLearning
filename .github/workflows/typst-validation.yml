@@ -15,6 +15,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check Codex lecture-workflow setup
+        run: python scripts/check_codex_setup.py
+
       - name: Install Typst 0.15.0
         uses: typst-community/setup-typst@v4
         with:

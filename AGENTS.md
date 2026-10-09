@@ -21,6 +21,12 @@ These instructions apply to the entire repository.
 
 ## Lecture development coordination
 
+- In Codex IDE/CLI, invoke `$lecture-development` for the instructor-facing
+  workflow. Thin discoverable wrappers live under `.agents/skills/` and five
+  specialist subagent profiles under `.codex/agents/`. See `.codex/README.md`
+  for launch and a live delegation smoke test. The canonical instructions
+  remain in `skills/`.
+
 - For a multi-stage lecture-development task, read and follow
   `skills/lecture-development/SKILL.md`. It coordinates stages and the
   instructor interaction; it does not replace the specialist skills.

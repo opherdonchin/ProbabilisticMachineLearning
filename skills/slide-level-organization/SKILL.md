@@ -20,6 +20,16 @@ This skill is deliberately iterative. It should support a cycle of:
 
 Do not silently resolve consequential ambiguities. Do not, however, stop midway through a proposed organization merely because a new question arises. When uncertainty is discovered during drafting, make a visible provisional choice, complete the section organization, record the issue, and return to it in critique.
 
+## Operating modes
+
+Use `build` (default), `feasibility-review`, or `revision` as assigned by the coordinator (`../lecture-development/SKILL.md`) or the instructor. Read `../shared/backpressure.md` for mode scope, report format, and issue routing. The interaction, drafting, and critique process below is **Build mode**.
+
+- **Build:** given an agreed section contract, develop the complete ordered slide-level teaching sequence, review its argument and granularity, and return issues requiring decisions. When coordinated, route consequential instructor choices through the coordinator.
+- **Feasibility Review:** inspect a **provisional Section Design contract**, its prerequisites and neighboring-section boundaries, mathematics, examples, and rough live extent. Ask whether the entry-to-endpoint move can plausibly be organized into slides without an incoherent detour, impractical density, or missing knowledge. Return verdict, uncertainties, named owner/severity, and smallest repair; **do not** propose slide titles, counts, ordered teaching moves, or a slide organization artifact. Do not silently change Section Design.
+- **Revision:** receive an already approved slide organization plus focused design-stage or instructor backpressure. Update only affected slide titles/order/teaching-move granularity or local summary choices. If solving the issue would alter Section Design's responsibility, boundaries, or treatment depth, return it as upstream pressure instead. Report impacts on existing slide designs and production artifacts.
+
+When a coordinator is active it commissions feasibility reviews, resolves disputes, and communicates with the instructor; otherwise use the established direct collaboration cycle.
+
 ## What this skill is not
 
 This skill does not decide what the lecture is fundamentally about. That belongs to `../lecture-scope/SKILL.md`. The intervening `../section-design/SKILL.md` owns the section's intellectual job, entry state, endpoint, boundaries, modularity, and major assigned material.

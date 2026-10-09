@@ -5,6 +5,16 @@ description: Develop an agreed lecture scope from prior course material, Murphy 
 
 # Develop a lecture scope
 
+## Operating modes
+
+Use `build` (default), `feasibility-review`, or `revision` as specified by the Lecture Development Coordinator (`../lecture-development/SKILL.md`) or an explicit user request. Follow the shared result contract in `../shared/backpressure.md`. The full five-part iterative process below is **Build mode only**.
+
+- **Build:** investigate actual prior lecture artifacts, material ledger, books, and instructor goals; compare forward paths; obtain decisions and produce the five-part Lecture Scope. When coordinated, return consequential questions to the coordinator rather than opening a parallel instructor conversation.
+- **Feasibility Review:** review an instructor's **proposed lecture brief, goals, or provisional course-level constraints** against the actual course boundary, syllabus, source support, conceptual prerequisites, notebook expectations, and lecture time. Return `feasible`, `feasible-with-risks`, or `blocked` with stage-owned concerns and minimum repairs. **Do not** draft the intellectual arc, mathematical spine, full Scope, sections, or slides. If no meaningful brief exists to review, report that limitation.
+- **Revision:** given a specific backpressure item and the current approved Scope, inspect the relevant evidence, propose the smallest Scope-level change, and modify only affected Scope fields **after instructor approval where consequential**. Preserve unaffected outcomes, covered/deferred decisions, and mathematical depths. Identify section and slide artifacts now requiring revalidation. Do not rebuild the entire scope or redesign sections.
+
+When operating standalone, interact with the instructor as described below. When coordinated, the coordinator arranges specialist reviews and instructor checkpoints.
+
 Use this skill when deciding what a lecture should cover and how its intellectual structure should work before any slide-level, visual, Typst, or notebook authoring begins.
 
 The purpose of this skill is not to generate a lecture plan in one pass. It is to guide an iterative instructor-agent process that explores alternative routes through the material, evaluates tradeoffs, converges on a coherent scope, and records that scope in a form that downstream drafting skills can use.
@@ -34,7 +44,7 @@ Do not use it to:
 - write a slide-by-slide outline;
 - perform section-level or slide-level drafting that belongs to later skills.
 
-Exception: before scope approval, request a **lightweight Section Design feasibility review**, not a section design. Follow the protocol in `../shared/backpressure.md` and the review mode of `../section-design/SKILL.md`.
+Exception: before scope approval, **obtain** a lightweight Section Design feasibility review, not a section design. The coordinator dispatches this review when active; in standalone mode request it directly. Follow `../shared/backpressure.md` and the review mode of `../section-design/SKILL.md`.
 
 The approximate time allocations in the scope are constraints for later drafting, not slide counts. Scope-stage timing is a planning estimate, not a validated rehearsal time.
 
@@ -429,7 +439,7 @@ Check that:
 
 ## Section Design feasibility review before approval
 
-After assembling the five-part provisional Lecture Scope and checking its internal consistency, request **one preview feasibility review** using the review mode in `../section-design/SKILL.md` and `../shared/backpressure.md`. Do this **before final instructor approval / freezing**, not as a substitute for the Scope Builder's own analysis.
+After assembling the five-part provisional Lecture Scope and checking its internal consistency, obtain **one preview feasibility review** using the review mode in `../section-design/SKILL.md` and `../shared/backpressure.md`. If the coordinator is active, signal that the artifact is ready and let the coordinator commission and adjudicate the review; otherwise request it yourself. Do this **before final instructor approval / freezing**, not as a substitute for the Scope Builder's own analysis.
 
 Ask:
 

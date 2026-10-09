@@ -203,7 +203,7 @@ Build and review each part separately. If a later part reveals a structural prob
 
 Build this first.
 
-Divide the lecture into a small number of major conceptual segments, not slides.
+Identify a small number of **provisional macro-level conceptual segments or milestones**, not slides and not finalized Section Design boundaries. These describe the intellectual route and its approximate time envelope; the Section Designer may split, combine, or shift them while preserving the instructor-approved coverage, mathematical depth, endpoint, examples, and live-time envelope. Scope segments are **not** a commitment to the number, titles, or exact boundaries of lecture sections.
 
 For each segment include:
 

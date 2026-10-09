@@ -13,6 +13,16 @@ The primary responsibility is:
 
 Work one approved section or an explicit slide allowlist at a time unless the instructor asks for a broader pass.
 
+## Operating modes
+
+Use `build` (default), `feasibility-review`, or `revision`. Follow `../shared/backpressure.md` after PR #4's upstream workflow is integrated; in the meantime use its stage ownership and result format described here. Under a Lecture Development Coordinator (`../lecture-development/SKILL.md` after integration), send instructor decisions and backpressure through the coordinator.
+
+- **Build:** lower the approved design to `slide_deck.typ` using the workflow below, compile handout and presentation, run checks and inspect changed render states.
+- **Feasibility Review:** inspect a **provisional Slide Design specification** against the current `design.typ`, live `course.typ` API, fonts/assets available in the repository, reveal semantics, and production constraints. Identify likely layout overflow, illegible density, impossible/unsupported primitives, missing assets, or unimplementable reveal behavior. Return `feasible`, `feasible-with-risks`, or `blocked` with actual evidence, owner, smallest fix, and uncertainty. **Do not** generate `slide_deck.typ`, rewrite `slide_design.typ`, or claim compilation/render validation of a production deck that has not been built.
+- **Revision:** accept focused feedback from compilation/visual inspection, instructor, or changed approved design. Apply the smallest production-level correction, recompile and visually recheck affected output states. If a faithful implementation is impossible without changing the intended explanation or teaching sequence, return explicit Slide Design (or earlier owner) backpressure instead of silently redesigning.
+
+A feasibility review is optional before implementation; actual mechanical and visual validation remain mandatory at the Build completion gate. Under coordination, preview scheduling and human approval belong to the coordinator, not the authoring agent.
+
 ## Required references
 
 Before authoring, read:

@@ -381,9 +381,9 @@ Slide Design may itself create backpressure, for example:
 
 Such feedback should return to organization rather than being silently repaired by changing the sequence during visual design.
 
-## Downstream: Implementation
+## Downstream: Slide Authoring
 
-Programming/implementation should receive an approved organization and designed slide roles. It should solve Typst/Touying, figure, asset, compilation, and implementation-level problems without silently changing the pedagogical sequence.
+Slide Authoring receives the approved Slide Design specification and implements it with the course's Typst/Touying production system, figures, assets, compilation, and review. It must not silently change approved visual explanation or pedagogical sequence. When that implementation exposes structural pressure, route it through Slide Design and, if necessary, back to Slide-Level Organization or its upstream owners.
 
 # Final approved handoff
 

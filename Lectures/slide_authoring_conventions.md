@@ -423,12 +423,11 @@ layout-only or read-only review.
 It is not a general authoring standard and should not override this document or
 the approved design.
 
-## 13. Speaker notes
+## 13. Speaker notes and section closure
 
-Do not add speaker notes during visible-slide development.
+Do not add speaker notes during visible-slide development. Each section's last visible teaching slide must be its retrospective summary; do not append an exit teaser, bridge, or question pointing to the next section. If connective context is indispensable, place it at the beginning of the receiving section.
 
-Speaker notes are a later production-stage artifact created only after the deck
-is stable and when the instructor explicitly requests them.
+Speaker notes are a later production-stage artifact, created **after** the visible deck is stable. They are **required on every substantive slide before the lecture is called final/published**, unless the instructor explicitly waives them. Record the intended argument, derivation emphasis, interpretation, or caution—not a paraphrase of the visible text. A visual draft may omit notes, but must remain labeled draft until the notes pass is complete (or waived).
 
 ## 14. Evidence and abstraction policy
 

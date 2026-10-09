@@ -161,6 +161,12 @@ Prefer slide boundaries when there is a genuine change in intellectual job, for 
 
 Do not create separate slides merely because a textbook gives separate paragraphs or equations. Conversely, do not force two distinct teaching moves onto one slide simply to hit a nominal slide-count target.
 
+## Section closure: finish on the summary
+
+The final teaching move in every section is a **retrospective summary** of that section's established argument. Do not place a preview, next-section question, "next we will" promise, bridge, or handoff **after** the summary or **inside** it. If essential continuity must be explained, establish it when the **receiving section begins**, not at the end of the preceding one. A later notebook task belongs to its separate lecture-level introduction, not to a forward-looking final summary.
+
+Upstream author-facing notes about neighboring sections are permitted, but they are not student-facing closing content. Preserve this ending when choosing slide titles and order, and ask for upstream clarification if a section contract appears to require a conflicting ending.
+
 # Slide titles are the main product
 
 Titles should normally state the slide's claim, question, or teaching move.
@@ -317,6 +323,7 @@ Check:
 - Does each example have a distinct pedagogical job?
 - Does the section summary consolidate only material already established in the section?
 - Are important take-home claims stated directly before they are reused in a summary?
+- Does the summary *end the section*, without a teaser, closing bridge, or question aimed at the next section?
 
 ### Extent
 
@@ -487,6 +494,10 @@ Are the claims students most need to retain stated directly somewhere in the sec
 For important take-home statements, would the instructor be comfortable reusing essentially the same wording on the section-summary slide?
 
 A negative answer may indicate that the upstream teaching slide's key point is not yet direct or load-bearing enough.
+
+## Retrospective-closure test
+
+Is the section's final slide a retrospective summary of established results, with no forward-looking handoff? If a connection is indispensable, move it to the next section's opening.
 
 ## Extent test
 

@@ -34,6 +34,11 @@ These instructions apply to the entire repository.
 - Do not collapse scope development into slide-level or notebook drafting. Those
   are downstream authoring tasks with separate constraints.
 
+## Section design and endings
+
+- When partitioning a scoped lecture into sections, give each section a distinct intellectual job and a **retrospective take-home**. Do not end one section by setting up, teasing, or handing off to the next. Connections or prerequisites may be introduced at the beginning of the receiving section when actually needed.
+- Apply the same rule during slide-level organization and implementation; the summary is the final teaching move in a section. Keep lecture-to-notebook task instructions separate from section summaries.
+
 ## Slide-level organization
 
 - When an already-scoped lecture section needs to be turned into an ordered

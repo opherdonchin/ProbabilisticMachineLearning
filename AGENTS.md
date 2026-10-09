@@ -33,10 +33,29 @@ These instructions apply to the entire repository.
   concrete examples, and lecture contract.
 - Do not collapse scope development into slide-level or notebook drafting. Those
   are downstream authoring tasks with separate constraints.
+- Before freezing the five-part Lecture Scope, use the review mode in
+  `skills/section-design/SKILL.md` for a **lightweight feasibility check**.
+  This preview must not generate a section partition or slide outline.
+
+## Section design and backpressure
+
+- After an agreed Lecture Scope and before slide organization, follow
+  `skills/section-design/SKILL.md` to construct sections forward from the
+  evolving student-knowledge state, with a visible global endpoint, selective
+  instructor checkpoints, periodic feasibility checks, and justified backtracking.
+- Maintain section purposes, entry conditions, endpoints, mathematical treatment
+  constraints, boundaries, approximate extent, and carry-forward in a lecture-local
+  `section_design.md`. Use the L02 file as an output reference, not a fixed outline.
+- Read `skills/shared/backpressure.md` when requesting or returning upstream
+  feedback. Distinguish a preliminary feasibility preview from pressure discovered
+  during actual downstream execution. Return decisions to the stage that owns
+  them; never silently amend a higher-level commitment.
+- An instructor-approved Section Design can proceed to Slide-Level Organization.
+  Mark it validated only after downstream structural backpressure has been resolved.
 
 ## Slide-level organization
 
-- When an already-scoped lecture section needs to be turned into an ordered
+- When an already-designed lecture section needs to be turned into an ordered
   sequence of slide-level teaching moves, read and follow
   `skills/slide-level-organization/SKILL.md` before detailed visual design or
   Typst implementation.
@@ -44,7 +63,9 @@ These instructions apply to the entire repository.
   design notes to disambiguate the teaching moves rather than prematurely
   designing finished layouts.
 - The process is iterative: clarification with the instructor, a complete
-  organization draft, critique/backpressure, and revision. Do not silently
+  organization draft, critique/backpressure, and revision. Escalate failures of a
+  section's intellectual contract to Section Design, not directly to Lecture Scope
+  unless the scope itself must change. Do not silently
   change section scope, treatment depth, source coverage, endpoint, or extent;
   surface such pressure explicitly while still completing a provisional full
   organization when reasonably possible.

@@ -17,6 +17,10 @@ Learned first-order Markov chain (L02) → general chain rule versus graph-based
 
 The structural through-line is: **What restrictions on a joint distribution are represented by this graph, and what do those restrictions let us factor or infer?**
 
+### Section closure convention
+
+Each section must end with a **backward-looking take-home** that summarizes results established in that section. Do not use its ending to preview, tease, motivate, or hand off to the next section. When a connection is pedagogically necessary, introduce it at the **beginning of the receiving section**. References to other sections in the design are permissible only as author-facing boundaries or source/reuse notes; they must not become closing remarks or summary slides. The lecture-to-notebook boundary is documented separately and must not be turned into a forward-looking section takeaway.
+
 ### Starting assumptions
 
 - L01 actually taught joint/marginal/conditional Gaussian reasoning and simple graphical notation, but not general DAG factorization, d-separation, Markov blankets, or plates.
@@ -57,7 +61,7 @@ The demanding work is in Sections 3–4, where students learn genuinely new CI r
 
 ### Purpose / role
 
-Generalize the first-order Markov chain from L02 into the parent-based factorization of an arbitrary directed acyclic graph (DAG). Establish the essential distinction: the **probability chain rule is an identity**, whereas replacing earlier variables with a smaller parent set imposes **additional conditional-independence assumptions**. Set up the need for concrete small conditional distributions, without working a full network yet.
+Generalize the first-order Markov chain from L02 into the parent-based factorization of an arbitrary directed acyclic graph (DAG). Establish the essential distinction: the **probability chain rule is an identity**, whereas replacing earlier variables with a smaller parent set imposes **additional conditional-independence assumptions**. The section's complete intellectual job is the abstract factorization argument, without a worked non-chain network.
 
 ### Entry condition / transition in
 
@@ -70,7 +74,7 @@ Students can recover the unrestricted chain rule, write a DAG factorization for 
 ### Sources and example jobs
 
 - L02 Section 8, Book 2 §§2.6 and 4.2.2.1, and Fig. 4.1: **carry forward** first-order Markov structure.
-- Book 2 §4.2.1: **derive/contrast** unrestricted chain-rule and parent-based factorization. Set up the student network for Section 2 without working its CPDs here.
+- Book 2 §4.2.1: **derive/contrast** unrestricted chain-rule and parent-based factorization.
 
 ### Assigned content and mathematical treatment
 
@@ -84,7 +88,7 @@ Students can recover the unrestricted chain rule, write a DAG factorization for 
 
 ### Boundary / exclusions
 
-Do not work the student network's specific CPDs, parameter counts, or plate notation until Section 2. Do not begin the directed CI motifs, d-separation, CPT learning, or ancestral sampling.
+No worked non-chain network, specific CPDs, numerical parameter counts, or plate notation. Do not begin directed CI motifs, d-separation, CPT learning, or ancestral sampling.
 
 ### Take-home
 
@@ -100,7 +104,7 @@ The chain rule always holds. A DAG factorization asserts extra conditional-indep
 
 ### Purpose / role
 
-Make the abstract DAG factorization operational using Murphy's **student network**: read a non-chain graph, identify each variable's parents, write and interpret its **locally normalized CPD/CPT**, and quantify how sparsity reduces the size of a joint model. Establish a reusable network to revisit in Sections 3–4. Finish with a brief introduction to plate notation as shorthand for repeated observations.
+Make the abstract DAG factorization operational using Murphy's **student network**: read a non-chain graph, identify each variable's parents, write and interpret its **locally normalized CPD/CPT**, and quantify how sparsity reduces the size of a joint model. Develop one sustained concrete example rather than disconnected mini-examples. Include a brief introduction to plate notation as shorthand for repeated observations.
 
 ### Entry condition / transition in
 
@@ -112,7 +116,7 @@ Students can work the student-network factorization, identify the local CPDs/CPT
 
 ### Sources and example jobs
 
-- Book 2 §4.2.2.2, especially Fig. 4.2: **work through** the student network as a genuinely non-chain DAG with multiple parents and local CPDs; reuse the same network later for CI and explaining away.
+- Book 2 §4.2.2.2, especially Fig. 4.2: **work through** the student network as a genuinely non-chain DAG with multiple parents and local CPDs.
 - Book 2 §4.2.8, Fig. 4.11: **briefly interpret** one repeated-observation plate and its product factorization.
 
 ### Assigned content and mathematical treatment
@@ -128,7 +132,7 @@ Do not systematically analyze the network's pipe, fork, or collider implications
 
 ### Take-home
 
-A sparse DAG can specify a large joint distribution through a small collection of locally normalized CPDs. The student network will remain our common example for subsequent independence reasoning.
+A sparse DAG specifies a large joint distribution using locally normalized CPDs; its parent structure determines the factors and reduces the number of free parameters. Plates abbreviate repeated factors.
 
 **Extent:** ~12 minutes.
 
@@ -140,7 +144,7 @@ A sparse DAG can specify a large joint distribution through a small collection o
 
 ### Purpose / role
 
-Show that a graph's local factorization is more than a storage trick: it also implies conditional independence, and conditioning can either remove or create dependence. Build the three fundamental motifs carefully before introducing general path reasoning.
+Show that a graph's local factorization is more than a storage trick: it also implies conditional independence, and conditioning can either remove or create dependence. Build the three fundamental single-path motifs carefully, showing why conditioning has different effects in each.
 
 ### Entry condition / transition in
 
@@ -168,7 +172,7 @@ Keep attention on **single-path motifs** and their worked conditionals. Section 
 
 ### Take-home
 
-Conditioning blocks pipes and forks but can open colliders. This reversal is why reading CI from a DAG takes more than simply following connected edges.
+The effect of conditioning depends on the motif: it blocks pipes and forks, but can open colliders and create explaining away.
 
 **Extent:** ~20 minutes.
 
@@ -336,7 +340,7 @@ Students can recognize and interpret a binary Ising distribution, explain what p
 
 ### Take-home
 
-A simple binary energy model can encode a spatial preference for local agreement. **Turning it into a working restoration method is the notebook problem, not a result already derived in the lecture.**
+The Ising model expresses local spatial interactions through pairwise binary energies. The sign and magnitude of the coupling control the preference for agreement or disagreement.
 
 **Extent:** ~9 minutes.
 

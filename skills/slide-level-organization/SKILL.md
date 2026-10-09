@@ -114,6 +114,12 @@ Prefer slide boundaries when there is a genuine change in intellectual job, for 
 
 Do not create separate slides merely because a textbook gives separate paragraphs or equations. Conversely, do not force two distinct teaching moves onto one slide simply to hit a nominal slide-count target.
 
+## Section closure: summarize, do not hand off
+
+A section ends on a **retrospective summary of its own argument**, not a preview or motivation for the next section. Do not add a closing bridge, "next we will" statement, unanswered question aimed at the next section, teaser, or reuse promise merely to create continuity. The section's final teaching move should synthesize already-taught results and stand on its own.
+
+If a connection to preceding material is needed, establish it at the **beginning of the receiving section** rather than at the end of the preceding one. Such an opening connection is optional, not a required rhetorical device. Internal author-facing notes about what later sections will reuse, or the separate lecture-to-notebook contract, do not authorize forward-looking section endings. The notebook may be introduced as a lecture-level task, but not as a substitute for a section's retrospective takeaway.
+
 # Slide titles are the main product
 
 Titles should normally state the slide's claim, question, or teaching move.
@@ -269,6 +275,7 @@ Check:
 
 - Does each example have a distinct pedagogical job?
 - Does the section summary consolidate only material already established in the section?
+- Does the section **end on that summary**, without a forward-looking handoff, teaser, or next-section question?
 - Are important take-home claims stated directly before they are reused in a summary?
 
 ### Extent
@@ -433,6 +440,10 @@ Are the claims students most need to retain stated directly somewhere in the sec
 ## Summary-reuse test
 
 For important take-home statements, would the instructor be comfortable reusing essentially the same wording on the section-summary slide?
+
+## Retrospective-closure test
+
+Does the section end by consolidating its own result, with no preview or promise about later material? If a forward reference appears, remove it from the ending; move any indispensable context to the next section's opening.
 
 A negative answer may indicate that the upstream teaching slide's key point is not yet direct or load-bearing enough.
 

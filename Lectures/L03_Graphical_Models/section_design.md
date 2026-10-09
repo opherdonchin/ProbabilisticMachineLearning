@@ -30,18 +30,18 @@ Each section must end with a **backward-looking take-home** that summarizes resu
 
 ### Extent and emphasis
 
-Plan **about 101 minutes of substantive live exposition in a 120-minute lecture window**, leaving roughly 20 minutes for questions, worked graph queries, transitions, and delivery variability. The allocations below are provisional complexity estimates, **not measured or guaranteed times**.
+Plan **about 104 minutes of substantive live exposition in a 120-minute lecture window**, leaving roughly 16 minutes for questions, worked graph queries, transitions, and delivery variability. The allocations below are provisional complexity estimates, **not measured or guaranteed times**.
 
 | Section | Live minutes (provisional) |
 |---|---:|
 | 1. From Markov chains to DAG factorization | 8 |
-| 2. Bayesian networks in practice: the student network | 12 |
+| 2. Bayesian networks in practice: the student network | 15 |
 | 3. Conditional independence in directed graphs | 20 |
 | 4. Reading independence from an entire DAG | 20 |
 | 5. Undirected graphical models: local interactions and global normalization | 18 |
 | 6. What directed and undirected graphs say about independence | 14 |
 | 7. The Ising model: a probabilistic model of spatial interaction | 9 |
-| **Substantive total** | **101** |
+| **Substantive total** | **104** |
 
 The demanding work is in Sections 3–4, where students learn genuinely new CI reasoning, and Sections 5–6, where they learn a different factorization and separation language. Protect those derivations and applications over adding more model families. L01's 61 content slides / 70 rendered pages are an extent benchmark, **not** an L03 target or a slide allocation. Re-estimate the workload from actual teaching moves at the next stage. No recording is required or assigned.
 
@@ -100,41 +100,44 @@ The chain rule always holds. A DAG factorization asserts extra conditional-indep
 
 ## Section 2 — Bayesian networks in practice: the student network
 
-**Status:** Proposed for section-boundary review; new section from the approved split.
+**Status:** Proposed for section-boundary review; detailed teaching moves proposed for instructor review.
 
 ### Purpose / role
 
-Make the abstract DAG factorization operational using Murphy's **student network**: read a non-chain graph, identify each variable's parents, write and interpret its **locally normalized CPD/CPT**, and quantify how sparsity reduces the size of a joint model. Develop one sustained concrete example rather than disconnected mini-examples. Include a brief introduction to plate notation as shorthand for repeated observations.
+Make the abstract DAG factorization operational using **one sustained worked example**, Murphy's five-node student network (Book 2 §4.2.2.2, Fig. 4.2). Show how a graph specifies a complete joint distribution through small, locally normalized conditional probability tables and quantify the resulting parameter economy. **Only after completing the student-network example**, introduce plate notation as a brief graphical shorthand for repeated observations. Plate notation is first taught here, **not in Section 1**.
 
 ### Entry condition / transition in
 
-Section 1 established the parent-based factorization. Ask how we would actually specify the joint distribution for a small DAG with multiple parents, instead of storing an unrestricted joint probability table.
+The parent-based factorization is already established abstractly. Start with Murphy's specific non-chain graph and ask what numerical distributions we must provide to define its joint probability law.
 
 ### Endpoint
 
-Students can work the student-network factorization, identify the local CPDs/CPTs and their normalization, and explain the parameter-count advantage of sparse parents. They can recognize one simple plate and translate it into an IID product.
+Students can name the five variables and their parents, reproduce the five-factor student-network joint, read and check a CPT row, calculate a joint-assignment probability by multiplying CPT entries, and explain the network's **15 versus 47** free-parameter advantage. They can read one simple IID plate and translate it into a product over observations.
 
 ### Sources and example jobs
 
-- Book 2 §4.2.2.2, especially Fig. 4.2: **work through** the student network as a genuinely non-chain DAG with multiple parents and local CPDs.
-- Book 2 §4.2.8, Fig. 4.11: **briefly interpret** one repeated-observation plate and its product factorization.
+- Book 2 §4.2.2.2, Fig. 4.2, Eqs. 4.5–4.6: **work through** the graph, its parent sets, factorization, and concrete CPTs, following Murphy's sequence.
+- Book 2 §4.2.1: **apply** the parameter-count argument to the actual network before mentioning generic asymptotic scaling.
+- Book 2 §4.2.8, Fig. 4.11: **briefly interpret** a repeated-observation plate and corresponding product; do not expand to a broad lesson on plates.
 
 ### Assigned content and mathematical treatment
 
-- Student-network graph and joint distribution — **Work**: identify the parent set of each variable and write its complete parent-based factorization.
-- Local CPDs/CPTs — **Interpret + Check**: each conditional distribution is normalized locally for a fixed parent configuration; contrast with the unrestricted joint table.
-- Sparse-graph parameter advantage — **Motivate + Compare** generic scaling \(O(K^D)\) versus \(O(DK^{m+1})\) for bounded indegree \(m\), distinguishing this order-of-growth illustration from an exact parameter count. Make the advantage tangible using the network.
-- Plate notation — **Recognize + Interpret** a simple IID repetition and corresponding product; do not start a broader plate lesson.
+1. **Read the student graph — Work.** Identify \(I\) (intelligence), \(D\) (difficulty), \(G\) (grade), \(S\) (SAT), and \(L\) (letter). List parent sets: \(\mathrm{pa}(I)=\mathrm{pa}(D)=\varnothing\), \(\mathrm{pa}(G)=\{I,D\}\), \(\mathrm{pa}(S)=\{I\}\), \(\mathrm{pa}(L)=\{G\}\).
+2. **Write the joint — Derive + Contrast.** Use Murphy Eqs. 4.5–4.6 to compare a valid unrestricted chain-rule ordering with the shorter parent-based factorization: \(p(i,d,g,s,l)=p(i)p(d)p(g\mid i,d)p(s\mid i)p(l\mid g)\). Explicitly identify the removed conditioning variables and the assumptions justifying their removal.
+3. **Read the numerical CPTs — Interpret + Check.** Work from Fig. 4.2: a row of the grade CPT is indexed by a particular intelligence/difficulty combination and provides a normalized distribution over grades A/B/C. Show the normalization check for a row; identify which local table supplies each factor.
+4. **Compute one concrete joint probability — Apply.** Choose one complete assignment of \((I,D,G,S,L)\), read its five probabilities from the tables, and multiply them. This is a calculation of \(p(i,d,g,s,l)\), **not** posterior inference or an explaining-away exercise.
+5. **Count free parameters — Calculate + Compare.** With cardinalities \((2,2,3,2,2)\), an unrestricted joint table requires \(2\cdot2\cdot3\cdot2\cdot2-1=47\) free probabilities. The DAG requires \(1+1+2\cdot2\cdot(3-1)+2\cdot(2-1)+3\cdot(2-1)=15\). Then interpret the general comparison \(O(K^D)\) versus \(O(DK^{m+1})\) for bounded indegree \(m\), as scaling rather than an exact count.
+6. **Introduce one IID plate — Recognize + Interpret.** Only after finishing the example, show Murphy Fig. 4.11 or its simplest appropriate repeated-observation plate. Explain the box and repeat count, distinguish repeated variables from shared model parameters, and write the corresponding product \(\prod_{n=1}^{N}p(x_n\mid\theta)\) (with independent observations conditional on \(\theta\)). Do not make plates part of Section 1 or pursue hierarchical plate examples.
 
 ### Boundary / exclusions
 
-Do not systematically analyze the network's pipe, fork, or collider implications yet: **conditioning and explaining away belong to Section 3**. General d-separation and Markov blankets belong to Section 4. No CPT estimation, ancestral sampling, or extended plate models.
+**Section 1 contains no plates and no student-network example.** In this section, treat the student graph as a **factorization and parameterization example**, not an independence-query exercise. Reserve systematic pipe/fork/collider reasoning and explaining away for Section 3, and general d-separation/Markov blankets for Section 4. No CPT parameter fitting, ancestral sampling, or extended plate models.
 
 ### Take-home
 
-A sparse DAG specifies a large joint distribution using locally normalized CPDs; its parent structure determines the factors and reduces the number of free parameters. Plates abbreviate repeated factors.
+Murphy's student network replaces one 47-parameter joint table with five locally normalized tables having 15 free parameters, while still defining a complete joint distribution. Plate notation abbreviates repeated factors without changing their probabilistic meaning.
 
-**Extent:** ~12 minutes.
+**Extent:** ~15 minutes, provisional (formerly 12); protect the worked CPT and joint-probability calculations, and keep the plate introduction brief.
 
 ---
 
@@ -381,11 +384,11 @@ Prefer few examples reused for different questions over an unconnected gallery. 
 
 **Extent pressure:** This is **plausible but tight** at ~101 substantive minutes, consistent with the scope estimate, especially if the Section 3 explaining-away calculation, Section 4 multipath query, and Section 6 four-cycle comparison are all worked rather than asserted. Provisional choice: preserve all three and the Ising endpoint, but avoid extra graphs, proof digressions, and additional model families. If later slide organization exceeds the live budget, report the pressure explicitly; do **not** silently move the essential CI and factorization work to a recording or notebook.
 
-**Presentation balance:** Section 1 isolates the chain-rule-versus-DAG argument; Section 2 works the student network, parameter advantage, and intentionally brief plate. The split creates a clearer transition but adds no new subject matter. Section 6 is dense despite a short allocation; the Hammersley–Clifford statement receives no proof so the four-cycle comparison remains substantive. Section 7 is deliberately short because the restoration derivation belongs to the notebook.
+**Presentation balance:** Section 1 isolates the chain-rule-versus-DAG argument without any plate notation or student-network example; Section 2 works the student network, its numerical CPTs, the exact parameter advantage, and an intentionally brief plate. The split creates a clearer transition but adds no new subject matter. Section 6 is dense despite a short allocation; the Hammersley–Clifford statement receives no proof so the four-cycle comparison remains substantive. Section 7 is deliberately short because the restoration derivation belongs to the notebook.
 
 **Notation / epistemic precision:** Directed arrows need not imply causation; d-separation entails CI but graphical connection need not imply actual dependence; positivity qualifies Hammersley–Clifford; clique potentials are globally, not locally, normalized; local ICM convergence does not assert global MAP optimality.
 
-**Open instructor decisions:** Review the seven section boundaries and relative emphasis. The ~101-minute total and section times are estimates to reassess after section-level slide organization and any actual pacing evidence; no current recording is assigned.
+**Open instructor decisions:** Review the seven section boundaries and relative emphasis. The ~104-minute total and section times are estimates to reassess after section-level slide organization and any actual pacing evidence; no current recording is assigned.
 
 **Upstream scope changes requested:** None. This plan is intended to realize the frozen scope without adding or dropping major content.
 

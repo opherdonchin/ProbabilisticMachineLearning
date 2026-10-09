@@ -95,6 +95,8 @@ Section summaries:
 
 - `#section-summary-visual[...]` and `#section-summary-takeaways[...]` form the current course-level summary convention.
 - A section summary looks backward: reuse a small number of already-taught visual anchors and state short conclusions that the section has already established. Do not introduce a new argument on a summary slide.
+- **End the section on this summary.** Do not append a preview, segue, teaser, "next we will" remark, or question whose purpose is to lead into the following section. If a connection is needed, establish it when the following section begins; do not make a handoff the preceding section's conclusion.
+- A lecture-to-notebook task may have a separately defined introduction, but do not turn a section summary into a preview of that task.
 - Section summaries are a special slide architecture. They need not imitate the ordinary card grammar merely for consistency.
 
 Available but provisional:

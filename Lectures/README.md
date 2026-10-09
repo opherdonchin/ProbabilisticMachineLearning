@@ -7,21 +7,32 @@ substitute for the stage-specific skill and conventions document.
 
 ## Pipeline
 
+The full lecture-development pipeline is **Lecture Scope → Section Design →
+Slide-Level Organization → Slide Design → Slide Authoring**, coordinated by
+`skills/lecture-development/SKILL.md` when the upstream workflow from PR #4 is
+integrated. In coordinated work, each specialist has **Build**, **Feasibility
+Review**, and **Revision** modes; the coordinator dispatches reviews and handles
+instructor decisions. `skills/shared/backpressure.md` defines issue ownership
+and return paths. This directory primarily documents the three downstream
+slide-system stages.
+
 | Stage | Process / authority | Course conventions | Executable layer | Persistent artifact |
 | --- | --- | --- | --- | --- |
+| Lecture Scope | `skills/lecture-scope/SKILL.md` | scope skill itself | — | agreed lecture scope |
+| Section Design | `skills/section-design/SKILL.md` | section skill itself | — | `section_design.md` |
 | Slide organization | `skills/slide-level-organization/SKILL.md` | organization skill itself | — | `slide_organization.md` |
 | Slide design | `skills/slide-design/SKILL.md` | `Lectures/slide_design_conventions.md` | `Lectures/design.typ` | `slide_design.typ` |
 | Slide authoring | `skills/slide-authoring/SKILL.md` | `Lectures/slide_authoring_conventions.md` | `Lectures/course.typ` | `slide_deck.typ` |
 | Layout / render review | authoring skill | authoring conventions | `scripts/review_slides.py` | review report/renders |
 
-Upstream lecture scope and section contracts constrain all three slide stages.
+Upstream Lecture Scope and Section Design contracts constrain all three slide stages. Each downstream stage can return **execution backpressure** to the nearest owning upstream stage; early **feasibility previews** do not authorize redesign.
 
 ## Source-of-truth hierarchy
 
 When guidance conflicts, use this order:
 
 1. explicit current instructor decision;
-2. approved lecture/section scope;
+2. approved Lecture Scope and Section Design contracts;
 3. approved slide organization;
 4. approved lecture-local `slide_design.typ`;
 5. stage-specific course conventions;

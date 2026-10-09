@@ -43,6 +43,26 @@ Use `Lectures/L02_Exponential_Families/section_design.md` as an example **output
 
 If the Scope is absent, internally inconsistent, or provisional in a way that changes section structure, clarify or send backpressure rather than inventing a new lecture-level scope. Source order is evidence about the material, not an instruction to preserve its sequence.
 
+## Specificity, source verification, and stage boundary
+
+The Section Design contract must be **specific enough for Slide-Level Organization to proceed without inventing mathematical coverage**, while leaving that stage free to decide the ordered teaching moves. Neither a topic label alone nor a script of individual slides is an acceptable substitute.
+
+Use this three-level test:
+
+- **Too vague:** "Apply d-separation to a nontrivial DAG." This leaves the worked case, prerequisite and source verification to the next stage.
+- **Appropriate section contract:** "Work a multiple-path d-separation query, including a collider descendant, on a named and source-verified graph; derive the directed Markov blanket for a specified node."
+- **Too prescriptive:** prescribe the exact classroom questions, sequence of traversed paths, click order, or wording for each presentation beat. That belongs to Slide-Level Organization and Slide Design.
+
+For each **required** example or worked calculation, state (a) the distinct teaching job, (b) the relevant source or explicitly **course-constructed** provenance, (c) the specific mathematical result or capability it demonstrates, and (d) treatment depth. Name required figures/equations only when selection matters pedagogically; secondary visual candidates may remain provisional.
+
+**Verify before committing an exact example claim.** Inspect the relevant Murphy page/figure/equation or authoritative artifact—not merely a citation from an earlier plan—and check node labels, edges, conditioning sets, graphical conclusions, formulas, cardinalities, numerical values, and attribution as applicable. A reference to "Murphy Fig. N" is not evidence that a newly invented teaching calculation appears in that figure. Label course-selected queries and derived numerical examples honestly. If the source cannot be inspected, record the example as *unverified/provisional* and do not turn its exact content into an approved obligation.
+
+Keep a compact, actionable contract: list the required mathematical objects and the **extent of their treatment**, not every intermediate derivation step, student question, reveal, or layout. Escalate material source conflicts rather than making an apparently concrete but unsupported plan.
+
+## Section closure invariant
+
+Every section's **last teaching move** is a retrospective summary of results established **in that section**. The take-home must stand alone; it must not introduce an untaught result, tease what comes next, pose a next-section question, promise reuse, or hand off to the following section. If a connection is pedagogically necessary, place it at the **beginning of the receiving section**. Author-facing prerequisite/boundary notes may name other sections, but they are not permission to make forward-looking closing slides. Keep notebook task instructions in the separate lecture-level notebook handoff; they must not replace the final section summary.
+
 ## Feasibility-review procedure: backpressure to Lecture Scope
 
 When invoked by the **coordinator**, or directly by a standalone Scope Builder, **before scope approval**, perform a lightweight feasibility review, not full Section Design.
@@ -84,6 +104,7 @@ Test the candidate:
 5. Does the intended treatment match the agreed mathematical spine and sources?
 6. Would independent treatment improve modularity, pacing, removability, or empirical interpretation?
 7. Is the expected live cost justified?
+8. Can the required mathematics and a specific, checkable example be named without specifying slide-by-slide pedagogy?
 
 Evaluate serious alternatives only if the tradeoff changes emphasis, treatment depth, order, extent, an empirical application, recording/removability, or future dependencies. Do not manufacture choices for routine bookkeeping.
 
@@ -161,6 +182,9 @@ Before seeking approval, verify:
 - **Modularity:** optional or recorded blocks can be removed without breaking required reasoning, where feasible.
 - **Examples:** empirical applications have teaching jobs and interpretations, not decorative roles.
 - **Continuity:** notation, pacing, and depth align with the actual preceding lectures.
+- **Specificity:** required mathematical work and examples have verified sources/clear provenance, distinct jobs, and treatment depth; placeholders are not silently passed downstream.
+- **Stage boundary:** the contract does not prescribe individual slides or a step-by-step classroom script.
+- **Closure:** every take-home is backward-looking, with the summary as the section's final teaching move.
 
 The instructor, not the agent, accepts the design.
 
@@ -177,13 +201,13 @@ For **each section**, include:
 2. purpose / intellectual role;
 3. entry condition / transition in;
 4. endpoint (what students now understand or can do);
-5. assigned content and precise sources;
+5. assigned content and precise, verified sources (flag any unverified item as provisional);
 6. mathematical treatment constraints (reuse Scope labels such as `State`, `Motivate`, `Derive`, `Work`, `Apply`);
 7. prerequisites / carry-forward and dependencies;
 8. empirical application or figure requirements, if relevant;
 9. boundary / exclusions and recording status, if relevant;
 10. approximate extent;
-11. take-home claim.
+11. retrospective take-home claim that ends the section without a next-section handoff.
 
 Document only fields with real content; do not use filler to complete a template. Preserve significant open issues, but leave rejected alternatives to chat/Git history.
 

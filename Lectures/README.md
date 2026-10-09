@@ -46,6 +46,12 @@ The executable design and production layers define current callable APIs:
 Do not infer API signatures from old prompts, historical drafts, or vendored
 theme documentation.
 
+## Pedagogical invariants across slide stages
+
+- A section **ends on its own retrospective summary**; its last visible teaching move is not a teaser, next-section question, or "next we will" handoff. Establish required continuity at the beginning of the receiving section. Keep the lecture-level notebook assignment separate from the final section summary.
+- Exact mathematical claims, model diagrams, figure/equation references and numerical worked examples require verifiable source or explicitly course-constructed provenance. Do not turn an unverified figure interpretation into a mandatory classroom calculation.
+- Speaker notes are **not written during early visual design**, but meaningful notes are required for every substantive slide before a production deck is final/published unless the instructor explicitly waives them.
+
 ## Slide design
 
 Read:

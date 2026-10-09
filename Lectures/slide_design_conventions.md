@@ -355,7 +355,7 @@ express well:
 - narrative arc;
 - visual and notation anchors;
 - summary design brief;
-- continuity / handoff;
+- entry context and continuity (connections begin the receiving section; no closing handoff);
 - known design constraints or open pressure.
 
 This page is design metadata. It is not a production slide.
@@ -395,7 +395,7 @@ Selection should optimize:
 A nomination is not an obligation.
 
 The summary may recombine or compact already-established material, but it should
-not introduce a new conceptual argument.
+not introduce a new conceptual argument. **It is the final teaching move of the section.** Do not put a next-section teaser, handoff, forward-looking question, or bridge in or after the summary. Any necessary connection belongs to the opening of the receiving section; a notebook task has its own lecture-level introduction.
 
 Summary takeaways should use an easy-to-read size by default. Production
 currently implements this as `fs("l")`; smaller text is an explicit exception.

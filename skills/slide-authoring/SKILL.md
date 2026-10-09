@@ -146,7 +146,11 @@ Report rather than silently solve design-fidelity pressure, density pressure, as
 
 For each item state the implementation problem, safe provisional implementation if any, recommended design/API change, and consequence.
 
-### 10. Stop when faithful and stable
+### 10. Prepare final speaker notes
+
+Do not write speaker notes while the visible slides are still being designed or their layout is in flux. **Before declaring a lecture final or publishing it**, add a meaningful speaker note to every substantive slide unless the instructor expressly waives notes. Each note should identify the intended argument, non-obvious derivation emphasis, interpretation, or caution—not merely restate visible text. Review the notes against the final visible states. A draft deck may be handed back for visual approval without notes, but must be explicitly described as **not yet final**.
+
+### 11. Stop when faithful and stable
 
 Do not continue refactoring for aesthetic novelty once the approved design is legible, stable, maintainable, and validated.
 
@@ -157,7 +161,7 @@ Before completion, verify:
 - every visible object traces to the approved design;
 - layout relationships preserve design intent;
 - reveal states preserve design timing and persistence;
-- summary anchors match the approved summary selection;
+- summary anchors match the approved summary selection and the section ends on its retrospective summary, with no following teaser or transition;
 - source remains readable as an intellectual argument;
 - current course API is reused rather than bypassed;
 - parent composition owns width;
@@ -165,6 +169,7 @@ Before completion, verify:
 - math attachment check passes;
 - handout and presentation modes compile;
 - all changed states have been visually inspected;
+- for a final/published deck, every substantive slide has a meaningful reviewed speaker note, or the instructor's explicit waiver is recorded;
 - substantive deviations are reported explicitly.
 
 ## Completion report
@@ -176,7 +181,8 @@ Report concisely:
 - assets generated or reused;
 - shared API changes, if any;
 - checks run;
-- unresolved implementation/design pressure.
+- unresolved implementation/design pressure;
+- whether the output is a draft without notes or a finalized deck with reviewed notes (or documented waiver).
 
 ## General principle
 

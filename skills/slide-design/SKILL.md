@@ -125,7 +125,7 @@ Record only the section-level information that controls detailed design:
 - narrative arc;
 - visual and notation anchors;
 - summary brief;
-- continuity / handoff;
+- entry context and continuity (no closing handoff);
 - known design pressure.
 
 Do not duplicate the entire upstream section plan.
@@ -201,7 +201,9 @@ Read the slide titles, inspect the design pages in sequence, and check:
 - reveal pacing;
 - cumulative density;
 - summary integrity;
-- handoff to the next section.
+- retrospective summary as the final section teaching move, with no handoff to the next section.
+
+The summary is the **end** of the section: do not add a teaser, "next we will" statement, next-section question, or exit bridge after it. Necessary connective explanation belongs at the **start of the receiving section**. The notebook handoff is separate from section closure. Keep both the designed summary and its preceding slides faithful to what was actually established.
 
 ### 8. Surface backpressure
 
@@ -225,7 +227,7 @@ A section is ready for production when:
 - reveal intent is explicit;
 - semantic object labels are stable;
 - summary nominations have been considered;
-- the summary selection is deliberate;
+- the summary selection is deliberate and the summary is the final, backward-looking section move;
 - unresolved `design-*` items are either resolved or explicitly delegated;
 - upstream pressure is recorded rather than silently absorbed.
 

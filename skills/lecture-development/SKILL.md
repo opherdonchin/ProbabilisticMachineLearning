@@ -19,7 +19,7 @@ Read `../shared/backpressure.md` for the common mode, review-result, and escalat
 | 4. Slide Design | `../slide-design/SKILL.md` | Approved student-visible content and design specification |
 | 5. Slide Authoring | `../slide-authoring/SKILL.md` | Faithful Typst/Touying implementation and validated output |
 
-The latter two skills may be on an unmerged development branch; confirm file availability before assigning them. Existing notebook-building skills can be coordinated after the lecture's notebook handoff is agreed, but do not implicitly fold notebook implementation into slide authoring.
+Confirm the skill file is available in the active repository revision before assigning a stage; if it is absent, identify the dependency rather than inventing its instructions. Existing notebook-building skills can be coordinated after the lecture's notebook handoff is agreed, but do not implicitly fold notebook implementation into slide authoring.
 
 **Instructor** owns consequential pedagogical decisions and final acceptance. **Each specialist** owns its technical/pedagogical analysis at its level. **Coordinator** owns continuity, task routing, review scheduling, decision presentation, and approval state—not the specialist's intellectual decisions.
 

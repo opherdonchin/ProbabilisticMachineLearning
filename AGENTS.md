@@ -21,11 +21,12 @@ These instructions apply to the entire repository.
 
 ## Lecture development coordination
 
-- In Codex IDE/CLI, invoke `$lecture-development` to start the instructor-facing
+- In Codex IDE/CLI, invoke `$lecture-development` for the instructor-facing
   workflow. Thin discoverable wrappers live under `.agents/skills/` and five
-  specialist subagent definitions under `.codex/agents/`. See `.codex/README.md`
-  for model choices and a runtime smoke test. Canonical skill instructions
+  specialist subagent profiles under `.codex/agents/`. See `.codex/README.md`
+  for launch and a live delegation smoke test. The canonical instructions
   remain in `skills/`.
+
 - For a multi-stage lecture-development task, read and follow
   `skills/lecture-development/SKILL.md`. It coordinates stages and the
   instructor interaction; it does not replace the specialist skills.
@@ -38,6 +39,10 @@ These instructions apply to the entire repository.
   that feasibility checks were not independent.
 - Preserve decisions in their owning artifacts. Instructor approval is needed
   for consequential pedagogical changes; a feasibility review is not approval.
+- In substantial multi-stage work, default to a small lecture-local committed
+  `development_state.md` tracking branch/revisions, approvals with provenance,
+  open decisions, review status and next owner. Reconcile it against live files
+  on resuming; do not silently inherit stale or cross-branch assumptions.
   Use `skills/shared/backpressure.md` for handoff and escalation rules.
 
 ## Lecture scope development
@@ -57,6 +62,12 @@ These instructions apply to the entire repository.
 - Before freezing the five-part Lecture Scope, use the review mode in
   `skills/section-design/SKILL.md` for a **lightweight feasibility check**.
   This preview must not generate a section partition or slide outline.
+
+## Cross-stage instructional invariants
+
+- Each lecture section **ends with a retrospective summary of what it taught**. Never end with a handoff, teaser, future-looking question, or "next we will" statement. Put essential connections at the *beginning of the receiving section*. The notebook handoff is a separate lecture-level item, not the last section's summary.
+- Preserve mathematical meaning and epistemic/source provenance. Verify exact examples, edges, numbers, figure/equation attributions and graphical CI claims against the actual source before making them required commitments; identify course-constructed examples rather than attributing them to Murphy. Flag unverifiable claims as provisional.
+- Carry these invariants through Scope, Section Design, Slide Organization, Slide Design, Slide Authoring and any coordinator review, rather than relying on one stage to remember them.
 
 ## Section design and backpressure
 
@@ -110,7 +121,7 @@ These instructions apply to the entire repository.
   conventions and `Lectures/course.typ` for the live production API.
 - Treat approved `slide_design.typ` as the student-visible design source of
   truth. Do not silently redesign while lowering it to `slide_deck.typ`.
-- Do not write speaker notes during visible-slide development.
+- Write and check meaningful speaker notes for every substantive slide **at finalization**, after the visible deck is stable. Do not write them during early visible-slide development. Notes are required for a final/published lecture unless the instructor explicitly waives them.
 
 ## Teaching notebook authoring
 

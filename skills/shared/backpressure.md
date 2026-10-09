@@ -10,7 +10,7 @@ Every specialist skill supports these externally selectable modes; when an agent
 - **`feasibility-review`:** inspect the **provisional output of the immediately upstream stage** and test whether the specialist's work seems achievable. Do **not** perform the build, produce the downstream artifact, revise upstream files, or demand settled downstream details. The reviewer should be prepared to report "feasible with uncertainties." For Lecture Scope (no preceding lecture-design specialist), the optional review target is an instructor's proposed lecture brief checked against actual prior course state, sources, and available time.
 - **`revision`:** update **only the owning stage's** existing artifact in response to a specific approved issue or changed upstream decision. Preserve unaffected decisions; report changed contracts, dependent artifacts, and validation needed.
 
-A reviewer returns its assessment; it does not grant instructor approval. Missing essential evidence is an uncertainty or blocker, not license to complete another stage's work.
+A reviewer returns its assessment; it does not grant instructor approval. Missing essential evidence is an uncertainty or blocker, not license to complete another stage's work. A claimed exact graph, theorem statement, figure, formula, or numerical result must be checked against the relevant source or explicitly marked unverified; apparent precision is not proof of provenance.
 
 ## Specialist handoff and review result
 
@@ -64,4 +64,4 @@ A feasibility review is not the same as a second full build and need not be prod
 - Obtain instructor approval when repairs change emphasis, endpoint, mathematical depth, substantive coverage, examples, delivery status, or substantial teaching time.
 - After an approved repair, update the **owning** artifact and only the affected downstream material. Preserve unaffected decisions.
 
-**Escalate explicitly; revise at the correct level; rerun only the affected check.** Never treat a preview as final validation or make every stage redo all previous stages.
+**Escalate explicitly; revise at the correct level; rerun only the affected check.** Never treat a preview as final validation or make every stage redo all previous stages. Preserve instructor-approved stylistic invariants (including retrospective section endings) across every handoff, even when a later stage offers a convenient alternate structure.

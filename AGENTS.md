@@ -121,7 +121,7 @@ These instructions apply to the entire repository.
   conventions and `Lectures/course.typ` for the live production API.
 - Treat approved `slide_design.typ` as the student-visible design source of
   truth. Do not silently redesign while lowering it to `slide_deck.typ`.
-- Write and check meaningful speaker notes for every substantive slide **at finalization**, after the visible deck is stable. Do not write them during early visible-slide development. Notes are required for a final/published lecture unless the instructor explicitly waives them.
+- Do not write speaker notes during lecture development.
 
 ## Teaching notebook authoring
 

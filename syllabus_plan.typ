@@ -239,7 +239,7 @@ The course is organized around four recurring ideas:
     - 13.5.1–13.5.4 Early stopping; weight decay; dropout
     - 13.5.6 SGD regularization
   ],
-  [*Heteroskedastic nonlinear regression with a neural network.* Fit a model with separate conditional mean and variance outputs, then inspect changing predictive uncertainty. #link("https://github.com/probml/pyprobml/blob/master/notebooks/book1/13/mlp_1d_regression_hetero_tfp.ipynb")[Murphy’s worked TFP notebook]. *Skill:* generalize L4 PyTorch knowledge to nn.Module, nonlinear layers and probabilistic neural output. *Adaptation:* port reference’s TensorFlow code to PyTorch.],
+  [*Heteroskedastic nonlinear regression with a neural network.* Fit a model with separate conditional mean and variance outputs, then inspect changing predictive uncertainty. #link("https://github.com/probml/pyprobml/blob/master/notebooks/book1/13/mlp_1d_regression_hetero_tfp.ipynb")[Murphy’s worked TFP notebook]. *Skill:* generalize L5 PyTorch knowledge to nn.Module, nonlinear layers and probabilistic neural output. *Adaptation:* port reference’s TensorFlow code to PyTorch.],
 
   [12],
   [*Variational autoencoders: neural latent-variable models* \
@@ -285,7 +285,7 @@ The plan is intended to avoid an invisible backlog. Material below the moving Bo
   [Treat basic linear algebra as prerequisite; backfill spectral machinery only when it earns its place.],
 
   [Book 2 §2.5 transformations of random variables],
-  [L8 / L12 or a later flow / reparameterization topic if needed],
+  [L9 / L12 or a later flow / reparameterization topic if needed],
   [Important for change-of-variables models, but not an early prerequisite for the present route.],
 
   [Book 2 §4.4 CRFs and advanced MRF material],

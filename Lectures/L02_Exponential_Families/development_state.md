@@ -8,7 +8,7 @@
 - Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
 - Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
 - Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
+- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
 
 ## Focus of current coordinator trial
 
@@ -25,7 +25,7 @@
 - Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
 - Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
 - Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
+- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
 
 ## Focus of current coordinator trial
 
@@ -42,7 +42,7 @@
 - Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
 - Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
 - Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
+- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
 
 ## Focus of current coordinator trial
 
@@ -59,7 +59,7 @@
 - Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
 - Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
 - Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
+- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
 
 ## Focus of current coordinator trial
 
@@ -76,7 +76,7 @@
 - Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
 - Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
 - Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
+- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
 
 ## Focus of current coordinator trial
 

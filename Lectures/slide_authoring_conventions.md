@@ -9,7 +9,7 @@ course source.
 
 Use it with:
 
-- `skills/slide-authoring/SKILL.md` — stage workflow, authority, validation,
+- `.agents/skills/slide-authoring/SKILL.md` — stage workflow, authority, validation,
   and backpressure;
 - `Lectures/course.typ` — executable production API;
 - the approved lecture-local `slide_design.typ` — design source of truth;

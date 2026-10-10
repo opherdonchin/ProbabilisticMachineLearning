@@ -2,7 +2,7 @@
 
 This file partitions the agreed Lecture 2 scope into section-level contracts for downstream slide organization.
 
-Use `skills/slide-level-organization/SKILL.md` on **one section at a time**. The slide-organization stage owns slide titles, order, slide count, and teaching-move granularity. This file owns the section boundaries, purposes, endpoints, assigned content, treatment constraints, and neighboring-section boundaries.
+Use `.agents/skills/slide-level-organization/SKILL.md` on **one section at a time**. The slide-organization stage owns slide titles, order, slide count, and teaching-move granularity. This file owns the section boundaries, purposes, endpoints, assigned content, treatment constraints, and neighboring-section boundaries.
 
 ## Lecture-level frame
 

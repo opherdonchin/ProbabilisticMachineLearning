@@ -33,8 +33,8 @@ When coordinated, route the response to the **Lecture Development Coordinator** 
 - **Lecture Scope** owns the lecture purpose and endpoint, covered/deferred material, mathematical spine and depth, notebook handoff, examples promised, lecture-wide delivery status, and live-time envelope.
 - **Section Design** owns the successive intellectual responsibilities, their boundaries, prerequisites, endpoints, source allocation, modularity, and section-level time distribution within the Scope.
 - **Slide-Level Organization** owns slide teaching moves, title/order, teaching-move granularity, summaries, and slide-count proposals within an approved section.
-- **Slide Design** (`skills/slide-design/SKILL.md`, when available) owns the student-visible explanation: mathematical/prose content, visual objects, semantic hierarchy, comparisons, and reveals, without dictating exact production geometry.
-- **Slide Authoring** (`skills/slide-authoring/SKILL.md`, when available) owns the faithful Typst/Touying production implementation, asset integration, exact geometry, and validation. These stages can report upstream contradictions but must not quietly rewrite approved teaching decisions.
+- **Slide Design** (`.agents/skills/slide-design/SKILL.md`, when available) owns the student-visible explanation: mathematical/prose content, visual objects, semantic hierarchy, comparisons, and reveals, without dictating exact production geometry.
+- **Slide Authoring** (`.agents/skills/slide-authoring/SKILL.md`, when available) owns the faithful Typst/Touying production implementation, asset integration, exact geometry, and validation. These stages can report upstream contradictions but must not quietly rewrite approved teaching decisions.
 
 Route an issue to the **nearest stage that actually owns the decision**. Do not send every difficulty all the way to Lecture Scope. An upstream stage may change its own artifact after a valid challenge, but downstream reviewers cannot unilaterally amend it.
 

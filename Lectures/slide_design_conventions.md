@@ -9,7 +9,7 @@ unfolds. It does not govern exact Typst geometry or Touying syntax.
 
 Use it with:
 
-- `skills/slide-design/SKILL.md` — stage workflow, authority, and backpressure;
+- `.agents/skills/slide-design/SKILL.md` — stage workflow, authority, and backpressure;
 - `Lectures/design.typ` — executable constrained design representation;
 - the lecture-local `slide_design.typ` — the actual approved design.
 

@@ -32,7 +32,7 @@ def skill_frontmatter(path):
 assert not (ROOT / "skills").exists(), "Legacy skills/ root must be removed"
 assert SKILLS_DIR.is_dir()
 assert (SKILLS_DIR / "shared" / "backpressure.md").is_file()
-assert set(p.name for p in SKILLS_DIR.glob("*/SKILL.md")) == set(SKILLS)
+assert {p.parent.name for p in SKILLS_DIR.glob("*/SKILL.md")} == set(SKILLS)
 
 for name in SKILLS:
     path = SKILLS_DIR / name / "SKILL.md"

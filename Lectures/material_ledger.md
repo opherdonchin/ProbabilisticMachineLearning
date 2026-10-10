@@ -84,3 +84,32 @@ Each lecture records a curriculum boundary for each book. The boundary is the fu
 
 - Primary notebook coverage: Book 1 §3.2.5, with repeated application of Gaussian conditioning and linear-Gaussian-system equations from the lecture.
 - No separate L01 recording is currently recorded as a primary coverage point.
+
+---
+
+## Provisional future-allocation map — NOT coverage (review branch, 2026-10-10)
+
+This table accompanies the [L04–L06 comparison](l04_l06_curriculum_comparison.md) and the provisional [syllabus plan](../syllabus_plan.typ). It **does not** change any actual disposition or curriculum boundary above. Only material actually taught or assigned is later marked `Covered` with a single primary coverage point. All rows here remain **Unreached** for coverage-accounting purposes until a lecture scope and delivery are confirmed. The competing L05 GLM route is described in the comparison and **not** silently ruled out by this table.
+
+| Murphy Book 2 material | Proposed destination under route A | Limitation / dependency |
+|---|---|---|
+| §§5.1–5.2 KL, entropy, cross-entropy | L04, lecture | Focus on interpretation plus operational coding consequence; not every KL property or derivation |
+| §5.3 Mutual information, data processing, sufficiency | L04, lecture / L04 notebook | Basic quantities and constraints; §5.3.5 multivariate MI, §5.3.6 variational bounds not promised |
+| §§5.4–5.5 Source/channel coding | L04, **choose one substantive coding application** | Channel parity decoding preferred; a brief source-coding comparison is possible but not a second full notebook |
+| §5.6 Information bottleneck; §5.4.2 rate-distortion | Return as selected mathematical connection in L12 VAE | Distinguish classical supervised IB from VAE compression/rate-distortion; full IB derivation not committed |
+| §§6.1–6.2 Differentiation and autodiff | L05, lecture; PyTorch in notebook | Reuse in VI (L09), neural modeling (L11), VAE (L12) |
+| §§6.3.1–6.3.3 Stochastic optimization | L05 lecture / notebook | Parameter-learning loop with a categorical likelihood |
+| §§6.3.4–6.3.7 Stochastic-distribution gradient estimators | L09 VI or L12 VAE, as needed | REINFORCE, reparameterization, Gumbel softmax not blanket L05 requirements |
+| §6.4 Natural gradients | Uncommitted, possible L09 extension | Not a prerequisite for core VI if not chosen |
+| §6.5 EM and bound optimization; §28.2 mixtures | L06 | Choose between missing Gaussian data and MRI GMM example; preserve one-hour lab constraint |
+| §§6.6–6.9 Bayesian optimization / DFO / transport / submodularity | Not committed | Distinct important fields, not core prerequisites; do not mark as covered or silently deferred to an invented meeting |
+| Ch. 7 Inference overview | L07 | Laplace/grid Bayesian logistic notebook |
+| Chs. 8–9 Gaussian filtering / message passing | L08 | Kalman vs HMM notebook still undecided |
+| Ch. 10 Variational inference | L09 | Includes selected stochastic gradient estimators if needed |
+| Chs. 11–12 Monte Carlo / MCMC | L10 | Multimodal proposal-comparison lab rather than routine undergraduate diagnostics |
+| §§15.1, 15.3 GLM/logistic form and likelihood | L05, as a substantial optimization example | No full standalone GLM family lecture in route A |
+| §15.2 regularization/priors; §14.2 calibration/scoring | Selected L11 with neural predictive models | Squeezing risk: must be checked at L11 scope; old L10 digit notebook not automatically retained |
+| Ch. 16 Neural networks | L11 | PyTorch already introduced in L05 |
+| Ch. 21 VAEs, selected §§21.3–21.4 | L12 | Rate-distortion/MI interpretation integrated selectively; time budget must be checked |
+
+**Delivery bookkeeping reminder:** L02 is only agreed scope, not recorded as delivered here. L03 and future lectures have no delivered coverage entries. If the alternative GLM-centered sequence is selected, update this map *after* instructor approval and revise the tentative syllabus documents consistently.

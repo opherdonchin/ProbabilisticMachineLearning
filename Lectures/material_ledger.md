@@ -89,7 +89,7 @@ Each lecture records a curriculum boundary for each book. The boundary is the fu
 
 ## Provisional future-allocation map — NOT coverage (review branch, 2026-10-10)
 
-This table accompanies the [L04–L06 comparison](l04_l06_curriculum_comparison.md) and the provisional [syllabus plan](../syllabus_plan.typ). It **does not** change any actual disposition or curriculum boundary above. Only material actually taught or assigned is later marked `Covered` with a single primary coverage point. All rows here remain **Unreached** for coverage-accounting purposes until a lecture scope and delivery are confirmed. The competing L05 GLM route is described in the comparison and **not** silently ruled out by this table.
+This table accompanies the [L04–L10 comparison](l04_l10_curriculum_comparison.md) and the provisional [syllabus plan](../syllabus_plan.typ). It **does not** change any actual disposition or curriculum boundary above. Only material actually taught or assigned is later marked `Covered` with a single primary coverage point. All rows here remain **Unreached** for coverage-accounting purposes until a lecture scope and delivery are confirmed. The **actual competing alternative** is the unchanged main-branch syllabus: combined information/optimization L04, EM L05, general inference L06, structured inference L07, VI L08, MCMC L09, and GLMs L10. This ledger's future-allocation map only represents proposed route B, not a decision against the baseline.
 
 | Murphy Book 2 material | Proposed destination under route A | Limitation / dependency |
 |---|---|---|

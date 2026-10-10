@@ -1,11 +1,11 @@
 # Syllabus planning decisions — Advanced Statistics 2027-1
 
-**Development branch:** `syllabus-2027-1-revision` (merged into `main` when approved)  
-**Status:** Working decisions as of 2026-10-08. Lectures 3 onward are tentative.  
+**Development branch:** `curriculum-l04-l06-information-review` — branch proposal; **do not merge without instructor approval**.  
+**Status:** Original decisions through 2026-10-08 retained except the *provisional* 2026-10-10 L04–L06 review proposal. L03 onward is tentative.  
 **Current plan:** [`../syllabus_plan.typ`](../syllabus_plan.typ)  
 **Formal syllabus:** [`../advanced_statistics_2027_1_syllabus.typ`](../advanced_statistics_2027_1_syllabus.typ) — **not** an authoritative constraint on this planning exercise.
 
-This note preserves the reasoning behind the current **Book-2-first** syllabus plan. It is a current planning document, not an archive of superseded draft syllabi.
+This note preserves the reasoning behind the **Book-2-first** syllabus plan. The proposed **Information → Optimization → EM** route is for instructor review only; **Information → GLMs → EM** remains an explicit alternative with a common L04. See [side-by-side assessment](l04_l06_curriculum_comparison.md). No new lecture scope is approved by the existence of this branch.
 
 ## Course-level teaching goals
 
@@ -20,31 +20,35 @@ A lecture should end with *solid conceptual understanding, substantial enough ma
 
 ## Curriculum structure and ordering
 
-**Murphy Book 2 is the curricular spine.** Murphy Book 1 is a selective supplement where it contributes prerequisites, richer pedagogy, worked examples, or a better local sequence. The current book ordering is intentional but not binding within individual lectures.
+**Murphy Book 2 is the curricular spine.** Book 1 is a selective supplement where it contributes prerequisites, richer pedagogy, worked examples, or a better local sequence. The following schedule is a **provisional A route**, not a new instructor decision.
 
 | Meeting | Tentative topic | Primary Murphy Book 2 |
 |---|---|---|
 | 1 | Probabilistic ML and Gaussian systems — *delivered* | Ch. 2, §2.3 |
 | 2 | Exponential families, moment matching and learned Markov chains — *agreed scope* | §§2.4, 2.6 |
 | 3 | Graphical models | Ch. 4 |
-| 4 | Information, objectives and optimization | Chs. 5–6 |
-| 5 | Latent-variable learning and EM | §6.5, with mixture-model example |
-| 6 | Inference as computation | Ch. 7 |
-| 7 | Exact inference in structured sequence models | Chs. 8–9 |
-| 8 | Variational and amortized inference | Ch. 10 |
-| 9 | Monte Carlo and MCMC | Chs. 11–12 |
-| 10 | Classical probabilistic prediction: GLMs and regularization | Ch. 15; selected §14.2 for evaluation |
-| 11 | Neural networks as probabilistic conditional models | Ch. 16 |
-| 12 | Variational autoencoders | Ch. 21 |
+| 4 | Information theory: dependence, communication and representations | Ch. 5 (selected §§5.1–5.5) |
+| 5 | Optimization of probabilistic models, with softmax GLM | §§6.1–6.3, selected §§15.1, 15.3 |
+| 6 | Latent-variable learning and EM | §6.5, selected §28.2 |
+| 7 | Inference as computation | Ch. 7 |
+| 8 | Exact inference in structured sequence models | Chs. 8–9 |
+| 9 | Variational and amortized inference | Ch. 10 |
+| 10 | Monte Carlo and MCMC | Chs. 11–12 |
+| 11 | Neural networks as probabilistic conditional models | Ch. 16, selected §§14.2, 15.2 |
+| 12 | Variational autoencoders; information and representation | Ch. 21, selected §§5.4.2, 5.6 |
 | 13 | Project presentations / synthesis | No committed new material |
 
-**Decisions behind this ordering:**
+**Reasons and constraints behind the proposal:**
 
-- The EM / mixture lecture comes *before* the general inference overview: it gives one concrete and mathematically complete latent-variable learning problem, so later general inference concepts can refer back to it.
-- VI precedes MC/MCMC, paralleling Book 2 and contrasting optimization-based posterior approximation with sampling-based computation.
-- We are not adding a separate lecture for Book 2 Ch. 13 (SMC) or Ch. 14 (prediction overview). Ch. 13 can be a deliberate skip; Ch. 14 evaluation/calibration can be used selectively in L10.
-- Keep the VAE lecture as the present last substantive lecture. Do not now allocate extra meetings to Book 2 Chs. 17–19 (Bayesian NNs, Gaussian processes, distribution shift). Reconsider only as course delivery evolves; do not over-specify the end of semester.
-- This plan is **not** required to match the previously written formal syllabus; the current syllabus was explicitly removed as even a loose planning constraint.
+- Give **information theory** enough room to be computational and operational (mutual information, coding), not just another name for a loss function. Choose **one** coding endpoint for the L04 notebook. Its exact adaptation/timing is not yet validated.
+- Give **differentiable optimization** a mathematical foundation in L05: probabilistic objective, gradients, reverse-mode autodiff and mini-batch SGD. Use a categorical GLM and PyTorch Iris application, rather than attempting all of Chapter 6.
+- Place **EM after explicit optimization** to show how hidden variables complicate parameter learning. Inference overview and subsequent methods shift one slot to L07–L10.
+- Remove the **standalone GLM lecture**, not its core content. GLM conditional likelihood and softmax live in L05; logistic posterior/Laplace in L07; regularization and predictive calibration selected for L11. A systematic treatment of other GLM families and the dedicated L1/L2 digit experiment are **not** claimed to be preserved.
+- Preserve **VI before MCMC**, **neural networks in L11** and **VAEs in L12**. Return to mutual information/rate-distortion and the information-bottleneck perspective in L12, without obligating a full standalone proof of IB or InfoVAE.
+- Book 2 Chapter 6 §§6.3.4–6.4 are candidate resources for VI/VAE; §§6.6–6.9 are not promised. There is still no dedicated SMC or broad predictive overview lecture.
+- This proposed route does **not** override the delivered L01 or the agreed L02 scope. The current formal syllabus remains an output to revise after the instructor decides, not a constraint on the decision.
+
+**Open alternative:** L04 information → L05 GLMs → L06 EM. It has a strong models-first progression, more direct biomedical statistical application, but leaves autodiff/SGD to be distributed into L05/L09/L11/L12. See the linked assessment for specific tradeoffs, provisional ratings, and downstream risks.
 
 ## Book 1's role: lecture-by-lecture decisions
 
@@ -55,14 +59,14 @@ Only retain material with a distinct contribution beyond the Book 2 treatment. `
 | **L1** | Historical delivered provenance, especially §§3.1.1–3.3.4 | Pedagogically useful covariance → MVN conditioning → missing data → linear-Gaussian examples. Earlier introductory and basic-Bayes references are retained as delivery provenance, **not** required future reading. |
 | **L2** | **None required** | Book 2 §2.4 is the richer exponential-family treatment; Book 1 §§3.4 and 4.2 are redundant with the agreed scope or prior statistics background. |
 | **L3** | **Possible:** §3.6.1 and §3.6.2 | Very compact Representation / Inference / Learning orientation, but Book 2 Ch. 4 remains the full mathematical treatment. Do not claim all of §3.6 as a requirement. |
-| **L4** | **Core:** §7.8; §§8.1–8.2, §8.3.1, §§8.4.1–8.4.3. **Possible:** §§6.1.1–6.1.5, §6.2.6 | Book 1 supplies introductory matrix calculus and first-order / Newton / SGD optimization assumed or compressed by Book 2. Its entropy/cross-entropy and forward-v-reverse KL explanations may be pedagogically clearer, but are not necessarily needed. |
-| **L5** | **Core:** §3.5; §§8.7.1–8.7.3 | Book 1 provides the concrete GMM latent-variable model and worked EM-for-GMM example that Book 2 §6.5 cites as an application in the prequel. Do not add Book 1 §21.4 as duplicate mixture-model coverage. |
-| **L6** | **None** | Book 2 Ch. 7 directly provides the inference-as-integral overview; Book 1 §§4.6.7–4.6.8 and §5.1.6 are not needed for it. |
-| **L7** | **None** | Book 2 Chs. 8–9 provide the detailed filtering and message-passing methods; the Book 1 §3.6.2 overview adds little. |
-| **L8** | **None** | Book 2 Ch. 10 suffices for VI; save VAE applications for L12 rather than previewing via Book 1 §20.3.5. |
-| **L9** | **None** | Book 2 Chs. 11–12 provide general Monte Carlo/MCMC; a familiar Book 1 model may be used as an example without assigning its chapter. |
-| **L10** | **Core support:** selected §§10.2–10.3 and §§11.3–11.4. **Possible:** selected §§9.1–9.4 | Book 1 develops logistic-regression MLE/gradient training and the ridge/lasso geometry and MAP interpretation more concretely than Book 2 §15. If generative classifiers earn a place, Book 1 Ch. 9 offers LDA, naive Bayes and generative/discriminative comparison; otherwise drop. Book 1 Ch. 12 GLM repetition does not independently earn a place. |
-| **L11** | **Core support:** selected §§13.2–13.5, excluding §13.5.5 unless needed | Book 1 gives a thorough teachable treatment of MLPs, reverse-mode differentiation/backpropagation, training/regularization, where Book 2 Ch. 16 is a rapid architecture survey. |
+| **L4** | **Possible:** §§6.1–6.2 | Entropy, cross-entropy and KL scaffolding when Murphy Book 1 is more accessible; Book 2 Ch. 5 remains the mathematical spine. |
+| **L5** | **Core:** §7.8; §§8.1–8.2, §§8.4.1–8.4.3; **Possible:** §§10.2–10.3 | Matrix calculus, differentiable optimization and SGD applied to categorical/logistic regression; does not require a full Book 1 GLM survey. |
+| **L6** | **Core:** §3.5; §§8.7.1–8.7.3 | The GMM latent-variable model and a teachable worked EM example; do not double count Book 2 §28.2. |
+| **L7** | **None** | Book 2 Ch. 7 provides the general inference-as-integral overview. |
+| **L8** | **None** | Book 2 Chs. 8–9 cover Kalman filtering and HMM/message-passing methods. |
+| **L9** | **None** | Book 2 Ch. 10 suffices for VI; defer detailed VAE applications to L12. |
+| **L10** | **None** | Book 2 Chs. 11–12 provide Monte Carlo/MCMC; use prior familiar models only as examples. |
+| **L11** | **Core support:** selected §§13.2–13.5; **Possible:** §§11.3–11.4 | Book 1 develops neural-network training and regularization more deeply than Book 2 Ch. 16; selected ridge/lasso interpretation carries forward displaced GLM material without creating a second full regression survey. |
 | **L12** | **None** | Book 2 Ch. 21 is the substantive VAE source and Ch. 16 §16.3.3 supplies autoencoder context; the short Book 1 §20.3.5 is not needed. |
 | **L13** | **None** | Projects / synthesis only for now. |
 
@@ -70,7 +74,7 @@ These judgments are **provisional selections**, not a blanket assignment of ever
 
 ## Deferred versus skipped — avoid invisible curriculum debt
 
-**Pay back in a known lecture:** mixture models and EM (Book 1 §3.5, Book 1 §8.7, Book 2 §6.5) in L5; predictive regularization in L10–L11; nontrivial matrix calculus in L4; optional hierarchical/model-checking material with VI, MCMC or prediction examples.
+**Pay back in a known lecture (proposed):** mixture models and EM (Book 1 §3.5, Book 1 §8.7, Book 2 §6.5) in L6; GLM conditional likelihood / multinomial logistic in L5; predictive penalties and calibration selectively in L11; matrix calculus/autodiff in L5; optional hierarchical/model-checking material in later inference and prediction lectures.
 
 **Keep selectively available without committing a whole lecture:**
 
@@ -79,10 +83,10 @@ These judgments are **provisional selections**, not a blanket assignment of ever
 - Book 2 Ch. 3 hierarchical priors, empirical Bayes, model checking or Fisher information as examples require.
 - Book 2 §§4.3–4.4 detailed MRFs and CRFs (not automatically owed because they are in Ch. 4).
 - Book 1 Ch. 7 EVD/SVD if factor models or PCA are later chosen.
-- Book 2 Ch. 14 §14.2 calibration/proper scoring selectively in L10.
+- Book 2 Ch. 14 §14.2 calibration/proper scoring selectively in L11.
 - Book 2 Chs. 17–19 remain useful options, not current commitments.
 
-**Tentatively skip as a separate lecture:** Book 2 Ch. 13 SMC. A brief mention within the L6 inference overview is not a commitment to teaching its full method.
+**Tentatively skip as a separate lecture:** Book 2 Ch. 13 SMC. A brief mention within the L7 inference overview is not a commitment to teaching its full method.
 
 ## Immediate L3 scoping work
 
@@ -92,4 +96,4 @@ For L3, evaluate genuinely different internally complete graphical-model routes,
 
 ## Latest notebook and toolkit decisions (2026-10-08)
 
-The plan now explicitly includes *mathematical contribution, worked reference, lecture complementarity and durable computational skill* as criteria for each exercise; see [notebook_reference_audit.md](notebook_reference_audit.md). Students already know PyMC and Bambi from the undergraduate course, but their MCMC exercises must go beyond running HMC and diagnostics. Adopt **PyTorch from L4** and reuse it later; **do not teach JAX**. Use SciPy/scikit-learn for numerical reference solutions, not to conceal the new algorithm. Preferred new examples include Ising restoration (L3), three-class Iris softmax in PyTorch (L4), multimodal MH sampling (L9), and heteroskedastic neural prediction (L11); retain the L6 grid/Laplace reference. Keep L5's MRI-versus-incomplete-Gaussian EM choice and L12's mobility-versus-MNIST VAE choice open.
+The plan now explicitly includes *mathematical contribution, worked reference, lecture complementarity and durable computational skill* as criteria for each exercise; see [notebook_reference_audit.md](notebook_reference_audit.md). Students already know PyMC and Bambi from the undergraduate course, but their MCMC exercises must go beyond running HMC and diagnostics. In the review proposal, adopt **PyTorch from L5** and reuse it later; **do not teach JAX**. Use SciPy/scikit-learn for numerical reference solutions, not to conceal the new algorithm. Preferred new examples include Ising restoration (L3), three-class Iris softmax in PyTorch (L5), multimodal MH sampling (L10), and heteroskedastic neural prediction (L11); retain the L7 grid/Laplace reference. Keep L6's MRI-versus-incomplete-Gaussian EM choice and L12's mobility-versus-MNIST VAE choice open.

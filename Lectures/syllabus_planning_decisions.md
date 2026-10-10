@@ -1,11 +1,11 @@
 # Syllabus planning decisions — Advanced Statistics 2027-1
 
 **Development branch:** `curriculum-l04-l06-information-review` — branch proposal; **do not merge without instructor approval**.  
-**Status:** Original decisions through 2026-10-08 retained except the *provisional* 2026-10-10 L04–L06 review proposal. L03 onward is tentative.  
+**Status:** Original decisions through 2026-10-08 retained except the *provisional* L04–L10 alternative schedule, corrected 2026-10-11. L03 onward is tentative.  
 **Current plan:** [`../syllabus_plan.typ`](../syllabus_plan.typ)  
 **Formal syllabus:** [`../advanced_statistics_2027_1_syllabus.typ`](../advanced_statistics_2027_1_syllabus.typ) — **not** an authoritative constraint on this planning exercise.
 
-This note preserves the reasoning behind the **Book-2-first** syllabus plan. The proposed **Information → Optimization → EM** route is for instructor review only; **Information → GLMs → EM** remains an explicit alternative with a common L04. See [side-by-side assessment](l04_l06_curriculum_comparison.md). No new lecture scope is approved by the existence of this branch.
+This note preserves the reasoning behind the **Book-2-first** syllabus plan. The branch proposes **L04 Information → L05 Optimization (with categorical GLM) → L06 EM → L07 Inference → L08 Structured inference → L09 VI → L10 MCMC**. The actual alternative is **retaining the unchanged main-branch sequence: combined information/objectives/optimization L04 → EM L05 → inference through L09 → dedicated GLMs L10**. See the [L04–L10 side-by-side assessment](l04_l10_curriculum_comparison.md). No new lecture scope is approved by the existence of this branch.
 
 ## Course-level teaching goals
 
@@ -48,7 +48,7 @@ A lecture should end with *solid conceptual understanding, substantial enough ma
 - Book 2 Chapter 6 §§6.3.4–6.4 are candidate resources for VI/VAE; §§6.6–6.9 are not promised. There is still no dedicated SMC or broad predictive overview lecture.
 - This proposed route does **not** override the delivered L01 or the agreed L02 scope. The current formal syllabus remains an output to revise after the instructor decides, not a constraint on the decision.
 
-**Open alternative:** L04 information → L05 GLMs → L06 EM. It has a strong models-first progression, more direct biomedical statistical application, but leaves autodiff/SGD to be distributed into L05/L09/L11/L12. See the linked assessment for specific tradeoffs, provisional ratings, and downstream risks.
+**Actual open alternative (A, baseline):** Keep the **main** syllabus unchanged, including its *combined* information/optimization L04, EM L05, general inference L06, structured inference L07, VI L08, MCMC L09 and dedicated GLM L10. Under this choice, L04 already includes introductory autodiff/SGD and the Iris PyTorch notebook, but not substantive MI/coding; fitting the instructor's stronger information-theory goal requires deliberate compression/displacement. **Branch alternative (B):** dedicated L04 information + coding and L05 optimization/softmax GLM; EM and each intervening inference lecture shift one slot, removing the old L10 GLM meeting. Compare both **through L10** and audit L11/L12 consequences in the linked assessment.
 
 ## Book 1's role: lecture-by-lecture decisions
 

@@ -33,7 +33,7 @@
 
 = Syllabus plan
 
-This is a working curriculum map for *Probabilistic Machine Learning: Advanced Topics*. It is intended to guide lecture scoping and later transfer into the formal syllabus, not to freeze the detailed content of later lectures.
+This is a working curriculum map for *Probabilistic Machine Learning: Advanced Topics*. On this review branch it instantiates *one proposed alternative*: information theory in L04, optimization with a categorical GLM in L05, and EM/inference shifted through L10. The competing alternative is the *unchanged main-branch plan*: combined information and optimization L04, EM L05, and a dedicated GLM L10. Compare these paths through L10 in #link("Lectures/l04_l10_curriculum_comparison.md")[the evaluation document]. Neither is instructor-approved by this branch.
 
 The course is organized around four recurring ideas:
 

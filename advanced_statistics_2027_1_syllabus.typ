@@ -87,11 +87,11 @@
 
 This course develops modern machine learning through probabilistic models and the computations needed to use them. We describe a task by a joint probability distribution and a query: a posterior, marginal, predictive distribution, integral, expectation, or decision. The structure of a distribution and the required computation motivate exact algorithms, simplifying assumptions, or approximate inference. Students learn how those mathematical choices produce useful predictive, generative and scientific models.
 
-The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 is used selectively when it gives needed background or a more pedagogical derivation. The course progresses from exponential families and graphical models through optimization, EM, structured exact inference, VI and MCMC to GLMs, neural networks and VAEs.
+The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 is used selectively when it gives needed background or a more pedagogical derivation. The proposed course progression moves from exponential families and graphical models through information theory, differentiable optimization, EM, structured inference, VI and MCMC to neural networks and VAEs. Key GLM concepts are integrated into the optimization and neural-network lectures rather than assigned a separate meeting.
 
 Each meeting includes approximately two hours of mathematical lecture and one hour of guided notebook work. Lectures and notebooks have complementary jobs: the lecture establishes mathematics, while the notebook solves a particular application and builds transferable skills.
 
-**Software progression.** Students enter with experience in Python, NumPy, PyMC, Bambi and ArviZ. The course introduces PyTorch early for automatic differentiation and optimization, develops scikit-learn and SciPy skills, and later reuses PyTorch to train neural and generative models. JAX is not required.
+**Software progression.** Students enter with experience in Python, NumPy, PyMC, Bambi and ArviZ. The proposed plan introduces PyTorch in L05 for automatic differentiation and optimization, develops scikit-learn and SciPy skills, and later reuses PyTorch to train neural and generative models. JAX is not required.
 
 = Additional materials
 
@@ -126,6 +126,8 @@ The course grade is based on four components:
 
 
 = Schedule
+
+#text(size: 8pt, weight: "semibold", fill: blue)[PROVISIONAL REVIEW BRANCH — this L04–L06 allocation is proposed, not instructor-approved. See Lectures/l04_l06_curriculum_comparison.md for the GLM alternative and unresolved decisions.]
 
 #lecture(
   1,
@@ -197,29 +199,48 @@ The course grade is based on four components:
 #lecture(
   4,
   [11.11.2026],
-  [Information, objectives, and optimization],
-  [Entropy, KL and cross-entropy as objectives; derivatives and stochastic optimization; PyTorch tensor/autograd fundamentals; categorical likelihood and multinomial softmax as a concrete optimization application.],
+  [Information theory: dependence, communication, and representations],
+  [Entropy, cross-entropy and KL; mutual information as a measure of dependence; the data-processing inequality; a concrete source- or channel-coding problem; rate-distortion as a bridge to later generative models. Full information bottleneck is deferred to the VAE context.],
   [
-    - 5.1.3–5.1.8 KL divergence; MLE; Bayes
-    - 5.2.4 Cross-entropy; perplexity
-    - 6.1–6.2 Optimization; autodiff
-    - 6.3.1–6.3.3 Stochastic gradient optimization
+    - 5.1.3–5.1.8 KL, MLE and Bayes
+    - 5.2.1–5.2.4 Entropy and cross-entropy
+    - 5.3.1–5.3.4 Mutual information, data processing, sufficient statistics
+    - 5.4.1–5.4.2 Source coding, rate-distortion (selected)
+    - 5.5 Channel coding (selected application)
+    - 5.6 Information bottleneck (brief orientation)
   ],
   [
-    - 6.1.1–6.1.5 Entropy; cross-entropy
-    - 6.2.6 Forward vs reverse KL
-    - 7.8 Matrix calculus
-    - 8.1–8.2 Optimization; gradient descent
-    - 8.3.1 Newton’s method
-    - 8.4.1–8.4.3 Stochastic gradient descent
+    - 6.1 Entropy and cross-entropy
+    - 6.2.6 Forward/reverse KL (possible)
   ],
-  [Fit a three-class Iris softmax classifier with PyTorch.],
-  [PyTorch tensor shapes, autograd, losses and gradient-based optimizers.],
+  [Analyze a noisy parity-check code: compute entropy and mutual information and use posterior decoding to correct errors (candidate).],
+  [Finite-probability enumeration, dependence and channel information with NumPy.],
 )
 
 #lecture(
   5,
   [18.11.2026],
+  [Optimization of probabilistic models],
+  [Learning from negative log likelihood and cross-entropy; categorical logistic regression as a GLM; gradients, reverse-mode automatic differentiation, mini-batch SGD, PyTorch training and predictive probabilities. More advanced stochastic-distribution gradients are reserved for VI and VAEs.],
+  [
+    - 6.1–6.2 Optimization and automatic differentiation
+    - 6.3.1–6.3.3 Stochastic gradient descent
+    - 15.1.1–15.1.3 GLM structure and MLE (selected)
+    - 15.3.2 Multinomial logistic regression
+  ],
+  [
+    - 7.8 Matrix calculus
+    - 8.1–8.2 Gradient optimization
+    - 8.4.1–8.4.3 Stochastic gradient descent
+    - 10.2–10.3 Logistic regression (selected)
+  ],
+  [Fit a three-class Iris multinomial-softmax GLM using a transparent PyTorch optimization loop.],
+  [PyTorch tensors, computational graphs, autograd, losses, optimizers and predictive evaluation.],
+)
+
+#lecture(
+  6,
+  [25.11.2026],
   [Latent-variable learning and EM],
   [Mixture models; latent assignments; complete vs observed likelihood; EM as alternating inference and optimization; expected sufficient statistics; relation to exponential-family moment matching.],
   [
@@ -235,8 +256,8 @@ The course grade is based on four components:
 )
 
 #lecture(
-  6,
-  [25.11.2026],
+  7,
+  [02.12.2026],
   [Inference as computation],
   [Posterior, marginal, predictive and expected-value queries as sums / integrals; exact vs approximate inference; MAP; grid and Laplace approximation; variational inference, MCMC and SMC as contrasting strategies; how structural assumptions and computational budget determine the method.],
   [
@@ -251,8 +272,8 @@ The course grade is based on four components:
 )
 
 #lecture(
-  7,
-  [02.12.2026],
+  8,
+  [09.12.2026],
   [Exact inference in structured sequence models],
   [Dynamic programming / message passing; hidden Markov models; forward-backward and Viterbi as exact summation / maximization over exponentially many latent-state sequences; Gaussian filtering as the continuous analogue; selected Kalman filtering if scope permits.],
   [
@@ -265,8 +286,8 @@ The course grade is based on four components:
 )
 
 #lecture(
-  8,
-  [09.12.2026],
+  9,
+  [16.12.2026],
   [Variational inference and amortized inference],
   [Variational approximation as optimization; ELBO; mean-field structure; coordinate ascent; black-box / stochastic VI; reparameterization; amortized inference as learning a map from observations to approximate posteriors.],
   [
@@ -281,8 +302,8 @@ The course grade is based on four components:
 )
 
 #lecture(
-  9,
-  [16.12.2026],
+  10,
+  [23.12.2026],
   [Monte Carlo and MCMC],
   [Monte Carlo approximation of integrals; proposal-based sampling; Metropolis-Hastings; Gibbs sampling; Hamiltonian Monte Carlo; diagnostics and the relation between sampling cost, posterior geometry and effective information.],
   [
@@ -297,35 +318,18 @@ The course grade is based on four components:
 )
 
 #lecture(
-  10,
-  [23.12.2026],
-  [Classical probabilistic prediction: GLMs and regularization],
-  [Binary and multinomial logistic regression; linear / generalized linear models; MLE / MAP; ridge and lasso as structural assumptions / priors; calibration and posterior predictive uncertainty where appropriate. Generative-vs-discriminative classification is included only if it earns space.],
-  [
-    - 14.2 Predictive scoring; calibration
-    - 15.1 GLM form; links; estimation
-    - 15.2 Linear regression; priors
-    - 15.3 Logistic regression; uncertainty
-  ],
-  [
-    - 9.1–9.4 LDA; naive Bayes; classifier types
-    - 10.2–10.3 Logistic regression
-    - 11.3–11.4 Ridge; lasso
-  ],
-  [Classify handwritten digits with L1/L2 regularization (alternative: Oke Poisson GLM).],
-  [scikit-learn estimators, preprocessing, penalties and predictive evaluation.],
-)
-
-#lecture(
   11,
   [30.12.2026],
   [Neural networks as probabilistic conditional models],
-  [MLPs; nonlinear function approximation; activations and depth; backpropagation / reverse-mode autodiff; optimization and initialization; regularization; softmax / cross-entropy viewed as a probabilistic conditional model rather than a separate conceptual framework.],
+  [MLPs as nonlinear conditional-probability models; activations, architecture, training and regularization; selected priors/penalties and predictive calibration, connecting to the GLM studied in L05.],
   [
     - 16.1–16.2 Neural-network building blocks
-    - 16.3 MLPs; CNNs; autoencoders; sequences
+    - 16.3 MLPs; selected architectures
+    - 14.2 Predictive scoring and calibration (selected)
+    - 15.2.4–15.2.7 Priors and penalties (selected)
   ],
   [
+    - 11.3–11.4 Ridge and lasso (selected)
     - 13.2 MLPs; nonlinearities
     - 13.3 Backpropagation
     - 13.4 Network training
@@ -340,11 +344,12 @@ The course grade is based on four components:
   12,
   [06.01.2027],
   [Variational autoencoders: neural latent-variable models],
-  [Latent-variable generative model; encoder / decoder networks; amortized variational posterior; ELBO; reparameterization; reconstruction and KL terms; posterior collapse as a failure mode; VAE as a synthesis of graphical models, information objectives, optimization, VI and neural networks.],
+  [Latent-variable generative model; encoder / decoder networks; amortized variational posterior; ELBO and reparameterization; reconstruction and KL; β-VAE, rate-distortion and the information bottleneck perspective; posterior collapse. InfoVAE is an optional extension.],
   [
     - 21.1–21.2 VAE model; ELBO; inference network
-    - 21.3 VAE variants
+    - 21.3.1–21.3.2 β-VAE; InfoVAE (selected)
     - 21.4 Posterior collapse
+    - 5.4.2, 5.6 Rate-distortion and information bottleneck (selective return)
   ],
   [],
   [Train a VAE for mobility variables (Oke PS4) or MNIST.],

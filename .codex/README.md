@@ -1,60 +1,74 @@
 # Codex lecture-development workflow
 
-The instructor works with the **Lecture Development Coordinator** in a single Codex conversation. The coordinator can delegate to five specialist agent types, which each support `build`, `feasibility-review`, and `revision`.
+The instructor works with the **Lecture Development Coordinator** in one Codex conversation. The coordinator delegates bounded work or independent feasibility reviews to five specialist subagents, preserving instructor decisions across stages.
 
-## Start in VS Code (or Codex CLI)
+## Where things live
 
-1. Update this repository and open its **root** in VS Code with the Codex extension, or start Codex CLI at the root.
-2. Open a **new** Codex conversation. Explicitly invoke `$lecture-development` (skills can also be discovered with `/skills`). Restart Codex if the skill is not visible.
-3. Choose an available capable model and a High reasoning effort for the coordinator, such as GPT-6 Sol High; use Astra if your Codex setup offers it and you prefer it for difficult intellectual judgments.
-4. Use this launch prompt:
+| Location | Authority |
+| --- | --- |
+| `.agents/skills/<name>/SKILL.md` | **Single canonical source** for each of the nine skills: procedure, modes, stage boundaries, review rules, supporting references |
+| `.agents/skills/shared/backpressure.md` | Shared protocol referenced by the canonical skills |
+| `.codex/agents/<role>.toml` | Thin **Codex-specific launch profiles**: name, one-line description, model, reasoning effort, and pointer to the canonical skill |
+| `.codex/config.toml` | Subagent runtime/concurrency settings |
+| `AGENTS.md` | Repository-wide instructions and cross-stage invariants |
+
+There are **no metadata wrappers** and no duplicate copies of skills in a separate `skills/` root. Skills are portable; Codex launch profiles are not. These paths are part of the repository contract.
+
+## Model and reasoning settings
+
+The five specialist profiles currently pin models and effort. These are **execution defaults, not pedagogical instructions**, and can be changed in one TOML file without modifying the skill:
+
+| Agent | Model | Effort | Reason |
+| --- | --- | --- | --- |
+| `lecture_scope` | `gpt-6.1-sol` | `high` | Lecture-level intellectual and mathematical decisions |
+| `section_design` | `gpt-6.1-sol` | `high` | Prerequisite reasoning and section contracts |
+| `slide_organization` | `gpt-6.1-sol` | `medium` | Sequential teaching-move organization |
+| `slide_design` | `gpt-6.1-sol` | `high` | Accurate mathematical and visual explanation |
+| `slide_authoring` | `gpt-6-luna` | `high` | Lower-cost production implementation and mechanical checking |
+
+**Important:** account/workspace availability varies. If Codex rejects a pinned model or reasoning effort, edit only the affected `.codex/agents/<role>.toml` or choose an accessible equivalent. The static configuration check does **not** prove model entitlement or runtime availability. The coordinator's own model is chosen in the Codex interface.
+
+## Start in VS Code or Codex CLI
+
+1. Update this repository, open its **root** in VS Code with the Codex extension, or start Codex CLI at the root.
+2. Open a **new** Codex conversation. Invoke `$lecture-development` (also discoverable through `/skills`). Restart Codex if the new skill is not visible.
+3. Choose a capable available model/high reasoning effort for the coordinator.
+4. Use this initial prompt:
 
 ```text
 $lecture-development
 Act as Lecture Development Coordinator for this repository.
-Read AGENTS.md and the canonical skills/lecture-development/SKILL.md.
-Check that the five specialist subagent profiles can be invoked.
-Delegate bounded work and feasibility reviews using the explicit modes,
-keeping the instructor conversation with you.
-Do not claim independent reviews unless a separate subagent actually ran.
-Do not start drafting a lecture yet. Identify the current state of the course,
-then ask me which lecture and stage to start or resume.
+Read AGENTS.md, .agents/skills/lecture-development/SKILL.md,
+and .agents/skills/shared/backpressure.md.
+Check that specialist subagents can be launched.
+Keep the instructor conversation with you. Delegate only bounded work
+or feasibility reviews with explicit modes, artifacts and versions.
+Never claim an independent review unless a separate subagent ran.
+First identify the current course stage and ask which lecture to resume.
 ```
 
-## Available specialist subagents
+## Read-only subagent smoke test
 
-| Agent name | Canonical skill |
-| --- | --- |
-| `lecture_scope` | `skills/lecture-scope/SKILL.md` |
-| `section_design` | `skills/section-design/SKILL.md` |
-| `slide_organization` | `skills/slide-level-organization/SKILL.md` |
-| `slide_design` | `skills/slide-design/SKILL.md` |
-| `slide_authoring` | `skills/slide-authoring/SKILL.md` |
-
-The root coordinator is invoked as a **skill**, not by spawning itself as a subagent. By default, specialist subagents inherit the parent's model and reasoning effort. Edit a specific agent TOML file to override those choices later if useful; don't assume a particular model is enabled for every account.
-
-## Delegation smoke test
-
-After checking out the configuration, start a fresh Codex conversation and ask:
+In a fresh Codex conversation:
 
 ```text
 $lecture-development
-Spawn the slide_design specialist in feasibility-review mode.
+Spawn the slide_design custom subagent in feasibility-review mode.
 Review Lectures/L02_Exponential_Families/slide_organization.md using
 Lectures/L02_Exponential_Families/section_design.md.
+Use .agents/skills/slide-design/SKILL.md and shared backpressure rules.
 Read only; do not edit files. Wait for its report.
-Give me the feasibility verdict and identify the separate subagent thread.
-Then stop and ask before doing any lecture-development work.
+Give me its feasibility verdict and identify the separate subagent thread.
+Then stop and ask before making any lecture-development changes.
 ```
 
-**Pass criteria:** an actual `slide_design` subagent thread appears, it uses the canonical skill, returns a bounded evidence-based feasibility review, and no files are changed. This runtime test cannot be done just by committing the configuration.
+**Pass criteria:** a separate `slide_design` subagent launches using its configured model and skill, returns a bounded evidence-based report, and makes **no file changes**. This is not established by static or Typst CI checks.
 
-## Design and maintenance
+## Validation and maintenance
 
-- Canonical procedures remain in `skills/*/SKILL.md`. The `.agents/skills/*/SKILL.md` entries are deliberately **tiny metadata/discovery wrappers**, not copies of the instructions. Regular files avoid Windows Git symlink problems.
-- Coordinator orchestration: `skills/lecture-development/SKILL.md`. Shared modes and backpressure: `skills/shared/backpressure.md`.
-- Five custom TOML profiles in `.codex/agents/` are subagent definitions, not independent launchers. No separate model is hard-coded.
-- Run `python scripts/check_codex_setup.py` to validate wrapper metadata and TOML structure. This is a static check, not a runtime delegation test.
-- Keep consequential decisions and approval with the instructor. Never allow concurrently editing agents to modify the same artifact.
+- Run `python scripts/check_codex_setup.py` to validate canonical skills, references, model/effort keys and TOML shape. CI runs this script.
+- Avoid duplicating agent rules in the TOML files. They identify the appropriate `SKILL.md` and enforce only a minimal delegation boundary.
+- If model choices should become dynamic later, change the profile strategy then. Do not put model names inside the skill instructions.
+- Preserve instructor approvals in lecture-local development state and never edit the same artifact concurrently in separate agents.
 
-Docs: https://learn.chatgpt.com/docs/build-skills and https://learn.chatgpt.com/docs/agent-configuration/subagents.
+Documentation: [Codex subagents](https://learn.chatgpt.com/docs/agent-configuration/subagents), [Agent Skills](https://agentskills.io/), [VS Code skill locations](https://code.visualstudio.com/docs/agent-customization/agent-skills).

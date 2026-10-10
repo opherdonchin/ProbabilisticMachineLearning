@@ -29,7 +29,7 @@ command, with `--offline` when dependencies are cached. Do not use system Python
 or the notebook environment for its rendering dependencies.
 
 Do not make broad repository reads, use the web, add helpers/assets/dependencies,
-or create commits. If editing, follow `skills/slide-authoring/SKILL.md` and
+or create commits. If editing, follow `.agents/skills/slide-authoring/SKILL.md` and
 `Lectures/slide_authoring_conventions.md`. The approved slide design remains
 authoritative for student-visible meaning and hierarchy.
 

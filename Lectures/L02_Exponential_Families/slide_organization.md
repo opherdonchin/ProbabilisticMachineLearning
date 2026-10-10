@@ -59,7 +59,7 @@ and establish the four roles `h`, `T`, `η`, and `A` before specializing it.
 
 **Role:** Summary.
 
-**Intention / goal:** Consolidate the four pieces of exponential-family structure and point forward to the Gaussian as a richer familiar test case.
+**Intention / goal:** Consolidate the four pieces of exponential-family structure—`h`, `T`, `η`, and `A`—using the Bernoulli mapping established in this section.
 
 ## Issues / critique
 
@@ -171,7 +171,7 @@ Students should understand the covariance result and the resulting convexity of 
 
 **Role:** Summary.
 
-**Intention / goal:** Consolidate the first- and second-derivative identities and hand off to estimation: if model moments are functions of `η`, observed sufficient statistics can tell us how to choose `η`.
+**Intention / goal:** Consolidate the first- and second-derivative identities: `∇A(η)` gives the mean sufficient statistic, while `∇²A(η)` gives its covariance.
 
 ## Issues / critique
 
@@ -452,15 +452,13 @@ The result should feel inevitable from Sections 4 and 7 rather than like another
 
 **Intention / goal:** Show the generative consequence using Murphy's generated-text example. Students should see generation as repeated sampling from the learned row corresponding to the current state.
 
-### 10. From text to a fitted Markov model — and into the notebook
+### 10. From text to a fitted Markov model
 
 **Role:** Summary.
 
 **Intention / goal:** Consolidate
 
-`text → transition counts → normalized rows → sequence probability / generation`
-
-and hand off explicitly to the one-hour notebook.
+`text → transition counts → normalized rows → sequence probability / generation`.
 
 ## Issues / critique
 
@@ -471,6 +469,12 @@ and hand off explicitly to the one-hour notebook.
 ## Upstream change requests
 
 None.
+
+---
+
+# Lecture-level notebook handoff
+
+After the Section 8 summary, introduce the one-hour student notebook as a separate lecture-level activity, not as part of a section summary or an additional content slide. The notebook operationalizes the established chain `sequence data → transition counts → fitted transition matrix → inspection / scoring / generation`. The proposed content-slide count remains 45.
 
 ---
 

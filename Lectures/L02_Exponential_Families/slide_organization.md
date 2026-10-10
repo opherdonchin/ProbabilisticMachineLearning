@@ -1,6 +1,6 @@
 # Lecture 2 slide organization — draft
 
-This file applies `skills/slide-level-organization/SKILL.md` to the current section contracts in `section_design.md`.
+This file applies `.agents/skills/slide-level-organization/SKILL.md` to the current section contracts in `section_design.md`.
 
 This is an **organization draft for instructor review**, not an approved slide-design specification. It owns slide titles, order, and concise teaching intentions. It does not prescribe finished layouts or Typst implementation.
 

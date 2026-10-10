@@ -22,13 +22,13 @@ These instructions apply to the entire repository.
 ## Lecture development coordination
 
 - In Codex IDE/CLI, invoke `$lecture-development` for the instructor-facing
-  workflow. Thin discoverable wrappers live under `.agents/skills/` and five
-  specialist subagent profiles under `.codex/agents/`. See `.codex/README.md`
-  for launch and a live delegation smoke test. The canonical instructions
-  remain in `skills/`.
+  workflow. Canonical, discoverable skill instructions live under
+  `.agents/skills/` (no wrappers); five minimal Codex execution profiles,
+  including their model/effort settings, live under `.codex/agents/`.
+  See `.codex/README.md` for launch and a live delegation smoke test.
 
 - For a multi-stage lecture-development task, read and follow
-  `skills/lecture-development/SKILL.md`. It coordinates stages and the
+  `.agents/skills/lecture-development/SKILL.md`. It coordinates stages and the
   instructor interaction; it does not replace the specialist skills.
 - Specialists support `build`, `feasibility-review`, and `revision` modes.
   The coordinator dispatches reviews and routes decisions when active. For a
@@ -43,13 +43,13 @@ These instructions apply to the entire repository.
   `development_state.md` tracking branch/revisions, approvals with provenance,
   open decisions, review status and next owner. Reconcile it against live files
   on resuming; do not silently inherit stale or cross-branch assumptions.
-  Use `skills/shared/backpressure.md` for handoff and escalation rules.
+  Use `.agents/skills/shared/backpressure.md` for handoff and escalation rules.
 
 ## Lecture scope development
 
 - When deciding what a new lecture should cover before drafting slides or a
-  notebook, read and follow `skills/lecture-scope/SKILL.md`.
-- Also read `skills/lecture-scope/references/timing-calibration.md` when judging
+  notebook, read and follow `.agents/skills/lecture-scope/SKILL.md`.
+- Also read `.agents/skills/lecture-scope/references/timing-calibration.md` when judging
   lecture extent, mathematical density, source-page compression, or possible
   recording candidates. Its current numbers are provisional priors and should
   be replaced or sharpened as actual course timing data accumulate.
@@ -60,7 +60,7 @@ These instructions apply to the entire repository.
 - Do not collapse scope development into slide-level or notebook drafting. Those
   are downstream authoring tasks with separate constraints.
 - Before freezing the five-part Lecture Scope, use the review mode in
-  `skills/section-design/SKILL.md` for a **lightweight feasibility check**.
+  `.agents/skills/section-design/SKILL.md` for a **lightweight feasibility check**.
   This preview must not generate a section partition or slide outline.
 
 ## Cross-stage instructional invariants
@@ -72,13 +72,13 @@ These instructions apply to the entire repository.
 ## Section design and backpressure
 
 - After an agreed Lecture Scope and before slide organization, follow
-  `skills/section-design/SKILL.md` to construct sections forward from the
+  `.agents/skills/section-design/SKILL.md` to construct sections forward from the
   evolving student-knowledge state, with a visible global endpoint, selective
   instructor checkpoints, periodic feasibility checks, and justified backtracking.
 - Maintain section purposes, entry conditions, endpoints, mathematical treatment
   constraints, boundaries, approximate extent, and carry-forward in a lecture-local
   `section_design.md`. Use the L02 file as an output reference, not a fixed outline.
-- Read `skills/shared/backpressure.md` when requesting or returning upstream
+- Read `.agents/skills/shared/backpressure.md` when requesting or returning upstream
   feedback. Distinguish a preliminary feasibility preview from pressure discovered
   during actual downstream execution. Return decisions to the stage that owns
   them; never silently amend a higher-level commitment.
@@ -89,7 +89,7 @@ These instructions apply to the entire repository.
 
 - When an already-designed lecture section needs to be turned into an ordered
   sequence of slide-level teaching moves, read and follow
-  `skills/slide-level-organization/SKILL.md` before detailed visual design or
+  `.agents/skills/slide-level-organization/SKILL.md` before detailed visual design or
   Typst implementation.
 - Treat slide titles and order as the primary output. Use brief intention and
   design notes to disambiguate the teaching moves rather than prematurely
@@ -105,7 +105,7 @@ These instructions apply to the entire repository.
 ## Slide design
 
 - After slide-level organization is approved, read and follow
-  `skills/slide-design/SKILL.md`.
+  `.agents/skills/slide-design/SKILL.md`.
 - Use `Lectures/slide_design_conventions.md` for course-wide design
   conventions and `Lectures/design.typ` for the executable constrained design
   language.
@@ -116,7 +116,7 @@ These instructions apply to the entire repository.
 ## Lecture slide authoring
 
 - After slide design is approved, read and follow
-  `skills/slide-authoring/SKILL.md`.
+  `.agents/skills/slide-authoring/SKILL.md`.
 - Use `Lectures/slide_authoring_conventions.md` for course-wide production
   conventions and `Lectures/course.typ` for the live production API.
 - Treat approved `slide_design.typ` as the student-visible design source of
@@ -126,13 +126,13 @@ These instructions apply to the entire repository.
 ## Teaching notebook authoring
 
 - For an end-to-end new teaching notebook, read and follow
-  `skills/build-teaching-notebook/SKILL.md`. It deliberately separates creation
+  `.agents/skills/build-teaching-notebook/SKILL.md`. It deliberately separates creation
   of a technically correct worked solution from pedagogical decomposition into
   solved Q&A and student self-work notebooks.
 - If only the worked computational example is being developed or validated,
-  follow `skills/worked-solution-authoring/SKILL.md`.
+  follow `.agents/skills/worked-solution-authoring/SKILL.md`.
 - If a validated worked solution already exists and the task is to turn it into
-  course pedagogy, follow `skills/teaching-notebook-authoring/SKILL.md` and its
+  course pedagogy, follow `.agents/skills/teaching-notebook-authoring/SKILL.md` and its
   references, especially the cumulative student-knowledge file.
 - The solved Q&A notebook is the pedagogical source of truth. Generate the
   student self-work version from it with `scripts/make_self_work_notebook.py`

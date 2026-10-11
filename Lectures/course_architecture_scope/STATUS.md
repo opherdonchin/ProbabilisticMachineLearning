@@ -3,7 +3,7 @@
 **Branch:** scope-l03-l12-course-architecture
 **Base:** main, after instructor-selected curriculum merged in PR #8 (b78a7650bb09ae851e412089d98525f7b71275d9)
 **Operating contract:** [WORK_ORDER.md](WORK_ORDER.md)
-**Status:** PREPARED ONLY. No independent scope agents have been launched here, no complete new lecture scopes exist, and no review / agent approvals have been recorded. This is not a final course-architecture proposal.
+**Status:** RUNNING. Branch refreshed from origin; initial working tree clean. Starting HEAD 906ce71dd9c8e29f3dede51ec809442a885354c9; main/base b78a7650bb09ae851e412089d98525f7b71275d9. Source-ownership contract and inspection register committed at 374bc6d. Distinct configured lecture_scope builders /root/build_l03 and /root/build_l04 launched successfully. No scope approval yet. This course-local STATUS serves as the batch development-state index; lecture contracts remain their owning artifacts.
 
 ## Core authority
 
@@ -13,9 +13,9 @@ Instructor delegated this review-batch autonomy on 2026-10-11: coordinator may g
 
 | Lecture | Focus | Scope author / revision | Independent review / revision | Gate | Principal unresolved handoff |
 |---|---|---|---|---|---|
-| L03 | Graphical models | Not started | Not run | Pending | Ising image denoising versus unavailable later MCMC machinery |
-| L04 | Information theory | Not started | Not run | Pending | Choose one substantive source- or channel-coding lab |
-| L05 | GLMs and optimization | Not started | Not run | Pending | Source precision and combined GLM-gradient/AD/SGD load |
+| L03 | Graphical models | /root/build_l03, blob f4dab507f90618362c2e04c1c3791c8139f7de56 | /root/review_l03 running | Pending | Ising image denoising versus unavailable later MCMC machinery |
+| L04 | Information theory | /root/build_l04, blob 242ee28d251d583004daa25379b6a0f8cb44d622 | Queued | Pending | Choose one substantive source- or channel-coding lab |
+| L05 | GLMs and optimization | /root/build_l05 building | Queued | Pending | Source precision and combined GLM-gradient/AD/SGD load |
 | L06 | Latent-variable EM | Not started | Not run | Pending | Incomplete Gaussian or MRI-GMM lab |
 | L07 | Inference overview | Not started | Not run | Pending | One Laplace benchmark versus full Ch. 7 breadth |
 | L08 | Message passing / filtering | Not started | Not run | Pending | HMM vs Kalman worked core |
@@ -30,8 +30,8 @@ The table is a progress register, not a declaration that any provisional source 
 
 | Gate | State | Evidence path |
 |---|---|---|
-| Reconcile latest actual course materials | Pending | WORK_ORDER.md phase 0 |
-| Map main book concepts to primary/omitted lectures | Pending | architecture_audit.md |
+| Reconcile latest actual course materials | Passed | Protected L01 actual deck/imputation notebook, L02 section contract; malformed/stale L02 state excluded |
+| Map main book concepts to primary/omitted lectures | Provisional v1 | architecture_audit.md blob 882a9b2e76134d4952b218492a3564e117f6d6b4 |
 | Ten complete five-part scopes | Pending | lecture-local lecture_scope.md files |
 | Ten separate independent feasibility reviews | Pending | reviews/L03_review.md through L12_review.md |
 | Targeted repairs and agent approvals | Pending | above register and reviews |
@@ -41,6 +41,6 @@ The table is a progress register, not a declaration that any provisional source 
 | Mechanical Typst/links/numbering/source consistency | Pending | architecture_audit.md |
 | Final committed branch proposal | Pending | this register + scope files |
 
-## Resume instruction
+## Next action
 
-Open the branch in a fresh VS Code Codex session and start from [RUN_IN_VSCODE.md](RUN_IN_VSCODE.md). No artifact except the initial work-order/status/questions templates should be treated as evidence of actual agent work. Do not begin slide authoring, notebook production, a course merge or a student-facing syllabus release in this phase.
+L03/L04 complete provisional scopes, L03 independent review running; L05 build running. Complete Wave A review/reconciliation before Wave B. Keep at most three active threads including coordinator. Source access available; no launch blocker. No slides/notebook production or merge authorized.

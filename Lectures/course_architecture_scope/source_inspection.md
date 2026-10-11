@@ -29,3 +29,8 @@ PS4-Questions/CEE790A-PS4.tex, vae.ipynb and mobile-msa.csv are available locall
 - `PS4/PS4-Questions/mobile-msa.csv` SHA256 `05e02113771a0ab550a9e7a0098d099ee348820564b68bcdc6c71a28b24418d6`.
 - `PS2/PS2-Questions/CEE790A-PS2.tex` SHA256 `838540ec8b1ff0d0718b34820046dfb69bfb1de44f74d3bfcb1be0f27c13da2e`.
 - `PS4/PS4-Questions/CEE790A-PS4.tex` SHA256 `d89b8956b1d7e1d223df62a42c127ea3f6513bc6a0ec6f39ec92ddff310ecdba`.
+
+## Source-reading cautions for builders/reviewers
+
+- B2 §15.1.3 Eq. 15.35 differentiates the **log likelihood** (observed minus predicted); NLL reverses the sign and restores dispersion. Positive-semidefinite Hessian does not by itself imply a unique finite MLE: design rank and separation matter. Do not inherit the source paragraph's stronger uniqueness wording.
+- B2 §10.2.1 pp. 447–448 extraction contains apparent sign/constant inconsistencies around Eqs. 10.49–10.50. The scope must independently use ELBO = expected log likelihood **minus** KL and diagonal Normal KL = one half sum(mu² + sigma² − 1 − log sigma²). Check the actual PDF if exact equation attribution is required; no erroneous extracted formula is adopted as a teaching commitment.

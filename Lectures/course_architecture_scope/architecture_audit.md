@@ -52,11 +52,11 @@ Repeated Gaussian objects have different jobs: L01 known-parameter conditioning,
 | 16.2.1–2/16.3.1 MLPs | L11 deep nonlinear conditional mean/SD and NLL, AD reused | CNN/RNN/transformer/GNN/dropout/norm/attention theory omitted |
 | 16.3.3 autoencoder context | Optional L12 comparison | No separate deterministic-AE lab or architecture survey |
 | 21.1–2 VAE basics | L12 model/q roles, joint objective/gradients, one tabular lab | Generic ELBO L06, pathwise math L09 and network loss L11 reused |
-| 21.3.1 beta;21.4 collapse | L12 rate versus MI identity and cautious diagnostics | No identified/causal factor guarantee; annealing Mention only |
+| 21.3.1 beta; 21.4 collapse | L12 rate versus MI identity and cautious diagnostics | No identified/causal factor guarantee; annealing Mention only |
 | 21.3.2–5/21.5–6 extensions | Deliberate omissions | No InfoVAE, multimodal/sequential/hierarchical/VQ VAE or multiple full fits |
-| Ch17–19 and20/22–26 additional prediction/generation fields | Not assigned in this13-meeting architecture | BNN/GP/shift and autoregressive/flow/diffusion/GAN methods require a displacement decision |
+| Ch17–19 and 20/22–26 additional prediction/generation fields | Not assigned in this 13-meeting architecture | BNN/GP/shift and autoregressive/flow/diffusion/GAN methods require a displacement decision |
 
-**Book 1 is selective support:** L03§§3.6.1–2 DAG recall; L04 finite entropy/MI/DPI exposition; L05 selected matrix calculus/SGD; L06 mixture/responsibility and EM exposition; L11§13.2.4.4 heteroskedastic example and§13.5.2 weight decay. Other overlap is not another required chapter. Full references and source limits live in the scopes and [source_inspection.md](source_inspection.md).
+**Book 1 is selective support:** L03 §§3.6.1–2 DAG recall; L04 finite entropy/MI/DPI exposition; L05 selected matrix calculus/SGD; L06 mixture/responsibility and EM exposition; L11 §13.2.4.4 heteroskedastic example and §13.5.2 weight decay. Other overlap is not another required chapter. Full references and source limits live in the scopes and [source_inspection.md](source_inspection.md).
 
 ## Prerequisite graph and backward-reference audit
 
@@ -101,12 +101,12 @@ One actual source-depth mismatch was repaired: L09's deferred “HMC theory” r
 | L06 | Expected moments and alternating Gaussian estimator | NumPy solves reused; masks/SPD data/driver/objective checker supplied |112 /60 |
 | L07 | Domain/resolution-challenged grid versus Laplace | SciPy solver wrapper/grid/plots supplied; no VI/MH coding |110 /60 |
 | L08 | Scaled forward/backward and sequence marginals | NumPy reused; simulation/oracles/plots supplied; asymmetric-A check required |112 /60 |
-| L09 | Diagonal q fitted through sample transform and exact reference | PyTorch refresh10min included; driver/reference/plots supplied |112 /60 |
+| L09 | Diagonal q fitted through sample transform and exact reference | PyTorch refresh 10min included; driver/reference/plots supplied |112 /60 |
 | L10 | Checked MH kernel, proposal/start/query mixing comparison | NumPy reused; stable log target/diagnostics/harness supplied |110 /60 |
 | L11 | One nonlinear mean/SD fit and conditional intervals | PyTorch refresh included; baseline/model driver/checkpoints supplied |112 /60 |
-| L12 | One joint VAE objective/update run and beta/rate interpretation | PyTorch refresh10min included; data/model/driver and normalized comparison fits supplied |112 /60 |
+| L12 | One joint VAE objective/update run and beta/rate interpretation | PyTorch refresh 10min included; data/model/driver and normalized comparison fits supplied |112 /60 |
 
-Future L03–L12 total:1117 live minutes including120 reserve, plus600 lab minutes. These are estimated envelopes, not measured student pace or runtime. Each local reviewer bounded its concern to the real new derivations and promised scaffolding. L01's61-content-slide anchor is a provisional density prior, not a universal conversion or an implementation validation. Every new lecture is tight; optional examples are first cuts, not required recordings. No required recording was introduced.
+Future L03–L12 total: 1117 live minutes including 120 reserve, plus 600 lab minutes. These are estimated envelopes, not measured student pace or runtime. Each local reviewer bounded its concern to the real new derivations and promised scaffolding. L01's 61-content-slide anchor is a provisional density prior, not a universal conversion or an implementation validation. Every new lecture is tight; optional examples are first cuts, not required recordings. No required recording was introduced.
 
 Only PyTorch is a new required ecosystem, introduced L05 and refreshed later. NumPy/SciPy/Matplotlib support checks; scikit-learn may load/preprocess supplied data but is not a new algorithm curriculum. PyMC/Bambi/ArviZ are prior skills, not repeated routine labs. Pyro, JAX/Dynamax and TFP source implementations are not student dependencies. Checkpoints, data packaging and helper correctness remain real production work, not already existing course deliverables.
 
@@ -124,4 +124,6 @@ Every resulting section must end retrospectively; receiving sections own connect
 
 Wave A: L03–L05 representations/information/trainable conditionals; independent reviews passed and source-depth/budget handoffs reconciled. Wave B: L06–L08 hidden statistics/approximation/exact structure; independent reviews passed, no second EM or sequence implementation. Wave C: L09–L12 stochastic gradients/sampling/neural synthesis; generic proof ownership is protected and HMC overpromise repaired. Exact authors, reviewers, scope versions and approval states are in STATUS, with full raw evidence under reviews/.
 
-Independent adversarial whole-course gate: pending. Formal syllabus, plan, material ledger, notebook audit and planning decisions will be synchronized only after that gate settles. Delivered ledger boundaries and L01/L02 artifacts are protected. Two Typst files must compile;13 meeting numbers/dates, local links, source-depth promises and exact revision bindings must be checked. Final validation evidence will be committed separately from any notebook-runtime claim.
+The separate cold adversarial review by `/root/course_adversary` returned **feasible-with-risks**, with no architectural blocker. Its [complete raw report](reviews/course_architecture_review.md) preserves the frozen inputs and separates cold findings from post-evidence reconciliation. C1 is carried into the L12 author-revised handoff and notebook audit: held-out distortion averages event-summed Gaussian NLL over q draws with fixed variance/constants and observation-count weighting; encoder-mean reconstruction is a separately labeled visualization. The independent L12 targeted check records the exact repair. C2 supplied infrastructure, C3 unmeasured margins, C4 lost applications and C5 revision identity are binding constraints or visible instructor questions, not hidden obligations.
+
+The two syllabi, future ledger, notebook audit and planning decisions now describe the same reviewed depths and one-lab endpoints. No new delivered coverage or L01/L02 change is authorized. [Validation evidence](validation.md) records compiler, dates, protected-content, reference and revision checks; [STATUS](STATUS.md) binds final exact scope blobs to original independent review targets and final synchronization evidence. All ten scopes are agent-approved / instructor-pending under WORK_ORDER; no new instructor approval, production authorization or notebook-runtime validation is implied.

@@ -1,6 +1,6 @@
 # L06 — Learning with hidden values: EM and expected sufficient statistics
 
-**Status:** provisional five-part Scope, ready for independently dispatched feasibility review; no self-approval or instructor approval. **Stage/mode:** Lecture Scope / BUILD. **Builder thread:** `/root/build_l03`, 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`; input checkpoint `791e71b632048f52e7b8f8bc3cd54fda264311bb`. **Upstream:** cross-course contract v2, `architecture_audit.md` blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`; autonomous authority in `WORK_ORDER.md`. Only this Scope is owned here. No sections, slides, notebook code, shared-file edits or runtime validation.
+**Status:** Reviewed five-part scope proposal; [current agent approval and exact reviews](../course_architecture_scope/STATUS.md) are maintained by the coordinator. Instructor acceptance pending; timing and notebook implementation remain unvalidated. **Stage/mode:** Lecture Scope / BUILD. **Builder thread:** `/root/build_l03`, 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`; input checkpoint `791e71b632048f52e7b8f8bc3cd54fda264311bb`. **Upstream:** cross-course contract v2, `architecture_audit.md` blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`; autonomous authority in `WORK_ORDER.md`. Only this Scope is owned here. No sections, slides, notebook code, shared-file edits or runtime validation.
 
 ## Starting boundary, sources and route choice
 
@@ -159,4 +159,4 @@ Coordinator should record selective proposed §§6.5.1, 6.5.3–6.5.4 allocation
 2. **Scope owner / advisory:** generic proof plus moment assembly is tight. First cut is the six-minute mixture calculation, preserving recognition; deeper cuts must preserve conditional covariance and return through Scope. Actual timing remains unknown.
 3. **Notebook owner / downstream-owned:** ensure MCAR mask/co-observation and SPD behavior support an unregularized demonstration. More data/scaffolding is the first repair; silently adding ridge changes the exact update/objective promise. Runtime and reference-helper reliability are unverified.
 
-**Next owner:** coordinator commissions independent Section Design feasibility review of this exact revision, especially the 26-minute bound argument, 30-minute first/second-moment derivation and 60-minute supplied-driver lab. Builder stops editing at handoff. A favorable preview is not measured timing, runtime validation or instructor approval.
+**Next owner:** Instructor oversight of this reviewed proposal. Subsequent Section Design requires human acceptance; its execution backpressure returns to the nearest owning stage. Review and approval provenance are in the registry. No rehearsal, notebook runtime or hosted Colab validation is implied.

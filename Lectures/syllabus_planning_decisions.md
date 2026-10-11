@@ -1,106 +1,28 @@
-# Syllabus planning decisions — Advanced Statistics 2027-1
+# Current syllabus planning decisions — Advanced Statistics 2027-1
 
-**Decision:** Instructor selected the split information-theory / GLM-and-optimization architecture on 2026-10-11. The course architecture is accepted; lecture-level scopes are not yet finalized.  
-**Status:** Course structure accepted by instructor 2026-10-11. L03–L12 scope/section/notebook commitments require agent-led feasibility review and subsequent human oversight of the full architectural proposal.  
-**Current plan:** [`../syllabus_plan.typ`](../syllabus_plan.typ)  
-**Formal syllabus:** [`../advanced_statistics_2027_1_syllabus.typ`](../advanced_statistics_2027_1_syllabus.typ) — **not** an authoritative constraint on this planning exercise.
+**Instructor acceptance:** 13-meeting Book-2-first architecture, 2026-10-11, main merge PR #8 / b78a7650bb09ae851e412089d98525f7b71275d9. **Detailed scopes:** agent-approved / instructor-pending under the explicit autonomous WORK_ORDER; this is not instructor acceptance or a student-facing syllabus release.
 
-This note records the accepted **Book-2-first** course architecture: L04 information theory; L05 GLMs and optimization; L06 EM; L07–L10 inference methods; L11 neural prediction; L12 VAE. The alternative with a combined L04 and a separate GLM L10 was considered and rejected for this planning cycle; see the [historical comparison](l04_l10_curriculum_comparison.md). **This accepts the topic allocation, not the detailed mathematical scope or notebook implementation for each lecture.**
+The architecture preserves L01 delivered Gaussian/LGS coverage, L02 agreed exponential families/Markov learning, L04 information theory, L05 substantive unified GLMs/AD/SGD, L06 EM, L07–L10 inference, L11 neural conditional prediction, L12 VAE and L13 projects. No protected prior lecture was rewritten. Every resulting section ends retrospectively; notebook handoffs stay separate.
 
-## Course-level teaching goals
+## Agent provisional resolutions
 
-The instructor wants students to understand ML primarily as:
+| Owner | Resolution / consequence |
+|---|---|
+| L03 | Positive Ising/local computation and deterministic ICM restoration; no early formal Gibbs/VI or exact-MAP claim. |
+| L04 | One verified course five-bit error-correcting channel; MI/DPI substantive, source-code bounds stated, rate–distortion owned L12. |
+| L05 | One common canonical GLM gradient, separate vector softmax application, complete reverse graph and first PyTorch Iris fit; family comparison protected. |
+| L06 | Missing-Gaussian EM and uncertainty-preserving second moments; generic bound/monotonicity primary owner. MRI/full GMM fit displaced. |
+| L07 | One fixed scalar logistic grid/Laplace comparison with domain/spacing checks; no later algorithm implementation. |
+| L08 | HMM scaled forward/backward primary; compact Kalman application, no forecasting lab or second full sequence method. |
+| L09 | One diagonal Gaussian pathwise fit with exact known-noise reference; controlled data instead of Pyro/unknown-noise GDP/HMC. CAVI bounded, amortization recognized. |
+| L10 | MH correctness and proposal/start/query mixing; Gibbs bounded and HMC mechanics recognized, full HMC theory omitted. |
+| L11 | Nonlinear mean/SD likelihood, conditional noise versus weight uncertainty and scaled Gaussian-prior/L2 connection; no architecture/BNN/calibration survey. |
+| L12 | Compact mobility VAE, correctly normalized objective and rate=MI+aggregate KL; descriptive patterns, not guaranteed causal/disentangled factors. |
 
-1. **A task is a joint probability distribution and an integral.** For particular problems, the query may be a marginal, posterior, predictive distribution, expectation or decision.
-2. **The shape of the joint distribution and the integral required determine the method.**
-3. **Methods balance simplifying structural assumptions, approximating integrals and brute-force (sometimes exact) computation to obtain practical predictive value.**
-4. Students should develop a useful repertoire of modern, essential methods, including **classical models and neural-network-based tools**.
+## Authority, evidence and oversight
 
-A lecture should end with *solid conceptual understanding, substantial enough mathematics for genuine understanding, and a clear practical application*. Do not move large amounts of general framing backward just to foreshadow later lectures. Reuse the L1 conceptual framework throughout. The notebook should culminate in a specific problem students can actually work on.
+[Scope/review registry](course_architecture_scope/STATUS.md) records actual builder/reviewer threads and exact Git blobs. [Whole-course audit](course_architecture_scope/architecture_audit.md) owns the source matrix, prerequisites, novelty/duplication and notebooks. [Raw adversarial report](course_architecture_scope/reviews/course_architecture_review.md) is independently authored. [Questions and hesitations](course_architecture_scope/questions_and_hesitations.md) records provisional choices, alternatives and costs for instructor oversight. Historical alternative drafts live in Git history, not the current tree.
 
-## Curriculum structure and ordering
+[syllabus_plan.typ](../syllabus_plan.typ), [formal syllabus](../advanced_statistics_2027_1_syllabus.typ), [material ledger](material_ledger.md) and [notebook audit](notebook_reference_audit.md) describe the same reviewed proposal. Source ranges mean selected treatment, not every subsection. Delivered ledger entries remain unchanged; future allocation stays undelivered in actual accounting. No optional item becomes a formal required outcome by citation alone.
 
-**Murphy Book 2 is the curricular spine.** Book 1 is a selective supplement where it contributes prerequisites, richer pedagogy, worked examples, or a better local sequence. The following **lecture allocation is instructor-selected**; the content specifications are provisional pending full L03–L12 agent scoping.
-
-| Meeting | Tentative topic | Primary Murphy Book 2 |
-|---|---|---|
-| 1 | Probabilistic ML and Gaussian systems — *delivered* | Ch. 2, §2.3 |
-| 2 | Exponential families, moment matching and learned Markov chains — *agreed scope* | §§2.4, 2.6 |
-| 3 | Graphical models | Ch. 4 |
-| 4 | Information theory: dependence, communication and representations | Ch. 5 (selected §§5.1–5.5) |
-| 5 | Learning probabilistic models: GLMs and optimization | Ch. 15 §15.1 and §15.3.2 with Ch. 6 §§6.1–6.3.2 |
-| 6 | Latent-variable learning and EM | §6.5, selected §28.2 |
-| 7 | Inference as computation | Ch. 7 |
-| 8 | Exact inference in structured sequence models | Chs. 8–9 |
-| 9 | Variational and amortized inference | Ch. 10 |
-| 10 | Monte Carlo and MCMC | Chs. 11–12 |
-| 11 | Neural networks as probabilistic conditional models | Ch. 16, optional evaluation/penalty bridges to Ch. 14/15 |
-| 12 | Variational autoencoders; rate-distortion and representation | Ch. 21 and selected §5.4.2 (IB comparison optional) |
-| 13 | Project presentations / synthesis | No committed new material |
-
-**Reasons and constraints behind the proposal:**
-
-- Give **information theory** enough room to be computational and operational (mutual information, coding), not just another name for a loss function. Choose **one** coding endpoint for the L04 notebook. Its exact adaptation/timing is not yet validated.
-- Integrate **the fundamental GLM family with optimization in L05**: conditional exponential-family structure and canonical links (§15.1), Gaussian/Bernoulli/Poisson contrasts, derivation of the general GLM likelihood gradient (§15.1.3), multinomial softmax (§15.3.2), then reverse-mode AD and minibatch SGD (§§6.2–6.3.2) as the method for learning this model. PyTorch Iris notebook. Avoid deep GLM priors, Newton/IRLS, black-box gradient estimators and broad optimizer surveys in this already-dense lecture.
-- Place **EM after explicit optimization** to show how hidden variables complicate parameter learning. Inference overview and subsequent methods shift one slot to L07–L10.
-- Remove the **standalone GLM lecture**, while retaining the *unifying core of its model family* in L05: contrasts among Gaussian, Bernoulli, Poisson and categorical outcomes, link/mean relationships and likelihood-gradient learning. Logistic posterior/Laplace returns in L07; L11 carries a narrow weight-decay/prior analogy and at most one optional calibration diagnostic. Deep sparse-prior taxonomy, complete frequentist/Bayesian GLM inference and the dedicated L1/L2 digit experiment are **not** preserved.
-- Preserve **VI before MCMC**, **neural networks in L11** and **VAEs in L12**. Return to mutual information/rate-distortion in L12 as a β-VAE interpretation; keep the supervised classical information bottleneck and InfoVAE as optional *comparisons*, not full additional derivations.
-- Book 2 Chapter 6 §§6.3.4–6.4 are candidate resources for VI/VAE; §§6.6–6.9 are not promised. There is still no dedicated SMC or broad predictive overview lecture.
-- This proposed route does **not** override the delivered L01 or the agreed L02 scope. The current formal syllabus remains an output to revise after the instructor decides, not a constraint on the decision.
-
-**Previously considered alternative (historical):** A combined information/objectives/optimization L04 and separate GLM L10 would have compressed operational information theory. The instructor has now selected the separate L04 / integrated GLM-and-optimization L05 approach. Historical deliberations remain linked for provenance, not as an unresolved decision.
-
-## Book 1's role: lecture-by-lecture decisions
-
-Only retain material with a distinct contribution beyond the Book 2 treatment. `Core` means strong present justification; `Possible` means keep while deciding the detailed lecture scope; `None` means do not designate Book 1 coverage merely because a topic is also discussed there.
-
-| Lecture | Book 1 status | Specific rationale |
-|---|---|---|
-| **L1** | Historical delivered provenance, especially §§3.1.1–3.3.4 | Pedagogically useful covariance → MVN conditioning → missing data → linear-Gaussian examples. Earlier introductory and basic-Bayes references are retained as delivery provenance, **not** required future reading. |
-| **L2** | **None required** | Book 2 §2.4 is the richer exponential-family treatment; Book 1 §§3.4 and 4.2 are redundant with the agreed scope or prior statistics background. |
-| **L3** | **Possible:** §3.6.1 and §3.6.2 | Very compact Representation / Inference / Learning orientation, but Book 2 Ch. 4 remains the full mathematical treatment. Do not claim all of §3.6 as a requirement. |
-| **L4** | **Possible:** §§6.1–6.2 | Entropy, cross-entropy and KL scaffolding when Murphy Book 1 is more accessible; Book 2 Ch. 5 remains the mathematical spine. |
-| **L5** | **Core:** §7.8; §§8.1–8.2, §§8.4.1–8.4.3; **Possible:** §§10.2–10.3 | Matrix calculus, reverse-mode AD and SGD are paired with Murphy Book 2 §15.1 (Gaussian/Bernoulli/Poisson GLM common form) and §15.3.2 softmax; Book 1 logistic-regression calculations provide optional support rather than a second survey. |
-| **L6** | **Core:** §3.5; §§8.7.1–8.7.3 | The GMM latent-variable model and a teachable worked EM example; do not double count Book 2 §28.2. |
-| **L7** | **None** | Book 2 Ch. 7 provides the general inference-as-integral overview. |
-| **L8** | **None** | Book 2 Chs. 8–9 cover Kalman filtering and HMM/message-passing methods. |
-| **L9** | **None** | Book 2 Ch. 10 suffices for VI; defer detailed VAE applications to L12. |
-| **L10** | **None** | Book 2 Chs. 11–12 provide Monte Carlo/MCMC; use prior familiar models only as examples. |
-| **L11** | **Core support:** selected §§13.2–13.5; **Possible:** brief §§11.3–11.4 | Book 1 develops neural-network training and regularization more deeply than Book 2 Ch. 16. The displaced GLM material does *not* become a new lecture inside L11: weight-decay/normal-prior analogy and perhaps a brief evaluation diagnostic only. |
-| **L12** | **None** | Book 2 Ch. 21 is the substantive VAE source and Ch. 16 §16.3.3 supplies autoencoder context; the short Book 1 §20.3.5 is not needed. |
-| **L13** | **None** | Projects / synthesis only for now. |
-
-These judgments are **provisional selections**, not a blanket assignment of every subsection in a cited range. In particular, do not use Book 1 because it happens to repeat Book 2.
-
-## Deferred versus skipped — avoid invisible curriculum debt
-
-**Pay back in a known lecture (proposed):** mixture models and EM (Book 1 §3.5, Book 1 §8.7, Book 2 §6.5) in L6; GLM conditional likelihood / multinomial logistic in L5; a brief penalty/weight-decay bridge in L05/L11 and only optional calibration in L11; matrix calculus/autodiff in L5; optional hierarchical/model-checking material in later inference and prediction lectures.
-
-**Keep selectively available without committing a whole lecture:**
-
-- Book 2 §2.5 transformations (use for reparameterization / flow methods if needed).
-- Book 2 §2.7 non-KL divergences / IPMs (use in generative or two-sample methods only when warranted).
-- Book 2 Ch. 3 hierarchical priors, empirical Bayes, model checking or Fisher information as examples require.
-- Book 2 §§4.3–4.4 detailed MRFs and CRFs (not automatically owed because they are in Ch. 4).
-- Book 1 Ch. 7 EVD/SVD if factor models or PCA are later chosen.
-- Book 2 §14.2.1 log score and MLE/MAP (§14.1.2) briefly in L05; §14.2.2 calibration remains optional within L11.
-- Book 2 Chs. 17–19 remain useful options, not current commitments.
-
-**Tentatively skip as a separate lecture:** Book 2 Ch. 13 SMC. A brief mention within the L7 inference overview is not a commitment to teaching its full method.
-
-
-## Rapid scope feasibility and approval boundary (2026-10-11)
-
-The instructor asked for provisional syllabus/ledger updates plus initial scope feasibility checks. The accepted architecture is accompanied by [rapid scope briefs and initial checks](curriculum_scope_previews.md) for materially revised L04, L05, L11 and L12, plus explicit continuity checks for L06–L10. These are **not approved Lecture Scopes**, not independent multi-agent reviews, and do not bypass the lecture-scope skill's iterative process. A [VS Code Codex review prompt](curriculum_scope_review_codex_prompt.md) specifies the independent follow-up.
-
-**Critical feasibility tradeoff:** L05 is intended to preserve genuine GLM generality *and* foundational AD/SGD. It must teach the §15.1.3 gradient with one canonical-link example and avoid trying to derive Poisson, Bernoulli and multinomial gradients separately at length. L11 is deliberately trimmed rather than used as a catch-all for displaced GLM material. L12 retains rate-distortion but not a full information-bottleneck lecture. Final instructor acceptance and subsequent Section Design checks are still required.
-
-## Immediate L3 scoping work
-
-The next task is **scope design, not Typst slide drafting**. Follow [`.agents/skills/lecture-scope/SKILL.md`](../.agents/skills/lecture-scope/SKILL.md), taking [`material_ledger.md`](material_ledger.md) and the [L2 section design](L02_Exponential_Families/section_design.md) as the actual prior boundary.
-
-For L3, evaluate genuinely different internally complete graphical-model routes, with a concrete notebook endpoint. The currently preferred application is [Ising-image restoration](https://github.com/probml/pyprobml/blob/master/notebooks/book2/04/ising_image_denoise_demo.ipynb). L3 should make a substantive advance from elementary DAGs to *undirected factorization, potentials, partition functions and conditional-independence structure*. The Ising notebook uses simple local probability computations but also Gibbs sampling / mean-field ideas studied formally later; validate how much of the local update can be explained using L3 alone. ALARM CPT learning remains an alternative, not a committed problem. The final lecture boundary and notebook are deliberately provisional. The instructor has explicitly asked **not** to pull general inference framing into L3 as a mere forward reference; teach the chosen graphical-model mathematics to depth, with a practical notebook handoff.
-
-## Latest notebook and toolkit decisions (2026-10-08)
-
-The plan now explicitly includes *mathematical contribution, worked reference, lecture complementarity and durable computational skill* as criteria for each exercise; see [notebook_reference_audit.md](notebook_reference_audit.md). Students already know PyMC and Bambi from the undergraduate course, but their MCMC exercises must go beyond running HMC and diagnostics. In the review proposal, adopt **PyTorch from L5** and reuse it later; **do not teach JAX**. Use SciPy/scikit-learn for numerical reference solutions, not to conceal the new algorithm. Preferred new examples include Ising restoration (L3), three-class Iris softmax in PyTorch (L5), multimodal MH sampling (L10), and heteroskedastic neural prediction (L11); retain the L7 grid/Laplace reference. Keep L6's MRI-versus-incomplete-Gaussian EM choice and L12's mobility-versus-MNIST VAE choice open.
+Every future lecture/lab budget is estimated, not rehearsed or piloted. No required recording, slide/figure/student notebook production or runtime-compatible claim was introduced. PyTorch is the sole new required ecosystem, starting L05; source Pyro/JAX/TFP are not adopted. Actual L02 delivery, prepared helpers/checkpoints, mobility portable access and clean local uv/hosted Colab checks remain downstream gates. Human acceptance is required before advancing this proposal to production or main; no merge or ready-to-merge PR is authorized here.

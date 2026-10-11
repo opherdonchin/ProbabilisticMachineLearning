@@ -1,68 +1,127 @@
-# Course architecture audit — cross-course contract v3
+# L03–L12 whole-course architecture audit
 
-Status: Waves A/B reconciled allocation for Wave C scope builders, 2026-10-11. Base architecture main b78a7650bb09ae851e412089d98525f7b71275d9; execution starts at 906ce71dd9c8e29f3dede51ec809442a885354c9. Only coordinator edits this file.
+**Proposal:** agent-reviewed / instructor-pending, 2026-10-11. Branch `scope-l03-l12-course-architecture`. Instructor architecture: main `b78a7650bb09ae851e412089d98525f7b71275d9` (PR #8). Execution began at `906ce71dd9c8e29f3dede51ec809442a885354c9`. Exact scope/review revisions and gates are in [STATUS.md](STATUS.md). This audit owns allocation, dependencies and consistency; lecture-local scopes own their five-part intellectual commitments. No new scope is instructor-approved.
 
-## Protected course boundary and common budget
+## Protected boundary and overall argument
 
-L01 delivered deck, Gaussian-imputation notebook InClass/Solutions/lecture1_missing_data.ipynb and ledger are protected. L02 agreed section_design.md is protected: exponential family, log partition moments, moment matching, maximum entropy, Gamma application, categorical counts and Markov-chain learning. L02 is not delivered. Its development_state.md has repeated malformed text and stale branch metadata: do not propagate it or repair it in this batch. No L03–L12 delivery artifacts exist.
+L01's actual Gaussian/LGS deck, missing-data solution and delivered ledger remain unchanged. L02's agreed exponential-family/Markov-learning section contract remains unchanged and undelivered in accounting. Its malformed/stale development-state file is not treated as new authority. The contract assumes L02's promised results are taught before L03; reconcile actual delivery before implementation. No new lecture is assigned to L13 projects.
 
-Each new lecture: 100–120 minutes live INCLUDING reserve (aim 95–105 minutes substantive work plus 10–15 minutes reserve), separate scaffolded 60-minute lab. Count mathematical novelty, not equations repeated. State timing confidence, tightness and first cut. Recording candidates remain live; no required recordings are introduced. No section partition, slides or notebook implementation. Every macrosegment ends retrospectively; transitions begin receiving segments. Five parts per scope; clear depths and explicit omission/deferment. Sources inspected directly; course-constructed examples labeled. Agent approval only after separate Section Design feasibility review and global reconciliation; instructor pending.
+The course moves from representations and information to fitted conditional models, hidden-data learning, inference and neural latent models. L03 asks what a factorization makes locally computable; L04 asks what information survives noise/processing; L05 learns a conditional model; L06 learns when sufficient statistics are hidden; L07 measures approximation error; L08 exploits exact structure; L09 restricts posterior families; L10 studies correct chains and unreliable finite estimates; L11 makes nonlinear conditional predictions; L12 learns a generative model and approximate inference map jointly.
 
-## Primary ownership and named exclusions
+Repeated Gaussian objects have different jobs: L01 known-parameter conditioning, L06 unknown-parameter missing-data EM, L09 restricted approximation to a known-noise regression posterior, L11 nonlinear mean/scale prediction, L12 local latent-variable generation. These are deliberate reuse, not five independent Gaussian derivations.
 
-| Source | Primary destination and depth constraint | Exclusions / later reuse |
+## Primary source ownership and treatment
+
+`Deep` means Derive/Prove/Work as specified in the scope; `bridge` means bounded State/Apply/recognition. Reading ranges do not promise every subsection. All allocations below are proposed future coverage, never changes to delivered dispositions.
+
+| Murphy Book 2 source / central concept | Primary owner and actual treatment | Named limit / exclusion |
 |---|---|---|
-| B2 Ch4 DAG factorization/CI, MRF potentials/Z/Ising/local CI, factor graphs | L03 substantive undirected mathematics; compact DAG recall with correct collider/faithfulness distinctions | CRF learning, graph structure learning, SCM/do calculus, relational/circuit models omitted; inference algorithms L08/L09/L10 |
-| B2 Ch5 entropy/KL/MI/DPI and channel coding | L04 MI identity, DPI proof sketch, finite parity-channel enumeration | Lossless coding bounds stated; no full coding theorems, multivariate/variational MI, bits back, algorithmic information; rate-distortion L12; IB optional comparison only |
-| B2 15.1, 15.3.2; 6.2, 6.3.1–2 | L05 canonical GLM family and ONE common gradient; vector softmax applied separately; ONE reverse AD graph; SGD | Hessian/IRLS, full Bayesian GLM, sparse prior taxonomy omitted; 15.2 Gaussian weight decay L11; stochastic distribution gradients L09 |
-| B2 6.5.1, 6.5.3–4; 28.2; B1 3.5,8.7 | L06 EM bound identity/monotonicity; one worked primary model | Prefer Gaussian missing-data lab to repay L01; GMM illustration compact, MRI alternate; general MM/robust regression/EM extensions omitted; ELBO generic VI reuse L09 |
-| B2 Ch7 | L07 query taxonomy compact; Laplace from Taylor and one scalar logistic grid benchmark | VI/MCMC/SMC only recognized; no methods duplicated; no broad challenging-posterior tour |
-| B2 Ch8–9 | L08 one exact sequence method deep, other compact connection | Provisional preference HMM forward/backward core and scaffolded HMM lab; Kalman as L01 reuse stated/worked compactly; avoid two implementations; EKF/UKF/RTS, loopy BP, JTA omitted; VE concept compact |
-| B2 Ch10; 6.3.3–5 | L09 generic VI identity REUSE L06; Gaussian pathwise estimator primary derivation; small mean-field CAVI illustration | Score-function stated as contrast; no full CAVI/VBEM derivation catalog, natural gradients/flows/IWAE/EP/wake-sleep; amortization recognized here, operational L12; exact Gaussian reference lab preferred to pre-L10 HMC dependency |
-| B2 Ch11–12 | L10 MC variance, MH detailed balance, Gibbs as MH, multimodal proposal/mixing lab | Importance sampling narrow contrast, rejection briefly; HMC mechanics stated leveraging undergraduate tool use, no full derivation; advanced MCMC/tempering omitted |
-| B2 Ch13; 6.6–9 | Deliberately omitted substantive teaching | SMC mention L07; Bayesian/DFO/transport/submodular optimization not deferred debt |
-| B2 Ch15 remainder | 15.1 and softmax L05; Gaussian prior/weight decay L11 | Sparse priors, hierarchical GLM inference, robust/multitask/ordinal models omitted; L07 scalar logistic inference specific reuse |
-| B2 Ch16; B1 selected Ch13 | L11 MLP nonlinear conditional model and heteroskedastic Gaussian NLL, reuse L05 AD/SGD | No architecture zoo; CNN/RNN/transformers, dropout theory, full calibration/model selection omitted; autoencoder context L12 |
-| B2 Ch21; 5.4.2 | L12 VAE ELBO specialization, Gaussian KL, beta-rate-distortion, collapse; reuse L09 pathwise math | MNIST small CPU/checkpoint lab provisional default; mobility alternative only if inspectable; IB/InfoVAE optional mentions, IWAE/VQ/hierarchical/discrete VAE omitted |
+| 4.2 DAG factorization, d-separation, blankets | L03 compact recall/work; graphical entailment versus numerical independence | No full Bayes-ball, BN learning or causal calculus |
+| 4.3.1 positive MRF factors, energy, partition function | L03 deep tiny-square normalization | Positivity qualifies converse Markov equivalences; potentials are not CPDs |
+| 4.3.2.1 Ising;4.3.6 CI; selected4.3.8 restoration model | L03 deep conditional cancellation/odds and coordinate MAP | Potts only optional mention; no exact joint-MAP or marginal guarantee from ICM |
+| 4.3.3–5,4.3.7/9 specialized models, sampling/learning | GMRF optional L03; sampling mathematics L10, VI L09 | RBMs, feature induction, INLA, pseudolikelihood and MRF fitting omitted |
+| 4.4 CRFs;4.5 model comparison;4.6 factor graphs;4.7 causal models | Factor incidence and bounded directed/undirected distinction L03 | Full CRF/conversion/label-bias/circuits/relational/SCM methods omitted |
+| 5.1 selected KL and5.2.1/4 finite entropy/cross-entropy | L04 operational consolidation, identity and worked mismatch | No uniqueness axioms, Fisher/Bregman geometry, differential-entropy/AEP module |
+| 5.3.1–4 MI, DPI, sufficiency | L04 MI derivation, DPI sketch, bounded sufficiency equality | Conditional MI only proof support; no multivariate/variational-MI catalogue |
+| 5.4.1 source length;5.5 channel coding | L04 states prefix-code bounds, deeply works one five-bit channel | No Huffman, coding/capacity theorem proof or second lab; source XOR optional |
+| 5.4.2 rate–distortion;5.6 IB | L12 deep average-KL rate decomposition and beta tradeoff | Full supervised IB/InfoVAE/bits-back/algorithmic information omitted |
+| 6.1–2 differentiable objectives/reverse AD | L05 one complete shared-intermediate graph; L11/L12 reuse | No full functional/JVP/VJP/program-differentiation theory |
+| 6.3.1–2 finite-sum/minibatch SGD | L05 primary derivation/application and first PyTorch lab | No optimizer/convergence-rate catalogue |
+| 6.3.3–5 distribution expectations/estimators | L09 Gaussian total pathwise gradient deep; score function stated | L12 applies; Gumbel/straight-through/stochastic-graph catalogue omitted |
+| 6.4 natural gradients;6.6–9 BO/DFO/transport/submodularity | Deliberate course omissions | Not future debt or unapproved recordings |
+| 6.5.1,3–4 MM/EM and missing MVN | L06 generic F/KL/tightness/monotonicity and uncertainty-preserving moments deep | Logistic MM, robust/online/MC/ECM EM and full second GMM derivation omitted |
+| 7.1–3 queries/patterns/exact possibilities | L07 short framing grounded in one posterior | No repeated broad task taxonomy |
+| 7.4.1–3 MAP/grid/Laplace; selected7.5 checking | L07 scalar Taylor/normalizer/curvature deep; grid checks lab | No asymptotic proof, multimode/INLA catalogue or exact-grid-truth claim |
+| 7.4.4–6 VI/MCMC/SMC overview | Recognition L07; primary VI L09, MCMC L10 | Substantive Ch13 SMC omitted; no broad7.4.7 tour |
+| 8.1.2/8.2.2 Bayesian/Kalman filtering | L08 compact14-minute Apply/Work from L01 conditioning | No Kalman lab, RTS, information filter, EKF/UKF/ensemble/ADF catalogue |
+| 9.2.1–5 HMM forward/backward/scaling/complexity | L08 deep recursions/smoothing, exact oracle and NumPy lab | Dense O(TK²), not brute-force exponential enumeration at scale |
+| 9.2.6 Viterbi and marginal/path decisions | L08 decision distinction; mechanics optional | No second full max-product derivation; general trees/loopy BP/VE/JTA omitted |
+| 10.1.1–2 restricted VI/reverse KL | L09 deep Gaussian geometry; L06 generic identity reused | Factorization of q does not imply independence in the true posterior |
+| 10.2.1 and6.3.5 pathwise Gaussian objective | L09 primary total derivative/regularity; L12 application | No ADVI transform catalogue or score-estimator implementation |
+| 10.3 CAVI;10.1.5 amortization | Bounded CAVI same-target application L09; operational amortization L12 | No full CAVI functional proof/VBEM/Ising solver;10.4–7 flows/IWAE/EP/wake-sleep omitted |
+| 11.2 IID integration/variance | L10 deep estimator uncertainty; operational latent-draw average L09 | Rigorous-probability LLN background; no pre-L10 MCMC requirement |
+| 11.4/5 rejection/importance | L10 brief contrast/state only | No implementation module, inverse-CDF/Box–Muller/AIS/variance-reduction catalogue |
+| 2.6.4 and12.2 stationarity/MH | L10 deep balance/acceptance and bounded convergence assumptions | L02 stopped before stationarity; rejection repeats are part of the kernel |
+| 12.3 Gibbs;12.6 mixing/ESS/error | L10 bounded Gibbs cancellation, stationary variance and query-specific diagnostics | No certificate from acceptance/ESS/burn-in; stronger CLT conditions stated |
+| 12.5 HMC | L10 recognition/mechanics only, leveraging undergraduate NUTS use | Full theory/leapfrog proof/implementation omitted; no false L09 deferment |
+| 12.4/7–9 auxiliary/SG/RJ/annealing MCMC | Deliberate omissions | No debt to neural/VAE lectures |
+| 15.1 family/links/canonical gradient;15.3.2 softmax | L05 substantive Gaussian/Bernoulli/Poisson comparison, one scalar gradient and separate vector application | Rank/separation qualify finite MLE claims; no Hessian/IRLS/general Bayesian GLM |
+| 15.3.5–6 logistic Laplace/predictive integral | Selected scalar L07 application | No full multiclass posterior/frogs case study |
+| 15.2 priors;14.2 scoring | L11 narrow Gaussian-prior/mean-loss L2 connection; log scores L04/L05/L11 | Sparse/lasso/horseshoe/selection/calibration/conformal units omitted |
+| 15.4–5 probit/ordinal/hierarchical GLMs | Noncanonical-link recognition L05 only | No substantive model-family extensions |
+| 16.2.1–2/16.3.1 MLPs | L11 deep nonlinear conditional mean/SD and NLL, AD reused | CNN/RNN/transformer/GNN/dropout/norm/attention theory omitted |
+| 16.3.3 autoencoder context | Optional L12 comparison | No separate deterministic-AE lab or architecture survey |
+| 21.1–2 VAE basics | L12 model/q roles, joint objective/gradients, one tabular lab | Generic ELBO L06, pathwise math L09 and network loss L11 reused |
+| 21.3.1 beta;21.4 collapse | L12 rate versus MI identity and cautious diagnostics | No identified/causal factor guarantee; annealing Mention only |
+| 21.3.2–5/21.5–6 extensions | Deliberate omissions | No InfoVAE, multimodal/sequential/hierarchical/VQ VAE or multiple full fits |
+| Ch17–19 and20/22–26 additional prediction/generation fields | Not assigned in this13-meeting architecture | BNN/GP/shift and autoregressive/flow/diffusion/GAN methods require a displacement decision |
 
-## Source access and provenance
+**Book 1 is selective support:** L03§§3.6.1–2 DAG recall; L04 finite entropy/MI/DPI exposition; L05 selected matrix calculus/SGD; L06 mixture/responsibility and EM exposition; L11§13.2.4.4 heteroskedastic example and§13.5.2 weight decay. Other overlap is not another required chapter. Full references and source limits live in the scopes and [source_inspection.md](source_inspection.md).
 
-Local Murphy B2 online edition December 10, 2025: /home/opher/OneDrive/CurrentSemester/Teaching/Advanced Bayesian Statistics/Oke Advanced Probability Course/book2-1.pdf; extracted /tmp/pml-book2.txt. Local B1: /home/opher/OneDrive/CurrentSemester/Teaching/Advanced Bayesian Statistics/Books/book1.pdf; extracted /tmp/pml-book1.txt. These scratch paths are execution aids, not repository dependencies. Read actual passages and verify subsection labels (B2 9.2 is HMM, 8.2.2 Kalman, 6.5.4 missing MVN). Legitimate reference notebooks available locally under /home/opher/Repositories/pyprobml/notebooks. Inspect source, not just titles. Do not read student submissions in Oke folders. Record notebook source hashes/commit, package differences and what remains unrun. No runtime validation claims.
+## Prerequisite graph and backward-reference audit
 
-## Reconciliation gates
+```mermaid
+flowchart LR
+  L01["L01 delivered: Gaussian queries"] --> L02["L02 agreed: EF and Markov learning"]
+  L02 --> L03["L03 factors and local CI"]
+  L03 --> L04["L04 information and decoding"]
+  L02 --> L05["L05 GLM, AD, SGD"]
+  L04 --> L05
+  L01 --> L06["L06 EM and hidden statistics"]
+  L05 --> L06
+  L04 --> L06
+  L06 --> L07["L07 grid and Laplace"]
+  L03 --> L08["L08 HMM exact recursions"]
+  L02 --> L08
+  L01 --> L08
+  L05 --> L09["L09 restricted VI, pathwise gradient"]
+  L06 --> L09
+  L07 --> L09
+  L03 --> L10["L10 MC and MCMC"]
+  L07 --> L10
+  L05 --> L11["L11 nonlinear conditional model"]
+  L09 --> L11
+  L04 --> L12["L12 VAE and rate-distortion"]
+  L06 --> L12
+  L09 --> L12
+  L11 --> L12
+```
 
-Wave A L03–L05 establishes representations, information and trainable conditional models. Wave B L06–L08 consumes these without repeating them. Wave C L09–L12 synthesizes inference, stochastic computation and neural models. At each wave reconcile dependencies, budgets and sources before next wave; contracts can change through scoped builder revisions. Whole-course independent adversarial review follows all ten scopes.
+There is no algorithmic backward dependency. L03's ICM does not require L09/10; L08's exact messages do not require VI/MCMC; L09 uses independent standard-Normal draws and a probability-level sample-mean expectation, not HMC/chain error theory; L11 conditions on fitted weights and does not claim BNN inference. L12 adds encoder construction rather than assuming it was taught in L11. L05's canonical coordinate is locally distinguished from full model parameters in later lectures.
 
-## Wave A reconciliation — coordinator disposition
+One actual source-depth mismatch was repaired: L09's deferred “HMC theory” row now promises only L10 mechanics/recognition and names full theory as omitted. Original and targeted independent evidence is preserved in L09_review.md. L11's original build cited the earlier L09 blob; its reviewer checked the current handoff and confirmed the only change was unrelated HMC wording. No neural prerequisite or content approval was invalidated.
 
-L03 blob f4dab507f90618362c2e04c1c3791c8139f7de56 / independent /root/review_l03: feasible-with-risks. L04 blob242ee28d251d583004daa25379b6a0f8cb44d622 / independent /root/review_l03: feasible-with-risks. L05 blob736943b90f24826e29955115896929742f2961f5 / independent /root/review_l05: feasible-with-risks. No blocking findings; raw reports preserved. These scopes meet the per-lecture agent gate, instructor pending; whole-course adversarial gate remains open and may invalidate affected approvals.
+## Notebook skill sequence and workload
 
-- L03 local conditional and deterministic ICM are model/optimization mathematics, not premature Gibbs or VI. Exact square oracle protects the local/global distinction. Optional GMRF comparison is first cut. No Potts, CRF or MRF-learning promise survives into formal outputs.
-- L04 selects a course-constructed 2→5, minimum-distance-three parity code, preserving error correction; actual source XOR is optional contrast. MI/DPI is substantial; source-code bounds are stated, rate-distortion is L12-owned. Conditional MI is proof support and sufficiency only a bounded recall (finite candidate-parameter framing when concrete; no parameter entropy calculation).
-- L05 owns one general scalar canonical gradient, a separate short vector softmax specialization, one full fan-out reverse graph and minibatch SGD. Family comparison is protected. Lab owns first PyTorch mechanics with given data/indices/plotting. Optional MAP/probit/repeated applications are first cuts; no new prerequisite is allocated to L02.
-- Live totals including reserve:112/110/115 minutes; each lab60. All unmeasured, tight, within envelope. Advisory pacing and lab-scaffolding risks accepted provisionally and routed to downstream implementation; no source or runtime validation overstated.
+| Lecture | One completion endpoint / durable skill | New tools or assumptions; supplied infrastructure | Inclusive live / lab estimate |
+|---|---|---|---:|
+| L03 | Checked local conditional and coordinate restoration | NumPy reused; image/edge/sweep/plot helpers; tiny exact oracle |112 /60 |
+| L04 | Complete coded channel, MI and Bayes block risk | NumPy reused; bit arrays/axes/log-zero helpers and sweep plots |110 /60 |
+| L05 | Three-class Iris fit, manual/autograd gradient, held-out log loss | First PyTorch; data split/scaling/index/plots supplied |115 /60 |
+| L06 | Expected moments and alternating Gaussian estimator | NumPy solves reused; masks/SPD data/driver/objective checker supplied |112 /60 |
+| L07 | Domain/resolution-challenged grid versus Laplace | SciPy solver wrapper/grid/plots supplied; no VI/MH coding |110 /60 |
+| L08 | Scaled forward/backward and sequence marginals | NumPy reused; simulation/oracles/plots supplied; asymmetric-A check required |112 /60 |
+| L09 | Diagonal q fitted through sample transform and exact reference | PyTorch refresh10min included; driver/reference/plots supplied |112 /60 |
+| L10 | Checked MH kernel, proposal/start/query mixing comparison | NumPy reused; stable log target/diagnostics/harness supplied |110 /60 |
+| L11 | One nonlinear mean/SD fit and conditional intervals | PyTorch refresh included; baseline/model driver/checkpoints supplied |112 /60 |
+| L12 | One joint VAE objective/update run and beta/rate interpretation | PyTorch refresh10min included; data/model/driver and normalized comparison fits supplied |112 /60 |
 
-### Additional Wave B/C input decisions
+Future L03–L12 total:1117 live minutes including120 reserve, plus600 lab minutes. These are estimated envelopes, not measured student pace or runtime. Each local reviewer bounded its concern to the real new derivations and promised scaffolding. L01's61-content-slide anchor is a provisional density prior, not a universal conversion or an implementation validation. Every new lecture is tight; optional examples are first cuts, not required recordings. No required recording was introduced.
 
-L06 should deeply work missing-Gaussian EM (expected second moments and ignorability explicitly), keeping any GMM illustration short rather than deriving two complete M-steps. L07 owns one Laplace approximation, not a survey of later algorithms. L08 HMM forward/backward is the preferred exact core and lab; Kalman compactly applies L01 conditioning, no second implementation. A named Oke Kalman notebook is unverified despite questions/data being located; record the practical loss as a human question.
+Only PyTorch is a new required ecosystem, introduced L05 and refreshed later. NumPy/SciPy/Matplotlib support checks; scikit-learn may load/preprocess supplied data but is not a new algorithm curriculum. PyMC/Bambi/ArviZ are prior skills, not repeated routine labs. Pyro, JAX/Dynamax and TFP source implementations are not student dependencies. Checkpoints, data packaging and helper correctness remain real production work, not already existing course deliverables.
 
-L09 should use a known-noise Gaussian regression or controlled correlated-Normal exact reference to avoid requiring HMC before L10; real GDP data may be retained only if the simplified model/data burden fits. L12 mobility materials have now been directly located and inspected (source_inspection.md); compact PyTorch tabular VAE is a defensible preferred route, with explicit per-observation reconstruction/KL normalization and no guaranteed identifiability/causality claim. MNIST is a fallback rather than an automatic default; final choice belongs to its builder and independent review. Data redistribution and all runtimes remain later publication gates.
+## Cross-lecture safeguards and genuine losses
 
-## Wave B reconciliation — coordinator disposition
+The canonical bound is F=E log joint+entropy; log evidence=F+KL(q||posterior). Exact EM supplies tightness, restricted VI generally does not. L05 mean empirical NLL is not L09's summed-data Bayesian likelihood: sum observations/average latent draws, or scale the entire objective together. L11 mean-loss Gaussian-prior coefficient includes N. L12 sums observed/latent event axes separately, then averages observations; fixed decoder variance determines reconstruction scaling. L04 uses bits, later loss formulas use nats, converted by ln2. A variance is never passed as a Normal SD.
 
-L06 blob326267281c6b6775ac9a33d7ed4f022a859fc49b reviewed by /root/review_l05; L07 blobf12fba8de7339675d09a771c5f956c8ed93649d8 reviewed by /root/review_l05; L08 blobb7a2de325c364bcde8230c33aaba2a5cd6b8596a reviewed by /root/review_l03. All verdicts feasible-with-risks, no unresolved blockers; raw reports preserved. Per-lecture agent gates pass, instructor/global audit pending.
+Source discrepancies are explicit: XOR correction claims, graph connection versus universal dependence, HMM joint versus marginal modes, Berkeley accuracy prose, VI sign/constants, and heteroskedastic SD/variance. Required exact examples are course-constructed or accurately source-inspected; no new Murphy figure or notebook output is attributed without verification.
 
-- L06 owns the generic bound/KL identity, tightness, Q-versus-bound distinction and exact-EM monotonicity. Missing-Gaussian first/second moments are the one deep model; the GMM responsibility bridge is recognition only, numerical comparison optional. No full MRI/GMM fit is promised.
-- L07 owns scalar Laplace normalization and curvature, using a fixed eight-observation logistic case and domain/resolution-challenged grid reference. It does not implement later VI/MCMC. Model-specific scalar Hessian here does not turn omitted general Newton/IRLS into a prior L05 obligation.
-- L08 owns scaled HMM forward/backward, smoothing and exact path/marginal distinctions; Kalman is a14-minute application of L01 conditioning with no second implementation. Viterbi mechanics optional; its general maximization distinction can be recognized. Supplied notebook harness must include an asymmetric-transition check because the selected symmetric eight-path oracle cannot detect transposition mistakes. This is a downstream test obligation, not another live example.
-- Live totals including reserve112/110/112 minutes; each lab60. Source proof/algorithm mismatches were corrected, not inherited. Optional mixture, Beta/determinant and Viterbi additions are first cuts. No workload or Colab pass is claimed.
+Practical losses are real: no full MRI/GMM fit, Kalman forecasting lab, real-GDP unknown-noise VI-versus-HMC comparison, standalone regularized-digits/Poisson lab, full HMC theory, BNN posterior uncertainty or broad calibration. Controlled cases improve exact checking but reduce empirical breadth. Mobility is retained as the final empirical application, with approximate standardized-Gaussian modeling/descriptive interpretation and unresolved distribution access. These choices are collected with alternatives/cost in [questions_and_hesitations.md](questions_and_hesitations.md).
 
-### Wave C load budget and handoff
+Every resulting section must end retrospectively; receiving sections own connections. Notebook handoffs remain separate lecture-level items. Scope-stage arithmetic checks and independent feasibility are not Section Design construction, rehearsal, clean-kernel execution or Colab compatibility. Future authoring must validate worked solutions and run local uv plus clean hosted Colab before publication.
 
-L09 reuses generic F/KL from L06 rather than rederiving it. Make restricted-q optimization and one Gaussian pathwise gradient genuinely substantive; CAVI is a bounded worked/recognized contrast, not a second long general derivation. Correct Gaussian KL sign/constant explicitly (original PDF p448 checked). Exact known-noise regression/correlated-Normal reference avoids pre-L10 HMC; any real-data variant must not add a new Pyro stack or unbudgeted preprocessing. Amortization recognized, networks/encoder implementation L12.
+## Review, reconciliation and formal-output gates
 
-L10 owns IID MC variance and dependent-chain estimator interpretation, MH detailed balance and stationarity assumptions, Gibbs-as-MH recognition/work. Multimodal proposal comparison is the one lab; HMC mechanics compactly contextualize familiar undergraduate NUTS rather than deriving a second algorithm.
+Wave A: L03–L05 representations/information/trainable conditionals; independent reviews passed and source-depth/budget handoffs reconciled. Wave B: L06–L08 hidden statistics/approximation/exact structure; independent reviews passed, no second EM or sequence implementation. Wave C: L09–L12 stochastic gradients/sampling/neural synthesis; generic proof ownership is protected and HMC overpromise repaired. Exact authors, reviewers, scope versions and approval states are in STATUS, with full raw evidence under reviews/.
 
-L11 owns MLP nonlinear conditional prediction and heteroskedastic Normal likelihood/positive scale; reuse L05 AD/SGD. Weight decay is Gaussian-prior connection, not sparse-prior/BNN/calibration survey. L12 owns VAE objective specialization, Gaussian KL, encoder/decoder joint training and rate-distortion rate>=MI decomposition; reuse L09 pathwise gradient and L11 network code. β does not guarantee identified/disentangled scientific factors.
-
-All Wave C labs must include software refresh and interpretation in the60-minute envelope. Scope outputs remain proposed implementations, not validated notebooks; no recording-dependent hidden prerequisites.
+Independent adversarial whole-course gate: pending. Formal syllabus, plan, material ledger, notebook audit and planning decisions will be synchronized only after that gate settles. Delivered ledger boundaries and L01/L02 artifacts are protected. Two Typst files must compile;13 meeting numbers/dates, local links, source-depth promises and exact revision bindings must be checked. Final validation evidence will be committed separately from any notebook-runtime claim.

@@ -328,7 +328,7 @@ The course grade is based on four components:
     - 16.1–16.2 Neural-network building blocks
     - 16.3 MLPs; selected architectures
     - 14.2.1–14.2.2 Scoring/calibration (optional brief diagnostic)
-    - 15.2.3 / 15.2.6 Priors and penalties (brief connection)
+    - 15.2.2 / 15.2.6 Gaussian prior and lasso (brief connection)
   ],
   [
     - 11.3–11.4 Ridge/lasso (optional brief prior connection)

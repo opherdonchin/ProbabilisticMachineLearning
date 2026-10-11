@@ -1,111 +1,47 @@
 # Lecture 2 — development state
 
-**Workflow index, not an alternative curriculum source.** This file records the current lecture-development stage, approvals, and validation. Recheck GitHub and instructor instructions before resuming.
+**Operational index; not a competing scope or slide-design artifact.** Reconcile against the live repository, lecture documents, and instructor decisions on every resume.
 
-## Repository and source-of-truth
+## Repository and current stage
 
-- Current working branch: `main`; confirm HEAD on resume (integration merge on 2026-10-10: `aefa638c1a3790c61e134d0a290bf42f2cc73bf9`).
-- Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
-- Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
-- Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
+- Current revision branch: `l02-section-titles-summaries` (derived from `main`). Do not interpret changes on this branch as merged or approved.
+- Section contracts: `Lectures/L02_Exponential_Families/section_design.md` (authoritative for required content and treatment depth).
+- Proposed slide organization: `Lectures/L02_Exponential_Families/slide_organization.md` (newly regenerated draft).
+- Organization skill: `.agents/skills/slide-level-organization/SKILL.md` (updated on this branch).
+- Scope and Section Design remain unchanged. Lecture 2 Section 1 has existing slide-design/production work. Section 2's newly organized slides have not been implemented.
+- **Stage:** Slide-Level Organization regeneration, **proposed for instructor review**; no approval of the regenerated 54-slide organization has been recorded.
 
-## Focus of current coordinator trial
+## Accepted instructor decisions
 
-**Lecture 2, Section 2: “A Gaussian can be rewritten in exponential-family coordinates.”**
+- **Section structure:** preserve the eight existing sections and their mathematical teaching contracts.
+- **Section-title slides:** one dedicated title slide at the beginning of **every** section. Slide Organization proposes the full `title`, section `subtitle`, and abbreviated `short-title` for footers.
+- **Section summaries:** one dedicated retrospective summary slide **at the end** of every section. The organization identifies previously introduced visual/equation anchors and concrete mathematical/conceptual takeaway candidates suitable for the distinct `section-summary-visual` and `section-summary-takeaways` roles. Detailed selection/layout remains Slide Design's job.
+- **No section-end handoffs:** no next-section teasers, preview questions, or notebook launch inside the retrospective summary. Necessary continuity begins at the receiving section.
+- **Gaussian section modularity:** Lecture 2 Section 2 remains a removable, optional whole-section recording candidate; do not make later live sections depend on seeing it.
+- **Lecture/notebook separation:** the one-hour student notebook is a separate lecture-level activity, not the Section 8 summary.
 
-- Section Design contract: **Ready for slide organization**; **whole-section recording candidate**, still budgeted as live; ~8–10 minutes.
-- Proposed five-slide organization: familiar Gaussian density → expand the quadratic in precision coordinates → identify `$x# Lecture 2 — development state
+## Draft organization produced on this branch
 
-**Workflow index, not an alternative curriculum source.** This file records the current lecture-development stage, approvals, and validation. Recheck GitHub and instructor instructions before resuming.
+- Sections 1–8 each have an explicit title slide and a final visual/takeaway summary brief.
+- Original teaching-move sequence is otherwise preserved, except **Section 6 gains one substantive fit-visualization move** so a Gamma-on-rainfall overlay is introduced before it appears in the final summary.
+- Proposed counts: **46 substantive slides**, including eight summaries, plus **eight title slides** = **54 section slides**, not including the lecture-level opening title.
+- The Section 8 sequence-scoring slide explicitly flags the need to specify the initial-state probability `p(x_1)` or condition on the starting symbol.
+- The exact section metadata, summary anchor nominations, and per-section issues are in `slide_organization.md`; do not duplicate their details here.
 
-## Repository and source-of-truth
+## Review history and open questions
 
-- Current working branch: `main`; confirm HEAD on resume (integration merge on 2026-10-10: `aefa638c1a3790c61e134d0a290bf42f2cc73bf9`).
-- Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
-- Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
-- Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
+- Initial specialist smoke review against current `main`: **blocked** because Sections 1 and 3 had forward-looking summary language and Section 8 embedded the notebook handoff in its summary. The specialist also flagged time pressure, mathematical boundary cases, and empirical assets.
+- The present regeneration removes those closing handoffs and produces fully specified title and summary briefs, but **a new independent read-only feasibility review has not yet been run**.
+- **Assets:** Section 6's Gamma/rainfall fitted overlay requires a verified empirical asset. Sections 6 and 8 need the actual empirical figures checked before final design.
+- **Timing:** title slides plus an extra substantive Section 6 slide increase duration pressure; instructor should review whether 54 section slides fit or whether Section 2 moves to a recording.
+- **Mathematical precision:** keep interior/boundary qualifications for MLE results. Section 8's score requires an initial-state distribution or explicit conditioning.
+- **Agent launch:** prior Codex run established a separate named `slide_design` thread without edits, but automatic loading of its TOML launch profile was not definitively verified. Do not equate named review with proved profile loading.
 
-## Focus of current coordinator trial
+## Next actions
 
-**Lecture 2, Section 2: “A Gaussian can be rewritten in exponential-family coordinates.”**
+1. **Instructor:** review the regenerated title metadata, summary nominations, one extra empirical slide, and extent.
+2. **Coordinator:** request a new **read-only** Slide Design feasibility review scoped to the regenerated eight-section organization. Compare its verdict and treat any changes to Section Design as backpressure rather than silent edits.
+3. **After explicit instructor approval:** proceed to detailed slide design, not production.
+4. Before merging: verify that this branch has not drifted from `main`; review PR diff and avoid replacing newer instructor decisions.
 
-- Section Design contract: **Ready for slide organization**; **whole-section recording candidate**, still budgeted as live; ~8–10 minutes.
-- Proposed five-slide organization: familiar Gaussian density → expand the quadratic in precision coordinates  and `$xx^{\mathsf T}# Lecture 2 — development state
-
-**Workflow index, not an alternative curriculum source.** This file records the current lecture-development stage, approvals, and validation. Recheck GitHub and instructor instructions before resuming.
-
-## Repository and source-of-truth
-
-- Current working branch: `main`; confirm HEAD on resume (integration merge on 2026-10-10: `aefa638c1a3790c61e134d0a290bf42f2cc73bf9`).
-- Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
-- Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
-- Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
-
-## Focus of current coordinator trial
-
-**Lecture 2, Section 2: “A Gaussian can be rewritten in exponential-family coordinates.”**
-
-- Section Design contract: **Ready for slide organization**; **whole-section recording candidate**, still budgeted as live; ~8–10 minutes.
-- Proposed five-slide organization: familiar Gaussian density → expand the quadratic in precision coordinates  as sufficient statistics → identify `$-\tfrac12\Lambda# Lecture 2 — development state
-
-**Workflow index, not an alternative curriculum source.** This file records the current lecture-development stage, approvals, and validation. Recheck GitHub and instructor instructions before resuming.
-
-## Repository and source-of-truth
-
-- Current working branch: `main`; confirm HEAD on resume (integration merge on 2026-10-10: `aefa638c1a3790c61e134d0a290bf42f2cc73bf9`).
-- Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
-- Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
-- Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
-
-## Focus of current coordinator trial
-
-**Lecture 2, Section 2: “A Gaussian can be rewritten in exponential-family coordinates.”**
-
-- Section Design contract: **Ready for slide organization**; **whole-section recording candidate**, still budgeted as live; ~8–10 minutes.
-- Proposed five-slide organization: familiar Gaussian density → expand the quadratic in precision coordinates  and `$\Lambda\mu# Lecture 2 — development state
-
-**Workflow index, not an alternative curriculum source.** This file records the current lecture-development stage, approvals, and validation. Recheck GitHub and instructor instructions before resuming.
-
-## Repository and source-of-truth
-
-- Current working branch: `main`; confirm HEAD on resume (integration merge on 2026-10-10: `aefa638c1a3790c61e134d0a290bf42f2cc73bf9`).
-- Section contracts: `Lectures/L02_Exponential_Families/section_design.md`.
-- Slide-level organization: `Lectures/L02_Exponential_Families/slide_organization.md`, headed **draft**.
-- Section 1 design/production currently exist as `slide_design.typ` and `slide_deck.typ`; Section 2 has **not** been designed or authored.
-- Current workflow: `.agents/skills/lecture-development/SKILL.md` and canonical specialist skills, plus Codex launch files in `.codex/` / `.agents/skills/`.
-
-## Focus of current coordinator trial
-
-**Lecture 2, Section 2: “A Gaussian can be rewritten in exponential-family coordinates.”**
-
-- Section Design contract: **Ready for slide organization**; **whole-section recording candidate**, still budgeted as live; ~8–10 minutes.
-- Proposed five-slide organization: familiar Gaussian density → expand the quadratic in precision coordinates  as natural parameters, including the normalizer → retrospective summary.
-- Approval status: the `slide_organization.md` file says **draft**. There is no recorded explicit instructor approval for this particular five-slide sequence. **Do not promote it to approved Slide Design input merely because this trial found it plausible.**
-- The instructor's global preference is that **the summary is the final teaching move**, with no next-section teaser or handoff. Preserve Section 2's ability to move intact to a recording.
-
-## Review performed in this conversation (2026-10-10)
-
-- **Mode:** same-context, read-only Slide Design feasibility review of proposed Section 2 organization; **not** a separately launched Codex subagent review, actual slide design, or production build.
-- **Verdict:** **feasible with advisory risks**, no demonstrated blocker.
-- **Sources checked:** Murphy Book 2 §2.4.2.5, Eqs. (2.198)–(2.213), plus current section contract and the five-slide organization.
-- **Mathematical content check:** Murphy's natural coordinates are `$\Lambda=\Sigma^{-1}$`, `$\xi=\Lambda\mu$`, `$\eta=[\xi;-\tfrac12\operatorname{vec}(\Lambda)]$`, `$T(x)=[x;\operatorname{vec}(xx^{\mathsf T})]$`, `$h(x)=(2\pi)^{-D/2}$`, and `$A(\eta)=-\tfrac12\log|\Lambda|+\tfrac12\xi^{\mathsf T}\Lambda^{-1}\xi$`. The organization supports all pieces.
-- **Advisory — extent:** 8–10 minutes for the full multivariate quadratic expansion, identification and interpretation of all exponential-family terms, and summary is tight; actual design/render/rehearsal must reassess. Keep the recording candidate modular.
-- **Advisory — design precision:** Slide Design must keep the base measure/log-partition distinction explicit; the symmetric matrix/vectorization technicality can remain a concise notation caveat rather than an algebraic digression.
-- **Advisory — closure:** End with a retrospective mapping from ((\mu,\Sigma)) to exponential-family objects. Any transition to log-partition derivatives belongs at the start of Section 3.
-
-## Toolchain status
-
-- Authoring policy PR #6 and Codex launcher PR #5 were merged into `main` after resolving their overlap; GitHub Actions reported **success** for PR #5's integrated merge branch, including the launcher static check and existing Typst compilation workflow.
-- A **live Codex IDE/CLI subagent launch** has *not* been executed in this conversation; no Codex executable/delegation facility is available in this environment. Do not claim independent review or a verified runtime launch. Run the read-only launch smoke test described in `.codex/README.md` from the repository root in Codex.
-
-## Next action / approval
-
-1. **Instructor:** confirm or revise Lecture 2 Section 2's existing five-slide organization if proceeding to full Slide Design.
-2. **Coordinator:** in Codex IDE/CLI, launch `$lecture-development`, run the real independent `slide_design` feasibility review (read-only) and compare it with this same-context review. Check subagent discovery, mode, artifact ownership, and response quality.
-3. **Slide Design:** only after explicit instructor approval of organization, design Section 2 in `slide_design.typ`, preserving the full Gaussian result and retrospective close; then request Slide Authoring feasibility and instructor review as defined by the workflow.
-
-No slide content, section contract, or lecture-level scope was altered by this trial.
+This file repairs a previously corrupted development-state artifact; its reconstruction preserves supported stage and decision facts but does not imply any unrecorded instructor approval.

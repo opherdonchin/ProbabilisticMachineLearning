@@ -145,7 +145,7 @@ The course is organized around four recurring ideas:
   [Conditional exponential-family models and links extend L02's distribution framework to prediction. Compare Gaussian, Bernoulli and Poisson GLMs, then derive the general canonical-link log-likelihood gradient. Develop categorical/softmax regression as the worked model; explain computational gradients, reverse-mode autodiff and mini-batch SGD as the method for fitting it. Brief MAP penalty and predictive scoring interpretation. Notebook introduces PyTorch by fitting three-species Iris.],
   [
     - 15.1–15.1.1 GLM definition, canonical link, Gaussian / Bernoulli / Poisson examples
-    - 15.1.2–15.1.3 GLM estimation; general likelihood gradient
+    - 15.1.2 Noncanonical links (contrast only); 15.1.3 MLE and canonical-link gradient
     - 15.3.2 Multinomial logistic regression as worked prediction model
     - 6.1–6.2 Differentiable objectives and reverse-mode autodiff (selected)
     - 6.3.1–6.3.2 SGD and minibatches (selected)

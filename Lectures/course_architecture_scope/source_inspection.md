@@ -1,6 +1,6 @@
 # Source inspection register
 
-Inspected source only, 2026-10-11. No notebook execution or Colab validation. Absolute local paths identify inspected inputs, not portable course dependencies. Textbook source excerpts are not copied into the repository.
+Inspected source only, 2026-10-11. No notebook execution or Colab validation. Absolute local paths identify inspected inputs, not portable course dependencies. Textbook source excerpts are not copied into the repository. PDF SHA256: B2 `54d6bfa8cc4a367bb553bea1c5127ca63696a9655b2ca1f6137a8584dccfdbaf`; B1 `89749245bc8065d7575f990815c621a091de3facca1585168fc0369542742dcf` (April 18, 2025 online edition as inspected by builders).
 
 ## Textbooks
 
@@ -34,3 +34,5 @@ PS4-Questions/CEE790A-PS4.tex, vae.ipynb and mobile-msa.csv are available locall
 
 - B2 §15.1.3 Eq. 15.35 differentiates the **log likelihood** (observed minus predicted); NLL reverses the sign and restores dispersion. Positive-semidefinite Hessian does not by itself imply a unique finite MLE: design rank and separation matter. Do not inherit the source paragraph's stronger uniqueness wording.
 - B2 §10.2.1 printed p. 448 (PDF page 482) was rendered and visually inspected: Eqs. 10.49–10.50 contain a plus-KL sign and omit the Gaussian KL constant respectively; these are present in the PDF, not merely text-extraction artifacts. The scope must independently use ELBO = expected log likelihood **minus** KL and diagonal Normal KL = one half sum(mu² + sigma² − 1 − log sigma²). These are independently corrected mathematical expressions, with source discrepancies explicitly documented; no erroneous source formula is adopted as a teaching commitment.
+
+- Berkeley scalar logistic reference source inspection: stored grid mean about 2.778 versus Laplace center about 2.523 contradicts close-agreement prose. L07 uses model/method provenance only, not a numerical accuracy guarantee. A finite grid is a truncation/discretization benchmark requiring domain, tail and resolution checks.

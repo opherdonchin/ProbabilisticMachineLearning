@@ -1,48 +1,47 @@
-# Questions and hesitations for instructor — L03–L12
+# Questions and hesitations for instructor oversight
 
-**Status:** Seed for autonomous agent review, **NOT** the final consolidated report. The coordinator must replace this with a reviewed synthesis after all ten scopes, independent per-lecture feasibility reviews, and cross-course architecture review. Do **not** use this as a pretext to interrupt the instructor mid-run.
+Status: current coordinator synthesis during autonomous scoping, 2026-10-11; Wave A reviewed, later waves/global review pending. Every resolution is provisional agent judgment under WORK_ORDER, not instructor acceptance. No interim human decision is needed to continue.
 
-For each genuine concern include:
-- **Where / priority** (earliest lecture or spanning lectures; high/medium/low);
-- **Question in human terms** (rather than internal tool jargon);
-- **Relevant mathematical, source, practical and timing evidence**;
-- **Options and tradeoff**, including what was provisionally selected by agents;
-- **What human choice, if any, would materially change**;
-- **Review provenance**, references to scope(s) and review file(s).
+## L03 — What should the first restoration algorithm claim? (medium)
 
-Group multi-lecture decisions together when a single answer should control two or more scopes. Place them near the earliest relevant lecture. Avoid ten separate copies of the same overload complaint.
+**Question:** Accept deterministic coordinate restoration as the image endpoint before formal VI/MCMC?
 
-## Initial candidate questions (unresolved; for reviewers to validate)
+**Evidence:** The actual Murphy notebook uses Gibbs/mean-field, requiring later mathematics, and has inconsistent noise scaling. The course square has a verified coordinate-stable state whose posterior score is below exact joint MAP. Its local conditional is sound; its local decision is not a posterior sample or a marginal.
 
-### L03: graphical-model application
+**Provisional resolution:** Keep image restoration using explicitly sequential ICM, a tiny enumeration oracle, and the nonglobal-optimum counterexample. All image construction, boundary handling, sweeps and plotting are supplied; students own the local mathematical computation.
 
-Can a local Ising denoising algorithm be worked without using MCMC or mean-field methods before their formal lectures? The current plan favors explaining local conditionals and using a minimal explicit update, but a reviewer must check whether the hands-on is mathematically faithful.
+**Alternatives and cost:** Exact tiny-image enumeration removes algorithmic risk but loses the larger image application. Teaching Gibbs/mean-field now would take primary derivations from L09/L10 and overload L03. Optional five-minute Gaussian precision comparison is the first cut; it is not a required outcome.
 
-### L04: information theory as computation
+**Review evidence:** [L03 scope](../L03_Graphical_Models/lecture_scope.md), [independent review](reviews/L03_review.md), exact scope blob f4dab507f90618362c2e04c1c3791c8139f7de56. No blocker; CI pace and lab scaffolding remain downstream timing risks.
 
-Should the one-hour notebook decode a noisy parity-check code (currently preferred) or build/evaluate a source-compression code? The choice determines which parts of §§5.4–5.5 receive genuine operational treatment. MI/DPI should not be sacrificed merely to claim two forms of coding.
+## L04 — Preserve real error correction with an adapted code? (medium)
 
-### L05: GLM breadth versus optimization depth
+**Question:** Accept the course-constructed five-bit channel example rather than reproducing the textbook's three-bit XOR code?
 
-Can students understand the Gaussian/Bernoulli/Poisson conditional family, the §15.1.3 canonical gradient, categorical softmax, reverse-mode autodiff and SGD within a two-hour lecture? Which mathematical derivation would be shortened first while preserving substantive GLM unification and a serious computational optimization skill?
+**Evidence:** The XOR source is a detection/ambiguous-decoding example; it cannot guarantee single-error correction. Our code c(m)=(m1,m2,m1,m2,m1 XOR m2) has minimum distance three. Independent arithmetic verifies all one-flip cases, ambiguous multiple-error posteriors, MI and Bayes block risk. A decoding guarantee is separate from average error or information per channel use.
 
-### L06: EM notebook endpoint
+**Provisional resolution:** One five-bit noisy-channel lab. Keep source coding at stated entropy/prefix-length bounds, MI identity at derivation depth and DPI at proof-sketch depth. Complete probability tables and noise curves belong to the lab; no second coding lab, capacity theorem or full information bottleneck.
 
-Incomplete Gaussian measurements are a strong link to delivered L01; MRI tissue segmentation adds biomedical relevance and GMM clustering but may require more preprocessing. Which makes the better one-hour student exercise after the actual L05 scope?
+**Alternatives and cost:** Retain source XOR as an optional two-minute contrast, or replace the entire operational endpoint with source compression. The latter changes the practical skill and would require a new scoped review. Shorten the sufficiency recall before cutting MI/DPI; use a finite candidate-parameter framing or only the CI interpretation, never a discrete-entropy substitution for a continuous Beta parameter.
 
-### L07–L09: inference methods and gradient responsibilities
+**Review evidence:** [L04 scope](../L04_Information_Theory/lecture_scope.md), [independent review](reviews/L04_review.md), blob242ee28d251d583004daa25379b6a0f8cb44d622. No blocker; probability-table axes, support and zero-log handling require supplied helpers and a later student timing trial.
 
-Which HMM/Kalman algorithm gets full worked treatment? Which gradient estimators are deeply developed in VI (score-function or reparameterization), and which derivation may be deferred to L12 without creating a missing prerequisite?
+## L05 — How much first-exposure mathematics fits with PyTorch? (high)
 
-### L10–L12: methodological breadth and coding load
+**Question:** Is the combined family/gradient/AD endpoint the right use of the tightest early lecture?
 
-How much MCMC should go beyond familiar PyMC/NUTS? How much network architecture survey can coexist with a serious heteroskedastic likelihood exercise? Does VAE notebook training and mobility-data access fit the one-hour student window, and how deep should the rate-distortion/IB return be?
+**Evidence:** L05 budgets115 minutes including12 reserve for substantive Gaussian/Bernoulli/Poisson unification, one dispersion-correct canonical gradient, a short vector softmax application, a complete reverse-mode graph and minibatch SGD. Its independent review found no mathematical/source blocker, but judged live and first-PyTorch60-minute workload tight and unmeasured.
 
-## Cross-cutting questions
+**Provisional resolution:** Preserve the common GLM family and complete reverse graph; do not derive three separate family gradients. Give data, train/test split, standardization, indexing and plots; students check manual versus automatic gradients and one visible SGD cycle. No DataLoader tutorial, optimizer catalogue, Hessian/IRLS or Bayesian GLM inference.
 
-- Are there important Book 2 topics with **no primary home** that are too valuable to omit, especially §6.4 and §§6.6–6.9, SMC, Ch. 14 evaluation, or sparse-prior GLM material? If kept, specify exactly what is displaced.
-- Do L03–L12 form a continuous introduction of NumPy/SciPy, PyTorch and probabilistic inference rather than presenting new software syntax during difficult mathematics?
-- Has each mathematical result one primary derivation, with later reuse explicitly distinguished from repeat coverage?
-- What is the course's actual feasible derivation density given L01 experience and the early lectures' delivered artifacts?
+**Alternatives and cost:** Remove the optional MAP/numerical-probit/repeated-application package first (estimated6–8 minutes, not measured). Removing a core gradient or AD explanation would weaken later VI/neural/VAE work. Restoring a standalone GLM meeting would require displacing a whole accepted lecture; the autonomous proposal does not make that change.
 
-**Coordinator duty:** Report real doubts instead of papering them over; make safe provisional choices when possible; never label an unsupported scope approved simply to finish the batch.
+**Review evidence:** [L05 scope](../L05_GLM_Optimization/lecture_scope.md), [independent review](reviews/L05_review.md), blob736943b90f24826e29955115896929742f2961f5. Later actual L02 delivery and software retention must be checked; scope approval is not runtime validation.
+
+## Shared protected-prerequisite and publication gates
+
+L02's agreed section contract is protected, but it is not recorded as delivered. Its malformed/stale development-state register is not evidence of new approvals. Reconcile the actual taught boundary before teaching these scopes; do not retrospectively alter L01/L02 to conceal backfill. All future labs require separately authored validated solutions, clean local uv execution and fresh hosted Colab runs before publication. Source inspection and small mathematical arithmetic checks do not establish student timing, source-output reliability or Colab compatibility.
+
+## Remaining synthesis
+
+L06–L12 choices and the adversarial whole-course findings will be consolidated here after those gates close. This is an active report, not a completed proposal.

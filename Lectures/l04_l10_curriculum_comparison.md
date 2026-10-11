@@ -1,5 +1,8 @@
 # Curriculum alternatives, L04–L10 — comparison for instructor review
 
+**Historical comparison (2026-10-11):** This document compares the original combined L04 + GLM L10 against the earlier proposed *optimization-led* L05. It predates the instructor's refined **GLM-and-optimization** L05 proposal and should not be treated as a current scope decision. For the revised briefs and capacity concerns, see [current initial scope previews](curriculum_scope_previews.md). The unchanged original sequence remains on main. This record is retained for provenance.
+
+
 **Status:** PROVISIONAL / NOT APPROVED (corrected comparison, 2026-10-11). This replaces the earlier, incorrectly framed L04–L06 comparison, which had offered a GLM lecture in L05. That was **not** the instructor's proposed alternative.
 
 **Authoritative baseline:** [main-branch syllabus plan](https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/main/syllabus_plan.typ). The proposed revision is in [this branch's syllabus plan](../syllabus_plan.typ). Actual delivery and agreed scopes in [the material ledger](material_ledger.md) take precedence over tentative syllabus predictions.

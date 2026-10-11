@@ -140,14 +140,17 @@ The course is organized around four recurring ideas:
   [*Noisy-channel decoding and information.* Enumerate a simple parity-check code and noisy channel; calculate entropy/mutual information and posterior decoding performance as noise changes. Reference: #link("https://github.com/probml/pyprobml/blob/master/notebooks/book2/05/error_correcting_code_demo.ipynb")[Murphy's worked channel-coding example]. *Skill:* finite probability tables, conditional probabilities and information quantities with NumPy. *Alternative:* source-coding / code-length comparison. *Choice and runtime remain unvalidated.*],
 
   [5],
-  [*Optimization of probabilistic models* \
+  [*Learning probabilistic models: GLMs and optimization* \
   #note[Tentative; alternative progression under review]],
-  [Negative log likelihood and cross-entropy as objectives; categorical/softmax GLM as a concrete model; gradients and reverse-mode automatic differentiation; mini-batch stochastic optimization; PyTorch computational graphs, loss and training loops; light MAP/regularization bridge.],
+  [Conditional exponential-family models and links extend L02's distribution framework to prediction. Compare Gaussian, Bernoulli and Poisson GLMs, then derive the general canonical-link log-likelihood gradient. Develop categorical/softmax regression as the worked model; explain computational gradients, reverse-mode autodiff and mini-batch SGD as the method for fitting it. Brief MAP penalty and predictive scoring interpretation. Notebook introduces PyTorch by fitting three-species Iris.],
   [
-    - 6.1–6.2 Differentiable optimization and autodiff
-    - 6.3.1–6.3.3 SGD and finite-sum objectives
-    - 15.1.1–15.1.3 GLM form and likelihood estimation (selected)
-    - 15.3.2 Multinomial logistic regression
+    - 15.1–15.1.1 GLM definition, canonical link, Gaussian / Bernoulli / Poisson examples
+    - 15.1.2–15.1.3 GLM estimation; general likelihood gradient
+    - 15.3.2 Multinomial logistic regression as worked prediction model
+    - 6.1–6.2 Differentiable objectives and reverse-mode autodiff (selected)
+    - 6.3.1–6.3.2 SGD and minibatches (selected)
+    - 14.1.2 MLE / MAP as penalized objectives (brief bridge)
+    - 14.2.1 Log loss as predictive score (interpretation only)
   ],
   [
     - 7.8 Matrix calculus
@@ -155,7 +158,7 @@ The course is organized around four recurring ideas:
     - 8.4.1–8.4.3 SGD
     - 10.2–10.3 Logistic-regression learning (selected)
   ],
-  [*Three-class Iris softmax regression in PyTorch.* Fit a categorical likelihood using tensor operations, autodiff and a visible optimization loop; inspect probabilities, loss and held-out error. Reference: #link("https://github.com/nipunbatra/pytorch-basics/blob/main/notebooks/04-softmax-regression.ipynb")[Batra's worked softmax notebook]. *Skill:* PyTorch tensors, gradients and training. *Boundary:* save the full three-species fit for the lab; defer stochastic-distribution gradient estimators to VI and VAEs.],
+  [*Three-class Iris softmax GLM in PyTorch.* Starting from the canonical categorical likelihood developed in lecture, implement its differentiable loss, train it using autograd and a minibatch optimizer, and compare probabilities, held-out log loss and error. Reference: #link("https://github.com/nipunbatra/pytorch-basics/blob/main/notebooks/04-softmax-regression.ipynb")[Batra's worked softmax notebook]. *Skill:* PyTorch tensors, gradients and training. *Boundary:* complete the full three-species fit in the lab; leave non-canonical links, detailed Poisson fitting, Newton/IRLS, score-function gradients and reparameterization to later or optional work.],
 
   [6],
   [*Latent-variable learning and EM* \
@@ -169,7 +172,7 @@ The course is organized around four recurring ideas:
     - 3.5 Gaussian and Bernoulli mixtures
     - 8.7.1–8.7.3 Bound optimization; EM for GMMs
   ],
-  [*Two strong application candidates:* (A) *EM for missing Gaussian measurements*: estimate unknown mean/covariance from incomplete records using conditional first and second moments; #link("https://github.com/probml/pyprobml/blob/master/notebooks/book2/opt/gauss_imputation_em_demo.ipynb")[Murphy’s worked code]. (B) *MRI tissue segmentation with GMM-EM*: infer latent classes of voxels from intensity; #link("https://github.com/huytrnq/ExpectationMaximization/blob/main/Exp_MutilModals.ipynb")[worked MRI notebook]. *Skills:* implement E/M steps with NumPy/SciPy and check against an independent package fit. *Decision:* choose application when scoping L5.],
+  [*Two strong application candidates:* (A) *EM for missing Gaussian measurements*: estimate unknown mean/covariance from incomplete records using conditional first and second moments; #link("https://github.com/probml/pyprobml/blob/master/notebooks/book2/opt/gauss_imputation_em_demo.ipynb")[Murphy’s worked code]. (B) *MRI tissue segmentation with GMM-EM*: infer latent classes of voxels from intensity; #link("https://github.com/huytrnq/ExpectationMaximization/blob/main/Exp_MutilModals.ipynb")[worked MRI notebook]. *Skills:* implement E/M steps with NumPy/SciPy and check against an independent package fit. *Decision:* choose application when scoping L06.],
 
   [7],
   [*Inference as computation* \
@@ -224,15 +227,15 @@ The course is organized around four recurring ideas:
   [11],
   [*Neural networks as probabilistic conditional models* \
   #note[Tentative]],
-  [MLPs as nonlinear probabilistic conditional models; architecture, depth and regularization; reuse of L05 autodiff/SGD; selected priors/penalties and calibration/proper scoring as extensions of the earlier GLM example.],
+  [MLPs generalize the L05 GLM linear predictor to a nonlinear, learned mapping; build conditional Gaussian models with learned mean and variance; reuse L05 differentiation and SGD; compare weight decay with a Gaussian parameter prior. Include a single concise predictive-calibration diagnostic only if time permits; do not re-teach GLM family theory or sparse-prior taxonomy.],
   [
     - 16.1–16.2 Neural-network building blocks
     - 16.3 MLPs; selected other architectures
-    - 14.2 Predictive scoring and calibration (selected)
-    - 15.2.4–15.2.7 Regression priors and penalties (selected)
+    - 14.2.1–14.2.2 Proper scores / calibration (optional application, not full section)
+    - 15.2.3 / 15.2.6 Gaussian-shrinkage / lasso contrast (brief carry-forward only)
   ],
   [
-    - 11.3–11.4 Ridge and lasso as optimization / prior choices (selected)
+    - 11.3–11.4 Penalties/priors (selected contrast; no new full regression derivation)
     - 13.2 MLPs; nonlinearities
     - 13.3 Backpropagation
     - 13.4 Network training
@@ -244,12 +247,12 @@ The course is organized around four recurring ideas:
   [12],
   [*Variational autoencoders: neural latent-variable models* \
   #note[Tentative final substantive topic]],
-  [Latent-variable generative model; encoder/decoder and amortized variational posterior; ELBO and reparameterization; reconstruction versus KL, rate-distortion and mutual-information perspectives; β-VAE and posterior collapse. Information bottleneck/InfoVAE are selected extensions, not mandatory additional derivations.],
+  [Latent-variable generative model; encoder/decoder and amortized variational posterior; ELBO and reparameterization; reconstruction versus KL as a rate-distortion tradeoff. Connect β-VAE and posterior collapse to the earlier information-theory perspective. Classical supervised information bottleneck and InfoVAE are comparison-only / optional, not additional full derivations.],
   [
     - 21.1–21.2 VAE model; ELBO; inference network
-    - 21.3.1–21.3.2 β-VAE and InfoVAE (selected)
+    - 21.3.1 β-VAE (core); 21.3.2 InfoVAE (optional mention)
     - 21.4 Posterior collapse
-    - 5.4.2, 5.6 Rate-distortion / information bottleneck (selected return)
+    - 5.4.2 Rate-distortion (selected derivation); 5.6 information bottleneck (comparison only)
   ],
   [],
   [*Variational autoencoder.* Primary candidate: fit a β-VAE to metropolitan mobility/urban-form indicators; interpret latent dimensions (Oke PS4 worked notebook in supplied archive). Fallback: #link("https://github.com/probml/pyprobml/blob/master/notebooks/misc/vae_mnist_pytorch.ipynb")[Murphy’s MNIST PyTorch VAE]. *Skills:* encoder/decoder, reparameterization, reconstruction + KL loss, latent traversals. *Decision:* mobility data prep and student runtime must be checked.],

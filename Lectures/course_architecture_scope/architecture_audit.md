@@ -1,6 +1,6 @@
-# Course architecture audit — cross-course contract v1
+# Course architecture audit — cross-course contract v2
 
-Status: provisional allocation for scope builders, 2026-10-11. Base architecture main b78a7650bb09ae851e412089d98525f7b71275d9; execution starts at 906ce71dd9c8e29f3dede51ec809442a885354c9. Only coordinator edits this file.
+Status: Wave A reconciled allocation for Wave B scope builders, 2026-10-11. Base architecture main b78a7650bb09ae851e412089d98525f7b71275d9; execution starts at 906ce71dd9c8e29f3dede51ec809442a885354c9. Only coordinator edits this file.
 
 ## Protected course boundary and common budget
 
@@ -32,3 +32,18 @@ Local Murphy B2 online edition December 10, 2025: /home/opher/OneDrive/CurrentSe
 ## Reconciliation gates
 
 Wave A L03–L05 establishes representations, information and trainable conditional models. Wave B L06–L08 consumes these without repeating them. Wave C L09–L12 synthesizes inference, stochastic computation and neural models. At each wave reconcile dependencies, budgets and sources before next wave; contracts can change through scoped builder revisions. Whole-course independent adversarial review follows all ten scopes.
+
+## Wave A reconciliation — coordinator disposition
+
+L03 blob f4dab507f90618362c2e04c1c3791c8139f7de56 / independent /root/review_l03: feasible-with-risks. L04 blob242ee28d251d583004daa25379b6a0f8cb44d622 / independent /root/review_l03: feasible-with-risks. L05 blob736943b90f24826e29955115896929742f2961f5 / independent /root/review_l05: feasible-with-risks. No blocking findings; raw reports preserved. These scopes meet the per-lecture agent gate, instructor pending; whole-course adversarial gate remains open and may invalidate affected approvals.
+
+- L03 local conditional and deterministic ICM are model/optimization mathematics, not premature Gibbs or VI. Exact square oracle protects the local/global distinction. Optional GMRF comparison is first cut. No Potts, CRF or MRF-learning promise survives into formal outputs.
+- L04 selects a course-constructed 2→5, minimum-distance-three parity code, preserving error correction; actual source XOR is optional contrast. MI/DPI is substantial; source-code bounds are stated, rate-distortion is L12-owned. Conditional MI is proof support and sufficiency only a bounded recall (finite candidate-parameter framing when concrete; no parameter entropy calculation).
+- L05 owns one general scalar canonical gradient, a separate short vector softmax specialization, one full fan-out reverse graph and minibatch SGD. Family comparison is protected. Lab owns first PyTorch mechanics with given data/indices/plotting. Optional MAP/probit/repeated applications are first cuts; no new prerequisite is allocated to L02.
+- Live totals including reserve:112/110/115 minutes; each lab60. All unmeasured, tight, within envelope. Advisory pacing and lab-scaffolding risks accepted provisionally and routed to downstream implementation; no source or runtime validation overstated.
+
+### Additional Wave B/C input decisions
+
+L06 should deeply work missing-Gaussian EM (expected second moments and ignorability explicitly), keeping any GMM illustration short rather than deriving two complete M-steps. L07 owns one Laplace approximation, not a survey of later algorithms. L08 HMM forward/backward is the preferred exact core and lab; Kalman compactly applies L01 conditioning, no second implementation. A named Oke Kalman notebook is unverified despite questions/data being located; record the practical loss as a human question.
+
+L09 should use a known-noise Gaussian regression or controlled correlated-Normal exact reference to avoid requiring HMC before L10; real GDP data may be retained only if the simplified model/data burden fits. L12 mobility materials have now been directly located and inspected (source_inspection.md); compact PyTorch tabular VAE is a defensible preferred route, with explicit per-observation reconstruction/KL normalization and no guaranteed identifiability/causality claim. MNIST is a fallback rather than an automatic default; final choice belongs to its builder and independent review. Data redistribution and all runtimes remain later publication gates.

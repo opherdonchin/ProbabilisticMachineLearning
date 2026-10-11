@@ -10,9 +10,9 @@ Current trajectory:
 
 Exponential-family representation → Gaussian canonical derivation → moments from the log-partition function → MLE as moment matching → maximum entropy → Gamma rainfall application → categorical counts → Markov learning from transition counts.
 
-Proposed content-slide count: **45** (excluding title and section-divider slides).
+Proposed **substantive slides: 46** (38 ordinary teaching slides + 8 summary slides); **8 dedicated section-title slides**; **54 section slides total**, excluding the lecture-level opening title. The increase by one substantive slide is the fit-visualization move in Section 6, which prevents a novel result from first appearing in its summary.
 
-Section 2 is intentionally self-contained and can later move wholesale to a recording. Every section ends with an explicitly labeled summary slide.
+Section 2 is intentionally self-contained and can later move wholesale to a recording. Every section begins with an explicit title slide whose metadata records full title, subtitle and abbreviated footer title. Every section ends with a retrospective summary brief specifying candidate reused visual anchors and concrete takeaway nominations. A notebook introduction is a separate lecture-level item, not a section-ending slide.
 
 ---
 
@@ -30,6 +30,16 @@ Section 2 is intentionally self-contained and can later move wholesale to a reco
 No clarification is needed before a first organization draft.
 
 ## Proposed slides
+
+### 0. Section title slide — Exponential families give familiar distributions a common form
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** Exponential families give familiar distributions a common form
+- **Subtitle:** A shared algebraic form for familiar probability distributions
+- **Short title (footer):** Exponential families
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
 
 ### 1. Different distributions can share the same algebraic structure
 
@@ -55,11 +65,22 @@ and establish the four roles `h`, `T`, `η`, and `A` before specializing it.
 
 **Design note:** Carry forward the result of the previous slide rather than restarting the derivation.
 
-### 5. One representation exposes the same ingredients across families
+### 5. Exponential-family structure is visible in the Bernoulli model
 
-**Role:** Summary.
+**Role:** Section summary (final teaching slide; retrospective).
 
-**Intention / goal:** Consolidate the four pieces of exponential-family structure and point forward to the Gaussian as a richer familiar test case.
+**Intention / goal:** Retell the completed general-form-to-Bernoulli argument with one recognized formula and its worked example.
+
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
+
+- **Already-taught visual anchors:**
+  - **Slide 2:** the generic exponential-family expression with labeled roles `h(x)`, `T(x)`, `η`, `A(η)`
+  - **Slide 4:** the completed Bernoulli-to-natural-parameter identification
+- **Concrete retrospective takeaway nominations:**
+  - An exponential-family density separates a base measure, sufficient statistic, natural parameter, and log-partition function.
+  - For Bernoulli, `T(x)=x` and `η=log(p/(1-p))`; log odds are the natural coordinate.
+  - `A(η)` normalizes the exponential form (Bernoulli: `log(1+exp η)`).
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
@@ -87,6 +108,16 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
+### 0. Section title slide — A Gaussian can be rewritten in exponential-family coordinates
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** A Gaussian can be rewritten in exponential-family coordinates
+- **Subtitle:** From covariance coordinates to sufficient statistics and natural parameters
+- **Short title (footer):** Gaussian canonical form
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
+
 ### 1. The Gaussian density hides an exponential-family representation
 
 **Intention / goal:** Start from the familiar multivariate Gaussian density and pose the task: rearrange it into `h(x) exp(ηᵀT(x)-A(η))` without changing the model.
@@ -105,11 +136,22 @@ No clarification is needed before a first organization draft.
 
 **Intention / goal:** Identify natural parameters corresponding to `-½Λ` and `Λμ`, together with the parameter-only normalizing term. Connect these coordinates directly to the information/precision form from Lecture 1.
 
-### 5. Gaussian information coordinates are exponential-family coordinates
+### 5. Gaussian precision coordinates yield an exponential-family representation
 
-**Role:** Summary.
+**Role:** Section summary (final teaching slide; retrospective).
 
-**Intention / goal:** Consolidate the complete mapping from ordinary Gaussian parameters `(μ,Σ)` to the exponential-family pieces. The section should be independently removable to a recording without creating a conceptual gap in Section 3.
+**Intention / goal:** Retell the already-derived parameter mapping as one self-contained Gaussian result; make this section independently removable.
+
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
+
+- **Already-taught visual anchors:**
+  - **Slide 2:** expanded Gaussian quadratic with data-dependent and parameter-only terms distinguished
+  - **Slides 3–4:** the matched sufficient-statistic and natural-parameter terms
+- **Concrete retrospective takeaway nominations:**
+  - Writing `Λ=Σ⁻¹` expands the Gaussian log density into linear and quadratic functions of `x`.
+  - The Gaussian sufficient statistics are `x` and `xxᵀ`; their natural coefficients are `Λμ` and `−½Λ`.
+  - The parameter-only term and base measure complete the normalized exponential-family representation.
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
@@ -136,6 +178,16 @@ None.
 No clarification is needed before a first organization draft.
 
 ## Proposed slides
+
+### 0. Section title slide — The log-partition function connects parameters to moments
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** The log-partition function connects parameters to moments
+- **Subtitle:** How derivatives of the normalizer reveal means and covariances
+- **Short title (footer):** Log-partition moments
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
 
 ### 1. The normalizer must change when the natural parameter changes
 
@@ -167,11 +219,22 @@ Separate the result students should retain from the derivational algebra that pr
 
 Students should understand the covariance result and the resulting convexity of `A` without expanding into a separate convex-analysis topic.
 
-### 6. The log-partition function converts parameters into moments
+### 6. Log-partition derivatives determine sufficient-statistic moments
 
-**Role:** Summary.
+**Role:** Section summary (final teaching slide; retrospective).
 
-**Intention / goal:** Consolidate the first- and second-derivative identities and hand off to estimation: if model moments are functions of `η`, observed sufficient statistics can tell us how to choose `η`.
+**Intention / goal:** Consolidate the two identities and their Bernoulli interpretation; no prospective estimation or next-section question.
+
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
+
+- **Already-taught visual anchors:**
+  - **Slides 1–3:** the normalization identity and its differentiated result `∇A(η)=Eη[T(X)]`
+  - **Slide 5:** the covariance/Hessian identity `∇²A(η)=Covη[T(X)]`
+- **Concrete retrospective takeaway nominations:**
+  - Differentiating the normalization identity gives the model expectation of the sufficient statistic.
+  - `∇A(η)=Eη[T(X)]` maps natural parameters to mean parameters; Bernoulli gives the logistic map.
+  - `∇²A(η)=Covη[T(X)]` makes the log-partition function convex.
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
@@ -198,6 +261,16 @@ None.
 No clarification is needed before a first organization draft.
 
 ## Proposed slides
+
+### 0. Section title slide — Learning an exponential-family model means matching model moments to data
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** Learning an exponential-family model means matching model moments to data
+- **Subtitle:** Likelihood gradients compare empirical and model statistics
+- **Short title (footer):** MLE moment matching
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
 
 ### 1. An IID sample enters the likelihood through its aggregate sufficient statistic
 
@@ -229,15 +302,23 @@ This is the central learning result of the lecture.
 
 **Intention / goal:** Perform a quick sanity check using a model students already know. The general machinery should collapse immediately to the familiar Bernoulli MLE.
 
-### 6. Maximum likelihood in an exponential family is moment matching
+### 6. Exponential-family maximum likelihood matches moments
 
-**Role:** Summary.
+**Role:** Section summary (final teaching slide; retrospective).
 
-**Intention / goal:** Consolidate the full learning chain
+**Intention / goal:** Reassemble data reduction, score, and moment-matching solution into the completed MLE result, with interior/boundary qualifications retained.
 
-`data → sufficient statistic → likelihood gradient → matched model moment`
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
 
-and close the MLE argument before changing questions in Section 5.
+- **Already-taught visual anchors:**
+  - **Slide 3:** the likelihood gradient `T(D)−N Eη[T(X)]`
+  - **Slide 4:** the model-moment-equals-empirical-moment equation
+  - **Slide 5:** Bernoulli `p̂` as a quick check
+- **Concrete retrospective takeaway nominations:**
+  - For IID exponential-family data, the sample enters the likelihood through the sum of sufficient statistics.
+  - The score compares observed aggregate statistics with expectations under the candidate model.
+  - At an interior MLE, model moments match empirical moments; Bernoulli recovers the sample proportion.
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
@@ -264,6 +345,16 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
+### 0. Section title slide — Moment constraints and maximum entropy lead to exponential families
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** Moment constraints and maximum entropy lead to exponential families
+- **Subtitle:** From expected-feature constraints to a probability model
+- **Short title (footer):** Maximum entropy
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
+
 ### 1. Moment constraints state what we know about an otherwise unknown distribution
 
 **Intention / goal:** Start from constraints `E[f_k(X)] = F_k`. Make clear that the constraints are inputs to a new model-construction problem, not consequences of the MLE derivation.
@@ -276,11 +367,22 @@ No clarification is needed before a first organization draft.
 
 **Intention / goal:** Give the proof sketch: constrained optimization yields an exponential form in the features `f_k(x)`, with the multipliers becoming natural parameters and the reference distribution becoming the base measure.
 
-### 4. Moment constraints plus maximum entropy produce an exponential-family model
+### 4. Maximum entropy under feature constraints yields exponential-family form
 
-**Role:** Summary.
+**Role:** Section summary (final teaching slide; retrospective).
 
-**Intention / goal:** Consolidate the reverse direction relative to Section 4: Section 4 assumed an exponential family and learned its parameters; Section 5 starts from feature constraints and derives an exponential-family form.
+**Intention / goal:** Summarize the constrained-optimization argument on its own terms, not as a preview or a contrast with the following topic.
+
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
+
+- **Already-taught visual anchors:**
+  - **Slide 1:** the expected-feature constraints
+  - **Slides 2–3:** the minimum-KL-to-reference-distribution objective and exponential-form solution
+- **Concrete retrospective takeaway nominations:**
+  - Constraints on `E[f_k(X)]` specify what must be preserved about an otherwise unknown distribution.
+  - Minimizing KL to a reference `q` selects a distribution satisfying those constraints; a uniform reference yields maximum entropy.
+  - The constrained optimum has exponential-family form, with multipliers as natural parameters and `q` as the base measure.
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
@@ -307,6 +409,16 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
+### 0. Section title slide — Maximum likelihood fits a Gamma model to rainfall data
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** Maximum likelihood fits a Gamma model to rainfall data
+- **Subtitle:** Sufficient statistics and a fitted model for skewed precipitation
+- **Short title (footer):** Gamma rainfall
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
+
 ### 1. Rainfall amounts are positive and strongly right-skewed
 
 **Intention / goal:** Begin with the actual precipitation data. Establish the empirical modeling problem and why a symmetric Gaussian is not an obvious choice.
@@ -321,15 +433,33 @@ No clarification is needed before a first organization draft.
 
 **Intention / goal:** Apply Section 4 directly: the sample likelihood reduces to two aggregate statistics, and the MLE matches their model expectations. Acknowledge the digamma equation without making numerical solution a teaching move.
 
-### 4. A low-dimensional sufficient statistic determines a useful rainfall fit
+### 4. The fitted Gamma distribution can be compared with the rainfall observations
 
-**Role:** Summary.
+**Intention / goal:** Display the fitted Gamma density over the rainfall distribution already introduced on Slide 1. Interpret what the fitted model captures and what the empirical comparison does not establish; do not teach numerical digamma solving.
 
-**Intention / goal:** Return to the empirical distribution with the fitted Gamma overlaid. Consolidate the data-to-statistics-to-fit chain visually rather than adding more algebra.
+**Design note:** Fitted overlay is required to appear **here before summary**, and depends on sourcing/producing the empirical asset. This adds one teaching move and increases the time pressure of this section.
+
+### 5. Rainfall data are compressed into two statistics for Gamma fitting
+
+**Role:** Section summary (final teaching slide; retrospective).
+
+**Intention / goal:** Retell the data-to-statistics-to-fit argument through the previously introduced empirical plot and its fit; do not reveal a new figure for the first time in summary.
+
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
+
+- **Already-taught visual anchors:**
+  - **Slide 1:** the observed rainfall distribution
+  - **Slide 3:** the two aggregate Gamma statistics `Σx` and `Σlog x`
+  - **Slide 4:** the fitted-Gamma overlay on the observed rainfall distribution (requires empirical asset)
+- **Concrete retrospective takeaway nominations:**
+  - Positive, right-skewed rainfall motivates a Gamma model rather than a symmetric Gaussian.
+  - The Gamma model's sample statistics are `Σlog x` and `Σx`.
+  - Fitting the model by likelihood uses those aggregates; the fitted distribution can then be checked against the observed histogram.
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
-- Four slides preserve the pedagogical payoff without turning the application into a second derivation sequence.
+- Five substantive slides preserve the pedagogical payoff without turning the application into a second derivation sequence.
 - The example remains substantive because the nontrivial sufficient statistic `log x` is still explicit.
 
 ## Upstream change requests
@@ -353,6 +483,16 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
+### 0. Section title slide — Categorical distributions extend the same learning rule to multiple outcomes
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** Categorical distributions extend the same learning rule to multiple outcomes
+- **Subtitle:** Indicator statistics, softmax, and normalized outcome counts
+- **Short title (footer):** Categorical learning
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
+
 ### 1. Categorical data replace one binary indicator with a one-hot vector
 
 **Intention / goal:** Move from Bernoulli to `K` mutually exclusive outcomes using indicator variables. This should feel like a structural extension of familiar binary data.
@@ -373,11 +513,23 @@ No clarification is needed before a first organization draft.
 
 Students should recognize “count and normalize” as the categorical instance of the same moment-matching rule.
 
-### 5. For categorical models, learning means count and normalize
+### 5. Categorical learning turns indicator counts into probabilities
 
-**Role:** Summary.
+**Role:** Section summary (final teaching slide; retrospective).
 
-**Intention / goal:** Consolidate the section in exactly the form needed by the next section: one categorical distribution can be learned from counts without a fresh MLE derivation.
+**Intention / goal:** Unify the one-hot representation, its natural parameters, and the count-based estimator as a self-contained categorical result.
+
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
+
+- **Already-taught visual anchors:**
+  - **Slides 1–2:** one-hot category indicators and their expectations
+  - **Slide 3:** the softmax natural-to-probability map
+  - **Slide 4:** the count and normalized-count estimator
+- **Concrete retrospective takeaway nominations:**
+  - For `K` possible outcomes, categorical sufficient statistics are outcome indicator variables.
+  - Softmax maps natural coordinates to category probabilities, with a redundant reference degree of freedom.
+  - The categorical MLE is `p̂_k=N_k/N`: count outcomes and normalize.
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
@@ -405,6 +557,16 @@ None.
 No clarification is needed before a first organization draft.
 
 ## Proposed slides
+
+### 0. Section title slide — A Markov model learns one categorical distribution for each preceding state
+
+**Role:** Section title (navigation/framing; not a substantive teaching slide).
+
+- **Title:** A Markov model learns one categorical distribution for each preceding state
+- **Subtitle:** Learning and using conditional probabilities between successive states
+- **Short title (footer):** Markov chains
+
+**Intention / goal:** Establish this section's own intellectual focus without previewing another section. These three fields are the approved slide-organization metadata proposal; Slide Design determines the presentation, and production handles the first-section metadata convention.
 
 ### 1. Sequence models need conditional probabilities, not independent draws
 
@@ -448,23 +610,33 @@ The result should feel inevitable from Sections 4 and 7 rather than like another
 
 **Intention / goal:** Reuse the factorization with learned `Â` to show how an unseen string receives a probability. This establishes the model as more than a descriptive transition table.
 
+**Design note:** Sequence scoring must account for `p(x₁)` or explicitly condition on the starting symbol; do not silently use transition probabilities alone.
+
 ### 9. Sampling the fitted transitions generates new text
 
 **Intention / goal:** Show the generative consequence using Murphy's generated-text example. Students should see generation as repeated sampling from the learned row corresponding to the current state.
 
-### 10. From text to a fitted Markov model — and into the notebook
+### 10. Learned Markov transitions support scoring and generation
 
-**Role:** Summary.
+**Role:** Section summary (final teaching slide; retrospective).
 
-**Intention / goal:** Consolidate
+**Intention / goal:** Retell the complete text→counts→conditional rows→scoring/generation argument. The notebook introduction is separate from the last summary.
 
-`text → transition counts → normalized rows → sequence probability / generation`
+**Summary design brief** (candidates for `section-summary-visual` and `section-summary-takeaways`; final selection and layout belong to Slide Design):
 
-and hand off explicitly to the one-hour notebook.
+- **Already-taught visual anchors:**
+  - **Slide 2:** the first-order Markov factorization and state-transition diagram
+  - **Slides 6–7:** observed character bigram counts beside normalized conditional rows
+  - **Slides 8–9:** the already-introduced sequence-scoring and generation use cases
+- **Concrete retrospective takeaway nominations:**
+  - The first-order assumption factors sequence probability into an initial-state probability and one-step transitions.
+  - Transition counts are sufficient statistics; row-normalizing them estimates each conditional categorical distribution.
+  - The fitted transition model supports sequence scoring and stepwise text generation.
+- **Closure constraint:** No new derivation, unintroduced result, next-section teaser, or notebook handoff. The summary is the section's final teaching move.
 
 ## Issues / critique
 
-- Ten slides for 20–24 minutes is plausible because several are empirical/visual rather than algebra-heavy.
+- Ten substantive slides plus a section-title slide for 20–24 minutes is plausible because several are empirical/visual rather than algebra-heavy.
 - Raw counts and normalized rows remain separate teaching moves because they distinguish the observed data from the learned conditional model.
 - Sequence scoring and generation remain separate because they are distinct uses of the same fitted model.
 
@@ -474,11 +646,17 @@ None.
 
 ---
 
+## Lecture-level notebook introduction (outside all sections)
+
+The one-hour student notebook is introduced separately from Section 8's final retrospective summary. Its exact prompt, mathematical tasks, and any student-facing launch material are governed by the lecture scope/notebook contract, not invented by Slide Organization. **No additional lecture slide is assumed or counted here**; request instructor approval if a dedicated notebook-launch slide is wanted.
+
+---
+
 # Whole-lecture critique
 
 ## Title-sequence test
 
-The titles now recover a more explicit lecture argument:
+Read the *content-slide* titles in sequence (ignoring the deliberately navigational section-title slides) to recover the lecture argument:
 
 1. familiar distributions share an exponential-family representation;
 2. the Gaussian provides a full familiar derivation and a removable recording unit;
@@ -491,26 +669,26 @@ The titles now recover a more explicit lecture argument:
 
 ## Extent
 
-Proposed content slides by section:
+Proposed substantive slides **including summaries, but excluding section-title slides** by section:
 
 - Section 1: 5
 - Section 2: 5
 - Section 3: 6
 - Section 4: 6
 - Section 5: 4
-- Section 6: 4
+- Section 6: 5
 - Section 7: 5
 - Section 8: 10
 
-**Total: 45 content slides.**
+**Total: 46 substantive slides (including 8 summaries), plus 8 dedicated section-title slides = 54 section slides**, excluding the lecture-level title. New section titles and summaries raise the number of rendered slides without adding eight substantive derivations.
 
-Moving Section 2 to a recording would reduce the live deck to about 40 content slides without damaging the remaining dependency chain.
+Moving Section 2 to a recording would reduce the live deck to about 41 substantive slides (and seven live section-title slides) without damaging the remaining dependency chain.
 
 ## Main backpressure items
 
-No blocking backpressure remains at the organization stage.
+This is a **new draft requiring instructor review**, not an approved organization. The changed section-title and summary requirements demand another downstream read-only feasibility review. The rainfall fit asset is necessary for the new Section 6 Slide 4. Section 8 sequence scoring must treat the initial-state term explicitly.
 
-The main timing uncertainty is now empirical rather than structural: Sections 3–5 contain the densest mathematical reasoning. If rehearsal runs long, Section 2 is the cleanest whole-section recording move, followed by reducing the maximum-entropy proof sketch rather than compressing the central MLE derivation.
+The main timing uncertainty is now empirical rather than structural; with a dedicated title slide in each section and an extra rainfall-fit teaching move, pacing should be reviewed again: Sections 3–5 contain the densest mathematical reasoning. If rehearsal runs long, Section 2 is the cleanest whole-section recording move, followed by reducing the maximum-entropy proof sketch rather than compressing the central MLE derivation.
 
 ## Open issues / explicit assumptions
 

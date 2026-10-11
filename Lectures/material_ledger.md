@@ -108,7 +108,7 @@ This table accompanies the [L04–L10 comparison](l04_l10_curriculum_comparison.
 | Ch. 10 Variational inference | L09 | Includes selected stochastic gradient estimators if needed |
 | Chs. 11–12 Monte Carlo / MCMC | L10 | Multimodal proposal-comparison lab rather than routine undergraduate diagnostics |
 | §15.1–§15.1.1 GLM family, Gaussian/Bernoulli/Poisson models and canonical links | L05 **core mathematical framework** | Show several response distributions; derive link and mean relationship; Poisson a worked comparison, not a second notebook |
-| §15.1.2–§15.1.3 estimation and general gradient; §15.3.2 softmax | L05 **core derivation and worked categorical example** | Canonical-link GLM gradient; SGD/autodiff and Iris notebook; cannot cover full §15.3 |
+| §15.1.2 noncanonical links (contrast); §15.1.3 MLE and gradient; §15.3.2 softmax | L05 **core derivation and worked categorical example** | Canonical-link GLM gradient; SGD/autodiff and Iris notebook; cannot cover full §15.3 |
 | §14.1.2 MLE/MAP and §14.2.1 log score | L05 concise bridge and notebook interpretation | Avoid full predictive-evaluation framework during first PyTorch lab |
 | §15.2 priors, sparsity/regularization; §14.2 evaluation/calibration | Brief L05 penalty bridge; selected L11 weight decay and optional one calibration diagnostic | **Most detailed ridge/lasso/horseshoe and model selection are deliberately not allocated.** Do not conceal loss of standalone L10 GLM notebook. |
 | Ch. 16 Neural networks | L11 | PyTorch introduced in L05; GLM→nonlinear-predictor connection; don't add complete Ch. 15 material |

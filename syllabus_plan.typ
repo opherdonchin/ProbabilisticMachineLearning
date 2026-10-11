@@ -232,7 +232,7 @@ The course is organized around four recurring ideas:
     - 16.1–16.2 Neural-network building blocks
     - 16.3 MLPs; selected other architectures
     - 14.2.1–14.2.2 Proper scores / calibration (optional application, not full section)
-    - 15.2.3 / 15.2.6 Gaussian-shrinkage / lasso contrast (brief carry-forward only)
+    - 15.2.2 / 15.2.6 Gaussian-prior / lasso contrast (brief carry-forward only)
   ],
   [
     - 11.3–11.4 Penalties/priors (selected contrast; no new full regression derivation)

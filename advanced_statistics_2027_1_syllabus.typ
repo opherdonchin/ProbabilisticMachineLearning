@@ -224,7 +224,7 @@ The course grade is based on four components:
   [Build conditional exponential-family GLMs from the L02 foundation: Gaussian, Bernoulli and Poisson outcomes, canonical links, and the general likelihood gradient. Use multinomial softmax as a complete probabilistic prediction example; teach reverse-mode automatic differentiation and mini-batch stochastic gradient training to fit it. Brief MLE/MAP and log-loss evaluation connections; stochastic-distribution gradients remain for VI and VAEs.],
   [
     - 15.1–15.1.1 GLM form, links, Gaussian/Bernoulli/Poisson
-    - 15.1.2–15.1.3 GLM estimation and gradient derivation
+    - 15.1.2 Noncanonical links (mention); 15.1.3 MLE and gradient derivation
     - 15.3.2 Multinomial logistic regression
     - 6.1–6.2 Optimization and automatic differentiation (selected)
     - 6.3.1–6.3.2 Stochastic gradient descent and minibatches

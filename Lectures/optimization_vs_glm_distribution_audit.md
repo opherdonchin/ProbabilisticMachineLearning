@@ -1,5 +1,8 @@
 # Detailed curriculum audit: distributing optimization versus GLMs
 
+**Historical tradeoff analysis (2026-10-11):** Written before the proposed L05 was re-centered on the **GLM family plus optimization**. Its concern that the family coherence would be lost is now partly addressed by the new branch syllabus; its overload cautions remain relevant. Review the [updated scope previews](curriculum_scope_previews.md) instead of applying the old conclusion without adjustment.
+
+
 **Date:** 2026-10-11. **Status:** Instructor review; neither path approved. **No changes to the proposed timetable are implied by this audit.** Compare [current baseline on main](https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/main/syllabus_plan.typ) with [split proposal on branch](../syllabus_plan.typ). This supplements [the existing L04–L10 comparison](l04_l10_curriculum_comparison.md) and supersedes its coarse numeric evaluation.
 
 ## Question and criteria

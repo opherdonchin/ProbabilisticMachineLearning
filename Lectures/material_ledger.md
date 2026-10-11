@@ -87,11 +87,10 @@ Each lecture records a curriculum boundary for each book. The boundary is the fu
 
 ---
 
-## Provisional future-allocation map — NOT coverage (revised 2026-10-11)
+## Instructor-selected future curriculum allocation — NOT delivered coverage (2026-10-11)
 
-This table accompanies the [L04–L10 comparison](l04_l10_curriculum_comparison.md) and the provisional [syllabus plan](../syllabus_plan.typ). It **does not** change any actual disposition or curriculum boundary above. Only material actually taught or assigned is later marked `Covered` with a single primary coverage point. All rows here remain **Unreached** for coverage-accounting purposes until a lecture scope and delivery are confirmed. The **actual competing alternative** is the unchanged main-branch syllabus: combined information/optimization L04, EM L05, general inference L06, structured inference L07, VI L08, MCMC L09, and GLMs L10. This ledger's future-allocation map only represents proposed route B, not a decision against the baseline.
-
-| Murphy Book 2 material | Proposed destination under split-lecture route (B) | Limitation / dependency |
+The instructor selected the dedicated-information L04, integrated GLM/optimization L05, and shifted EM/inference sequence on 2026-10-11. This table is the **planned allocation only** and does not modify the actual disposition or curricular boundary above. Every future row remains **Unreached** in delivery accounting until actual substantive teaching or notebook completion. Lecture scopes, notebook commitments and exact subsection depths require the new L03–L12 scoping process. The [historical comparison](l04_l10_curriculum_comparison.md) documents a discarded alternative.
+| Murphy Book 2 material | Tentative destination under selected architecture | Limitation / dependency |
 |---|---|---|
 | §§5.1–5.2 KL, entropy, cross-entropy | L04, lecture | Focus on interpretation plus operational coding consequence; not every KL property or derivation |
 | §5.3 Mutual information, data processing, sufficiency | L04, lecture / L04 notebook | Basic quantities and constraints; §5.3.5 multivariate MI, §5.3.6 variational bounds not promised |
@@ -116,4 +115,4 @@ This table accompanies the [L04–L10 comparison](l04_l10_curriculum_comparison.
 
 **Delivery bookkeeping reminder:** L02 is only agreed scope, not recorded as delivered here. L03 and future lectures have no delivered coverage entries. If the alternative GLM-centered sequence is selected, update this map *after* instructor approval and revise the tentative syllabus documents consistently.
 
-**Review status:** This allocation map is only a proposed future teaching contract. See [rapid scope briefs and initial feasibility checks](curriculum_scope_previews.md). Neither those previews nor edits here change delivered coverage. Revisit after formal lecture-scope approval.
+**Review status:** The course-level allocation is instructor-selected, but the specific teaching obligations are still tentative. See [rapid scope briefs and initial feasibility checks](curriculum_scope_previews.md). Neither those previews nor edits here change delivered coverage. Revisit after formal lecture-scope approval.

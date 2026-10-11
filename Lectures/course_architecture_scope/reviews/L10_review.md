@@ -1,3 +1,15 @@
+# L10 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Sampling: correct transitions and unreliable short runs. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** The accept/reject rule and separated-peaks example make a useful lesson about sampling. A valid rule does not certify that a short chain has explored both peaks. Estimation error depends on the question, and a stuck chain must not be reported as perfectly precise.
+
+## Original independent review and later technical check records
+
 # L10 independent Section Design feasibility review
 
 **Verdict: feasible-with-risks. No unresolved blocking concern found.** Confidence medium in conceptual/source feasibility, medium-low in timing. This is a preliminary Scope feasibility preview, not downstream execution validation or approval.

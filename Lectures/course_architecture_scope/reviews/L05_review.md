@@ -1,3 +1,15 @@
+# L05 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Learning models: regression, derivatives and parameter updates. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** The family comparison, common derivative and automatic-differentiation example are mathematically sound. The combination of new ideas and first PyTorch use is the main risk. Data preparation, plots and program structure must be supplied; extra examples should not become required work.
+
+## Original independent review and later technical check records
+
 # L05 independent Section Design feasibility preview
 
 **Reviewer:** Section Design specialist, `/root/review_l05`; independent of builder `/root/build_l05`. **Mode:** `feasibility-review` only. **Date:** 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`. **Target:** `Lectures/L05_GLM_Optimization/lecture_scope.md`, Git blob **`736943b90f24826e29955115896929742f2961f5` before review and unchanged after review**. This is raw reviewer evidence, not instructor or agent approval. Only this report was authored; no upstream scope, shared file, section partition, slide outline or notebook was changed.

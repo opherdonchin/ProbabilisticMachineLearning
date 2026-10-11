@@ -1,3 +1,15 @@
+# L09 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Approximate a posterior by fitting a simpler distribution. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** The simpler-Gaussian posterior comparison makes the limits of approximation visible. The derivative check must use the same random draws and score as the training calculation. The observation likelihood and prior penalty must be counted consistently. No earlier sampling algorithm or new software library is assumed.
+
+## Original independent review and later technical check records
+
 # L09 independent Section Design feasibility preview
 
 **Reviewer role/thread:** Section Design specialist `/root/review_l05`, independent of builder `/root/build_l03`. **Mode:** `feasibility-review` only. **Date:** 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`. **Exact target:** `Lectures/L09_Variational_Inference/lecture_scope.md`, Git blob **`a8080351116f51a34eddd3e5dc06d65f7025722e` before and unchanged after review**. **Contract:** architecture audit v3, blob `54064183398bd643a895c5e38a023f793dc2d9d6`. The interrupted review was resumed against these actual hashes; no partial L09 report existed. Only this report was authored; earlier reports and all upstream/shared files were preserved. No sections, slides, notebook, commit or approval was produced.

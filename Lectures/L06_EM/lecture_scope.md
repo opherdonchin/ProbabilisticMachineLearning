@@ -1,162 +1,83 @@
-# L06 — Learning with hidden values: EM and expected sufficient statistics
+# L06 — Learn from incomplete data without pretending missing values are known
 
-**Status:** Reviewed five-part scope proposal; [current agent approval and exact reviews](../course_architecture_scope/STATUS.md) are maintained by the coordinator. Instructor acceptance pending; timing and notebook implementation remain unvalidated. **Stage/mode:** Lecture Scope / BUILD. **Builder thread:** `/root/build_l03`, 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`; input checkpoint `791e71b632048f52e7b8f8bc3cd54fda264311bb`. **Upstream:** cross-course contract v2, `architecture_audit.md` blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`; autonomous authority in `WORK_ORDER.md`. Only this Scope is owned here. No sections, slides, notebook code, shared-file edits or runtime validation.
+**Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
-## Starting boundary, sources and route choice
-
-Actual protected L01 establishes Gaussian conditioning/LGS and a known-parameter missing-block lab (`slide_deck.typ` blob `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`; `InClass/Solutions/lecture1_missing_data.ipynb` blob `ab441941c8b526151a927bfbcf292bd9bc629ce5`). L06 changes the problem: **the Gaussian mean and covariance are unknown and must be learned from incomplete cases**. L02's agreed, undelivered `section_design.md` (`bbf78a13db05224a839d0b2f8bda4c7a5bd0c764`) supplies exponential families and moment matching. Its malformed/stale development register supplies no new authority. The ledger's delivered boundaries remain B2 §2.3.2/B1 §3.3; no future scope is delivery evidence.
-
-Reviewed Wave A inputs: L03 blob `f4dab507f90618362c2e04c1c3791c8139f7de56` supplies latent/observed factors and distinguishes inference from coordinate optimization; L04 blob `242ee28d251d583004daa25379b6a0f8cb44d622` supplies KL/support interpretation, using bits; L05 blob `736943b90f24826e29955115896929742f2961f5` supplies fully observed likelihood optimization and gradients/updates. L06 uses natural logarithms/nats, does not repeat their derivations, and does not assume VI or MCMC theory. Current syllabus/ledger notebook candidates still leave Gaussian EM versus MRI open; the contract selects Gaussian depth provisionally, with MRI consequences recorded below.
-
-**Direct textbook inspection:** Murphy B2 December 10, 2025 edition, local PDF identified in the architecture contract, extracted `/tmp/pml-book2.txt`: §6.5.1 (printed p. 287), §§6.5.3.1–6.5.3.3 (pp. 290–291), §§6.5.4.1–6.5.4.4 (pp. 292–293), §3.11 missingness (pp. 141–142), selected §§28.2–28.2.1 (pp. 929–932); §6.5.6 inspected only to delimit extensions. B1 April 18, 2025 edition, `/tmp/pml-book1.txt`: §§3.5–3.5.1 and §§8.7.2–8.7.3, supporting mixture/EM exposition. These selective passages, not full chapter ranges, support the commitments. Generic ELBO/KL identity, E-step tightness and EM monotonicity have **primary teaching ownership here**; L09 reuses them.
-
-**Inspected solved application reference:** [gauss_imputation_em_demo.ipynb](https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/opt/gauss_imputation_em_demo.ipynb), local `/home/opher/Repositories/pyprobml/notebooks/book2/opt/gauss_imputation_em_demo.ipynb`, checkout `d1ea4122dcf3c2a2c02eb4e05343203b26440827`, SHA-256 `302a3b8f3608a5edf526f033d811bb71831c96925c671cabf59baa84adf991fc`. Two code cells construct 100 four-dimensional Gaussian cases with independent 50% entry masking, call `gauss_fit_em`/`gauss_impute`, and compare oracle/learned reconstructions. Imports include probml-utils, NumPy, Matplotlib and scikit-learn; it may install a Git dependency. The actual algorithm is hidden in an external helper, not exposed by these cells. B2's prose example says ten dimensions, whereas this inspected code sets four; do not attribute either size to the course adaptation. Source inspection is not execution or verification of fitted outputs.
-
-| Genuine alternative | Intellectual endpoint / notebook | Disposition |
-|---|---|---|
-| **Missing Gaussian values → expected moments → EM** | B2 §6.5.3/§6.5.4; explicitly learn unknown parameters while retaining conditional uncertainty | Selected: repays L01, deeply demonstrates sufficient statistics, avoids a new application/data stack. |
-| Gaussian mixture clustering/MRI | B2 §28.2/B1 §8.7.3; responsibilities and component fitting, image segmentation lab | Attractive biomedical outcome but would add component covariance updates, identifiability and MRI preprocessing. Keep one responsibility illustration, no MRI lab or second full derivation. MRI source/runtime not verified here. |
-| General bound optimization before applications | B2 §§6.5.1–6.5.3; surrogate construction, logistic/robust examples | Broad optimization payoff, but spends the budget on several new bounds. State MM context; derive only the EM bound and one primary model. |
+**How to read this scope:** Parts 1, 3 and 5 explain the teaching proposal without requiring knowledge of Murphy's books. Part 2 gives the mathematics needed by later authors. Part 4 identifies the examples and their sources. “Derive” means show the calculation; “state” means explain the result without proving it; “apply” means use something already taught. Live teaching and the separate notebook session have their own budgets. These are lecture-wide commitments, not a section or slide outline. Every later section must finish by summarizing what it taught; connections to earlier work belong at the beginning of the receiving section.
 
 ## 1. Intellectual arc
 
-These are provisional macro-level responsibilities, not section contracts. Section Design may split/combine them within the retained endpoint/depth/time. Every resulting section ends retrospectively; connections begin receiving segments. All core mathematics is **Live**; no recording prerequisite or unbudgeted recording candidate.
+L01 inferred missing entries when the Gaussian mean and covariance were known. Now those parameters are unknown too. To predict the missing entries we need the parameters, but to fit the parameters we seem to need the missing entries. This lecture resolves that circle by alternating two calculations: estimate a **distribution** for the missing values, then update the parameters using its expected statistics.
 
-### A. Unknown parameters make missing-value learning circular — 12 minutes
+The method is *expectation–maximization* (EM). “Expectation” means averaging the quantities needed for fitting over possible missing values. “Maximization” means updating model parameters to improve the fitting objective. Replacing every missing value by its predicted mean is insufficient: it discards the uncertainty needed to learn covariance correctly.
 
-**Transition in:** L05 optimized a fully observed likelihood; L01 inferred a hidden Gaussian block using known parameters. Ask what changes when the missing-value predictor itself must be estimated.
+1. **What likelihood are we trying to improve? — 12 minutes.** Sum/integrate over missing values to obtain the probability of the observed entries. Explain when the missingness mechanism can be ignored: our lab deliberately hides values independently of them. Other mechanisms can bias an analysis. This is unknown-parameter learning, not a repetition of L01's known-parameter prediction. End by summarizing the target and assumptions.
+2. **Why alternating steps can help — 26 minutes.** Introduce a lower bound on observed-data log likelihood using a distribution q over hidden values. Derive the difference between likelihood and bound as a nonnegative KL divergence. Choosing the current hidden-value posterior makes the bound touch the likelihood. Holding that distribution fixed while improving parameters raises the bound and therefore cannot reduce likelihood under the stated exact-step conditions. This is the *evidence lower bound* (ELBO); explain the name after its role. Distinguish it from the expected complete-data log likelihood, which omits a constant entropy term. End by summarizing the touching-bound argument and its limits.
+3. **Keep both the predicted mean and uncertainty — 30 minutes.** Apply L01 Gaussian conditioning to a partly observed row. Build its expected full vector and outer-product matrix. The latter includes conditional covariance as well as the product of predicted means. Work a two-coordinate example and compare with filling the missing entry by its mean. End by summarizing the two statistics needed for Gaussian fitting.
+4. **Update mean/covariance and check the result — 23 minutes.** Apply L02 moment matching to the expected statistics. Derive the mean update and obtain covariance by expected moments, without a full matrix-calculus proof. Work one complete small iteration. Check observed likelihood separately from missing-entry reconstruction error: increasing one does not guarantee every realization's reconstruction improves. End by summarizing the full Gaussian EM calculation and its checks.
+5. **Recognize the same idea in a mixture — 9 minutes.** A mixture hides a component label instead of a measurement. Its *responsibility* is the posterior probability that a component generated the observation. Work one short responsibility example; soft probabilities preserve uncertainty that a hard label loses. Weighted parameter updates are recognized, not fully derived or implemented. End by summarizing the shared expected-statistic idea.
 
-**Purpose:** Distinguish an observed-data objective from the easier complete-data objective.
+**Time:** **112 live minutes** (100 teaching plus 12 questions/slippage), and **60 minutes** for the lab. Timing is tight and unmeasured. The two difficult chains are the bound/likelihood argument and expected second moments. First remove six minutes of numerical mixture work while retaining three-minute recognition. Protect conditional covariance and the likelihood-improvement argument. No required recording.
 
-**Sources:** B2 §§6.5.3, 6.5.4 and §3.11.
+**Alternatives considered:** A mixture/MRI segmentation lab would offer a biomedical application but add component-fitting mathematics and image preprocessing. A general bound-optimization tour would add several unrelated examples. The selected Gaussian missing-data lab concentrates on understanding uncertainty, builds directly on L01 and uses one fitting problem. The lost MRI application remains an instructor oversight question.
 
-**Core:** Name observed/missing row index sets and parameters `theta=(mu,Sigma)`. The likelihood marginalizes each missing block; it does not substitute a guessed completion. State MCAR/MAR/MNAR distinctions and the ignorability conditions used here. The lab uses parameter-independent MCAR masking; MAR additionally requires a separate missingness parameter/model whose factor can be ignored for likelihood estimation. MNAR cannot generally be discarded. Gaussian observed-block densities are computable, but their varying subsets make joint maximization less convenient than complete-data moments. No survey of missingness methods.
-
-**Retrospective summary:** Missing-data learning maximizes the probability of the observed entries under unknown parameters; valid omission of a missingness mechanism is an assumption, not a consequence of calling data missing.
-
-### B. A posterior distribution makes a lower bound tight — 26 minutes
-
-**Transition in:** Filling missing values with one guess changes the objective. Introduce a distribution over those values and a bound on the original likelihood instead.
-
-**Purpose:** Why can alternating inference and parameter optimization increase the observed likelihood?
-
-**Sources:** B2 §§6.5.1, 6.5.3.1–6.5.3.3; B1 §8.7.2 supports the same argument.
-
-**Core:** Derive the generic identity `ell(theta)=F(q,theta)+sum KL(q_n || p_theta(z_n|o_n))`. Nonnegative KL makes `F` a lower bound. Exact posterior E-step makes it tight at the old parameters; with `q` fixed, entropy is constant in the M-step. Derive the full three-link monotonicity argument. Distinguish the ELBO `F` from `Q=expected complete log likelihood`; `Q` alone omits the entropy constant and is not generally the touching lower bound. A short MM interpretation names minorize–maximize, without a second Jensen proof or a logistic surrogate. State that monotone likelihood does not prove global maximization, unique identification or convergence to a local maximum in every model. Exact algebra assumes finite likelihood/expectations and compatible supports.
-
-**Retrospective summary:** The posterior makes the ELBO touch the observed likelihood; improving that same bound with the distribution fixed cannot lower the observed likelihood under the exact-EM assumptions.
-
-### C. Gaussian E-steps retain means and uncertainty — 30 minutes
-
-**Transition in:** The bound requires expectations of the complete-data log likelihood. L02 identifies sufficient statistics; L01 already gives the Gaussian conditional distribution needed to compute them.
-
-**Purpose:** What information about missing values is sufficient for the Gaussian M-step?
-
-**Sources:** B2 §6.5.4.1, Eqs. 6.157–6.162; L01 conditioning and L02 moment matching carried forward.
-
-**Core:** Recall block-conditional mean/covariance at the current parameter estimate. Assemble full-row expected vector `m_n` and conditional covariance `C_n`, which has zeros in observed rows/columns. Derive `R_n=E[X_n X_n^T|observed,theta_t]=m_n m_n^T+C_n`. Work one two-dimensional partly observed row, explicitly including observed–missing cross moments. Compare its second moment against mean-only completion to expose the lost variance. Handle complete rows (`C_n=0`); fully missing rows contribute current prior moments and no observed information, so exclude them from the lab. Do not rederive Gaussian conditioning or introduce sampling.
-
-**Retrospective summary:** The E-step supplies conditional expectations of `X` and `XX^T`; the second statistic contains conditional covariance that a completed mean vector cannot represent.
-
-### D. Expected moments give a Gaussian M-step and a checkable iteration — 23 minutes
-
-**Transition in:** Each row's required moments are now available. Apply L02's complete-data moment-matching principle to the expectations rather than to a fabricated complete sample.
-
-**Purpose:** How do those moments update the parameters, and how do we check the algorithm?
-
-**Sources:** B2 §6.5.4.2, Eqs. 6.163–6.164; §6.5.4.3 initialization.
-
-**Core:** Express `Q` using the expected quadratic statistic; derive the mean stationarity condition and work the covariance update from Gaussian sufficient-statistic matching. Full matrix-calculus proof is not required. Work one complete iteration on the tiny case below. Evaluate observed likelihood using Gaussian marginal densities; distinguish a likelihood trace from imputation accuracy. Start from SPD covariance and adequate observed/co-observed data; small improvements alone do not establish a global optimum or an accurate data-generating parameter estimate. No automatic covariance ridge is added to an exact M-step: if conditioning fails, diagnose the data/initialization or explicitly change the estimation objective.
-
-**Retrospective summary:** Gaussian EM alternates conditional expected sufficient statistics with mean/covariance updates; observed likelihood checks the optimization property while reconstruction evaluates a different task.
-
-### E. Mixture responsibilities express the same expectation principle — 9 minutes
-
-**Transition in:** Missing measurements are one kind of latent variable. A mixture model hides a discrete component label while following the same posterior-expectation logic.
-
-**Purpose:** Recognize EM's generality without introducing a second complete fitting algorithm.
-
-**Sources:** B2 §§28.2–28.2.1; B1 §§3.5.1, 8.7.3.1.
-
-**Core:** State mixture joint and marginal, apply Bayes to normalized responsibilities and work one scalar numerical responsibility. Interpret responsibilities as expected indicator statistics rather than hard assignments. Mention weighted moments as the M-step analogue; no component covariance derivation, GMM implementation, cluster-number selection or MRI processing. Close by consolidating the established bound and expected-statistic principle, not by previewing VI or handing out lab instructions.
-
-**Retrospective summary:** Gaussian missing values and discrete mixture labels differ in their latent representation; both require posterior expectations of complete-data statistics rather than a single guessed latent state.
-
-### Extent and first cut
-
-**100 substantive minutes + 12 reserve = 112 live minutes**, with summaries/transitions included; separate 60-minute lab. **Tight, unmeasured, confidence medium-low.** Two substantial linked chains dominate: KL identity/tightness/monotonicity, and conditional second moments/Gaussian updates. L01's 61-content-slide anchor is an instructor extent judgment, not a timed conversion; carried Gaussian equations reduce backfill but not moment-assembly effort.
-
-Provisional calibration: `K=5`, `P≈9–12` substantive page equivalents, `E_new≈10–12`, `E_carry≈14–20`, `E_deriv≈9–13`, `V≈5–7`; prototype `S_hat≈22–27`, an uncertain warning signal, not a slide target. New families include marginal objective, ELBO identity, tightness, monotonicity, expected quadratic statistics, first/second moments, parameter updates and responsibility normalization. Gaussian conditioning, KL nonnegativity and EF moment matching are carried support. **First cut:** remove the six-minute numerical mixture/moment comparison while retaining a three-minute mixture/responsibility recognition; total falls to about 106 minutes. Protect second moments and monotonicity. No core derivation is moved to recording to manufacture feasibility; actual downstream extent/rehearsal can return Scope-owned pressure.
+**Rough authoring check:** five major responsibilities, 9–12 substantive source-page equivalents, 10–12 new equation/result families, 14–20 repeats of earlier formulas, 9–13 intermediate algebra blocks and 5–7 conceptual picture groups give the earlier approximate 22–27 content-slide-equivalent warning. These are unvalidated estimates, not slide targets. L01's 61 content slides are a comparison anchor, and carrying its Gaussian formulas forward still requires careful moment assembly.
 
 ## 2. Mathematical spine
 
-Use full row `X_n`, observed realization `o_n`, missing vector `z_n`, index sets `O_n,M_n`. `theta_t` is fixed while taking E-step expectations. Logs are natural; `Q` never denotes the entropy-including bound here.
+Let each full row be `X_n`, its observed entries `o_n`, missing entries `z_n`, and parameters `θ=(μ,Σ)`. Index sets O and M identify the two blocks. Natural logs give likelihoods in nats. During an expectation step, the current parameter value `θ_t` is fixed.
 
-| Result / object | Treatment and delivery | Purpose / limits |
-|---|---|---|
-| `ell(theta)=sum_n log integral p_theta(o_n,z_n) dz_n` | **State + Motivate**, Live A | Observed likelihood; sums replace integrals for discrete latent values. No claim it is always intractable to evaluate. |
-| `F(q,theta)=sum_n E_q[log p_theta(o_n,z_n)-log q_n(z_n)]`; `ell=F+sum_n KL(q_n||p_theta(z_n|o_n))` | **Derive**, Live B; primary L06 ownership | Rearrange posterior definition. Assume compatible densities/supports and finite quantities; no continuous point-mass entropy manipulation. |
-| `q_n^t=p_theta_t(z_n|o_n)` and `F(q^t,theta_t)=ell(theta_t)` | **Derive**, Live B | Exact E-step tightness. Approximate q need not make the bound touch. |
-| `Q(theta|theta_t)=sum_n E_q^t log p_theta(o_n,z_n)`; M-step maximizes Q with q fixed | **Derive/Explain**, Live B | Entropy is independent of candidate theta. Do not differentiate q with theta during this step. |
-| `ell(theta_{t+1}) ≥ F(q^t,theta_{t+1}) ≥ F(q^t,theta_t)=ell(theta_t)` | **Prove** short chain, Live B | Exact M-step or a demonstrated Q increase suffices. No guarantee for arbitrary optimizer steps, changed regularizers or an approximate E-step. |
-| `a_n=mu_M+Sigma_MO Sigma_OO^{-1}(o_n-mu_O)`; `V_n=Sigma_MM-Sigma_MO Sigma_OO^{-1}Sigma_OM` | **Apply/Work**, Live C; carried L01 | Current estimates; stable linear solves in lab. No fresh conditioning proof. |
-| `m_n=E[X_n|o_n]`; `C_n[M,M]=V_n`, other blocks zero; `R_n=m_n m_n^T+C_n` | **Derive + Work**, Live C | Expected sufficient statistics include full symmetric cross blocks. Mean imputation misses C. |
-| `Q=const-(N/2)log det Sigma-(1/2)tr(Sigma^{-1} sum_n[R_n-m_n mu^T-mu m_n^T+mu mu^T])` | **Motivate + Work** expansion, Live D | Symmetric outer-product terms; avoid copying shorthand `-2 mu m_n^T` as a nonsymmetric matrix equality. |
-| `mu_{t+1}=N^{-1}sum m_n`; `Sigma_{t+1}=N^{-1}sum R_n-mu_{t+1}mu_{t+1}^T` | Mean **Derive**; covariance **Apply** moment matching/Work, Live D | ML denominator N, not unbiased N−1. A PSD expression is not automatically strictly positive definite. |
-| `ell=sum_n log Normal(o_n|mu_O,Sigma_OO)` | **Apply**, Live D / Notebook | Supplied likelihood checker; no entropy computation needed for the lab trace. |
-| Mixture `p(x)=sum_k pi_k Normal(x|mu_k,Sigma_k)`; `r_nk ∝ pi_k Normal(x_n|mu_k,Sigma_k)` | **State + compact Work**, Live E; numerical Work first cut | Posterior expected indicator; weighted-moment interpretation only. No second M-step derivation. |
+| Mathematical commitment | Purpose and treatment |
+|---|---|
+| `ℓ(θ)=Σ_n log∫p_θ(o_n,z_n)dz_n` | State/motivate the observed-data likelihood. Sum instead of integrate for discrete hidden values. Marginal densities may be computable even when joint parameter fitting is inconvenient. |
+| `F(q,θ)=Σ_n E_q[log p_θ(o_n,z_n)−log q_n(z_n)]`; `ℓ=F+Σ_n KL(q_n||p_θ(z_n|o_n))` | Derive by rearranging Bayes' rule. F is the ELBO. Require compatible supports and finite quantities; do not manipulate a continuous point mass as though it had finite differential entropy. L06 owns this first generic derivation. |
+| `q_n^t=p_θ_t(z_n|o_n)`; `F(q^t,θ_t)=ℓ(θ_t)` | Derive exact posterior tightness. An approximate hidden-value distribution need not touch. |
+| `Q(θ|θ_t)=Σ_n E_q^t log p_θ(o_n,z_n)` | Explain why the entropy term is constant when q is held fixed. Maximizing Q then maximizes F; Q alone is not generally the touching bound. Do not differentiate q as θ varies within this step. |
+| `ℓ(θ_(t+1))≥F(q^t,θ_(t+1))≥F(q^t,θ_t)=ℓ(θ_t)` | Prove this short chain. Exact maximization or a demonstrated increase in Q suffices; an arbitrary optimizer step does not. Monotonicity is not global optimality, unique identification or a general convergence theorem. Briefly name this lower-bound approach *minorize–maximize*, without another proof. |
+| `a=μ_M+Σ_MOΣ_OO⁻¹(o−μ_O)`; `V=Σ_MM−Σ_MOΣ_OO⁻¹Σ_OM` | Apply/work L01 conditional mean and covariance at current estimates. Use linear solves later, no fresh conditioning proof or sampling. |
+| `m_n=E[X_n|o_n]`; `C_n[M,M]=V_n`, other blocks zero; `R_n=E[X_nX_nᵀ|o_n]=m_nm_nᵀ+C_n` | Derive/work full first/second moments including observed–missing cross blocks. Complete rows have C=0. Fully missing rows contribute current prior moments but no observed information; exclude them from the lab. |
+| `Q=const−(N/2)logdetΣ−(1/2)tr(Σ⁻¹Σ_n[R_n−m_nμᵀ−μm_nᵀ+μμᵀ])` | Motivate/work the expected Gaussian quadratic. Keep both symmetric cross terms; `−2μm_nᵀ` is not a symmetric matrix equality. |
+| `μ_new=N⁻¹Σm_n`; `Σ_new=N⁻¹ΣR_n−μ_newμ_newᵀ` | Derive mean stationarity, apply Gaussian moment matching for covariance, work one iteration. Maximum-likelihood denominator is N, not N−1. Nonnegative-definite covariance is not automatically invertible. |
+| `ℓ=Σ_n log N(o_n|μ_O,Σ_OO)` | Apply observed marginal densities as the objective check. A supplied checker avoids turning the lab into a density-software exercise. |
+| Mixture `p(x)=Σ_kπ_kN(x|μ_k,Σ_k)`; responsibility `r_nk∝π_kN(x_n|μ_k,Σ_k)` | State, Bayes-normalize and work briefly. Interpret as the expected component indicator. No second full parameter-update derivation. |
 
-**Missingness/identification assumptions:** independent Gaussian rows, MCAR designed mask for the lab; MAR ignorability additionally requires distinct variation-independent missingness parameters. Such a mechanism contributes a theta-independent factor to the observed-data likelihood and conditional missing-value posterior. Adequate samples and co-observation of coordinates are required to learn unrestricted covariance; disconnected observation patterns can leave correlations unidentified. Supplied dataset has informative complete rows and all coordinate pairs co-observed. SPD initialization, nonsingular observed blocks and a finite SPD maximizer are working assumptions, verified later; no convergence guarantee covers singular boundaries or poorly identified data.
+**Missingness assumptions in plain terms:** *missing completely at random* (MCAR) means hiding is independent of the values; this is designed into the lab. *Missing at random* (MAR) may depend on observed values but not missing values after conditioning on those observed values; ignoring it additionally requires separately varying missingness-model parameters. *Missing not at random* (MNAR) depends on the unseen values and generally needs explicit modeling. State these distinctions and assumptions, no missingness-method survey.
 
-## 3. Notebook handoff — scaffolded 60-minute Gaussian EM
+The lab assumes independent Gaussian rows, enough observed/co-observed values to learn covariance, an initially positive-definite covariance and nonsingular observed blocks. Disconnected observation patterns can leave a correlation unidentified. Supply enough complete rows and every pair co-observed. Do not silently add a covariance ridge to repair failure: that changes the exact fitting objective. Actual finite/invertible behavior must be checked in later authoring.
 
-**Anchor:** B2 §6.5.4 and inspected Gaussian-imputation reference. **Endpoint:** expose and verify one row's expected first/second moments, aggregate them to update unknown `mu,Sigma`, run a supplied EM driver and interpret observed likelihood plus held-out missing-entry error. The final conditional mean reconstruction is a plug-in estimate, not a posterior integrating parameter uncertainty.
+## 3. Notebook handoff — fit unknown Gaussian parameters
 
-Lecture supplies the entire E/M mathematics, support/ignorability assumptions, ML scaling and monotonicity conditions. Students bring NumPy slicing/solves from L01 and cumulative checking skills; returning to NumPy/SciPy after L05 PyTorch introduces no new ecosystem. Supply synthetic correlated low-dimensional data, mask/index helpers, SPD initialization, plotting, stopping driver and a Gaussian observed-block log-likelihood utility. The student-owned computation is **conditional expected sufficient statistics**, with a supplied aggregation interface; avoid simultaneously implementing a generic optimizer, covariance repair and all plotting infrastructure.
+Students inspect one row's expected vector and second-moment matrix, use the supplied aggregation interface for an update, then run a supplied EM driver. They inspect the observed-likelihood trace and compare reconstructed missing values with given baselines. The final reconstruction uses fitted parameters; it does not integrate uncertainty about those parameters.
 
-Course adaptation uses a small MCAR-masked Gaussian dataset, excludes fully missing rows, and guarantees enough complete/co-observed cases for the exercise. Exact dimension, sample size, covariance, seed and masking pattern must be fixed and validated in the later worked solution; neither the book's ten dimensions nor the reference's four dimensions is an obligatory replication. Complete latent truth is kept solely for evaluation, never used for E/M updates or initialization. Compare fitted conditional means with a supplied oracle conditional-mean baseline and a supplied mean-only-update baseline; explain covariance distortion without promising EM improves every realization's reconstruction error.
+**Students write/check:** conditional expected statistics, including covariance in R; the parameter-update interface; interpretation of objective and reconstruction checks. **Supplied:** synthetic correlated low-dimensional data, deliberately random masking with no fully missing rows, index helpers, invertible starting covariance, observed-block density utility, stopping/iteration driver and plots. Choose exact dimension/sample size/seed/mask later, then validate them; source dimensions are not binding. Complete latent truth is used only for evaluation, never fitting or initialization.
 
-| Lab work | Minutes |
-|---|---:|
-| Inspect given data/mask, index mapping and unknown-versus-oracle parameters | 8 |
-| Compute/check one conditional moment pair; include covariance in R | 16 |
-| Aggregate one update and complete the supplied EM driver interface | 12 |
-| Run fit, check observed-likelihood trace and SPD/covariance outputs | 10 |
-| Compare mean-only and oracle baselines using given tables/plots | 9 |
-| Debugging/retrospective reserve | 5 |
-| **Total** | **60** |
+Allocate 8 minutes to data/unknown-versus-known roles, 16 to one row's moments, 12 to aggregation/update, 10 to fitting and likelihood/covariance checks, 9 to given baseline comparisons, and 5 to debugging/summary. Supply an oracle-known-parameter conditional-mean baseline and a mean-only-update baseline to expose lost covariance. An extra initialization run is optional outside the hour.
 
-One reusable computational skill is retained: **turn posterior uncertainty into expected statistics and verify an alternating estimator against its objective**. A second initialization run is optional and excluded from completion. No MRI download/segmentation, Gibbs sampling, VI solver or `GaussianMixture.fit` exercise. Reference helper calls are computational precedent, not a verified exposed solution. Later authoring must validate formulas, finite/SPD behavior, bounded iteration count and student duration, and pass clean local uv plus hosted Colab before publication; no execution claim is made here.
+Returning to NumPy/SciPy introduces no new major library. There is no second mixture fit, MRI download, sampling program or general covariance repair exercise. Later authoring must validate the worked solution, bounded iteration count and student workload, then pass local uv and hosted Colab runs. The source's helper call is precedent, not a verified exposed algorithm.
 
-## 4. Concrete examples and provenance
+## 4. Concrete examples and source checks
 
-- **One conditional second moment, Work/Live C.** Course-constructed `mu_t=(0,0)`, `Sigma_t=[[1,1/2],[1/2,1]]`, row `(2,missing)`. L01 conditioning gives missing mean 1 and variance 3/4; `m=(2,1)`, `R=[[4,2],[2,7/4]]`. Mean-only completion gives bottom-right 1, missing 3/4. B2 Eqs. 6.157–6.162 supply the formulas, not these numbers. Direct arithmetic checked.
-- **One complete EM iteration, Work/Live D, small lab oracle.** Same current parameters, observed rows `(-1,-1)`, `(0,1)`, `(2,missing)`. Aggregate moments give `mu_{t+1}=(1/3,1/3)` and `Sigma_{t+1}=[[14/9,8/9],[8/9,41/36]]`. Its determinant is `53/54>0`. Dropping conditional covariance lowers the second variance by exactly `1/4` after dividing by N=3. The observed log likelihood rises from approximately `−7.640344` to `−7.137887`. These course-constructed values were checked using a direct two-dimensional/one-dimensional Gaussian arithmetic calculation, not a run of the source notebook. This illustrates one update, not convergence or population recovery.
-- **Compact mixture responsibility, Work/Live E, first cut.** Course-constructed equal-weight unit-variance scalar components centered at −1 and +1. At `x=1/2`, positive-component responsibility is `sigmoid(1)≈0.731059`, because its likelihood ratio is `exp(1)`. Source B2 Eq. 28.8/B1 Eq. 8.160 supports Bayes normalization; no source numerical attribution or GMM fitting follows. Hard assignment loses uncertainty.
+- **One missing coordinate:** current `μ=(0,0)`, `Σ=[[1,1/2],[1/2,1]]`, observed row `(2,missing)`. Missing conditional mean is 1 and variance 3/4. Thus `m=(2,1)` and `R=[[4,2],[2,7/4]]`. A mean-filled row gives bottom-right 1, losing 3/4. These are course numbers applied to Book 2 Eqs. 6.157–6.162.
+- **One whole update:** same initial parameters and rows `(-1,-1)`, `(0,1)`, `(2,missing)` yield `μ_new=(1/3,1/3)` and `Σ_new=[[14/9,8/9],[8/9,41/36]]`. Determinant is `53/54>0`. Omitting the conditional covariance lowers the second variance by 1/4 after averaging three rows. Observed log likelihood rises from about −7.640344 to −7.137887. Direct Gaussian arithmetic checked this course-created iteration; it is not a notebook execution or convergence claim.
+- **Mixture responsibility, first cut:** equal-weight unit-variance components with means −1 and +1, observation x=1/2. The positive component's likelihood is e times the negative's, giving probability `sigmoid(1)≈0.731059`. Book 2 Eq. 28.8/Book 1 Eq. 8.160 supplies normalization, not these numbers.
 
-Selected visual/schema groups: observed/latent versus parameter roles, bound/touching semantics, conditional moment blocks, one update comparison, likelihood/reconstruction distinction and optional mixture weights (about 5–7 groups). No figure asset is required or generated. B2 Fig. 6.8 is available reference context, not a guaranteed course result; its plotted performance is not evidence that the adaptation will match it.
+**Text sources:** Book 2 §6.5.1, p. 287; §§6.5.3.1–6.5.3.3, pp. 290–291; §§6.5.4.1–6.5.4.4, pp. 292–293; §3.11, pp. 141–142; selected §§28.2–28.2.1, pp. 929–932. Book 1 §§3.5–3.5.1 and §§8.7.2–8.7.3 support mixtures/EM. §6.5.6 was inspected to delimit, not promise, extensions. Fig. 6.8 is context, not an expected course output; roughly 5–7 conceptual picture groups are envisaged, no assets specified.
+
+**Computational reference:** [Gaussian-imputation EM notebook, fixed revision](https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/opt/gauss_imputation_em_demo.ipynb), SHA-256 `302a3b8f3608a5edf526f033d811bb71831c96925c671cabf59baa84adf991fc`. It builds 100 four-dimensional cases with independent 50% entry masking, calls external `gauss_fit_em`/`gauss_impute` helpers and compares reconstructions. The fitting algorithm is hidden in those helpers; imports include probml-utils, NumPy, Matplotlib and scikit-learn, with a possible Git install. The book prose says ten dimensions, the reference four: neither is a mandatory course setting. No source runtime or helper correctness was certified.
+
+### Evidence about the earlier course
+
+L01's actual slides and missing-data solution establish joint and conditional probabilities, Gaussian conditioning and numerical checks. The solution hides three coordinates of a known seven-dimensional Gaussian; it compares a numerical calculation with the exact conditional distribution. It does not teach how to estimate the unknown Gaussian parameters or prove a sampling algorithm correct. L02's agreed `section_design.md` promises exponential-family distributions, derivatives of their normalizing function, likelihood moment matching and simple categorical/Markov-chain fitting. These are planned prerequisites, not evidence that L02 has already been delivered. If delivery changes, the coordinator must revisit the affected prerequisite and time budget.
+
+The material ledger's recorded delivered boundaries remain Book 2 §2.3.2 and Book 1 §3.3. The actual L01/L02 files are protected. L02's malformed development-state text does not establish additional approval. The [source-inspection register](../course_architecture_scope/source_inspection.md) identifies the textbooks and reference files inspected for the proposal: Murphy Book 2, online edition December 10, 2025; Book 1, April 18, 2025. Source inspection is not notebook execution.
+
+**Original proposal provenance:** builder `/root/build_l03`, 2026-10-11; checkpoint `791e71b632048f52e7b8f8bc3cd54fda264311bb`, contract v2 blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`. Inspected earlier scope blobs L03 `f4dab507f90618362c2e04c1c3791c8139f7de56`, L04 `242ee28d251d583004daa25379b6a0f8cb44d622`, L05 `736943b90f24826e29955115896929742f2961f5` record inputs at original build time. The changed L04 code does not alter the KL prerequisite used here. Readability revision: `/root/readable_early`; required mathematics, Gaussian lab and time are preserved.
 
 ## 5. Lecture contract
 
-**Start:** probability/conditioning, actual L01 Gaussian results and numerical solves; agreed L02 sufficient statistics/moment matching; L04 KL; L05 likelihood optimization. Neither exact posterior sampling nor VI theory is prerequisite. **Goal:** learn model parameters when observations hide some sufficient statistics. **Lecture endpoint:** derive the ELBO/KL decomposition and exact-EM monotonicity, compute uncertainty-preserving Gaussian E-step statistics and perform their mean/covariance M-step. **Lab endpoint:** a checked scaffolded Gaussian EM fit with objective and reconstruction comparisons. **No required recording.** Estimated duration 112 minutes plus separate 60-minute lab.
+**Start:** L01 Gaussian conditioning/numerical solves, agreed L02 sufficient statistics and moment fitting, L04 KL and L05 likelihood learning. **Question:** how do we learn parameters when some of the needed data are unobserved? **Lecture result:** derive the lower-bound identity and exact-step improvement argument, retain uncertainty in Gaussian expected statistics and perform a mean/covariance update. **Lab result:** a checked unknown-parameter Gaussian fit with separate objective/reconstruction checks. No required recording.
 
-Supported outcomes: distinguish observed versus complete likelihood; explain tightness and correct EM monotonicity assumptions; retain conditional covariance in expected second moments; update unknown Gaussian parameters and diagnose a failed objective check; recognize responsibility as an expected latent indicator. No mastery of mixture fitting, missingness sensitivity analysis or approximate EM is claimed.
+Students can distinguish observed from complete likelihood, explain why the posterior makes a bound tight, use first/second conditional moments and recognize mixture responsibilities as probabilities. The generic lower-bound argument belongs primarily to L06; L09 reuses it for restricted approximate distributions. L08 owns exact structured hidden-state calculations, L10 sampling, L12 its generative-network specialization.
 
-| Allocation | Commitment and boundary |
-|---|---|
-| **Core/Live deep** | B2 §6.5.3 identity/E/M/tightness/monotonicity; §6.5.4 first/second moments and Gaussian updates. L06 primary ownership of generic ELBO mathematics. |
-| **Short bridge** | §6.5.1 MM interpretation; §3.11 ignorability assumptions; §§28.2–28.2.1/B1 §3.5 mixture/responsibilities. No full chapter or mixture-fitting coverage. |
-| **Notebook owned** | Row moment implementation, aggregation, supplied alternating driver, observed-objective check and plug-in reconstruction comparisons. |
-| **Optional/first cut** | Numerical mixture illustration; extra initialization experiments. No formal-syllabus promise. |
-| **Deferred to named owner** | Restricted-q variational objectives/approximate expectations → L09; stochastic sampling methods → L10; exact structured latent-state computation → L08; VAE specialization → L12. L07 may recognize EM's query/computation distinction, without rederiving it. |
-| **Omitted by course decision** | §6.5.2 logistic MM, §6.5.5 robust-regression EM, §6.5.6 extension catalogue and online/ECM/MCEM derivations; full GMM E/M derivation, MAP covariance priors, component-number selection, MRI preprocessing/segmentation, mixture degeneracy theory and full Ch. 28 latent-factor catalogue. No invisible recording debt. |
+Core sources are selected §6.5.3–§6.5.4; missingness and mixture examples are short bridges. Broader EM extensions, robust regression, complete mixture fitting, MRI segmentation and missingness-sensitivity analysis are omitted. Students will not leave with a general recipe for every latent model or a biomedical segmentation solution. Technical exclusions include §6.5.2, §6.5.5, the §6.5.6 extension catalogue and wider Ch. 28 methods. No hidden recording debt.
 
-Coordinator should record selective proposed §§6.5.1, 6.5.3–6.5.4 allocation and narrow broad §6.5.1–6.5.6/§28.2 syllabus references; actual delivered ledger boundaries remain unchanged. L09 inherits the general identity and the exact-versus-restricted-q distinction, and must not assume Gaussian mean imputation was taught as EM.
-
-**Questions/hesitations for consolidation:**
-
-1. **Scope owner / advisory, medium priority:** accept Gaussian missing-data EM as the primary lab, losing the proposed biomedical MRI segmentation outcome? Provisional choice protects expected-second-moment depth and L01 continuity within one hour. MRI is a legitimate alternative with extra preprocessing/model burden, not a second required lab; instructor preference could change the example and notebook contract.
-2. **Scope owner / advisory:** generic proof plus moment assembly is tight. First cut is the six-minute mixture calculation, preserving recognition; deeper cuts must preserve conditional covariance and return through Scope. Actual timing remains unknown.
-3. **Notebook owner / downstream-owned:** ensure MCAR mask/co-observation and SPD behavior support an unregularized demonstration. More data/scaffolding is the first repair; silently adding ridge changes the exact update/objective promise. Runtime and reference-helper reliability are unverified.
-
-**Next owner:** Instructor oversight of this reviewed proposal. Subsequent Section Design requires human acceptance; its execution backpressure returns to the nearest owning stage. Review and approval provenance are in the registry. No rehearsal, notebook runtime or hosted Colab validation is implied.
+**Remaining oversight:** accepting Gaussian continuity means forgoing the MRI application. The bound and moment assembly are tight; lab data must make unregularized covariance estimation well defined. If supplied data/helpers cannot deliver that within an hour, fix the scaffolding first; a changed objective or mathematical endpoint requires scope revision and review.

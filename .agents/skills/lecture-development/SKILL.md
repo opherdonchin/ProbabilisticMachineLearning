@@ -5,6 +5,8 @@ description: Coordinate end-to-end lecture development through specialized Scope
 
 # Coordinate lecture development
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students) for every instructor-facing explanation and review. Explain unfamiliar ideas and the consequences of a choice before using specialist names; do not assume the instructor knows material beyond L03–L04. Keep exact mathematical and source checks available after the readable explanation.
+
 Use this skill for a **multi-stage lecture-development request** or when resuming a lecture across stages. It is the instructor-facing orchestration layer, not an extra specialist that decides the lecture content.
 
 Read `../shared/backpressure.md` for the common mode, review-result, and escalation contracts. Before delegating any stage, read enough of its `SKILL.md` to identify its inputs, outputs, authority, and completion gate. Do not load the whole production stack unnecessarily.
@@ -56,6 +58,8 @@ A skill reference alone does **not** launch an agent or load instructions. Use a
 Do not start multiple agents editing the same artifact concurrently. Delegate analysis in parallel only if the outputs are nonconflicting; integrate changes through the artifact's owning stage.
 
 ## Coordinator interaction with the instructor
+
+The instructor is also learning the later course material. For every proposal or question, first explain the problem and the actual classroom/notebook activity. Then explain the tradeoff in ordinary language: what the simpler choice achieves, what it gives up, and what the other choice would require. Supply enough context to decide without opening Murphy or already knowing the algorithms. Separate teaching decisions from technical checks the authors must resolve themselves. Include this reader background in every specialist dispatch and check returned work for readability before forwarding it. Do not repair inaccessible prose merely by adding a glossary or expanding abbreviations.
 
 Provide **one continuous human-facing discussion** across stages. Specialists return questions, evidence, proposals, alternatives, and uncertainties to the coordinator. Present them faithfully, distinguishing specialist conclusions from the coordinator's process recommendations.
 

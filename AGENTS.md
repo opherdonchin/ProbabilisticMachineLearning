@@ -19,6 +19,38 @@ These instructions apply to the entire repository.
   regenerated or removed; do not knowingly leave stale generated outputs beside
   updated source.
 
+## Writing for the instructor and students
+
+- Write course proposals, questions, reviews and progress reports for an instructor
+  who knows probability and the course material through roughly L03–L04, but is
+  learning the later material. Do not assume familiarity with Murphy's chapter
+  contents, later algorithms, or a list of things the course excludes.
+- Explain the problem, the proposed teaching choice and its practical consequence
+  in ordinary language before naming the method. Introduce unfamiliar terms and
+  abbreviations where they first matter. A spelled-out acronym alone is not an
+  explanation: say what the method does and give a small example when needed.
+- Make each decision understandable without opening the book or following several
+  links. State what students will learn, what they will do, what the simpler option
+  loses, and why the alternative would take more time. Do not ask the instructor
+  to approve technical correctness checks that belong to the author/reviewer.
+- Keep mathematical meaning precise. Simpler teaching is allowed; false claims are
+  not. If an example only detects an error, say that it cannot always correct it.
+  Put detailed equations, source section numbers, software checks and Git hashes
+  after the explanation, in clearly labeled checking details when useful.
+- Avoid compressed strings of specialist labels, unexplained acronym lists,
+  administrative jargon and claims such as “bounded bridge” without saying what
+  is actually taught. Prefer connected explanations over catalogues of names.
+- Before handing over work, read its main explanation as someone encountering the
+  topic for the first time. Can that reader describe the problem, understand the
+  recommendation and compare the alternatives? Rewrite if the answer depends on
+  knowing the technical labels already. More definitions alone do not repair a
+  missing explanation.
+- This rule applies to all course-development and notebook skills, including
+  delegated specialists. Student material should use only knowledge already
+  established at that point in the course. Internal source/implementation records
+  may retain exact technical notation, but need a readable explanation of their
+  purpose and findings; raw review evidence must remain identifiable as evidence.
+
 ## Lecture development coordination
 
 - In Codex IDE/CLI, invoke `$lecture-development` for the instructor-facing

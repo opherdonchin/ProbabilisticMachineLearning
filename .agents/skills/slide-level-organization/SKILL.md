@@ -5,6 +5,8 @@ description: Organize an already-scoped lecture section into an ordered sequence
 
 # Organize slides within a lecture section
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students) for every instructor-facing explanation and review. Explain unfamiliar ideas and the consequences of a choice before using specialist names; do not assume the instructor knows material beyond L03–L04. Keep exact mathematical and source checks available after the readable explanation.
+
 Use this skill when a lecture section has already been substantially scoped and the next task is to determine the sequence of individual slides before detailed visual design or Typst implementation.
 
 The primary responsibility of this skill is **slide titles and their order**.

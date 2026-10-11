@@ -5,6 +5,8 @@ description: Develop an agreed lecture scope from prior course material, Murphy 
 
 # Develop a lecture scope
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students) for every instructor-facing explanation and review. Explain unfamiliar ideas and the consequences of a choice before using specialist names; do not assume the instructor knows material beyond L03–L04. Keep exact mathematical and source checks available after the readable explanation.
+
 ## Operating modes
 
 Use `build` (default), `feasibility-review`, or `revision` as specified by the Lecture Development Coordinator (`../lecture-development/SKILL.md`) or an explicit user request. Follow the shared result contract in `../shared/backpressure.md`. The full five-part iterative process below is **Build mode only**.

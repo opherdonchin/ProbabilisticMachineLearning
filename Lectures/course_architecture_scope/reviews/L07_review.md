@@ -1,3 +1,15 @@
+# L07 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Posterior approximation: compare a grid with a Gaussian shortcut. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** The one-parameter posterior is a useful way to test a Gaussian shortcut. The comparison must check the numerical grid too, by widening it and refining its spacing. Source prose claiming close agreement is not evidence of actual accuracy.
+
+## Original independent review and later technical check records
+
 # L07 independent Section Design feasibility preview
 
 **Role/thread:** Section Design specialist `/root/review_l05`, independent of scope builder `/root/build_l04`. **Mode:** `feasibility-review` only. **Date:** 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`. **Exact target:** `Lectures/L07_Inference/lecture_scope.md`, blob **`f12fba8de7339675d09a771c5f956c8ed93649d8` before and unchanged after review**. **Contract:** architecture audit v2, blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`. Only this report was written; L05/L06 reports, upstream scopes and shared artifacts were preserved. No sections, slides, notebook or approval was produced.

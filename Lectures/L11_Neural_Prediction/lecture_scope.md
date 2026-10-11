@@ -1,91 +1,95 @@
-# L11 — Neural prediction: nonlinear conditional probability models
+# L11 — Predicting a curved mean and a changing amount of noise
 
-**Status:** Reviewed five-part scope proposal; [current agent approval and exact reviews](../course_architecture_scope/STATUS.md) are maintained by the coordinator. Instructor acceptance pending; timing and notebook implementation remain unvalidated. **Stage/mode:** Lecture Scope / BUILD. **Builder:** `/root/build_l11`, 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`; checkpoint `9b62b6c`. **Input:** [architecture contract v3](../course_architecture_scope/architecture_audit.md), blob `54064183398bd643a895c5e38a023f793dc2d9d6`. [WORK_ORDER](../course_architecture_scope/WORK_ORDER.md) delegates autonomous provisional choices without instructor checkpoints. Only this Scope is owned here; no sections, slides, notebook implementation or shared-file edits.
+**Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
-## Starting boundary, sources and route choice
+Imagine observations following a curved trend: some parts of the input range are tightly clustered, while others are much more scattered. A straight-line predictor with one fixed noise level misses both features. This lecture builds a nonlinear function that predicts a Gaussian mean and standard deviation for each input, then asks what those predictions mean.
 
-Protected L01 deck and Gaussian-imputation solution establish Gaussian conditioning and exact-versus-sampled comparison. The solution's missing-value posterior conditions on known parameters; it is not a weight posterior. Delivered ledger boundaries remain B2 §2.3.2/B1 §3.3. Protected agreed L02 section design supplies exponential-family moments, likelihood learning and categorical counts, but remains undelivered; malformed development-state metadata adds no authority.
+The function is a small **neural network**, also called a **multilayer perceptron (MLP)**. Its hidden layer makes learned nonlinear features; two final outputs use those features to predict the mean and a positive standard deviation. Input-dependent observation spread is called **heteroskedasticity**. The notebook fits one such model and checks it on held-out observations.
 
-Inspected L05 scope, blob `736943b90f24826e29955115896929742f2961f5`, owns common GLM likelihood gradients, a complete reverse-mode graph and minibatch SGD, with first PyTorch practice. L09 provisional blob `a8080351116f51a34eddd3e5dc06d65f7025722e` supplies Gaussian pathwise VI and posterior-predictive uncertainty; L10 provisional blob `9503b32aef49e7090792ea7e38d3acfb808a973b` distinguishes target uncertainty from numerical Monte Carlo error. These are planned handoffs, not delivered coverage. L11 adds a nonlinear learned predictor and input-dependent observation scale; it does not repeat GLM-family derivations, VI or sampler theory. PyTorch practice needs a short refresh after L10's NumPy lab.
+**What earlier lectures supply:** L01 gives Gaussian distributions and conditioning, including missing-value inference with known parameters, not uncertainty about network weights. L02's agreed plan gives likelihood learning; L04 explains probability-based scoring; L05 provides loss differentiation, gradient-based training and first PyTorch practice. L09 distinguishes a posterior over parameters from a fixed estimate and supplies predictive integration. L10's numerical-error discussion is useful context but not required for the new model. Planned lectures are not already delivered; the protected delivery boundary remains B2 §2.3.2/B1 §3.3. PyTorch needs a short refresh after L10's NumPy notebook.
+
+**Choice and cost:** Fit nonlinear Gaussian regression with an input-dependent mean and scale, rather than repeat Iris classification with nonlinear logits. This adds a meaningful probability prediction and gives network components for L12. A neural network with a posterior distribution over its weights would instead represent uncertainty in those weights; fitting that distribution adds another inference chain and lab. A survey of convolutional, recurrent, attention and other networks gives breadth but loses the worked probabilistic endpoint. Keep one shallow model, a short classification connection and a narrow Gaussian-prior penalty explanation. Earlier broad promises of architecture surveys, sparse penalties or dropout must be narrowed in the shared course records.
+
+<details>
+<summary>Source verification and original build record for later authors</summary>
+
+The material below records exactly which sources were inspected. B1 and B2 mean Murphy's first and second books. Section and equation numbers identify source passages; they do not require familiarity with the surrounding chapters. These notes are for checking the later teaching material, rather than for understanding this proposal.
+
+**Stage/mode:** Lecture Scope / BUILD. **Builder:** `/root/build_l11`, 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`; checkpoint `9b62b6c`. **Input:** [architecture contract v3](../course_architecture_scope/architecture_audit.md), blob `54064183398bd643a895c5e38a023f793dc2d9d6`. [WORK_ORDER](../course_architecture_scope/WORK_ORDER.md) delegates autonomous provisional choices without instructor checkpoints. Only this Scope is owned here; no sections, slides, notebook implementation or shared-file edits.
 
 **Direct reading:** B2 December 10, 2025 edition, `/tmp/pml-book2.txt`, §§16.1, 16.2.1–16.2.2 and 16.3.1 (printed pp. 631–633, 641–642); selected §15.2.2.1 Gaussian-prior connection (p. 597). B1 April 18, 2025 edition, `/tmp/pml-book1.txt`, §§13.2.2–13.2.3, 13.2.4.4 (pp. 428–434), selected §§13.3.3.2–13.3.3.3 for local derivative application and §§13.5.1–13.5.2 for early stopping/weight decay. B2 remains the spine; B1 supplies the concrete regression example and notation scaffolding. No entire chapter is promised.
 
-Current syllabi list selected other architectures, lasso, dropout and SGD regularization more broadly. Contract v3 narrows these promises: only MLP blocks and Gaussian-prior/L2 meaning are substantive here. Coordinator must reconcile the formal artifacts rather than interpreting those lists as extra required material.
+**Inspected anchor:** [pyprobml heteroskedastic MLP notebook](https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book1/13/mlp_1d_regression_hetero_tfp.ipynb), local checkout `d1ea4122dcf3c2a2c02eb4e05343203b26440827`, SHA256 `1e685b9e50518ab79a7448d6bfdcc27803596ae58a7ab1de9e1fbee7aeef37a6`. Source uses TensorFlow/TFP, 1,000 evenly spaced inputs on `[-20,60]`, seed 12345, two 50-unit backbone layers, 20-unit heads, Adam at 0.01 and two 500-epoch fits. Its learned SD is `softplus(10⁻³+0.05·raw)`; the constant is inside softplus, not an additive positive floor. Fixed variance is re-estimated from training residual MSE. These are inspected source settings, not required course settings, reliable outcomes or runtime evidence.
 
-| Route | Endpoint and tradeoff | Provisional disposition |
-|---|---|---|
-| **Nonlinear conditional Gaussian** | B2 §16.3.1/B1 §13.2.4.4: learn a mean and positive scale; score held-out observations | Selected: a useful probabilistic endpoint, one scaffolded PyTorch lab and reusable network components for L12. |
-| Nonlinear Iris classifier | B2 §§16.1/16.3.1: replace L05 affine logits with an MLP | Strong continuity and low coding burden, but another Iris fit underuses probabilistic output scale. Classification is a brief transfer example only. |
-| Bayesian neural-weight inference | B2 Ch. 17/B1 §13.5.5: infer weight distributions and integrate predictions | Connects L09/L10, but adds a second inference/modeling chain and lab burden. Preserve the uncertainty distinction; omit fitting a weight posterior. |
-| Architecture/regularization survey | B2 §§16.2–16.3; B1 §13.5 | Broad recognition without a worked probability endpoint. Omit CNN/RNN/attention, sparse priors and dropout theory; autoencoder purpose belongs to L12. |
+**Original upstream version references:** L05 scope, blob `736943b90f24826e29955115896929742f2961f5`; L09 provisional blob `a8080351116f51a34eddd3e5dc06d65f7025722e`; L10 provisional blob `9503b32aef49e7090792ea7e38d3acfb808a973b`.
 
-Selection prioritizes continuity, one likelihood and computational reuse. No required recording or new ecosystem.
+</details>
 
-## 1. Intellectual arc
+## 1. Intellectual arc — what the lecture explains, in order
 
-These provisional macrosegments may be split/combined by Section Design while preserving depths, endpoint and time. Connections start receiving segments; every section ends retrospectively. Required development is **Live**.
+These are the lecture's main jobs, rather than final section boundaries. Later section design can split or combine them without changing the promised mathematics, outcomes or time. Explain necessary connections at the start of the receiving section. End every section with a summary of what it has taught. Notebook instructions remain a separate item. All required material is taught live; no recording is a prerequisite.
 
-### Learned nonlinear features change the predictor — about 22 minutes
+### A. Explain what a nonlinear hidden layer adds — 22 minutes
 
-**Transition in:** L05 models response distributions through an affine predictor. Retain that probabilistic construction while replacing the predictor by a learned composition.
+Begin with L05's affine predictor `Wx+b`, then compose learned transformations. Show that stacking two affine maps still gives one affine map. Introduce a nonlinear activation and work the simple absolute-value example in Part 4.
 
-**Purpose/sources:** B2 §§16.1, 16.2.1–16.2.2, 16.3.1; B1 §§13.2.2–13.2.3. Explain what an MLP contributes beyond stacking linear maps.
+Use one shallow hidden layer and explicit input/hidden/output dimensions. The activation **ReLU**, or rectified linear unit, keeps positive inputs and replaces negative inputs by zero. It is piecewise differentiable; state the chosen derivative at zero without a separate nonsmooth-optimization lesson. Learned hidden features and valid probability-output constraints have different jobs: a network alone is not a likelihood.
 
-**Core:** carry `Wx+b` and parameter learning from L05. Define hidden activations and output coordinates with explicit dimensions; work the collapse of two affine layers and one course-constructed ReLU function. Distinguish nonlinear hidden features from a probability distribution's output constraints. ReLU is piecewise differentiable; state the chosen derivative at zero without a nonsmooth-optimization detour. Use one shallow backbone, not a depth/architecture comparison. Briefly recognize that affine logits can likewise become nonlinear logits inside the already-known categorical model. The network alone does not specify a likelihood.
+Briefly recognize that the same hidden features can replace L05's affine classification logits. That transfer is optional, not another classification fit or depth/architecture comparison.
 
-**Retrospective summary:** affine compositions remain affine; nonlinear hidden transformations create learned features, while the output distribution still determines what the predictions mean.
+**End summary:** Nonlinear hidden transformations change what the predictor can represent; the chosen output distribution still determines what its predictions mean.
 
-### A positive scale makes regression a conditional density — about 30 minutes
+### B. Turn two outputs into a Gaussian prediction — 30 minutes
 
-**Transition in:** nonlinear features can parameterize several distribution coordinates. The regression data have both curved mean and changing noise spread.
+Use one output for the mean and another for a positive standard deviation. Set `σ=σ_min+softplus(aσ)` with a fixed positive floor. Softplus is the smooth function `log(1+exp(aσ))`; the raw output aσ need not be positive.
 
-**Purpose/sources:** B2 §16.3.1 and B1 §13.2.4.4; establish a shared-backbone Gaussian with mean and scale heads.
+Derive the Gaussian **negative log likelihood (NLL)**. Its squared residual divided by variance rewards fitting, while its log-standard-deviation term penalizes simply making the distribution wider. Derive local derivatives with respect to mean and log standard deviation, then apply the chain rule to the actual softplus output. For a known fixed scale, minimizing NLL is equivalent to minimizing squared error.
 
-**Core:** define `p(y|x,ψ)=N(y|μψ(x),σψ(x)²)`, with unconstrained mean and `σ=σ_min+softplus(aσ)>0`. Derive per-observation NLL from the scalar Gaussian density, retaining the log-scale term and variance denominator. Derive its local derivatives in mean and log-standard-deviation coordinates; interpret residual-dependent pressure on mean and scale. Apply fixed-known-scale NLL's equivalence to squared error. Work the numerical scale comparison below: arbitrarily widening intervals is penalized. A positive floor prevents zero scale numerically but neither guarantees generalization nor establishes an optimum. A very flexible unconstrained model can drive likelihood upward by interpolating observations and shrinking scales; training loss alone cannot validate the fit.
+Work the numerical residual/scale comparison in Part 4. The floor prevents a zero scale numerically, but does not guarantee generalization or an optimum. A sufficiently flexible model can interpolate the observations and push unrestricted scales toward zero, so low training loss is not evidence of a useful predictive distribution.
 
-**Retrospective summary:** a mean and positive standard deviation define the conditional Gaussian; its NLL trades residual fit against distribution width, and removing log scale changes the learning problem.
+**End summary:** Mean and positive standard deviation define the Gaussian prediction. Both residual fit and distribution width belong in the loss; omitting log scale changes the problem.
 
-### Existing differentiation and training operate on the new likelihood — about 18 minutes
+### C. Reuse differentiation and training for the two outputs — 18 minutes
 
-**Transition in:** the probability model supplies a scalar differentiable objective. Apply the already-established L05 machinery to its new outputs.
+Apply L05 **automatic differentiation (AD)** and **stochastic gradient descent (SGD)** to the average NLL. Trace the mean and scale derivatives locally and explain why both contributions add where they share hidden features. Do not rederive a full multilayer backward traversal.
 
-**Purpose/sources:** B2 §16.1 with L05 §§6.2/6.3 ownership; B1 selected §13.3.3 local layer rules.
+Separate computing gradients from taking optimizer steps. A nonlinear network generally loses the convexity of an affine canonical generalized linear model. State the training/validation/test roles and use supplied initialization and a bounded driver. **Early stopping** chooses a stopping point based on validation behavior; it is not drawing weights from their posterior. Software boilerplate is supplied.
 
-**Core:** carry the mean empirical NLL, batch averaging and reset/backward/update cycle. Apply local affine/nonlinearity derivatives to the mean/scale heads; explain summation of their contributions at the shared backbone using L05 fan-out accumulation. This is bounded application, not another full reverse traversal or a manual multilayer backpropagation derivation. Separate gradient computation from optimizer updates; nonlinear parameterization generally loses the canonical affine GLM's convexity. State training/validation/test responsibilities and given initialization/bounded training configuration. Recognize early stopping as validation-based model selection, not posterior sampling. Software boilerplate belongs to scaffolding.
+**End summary:** Familiar differentiation accumulates both output contributions, and familiar training minimizes the common likelihood. Neither completed updates nor low training loss establish predictive quality.
 
-**Retrospective summary:** familiar AD accumulates both head contributions and familiar minibatch training optimizes their common likelihood; low training loss and completed updates do not establish predictive quality.
+### D. Say exactly what the predicted spread describes — 18 minutes
 
-### Conditional intervals represent observation noise at fitted weights — about 18 minutes
+At one fitted weight vector, the interval `μhat±1.96σhat` contains about 95% probability under the fitted Gaussian model. It describes a future observation, not the uncertainty in the mean or in the weights. It does not guarantee 95% coverage under the unknown true data-generating process.
 
-**Transition in:** a fitted distribution can generate intervals and scores. Determine exactly which uncertainty its scale represents before interpreting the plot.
+State the alternative posterior prediction, which averages the conditional distribution over uncertain weights. Apply the total-variance formula: one term averages observation-noise variance, and another measures how the predicted mean changes across possible weights. Our single fitted network does not compute the second term. Its learned scale can also absorb errors in the mean function, so it is not automatically a pure physical noise measurement.
 
-**Purpose/sources:** B1 §13.2.4.4; L01/L09 conditional-versus-posterior prediction and L04 log-score interpretation carried forward. The uncertainty decomposition is course synthesis from conditional expectation/variance.
+Compare held-out NLL, mean squared error and interval behavior in low/high-noise regions using supplied summaries. They answer different questions. One regional coverage check can aid interpretation, but is not a full **calibration** framework, which would establish agreement between stated probabilities and empirical frequencies, or a guarantee for inputs unlike the training data.
 
-**Core:** conditional Gaussian observation interval `μhat±1.96σhat` has about 95% probability under the fitted model. It is not a credible interval for the mean, an interval for weights or a guaranteed frequentist coverage statement under the unknown data law. State posterior-predictive integration and apply total variance to distinguish expected conditional noise from variation in conditional means across weights. At one fitted weight vector, the latter is absent; scale can nevertheless absorb mean misspecification. Compare held-out NLL, mean squared error and low/high-noise interval behavior using supplied summaries. These answer different questions. One regional coverage check is an interpretation aid, not a calibration framework or OOD guarantee.
+**End summary:** Conditional spread describes observation variation at fitted weights. Weight uncertainty requires averaging over weights; predictive scores and observed coverage need checking.
 
-**Retrospective summary:** learned conditional spread describes observation variation at fixed fitted parameters; posterior weight uncertainty requires integration over weights, and empirical scoring/coverage must be checked rather than inferred from interval width.
+### E. Connect one squared-weight penalty to a Gaussian prior — 12 minutes
 
-### Gaussian weight priors explain a narrow L2 penalty — about 12 minutes
+A Gaussian prior on selected weights contributes a squared-weight penalty to the negative log posterior. Derive its coefficient when the data loss is a **mean** rather than a sum. Specify which weights receive the prior; biases can be treated differently.
 
-**Transition in:** predictive checks expose fitting flexibility. Connect one regularization choice to familiar Bayesian modeling without changing to weight-posterior inference.
+Work the resulting shrinkage term for ordinary SGD. A squared-weight penalty in the objective and a separate optimizer rule shrinking weights are equivalent for the stated ordinary SGD update, but not generally for adaptive preconditioning. Do not add Adam/AdamW comparisons, sparse priors or penalty tuning. A maximum a posteriori (**MAP**) weight estimate remains one point, not a posterior distribution or its uncertainty.
 
-**Purpose/sources:** selected B2 §15.2.2.1 and B1 §13.5.2, with §13.5.1 recognition.
+**End summary:** A Gaussian prior gives an explicitly scaled squared-weight penalty. A regularized point fit is still a point fit, and the update rule must match the stated objective.
 
-**Core:** derive Gaussian negative log prior and its correctly scaled addition to a **mean** NLL. State which parameters are penalized; biases may have different treatment. Work ordinary SGD's resulting shrinkage term. Distinguish an objective's L2 penalty from decoupled optimizer weight shrinkage: equivalence holds for the stated ordinary SGD update, not generically for adaptive preconditioning. No Adam/AdamW comparison, sparse prior or penalty tuning lab. MAP gives a point estimate and does not supply a weight posterior or its epistemic variance.
+### Time estimate and what to shorten first
 
-**Retrospective summary:** Gaussian priors induce squared-weight penalties with explicit loss scaling; a regularized point fit remains a point fit, and optimizer shrinkage must be distinguished from the objective it updates.
+The estimate is **100 substantive plus 12 reserve =112 live minutes**, with a separate 60-minute lab. It is tight and unmeasured, with medium-low confidence. The main new chain is the Gaussian loss, its mean/scale derivatives, and interpretation of the distribution. Affine composition and prior scaling are short algebraic applications; earlier training/integration are reused.
 
-### Extent and first cut
+First remove optional classification transfer, a repeated numerical SGD-shrinkage example and extra regional coverage breakdowns, saving about 6–8 minutes. Keep nonlinearity, the complete NLL/scale explanation, Gaussian-prior scaling and the observation-noise/weight-uncertainty distinction. No material silently moves to recording. Time the likelihood/scale explanation during section design and rehearsal; change the scope if core commitments still do not fit.
 
-**100 substantive + 12 reserve = 112 minutes live**, plus separate 60-minute lab. Reserve includes questions, transitions and slippage. **Tight, unmeasured; confidence medium-low.** The main new chain is Gaussian NLL → mean/scale derivatives → distribution interpretation. Affine collapse and Gaussian-prior scaling are short algebraic applications, not additional full inference or optimizer derivations. L05 AD and L09 integration are carried support.
+Later-author counts `K=5`, `P≈7–10`, `E_new≈10–13`, `E_carry≈12–20`, `E_deriv≈6–9`, `V≈5–7` refer to major parts, substantive pages, new equation families, repeated support, algebra blocks and visual groups. The rough prediction is 20–25 content-slide equivalents, not a slide target or measured delivery rate. L01's 61-content-slide/70-page judgment is only a comparison; scale and interval explanations can be slow despite few equations.
 
-Against L01's instructor-judged 61-content-slide/70-page anchor, estimate `K=5`, `P≈7–10` substantive source-page equivalents, `E_new≈10–13`, `E_carry≈12–20`, `E_deriv≈6–9`, `V≈5–7`. The provisional calibration gives about **20–25 content-slide-equivalents**, a warning signal, not slide commitments or measured delivery. Coordinate/scale distinctions and interval interpretation consume time beyond equation count.
+## 2. Mathematical spine — the results students will use
 
-**First cut:** remove optional categorical transfer, numerical SGD shrinkage repetition and extra coverage stratification, approximately 6–8 minutes, retaining MLP nonlinearity, complete NLL/scale reasoning, Gaussian-prior scaling and the noise/posterior distinction. No content is silently moved to recording. Recount novelty during Section Design and time the likelihood/scale explanation; if core still exceeds the envelope, return Scope-owned backpressure.
+`ψ` denotes all fitted network parameters. h is the deterministic hidden-feature vector; it is not the random latent variable introduced in L12. `aσ` is the raw scale output, `σ` standard deviation and `v=σ²` variance. W maps D input coordinates to H hidden features; the mean and scale output vectors also have H entries. The “backbone” is this shared hidden computation; “heads” are the two output maps.
 
-## 2. Mathematical spine
+`ℓ` is one observation's NLL; L is its mean across N observations. `ρ=logσ` is a convenient coordinate for interpreting one derivative, not a replacement for the actual softplus model. In the prior calculation, τ² is the fixed prior variance and λ the resulting mean-loss penalty coefficient. Adaptive preconditioning means rescaling gradient directions differently; no such optimizer theory is taught. A BNN is a Bayesian neural network with uncertain weights, which is excluded here. OOD means out of distribution: inputs unlike those represented by training data.
 
-Use `ψ` for all fitted network parameters, `h` for deterministic hidden features, `aσ` for raw scale, `σ` for standard deviation and `v=σ²` for variance. This prevents confusing a hidden activation with L12's random latent variable or a raw head with a positive variance.
+In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, role and delivery |
 |---|---|
@@ -102,28 +106,23 @@ Use `ψ` for all fitted network parameters, `h` for deterministic hidden feature
 
 All new required mathematics remains live. The lab assembles this model rather than introducing another likelihood or a stochastic weight draw.
 
-## 3. Notebook handoff — one scaffolded 60-minute PyTorch regression lab
+## 3. Notebook handoff — what students do and what is supplied
 
-**Inspected anchor:** [pyprobml heteroskedastic MLP notebook](https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book1/13/mlp_1d_regression_hetero_tfp.ipynb), local checkout `d1ea4122dcf3c2a2c02eb4e05343203b26440827`, SHA256 `1e685b9e50518ab79a7448d6bfdcc27803596ae58a7ab1de9e1fbee7aeef37a6`. Source uses TensorFlow/TFP, 1,000 evenly spaced inputs on `[-20,60]`, seed 12345, two 50-unit backbone layers, 20-unit heads, Adam at 0.01 and two 500-epoch fits. Its learned SD is `softplus(10⁻³+0.05·raw)`; the constant is inside softplus, not an additive positive floor. Fixed variance is re-estimated from training residual MSE. These are inspected source settings, not required course settings, reliable outcomes or runtime evidence.
+**Student endpoint:** Assemble a nonlinear Gaussian mean/scale model, check its loss and derivatives, run one supplied PyTorch fit, and interpret held-out scores and observation intervals. The lecture supplies the shapes, positive-scale rule, NLL and uncertainty meanings. Reuse PyTorch from L05/L09 rather than introduce TensorFlow Probability, JAX or Pyro.
 
-**Entry:** lecture supplies network shapes, Gaussian NLL, scale constraints, shared differentiation and conditional/predictive uncertainty meanings. Reuse L05/L09 PyTorch rather than introducing TFP, JAX or Pyro. Give data generation/splits, input scaling, backbone/model wrapper, optimizer/driver, plots, baseline and local checks. Students own nonlinear probability-head assembly and batch-mean NLL, then interpret results; no custom data loader, second optimizer or second data pipeline.
+**Supplied:** data generation/splits, training-only normalization, a shallow backbone and model wrapper, optimizer/training driver, plots, a checked fixed-scale baseline and local checks. **Students complete:** the mean and positive-scale outputs and batch-mean NLL, then compare their values/derivatives on a fixed batch and interpret one fitted model. No new data loader, second optimizer or second data pipeline is required.
 
-**Course adaptation:** retain the source mean/noise laws below, with supplied train/test data and train-only normalization. Provisionally use 320 training and 160 held-out points, one shallow 32-unit ReLU backbone and linear mean/scale heads; these are course choices to pilot, not source results. Keep all scalar targets/outputs as matching `B×1` tensors to prevent accidental pairwise broadcasting. Fixed-scale nonlinear baseline is supplied as a checked fitted artifact/configuration; students fit one heteroskedastic model through a bounded CPU driver. Driver/settings and a fallback checkpoint must be validated later; no epoch count, convergence or speed is guaranteed here.
+Provisionally use 320 training observations and 160 held-out observations, one 32-unit ReLU hidden layer and linear mean/scale outputs. Keep targets and outputs as matching `B×1` tensors: mismatched shapes can accidentally compare every prediction with every target. Fit one input-dependent-scale model through a bounded CPU driver. A fixed-scale nonlinear baseline is supplied as a validated fit/configuration; students do not run a second full fit. Validate driver settings and a fallback checkpoint later rather than promise convergence, epoch count or speed.
 
-**Required new work:** assemble positive scale and mean, construct the correct NLL, compare its value/derivatives with a supplied reference on one fixed batch, run one provided fit, and compare held-out mean NLL/MSE and observation intervals to the supplied baseline and known generating law. Software check includes finite positive scales, matching shapes and no detached head gradients. The source's long training and two full fits are not student requirements.
+Required local checks are finite positive scales, matching shapes, agreement with a reference loss/derivative, and no detached mean or scale gradients. Compare held-out mean NLL/MSE, means and interval widths with the baseline and the known generating law. A coarse low/high-noise coverage summary is optional and removed first if debugging overruns.
 
-| Responsibility | Minutes |
-|---|---:|
-| PyTorch refresh, given data/split and tensor/model shapes | 10 |
-| Complete mean/positive-scale heads and NLL | 15 |
-| Supplied local value/gradient checks and one training-driver run | 12 |
-| Interpret mean, interval width and held-out NLL/MSE against given baseline | 13 |
-| Reserve for debugging, runtime and discussion | 10 |
-| **Total** | **60** |
+The 60-minute budget is: 10 minutes PyTorch/data/split/shape refresh; 15 completing the heads and NLL; 12 local value/gradient checks and one driver run; 13 interpreting intervals and held-out scores; 10 reserve for debugging, runtime and discussion.
 
-The notebook applies the mathematics to an empirically checked conditional model. A coarse low/high-noise coverage summary is optional; omit it first if debugging overruns. Regularization sweeps, architecture searches, weight-posterior inference and a second fit are excluded. Failure to recover truth is evidence to interpret, not permission to label intervals calibrated. No required recording. Clean local uv execution, hosted Colab Restart/Run All and workload pilot remain downstream obligations; the PyTorch port is unimplemented/unrun.
+No regularization sweep, architecture search, weight-posterior inference or second fit is required. A failure to recover the generating law is evidence to interpret, not a reason to call intervals calibrated. The inspected source uses two long TensorFlow/TFP fits; the course PyTorch port remains unimplemented and unrun. Clean local uv execution, hosted Colab Restart/Run All and a student-workload pilot remain necessary before publication.
 
-## 4. Concrete examples and provenance
+## 4. Concrete examples and their sources
+
+One simple function shows why nonlinearity is needed. One residual calculation shows why wider predictions are not always better. The synthetic data then provide a known curved mean and changing noise level against which to interpret the fit. Finally, the uncertainty/prior comparison prevents a regularized point estimate being mistaken for a Bayesian weight posterior. SD means standard deviation; variance is its square. “Heads” are output maps, and “shared backbone” means their common hidden-feature calculation.
 
 **Affine collapse/nonlinear feature — Work Live, course-constructed:** two scalar affine maps compose to one affine map. In contrast `h1=ReLU(x)`, `h2=ReLU(−x)`, `μ=h1+h2=|x|` gives a nonlinear conditional mean. For `x=−1,0,1`, means are `1,0,1`. This verifies expressiveness without XOR/architecture catalogues or approximation-theorem debt.
 
@@ -135,11 +134,24 @@ The notebook applies the mathematics to an empirically checked conditional model
 
 Selected visual/schema groups are affine/nonlinear mapping, shared backbone/two heads, residual/scale scoring, source-law versus fitted mean/intervals, and conditional-versus-weight uncertainty, approximately five to seven groups. B2 Fig. 16.11/B1 Figs. 13.5–13.6 are inspected context; no exact figure asset is selected or authored. All source adaptations and constructed calculations remain explicitly labeled downstream.
 
-## 5. Lecture contract
+## 5. Lecture contract — what this proposal commits to
 
-**Start:** L01 Gaussian distributions, L02 likelihood/EF coordinates, L04 log scoring, L05 reverse AD/SGD and PyTorch, L09 posterior-predictive distinction; L10 numerical sampling error is contextual, not a new dependency. **Question:** how does a nonlinear learned function define an interpretable conditional probability distribution? **Lecture endpoint:** explain MLP nonlinearity, derive/use heteroskedastic Gaussian NLL with positive SD, reuse AD/training, and distinguish conditional noise from posterior weight uncertainty. **Lab endpoint:** one checked PyTorch mean/scale model with held-out scoring and conditional-interval interpretation. **No required recording.** Estimated live112/lab60 minutes.
+**Starting knowledge:** Gaussian distributions, likelihood learning, probability-based scoring, L05 differentiation/training and PyTorch, and L09's distinction between a fixed parameter fit and posterior prediction. L10 sampling-error theory is context rather than a dependency.
 
-Supported outcomes: identify hidden/output dimensions; show affine collapse; compute correct mean/scale loss derivatives; explain shared gradient accumulation; interpret conditional intervals honestly; connect a scaled L2 objective to a Gaussian prior without claiming Bayesian weight inference.
+**Main question:** How can a nonlinear learned function define an interpretable probability distribution for a response? **Lecture endpoint:** explain nonlinear hidden features; derive/use a Gaussian mean/positive-scale loss; reuse differentiation and training; interpret observation intervals; and connect a scaled squared-weight penalty to a Gaussian prior. **Notebook endpoint:** one checked PyTorch mean/scale fit with held-out scoring and interval interpretation. The estimate is 112 live minutes plus 60 lab minutes, with no required recording.
+
+Supported outcomes include explicit network dimensions, the collapse of purely affine layers, correct mean/scale derivatives, summed contributions at shared features, honest interval interpretation and prior/loss scaling. Core sources are selected B2 §§16.2.1–16.2.2/16.3.1 and B1 §13.2.4.4, with a narrow prior connection from B2 §15.2.2.1/B1 §13.5.2.
+
+**What is left out, and the lost capability:** Students do not learn a survey of image, sequence, graph or attention architectures, nor a theorem about network depth or approximation power. They do not derive dropout/adaptive-optimizer theory, sparse priors or lasso, so the course cannot promise that regularization breadth. They do not infer network-weight posteriors or fit ensembles, and therefore cannot claim to measure weight uncertainty. Full calibration/model-selection systems and guarantees for unfamiliar inputs are also outside scope. None becomes L12's debt. L12 owns random latent codes, the shared encoder/decoder and their joint objective; no encoder construction is assumed here.
+
+**Choices and risks:** Synthetic growing-noise data preserve exact truth and one-hour checking, but lose an empirical domain application. The supplied baseline, bounded CPU fit and fallback checkpoint protect the lab; source training duration is not portable timing evidence. Pilot the refresh and likelihood/scale checks. If teaching is too slow, apply optional cuts before weakening the probability loss or uncertainty distinction.
+
+**Record updates:** Narrow broad Chapters 16/13 claims and remove survey/lasso/dropout promises while preserving delivered coverage. Mere mentions do not count as teaching a subsection.
+
+<details>
+<summary>Exact source allocation for checking the syllabus and material ledger</summary>
+
+This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / proposed bookkeeping |
 |---|---|
@@ -150,8 +162,6 @@ Supported outcomes: identify hidden/output dimensions; show affine collapse; com
 | **Deferred, named owner** | Encoder/decoder roles, random latent representation, amortized inference, VAE objective and joint training → L12. Its builder owns inference-network construction; no implicit encoder prerequisite here. |
 | **Omitted deliberately** | CNN/RNN/transformer/GNN zoo, depth theorem, full backprop rederivation, dropout theory, adaptive-optimizer theory, sparse/lasso/horseshoe priors, BNN posterior fitting, uncertainty ensembles, full calibration/model selection, OOD guarantees and second GLM lecture. No omitted content becomes L12 debt. |
 
-Coordinator should narrow syllabus/ledger Ch.16/Ch.13 claims and remove lasso/dropout/architecture breadth, preserving actual delivered coverage. Mentions do not mark subsections covered; no ledger changes are made by this builder.
+</details>
 
-**Questions/risks to consolidate:** **Scope-owned, medium:** synthetic heteroskedastic regression is deliberately the practical endpoint rather than an empirical domain dataset; preserves exact noise truth and one-hour feasibility, but sacrifices application context. **Downstream-owned, medium:** one supplied baseline and bounded fit/checkpoint are necessary to protect the lab; reference training length is not a portable timing claim. Pilot software refresh, train duration and NLL/scale checks. **Scope-owned, advisory:** correct likelihood, scale and uncertainty interpretation are load-bearing; if rehearsal exceeds budget, apply first cuts before adding recordings or removing these distinctions. Current independent review evidence and bounded residual risks are recorded in the registry.
-
-**Next owner:** Instructor oversight of this reviewed proposal. Subsequent Section Design requires human acceptance; its execution backpressure returns to the nearest owning stage. Review and approval provenance are in the registry. No rehearsal, notebook runtime or hosted Colab validation is implied.
+**Next owner:** The instructor reviews the proposal's choices and explanations. Detailed section design follows acceptance. If later writing or rehearsal cannot meet the stated commitments, return the affected choice to Lecture Scope. The [registry](../course_architecture_scope/STATUS.md) holds review evidence. This document does not establish notebook runtime, Colab readiness or measured teaching time.

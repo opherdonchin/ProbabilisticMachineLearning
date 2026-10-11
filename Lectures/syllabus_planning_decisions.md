@@ -1,28 +1,32 @@
-# Current syllabus planning decisions — Advanced Statistics 2027-1
+# Current teaching decisions
 
-**Instructor acceptance:** 13-meeting Book-2-first architecture, 2026-10-11, main merge PR #8 / b78a7650bb09ae851e412089d98525f7b71275d9. **Detailed scopes:** agent-approved / instructor-pending under the explicit autonomous WORK_ORDER; this is not instructor acceptance or a student-facing syllabus release.
+The instructor agreed to the 13-meeting, Book-2-first course order in PR #8. During the subsequent question review, the instructor agreed to a simpler L03 image algorithm and selected the lighter L04 parity-bit example. The instructor then paused further decisions and requested plain-language explanations throughout. This accepts those two choices, not every later lecture.
 
-The architecture preserves L01 delivered Gaussian/LGS coverage, L02 agreed exponential families/Markov learning, L04 information theory, L05 substantive unified GLMs/AD/SGD, L06 EM, L07–L10 inference, L11 neural conditional prediction, L12 VAE and L13 projects. No protected prior lecture was rewritten. Every resulting section ends retrospectively; notebook handoffs stay separate.
+Book 2 remains the main source. Book 1 supplies selected explanations or examples. L01's delivered material and L02's agreed sections remain unchanged; L13 remains project presentations. We are developing scopes, not slides or student notebooks.
 
-## Agent provisional resolutions
+## What is selected or still proposed
 
-| Owner | Resolution / consequence |
+| Meeting | Choice and consequence |
 |---|---|
-| L03 | Positive Ising/local computation and deterministic ICM restoration; no early formal Gibbs/VI or exact-MAP claim. |
-| L04 | One verified course five-bit error-correcting channel; MI/DPI substantive, source-code bounds stated, rate–distortion owned L12. |
-| L05 | One common canonical GLM gradient, separate vector softmax application, complete reverse graph and first PyTorch Iris fit; family comparison protected. |
-| L06 | Missing-Gaussian EM and uncertainty-preserving second moments; generic bound/monotonicity primary owner. MRI/full GMM fit displaced. |
-| L07 | One fixed scalar logistic grid/Laplace comparison with domain/spacing checks; no later algorithm implementation. |
-| L08 | HMM scaled forward/backward primary; compact Kalman application, no forecasting lab or second full sequence method. |
-| L09 | One diagonal Gaussian pathwise fit with exact known-noise reference; controlled data instead of Pyro/unknown-noise GDP/HMC. CAVI bounded, amortization recognized. |
-| L10 | MH correctness and proposal/start/query mixing; Gibbs bounded and HMC mechanics recognized, full HMC theory omitted. |
-| L11 | Nonlinear mean/SD likelihood, conditional noise versus weight uncertainty and scaled Gaussian-prior/L2 connection; no architecture/BNN/calibration survey. |
-| L12 | Compact mobility VAE, correctly normalized objective and rate=MI+aggregate KL; descriptive patterns, not guaranteed causal/disentangled factors. |
+| L03 | The instructor agreed to this simpler method. It differs from Murphy’s algorithm and does not promise the best possible image or posterior uncertainty. |
+| L04 | The instructor chose the lighter example. One changed bit is detected but cannot always be located or corrected. The stronger code is reference material. |
+| L05 | First PyTorch use makes this meeting tight. Data preparation and plotting are supplied; the lecture does not teach a large software framework. |
+| L06 | This replaces the candidate MRI tissue-classification lab. Class-assignment probabilities are explained briefly; a second mixture-model fit is not required. |
+| L07 | The small example is chosen for checkability. A finite grid is also an approximation, not an automatically exact answer. |
+| L08 | The main lab is discrete hidden-state inference. The previously preferred continuous Kalman forecasting lab is not included. |
+| L09 | Uses controlled data and known noise. The real economic-data example and sampling comparison are replaced; no new Pyro software is required. |
+| L10 | Helper diagnostics are supplied. Gibbs updates are explained briefly. Hamiltonian Monte Carlo uses derivatives for directed moves but is not fully derived or implemented. |
+| L11 | Intervals describe observation noise conditional on fitted weights. They do not include a Bayesian posterior over weights. One CPU fit and prepared fallback still need testing. |
+| L12 | Uses 19 measurements and four hidden coordinates. Data access, prepared comparisons and CPU runtime remain untested. Patterns are descriptive, not identified causal factors. |
 
-## Authority, evidence and oversight
+The later scopes keep the same mathematical commitments during the readability rewrite. L04 is the one change to the required example: a three-bit parity model replaces the five-bit error-correcting construction. The simpler code detects a single-bit change but cannot always locate or correct it; the stronger result is reference material. The numerical model and review must therefore be updated, not merely renamed.
 
-[Scope/review registry](course_architecture_scope/STATUS.md) records actual builder/reviewer threads and exact Git blobs. [Whole-course audit](course_architecture_scope/architecture_audit.md) owns the source matrix, prerequisites, novelty/duplication and notebooks. [Raw adversarial report](course_architecture_scope/reviews/course_architecture_review.md) is independently authored. [Questions and hesitations](course_architecture_scope/questions_and_hesitations.md) records provisional choices, alternatives and costs for instructor oversight. Historical alternative drafts live in Git history, not the current tree.
+## What the instructor needs to assess
 
-[syllabus_plan.typ](../syllabus_plan.typ), [formal syllabus](../advanced_statistics_2027_1_syllabus.typ), [material ledger](material_ledger.md) and [notebook audit](notebook_reference_audit.md) describe the same reviewed proposal. Source ranges mean selected treatment, not every subsection. Delivered ledger entries remain unchanged; future allocation stays undelivered in actual accounting. No optional item becomes a formal required outcome by citation alone.
+The [teaching choices](course_architecture_scope/questions_and_hesitations.md) explain the remaining decisions: the first PyTorch meeting, hidden categories versus Kalman forecasting, simple checkable data versus realistic applications, and mobility modeling/access. Technical correctness and software checks are the authors' responsibilities and are not presented as approval questions.
 
-Every future lecture/lab budget is estimated, not rehearsed or piloted. No required recording, slide/figure/student notebook production or runtime-compatible claim was introduced. PyTorch is the sole new required ecosystem, starting L05; source Pyro/JAX/TFP are not adopted. Actual L02 delivery, prepared helpers/checkpoints, mobility portable access and clean local uv/hosted Colab checks remain downstream gates. Human acceptance is required before advancing this proposal to production or main; no merge or ready-to-merge PR is authorized here.
+The [course explanation](course_architecture_scope/architecture_audit.md) shows how the lectures build on one another and what is omitted. The [review register](course_architecture_scope/STATUS.md) gives exact scope versions and reviewer identities. Original review reports are retained for evidence, with plain-language summaries before their technical records. Previous approval of a five-bit L04 model is not approval of the new three-bit model.
+
+The [plan](../syllabus_plan.typ), [syllabus](../advanced_statistics_2027_1_syllabus.typ), [ledger](material_ledger.md) and [notebook checks](notebook_reference_audit.md) must describe these same activities. Future notebooks require supplied helpers and one central student implementation per hour. PyTorch is the only new required software library; we do not copy source dependencies automatically.
+
+Lecture/lab times are estimates. Data packaging, helper code, prepared comparisons, student trials and clean local/Google Colab runs are later work. No merge or student release is authorized by readability revision or feasibility review.

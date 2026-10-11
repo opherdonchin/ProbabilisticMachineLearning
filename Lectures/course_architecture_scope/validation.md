@@ -1,30 +1,36 @@
-# Proposal validation evidence — 2026-10-11
+# What we checked in the readable revision
 
-**Scope:** coordinator mechanical checks of the L03–L12 proposal on `scope-l03-l12-course-architecture`, compared with starting commit `906ce71dd9c8e29f3dede51ec809442a885354c9`. These checks complement, and do not replace, the actual independent specialist evidence in [STATUS](STATUS.md) and the [adversarial report](reviews/course_architecture_review.md). Final content/closure revisions are registered in STATUS.
+This record describes checks of the documents, not a trial of the lectures or notebooks. The revision starts from branch commit `39446b5d0fc520a690ed612f0845203ed8d02498`. Exact final file versions and review identities are in [STATUS](STATUS.md).
 
-## Typst and rendered output
+## Writing and mathematical review
 
-Typst 0.15.0 compiled both current sources successfully, with exit code 0 and no compiler warnings:
+Two scope authors rewrote all ten lectures to explain the problem and student task before introducing unfamiliar methods. The coordinator rewrote the course explanation, teaching questions, notebook responsibilities, planning records and syllabi. All nine course skills now link to the shared writing rule in AGENTS.md; the coordinator must also check whether returned explanations can be understood from the instructor's stated background.
+
+A separate reviewer completed the comparison against the prior scope content and returned feasible with risks, without a demonstrated blocker. The only intended change to a required example is L04: three-bit error detection and uncertain decoding replace the five-bit guaranteed-correction lab. Exact review evidence and its verdict are in the [revision report](reviews/readability_revision_review.md). Original independent reports are retained verbatim after new coordinator-written reading guides. A reading guide is not itself independent review or instructor acceptance.
+
+## What the document checks establish
+
+- All ten scopes retain their five required parts. Exact mathematical tables and example commitments remain available for later authors. The independent comparison checks their meaning, rather than assuming that a similar title implies unchanged content.
+- All 66 tracked files in the protected L01/L02 directories and the delivered L01 solution are byte-identical to the prior branch. Formal syllabus L01/L02/L13 argument blocks and plan L01/L02 rows are unchanged. The entire delivered-ledger prefix is byte-identical. The presentation of future teaching does not claim it has already been delivered.
+- Both the plan and formal syllabus have 13 numbered meetings. Dates remain weekly Wednesdays, 21 October 2026 through 13 January 2027. L13 remains projects.
+- Original bytes of all ten individual reviews and the whole-course report remain as unchanged contiguous records inside the current files. New plain-language guides precede them; the original record is no longer the file's first byte. L04's new review is added separately and explicitly checks the changed three-bit task.
+- Relative Markdown and Typst links in current scopes, course reports, synchronized artifacts, AGENTS.md and all nine skills are checked for file existence. The skill-policy links point to the actual AGENTS.md heading. Historical external URLs are source references, not current local dependencies.
+- `python scripts/check_codex_setup.py` passed for nine canonical skills and five execution profiles. The skill-creator validator passed for the updated coordinator skill. `git diff --check` passed.
+- No notebook, slide deck, SVG/PNG teaching asset, Python implementation, dependency pin or lockfile was changed. Checks and validation outputs remain in ignored `build/` or `/tmp/`.
+
+## Syllabus compilation and reading
+
+Typst 0.15.0 compiled both source files successfully with no warnings. The current plan has three A4 landscape pages; the formal syllabus has five A4 portrait pages. Poppler rendered all eight pages for visual inspection. No evident clipping or collision was found. The lecture number/date and title now stay together; this fixes an orphaned Lecture 13 heading without changing its content. Detailed entries may still continue across pages.
 
 ```sh
 typst compile --root . syllabus_plan.typ build/typst-validation/syllabus_plan.pdf
 typst compile --root . advanced_statistics_2027_1_syllabus.typ build/typst-validation/advanced_statistics_2027_1_syllabus.pdf
 ```
 
-The compiler was obtained in `/tmp/typst-0.15.0/`, without changing repository dependencies. `pdfinfo` reports three A4 landscape pages for the plan and four A4 portrait pages for the formal syllabus. Poppler rendered all seven pages; coordinator visual inspection found legible tables/schedules and no evident clipping or collision. Lecture entries can continue across pages under the existing breakable layout. `typstyle` is unavailable; no formatter pass is claimed. Generated PDFs/renders are validation outputs under ignored `build/` or `/tmp/`, not published student artifacts; no committed obsolete syllabus PDF remains beside updated source.
+The compiler is in `/tmp/typst-0.15.0/`; no repository dependency was added. `typstyle` is unavailable, so no formatter pass is claimed. These PDFs are checking outputs, not student releases.
 
-## Structure, protection and references
+## What these checks do not establish
 
-- Exactly ten scope files L03–L12 each contain all five numbered parts: intellectual arc, mathematical spine, notebook handoff, concrete examples and lecture contract. Ten actual raw specialist reports exist, plus the separate course report. Exact final scope/review blobs and original target mapping are in STATUS.
-- Formal schedule has exactly 13 meetings, numbered 1–13, every seven days on Wednesday from 21.10.2026 to 13.01.2027. The plan likewise preserves 13 rows and L13 projects, with no new lecture debt assigned there.
-- All 66 tracked files under the protected L01/L02 directories and the delivered L01 solved notebook are byte-identical to the starting commit. Formal L01, L02 and L13 lecture blocks and plan L01/L02 rows are unchanged. The delivered-ledger prefix, including actual dispositions and boundaries, is byte-identical; only future allocation was rewritten.
-- Current relative Markdown and Typst `link` targets in all scopes, course-architecture reports and five synchronized artifacts were checked for filesystem existence, with zero broken targets. This checks actual links, not every plain-text historical input path or external URL. Local textbook/application provenance and legitimate online sources are recorded in the source register; no full external crawl or runtime-portability claim is made.
-- Superseded preliminary scope/comparison/optimization audit/prompt files were removed after reference search. Their only remaining named reference is L04's explicitly historical GitHub URL pinned to the inspected starting commit; no current local link depends on a deleted draft. Historical reviews and build-input versions remain in Git and raw evidence.
-- Original L09/L12 full-review byte prefixes were compared against their recorded original Git blobs and are exactly preserved; targeted evidence is append-only. All other original individual reviews remain unchanged. Scope metadata changes retain original author/input provenance and bind current approval to STATUS.
-- `python scripts/check_codex_setup.py` passed: nine canonical skills and five Codex execution profiles. `git diff --check` passed. No slides, notebooks, SVG/PNG assets, Python implementations, environment pins or lockfile were changed in this scoping proposal.
+No future student notebook was executed, no hosted Colab runtime was tested, and no lecture or student task was timed. Authors still need to build the promised helpers/comparison fits, check data access and run clean local and hosted notebooks before publication. Mathematical spot checks establish small calculations, not student completion time.
 
-## Content and approval limits
-
-The coordinator reconciled source ownership, prerequisite order, one-lab endpoints, source depth and loss units through three waves. Independent reviews supply the mathematical/feasibility evidence; a fresh cold reviewer challenged the full course before reading coordinator justifications. L09 HMC-depth wording and L12 distortion scoring received owner revisions and independent targeted checks. The final separate synchronization addendum binds formal documents and metadata to final scope blobs; its exact provenance is in STATUS.
-
-All ten approvals are **agent-approved / instructor-pending**, under WORK_ORDER. No source notebook/course adaptation was executed, and no student timing, rehearsal, clean local uv run or hosted Colab validation was performed. Checked tiny mathematical examples are scope evidence, not notebook tests. Prepared utilities/checkpoints, CPU runtime, mobility distribution access and actual L02 delivery remain downstream authoring gates. No merge or student syllabus publication occurred.
+The instructor agreed to the course order and two simpler choices, then paused further decisions. The readable revision does not infer acceptance of the rest of the course or permission to begin production, merge main or release material to students. Original reviews, revised review and instructor decisions are distinguished in the current register.

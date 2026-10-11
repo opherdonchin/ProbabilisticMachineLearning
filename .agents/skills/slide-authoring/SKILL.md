@@ -5,6 +5,8 @@ description: Lower an approved slide-design specification into the course's Typs
 
 # Slide authoring
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students) for every instructor-facing explanation and review. Explain unfamiliar ideas and the consequences of a choice before using specialist names; do not assume the instructor knows material beyond L03–L04. Keep exact mathematical and source checks available after the readable explanation.
+
 Use this skill after slide design is approved.
 
 The primary responsibility is:

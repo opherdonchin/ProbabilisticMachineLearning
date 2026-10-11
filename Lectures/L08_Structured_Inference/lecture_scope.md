@@ -1,88 +1,103 @@
-# L08 — Exact sequence inference: forward and backward information
+# L08 — Recovering hidden states in a sequence: looking forward and backward
 
-**Status:** Reviewed five-part scope proposal; [current agent approval and exact reviews](../course_architecture_scope/STATUS.md) are maintained by the coordinator. Instructor acceptance pending; timing and notebook implementation remain unvalidated. **Stage/mode:** Lecture Scope / BUILD. **Builder:** `/root/build_l05`, 2026-10-11, branch `scope-l03-l12-course-architecture`. **Inputs:** Wave A checkpoint `791e71b`; [architecture contract v2](../course_architecture_scope/architecture_audit.md), blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`; L06 scope `326267281c6b6775ac9a33d7ed4f022a859fc49b`, L07 scope `f12fba8de7339675d09a771c5f956c8ed93649d8`. The [work order](../course_architecture_scope/WORK_ORDER.md) authorizes autonomous provisional choices; the coordinator owns approval and human questions. This builder owns only this scope, not sections, slides, notebooks or shared records.
+**Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
-## Starting boundary, sources and route choice
+Imagine watching a sequence of die rolls without knowing when the casino switches from a fair die to a loaded one. We want the probability of each hidden die choice, given the rolls. A calculation using only rolls seen so far can support a live decision. A calculation using the whole sequence can revise earlier beliefs. This lecture shows how both calculations can be exact without listing every possible history.
 
-Actual protected L01 source and `InClass/Solutions/lecture1_missing_data.ipynb` establish Gaussian conditioning/LGS, inference with known parameters and numerical cross-checks. The delivered ledger boundaries remain B2 §2.3.2/B1 §3.3. L02's agreed, undelivered `section_design.md` supplies categorical probabilities and learned **observed-state** Markov transitions through B2 §2.6.3. Its malformed development-state text adds no authority. Artifacts inspected during this builder's L05 work remain protected.
+The model is called a **hidden Markov model (HMM)**. “Hidden” means the state is unobserved; “Markov” means the next state depends on the current state rather than the whole past. The main new skill is to reuse partial probability calculations along this chain. Students also see a short comparison with a **Kalman filter**, which performs the same predict-then-condition steps when states and observations are Gaussian rather than categorical.
 
-Reviewed Wave A supplies factor graphs/local-versus-global inference (L03), finite normalized enumeration (L04) and likelihood learning (L05). The new L06 scope establishes latent posterior expectations and EM, primarily for missing Gaussians; it does not teach HMM algorithms. L07 distinguishes normalization, marginalization, prediction and MAP, then deeply develops Laplace. L08 exploits chain structure to perform **exact finite-state inference**, rather than assuming every hidden-variable posterior needs approximation. Future scopes are not delivered coverage; missing L02/L03 prerequisites require backpressure.
+**What earlier lectures supply:** L01 taught Gaussian conditioning. The agreed L02 plan teaches categorical probabilities and transitions when the states are observed. L03 explains how a graph expresses a product of local probabilities. L07 distinguishes probabilities of individual unknowns from the most probable complete explanation. L06 supplies the idea of averaging over hidden quantities; it does not teach sequence algorithms. These later lectures are plans, not delivered coverage: if their prerequisites are missing when L08 is prepared, repair that gap explicitly. The protected delivery record remains B2 §2.3.2/B1 §3.3; L02's agreed section design, rather than its damaged progress metadata, establishes its planned boundary.
+
+**Choice and cost:** Use the die example and a small checked model as the main lecture and notebook. This exposes the actual probability calculation with little data preparation or software setup. The alternative is to make Kalman filtering the main method and build a website-traffic forecasting exercise. That would add model fitting and data preparation, and the named solved forecasting notebook has not been verified. Choosing forecasting would require reducing the HMM work; it cannot be added as a second full lab. General inference on arbitrary graphs is also left out, because it adds decisions about which variables to eliminate and in which order.
+
+The instructor's Oke PS2 question sheet and `lacity.org-website-traffic.csv` were inspected. They name `PS2-Kalman-filter-forecasting`, compare state dimensions and include N4SID, a method for learning state-space dynamics. Access to that named solved notebook remains unverified. Thus the practical forecasting outcome is a real alternative we lose, not an outcome silently preserved by the short Kalman comparison.
+
+<details>
+<summary>Source verification and original build record for later authors</summary>
+
+The material below records exactly which sources were inspected. B1 and B2 mean Murphy's first and second books. Section and equation numbers identify source passages; they do not require familiarity with the surrounding chapters. These notes are for checking the later teaching material, rather than for understanding this proposal.
+
+**Stage/mode:** Lecture Scope / BUILD. **Builder:** `/root/build_l05`, 2026-10-11, branch `scope-l03-l12-course-architecture`. **Inputs:** Wave A checkpoint `791e71b`; [architecture contract v2](../course_architecture_scope/architecture_audit.md), blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`; L06 scope `326267281c6b6775ac9a33d7ed4f022a859fc49b`, L07 scope `f12fba8de7339675d09a771c5f956c8ed93649d8`. The [work order](../course_architecture_scope/WORK_ORDER.md) authorizes autonomous provisional choices; the coordinator owns approval and human questions. This builder owns only this scope, not sections, slides, notebooks or shared records.
 
 **Direct source inspection:** Murphy B2 December 10, 2025 edition, `/tmp/pml-book2.txt`: §9.1; §9.2.1, joint Eq. 9.1 and casino emissions Eqs. 9.2–9.3; §9.2.2 Eqs. 9.5–9.8; §§9.2.3/9.2.3.1 Eqs. 9.9–9.19; §9.2.3.4 normalization; §9.2.5 complexity; §9.2.6/Eqs. 9.39–9.42 path MAP, selective printed pp. 401–409. §9.2.3.3 pair marginals inspected to delimit exclusions. §9.5.1, p. 428, supports a compact elimination interpretation, not its student-network worked example. §8.1.2, pp. 361–362, and §§8.2.2.1–8.2.2.3, pp. 365–367, support Bayesian predict/update and the compact Kalman comparison. B1 adds no required coverage; its Gaussian/Markov background is already available through prior lectures.
 
 **Inspected computational reference:** [casino_hmm.ipynb](https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/misc/casino_hmm.ipynb), local pyprobml checkout `d1ea4122dcf3c2a2c02eb4e05343203b26440827`, SHA256 `975e90d6d095eed5e087121acd9094f57a176e270d76c6ebdbfcf6d312a18ed1`. Its ten cells construct/simulate a known categorical HMM and call Dynamax smoothing/MAP helpers; imports include JAX, Optax, Dynamax, Graphviz and probml-utils. This is application/model provenance, **not an exposed or validated NumPy worked solution**. No reference notebook was executed.
 
-The Oke PS2 questions and `lacity.org-website-traffic.csv` were located and inspected under the instructor's `spring-2026/PS2/PS2-Questions` directory. Problem 3 names `PS2-Kalman-filter-forecasting`, daily device-category sessions, state-dimension comparisons and N4SID/system identification; the named solved notebook remains unverified. This forecasting task is larger than applying a known Kalman filter and requires data aggregation/model-fitting choices. The existing syllabi/notebook audit prefer that candidate; contract v2 provisionally selects HMM instead. The practical-outcome change remains a visible human question below, not a claim that the Kalman application has been preserved.
+**Original upstream version references:** L06 scope `326267281c6b6775ac9a33d7ed4f022a859fc49b`; L07 scope `f12fba8de7339675d09a771c5f956c8ed93649d8`.
 
-| Alternative | Endpoint and tradeoff | Provisional choice |
-|---|---|---|
-| **HMM forward/backward, compact Kalman analogy** | B2 §9.2; implement exact messages and test them against enumeration. New dynamic-programming skill; minimal data/software burden. | **Selected.** Deep discrete reasoning and reusable numerical checks fit one lecture/lab; L01 supports a short continuous comparison. |
-| Kalman filtering and real forecasting | B2 §8.2.2; Oke PS2 candidate. Strong application continuity, but preprocessing/system identification and uncertain solved-source access add burden. | Keep as a consequential alternative; selecting it requires reallocating HMM depth/lab, not adding a second implementation. |
-| General graph elimination/tree message passing | B2 §§9.3/9.5–9.6; multiple graph queries and ordering effects. | Broad exact-inference endpoint but weaker sequence application and too many graph-specific steps. Retain only chain elimination interpretation. |
+</details>
 
-## 1. Intellectual arc
+## 1. Intellectual arc — what the lecture explains, in order
 
-These are **macro-level responsibilities, not section contracts**. Section Design can split/combine them within the scope/depth/time constraints. Connections begin receiving segments; every resulting section ends with a retrospective summary. Notebook instructions are a separate lecture-level handoff. All required mathematics is Live; no recording prerequisite.
+These are the lecture's main jobs, rather than final section boundaries. Later section design can split or combine them without changing the promised mathematics, outcomes or time. Explain necessary connections at the start of the receiving section. End every section with a summary of what it has taught. Notebook instructions remain a separate item. All required material is taught live; no recording is a prerequisite.
 
-### A chain factorization turns exponentially many paths into reusable subproblems — 15 minutes
+### A. Reuse calculations for histories ending in the same state — 15 minutes
 
-**Transition in:** L07 separated marginal sums from optimization; L02 learned transitions when states were observed. Now states are hidden, but parameters are known and the chain's conditional independence is available.
+Begin with the die-switching problem. Specify the initial die probabilities, the probabilities of switching dice, and the roll probabilities for each die. Parameters are known: we infer the hidden choices, not learn a new model.
 
-**Purpose/sources:** B2 §§9.1/9.2.1 and selective §9.5.1; identify exactly which sums the graph can simplify.
+Write the probability of one complete hidden history as a product. To find the probability of the observed rolls, we would ordinarily add over all `K^T` histories, where K is the number of states and T the sequence length. Group histories by the state where they currently end. Histories in the same group can share the next calculation. This is **dynamic programming**: save a partial answer and reuse it rather than recomputing it for each complete history. A saved partial probability calculation is called a **message**.
 
-**Core:** initial probabilities, row-stochastic transition matrix and state-dependent emissions; joint HMM factorization. Distinguish filtering, smoothing, evidence and path MAP. Write the evidence sum over `K^T` paths, then use distributivity to group prefixes by their ending state. Interpret the resulting partial sum as a message carrying eliminated variables' information. Recall L03 factor scopes; no general elimination-order algorithm or second graph example.
+Distinguish four questions: the current state's probability using observations so far (**filtering**); an earlier state's probability using all observations (**smoothing**); the probability of the observation sequence (**evidence**); and the single most probable complete state history (**path MAP**, or maximum a posteriori path). Briefly connect the reuse of partial sums to eliminating hidden variables in a graph. Do not teach a general elimination-order algorithm or a second graph example.
 
-**Retrospective summary:** an HMM's joint is a product of local factors; exact inference sums over hidden paths, and paths ending in the same state share a reusable prefix calculation.
+**End summary:** Local transition and observation factors let histories ending in the same state share their prefix calculation.
 
-### Forward messages filter the state and compute sequence probability — 27 minutes
+### B. Update the current-state probabilities as observations arrive — 27 minutes
 
-**Transition in:** grouped prefixes retain only the current state as their interface to the remaining chain. Derive how the next transition and observation update that interface.
+Start from the grouped histories. Derive how each possible old state contributes to each possible new state, then multiply by the new observation's likelihood. Work all three steps of the small model in Part 4.
 
-**Purpose/sources:** B2 §9.2.2 and §9.2.3.4; derive rather than merely name the forward algorithm.
+First use raw joint probabilities of state and observations. Then divide by their sum to obtain state probabilities that add to one. Save each dividing constant `c_t`: it is the probability of the new observation given earlier observations. Multiplying these constants gives the whole sequence's probability; adding their logarithms gives its log probability. Initialize using the stated initial distribution, without inventing a transition from a time-zero state.
 
-**Core:** derive raw forward joint messages from the factorization, then normalized predict/update probabilities. Work the tiny model in Part 4 through its three steps. Each normalization `c_t` is the next observation's predictive probability; their product is evidence and their log sum is log evidence. Explicit initialization uses the initial distribution, not a transition from an invented time-zero state. Online filtering uses no future observations. Known-parameter inference is not HMM training or EM.
+This calculation sees no future observations. It is not a procedure for estimating transition probabilities, and it is not the expectation-maximization training method from L06.
 
-**Retrospective summary:** the forward recurrence sums previous-state alternatives before incorporating local evidence; normalized messages are filtered state probabilities, and saved predictive normalizers recover the sequence likelihood.
+**End summary:** Forward updates add contributions from old states, incorporate the new observation, and normalize. The saved normalization constants recover the sequence probability.
 
-### Backward messages bring future evidence into each marginal — 27 minutes
+### C. Use later observations to revise earlier probabilities — 27 minutes
 
-**Transition in:** filtering answers an online question; an offline observation sequence also contains evidence after the time being inferred.
+A roll later in the sequence can change our belief about which die was used earlier. Derive a backward calculation: for each state at time t, ask how likely all later observations would be if that state were known. At the final time there are no later observations, so this likelihood is one.
 
-**Purpose/sources:** B2 §§9.2.3/9.2.3.1; derive the future-likelihood recurrence and its combination with filtering.
+Combine that future likelihood with the filtered probabilities from the forward calculation. Explain why the observation at time t enters only once. Work the backward values and one combined state probability on the same small model. A backward likelihood is not itself a probability distribution across current states.
 
-**Core:** derive `β_t(i)=p(y_{t+1:T}|z_t=i)` using a sum over the next state and the HMM independences. Set terminal message one. Combine forward and backward information into the smoothed marginal, explaining why observation `y_t` is included exactly once. Work backward values and one smoothing calculation on the same tiny oracle. A backward likelihood is not a probability distribution over current states. State the consistently scaled backward form using saved `c_{t+1}`; its product with the filtered vector yields normalized smoothing probabilities. No second smoother, two-slice derivation, EM update or sampling pass.
+Give the consistently scaled backward formula using the saved `c_{t+1}` constants. With this convention the product of forward beliefs and backward messages already sums to one in exact arithmetic. Do not add a second smoother, adjacent-state-pair derivation, model-training update or sampling pass.
 
-**Retrospective summary:** backward messages summarize future observations as state-dependent likelihoods; combining them with filtered beliefs gives the exact full-data marginal at each time.
+**End summary:** The backward calculation summarizes later evidence; combining it with the forward beliefs gives each state's exact probability using the full sequence.
 
-### Exact marginals, path decisions and numerical stability are different obligations — 17 minutes
+### D. A likely state at each time is not necessarily the likeliest history — 17 minutes
 
-**Transition in:** both passes now produce distributions. Examine what happens when they are turned into decisions or evaluated over longer sequences.
+Use the same example to compare the most probable state separately at each time with the most probable complete history. They give different answers. The first minimizes the expected number of time-by-time mistakes; the second minimizes the chance of getting the whole history wrong.
 
-**Purpose/sources:** B2 §§9.2.3.4/9.2.5/9.2.6; consolidate the algorithm's query and computational contract.
+Briefly state **Viterbi's algorithm**, which replaces sums by maxima and saves pointers to reconstruct the winning history. Its mechanics are optional; do not add a deep derivation or student implementation. For a selected block of unknown states, define the best block after adding over the other states. Adding and maximizing generally cannot be swapped.
 
-**Core:** use the tiny model to show pointwise marginal modes differ from joint path MAP. State Viterbi's max-product recurrence and need for backpointers, with no deep derivation or student implementation. Define marginal MAP for a selected block as optimizing after summing the other states; sum and max cannot generally be exchanged. Account for dense `O(TK²)` work and `O(TK)` stored beliefs, compared with path enumeration. Explain underflow, saved scaling and the log-sum-exp alternative; reuse L05's stability idea. Positive evidence is required: a zero normalizer signals an impossible observation sequence, not permission to divide by zero. No claim that scaling cures every zero/overflow issue.
+Count the work: dense forward/backward calculations take `O(TK²)` time and store `O(TK)` beliefs, instead of enumerating `K^T` histories. Explain why products of many small probabilities can round to zero, and how saved scaling or the log-sum-exp calculation from L05 helps. A zero normalization constant means an impossible observation sequence under the model; do not divide by it or promise that scaling cures every numerical problem.
 
-**Retrospective summary:** exact marginal inference sums paths; a most probable complete path maximizes them and answers a different question. Dynamic programming avoids exponential enumeration, while correct scaling preserves probabilities and sequence evidence.
+**End summary:** Summing histories and selecting a history answer different questions. Reusing partial calculations avoids exponential work, and scaling preserves meaningful probabilities on long sequences.
 
-### Kalman filtering is the Gaussian predict/update instance — 14 minutes
+### E. Recognize the same update pattern for Gaussian states — 14 minutes
 
-**Transition in:** the discrete filter predicts a state distribution and then conditions on a measurement. L01 already established those two operations for Gaussians.
+Return to L01's Gaussian conditioning. In a linear-Gaussian state model, prediction carries the current mean and covariance through the dynamics and adds process-noise uncertainty. Conditioning on a new measurement corrects that prediction using the discrepancy between predicted and observed measurement, called the **innovation**.
 
-**Purpose/sources:** B2 §8.1.2 and §§8.2.2.1–8.2.2.3; recognize the same filtering architecture with Gaussian belief parameters.
+State the known-parameter model with independent Gaussian process and measurement noise, without controls or biases. Apply L01 to the mean/covariance formulas and work the scalar update in Part 4. Explain the **gain** as the uncertainty-dependent weight on the measurement correction, and state the one-step observation distribution and its contribution to evidence.
 
-**Core:** state a linear-Gaussian state-space model with known parameters and independent Gaussian process/measurement noise, omitting controls and biases. Apply L01 marginalization and conditioning to the mean/covariance predict/update formulas; work one scalar update. Explain process-noise uncertainty growth, innovation and gain. State the one-step observation predictive Normal and corresponding evidence factor. No new matrix conditioning proof, full filter implementation, learning of dynamics/noise, real-data forecasting pipeline or Kalman smoother.
+This is a compact comparison, not a second implementation. It does not learn the dynamics or noise, build a real-data forecasting pipeline, prove matrix conditioning again, or revise past Gaussian states with a Kalman smoother.
 
-**Retrospective summary:** linear-Gaussian dynamics preserve Gaussian beliefs; prediction propagates their moments and measurement conditioning corrects them by the innovation weighted by uncertainty. This filter is exact under the stated model assumptions.
+**End summary:** Under the linear-Gaussian assumptions, prediction and measurement conditioning preserve Gaussian beliefs and give an exact filter.
 
-**Extent:** `15+27+27+17+14=100` substantive minutes plus **12 reserve =112 minutes**, including transitions/questions/slippage; separate lab 60. **Tight but plausible, unmeasured, medium-low timing confidence.** Forward and backward/smoothing are the two deep novel derivational chains. Kalman is application of L01, not a third deep derivation. L01's 61 content slides/70 rendered pages and its 29-slide Gaussian span are comparative anchors, not a rate; no measured timings validate this plan.
+### Time estimate and what to shorten first
 
-Provisional novelty calibration: `K=5`, `P≈8–10` substantive page-equivalents, `E_new≈10–12`, `E_carry≈16–22`, `E_deriv≈8–11`, `V≈5–6`. New families are HMM factorization, query distinctions, forward/scaled messages and evidence, backward/smoothing, max-product recognition, complexity and Gaussian sequential prediction. Repeated Bayes/conditioning and messages are carried support. Prototype extent is roughly **21–25 content-slide equivalents**, not a slide target or timing validation; indexed recurrences and state tables can be substantially slower than its coefficients imply.
+The five parts take `15+27+27+17+14=100` substantive minutes, plus **12 minutes for questions, transitions and slippage: 112 minutes live**, with a separate 60-minute lab. This is tight and unmeasured, with medium-low confidence. The two main new derivations are forward and backward inference; the Kalman comparison applies earlier Gaussian results.
 
-**First cut:** remove optional Viterbi recurrence mechanics/backpointer illustration while retaining the path-versus-marginal distinction and checked counterexample (about 3–4 minutes); shorten the Kalman matrix catalogue to state the result and work the scalar update (about 3 minutes). Preserve forward/backward derivations, correct evidence scaling and uncertainty interpretation. If further relief is needed, escalate a Scope-level change rather than silently removing Kalman or declaring a full second method taught by a formula table. Recheck actual mathematical steps at Section Design and through a recurrence/example rehearsal.
+First remove optional Viterbi mechanics/backpointer illustration, saving about 3–4 minutes, while preserving the checked history-versus-state example. Then shorten the Kalman matrix formula list while preserving its stated result and scalar calculation, saving about 3 minutes. Preserve both message derivations, scaling and uncertainty interpretation. If those cuts are insufficient, the scope needs a new decision rather than faster assumed delivery.
 
-## 2. Mathematical spine
+For later authors, the provisional extent counts are `K=5` main parts, `P≈8–10` substantive source pages, `E_new≈10–12` new equation/result families, `E_carry≈16–22` repeated supporting equation blocks, `E_deriv≈8–11` intermediate algebra blocks and `V≈5–6` visual groups. The course's rough model gives 21–25 content-slide equivalents. This is neither a slide target nor measured timing; indexed calculations may take much longer than that model predicts. L01's 61 content slides/70 rendered pages and 29-slide Gaussian portion are comparison anchors only. Check the actual recurrence/example explanation during section design and rehearsal.
 
-States `z_t∈{0,…,K−1}`, observations `y_t`; `π_j=p(z_1=j)`, `A_ij=p(z_t=j|z_{t−1}=i)`, `λ_t(j)=p(y_t|z_t=j)`. Belief vectors are columns: prediction is `Aᵀf_{t−1}`. Use `f` for normalized forward beliefs and `a` for raw joints; B2 uses `α` and `α′` respectively. Natural logs/nats for evidence.
+## 2. Mathematical spine — the results students will use
+
+The equations below make the forward and backward calculations precise. `z_t` is the hidden state at time t; `y_t` is the observation. There are K possible states, numbered `0,…,K−1`. `π_j` is the initial probability of state j. `A_ij` is the probability of moving from i to j; each row of A sums to one. `λ_t(j)` is how likely observation `y_t` is in state j.
+
+Use column vectors: prediction is `Aᵀf_{t−1}`. `f` denotes normalized forward state probabilities; `a` denotes raw joint probabilities. Murphy uses `α` and `α′` for these. `β` is the raw likelihood of future observations; `b` is its scaled form; `γ` is the state probability after using the whole sequence. `⊙` means element-by-element multiplication. `LSE` means log-sum-exp, a stable way to take the logarithm of a sum. Natural logarithms give evidence in nats.
+
+In the Gaussian comparison, **LGSSM** means linear-Gaussian state-space model. F is the state-transition matrix, H maps states to measurements, Q and R are process and measurement noise covariances, m and P are belief mean and covariance, S is the predicted measurement covariance and G is the gain. Assume S is nonsingular; later code should solve a linear system rather than explicitly invert it.
+
+In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, delivery and role |
 |---|---|
@@ -99,19 +114,25 @@ States `z_t∈{0,…,K−1}`, observations `y_t`; `π_j=p(z_1=j)`, `A_ij=p(z_t=j
 | LGSSM `z_t=Fz_{t−1}+ε_t`, `ε_t~N(0,Q)`; `y_t=Hz_t+ν_t`, `ν_t~N(0,R)` | **State + Motivate**, Live; independent noises and initial Gaussian, known parameters. |
 | `m⁻=Fm`, `P⁻=FPFᵀ+Q`; `S=HP⁻Hᵀ+R`, `G=P⁻HᵀS⁻¹`; `m⁺=m⁻+G(y−Hm⁻)`, `P⁺=P⁻−GSGᵀ`; observation predictive `N(Hm⁻,S)` | **Apply + scalar Work**, Live compact; L01 conditioning carried, dynamics prediction new. Use a solve for gain in production; assume required nonsingular innovation covariance. No new derivation or numerical filter code. |
 
-## 3. Notebook handoff — a 60-minute checked HMM inference lab
+## 3. Notebook handoff — what students do and what is supplied
 
-**Interface:** B2 §§9.2.1–9.2.3.4 and the casino reference's known-parameter model. Students bring NumPy, categorical/Markov probabilities and both derived recurrences. PyTorch from L05 is available but unnecessary; no Dynamax/JAX/Graphviz setup. No required recording.
+**Student endpoint:** Write one checked NumPy implementation of the forward and backward calculations, then interpret the effect of later observations. The lecture provides both derived recurrences; students already know categorical/Markov probabilities and basic NumPy. No recording, PyTorch, JAX, Dynamax or Graphviz setup is needed.
 
-**Endpoint:** implement scaled forward and backward passes plus smoothed marginals in supplied NumPy scaffolding; compare evidence and every time marginal with exhaustive enumeration on the tiny model; apply the checked inference to a supplied longer casino sequence and interpret filtering versus smoothing. No fitting parameters, Viterbi implementation or Kalman lab.
+**Supplied:** arrays and settings, simulated or fixed observations, a routine that lists all histories for the tiny model, plotting code, and shape/checking helpers. **Students complete:** scaled forward updates and evidence, backward updates and smoothed state probabilities. Compare evidence and every time's probabilities with exhaustive enumeration.
 
-Instructor supplies arrays/configuration, simulator or fixed observations, tiny enumerator, plotting and shape/assertion harness. Larger application uses the inspected reference's `π=(.5,.5)`, `A=((.95,.05),(.10,.90))`, fair emissions `1/6` each and loaded emissions `(.1,.1,.1,.1,.1,.5)`. No source realization or empirical fraction is promised. A single fixed sequence of roughly 100–200 steps is sufficient; runtime/output must be piloted later.
+For the longer die sequence, supply `π=(.5,.5)`, `A=((.95,.05),(.10,.90))`, fair-die probabilities `1/6` for each face, and loaded-die probabilities `(.1,.1,.1,.1,.1,.5)`. About 100–200 rolls are provisionally sufficient. These are the inspected reference's model probabilities, but we do not promise its exact random sequence, empirical fractions or a particular runtime.
 
-Budget: **8 min** model/shape interpretation, **15 min** scaled forward/evidence, **14 min** backward/smoothing, **10 min** oracle and normalization checks, **8 min** supplied long-sequence plot and evidence-use interpretation, **5 min reserve = 60**. Required checks include matching enumeration, `Σγ_t=1`, terminal smoothing=filtering, unchanged earlier filtering when future evidence is appended, and an impossible-observation response to a supplied all-zero evidence vector. Larger plots reveal computational behavior; smoothing need not improve every realized classification or lower every realized uncertainty.
+The 60-minute budget is: 8 minutes interpreting the model and array shapes; 15 completing forward updates/evidence; 14 completing backward updates/smoothing; 10 checking against enumeration and normalization; 8 interpreting the supplied long-sequence plot and sequence probability; 5 reserve.
 
-First lab cut is an optional transition-persistence sensitivity rerun, excluded from this core budget. If debugging dominates, shorten the supplied larger-plot interpretation while preserving a complete checked algorithm. A second log-domain implementation, parameter training and benchmarking are omitted. The reference hides recurrences in a new stack; **course NumPy worked implementation is not yet authored or validated**. Later authoring must check correctness, 60-minute student workload, clean local uv execution and hosted Colab before publication.
+Required checks: every smoothed vector sums to one; smoothing at the final time equals filtering; appending future observations leaves earlier filtering unchanged; enumeration and both recurrences agree; an all-zero observation-likelihood vector produces an explicit impossible-observation response. The larger plot illustrates behavior, not a guarantee that smoothing improves every classification or lowers uncertainty for every realized observation.
 
-## 4. Concrete examples and provenance
+There is no parameter fitting, Viterbi implementation, Kalman lab, benchmarking exercise or second log-domain implementation. An optional rerun changing transition persistence is outside the core budget and is the first extra to remove. If debugging takes longer, shorten the larger-plot discussion while preserving a complete checked algorithm.
+
+The reference notebook hides these calculations in additional libraries. The course NumPy worked solution has not been authored or executed. Later work must check the implementation, student workload, clean local uv execution and a hosted Colab run before publication.
+
+## 4. Concrete examples and their sources
+
+The three examples have separate jobs: a three-observation model checks every probability exactly; the casino interpretation makes filtering and smoothing concrete; one scalar Gaussian update explains the short Kalman comparison. “Oracle” below means an independently computable exact reference, not another inference method students must learn. MAP means maximum a posteriori, or most probable value/history.
 
 **Required tiny oracle — Work, Live/Notebook, course-constructed:** `K=2,T=3`, `π=(1/2,1/2)`, `A=((4/5,1/5),(1/5,4/5))`, emissions `B=((7/10,3/10),(3/10,7/10))` for observation symbols 0/1, observed sequence `(0,0,1)`. All factors are positive/normalized. Exhaustive rational arithmetic over eight paths verifies these joint weights:
 
@@ -127,13 +148,24 @@ Evidence is `589/5000=.1178`; normalizers are `(.5,.548,589/1370)`, whose produc
 
 Approximately 5–6 selected semantic groups cover chain factors, prefix reuse, message tables, filtering/smoothing, path-versus-marginal decisions and Gaussian predict/update. Available B2 Figs. 9.1–9.5 provide context; no exact asset reproduction, figure generation or slide layout is committed.
 
-## 5. Lecture contract
+## 5. Lecture contract — what this proposal commits to
 
-**Starting assumptions:** L01 Gaussian conditioning, agreed L02 categorical/Markov probabilities, L03 factorization and L07 query distinctions; Python/NumPy. L06 supplies context; HMM parameter training is neither assumed nor taught.
+**Starting knowledge:** Gaussian conditioning from L01; planned categorical transitions from L02; graphical probability factorization from L03; and the different probability queries introduced in L07. Students use Python/NumPy. The lecture assumes no HMM training method.
 
-**Central question:** how does chain structure make exact posterior sequence inference tractable? **Lecture endpoint:** derive/work forward and backward messages, recover correctly normalized marginals/evidence, distinguish pointwise decisions from path MAP, account for complexity and recognize Gaussian filtering as the same predict/update architecture. **Lab endpoint:** one checked NumPy HMM inference implementation and filtering/smoothing interpretation. **No required recording.** 112-minute inclusive live estimate plus 60-minute lab; unvalidated timings.
+**Main question:** How can we recover hidden-state probabilities along a sequence without listing every possible history? **Lecture endpoint:** derive forward and backward calculations, recover normalized probabilities and sequence evidence, distinguish individual-state choices from complete-history choices, count the computational work, and apply one scalar Gaussian filtering update. **Notebook endpoint:** one checked HMM implementation and an interpretation of filtering versus smoothing. The estimated commitment is 112 live minutes plus 60 lab minutes, with no required recording.
 
-Supported outcomes: specify the known-parameter HMM joint; derive the two recurrences and explain message meanings; check scaling/evidence against enumeration; distinguish sum/marginal/max queries; apply one scalar Kalman update under stated assumptions. No mastery of general graph inference or forecasting/system identification is claimed.
+The core source is Murphy B2 §§9.2.1–9.2.3.1, with normalization in §9.2.3.4 and complexity in §9.2.5. The short Gaussian comparison uses §8.1.2 and selected §8.2.2 results. This does not amount to teaching all of Chapters 8–9.
+
+**What is left out, and the lost capability:** Students do not learn to fit HMM parameters from hidden data (Baum–Welch/EM), calculate adjacent-state-pair probabilities, or run additional smoothing and sampling algorithms. They do not learn general inference on trees or multiply connected graphs, or how to choose an elimination order. They cannot claim a real forecasting workflow, learned state-space dynamics, Gaussian smoothing, or nonlinear Gaussian-filter extensions. These are deliberate limits rather than promised recordings. L09/L10 own approximate posterior methods; L06 supplies the general training principle but does not own a full HMM-training derivation.
+
+**Choice requiring oversight:** The HMM lab replaces the earlier preferred website-traffic forecasting outcome. Its gain is a transparent, fully checkable probability algorithm; its cost is losing that empirical application. To retain forecasting, select Kalman as primary and reduce the HMM depth/lab. The notation is another risk: normalized probabilities and backward likelihoods must stay clearly distinguished. Use the single small model throughout and apply the first cuts above if needed. Later notebook authoring must pilot the NumPy scaffold; inspection of a source notebook is not execution evidence.
+
+**Record updates:** Keep the protected L01/L02 artifacts and delivered ledger history unchanged. Record only this selective future chain-inference allocation, rather than broad Kalman smoothing or Viterbi promises. B1 supplies background but no new required coverage.
+
+<details>
+<summary>Exact source allocation for checking the syllabus and material ledger</summary>
+
+This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment |
 |---|---|
@@ -144,8 +176,6 @@ Supported outcomes: specify the known-parameter HMM joint; derive the two recurr
 | Deferred to named owners | Approximate posterior algorithms L09/L10; their Ising/model examples reuse L03. HMM EM has no assigned full derivation; L06 supplies only its general principle. |
 | Deliberately omitted | HMM EM/Baum–Welch, two-slice derivation, alternate smoothing/sampling passes, tree/JTA/loopy BP, general ordering/treewidth algorithms, FFT/parallel message algorithms, Kalman smoothing/RTS/EKF/UKF, system identification and real-data forecasting lab. These are not blanket Chapter 8–9 coverage or hidden recording debts. |
 
-**Coordinator-owned bookkeeping:** replace the current preferred Kalman notebook promise and broad Kalman-smoothing/Viterbi-depth wording with these selective future allocations after agent approval; preserve delivered ledger history. B2 advances to selected Chapter 9 chain inference; Chapter 8 is isolated Gaussian application, not full coverage. B1 contributes no new required reading.
+</details>
 
-**Questions/risks:** (1) **Scope/advisory, consequential human question:** HMM default loses the previously preferred practical website-traffic forecasting outcome. It gains transparent exact inference and avoids an unverified solved source/system-identification burden; retaining forecasting requires choosing Kalman as primary and reducing HMM commitments. Do not claim both outcomes in formal artifacts. (2) **Scope/advisory:** normalized/raw/backward likelihood notation is cognitively demanding; use one consistent convention and retain the oracle. First-cut mechanics above provide 6–7 minutes relief. (3) **Notebook/downstream:** pilot the supplied NumPy scaffold; package-free source adaptation is not yet a tested worked solution. These limitations are bounded, not grounds for self-approval.
-
-**Next owner:** Instructor oversight of this reviewed proposal. Subsequent Section Design requires human acceptance; its execution backpressure returns to the nearest owning stage. Review and approval provenance are in the registry. No rehearsal, notebook runtime or hosted Colab validation is implied.
+**Next owner:** The instructor reviews the proposal's choices and explanations. Detailed section design follows acceptance. If later writing or rehearsal cannot meet the stated commitments, return the affected choice to Lecture Scope. The [registry](../course_architecture_scope/STATUS.md) holds review evidence. This document does not establish notebook runtime, Colab readiness or measured teaching time.

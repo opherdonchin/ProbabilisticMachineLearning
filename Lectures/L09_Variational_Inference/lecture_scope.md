@@ -1,10 +1,23 @@
-# L09 — Variational inference: optimize a posterior approximation
+# L09 — Fitting a simpler distribution when the posterior is hard to compute
 
-**Status:** Reviewed five-part scope proposal; [current agent approval and exact reviews](../course_architecture_scope/STATUS.md) are maintained by the coordinator. Instructor acceptance pending; timing and notebook implementation remain unvalidated. **Stage/mode:** Lecture Scope / BUILD. **Builder thread:** `/root/build_l03`, 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`; input checkpoint `9b62b6c7033f64399c81f5ba6be6a96b95ae4e68`. **Upstream:** architecture contract v3, blob `54064183398bd643a895c5e38a023f793dc2d9d6`; autonomous authority in `WORK_ORDER.md`. Only this Scope is owned here; no sections, slides, notebook code or shared edits.
+**Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
-## Starting boundary, source evidence and alternatives
+Suppose two regression coefficients can compensate for each other: several combinations fit the data almost equally well. A best-fit pair hides that uncertainty. Ideally we want the posterior distribution over both coefficients, but in a more complicated model it may be expensive to compute. This lecture chooses a simpler distribution and adjusts it to approximate the posterior.
 
-Protected L01 establishes Gaussian conditioning, precision coordinates and known-model numerical comparisons; L02's agreed, undelivered section design establishes EF moments/moment matching. Actual delivery remains ledger B2 §2.3.2/B1 §3.3. L05 scope blob `736943b90f24826e29955115896929742f2961f5` supplies reverse AD and SGD; L06 `326267281c6b6775ac9a33d7ed4f022a859fc49b` **owns the generic ELBO/KL identity, entropy-versus-Q distinction and exact-EM monotonicity proof**. L07 `f12fba8de7339675d09a771c5f956c8ed93649d8` supplies query-specific Laplace/grid checking; L08 `b7a2de325c364bcde8230c33aaba2a5cd6b8596a` supplies exact HMM marginals/messages. These inspected handoffs establish that approximation is a computational choice, not an automatic consequence of latent variables. Reviewed future scopes are not delivered coverage. L09 does not repeat these proofs or assume L10 HMC theory; L05 PyTorch needs a short lab refresh after three intervening meetings.
+This is **variational inference (VI)**. Here the simpler distribution is a Gaussian with a separate mean and variance for each coefficient, but no correlations. We ask two practical questions: how do we adjust its means and spreads, and what important uncertainty can this simplification lose? A small Gaussian regression problem provides exact answers against which to check the approximation.
+
+**What earlier lectures supply:** L01 gives Gaussian conditioning and the exact known-noise regression posterior. L02's agreed plan supplies distribution moments; L05 supplies automatic differentiation, stochastic gradient descent and first PyTorch practice. L06 proves the identity connecting an approximate distribution's objective to its difference from the true posterior. L07 and L08 supply checked approximate and exact inference examples. These future plans are not already delivered material; the protected delivered boundary remains B2 §2.3.2/B1 §3.3. The notebook includes a ten-minute PyTorch refresh after three intervening meetings.
+
+**Choice and cost:** Use synthetic regression with known observation-noise variance, so the exact posterior and best simplified approximation are available. This cleanly separates a poor approximation family from unfinished optimization. We lose the real GDP/ruggedness application in the inspected reference. A prepared GDP version with fixed noise is an alternative after checking its data and model assumptions. The source's complete model also estimates noise, uses Pyro automatic approximations and compares with advanced sampling; that is substantially more than this hour can hold.
+
+A second possible main example is to update approximate distributions one coordinate at a time for L03's image model. That would reconnect to image restoration, but a full derivation and solver would displace the differentiable sampling skill needed in L12. Keep only a short coordinate-update example on the same Gaussian target. No new software library or required advanced sampler is introduced.
+
+<details>
+<summary>Source verification and original build record for later authors</summary>
+
+The material below records exactly which sources were inspected. B1 and B2 mean Murphy's first and second books. Section and equation numbers identify source passages; they do not require familiarity with the surrounding chapters. These notes are for checking the later teaching material, rather than for understanding this proposal.
+
+**Stage/mode:** Lecture Scope / BUILD. **Builder thread:** `/root/build_l03`, 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`; input checkpoint `9b62b6c7033f64399c81f5ba6be6a96b95ae4e68`. **Upstream:** architecture contract v3, blob `54064183398bd643a895c5e38a023f793dc2d9d6`; autonomous authority in `WORK_ORDER.md`. Only this Scope is owned here; no sections, slides, notebook code or shared edits.
 
 **Direct B2 inspection:** December 10, 2025 edition, local PDF identified in architecture/source register; `/tmp/pml-book2.txt` §§10.1.1–10.1.2 (printed pp. 439–442), §10.1.4–10.1.5 (pp. 444–445), §10.2.1/§10.2.1.1 (pp. 446–448), selected §10.2.1.5 (pp. 450–451), §§10.3–10.3.1 (pp. 455–457), §10.3.2 inspected only as another mean-field application; §§6.3.3–6.3.5.2 (pp. 273–277). B1 adds no required new coverage: the Gaussian/backprop scaffolding already has course owners. Book 2 remains the spine.
 
@@ -12,76 +25,81 @@ Protected L01 establishes Gaussian conditioning, precision coordinates and known
 
 **Inspected reference:** [linreg_bayes_svi_hmc.ipynb](https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/10/linreg_bayes_svi_hmc.ipynb), local pyprobml path `notebooks/book2/10/linreg_bayes_svi_hmc.ipynb`, checkout `d1ea4122dcf3c2a2c02eb4e05343203b26440827`, SHA-256 `415b81857e37701258718392c3c05db9a903f768ab59a54b03f438f211c204a1`. It downloads country ruggedness/GDP data, log-transforms GDP, includes Africa/interactions, unknown Uniform noise scale, Pyro autoguides, NUTS, and both diagonal/full-covariance fits. It is an inspected application precedent, not a validated course solution; no downloaded dataset, fitted result or runtime was verified here.
 
-| Route | Endpoint / tradeoff | Disposition |
-|---|---|---|
-| **Controlled known-noise regression** | One diagonal posterior optimization against analytic Gaussian mean/covariance and predictions; B2 §10.1.2 geometry plus §10.2.1 pathwise VI | Selected: clean reference separates approximation from optimization, no pre-L10 HMC, preprocessing or new stack. |
-| Simplified real ruggedness/GDP regression | Same math with known noise and supplied prepared features/data; preserves empirical context | Defensible alternate if data and fixed noise assumptions are validated. Source's unknown-scale/HMC model is not this exact benchmark; changing it requires an explicit model/data decision. |
-| Ising CAVI as primary endpoint | B2 §10.3.2, repay L03 denoising with distributional means | Useful continuity, but a full CAVI derivation/solver displaces the pathwise skill needed by L12. Keep a bounded CAVI comparison on the same Gaussian target. |
-| Automatic VI versus HMC on the full source model | Reference's two autoguides/NUTS | Too many implementations and transformed parameters; hides gradient mathematics and requires a new Pyro ecosystem. Omitted as required work. |
+**Original upstream version references:** L05 scope blob `736943b90f24826e29955115896929742f2961f5`; L06 `326267281c6b6775ac9a33d7ed4f022a859fc49b`; L07 `f12fba8de7339675d09a771c5f956c8ed93649d8`; L08 `b7a2de325c364bcde8230c33aaba2a5cd6b8596a`.
 
-## 1. Intellectual arc
+</details>
 
-These are provisional macrosegments, not Section Design boundaries. Downstream may split/combine them within the endpoint/depth/time envelope. Connections enter receiving segments; every resulting section ends with a retrospective summary. All core treatment is **Live**; no recording prerequisite.
+## 1. Intellectual arc — what the lecture explains, in order
 
-### A. Restricting the posterior changes the inference problem — 16 minutes
+These are the lecture's main jobs, rather than final section boundaries. Later section design can split or combine them without changing the promised mathematics, outcomes or time. Explain necessary connections at the start of the receiving section. End every section with a summary of what it has taught. Notebook instructions remain a separate item. All required material is taught live; no recording is a prerequisite.
 
-**Transition in:** L06 could compute an exact E-step; L08 exploited structure for exact sums. When those computations are unavailable, specify which tractable distributions may approximate the posterior.
+### A. Choose a family of simpler posterior distributions — 16 minutes
 
-**Purpose/sources:** B2 §§10.1.1–10.1.2; turn inference into an explicitly restricted optimization.
+Recall L06's result: the log probability of the data equals an approximation objective F plus a nonnegative **Kullback–Leibler divergence (KL)** from the approximation to the true posterior. KL measures a directed discrepancy between distributions. Since the data probability is fixed here, increasing F makes this discrepancy smaller. F is also called the **evidence lower bound (ELBO)** because it cannot exceed the log data probability.
 
-**Core:** Recall, rather than rederive, `log p(D)=F(q)+KL(q||p(w|D))`. Fixed model/data make the evidence constant with respect to variational parameters. Maximizing F minimizes reverse KL within a chosen family; a missing normalizer does not prevent optimizing expected log joint minus log q. Contrast unrestricted exact E-step with restricted q and distinguish variational parameters from model parameters/latent regression weights. Introduce diagonal Gaussian and mean-field factorization. Explain support asymmetry and why reverse KL penalizes q mass where p is very small, without a universal mode-seeking or underdispersion theorem.
+Select a Gaussian q with adjustable means and positive standard deviations, but zero correlations. This is a **mean-field** approximation: q factors into a product of independent coordinate distributions. That independence is our restriction on q, not a statement that the true posterior's coordinates are independent. Separate the regression weights w, the model's fixed settings, and the parameters used to adjust q.
 
-**Retrospective summary:** VI chooses the best available distribution according to a directed divergence; evidence normalization cancels from the variational optimization, while family restrictions can leave irreducible approximation error.
+Because this is `KL(q||p)`, often called reverse KL, it strongly penalizes putting q probability where the target p is very small. Explain that directional effect without claiming that every such fit picks one mode or always underestimates all uncertainties. We optimize expected log joint probability minus expected log q; the target's unknown normalizing constant is unnecessary.
 
-### B. A correlated Gaussian reveals what diagonal VI loses — 24 minutes
+**End summary:** We fit the best distribution available within a chosen family. Restricting the family can leave approximation error even when optimization is complete.
 
-**Transition in:** A family must be judged against a query, not just an objective trace. A Gaussian posterior with known covariance provides an exact, interpretable reference.
+### B. Show exactly what discarding correlation loses — 24 minutes
 
-**Purpose/sources:** B2 §10.1.2/Fig. 10.2 supports the geometry; the exact two-dimensional target and calculations below are course-constructed.
+Use a two-dimensional Gaussian whose exact mean and covariance are known. State the Gaussian-to-Gaussian KL formula and work the diagonal restriction. A short stationarity calculation gives the best means and separate variances; do not prove the general KL formula again.
 
-**Core:** State Gaussian-to-Gaussian KL and work its diagonal restriction. Obtain best diagonal mean equal to the target mean and variances equal to reciprocal precision diagonals, using a short scalar stationarity calculation. Distinguish these from exact marginal variances. Work the specified correlated target: covariance is discarded and marginal variances shrink. Compare uncertainty along sum/difference directions to show that predictive variance error need not have one sign. Separate family error from optimization error using the analytic diagonal optimum; no second full-covariance optimizer. Recall known-noise Gaussian regression/LGS posterior formulas as the lab model, without a fresh conjugacy derivation.
+For the example in Part 4, the best means are correct but the separate variances are smaller than the true marginal variances. They reflect conditional rather than marginal spread. Correlation also affects uncertainty in combinations of coefficients: compare their sum and difference. The diagonal approximation underestimates one combination and overestimates the other, so “uncertainty is smaller” needs a specified query.
 
-**Retrospective summary:** The best diagonal approximation matches the Gaussian center but uses conditional-scale variances and loses correlations; accurate means or a good objective do not establish accurate uncertainty for every query.
+Compare a numerical fit with both the exact posterior and the analytic best diagonal approximation. Their difference identifies unfinished optimization separately from the unavoidable family restriction. Recall the known-noise Gaussian regression equations from L01 as the notebook model; do not add a fresh conjugacy proof or a second full-covariance optimizer.
 
-### C. Reparameterization makes distribution parameters differentiable — 31 minutes
+**End summary:** Matching the center or improving the objective does not establish correct uncertainty. The lost correlation matters differently for different questions.
 
-**Transition in:** L05 differentiated a fixed empirical loss. Here changing the variational parameters also changes the distribution under the expectation; treating a random draw as fixed would omit part of the derivative.
+### C. Make a random draw depend differentiably on means and spreads — 31 minutes
 
-**Purpose/sources:** B2 §§6.3.3, 6.3.5–6.3.5.2 and §10.2.1.1; derive one Gaussian pathwise estimator.
+Ordinary L05 training differentiated a loss evaluated at fixed data. Now the loss is averaged over random coefficients drawn from q, and changing q changes those draws. Ignoring that dependence loses part of the derivative.
 
-**Core:** Set `s=exp(rho)`, `w=m+s⊙epsilon`, `epsilon~N(0,I)` independent of `(m,rho)`. Derive the expectation rewrite, the total derivative including direct parameter dependence, and the diagonal-Gaussian ELBO gradients using analytic entropy. State differentiation/interchange regularity; independent base noise alone is insufficient. Average pathwise sample derivatives to estimate the gradient; explain gradient noise versus data-minibatch noise without importing L10 variance/chain theory. Apply L05 AD to the reparameterized expression, retaining scale derivatives. State the score-function identity with its direct term as a contrast; no derivation, baseline catalogue or second coding task. Pathwise gradients need a differentiable sampling map/objective; variance is often favorable, not universally ordered.
+Draw standard Gaussian noise ε independently of q's parameters. Construct a coefficient draw as `w=m+s⊙ε`, with `s=exp(ρ)>0`. The same noise draw then shows how w changes when m or ρ changes. This is **reparameterization**; differentiating through the sampled value is a **pathwise gradient**.
 
-**Retrospective summary:** An independent noise draw and differentiable transform preserve the sampling distribution while exposing a total derivative; Gaussian variational means and scales can be optimized with a correctly constructed stochastic gradient.
+Derive the rewritten expectation and its total derivative, including any direct dependence of the objective on the distribution parameters. Give the conditions allowing derivative and expectation to be interchanged; independent noise alone is not enough. Derive mean and scale gradients for the diagonal Gaussian objective using its analytic entropy, the measure of the distribution's spread. Average sample derivatives to estimate the expectation. Distinguish noise from drawing latent coefficients from noise due to selecting data minibatches; detailed sampling-error theory belongs to L10.
 
-### D. Coordinate updates offer a bounded alternative — 16 minutes
+Apply L05 automatic differentiation, keeping both mean and scale paths connected. State the alternative **score-function gradient**, which differentiates the density instead of the sample, including its direct term. It is a brief contrast, not a second derivation, estimator catalogue or coding task. A differentiable sample map/objective is needed for the pathwise method, and it is not universally lower variance.
 
-**Transition in:** Pathwise gradients optimize a fixed parameterization. Some factorized models instead permit an exact update of one variational factor while holding the others fixed.
+**End summary:** Independent noise plus a differentiable transform lets us compute the complete derivative of the sampled objective, including how means and spreads affect the draws.
 
-**Purpose/sources:** B2 §§10.3–10.3.1; show the distinction with the already established Gaussian target.
+### D. Compare updating one distributional factor at a time — 16 minutes
 
-**Core:** State `log q_j*(w_j)=E_q_-j log p(D,w)+constant`, with normalization, without the full functional-optimization proof. Work one Gaussian coordinate sweep: replace other coordinates by their means in the target log quadratic, recognize the resulting Normal factor. This is a small application, not a second general CAVI derivation. Contrast an exact coordinate ELBO improvement with noisy gradient steps, and distinguish expectation over other factors from conditioning on a sampled/fixed neighboring state. No Ising solver, VBEM example or general convergence claim from coordinatewise concavity alone.
+Some models let us optimize one factor q_j exactly while holding the others fixed. This is **coordinate-ascent variational inference (CAVI)**. State its update: exponentiate the expected log joint probability, averaging over all other factors, and normalize.
 
-**Retrospective summary:** CAVI updates a distributional factor using an expected log joint; exact coordinate updates improve the variational objective but remain constrained by the same family and need not recover the true posterior.
+Work one small sweep on the already known Gaussian target: other coordinates enter through their means, and the result is a Normal factor. Do not add the general functional-optimization proof. Unlike selecting the best fixed neighbor state in L03, this update averages over distributions. Unlike drawing a conditional value in a sampler, it adjusts a whole approximate distribution.
 
-### E. An analytic KL and explicit queries make VI checkable — 13 minutes
+An exact coordinate update improves the same bound. Noisy gradient steps need not improve it individually. Neither fact establishes recovery of the true posterior or a general convergence theorem. There is no Ising solver or second variational-EM example.
 
-**Transition in:** Both optimizers target a bound; interpreting the approximation also requires correct objective signs, scaling and query evaluation.
+**End summary:** Coordinate updates offer another way to improve the same restricted-distribution objective; they do not remove the family restriction.
 
-**Purpose/sources:** B2 §§10.1.1.2, 10.2.1.1, with §10.1.5 recognition only; consolidate the lab's objective and limits.
+### E. Check objective signs, loss scaling and predictions — 13 minutes
 
-**Core:** Apply `F=E log likelihood−KL(q||prior)` and the corrected diagonal Normal KL; check that matching standard Normals give zero KL. In known-noise regression use one global q(w), full-data likelihood and one prior KL, rather than one KL per observation. State Gaussian predictive mean and variance including observation noise. Distinguish objective estimates from exact ELBO/KL checks available in this controlled model. Recognize amortization as sharing a map from observations to variational parameters; the current lab optimizes one global posterior, not an encoder or per-row q. No network implementation or amortization-gap derivation here.
+Write F as expected log likelihood **minus** KL to the prior. Use the corrected diagonal Gaussian KL in Part 2 and check that identical standard Normals give zero. The inspected book has a plus-sign error and a missing constant; later teaching must use the corrected expressions.
 
-**Retrospective summary:** A correctly signed/scaled bound is an optimization objective; analytic checks and posterior/predictive queries expose errors that a stochastic loss trace alone can hide, and amortization shares inference parameters across inputs.
+In this regression model q describes one shared set of weights for the entire dataset. Sum the full-data likelihood contributions and include the prior KL once, not once per observation. State predictive mean and variance, adding observation noise separately from coefficient uncertainty. This known model allows exact objective and posterior/predictive checks, rather than relying on a noisy loss trace.
 
-### Extent and first cut
+Briefly explain **amortized inference**: one shared map can return an approximate posterior for each new observation, avoiding a separate optimization each time. The current notebook has one global weight posterior, not a per-row encoder. L12 constructs that shared map; no network or new gap derivation is required here.
 
-**100 substantive + 12 reserve = 112 live minutes**, including summaries/transitions; separate 60-minute lab. **Tight, unmeasured; confidence medium-low.** Novel chains are diagonal reverse-KL geometry and a total pathwise derivative, with CAVI only a bounded application. L06's proof and L01 Gaussian algebra are carried support, not new coverage. Provisional calibration: `K=5`, `P≈10–14`, `E_new≈12–15`, `E_carry≈14–22`, `E_deriv≈10–14`, `V≈6–8`; prototype `S_hat≈24–30`, a warning signal rather than a slide target. L01's 61-content-slide judgment is not a measured rate for stochastic differentiation.
+**End summary:** Correct signs and scaling define the intended objective. Exact probability queries reveal errors a training trace can hide; sharing inference across inputs is a later extension.
 
-**First cut:** remove the six-minute numerical CAVI sweep, retaining its update rule and Gaussian factor interpretation. This yields about 106 minutes; no lab dependency changes. Retain the core pathwise derivation, correlation/query comparison and correct KL. No required mathematics moves to an unapproved recording. Later Section Design/rehearsal must return a Scope-owned repair if core depth cannot fit.
+### Time estimate and what to shorten first
 
-## 2. Mathematical spine
+The five parts total **100 substantive plus 12 reserve =112 live minutes**, with a separate 60-minute lab. The estimate is tight and unmeasured, with medium-low confidence. The main new derivations are diagonal-approximation geometry and the total derivative through random draws. Earlier Gaussian algebra and L06's bound proof are reused.
 
-Model hyperparameters are fixed; unknown regression weights `w` are latent. Variational parameters are `psi=(m,rho)`, `s_j=exp(rho_j)>0`; `q=N(m,diag(s²))`. Natural logarithms throughout.
+First remove the six-minute numerical coordinate-update sweep, keeping the rule and Gaussian-factor interpretation. The result is about 106 live minutes and leaves the lab unchanged. Preserve the pathwise derivation, correlation/query comparison and correct KL. No required material moves to a recording without a decision.
+
+The later-author extent counts are `K=5`, `P≈10–14`, `E_new≈12–15`, `E_carry≈14–22`, `E_deriv≈10–14`, `V≈6–8`: main parts, substantive source pages, new equation families, repeated support, intermediate algebra and visual groups respectively. The rough model predicts 24–30 content-slide equivalents. This is neither a target nor validated time. L01's 61-slide judgment does not measure the pace of stochastic differentiation; check actual explanations during section design and rehearsal.
+
+## 2. Mathematical spine — the results students will use
+
+There are three different sets of parameters. The model's noise and prior settings are fixed. w denotes unknown regression weights. `ψ=(m,ρ)` denotes the parameters we optimize to adjust q: means m and log standard deviations ρ. Thus `s_j=exp(ρ_j)>0` and `q=N(m,diag(s²))`. Squaring s is essential: s is standard deviation, while `diag(s²)` is covariance.
+
+For the exact Gaussian target, a is its mean, S its covariance and `Λ=S⁻¹` its precision, the inverse covariance. D is the diagonal covariance of q. `⊙` means element-by-element multiplication; `J_g` is the derivative matrix of the sample transform. F is the lower-bound objective, H(q) is entropy and all logarithms are natural. The two KL uses are different: KL to the posterior measures approximation error; KL to the prior appears in the computable training objective.
+
+In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth / delivery and role |
 |---|---|
@@ -97,25 +115,23 @@ Model hyperparameters are fixed; unknown regression weights `w` are latent. Vari
 | Known-noise regression `w~N(0,I)`, `y|w~N(Xw,sigma_y² I)`; exact `S=(I+X^T X/sigma_y²)^{-1}`, `a=S X^T y/sigma_y²` | **Recall/Apply**, Live B/Notebook, L01 LGS. Prior/noise fixed, no unknown scale or parameter-fitting E/M loop. |
 | Prediction at feature vector v: mean `v^T m`, variance `sigma_y²+v^T Dv`; exact uses a,S | **Apply/Work**, Live B/E and Notebook. Distinguish latent-mean uncertainty from future-observation uncertainty. |
 
-## 3. Notebook handoff — one 60-minute diagonal Gaussian fit
+## 3. Notebook handoff — what students do and what is supplied
 
-**Selected anchor:** known-noise Gaussian regression with supplied correlated synthetic design/data; B2 §10.1.2 geometry and §10.2.1 reparameterization, adapted from the inspected regression reference. One optimized diagonal Gaussian, analytic exact posterior and analytic best-diagonal oracle; **no required HMC, second full-covariance optimization or Pyro**. Parameter dimension is small; supplied data/seed/model constants are frozen and checked in the later worked solution. The tiny two-row example below is a mathematical oracle, not the entire student dataset.
+**Student endpoint:** Fit one diagonal Gaussian weight distribution by differentiating through random draws, then compare its posterior and predictions with exact references. Use a small, supplied synthetic regression design with known noise. The tiny two-row example in Part 4 checks the mathematics but is not the complete student dataset. Freeze/check the actual data, seed and constants when building the worked solution.
 
-The lecture supplies the bound, mean/scale parameterization, entropy/prior KL and pathwise derivative. Students reuse PyTorch tensors, loss/backward/update and NumPy solves. The lab adds a stochastic **latent draw** to familiar training mechanics, preserves gradients through the scale/mean transform, and evaluates covariance/predictions. Full-data likelihood avoids another minibatch-scaling implementation; minimize negative F, including one analytic prior KL. Supply data, initialization, optimizer configuration, bounded driver, analytic-reference routines and plots. Students own reparameterized sample/objective assembly and one fixed-noise analytic/autograd gradient comparison; no custom data loader, inference-network class or generic distribution library survey.
+**Supplied:** data, initialization, optimizer settings, a bounded training driver, plotting code, an exact Gaussian posterior routine and the analytic best diagonal reference. **Students complete:** the sampled coefficient transform and objective; one gradient check using fixed supplied noise draws; interpretation of the learned means, covariance and predictions. Reuse PyTorch tensors/backward/update and NumPy linear solves. There is no new data loader, generic distribution-library survey, Pyro, required Hamiltonian sampler or second full-covariance fit.
 
-| Required work, including refresh | Minutes |
-|---|---:|
-| PyTorch refresh: shapes, requires-grad, zero/backward/update; distinguish psi from sampled w | 10 |
-| Complete one reparameterized objective and check gradient at supplied fixed base-noise draws | 15 |
-| Fit diagonal q using supplied bounded stochastic driver; inspect exact objective diagnostics | 12 |
-| Compare learned m/D with exact a/S and best-diagonal oracle | 10 |
-| Interpret supplied predictive variance/interval comparisons in two directions | 8 |
-| Debugging/retrospective reserve | 5 |
-| **Total** | **60** |
+Minimize negative F. Use the full-data likelihood and one analytic prior KL. Sum observation likelihood contributions; average over latent draws. Preserve gradients through both mean and scale. The supplied fixed-noise analytic/autograd comparison must check the actual finite sampled objective, not claim it equals an expectation without sampling error.
 
-Durable skill: **differentiate an expectation through a sample transform and judge the resulting distribution against an exact query reference**. Distinguish optimization residual from family error; stochastic training trace need not be monotone. A supplied exact Gaussian objective checker is diagnostic, not a second deterministic training exercise. First lab cut is a repeated fit/extra noise-sample comparison if added later; preserve refresh, gradient check and query interpretation. No promised exact learned numbers, convergence tolerance, iteration duration or runtime pass. Later authoring must validate the worked solution, student extent, clean local uv and hosted Colab. Reference outputs and source inspection prove none of those gates.
+The 60-minute budget is: 10 minutes PyTorch/shape refresh, including the difference between ψ and sampled w; 15 assembling the transform/objective and checking gradients; 12 running the supplied fit and inspecting exact objective diagnostics; 10 comparing learned, exact and best-diagonal distributions; 8 interpreting predictive variance/intervals in two directions; 5 reserve.
 
-## 4. Concrete examples and provenance
+A stochastic trace need not improve each step. Use the best diagonal reference to separate fitting error from family error. The exact objective checker is diagnostic, not a second deterministic training exercise. If extra repeated fits or noise-sample comparisons are added later, remove them first. Preserve the refresh, gradient check and probability-query interpretation.
+
+No learned values, convergence tolerance, iteration time or execution pass are promised. Later authoring must validate the worked solution, student workload, clean local uv execution and hosted Colab. Inspecting reference outputs is not evidence for those gates.
+
+## 4. Concrete examples and their sources
+
+These examples keep every numerical check in a problem we can solve independently. First, correlated Gaussian coefficients reveal the uncertainty lost by an independent approximation. Second, a tiny regression design realizes that same posterior. Third, a scalar derivative check catches a wrong entropy or scale sign. “Oracle” means the exact answer used to test a calculation. Automatic differentiation is abbreviated AD; a Gibbs sample would be a random conditional draw, unlike the coordinate distribution update here.
 
 **Correlated Gaussian, Work/Live B and reused D/E.** Course-constructed target mean zero, `S=[[1/2,2/5],[2/5,1/2]]`; determinant `9/100`, precision `Lambda=[[50/9,−40/9],[−40/9,50/9]]`. Best diagonal covariance is `D=(9/50)I`, versus exact marginal variances `1/2`; minimum reverse KL is `(1/2)log(25/9)≈0.510826` nats. Direct rational arithmetic checked these values. B2 Fig. 10.2 supplies the phenomenon, not these parameters or claims of source figure replication.
 
@@ -127,11 +143,24 @@ For `v=(1,1)`, exact latent predictive variance is `9/5` versus diagonal `9/25`;
 
 About 6–8 selected conceptual visual groups support family geometry, rotated versus diagonal uncertainty, sample-transform dependence, one gradient calculation, coordinate factor interpretation and posterior/predictive comparisons. No source asset reproduction or generated figure is required at Scope stage.
 
-## 5. Lecture contract
+## 5. Lecture contract — what this proposal commits to
 
-**Start:** L01 Gaussian/LGS and numerical checks; L02 sufficient statistics; L05 AD/SGD; L06 ELBO identity; L07/L08 query and exact/approximate distinctions. **Goal:** optimize and assess a restricted posterior without differentiating a parameter-dependent expectation incorrectly. **Lecture endpoint:** reverse-KL diagonal geometry, one total Gaussian pathwise gradient and bounded CAVI interpretation. **Lab endpoint:** one checked diagonal Gaussian regression posterior with exact covariance/predictive references. **No required recording.** Estimated 112 minutes live and 60-minute lab.
+**Starting knowledge:** Gaussian conditioning and regression from L01; L05 differentiation/training and PyTorch; L06's posterior-approximation identity. L07/L08 provide context about approximate versus exact computation. No L10 sampling theory is assumed.
 
-Supported outcomes: explain restriction/optimization errors; interpret directed KL and query-specific uncertainty loss; derive the diagonal Gaussian sample transform/ELBO gradient with correct regularity and direct terms; recognize a coordinate factor update; implement and assess one reparameterized objective. No general VI solver, encoder or HMC mastery is claimed.
+**Main question:** How do we fit and evaluate a simpler posterior distribution when exact inference is difficult? **Lecture endpoint:** explain the chosen family/objective, calculate its Gaussian limitation, derive differentiable sampling gradients, recognize coordinate factor updates, and check a correctly signed/scaled objective against predictions. **Notebook endpoint:** one diagonal fit with gradient and exact-reference checks. The estimate is 112 live minutes plus 60 lab minutes; there is no required recording.
+
+The core new mathematics comes from selected B2 §§10.1.1–10.1.2, §10.2.1.1 and §§6.3.3/6.3.5.2. Coordinate updates are a short application of §§10.3–10.3.1. The generic bound proof belongs to L06, and the shared neural inference map belongs to L12.
+
+**What is left out, and the lost capability:** Students do not fit richer correlated, low-rank or flow-based distributions, so they cannot use this lab to repair lost correlation. They do not fit the source's real-data unknown-noise model or compare it with advanced sampling. They do not derive alternative noisy-gradient estimators, natural-gradient methods, automatic variable-transform systems, broad variational-EM examples, image-model coordinate solvers or other approximate-inference frameworks. These specialist extensions are deliberately omitted, not future recording obligations. L10 owns Monte Carlo variance and dependent-chain analysis; it recognizes Hamiltonian sampling but omits its full theory. L11 introduces nonlinear networks; L12 builds shared encoders/decoders and the autoencoding application.
+
+**Choices and risks:** Synthetic known-noise data lose the GDP narrative but protect exact checking and the one-hour lab. A prepared GDP variant is possible after data/model validation; keeping the complete unknown-noise/sampler comparison is a larger change. Total differentiation and covariance interpretation may be slow: cut the optional coordinate sweep first. The ten-minute PyTorch refresh and supplied diagnostics are necessary; if they take longer, remove extra runs and software burden before weakening the mathematics.
+
+**Record updates:** Narrow broad Chapter 10/§10.4 promises to this selective coverage, without changing delivered ledger history. Merely recognizing shared inference does not count as teaching it. L12 can rely on the Gaussian sample derivative and correct KL, but must establish its own neural inference model.
+
+<details>
+<summary>Exact source allocation for checking the syllabus and material ledger</summary>
+
+This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / boundary |
 |---|---|
@@ -141,8 +170,6 @@ Supported outcomes: explain restriction/optimization errors; interpret directed 
 | **Deferred, named owners** | MC variance/dependent-chain analysis → L10; HMC recognition/mechanics there, full HMC theory omitted; nonlinear networks → L11; amortized encoder/decoder, VAE specialization and joint training → L12. |
 | **Omitted by course decision** | Full real-data unknown-noise/HMC comparison; full-covariance optimizer; low-rank/flow family implementation; natural gradients, ADVI transforms/Jacobian catalogue, control-variate/score estimator derivations, stochastic-variational-EM/VBEM model catalogue, Ising CAVI solver, EP/wake-sleep, semi-amortized inference, IWAE and normalizing flows. These are not hidden future obligations. |
 
-Coordinator should narrow blanket Ch. 10/§10.4 syllabus promises and record selective proposed coverage, preserving actual delivered ledger boundaries. Recognition does not mark amortized inference or structured families substantively taught. L12 may rely on pathwise differentiation and correct Normal KL but must establish its own neural amortization and VAE model contract.
+</details>
 
-**Questions/risks for consolidation:** (1) **Scope owner/advisory, medium:** synthetic controlled regression provisionally replaces the real GDP narrative to protect exact-reference mathematics and one-hour extent. A prepared known-noise GDP variant is viable after data/model validation; preserving the source unknown-noise/HMC model is a larger scope change. (2) **Scope owner/advisory:** total differentiation and covariance interpretation are tight; optional CAVI sweep is first cut. (3) **Notebook owner/downstream-owned:** include the ten-minute PyTorch refresh and supplied exact diagnostics; optimizer noise or slower refresh should reduce extra runs/scaffolding load before changing required math. No runtime evidence exists.
-
-**Next owner:** Instructor oversight of this reviewed proposal. Subsequent Section Design requires human acceptance; its execution backpressure returns to the nearest owning stage. Review and approval provenance are in the registry. No rehearsal, notebook runtime or hosted Colab validation is implied.
+**Next owner:** The instructor reviews the proposal's choices and explanations. Detailed section design follows acceptance. If later writing or rehearsal cannot meet the stated commitments, return the affected choice to Lecture Scope. The [registry](../course_architecture_scope/STATUS.md) holds review evidence. This document does not establish notebook runtime, Colab readiness or measured teaching time.

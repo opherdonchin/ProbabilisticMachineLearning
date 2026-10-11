@@ -1,3 +1,15 @@
+# L11 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Neural prediction: learn a mean and a noise level. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** A small network predicting a mean and noise scale is a coherent reuse of L05. Standard deviation and variance must remain distinct. The comparison model needs the same data split, and output intervals describe observation noise, not a posterior over network weights.
+
+## Original independent review and later technical check records
+
 # L11 independent Section Design feasibility review
 
 **Stage/mode:** Section Design / `feasibility-review`, preview only. **Reviewer:** actual specialist thread `/root/review_l11`, distinct from builder `/root/build_l11`; dispatched by `/root` on 2026-10-11. **Target:** `Lectures/L11_Neural_Prediction/lecture_scope.md`, Git blob `0c564a7e5b1fd308282ab2ea6488927a44bc890a`, verified before and after review. **Architecture input:** contract v3, blob `54064183398bd643a895c5e38a023f793dc2d9d6`, verified. Builder was stopped at handoff. This report is the reviewer's raw assessment, not coordinator synthesis or approval. Only this report was authored; no scope, section partition, slides, notebook, shared allocation, approval or commit was produced.

@@ -1,3 +1,15 @@
+# L03 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Graphical models: local calculations in a large model. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** The probability calculation and simpler image update are defensible. The main risks are explaining what graph-based independence does and does not imply, and providing enough code so the lab focuses on the pixel calculation. A locally improved image is not guaranteed to be the best whole image.
+
+## Original independent review and later technical check records
+
 # L03 independent Section Design feasibility review
 
 **Reviewer role:** Section Design specialist. **Mode:** `feasibility-review` only. **Reviewer thread:** `/root/review_l03`, distinct from Scope builder `/root/build_l03`. **Date:** 2026-10-11. **Branch checked:** `scope-l03-l12-course-architecture`.

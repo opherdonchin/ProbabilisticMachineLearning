@@ -1,3 +1,15 @@
+# L08 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Sequences: infer hidden states using repeated calculations. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** The hidden-state sequence calculation is feasible with supplied simulation and checking tools. A symmetric example can hide a wrong transition direction, so a second asymmetric test must be supplied. A best whole history can differ from the separate most likely states; continuous forecasting is not also a full lab.
+
+## Original independent review and later technical check records
+
 # L08 independent Section Design feasibility preview
 
 **Role/mode:** Section Design specialist, `feasibility-review` only. **Reviewer thread:** `/root/review_l03`, distinct from Scope builder `/root/build_l05`. **Date:** 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`.

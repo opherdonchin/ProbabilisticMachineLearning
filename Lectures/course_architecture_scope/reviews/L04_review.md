@@ -1,3 +1,15 @@
+# L04 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Information theory: what survives a noisy message?. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** The original reviewer checked the larger five-bit code and found its single-error-correction guarantee valid. The instructor has since selected the lighter three-bit parity model. That new model cannot inherit the old correction claim: it detects an error but can leave several originals possible. The current revision check is recorded separately in STATUS.
+
+## Original independent review and later technical check records
+
 # L04 independent Section Design feasibility review
 
 **Role/mode:** Section Design specialist, `feasibility-review` only. **Reviewer thread:** `/root/review_l03`, independently dispatched for L04 and distinct from builder `/root/build_l04`. **Date:** 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`.
@@ -70,3 +82,18 @@ No current blocker justifies replacing the five-bit endpoint or narrowing the pr
 Lingering risks are actual entropy/KL fluency after L02, the 16-minute proof bridge, zero-probability/axis scaffolding, unequal-use interpretation and future L12 reconciliation. Neither a live rehearsal nor a student-workload trial was performed. No clean uv, hosted Colab, reference runtime, noise-curve notebook execution, full student adaptation or cross-course final audit was run. The rational calculation is a bounded mathematical check, not implementation validation. Future execution backpressure may require revision despite this favorable preview.
 
 **Blockers/approval:** no unresolved blocking Scope objection identified. Coordinator owns any agent-approved/instructor-pending designation after reconciliation and the consolidated instructor questions, including the selected five-bit adaptation. This reviewer grants no approval and does not interrupt the instructor.
+
+
+## Independent targeted check: instructor-selected three-bit revision
+
+The smaller example is feasible with risks and is mathematically correct with its stated limitation: it detects one changed bit but cannot always recover the original message. For received `100`, three originals can each explain the observation through a single flip. The five-bit correction exercise is now reference material, rather than a required student calculation.
+
+**Reviewer/mode:** `/root/readability_check`, Section Design `feasibility-review`, 2026-10-11; independent of the current scope writers and coordinator. **Exact new target:** `Lectures/L04_Information_Theory/lecture_scope.md`, Git blob `2299ca6e5a0ab901da3fbb8e85cfb5546910f1c4`, matched before and after the closing check. Baseline scope at commit `39446b5d0fc520a690ed612f0845203ed8d02498` had blob `6b008770631926f61e51d838a126651c2200466e`. The original report above reviews the older five-bit example and remains unchanged. It is not approval of this new target.
+
+**Verdict:** `feasible-with-risks`, no demonstrated blocker. The [full revision check](readability_revision_review.md) records the readable explanation, exact shared inputs and numerical comparisons. No instructor acceptance, measured duration, downstream section design or notebook validation is implied.
+
+I read the new five-part scope and shared syllabus, plan, ledger, notebook record, planning decisions, course overview and teaching questions. All select the three-bit parity model and its uncertain-decoding outcome. The unchanged information/proof commitments and the 110-live/60-lab budget remain feasible as a preview. A 4×8 table reduces bookkeeping without adding new content to the allowance. Conceptual interpretation, ties and zero-probability handling still need teaching trials.
+
+**Independent source/arithmetic evidence:** Read the actual fixed-reference pyprobml notebook (SHA-256 `b557bf8b97488541d1f11b88a6b92ad172b0f4d7501de8c92fe00f634ba04cd1`) and Murphy's printed pp. 251–252 in the registered extracted Book 2 text. Rebuilt the channel using exact fractions over all 32 message/received pairs. Every row and marginal normalized; every pair of valid words had distance two; every single flip violated parity. At alpha=1/5, posterior for `100` is `(16,1,16,16)/49`, and for `000` is `(16,1,1,1)/19`. Both mutual-information formulas agree at `0.8002938129331385` bits/message. Optimal whole-message error is `9/25`, equal to uncoded transmission's error at this noise level. Coded/uncoded information per use is approximately `0.266765/0.278072` bits. No-flip and half-noise endpoints agree with the scope, including undefined posteriors for impossible zero-noise observations. The stronger optional five-bit construction has minimum distance three; that correction guarantee is not attributed to parity alone.
+
+**Limits and ownership:** Mathematical correctness and probability conventions are author/reviewer responsibilities. Only the choice of the lighter teaching example was instructor-agreed. The smaller model is not a false statement used for convenience; it is a correctly described model with a weaker outcome. No course notebook was authored or executed, and neither the source software stack nor source figures were validated by this arithmetic check. Remaining classroom/software load belongs to later authoring and rehearsal; return a real scope change if core reasoning does not fit.

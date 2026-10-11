@@ -1,141 +1,137 @@
-# Questions and hesitations for instructor oversight
+# Teaching choices for instructor review
 
-**Status:** Completed autonomous proposal for instructor oversight, 2026-10-11. All ten scopes have actual independent feasibility reviews; a separate adversarial course review found no architectural blocker. Every resolution below is agent-approved / instructor-pending under WORK_ORDER. Exact final artifact identities and approval provenance live in [STATUS](STATUS.md), rather than this human decision report.
+This file explains the choices in the proposed course. It assumes familiarity with probability and the material through lectures 3–4. You do not need to know Murphy's later chapters to read it.
 
-## L03 — What should the first restoration algorithm claim? (medium)
+The instructor has agreed to the simpler image-restoration method in L03 and chosen the lighter coding example in L04. Those decisions are recorded below. The remaining choices are still proposals. The instructor has paused further decisions while the documents are rewritten; nothing here asks for an immediate answer. [Review records and exact versions](STATUS.md) are available separately.
 
-**Question:** Accept deterministic coordinate restoration as the image endpoint before formal VI/MCMC?
+## L03 — Restore an image by improving one pixel at a time
 
-**Evidence:** The actual Murphy notebook uses Gibbs/mean-field, requiring later mathematics, and has inconsistent noise scaling. The course square has a verified coordinate-stable state whose posterior score is below exact joint MAP. Its local conditional is sound; its local decision is not a posterior sample or a marginal.
+**Decision agreed:** Use the simpler method, even though it differs from Murphy's algorithm.
 
-**Provisional resolution:** Keep image restoration using explicitly sequential ICM, a tiny enumeration oracle, and the nonglobal-optimum counterexample. All image construction, boundary handling, sweeps and plotting are supplied; students own the local mathematical computation.
+Imagine a noisy black-and-white image. We give a proposed clean image a score that rewards agreement with the observations and agreement between neighboring pixels. Students work out how to update one pixel while holding its neighbors fixed. Repeating this operation gives an accessible connection between the graph, the probability model and an actual computation.
 
-**Alternatives and cost:** Exact tiny-image enumeration removes algorithmic risk but loses the larger image application. Teaching Gibbs/mean-field now would take primary derivations from L09/L10 and overload L03. Optional five-minute Gaussian precision comparison is the first cut; it is not a required outcome.
+The limitation is easy to state: the algorithm can get stuck at an image where no single-pixel change helps, even though changing several pixels would produce a better image. A tiny example demonstrates this. We therefore describe the output as an improved candidate image, rather than claiming it is the best possible image or a description of all posterior uncertainty.
 
-**Review evidence:** [L03 scope](../L03_Graphical_Models/lecture_scope.md), [independent review](reviews/L03_review.md), exact scope blob f4dab507f90618362c2e04c1c3791c8139f7de56. No blocker; CI pace and lab scaffolding remain downstream timing risks.
+Murphy's methods use sampling or approximate probability distributions. Their mathematical explanation belongs later in the course. The simpler choice keeps L03 focused on understanding how a graph makes local calculations possible. [L03 scope](../L03_Graphical_Models/lecture_scope.md).
 
-## L04 — Preserve real error correction with an adapted code? (medium)
+## L04 — Add one check bit to a two-bit message
 
-**Question:** Accept the course-constructed five-bit channel example rather than reproducing the textbook's three-bit XOR code?
+**Decision selected:** Use the lighter example. Reference a stronger error-correcting code rather than making it the required exercise.
 
-**Evidence:** The XOR source is a detection/ambiguous-decoding example; it cannot guarantee single-error correction. Our code c(m)=(m1,m2,m1,m2,m1 XOR m2) has minimum distance three. Independent arithmetic verifies all one-flip cases, ambiguous multiple-error posteriors, MI and Bayes block risk. A decoding guarantee is separate from average error or information per channel use.
+Suppose we want to send two bits. We append a third bit that says whether the first two differ. The receiver can check whether the three received bits satisfy this rule. If exactly one bit changes during transmission, the check fails. This detects the error, but does not tell us which bit changed: several original messages can explain the same received result.
 
-**Provisional resolution:** One five-bit noisy-channel lab. Keep source coding at stated entropy/prefix-length bounds, MI identity at derivation depth and DPI at proof-sketch depth. Complete probability tables and noise curves belong to the lab; no second coding lab, capacity theorem or full information bottleneck.
+Students can still calculate the probability of each possible message and make a best guess. Ties and mistaken guesses are part of the lesson. The example illustrates the difference between detecting a problem, extracting useful information and guaranteeing a correct decision. The stronger five-bit construction can correct any single-bit error, but costs more transmission and more classroom explanation.
 
-**Alternatives and cost:** Retain source XOR as an optional two-minute contrast, or replace the entire operational endpoint with source compression. The latter changes the practical skill and would require a new scoped review. Shorten the sufficiency recall before cutting MI/DPI; use a finite candidate-parameter framing or only the CI interpretation, never a discrete-entropy substitution for a continuous Beta parameter.
+We will keep the lighter model mathematically honest: it is a valid model with a limited guarantee, rather than an incorrect claim of guaranteed correction. This choice reduces the calculation from 32 possible received strings to eight. [L04 scope](../L04_Information_Theory/lecture_scope.md).
 
-**Review evidence:** [L04 scope](../L04_Information_Theory/lecture_scope.md), [independent review](reviews/L04_review.md), reviewed substantive blob 242ee28d251d583004daa25379b6a0f8cb44d622. No blocker; probability-table axes, support and zero-log handling require supplied helpers and a later student timing trial.
+## L05 — Learn both a model and the machinery for fitting it
 
-## L05 — How much first-exposure mathematics fits with PyTorch? (high)
+**Important teaching choice still open:** Is this combined first encounter manageable?
 
-**Question:** Is the combined family/gradient/AD endpoint the right use of the tightest early lecture?
+Linear regression predicts a numerical outcome. Logistic regression predicts the probability of a yes/no outcome. A Poisson model predicts a count. L05 explains how these share a common structure, called a generalized linear model, and how to change the model's parameters to improve its fit.
 
-**Evidence:** L05 budgets 115 minutes including 12 reserve for substantive Gaussian/Bernoulli/Poisson unification, one dispersion-correct canonical gradient, a short vector softmax application, a complete reverse-mode graph and minibatch SGD. Its independent review found no mathematical/source blocker, but judged live and first-PyTorch 60-minute workload tight and unmeasured.
+Students also encounter automatic differentiation: software follows a calculation and computes its derivatives. PyTorch is the new library used for this. The notebook fits a model that assigns probabilities to the three Iris flower species. Students compare a hand-calculated derivative with the software's answer, then make repeated parameter updates.
 
-**Provisional resolution:** Preserve the common GLM family and complete reverse graph; do not derive three separate family gradients. Give data, train/test split, standardization, indexing and plots; students check manual versus automatic gradients and one visible SGD cycle. No DataLoader tutorial, optimizer catalogue, Hessian/IRLS or Bayesian GLM inference.
+**Current proposal:** Keep one common derivation and one complete example of automatic differentiation. Provide the data preparation and plotting code. Do not require students to learn a large software framework or derive the same result separately for each distribution.
 
-**Alternatives and cost:** Remove the optional MAP/numerical-probit/repeated-application package first (estimated 6–8 minutes, not measured). Removing a core gradient or AD explanation would weaken later VI/neural/VAE work. Restoring a standalone GLM meeting would require displacing a whole accepted lecture; the autonomous proposal does not make that change.
+**Tradeoff:** This supports the neural-network lectures later, but combines new mathematics and new software in one meeting. We estimate 115 minutes of lecture, including time for questions, plus a 60-minute notebook; neither has been timed with students. Extra model examples and optional penalty calculations should be removed first if the lecture is too full. Separating the topics into two meetings would require replacing another lecture. [L05 scope](../L05_GLM_Optimization/lecture_scope.md).
 
-**Review evidence:** [L05 scope](../L05_GLM_Optimization/lecture_scope.md), [independent review](reviews/L05_review.md), reviewed substantive blob 736943b90f24826e29955115896929742f2961f5. Later actual L02 delivery and software retention must be checked; scope approval is not runtime validation.
+## L06 — Learn a distribution when some measurements are missing
 
-## Shared protected-prerequisite and publication gates
+**Choice still open:** Use missing measurements, or use medical-image tissue classification?
 
-L02's agreed section contract is protected, but it is not recorded as delivered. Its malformed/stale development-state register is not evidence of new approvals. Reconcile the actual taught boundary before teaching these scopes; do not retrospectively alter L01/L02 to conceal backfill. All future labs require separately authored validated solutions, clean local uv execution and fresh hosted Colab runs before publication. Source inspection and small mathematical arithmetic checks do not establish student timing, source-output reliability or Colab compatibility.
+In L01, students inferred missing measurements when the Gaussian model was already known. L06 asks a harder question: how do we estimate the model itself from incomplete records?
 
-## L06 — Gaussian uncertainty or biomedical mixtures? (medium)
+The proposed method alternates between estimating the missing quantities using the current model and updating the model using those estimates. This is expectation-maximization, usually called EM. Importantly, we must retain uncertainty about a missing value. Simply filling every blank with a best guess gives the wrong calculation for learning the covariance.
 
-**Question:** Prefer the deep missing-Gaussian EM example over the MRI segmentation candidate?
+**Current proposal:** Make this the single worked application and notebook. It builds directly on L01, so the new difficulty is the learning method. Briefly explain how the same idea assigns observations to possible groups.
 
-**Evidence:** The inspected Gaussian reference hides fitting in a helper, while L06 now exposes first and second conditional moments, a verified complete EM iteration and the exact monotonicity conditions. It naturally extends L01's known-parameter inference to learning unknown parameters. A full GMM update plus MRI preprocessing would add a second application and more implementation burden.
+**Alternative and cost:** Use a mixture of Gaussians to separate types of tissue in an MRI image. That gives a stronger biomedical application but adds data preparation and group-assignment calculations. It should replace the missing-data lab, rather than become a second required lab. [L06 scope](../L06_EM/lecture_scope.md).
 
-**Provisional resolution:** Gaussian EM lab with supplied driver and data/mask checks; mixture responsibilities are a short illustration, not full GMM fitting. Expected second moments include posterior covariance. Exact E-step tightness is essential; approximate q only gives a lower bound and does not inherit likelihood monotonicity.
+## L07 — Check how much a convenient posterior approximation loses
 
-**Alternatives and cost:** Substitute MRI/GMM as the primary case, with a new worked solution and scoped review; it gains biomedical interpretation but loses the uncertainty-preserving missing-data thread. Do not quietly retain both. Optional numerical mixture illustration is a six-minute first cut.
+**Choice still open:** Keep a small example where the answer can be checked thoroughly?
 
-**Evidence:** [L06 scope](../L06_EM/lecture_scope.md), [independent review](reviews/L06_review.md), reviewed substantive blob 326267281c6b6775ac9a33d7ed4f022a859fc49b. Data-level SPD and sufficient co-observation remain later implementation checks, not proven by symbolic formulas.
+A posterior may be awkward to integrate. One shortcut replaces its shape near its highest point by a Gaussian; this is the Laplace approximation. It can be useful without being accurate everywhere.
 
-## L07–L08 — Which exact computations earn deep treatment? (high for L08 practical choice)
+**Current proposal:** Use a logistic model with just one unknown parameter. Students calculate the posterior on a fine grid and compare it with the Gaussian shortcut. They check both parameter summaries and predictions. They also widen the grid and make its spacing finer, because a numerical comparison is only convincing if the reference calculation is itself reliable.
 
-**Question:** Accept one controlled scalar grid/Laplace comparison and HMM forward/backward as the sequence core, replacing the preferred Kalman forecasting lab?
+**Tradeoff:** The small model makes errors visible and keeps the lesson focused. It does not show how the shortcut behaves in a large real-data problem. A bigger example would need a less easily checked reference and more code. [L07 scope](../L07_Inference/lecture_scope.md).
 
-**Evidence:** L07's fully specified logistic posterior has a finite unique mode from a proper prior, and independent arithmetic shows grid mean differs from the Laplace center. Domain widening and spacing refinement are required checks. L08's tiny exact HMM distinguishes path MAP from marginal modes and validates scaled recursions; a second full Kalman implementation would exceed the chosen one-algorithm budget. Oke forecasting questions and data were located, but the named solved notebook remains unverified.
+## L08 — Infer hidden categories or forecast a continuous time series?
 
-**Provisional resolution:** L07 controlled eight-observation benchmark; L08 HMM NumPy lab and compact Kalman reuse of L01 conditioning. Generic inference menus remain recognition, not hidden prerequisites for VI/MCMC. No JAX/Dynamax stack.
+**Important teaching choice still open:** Which should be the main sequence application?
 
-**Alternatives and cost:** Keep Berkeley's random scalar case but revalidate all outputs, or reverse L08's depth allocation: Kalman forecasting primary, HMM compact. The latter is a coherent alternative but removes the current full discrete-message/smoothing practice and requires new source/workload review. It is a real practical tradeoff, not an equivalent label change. Optional Beta/determinant illustrations in L07 and Viterbi mechanics in L08 are first cuts.
+One example is a sequence of die rolls where the die sometimes changes from fair to loaded. We see the rolls but not which die was used. A hidden Markov model represents this: a hidden state changes over time and produces observations. Students calculate the probability of each hidden state using observations before and after that time. Reusing intermediate calculations avoids listing every possible history.
 
-**Evidence:** [L07 scope](../L07_Inference/lecture_scope.md), [independent review](reviews/L07_review.md); [L08 scope](../L08_Structured_Inference/lecture_scope.md), [independent review](reviews/L08_review.md). Preserve checking work before extra plots or method comparisons. Neither lab is executed/timed here.
+A different example follows a continuously changing quantity, such as website traffic. A Kalman filter repeatedly predicts its next value and updates that prediction when a noisy measurement arrives. This builds on Gaussian conditioning from L01.
 
-## L06–L11 — Is exact checking worth the loss of empirical breadth? (high)
+**Current proposal:** Teach the discrete hidden-state calculation in depth and make it the notebook. Explain the Gaussian filtering connection briefly.
 
-**Question:** Retain controlled cases as the main computational progression, or restore one displaced domain application?
+**Alternative and cost:** Make Kalman forecasting the main application and shorten the discrete example. This is a coherent alternative, but it changes the mathematics students practise. The current proposal does not deliver the previously preferred forecasting lab. Teaching and implementing both fully would exceed the hour available. The forecasting questions and data were located; the named worked solution was not found. [L08 scope](../L08_Structured_Inference/lecture_scope.md).
 
-**Why/evidence:** The [adversarial review, C4](reviews/course_architecture_review.md) independently identifies the same tradeoff as the local reviews: missing-Gaussian EM replaces MRI segmentation, HMM messages replace forecasting, known-noise regression replaces GDP/unknown-noise VI-versus-HMC, and synthetic heteroskedastic prediction replaces broader neural applications. Method outcomes survive; these domain outcomes do not. Repeated Gaussian work changes the query or operation (conditioning, expected statistics, local approximation, restricted posterior, nonlinear likelihood), rather than repeating a proof.
+## L06–L11 — Small checkable examples or more real-data applications?
 
-**Provisional resolution:** Retain controlled comparisons and exact numerical oracles, then one real mobility application in L12. Formal syllabus and ledger remove the discarded domain promises.
+**Shared teaching choice still open:** Are we comfortable with the amount of deliberately simple data?
 
-**Alternatives/cost:** Restore one chosen domain by replacing that lecture's primary lab and rechecking its workload. Forecasting is the highest-priority alternative because it changes L08's algorithmic depth allocation. Restoring all applications would require more lab time or displacement of methods; it is not an optional plotting extension. This question groups the global breadth decision; the local entries above retain their distinct algorithm choices.
+The proposed examples make it possible to tell whether the mathematics and code are right. For instance, in L09 we know the exact regression posterior and can see what a simpler approximation misses. L11 uses simulated data whose noise level is known, so we can assess the model's learned uncertainty.
 
-## L09 — Which variational error should students isolate? (medium)
+The cost is less exposure to messy applications. The current course gives up the MRI lab, the Kalman forecasting lab and a regression application using economic data. L12 retains a real metropolitan-mobility dataset.
 
-**Question:** Prefer known-noise regression with exact and best-diagonal references over source GDP/unknown-noise/HMC?
+**Current proposal:** Keep the small checkable examples as the main progression. If one real-data application is especially important, replace the corresponding notebook and review its workload. Adding all discarded applications would require more time or removing methods elsewhere. This is a choice about the experience we want students to have, rather than a question about whether the algorithms are valid.
 
-**Evidence:** [L09 scope](../L09_Variational_Inference/lecture_scope.md) and [review including targeted HMC repair](reviews/L09_review.md) separate optimizer, family and sampling-estimator error. The reverse-KL optimum uses inverse diagonal precision, not marginal variances. A single total pathwise derivative includes direct parameter dependence. Source HMC would create a backward dependency on L10 and Pyro would add a stack.
+## L09 — Fit a simple distribution to approximate a difficult posterior
 
-**Provisional resolution:** One PyTorch diagonal-Gaussian fit with supplied reference/driver; ten-minute software refresh is included. CAVI is a bounded same-target application, not a second implementation. Analytic/autograd checks compare the same finite-draw likelihood-minus-analytic-KL estimator at fixed epsilon.
+**Choice still open:** Use a regression case with a known answer?
 
-**Alternatives/cost:** Unknown-noise empirical regression is more realistic but loses a clean exact reference and adds preprocessing/inference choices. A full CAVI/VBEM treatment displaces the pathwise spine. Optional numerical CAVI sweeps are first cuts, not required extra work.
+Variational inference approximates a posterior by fitting a simpler probability distribution. Here we restrict that approximation to a Gaussian with independent coordinates. This makes calculations easier, but it cannot reproduce posterior correlations.
 
-## L09–L12 — Can loss units and probability axes remain explicit? (high implementation gate)
+**Current proposal:** Use a regression model whose exact posterior is available. Students fit the simpler distribution and distinguish two failures: the fitting algorithm might not have reached its target, or the chosen distribution might be incapable of representing the answer. PyTorch computes derivatives through the random-sample calculation; the lecture explains why that is legitimate.
 
-**Question:** Accept the normalization contracts as binding worked-solution checks?
+**Alternative and cost:** Real economic data with an unknown noise level would be more realistic, but the answer becomes harder to check. Comparing against a sampling method before L10 would also require teaching that method early. [L09 scope](../L09_Variational_Inference/lecture_scope.md).
 
-**Evidence:** [Source inspection](source_inspection.md) and [adversarial C1/negative tests](reviews/course_architecture_review.md) expose errors that plausible learning curves cannot detect. L09 sums observation likelihoods and counts prior KL once; mean likelihood requires KL/N. L11's mean-loss Gaussian-prior coefficient includes N. L12 sums observed and latent event axes separately, then averages observations; source feature/latent means make source beta 4 equivalent to course coefficient 19, not course beta 4. L04 uses bits; later losses use nats. B2's printed pathwise-ELBO sign and Gaussian-KL constants require correction.
+## L10 — Show why correct sampling can still give poor estimates
 
-**Provisional resolution:** Carry exact axis/unit/variance conventions and matched-estimator gradient checks into the [notebook audit](../notebook_reference_audit.md). L12 held-out D averages event-summed NLL over q draws and weights batches by case count; mean-code reconstruction remains a separate visualization. Supplied beta comparisons must be freshly trained under the same course objective, splits, transforms and decoder variance.
+**Choice still open:** Keep the simplest sampling algorithm as the main implementation?
 
-**Alternatives/cost:** An equivalent rescaled objective is valid only if every term/coefficient is transformed together and stated explicitly. Reusing stored source fits without conversion is not defensible. These checks add supplied assertions/metric helpers, not a second student fit or extra hour.
+When integrals are difficult, we can estimate them by averaging samples. A Markov-chain sampler generates each sample from the preceding one. The proposed Metropolis–Hastings algorithm proposes a move and accepts or rejects it using a probability chosen to preserve the target distribution.
 
-## L10 — How much sampler theory is enough? (medium)
+A correct rule does not mean a short run has explored the distribution well. On a distribution with two separated peaks, the samples can stay in one peak for a long time. Estimates of the average or the probability of being in the other peak can then be poor.
 
-**Question:** Prioritize MH validity and observable mixing failure over a full HMC derivation?
+**Current proposal:** Have students implement this rule and compare proposal sizes and starting points. Explain the principle of Hamiltonian Monte Carlo—a method that uses derivative information to make longer, directed moves—without deriving or implementing it fully.
 
-**Evidence:** [L10 scope](../L10_MCMC/lecture_scope.md) and [review](reviews/L10_review.md) allocate 110 live minutes including reserve to IID error, stationarity/detailed balance, Hastings correction/rejection, bounded Gibbs and dependent-query error. The multimodal target makes start/proposal sensitivity visible. ESS cannot certify convergence and stuck chains need explicit diagnostic flags.
+**Alternative and cost:** A full Hamiltonian treatment would add equations of motion, a numerical integrator and its acceptance correction. It would require replacing part of the present theory and practical comparison. [L10 scope](../L10_MCMC/lecture_scope.md).
 
-**Provisional resolution:** MH is the single implemented kernel; Gibbs cancellation is bounded, HMC mechanics are recognition only. Full HMC theory is omitted consistently in L09/L10 and formal records.
+## L11 — Learn both a prediction and its observation noise
 
-**Alternatives/cost:** HMC as the main lab needs geometry, integrator/acceptance and additional software/theory, and loses the current mode-exploration comparison unless another topic is displaced. Remove optional numerical planning/NUTS/proposal elaboration first; return core overruns to Scope rather than accelerate the proof.
+**Choice still open:** Make this the first neural-network application?
 
-## L11 — What does a neural interval represent? (medium)
+A neural network replaces a fixed linear prediction rule with a flexible nonlinear one learned from data. The proposed model outputs both a predicted mean and a positive standard deviation. It can therefore learn that observations are more variable in some regions than others.
 
-**Question:** Retain conditional-noise learning as the neural endpoint without claiming posterior weight uncertainty?
+**Current proposal:** Fit one small network and compare it with a supplied simpler model. Students evaluate predicted probabilities as well as prediction error. The intervals describe variation of observations around the fitted prediction. They do not include uncertainty about the fitted network parameters themselves.
 
-**Evidence:** [L11 scope](../L11_Neural_Prediction/lecture_scope.md) and [review](reviews/L11_review.md) preserve positive-SD heads, correct Gaussian NLL/derivatives and Gaussian-prior/L2 scaling. The source standard-deviation law and variance law differ. A fitted-weight observation interval is not a Bayesian neural-network posterior interval.
+**Alternative and cost:** A Bayesian neural network could represent parameter uncertainty too, but needs another inference problem and more computation. Image-classification architectures would offer a different practical application, but lose the direct connection to Gaussian models and the final lecture. [L11 scope](../L11_Neural_Prediction/lecture_scope.md).
 
-**Provisional resolution:** One shallow PyTorch fit plus a supplied fixed-scale baseline/checkpoint, common split and training-only residual-scale estimation. AD/SGD are reused; total-variance interpretation is applied. No architecture zoo, dropout-as-inference, calibration survey or BNN implementation.
+## L12 — Describe mobility data using a few hidden coordinates
 
-**Alternatives/cost:** Adding posterior-weight inference or modern architecture theory requires a substantial replacement, not a renamed output band. One CPU fit and supplied fallback must be piloted; test data cannot select the run or checkpoint.
+**Important teaching choice still open:** Is this a suitable final application, with its limitations stated clearly?
 
-## L12 — How should mobility latent patterns be interpreted and distributed? (high)
+A variational autoencoder learns two connected networks. One describes each observation by a small distribution over hidden coordinates. The other uses those coordinates to predict the observation. Training balances faithful reconstruction against keeping the hidden distributions close to a chosen reference distribution.
 
-**Question:** Accept a standardized fixed-Gaussian mobility VAE as a descriptive application, conditional on portable, permitted data access?
+**Current proposal:** Use 19 metropolitan-mobility measurements and four hidden coordinates. Students complete the central probability calculation and train one small model. Supplied comparison runs show what happens when we change the balance between reconstruction and the restriction on hidden coordinates.
 
-**Evidence:** [L12 scope](../L12_VAE/lecture_scope.md), [review and targeted metric check](reviews/L12_review.md) and inspected instructor PS4 source specify 349 rows, 19 features, four latent coordinates and fixed decoder variance. Mixed-domain features are only approximately Gaussian after transformation. Rate decomposes into mutual information plus aggregate mismatch; positive rate need not imply informative codes. Latent coordinates are not identifiable causal or guaranteed disentangled factors. The local instructor source/data were inspected, not redistributed or run.
+**Limitations:** We approximate the transformed measurements by Gaussian distributions, although not all original quantities have Gaussian form. The hidden coordinates can summarize patterns, but we cannot claim they reveal unique causes or automatically correspond to meaningful independent factors. A nonzero training penalty alone does not prove they carry useful information about observations.
 
-**Provisional resolution:** Compact one-fit lab with supplied preprocessing, driver and fresh normalized beta comparisons; descriptive profiles and collapse/rate interpretation only. Expected-q distortion is distinct from encoder-mean visualization. Resolve data permission/portable delivery and CPU/checkpoint preparation before publication.
+**Alternatives and cost:** Synthetic or openly available data may be easier to distribute but would change the practical application. Modeling each type of measurement more faithfully would add several likelihoods and more code. Data access and permission to distribute the current dataset still need checking before a student release. [L12 scope](../L12_VAE/lecture_scope.md).
 
-**Alternatives/cost:** A synthetic or openly licensed tabular substitute reduces distribution friction but changes the empirical endpoint and needs a targeted Scope review. Support-respecting mixed likelihoods add modeling/implementation beyond this lab. Optional deterministic-AE/sign-flip/traversal extras are first cuts; multiple full beta fits remain supplied, not student requirements.
+## Work the authors must do, rather than questions for the instructor
 
-## Whole-course omissions and feasibility envelope (high if broader coverage is required)
+The authors must keep the formulas, probability conventions and software checks correct. Among other things, they must count data and penalty terms consistently, distinguish standard deviation from variance, and compare reconstruction errors using the same definition. These are not pedagogical decisions for you to settle. Details are in the [notebook checks](../notebook_reference_audit.md) and [source records](source_inspection.md).
 
-**Question:** Accept a selected methods spine rather than requiring every central-book extension or prior candidate application?
+The lecture budgets are estimates. Future notebook authors must provide the promised setup and helper code, then check clean execution locally and in Google Colab and try the tasks within an hour. None of those notebook runs or student timing trials has been done in this scope-writing phase. L01/L02's established material remains unchanged.
 
-**Evidence:** The [whole-course ownership matrix](architecture_audit.md) explicitly allocates or excludes Chapters 4–12, 15–16 and 21, plus Ch13 and §§6.6–6.9. [Independent cold review](reviews/course_architecture_review.md) found no necessary missing foundation or backward dependency. The ten inclusive budgets total 1117 live minutes, including 120 reserve, and 600 lab minutes; all estimates are unmeasured and most labs require supplied infrastructure.
+## The main decisions left for later
 
-**Provisional resolution:** Omit SMC, natural/advanced optimization, Bayesian optimization, transport, specialized graph inference, sparse/hierarchical GLM inference, full VI/HMC catalogues, broad calibration, BNN/GP/shift, architecture surveys and modern generative alternatives. No required recording is used to hide coverage. Preserve live load-bearing calculations and the one-lab boundary.
+The most consequential remaining choices are whether L05 combines too much new material, whether L08 should instead prioritize Kalman forecasting, how much realistic data we want across the course, and whether the L12 mobility application is appropriate and distributable.
 
-**Alternatives/cost:** Choose one omitted field and name the lecture/topic it replaces. A strict 100-minute delivery window, rather than the authorized upper 110–115-minute plans, requires scope backpressure and reallocation. Removing an optional lab rerun already outside the core creates no core margin. Rehearse sections and pilot L05/L08/L09/L12 before treating feasibility estimates as observed pace.
-
-## Executive oversight priorities
-
-The proposal is complete, with ten agent approvals supported by distinct specialist reviews and a separate adversarial pass; no unresolved architectural blocker remains. The highest-value human choices are L05's first-PyTorch density, HMM versus Kalman forecasting and the combined loss of empirical breadth, plus L12's descriptive likelihood/data-access assumptions. Timing, scaffolding/checkpoints and clean local uv/hosted Colab execution remain downstream production gates. Actual L02 delivery must be reconciled without rewriting its agreed contract. Instructor acceptance is still pending; this branch is not merged or released.
+The course also leaves out other substantial subjects. Examples include particle methods for tracking a changing hidden state, Bayesian neural networks that quantify uncertainty about weights, Gaussian-process prediction, and other ways of building generative models. These are worthwhile topics, but each would need to replace something in the 13-meeting plan. The [course overview](architecture_audit.md) explains the chosen progression and gives the detailed book map separately.

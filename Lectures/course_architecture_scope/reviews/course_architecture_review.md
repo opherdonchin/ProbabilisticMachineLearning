@@ -1,3 +1,15 @@
+# Whole-course review: explanation for the instructor
+
+This coordinator-written reading guide explains the independent report preserved verbatim below. The reviewer was a separate agent who had not built or individually reviewed the ten lectures. It first read the course without the coordinator's defense, then compared the other review evidence.
+
+The original conclusion was that the course could fit its declared upper time budgets, with risks. It found no essential missing prerequisite or accidentally repeated full proof. It did not claim that lectures had been rehearsed or notebooks tested.
+
+The main concerns are understandable without the book. Students need substantial supplied code to keep each notebook within an hour. Lecture time is tight and still estimated. The controlled examples lose MRI, forecasting and economic-data applications. The final mobility model describes patterns but does not establish causes. Its reconstruction comparisons must average over the inferred hidden distribution rather than merely decode its mean. Finally, the records must say which exact proposal was checked and distinguish agent review from instructor acceptance.
+
+The report below checked the earlier five-bit L04 example. The instructor has now selected three-bit parity instead, and asked for a plain-language rewrite of all documents. Current revision evidence is listed in [STATUS](../STATUS.md); old example claims are not current promises. The technical record is retained to make the original review reproducible, not to require the instructor to understand every algorithm name before making a decision.
+
+## Original independent report and final check of the earlier proposal
+
 # Independent adversarial whole-course feasibility review
 
 **Reviewer:** Lecture Scope specialist, actual thread `/root/course_adversary`, a fresh thread which did not build or individually review L03–L12. **Mode:** feasibility-review, bounded to the whole-course proposal; sole write ownership is this report. **Date:** 2026-10-11. **Target branch:** `scope-l03-l12-course-architecture`. **Checkpoint inspected:** `39ba5b50a40fa2af6dbc50ba69a059d637aa990d`. **Final verdict:** `feasible-with-risks`, unchanged from the cold pass; no demonstrated architectural blocker. This is review evidence, not agent approval or instructor approval.

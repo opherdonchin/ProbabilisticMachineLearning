@@ -1,129 +1,155 @@
-# L03–L12 whole-course architecture audit
+# How the proposed course fits together
 
-**Proposal:** agent-reviewed / instructor-pending, 2026-10-11. Branch `scope-l03-l12-course-architecture`. Instructor architecture: main `b78a7650bb09ae851e412089d98525f7b71275d9` (PR #8). Execution began at `906ce71dd9c8e29f3dede51ec809442a885354c9`. Exact scope/review revisions and gates are in [STATUS.md](STATUS.md). This audit owns allocation, dependencies and consistency; lecture-local scopes own their five-part intellectual commitments. No new scope is instructor-approved.
+The course teaches students to describe a problem with a probability model, work out what they want to know, and choose a computation that answers it. This overview assumes knowledge of probability and lectures 1–4. Book section numbers are lookup information near the end, not required background for reading the explanation.
 
-## Protected boundary and overall argument
+The instructor agreed to the 13-meeting course order and selected the simpler L03 image algorithm and L04 check-bit example. The remaining detailed choices await instructor review. [Teaching choices](questions_and_hesitations.md) explains the alternatives. [Review records](STATUS.md) separates instructor decisions from what agents have checked.
 
-L01's actual Gaussian/LGS deck, missing-data solution and delivered ledger remain unchanged. L02's agreed exponential-family/Markov-learning section contract remains unchanged and undelivered in accounting. Its malformed/stale development-state file is not treated as new authority. The contract assumes L02's promised results are taught before L03; reconcile actual delivery before implementation. No new lecture is assigned to L13 projects.
+## What each lecture adds
 
-The course moves from representations and information to fitted conditional models, hidden-data learning, inference and neural latent models. L03 asks what a factorization makes locally computable; L04 asks what information survives noise/processing; L05 learns a conditional model; L06 learns when sufficient statistics are hidden; L07 measures approximation error; L08 exploits exact structure; L09 restricts posterior families; L10 studies correct chains and unreliable finite estimates; L11 makes nonlinear conditional predictions; L12 learns a generative model and approximate inference map jointly.
+L01's established Gaussian material and notebook are unchanged. L02's agreed exponential-family and character-sequence work is also unchanged; it is not recorded as delivered. Before producing later teaching material, we must check what L02 actually taught. Its old process notes are not a substitute for that check.
 
-Repeated Gaussian objects have different jobs: L01 known-parameter conditioning, L06 unknown-parameter missing-data EM, L09 restricted approximation to a known-noise regression posterior, L11 nonlinear mean/scale prediction, L12 local latent-variable generation. These are deliberate reuse, not five independent Gaussian derivations.
-
-## Primary source ownership and treatment
-
-`Deep` means Derive/Prove/Work as specified in the scope; `bridge` means bounded State/Apply/recognition. Reading ranges do not promise every subsection. All allocations below are proposed future coverage, never changes to delivered dispositions.
-
-| Murphy Book 2 source / central concept | Primary owner and actual treatment | Named limit / exclusion |
+| Meeting | The new question | New ability students gain |
 |---|---|---|
-| 4.2 DAG factorization, d-separation, blankets | L03 compact recall/work; graphical entailment versus numerical independence | No full Bayes-ball, BN learning or causal calculus |
-| 4.3.1 positive MRF factors, energy, partition function | L03 deep tiny-square normalization | Positivity qualifies converse Markov equivalences; potentials are not CPDs |
-| 4.3.2.1 Ising;4.3.6 CI; selected4.3.8 restoration model | L03 deep conditional cancellation/odds and coordinate MAP | Potts only optional mention; no exact joint-MAP or marginal guarantee from ICM |
-| 4.3.3–5,4.3.7/9 specialized models, sampling/learning | GMRF optional L03; sampling mathematics L10, VI L09 | RBMs, feature induction, INLA, pseudolikelihood and MRF fitting omitted |
-| 4.4 CRFs;4.5 model comparison;4.6 factor graphs;4.7 causal models | Factor incidence and bounded directed/undirected distinction L03 | Full CRF/conversion/label-bias/circuits/relational/SCM methods omitted |
-| 5.1 selected KL and5.2.1/4 finite entropy/cross-entropy | L04 operational consolidation, identity and worked mismatch | No uniqueness axioms, Fisher/Bregman geometry, differential-entropy/AEP module |
-| 5.3.1–4 MI, DPI, sufficiency | L04 MI derivation, DPI sketch, bounded sufficiency equality | Conditional MI only proof support; no multivariate/variational-MI catalogue |
-| 5.4.1 source length;5.5 channel coding | L04 states prefix-code bounds, deeply works one five-bit channel | No Huffman, coding/capacity theorem proof or second lab; source XOR optional |
-| 5.4.2 rate–distortion;5.6 IB | L12 deep average-KL rate decomposition and beta tradeoff | Full supervised IB/InfoVAE/bits-back/algorithmic information omitted |
-| 6.1–2 differentiable objectives/reverse AD | L05 one complete shared-intermediate graph; L11/L12 reuse | No full functional/JVP/VJP/program-differentiation theory |
-| 6.3.1–2 finite-sum/minibatch SGD | L05 primary derivation/application and first PyTorch lab | No optimizer/convergence-rate catalogue |
-| 6.3.3–5 distribution expectations/estimators | L09 Gaussian total pathwise gradient deep; score function stated | L12 applies; Gumbel/straight-through/stochastic-graph catalogue omitted |
-| 6.4 natural gradients;6.6–9 BO/DFO/transport/submodularity | Deliberate course omissions | Not future debt or unapproved recordings |
-| 6.5.1,3–4 MM/EM and missing MVN | L06 generic F/KL/tightness/monotonicity and uncertainty-preserving moments deep | Logistic MM, robust/online/MC/ECM EM and full second GMM derivation omitted |
-| 7.1–3 queries/patterns/exact possibilities | L07 short framing grounded in one posterior | No repeated broad task taxonomy |
-| 7.4.1–3 MAP/grid/Laplace; selected7.5 checking | L07 scalar Taylor/normalizer/curvature deep; grid checks lab | No asymptotic proof, multimode/INLA catalogue or exact-grid-truth claim |
-| 7.4.4–6 VI/MCMC/SMC overview | Recognition L07; primary VI L09, MCMC L10 | Substantive Ch13 SMC omitted; no broad7.4.7 tour |
-| 8.1.2/8.2.2 Bayesian/Kalman filtering | L08 compact14-minute Apply/Work from L01 conditioning | No Kalman lab, RTS, information filter, EKF/UKF/ensemble/ADF catalogue |
-| 9.2.1–5 HMM forward/backward/scaling/complexity | L08 deep recursions/smoothing, exact oracle and NumPy lab | Dense O(TK²), not brute-force exponential enumeration at scale |
-| 9.2.6 Viterbi and marginal/path decisions | L08 decision distinction; mechanics optional | No second full max-product derivation; general trees/loopy BP/VE/JTA omitted |
-| 10.1.1–2 restricted VI/reverse KL | L09 deep Gaussian geometry; L06 generic identity reused | Factorization of q does not imply independence in the true posterior |
-| 10.2.1 and6.3.5 pathwise Gaussian objective | L09 primary total derivative/regularity; L12 application | No ADVI transform catalogue or score-estimator implementation |
-| 10.3 CAVI;10.1.5 amortization | Bounded CAVI same-target application L09; operational amortization L12 | No full CAVI functional proof/VBEM/Ising solver;10.4–7 flows/IWAE/EP/wake-sleep omitted |
-| 11.2 IID integration/variance | L10 deep estimator uncertainty; operational latent-draw average L09 | Rigorous-probability LLN background; no pre-L10 MCMC requirement |
-| 11.4/5 rejection/importance | L10 brief contrast/state only | No implementation module, inverse-CDF/Box–Muller/AIS/variance-reduction catalogue |
-| 2.6.4 and12.2 stationarity/MH | L10 deep balance/acceptance and bounded convergence assumptions | L02 stopped before stationarity; rejection repeats are part of the kernel |
-| 12.3 Gibbs;12.6 mixing/ESS/error | L10 bounded Gibbs cancellation, stationary variance and query-specific diagnostics | No certificate from acceptance/ESS/burn-in; stronger CLT conditions stated |
-| 12.5 HMC | L10 recognition/mechanics only, leveraging undergraduate NUTS use | Full theory/leapfrog proof/implementation omitted; no false L09 deferment |
-| 12.4/7–9 auxiliary/SG/RJ/annealing MCMC | Deliberate omissions | No debt to neural/VAE lectures |
-| 15.1 family/links/canonical gradient;15.3.2 softmax | L05 substantive Gaussian/Bernoulli/Poisson comparison, one scalar gradient and separate vector application | Rank/separation qualify finite MLE claims; no Hessian/IRLS/general Bayesian GLM |
-| 15.3.5–6 logistic Laplace/predictive integral | Selected scalar L07 application | No full multiclass posterior/frogs case study |
-| 15.2 priors;14.2 scoring | L11 narrow Gaussian-prior/mean-loss L2 connection; log scores L04/L05/L11 | Sparse/lasso/horseshoe/selection/calibration/conformal units omitted |
-| 15.4–5 probit/ordinal/hierarchical GLMs | Noncanonical-link recognition L05 only | No substantive model-family extensions |
-| 16.2.1–2/16.3.1 MLPs | L11 deep nonlinear conditional mean/SD and NLL, AD reused | CNN/RNN/transformer/GNN/dropout/norm/attention theory omitted |
-| 16.3.3 autoencoder context | Optional L12 comparison | No separate deterministic-AE lab or architecture survey |
-| 21.1–2 VAE basics | L12 model/q roles, joint objective/gradients, one tabular lab | Generic ELBO L06, pathwise math L09 and network loss L11 reused |
-| 21.3.1 beta; 21.4 collapse | L12 rate versus MI identity and cautious diagnostics | No identified/causal factor guarantee; annealing Mention only |
-| 21.3.2–5/21.5–6 extensions | Deliberate omissions | No InfoVAE, multimodal/sequential/hierarchical/VQ VAE or multiple full fits |
-| Ch17–19 and 20/22–26 additional prediction/generation fields | Not assigned in this 13-meeting architecture | BNN/GP/shift and autoregressive/flow/diffusion/GAN methods require a displacement decision |
+| L03 | Graphical models: local calculations in a large model | Turn a probability model into a local calculation and check it against an exact small example. |
+| L04 | Information theory: what survives a noisy message? | Build and check a small probability table, and distinguish useful information from a guaranteed correct decision. |
+| L05 | Learning models: regression, derivatives and parameter updates | Check automatic derivatives and carry out a simple fit/evaluation loop in PyTorch. |
+| L06 | Learning with missing data: expectation-maximization | Use uncertainty about missing values in a parameter update rather than merely fill blanks with best guesses. |
+| L07 | Posterior approximation: compare a grid with a Gaussian shortcut | Check a numerical reference and assess the consequences of an approximation. |
+| L08 | Sequences: infer hidden states using repeated calculations | Reuse partial calculations to avoid listing an exponentially large set of hidden histories. |
+| L09 | Approximate a posterior by fitting a simpler distribution | Compute derivatives through random draws and check an approximation against a known answer. |
+| L10 | Sampling: correct transitions and unreliable short runs | Check a sampling rule and diagnose inadequate exploration before trusting an estimate. |
+| L11 | Neural prediction: learn a mean and a noise level | Build a probability prediction with a neural network and interpret its uncertainty correctly. |
+| L12 | Variational autoencoders: learn a compact hidden description | Combine two networks in one probability model and check how its likelihood and penalty are scaled. |
 
-**Book 1 is selective support:** L03 §§3.6.1–2 DAG recall; L04 finite entropy/MI/DPI exposition; L05 selected matrix calculus/SGD; L06 mixture/responsibility and EM exposition; L11 §13.2.4.4 heteroskedastic example and §13.5.2 weight decay. Other overlap is not another required chapter. Full references and source limits live in the scopes and [source_inspection.md](source_inspection.md).
+L13 remains student project presentations. It is not an extra slot for unfinished mathematics.
 
-## Prerequisite graph and backward-reference audit
+## Why this order works
+
+L03 connects a graph with a local probability calculation. L04 asks how much an observation tells us and what happens when that observation is noisy or processed. L05 introduces parameter fitting and software-calculated derivatives. Those tools are reused later, rather than reintroduced as new software every time.
+
+L06 explains learning when some values are hidden. It derives a probability bound: a tractable expression that is no larger than the log probability of the observed data. Using the exact conditional distribution of the hidden values makes the bound meet that log probability, which justifies the EM learning step. L09 and L12 reuse this result when the conditional distribution must instead be approximated.
+
+L07 tests a simple Gaussian shortcut to a posterior against a carefully checked numerical grid. L08 shows a different opportunity: some sequence models permit exact calculations without listing all hidden histories. L09 fits a simpler distribution when exact posterior calculation is difficult. L10 estimates quantities by sampling and explains why a mathematically correct chain can still give unreliable short-run estimates.
+
+L11 uses a neural network to make nonlinear predictions and to learn observation noise. L12 combines that network idea with L06's bound and L09's approximate-inference calculation. It learns both a hidden description of an observation and a model that predicts the observation from that description.
+
+We do not make a lecture depend on a method that has not been taught yet. The L03 pixel update does not require later sampling theory. L09 uses independent random draws and an exact regression comparison, so its notebook does not require L10's Markov-chain algorithm. L11 does not claim to infer a posterior over network weights. L12 explains its new inference network rather than assuming that L11 taught it.
 
 ```mermaid
 flowchart LR
-  L01["L01 delivered: Gaussian queries"] --> L02["L02 agreed: EF and Markov learning"]
-  L02 --> L03["L03 factors and local CI"]
-  L03 --> L04["L04 information and decoding"]
-  L02 --> L05["L05 GLM, AD, SGD"]
-  L04 --> L05
-  L01 --> L06["L06 EM and hidden statistics"]
-  L05 --> L06
-  L04 --> L06
-  L06 --> L07["L07 grid and Laplace"]
-  L03 --> L08["L08 HMM exact recursions"]
+  L01["L01: Gaussian conditioning"] --> L06["L06: learning from missing values"]
+  L01 --> L08["L08: hidden-state sequences"]
+  L02["L02: model families and transitions"] --> L05["L05: fitting and derivatives"]
   L02 --> L08
-  L01 --> L08
-  L05 --> L09["L09 restricted VI, pathwise gradient"]
+  L03["L03: local calculations on a graph"] --> L08
+  L03 --> L10["L10: sampling and exploration"]
+  L04["L04: uncertainty and information"] --> L06
+  L04 --> L12["L12: hidden descriptions of data"]
+  L05 --> L06
+  L05 --> L09["L09: fitting an approximate posterior"]
+  L05 --> L11["L11: nonlinear probability prediction"]
+  L06 --> L07["L07: checking posterior approximations"]
   L06 --> L09
   L07 --> L09
-  L03 --> L10["L10 MC and MCMC"]
   L07 --> L10
-  L05 --> L11["L11 nonlinear conditional model"]
-  L09 --> L11
-  L04 --> L12["L12 VAE and rate-distortion"]
   L06 --> L12
   L09 --> L12
   L11 --> L12
 ```
 
-There is no algorithmic backward dependency. L03's ICM does not require L09/10; L08's exact messages do not require VI/MCMC; L09 uses independent standard-Normal draws and a probability-level sample-mean expectation, not HMC/chain error theory; L11 conditions on fitted weights and does not claim BNN inference. L12 adds encoder construction rather than assuming it was taught in L11. L05's canonical coordinate is locally distinguished from full model parameters in later lectures.
+An arrow means that the receiving lecture uses an earlier result. The graph shows mathematical dependencies, not all chronological transitions.
 
-One actual source-depth mismatch was repaired: L09's deferred “HMC theory” row now promises only L10 mechanics/recognition and names full theory as omitted. Original and targeted independent evidence is preserved in L09_review.md. L11's original build cited the earlier L09 blob; its reviewer checked the current handoff and confirmed the only change was unrelated HMC wording. No neural prerequisite or content approval was invalidated.
+## Reuse without repeating whole derivations
 
-## Notebook skill sequence and workload
+Gaussian distributions recur for different reasons. L01 conditions a known model. L06 learns its unknown parameters with missing data. L09 compares an approximate posterior with an exact Gaussian answer. L11 lets the mean and noise change nonlinearly with the input. L12 uses a Gaussian likelihood for observations given hidden coordinates. These are different tasks using a familiar distribution.
 
-| Lecture | One completion endpoint / durable skill | New tools or assumptions; supplied infrastructure | Inclusive live / lab estimate |
-|---|---|---|---:|
-| L03 | Checked local conditional and coordinate restoration | NumPy reused; image/edge/sweep/plot helpers; tiny exact oracle |112 /60 |
-| L04 | Complete coded channel, MI and Bayes block risk | NumPy reused; bit arrays/axes/log-zero helpers and sweep plots |110 /60 |
-| L05 | Three-class Iris fit, manual/autograd gradient, held-out log loss | First PyTorch; data split/scaling/index/plots supplied |115 /60 |
-| L06 | Expected moments and alternating Gaussian estimator | NumPy solves reused; masks/SPD data/driver/objective checker supplied |112 /60 |
-| L07 | Domain/resolution-challenged grid versus Laplace | SciPy solver wrapper/grid/plots supplied; no VI/MH coding |110 /60 |
-| L08 | Scaled forward/backward and sequence marginals | NumPy reused; simulation/oracles/plots supplied; asymmetric-A check required |112 /60 |
-| L09 | Diagonal q fitted through sample transform and exact reference | PyTorch refresh 10min included; driver/reference/plots supplied |112 /60 |
-| L10 | Checked MH kernel, proposal/start/query mixing comparison | NumPy reused; stable log target/diagnostics/harness supplied |110 /60 |
-| L11 | One nonlinear mean/SD fit and conditional intervals | PyTorch refresh included; baseline/model driver/checkpoints supplied |112 /60 |
-| L12 | One joint VAE objective/update run and beta/rate interpretation | PyTorch refresh 10min included; data/model/driver and normalized comparison fits supplied |112 /60 |
+The main repeated proofs have one owner. L05 explains automatic derivatives; later lectures apply them. L06 proves the probability-bound identity; L09/L12 reuse it. L09 explains derivatives through random draws; L12 applies that calculation. L04 introduces shared information; L12 studies whether a hidden description actually retains information about data.
 
-Future L03–L12 total: 1117 live minutes including 120 reserve, plus 600 lab minutes. These are estimated envelopes, not measured student pace or runtime. Each local reviewer bounded its concern to the real new derivations and promised scaffolding. L01's 61-content-slide anchor is a provisional density prior, not a universal conversion or an implementation validation. Every new lecture is tight; optional examples are first cuts, not required recordings. No required recording was introduced.
+## Time and notebook responsibilities
 
-Only PyTorch is a new required ecosystem, introduced L05 and refreshed later. NumPy/SciPy/Matplotlib support checks; scikit-learn may load/preprocess supplied data but is not a new algorithm curriculum. PyMC/Bambi/ArviZ are prior skills, not repeated routine labs. Pyro, JAX/Dynamax and TFP source implementations are not student dependencies. Checkpoints, data packaging and helper correctness remain real production work, not already existing course deliverables.
+| Meeting | Planned lecture minutes, including 12 for questions/slippage | Notebook minutes | What must be supplied rather than built by students |
+|---|---:|---:|---|
+| L03 | 112 | 60 | Image data, neighbor handling, update loop, plotting and tiny-model checks |
+| L04 | 110 | 60 | Bit arrays, probability-table layout, log-zero handling and plots |
+| L05 | 115 | 60 | Data split/scaling, indexing, plotting and training-loop framework |
+| L06 | 112 | 60 | Data/masks, matrix checks, update driver and likelihood checks |
+| L07 | 110 | 60 | Solver wrapper, grid framework and plots |
+| L08 | 112 | 60 | Simulation, exact short-sequence checks, scaling tests and plots |
+| L09 | 112 | 60 | Exact comparisons, parameter-update loop, plots and software refresh |
+| L10 | 110 | 60 | Stable target calculation, run comparisons and diagnostic helpers |
+| L11 | 112 | 60 | Comparison model, training driver, prepared fallback and plots |
+| L12 | 112 | 60 | Data transformation, small network definitions, training driver and comparison fits |
 
-## Cross-lecture safeguards and genuine losses
+The ten plans total 1117 lecture minutes, including 120 reserved for questions/slippage, and 600 notebook minutes. These are estimates, not observed teaching or student completion times. The lighter L04 table reduces calculation without adding material to its existing allowance.
 
-The canonical bound is F=E log joint+entropy; log evidence=F+KL(q||posterior). Exact EM supplies tightness, restricted VI generally does not. L05 mean empirical NLL is not L09's summed-data Bayesian likelihood: sum observations/average latent draws, or scale the entire objective together. L11 mean-loss Gaussian-prior coefficient includes N. L12 sums observed/latent event axes separately, then averages observations; fixed decoder variance determines reconstruction scaling. L04 uses bits, later loss formulas use nats, converted by ln2. A variance is never passed as a Normal SD.
+The first PyTorch meeting, the sequence calculations, derivatives through random draws and the final two-network model are the main workload risks. Later PyTorch refreshes are included in the hour. Students complete central mathematical calculations inside supplied programs; the proposal does not promise they will independently build every data loader, solver, diagnostic and training system.
 
-Source discrepancies are explicit: XOR correction claims, graph connection versus universal dependence, HMM joint versus marginal modes, Berkeley accuracy prose, VI sign/constants, and heteroskedastic SD/variance. Required exact examples are course-constructed or accurately source-inspected; no new Murphy figure or notebook output is attributed without verification.
+If the real limit is 100 minutes rather than the upper 110–115 minutes used here, actual lecture construction must return the excess to the scope author. Speaking faster or moving work silently to recordings is not a solution. Every section ends by summarizing what it taught; connections are explained at the start of the receiving section. Notebook tasks are a separate lecture-level item.
 
-Practical losses are real: no full MRI/GMM fit, Kalman forecasting lab, real-GDP unknown-noise VI-versus-HMC comparison, standalone regularized-digits/Poisson lab, full HMC theory, BNN posterior uncertainty or broad calibration. Controlled cases improve exact checking but reduce empirical breadth. Mobility is retained as the final empirical application, with approximate standardized-Gaussian modeling/descriptive interpretation and unresolved distribution access. These choices are collected with alternatives/cost in [questions_and_hesitations.md](questions_and_hesitations.md).
+## What the selected examples give up
 
-Every resulting section must end retrospectively; receiving sections own connections. Notebook handoffs remain separate lecture-level items. Scope-stage arithmetic checks and independent feasibility are not Section Design construction, rehearsal, clean-kernel execution or Colab compatibility. Future authoring must validate worked solutions and run local uv plus clean hosted Colab before publication.
+The main practical losses are MRI tissue classification, continuous Kalman forecasting, real economic-data regression with unknown noise, and broader neural applications. The current examples are easier to check against a known answer, but give less experience with messy data. That is a visible instructor choice, not an equivalent substitution. Restoring a domain application should replace its corresponding notebook and be reviewed for workload.
 
-## Review, reconciliation and formal-output gates
+Some worthwhile methods are outside this course. Particle methods track a changing hidden state using many weighted samples; they are not taught here. More advanced optimization methods address different geometry or expensive black-box evaluations; basic derivative updates suffice for the selected labs. Bayesian neural networks and Gaussian processes provide other prediction/uncertainty tools, but have no assigned meeting. General graph solvers, more complex regression families, stronger prediction-interval guarantees, architecture surveys and alternative generative models are also omitted. None is quietly deferred to L13 or an unapproved recording.
 
-Wave A: L03–L05 representations/information/trainable conditionals; independent reviews passed and source-depth/budget handoffs reconciled. Wave B: L06–L08 hidden statistics/approximation/exact structure; independent reviews passed, no second EM or sequence implementation. Wave C: L09–L12 stochastic gradients/sampling/neural synthesis; generic proof ownership is protected and HMC overpromise repaired. Exact authors, reviewers, scope versions and approval states are in STATUS, with full raw evidence under reviews/.
+## Technical checks the authors own
 
-The separate cold adversarial review by `/root/course_adversary` returned **feasible-with-risks**, with no architectural blocker. Its [complete raw report](reviews/course_architecture_review.md) preserves the frozen inputs and separates cold findings from post-evidence reconciliation. C1 is carried into the L12 author-revised handoff and notebook audit: held-out distortion averages event-summed Gaussian NLL over q draws with fixed variance/constants and observation-count weighting; encoder-mean reconstruction is a separately labeled visualization. The independent L12 targeted check records the exact repair. C2 supplied infrastructure, C3 unmeasured margins, C4 lost applications and C5 revision identity are binding constraints or visible instructor questions, not hidden obligations.
+A simpler explanation must preserve the calculation. For example, a parity bit detects but cannot always correct an error. A one-pixel update can stop short of the best image. The most likely entire hidden-state history need not be the list of most likely states considered separately. A correct sampling transition does not certify that a short run explored the distribution.
 
-The two syllabi, future ledger, notebook audit and planning decisions now describe the same reviewed depths and one-lab endpoints. No new delivered coverage or L01/L02 change is authorized. [Validation evidence](validation.md) records compiler, dates, protected-content, reference and revision checks; [STATUS](STATUS.md) binds final exact scope blobs to original independent review targets and final synchronization evidence. All ten scopes are agent-approved / instructor-pending under WORK_ORDER; no new instructor approval, production authorization or notebook-runtime validation is implied.
+The later probability objectives must count observations and penalty terms consistently. Standard deviation is not variance. Comparing two model runs requires the same data split, transformations and scoring convention. In L12, expected reconstruction error averages over the hidden-coordinate distribution; decoding its mean is a different visualization. A penalty that keeps hidden distributions close to a reference is not automatically the information those coordinates contain about observations. These checks are explained in the [notebook record](../notebook_reference_audit.md), not presented as questions for the instructor.
+
+## Detailed book map for preparation and checking
+
+The table gives destinations for the main source material. A row marked “not taught” is a deliberate omission, not a reading assignment or a claim of student coverage. “Brief explanation” means a small connection rather than a full derivation or second notebook. Book 2 is Murphy's *Advanced Topics*; Book 1 is *An Introduction*. Exact selected subsections and formulas are also in each scope.
+
+| Book 2 location / subject | Main teaching destination | Extent and limitation |
+|---|---|---|
+| 4.2 Directed graphs and independence | L03 review | Interpret graph implications; no new graph-learning or causal-calculus course. |
+| 4.3.1 / 4.3.2.1 Interactions, normalization and Ising pixels | L03 | Derive a tiny positive pixel model and its normalizing sum. A factor is a score, not itself a normalized conditional probability. |
+| 4.3.6 / selected 4.3.8 Independence and image restoration | L03 | Derive the local conditional and one-pixel improvement; no global-best or full-uncertainty guarantee. |
+| 4.3.3–5 / 4.3.7 / 4.3.9 Other interaction models and learning | Not taught; small Gaussian comparison optional L03 | Sampling principles are L10 and approximation principles L09. Specialized fitting, feature learning and model approximations are excluded. |
+| 4.4 / 4.5 / 4.6 / 4.7 Conditional graphs, comparison, factor graphs, causal models | Factor representation and brief model comparison L03 | No conditional-random-field fitting, general graph conversion, circuits, relational modeling or structural causal-model course. |
+| Selected 5.1 / 5.2 Discrepancy, entropy and cross-entropy | L04 | Work finite probability examples; no differential-entropy or geometric-divergence module. |
+| 5.3.1–4 Shared information, processing and sufficient summaries | L04 | Derive mutual information, sketch the processing inequality and briefly interpret sufficient statistics. More general information estimators are excluded. |
+| 5.4.1 / 5.5 Description length and noisy communication | L04 | State length bounds and work one three-bit parity channel. Guaranteed single-error correction is a stronger referenced result, not the selected lab. |
+| 5.4.2 / 5.6 Reconstruction tradeoffs and information bottlenecks | Selected result L12 | Derive why the average prior penalty includes both information and mismatch of pooled hidden codes. No separate full supervised bottleneck or coding theory. |
+| 6.1–2 Derivatives and automatic differentiation | L05 | One complete reverse calculation, reused later; no general software framework construction. |
+| 6.3.1–2 Batch parameter updates | L05 | Derive the central small-batch update; no optimizer catalogue. |
+| 6.3.3–5 Derivatives of random expectations | L09; application L12 | Derive the Gaussian sample-transform route. State an alternative score-based estimator; no full estimator comparison course. |
+| 6.3.6–7 Discrete/straight-through gradient methods | Not taught | No Gumbel relaxation, straight-through estimator or general gradient-surrogate toolkit. |
+| 6.4 / 6.6–9 Other optimization fields | Not taught | Natural gradients, Bayesian optimization, derivative-free search, transport and submodular selection are excluded, not hidden prerequisites. |
+| 6.5.1 / 6.5.3 / 6.5.4 Bound optimization and missing-data EM | L06 | Derive the probability identity, exact-update improvement and Gaussian expected moments. Generalized/stochastic EM and alternative bound methods are excluded. |
+| 7.1–3 Inference questions and exact calculation | L07 short overview | Explain what summaries/predictions require; do not teach every inference algorithm. |
+| 7.4.1–3 Most likely parameter, grid and Laplace shortcut | L07 | Derive and check a scalar case, including coordinate dependence and numerical-reference limits. |
+| 7.4.4–7 Other approximations; 7.5 checks | Methods selected L09/L10; checks L07 | No second implementation in L07; particle methods remain excluded. |
+| 8.1.2 / 8.2.2 Gaussian filtering | L08 brief application | Use L01 conditioning. Full smoothing, nonlinear filters, information/square-root variants and learning a dynamic model are excluded. |
+| 9.2.1–5 Hidden Markov sequences | L08 | Derive forward/backward calculations, scaling, evidence and computational cost; one main lab. |
+| 9.2.6 Whole-history decisions; other model-learning/smoothing extensions | Decision distinction L08 | Full Viterbi mechanics optional; no additional sequence algorithm or parameter-learning lab. |
+| 9.1 / 9.3–5 More general graph calculations | Not taught | No general tree solver, variable elimination, junction-tree method or iterative loopy-message algorithm. |
+| 10.1.1–2 / 10.1.5 Variational objective and learned inference | L09, with learned inference L12 | Reuse L06 bound; explain family restriction and introduce reuse of an inference network. Other objectives and model-selection recipes excluded. |
+| 10.2.1 and selected 10.2 methods | L09 | One Gaussian sample-transform derivative; no full natural-gradient/curvature, discrete-gradient or general black-box toolbox. |
+| 10.3.1 Coordinate updates | L09 brief same-target application | No full variational-Bayes EM or expectation-propagation derivation; numerical coordinate sweep optional. |
+| 10.4–5 Structured and richer approximations | Not taught | No structured/transformed/mixture family catalogue, flow approximation, message-based variational solver or broader distributed extensions. |
+| 11.2–2.2 Monte Carlo integration and error | L10 | Derive independent-sample error and a checked expectation; earlier independent sample averages need no chain theory. |
+| 11.3–6 Other Monte Carlo techniques | Not taught | No additional variance-reduction, rejection/importance-sampling or sequential-method lab. |
+| 2.6.4 / 12.2.1–2 / 12.3.1–2 Invariant chains, acceptance and Gibbs | L10 | Derive general acceptance correction and brief conditional-coordinate cancellation. |
+| 12.5.3 / 12.6.3 Directed Hamiltonian moves and dependent error | Selected L10 | Recognize Hamiltonian mechanics only. Explain query-specific mixing/error under its conditions; no full Hamiltonian theory or automatic convergence certificate. |
+| Other Ch.12 advanced samplers; Ch.13 particles | Not taught | No sampler catalogue, tempering/advanced adaptation or particle-tracking curriculum. |
+| 15.1 / 15.3.2 Response families and class probabilities | L05 | Substantive Gaussian/Bernoulli/Poisson family comparison, one common derivative and one vector class-probability application. |
+| 15.1.2 / 15.2 / 15.3–5 Model extensions | Brief alternative link L05; Gaussian prior L11 | No full sparse/hierarchical/probit/ordinal model inference. Scalar logistic posterior is an L07 example, not full Bayesian regression theory. |
+| 14.2 Prediction evaluation | Log probability applied L05/L11 | No full calibration, model-selection or guaranteed-interval module. |
+| Selected 16.2 / 16.3.1 Feedforward networks | L11 | One nonlinear conditional mean/noise model; derivatives reused from L05. |
+| Other Ch.16 architectures and training extensions | Not taught | No convolutional/recurrent/transformer/graph-network survey, dropout inference or broad normalization/attention theory. Deterministic autoencoder comparison optional L12. |
+| 21.1–2 Variational autoencoder | L12 | Model/inference roles, joint objective and updates; apply earlier bound, sample derivative and network likelihood. |
+| 21.3.1 / 21.4 Penalty strength and uninformative codes | L12 | Explain rate versus information, collapse cautions and descriptive interpretation; no guaranteed causal/independent factors. |
+| 21.3.2–5 / 21.5–6 Other autoencoder models | Not taught | No full information-variational, multimodal, sequential, hierarchical or discrete-code extension. |
+| Ch.17–19 / 20 / 22–26 Other prediction/generative fields | Not assigned | Neural networks with a posterior distribution over weights, Gaussian processes, distribution shift and autoregressive/flow/diffusion/adversarial generation require a replacement decision. |
+| Selected 3.11 / 28.2.1 Missingness and group assignments | L06 supporting statement/example | Explain when missingness may be ignored and what a group probability means; no second mixture fitting lab. |
+
+Book 1 supports directed-graph review (L03), finite information quantities (L04), derivatives/batch fitting (L05), EM/group explanations (L06) and the input-dependent-noise/weight-shrinkage example (L11). These examples do not make whole Book 1 chapters required or advance a delivered book boundary.
+
+## What has actually been checked
+
+Distinct specialists built and reviewed the original ten scopes. A separate reviewer examined the whole course before reading the coordinator's justification. Those reports supported the original proposal with explicit time/scaffolding risks. The instructor's new L04 choice changes the required code; its previous five-bit review cannot certify the new model. The current readability revisions and changed example are checked separately, with exact targets in [STATUS](STATUS.md).
+
+Textbooks and reference code were inspected. Tiny mathematical examples were checked. Future student notebooks have not been written/executed, and no Google Colab pass or student timing trial is claimed. [Source details](source_inspection.md) identify the inspected material; [validation](validation.md) records document compilation and protection checks. Instructor review remains the next teaching-decision step.

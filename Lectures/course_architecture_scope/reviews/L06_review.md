@@ -1,3 +1,15 @@
+# L06 review: explanation for the instructor
+
+This reading guide was written by the coordinator. The original independent review is preserved verbatim below; it identifies its own reviewer, exact earlier scope version and checks. [STATUS](../STATUS.md) identifies the current readable scope and any subsequent revision check. Rewriting a guide is not a new independent approval.
+
+**What was assessed:** Learning with missing data: expectation-maximization. The reviewer asked whether the mathematics, student prerequisites and one-hour task could fit the proposed meeting.
+
+**What the original review concluded:** The proposal was feasible with risks, meaning no demonstrated mathematical or structural obstacle was found, but time and supplied-code requirements remained uncertain. No student notebook or teaching trial was validated.
+
+**What matters for the teaching choice:** Learning from incomplete Gaussian records is a suitable continuation of L01. The key mathematical caution is to include uncertainty when calculating products of missing values; filling blanks with best guesses is insufficient for covariance learning. Matrix/data conditions and supplied update code still need testing.
+
+## Original independent review and later technical check records
+
 # L06 independent Section Design feasibility preview
 
 **Reviewer role/thread:** Section Design specialist, `/root/review_l05`, reviewing L06 independently of builder `/root/build_l03`. **Mode:** `feasibility-review` only. **Date:** 2026-10-11. **Branch:** `scope-l03-l12-course-architecture`. **Exact target:** `Lectures/L06_EM/lecture_scope.md`, Git blob **`326267281c6b6775ac9a33d7ed4f022a859fc49b` before and unchanged after review**. **Upstream contract:** architecture audit v2, blob `12ae5e1608eb2d74c6c70ba857eb5a75ff2114c1`. Only this report was authored; L05's report and all scopes/shared files were preserved. No sections, slides or notebook were produced; no approval is granted.

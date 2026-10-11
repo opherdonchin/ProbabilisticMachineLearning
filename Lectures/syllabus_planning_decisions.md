@@ -1,11 +1,11 @@
 # Syllabus planning decisions — Advanced Statistics 2027-1
 
-**Development branch:** `curriculum-l04-l06-information-review` — branch proposal; **do not merge without instructor approval**.  
-**Status:** Original decisions through 2026-10-08 retained except the *provisional* L04–L10 alternative schedule, corrected 2026-10-11. L03 onward is tentative.  
+**Decision:** Instructor selected the split information-theory / GLM-and-optimization architecture on 2026-10-11. The course architecture is accepted; lecture-level scopes are not yet finalized.  
+**Status:** Course structure accepted by instructor 2026-10-11. L03–L12 scope/section/notebook commitments require agent-led feasibility review and subsequent human oversight of the full architectural proposal.  
 **Current plan:** [`../syllabus_plan.typ`](../syllabus_plan.typ)  
 **Formal syllabus:** [`../advanced_statistics_2027_1_syllabus.typ`](../advanced_statistics_2027_1_syllabus.typ) — **not** an authoritative constraint on this planning exercise.
 
-This note preserves the reasoning behind the **Book-2-first** syllabus plan. The branch proposes **L04 Information → L05 GLMs + optimization (substantive general framework) → L06 EM → L07 Inference → L08 Structured inference → L09 VI → L10 MCMC**. The actual alternative is **retaining the unchanged main-branch sequence: combined information/objectives/optimization L04 → EM L05 → inference through L09 → dedicated GLMs L10**. See the [L04–L10 side-by-side assessment](l04_l10_curriculum_comparison.md). No new lecture scope is approved by the existence of this branch.
+This note records the accepted **Book-2-first** course architecture: L04 information theory; L05 GLMs and optimization; L06 EM; L07–L10 inference methods; L11 neural prediction; L12 VAE. The alternative with a combined L04 and a separate GLM L10 was considered and rejected for this planning cycle; see the [historical comparison](l04_l10_curriculum_comparison.md). **This accepts the topic allocation, not the detailed mathematical scope or notebook implementation for each lecture.**
 
 ## Course-level teaching goals
 
@@ -20,7 +20,7 @@ A lecture should end with *solid conceptual understanding, substantial enough ma
 
 ## Curriculum structure and ordering
 
-**Murphy Book 2 is the curricular spine.** Book 1 is a selective supplement where it contributes prerequisites, richer pedagogy, worked examples, or a better local sequence. The following schedule is a **provisional A route**, not a new instructor decision.
+**Murphy Book 2 is the curricular spine.** Book 1 is a selective supplement where it contributes prerequisites, richer pedagogy, worked examples, or a better local sequence. The following **lecture allocation is instructor-selected**; the content specifications are provisional pending full L03–L12 agent scoping.
 
 | Meeting | Tentative topic | Primary Murphy Book 2 |
 |---|---|---|
@@ -48,7 +48,7 @@ A lecture should end with *solid conceptual understanding, substantial enough ma
 - Book 2 Chapter 6 §§6.3.4–6.4 are candidate resources for VI/VAE; §§6.6–6.9 are not promised. There is still no dedicated SMC or broad predictive overview lecture.
 - This proposed route does **not** override the delivered L01 or the agreed L02 scope. The current formal syllabus remains an output to revise after the instructor decides, not a constraint on the decision.
 
-**Actual open alternative (A, baseline):** Keep the **main** syllabus unchanged, including its *combined* information/optimization L04, EM L05, general inference L06, structured inference L07, VI L08, MCMC L09 and dedicated GLM L10. Under this choice, L04 already includes introductory autodiff/SGD and the Iris PyTorch notebook, but not substantive MI/coding; fitting the instructor's stronger information-theory goal requires deliberate compression/displacement. **Branch alternative (B):** dedicated L04 information + coding and L05 optimization/softmax GLM; EM and each intervening inference lecture shift one slot, removing the old L10 GLM meeting. Compare both **through L10** and audit L11/L12 consequences in the linked assessment.
+**Previously considered alternative (historical):** A combined information/objectives/optimization L04 and separate GLM L10 would have compressed operational information theory. The instructor has now selected the separate L04 / integrated GLM-and-optimization L05 approach. Historical deliberations remain linked for provenance, not as an unresolved decision.
 
 ## Book 1's role: lecture-by-lecture decisions
 
@@ -91,7 +91,7 @@ These judgments are **provisional selections**, not a blanket assignment of ever
 
 ## Rapid scope feasibility and approval boundary (2026-10-11)
 
-The instructor asked for provisional syllabus/ledger updates plus initial scope feasibility checks. The branch now includes [rapid scope briefs and initial checks](curriculum_scope_previews.md) for materially revised L04, L05, L11 and L12, plus explicit continuity checks for L06–L10. These are **not approved Lecture Scopes**, not independent multi-agent reviews, and do not bypass the lecture-scope skill's iterative process. A [VS Code Codex review prompt](curriculum_scope_review_codex_prompt.md) specifies the independent follow-up.
+The instructor asked for provisional syllabus/ledger updates plus initial scope feasibility checks. The accepted architecture is accompanied by [rapid scope briefs and initial checks](curriculum_scope_previews.md) for materially revised L04, L05, L11 and L12, plus explicit continuity checks for L06–L10. These are **not approved Lecture Scopes**, not independent multi-agent reviews, and do not bypass the lecture-scope skill's iterative process. A [VS Code Codex review prompt](curriculum_scope_review_codex_prompt.md) specifies the independent follow-up.
 
 **Critical feasibility tradeoff:** L05 is intended to preserve genuine GLM generality *and* foundational AD/SGD. It must teach the §15.1.3 gradient with one canonical-link example and avoid trying to derive Poisson, Bernoulli and multinomial gradients separately at length. L11 is deliberately trimmed rather than used as a catch-all for displaced GLM material. L12 retains rate-distortion but not a full information-bottleneck lecture. Final instructor acceptance and subsequent Section Design checks are still required.
 

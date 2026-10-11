@@ -38,3 +38,5 @@ PS4-Questions/CEE790A-PS4.tex, vae.ipynb and mobile-msa.csv are available locall
 - Berkeley scalar logistic reference source inspection: stored grid mean about 2.778 versus Laplace center about 2.523 contradicts close-agreement prose. L07 uses model/method provenance only, not a numerical accuracy guarantee. A finite grid is a truncation/discretization benchmark requiring domain, tail and resolution checks.
 
 - L08 builder inspected pyprobml `notebooks/misc/casino_hmm.ipynb` SHA256 `975e90d6d095eed5e087121acd9094f57a176e270d76c6ebdbfcf6d312a18ed1`: JAX/Dynamax reference hides inference; proposed lab exposes NumPy forward/backward. No execution or code-port reliability claim.
+
+- L11 builder checked the heteroskedastic reference: source noise is SD `s(x)=0.25+g(x)^2`, so variance is `s(x)^2`, not the same quadratic function. Future PyTorch heads/NLL must explicitly distinguish SD, variance and log variance. Source uses two Adam fits/500 epochs and a larger backbone; that is not a timed course-lab contract.

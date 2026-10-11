@@ -1,6 +1,6 @@
 # Notebook references, prerequisites and skills — syllabus 2027-1
 
-*Planning record, 2026-10-08; provisional L04–L10 review-branch revision, corrected 2026-10-11 (not approved).* The unchanged baseline remains on `main`; this branch instantiates the alternative with L04 information and L05 optimization. See the [full comparison](l04_l10_curriculum_comparison.md), [proposed syllabus plan](../syllabus_plan.typ) and [formal syllabus](../advanced_statistics_2027_1_syllabus.typ). Exact exercise scope, runtime compatibility, and one-hour feasibility remain to be validated when each lecture is prepared. The linked references are *worked source material*, not necessarily ready-to-run student handouts.
+*Planning record, 2026-10-08; provisional L04–L10 review-branch revision, corrected 2026-10-11 (not approved).* The unchanged baseline remains on `main`; this branch instantiates the alternative with L04 information and L05 GLM-family modeling plus optimization. See the [full comparison](l04_l10_curriculum_comparison.md), [proposed syllabus plan](../syllabus_plan.typ) and [formal syllabus](../advanced_statistics_2027_1_syllabus.typ). Exact exercise scope, runtime compatibility, and one-hour feasibility remain to be validated when each lecture is prepared. The linked references are *worked source material*, not necessarily ready-to-run student handouts.
 
 ## Selection criteria
 

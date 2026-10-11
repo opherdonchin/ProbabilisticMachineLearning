@@ -10,6 +10,8 @@
 
 **Evaluation method:** Same-context application of [lecture-scope skill](../.agents/skills/lecture-scope/SKILL.md) (coherence, useful endpoint, notebook handoff, prerequisites, time feasibility, continuity, later value), [timing calibration](../.agents/skills/lecture-scope/references/timing-calibration.md), current syllabus, L01 delivery, L02 agreed scope and undergraduate prior knowledge. No independent specialist or separately named "account" skill was run; judgments below are qualitative estimates, not validation.
 
+> **Updated assessment (2026-10-11):** The deeper [optimization-versus-GLM distribution and overload audit](optimization_vs_glm_distribution_audit.md) supersedes the coarse scores below. It finds substantial natural homes for advanced optimization in EM, VI and neural networks, and identifies L11 load from displaced GLMs as a consequential risk. Read the detailed audit before treating 23/30 versus 26/30 as a recommendation.
+
 ## The two actual progressions, *through the displaced L10 GLM meeting*
 
 | Meeting | A — keep existing main syllabus (no **dedicated** optimization lecture) | B — information + dedicated optimization, remove standalone GLM (branch proposal) |

@@ -33,7 +33,7 @@
 
 = Syllabus plan
 
-This is a working curriculum map for *Probabilistic Machine Learning: Advanced Topics*. On this review branch it instantiates *one proposed alternative*: information theory in L04, substantive GLM-family modeling and differentiable optimization in L05, and EM/inference shifted through L10. The competing alternative is the *unchanged main-branch plan*: combined information and optimization L04, EM L05, and a dedicated GLM L10. Compare these paths through L10 in #link("Lectures/l04_l10_curriculum_comparison.md")[the evaluation document]. Neither is instructor-approved by this branch.
+This working curriculum map for *Probabilistic Machine Learning: Advanced Topics* records the **instructor-selected course architecture (2026-10-11)**: dedicated information theory in L04; substantive GLMs and differentiable optimization in L05; EM in L06; inference methods in L07–L10; neural networks in L11; and VAEs in L12. **Lecture-level scopes, examples and notebooks remain tentative pending the L03–L12 architecture-and-scope review.** See #link("Lectures/curriculum_scope_previews.md")[preliminary feasibility notes] and the earlier #link("Lectures/l04_l10_curriculum_comparison.md")[historical alternative comparison].
 
 The course is organized around four recurring ideas:
 

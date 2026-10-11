@@ -127,7 +127,7 @@ The course grade is based on four components:
 
 = Schedule
 
-#text(size: 8pt, weight: "semibold", fill: blue)[PROVISIONAL REVIEW BRANCH — this is the information L04 + GLMs and optimization L05 proposal (shifting EM and inference through L10). The actual alternative is the unchanged main syllabus with a combined L04 and a dedicated GLM L10. See Lectures/l04_l10_curriculum_comparison.md; neither route is approved here.]
+#text(size: 8pt, weight: "semibold", fill: blue)[Instructor-selected course architecture (2026-10-11). Individual L03–L12 lecture scopes and notebook choices remain provisional until agent-led scoping and feasibility review.]
 
 #lecture(
   1,

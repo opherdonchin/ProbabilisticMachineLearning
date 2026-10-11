@@ -14,8 +14,8 @@ Instructor delegated this review-batch autonomy on 2026-10-11: coordinator may g
 | Lecture | Focus | Scope author / revision | Independent review / revision | Gate | Principal unresolved handoff |
 |---|---|---|---|---|---|
 | L03 | Graphical models | /root/build_l03, blob f4dab507f90618362c2e04c1c3791c8139f7de56 | /root/review_l03; reviews/L03_review.md targets f4dab507, feasible-with-risks | Individually feasible; global gate pending | Ising image denoising versus unavailable later MCMC machinery |
-| L04 | Information theory | /root/build_l04, blob 242ee28d251d583004daa25379b6a0f8cb44d622 | /root/review_l03 running | Pending | Choose one substantive source- or channel-coding lab |
-| L05 | GLMs and optimization | /root/build_l05 building | Queued | Pending | Source precision and combined GLM-gradient/AD/SGD load |
+| L04 | Information theory | /root/build_l04, blob 242ee28d251d583004daa25379b6a0f8cb44d622 | /root/review_l03; L04_review.md targets 242ee28d, feasible-with-risks | Individually feasible; global gate pending | Choose one substantive source- or channel-coding lab |
+| L05 | GLMs and optimization | /root/build_l05 blob736943b90f24826e29955115896929742f2961f5 | /root/review_l05 running | Pending | Source precision and combined GLM-gradient/AD/SGD load |
 | L06 | Latent-variable EM | Not started | Not run | Pending | Incomplete Gaussian or MRI-GMM lab |
 | L07 | Inference overview | Not started | Not run | Pending | One Laplace benchmark versus full Ch. 7 breadth |
 | L08 | Message passing / filtering | Not started | Not run | Pending | HMM vs Kalman worked core |
@@ -43,4 +43,4 @@ The table is a progress register, not a declaration that any provisional source 
 
 ## Next action
 
-L03 independent feasibility passed with bounded risks; L04 independent review running; L05 build running. Complete Wave A review/reconciliation before Wave B. Keep at most three active threads including coordinator. Source access available; no launch blocker. No slides/notebook production or merge authorized.
+L03/L04 independent feasibility passed with bounded risks; L05 full scope complete and /root/review_l05 independently reviewing. Complete Wave A review/reconciliation before Wave B. Keep at most three active threads including coordinator. Source access available; no launch blocker. No slides/notebook production or merge authorized.

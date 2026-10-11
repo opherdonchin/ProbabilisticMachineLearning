@@ -110,12 +110,16 @@ The approved organization is a contract for the downstream design stage.
 
 For each slide, the handoff should make recoverable:
 
-- final-style title;
+- final-style title (or the full section title for a dedicated section-title slide);
 - position in the section;
 - teaching move / intention;
-- special role when relevant, such as summary, comparison, derivation, example, or recap;
+- explicit special role for section-title and summary slides; other roles when relevant, such as comparison, derivation, example, or recap;
 - required equation, example, figure, or source when the upstream section contract makes it mandatory;
 - brief design constraints only when they materially preserve the teaching move.
+
+For the **dedicated section-title slide**, the handoff must state three distinct fields: the **full title** (the approved section heading), a **subtitle** that frames the section's own intellectual job, and a **short/abbreviated title** suitable for the running footer. Record all three for *every* section, including Section 1; production may use a special first-section convention after the lecture title slide. This is navigation and framing metadata, not an ordinary claim slide.
+
+For the **last-slide section summary**, provide a design-ready but non-prescriptive summary brief: (1) candidate **retrospective visual anchor(s)** linked to the earlier slide(s) that establish them, (2) two or three **specific takeaway claims** all taught within this section, and (3) the concise **consolidation job** of the summary. This feeds the `section-summary-visual` and `section-summary-takeaways` architecture in `Lectures/slide_authoring_conventions.md`. Slide Design owns the final selection, exact wording, visual grouping and placement. If no honest visual anchor exists, flag that as design pressure; don't invent or decorate one to fill a template.
 
 Design notes should describe pedagogical relationships rather than finished composition.
 
@@ -167,6 +171,16 @@ The final teaching move in every section is a **retrospective summary** of that 
 
 Upstream author-facing notes about neighboring sections are permitted, but they are not student-facing closing content. Preserve this ending when choosing slide titles and order, and ask for upstream clarification if a section contract appears to require a conflicting ending.
 
+## Dedicated section-title and retrospective-summary slides
+
+Organize **each section** as:
+
+1. **A dedicated section-title slide, first.** Specify `title`, `subtitle`, and `short-title` explicitly; the approved section title supplies `title`. The subtitle describes the current section, not an upcoming section. The short title should distinguish this section in a footer without trying to repeat the entire heading.
+2. **The content teaching moves.** Claim-style titles and concise teaching intentions, as before.
+3. **A dedicated retrospective summary slide, last.** Specify its slide title, intention, candidate already-taught visual anchors, and concrete retrospective takeaway nominations. Organize it for the two semantic roles `section-summary-visual` and `section-summary-takeaways`, but do not pick sizes, typography or a final composition.
+
+Section-title slides do not count as substantive content slides. Count section-title, ordinary teaching, and summary slides **separately** in extent estimates. A section's summary remains part of its substantive sequence; a notebook task/lecture-level handoff is **not** an extra closing section slide. Do not let a decorative section title substitute for an intellectual entry, or a generic summary label substitute for a concrete summary brief.
+
 # Slide titles are the main product
 
 Titles should normally state the slide's claim, question, or teaching move.
@@ -187,7 +201,7 @@ Avoid generic organizational labels such as:
 - `Background`
 - `Derivation`
 
-unless the slide genuinely functions as a reference or navigation slide and a claim-style title would be misleading.
+unless the slide genuinely functions as a reference or navigation slide and a claim-style title would be misleading. **Dedicated section-title slides are the deliberate navigation exception**, and still require the three metadata fields.
 
 Use this as a central quality test:
 
@@ -240,7 +254,7 @@ Do not require every ambiguity to be resolved before drafting. Some important qu
 
 When the instructor asks you to proceed, draft the entire section rather than stopping at the first uncertainty.
 
-For each proposed slide give:
+For each proposed slide give the following; section-title and summary slides also have required role-specific fields described above:
 
 ### Slide title
 
@@ -271,6 +285,18 @@ Inappropriate detail at this stage includes exact widths, colors, font sizes, bo
 ### Provisional assumption, when needed
 
 If drafting exposed an unresolved issue, state the provisional choice locally when that helps interpret the organization, but do not let the issue interrupt completion of the full draft.
+
+### Section-title and summary specifications
+
+Always include a numbered **section-title slide** as the first slide, with the exact `title`, `subtitle`, and `short-title` metadata; do not infer these later in production.
+
+For each **summary slide**, include a compact **summary design brief** (not a finished composition):
+
+- **Previously established visual anchor candidates:** say which preceding slide/figure/equation/diagram supplies each and what part of the section it recalls.
+- **Specific takeaway nominations:** usually two or three concrete mathematical or conceptual claims established in the section, not abstract topics, prerequisites, or future applications.
+- **Selection rationale / consolidation job:** how those anchors and statements retell the section's *completed* intellectual argument. Design will choose the smallest effective set and may refine it, preserving scope.
+
+Apply `Lectures/slide_design_conventions.md` §8 for visual/key-point nominations and summary hierarchy and `Lectures/slide_authoring_conventions.md` §5 for the separate visual and takeaway roles. Do not specify layout widths, exact key-point styling, Typst code, or finalized graphical compositions.
 
 ## 4. Record issues exposed by drafting
 
@@ -322,6 +348,7 @@ Check:
 
 - Does each example have a distinct pedagogical job?
 - Does the section summary consolidate only material already established in the section?
+- Does the summary brief identify concrete already-taught visual anchors and takeaway claims (not only the word "consolidate")?
 - Are important take-home claims stated directly before they are reused in a summary?
 - Does the summary *end the section*, without a teaser, closing bridge, or question aimed at the next section?
 
@@ -452,6 +479,8 @@ An ordered list of slides. For each slide:
 - **Title**
 - **Intention / goal**
 - **Design note** only where useful
+- **Section title (first slide):** full `title`, `subtitle`, `short-title` metadata
+- **Section summary (last slide):** named earlier visual-anchor candidates, concrete retrospective takeaways, and a brief consolidation rationale. Leave final selection/composition to Slide Design.
 
 Example:
 
@@ -488,6 +517,14 @@ Does every slide arrive after the concepts and notation it needs?
 ## Load-bearing test
 
 Are the claims students most need to retain stated directly somewhere in the section rather than appearing for the first time in the summary?
+
+## Section-title metadata test
+
+Does every section begin with a dedicated title slide with all three fields (`title`, `subtitle`, `short-title`), including the first section? Are the subtitle and short title useful for this section rather than forward-looking?
+
+## Summary contract test
+
+Does every section end with one summary slide whose design brief nominates both reusable, already-established visual anchors and concrete takeaways, consistent with the two summary components? Would a designer be able to build a retrospective summary without inventing the content from scratch?
 
 ## Summary-reuse test
 

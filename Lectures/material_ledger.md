@@ -87,18 +87,18 @@ Each lecture records a curriculum boundary for each book. The boundary is the fu
 
 ---
 
-## Provisional future-allocation map — NOT coverage (review branch, 2026-10-10)
+## Provisional future-allocation map — NOT coverage (revised 2026-10-11)
 
 This table accompanies the [L04–L10 comparison](l04_l10_curriculum_comparison.md) and the provisional [syllabus plan](../syllabus_plan.typ). It **does not** change any actual disposition or curriculum boundary above. Only material actually taught or assigned is later marked `Covered` with a single primary coverage point. All rows here remain **Unreached** for coverage-accounting purposes until a lecture scope and delivery are confirmed. The **actual competing alternative** is the unchanged main-branch syllabus: combined information/optimization L04, EM L05, general inference L06, structured inference L07, VI L08, MCMC L09, and GLMs L10. This ledger's future-allocation map only represents proposed route B, not a decision against the baseline.
 
-| Murphy Book 2 material | Proposed destination under route A | Limitation / dependency |
+| Murphy Book 2 material | Proposed destination under split-lecture route (B) | Limitation / dependency |
 |---|---|---|
 | §§5.1–5.2 KL, entropy, cross-entropy | L04, lecture | Focus on interpretation plus operational coding consequence; not every KL property or derivation |
 | §5.3 Mutual information, data processing, sufficiency | L04, lecture / L04 notebook | Basic quantities and constraints; §5.3.5 multivariate MI, §5.3.6 variational bounds not promised |
 | §§5.4–5.5 Source/channel coding | L04, **choose one substantive coding application** | Channel parity decoding preferred; a brief source-coding comparison is possible but not a second full notebook |
 | §5.6 Information bottleneck; §5.4.2 rate-distortion | Return as selected mathematical connection in L12 VAE | Distinguish classical supervised IB from VAE compression/rate-distortion; full IB derivation not committed |
-| §§6.1–6.2 Differentiation and autodiff | L05, lecture; PyTorch in notebook | Reuse in VI (L09), neural modeling (L11), VAE (L12) |
-| §§6.3.1–6.3.3 Stochastic optimization | L05 lecture / notebook | Parameter-learning loop with a categorical likelihood |
+| §§6.1–6.2 Differentiation and autodiff | L05 alongside conditional GLM likelihoods | One worked reverse-mode computational graph, not a general autodiff theory course; reuse in L11/L12 |
+| §§6.3.1–6.3.2 Stochastic optimization / minibatches | L05 lecture and three-class Iris PyTorch notebook | Train categorical GLM; reserve §6.3.3 stochastic expectations for L09 |
 | §§6.3.4–6.3.7 Stochastic-distribution gradient estimators | L09 VI or L12 VAE, as needed | REINFORCE, reparameterization, Gumbel softmax not blanket L05 requirements |
 | §6.4 Natural gradients | Uncommitted, possible L09 extension | Not a prerequisite for core VI if not chosen |
 | §6.5 EM and bound optimization; §28.2 mixtures | L06 | Choose between missing Gaussian data and MRI GMM example; preserve one-hour lab constraint |
@@ -107,9 +107,13 @@ This table accompanies the [L04–L10 comparison](l04_l10_curriculum_comparison.
 | Chs. 8–9 Gaussian filtering / message passing | L08 | Kalman vs HMM notebook still undecided |
 | Ch. 10 Variational inference | L09 | Includes selected stochastic gradient estimators if needed |
 | Chs. 11–12 Monte Carlo / MCMC | L10 | Multimodal proposal-comparison lab rather than routine undergraduate diagnostics |
-| §§15.1, 15.3 GLM/logistic form and likelihood | L05, as a substantial optimization example | No full standalone GLM family lecture in route A |
-| §15.2 regularization/priors; §14.2 calibration/scoring | Selected L11 with neural predictive models | Squeezing risk: must be checked at L11 scope; old L10 digit notebook not automatically retained |
-| Ch. 16 Neural networks | L11 | PyTorch already introduced in L05 |
-| Ch. 21 VAEs, selected §§21.3–21.4 | L12 | Rate-distortion/MI interpretation integrated selectively; time budget must be checked |
+| §15.1–§15.1.1 GLM family, Gaussian/Bernoulli/Poisson models and canonical links | L05 **core mathematical framework** | Show several response distributions; derive link and mean relationship; Poisson a worked comparison, not a second notebook |
+| §15.1.2–§15.1.3 estimation and general gradient; §15.3.2 softmax | L05 **core derivation and worked categorical example** | Canonical-link GLM gradient; SGD/autodiff and Iris notebook; cannot cover full §15.3 |
+| §14.1.2 MLE/MAP and §14.2.1 log score | L05 concise bridge and notebook interpretation | Avoid full predictive-evaluation framework during first PyTorch lab |
+| §15.2 priors, sparsity/regularization; §14.2 evaluation/calibration | Brief L05 penalty bridge; selected L11 weight decay and optional one calibration diagnostic | **Most detailed ridge/lasso/horseshoe and model selection are deliberately not allocated.** Do not conceal loss of standalone L10 GLM notebook. |
+| Ch. 16 Neural networks | L11 | PyTorch introduced in L05; GLM→nonlinear-predictor connection; don't add complete Ch. 15 material |
+| Ch. 21 VAEs, selected §§21.3–21.4 | L12 | β-VAE and posterior collapse with rate-distortion bridge; supervised IB and InfoVAE only optional comparisons |
 
 **Delivery bookkeeping reminder:** L02 is only agreed scope, not recorded as delivered here. L03 and future lectures have no delivered coverage entries. If the alternative GLM-centered sequence is selected, update this map *after* instructor approval and revise the tentative syllabus documents consistently.
+
+**Review status:** This allocation map is only a proposed future teaching contract. See [rapid scope briefs and initial feasibility checks](curriculum_scope_previews.md). Neither those previews nor edits here change delivered coverage. Revisit after formal lecture-scope approval.

@@ -7,7 +7,8 @@ description: Organize an already-scoped lecture section into an ordered sequence
 
 Use this skill when a lecture section has already been substantially scoped and the next task is to determine the sequence of individual slides before detailed visual design or Typst implementation.
 
-The primary responsibility of this skill is **slide titles and their order**.
+The primary responsibility of this skill is **slide titles and their order**,
+including the title and summary slides that bound each section.
 
 Its output should make the teaching argument of the section visible as a sequence of slide-level moves. Brief intention and design notes exist to make those titles unambiguous and reviewable; they are not a substitute for the downstream slide-design stage.
 
@@ -88,6 +89,8 @@ Within an agreed section specification, this skill may decide:
 - whether one conceptual move requires one slide or several;
 - whether two closely related moves belong on one slide;
 - where examples, comparisons, recaps, and section summaries belong;
+- the title, subtitle, and abbreviated title for each section title slide;
+- concrete earlier-slide objects and claims worth considering for each section summary;
 - when an earlier equation, figure, or result should be carried forward for local readability;
 - where a staged derivation or comparison is likely to need multiple teaching beats.
 
@@ -114,6 +117,8 @@ For each slide, the handoff should make recoverable:
 - position in the section;
 - teaching move / intention;
 - special role when relevant, such as summary, comparison, derivation, example, or recap;
+- section title-slide metadata (full title, subtitle, abbreviated footer title);
+- named earlier-slide candidates for a retrospective summary, when the slide is a summary;
 - required equation, example, figure, or source when the upstream section contract makes it mandatory;
 - brief design constraints only when they materially preserve the teaching move.
 
@@ -240,6 +245,9 @@ Do not require every ambiguity to be resolved before drafting. Some important qu
 
 When the instructor asks you to proceed, draft the entire section rather than stopping at the first uncertainty.
 
+Begin the numbered sequence with the section title slide and end it with the
+retrospective summary. Include both in the proposed slide count.
+
 For each proposed slide give:
 
 ### Slide title
@@ -322,6 +330,8 @@ Check:
 
 - Does each example have a distinct pedagogical job?
 - Does the section summary consolidate only material already established in the section?
+- Does its candidate list name specific objects or claims from earlier slides,
+  while leaving final selection to Slide Design?
 - Are important take-home claims stated directly before they are reused in a summary?
 - Does the summary *end the section*, without a teaser, closing bridge, or question aimed at the next section?
 
@@ -453,6 +463,20 @@ An ordered list of slides. For each slide:
 - **Intention / goal**
 - **Design note** only where useful
 
+The **first numbered slide of every section is its title slide**. Specify its
+full title, subtitle, and abbreviated title (the short section label used in
+the slide footer). Its intention should frame the section's question or job
+without teaching the result before the section develops it. Count this slide
+in the section and lecture totals; do not leave it as an uncounted divider.
+
+The **last numbered slide is its retrospective summary**. In addition to its
+title and intention, propose a small set of specific candidate equations,
+figures, schemas, examples, or take-home claims from named earlier slides in
+that section. State what each candidate would help students recall. These are
+organization-level nominations, not a finished summary layout or a demand to
+include every candidate. Do not introduce a new result, asset, or forward
+handoff on the summary slide.
+
 Example:
 
 > **Conditioning shifts the mean by an observed deviation**  
@@ -476,6 +500,14 @@ Before presenting an organization as stable, apply these tests.
 ## Title-sequence test
 
 If only the slide titles are read in order, can the section's intellectual argument be reconstructed?
+
+## Section-boundary and count test
+
+Is the first numbered slide a title slide with full title, subtitle, and
+abbreviated title? Is the final numbered slide a retrospective summary with
+specific candidates from earlier slides? Do section totals include both
+bookends, and does the lecture total distinguish section slides from any
+separate lecture title or activity handoff?
 
 ## Distinct-job test
 

@@ -201,8 +201,12 @@ For sections after the first, use:
 Place `section-metadata` immediately before the level-1 heading.
 
 For the first section immediately after an explicit `#title-slide()`, omit
-`section-metadata`; `course.typ` falls back to the section heading for the
-footer short title.
+`section-metadata` when no approved subtitle or abbreviated footer title is
+specified; `course.typ` falls back to the section heading for the footer short
+title. If the approved first-section title slide specifies either, use
+`section-metadata` immediately before the level-1 heading as shown above. The
+call updates pending section state; the heading still produces the section
+divider.
 
 ## 6. Typography, spacing, and density
 

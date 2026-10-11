@@ -19,9 +19,9 @@ Instructor delegated this review-batch autonomy on 2026-10-11: coordinator may g
 | L06 | Latent-variable EM | /root/build_l03 blob326267281c6b6775ac9a33d7ed4f022a859fc49b | /root/review_l05; L06_review.md targets32626728, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | Gaussian expected-moment lab |
 | L07 | Inference overview | /root/build_l04 blobf12fba8de7339675d09a771c5f956c8ed93649d8 | /root/review_l05; L07_review.md targetsf12fba8d, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | One Laplace benchmark versus full Ch. 7 breadth |
 | L08 | Message passing / filtering | /root/build_l05 blobb7a2de325c364bcde8230c33aaba2a5cd6b8596a | /root/review_l03; L08_review.md targetsb7a2de32, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | HMM primary; Kalman compact |
-| L09 | Variational inference | Not started | Not run | Pending | Which stochastic expectation gradient, and amortization extent |
-| L10 | MC / MCMC | Not started | Not run | Pending | Multimodal MH lab; avoid routine PyMC repetition |
-| L11 | Probabilistic neural networks | Not started | Not run | Pending | Heteroskedastic PyTorch training vs architecture breadth |
+| L09 | Variational inference | /root/build_l03 bloba8080351116f51a34eddd3e5dc06d65f7025722e | /root/review_l05 resumed/running | Pending | Which stochastic expectation gradient, and amortization extent |
+| L10 | MC / MCMC | /root/build_l04 blob9503b32aef49e7090792ea7e38d3acfb808a973b | Queued | Pending | Multimodal MH lab; avoid routine PyMC repetition |
+| L11 | Probabilistic neural networks | /root/build_l11 building | Queued | Pending | Heteroskedastic PyTorch training vs architecture breadth |
 | L12 | VAEs | Not started | Not run | Pending | Mobility data vs MNIST and rate-distortion depth |
 
 The table is a progress register, not a declaration that any provisional source references are already taught. At each review milestone fill in the exact committed SHA or blob SHA of the scope inspected, actual reviewer agent/thread, verdict and remaining risks. The coordinator owns this file and updates it serially.
@@ -43,4 +43,8 @@ The table is a progress register, not a declaration that any provisional source 
 
 ## Next action
 
-Wave A closed: all three independent reviews passed with bounded risks, source/dependency/budget reconciliation complete in architecture_audit.md v2. Wave B closed: all three reviewed and reconciled in contractv3. Start Wave C L09–L12; global adversarial gate remains pending. Keep at most three active threads including coordinator. Source access available; no launch blocker. No slides/notebook production or merge authorized.
+Wave A closed: all three independent reviews passed with bounded risks, source/dependency/budget reconciliation complete in architecture_audit.md v2. Wave B closed: all three reviewed and reconciled in contractv3. Wave C: L09 complete/reviewing, L10 complete/review queued, L11 building, L12 queued; global adversarial gate remains pending. Keep at most three active threads including coordinator. Source access available; no launch blocker. No slides/notebook production or merge authorized.
+
+## Delegation interruption reconciled
+
+L09 reviewer /root/review_l05 and L10 builder /root/build_l04 hit an actual usage-limit error. After instructor reported upgrade, both distinct threads resumed successfully: L10 confirmed its complete saved scope and exact hash; L09 rechecked the target and continued actual review. No review or approval was inferred from an interrupted turn.

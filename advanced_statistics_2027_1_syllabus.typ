@@ -220,13 +220,15 @@ The course grade is based on four components:
 #lecture(
   5,
   [18.11.2026],
-  [Optimization of probabilistic models],
-  [Learning from negative log likelihood and cross-entropy; categorical logistic regression as a GLM; gradients, reverse-mode automatic differentiation, mini-batch SGD, PyTorch training and predictive probabilities. More advanced stochastic-distribution gradients are reserved for VI and VAEs.],
+  [Learning probabilistic models: GLMs and optimization],
+  [Build conditional exponential-family GLMs from the L02 foundation: Gaussian, Bernoulli and Poisson outcomes, canonical links, and the general likelihood gradient. Use multinomial softmax as a complete probabilistic prediction example; teach reverse-mode automatic differentiation and mini-batch stochastic gradient training to fit it. Brief MLE/MAP and log-loss evaluation connections; stochastic-distribution gradients remain for VI and VAEs.],
   [
-    - 6.1–6.2 Optimization and automatic differentiation
-    - 6.3.1–6.3.3 Stochastic gradient descent
-    - 15.1.1–15.1.3 GLM structure and MLE (selected)
+    - 15.1–15.1.1 GLM form, links, Gaussian/Bernoulli/Poisson
+    - 15.1.2–15.1.3 GLM estimation and gradient derivation
     - 15.3.2 Multinomial logistic regression
+    - 6.1–6.2 Optimization and automatic differentiation (selected)
+    - 6.3.1–6.3.2 Stochastic gradient descent and minibatches
+    - 14.1.2 MLE/MAP; 14.2.1 log loss (brief)
   ],
   [
     - 7.8 Matrix calculus
@@ -234,7 +236,7 @@ The course grade is based on four components:
     - 8.4.1–8.4.3 Stochastic gradient descent
     - 10.2–10.3 Logistic regression (selected)
   ],
-  [Fit a three-class Iris multinomial-softmax GLM using a transparent PyTorch optimization loop.],
+  [Implement the three-class Iris categorical GLM: derive/compute its NLL, train with PyTorch autodiff and minibatch SGD, evaluate held-out probabilities and log loss.],
   [PyTorch tensors, computational graphs, autograd, losses, optimizers and predictive evaluation.],
 )
 
@@ -321,15 +323,15 @@ The course grade is based on four components:
   11,
   [30.12.2026],
   [Neural networks as probabilistic conditional models],
-  [MLPs as nonlinear conditional-probability models; activations, architecture, training and regularization; selected priors/penalties and predictive calibration, connecting to the GLM studied in L05.],
+  [From the L05 linear GLM predictor to nonlinear probabilistic networks: MLPs, training, and heteroskedastic predictive distributions; revisit weight decay as a Gaussian-prior analogue. Calibration is an optional brief evaluation extension rather than a second large topic.],
   [
     - 16.1–16.2 Neural-network building blocks
     - 16.3 MLPs; selected architectures
-    - 14.2 Predictive scoring and calibration (selected)
-    - 15.2.4–15.2.7 Priors and penalties (selected)
+    - 14.2.1–14.2.2 Scoring/calibration (optional brief diagnostic)
+    - 15.2.3 / 15.2.6 Priors and penalties (brief connection)
   ],
   [
-    - 11.3–11.4 Ridge and lasso (selected)
+    - 11.3–11.4 Ridge/lasso (optional brief prior connection)
     - 13.2 MLPs; nonlinearities
     - 13.3 Backpropagation
     - 13.4 Network training
@@ -344,12 +346,12 @@ The course grade is based on four components:
   12,
   [06.01.2027],
   [Variational autoencoders: neural latent-variable models],
-  [Latent-variable generative model; encoder / decoder networks; amortized variational posterior; ELBO and reparameterization; reconstruction and KL; β-VAE, rate-distortion and the information bottleneck perspective; posterior collapse. InfoVAE is an optional extension.],
+  [Latent-variable generative model; encoder/decoder networks; amortized posterior; ELBO and reparameterization; reconstruction/KL as rate-distortion; β-VAE and posterior collapse. Connect to mutual information from L04 without requiring full supervised IB/InfoVAE derivations.],
   [
     - 21.1–21.2 VAE model; ELBO; inference network
-    - 21.3.1–21.3.2 β-VAE; InfoVAE (selected)
+    - 21.3.1 β-VAE (core); 21.3.2 InfoVAE (optional mention)
     - 21.4 Posterior collapse
-    - 5.4.2, 5.6 Rate-distortion and information bottleneck (selective return)
+    - 5.4.2 Rate-distortion (selected return); 5.6 IB (comparison only)
   ],
   [],
   [Train a VAE for mobility variables (Oke PS4) or MNIST.],

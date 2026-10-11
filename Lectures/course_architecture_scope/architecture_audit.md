@@ -1,6 +1,6 @@
-# Course architecture audit — cross-course contract v2
+# Course architecture audit — cross-course contract v3
 
-Status: Wave A reconciled allocation for Wave B scope builders, 2026-10-11. Base architecture main b78a7650bb09ae851e412089d98525f7b71275d9; execution starts at 906ce71dd9c8e29f3dede51ec809442a885354c9. Only coordinator edits this file.
+Status: Waves A/B reconciled allocation for Wave C scope builders, 2026-10-11. Base architecture main b78a7650bb09ae851e412089d98525f7b71275d9; execution starts at 906ce71dd9c8e29f3dede51ec809442a885354c9. Only coordinator edits this file.
 
 ## Protected course boundary and common budget
 
@@ -47,3 +47,22 @@ L03 blob f4dab507f90618362c2e04c1c3791c8139f7de56 / independent /root/review_l03
 L06 should deeply work missing-Gaussian EM (expected second moments and ignorability explicitly), keeping any GMM illustration short rather than deriving two complete M-steps. L07 owns one Laplace approximation, not a survey of later algorithms. L08 HMM forward/backward is the preferred exact core and lab; Kalman compactly applies L01 conditioning, no second implementation. A named Oke Kalman notebook is unverified despite questions/data being located; record the practical loss as a human question.
 
 L09 should use a known-noise Gaussian regression or controlled correlated-Normal exact reference to avoid requiring HMC before L10; real GDP data may be retained only if the simplified model/data burden fits. L12 mobility materials have now been directly located and inspected (source_inspection.md); compact PyTorch tabular VAE is a defensible preferred route, with explicit per-observation reconstruction/KL normalization and no guaranteed identifiability/causality claim. MNIST is a fallback rather than an automatic default; final choice belongs to its builder and independent review. Data redistribution and all runtimes remain later publication gates.
+
+## Wave B reconciliation — coordinator disposition
+
+L06 blob326267281c6b6775ac9a33d7ed4f022a859fc49b reviewed by /root/review_l05; L07 blobf12fba8de7339675d09a771c5f956c8ed93649d8 reviewed by /root/review_l05; L08 blobb7a2de325c364bcde8230c33aaba2a5cd6b8596a reviewed by /root/review_l03. All verdicts feasible-with-risks, no unresolved blockers; raw reports preserved. Per-lecture agent gates pass, instructor/global audit pending.
+
+- L06 owns the generic bound/KL identity, tightness, Q-versus-bound distinction and exact-EM monotonicity. Missing-Gaussian first/second moments are the one deep model; the GMM responsibility bridge is recognition only, numerical comparison optional. No full MRI/GMM fit is promised.
+- L07 owns scalar Laplace normalization and curvature, using a fixed eight-observation logistic case and domain/resolution-challenged grid reference. It does not implement later VI/MCMC. Model-specific scalar Hessian here does not turn omitted general Newton/IRLS into a prior L05 obligation.
+- L08 owns scaled HMM forward/backward, smoothing and exact path/marginal distinctions; Kalman is a14-minute application of L01 conditioning with no second implementation. Viterbi mechanics optional; its general maximization distinction can be recognized. Supplied notebook harness must include an asymmetric-transition check because the selected symmetric eight-path oracle cannot detect transposition mistakes. This is a downstream test obligation, not another live example.
+- Live totals including reserve112/110/112 minutes; each lab60. Source proof/algorithm mismatches were corrected, not inherited. Optional mixture, Beta/determinant and Viterbi additions are first cuts. No workload or Colab pass is claimed.
+
+### Wave C load budget and handoff
+
+L09 reuses generic F/KL from L06 rather than rederiving it. Make restricted-q optimization and one Gaussian pathwise gradient genuinely substantive; CAVI is a bounded worked/recognized contrast, not a second long general derivation. Correct Gaussian KL sign/constant explicitly (original PDF p448 checked). Exact known-noise regression/correlated-Normal reference avoids pre-L10 HMC; any real-data variant must not add a new Pyro stack or unbudgeted preprocessing. Amortization recognized, networks/encoder implementation L12.
+
+L10 owns IID MC variance and dependent-chain estimator interpretation, MH detailed balance and stationarity assumptions, Gibbs-as-MH recognition/work. Multimodal proposal comparison is the one lab; HMC mechanics compactly contextualize familiar undergraduate NUTS rather than deriving a second algorithm.
+
+L11 owns MLP nonlinear conditional prediction and heteroskedastic Normal likelihood/positive scale; reuse L05 AD/SGD. Weight decay is Gaussian-prior connection, not sparse-prior/BNN/calibration survey. L12 owns VAE objective specialization, Gaussian KL, encoder/decoder joint training and rate-distortion rate>=MI decomposition; reuse L09 pathwise gradient and L11 network code. β does not guarantee identified/disentangled scientific factors.
+
+All Wave C labs must include software refresh and interpretation in the60-minute envelope. Scope outputs remain proposed implementations, not validated notebooks; no recording-dependent hidden prerequisites.

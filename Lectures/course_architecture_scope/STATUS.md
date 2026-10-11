@@ -16,9 +16,9 @@ Instructor delegated this review-batch autonomy on 2026-10-11: coordinator may g
 | L03 | Graphical models | /root/build_l03, blob f4dab507f90618362c2e04c1c3791c8139f7de56 | /root/review_l03; reviews/L03_review.md targets f4dab507, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | Ising image denoising versus unavailable later MCMC machinery |
 | L04 | Information theory | /root/build_l04, blob 242ee28d251d583004daa25379b6a0f8cb44d622 | /root/review_l03; L04_review.md targets 242ee28d, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | Choose one substantive source- or channel-coding lab |
 | L05 | GLMs and optimization | /root/build_l05 blob736943b90f24826e29955115896929742f2961f5 | /root/review_l05; L05_review.md targets736943b9, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | Source precision and combined GLM-gradient/AD/SGD load |
-| L06 | Latent-variable EM | /root/build_l03 blob326267281c6b6775ac9a33d7ed4f022a859fc49b | /root/review_l05; L06_review.md targets32626728, feasible-with-risks | Individually feasible; Wave B reconciliation pending | Gaussian expected-moment lab |
-| L07 | Inference overview | /root/build_l04 blobf12fba8de7339675d09a771c5f956c8ed93649d8 | /root/review_l05; L07_review.md targetsf12fba8d, feasible-with-risks | Individually feasible; Wave B reconciliation pending | One Laplace benchmark versus full Ch. 7 breadth |
-| L08 | Message passing / filtering | /root/build_l05 blobb7a2de325c364bcde8230c33aaba2a5cd6b8596a | /root/review_l03 running | Pending | HMM vs Kalman worked core |
+| L06 | Latent-variable EM | /root/build_l03 blob326267281c6b6775ac9a33d7ed4f022a859fc49b | /root/review_l05; L06_review.md targets32626728, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | Gaussian expected-moment lab |
+| L07 | Inference overview | /root/build_l04 blobf12fba8de7339675d09a771c5f956c8ed93649d8 | /root/review_l05; L07_review.md targetsf12fba8d, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | One Laplace benchmark versus full Ch. 7 breadth |
+| L08 | Message passing / filtering | /root/build_l05 blobb7a2de325c364bcde8230c33aaba2a5cd6b8596a | /root/review_l03; L08_review.md targetsb7a2de32, feasible-with-risks | Agent-approved / instructor-pending; global audit pending | HMM primary; Kalman compact |
 | L09 | Variational inference | Not started | Not run | Pending | Which stochastic expectation gradient, and amortization extent |
 | L10 | MC / MCMC | Not started | Not run | Pending | Multimodal MH lab; avoid routine PyMC repetition |
 | L11 | Probabilistic neural networks | Not started | Not run | Pending | Heteroskedastic PyTorch training vs architecture breadth |
@@ -43,4 +43,4 @@ The table is a progress register, not a declaration that any provisional source 
 
 ## Next action
 
-Wave A closed: all three independent reviews passed with bounded risks, source/dependency/budget reconciliation complete in architecture_audit.md v2. Wave B: L06/L07 independent feasibility passed; L08 complete/reviewing; reconcile then start Wave C. Keep at most three active threads including coordinator. Source access available; no launch blocker. No slides/notebook production or merge authorized.
+Wave A closed: all three independent reviews passed with bounded risks, source/dependency/budget reconciliation complete in architecture_audit.md v2. Wave B closed: all three reviewed and reconciled in contractv3. Start Wave C L09–L12; global adversarial gate remains pending. Keep at most three active threads including coordinator. Source access available; no launch blocker. No slides/notebook production or merge authorized.

@@ -42,6 +42,30 @@ Status: current coordinator synthesis during autonomous scoping, 2026-10-11; Wav
 
 L02's agreed section contract is protected, but it is not recorded as delivered. Its malformed/stale development-state register is not evidence of new approvals. Reconcile the actual taught boundary before teaching these scopes; do not retrospectively alter L01/L02 to conceal backfill. All future labs require separately authored validated solutions, clean local uv execution and fresh hosted Colab runs before publication. Source inspection and small mathematical arithmetic checks do not establish student timing, source-output reliability or Colab compatibility.
 
+## L06 — Gaussian uncertainty or biomedical mixtures? (medium)
+
+**Question:** Prefer the deep missing-Gaussian EM example over the MRI segmentation candidate?
+
+**Evidence:** The inspected Gaussian reference hides fitting in a helper, while L06 now exposes first and second conditional moments, a verified complete EM iteration and the exact monotonicity conditions. It naturally extends L01's known-parameter inference to learning unknown parameters. A full GMM update plus MRI preprocessing would add a second application and more implementation burden.
+
+**Provisional resolution:** Gaussian EM lab with supplied driver and data/mask checks; mixture responsibilities are a short illustration, not full GMM fitting. Expected second moments include posterior covariance. Exact E-step tightness is essential; approximate q only gives a lower bound and does not inherit likelihood monotonicity.
+
+**Alternatives and cost:** Substitute MRI/GMM as the primary case, with a new worked solution and scoped review; it gains biomedical interpretation but loses the uncertainty-preserving missing-data thread. Do not quietly retain both. Optional numerical mixture illustration is a six-minute first cut.
+
+**Evidence:** [L06 scope](../L06_EM/lecture_scope.md), [independent review](reviews/L06_review.md), blob326267281c6b6775ac9a33d7ed4f022a859fc49b. Data-level SPD and sufficient co-observation remain later implementation checks, not proven by symbolic formulas.
+
+## L07–L08 — Which exact computations earn deep treatment? (high for L08 practical choice)
+
+**Question:** Accept one controlled scalar grid/Laplace comparison and HMM forward/backward as the sequence core, replacing the preferred Kalman forecasting lab?
+
+**Evidence:** L07's fully specified logistic posterior has a finite unique mode from a proper prior, and independent arithmetic shows grid mean differs from the Laplace center. Domain widening and spacing refinement are required checks. L08's tiny exact HMM distinguishes path MAP from marginal modes and validates scaled recursions; a second full Kalman implementation would exceed the chosen one-algorithm budget. Oke forecasting questions and data were located, but the named solved notebook remains unverified.
+
+**Provisional resolution:** L07 controlled eight-observation benchmark; L08 HMM NumPy lab and compact Kalman reuse of L01 conditioning. Generic inference menus remain recognition, not hidden prerequisites for VI/MCMC. No JAX/Dynamax stack.
+
+**Alternatives and cost:** Keep Berkeley's random scalar case but revalidate all outputs, or reverse L08's depth allocation: Kalman forecasting primary, HMM compact. The latter is a coherent alternative but removes the current full discrete-message/smoothing practice and requires new source/workload review. It is a real practical tradeoff, not an equivalent label change. Optional Beta/determinant illustrations in L07 and Viterbi mechanics in L08 are first cuts.
+
+**Evidence:** [L07 scope](../L07_Inference/lecture_scope.md), [independent review](reviews/L07_review.md); [L08 scope](../L08_Structured_Inference/lecture_scope.md), independent review in progress. Preserve checking work before extra plots or method comparisons. Neither lab is executed/timed here.
+
 ## Remaining synthesis
 
-L06–L12 choices and the adversarial whole-course findings will be consolidated here after those gates close. This is an active report, not a completed proposal.
+L09–L12 choices and the adversarial whole-course findings will be consolidated here after those gates close. This is an active report, not a completed proposal.

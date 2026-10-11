@@ -2,8 +2,8 @@
 
 **Branch:** `scope-l03-l12-course-architecture`. **Instructor architecture/base:** `b78a7650bb09ae851e412089d98525f7b71275d9` (main/PR #8). **Starting HEAD:** `906ce71dd9c8e29f3dede51ec809442a885354c9`.
 **Authority:** instructor [WORK_ORDER](WORK_ORDER.md), 2026-10-11; agent approval is distinct from instructor approval.
-**Stage:** all ten scopes, individual independent previews, wave reconciliation and separate adversarial cold review complete. Formal documents synchronized and independently verified; mechanical validation passed. Complete agent-approved / instructor-pending proposal awaiting Git content/registry closure.
-**Proposal content commit:** pending final content checkpoint. This registry will record that exact commit; its own closure commit is recoverable with `git log -1 --format=%H -- Lectures/course_architecture_scope/STATUS.md` to avoid a self-referential SHA.
+**Stage:** all ten scopes, individual independent previews, wave reconciliation and separate adversarial cold review complete. Formal documents synchronized and independently verified; mechanical validation passed. Completed agent-approved / instructor-pending proposal; no unresolved scope, review, reconciliation or synchronization blocker. Instructor oversight is the next stage.
+**Final proposal Git commit:** `54bbc5151063ecb7eec6a6d0f95cb3c34477c585` contains every final scope, raw review, synchronized course artifact, audit, human report and validation record. The following registry-only closure changes no approved content. **Final branch/registry closure commit:** resolve exactly with `git log -1 --format=%H -- Lectures/course_architecture_scope/STATUS.md`; equivalently `git rev-parse HEAD` on the delivered branch. A commit cannot embed its own SHA; this distinction records the literal content revision without mislabeling the reviewer's earlier checkpoint as the final proposal.
 
 ## Agent approval and exact artifact identities
 
@@ -50,7 +50,7 @@ C1 distortion estimation is resolved by the author-owned L12 repair and independ
 | Syllabus/plan/ledger/notebook audit/decisions synchronization | Passed: independent final synchronization addendum, exact input hashes in raw report |
 | Consolidated human questions | Completed: [questions and hesitations](questions_and_hesitations.md) |
 | Typst/dates/links/protected content/revision checks | Passed: [validation evidence](validation.md); both syllabi compile, references/dates/protected content checked |
-| Coherent proposal content commit / registry closure | Pending exact final commit |
+| Coherent proposal content commit / registry closure | Passed: proposal `54bbc5151063ecb7eec6a6d0f95cb3c34477c585`; final registry-only closure recorded by Git as above |
 | Instructor acceptance / production / merge | Pending and outside autonomous authorization |
 
 ## Allocation and residual risks
@@ -67,4 +67,4 @@ Source contract v1 `882a9b2e76134d4952b218492a3564e117f6d6b4` (374bc6d); Wave A 
 
 Usage-limit failures interrupted L09 review/L10 build; both actual threads resumed after the instructor reported upgrade and completed the required work. No review was inferred from an interrupted turn. At most three active threads including coordinator were used concurrently.
 
-**Next owner:** Instructor oversight of this complete proposal; acceptance before Section Design/production. Only exact Git content/registry closure remains for the coordinator. No merge, ready-to-merge PR or student publication is authorized.
+**Next owner:** Instructor oversight of this complete proposal; acceptance before Section Design/production. All autonomous gates are complete; scope and review identities remain the exact approved blobs above. No merge, ready-to-merge PR or student publication is authorized.

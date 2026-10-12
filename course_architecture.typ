@@ -1,10 +1,10 @@
 #set page(
   paper: "a4",
-  flipped: true,
+  flipped: false,
   margin: (x: 15mm, y: 13mm),
 )
-#set text(font: "Libertinus Serif", size: 9.5pt)
-#set par(leading: 0.58em, spacing: 0.65em)
+#set text(font: "Libertinus Serif", size: 11pt)
+#set par(leading: 1em, spacing: 0.8em)
 
 #let navy = rgb("#173A5E")
 #let blue = rgb("#2F6690")
@@ -12,10 +12,10 @@
 #let rule = rgb("#D8DEE4")
 #let muted = rgb("#59636E")
 
-#show heading.where(level: 1): it => block(above: 1.1em, below: 0.45em)[
+#show heading.where(level: 1): it => block(above: 1.1em, below: 1em)[
   #text(size: 16pt, weight: "bold", fill: navy)[#it.body]
 ]
-#show heading.where(level: 2): it => block(above: 0.78em, below: 0.3em)[
+#show heading.where(level: 2): it => block(above: 1.1em, below: 0.8em)[
   #text(size: 11.3pt, weight: "bold", fill: blue)[#it.body]
 ]
 
@@ -46,11 +46,11 @@ This document defines the *intellectual purpose and planned progression* of the 
 
 = What the course is about
 
-Understanding probabilistic machine learning is understanding *why different classes of learning problems call for different mathematical machinery*. The point is neither a catalogue of models nor a progression from one approximation algorithm to the next. Each mathematical advance is motivated by a kind of task and available experience for which our existing models, performance criteria, or computations are insufficient.
+Understanding probabilistic machine learning is understanding *the probabalistic formulation of machine language problems*, *how different machine language problems are expressed in this machinery*, and *why specific classes of learning problems apply different computational approaches to the same machinery*. The goal is to achieve a coherent and integrated view of how the structured data, the questions being asked, and the computational tools are all related through the probabalistic formulation. This will not be a catalogue of models and it is not a progression from one approximation algorithm to the next. Each mathematical advance is motivated by a kind of task and available experience for which our existing models, performance criteria, or computations are insufficient.
 
 == From learning problems to mathematical formulations
 
-L01 established the common starting point. A *learning task* specifies what a system should accomplish; its *experience* specifies the data, feedback, or interaction available. Its success must be defined by a *performance criterion*. The same dataset may support prediction, generation, discovery, or action; data alone do not specify the learning problem.
+A *learning task* specifies what a system should accomplish; its *experience* specifies the data, feedback, or interaction available. Its success must be defined by a *performance criterion*. The same dataset may support prediction, generation, discovery, or action; data alone do not specify the learning problem.
 
 The mathematical formulation has *two distinct, related objects*. A probabilistic model describes the relevant observed and unobserved variables, their dependencies, and our uncertainty. A performance functional defines what counts as a good prediction, representation, decision, or learned distribution—often by taking an expectation with respect to a relevant distribution. For example, a predictive action $a$ may be evaluated by
 
@@ -58,7 +58,7 @@ $ cal(R)(a) = integral L(a,y) p(y) dif y. $
 
 The distribution under which we evaluate actual performance need not be the same as our fitted model. Distinguishing a mismatch of models from an error of computation is itself part of the discipline.
 
-The formulation then gives us probabilistic *queries*. Conditioning, marginalization, and summarizing a distribution—three operations developed explicitly in L01—may deliver the quantities required to evaluate or optimize performance. They are tractable in some models, including the linear-Gaussian systems of L01, but not in every family of tasks.
+The formulation then gives us probabilistic *queries*. These are generally addressed with specific integrals on the probabilistic models: conditioning, marginalization, and summarizing are three operations developed explicitly  that may deliver the quantities required to evaluate or optimize performance. They are tractable in some models, but the course deals primarily with how queries can be approached when computation is a challenge.
 
 == The task–model–performance–computation relationship
 
@@ -112,19 +112,28 @@ The three major *moves* in the course are consequently extensions of *(i) what m
 
 == The ideal quantity and the practical calculation
 
-It is useful to distinguish a mathematical target from the tractable proxy used to pursue it. A desired performance functional may be replaced during training by an empirical score or surrogate objective. Likewise, an ideal posterior or expectation may be represented by a point estimate, a local Gaussian approximation, a variational distribution, or samples. Some structured problems admit *exact* solutions by message passing, so computation is not synonymous with approximation.
+One key move in the course is to substitue a tractable proxy for an ideal mathematical target. A desired performance functional may be replaced during training by an empirical score or surrogate objective. Likewise, an ideal posterior or expectation may be represented by a point estimate, a local Gaussian approximation, a variational distribution, or samples. Some structured problems admit *exact* solutions, so computation is not synonymous with approximation.
 
-These substitutions have different meanings and limitations. A negative log-likelihood objective may support good distributional prediction without exactly matching task-specific performance. A posterior mode does not represent posterior spread; an exact EM step improves a marginal-likelihood objective but does not provide a full posterior over global parameters; a finite MCMC run approximates particular expectations. The appropriate criterion for assessing the approximation depends on the *original question*, not merely whether an internal algorithm converged.
+The central goal of the course is to develop an understanding of the possible substitutions and the situations in which they are appropriate. Each substitution has different meanings and limitations. The appropriate criterion for assessing the approximation depends on the *original question*, *the probabilistic formulation*, and *the computational power available* not merely whether an internal algorithm converged.
 
 == The role of Murphy and mathematical depth
 
-Murphy's books provide the principal mathematical argument, but no lecture attempts complete chapter coverage. We select and sometimes reorder developments to build a recognizable source-based argument that serves the current family of problems and connects to the preceding course. Where a practical notebook example motivates a lecture, it must not quietly replace the intellectual role of the mathematical material. A lecture should reach a substantive conclusion and make explicit what it enables and what it does not solve.
+Murphy's books provide the central spine of the course's progression and guide the choice of material, the explanatory logic, the depth of the coverage, and the mathematical language. The course as a whole and each lecture provides only partial coverage, relative to Murphy's second book. Material is selected and occasionally re-ordered. 
+
+A detailed understanding of the mathematical development of the material is an essential part of the course. As such, many of the mathematical developments in Murphy are presented in lecture or in the self-work notebooks. The first Murphy book often provides more detailed and scaffolded mathematical derivations, and is used as a reference for the course. The second Murphy book is the primary source fo the underlying logic of the course (as explained above) and for its structure.
 
 = How the semester develops
 
+Each lecture develops the models, mathematical formulations, and computational tools to address a class of problems. Thus, each lecture can be seen as a discrete move extending the classes of problems that can be addressed and the interaction between problems, formulation, and computation. Each lecture should reach a substantive conclusion and make the move it made and the achievment that enables explicit. Each lecture is followed by a notebook that extends the lecture with a worked example, usualy illustrating the type of problem that can now be solved and exercising the computational approach.
+
+
 == Foundations: questions, distributions, and structure
 
-*L01* establishes task, experience, performance, and the recurrent probabilistic operations. Linear-Gaussian systems show how conditioning, marginalization, and summarizing can be done coherently and exactly. *L02* connects several observation models through exponential families and derives fitting by moment matching; learning categorical transitions leads to a simple sequence generator. *L03* examines factorizations and conditional independence to express larger structured joint models without writing a full joint table.
+*L01* defines machine learning andestablishes the framework outlined in this document. The framework is made concrete using Linear-Gaussian systems and specific computational tools are applied to demonstrate how conditioning, marginalization, and summarizing work together to solve an estimation problem.  
+
+*L02* extends the class of probabilistic models we consider by developing the mathematics of the exponential families. It also introduces derives fitting by moment matching; learning categorical transitions leads to a simple sequence generator.
+
+*L03* examines factorizations and conditional independence to express larger structured joint models without writing a full joint table.
 
 == Richer performance criteria and tractable learning
 

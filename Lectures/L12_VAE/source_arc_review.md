@@ -10,7 +10,7 @@ The central source development is **generative model → intractable posterior/m
 
 ## 2. Scope's arc
 
-The [L12 scope](../../L12_VAE/lecture_scope.md) begins with a four-dimensional latent code for 19 standardized metropolitan features, distinguishes decoder from encoder and generation from reconstruction, obtains the event-summed Gaussian NLL and diagonal Normal prior KL, applies L09's reparameterization, and derives
+The [L12 scope](lecture_scope.md) begins with a four-dimensional latent code for 19 standardized metropolitan features, distinguishes decoder from encoder and generation from reconstruction, obtains the event-summed Gaussian NLL and diagonal Normal prior KL, applies L09's reparameterization, and derives
 `R=E_x KL(q_phi(z|x)||p(z))=I_q(X;Z)+KL(q_phi(z)||p(z))`.
 It interprets beta, posterior collapse and nonidentifiability, with a compact mobility VAE notebook and controlled beta comparisons.
 

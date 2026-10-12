@@ -28,7 +28,7 @@ The lecture uses finite probability tables, Bayes' rule and familiar entropy/KL 
 All information calculations here use base-2 logs, in **bits**. Later likelihood calculations use natural logs, in **nats**; bits equal nats divided by `ln 2`. Random variables use capitals. `M` is the two-bit message, `C=c(M)` the transmitted codeword and `Y` the noisy received word; the live calculation uses three transmitted bits and the notebook uses five.
 
 | Mathematical commitment | Purpose and treatment |
-|---\|---|
+|---|---|
 | `H(p)=−Σp log₂p`; `h₂(α)=−αlog₂α−(1−α)log₂(1−α)` | Motivate and work finite uncertainty. State `0≤H(X)≤log₂\|X\|`; recall rather than repeat L02 maximum entropy. |
 | `H_ce(p,q)=−Σp log₂q`; `KL(p\|\|q)=H_ce−H` | Derive the identity and work a binary example. State nonnegativity, direction/asymmetry and support convention: `0log0=0`; positive p with zero q gives infinite divergence. |
 | Empirical cross-entropy `−N⁻¹Σ_n log₂q(x_n)` | Apply to recalled categorical counts and likelihood fitting. This finite identity is not an assertion about KL from point masses to continuous densities. |
@@ -74,7 +74,7 @@ For processing, let `Y=X XOR E`, with fair X and independent `E~Bernoulli(α)`. 
 ### Primary three-bit code
 
 | Message | Transmitted word |
-|---\|---|
+|---|---|
 | 00 | 000 |
 | 01 | 011 |
 | 10 | 101 |

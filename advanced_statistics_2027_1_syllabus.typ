@@ -101,7 +101,7 @@ Each meeting includes approximately two hours of mathematical lecture and one ho
 2. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
 3. Course notes, exercises, notebook solutions and project materials: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[course repository].
 
-The descriptions specify the mathematical work and its computational application. Book references identify selected preparation, not every subsection; focused reading guidance for the teaching choices is in #link("Lectures/course_architecture_scope/questions_and_hesitations.md")[questions and hesitations]. The instructor selected the simpler L03 image algorithm and L04 coding example. Other detailed choices await instructor review. An independent revision review checked the readable wording, preserved mathematics and lighter L04 choice; see #link("Lectures/course_architecture_scope/STATUS.md")[review records]. Future notebooks have not been written or run. They must be tested locally, in Google Colab and within the student hour before release.
+The descriptions specify the mathematical work and its computational application. Book references identify selected preparation, not every subsection; focused reading guidance for the teaching choices is in #link("Lectures/course_architecture_scope/questions_and_hesitations.md")[questions and hesitations]. L03 restores the existing instructor-agreed graphical-model scope and notebook boundary. The instructor selected the simpler image algorithm and lighter L04 coding example. Other detailed choices await instructor review. An independent revision review checked the readable wording, preserved mathematics and lighter L04 choice; see #link("Lectures/course_architecture_scope/STATUS.md")[review records]. Future notebooks have not been written or run. They must be tested locally, in Google Colab and within the student hour before release.
 
 = Prerequisites
 
@@ -129,7 +129,7 @@ The course grade is based on four components:
 
 = Schedule
 
-#text(size: 8pt, weight: "semibold", fill: blue)[The 13-meeting order is agreed. Detailed teaching choices remain proposals except the selected L03/L04 choices. L01/L02 material is unchanged. Future notebook code and timing have not been tested.]
+#text(size: 8pt, weight: "semibold", fill: blue)[The 13-meeting order is agreed. L03’s agreed scope is restored; L04’s lighter example is selected. Other detailed teaching choices remain proposals. L01/L02 material is unchanged. Future notebook code and timing have not been tested.]
 
 #lecture(
   1,
@@ -181,19 +181,20 @@ The course grade is based on four components:
 #lecture(
   3,
   [04.11.2026],
-  [Graphical models and local conditional computation],
-  [Directed-graph independence recall; positive Markov random fields and Ising normalization; derive a local conditional by factor cancellation and the Gaussian-noise posterior score. Use iterated conditional modes (sequential coordinate maximization), with a counterexample to global MAP optimality. Represent factor incidence explicitly.],
+  [Graphical models: factorization and conditional independence],
+  [Derive DAG factorization from the probability chain rule and independence assumptions; work the student network and parameter economy. Develop d-separation and directed Markov blankets. Define undirected potentials and global normalization, compare separation and independence expressivity, and interpret the binary Ising model. Image posterior and algorithm derivations belong to the notebook.],
   [
-    - 4.2.1 / 4.2.4 Directed graphs: review only
-    - 4.3.1–4.3.2.1 Pixel model and normalization
-    - 4.3.6.1 / selected 4.3.8 Conditional independence and image model
-    - 4.6.1.1 Factor-graph representation
+    - 4.2.1–4.2.2 DAG factorization; student network
+    - 4.2.4 / selected 4.2.8 Independence; plates
+    - 4.3.1–4.3.2.1 / 4.3.6.1 Undirected models; Ising; separation
+    - 4.5.1 Directed/undirected independence comparison
+    - 4.3.8 Image restoration: notebook
   ],
   [
-    - Selected 3.6.1–3.6.2 Directed-graph review
+    - Optional 3.6.1–3.6.2 Graphical-model orientation
   ],
-  [Derive and implement the local field/conditional; verify normalization by exact enumeration on four pixels, then apply a supplied sequential image-update driver. Compare score improvement with reconstruction quality.],
-  [Translate graph factorization into a checked conditional computation, and distinguish a coordinate-stable MAP candidate from posterior marginals or a global optimum.],
+  [Construct an Ising prior and Gaussian observation likelihood; derive the joint, posterior and single-site conditional. Implement or complete sequential local maximization (ICM) in a NumPy scaffold; compare with a pixelwise baseline and examine initialization or local-optimum limitations.],
+  [Build a probabilistic restoration model from local factors, derive its posterior update, and distinguish local maximization from a global optimum or posterior marginal inference.],
 )
 
 #lecture(

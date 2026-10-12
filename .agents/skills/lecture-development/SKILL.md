@@ -28,7 +28,7 @@ Confirm the skill file is available in the active repository revision before ass
 ## Starting or resuming
 
 1. Identify the lecture, request, current stage, authoritative branch/files, prior approvals, and current instructor constraints. Inspect current course artifacts and the live repository rather than trusting stale summaries.
-2. Check whether an approved upstream artifact already exists. Resume at the earliest stage with a genuine unresolved problem; do not repeat completed planning merely to rerun the workflow.
+2. Check whether an approved artifact for the target lecture already exists, including on relevant local or remote-tracking branches. Inspect branches named by the instructor or course records before dispatching a fresh build; record exact source revisions and approval provenance. Read divergent files without switching or merging. If an agreed scope exists, dispatch reconciliation/revision rather than replacement. Resume at the earliest stage with a genuine unresolved problem; do not repeat completed planning merely to rerun the workflow.
 3. For **multi-stage work or work expected to span conversations**, use a small, committed lecture-local `development_state.md` as the **default** workflow register. Do not rely on chat memory as the sole durable record of approvals, exclusions, or the authoritative branch. For a short self-contained single-stage task, a conversational register may suffice. If the repository has no suitable writable location, report the limitation and carry an explicit text handoff.
 4. The register is an **index**, not a competing curriculum authority or chronological log. Keep these compact fields, updating them at material checkpoints and before a conversation ends:
    - **Repository and revision:** exact working branch, relevant artifact paths, and their last-reviewed commit/blob revisions;
@@ -60,6 +60,10 @@ Do not start multiple agents editing the same artifact concurrently. Delegate an
 ## Coordinator interaction with the instructor
 
 The instructor is mathematically mature and is learning the later methods. Explain each concern with precise objects, relevant equations/assumptions and the actual competing teaching goals; do not reduce it to a generic choice between simple and complex. Use unfamiliar method names with a short explanation, and offer verified section titles/numbers plus what to read for when background study is useful. Distinguish the depth taught in class from recommended instructor preparation. Separate teaching decisions from correctness checks authors own. Include this background in specialist dispatches, and check both clarity and mathematical substance before forwarding output. A glossary alone does not explain a concern, and elementary prose alone does not preserve its substance.
+
+Follow the instructor's chosen unit and pace of review. When they review a scope together with its related questions, keep those artifacts together and stop at the issue they want to work on; do not advance through a predetermined question list or automatically rewrite later lectures. Reconcile approval at the level actually granted: agreement on an example or notebook algorithm is not agreement on the whole intellectual arc.
+
+In scope dispatches and adjudication, require an inspectable comparison of the selected source argument, the prior course's mathematical development and the proposed lecture argument. Review both whether a route can be taught and whether its organizing endpoint is justified. Protect the distinction between approving a practical method and approving lecture-wide emphasis.
 
 Provide **one continuous human-facing discussion** across stages. Specialists return questions, evidence, proposals, alternatives, and uncertainties to the coordinator. Present them faithfully, distinguishing specialist conclusions from the coordinator's process recommendations.
 

@@ -53,3 +53,7 @@ Book 2 PDF SHA256: `54d6bfa8cc4a367bb553bea1c5127ca63696a9655b2ca1f6137a8584dccf
 Book 1 PDF SHA256: `89749245bc8065d7575f990815c621a091de3facca1585168fc0369542742dcf` (April 18, 2025 online edition as inspected by the builders).
 
 In the formula checks above, NLL means negative log likelihood, MLE means maximum-likelihood estimate, and ELBO means evidence lower bound—the tractable probability bound explained in L06. KL is Kullback–Leibler discrepancy between distributions. These names are source lookup terms; the scopes explain their mathematical roles before using them.
+
+## Recovered agreement as an authoritative input — 2026-10-12
+
+The batch source inspection missed the existing instructor-agreed L03 scope on `lecture-3-authoring`. The instructor identified it in the current discussion; the coordinator fetched and inspected source commit `8007d42b2871181a6966ab4d55417c10af9b5544`, scope blob `0656648fd43374997469174a845418a802b3aefe`, together with its register and proposed section design. The restored scope, not the batch model choice alone, now owns the live/notebook boundary. Source/code correctness cautions above remain checking evidence, not additional required student tasks. The accepted scope’s secondary ICM reference is a candidate, not newly verified or adopted code.

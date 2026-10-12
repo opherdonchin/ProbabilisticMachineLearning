@@ -75,6 +75,14 @@ Check whether a plausible sequence of intellectual moves can:
 - fit required examples, derivations, notebook prerequisites, and live time;
 - respect source support, omissions, recording decisions, and essential module boundaries.
 
+Also challenge whether the defined endpoint and argument are justified, rather than checking only whether the selected route is constructible:
+
+- Can the reviewer identify the lecture's reusable mathematical understanding separately from its notebook product?
+- How does the proposed reasoning compare with the actual preceding lecture and the selected book passages? Which foundations are assumed, compressed, relocated or omitted, and is that justified by actual prior teaching or an explicit choice?
+- Do examples illustrate or motivate the argument, or has a convenient application silently displaced the intended subject? Was a source/continuity-led alternative with the same application considered when plausible?
+
+Return an unjustified organizing purpose or relative mathematical emphasis to Lecture Scope. Do not solve it by repartitioning sections, and do not enforce literal book order or one universal theory-first pattern. A route may be mathematically correct and teachable yet need a Scope-level choice about what lecture it is trying to be.
+
 Use a rough dependency/route sketch if necessary, **without producing section titles, a final partition, or slide moves**. Report only material concerns and their owners. Distinguish a genuine Scope conflict from a choice Section Design can make later. Return a short verdict: `feasible`, `feasible with advisory risks`, or `blocked`; for each issue give evidence, minimum repair, and impact. An absence of identified blockers is not a guarantee that later Section Design will succeed.
 
 ## Build mode: sequential construction

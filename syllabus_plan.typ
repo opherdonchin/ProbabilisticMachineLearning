@@ -33,7 +33,7 @@
 
 = Syllabus plan
 
-This plan specifies the mathematical sequence and notebook applications. It assumes probability and Bayesian background, while explaining later methods and providing selected reading references. The instructor agreed to the 13-meeting order, the simpler image algorithm in L03 and the lighter coding example in L04. Other detailed choices remain proposals. Each row identifies the mathematical objects, treatment and student task. The linked teaching-choice report supplies decision-relevant equations and focused instructor readings. See #link("Lectures/course_architecture_scope/questions_and_hesitations.md")[teaching choices] and #link("Lectures/course_architecture_scope/architecture_audit.md")[course explanation].
+This plan specifies the mathematical sequence and notebook applications. It assumes probability and Bayesian background, while explaining later methods and providing selected reading references. The instructor agreed to the 13-meeting order, the existing L03 scope and its simpler notebook image algorithm and the lighter coding example in L04. Other detailed choices remain proposals. Each row identifies the mathematical objects, treatment and student task. The linked teaching-choice report supplies decision-relevant equations and focused instructor readings. See #link("Lectures/course_architecture_scope/questions_and_hesitations.md")[teaching choices] and #link("Lectures/course_architecture_scope/architecture_audit.md")[course explanation].
 The course is organized around four recurring ideas:
 
 - a machine-learning task can be expressed through a joint probability model and a query;
@@ -43,7 +43,7 @@ The course is organized around four recurring ideas:
 
 *Book 2 is the primary curricular spine.* Book 1 is supplementary rather than co-equal: a Book 1 section is retained only when it supplies necessary background, offers a more pedagogical development, gives a useful worked example, or provides an alternative treatment that may materially improve the lecture.
 
-#note[*Status:* L01 material is recorded as delivered; L02 is agreed. L03–L12 are proposed scopes with independent review records. The instructor selected two simpler choices; later choices still await review. Future notebook implementations and student timings have not been tested.]
+#note[*Status:* L01 material is recorded as delivered; L02 is agreed. L03 restores the instructor-agreed scope from its authoring branch. L04–L12 remain proposals with review evidence; L04’s lighter example is selected. Later choices still await review. Future notebook implementations and student timings have not been tested.]
 
 #v(0.5em)
 
@@ -104,19 +104,20 @@ The course is organized around four recurring ideas:
   [*Baby-name character bigram model.* Count character transitions in the names corpus, normalize the transition matrix, compute sequence NLL and generate new names. Reference: #link("https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/makemore/makemore_part1_bigrams.ipynb")[Karpathy’s solved bigram notebook].],
 
   [3],
-  [*Graphical models and local conditional computation* \
-  #note[Proposed teaching scope]],
-  [Directed-graph independence recall; positive Markov random fields and Ising normalization; derive a local conditional by factor cancellation and the Gaussian-noise posterior score. Use iterated conditional modes (sequential coordinate maximization), with a counterexample to global MAP optimality. Represent factor incidence explicitly.],
+  [*Graphical models: factorization and conditional independence* \
+  #note[Agreed scope restored]],
+  [Derive DAG factorization from the probability chain rule and independence assumptions; work the student network and parameter economy. Develop d-separation and directed Markov blankets. Define undirected potentials and global normalization, compare separation and independence expressivity, and interpret the binary Ising model. Image posterior and algorithm derivations belong to the notebook.],
   [
-    - 4.2.1 / 4.2.4 Directed graphs: review only
-    - 4.3.1–4.3.2.1 Pixel model and normalization
-    - 4.3.6.1 / selected 4.3.8 Conditional independence and image model
-    - 4.6.1.1 Factor-graph representation
+    - 4.2.1–4.2.2 DAG factorization; student network
+    - 4.2.4 / selected 4.2.8 Independence; plates
+    - 4.3.1–4.3.2.1 / 4.3.6.1 Undirected models; Ising; separation
+    - 4.5.1 Directed/undirected independence comparison
+    - 4.3.8 Image restoration: notebook
   ],
   [
-    - Selected 3.6.1–3.6.2 Directed-graph review
+    - Optional 3.6.1–3.6.2 Graphical-model orientation
   ],
-  [Derive and implement the local field/conditional; verify normalization by exact enumeration on four pixels, then apply a supplied sequential image-update driver. Compare score improvement with reconstruction quality. *Skill:* Translate graph factorization into a checked conditional computation, and distinguish a coordinate-stable MAP candidate from posterior marginals or a global optimum. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/04/ising_image_denoise_demo.ipynb")[Inspected source]. *Limit:* The instructor agreed to this simpler method. It differs from Murphy’s algorithm and does not promise the best possible image or posterior uncertainty. All course adaptations remain unrun.],
+  [Construct an Ising prior and Gaussian observation likelihood; derive the joint, posterior and single-site conditional. Implement or complete sequential local maximization (ICM) in a NumPy scaffold; compare with a pixelwise baseline and examine initialization or local-optimum limitations. *Skill:* Build a probabilistic restoration model from local factors, derive its posterior update, and distinguish local maximization from a global optimum or posterior marginal inference. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/04/ising_image_denoise_demo.ipynb")[Inspected source]. *Limit:* The instructor agreed to this simpler method. It differs from Murphy’s algorithm and does not promise the best possible image or posterior uncertainty. All course adaptations remain unrun.],
 
   [4],
   [*Information theory: mutual information, processing and noisy coding* \

@@ -50,6 +50,12 @@ Exception: before scope approval, **obtain** a lightweight Section Design feasib
 
 The approximate time allocations in the scope are constraints for later drafting, not slide counts. Scope-stage timing is a planning estimate, not a validated rehearsal time.
 
+## Recover existing agreements before building
+
+Check the target lecture's scope and development register before treating it as new work. Inspect relevant local branches and available remote-tracking branches, especially any branch named by the instructor or recorded in course files. Refresh a named remote branch when access permits. Read its files without switching branches or merging; record the source commit and distinguish instructor-agreed scope from proposed downstream work. If relevant prior work is unavailable, report that authority gap instead of assuming no agreement exists.
+
+An existing agreed scope makes this a reconciliation or revision task. Compare current decisions and files, preserve accepted content, and seek a new pedagogical choice only for an actual unresolved conflict. Autonomous proposal authority does not erase earlier instructor agreements. New generic process fields do not retroactively invalidate an accepted scope or authorize adding section boundaries or timed milestones to it.
+
 ## Required sources
 
 Before proposing a new lecture scope, inspect the sources that establish the actual course state.
@@ -78,7 +84,7 @@ If an existing syllabus conflicts with actual delivered material or with a more 
 
 When constraints conflict, use this order:
 
-1. explicit current instructor decisions;
+1. explicit current instructor decisions and documented agreements for the target lecture, unless a later instructor decision revises them;
 2. actual previously delivered course material and the agreed Lecture Scope of prior lectures, when available;
 3. the current material ledger;
 4. an authoritative current syllabus;
@@ -130,6 +136,15 @@ Identify, concisely:
 
 Do not turn this into a retrospective review of the whole course. Include only information that constrains the next scope.
 
+### Establish the intellectual starting point, not only prerequisites
+
+Before comparing routes, briefly reconstruct two arguments from the actual artifacts:
+
+- **Previous-course argument:** what mathematical question did the previous lecture develop, how did its representation/results/examples/applications relate, and what reusable understanding did it establish? Distinguish this from a list of usable formulas or a timing benchmark.
+- **Source argument:** what questions and results connect the selected book passages? Identify the foundations, worked instances and applications. Distinguish omitting an example from omitting the reasoning that makes the example meaningful. A list of section numbers is not this reconstruction.
+
+Use these as evidence, not fixed templates. The next lecture may deliberately change style or source order, but state what changes and why. A familiar example may motivate general mathematics; this does not make the example the lecture's purpose.
+
 ## 2. Solicit instructor goals, issues, and priorities
 
 Before generating alternative paths, explicitly ask the instructor for any goals, concerns, constraints, or priorities that should affect the lecture.
@@ -164,6 +179,10 @@ For each path, state compactly:
 - important deferrals or jumps;
 - likely recording opportunities when they materially affect feasibility;
 - why this path is worth considering.
+
+When plausible, include a serious route that preserves the source's mathematical argument and prior-course continuity **while keeping the same notebook application**. Do not make the instructor choose between a strong theoretical route and a useful application when both can coexist. If fixed constraints prevent that alternative, explain the conflict.
+
+State each route's reusable intellectual/mathematical endpoint separately from its notebook product. Choosing an accessible notebook algorithm does not by itself approve the lecture's organizing question or relative mathematical emphasis. An application-led lecture is legitimate when that emphasis is deliberate and justified; it is not the automatic consequence of finding a convenient worked example.
 
 Do not produce a slide outline at this stage.
 
@@ -214,6 +233,11 @@ Build and review each part separately. If a later part reveals a structural prob
 ## 6a. Intellectual arc
 
 Build this first.
+
+Read the proposed arc as a developing argument before turning it into timed milestones: what question makes the first result necessary, what that result enables, and why the next development follows. Compare this proposed argument explicitly with the previous-course and source arguments. Make consequential compression, relocation, assumptions and departures visible.
+
+The arc is neither a topic inventory nor the workflow of the notebook. Its examples should have explicit roles—motivation, worked instance, interpretation, counterexample or application. Preserve the reasons for transitions and the source mapping when later editing for readability; short prose must not erase the argument. The required milestone fields below help inspect this reasoning but filling them does not demonstrate it.
+
 
 Identify a small number of **provisional macro-level conceptual segments or milestones**, not slides and not finalized Section Design boundaries. These describe the intellectual route and its approximate time envelope; the Section Designer may split, combine, or shift them while preserving the instructor-approved coverage, mathematical depth, endpoint, examples, and live-time envelope. Scope segments are **not** a commitment to the number, titles, or exact boundaries of lecture sections.
 
@@ -502,6 +526,7 @@ The skill is complete when:
 - instructor goals and priorities have been incorporated;
 - multiple plausible routes were considered unless the instructor explicitly fixed the route;
 - the selected route was evaluated against coherence, endpoint, book progression, time, prerequisites, notebook integration, and prior-lecture alignment;
+- the previous-course, source and proposed reasoning were compared, and consequential departures and example roles are explicit;
 - the intellectual arc has been agreed;
 - the mathematical spine has been agreed, including treatment depth and any recording status;
 - the notebook handoff has been agreed;

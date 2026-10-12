@@ -1,21 +1,23 @@
-# Verification of the clear mathematical proposal — 2026-10-12
+# Current verification — L03 agreement restoration, 2026-10-12
 
-This communication revision starts from `4b886903925c25dc52434c962789c367db3d6ec6`. It strengthens the mathematical explanation and preparation readings, rather than changing the course scope. Exact target files and current review evidence are in [STATUS](STATUS.md).
+The proposal branch restores L03’s existing instructor agreement, recovered from `origin/lecture-3-authoring` at `8007d42b2871181a6966ab4d55417c10af9b5544`. It does not replace that agreement with another route or approve the proposed section design. [STATUS](STATUS.md) and the [L03 register](../L03_Graphical_Models/development_state.md) identify current authority and approval boundaries.
 
-## Substance and source checks
+## Content and independent review
 
-The teaching-choice report now states relevant equations, assumptions, treatment depths and alternatives. Focused readings identify actual Murphy sections and explain what to look for. The overview gives the formal connections across lectures. The syllabus, plan, future ledger and notebook descriptions retain the same reviewed mathematical and computational activities with more precise terminology. AGENTS.md, the nine skills and coordinator guidance assume a mathematically mature reader who may need background on an unfamiliar method.
+The restored scope matches source blob `0656648fd43374997469174a845418a802b3aefe`, except optional future lecture labels updated to the current order, a labeled provenance appendix, and three formatting-only Markdown hard breaks. Final scope blob: `2d5992a3f05d952dc21553690039fe021fd6284a`. No section partition or topic-by-topic timings were added.
 
-The independent Section Design precision/source review passed with feasible-with-risks and no material mathematical/source blocker. It checked the revised discussion and focused readings against the actual textbooks and unchanged scopes, including two notation repairs before its final snapshot. Its dated addendum is in the [revision report](reviews/readability_revision_review.md). Mathematical exposition is checked for correctness and clarity, not certified by a new instructor decision or a student usability trial.
+The independent Section Design specialist `/root/scope_method_diagnosis` checked source equality, shared live/notebook promises, actual L08 prerequisites and the scope/coordinator/review instruction changes. Verdict: **feasible with risks**, no reconciliation blocker. Its [dated correction and targeted review](reviews/L03_review.md), current report blob `c7a74f74335d44f2e47821909150a9e051f9a3c5`, explicitly qualifies earlier diagnoses based on incomplete authority. Passing batch-scope reviews are not transferred to the restored scope. Future agent behavior has not been tested.
 
-## Mechanical results
+Both syllabi, the future ledger, notebook audit, architecture explanation and teaching-choice report preserve the accepted boundary: graphical-model foundations and Ising interpretation are live; image model construction, posterior, local conditional and ICM are new notebook work. The notebook hour remains demanding; supplied helpers are requirements for future authors, not completed assets.
 
-- All ten five-part scope files are byte-identical to the starting commit. Their exact previous independent-review targets still match; the lighter L04 model remains the already-reviewed three-bit parity example.
-- All 66 tracked protected L01/L02 files and the delivered L01 solution are unchanged. The formal L01/L02/L13 argument blocks, plan L01/L02 rows and complete delivered-ledger prefix are byte-identical. Future allocations still do not advance delivered coverage.
-- The plan and formal syllabus retain exactly 13 numbered meetings, weekly Wednesdays from 21 October 2026 to 13 January 2027. L13 remains projects.
-- Current relative Markdown and Typst links, including all nine skill links to the shared writing policy, resolve. Original individual and whole-course review records remain unchanged contiguous evidence; the previous readability review is retained before the new append-only check.
-- `python scripts/check_codex_setup.py` passed for nine skills and five profiles; the skill-creator validator passed for the coordinator skill. `git diff --check` passed.
-- No notebook, teaching figure, slide deck, Python implementation, environment pin or lockfile changed. No notebook execution, hosted Colab run, student timing or lecture rehearsal occurred.
+## Mechanical checks
+
+- Exact normalized comparison against the accepted source passed. The other nine scope texts are byte-identical to baseline `2499e988706005b12c62f0d2bfb037f47b7c0c9e`.
+- All 66 protected L01/L02 files and the delivered L01 solution are unchanged. Formal L01/L02/L13 blocks, plan L01/L02 rows and the complete delivered-ledger prefix are byte-identical. Planned coverage does not advance delivered coverage.
+- Both syllabi retain 13 numbered meetings, weekly Wednesdays from 21 October 2026 to 13 January 2027. L13 remains projects.
+- The local reference check passed for 137 Markdown/Typst links; original individual and whole-course review records remain unchanged contiguous evidence.
+- `python scripts/check_codex_setup.py` passed for nine skills and five profiles. The skill-creator validator passed for the scope skill. `git diff --check` passed after formatting-only hard-break cleanup.
+- No notebook, slide, teaching figure, Python implementation, environment pin or lockfile changed. No notebook execution, hosted Colab run, student timing or rehearsal occurred.
 
 ## Compilation and layout
 
@@ -26,8 +28,8 @@ typst compile --root . syllabus_plan.typ build/typst-validation/syllabus_plan.pd
 typst compile --root . advanced_statistics_2027_1_syllabus.typ build/typst-validation/advanced_statistics_2027_1_syllabus.pdf
 ```
 
-The plan has four A4 landscape pages and the formal syllabus five A4 portrait pages. Poppler rendered all nine current pages; coordinator inspection found no evident clipping or collision. Each formal lecture entry stays together, and the plan's omission table starts with its heading on a fresh page. These layout adjustments change no teaching content. Generated checking files are ignored build outputs, not student releases. `typstyle` is unavailable, so no formatter pass is claimed.
+The plan has four A4 landscape pages; the formal syllabus has five A4 portrait pages. Poppler rendered the changed L03 page and the plan’s first two pages. Coordinator inspection found no evident clipping or collision; the formal L03 entry stays together. Build PDFs were regenerated and are ignored checking artifacts. `typstyle` is unavailable, so no formatter pass is claimed.
 
-## Approval and practical limits
+## Remaining work
 
-The instructor's L03/L04 decisions and earlier architecture acceptance are preserved. Other teaching choices await instructor oversight. Mathematical and source checks do not validate notebook scaffolding, runtime or teaching pace. Those remain future authoring obligations, including clean local uv/hosted Colab tests. No merge or student release is implied by passing this communication check.
+L03 Section Design’s exact-example checks and complete approval remain outstanding on its authoring branch. In particular, the recorded Fig.4.23(a) path issue has not been reverified by this repair. Notebook authoring must validate a worked solution, exercise timing and clean local/hosted Colab runs. Other later teaching choices remain proposals for instructor review. The branch is not merged or released to students.

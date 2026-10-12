@@ -6,15 +6,15 @@ L01's [Gaussian missing-data solution](../InClass/Solutions/lecture1_missing_dat
 
 ## The single main task in each later meeting
 
-### L03 — Graphical models and local conditional computation
+### L03 — Graphical models: student model construction and local inference
 
-Derive and implement the local field/conditional; verify normalization by exact enumeration on four pixels, then apply a supplied sequential image-update driver. Compare score improvement with reconstruction quality.
+Construct an Ising prior and Gaussian observation likelihood; derive the joint, posterior and single-site conditional. Implement or complete sequential local maximization (ICM) in a NumPy scaffold; compare with a pixelwise baseline and examine initialization or local-optimum limitations.
 
-**Skill practised:** Translate graph factorization into a checked conditional computation, and distinguish a coordinate-stable MAP candidate from posterior marginals or a global optimum.
+**Skill practised:** Build a probabilistic restoration model from local factors, derive its posterior update, and distinguish local maximization from a global optimum or posterior marginal inference.
 
-**Authors supply:** the image and neighbor handling, repeated-update program, plots and exact tiny-image comparison. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
+**Authors supply:** image/data preparation, plotting, stable notation, small implementation interfaces and verification aids. Preserve the students’ model construction and posterior/conditional derivations as new notebook work; the lecture must not pre-solve them. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
-**Choice or limitation:** The instructor agreed to this simpler method. It differs from Murphy’s algorithm and does not promise the best possible image or posterior uncertainty. [Detailed scope](L03_Graphical_Models/lecture_scope.md).
+**Choice or limitation:** The existing agreed scope requires this simpler method as notebook work. It differs from Murphy’s sampling/mean-field algorithms and does not promise a global optimum or posterior uncertainty. Completing both the mathematical model and algorithm in one hour remains demanding and untested. [Detailed scope](L03_Graphical_Models/lecture_scope.md).
 
 ### L04 — Information theory: mutual information, processing and noisy coding
 
@@ -118,7 +118,7 @@ These are implementation responsibilities, not choices for the instructor to app
 
 ### L03
 
-Use the stated Gaussian noise variance consistently. Update one pixel at a time, retain ties without worsening the score and show the tiny case where no single-pixel improvement remains although a better whole image exists. Murphy’s sampling code is a reference, not the selected course algorithm.
+Validate the instructor solution before decomposing the exercise. Use Gaussian noise variance consistently. Update one pixel at a time and retain ties without worsening the score. Supply verification aids and at least one interpretable limitation, such as initialization sensitivity or a local optimum; an exact tiny-model comparison is a possible aid, not an additional required student task. Murphy’s sampling code is a reference, not the selected course algorithm.
 
 ### L04
 

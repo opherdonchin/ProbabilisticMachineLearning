@@ -2,7 +2,7 @@
 
 The course teaches students to describe a problem with a probability model, work out what they want to know, and choose a computation that answers it. This overview is for an instructor comfortable with probability, calculus, linear algebra and the course through roughly L03–L04, without assuming familiarity with the later Murphy material. The discussion identifies the mathematical stakes directly. The selective readings below provide the underlying derivations and background needed to examine an unfamiliar issue in detail.
 
-The instructor agreed to the 13-meeting course order and selected the simpler L03 image algorithm and L04 check-bit example. The remaining detailed choices await instructor review. [Teaching choices](questions_and_hesitations.md) explains the alternatives. [Review records](STATUS.md) separates instructor decisions from what agents have checked.
+The instructor agreed to the 13-meeting course order and agreed to L03’s graphical-model scope and simpler notebook image algorithm, and selected the L04 check-bit example. The remaining detailed choices await instructor review. [Teaching choices](questions_and_hesitations.md) explains the alternatives. [Review records](STATUS.md) separates instructor decisions from what agents have checked.
 
 ## What each lecture adds
 
@@ -10,7 +10,7 @@ L01's established Gaussian material and notebook are unchanged. L02's agreed exp
 
 | Meeting | Mathematical focus | Notebook practice |
 |---|---|---|
-| L03 | Graphical models and local conditional computation | Translate graph factorization into a checked conditional computation, and distinguish a coordinate-stable MAP candidate from posterior marginals or a global optimum. |
+| L03 | Graphical models: factorization and conditional independence | Build a probabilistic restoration model from local factors, derive its posterior update, and distinguish local maximization from a global optimum or posterior marginal inference. |
 | L04 | Information theory: mutual information, processing and noisy coding | Calculate information and decision risk from one finite joint distribution without conflating information gain, code rate and guaranteed error correction. |
 | L05 | Generalized linear models, automatic differentiation and SGD | Connect a likelihood derivative with reverse-mode automatic differentiation and a checked stochastic parameter-update/evaluation loop. |
 | L06 | Latent-variable learning and expectation-maximization | Use conditional uncertainty in sufficient-statistic estimation and distinguish an exact EM improvement guarantee from arbitrary approximate hidden-value updates. |
@@ -25,7 +25,7 @@ L13 remains student project presentations. It is not an extra slot for unfinishe
 
 ## The mathematical route and the decisions it protects
 
-**L03: why a huge joint model can still support a local calculation.** For a positive model written as a product of local scores, $p(x)=Z^{-1}\prod_a\psi_a(x_a)$, the normalizing sum `Z` makes the scores probabilities. When every variable except pixel `xᵢ` is fixed, factors that do not contain `xᵢ` cancel between its two possible values. Thus $p(x_i\mid x_{-i})\propto\prod_{a:i\in a}\psi_a(x_a)$. Graph separation gives the corresponding conditional-independence statement: once the neighboring pixels are known, other pixels cannot change this local conditional in the chosen undirected model. The equation explains why students can calculate an exact *conditional* without enumerating the whole image; it does not make the globally best image easy. The instructor-selected course method changes one pixel to the better conditional value, stopping if no single change helps. It is a local improvement procedure, with no guarantee of the best joint image or posterior samples. Directed-graph independence is reviewed with its own rules; simply erasing arrowheads is not a valid conversion.
+**L03: how graphical assumptions organize a joint distribution.** Begin with L02’s Markov-chain factorization, derive the more general DAG factorization from the chain rule plus independence assumptions, and work Murphy’s student network to show parameter economy. Develop directed path-based independence, then introduce undirected local potentials, global normalization and ordinary separation. The collider/four-cycle contrast shows why the two graph languages express different independence structures. Define and interpret the binary Ising model live. Students construct the image prior, Gaussian likelihood, posterior and single-site conditional in the notebook, then implement a locally improving restoration method. The conditional is exact given the other pixels; the resulting image need not be globally optimal, and the algorithm does not supply posterior marginals. This restores the existing instructor agreement rather than selecting a new route.
 
 **L04: information retained versus a decision recovered.** For a message `X` and received observation `Y`, mutual information is $I(X;Y)=\sum_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)}=H(X)-H(X\mid Y)$: an average reduction in uncertainty, not the success rate of a decoder. If `X → Y → Z` is a Markov chain, so that further processing uses `Y` and has no additional access to `X`, the data-processing inequality gives $I(X;Z)\leq I(X;Y)$. Under zero-one loss, the best whole-message decision still has error probability $1-\sum_y\max_x p(x,y)$. This distinction matters in the agreed two-message-bit plus parity-bit lab: a single flipped bit violates the parity check, but the receiver cannot tell which of the three bits flipped and cannot guarantee correction. A stronger code can correct one error, but requiring its construction would restore the bookkeeping the instructor chose to remove.
 
@@ -45,7 +45,7 @@ makes $F$ a lower bound: the KL discrepancy is nonnegative. In expectation-maxim
 
 **L11–L12: distinguish prediction noise, parameter uncertainty and representation cost.** L11 predicts both a mean $\mu(x)$ and a positive standard deviation $\sigma(x)$ in a Gaussian observation model; the variance is $\sigma^2(x)$. One scalar negative log likelihood is $\frac12[\log(2\pi\sigma^2(x))+(y-\mu(x))^2/\sigma^2(x)]$; predicting variance therefore penalizes unjustified noise inflation as well as residual error. This input-dependent observation noise is distinct from a posterior over network weights. A Gaussian weight prior may yield a shrinkage penalty for a point estimate, but it does not by itself turn the trained weights into a posterior distribution. L12 builds a generative model $p(z)p_\theta(x\mid z)$ with fixed $p(z)=N(0,I)$ and a separate encoder $q_\phi(z\mid x)$ for approximate inference. Its ordinary objective at penalty weight one is the expected decoder negative log likelihood plus `KL(qφ(z|x)‖p(z))`, with event dimensions summed and observations averaged; changing the penalty weight changes the objective. If `qφ(z)=E_{pD(x)}qφ(z|x)` is the aggregate of encoded observations, the average penalty, or *rate*, obeys $R=E_{p_D(x)}\operatorname{KL}(q_\phi(z\mid x)\|p(z))=I_q(X;Z)+\operatorname{KL}(q_\phi(z)\|p(z))$. Hence a positive penalty need not mean that the code tells us anything about its input: the aggregate may merely differ from the prior. The model can also ignore the code. The class studies this diagnostic and the joint derivative path without claiming uniquely meaningful or causal latent coordinates.
 
-This route uses previous work when it is actually available. L01 supplies Gaussian conditioning; L02 has an agreed plan for distribution families and observed-state transitions but is not recorded as delivered. Its actual coverage must be checked before downstream authoring. L03's selected pixel update does not require L10's sampling theory. L11's point-estimated network precedes L12's encoder, which L12 introduces explicitly. None of the later scope choices beyond the instructor's L03 and L04 simplifications is recorded here as instructor-approved.
+This route uses previous work when it is actually available. L01 supplies Gaussian conditioning; L02 has an agreed plan for distribution families and observed-state transitions but is not recorded as delivered. Its actual coverage must be checked before downstream authoring. L03's selected pixel update does not require L10's sampling theory. L11's point-estimated network precedes L12's encoder, which L12 introduces explicitly. None of the later scope choices beyond the agreed L03 scope and selected L04 simplification is recorded here as instructor-approved.
 
 ```mermaid
 flowchart LR
@@ -53,7 +53,7 @@ flowchart LR
   L01 --> L08["L08: hidden-state sequences"]
   L02["L02: model families and transitions"] --> L05["L05: fitting and derivatives"]
   L02 --> L08
-  L03["L03: local calculations on a graph"] --> L08
+  L03["L03: factorization and independence; local inference lab"] --> L08
   L03 --> L10["L10: sampling and exploration"]
   L04["L04: uncertainty and information"] --> L06
   L04 --> L12["L12: hidden descriptions of data"]
@@ -81,7 +81,7 @@ The main repeated proofs have one owner. L05 explains automatic derivatives; lat
 
 | Meeting | Planned lecture minutes, including 12 for questions/slippage | Notebook minutes | What must be supplied rather than built by students |
 |---|---:|---:|---|
-| L03 | 112 | 60 | Image data, neighbor handling, update loop, plotting and tiny-model checks |
+| L03 | ~120, including ~20 reserve | 60 | Data/plots, small implementation interfaces and checks; students construct the model and derive the posterior/conditional |
 | L04 | 110 | 60 | Bit arrays, probability-table layout, log-zero handling and plots |
 | L05 | 115 | 60 | Data split/scaling, indexing, plotting and training-loop framework |
 | L06 | 112 | 60 | Data/masks, matrix checks, update driver and likelihood checks |
@@ -92,7 +92,7 @@ The main repeated proofs have one owner. L05 explains automatic derivatives; lat
 | L11 | 112 | 60 | Comparison model, training driver, prepared fallback and plots |
 | L12 | 112 | 60 | Data transformation, small network definitions, training driver and comparison fits |
 
-The ten plans total 1117 lecture minutes, including 120 reserved for questions/slippage, and 600 notebook minutes. These are estimates, not observed teaching or student completion times. The lighter L04 table reduces calculation without adding material to its existing allowance.
+With L03’s restored envelope of about 100 substantive minutes plus 20 reserve, the ten plans total approximately 1125 lecture minutes, including about 128 reserved for questions/slippage, and 600 notebook minutes. These are estimates, not observed teaching or student completion times. The lighter L04 table reduces calculation without adding material to its existing allowance.
 
 The first PyTorch meeting, the sequence calculations, derivatives through random draws and the final two-network model are the main workload risks. Later PyTorch refreshes are included in the hour. Students complete central mathematical calculations inside supplied programs; the proposal does not promise they will independently build every data loader, solver, diagnostic and training system.
 
@@ -130,11 +130,12 @@ The table gives destinations for the main source material. A row marked “not t
 
 | Book 2 location / subject | Main teaching destination | Extent and limitation |
 |---|---|---|
-| 4.2 Directed graphs and independence | L03 review | Interpret graph implications; no new graph-learning or causal-calculus course. |
-| 4.3.1 / 4.3.2.1 Interactions, normalization and Ising pixels | L03 | Derive a tiny positive pixel model and its normalizing sum. A factor is a score, not itself a normalized conditional probability. |
-| 4.3.6 / selected 4.3.8 Independence and image restoration | L03 | Derive the local conditional and one-pixel improvement; no global-best or full-uncertainty guarantee. |
-| 4.3.3–5 / 4.3.7 / 4.3.9 Other interaction models and learning | Not taught; small Gaussian comparison optional L03 | Sampling principles are L10 and approximation principles L09. Specialized fitting, feature learning and model approximations are excluded. |
-| 4.4 / 4.5 / 4.6 / 4.7 Conditional graphs, comparison, factor graphs, causal models | Factor representation and brief model comparison L03 | No conditional-random-field fitting, general graph conversion, circuits, relational modeling or structural causal-model course. |
+| 4.2.1–2 / 4.2.4 / selected 4.2.8 Directed graphs, independence and plates | L03 live | Derive parent factorization, work the student network and parameter economy; develop motifs, d-separation and blankets. Plates are brief; no graph learning or causal calculus. |
+| 4.3.1 / 4.3.2.1 Potentials, normalization and Ising | L03 live | Work a generic potential-product example and relate it to energy; define and interpret binary Ising. Image prior/posterior construction remains student notebook work. |
+| 4.3.6.1 / 4.3.8 Independence and image restoration | L03 live / notebook respectively | Separation and the positive-distribution theorem are live. Students construct the image model and derive/implement local inference in the notebook; no global-best or full-uncertainty guarantee. |
+| 4.3.3–5 / 4.3.7 / 4.3.9 Other interaction models and learning | Not taught in L03 | Sampling principles are L10 and approximation principles L09. Specialized fitting, feature learning and model approximations are excluded. |
+| 4.5.1 Directed/undirected independence comparison | L03 live | Work collider and four-cycle distinctions; no general graph-conversion theory. |
+| 4.4 / remaining 4.5 / 4.6 / 4.7 Conditional graphs, factor graphs and causal models | No primary L03 coverage | Factor graphs are not an L03 prerequisite promise. L08 requires ordinary factorization and introduces its sequence computations. No conditional-random-field fitting, circuits, relational modeling or structural causal-model course. |
 | Selected 5.1 / 5.2 Discrepancy, entropy and cross-entropy | L04 | Work finite probability examples; no differential-entropy or geometric-divergence module. |
 | 5.3.1–4 Shared information, processing and sufficient summaries | L04 | Derive mutual information, sketch the processing inequality and briefly interpret sufficient statistics. More general information estimators are excluded. |
 | 5.4.1 / 5.5 Description length and noisy communication | L04 | State length bounds and work one three-bit parity channel. Guaranteed single-error correction is a stronger referenced result, not the selected lab. |
@@ -172,7 +173,7 @@ The table gives destinations for the main source material. A row marked “not t
 | Ch.17–19 / 20 / 22–26 Other prediction/generative fields | Not assigned | Neural networks with a posterior distribution over weights, Gaussian processes, distribution shift and autoregressive/flow/diffusion/adversarial generation require a replacement decision. |
 | Selected 3.11 / 28.2.1 Missingness and group assignments | L06 supporting statement/example | Explain when missingness may be ignored and what a group probability means; no second mixture fitting lab. |
 
-Book 1 supports directed-graph review (L03), finite information quantities (L04), derivatives/batch fitting (L05), EM/group explanations (L06) and the input-dependent-noise/weight-shrinkage example (L11). These examples do not make whole Book 1 chapters required or advance a delivered book boundary.
+Book 1 offers optional graphical-model orientation (L03), finite information quantities (L04), derivatives/batch fitting (L05), EM/group explanations (L06) and the input-dependent-noise/weight-shrinkage example (L11). These examples do not make whole Book 1 chapters required or advance a delivered book boundary.
 
 ## What has actually been checked
 

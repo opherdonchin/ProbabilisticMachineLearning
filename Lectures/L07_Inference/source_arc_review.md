@@ -10,7 +10,7 @@ Thus Chapter 7 is not principally a Laplace chapter. Its contribution is the **q
 
 ## 2. The scope's argument
 
-The [proposed L07](../../L07_Inference/lecture_scope.md) begins with different posterior queries (normalization, MAP, means and prediction), then makes grid quadrature honest about resolution and tails, derives scalar Laplace from Taylor curvature, and checks the approximation on one proper-prior logistic posterior. It handles parameterization dependence of density modes and prediction versus plug-in. The notebook asks students to construct and *challenge* a numerical reference, not merely fit a Gaussian.
+The [proposed L07](lecture_scope.md) begins with different posterior queries (normalization, MAP, means and prediction), then makes grid quadrature honest about resolution and tails, derives scalar Laplace from Taylor curvature, and checks the approximation on one proper-prior logistic posterior. It handles parameterization dependence of density modes and prediction versus plug-in. The notebook asks students to construct and *challenge* a numerical reference, not merely fit a Gaussian.
 
 This is good mathematical pedagogy. The selection is **locally coherent** and the calculation yields a distinctive skill. But about three quarters of the planned lecture arc runs toward one approximation and its limitations, while the methods it is supposed to contextualize (structured exact inference, VI, MCMC) appear only as names in the closure.
 

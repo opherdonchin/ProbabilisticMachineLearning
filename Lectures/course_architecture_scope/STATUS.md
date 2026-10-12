@@ -6,6 +6,8 @@ The instructor identified `lecture-3-authoring` as the location of the already a
 
 The live lecture runs from L02’s Markov chain through DAG factorization and directed independence, then undirected models and Ising interpretation. The image prior, Gaussian likelihood, posterior, local conditional and simpler restoration algorithm remain new student notebook work. The [L03 register](../L03_Graphical_Models/development_state.md) identifies exact authority and stage status; read the [scope](../L03_Graphical_Models/lecture_scope.md) with its [questions](questions_and_hesitations.md). The instructor chooses where to stop for discussion; there is no automatic question-by-question sequence.
 
+**Course-wide intellectual and allocation authority:** [course_architecture.typ](../../course_architecture.typ) ([PDF](../../course_architecture.pdf)), replacing the old syllabus plan. Instructor-approved lecture scopes and actual delivered teaching retain their own authority; disagreements must be reconciled rather than silently changed.
+
 ## What is agreed and what remains proposed
 
 - The 13-meeting course order, Book 2 as the main source, and the existing L03 scope are instructor-agreed. Its future-opportunity lecture labels were maintained without changing teaching commitments.

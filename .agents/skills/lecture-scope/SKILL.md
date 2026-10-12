@@ -58,6 +58,10 @@ An existing agreed scope makes this a reconciliation or revision task. Compare c
 
 ## Required sources
 
+Read the authoritative `../../../course_architecture.typ` (or its current compiled PDF) before designing or significantly revising a scope. Its task-family → model and performance → computation framework is the course-level criterion; this skill implements that framework rather than defining a competing course philosophy.
+
+
+
 Before proposing a new lecture scope, inspect the sources that establish the actual course state.
 
 Use, when available:
@@ -82,14 +86,15 @@ If an existing syllabus conflicts with actual delivered material or with a more 
 
 ## Order of authority
 
-When constraints conflict, use this order:
+When constraints conflict, use this order (the course architecture governs course-wide goals but does not cancel instructor-approved local teaching):
 
 1. explicit current instructor decisions and documented agreements for the target lecture, unless a later instructor decision revises them;
 2. actual previously delivered course material and the agreed Lecture Scope of prior lectures, when available;
-3. the current material ledger;
-4. an authoritative current syllabus;
-5. Murphy Book 2 and Book 1 as source texts;
-6. generic pedagogical preference.
+3. the course-wide intellectual framework and planned progression in `course_architecture.typ`;
+4. the current material ledger for coverage state;
+5. the student-facing syllabus as a summary;
+6. Murphy Book 2 and Book 1 as source texts;
+7. generic pedagogical preference.
 
 Book order matters, but it is not a command to cover every intervening section.
 
@@ -452,6 +457,8 @@ Check that:
 - the scope does not contain slide-level drafting.
 
 ## Source-arc and Section Design reviews before approval
+
+In addition to Murphy source-arc fidelity, ask whether the lecture makes a specific, mathematically meaningful connection between its *family of learning problems* and its choices of model, performance functional, and computation under the canonical course architecture. A generic recap of the framework is not evidence of that connection.
 
 After assembling the five-part provisional Lecture Scope, obtain a **source-arc review** for a new or substantially redirected scope, using a separate reviewer where available. The reviewer first reconstructs the relevant book's intellectual progression from the source and actual prior course, **before** reading the proposed scope. Compare the two arcs as a faithful selection, justified reorganization, unjustified displacement by a narrower task, or fragmented collection. Test whether the lecture's contribution to L01's course-wide task/query and model-to-computation framework is intelligible without forcing every lecture to be about posterior approximation. For the latter two, recommend the smallest scope repair. Do not penalize deliberate departures or override instructor-agreed choices; distinguish same-context from independent review.
 

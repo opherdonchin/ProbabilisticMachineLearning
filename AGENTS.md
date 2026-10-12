@@ -58,6 +58,10 @@ These instructions apply to the entire repository.
   the course. Preserve identifiable raw review evidence and exact source records;
   readable summaries complement them and do not replace their mathematical claims.
 
+## Course-wide intellectual authority
+
+`course_architecture.typ` is the single authoritative statement of the course's intellectual framework, rationale, and planned lecture progression; `course_architecture.pdf` is the synchronized readable rendering. Start from the family of learning problems (task, available experience, data structure), then identify the probabilistic model, performance functional, and computation appropriate to it. Do not turn a worked example or a chosen notebook into the lecture's intellectual purpose. The student syllabus summarizes the architecture; `Lectures/course_architecture_scope/architecture_audit.md` evaluates proposed scopes against it rather than independently defining course philosophy. Actual delivered material and explicitly instructor-approved lecture scopes retain authority over their respective facts. Surface conflicts for instructor reconciliation rather than silently overruling approvals.
+
 ## Lecture development coordination
 
 - In Codex IDE/CLI, invoke `$lecture-development` for the instructor-facing

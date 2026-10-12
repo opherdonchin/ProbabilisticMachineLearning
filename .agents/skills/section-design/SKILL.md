@@ -39,6 +39,8 @@ Read `../shared/backpressure.md` for severity, ownership, and revision rules. Fo
 
 ## Sources and authority
 
+The approved Lecture Scope owns the detailed mathematical and example commitments. For consequential changes in a section's intellectual destination or in its relationship to the broader course, consult `../../../course_architecture.typ` and send scope-level conflicts upstream; do not infer a new course-wide rationale from a single notebook or application.
+
 Read the current agreed Lecture Scope, including its five parts, and any explicit current instructor decisions. Inspect the actual preceding lecture and notebook where they clarify the student starting state, relevant Book 2/Book 1 sections, the material ledger, and the course timing-calibration reference where extent is uncertain.
 
 Use `Lectures/L02_Exponential_Families/section_design.md` as an example **output contract**, not as a template for the sequence of intellectual moves in another lecture. Read `../slide-level-organization/SKILL.md` to understand what the downstream stage needs.

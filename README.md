@@ -2,6 +2,10 @@
 
 Course-development repository for probabilistic machine learning.
 
+## Course architecture
+
+The authoritative account of the course's intellectual purpose, mathematical progression, and 13-meeting teaching allocation is [course_architecture.typ](course_architecture.typ) ([readable PDF](course_architecture.pdf)). The [student syllabus](advanced_statistics_2027_1_syllabus.typ) summarizes it; [architecture_audit.md](Lectures/course_architecture_scope/architecture_audit.md) assesses how proposed lecture scopes align with it.
+
 ## Notebook development
 
 The student runtime is Google Colab; uv provides the reproducible local check

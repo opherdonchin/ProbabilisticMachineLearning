@@ -27,7 +27,7 @@ The method is *expectation–maximization* (EM). “Expectation” means averagi
 Let each full row be `X_n`, its observed entries `o_n`, missing entries `z_n`, and parameters `θ=(μ,Σ)`. Index sets O and M identify the two blocks. Natural logs give likelihoods in nats. During an expectation step, the current parameter value `θ_t` is fixed.
 
 | Mathematical commitment | Purpose and treatment |
-|---\|---|
+|---|---|
 | `ℓ(θ)=Σ_n log∫p_θ(o_n,z_n)dz_n` | State/motivate the observed-data likelihood. Sum instead of integrate for discrete hidden values. Marginal densities may be computable even when joint parameter fitting is inconvenient. |
 | `F(q,θ)=Σ_n E_q[log p_θ(o_n,z_n)−log q_n(z_n)]`; `ℓ=F+Σ_n KL(q_n\|\|p_θ(z_n\|o_n))` | Derive by rearranging Bayes' rule. F is the ELBO. Require compatible supports and finite quantities; do not manipulate a continuous point mass as though it had finite differential entropy. L06 owns this first generic derivation. |
 | `q_n^t=p_θ_t(z_n\|o_n)`; `F(q^t,θ_t)=ℓ(θ_t)` | Derive exact posterior tightness. An approximate hidden-value distribution need not touch. |

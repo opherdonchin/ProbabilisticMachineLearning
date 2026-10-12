@@ -28,21 +28,21 @@ The lecture uses finite probability tables, Bayes' rule and familiar entropy/KL 
 All information calculations here use base-2 logs, in **bits**. Later likelihood calculations use natural logs, in **nats**; bits equal nats divided by `ln 2`. Random variables use capitals. `M` is the two-bit message, `C=c(M)` the transmitted codeword and `Y` the noisy received word; the live calculation uses three transmitted bits and the notebook uses five.
 
 | Mathematical commitment | Purpose and treatment |
-|---|---|
-| `H(p)=−Σp log₂p`; `h₂(α)=−αlog₂α−(1−α)log₂(1−α)` | Motivate and work finite uncertainty. State `0≤H(X)≤log₂|X|`; recall rather than repeat L02 maximum entropy. |
-| `H_ce(p,q)=−Σp log₂q`; `KL(p||q)=H_ce−H` | Derive the identity and work a binary example. State nonnegativity, direction/asymmetry and support convention: `0log0=0`; positive p with zero q gives infinite divergence. |
+|---\|---|
+| `H(p)=−Σp log₂p`; `h₂(α)=−αlog₂α−(1−α)log₂(1−α)` | Motivate and work finite uncertainty. State `0≤H(X)≤log₂\|X\|`; recall rather than repeat L02 maximum entropy. |
+| `H_ce(p,q)=−Σp log₂q`; `KL(p\|\|q)=H_ce−H` | Derive the identity and work a binary example. State nonnegativity, direction/asymmetry and support convention: `0log0=0`; positive p with zero q gives infinite divergence. |
 | Empirical cross-entropy `−N⁻¹Σ_n log₂q(x_n)` | Apply to recalled categorical counts and likelihood fitting. This finite identity is not an assertion about KL from point masses to continuous densities. |
 | Best binary prefix-code average length `H≤L_min<H+1`; independent n-symbol blocks `H≤L_min,n/n<H+1/n` | State/explain, no code-construction or theorem proof. A prefix code permits unique reading of concatenated words; integer lengths differ from ideal fractional information lengths. This is lossless source coding, not our check-bit model. |
-| `H(Y|X)=−Σp(x,y)log₂p(y|x)`; `H(X,Y)=H(X)+H(Y|X)` | State conditional averaging and derive the chain rule briefly. |
-| `I(X;Y)=KL(p_xy||p_xp_y)=H(Y)−H(Y|X)` | Derive by expanding one finite sum. State symmetry, nonnegativity, the joint-entropy equivalent and zero iff independence. Work a fair bit-flip channel: `I=1−h₂(α)`. |
-| Conditional `I(X;Y|Z)` is average conditional KL, hence nonnegative; `I(X;Y,Z)=I(X;Y)+I(X;Z|Y)=I(X;Z)+I(X;Y|Z)` | State/explain enough to follow the processing proof, not a separate result catalogue. |
-| `X⟂Z|Y ⇒ I(X;Z)≤I(X;Y)` | Proof sketch using the two decompositions and zero conditional information. Work invertible recoding versus constant output. |
-| `θ⟂D|S(D) ⇒ I(θ;S(D))=I(θ;D)` | State/motivate using Bernoulli counts under an explicit joint prior/data model. A sufficient statistic preserves parameter-relevant information, not literal sample reconstruction. |
-| `c(m)=(m1,m2,m1 XOR m2)`; `p(y|m)=α^d(1−α)^(3−d)` | Work the three-bit channel; d is the number of differing bit positions (*Hamming distance*). Noise flips each position independently. Uniform message prior, known α. |
-| `p(m,y)=p(m)p(y|m)`; `p(y)=Σ_m p(m,y)`; `p(m|y)=p(m,y)/p(y)` | Work the tied example live; the complete three-bit 4×8 table is a **supplied reference** for the five-bit notebook, not a second student exercise. A maximum-a-posteriori (MAP) decoder chooses a message with greatest posterior probability. State tied maximizers explicitly. |
+| `H(Y\|X)=−Σp(x,y)log₂p(y\|x)`; `H(X,Y)=H(X)+H(Y\|X)` | State conditional averaging and derive the chain rule briefly. |
+| `I(X;Y)=KL(p_xy\|\|p_xp_y)=H(Y)−H(Y\|X)` | Derive by expanding one finite sum. State symmetry, nonnegativity, the joint-entropy equivalent and zero iff independence. Work a fair bit-flip channel: `I=1−h₂(α)`. |
+| Conditional `I(X;Y\|Z)` is average conditional KL, hence nonnegative; `I(X;Y,Z)=I(X;Y)+I(X;Z\|Y)=I(X;Z)+I(X;Y\|Z)` | State/explain enough to follow the processing proof, not a separate result catalogue. |
+| `X⟂Z\|Y ⇒ I(X;Z)≤I(X;Y)` | Proof sketch using the two decompositions and zero conditional information. Work invertible recoding versus constant output. |
+| `θ⟂D\|S(D) ⇒ I(θ;S(D))=I(θ;D)` | State/motivate using Bernoulli counts under an explicit joint prior/data model. A sufficient statistic preserves parameter-relevant information, not literal sample reconstruction. |
+| `c(m)=(m1,m2,m1 XOR m2)`; `p(y\|m)=α^d(1−α)^(3−d)` | Work the three-bit channel; d is the number of differing bit positions (*Hamming distance*). Noise flips each position independently. Uniform message prior, known α. |
+| `p(m,y)=p(m)p(y\|m)`; `p(y)=Σ_m p(m,y)`; `p(m\|y)=p(m,y)/p(y)` | Work the tied example live; the complete three-bit 4×8 table is a **supplied reference** for the five-bit notebook, not a second student exercise. A maximum-a-posteriori (MAP) decoder chooses a message with greatest posterior probability. State tied maximizers explicitly. |
 | For a uniform message prior and `0<α<1/2`, likelihood decreases with distance | Derive briefly: one more differing position multiplies likelihood by `α/(1−α)<1`. A nearest valid word is therefore a most probable message, but several can be equally near. Boundary noise values are checked separately. |
 | Every pair of distinct valid words has distance 2 | Work the parity/detection implication: one changed bit creates an invalid word, but the original is not uniquely identified. Briefly state the stronger result: minimum distance at least 3 guarantees unique nearest-word correction after at most one bit error. The minimum-distance-three result is stated live; the students verify it for the five-bit code and apply it in the notebook. |
-| `H(M)=H(C)=2`; `H(Y|M)=3h₂(α)`; `I(M;Y)=H(Y)−3h₂(α)` | Derive conditional entropy from independent noise, apply mutual information. The five-bit received marginal/curve calculation is lab-owned; the three-bit result may be supplied as a comparison. Two bits of message uncertainty do not become three just because representation is longer. |
+| `H(M)=H(C)=2`; `H(Y\|M)=3h₂(α)`; `I(M;Y)=H(Y)−3h₂(α)` | Derive conditional entropy from independent noise, apply mutual information. The five-bit received marginal/curve calculation is lab-owned; the three-bit result may be supplied as a comparison. Two bits of message uncertainty do not become three just because representation is longer. |
 | Optimal whole-message error `P_error*=1−Σ_y max_m p(m,y)`; rate `2/3` message bits per transmitted bit | State and explain: for each received word, success mass is the largest joint entry. Complete calculation in lab; rate is a resource count, not channel capacity. |
 
 L06/L09 reuse KL nonnegativity; L12 reuses entropy, mutual information and processing. Neither the lower-bound identity used for hidden variables nor L12's lossy-compression optimization is taught here.
@@ -74,7 +74,7 @@ For processing, let `Y=X XOR E`, with fair X and independent `E~Bernoulli(α)`. 
 ### Primary three-bit code
 
 | Message | Transmitted word |
-|---|---|
+|---\|---|
 | 00 | 000 |
 | 01 | 011 |
 | 10 | 101 |

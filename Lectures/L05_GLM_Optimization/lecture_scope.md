@@ -27,17 +27,17 @@ A *generalized linear model* (GLM) keeps a weighted sum of predictors but change
 Use `r=wᵀx` for the weighted predictor, `θ` for a scalar distribution coordinate and `μ=E[Y|x]` for the response mean. In a canonical GLM, `θ=r`. The positive dispersion `φ` scales variance and is fixed here. Avoid using θ for both this coordinate and all trainable weights. Logarithms are natural, so losses are in nats.
 
 | Mathematical commitment | Purpose and treatment |
-|---|---|
-| `p(y|x,w,φ)=h(y,φ)exp{[yθ−A(θ)]/φ}` | State/motivate the conditional exponential-family form. `A` is the log normalizing function; h is the remaining factor. Apply L02 results `μ=A′(θ)`, `Var(Y|x)=φA″(θ)`; do not rederive them. |
+|---\|---|
+| `p(y\|x,w,φ)=h(y,φ)exp{[yθ−A(θ)]/φ}` | State/motivate the conditional exponential-family form. `A` is the log normalizing function; h is the remaining factor. Apply L02 results `μ=A′(θ)`, `Var(Y\|x)=φA″(θ)`; do not rederive them. |
 | Canonical link `ℓ(μ)=(A′)⁻¹(μ)=r` | Motivate/compare: a link maps the response mean to its predictor coordinate. Gaussian `A=θ²/2`, `φ=σ²`, mean r; Bernoulli `A=log(1+e^θ)`, `φ=1`, mean sigmoid(r); Poisson `A=e^θ`, `φ=1`, mean `e^r`. Their variances are `σ²`, `μ(1−μ)` and μ. Work one Poisson prediction. |
 | Alternative Bernoulli probit link `μ=Φ(r)` | State/explain: Φ is the standard normal cumulative distribution; the canonical coordinate `logit(μ)` then differs from r. Numerical comparison optional. Do not apply the canonical-gradient shortcut indiscriminately. |
-| `L(w)=−N⁻¹Σ_n log p(y_n|x_n,w,φ)`; `∇L=(Nφ)⁻¹Σ_n x_n(μ_n−y_n)` | Derive one scalar likelihood chain and apply it. Log-likelihood gradient has the opposite sign, `φ⁻¹Σx(y−μ)`. φ is fixed and h independent of w. |
+| `L(w)=−N⁻¹Σ_n log p(y_n\|x_n,w,φ)`; `∇L=(Nφ)⁻¹Σ_n x_n(μ_n−y_n)` | Derive one scalar likelihood chain and apply it. Log-likelihood gradient has the opposite sign, `φ⁻¹Σx(y−μ)`. φ is fixed and h independent of w. |
 | Canonical loss convexity | State only; explain briefly why insufficient predictor rank or separated binary labels can prevent a unique/finite maximum-likelihood estimate. No Hessian, second-order algorithm or convergence proof. |
 | `z=Wx+b`; `p_c=e^z_c/Σ_j e^z_j`; target vector `t=onehot(y)` | Motivate/work class probabilities. One-hot means one at the observed class and zero elsewhere. W has shape C×D; b,z,p,t have length C. All-score shifts leave probabilities unchanged. |
 | `ℓ(z,t)=logΣ_j e^z_j−tᵀz`; `∇_zℓ=p−t` | Work the short log-normalizer derivative. For rows X:N×D and probability/target tables P,T:N×C, apply `∇_W L=N⁻¹(P−T)ᵀX`, `∇_bL=N⁻¹Σ_n(p_n−t_n)`. This vector application is distinct from the scalar formula. |
 | Stable `logΣe^z=m+logΣe^(z−m)`, `m=max z` | State/explain exact identity. A loss expecting logits must receive logits, not already normalized probabilities. No numerical-analysis survey. |
 | Backward contribution `bar(v_i)+=bar(v_j)∂v_j/∂v_i`, seed `bar(L)=1` | Work one complete branching binary-loss graph. `bar(v)` means the loss derivative with respect to intermediate v. Add every path contribution. Recognize numerical differencing and symbolic algebra as different methods; no full differentiation taxonomy. |
-| `g_B=|B|⁻¹Σ_(n∈B)∇ℓ_n`; `E[g_B|ψ]=∇L(ψ)`; `ψ_next=ψ−ηg_B` | Motivate with a brief expectation argument for fresh uniform indices sampled independently of the fixed parameter tuple ψ. This exact conditional-unbiased statement is not claimed for every shuffled-batch scheme. Apply one training cycle; no optimizer convergence theory. |
+| `g_B=\|B\|⁻¹Σ_(n∈B)∇ℓ_n`; `E[g_B\|ψ]=∇L(ψ)`; `ψ_next=ψ−ηg_B` | Motivate with a brief expectation argument for fresh uniform indices sampled independently of the fixed parameter tuple ψ. This exact conditional-unbiased statement is not claimed for every shuffled-batch scheme. Apply one training cycle; no optimizer convergence theory. |
 | Optional prior objective `L_MAP=L−N⁻¹log p(w)` | Recognize only, correctly scale prior relative to a mean data loss. L11 owns the substantive Gaussian-prior connection. |
 
 L06 inherits fully observed likelihood optimization; L07 adds posterior curvature; L09 adds gradients through a parameter-dependent random draw; L11/L12 reuse the training cycle. These additional topics are not established here.

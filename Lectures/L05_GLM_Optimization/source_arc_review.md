@@ -10,7 +10,7 @@
 
 ## 2. The proposed argument and its deliberate deviation
 
-The [L05 scope](../../L05_GLM_Optimization/lecture_scope.md) has a strong new sequence: L02 exponential-family representation → predictors and canonical links → compare Gaussian/Bernoulli/Poisson responses → derive the shared canonical NLL gradient → extend to vector softmax → show a reverse-mode derivative graph → mini-batch SGD → fit three Iris species in PyTorch.
+The [L05 scope](lecture_scope.md) has a strong new sequence: L02 exponential-family representation → predictors and canonical links → compare Gaussian/Bernoulli/Poisson responses → derive the shared canonical NLL gradient → extend to vector softmax → show a reverse-mode derivative graph → mini-batch SGD → fit three Iris species in PyTorch.
 
 This is **not Murphy's chapter order**. It brings Ch. 15 forward and uses Ch. 6 as the computational answer to the model-fitting problem. But the departure is principled, not an application opportunistically replacing a theory chapter. The core mathematical link is
 `L(w)=-N^{-1} sum_n log p(y_n|x_n,w)` and, for the specified scalar canonical GLM with fixed dispersion, `grad_w L = (N phi)^{-1} sum_n x_n(mu_n-y_n)`.

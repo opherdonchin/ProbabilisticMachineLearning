@@ -26,17 +26,17 @@ The example extends L05's yes/no regression to an unknown coefficient with a Gau
 Use scalar coefficient θ, natural logarithms and sigmoid `s(a)=1/(1+e^(−a))`. Let `u(θ)=p(θ)p(D|θ)` be unnormalized posterior density and `E(θ)=−log u(θ)`. E is a function of the coefficient, not a physical energy assumption. Additive constants do not change the shape or mode but matter for the integral of u.
 
 | Mathematical commitment | Purpose and treatment |
-|---|---|
-| `p(θ|D)=u(θ)/Z`, `Z=∫u`; mean of g `∫g(θ)p(θ|D)dθ`; prediction `∫p(y*|x*,θ)p(θ|D)dθ` | Apply Bayes/expectations and motivate the separate questions. Evidence Z is named as the normalizer; model selection is not taught. |
-| For `r=f(θ)`, `p_r(r)=p_θ(f⁻¹(r))|d f⁻¹/dr|` | State and work one normal-to-lognormal mode example. The derivative factor adjusts density under the coordinate change; no general transform-calculus development. Continuous density MAP differs from L04's discrete-message probability decision. |
+|---\|---|
+| `p(θ\|D)=u(θ)/Z`, `Z=∫u`; mean of g `∫g(θ)p(θ\|D)dθ`; prediction `∫p(y*\|x*,θ)p(θ\|D)dθ` | Apply Bayes/expectations and motivate the separate questions. Evidence Z is named as the normalizer; model selection is not taught. |
+| For `r=f(θ)`, `p_r(r)=p_θ(f⁻¹(r))\|d f⁻¹/dr\|` | State and work one normal-to-lognormal mode example. The derivative factor adjusts density under the coordinate change; no general transform-calculus development. Continuous density MAP differs from L04's discrete-message probability decision. |
 | `Z_grid=Σ_j u(θ_j)ω_j`; grid masses `w_j=u_jω_j/Z_grid`; `E[g]≈Σ_jw_jg(θ_j)` | Derive/work integration weights. For equal-width intervals Δ, density is `w_j/Δ`, not w_j. Motivate subtracting a common maximum log value before exponentiating to avoid numerical overflow/underflow; implementation belongs to lab. |
 | `E(θ)≈E(hatθ)+(1/2)H(θ−hatθ)²`, `H=E''(hatθ)>0` | Derive carefully. The first derivative vanishes at an interior differentiable stationary mode; a boundary maximum does not justify this step. Nonnegative curvature alone is insufficient for inverse variance. |
 | `q_L=N(hatθ,H⁻¹)`; `Z_L=e^(−E(hatθ))√(2π/H)` | Derive scalar normalization. Z_L approximates the original integral Z; it exactly normalizes only the quadratic surrogate. The approximation's mean is the selected mode, not necessarily the true mean. |
-| In d dimensions, `q_L=N(hatθ,H⁻¹)`; `Z_L=e^(−E(hatθ))(2π)^(d/2)|H|^(−1/2)` | State/explain; H is the symmetric Hessian matrix of second derivatives and must be positive definite. Determinant illustration optional. No error-rate theorem or general Hessian survey. |
+| In d dimensions, `q_L=N(hatθ,H⁻¹)`; `Z_L=e^(−E(hatθ))(2π)^(d/2)\|H\|^(−1/2)` | State/explain; H is the symmetric Hessian matrix of second derivatives and must be positive definite. Determinant illustration optional. No error-rate theorem or general Hessian survey. |
 | Regression `E=θ²/(2τ²)+Σ_i[log(1+e^(x_iθ))−y_ix_iθ]+constant` | Work: familiar Bernoulli likelihood plus Gaussian prior variance τ². No intercept in this specific example. |
 | `E'=θ/τ²+Σ_i x_i(s_i−y_i)`; `E''=τ⁻²+Σ_i x_i²s_i(1−s_i)>0` | Apply first derivative, derive second derivative, sketch finite unique-mode reasoning from strict convexity and growth at infinity. No second-order optimizer/IRLS derivation. |
 | Laplace mean `hatθ`, variance `1/E''(hatθ)` versus numerical posterior moments | Work/compare local approximation with checked full-distribution integration. Local curvature is not a guaranteed true posterior variance. |
-| `P(y*=1|x*,D)=E_p[s(x*θ)]` versus `s(x*hatθ)` | Apply/compare prediction by averaging with prediction at one point. In general averaging a nonlinear function differs from applying it to the mean. No extra sampler or analytic probit approximation. |
+| `P(y*=1\|x*,D)=E_p[s(x*θ)]` versus `s(x*hatθ)` | Apply/compare prediction by averaging with prediction at one point. In general averaging a nonlinear function differs from applying it to the mean. No extra sampler or analytic probit approximation. |
 
 The Laplace method is not introduced as minimizing a particular KL divergence. L06's bound only helps recognize later methods; its full derivation is not repeated. L08–L10 own their respective algorithms.
 

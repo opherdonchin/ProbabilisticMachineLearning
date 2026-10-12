@@ -18,13 +18,13 @@ Construct an Ising prior and Gaussian observation likelihood; derive the joint, 
 
 ### L04 — Information theory: mutual information, processing and noisy coding
 
-Construct the four-message/eight-observation noisy-channel table. Compute mutual information and optimal whole-message Bayes error, including ties and zero-support cases. Compare resource use; reference stronger single-error correction separately.
+Extend the lecture's 2-message-bit + parity code to `c5(m1,m2)=(m1,m2,m1,m2,m1 XOR m2)`; prove minimum distance 3; implement/check MAP decoding and use a supplied 4×32 channel enumeration to compare MI, Bayes error and rate with the three-bit and uncoded baselines.
 
-**Skill practised:** Calculate information and decision risk from one finite joint distribution without conflating information gain, code rate and guaranteed error correction.
+**Skill practised:** Construct a correcting code and use a finite probability model to compare guaranteed single-error correction, average noisy-channel error, mutual information and transmission cost.
 
-**Authors supply:** bit arrays, probability-table layout, safe handling of zero probabilities and noise-curve plots. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
+**Authors supply:** 32 received-word enumeration, vectorized probability/axis helpers, lecture-code and uncoded benchmark outputs, log-zero/tie-safe utilities, plots and noise sweep; students retain codeword-distance analysis and decoder implementation. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
-**Choice or limitation:** The instructor chose the lighter example. One changed bit is detected but cannot always be located or corrected. The stronger code is reference material. [Detailed scope](L04_Information_Theory/lecture_scope.md).
+**Choice or limitation:** The instructor chose the **lighter three-bit code for the lecture and stronger five-bit code for the notebook**. The former detects but cannot guarantee recovery; the latter corrects up to one error at higher transmission cost. One-hour workload remains untested. [Detailed scope](L04_Information_Theory/lecture_scope.md).
 
 ### L05 — Generalized linear models, automatic differentiation and SGD
 
@@ -122,7 +122,7 @@ Validate the instructor solution before decomposing the exercise. Use Gaussian n
 
 ### L04
 
-The required table has four messages and eight received strings. One flipped bit violates parity but can leave several equally plausible originals. Do not promise guaranteed correction. Check table sums, zeros and ties, and state that three transmitted bits cost more than two uncoded bits. The five-bit result is a stronger reference, not another required implementation.
+The lecture uses a four-message/eight-received-word three-bit model: it detects a single flip without guaranteed correction. The student notebook uses the **course-constructed five-bit code** with four messages/32 received words (vectorized 4×32 joint table, not hand enumeration). Verify pairwise minimum distance 3, single-flip decoding, marginal/joint normalization, posterior ties and impossible observations. At α=0.2, five-bit optimal message error ≈0.22176 versus 0.36 for the lecture's three-bit code; MI ≈1.12343 bits/message. Five transmitted bits reduce the rate to 2/5. These are untested notebook targets, not a guaranteed one-hour completion.
 
 ### L05
 

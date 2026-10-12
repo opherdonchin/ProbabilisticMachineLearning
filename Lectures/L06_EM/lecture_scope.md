@@ -27,18 +27,18 @@ The method is *expectation–maximization* (EM). “Expectation” means averagi
 Let each full row be `X_n`, its observed entries `o_n`, missing entries `z_n`, and parameters `θ=(μ,Σ)`. Index sets O and M identify the two blocks. Natural logs give likelihoods in nats. During an expectation step, the current parameter value `θ_t` is fixed.
 
 | Mathematical commitment | Purpose and treatment |
-|---|---|
+|---\|---|
 | `ℓ(θ)=Σ_n log∫p_θ(o_n,z_n)dz_n` | State/motivate the observed-data likelihood. Sum instead of integrate for discrete hidden values. Marginal densities may be computable even when joint parameter fitting is inconvenient. |
-| `F(q,θ)=Σ_n E_q[log p_θ(o_n,z_n)−log q_n(z_n)]`; `ℓ=F+Σ_n KL(q_n||p_θ(z_n|o_n))` | Derive by rearranging Bayes' rule. F is the ELBO. Require compatible supports and finite quantities; do not manipulate a continuous point mass as though it had finite differential entropy. L06 owns this first generic derivation. |
-| `q_n^t=p_θ_t(z_n|o_n)`; `F(q^t,θ_t)=ℓ(θ_t)` | Derive exact posterior tightness. An approximate hidden-value distribution need not touch. |
-| `Q(θ|θ_t)=Σ_n E_q^t log p_θ(o_n,z_n)` | Explain why the entropy term is constant when q is held fixed. Maximizing Q then maximizes F; Q alone is not generally the touching bound. Do not differentiate q as θ varies within this step. |
+| `F(q,θ)=Σ_n E_q[log p_θ(o_n,z_n)−log q_n(z_n)]`; `ℓ=F+Σ_n KL(q_n\|\|p_θ(z_n\|o_n))` | Derive by rearranging Bayes' rule. F is the ELBO. Require compatible supports and finite quantities; do not manipulate a continuous point mass as though it had finite differential entropy. L06 owns this first generic derivation. |
+| `q_n^t=p_θ_t(z_n\|o_n)`; `F(q^t,θ_t)=ℓ(θ_t)` | Derive exact posterior tightness. An approximate hidden-value distribution need not touch. |
+| `Q(θ\|θ_t)=Σ_n E_q^t log p_θ(o_n,z_n)` | Explain why the entropy term is constant when q is held fixed. Maximizing Q then maximizes F; Q alone is not generally the touching bound. Do not differentiate q as θ varies within this step. |
 | `ℓ(θ_(t+1))≥F(q^t,θ_(t+1))≥F(q^t,θ_t)=ℓ(θ_t)` | Prove this short chain. Exact maximization or a demonstrated increase in Q suffices; an arbitrary optimizer step does not. Monotonicity is not global optimality, unique identification or a general convergence theorem. Briefly name this lower-bound approach *minorize–maximize*, without another proof. |
 | `a=μ_M+Σ_MOΣ_OO⁻¹(o−μ_O)`; `V=Σ_MM−Σ_MOΣ_OO⁻¹Σ_OM` | Apply/work L01 conditional mean and covariance at current estimates. Use linear solves later, no fresh conditioning proof or sampling. |
-| `m_n=E[X_n|o_n]`; `C_n[M,M]=V_n`, other blocks zero; `R_n=E[X_nX_nᵀ|o_n]=m_nm_nᵀ+C_n` | Derive/work full first/second moments including observed–missing cross blocks. Complete rows have C=0. Fully missing rows contribute current prior moments but no observed information; exclude them from the lab. |
+| `m_n=E[X_n\|o_n]`; `C_n[M,M]=V_n`, other blocks zero; `R_n=E[X_nX_nᵀ\|o_n]=m_nm_nᵀ+C_n` | Derive/work full first/second moments including observed–missing cross blocks. Complete rows have C=0. Fully missing rows contribute current prior moments but no observed information; exclude them from the lab. |
 | `Q=const−(N/2)logdetΣ−(1/2)tr(Σ⁻¹Σ_n[R_n−m_nμᵀ−μm_nᵀ+μμᵀ])` | Motivate/work the expected Gaussian quadratic. Keep both symmetric cross terms; `−2μm_nᵀ` is not a symmetric matrix equality. |
 | `μ_new=N⁻¹Σm_n`; `Σ_new=N⁻¹ΣR_n−μ_newμ_newᵀ` | Derive mean stationarity, apply Gaussian moment matching for covariance, work one iteration. Maximum-likelihood denominator is N, not N−1. Nonnegative-definite covariance is not automatically invertible. |
-| `ℓ=Σ_n log N(o_n|μ_O,Σ_OO)` | Apply observed marginal densities as the objective check. A supplied checker avoids turning the lab into a density-software exercise. |
-| Mixture `p(x)=Σ_kπ_kN(x|μ_k,Σ_k)`; responsibility `r_nk∝π_kN(x_n|μ_k,Σ_k)` | State, Bayes-normalize and work briefly. Interpret as the expected component indicator. No second full parameter-update derivation. |
+| `ℓ=Σ_n log N(o_n\|μ_O,Σ_OO)` | Apply observed marginal densities as the objective check. A supplied checker avoids turning the lab into a density-software exercise. |
+| Mixture `p(x)=Σ_kπ_kN(x\|μ_k,Σ_k)`; responsibility `r_nk∝π_kN(x_n\|μ_k,Σ_k)` | State, Bayes-normalize and work briefly. Interpret as the expected component indicator. No second full parameter-update derivation. |
 
 **Missingness assumptions in plain terms:** *missing completely at random* (MCAR) means hiding is independent of the values; this is designed into the lab. *Missing at random* (MAR) may depend on observed values but not missing values after conditioning on those observed values; ignoring it additionally requires separately varying missingness-model parameters. *Missing not at random* (MNAR) depends on the unseen values and generally needs explicit modeling. State these distinctions and assumptions, no missingness-method survey.
 

@@ -32,20 +32,22 @@ The instructor authorized pushing this proposal branch to origin. No merge is au
 | Scope | Current scope file hash | Current source / author | Earlier substantive file hash | Original independent review |
 |---|---|---|---|---|
 | [L03](../L03_Graphical_Models/lecture_scope.md) | `2d5992a3f05d952dc21553690039fe021fd6284a` | Instructor-agreed `lecture-3-authoring`; coordinator restored | `f4ab82808c1cc6b4b32c38588c6c2e969483b036` | [Raw report and reading guide](reviews/L03_review.md) |
-| [L04](../L04_Information_Theory/lecture_scope.md) | `c0c61c22e0152ce2fab18ac41132d2e17eeaa647` | `/root/readable_early` | `6b008770631926f61e51d838a126651c2200466e` | [Raw report and reading guide](reviews/L04_review.md) |
-| [L05](../L05_GLM_Optimization/lecture_scope.md) | `84629e7171a371676ac6dbf1e3fabd34de907b95` | `/root/readable_early` | `6f7200e2383a2136687fe03cbb8b35b67f76d696` | [Raw report and reading guide](reviews/L05_review.md) |
-| [L06](../L06_EM/lecture_scope.md) | `b492462f2f2e9602b6ef917d0f47a52f23f1bdab` | `/root/readable_early` | `c29aefd80dbd192a6a4da4b79e5e299df343875a` | [Raw report and reading guide](reviews/L06_review.md) |
-| [L07](../L07_Inference/lecture_scope.md) | `99de6f1ea4292d5006bbe70184a480fe231a1e5a` | `/root/readable_early` | `80eacfd8c3e7e3bb4eb00d9bb23ccdb1c2ddcb0a` | [Raw report and reading guide](reviews/L07_review.md) |
-| [L08](../L08_Structured_Inference/lecture_scope.md) | `1c92cf00a125c33b1142cbd0696a1221a766ea36` | `/root/readable_late` | `4ae9853bf48899edeab65a1c2b503dfad0c1f990` | [Raw report and reading guide](reviews/L08_review.md) |
-| [L09](../L09_Variational_Inference/lecture_scope.md) | `dd7665143dbbcd5af443e6ca54c1a6a4baa9f3fa` | `/root/readable_late` | `7072832dfbf350454d66a0440abea8201bf530e0` | [Raw report and reading guide](reviews/L09_review.md) |
-| [L10](../L10_MCMC/lecture_scope.md) | `884a24c67187557546c74d0e3935f08fc67edd93` | `/root/readable_late` | `55359f7aeeeb5eb838915386ca5222981f8236c5` | [Raw report and reading guide](reviews/L10_review.md) |
-| [L11](../L11_Neural_Prediction/lecture_scope.md) | `f76ea83091b02831b7c5959e02ebe8f8ab55fc25` | `/root/readable_late` | `c9c3298efa4e11a0baedaa6bd06d72aba64ee86d` | [Raw report and reading guide](reviews/L11_review.md) |
-| [L12](../L12_VAE/lecture_scope.md) | `67fdd3cd474b3bbf1e5ca7e931c169ebef737eeb` | `/root/readable_late` | `ae38514fa2daf5502c411a3c5528cfa6a2becbdc` | [Raw report and reading guide](reviews/L12_review.md) |
+| [L04](../L04_Information_Theory/lecture_scope.md) | `b0efb934cd9a84d19ab9779239c438c9f14d8dc3` | `/root/readable_early` | `6b008770631926f61e51d838a126651c2200466e` | [Raw report and reading guide](reviews/L04_review.md) |
+| [L05](../L05_GLM_Optimization/lecture_scope.md) | `4866e4911403c2be7ac09779321d2985594df95d` | `/root/readable_early` | `6f7200e2383a2136687fe03cbb8b35b67f76d696` | [Raw report and reading guide](reviews/L05_review.md) |
+| [L06](../L06_EM/lecture_scope.md) | `57f3f8ea8ccb93e2e975847a3a8443efefdfc49f` | `/root/readable_early` | `c29aefd80dbd192a6a4da4b79e5e299df343875a` | [Raw report and reading guide](reviews/L06_review.md) |
+| [L07](../L07_Inference/lecture_scope.md) | `43c403d65e58e1b852517dd7b2785de1f84933e8` | `/root/readable_early` | `80eacfd8c3e7e3bb4eb00d9bb23ccdb1c2ddcb0a` | [Raw report and reading guide](reviews/L07_review.md) |
+| [L08](../L08_Structured_Inference/lecture_scope.md) | `8c442b362e4610edc4212988074c855b00e843b3` | `/root/readable_late` | `4ae9853bf48899edeab65a1c2b503dfad0c1f990` | [Raw report and reading guide](reviews/L08_review.md) |
+| [L09](../L09_Variational_Inference/lecture_scope.md) | `89ee9f324fd0384972ff1ef52c446d6b146367d6` | `/root/readable_late` | `7072832dfbf350454d66a0440abea8201bf530e0` | [Raw report and reading guide](reviews/L09_review.md) |
+| [L10](../L10_MCMC/lecture_scope.md) | `9ce5a70b8ac1e1506820134b1a01d06b976c072f` | `/root/readable_late` | `55359f7aeeeb5eb838915386ca5222981f8236c5` | [Raw report and reading guide](reviews/L10_review.md) |
+| [L11](../L11_Neural_Prediction/lecture_scope.md) | `629e38893497e4b2cf18e4fcf58d225177c00f88` | `/root/readable_late` | `c9c3298efa4e11a0baedaa6bd06d72aba64ee86d` | [Raw report and reading guide](reviews/L11_review.md) |
+| [L12](../L12_VAE/lecture_scope.md) | `22fa2d8307ef7cb621456521383b6c352dcd451a` | `/root/readable_late` | `ae38514fa2daf5502c411a3c5528cfa6a2becbdc` | [Raw report and reading guide](reviews/L12_review.md) |
 
 Original independent reviewers: `/root/review_l03` (L03/L04/L08), `/root/review_l05` (L05/L06/L07/L09), `/root/review_l10` (L10), `/root/review_l11` (L11/L12 and targeted repairs). `/root/course_adversary` reviewed the course proposal. Current mathematical-clarity evidence is retained in [readability revision review](reviews/readability_revision_review.md); its unchanged-scope findings do not certify this L03 restoration.
 
 
-**L04 subsequent amendment (2026-10-12):** The earlier L04 review and readability evidence refer to the old three-bit *notebook* or its prior five-bit variant. Neither independently reviews the present split of three-bit **lecture** and five-bit **student notebook**. The full live intellectual arc is unchanged, but the stronger notebook is a consequential pending feasibility and workload check. This update is not a new agent approval; later reviewers should target current L04 scope blob `c0c61c22e0152ce2fab18ac41132d2e17eeaa647`.
+**L04 subsequent amendment (2026-10-12):** The earlier L04 review and readability evidence refer to the old three-bit *notebook* or its prior five-bit variant. Neither independently reviews the present split of three-bit **lecture** and five-bit **student notebook**. The full live intellectual arc is unchanged, but the stronger notebook is a consequential pending feasibility and workload check. This update is not a new agent approval; later reviewers should target the current L04 scope hash in the registry. The recent GitHub Markdown table-escaping change is formatting-only, not new pedagogical review or approval.
+
+**Markdown table repair (2026-10-12):** Escaped literal `|` characters inside mathematical/code cells across all ten scope Markdown files, without changing equations, treatment depths or notebooks. GitHub previously parsed these as spurious table columns. The current scope hashes above reflect the formatting changes; historical review targets remain intact. All table rows were checked for the expected number of columns.
 
 ## Next action
 

@@ -10,7 +10,7 @@ This is a coherent source argument: **compositional differentiable computations 
 
 ## 2. Proposed lecture argument
 
-The [L11 scope](../../L11_Neural_Prediction/lecture_scope.md) starts with linear predictors, shows that stacked affine maps collapse into one affine map without nonlinearities, constructs a shallow MLP and derives a Gaussian mean/positive-scale head and heteroskedastic NLL. It uses prior backprop to train, distinguishes aleatoric conditional noise from uncertainty in network weights, and derives a Gaussian-weight-prior penalty. A synthetic nonlinear Gaussian regression notebook fits the chosen network.
+The [L11 scope](lecture_scope.md) starts with linear predictors, shows that stacked affine maps collapse into one affine map without nonlinearities, constructs a shallow MLP and derives a Gaussian mean/positive-scale head and heteroskedastic NLL. It uses prior backprop to train, distinguishes aleatoric conditional noise from uncertainty in network weights, and derives a Gaussian-weight-prior penalty. A synthetic nonlinear Gaussian regression notebook fits the chosen network.
 
 This is mathematically coherent and particularly suitable for a Bayesian-trained MSc cohort: it demonstrates what it means for a **neural model to parameterize a distribution**. It avoids repeating an Iris classification fit. But heteroskedastic noise and regularization occupy most of the planned live argument, whereas Murphy's broader question of differentiable architecture/representation is compressed to an early shallow-network step.
 

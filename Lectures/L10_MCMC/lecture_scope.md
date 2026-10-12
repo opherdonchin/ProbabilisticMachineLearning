@@ -96,7 +96,7 @@ The formulas distinguish target variance from the variance of its estimated aver
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, purpose and delivery |
-|---\|---|
+|---|---|
 | `hatμ=N⁻¹Σg(X_n)`, IID unbiasedness, `Var(hatμ)=σ_g²/N` | **Derive**, Live; estimator's numerical uncertainty. LLN/CLT and `SE≈s_g/√N` **State + Interpret** with integrability/finite variance. |
 | Importance `E_q[gπ/q]`, self-normalized weights; rejection envelope | Importance identity **State + Explain**, rejection **Mention**, Live narrow contrasts; no implementation/proof or second estimator module. |
 | `πT=π`; detailed balance | Definitions **Motivate/State**, balance ⇒ invariance **Prove** by summation, Live. Not a proof of mixing. |
@@ -159,7 +159,7 @@ Supported outcomes are computing independent-sample standard error; explaining b
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / proposed future bookkeeping |
-|---\|---|
+|---|---|
 | **Core/Live deep** | B2 §§11.2–11.2.2, selected §2.6.4, §§12.2.1–12.2.2, selected §12.6.3; MH/MC correctness and dependent variance. |
 | **Short bridge** | §11.4/§§11.5.1–11.5.2 narrow contrasts; §12.2.3.2 random walk; §§12.3.1–12.3.2 bounded Gibbs; §12.6.1/12.6.2 interpretation; HMC mechanics §12.5.3/NUTS name §12.5.4.1 only. |
 | **Notebook owned** | Stable MH mechanics, repeated states, fixed-scale/dispersed-start mixture comparison, exact-reference query errors and supplied uncertainty diagnostics. |

@@ -38,7 +38,7 @@ This is not simply about restoring missing section numbers. For example, L08 nee
 
 **Do not confuse review with production:** Notebook scaffolds are still unimplemented and teaching times unmeasured. A source-arc pass should not rubber-stamp feasibility, but it should also not fail a good mathematical arc because a particular GPU/Colab setup is untested.
 
-**Proposed skill changes:** [specific amendments](source_arc_skill_recommendations.md) to make source-first and independent source-arc comparisons enforceable, supplementing (not replacing) the current skill's post-L03 corrections. The canonical skill has **not** been changed. See [VS Code revision prompt](SOURCE_ARC_REVISIONS_IN_VSCODE.md) after instructor review of the recommendations.
+**Scope-authoring skill:** A concise [integrated revision](../../.agents/skills/lecture-scope/SKILL.md) now strengthens source-first reading, comparison of intellectual transitions and source-arc review while retaining the established workflow. The [older detailed patch proposal](source_arc_skill_recommendations.md) is historical, not an instruction to apply. The [VS Code revision prompt](SOURCE_ARC_REVISIONS_IN_VSCODE.md) uses the revised skill when the instructor authorizes scope revisions.
 
 ## Review provenance
 

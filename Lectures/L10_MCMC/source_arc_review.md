@@ -10,7 +10,7 @@
 
 ## 2. Scope's chosen line
 
-The [L10 scope](../../L10_MCMC/lecture_scope.md) first derives independent Monte Carlo variance, then distinguishes invariance/detailed balance from convergence speed, derives the general Hastings correction and explains rejected repeated states, recognizes Gibbs and HMC, and finally derives dependent-estimator variance and explains query-specific ESS. The notebook implements a NumPy MH sampler on a bimodal target and compares proposal scales and dispersed starts against known expectations.
+The [L10 scope](lecture_scope.md) first derives independent Monte Carlo variance, then distinguishes invariance/detailed balance from convergence speed, derives the general Hastings correction and explains rejected repeated states, recognizes Gibbs and HMC, and finally derives dependent-estimator variance and explains query-specific ESS. The notebook implements a NumPy MH sampler on a bimodal target and compares proposal scales and dispersed starts against known expectations.
 
 This is **substantively faithful** to the core Chapters 11–12 progression, despite omitting important other samplers. It is *not* merely an MH recipe: estimator error and chain validity are distinct central themes, and conditional-update Gibbs has a different source of valid transitions.
 

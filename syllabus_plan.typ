@@ -137,7 +137,7 @@ The course is organized around four recurring ideas:
   [5],
   [*Generalized linear models, automatic differentiation and SGD* \
   #note[Proposed teaching scope]],
-  [Conditional exponential-family models: Gaussian, Bernoulli and Poisson supports, mean/link and dispersion. Derive one canonical NLL gradient, work the distinct vector softmax gradient, trace reverse-mode differentiation through a shared computational graph, and explain finite-sum minibatch stochastic gradient descent.],
+  [Start from the familiar Bayesian regression likelihood and parameter prior; explain why Gaussian observations are unsuitable for binary responses and counts, without implying that the hierarchical model fails. Generalize the observation family using Gaussian/Bernoulli/Poisson GLMs and links. Contrast full posterior inference with MLE/MAP point fitting; derive the canonical NLL and vector softmax gradients, then reverse-mode autodiff and minibatch SGD.],
   [
     - 15.1 / 15.1.1 / 15.1.3 Common model structure and derivative
     - 15.1.2 Brief alternative-link comparison
@@ -153,7 +153,7 @@ The course is organized around four recurring ideas:
   [6],
   [*Latent-variable learning and expectation-maximization* \
   #note[Proposed teaching scope]],
-  [Derive the ELBO/KL identity, exact E-step tightness and EM likelihood monotonicity under its assumptions. Apply Gaussian conditional first and second moments to unknown mean/covariance with missing data. State ignorability and positive-definiteness conditions; illustrate mixture responsibilities briefly.],
+  [Recall Bayesian latent-variable hierarchies and joint posterior inference, then distinguish point estimation by marginal likelihood from inference over all unknowns. Show why unknown latent values complicate direct fitting, and derive the ELBO/KL identity, exact E-step tightness and EM monotonicity. Apply Gaussian conditional first/second moments to unknown mean/covariance with missing data; briefly interpret mixture responsibilities and assumptions.],
   [
     - Selected 6.5.1 / 6.5.3 Probability bound and EM
     - 6.5.4 Gaussian missing-data updates

@@ -27,7 +27,7 @@ A *generalized linear model* (GLM) keeps a weighted sum of predictors but change
 Use `r=wᵀx` for the weighted predictor, `θ` for a scalar distribution coordinate and `μ=E[Y|x]` for the response mean. In a canonical GLM, `θ=r`. The positive dispersion `φ` scales variance and is fixed here. Avoid using θ for both this coordinate and all trainable weights. Logarithms are natural, so losses are in nats.
 
 | Mathematical commitment | Purpose and treatment |
-|---\|---|
+|---|---|
 | `p(y\|x,w,φ)=h(y,φ)exp{[yθ−A(θ)]/φ}` | State/motivate the conditional exponential-family form. `A` is the log normalizing function; h is the remaining factor. Apply L02 results `μ=A′(θ)`, `Var(Y\|x)=φA″(θ)`; do not rederive them. |
 | Canonical link `ℓ(μ)=(A′)⁻¹(μ)=r` | Motivate/compare: a link maps the response mean to its predictor coordinate. Gaussian `A=θ²/2`, `φ=σ²`, mean r; Bernoulli `A=log(1+e^θ)`, `φ=1`, mean sigmoid(r); Poisson `A=e^θ`, `φ=1`, mean `e^r`. Their variances are `σ²`, `μ(1−μ)` and μ. Work one Poisson prediction. |
 | Alternative Bernoulli probit link `μ=Φ(r)` | State/explain: Φ is the standard normal cumulative distribution; the canonical coordinate `logit(μ)` then differs from r. Numerical comparison optional. Do not apply the canonical-gradient shortcut indiscriminately. |

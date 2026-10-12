@@ -26,7 +26,7 @@ Time plans have not been rehearsed or tried with students. Future notebooks have
 ## Exact file and agent record
 
 **Branch:** `scope-l03-l12-course-architecture`. **Instructor architecture/main:** `b78a7650bb09ae851e412089d98525f7b71275d9`. **Current communication revision starts from:** `4b886903925c25dc52434c962789c367db3d6ec6`.
-**Reviewed scope content commit:** `8e83e48a5d4553be90ca3fd074bc8906bf209429` contains the current ten scope texts and their targeted review. **Current communication content commit:** pending the precision/source check and final commit. The registry-only closure revision can be resolved with `git log -1 --format=%H -- Lectures/course_architecture_scope/STATUS.md`, since a commit cannot contain its own SHA.
+**Reviewed scope content commit:** `8e83e48a5d4553be90ca3fd074bc8906bf209429` contains the current ten scope texts and their targeted review. **Current communication content commit:** `09e1dfd47cd54fcc77c80b825127f3ffe2fb7d02` contains the clear mathematical discussion, focused readings, synchronized descriptions, writing instructions and independent precision/source evidence. The registry-only closure revision can be resolved with `git log -1 --format=%H -- Lectures/course_architecture_scope/STATUS.md`, since a commit cannot contain its own SHA.
 **Remote delivery authority:** the instructor explicitly authorized pushing this proposal branch to `origin` (`https://github.com/opherdonchin/ProbabilisticMachineLearning.git`). No merge or student release was authorized.
 
 The long identifiers below are Git file hashes: each identifies the exact text, so a review cannot silently be applied to a changed file. The original report remains verbatim inside each review file after a coordinator-written reading guide. A guide is not a review by another agent. [Completed revision check](reviews/readability_revision_review.md) was written by the actual independent reviewer. Its earlier review Git file hash was `92b36de1c873bb61cf78f2642e9bd62cd308420f`; the L04 report with the independent targeted addition is `d0716eb0c02cd99505b422783878e1ae63e1d35c`. All prior reports are preserved verbatim as contiguous records behind their reading guides. The new report lists every exact final scope hash and inspected input, independently confirmed before/after; the current communication revision leaves all ten checked scope texts unchanged. The forthcoming dated addendum identifies revised explanatory inputs separately.
@@ -59,10 +59,10 @@ Earlier smallest repairs corrected an overpromise of full Hamiltonian theory and
 | Current mathematical discussion, readings and formal descriptions | Passed: independent precision/source check; no scope commitment changed |
 | All nine skills and coordinator writing rule | Updated; repository setup checker passed |
 | Syllabi, dates, links and protected content | Passed: [current validation](validation.md), no broken local links |
-| Current communication commit / branch update | All checks passed; exact final content commit to be recorded in registry closure |
+| Current communication commit / branch update | Completed content commit `09e1dfd47cd54fcc77c80b825127f3ffe2fb7d02`; registry-only closure records the final branch state |
 | Further instructor teaching decisions | Paused at instructor request; no inferred answers |
 
-**Next step:** record the final content commit and return the clear mathematical discussion for instructor oversight. No reviewed scope or teaching commitment changes. Further instructor review can resume with L05 when the instructor chooses. No later production stage begins merely because this rewrite passes review.
+**Next step:** instructor oversight of the clear mathematical discussion; all communication, source and mechanical checks are complete. No reviewed scope or teaching commitment changes. Further instructor review can resume with L05 when the instructor chooses. No later production stage begins merely because this rewrite passes review.
 
 ### Current execution evidence
 

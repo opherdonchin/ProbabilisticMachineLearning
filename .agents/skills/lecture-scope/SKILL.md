@@ -141,7 +141,7 @@ Do not turn this into a retrospective review of the whole course. Include only i
 Before comparing routes, briefly reconstruct two arguments from the actual artifacts:
 
 - **Previous-course argument:** what mathematical question did the previous lecture develop, how did its representation/results/examples/applications relate, and what reusable understanding did it establish? Distinguish this from a list of usable formulas or a timing benchmark.
-- **Source argument:** what questions and results connect the selected book passages? Identify the foundations, worked instances and applications. Distinguish omitting an example from omitting the reasoning that makes the example meaningful. A list of section numbers is not this reconstruction.
+- **Source argument:** independently of a favored notebook or proposed lecture, reconstruct the book's motivating question, the mathematical transitions linking its selected passages, and their intellectual endpoint. Distinguish the essential argument from examples and optional excursions; a list of section numbers is not this reconstruction.
 
 Use these as evidence, not fixed templates. The next lecture may deliberately change style or source order, but state what changes and why. A familiar example may motivate general mathematics; this does not make the example the lecture's purpose.
 
@@ -195,6 +195,7 @@ Include:
 - internal coherence;
 - substantive endpoint;
 - notebook handoff;
+- whether the selected ideas preserve a recognizable source argument, or form a better course-specific argument with justified departures;
 - forward progress through the books;
 - prerequisite burden and required backfill;
 - feasibility in the available lecture time;
@@ -202,7 +203,7 @@ Include:
 - whether any valuable but self-contained mathematical development is a plausible recording candidate;
 - implications for later lectures when they are material to the choice.
 
-Expose real tradeoffs. Do not manufacture a numerical score unless it genuinely clarifies the decision.
+Make consequential changes to the source's conceptual transitions explicit: which are developed here, explained elsewhere, or deliberately lost, and what replaces them. Judge the mathematical argument, not section coverage or book order. Expose real tradeoffs; do not manufacture a numerical score unless it clarifies the decision.
 
 Recommend a path when the evidence is strong, but keep the alternatives visible enough for the instructor to redirect the design.
 
@@ -234,7 +235,7 @@ Build and review each part separately. If a later part reveals a structural prob
 
 Build this first.
 
-Read the proposed arc as a developing argument before turning it into timed milestones: what question makes the first result necessary, what that result enables, and why the next development follows. Compare this proposed argument explicitly with the previous-course and source arguments. Make consequential compression, relocation, assumptions and departures visible.
+Read the proposed arc as a developing argument before turning it into timed milestones: what question makes the first result necessary, what that result enables, and why the next development follows. Briefly state how it preserves, rearranges or replaces the source's argument, and why; identify essential transitions explained in other lectures or omitted. For a multi-chapter synthesis, explain the new combined argument. Compare with the previous course rather than assuming a good notebook determines the lecture's purpose.
 
 The arc is neither a topic inventory nor the workflow of the notebook. Its examples should have explicit roles—motivation, worked instance, interpretation, counterexample or application. Preserve the reasons for transitions and the source mapping when later editing for readability; short prose must not erase the argument. The required milestone fields below help inspect this reasoning but filling them does not demonstrate it.
 
@@ -463,7 +464,9 @@ Check that:
 - the notebook has a clear handoff;
 - the scope does not contain slide-level drafting.
 
-## Section Design feasibility review before approval
+## Source-arc and Section Design reviews before approval
+
+For a new or substantially redirected scope, obtain a **source-arc review** from a separate reviewer where delegation is available. Give the reviewer the relevant book material and earlier course argument first, so they reconstruct the source's intellectual progression **before** reading the proposed scope. Then ask whether it is a faithful selection, a justified reorganization, an unjustified displacement of the source's central argument (for example by a convenient application), or a fragmented collection of topics. Require the smallest repair for either failure. Preserve instructor-agreed departures; this is not a demand to follow the book's order or cover more sections. If reviewing in the same context, say so rather than claiming independence.
 
 After assembling the five-part provisional Lecture Scope and checking its internal consistency, obtain **one preview feasibility review** using the review mode in `../section-design/SKILL.md` and `../shared/backpressure.md`. If the coordinator is active, signal that the artifact is ready and let the coordinator commission and adjudicate the review; otherwise request it yourself. Do this **before final instructor approval / freezing**, not as a substitute for the Scope Builder's own analysis.
 
@@ -506,6 +509,7 @@ At every stage, preserve course-level uniformity where it helps students build c
 
 Check for consistency in:
 
+- the course-wide intellectual argument: distinguish ideas actually explained elsewhere from those only named or reused;
 - terminology;
 - notation;
 - mathematical treatment depth;
@@ -526,7 +530,8 @@ The skill is complete when:
 - instructor goals and priorities have been incorporated;
 - multiple plausible routes were considered unless the instructor explicitly fixed the route;
 - the selected route was evaluated against coherence, endpoint, book progression, time, prerequisites, notebook integration, and prior-lecture alignment;
-- the previous-course, source and proposed reasoning were compared, and consequential departures and example roles are explicit;
+- the previous-course, source and proposed reasoning were compared, and consequential departures, conceptual transitions and example roles are explicit;
+- any required source-arc review identified no unresolved unjustified displacement or fragmentation;
 - the intellectual arc has been agreed;
 - the mathematical spine has been agreed, including treatment depth and any recording status;
 - the notebook handoff has been agreed;

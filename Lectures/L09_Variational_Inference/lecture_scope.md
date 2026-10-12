@@ -102,17 +102,17 @@ For the exact Gaussian target, a is its mean, S its covariance and `Λ=S⁻¹` i
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth / delivery and role |
-|---|---|
-| `log p(D)=F(q)+KL(q||p(w|D))`, `F=E_q[log p(D,w)−log q(w)]` | **Recall + Apply**, Live A; L06-owned identity. Restrict q, keep evidence constant in psi. |
+|---\|---|
+| `log p(D)=F(q)+KL(q\|\|p(w\|D))`, `F=E_q[log p(D,w)−log q(w)]` | **Recall + Apply**, Live A; L06-owned identity. Restrict q, keep evidence constant in psi. |
 | `q=product_j q_j`; diagonal Gaussian versus correlated target | **State/Motivate**, Live A/B. Family factorization is an assumption about q, not an asserted independence in p. |
-| `KL(N(m,D)||N(a,S)) = (1/2)[tr(S^{-1}D)+(m−a)^T S^{-1}(m−a)−d+log(det S/det D)]` | **State + Work**, Live B. With diagonal D, **Work** stationarity giving `m*=a`, `D_jj*=1/(S^{-1})_jj`. No general Gaussian-KL proof. |
+| `KL(N(m,D)\|\|N(a,S)) = (1/2)[tr(S^{-1}D)+(m−a)^T S^{-1}(m−a)−d+log(det S/det D)]` | **State + Work**, Live B. With diagonal D, **Work** stationarity giving `m*=a`, `D_jj*=1/(S^{-1})_jj`. No general Gaussian-KL proof. |
 | `w=m+exp(rho)⊙epsilon`, parameter-independent standard Normal epsilon | **Derive** expectation rewrite, Live C. Distribution covariance is diag(s²), not diag(s). |
 | `grad_psi E_epsilon f_psi(g_psi(epsilon))=E[partial_psi f+J_g^T grad_w f]` | **Derive**, Live C. Retain the direct term; require almost-everywhere differentiability and an integrable dominating derivative locally to interchange derivative/expectation. Gaussian quadratic model meets these conditions. |
 | `H(q)=(d/2)(1+log(2pi))+sum rho_j`; `g(w)=grad_w log p(D,w)`; `grad_m F=E[g]`, `grad_rho F=E[s⊙epsilon⊙g]+1` | Entropy **State/Apply**, gradients **Derive + Work**, Live C. Analytic entropy includes explicit scale dependence; sample-average gradients target these expectations, without a monotone-SGD guarantee. |
 | Score-function `grad_psi E_q f_psi=E_q[partial_psi f_psi+f_psi grad_psi log q]` | **State/contrast only**, Live C, common-support/differentiability assumptions. No score-function implementation or variance proof. |
 | `q_j* ∝ exp(E_q_-j log p(D,w))` | **State + bounded Work**, Live D. Gaussian target gives `m_j←a_j−Lambda_jj^{-1}sum_{k≠j}Lambda_jk(m_k−a_k)`, variance `Lambda_jj^{-1}`. Numerical sweep optional; no full CAVI functional derivation. |
 | Standard-Normal-prior KL `(1/2)sum(m²+s²−1−2rho)`; `F=E log likelihood−KL` | **Apply/Work**, Live E and Notebook. L12 specializes/reuses it; prior KL differs from KL to the posterior. |
-| Known-noise regression `w~N(0,I)`, `y|w~N(Xw,sigma_y² I)`; exact `S=(I+X^T X/sigma_y²)^{-1}`, `a=S X^T y/sigma_y²` | **Recall/Apply**, Live B/Notebook, L01 LGS. Prior/noise fixed, no unknown scale or parameter-fitting E/M loop. |
+| Known-noise regression `w~N(0,I)`, `y\|w~N(Xw,sigma_y² I)`; exact `S=(I+X^T X/sigma_y²)^{-1}`, `a=S X^T y/sigma_y²` | **Recall/Apply**, Live B/Notebook, L01 LGS. Prior/noise fixed, no unknown scale or parameter-fitting E/M loop. |
 | Prediction at feature vector v: mean `v^T m`, variance `sigma_y²+v^T Dv`; exact uses a,S | **Apply/Work**, Live B/E and Notebook. Distinguish latent-mean uncertainty from future-observation uncertainty. |
 
 ## 3. Notebook handoff — what students do and what is supplied
@@ -163,7 +163,7 @@ The core new mathematics comes from selected B2 §§10.1.1–10.1.2, §10.2.1.1 
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / boundary |
-|---|---|
+|---\|---|
 | **Core/Live deep** | B2 §§10.1.1–10.1.2 restricted objective/geometry; §§6.3.3, 6.3.5.2 and §10.2.1.1 Gaussian total pathwise derivative. Generic bound identity reused from L06. |
 | **Short bridges** | §6.3.4 score-function contrast; §§10.3–10.3.1 CAVI update/application, numerical sweep optional; §10.1.5 amortization recognition. Gaussian KL/known-noise posterior applied, not complete source derivations. |
 | **Notebook owned** | PyTorch refresh, one stochastic transform/objective, local gradient check, diagonal fit and exact/analytic-diagonal/predictive diagnostics. |

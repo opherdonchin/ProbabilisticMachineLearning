@@ -1,6 +1,6 @@
 # Recommended amendments to the Lecture Scope authoring skill
 
-**Status: proposal for instructor approval; canonical skill NOT edited.** Prepared 2026-10-12 after direct comparison of Murphy Book 2 Chs. 5–12, 15–16 and 21 against the committed L04–L12 scopes, and examination of the original L03 route replacement. The current [.agents/skills/lecture-scope/SKILL.md](../../.agents/skills/lecture-scope/SKILL.md) already contains substantial corrective material added after L03. **Do not reintroduce or duplicate those rules.** The proposed changes below are a *small set of stronger, inspectable gates*, not a wholesale skill rewrite.
+**Status: historical proposal, superseded by the concise integrated revision to `.agents/skills/lecture-scope/SKILL.md` committed on this branch. Do not apply these five patches.** The original analysis is retained to document the alternatives considered. Prepared 2026-10-12 after direct comparison of Murphy Book 2 Chs. 5–12, 15–16 and 21 against the committed L04–L12 scopes, and examination of the original L03 route replacement. The current [.agents/skills/lecture-scope/SKILL.md](../../.agents/skills/lecture-scope/SKILL.md) already contains substantial corrective material added after L03. **Do not reintroduce or duplicate those rules.** The proposed changes below are a *small set of stronger, inspectable gates*, not a wholesale skill rewrite.
 
 ## What the current skill already gets right
 
@@ -103,4 +103,4 @@ These five changes would have made it harder for an original L03 reviewer to pas
 
 There is an independent **authority failure** as well: the batch missed the pre-existing instructor-agreed L03 on another branch. The skill's **current** “Recover existing agreements before building” section already directly addresses that, so no duplicate authority-recovery amendment is recommended.
 
-**Recommendation:** approve Changes 1–5 as a coherent package; optional one-line Section Design update separately. Then use the existing nine source-arc reviews and the VS Code prompt to revise only affected scopes, with new truly independent specialist review and explicit old/new mathematical arc comparisons.
+**Historical recommendation (superseded):** apply Changes 1–5. The actual revision instead integrated their substantive aims into the existing skill with considerably less new text, without modifying Section Design. Then use the existing nine source-arc reviews and the VS Code prompt to revise only affected scopes, with new truly independent specialist review and explicit old/new mathematical arc comparisons.

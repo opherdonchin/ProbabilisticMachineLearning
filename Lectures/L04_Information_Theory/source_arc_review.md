@@ -10,7 +10,7 @@ The distinctive argument is not “a collection of formulas about entropy,” no
 
 ## 2. Reconstruct the current course argument
 
-The current [L04 scope](../../L04_Information_Theory/lecture_scope.md) opens with two message bits and a parity bit. It then develops entropy/cross-entropy/KL, derives MI and sketches DPI, works a full finite noisy-channel model, and gives an optional stronger code. It mentions the lossless source-length bound and sufficient statistics, then hands rate-distortion/IB to L12. Its notebook computes a 4×8 channel joint distribution, posteriors, MI, optimal decoding risk and resource cost. This is an intellectually coherent *communication-first* arc. It gives a practical meaning to information that is absent from a purely objectives-first lecture.
+The current [L04 scope](lecture_scope.md) opens with two message bits and a parity bit. It then develops entropy/cross-entropy/KL, derives MI and sketches DPI, works a full finite noisy-channel model, and gives an optional stronger code. It mentions the lossless source-length bound and sufficient statistics, then hands rate-distortion/IB to L12. Its notebook computes a 4×8 channel joint distribution, posteriors, MI, optimal decoding risk and resource cost. This is an intellectually coherent *communication-first* arc. It gives a practical meaning to information that is absent from a purely objectives-first lecture.
 
 The selected three-bit code **detects** a single flipped bit but cannot guarantee correction; at the given noise level the coded and uncoded whole-message MAP error can be the same. Treating this as a contrast between information, redundancy, and decision quality is mathematically honest, not a flaw to conceal.
 

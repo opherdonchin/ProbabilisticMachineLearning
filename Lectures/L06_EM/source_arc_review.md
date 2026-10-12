@@ -10,7 +10,7 @@ The intellectual point is broader than “fill in missing values iteratively.”
 
 ## 2. Proposed arc
 
-The [L06 scope](../../L06_EM/lecture_scope.md) begins with unknown Gaussian parameters and missing observations, contrasted with L01's known-parameter imputation and L05's observed-label likelihood fitting. It constructs the marginal likelihood, derives
+The [L06 scope](lecture_scope.md) begins with unknown Gaussian parameters and missing observations, contrasted with L01's known-parameter imputation and L05's observed-label likelihood fitting. It constructs the marginal likelihood, derives
 `log p_theta(o)=F(q,theta)+KL(q||p_theta(z|o))`,
 establishes bound tightness and monotonicity for exact E-step plus improving M-step, then carefully derives expected Gaussian first and **second** moments. It works a complete fitted Gaussian update and briefly shows how mixture responsibilities instantiate the same logic. The student notebook repeats the optimization mechanism on missing-Gaussian data rather than assuming values known.
 

@@ -1,8 +1,8 @@
 # VS Code Codex prompt — revise L04–L12 after source-arc review
 
-**Preparation state:** The source-arc safeguards have been integrated into the existing [lecture-scope skill](../../.agents/skills/lecture-scope/SKILL.md) on this branch. The earlier [amendment proposal](source_arc_skill_recommendations.md) is historical and **must not be reapplied**. Nine source-arc reviews remain beside their scopes, summarized in [the review index](source_arc_review_index.md). This prompt is for **subsequent instructor-authorized revisions of the lecture scopes**, not further skill rewriting.
+**Preparation state:** The revised [lecture-scope skill](../../.agents/skills/lecture-scope/SKILL.md) is committed on this branch, including source-arc fidelity checks and an explicit decision hierarchy: **authority/prerequisites → worthwhile intellectual argument → feasibility gate → notebook/application value**. The earlier [amendment proposal](source_arc_skill_recommendations.md) is historical and **must not be reapplied**. Nine source-arc reviews remain beside their scopes, summarized in [the review index](source_arc_review_index.md). This prompt is for **subsequent instructor-authorized revisions of the lecture scopes**, not further skill rewriting.
 
-**How to use:** After the instructor authorizes the scope-revision run, check out and pull `scope-l03-l12-course-architecture` in VS Code and begin a new Codex conversation at the repository root. Use the integrated skill as it stands; do not apply the older five-patch proposal.
+**How to use:** Check out and pull `scope-l03-l12-course-architecture` in VS Code, then open a new Codex conversation at the repository root. The instructor authorizes the *targeted revision process* by giving the launch prompt below. Do not reapply the older five-patch proposal or change the skill during the revision run.
 
 ---
 
@@ -10,13 +10,13 @@ $lecture-development
 
 You are the Lecture Development Coordinator for a **targeted, source-grounded intellectual-arc revision of L04–L12**. Work on branch scope-l03-l12-course-architecture.
 
-The instructor's objective is **not** to require complete or slavish adherence to Murphy's chapter organization. It is to make the selected and reorganized mathematics form a *recognizable intellectual development*, and require explicit justification for departures. Do not exchange that objective for additional section coverage or conveniently checkable notebooks.
+The instructor's objective is **not** to require complete or slavish adherence to Murphy's chapter organization. It is to make the selected and reorganized mathematics form a *recognizable intellectual development*, and require explicit justification for departures. Apply the current scope skill's decision priorities in order: (1) protect approved teaching and prerequisites, (2) construct a worthwhile mathematical argument, (3) test feasibility without silently sacrificing that argument, and (4) optimize notebook/application value within a feasible route. Do not trade source-arc quality for easy notebooks or chapter-count coverage.
 
 ### Gate 0: provenance, branch and protected decisions
 
 - Confirm repository root, branch, exact HEAD and clean worktree. Protect all existing instructor-agreed work and don't overwrite a divergent local branch.
 - Read AGENTS.md, .agents/skills/lecture-development/SKILL.md, .agents/skills/lecture-scope/SKILL.md, .agents/skills/section-design/SKILL.md, .agents/skills/shared/backpressure.md, the timing-calibration reference, L03 accepted scope and development_state, source inspection, current course syllabus/plan/ledger, scope status and all nine current L04–L12 scopes. Read all nine adjacent source_arc_review.md files and Lectures/course_architecture_scope/source_arc_review_index.md.
-- Follow the existing source-arc provisions in `.agents/skills/lecture-scope/SKILL.md`. Do not reapply the superseded `source_arc_skill_recommendations.md` text, invent additional review modes or edit canonical skills during this run. Use the standard source-arc review and Section Design feasibility checks already defined.
+- Follow the **current** `.agents/skills/lecture-scope/SKILL.md`, including its decision priorities, source-arc review and Section Design feasibility check. Treat the old `source_arc_skill_recommendations.md` as historical; do not reapply it, invent additional review modes or edit canonical skills. Record the exact skill blob used.
 - Protect the actual agreed L03 scope and selected L04 parity example. Keep architectural order L04 information, L05 substantive GLMs and optimization, L06 EM, inference L07–L10, neural prediction L11, VAE L12. Preserve L01/L02 delivered/agreed contracts.
 
 ### Gate 1: independent source-first assessment, *before* revision
@@ -33,7 +33,7 @@ The earlier same-context files are constructive hypotheses, not a mandatory verd
 
 ### Gate 2: narrowly scoped revisions, not another syllabus rebuild
 
-Use the initial independent comparisons to decide **which** scopes need changes. Current working priorities are L07, L08 and L11; L04–L06, L09–L10 and L12 mainly need bridge/justification checks. This is a triage, not a foregone finding.
+Use the initial independent comparisons to decide **which** scopes need changes. Current working priorities are L07, L08 and L11; L04–L06, L09–L10 and L12 mainly need bridge/justification checks. This is a triage, not a foregone finding. **No compulsory rewrite:** if a source-faithful or justified arc is already present, document why it should be preserved.
 
 Assign independent builders using lecture_scope in REVISION mode to each actual scope-level change. The revision request must specify exactly which mathematical **argument** is lost or underdeveloped, what alternative transitions have to replace it, and the existing lecture/notebook obligations to preserve. Do not add chapters or derive more math automatically.
 
@@ -70,4 +70,4 @@ Only after revisions and independent reviews:
 
 ---
 
-**Execution note:** The adjacent `source_arc_review.md` files remain provisional critiques, not authorization to overwrite agreed scopes. The canonical scope skill is already revised; actual scope changes still await the instructor's explicit authorization of this VS Code run.
+**Execution note:** The adjacent `source_arc_review.md` files are provisional critiques, not authorization to overwrite agreed scopes. Use the revised canonical skill; the instructor's submission of the launch prompt authorizes the targeted revision run. Make reversible decisions within existing approval boundaries, collect consequential instructor questions instead of stopping for each one, and do not merge the course branch into `main`.

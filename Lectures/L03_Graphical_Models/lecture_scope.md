@@ -32,7 +32,7 @@ The substantive lecture endpoint is a concise **definition and interpretation of
 These are mathematical obligations and their intended depth, **not** an ordered outline or a partition into teaching sections. All listed live items remain live; no recording is currently required.
 
 | Mathematical object or result | Treatment | Delivery and boundary |
-|---|---|---|
+|---\|---\|---|
 | First-order Markov factorization, p(x₁:T) = p(x₁)∏ₜ₌₂ᵀ p(xₜ∣xₜ₋₁) | Recall; apply | Live, explicitly carried forward from L02 |
 | Probability chain rule vs. DAG/parent factorization, p(x₁:D) = ∏ᵢ p(xᵢ∣x_pa(i)) | Derive from the chain rule plus the ordered Markov assumption | Live; distinguish a general identity from a structural assumption |
 | Locally normalized CPDs/CPTs; sparse factorization's parameter advantage | State; work the student network; motivate the scaling O(Kᴰ) vs. O(D K^(m+1)) for bounded indegree m | Live; no separate CPT-learning derivation |
@@ -71,7 +71,7 @@ No separate recording is a prerequisite for the notebook.
 These are **example candidates selected for their distinct jobs**, not a proposed order or allocation to sections.
 
 | Example / source | Teaching job | Intended treatment |
-|---|---|---|
+|---\|---\|---|
 | L02 first-order Markov model; Murphy Book 2 §§2.6 and 4.2.2.1, Fig. 4.1 | Reconnect the prior lecture to graph factorization | Carry forward / work |
 | Murphy Book 2 §4.2.2.2, student network, Fig. 4.2 | General DAG factorization with multiple parents; CPD parameter economy; reusable collider example | Work through |
 | Murphy Book 2 §4.2.4, Figs. 4.4–4.8 as applicable | Pipes, forks, colliders, explaining away and directed Markov blanket queries | Work through selected cases; not every figure |

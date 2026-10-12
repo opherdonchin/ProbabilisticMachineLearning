@@ -96,16 +96,16 @@ The formulas distinguish target variance from the variance of its estimated aver
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, purpose and delivery |
-|---|---|
+|---\|---|
 | `hatμ=N⁻¹Σg(X_n)`, IID unbiasedness, `Var(hatμ)=σ_g²/N` | **Derive**, Live; estimator's numerical uncertainty. LLN/CLT and `SE≈s_g/√N` **State + Interpret** with integrability/finite variance. |
 | Importance `E_q[gπ/q]`, self-normalized weights; rejection envelope | Importance identity **State + Explain**, rejection **Mention**, Live narrow contrasts; no implementation/proof or second estimator module. |
 | `πT=π`; detailed balance | Definitions **Motivate/State**, balance ⇒ invariance **Prove** by summation, Live. Not a proof of mixing. |
 | Irreducibility, aperiodicity, proper target; continuous Harris/LLN statement | **State + Motivate** with exact finite example; continuous result **State**, Live. Recurrence/CLT proofs omitted. |
 | General MH acceptance, cancellation of `Z`, rejection stay | **Derive + Work**, Live; include asymmetric proposal. Actual transition, not proposal alone, preserves target. |
-| `π(x)q(x'|x)a(x,x')=min{π(x)q(x'|x),π(x')q(x|x')}` | **Prove** MH detailed balance, Live; diagonal stays handled explicitly. |
+| `π(x)q(x'\|x)a(x,x')=min{π(x)q(x'\|x),π(x')q(x\|x')}` | **Prove** MH detailed balance, Live; diagonal stays handled explicitly. |
 | Gibbs conditional proposal ratio equals one | **Work/Derive bounded cancellation**, Live; coordinate/sweep invariance and reversibility distinction **State**. |
 | Stationary `Var(hatμ)=σ_g²/N[1+2Σ_{k=1}^{N−1}(1−k/N)ρ_g(k)]` | **Derive briefly** from covariance-pair grouping, Live. Equality assumes stationarity and finite variance. |
-| `τ_g=1+2Σ_{k≥1}ρ_g(k)`, `N_eff,g≈N/τ_g`, asymptotic variance `σ_g²τ_g/N` | **State + Interpret**, Live, with absolute autocovariance summability; a CLT requires additional conditions. One sufficient example is geometric ergodicity (distributional convergence controlled at a geometric rate) and `E_π|g|^(2+δ)<∞` for some `δ>0`, **State only**. Negative correlations can give `N_eff>N`. Supplied estimates **Notebook**, unreliable if exploration fails. |
+| `τ_g=1+2Σ_{k≥1}ρ_g(k)`, `N_eff,g≈N/τ_g`, asymptotic variance `σ_g²τ_g/N` | **State + Interpret**, Live, with absolute autocovariance summability; a CLT requires additional conditions. One sufficient example is geometric ergodicity (distributional convergence controlled at a geometric rate) and `E_π\|g\|^(2+δ)<∞` for some `δ>0`, **State only**. Negative correlations can give `N_eff>N`. Supplied estimates **Notebook**, unreliable if exploration fails. |
 | Mixture moments and `P(X>0)` | **Work**, Live; exact references support both mean and mode-region estimation. |
 | HMC augmented energy and accept `min(1,exp(−ΔH))` | **State/recognize**, Live; no Hamiltonian/leapfrog correctness derivation. |
 
@@ -159,7 +159,7 @@ Supported outcomes are computing independent-sample standard error; explaining b
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / proposed future bookkeeping |
-|---|---|
+|---\|---|
 | **Core/Live deep** | B2 §§11.2–11.2.2, selected §2.6.4, §§12.2.1–12.2.2, selected §12.6.3; MH/MC correctness and dependent variance. |
 | **Short bridge** | §11.4/§§11.5.1–11.5.2 narrow contrasts; §12.2.3.2 random walk; §§12.3.1–12.3.2 bounded Gibbs; §12.6.1/12.6.2 interpretation; HMC mechanics §12.5.3/NUTS name §12.5.4.1 only. |
 | **Notebook owned** | Stable MH mechanics, repeated states, fixed-scale/dispersed-start mixture comparison, exact-reference query errors and supplied uncertainty diagnostics. |

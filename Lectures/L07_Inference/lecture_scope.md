@@ -26,7 +26,7 @@ The example extends L05's yes/no regression to an unknown coefficient with a Gau
 Use scalar coefficient θ, natural logarithms and sigmoid `s(a)=1/(1+e^(−a))`. Let `u(θ)=p(θ)p(D|θ)` be unnormalized posterior density and `E(θ)=−log u(θ)`. E is a function of the coefficient, not a physical energy assumption. Additive constants do not change the shape or mode but matter for the integral of u.
 
 | Mathematical commitment | Purpose and treatment |
-|---\|---|
+|---|---|
 | `p(θ\|D)=u(θ)/Z`, `Z=∫u`; mean of g `∫g(θ)p(θ\|D)dθ`; prediction `∫p(y*\|x*,θ)p(θ\|D)dθ` | Apply Bayes/expectations and motivate the separate questions. Evidence Z is named as the normalizer; model selection is not taught. |
 | For `r=f(θ)`, `p_r(r)=p_θ(f⁻¹(r))\|d f⁻¹/dr\|` | State and work one normal-to-lognormal mode example. The derivative factor adjusts density under the coordinate change; no general transform-calculus development. Continuous density MAP differs from L04's discrete-message probability decision. |
 | `Z_grid=Σ_j u(θ_j)ω_j`; grid masses `w_j=u_jω_j/Z_grid`; `E[g]≈Σ_jw_jg(θ_j)` | Derive/work integration weights. For equal-width intervals Δ, density is `w_j/Δ`, not w_j. Motivate subtracting a common maximum log value before exponentiating to avoid numerical overflow/underflow; implementation belongs to lab. |

@@ -100,7 +100,7 @@ In the Gaussian comparison, **LGSSM** means linear-Gaussian state-space model. F
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, delivery and role |
-|---\|---|
+|---|---|
 | `p(z,y)=π_{z_1}∏_{t=2}^T A_{z_{t−1},z_t}∏_{t=1}^T λ_t(z_t)`; `p(y)=Σ_z p(z,y)` | **State + Work**, Live; factorization/finite sums carried, hidden-path structure new. Parameters known. |
 | `a_1(j)=π_jλ_1(j)`; `a_t(j)=λ_t(j)Σ_i A_ij a_{t−1}(i)` | **Derive + Work**, Live; grouped prefix sums and evidence `Σ_j a_T(j)`. |
 | `u_1=π⊙λ_1`, `c_1=Σu_1`, `f_1=u_1/c_1`; for `t≥2`, `u_t=λ_t⊙(Aᵀf_{t−1})`, `c_t=Σu_t`, `f_t=u_t/c_t` | **Derive + Work**, Live. `f_t=p(z_t\|y_{1:t})`, `c_t=p(y_t\|y_{1:t−1})`; evidence `∏c_t`, log evidence `Σlog c_t`. |
@@ -168,7 +168,7 @@ The core source is Murphy B2 §§9.2.1–9.2.3.1, with normalization in §9.2.3.
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment |
-|---\|---|
+|---|---|
 | Core/Live deep | B2 §§9.2.1–9.2.3.1, normalization §9.2.3.4, complexity §9.2.5; one exact oracle. |
 | Short bridge | §9.1 dynamic-programming framing; §9.5.1 chain elimination interpretation; §9.2.6 path-MAP recognition; §8.1.2 / selected §8.2.2 predict/update application. |
 | Notebook owned | NumPy recurrence implementation, scaling/likelihood checks, tiny enumeration comparison and supplied casino interpretation. |

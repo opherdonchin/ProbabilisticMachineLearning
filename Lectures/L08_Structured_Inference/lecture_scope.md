@@ -137,7 +137,7 @@ The three examples have separate jobs: a three-observation model checks every pr
 **Required tiny oracle — Work, Live/Notebook, course-constructed:** `K=2,T=3`, `π=(1/2,1/2)`, `A=((4/5,1/5),(1/5,4/5))`, emissions `B=((7/10,3/10),(3/10,7/10))` for observation symbols 0/1, observed sequence `(0,0,1)`. All factors are positive/normalized. Exhaustive rational arithmetic over eight paths verifies these joint weights:
 
 | Path | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
-|---\|---:\|---:\|---:\|---:\|---:\|---:\|---:\|---:|
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | `p(z,y)` | .04704 | .02744 | .00126 | .01176 | .00504 | .00294 | .00216 | .02016 |
 
 Evidence is `589/5000=.1178`; normalizers are `(.5,.548,589/1370)`, whose product matches enumeration. Filtered beliefs are `(.7,.3)`, `(217/274,57/274)`, `(555/1178,623/1178)`. Smoothed beliefs are `(875/1178,303/1178)`, `(.7,.3)`, `(555/1178,623/1178)`. For example, scaled backward at time 2 is `(137/155,137/95)`; multiplying by the time 2 filtered vector yields `(.7,.3)`. Joint path MAP is uniquely `000`, while pointwise marginal modes are `001`. This demonstrates summation/decision distinctions without deriving another algorithm. Values were checked by separate enumeration and recurrence arithmetic in a builder scratch calculation, not by executing a student notebook.

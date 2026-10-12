@@ -33,7 +33,7 @@
 
 = Syllabus plan
 
-This plan explains the proposed teaching sequence without assuming familiarity with later book chapters. The instructor agreed to the 13-meeting order, the simpler image algorithm in L03 and the lighter coding example in L04. Other detailed choices remain proposals. Each row describes the problem, classroom content and student task before giving reading references. See #link("Lectures/course_architecture_scope/questions_and_hesitations.md")[teaching choices] and #link("Lectures/course_architecture_scope/architecture_audit.md")[course explanation].
+This plan specifies the mathematical sequence and notebook applications. It assumes probability and Bayesian background, while explaining later methods and providing selected reading references. The instructor agreed to the 13-meeting order, the simpler image algorithm in L03 and the lighter coding example in L04. Other detailed choices remain proposals. Each row identifies the mathematical objects, treatment and student task. The linked teaching-choice report supplies decision-relevant equations and focused instructor readings. See #link("Lectures/course_architecture_scope/questions_and_hesitations.md")[teaching choices] and #link("Lectures/course_architecture_scope/architecture_audit.md")[course explanation].
 The course is organized around four recurring ideas:
 
 - a machine-learning task can be expressed through a joint probability model and a query;
@@ -104,9 +104,9 @@ The course is organized around four recurring ideas:
   [*Baby-name character bigram model.* Count character transitions in the names corpus, normalize the transition matrix, compute sequence NLL and generate new names. Reference: #link("https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/makemore/makemore_part1_bigrams.ipynb")[Karpathy’s solved bigram notebook].],
 
   [3],
-  [*Graphical models: local calculations in a large model* \
+  [*Graphical models and local conditional computation* \
   #note[Proposed teaching scope]],
-  [Use graphs to describe which variables interact. Build and normalize a small black-and-white pixel model; calculate the probability of one pixel given its neighbors. Improve a noisy image one pixel at a time, and show why this can stop short of the best whole image.],
+  [Directed-graph independence recall; positive Markov random fields and Ising normalization; derive a local conditional by factor cancellation and the Gaussian-noise posterior score. Use iterated conditional modes (sequential coordinate maximization), with a counterexample to global MAP optimality. Represent factor incidence explicitly.],
   [
     - 4.2.1 / 4.2.4 Directed graphs: review only
     - 4.3.1–4.3.2.1 Pixel model and normalization
@@ -116,12 +116,12 @@ The course is organized around four recurring ideas:
   [
     - Selected 3.6.1–3.6.2 Directed-graph review
   ],
-  [Calculate a pixel update, check it by listing every configuration of a tiny image, and use a supplied program to repeat updates on a larger image. *Skill:* Turn a probability model into a local calculation and check it against an exact small example. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/04/ising_image_denoise_demo.ipynb")[Inspected source]. *Limit:* The instructor agreed to this simpler method. It differs from Murphy’s algorithm and does not promise the best possible image or posterior uncertainty. All course adaptations remain unrun.],
+  [Derive and implement the local field/conditional; verify normalization by exact enumeration on four pixels, then apply a supplied sequential image-update driver. Compare score improvement with reconstruction quality. *Skill:* Translate graph factorization into a checked conditional computation, and distinguish a coordinate-stable MAP candidate from posterior marginals or a global optimum. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/04/ising_image_denoise_demo.ipynb")[Inspected source]. *Limit:* The instructor agreed to this simpler method. It differs from Murphy’s algorithm and does not promise the best possible image or posterior uncertainty. All course adaptations remain unrun.],
 
   [4],
-  [*Information theory: what survives a noisy message?* \
+  [*Information theory: mutual information, processing and noisy coding* \
   #note[Proposed teaching scope]],
-  [Measure uncertainty and shared information. Explain why processing cannot create information about the original source. Add one parity bit—a bit that checks whether two message bits differ—and calculate what a noisy transmission tells us. Distinguish detecting an error from guaranteeing its correction.],
+  [Finite entropy, cross-entropy and KL divergence; derive mutual information and sketch the data-processing inequality with its conditional-independence premise. State source-length bounds. Work three-bit parity detection and posterior decoding, distinguishing information, Bayes message risk and a coding guarantee.],
   [
     - 5.1.3 / 5.1.6; 5.2.1 / 5.2.4 Information and uncertainty
     - 5.3.1–5.3.4 Shared information and processing
@@ -131,12 +131,12 @@ The course is organized around four recurring ideas:
   [
     - Selected 6.1 / 6.2.1–6.2.2 / 6.3 Uncertainty and shared information
   ],
-  [List the eight possible received three-bit strings. Calculate message probabilities, information and best-guess error; explain ambiguous results. Reference a stronger five-bit code without implementing it. *Skill:* Build and check a small probability table, and distinguish useful information from a guaranteed correct decision. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/05/error_correcting_code_demo.ipynb")[Inspected source]. *Limit:* The instructor chose the lighter example. One changed bit is detected but cannot always be located or corrected. The stronger code is reference material. All course adaptations remain unrun.],
+  [Construct the four-message/eight-observation noisy-channel table. Compute mutual information and optimal whole-message Bayes error, including ties and zero-support cases. Compare resource use; reference stronger single-error correction separately. *Skill:* Calculate information and decision risk from one finite joint distribution without conflating information gain, code rate and guaranteed error correction. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/05/error_correcting_code_demo.ipynb")[Inspected source]. *Limit:* The instructor chose the lighter example. One changed bit is detected but cannot always be located or corrected. The stronger code is reference material. All course adaptations remain unrun.],
 
   [5],
-  [*Learning models: regression, derivatives and parameter updates* \
+  [*Generalized linear models, automatic differentiation and SGD* \
   #note[Proposed teaching scope]],
-  [Compare models for numerical, yes/no and count outcomes: generalized linear models. Derive a common likelihood derivative, then apply it to three-class prediction. Explain automatic differentiation by following one complete calculation backward. Fit parameters using small batches of observations.],
+  [Conditional exponential-family models: Gaussian, Bernoulli and Poisson supports, mean/link and dispersion. Derive one canonical NLL gradient, work the distinct vector softmax gradient, trace reverse-mode differentiation through a shared computational graph, and explain finite-sum minibatch stochastic gradient descent.],
   [
     - 15.1 / 15.1.1 / 15.1.3 Common model structure and derivative
     - 15.1.2 Brief alternative-link comparison
@@ -147,12 +147,12 @@ The course is organized around four recurring ideas:
     - Selected 7.8.2 / 7.8.5 Matrix derivatives
     - Selected 8.2 / 8.4.1 / 8.4.3 Gradient and batch-update support
   ],
-  [Fit probabilities for all three Iris species in PyTorch. Compare a hand-calculated derivative with the software result, update parameters repeatedly and evaluate new observations. *Skill:* Check automatic derivatives and carry out a simple fit/evaluation loop in PyTorch. #link("https://github.com/nipunbatra/pytorch-basics/blob/main/notebooks/04-softmax-regression.ipynb")[Inspected source]. *Limit:* First PyTorch use makes this meeting tight. Data preparation and plotting are supplied; the lecture does not teach a large software framework. All course adaptations remain unrun.],
+  [Fit the three-class Iris softmax model in PyTorch; compare the manual mean-batch gradient with autograd at identical parameters, run visible SGD updates and evaluate held-out log loss/probabilities. Data preparation and program scaffolding are supplied. *Skill:* Connect a likelihood derivative with reverse-mode automatic differentiation and a checked stochastic parameter-update/evaluation loop. #link("https://github.com/nipunbatra/pytorch-basics/blob/main/notebooks/04-softmax-regression.ipynb")[Inspected source]. *Limit:* First PyTorch use makes this meeting tight. Data preparation and plotting are supplied; the lecture does not teach a large software framework. All course adaptations remain unrun.],
 
   [6],
-  [*Learning with missing data: expectation-maximization* \
+  [*Latent-variable learning and expectation-maximization* \
   #note[Proposed teaching scope]],
-  [Alternate between estimating missing quantities under the current model and updating the model: expectation-maximization (EM). Keep uncertainty about missing values when learning a Gaussian mean and covariance. Explain the probability bound used to justify the updates and the conditions for improvement.],
+  [Derive the ELBO/KL identity, exact E-step tightness and EM likelihood monotonicity under its assumptions. Apply Gaussian conditional first and second moments to unknown mean/covariance with missing data. State ignorability and positive-definiteness conditions; illustrate mixture responsibilities briefly.],
   [
     - Selected 6.5.1 / 6.5.3 Probability bound and EM
     - 6.5.4 Gaussian missing-data updates
@@ -162,12 +162,12 @@ The course is organized around four recurring ideas:
   [
     - Selected 3.5 / 8.7 Grouped observations and EM explanation
   ],
-  [Complete the expected values and second moments needed to fit a Gaussian to incomplete measurements. Use a supplied update loop and inspect likelihood and reconstruction. *Skill:* Use uncertainty about missing values in a parameter update rather than merely fill blanks with best guesses. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/opt/gauss_imputation_em_demo.ipynb")[Inspected source]. *Limit:* This replaces the candidate MRI tissue-classification lab. Class-assignment probabilities are explained briefly; a second mixture-model fit is not required. All course adaptations remain unrun.],
+  [Assemble expected Gaussian sufficient statistics, including conditional covariance, and perform an E/M update inside a supplied iteration driver. Check observed likelihood and missing-entry reconstruction; no second full mixture fit. *Skill:* Use conditional uncertainty in sufficient-statistic estimation and distinguish an exact EM improvement guarantee from arbitrary approximate hidden-value updates. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/opt/gauss_imputation_em_demo.ipynb")[Inspected source]. *Limit:* This replaces the candidate MRI tissue-classification lab. Class-assignment probabilities are explained briefly; a second mixture-model fit is not required. All course adaptations remain unrun.],
 
   [7],
-  [*Posterior approximation: compare a grid with a Gaussian shortcut* \
+  [*Bayesian computation: grid reference and Laplace approximation* \
   #note[Proposed teaching scope]],
-  [Use a one-parameter logistic model to compare a posterior computed on a fine grid with a Gaussian fitted near its peak: the Laplace approximation. Check the grid’s range and spacing, and compare posterior summaries and predictions. Explain why the most likely parameter depends on how we express it.],
+  [Posterior queries and parameterization-dependent MAP; derive scalar Laplace curvature and normalizer under positive-curvature conditions. Apply to proper-prior logistic regression, check quadrature domain and resolution, and compare posterior moments and predictive integrals.],
   [
     - 7.1–7.3 What posterior questions require: short introduction
     - Selected 7.4.1–7.4.3 Most likely parameter, grid and Gaussian shortcut
@@ -175,24 +175,24 @@ The course is organized around four recurring ideas:
     - Selected 15.3.5–15.3.6 One-parameter logistic example
   ],
   [],
-  [Construct a numerical posterior reference, change its range and spacing, then compare the Gaussian shortcut and predictions. Solver and plotting helpers are supplied. *Skill:* Check a numerical reference and assess the consequences of an approximation. #link("https://stat238.berkeley.edu/spring-2026/codelecturethirtysix238spring2026/")[Inspected source]. *Limit:* The small example is chosen for checkability. A finite grid is also an approximation, not an automatically exact answer. All course adaptations remain unrun.],
+  [Build a stable quadrature reference for the fixed eight-observation logistic posterior, challenge domain and mesh separately, and assess Laplace error in moments and prediction. Solver/plot helpers are supplied. *Skill:* Validate the numerical reference as well as the posterior approximation, and separate local curvature matching from global integral/prediction accuracy. #link("https://stat238.berkeley.edu/spring-2026/codelecturethirtysix238spring2026/")[Inspected source]. *Limit:* The small example is chosen for checkability. A finite grid is also an approximation, not an automatically exact answer. All course adaptations remain unrun.],
 
   [8],
-  [*Sequences: infer hidden states using repeated calculations* \
+  [*Exact inference in structured sequence models* \
   #note[Proposed teaching scope]],
-  [Infer whether a fair or loaded die produced each observation: a hidden Markov model. Derive repeated forward/backward calculations using earlier and later observations, prevent numerical underflow and distinguish the best whole history from the most likely state at each time. Briefly apply Gaussian conditioning to Kalman filtering.],
+  [Derive scaled HMM forward/backward recursions, evidence and filtered/smoothed marginals; establish dense computational cost and distinguish joint path MAP from marginal modes. Give a compact Kalman-filter application of L01 Gaussian conditioning, without a second full sequence implementation.],
   [
     - 9.2.1–9.2.5 Hidden-state calculations and scaling
     - 9.2.6 Whole history versus separate state decisions
     - Selected 8.1.2 / 8.2.2 Gaussian filtering: short application
   ],
   [],
-  [Implement the central hidden-state calculations in NumPy. Check a short sequence by listing its histories, including a test where transition directions matter. Simulation and plots are supplied. *Skill:* Reuse partial calculations to avoid listing an exponentially large set of hidden histories. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/misc/casino_hmm.ipynb")[Inspected source]. *Limit:* The main lab is discrete hidden-state inference. The previously preferred continuous Kalman forecasting lab is not included. All course adaptations remain unrun.],
+  [Implement scaled HMM likelihood messages and marginals in NumPy. Check tiny-sequence enumeration and an asymmetric-transition case to expose orientation errors. Simulation, reference and plotting code are supplied. *Skill:* Use sum-product dynamic programming to obtain exact sequence probabilities and marginals while controlling numerical scaling. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/misc/casino_hmm.ipynb")[Inspected source]. *Limit:* The main lab is discrete hidden-state inference. The previously preferred continuous Kalman forecasting lab is not included. All course adaptations remain unrun.],
 
   [9],
-  [*Approximate a posterior by fitting a simpler distribution* \
+  [*Variational inference: posterior geometry and pathwise gradients* \
   #note[Proposed teaching scope]],
-  [Fit a simpler probability distribution to a posterior: variational inference. Show what an independent-coordinate Gaussian loses when the posterior has correlations. Derive how to differentiate a random-sample calculation and briefly apply coordinate-by-coordinate updates. Reuse L06’s probability bound.],
+  [Reuse L06 ELBO identity; optimize restricted reverse KL and work the correlated-Gaussian diagonal optimum. Derive the total pathwise gradient including direct parameter terms and regularity conditions; apply bounded coordinate-ascent VI and recognize amortization.],
   [
     - 10.1.1–10.1.2 Fitting a restricted distribution
     - 6.3.3 / 6.3.5; 10.2.1.1 Derivatives through Gaussian draws
@@ -200,12 +200,12 @@ The course is organized around four recurring ideas:
     - 10.3.1 Coordinate updates; 10.1.5 learned inference: introduction only
   ],
   [],
-  [Fit an independent-coordinate Gaussian to a regression posterior with a known exact answer. Compare fitting error, the limitations of the chosen distribution and predictive uncertainty. *Skill:* Compute derivatives through random draws and check an approximation against a known answer. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/10/linreg_bayes_svi_hmc.ipynb")[Inspected source]. *Limit:* Uses controlled data and known noise. The real economic-data example and sampling comparison are replaced; no new Pyro software is required. All course adaptations remain unrun.],
+  [Fit a diagonal Gaussian to controlled known-noise regression using reparameterized PyTorch gradients. Compare exact posterior and analytic best-diagonal solution; use fixed-noise, matched-estimator gradient checks and query-specific predictive variances. *Skill:* Separate optimization error from variational-family error, and differentiate a parameter-dependent expectation with correct full-data likelihood/prior scaling. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/10/linreg_bayes_svi_hmc.ipynb")[Inspected source]. *Limit:* Uses controlled data and known noise. The real economic-data example and sampling comparison are replaced; no new Pyro software is required. All course adaptations remain unrun.],
 
   [10],
-  [*Sampling: correct transitions and unreliable short runs* \
+  [*Monte Carlo and MCMC: invariance, mixing and estimator error* \
   #note[Proposed teaching scope]],
-  [Estimate expectations by averaging samples. Introduce a chain whose next sample depends on the previous one, then derive the Metropolis–Hastings accept/reject rule. Explain why preserving the target distribution is different from exploring it quickly, and why error depends on the quantity being estimated.],
+  [Derive IID estimator variance, stationarity/detailed balance and the general Metropolis–Hastings ratio, retaining rejected states. Explain Gibbs cancellation briefly and dependent-sample error under its conditions. Distinguish invariant transitions, finite-run mixing and function-specific effective sample size; recognize HMC mechanics only.],
   [
     - 11.2–11.2.2 Averages and sampling error
     - 2.6.4; 12.2.1–12.2.2 Invariant distribution and acceptance rule
@@ -213,12 +213,12 @@ The course is organized around four recurring ideas:
     - Selected 12.6.3 Dependent-sample error; 12.5.3 Hamiltonian mechanics only
   ],
   [],
-  [Complete a NumPy accept/reject sampler. Compare proposal sizes and starting points on a distribution with two separated peaks; check the mean and the probability of a value greater than zero against known values. *Skill:* Check a sampling rule and diagnose inadequate exploration before trusting an estimate. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/12/mcmc_gmm_demo.ipynb")[Inspected source]. *Limit:* Helper diagnostics are supplied. Gibbs updates are explained briefly. Hamiltonian Monte Carlo uses derivatives for directed moves but is not fully derived or implemented. All course adaptations remain unrun.],
+  [Implement the NumPy MH kernel on a fixed bimodal target. Compare proposal scales and dispersed starts; assess the mean and probability above zero against exact references. Supplied diagnostics flag stuck chains and query-dependent error. *Skill:* Check transition validity separately from finite exploration and quantify uncertainty for a specified Monte Carlo query. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/12/mcmc_gmm_demo.ipynb")[Inspected source]. *Limit:* Helper diagnostics are supplied. Gibbs updates are explained briefly. Hamiltonian Monte Carlo uses derivatives for directed moves but is not fully derived or implemented. All course adaptations remain unrun.],
 
   [11],
-  [*Neural prediction: learn a mean and a noise level* \
+  [*Neural conditional models: heteroskedastic likelihood and regularization* \
   #note[Proposed teaching scope]],
-  [Replace a linear prediction rule by a small neural network. Predict both a mean and positive standard deviation, derive the Gaussian likelihood calculation and reuse automatic differentiation. Distinguish variation in observations from uncertainty about fitted weights. Explain a Gaussian-prior connection to shrinking weights.],
+  [Nonlinear feedforward mean/positive-scale model; derive heteroskedastic Gaussian NLL and output derivatives, reusing AD/SGD. Distinguish conditional observation noise from posterior weight uncertainty via total variance. Work the Gaussian-prior/L2 coefficient under mean-loss normalization.],
   [
     - Selected 16.2.1–16.2.2 / 16.3.1 Small feedforward networks
     - 15.2.2.1 Gaussian prior and weight shrinkage
@@ -228,12 +228,12 @@ The course is organized around four recurring ideas:
     - 13.2.4.4 Noise that depends on input
     - 13.5.2 Weight shrinkage; 13.5.1 stopping training: brief mention
   ],
-  [Fit one small nonlinear Gaussian model and compare it with a supplied fixed-noise model on new observations. Inspect predicted noise and intervals. *Skill:* Build a probability prediction with a neural network and interpret its uncertainty correctly. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book1/13/mlp_1d_regression_hetero_tfp.ipynb")[Inspected source]. *Limit:* Intervals describe observation noise conditional on fitted weights. They do not include a Bayesian posterior over weights. One CPU fit and prepared fallback still need testing. All course adaptations remain unrun.],
+  [Fit one shallow PyTorch mean/scale network and compare held-out NLL, MSE and conditional intervals with a supplied fixed-scale nonlinear baseline and known data law. Match splits/shapes and estimate baseline noise using training data. *Skill:* Implement and interpret a neural conditional likelihood, preserving standard-deviation/variance distinctions and the limits of fixed-weight predictive intervals. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book1/13/mlp_1d_regression_hetero_tfp.ipynb")[Inspected source]. *Limit:* Intervals describe observation noise conditional on fitted weights. They do not include a Bayesian posterior over weights. One CPU fit and prepared fallback still need testing. All course adaptations remain unrun.],
 
   [12],
-  [*Variational autoencoders: learn a compact hidden description* \
+  [*Variational autoencoders: amortized inference and rate–distortion* \
   #note[Proposed teaching scope]],
-  [Learn one network that describes observations with hidden coordinates and another that predicts observations from them: a variational autoencoder. Reuse the probability bound, sample derivatives and neural likelihoods. Study the reconstruction/penalty tradeoff and why a penalty value alone does not measure useful information or reveal unique causes.],
+  [Generative model versus amortized posterior; joint encoder/decoder objective with event-summed Gaussian NLL and diagonal KL, then observation averaging. Reuse ELBO/pathwise/neural results. Derive rate as mutual information plus aggregate-posterior mismatch; interpret beta, collapse and nonidentifiability.],
   [
     - Selected 21.1–21.2 Model, inference network and training objective
     - 21.3.1 Changing the penalty weight
@@ -241,7 +241,7 @@ The course is organized around four recurring ideas:
     - Selected 21.4 When the model ignores hidden coordinates
   ],
   [],
-  [Complete a small mobility-data model and one joint training run. Use prepared comparison runs to study reconstruction and hidden descriptions under different penalty strengths. *Skill:* Combine two networks in one probability model and check how its likelihood and penalty are scaled. #link("Lectures/course_architecture_scope/source_inspection.md")[Instructor mobility source]. *Limit:* Uses 19 measurements and four hidden coordinates. Data access, prepared comparisons and CPU runtime remain untested. Patterns are descriptive, not identified causal factors. All course adaptations remain unrun.],
+  [Complete the compact mobility VAE loss and one bounded joint fit. Use fresh, consistently normalized supplied beta comparisons; evaluate expected-q reconstruction NLL and average prior KL, keeping encoder-mean visualizations separate. *Skill:* Integrate amortized variational inference with a neural likelihood and assess a defined distortion/rate tradeoff without treating rate as mutual information or latent patterns as identified causes. #link("Lectures/course_architecture_scope/source_inspection.md")[Instructor mobility source]. *Limit:* Uses 19 measurements and four hidden coordinates. Data access, prepared comparisons and CPU runtime remain untested. Patterns are descriptive, not identified causal factors. All course adaptations remain unrun.],
 
   [13],
   [*Project presentations and course synthesis*],
@@ -250,6 +250,8 @@ The course is organized around four recurring ideas:
   [],
   [No notebook — project presentations and synthesis.],
 )
+
+#pagebreak()
 
 = What the course leaves out
 

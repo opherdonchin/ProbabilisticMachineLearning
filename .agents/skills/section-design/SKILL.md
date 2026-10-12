@@ -5,7 +5,7 @@ description: Construct a lecture's sequence of coherent intellectual sections fr
 
 # Design the lecture sections
 
-Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students) for every instructor-facing explanation and review. Explain unfamiliar ideas and the consequences of a choice before using specialist names; do not assume the instructor knows material beyond L03–L04. Keep exact mathematical and source checks available after the readable explanation.
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
 
 Use this skill after Lecture Scope has identified the lecture's destination, route, mathematical spine, examples, notebook handoff, and time budget, but before deciding slide titles or order.
 

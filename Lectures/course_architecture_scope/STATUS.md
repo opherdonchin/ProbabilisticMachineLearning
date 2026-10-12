@@ -1,6 +1,8 @@
 # Current course proposal and review status
 
-The instructor has paused further teaching decisions to request clearer explanations. The course documents have been rewritten for a reader who knows probability and the course through roughly L03–L04, but is learning the later topics. This is a presentation revision throughout, with one selected change to the required L04 example.
+The current writing standard is clear mathematical exposition for an instructor who is comfortable with probability, calculus, linear algebra and Bayesian reasoning but may be unfamiliar with later methods. The teaching-choice report now states the decision-relevant equations, assumptions and treatment depths, explains alternatives and gives focused, verified book readings.
+
+The ten lecture scopes and their reviewed mathematical commitments are unchanged in this communication revision. L03's simpler restoration and L04's three-bit parity example remain selected; later choices remain proposals.
 
 ## What the instructor has agreed
 
@@ -11,9 +13,9 @@ The instructor has paused further teaching decisions to request clearer explanat
 
 ## What is ready and what is still being checked
 
-Two actual scope specialists rewrote all ten lecture files. The coordinator rewrote the questions, course explanation, notebook checks, planning records and both syllabi. All nine course skills now refer to the same writing requirement in AGENTS.md, and the coordinator is required to check specialist explanations before sending them to the instructor.
+The questions and course overview now expose the mathematical distinctions behind their teaching choices, rather than describing only practical activities. The five course records retain precise method names and the existing mathematical/notebook endpoints. AGENTS.md and all nine skills now require clarity with mathematical substance; important equations need not be relegated to appendices. Selective reading directions specify what background to study, without assuming familiarity with entire chapters.
 
-The separate Section Design reviewer `/root/readability_check` completed the readability and mathematical comparison. It found the explanations understandable from the stated background, confirmed unchanged mathematical/teaching commitments in nine scopes, and independently checked the lighter L04 model. Its verdict is feasible with risks, with no demonstrated blocker. The coordinator accepts the revised texts as agent-reviewed proposals under WORK_ORDER. This is not instructor acceptance of the remaining teaching decisions.
+The existing review of the ten scope texts remains valid because those files are byte-unchanged. The independent precision/source review by `/root/precision_review` passed: feasible with risks, with no material mathematical or source blocker. Its dated addendum in the [revision review record](reviews/readability_revision_review.md) checks formulas, assumptions, verified focused readings, teaching-depth equivalence and clarity. Current report hash: `5cea2abe56c021133da534d3230930245e1824a5`. It identifies the question file `7c8b69e00b9d12185faba73b2df8a7aeda6bb0ac`, overview `f3e3d72677929370e9a19b1c2798f1492f3eeb06`, all other inspected inputs and unchanged scope hashes. No new instructor approval is implied.
 
 [Start with the teaching choices](questions_and_hesitations.md). [How the course fits together](architecture_audit.md) explains the progression and practical losses. [Notebook responsibilities](../notebook_reference_audit.md) separates student tasks from author-supplied programs and correctness checks. Exact review evidence is listed below so it need not interrupt those explanations.
 
@@ -23,11 +25,11 @@ Time plans have not been rehearsed or tried with students. Future notebooks have
 
 ## Exact file and agent record
 
-**Branch:** `scope-l03-l12-course-architecture`. **Instructor architecture/main:** `b78a7650bb09ae851e412089d98525f7b71275d9`. **Readability revision starts from:** `39446b5d0fc520a690ed612f0845203ed8d02498`.
-**Final readability content commit:** `8e83e48a5d4553be90ca3fd074bc8906bf209429` contains the ten rewritten scopes, all synchronized explanations, the skill/AGENTS.md writing rule and independent revision evidence. The registry-only closure revision can be resolved with `git log -1 --format=%H -- Lectures/course_architecture_scope/STATUS.md`, since a commit cannot contain its own SHA.
+**Branch:** `scope-l03-l12-course-architecture`. **Instructor architecture/main:** `b78a7650bb09ae851e412089d98525f7b71275d9`. **Current communication revision starts from:** `4b886903925c25dc52434c962789c367db3d6ec6`.
+**Reviewed scope content commit:** `8e83e48a5d4553be90ca3fd074bc8906bf209429` contains the current ten scope texts and their targeted review. **Current communication content commit:** pending the precision/source check and final commit. The registry-only closure revision can be resolved with `git log -1 --format=%H -- Lectures/course_architecture_scope/STATUS.md`, since a commit cannot contain its own SHA.
 **Remote delivery authority:** the instructor explicitly authorized pushing this proposal branch to `origin` (`https://github.com/opherdonchin/ProbabilisticMachineLearning.git`). No merge or student release was authorized.
 
-The long identifiers below are Git file hashes: each identifies the exact text, so a review cannot silently be applied to a changed file. The original report remains verbatim inside each review file after a coordinator-written reading guide. A guide is not a review by another agent. [Completed revision check](reviews/readability_revision_review.md) was written by the actual independent reviewer. Its exact Git file hash is `92b36de1c873bb61cf78f2642e9bd62cd308420f`; the L04 report with the independent targeted addition is `d0716eb0c02cd99505b422783878e1ae63e1d35c`. All prior reports are preserved verbatim as contiguous records behind their reading guides. The new report lists every exact final scope hash and inspected input, independently confirmed before/after; closure changes only process status and commit identity.
+The long identifiers below are Git file hashes: each identifies the exact text, so a review cannot silently be applied to a changed file. The original report remains verbatim inside each review file after a coordinator-written reading guide. A guide is not a review by another agent. [Completed revision check](reviews/readability_revision_review.md) was written by the actual independent reviewer. Its earlier review Git file hash was `92b36de1c873bb61cf78f2642e9bd62cd308420f`; the L04 report with the independent targeted addition is `d0716eb0c02cd99505b422783878e1ae63e1d35c`. All prior reports are preserved verbatim as contiguous records behind their reading guides. The new report lists every exact final scope hash and inspected input, independently confirmed before/after; the current communication revision leaves all ten checked scope texts unchanged. The forthcoming dated addendum identifies revised explanatory inputs separately.
 
 | Scope | Current readable file hash | Readability author | Earlier substantive file hash | Original independent review |
 |---|---|---|---|---|
@@ -54,10 +56,14 @@ Earlier smallest repairs corrected an overpromise of full Hamiltonian theory and
 | Instructor decisions L03/L04 reflected consistently | Passed; choices reflected without blanket instructor acceptance |
 | Readability and unchanged mathematics in other scopes | Passed; independent reviewer found no demonstrated blocker |
 | Current three-bit L04 example and finite calculations | Passed; direct source and exact finite-table calculations |
-| Course documents and review explanations synchronized | Passed; activities, limitations and author responsibilities match |
+| Current mathematical discussion, readings and formal descriptions | Passed: independent precision/source check; no scope commitment changed |
 | All nine skills and coordinator writing rule | Updated; repository setup checker passed |
 | Syllabi, dates, links and protected content | Passed: [current validation](validation.md), no broken local links |
-| Final commit / branch update | Completed content commit `8e83e48a5d4553be90ca3fd074bc8906bf209429`; registry-only closure and authorized origin delivery follow |
+| Current communication commit / branch update | All checks passed; exact final content commit to be recorded in registry closure |
 | Further instructor teaching decisions | Paused at instructor request; no inferred answers |
 
-**Next step:** return the readable proposal for the instructor to read at their own pace; all autonomous revision, review and document checks have passed. This registry-only closure changes no reviewed scope or teaching commitment. Further instructor review can resume with L05 when the instructor chooses. No later production stage begins merely because this rewrite passes review.
+**Next step:** record the final content commit and return the clear mathematical discussion for instructor oversight. No reviewed scope or teaching commitment changes. Further instructor review can resume with L05 when the instructor chooses. No later production stage begins merely because this rewrite passes review.
+
+### Current execution evidence
+
+The `/root/readable_early` scope specialist revised the teaching-choice report and verified its focused readings. The configured `/root/readable_late` writer returned `Selected model is at capacity` without edits. Following `.codex/README.md`, `/root/balanced_course_overview` used the accessible equivalent `gpt-6-sol` at high effort to revise only the overview. A separate `/root/precision_review` with the same accessible model checks the current communication independently in Section Design feasibility-review mode. No profile or model configuration file was changed, and no independence is inferred from a failed launch.

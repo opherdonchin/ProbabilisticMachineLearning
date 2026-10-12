@@ -6,101 +6,101 @@ L01's [Gaussian missing-data solution](../InClass/Solutions/lecture1_missing_dat
 
 ## The single main task in each later meeting
 
-### L03 — Graphical models: local calculations in a large model
+### L03 — Graphical models and local conditional computation
 
-Calculate a pixel update, check it by listing every configuration of a tiny image, and use a supplied program to repeat updates on a larger image.
+Derive and implement the local field/conditional; verify normalization by exact enumeration on four pixels, then apply a supplied sequential image-update driver. Compare score improvement with reconstruction quality.
 
-**Skill practised:** Turn a probability model into a local calculation and check it against an exact small example.
+**Skill practised:** Translate graph factorization into a checked conditional computation, and distinguish a coordinate-stable MAP candidate from posterior marginals or a global optimum.
 
 **Authors supply:** the image and neighbor handling, repeated-update program, plots and exact tiny-image comparison. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** The instructor agreed to this simpler method. It differs from Murphy’s algorithm and does not promise the best possible image or posterior uncertainty. [Detailed scope](L03_Graphical_Models/lecture_scope.md).
 
-### L04 — Information theory: what survives a noisy message?
+### L04 — Information theory: mutual information, processing and noisy coding
 
-List the eight possible received three-bit strings. Calculate message probabilities, information and best-guess error; explain ambiguous results. Reference a stronger five-bit code without implementing it.
+Construct the four-message/eight-observation noisy-channel table. Compute mutual information and optimal whole-message Bayes error, including ties and zero-support cases. Compare resource use; reference stronger single-error correction separately.
 
-**Skill practised:** Build and check a small probability table, and distinguish useful information from a guaranteed correct decision.
+**Skill practised:** Calculate information and decision risk from one finite joint distribution without conflating information gain, code rate and guaranteed error correction.
 
 **Authors supply:** bit arrays, probability-table layout, safe handling of zero probabilities and noise-curve plots. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** The instructor chose the lighter example. One changed bit is detected but cannot always be located or corrected. The stronger code is reference material. [Detailed scope](L04_Information_Theory/lecture_scope.md).
 
-### L05 — Learning models: regression, derivatives and parameter updates
+### L05 — Generalized linear models, automatic differentiation and SGD
 
-Fit probabilities for all three Iris species in PyTorch. Compare a hand-calculated derivative with the software result, update parameters repeatedly and evaluate new observations.
+Fit the three-class Iris softmax model in PyTorch; compare the manual mean-batch gradient with autograd at identical parameters, run visible SGD updates and evaluate held-out log loss/probabilities. Data preparation and program scaffolding are supplied.
 
-**Skill practised:** Check automatic derivatives and carry out a simple fit/evaluation loop in PyTorch.
+**Skill practised:** Connect a likelihood derivative with reverse-mode automatic differentiation and a checked stochastic parameter-update/evaluation loop.
 
 **Authors supply:** data split/scaling, target indexing, plots and a simple training-loop framework. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** First PyTorch use makes this meeting tight. Data preparation and plotting are supplied; the lecture does not teach a large software framework. [Detailed scope](L05_GLM_Optimization/lecture_scope.md).
 
-### L06 — Learning with missing data: expectation-maximization
+### L06 — Latent-variable learning and expectation-maximization
 
-Complete the expected values and second moments needed to fit a Gaussian to incomplete measurements. Use a supplied update loop and inspect likelihood and reconstruction.
+Assemble expected Gaussian sufficient statistics, including conditional covariance, and perform an E/M update inside a supplied iteration driver. Check observed likelihood and missing-entry reconstruction; no second full mixture fit.
 
-**Skill practised:** Use uncertainty about missing values in a parameter update rather than merely fill blanks with best guesses.
+**Skill practised:** Use conditional uncertainty in sufficient-statistic estimation and distinguish an exact EM improvement guarantee from arbitrary approximate hidden-value updates.
 
 **Authors supply:** incomplete data, masks, matrix checks, repeated-update program and likelihood calculation. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** This replaces the candidate MRI tissue-classification lab. Class-assignment probabilities are explained briefly; a second mixture-model fit is not required. [Detailed scope](L06_EM/lecture_scope.md).
 
-### L07 — Posterior approximation: compare a grid with a Gaussian shortcut
+### L07 — Bayesian computation: grid reference and Laplace approximation
 
-Construct a numerical posterior reference, change its range and spacing, then compare the Gaussian shortcut and predictions. Solver and plotting helpers are supplied.
+Build a stable quadrature reference for the fixed eight-observation logistic posterior, challenge domain and mesh separately, and assess Laplace error in moments and prediction. Solver/plot helpers are supplied.
 
-**Skill practised:** Check a numerical reference and assess the consequences of an approximation.
+**Skill practised:** Validate the numerical reference as well as the posterior approximation, and separate local curvature matching from global integral/prediction accuracy.
 
 **Authors supply:** solver wrapper, grid framework and plotting. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** The small example is chosen for checkability. A finite grid is also an approximation, not an automatically exact answer. [Detailed scope](L07_Inference/lecture_scope.md).
 
-### L08 — Sequences: infer hidden states using repeated calculations
+### L08 — Exact inference in structured sequence models
 
-Implement the central hidden-state calculations in NumPy. Check a short sequence by listing its histories, including a test where transition directions matter. Simulation and plots are supplied.
+Implement scaled HMM likelihood messages and marginals in NumPy. Check tiny-sequence enumeration and an asymmetric-transition case to expose orientation errors. Simulation, reference and plotting code are supplied.
 
-**Skill practised:** Reuse partial calculations to avoid listing an exponentially large set of hidden histories.
+**Skill practised:** Use sum-product dynamic programming to obtain exact sequence probabilities and marginals while controlling numerical scaling.
 
 **Authors supply:** simulation, a short-sequence exact comparison, direction-sensitive transition test and plots. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** The main lab is discrete hidden-state inference. The previously preferred continuous Kalman forecasting lab is not included. [Detailed scope](L08_Structured_Inference/lecture_scope.md).
 
-### L09 — Approximate a posterior by fitting a simpler distribution
+### L09 — Variational inference: posterior geometry and pathwise gradients
 
-Fit an independent-coordinate Gaussian to a regression posterior with a known exact answer. Compare fitting error, the limitations of the chosen distribution and predictive uncertainty.
+Fit a diagonal Gaussian to controlled known-noise regression using reparameterized PyTorch gradients. Compare exact posterior and analytic best-diagonal solution; use fixed-noise, matched-estimator gradient checks and query-specific predictive variances.
 
-**Skill practised:** Compute derivatives through random draws and check an approximation against a known answer.
+**Skill practised:** Separate optimization error from variational-family error, and differentiate a parameter-dependent expectation with correct full-data likelihood/prior scaling.
 
 **Authors supply:** exact posterior/best-restricted comparisons, parameter-update program and plots. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** Uses controlled data and known noise. The real economic-data example and sampling comparison are replaced; no new Pyro software is required. [Detailed scope](L09_Variational_Inference/lecture_scope.md).
 
-### L10 — Sampling: correct transitions and unreliable short runs
+### L10 — Monte Carlo and MCMC: invariance, mixing and estimator error
 
-Complete a NumPy accept/reject sampler. Compare proposal sizes and starting points on a distribution with two separated peaks; check the mean and the probability of a value greater than zero against known values.
+Implement the NumPy MH kernel on a fixed bimodal target. Compare proposal scales and dispersed starts; assess the mean and probability above zero against exact references. Supplied diagnostics flag stuck chains and query-dependent error.
 
-**Skill practised:** Check a sampling rule and diagnose inadequate exploration before trusting an estimate.
+**Skill practised:** Check transition validity separately from finite exploration and quantify uncertainty for a specified Monte Carlo query.
 
 **Authors supply:** target log probability, run-comparison program and diagnostic helpers. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** Helper diagnostics are supplied. Gibbs updates are explained briefly. Hamiltonian Monte Carlo uses derivatives for directed moves but is not fully derived or implemented. [Detailed scope](L10_MCMC/lecture_scope.md).
 
-### L11 — Neural prediction: learn a mean and a noise level
+### L11 — Neural conditional models: heteroskedastic likelihood and regularization
 
-Fit one small nonlinear Gaussian model and compare it with a supplied fixed-noise model on new observations. Inspect predicted noise and intervals.
+Fit one shallow PyTorch mean/scale network and compare held-out NLL, MSE and conditional intervals with a supplied fixed-scale nonlinear baseline and known data law. Match splits/shapes and estimate baseline noise using training data.
 
-**Skill practised:** Build a probability prediction with a neural network and interpret its uncertainty correctly.
+**Skill practised:** Implement and interpret a neural conditional likelihood, preserving standard-deviation/variance distinctions and the limits of fixed-weight predictive intervals.
 
 **Authors supply:** comparison model, training program, prepared fallback and plotting. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 
 **Choice or limitation:** Intervals describe observation noise conditional on fitted weights. They do not include a Bayesian posterior over weights. One CPU fit and prepared fallback still need testing. [Detailed scope](L11_Neural_Prediction/lecture_scope.md).
 
-### L12 — Variational autoencoders: learn a compact hidden description
+### L12 — Variational autoencoders: amortized inference and rate–distortion
 
-Complete a small mobility-data model and one joint training run. Use prepared comparison runs to study reconstruction and hidden descriptions under different penalty strengths.
+Complete the compact mobility VAE loss and one bounded joint fit. Use fresh, consistently normalized supplied beta comparisons; evaluate expected-q reconstruction NLL and average prior KL, keeping encoder-mean visualizations separate.
 
-**Skill practised:** Combine two networks in one probability model and check how its likelihood and penalty are scaled.
+**Skill practised:** Integrate amortized variational inference with a neural likelihood and assess a defined distortion/rate tradeoff without treating rate as mutual information or latent patterns as identified causes.
 
 **Authors supply:** data transformation, small network definitions, training program and prepared comparison fits. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
 

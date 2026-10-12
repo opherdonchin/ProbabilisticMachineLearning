@@ -1,6 +1,6 @@
 # Current teaching decisions
 
-The instructor agreed to the 13-meeting, Book-2-first course order in PR #8. During the subsequent question review, the instructor agreed to a simpler L03 image algorithm and selected the lighter L04 parity-bit example. The instructor then paused further decisions and requested plain-language explanations throughout. This accepts those two choices, not every later lecture.
+The instructor agreed to the 13-meeting, Book-2-first course order in PR #8. During the subsequent question review, the instructor agreed to a simpler L03 image algorithm and selected the lighter L04 parity-bit example. The instructor paused further decisions to request clearer explanations, then specified that those explanations must retain mathematical sophistication and precision, with focused book readings where needed. This accepts those two choices, not every later lecture.
 
 Book 2 remains the main source. Book 1 supplies selected explanations or examples. L01's delivered material and L02's agreed sections remain unchanged; L13 remains project presentations. We are developing scopes, not slides or student notebooks.
 
@@ -19,11 +19,11 @@ Book 2 remains the main source. Book 1 supplies selected explanations or example
 | L11 | Intervals describe observation noise conditional on fitted weights. They do not include a Bayesian posterior over weights. One CPU fit and prepared fallback still need testing. |
 | L12 | Uses 19 measurements and four hidden coordinates. Data access, prepared comparisons and CPU runtime remain untested. Patterns are descriptive, not identified causal factors. |
 
-The later scopes keep the same mathematical commitments during the readability rewrite. L04 is the one change to the required example: a three-bit parity model replaces the five-bit error-correcting construction. The simpler code detects a single-bit change but cannot always locate or correct it; the stronger result is reference material. The numerical model and review must therefore be updated, not merely renamed.
+The lecture scopes keep their reviewed mathematical commitments. The current communication revision brings decision-relevant equations, assumptions, formal method names and focused reading guidance into the instructor discussion. L04 is the one change to the required example: a three-bit parity model replaces the five-bit error-correcting construction. The simpler code detects a single-bit change but cannot always locate or correct it; the stronger result is reference material. Its numerical model and independent targeted review were updated; the current precision revision does not change that selected example.
 
 ## What the instructor needs to assess
 
-The [teaching choices](course_architecture_scope/questions_and_hesitations.md) explain the remaining decisions: the first PyTorch meeting, hidden categories versus Kalman forecasting, simple checkable data versus realistic applications, and mobility modeling/access. Technical correctness and software checks are the authors' responsibilities and are not presented as approval questions.
+The [teaching choices](course_architecture_scope/questions_and_hesitations.md) define the mathematical contrasts, state derive/state/apply depth, explain alternatives and their costs, and identify verified readings for the remaining decisions: the first PyTorch meeting, hidden categories versus Kalman forecasting, simple checkable data versus realistic applications, and mobility modeling/access. Technical correctness and software checks are the authors' responsibilities and are not presented as approval questions.
 
 The [course explanation](course_architecture_scope/architecture_audit.md) shows how the lectures build on one another and what is omitted. The [review register](course_architecture_scope/STATUS.md) gives exact scope versions and reviewer identities. Original review reports are retained for evidence, with plain-language summaries before their technical records. Previous approval of a five-bit L04 model is not approval of the new three-bit model.
 

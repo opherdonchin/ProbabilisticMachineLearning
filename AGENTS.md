@@ -21,35 +21,42 @@ These instructions apply to the entire repository.
 
 ## Writing for the instructor and students
 
-- Write course proposals, questions, reviews and progress reports for an instructor
-  who knows probability and the course material through roughly L03–L04, but is
-  learning the later material. Do not assume familiarity with Murphy's chapter
-  contents, later algorithms, or a list of things the course excludes.
-- Explain the problem, the proposed teaching choice and its practical consequence
-  in ordinary language before naming the method. Introduce unfamiliar terms and
-  abbreviations where they first matter. A spelled-out acronym alone is not an
-  explanation: say what the method does and give a small example when needed.
-- Make each decision understandable without opening the book or following several
-  links. State what students will learn, what they will do, what the simpler option
-  loses, and why the alternative would take more time. Do not ask the instructor
-  to approve technical correctness checks that belong to the author/reviewer.
-- Keep mathematical meaning precise. Simpler teaching is allowed; false claims are
-  not. If an example only detects an error, say that it cannot always correct it.
-  Put detailed equations, source section numbers, software checks and Git hashes
-  after the explanation, in clearly labeled checking details when useful.
-- Avoid compressed strings of specialist labels, unexplained acronym lists,
-  administrative jargon and claims such as “bounded bridge” without saying what
-  is actually taught. Prefer connected explanations over catalogues of names.
-- Before handing over work, read its main explanation as someone encountering the
-  topic for the first time. Can that reader describe the problem, understand the
-  recommendation and compare the alternatives? Rewrite if the answer depends on
-  knowing the technical labels already. More definitions alone do not repair a
-  missing explanation.
-- This rule applies to all course-development and notebook skills, including
-  delegated specialists. Student material should use only knowledge already
-  established at that point in the course. Internal source/implementation records
-  may retain exact technical notation, but need a readable explanation of their
-  purpose and findings; raw review evidence must remain identifiable as evidence.
+- Write for a mathematically mature instructor: probability, calculus, linear
+  algebra and Bayesian reasoning are available, while the later course methods
+  and Murphy's organization may be unfamiliar. Do not confuse unfamiliarity with
+  a method with a need to lower the mathematical level of the discussion.
+- State the mathematical issue and its teaching consequence in clear connected
+  prose. Use the correct method names and technical terms, explaining their role
+  when first needed. Preserve distinctions between objectives, distributions,
+  algorithms and guarantees rather than replacing them with generic descriptions.
+- Include decision-relevant equations, assumptions and counterexamples in the main
+  explanation when they make the concern precise. Define notation and explain
+  what the equation establishes. Long derivations, implementation details and Git
+  identifiers can follow as checking material; important mathematics should not
+  be hidden merely to make the document look simple.
+- Explain what is proposed at derive/prove, work/apply, state or mention depth;
+  what students will actually practise; what the competing choice adds or loses;
+  and why the difference affects time, prerequisites or the course endpoint.
+  These are teaching decisions. Formula correctness and software validation
+  remain author/reviewer responsibilities rather than instructor approval tasks.
+- When a concern requires unfamiliar background, provide a focused reading route:
+  verified book/edition, section numbers and titles, and what to look for there.
+  Prefer the relevant passage to a whole-chapter list. Flag pertinent source
+  errors. Give enough context to understand the stakes now, while being honest
+  about what reading is needed to assess the mathematics in detail.
+- Keep mathematical meaning precise. A simpler example may have a weaker
+  guarantee, which must be stated: error detection is not guaranteed correction,
+  an invariant chain need not mix quickly, and a variational penalty need not
+  equal mutual information. Explain such distinctions rather than just naming
+  them or presenting an unexplained catalogue of exclusions.
+- Before handing over work, check both clarity and substance. Can the reader
+  identify the exact mathematical objects, the concern and the teaching tradeoff?
+  Are the equations/conditions needed to judge it visible? Have terms been
+  explained without removing the issue that made the decision consequential?
+- This rule applies to all course and notebook skills, including specialists.
+  Student material must still follow the knowledge established at that point in
+  the course. Preserve identifiable raw review evidence and exact source records;
+  readable summaries complement them and do not replace their mathematical claims.
 
 ## Lecture development coordination
 

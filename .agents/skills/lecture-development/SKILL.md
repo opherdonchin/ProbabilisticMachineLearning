@@ -5,7 +5,7 @@ description: Coordinate end-to-end lecture development through specialized Scope
 
 # Coordinate lecture development
 
-Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students) for every instructor-facing explanation and review. Explain unfamiliar ideas and the consequences of a choice before using specialist names; do not assume the instructor knows material beyond L03–L04. Keep exact mathematical and source checks available after the readable explanation.
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
 
 Use this skill for a **multi-stage lecture-development request** or when resuming a lecture across stages. It is the instructor-facing orchestration layer, not an extra specialist that decides the lecture content.
 
@@ -59,7 +59,7 @@ Do not start multiple agents editing the same artifact concurrently. Delegate an
 
 ## Coordinator interaction with the instructor
 
-The instructor is also learning the later course material. For every proposal or question, first explain the problem and the actual classroom/notebook activity. Then explain the tradeoff in ordinary language: what the simpler choice achieves, what it gives up, and what the other choice would require. Supply enough context to decide without opening Murphy or already knowing the algorithms. Separate teaching decisions from technical checks the authors must resolve themselves. Include this reader background in every specialist dispatch and check returned work for readability before forwarding it. Do not repair inaccessible prose merely by adding a glossary or expanding abbreviations.
+The instructor is mathematically mature and is learning the later methods. Explain each concern with precise objects, relevant equations/assumptions and the actual competing teaching goals; do not reduce it to a generic choice between simple and complex. Use unfamiliar method names with a short explanation, and offer verified section titles/numbers plus what to read for when background study is useful. Distinguish the depth taught in class from recommended instructor preparation. Separate teaching decisions from correctness checks authors own. Include this background in specialist dispatches, and check both clarity and mathematical substance before forwarding output. A glossary alone does not explain a concern, and elementary prose alone does not preserve its substance.
 
 Provide **one continuous human-facing discussion** across stages. Specialists return questions, evidence, proposals, alternatives, and uncertainties to the coordinator. Present them faithfully, distinguishing specialist conclusions from the coordinator's process recommendations.
 

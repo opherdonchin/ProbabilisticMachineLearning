@@ -211,7 +211,7 @@ The course grade is based on four components:
   [
     - Selected 6.1 / 6.2.1–6.2.2 / 6.3 Uncertainty and shared information
   ],
-  [Construct the four-message/eight-observation noisy-channel table. Compute mutual information and optimal whole-message Bayes error, including ties and zero-support cases. Compare resource use; reference stronger single-error correction separately.],
+  [Extend the three-bit lecture parity code into a five-bit correcting code; establish minimum distance three and single-flip recovery. Use supplied enumeration of four messages and 32 received words to calculate MAP error and mutual information, comparing the rate/reliability tradeoff with the lecture code.],
   [Calculate information and decision risk from one finite joint distribution without conflating information gain, code rate and guaranteed error correction.],
 )
 

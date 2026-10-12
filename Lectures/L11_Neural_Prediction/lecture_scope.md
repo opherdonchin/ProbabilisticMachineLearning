@@ -92,16 +92,16 @@ Later-author counts `K=5`, `P≈7–10`, `E_new≈10–13`, `E_carry≈12–20`,
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, role and delivery |
-|---|---|
+|---\|---|
 | `h=ReLU(Wx+b)`, `μ=wμᵀh+bμ`, `aσ=wσᵀh+bσ`; `W:H×D`, `h,wμ,wσ:H` | **Motivate + Work**, Live: shapes and learned features. General multilayer recurrence **State**; no universal-approximation theorem/proof. |
 | `W2(W1x+b1)+b2=(W2W1)x+W2b1+b2` | **Work**, Live: affine depth alone does not create nonlinear expressiveness. |
 | `σ=σ_min+log(1+exp(aσ))`, fixed `σ_min>0`; `∂σ/∂aσ=sigmoid(aσ)` | **State + Motivate/Apply**, Live; stable softplus implementation supplied. The floor is a numerical/model constraint, not inferential uncertainty. |
 | `ℓ=(1/2)log(2π)+logσ+(y−μ)²/(2σ²)` | **Derive + Work**, Live; `L=N⁻¹Σℓ_n`. Fixed-known-scale MSE equivalence **Apply**. NLL can be negative for continuous densities. |
 | `∂ℓ/∂μ=(μ−y)/σ²`; at `ρ=logσ`, `∂ℓ/∂ρ=1−(y−μ)²/σ²`; `∂ℓ/∂aσ=[1/σ−(y−μ)²/σ³]sigmoid(aσ)` | First two **Derive + Interpret**, Live; raw-head chain **Apply**, not a new log-scale model. Notebook checks the actual softplus parameterization. |
 | Shared-backbone adjoint is the sum of mean/scale path contributions; batch-mean gradients and SGD | **Apply**, Live/Notebook: L05 result, no second complete reverse-mode derivation or convergence proof. |
-| `μhat±1.96σhat`; `p(y*|x*,D)=∫p(y*|x*,ψ)p(ψ|D)dψ` | Interval **Apply**, integration **State/recall**, Live: conditional noise versus posterior averaging. No BNN inference implementation. |
-| `Var(Y*|x*,D)=E[σψ(x*)²|D]+Var[μψ(x*)|D]` | **Apply + Explain**, Live: total variance under the stated conditional Gaussian and finite moments. This decomposition is model-relative, not identified from one fitted scale. |
-| For selected weights `w~N(0,τ²I)`, `L_MAP=L+||w||²/(2Nτ²)+constant` | **Derive**, Live: mean-loss scaling. Write `λ=1/(Nτ²)` for penalty `λ||w||²/2`; prior itself is not repeatedly counted per observation. |
+| `μhat±1.96σhat`; `p(y*\|x*,D)=∫p(y*\|x*,ψ)p(ψ\|D)dψ` | Interval **Apply**, integration **State/recall**, Live: conditional noise versus posterior averaging. No BNN inference implementation. |
+| `Var(Y*\|x*,D)=E[σψ(x*)²\|D]+Var[μψ(x*)\|D]` | **Apply + Explain**, Live: total variance under the stated conditional Gaussian and finite moments. This decomposition is model-relative, not identified from one fitted scale. |
+| For selected weights `w~N(0,τ²I)`, `L_MAP=L+\|\|w\|\|²/(2Nτ²)+constant` | **Derive**, Live: mean-loss scaling. Write `λ=1/(Nτ²)` for penalty `λ\|\|w\|\|²/2`; prior itself is not repeatedly counted per observation. |
 | Ordinary SGD `w_next=(1−αλ)w−αg_B`; decoupled shrinkage versus preconditioned penalty gradient | **Work briefly/State**, Live: narrow implementation distinction. Numerical repetition optional; no adaptive optimizer derivation. |
 
 All new required mathematics remains live. The lab assembles this model rather than introducing another likelihood or a stochastic weight draw.
@@ -154,7 +154,7 @@ Supported outcomes include explicit network dimensions, the collapse of purely a
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / proposed bookkeeping |
-|---|---|
+|---\|---|
 | **Core/Live deep** | B2 §§16.2.1–16.2.2/16.3.1 MLP construction and nonlinear conditional Gaussian; B1 §13.2.4.4 example scaffolding. Gaussian NLL/derivatives are explicit course development. |
 | **Short bridges** | B2 §16.1 likelihood versus inference-network distinction; §15.2.2.1/B1 §13.5.2 Gaussian-prior/L2 meaning; §13.5.1 early-stopping recognition; L05 AD/SGD and L09 predictive integration reused. |
 | **Notebook owned** | PyTorch refresh, head/NLL assembly, given checks/one driver fit, held-out scoring and interval interpretation against supplied baseline. |

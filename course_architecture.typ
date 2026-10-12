@@ -69,7 +69,7 @@ The formulation then gives us probabilistic *queries*. Conditioning, marginaliza
       [Task to be accomplished · available experience and data structure],
     )
     #v(5pt)
-    #align(center)[#text(size: 14pt, fill: blue)[$arrow.d$]]
+    #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
     #v(5pt)
     #text(weight: "bold", fill: navy)[Mathematical formulation]
     #v(5pt)
@@ -88,7 +88,7 @@ The formulation then gives us probabilistic *queries*. Conditioning, marginaliza
       ),
     )
     #v(5pt)
-    #align(center)[#text(size: 14pt, fill: blue)[$arrow.d$]]
+    #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
     #v(5pt)
     #concept-card(
       [Computational formulation],
@@ -96,7 +96,7 @@ The formulation then gives us probabilistic *queries*. Conditioning, marginaliza
       tint: rgb("#F5F6F7"),
     )
     #v(5pt)
-    #align(center)[#text(size: 14pt, fill: blue)[$arrow.d$]]
+    #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
     #v(5pt)
     #concept-card(
       [Learned model, answer, or decision],
@@ -128,7 +128,7 @@ Murphy's books provide the principal mathematical argument, but no lecture attem
 
 == Richer performance criteria and tractable learning
 
-*L04* addresses tasks for which single-answer classification accuracy or mean squared error is inadequate. Distributional similarity, relative information, and preservation of relevant statistical relationships motivate entropy, cross-entropy, KL divergence, mutual information, and their relationship to computable scores or bounds. The selected small noisy-channel example is a **worked illustration**, not the intellectual definition of the chapter or a representative machine-learning application: it distinguishes information, decision reliability, and resource cost. The three-bit detector is live; the five-bit correction problem extends it in the notebook.
+*L04* addresses tasks for which single-answer classification accuracy or mean squared error is inadequate. Distributional similarity, relative information, and preservation of relevant statistical relationships motivate entropy, cross-entropy, KL divergence, mutual information, and their relationship to computable scores or bounds. The selected small noisy-channel example is a *worked illustration*, not the intellectual definition of the chapter or a representative machine-learning application: it distinguishes information, decision reliability, and resource cost. The three-bit detector is live; the five-bit correction problem extends it in the notebook.
 
 *L05* connects familiar Bayesian regression to likelihood families for categorical and count observations. Exponential-family GLMs extend the *model*. Differentiation and stochastic optimization address the practical problem of *learning* from finite observations. Using MLE or MAP as a point fit is a computational choice that retains the probabilistic model but not a full parameter posterior. Prediction is ultimately judged by an appropriate performance criterion; success on an internal training objective is not equivalent to task performance.
 
@@ -138,7 +138,7 @@ Murphy's books provide the principal mathematical argument, but no lecture attem
 
 *L07* returns to the difference between a point fit and posterior queries that require uncertainty or predictive integration. Laplace uses local curvature for a Gaussian approximation; the approximation must be checked for the query that matters.
 
-*L08* addresses sequential tasks where the naive latent sum appears exponential but the joint factorization enables efficient **exact** filtering and smoothing by message passing. *L09* instead optimizes a restricted distribution to approximate an otherwise difficult posterior; *L10* uses samples to approximate integrals and studies the validity and finite-run error of Monte Carlo estimates. These methods solve different computational bottlenecks, not interchangeable names for "approximate inference."
+*L08* addresses sequential tasks where the naive latent sum appears exponential but the joint factorization enables efficient *exact* filtering and smoothing by message passing. *L09* instead optimizes a restricted distribution to approximate an otherwise difficult posterior; *L10* uses samples to approximate integrals and studies the validity and finite-run error of Monte Carlo estimates. These methods solve different computational bottlenecks, not interchangeable names for "approximate inference."
 
 == Expressive models and learned inference
 

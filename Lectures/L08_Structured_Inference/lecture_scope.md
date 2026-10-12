@@ -100,12 +100,12 @@ In the Gaussian comparison, **LGSSM** means linear-Gaussian state-space model. F
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, delivery and role |
-|---|---|
+|---\|---|
 | `p(z,y)=π_{z_1}∏_{t=2}^T A_{z_{t−1},z_t}∏_{t=1}^T λ_t(z_t)`; `p(y)=Σ_z p(z,y)` | **State + Work**, Live; factorization/finite sums carried, hidden-path structure new. Parameters known. |
 | `a_1(j)=π_jλ_1(j)`; `a_t(j)=λ_t(j)Σ_i A_ij a_{t−1}(i)` | **Derive + Work**, Live; grouped prefix sums and evidence `Σ_j a_T(j)`. |
-| `u_1=π⊙λ_1`, `c_1=Σu_1`, `f_1=u_1/c_1`; for `t≥2`, `u_t=λ_t⊙(Aᵀf_{t−1})`, `c_t=Σu_t`, `f_t=u_t/c_t` | **Derive + Work**, Live. `f_t=p(z_t|y_{1:t})`, `c_t=p(y_t|y_{1:t−1})`; evidence `∏c_t`, log evidence `Σlog c_t`. |
+| `u_1=π⊙λ_1`, `c_1=Σu_1`, `f_1=u_1/c_1`; for `t≥2`, `u_t=λ_t⊙(Aᵀf_{t−1})`, `c_t=Σu_t`, `f_t=u_t/c_t` | **Derive + Work**, Live. `f_t=p(z_t\|y_{1:t})`, `c_t=p(y_t\|y_{1:t−1})`; evidence `∏c_t`, log evidence `Σlog c_t`. |
 | `β_T(i)=1`; `β_t(i)=Σ_j A_ijλ_{t+1}(j)β_{t+1}(j)` | **Derive + Work**, Live; future likelihood, not normalized state probabilities. |
-| `γ_t(j)=p(z_t=j|y_{1:T})=normalize(f_t(j)β_t(j))` | **Derive + Work**, Live; use independence of past/future given `z_t`, no duplicated `λ_t`. |
+| `γ_t(j)=p(z_t=j\|y_{1:T})=normalize(f_t(j)β_t(j))` | **Derive + Work**, Live; use independence of past/future given `z_t`, no duplicated `λ_t`. |
 | `b_T=1`; `b_t(i)=Σ_j A_ijλ_{t+1}(j)b_{t+1}(j)/c_{t+1}`; `γ_t=f_t⊙b_t` | **State + Explain + Apply**, Live/Notebook. `b_t=β_t/∏_{s=t+1}^T c_s`, so products sum to one in exact arithmetic; explicit final normalization can absorb rounding. Independently normalized backward messages require renormalizing the product. |
 | Log-forward update: `v_t(j)=logλ_t(j)+LSE_i(logA_ij+log f_{t−1}(i))`; `log c_t=LSE_j v_t(j)`; `log f_t=v_t−log c_t` | **State + Explain**, Live short alternative, L05 LSE carried. Initialize with `logπ+logλ_1`; structural zeros use `−∞`. Core lab uses scaled probabilities, not a second log-domain implementation. |
 | `argmax_z p(z,y)` versus `argmax_j γ_t(j)`; block marginal MAP `argmax_{z_Q}Σ_{z_{−Q}}p(z,y)` | **Work** tiny counterexample; block definition **State**, Live. Pointwise modes minimize expected per-time 0–1 error, path MAP minimizes whole-path 0–1 error. |
@@ -137,7 +137,7 @@ The three examples have separate jobs: a three-observation model checks every pr
 **Required tiny oracle — Work, Live/Notebook, course-constructed:** `K=2,T=3`, `π=(1/2,1/2)`, `A=((4/5,1/5),(1/5,4/5))`, emissions `B=((7/10,3/10),(3/10,7/10))` for observation symbols 0/1, observed sequence `(0,0,1)`. All factors are positive/normalized. Exhaustive rational arithmetic over eight paths verifies these joint weights:
 
 | Path | 000 | 001 | 010 | 011 | 100 | 101 | 110 | 111 |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
+|---\|---:\|---:\|---:\|---:\|---:\|---:\|---:\|---:|
 | `p(z,y)` | .04704 | .02744 | .00126 | .01176 | .00504 | .00294 | .00216 | .02016 |
 
 Evidence is `589/5000=.1178`; normalizers are `(.5,.548,589/1370)`, whose product matches enumeration. Filtered beliefs are `(.7,.3)`, `(217/274,57/274)`, `(555/1178,623/1178)`. Smoothed beliefs are `(875/1178,303/1178)`, `(.7,.3)`, `(555/1178,623/1178)`. For example, scaled backward at time 2 is `(137/155,137/95)`; multiplying by the time 2 filtered vector yields `(.7,.3)`. Joint path MAP is uniquely `000`, while pointwise marginal modes are `001`. This demonstrates summation/decision distinctions without deriving another algorithm. Values were checked by separate enumeration and recurrence arithmetic in a builder scratch calculation, not by executing a student notebook.
@@ -168,7 +168,7 @@ The core source is Murphy B2 §§9.2.1–9.2.3.1, with normalization in §9.2.3.
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment |
-|---|---|
+|---\|---|
 | Core/Live deep | B2 §§9.2.1–9.2.3.1, normalization §9.2.3.4, complexity §9.2.5; one exact oracle. |
 | Short bridge | §9.1 dynamic-programming framing; §9.5.1 chain elimination interpretation; §9.2.6 path-MAP recognition; §8.1.2 / selected §8.2.2 predict/update application. |
 | Notebook owned | NumPy recurrence implementation, scaling/likelihood checks, tiny enumeration comparison and supplied casino interpretation. |

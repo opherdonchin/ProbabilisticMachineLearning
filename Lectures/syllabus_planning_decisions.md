@@ -4,6 +4,8 @@ The instructor agreed to the 13-meeting, Book-2-first course order in PR #8. L03
 
 Book 2 remains the main source. Book 1 supplies selected explanations or examples. L01's delivered material and L02's agreed sections remain unchanged; L13 remains project presentations. We are developing scopes, not slides or student notebooks.
 
+**2026-10-12 instructional framing:** The instructor identified the familiar Bayesian/hierarchical formulation as the starting point for L05 and L06. L05 changes *the response likelihood family* and then contrasts full Bayesian posterior inference with gradient-based MLE/MAP point fitting. L06 retains the latent hierarchy but changes *the estimation target/algorithm*: integrate latent variables in the observed likelihood and apply EM, rather than infer the joint Bayesian parameter posterior. Neither lecture should suggest that Bayesian hierarchical modeling breaks down conceptually. These are targeted scope-framing revisions, not authorization for a new extra lecture or notebook.
+
 ## What is selected or still proposed
 
 | Meeting | Choice and consequence |

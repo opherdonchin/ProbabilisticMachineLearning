@@ -17,7 +17,7 @@ The instructor's objective is **not** to require complete or slavish adherence t
 - Confirm repository root, branch, exact HEAD and clean worktree. Protect all existing instructor-agreed work and don't overwrite a divergent local branch.
 - Read AGENTS.md, .agents/skills/lecture-development/SKILL.md, .agents/skills/lecture-scope/SKILL.md, .agents/skills/section-design/SKILL.md, .agents/skills/shared/backpressure.md, the timing-calibration reference, L03 accepted scope and development_state, source inspection, current course syllabus/plan/ledger, scope status and all nine current L04–L12 scopes. Read all nine adjacent source_arc_review.md files and Lectures/course_architecture_scope/source_arc_review_index.md.
 - Follow the **current** `.agents/skills/lecture-scope/SKILL.md`, including its decision priorities, source-arc review and Section Design feasibility check. Treat the old `source_arc_skill_recommendations.md` as historical; do not reapply it, invent additional review modes or edit canonical skills. Record the exact skill blob used.
-- Protect the actual agreed L03 scope and selected L04 parity example. Keep architectural order L04 information, L05 substantive GLMs and optimization, L06 EM, inference L07–L10, neural prediction L11, VAE L12. Preserve L01/L02 delivered/agreed contracts.
+- Protect the agreed L03 scope and the **L04 lecture/notebook split**: live two-message-bit/one-parity-bit detection and uncertain decoding; notebook five-bit distance-three code for guaranteed correction of at most one error, evaluated with 4×32 channel probabilities. Preserve the mathematics, while feasibility-checking the new hour. Keep L04 information, L05 substantive GLMs and optimization, L06 EM, inference L07–L10, neural prediction L11, VAE L12. Preserve L01/L02 delivered/agreed contracts.
 
 ### Gate 1: independent source-first assessment, *before* revision
 
@@ -38,7 +38,7 @@ Use the initial independent comparisons to decide **which** scopes need changes.
 Assign independent builders using lecture_scope in REVISION mode to each actual scope-level change. The revision request must specify exactly which mathematical **argument** is lost or underdeveloped, what alternative transitions have to replace it, and the existing lecture/notebook obligations to preserve. Do not add chapters or derive more math automatically.
 
 Essential test cases:
-- L04: Honor the accepted three-bit parity task. Preserve Murphy's two-way relation between probabilistic modeling and information tools (KL→entropy/MI→source/channel coding→ML representation) without demanding a larger codec.
+- L04: Honor the **three-bit live / five-bit student** split without turning L04 into a coding-theory survey. Review the five-bit decoder, minimum-distance-three argument, MI/MAP error/rate comparison and one-hour workload with supplied NumPy enumeration; preserve Murphy's KL→entropy/MI→communication→ML-representation arc. Request targeted independent feasibility review of the changed notebook, not a redesign of the live lecture.
 - L05: Keep genuinely substantive GLM generality and meaningful AD/SGD. The Ch.15+Ch.6 synthesis is deliberate; account for what scientific coefficient inference is omitted.
 - L06: Preserve the general MM/EM lower-bound reason, not only the Gaussian missingness procedure.
 - L07: Make Chapter 7's query/structure/method map a real mathematical part of the lecture, with Laplace a deep worked case rather than the chapter's substitute. Make any time offsets explicit.

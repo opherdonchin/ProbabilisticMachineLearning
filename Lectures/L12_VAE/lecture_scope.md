@@ -106,17 +106,17 @@ The Gaussian model lives in preprocessed, standardized coordinates. It does not 
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, delivery and role |
-|---|---|
-| `p_theta(x,z)=N(z|0,I) N(x|d_theta(z),tau² I)`; `p_theta(x)=integral p_theta(x,z)dz` | **State/Motivate**, Live A. Likelihood in preprocessed standardized coordinates; not an exact support-respecting model for all raw percentages/counts. |
-| `q_phi(z|x)=N(mu_phi(x),diag(exp ell_phi(x)))` | **State + Work shapes**, Live A/C; amortized rather than one freely optimized q per row. |
-| `F(x)=E_q log p_theta(x|z)−KL(q_phi(z|x)||p(z))` | **Apply**, Live B; generic identity L06-owned. Restricted q/nonconvex training does not guarantee exact MLE. |
-| `−log p_theta(x|z)=||x−d_theta(z)||²/(2tau²)+(d/2)log(2pi tau²)` | **Apply/Work**, Live B; L11-owned Gaussian NLL. At tau²=1/2 coefficient is one. |
+|---\|---|
+| `p_theta(x,z)=N(z\|0,I) N(x\|d_theta(z),tau² I)`; `p_theta(x)=integral p_theta(x,z)dz` | **State/Motivate**, Live A. Likelihood in preprocessed standardized coordinates; not an exact support-respecting model for all raw percentages/counts. |
+| `q_phi(z\|x)=N(mu_phi(x),diag(exp ell_phi(x)))` | **State + Work shapes**, Live A/C; amortized rather than one freely optimized q per row. |
+| `F(x)=E_q log p_theta(x\|z)−KL(q_phi(z\|x)\|\|p(z))` | **Apply**, Live B; generic identity L06-owned. Restricted q/nonconvex training does not guarantee exact MLE. |
+| `−log p_theta(x\|z)=\|\|x−d_theta(z)\|\|²/(2tau²)+(d/2)log(2pi tau²)` | **Apply/Work**, Live B; L11-owned Gaussian NLL. At tau²=1/2 coefficient is one. |
 | `r(x)=(1/2)sum_j[mu_j²+exp ell_j−1−ell_j]`; `L_beta=batch mean_n[E reconstruction NLL+beta r(x_n)]` | **Apply + Work**, Live B. Sum latent and observed event dimensions separately, then average observations; beta=1 standard negative ELBO. |
 | `z=mu_phi(x)+exp(ell_phi(x)/2)⊙epsilon`, `epsilon~N(0,I)` | **Apply**, Live C; L09-owned derivation/interchange conditions. No fresh change-of-variables proof. |
 | Reconstruction gradient to theta; chain through z to phi; `partial r/partial mu=mu`, `partial r/partial ell=(exp ell−1)/2` | **Work bounded application**, Live C; no full network reverse traversal. Keep gradients through both encoder mean and variance. |
-| `D=E_pD E_q[-log p_theta(X|Z)]`; `R=E_pD KL(q_phi(Z|X)||p(Z))` | **State/Interpret**, Live D. Nats under natural logs; divide by log2 for bits, without literal codelength claims. |
-| `q_phi(z)=E_pD q_phi(z|X)`; `R=I_q(X;Z)+KL(q_phi(Z)||p(Z))≥I_q(X;Z)` | **Derive**, Live D; insert aggregate mixture into the density ratio. Finite/support-integrable quantities assumed; no KL between empirical point masses and continuous data densities is required. |
-| Collapse: `p_theta(x|z)=p_theta(x)` implies `p_theta(z|x)=p(z)`; q=p for all x gives R=I=0 | **Work/Explain**, Live E. Near-zero fitted rates are diagnostics, not an automatic theorem about decoder use. |
+| `D=E_pD E_q[-log p_theta(X\|Z)]`; `R=E_pD KL(q_phi(Z\|X)\|\|p(Z))` | **State/Interpret**, Live D. Nats under natural logs; divide by log2 for bits, without literal codelength claims. |
+| `q_phi(z)=E_pD q_phi(z\|X)`; `R=I_q(X;Z)+KL(q_phi(Z)\|\|p(Z))≥I_q(X;Z)` | **Derive**, Live D; insert aggregate mixture into the density ratio. Finite/support-integrable quantities assumed; no KL between empirical point masses and continuous data densities is required. |
+| Collapse: `p_theta(x\|z)=p_theta(x)` implies `p_theta(z\|x)=p(z)`; q=p for all x gives R=I=0 | **Work/Explain**, Live E. Near-zero fitted rates are diagnostics, not an automatic theorem about decoder use. |
 | Latent sign/permutation reparameterization | **State**, optional **Work**, Live E; preserves isotropic prior and diagonal family. General nonidentifiability **State**, no proof of nonlinear impossibility theorem. |
 
 ## 3. Notebook handoff — what students do and what is supplied
@@ -169,7 +169,7 @@ Core sources are selected B2 §§21.1–21.2, §21.3.1, §5.4.2 and §21.4. Earl
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / boundary |
-|---|---|
+|---\|---|
 | **Core/Live deep** | B2 §§21.1–21.2 model/amortization/joint objective; §21.3.1 beta tradeoff; §5.4.2 plus aggregate posterior definition for rate decomposition; §21.4 collapse diagnosis. Selective content, not all subsections. |
 | **Short bridges** | Correct Normal KL/pathwise machinery L09, Gaussian NLL/MLP L11, generic ELBO L06; §21.3.1.1 identification caution; §21.4.1 annealing Mention only. |
 | **Notebook owned** | Refresh, loss assembly/checks, one bounded fit, held-out reconstruction/rate and supplied beta/pattern comparison. |

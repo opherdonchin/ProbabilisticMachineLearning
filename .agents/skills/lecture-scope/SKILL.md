@@ -46,7 +46,7 @@ Do not use it to:
 - write a slide-by-slide outline;
 - perform section-level or slide-level drafting that belongs to later skills.
 
-Exception: before scope approval, **obtain** a lightweight Section Design feasibility review, not a section design. The coordinator dispatches this review when active; in standalone mode request it directly. Follow `../shared/backpressure.md` and the review mode of `../section-design/SKILL.md`.
+Exception: before scope approval, obtain the source-arc and lightweight Section Design feasibility reviews described below, without designing sections. The coordinator dispatches them when active; in standalone mode request them directly. Follow `../shared/backpressure.md` and the review mode of `../section-design/SKILL.md`.
 
 The approximate time allocations in the scope are constraints for later drafting, not slide counts. Scope-stage timing is a planning estimate, not a validated rehearsal time.
 

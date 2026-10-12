@@ -10,7 +10,7 @@
 
 ## 2. Current L08 argument
 
-The [L08 scope](../../L08_Structured_Inference/lecture_scope.md) builds a known-parameter HMM, derives forward and backward messages and scaling, contrasts marginal-state versus whole-path decisions, counts the computational saving, then briefly applies Gaussian filtering/Kalman formulas. Its lab implements and verifies an HMM recurrence against full enumeration and an asymmetric-transition test. This is mathematically serious and well-grounded; avoiding a second complete Kalman lab is sound.
+The [L08 scope](lecture_scope.md) builds a known-parameter HMM, derives forward and backward messages and scaling, contrasts marginal-state versus whole-path decisions, counts the computational saving, then briefly applies Gaussian filtering/Kalman formulas. Its lab implements and verifies an HMM recurrence against full enumeration and an asymmetric-transition test. This is mathematically serious and well-grounded; avoiding a second complete Kalman lab is sound.
 
 ## 3. Arc fidelity and deviation
 

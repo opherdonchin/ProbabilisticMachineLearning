@@ -10,7 +10,7 @@ The spine is **posterior integral → choose a simpler distribution → optimize
 
 ## 2. Scope's arc
 
-The [L09 scope](../../L09_Variational_Inference/lecture_scope.md) recalls the L06 ELBO identity, chooses independent Gaussian factors for the posterior over regression coefficients, derives exactly how correlation loss biases different uncertainties, then derives a *pathwise gradient through a random draw* and checks numerical VI against the exact Gaussian and the best diagonal approximation. It briefly applies a coordinate-ascent update and recognizes amortization before L12.
+The [L09 scope](lecture_scope.md) recalls the L06 ELBO identity, chooses independent Gaussian factors for the posterior over regression coefficients, derives exactly how correlation loss biases different uncertainties, then derives a *pathwise gradient through a random draw* and checks numerical VI against the exact Gaussian and the best diagonal approximation. It briefly applies a coordinate-ascent update and recognizes amortization before L12.
 
 The point that the best `KL(q||p)` diagonal Gaussian matches the target **precision-conditioned** variances, not simply its marginal variances, is excellent: it exposes the effect of model family restrictions with an honest query-dependent comparison.
 

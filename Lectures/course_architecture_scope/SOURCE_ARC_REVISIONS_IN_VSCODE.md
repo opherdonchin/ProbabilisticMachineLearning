@@ -1,8 +1,8 @@
 # VS Code Codex prompt — revise L04–L12 after source-arc review
 
-**Preparation state:** This prompt is staged for use **after the instructor accepts or modifies** [source-arc skill recommendations](source_arc_skill_recommendations.md). The canonical scope skill was NOT changed by the ChatGPT source-arc review. Nine reviews exist beside their scopes and are summarized in [the review index](source_arc_review_index.md).
+**Preparation state:** The source-arc safeguards have been integrated into the existing [lecture-scope skill](../../.agents/skills/lecture-scope/SKILL.md) on this branch. The earlier [amendment proposal](source_arc_skill_recommendations.md) is historical and **must not be reapplied**. Nine source-arc reviews remain beside their scopes, summarized in [the review index](source_arc_review_index.md). This prompt is for **subsequent instructor-authorized revisions of the lecture scopes**, not further skill rewriting.
 
-**How to use:** Check out and pull scope-l03-l12-course-architecture in VS Code. Begin a new Codex conversation in the repository root. If the instructor approves all five recommendations, use the prompt below verbatim. If the instructor approves only selected recommendations, state those explicitly in the opening and do not apply rejected changes.
+**How to use:** After the instructor authorizes the scope-revision run, check out and pull `scope-l03-l12-course-architecture` in VS Code and begin a new Codex conversation at the repository root. Use the integrated skill as it stands; do not apply the older five-patch proposal.
 
 ---
 
@@ -12,11 +12,11 @@ You are the Lecture Development Coordinator for a **targeted, source-grounded in
 
 The instructor's objective is **not** to require complete or slavish adherence to Murphy's chapter organization. It is to make the selected and reorganized mathematics form a *recognizable intellectual development*, and require explicit justification for departures. Do not exchange that objective for additional section coverage or conveniently checkable notebooks.
 
-### Gate 0: provenance, branch and skill adoption
+### Gate 0: provenance, branch and protected decisions
 
 - Confirm repository root, branch, exact HEAD and clean worktree. Protect all existing instructor-agreed work and don't overwrite a divergent local branch.
 - Read AGENTS.md, .agents/skills/lecture-development/SKILL.md, .agents/skills/lecture-scope/SKILL.md, .agents/skills/section-design/SKILL.md, .agents/skills/shared/backpressure.md, the timing-calibration reference, L03 accepted scope and development_state, source inspection, current course syllabus/plan/ledger, scope status and all nine current L04–L12 scopes. Read all nine adjacent source_arc_review.md files and Lectures/course_architecture_scope/source_arc_review_index.md.
-- The task-specific instructor approval of the recommended skill amendments must be present in the message that launches this run. If approval is absent or ambiguous, **do not change the skill**; perform only a read-only planning check and ask for approval. If explicitly authorized, apply ONLY the approved additions from source_arc_skill_recommendations.md to the canonical scope skill. Do not remove existing safeguards or change other skills without specific authorization. Commit the resulting skill change separately and run python scripts/check_codex_setup.py.
+- Follow the existing source-arc provisions in `.agents/skills/lecture-scope/SKILL.md`. Do not reapply the superseded `source_arc_skill_recommendations.md` text, invent additional review modes or edit canonical skills during this run. Use the standard source-arc review and Section Design feasibility checks already defined.
 - Protect the actual agreed L03 scope and selected L04 parity example. Keep architectural order L04 information, L05 substantive GLMs and optimization, L06 EM, inference L07–L10, neural prediction L11, VAE L12. Preserve L01/L02 delivered/agreed contracts.
 
 ### Gate 1: independent source-first assessment, *before* revision
@@ -70,4 +70,4 @@ Only after revisions and independent reviews:
 
 ---
 
-**Execution note:** The current source_arc_review.md files are reviews, not authorized scope edits. The scope skill change is also still only a proposal. Apply both only after the instructor's explicit go-ahead.
+**Execution note:** The adjacent `source_arc_review.md` files remain provisional critiques, not authorization to overwrite agreed scopes. The canonical scope skill is already revised; actual scope changes still await the instructor's explicit authorization of this VS Code run.

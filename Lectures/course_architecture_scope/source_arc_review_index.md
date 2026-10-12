@@ -16,6 +16,8 @@
 | [L11](../L11_Neural_Prediction/source_arc_review.md) | **Substantial source-arc contraction** of Ch. 16 | **High** | Re-center differentiable compositions and two roles of neural nets (probability model / inference network), then heteroskedastic model as full example |
 | [L12](../L12_VAE/source_arc_review.md) | **Justified synthesis** of Ch. 21 + Ch. 5 | Low-medium | Make generative model/intractable integral/prior generation explicit; rate-distortion stays a diagnosis, not whole endpoint |
 
+**L04 scope update (2026-10-12):** The instructor now chooses the three-bit parity example for the live lecture and the five-bit, distance-three correcting code for the notebook. The original source-arc assessment concerned a three-bit notebook; its arc conclusion remains informative, but the computational handoff has changed and must receive a targeted feasibility review. See the dated addendum to [L04](../L04_Information_Theory/source_arc_review.md).
+
 ## The consistent failure mode
 
 L03's original batch scope illustrated **unjustified displacement**: a useful image-restoration algorithm was allowed to redefine a lecture whose accepted mathematical purpose was graphical-model representation and conditional independence. The reviews identify **related but less severe** concerns in L07, L08 and L11: a complete and correct selected method increasingly stands in for the conceptual argument of its source chapter.

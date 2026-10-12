@@ -9,7 +9,7 @@ The live lecture runs from L02’s Markov chain through DAG factorization and di
 ## What is agreed and what remains proposed
 
 - The 13-meeting course order, Book 2 as the main source, and the existing L03 scope are instructor-agreed. Its future-opportunity lecture labels were maintained without changing teaching commitments.
-- L04’s lighter three-bit parity example is selected. It detects a single-bit error but cannot always locate or correct it.
+- L04’s lecture retains the two-bit message with one parity bit (detection, no guaranteed correction). The instructor **subsequently selected a five-bit correcting code for the notebook**, preserving a genuine new computation: verify distance three, one-error decoding, and MAP error/MI/rate for a 4×32 model. **The revised student task has not undergone a new independent feasibility review or runtime pilot.**
 - Other detailed scope choices remain proposals. The remaining nine scope texts are unchanged in this repair.
 - The complete seven-section L03 design remains proposed on its authoring branch. Its unresolved exact-example checks are not scope blockers or approved teaching commitments.
 
@@ -32,7 +32,7 @@ The instructor authorized pushing this proposal branch to origin. No merge is au
 | Scope | Current scope file hash | Current source / author | Earlier substantive file hash | Original independent review |
 |---|---|---|---|---|
 | [L03](../L03_Graphical_Models/lecture_scope.md) | `2d5992a3f05d952dc21553690039fe021fd6284a` | Instructor-agreed `lecture-3-authoring`; coordinator restored | `f4ab82808c1cc6b4b32c38588c6c2e969483b036` | [Raw report and reading guide](reviews/L03_review.md) |
-| [L04](../L04_Information_Theory/lecture_scope.md) | `2299ca6e5a0ab901da3fbb8e85cfb5546910f1c4` | `/root/readable_early` | `6b008770631926f61e51d838a126651c2200466e` | [Raw report and reading guide](reviews/L04_review.md) |
+| [L04](../L04_Information_Theory/lecture_scope.md) | `64d9fffc15aaffbef8bbc4ac0f635cf19ef3a18f` | `/root/readable_early` | `6b008770631926f61e51d838a126651c2200466e` | [Raw report and reading guide](reviews/L04_review.md) |
 | [L05](../L05_GLM_Optimization/lecture_scope.md) | `84629e7171a371676ac6dbf1e3fabd34de907b95` | `/root/readable_early` | `6f7200e2383a2136687fe03cbb8b35b67f76d696` | [Raw report and reading guide](reviews/L05_review.md) |
 | [L06](../L06_EM/lecture_scope.md) | `b492462f2f2e9602b6ef917d0f47a52f23f1bdab` | `/root/readable_early` | `c29aefd80dbd192a6a4da4b79e5e299df343875a` | [Raw report and reading guide](reviews/L06_review.md) |
 | [L07](../L07_Inference/lecture_scope.md) | `99de6f1ea4292d5006bbe70184a480fe231a1e5a` | `/root/readable_early` | `80eacfd8c3e7e3bb4eb00d9bb23ccdb1c2ddcb0a` | [Raw report and reading guide](reviews/L07_review.md) |
@@ -43,6 +43,9 @@ The instructor authorized pushing this proposal branch to origin. No merge is au
 | [L12](../L12_VAE/lecture_scope.md) | `67fdd3cd474b3bbf1e5ca7e931c169ebef737eeb` | `/root/readable_late` | `ae38514fa2daf5502c411a3c5528cfa6a2becbdc` | [Raw report and reading guide](reviews/L12_review.md) |
 
 Original independent reviewers: `/root/review_l03` (L03/L04/L08), `/root/review_l05` (L05/L06/L07/L09), `/root/review_l10` (L10), `/root/review_l11` (L11/L12 and targeted repairs). `/root/course_adversary` reviewed the course proposal. Current mathematical-clarity evidence is retained in [readability revision review](reviews/readability_revision_review.md); its unchanged-scope findings do not certify this L03 restoration.
+
+
+**L04 subsequent amendment (2026-10-12):** The earlier L04 review and readability evidence refer to the old three-bit *notebook* or its prior five-bit variant. Neither independently reviews the present split of three-bit **lecture** and five-bit **student notebook**. The full live intellectual arc is unchanged, but the stronger notebook is a consequential pending feasibility and workload check. This update is not a new agent approval; later reviewers should target current L04 scope blob `64d9fffc15aaffbef8bbc4ac0f635cf19ef3a18f`.
 
 ## Next action
 

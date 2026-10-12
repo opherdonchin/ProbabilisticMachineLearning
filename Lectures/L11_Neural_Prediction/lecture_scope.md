@@ -92,7 +92,7 @@ Later-author counts `K=5`, `P≈7–10`, `E_new≈10–13`, `E_carry≈12–20`,
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, role and delivery |
-|---\|---|
+|---|---|
 | `h=ReLU(Wx+b)`, `μ=wμᵀh+bμ`, `aσ=wσᵀh+bσ`; `W:H×D`, `h,wμ,wσ:H` | **Motivate + Work**, Live: shapes and learned features. General multilayer recurrence **State**; no universal-approximation theorem/proof. |
 | `W2(W1x+b1)+b2=(W2W1)x+W2b1+b2` | **Work**, Live: affine depth alone does not create nonlinear expressiveness. |
 | `σ=σ_min+log(1+exp(aσ))`, fixed `σ_min>0`; `∂σ/∂aσ=sigmoid(aσ)` | **State + Motivate/Apply**, Live; stable softplus implementation supplied. The floor is a numerical/model constraint, not inferential uncertainty. |
@@ -154,7 +154,7 @@ Supported outcomes include explicit network dimensions, the collapse of purely a
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / proposed bookkeeping |
-|---\|---|
+|---|---|
 | **Core/Live deep** | B2 §§16.2.1–16.2.2/16.3.1 MLP construction and nonlinear conditional Gaussian; B1 §13.2.4.4 example scaffolding. Gaussian NLL/derivatives are explicit course development. |
 | **Short bridges** | B2 §16.1 likelihood versus inference-network distinction; §15.2.2.1/B1 §13.5.2 Gaussian-prior/L2 meaning; §13.5.1 early-stopping recognition; L05 AD/SGD and L09 predictive integration reused. |
 | **Notebook owned** | PyTorch refresh, head/NLL assembly, given checks/one driver fit, held-out scoring and interval interpretation against supplied baseline. |

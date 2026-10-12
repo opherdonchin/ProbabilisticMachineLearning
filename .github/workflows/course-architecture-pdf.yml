@@ -1,0 +1,44 @@
+name: Publish course architecture PDF (temporary scoping branch)
+
+on:
+  push:
+    branches:
+      - course-architecture-authority-20261012
+    paths:
+      - course_architecture.typ
+      - .github/workflows/course-architecture-pdf.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Install pinned Typst 0.15.0
+        uses: typst-community/setup-typst@v4
+        with:
+          typst-version: "0.15.0"
+      - name: Compile committed PDF
+        run: |
+          typst compile --root . --creation-timestamp 0 course_architecture.typ course_architecture.pdf
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("course_architecture.pdf")
+          assert path.read_bytes().startswith(b"%PDF-"), "not a PDF file"
+          assert path.stat().st_size > 10000, "unexpectedly small PDF"
+          print(f"Architecture PDF: {path.stat().st_size} bytes")
+          PY
+      - name: Commit rendered PDF to review branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- course_architecture.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Render course architecture PDF from canonical Typst"
+            git push origin HEAD:course-architecture-authority-20261012
+          fi

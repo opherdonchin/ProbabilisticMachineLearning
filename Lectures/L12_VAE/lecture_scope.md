@@ -106,7 +106,7 @@ The Gaussian model lives in preprocessed, standardized coordinates. It does not 
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth, delivery and role |
-|---\|---|
+|---|---|
 | `p_theta(x,z)=N(z\|0,I) N(x\|d_theta(z),tau² I)`; `p_theta(x)=integral p_theta(x,z)dz` | **State/Motivate**, Live A. Likelihood in preprocessed standardized coordinates; not an exact support-respecting model for all raw percentages/counts. |
 | `q_phi(z\|x)=N(mu_phi(x),diag(exp ell_phi(x)))` | **State + Work shapes**, Live A/C; amortized rather than one freely optimized q per row. |
 | `F(x)=E_q log p_theta(x\|z)−KL(q_phi(z\|x)\|\|p(z))` | **Apply**, Live B; generic identity L06-owned. Restricted q/nonconvex training does not guarantee exact MLE. |
@@ -169,7 +169,7 @@ Core sources are selected B2 §§21.1–21.2, §21.3.1, §5.4.2 and §21.4. Earl
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / boundary |
-|---\|---|
+|---|---|
 | **Core/Live deep** | B2 §§21.1–21.2 model/amortization/joint objective; §21.3.1 beta tradeoff; §5.4.2 plus aggregate posterior definition for rate decomposition; §21.4 collapse diagnosis. Selective content, not all subsections. |
 | **Short bridges** | Correct Normal KL/pathwise machinery L09, Gaussian NLL/MLP L11, generic ELBO L06; §21.3.1.1 identification caution; §21.4.1 annealing Mention only. |
 | **Notebook owned** | Refresh, loss assembly/checks, one bounded fit, held-out reconstruction/rate and supplied beta/pattern comparison. |

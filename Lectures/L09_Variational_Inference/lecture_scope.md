@@ -102,7 +102,7 @@ For the exact Gaussian target, a is its mean, S its covariance and `Λ=S⁻¹` i
 In the table, **Derive** means work through the calculation; **Work** means carry out an example; **State** means give the result without proving it; **Apply** means use a result established earlier. These depths are unchanged by the wording revision.
 
 | Object/result | Depth / delivery and role |
-|---\|---|
+|---|---|
 | `log p(D)=F(q)+KL(q\|\|p(w\|D))`, `F=E_q[log p(D,w)−log q(w)]` | **Recall + Apply**, Live A; L06-owned identity. Restrict q, keep evidence constant in psi. |
 | `q=product_j q_j`; diagonal Gaussian versus correlated target | **State/Motivate**, Live A/B. Family factorization is an assumption about q, not an asserted independence in p. |
 | `KL(N(m,D)\|\|N(a,S)) = (1/2)[tr(S^{-1}D)+(m−a)^T S^{-1}(m−a)−d+log(det S/det D)]` | **State + Work**, Live B. With diagonal D, **Work** stationarity giving `m*=a`, `D_jj*=1/(S^{-1})_jj`. No general Gaussian-KL proof. |
@@ -163,7 +163,7 @@ The core new mathematics comes from selected B2 §§10.1.1–10.1.2, §10.2.1.1 
 This table preserves the reviewed source boundaries. The plain-language explanation above states what the omissions mean for students. A method named as omitted is not promised elsewhere unless a receiving lecture is explicitly named.
 
 | Allocation | Commitment / boundary |
-|---\|---|
+|---|---|
 | **Core/Live deep** | B2 §§10.1.1–10.1.2 restricted objective/geometry; §§6.3.3, 6.3.5.2 and §10.2.1.1 Gaussian total pathwise derivative. Generic bound identity reused from L06. |
 | **Short bridges** | §6.3.4 score-function contrast; §§10.3–10.3.1 CAVI update/application, numerical sweep optional; §10.1.5 amortization recognition. Gaussian KL/known-noise posterior applied, not complete source derivations. |
 | **Notebook owned** | PyTorch refresh, one stochastic transform/objective, local gradient check, diagonal fit and exact/analytic-diagonal/predictive diagnostics. |

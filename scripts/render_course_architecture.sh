@@ -10,3 +10,5 @@ fi
 output="${1:-course_architecture.pdf}"
 typst compile --root . --creation-timestamp 0 course_architecture.typ "$output"
 echo "Rendered $output from course_architecture.typ"
+# The companion curriculum map can be rendered with:
+# typst compile --root . --creation-timestamp 0 curriculum_map.typ curriculum_map.pdf

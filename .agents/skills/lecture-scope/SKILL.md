@@ -80,7 +80,7 @@ When estimating lecture extent, also read `references/timing-calibration.md`. It
 
 Do not infer the starting point from an old plan when actual lecture artifacts exist.
 
-Treat the material ledger as the canonical record of curriculum boundaries and prior section dispositions. A section that was merely mentioned is not thereby covered.
+Treat `curriculum_map_actual.typ` as the record of material actually taught and attempted; it is deliberately empty before the semester starts. Use `curriculum_map.typ`, agreed scopes, and prepared artifacts to determine the prospective authoring boundary. A section that was merely mentioned is not thereby covered.
 
 If an existing syllabus conflicts with actual delivered material or with a more recent instructor decision, surface the conflict rather than silently choosing one.
 
@@ -91,7 +91,7 @@ When constraints conflict, use this order (the course architecture governs cours
 1. explicit current instructor decisions and documented agreements for the target lecture, unless a later instructor decision revises them;
 2. actual previously delivered course material and the agreed Lecture Scope of prior lectures, when available;
 3. the course-wide intellectual framework and planned progression in `course_architecture.typ`;
-4. the current material ledger for coverage state;
+4. `curriculum_map_actual.typ` for actually taught coverage (and `curriculum_map.typ` for planned allocations);
 5. the student-facing syllabus as a summary;
 6. Murphy Book 2 and Book 1 as source texts;
 7. generic pedagogical preference.
@@ -485,7 +485,7 @@ Treat the agreed scope as the source of truth for downstream lecture-drafting sk
 
 ## Material-ledger implications
 
-Consult `Lectures/material_ledger.md` throughout scope development, but do not silently rewrite the ledger while alternatives are still being explored.
+Consult `curriculum_map.typ` throughout scope development, but do not silently rewrite the prospective allocation while alternatives are being explored. Update `curriculum_map_actual.typ` only after actual teaching, not as part of scoping.
 
 After the instructor agrees to the scope:
 

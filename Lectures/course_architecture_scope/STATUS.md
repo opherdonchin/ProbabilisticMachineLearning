@@ -11,7 +11,7 @@ The instructor identified `lecture-3-authoring` as the location of the already a
 
 The live lecture runs from L02’s Markov chain through DAG factorization and directed independence, then undirected models and Ising interpretation. The image prior, Gaussian likelihood, posterior, local conditional and simpler restoration algorithm remain new student notebook work. The [L03 register](../L03_Graphical_Models/development_state.md) identifies exact authority and stage status; read the [scope](../L03_Graphical_Models/lecture_scope.md) with its [questions](questions_and_hesitations.md). The instructor chooses where to stop for discussion; there is no automatic question-by-question sequence.
 
-**Course-wide intellectual and allocation authority:** [course_architecture.typ](../../course_architecture.typ) ([PDF](../../course_architecture.pdf)), replacing the old syllabus plan. Instructor-approved lecture scopes and actual delivered teaching retain their own authority; disagreements must be reconciled rather than silently changed.
+**Course-wide intellectual authority:** [course_architecture.typ](../../course_architecture.typ). The proposed lecture allocation has moved to [curriculum_map.typ](../../curriculum_map.typ). The [material ledger](../material_ledger.md) tracks authored materials, not classes taught; the empty [actual-teaching record](../material_lecture_actual.md) will start with the first meeting. Instructor-approved scopes retain their own authority; disagreements must be reconciled rather than silently changed.
 
 ## What is agreed and what remains proposed
 
@@ -20,7 +20,7 @@ The live lecture runs from L02’s Markov chain through DAG factorization and di
 - Other detailed scope choices remain proposals. The remaining nine scope texts are unchanged in this repair.
 - The complete seven-section L03 design remains proposed on its authoring branch. Its unresolved exact-example checks are not scope blockers or approved teaching commitments.
 
-The syllabi, future material ledger, notebook audit, architecture explanation and teaching-choice report now reflect the restored L03 boundary. L01/L02 source material and delivered coverage remain protected. New workflow checks require recovery of prior agreements across relevant branches before building, comparison of prior-course/source/proposed arguments, and review of whether a route is justified as well as teachable. A newer workflow template does not authorize rewriting an accepted scope.
+The syllabi, future material ledger, notebook audit, architecture explanation and teaching-choice report now reflect the restored L03 boundary. L01/L02 authored materials and prior decisions remain protected. New workflow checks require recovery of prior agreements across relevant branches before building, comparison of prior-course/source/proposed arguments, and review of whether a route is justified as well as teachable. A newer workflow template does not authorize rewriting an accepted scope.
 
 ## Review evidence and its limits
 

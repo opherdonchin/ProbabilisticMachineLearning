@@ -18,6 +18,10 @@ The authored lecture develops a broad formulation framework, then makes a joint 
 
 ## Decision-relevant mathematics
 
+**Further discussion proposal:** Align the three main questions with summarization, marginalization and conditioning, as the instructor suggests. For one fixed $p(z,y)$, ask for a point reconstruction $E[Z\mid y]$, the distribution of new measurements $p(y)=\int p(z,y)\,dz$, and the distribution of hidden quantities $p(z\mid y)$. The point reconstruction is a summary of the conditional distribution, so the operations naturally combine. Inference, prediction and generation describe uses of the model, rather than a second interchangeable three-operation list. The forward marginal can support predictive statements and generated observations; conditioning can support hidden-state inference and conditional generation. This is a provisional query relationship, not an approved notebook sequence.
+
+Source check for that distinction: Murphy Book 2, December 10, 2025 online edition, Chapter 1, printed pp. 1–2, places inference methods in Part II and models for prediction, generation and discovery in Parts III–V. It describes predictive $p(y\mid x)$, generative $p(x)$ or $p(x\mid c)$, and latent-variable $p(z,x)$ with inference $p(z\mid x)$. These categories overlap in operations; they do not justify pairing summarization, marginalization and conditioning one-to-one with inference, prediction and generation.
+
 For known jointly Gaussian missing and observed blocks, with invertible observed covariance,
 
 $$

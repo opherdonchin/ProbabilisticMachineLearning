@@ -66,7 +66,7 @@ The formulation then gives us probabilistic *queries*. These are generally addre
   #block(width: 91%)[
     #concept-card(
       [Learning problem],
-      [Task to be accomplished · available experience and data structure],
+      [Task and question · available experience · data structure and scale],
     )
     #v(5pt)
     #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
@@ -83,7 +83,7 @@ The formulation then gives us probabilistic *queries*. These are generally addre
       ),
       concept-card(
         [Performance functional],
-        [Expected loss, predictive score, distributional discrepancy, information retained, or decision utility],
+        [Expected loss, predictive score, distributional discrepancy, information retained, or decision utility; required fidelity],
         tint: pale-blue,
       ),
     )
@@ -91,8 +91,8 @@ The formulation then gives us probabilistic *queries*. These are generally addre
     #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
     #v(5pt)
     #concept-card(
-      [Computational formulation],
-      [Exact inference when structure permits · approximations to distributions or integrals · optimization objectives and algorithms],
+      [Induced computational demand and approach],
+      [Required query or optimization · cost from data structure and scale · exact algorithms, tractable proxies, and numerical approximations],
       tint: rgb("#F5F6F7"),
     )
     #v(5pt)
@@ -108,7 +108,7 @@ The formulation then gives us probabilistic *queries*. These are generally addre
   ]
 ]
 
-The three major *moves* in the course are consequently extensions of *(i) what models can represent, (ii) what performance functionals can express, and (iii) what computation can achieve*. A task family motivates one move or a combination; no move is an end in itself.
+The three major *moves* in the course extend *(i) what probabilistic models can represent, (ii) what performance functionals can express, and (iii) what computational methods can achieve*. The computational challenge is not a fourth, independent feature of the learning problem. It *emerges* from the structure and scale of the data, the probabilistic query and performance requirement, and the computational resources available. A mathematical move is justified by how it resolves that particular demand; no move is an end in itself.
 
 == The ideal quantity and the practical calculation
 
@@ -126,9 +126,9 @@ A detailed understanding of the mathematical development of the material is an e
 
 == What constitutes a class of learning problems?
 
-A class of problems is not simply an application domain (medicine, images, or language), nor is it a convenient dataset chosen to demonstrate an algorithm. It is characterized by *the structure of the experience* (observed, missing, sequential, high-dimensional, labeled, or unlabeled quantities), *the task and probabilistic query*, *what performance means for that task*, and *what mathematical or computational difficulty remains*. Two datasets may belong to the same class for a particular purpose; the same dataset may define several different learning problems.
+A class of learning problems is not simply an application domain (medicine, images, or language), nor a convenient dataset chosen to demonstrate an algorithm. It is characterized by *the experience and the structure and size of the data* (what is observed, missing, sequential or dependent; how many observations, variables and latent states are involved), *the task and probabilistic question*, and *the performance requirement* (which errors, distributions, information or decisions matter, and to what degree of accuracy). These jointly determine which probabilistic integrals or optimizations must be carried out and, for a given computational budget, which of them are difficult. *The computational obstacle is a consequence of these requirements, not a separate ingredient used to define the problem class.* The same dataset can support different tasks, and very different datasets can pose the same underlying problem.
 
-The lectures are organized around progressively more demanding combinations of these properties. Each account below starts with a *problem family*, identifies why the machinery available so far is inadequate, and then states the *mathematical move* that expands our capabilities. Not every move is an algorithm. Some give us a more expressive or tractable model; some clarify what should count as success; others make a previously difficult probabilistic operation computable. The computational alternatives in L07–L10 overlap in the *tasks they serve*: the appropriate method also depends on distributional structure, available operations, required accuracy, and computational resources.
+The lectures trace this chain: *data and task → probabilistic model and performance functional → required calculation and its cost → appropriate mathematical move*. In each case we should explain which query or optimization follows from the task, why the current machinery cannot meet its performance requirements at the relevant data scale, and what the new tool makes possible. Some advances improve the representation of a probability distribution; others define what success means; still others provide exact or approximate computations. All ultimately affect which problems can be addressed. The alternatives in L07–L10 deliberately serve overlapping tasks: posterior structure, dimensionality, available evaluations, required accuracy and resources determine which computational strategy is appropriate.
 
 A central learning outcome is therefore the ability to go *from a new problem to an appropriate formulation and computational approach*, rather than merely recognize an algorithm's name after seeing its worked example. Each notebook tests part of that relationship in a concrete setting; its example is neither the only application nor the justification for the mathematics.
 
@@ -156,7 +156,7 @@ Suppose each observation is partly missing, or a case belongs to an unobserved c
 
 == Families of difficult probabilistic queries (L07–L10)
 
-Here the question is often shared—calculate an expectation, prediction, or decision from a posterior—but the *computational regime* differs. That is itself part of the problem class. There is no general mapping from “Bayesian prediction” to a unique algorithm. We must examine the posterior's structure, what can be evaluated, how often queries must be answered, and which errors the performance criterion can tolerate.
+Here the question is often shared—calculate an expectation, prediction, or decision from a posterior—but *different model and data structures, sizes and accuracy requirements induce different computational demands*. Computational difficulty is the result of the required calculation relative to the available resources, not an independently specified property of the task. There is no general mapping from “Bayesian prediction” to a unique algorithm: posterior geometry, dimensionality, exploitable factorization, evaluable quantities, frequency of repeated queries, and acceptable error all matter.
 
 *L07 — Decisions and predictions that depend on continuous parameter uncertainty.*
 For a nonlinear binary-response model, a fitted coefficient may predict reasonably but give no answer to questions about parameter spread, predictive uncertainty, or expected loss averaged over plausible coefficients. These tasks require *posterior integrals*, not just a parameter mode. When the posterior is smooth and sufficiently concentrated around one interior mode, direct integration may be difficult but local curvature is available. The *computational move* is Laplace approximation: approximate the posterior near its mode by a Gaussian and use that distribution to estimate relevant summaries and predictions. The mode and the fitted curvature do not guarantee accurate global probabilities or decisions when tails, skew, boundaries, or multiple modes matter. The small logistic notebook compares posterior and predictive quantities with a separately checked numerical grid. It exposes the difference between an easy local calculation and the *task-specific integral we actually wanted*.

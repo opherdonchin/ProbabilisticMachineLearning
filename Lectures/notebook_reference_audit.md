@@ -1,5 +1,8 @@
 # What the proposed notebooks ask students to do
 
+**Historical implementation/reference audit (2026-10-13):** The references and mathematical checks below belong to the previous notebook proposals. The new [course architecture](../course_architecture.typ) emphasizes practical ML applications and proposes a different L04 notebook and a shared L07/L09/L10 classifier exercise. New notebooks are not built or validated; consult the current architecture and do not treat the old per-lecture checks as implementation evidence for the newer exercises.
+
+
 This record separates the central student task from the programs the authors must supply. A 60-minute lab is not a promise that students build a complete inference or training system from scratch. All future course adaptations are still unwritten/unrun; inspecting a reference notebook does not test the proposed student task.
 
 L01's [Gaussian missing-data solution](../InClass/Solutions/lecture1_missing_data.ipynb) is established material and was not changed or re-executed here. L02's agreed [character-bigram reference](https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/makemore/makemore_part1_bigrams.ipynb) counts neighboring characters, normalizes transition probabilities, scores strings and generates names. It stops before neural modeling and is not recorded as delivered by this project.

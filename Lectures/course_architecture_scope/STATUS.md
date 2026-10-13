@@ -20,7 +20,7 @@ The live lecture runs from L02’s Markov chain through DAG factorization and di
 - Other detailed scope choices remain proposals. The remaining nine scope texts are unchanged in this repair.
 - The complete seven-section L03 design remains proposed on its authoring branch. Its unresolved exact-example checks are not scope blockers or approved teaching commitments.
 
-The syllabi, future material ledger, notebook audit, architecture explanation and teaching-choice report now reflect the restored L03 boundary. L01/L02 authored materials and prior decisions remain protected. New workflow checks require recovery of prior agreements across relevant branches before building, comparison of prior-course/source/proposed arguments, and review of whether a route is justified as well as teachable. A newer workflow template does not authorize rewriting an accepted scope.
+The syllabus, prospective curriculum map, notebook audit, architecture explanation and teaching-choice report now reflect the restored L03 boundary. The parallel actual curriculum map remains empty until teaching begins. L01/L02 authored materials and prior decisions remain protected. New workflow checks require recovery of prior agreements across relevant branches before building, comparison of prior-course/source/proposed arguments, and review of whether a route is justified as well as teachable. A newer workflow template does not authorize rewriting an accepted scope.
 
 ## Review evidence and its limits
 

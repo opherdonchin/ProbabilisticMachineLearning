@@ -1,56 +1,65 @@
-# Start lecture scoping — post-architecture handoff
+# Start lecture re-scoping and alignment — L01 onward
 
-**Working branch:** `scope-l04-l12-after-architecture-20261014`
-**Frozen starting point:** merge commit `730b5cbde055cc166f48f1a73dc63df190e6187b` on `scope-l03-l12-course-architecture` (PR #16, already merged).
-**Stage:** Lecture Scope / instructor-led reconciliation and revision; **not** slides, Section Design, or notebook implementation.
-**Initial target:** L04 Information Theory, then L05–L12 in teaching order, resolving cross-lecture dependencies as necessary.
-**Protected:** `main`. Do not merge to it; do not merge this scoping branch without a separate instructor request.
+**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`
+**Architecture baseline:** PR #16 merge `730b5cbde055cc166f48f1a73dc63df190e6187b` into `scope-l03-l12-course-architecture`. This branch continues the prior L04-scoping kickoff but supersedes its instruction to start at L04.
+**First task:** L01 scope reconciliation; then L02 and L03, then L04–L12. **Do not edit or merge `main`**; do not merge this branch without explicit instructor authorization.
+**Instructor direction (2026-10-14):** Substantial changes in the course goals justify *re-scoping L01, L02 and L03* against their existing decisions, designs and slides. Those artifacts and the new architecture may all be questioned and improved. L04 onward may begin scope authoring from the updated course architecture, while checking the prerequisites actually established by L01–L03.
 
-## Authority and inputs
+## Two distinct workstreams
 
-1. Read `AGENTS.md`, `course_architecture.typ` (the teaching vision), and `curriculum_map.typ` (prospective allocations). `curriculum_map_actual.typ` has identical lecture/reading/notebook columns but is intentionally empty: **no lecture has been taught yet**. Never fill it from drafted slides or completed solutions.
-2. Read `.agents/skills/lecture-development/SKILL.md` and `.agents/skills/lecture-scope/SKILL.md`, including timing calibration and the downstream Section Design **feasibility-review** contract. Use the `$lecture-development` coordinator for a multi-lecture sequence and the `$lecture-scope` specialist for an individual scope. Honor the skill's build/revision distinction and actual delegation capability; do not claim independent reviews unless separate reviewers worked.
-3. Review `Lectures/course_architecture_scope/STATUS.md`, `Lectures/syllabus_planning_decisions.md`, `Lectures/course_architecture_scope/questions_and_hesitations.md`, and the target `LXX/lecture_scope.md`, associated reviews, and `development_state.md` (where present). These record prior approvals and proposals with different authority.
-4. Inspect actual earlier teaching **artifacts** for what students will encounter: L01's existing lecture/solved notebook; L02's agreed lecture/section design; L03's **approved** DAG-to-undirected-graph lecture scope, preserved from `lecture-3-authoring`. Actual delivery has not yet occurred. Follow Murphy Book 2 primarily and Book 1 selectively; recover the source's mathematical argument rather than using section numbers as a checklist. Ask for access if a named source cannot be inspected.
+### A. L01–L03: reciprocal alignment, not a clean-sheet restart
 
-## Decisions not to overwrite
+Begin from **all existing artifacts, prior approvals and working examples**. Compare their educational purpose, mathematical argument, substantive examples and one-hour notebook outcome with `course_architecture.typ` and `curriculum_map.typ`. Identify where:
+- the architecture explains and strengthens existing material;
+- a modest scope, design or slide change would improve consistency and practical competence;
+- an existing derivation, application, explanation or transition is worth preserving even though the architecture does not yet adequately accommodate it;
+- a substantive conflict requires the instructor to choose or **revise the architecture**;
+- the apparent conflict is merely terminology, documentation drift or an artifact that was only proposed.
 
-- **L01:** prepared lecture and solved notebook; not yet taught. Do not invent delivery information.
-- **L02:** agreed exponential-family/Markov-chain design; use as a prerequisite assumption but confirm final drafted artifacts later.
-- **L03:** instructor-agreed live graphical-model scope and notebook-only Ising image-restoration model and local algorithm. **Do not redo L03 scope**; proposed seven-section design on `lecture-3-authoring` is not fully approved and has separate review issues.
-- **L04:** previously selected three-bit parity/detection example in the lecture **and five-bit correction/decoding extension in the notebook**. A newer course-map proposal would instead devote the notebook primarily to Iris probabilistic scoring and information preservation, using parity coding as a smaller diagnostic. This is a **real unresolved instructor decision**, not authorization to replace the earlier agreed scope.
-- **L05–L12:** existing detailed scope files are proposals and review evidence, not blanket instructor approval of the newer curriculum-map examples. Preserve proven decisions, explicitly reopen consequential changes, and do not replace a scope merely because a newer map is more recent.
+Do **not** assume either “the architecture wins” or “the old lecture wins.” Develop the strongest justified course as a whole, minimizing unnecessary rework. Prior agreement is historical evidence and a reason to preserve strong work, *not* a veto on the instructor's newly authorized reconsideration. Conversely, a new architecture paragraph is not by itself approval to discard well-developed material. State both the mathematical and practical cost of important changes.
 
-## The teaching principle to protect
+Carry an explicit **two-way reconciliation matrix** for each lecture: existing component and status; intended educational job; fit/tension with architecture; recommended keep/reframe/modify/replace/defer; effects on other lectures; instructor decision required; downstream assets affected. Use this as an inspection artifact, not a second authoritative syllabus.
 
-The educational end is *working competence* with recognizable probabilistic ML problems and useful algorithms. Probabilistic models, queries, performance criteria and mathematically justified computation provide transferable understanding. Each lecture must show both its **mathematical contribution** and **practical capability**—the data/task, method, output, evaluation, meaningful baseline and failures. Distinguish mathematical check examples from substantive application; one hour cannot support two full implementations. Use the repository's guided Q&A notebook pattern, not an open-ended programming assignment.
+**Stages:** First diagnose the scope and obtain instructor decisions; produce an agreed five-part Lecture Scope; preview feasibility via Section Design review. Then revisit Section Design, Slide-Level Organization, Slide Design, Slide Authoring and the notebook handoff in their proper order, *reusing approved or strong existing material* wherever appropriate. Do not reflexively recreate all slides. Existing decks/designs are reviewable evidence during scope development, but an old slide is not a constraint that forces the revised scope. If downstream construction uncovers a conceptual problem, return backpressure to Scope or Architecture instead of patching symptoms into slides.
 
-Do not mischaracterize L05–L10 as increasingly advanced posterior approximations: model/parameter fitting, exact message passing, posterior proxy fitting and target-expectation sampling perform different tasks.
+Review the three lecture scopes together for shared prerequisites and coverage so L01 changes do not create avoidable L02/L03 contradictions. Scope discussions can be sequential, but check the L01–L03 joint trajectory before freezing each scope. After the early scopes stabilize, downstream drafting can proceed in parallel with later scope reviews if ownership and dependencies are explicit.
 
-## Scoping process
+### B. L04–L12: architecture-led new/revised scope authoring
 
-1. **Before changing a scope:** verify its latest blob/branch, prior instructor approvals and immediate prerequisites. Reconstruct the preceding lecture argument and Murphy's relevant argument. Identify any tension with the newer architecture and practical notebook proposal.
-2. Present a concise diagnosis and a small number of *substantively different* alternatives only where choice is open. Provide mathematics, rationale, meaningful application and opportunity cost; say which prior decision an option changes. Ask **one consequential question at a time**, following the instructor's preferred pace.
-3. Once the instructor chooses, develop the five Lecture Scope parts *iteratively*: intellectual arc; mathematical spine with treatment depth; notebook handoff; concrete examples; lecture contract. Do not make slides, section outlines, generated figures or notebooks in this phase. Identify deferrals, exact Book 2/Book 1 passages, realistic live/notebook workloads and genuine recording candidates.
-4. Have Section Design evaluate the provisional scope in `feasibility-review` mode without producing section contracts. Obtain instructor approval for consequential choices, write/update only the target lecture's scope and compact development-state record, and synchronize the *prospective* curriculum map. Record review provenance and any unresolved notebook validation. Never update the actual map before class.
-5. Continue lecture by lecture, with cross-lecture checks where topics/examples recur. Preserve the accepted course spine rather than redoing prior approvals.
+Start with the current course architecture, planned curriculum map, Murphy and the **reviewed prerequisites left by L01–L03**. Existing L04–L12 scope proposals, source reviews and earlier instructor choices are evidence, not an automatic finished scope or permission to revise historically agreed details silently. Follow the normal iterative Lecture Scope procedure with source-arc reconstruction, alternative routes where useful, instructor decisions, Section Design feasibility review, and downstream handoff.
 
-## Immediate instructor discussion: L04
+A real future decision remains in L04: previously instructor-selected three-bit parity in lecture and five-bit code in notebook vs a *new, not approved* Iris-based probability scoring/information-preservation notebook proposal. Do not make this the first question of the present kickoff; resolve it when L04 comes up.
 
-First reconcile the course's performance/information ambition with the earlier coding choice. The existing L04 scope builds entropy, KL, mutual information, data processing and a three-bit parity demonstration, with a five-bit correcting-code *student notebook*. The newer map proposes Iris probability forecasts, calibration/log-score, and an information-preserving representation as the notebook's main task; parity becomes optional small exact diagnostics. This may improve recognizable ML relevance but risks losing a substantive student construction and breaking a prior agreement. Consider whether a focused hybrid can genuinely fit one hour and still let students *use* information theory, rather than merely calculate metrics.
+## Artifacts and branch reconnaissance (checked at kickoff)
 
-**First response to the instructor:** briefly summarize the prior approved boundary, the newer alternative, the mathematical and practical gains/losses, and one recommended way to resolve the conflict. End with **one focused question about L04's notebook endpoint**. Do not produce a full revised L04 scope or start discussing L05 before the instructor responds.
+All SHAs below are **content identifiers / historical pointers**, not immutable authority. Inspect live branches and compare commits before editing.
 
-## Later decisions to surface only when their lectures arise
+| Lecture | Existing work on the architecture/scoping branches | Other branch evidence requiring inspection |
+| --- | --- | --- |
+| **L01** | `Lectures/L01_Probability_Statistics/slide_deck.typ` (blob `235b8eeb...`), `lecture_01_coverage_spec.typ` (`c4457bc4...`), prepared slide PDF, author-facing figure notebooks, review reports; `InClass/Solutions/lecture1_missing_data.ipynb` (`ab441941...`) plus worked solution and authoring report. No separate approved five-part Lecture Scope or Section Design is present here. | Current L01 core deck and solved notebook have the same blobs on `main`, `lecture-3-authoring` and the architecture branch. `slide-authoring-refactor` includes an additional `slide_deck_07.typ`; assess provenance if relevant, not automatically adopt. |
+| **L02** | `Lectures/L02_Exponential_Families/section_design.md` (`bbf78a13...`), draft `slide_organization.md`, `slide_design.typ`, partial `slide_deck.typ`, `development_state.md` and L02-related notebook/source plans. Agreed scope/design aspects require recovery from prior decisions; do not infer blanket approval from the presence of files. | `l02-section-titles-summaries` has an alternate slide organization; `fix/l02-retrospective-summaries` has divergent section design and slide design. The `lecture-3-authoring` branch contains older L02 section-design/organization versions. Compare arguments, accepted fixes and changes; do not wholesale merge. The current L02 development-state file appears duplicated/corrupted: verify and repair in its owning stage rather than treating repetition as decisions. |
+| **L03** | `Lectures/L03_Graphical_Models/lecture_scope.md` (restored instructor-agreed blob `2d5992a3...`) and development-state record. Intended live arc: chain-rule/DAG factorization, directed independence, undirected models and Ising; image-model construction and local restoration reserved for notebook. | `lecture-3-authoring` at commit `8007d42b2871181a6966ab4d55417c10af9b5544` has the original agreed scope (`0656648f...`) and proposed `Lectures/L03_Graphical_Models/section_design.md` (`2cb8c35a...`), **not approved in its entirety**. The previous section-design review identified an incorrect Figure 4.23 path interpretation; verify source before adopting that example. |
 
-- **L05:** breadth of GLMs plus first PyTorch/autodiff/SGD in one meeting.
-- **L06:** missing-data Gaussian EM versus a biomedical segmentation example; exact expected second moments and one-hour workload.
-- **L07/L09/L10:** shared posterior-prediction application versus existing different diagnostic testbeds, preserving Laplace/VI/MCMC distinctions and defensible computation/accuracy regimes.
-- **L08:** HMM discrete messages versus Kalman forecasting as the main application; exactness and sequential structure.
-- **L11:** heteroskedastic conditional prediction and honest separation of fitted-noise versus weight uncertainty.
-- **L12:** mobility VAE data access, Gaussian likelihood limitations, beta/reduction conventions, runtime and prior-generation checks.
-- **L13:** synthesis/projects, not overflow lecture time.
+Other context: `Lectures/course_architecture_scope/STATUS.md`, `questions_and_hesitations.md`, `reviews/`, `Lectures/syllabus_planning_decisions.md`, `Lectures/L02_Exponential_Families/section_design.md`, the relevant books, the slide-design/authoring skills, and the student-facing solved notebook examples. `curriculum_map_actual.typ` has matching lecture columns and is **blank because no lecture has yet been taught**. Prepared decks are *authored*, not delivered.
 
-## Status at handoff
+## Technical and pedagogical authorities
 
-This file creates no new pedagogical approval. The target L04 conflict is **pending**; prior scope documents remain untouched. Before starting each discussion, check current branch and commits for intervening changes.
+Read `AGENTS.md`, `.agents/skills/lecture-development/SKILL.md` and its shared-backpressure contract, `.agents/skills/lecture-scope/SKILL.md`, `.agents/skills/section-design/SKILL.md`, and the downstream slide skills *when their stage becomes relevant*. Use timing calibration and inspect Murphy Book 2 (primary) and Book 1 (supplemental). Identify previous instructor agreement and source versions exactly. Use actual delegation when possible; do not call a same-agent check an independent review.
+
+The course's objective is working competence with substantive probabilistic-ML problems and methods, with mathematical coherence giving the student a transferable tool for formulating models, specifying probabilistic queries and performance criteria, selecting computation and evaluating limits. For each lecture determine **both** the new mathematical understanding and the practical technique/learning problem students can actually experience. Distinguish toy mathematical diagnostics from substantive application; aim for an accessible two-hour lecture and one-hour guided, solved-first Q&A notebook. Meaningful, short intellectual actions are preferable to incidental coding burdens.
+
+The architecture, instructor-approved lecture scopes, existing artifacts, and source text have **different roles**. A justified early-lecture disagreement with the architecture should be presented as a concrete amendment proposal with its consequences for the other lectures and prospective map. Do not silently rewrite architecture, syllabus, multiple scopes, or actual coverage.
+
+## Interaction and gatekeeping
+
+1. **Begin with L01.** Inspect the actual existing deck and Gaussian missing-data solved notebook, the L01 coverage specification and review reports, and the current architecture's L01 role. Compare their *intellectual arcs and practical outcomes*, not only section lists.
+2. In the first reply, give a concise, balanced diagnosis (strong existing components, possible mismatches, uncertainty) and ask **one genuinely consequential instructor question** about the L01 endpoint/emphasis. Do not propose a full deck rewrite, nor produce ten lecture scopes.
+3. Once the instructor responds, iterate Scope's five parts: intellectual arc → mathematical spine → notebook handoff → concrete examples → lecture contract. Obtain stage-appropriate feasibility review and explicit instructor acceptance; record version/provenance in a compact L01 `development_state.md`.
+4. Cross-check L02/L03 coverage before freezing L01; then reconcile L02 and L03 against the same standard, preserving approved material unless a reasoned improvement is accepted. Decide explicitly whether an identified conflict should change an early lecture or change the course architecture.
+5. For early lectures, use the accepted scope to review existing Section Design → slide organization → slide design → authored slides; identify which units can be reused, selectively revised or replaced. Keep source and rendered PDFs synchronized, inspect render visually, validate notebook mathematics, and do not conflate a source-compilation check with student feasibility.
+6. From L04 onward use the usual architecture-led Scope Build process, informed by finalized early prerequisites. Review inter-lecture dependencies before committing neighboring scopes.
+7. Update `curriculum_map.typ` when prospective decisions are accepted; keep `curriculum_map_actual.typ` untouched until teaching. Record and explicitly approve proposed architecture changes where they are warranted. Pause at consequential instructor decisions rather than autopiloting through lectures.
+
+## Status and handoff boundary
+
+This is a revised kickoff, not approval of any revised scope, slide design or notebook. Existing L01–L03 artifacts are preserved on their source branches. A blank new L01 register may be created to record the reconciliation; do not claim it was independently reviewed. The previous L04-first plan is superseded by this explicit instructor direction.

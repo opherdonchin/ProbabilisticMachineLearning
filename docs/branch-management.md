@@ -34,7 +34,7 @@ For an active branch with no PR, arrange a PR or issue that names its intent and
 
 ## Temporary legacy exceptions
 
-The PR-name CI check permits some pre-policy branches while they are reconciled. These are *not* templates for new names: `course-architecture-practical-mastery-20261013`, `l02-section-titles-summaries`, `lecture-3-authoring`, `scope-l03-l12-course-architecture`, and `slide-authoring-refactor`. Remove each exception when the corresponding branch is retired or deliberately renamed.
+The PR-name CI check permits some pre-policy branches while they are reconciled. These are *not* templates for new names: `l02-section-titles-summaries`, `lecture-3-authoring`, `scope-l03-l12-course-architecture`, and `slide-authoring-refactor`. Remove each exception when the corresponding branch is retired or deliberately renamed.
 
 ## Enforcement
 

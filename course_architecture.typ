@@ -173,7 +173,7 @@ A long record of noisy sequential measurements may require inference about a hid
 The *computational move* is forward–backward message passing: reorder the same sums and reuse partial results, yielding *exact* evidence and state marginals with $O(T K^2)$ work for dense discrete transitions, rather than enumerating histories. The result matters because it preserves the required marginal probabilities, not merely a likely state sequence. Replacing sums by maxima addresses the different question of the most probable whole history; individual marginal modes need not form that history. This method illustrates the payoff of L03's conditional-independence representation. Its tractability depends on the *size of the state space and factorization*: an enormous or densely coupled hidden state can still make exact inference prohibitive. A compact Kalman-filter comparison exploits a different exact closure, the linear-Gaussian assumptions of L01. The small HMM notebook demonstrates and verifies exact computation; it does not train model parameters or teach a general graph solver.
 
 *L09 — When is optimizing a tractable posterior distribution a better approximation strategy? (Variational inference.)*
-The task may still be repeated marginal or predictive integration, but the posterior can have many continuous or discrete unknowns, and evaluating or factorizing its Hessian may be too costly. The local Gaussian constructed in L07 may also misrepresent the portions of the distribution needed for the task. The *computational move* is to choose a tractable family $q_\lambda$ and fit a distribution in it by maximizing the L06 evidence lower bound, equivalently minimizing the reverse-KL divergence from $q_lambda$ to the target posterior $p$ when the posterior is properly defined. Unlike Laplace, the fitted parameters optimize an *expectation over an entire candidate distribution*, rather than matching local mode and curvature. Even when both choose full Gaussians, they need not produce the same mean or covariance. Gaussian VI is common, but VI can also use structured, discrete, mixture or more flexible families; neither unimodality nor Gaussian shape is a defining assumption of *variational inference itself*.
+The task may still be repeated marginal or predictive integration, but the posterior can have many continuous or discrete unknowns, and evaluating or factorizing its Hessian may be too costly. The local Gaussian constructed in L07 may also misrepresent the portions of the distribution needed for the task. The *computational move* is to choose a tractable family $q_lambda$ and fit a distribution in it by maximizing the L06 evidence lower bound, equivalently minimizing the reverse-KL divergence from $q_lambda$ to the target posterior $p$ when the posterior is properly defined. Unlike Laplace, the fitted parameters optimize an *expectation over an entire candidate distribution*, rather than matching local mode and curvature. Even when both choose full Gaussians, they need not produce the same mean or covariance. Gaussian VI is common, but VI can also use structured, discrete, mixture or more flexible families; neither unimodality nor Gaussian shape is a defining assumption of *variational inference itself*.
 
 VI is attractive when evaluating the joint log density and estimating gradients or coordinate updates are manageable, when stochastic or factorized computation scales substantially better than full posterior calculation, and when the chosen $q$ retains the aspects of posterior uncertainty needed for performance. Mean-field factorization may make optimization and marginalization cheap at the cost of losing dependence. Its errors have distinct sources: *family restriction*, *failure to optimize the variational objective*, and *mismatch between that objective and the task-specific query*. The reverse-KL choice may, for example, neglect relevant probability mass even if the ELBO improves. Reparameterized draws from $q$ are often used *during training* to estimate gradients; drawing from the fitted $q$ afterward is optional and is not what defines VI. The controlled correlated-Gaussian regression notebook deliberately has an exact posterior: it measures the gap to the best diagonal approximation and to the numerical fit, but is not itself a dataset for which VI is needed.
 
@@ -199,11 +199,12 @@ This is attractive when the number and similarity of cases justify the up-front 
 *L13 — Choosing machinery for a new scientific problem.*
 The students' own projects are the final *problem family*: new data and a substantive question for which no lecture has already supplied a complete answer. Students must identify the available experience, define the task and its performance criterion, justify a probabilistic model and query, explain why the chosen inference or fitting method is appropriate, and distinguish empirical performance from model assumptions and numerical error. The ability to make and defend that chain of choices—not simply to reproduce the semester's algorithms—is the intended synthesis.
 
+#set page(flipped: true)
+
 = Lecture allocation and notebook commitments
 
 The table below retains the selected 13-meeting allocation and source readings. It is a *planning contract*: L01 is delivered, L02 is agreed, L03 preserves its instructor-approved scope, and L04's live/notebook split is selected. Other lecture scopes remain proposed pending their own reviews. Each notebook should extend rather than reproduce the live mathematics, normally within a separate hour. Full mathematical source-to-lecture ownership and unresolved feasibility questions remain in #link("Lectures/course_architecture_scope/architecture_audit.md")[the architecture audit] and #link("Lectures/course_architecture_scope/STATUS.md")[the scope register].
 
-#pagebreak()
 #set text(size: 8pt)
 #set par(leading: 0.55em, spacing: 0.6em)
 
@@ -412,7 +413,7 @@ The table below retains the selected 13-meeting allocation and source readings. 
   [No notebook — project presentations and synthesis.],
 )
 
-#pagebreak()
+#set page(flipped: false)
 
 = Deliberate scope boundaries
 

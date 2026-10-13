@@ -101,7 +101,7 @@ Each meeting includes approximately two hours of mathematical lecture and one ho
 2. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
 3. Course notes, exercises, notebook solutions and project materials: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[course repository].
 
-The schedule is a *revisable proposal* for future lectures and notebooks. L01's actual delivery, earlier L02/L03 decisions and the prior L04 coding choice remain documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register], but are not immutable design constraints. The revised practical exercises—especially L04 evaluation and the linked L07/L09/L10 comparison—require scope reconciliation, data packaging, runtime checks and a one-hour student pilot before adoption. Previous independent reviews apply only to the versions they reviewed.
+The schedule is a *revisable proposal* for lectures and notebooks. L01 has prepared materials but has not yet been taught. Earlier L02/L03 decisions and the prior L04 coding choice are documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register]; proposing an alternative does not silently amend their approved scopes. The revised practical exercises—especially L04 evaluation and the linked L07/L09/L10 comparison—require scope reconciliation, data packaging, runtime checks and a one-hour student pilot before adoption. Previous independent reviews apply only to the versions they reviewed.
 
 = Prerequisites
 
@@ -129,7 +129,7 @@ The course grade is based on four components:
 
 = Schedule
 
-#text(size: 8pt, weight: "semibold", fill: blue)[Proposed 13-meeting sequence. Revisions to future notebook examples are *not yet implemented or approved*. Earlier scope decisions and delivered material remain recorded; data, runtime and pedagogy require separate checks.]
+#text(size: 8pt, weight: "semibold", fill: blue)[Proposed 13-meeting sequence. No class has yet been taught. New notebook examples are not implemented or approved; check earlier scope decisions and separately validate data, runtime and student workload.]
 
 #lecture(
   1,

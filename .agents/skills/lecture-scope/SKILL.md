@@ -80,7 +80,7 @@ When estimating lecture extent, also read `references/timing-calibration.md`. It
 
 Do not infer the starting point from an old plan when actual lecture artifacts exist.
 
-Treat the material ledger as the canonical record of curriculum boundaries and prior section dispositions. A section that was merely mentioned is not thereby covered.
+Use `curriculum_map_actual.typ` to establish the *taught* boundary and recorded omissions, once lessons begin; use `curriculum_map.typ` for planned allocations before then. Before the first class, reconstruct the **prepared** boundary from the available decks and notebook solutions. A section merely mentioned or proposed is not thereby taught.
 
 If an existing syllabus conflicts with actual delivered material or with a more recent instructor decision, surface the conflict rather than silently choosing one.
 
@@ -91,7 +91,7 @@ When constraints conflict, use this order (the course architecture governs cours
 1. explicit current instructor decisions and documented agreements for the target lecture, unless a later instructor decision revises them;
 2. actual previously delivered course material and the agreed Lecture Scope of prior lectures, when available;
 3. the course-wide intellectual framework and planned progression in `course_architecture.typ`;
-4. the current material ledger for coverage state;
+4. `curriculum_map_actual.typ` for actual teaching, and `curriculum_map.typ` for proposed allocation;
 5. the student-facing syllabus as a summary;
 6. Murphy Book 2 and Book 1 as source texts;
 7. generic pedagogical preference.

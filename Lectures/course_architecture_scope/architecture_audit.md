@@ -11,7 +11,7 @@ L01's established Gaussian material and notebook are unchanged. L02's agreed exp
 | Meeting | Mathematical focus | Notebook practice |
 |---|---|---|
 | L03 | Graphical models: factorization and conditional independence | Build a probabilistic restoration model from local factors, derive its posterior update, and distinguish local maximization from a global optimum or posterior marginal inference. |
-| L04 | Distributional evaluation and information preservation | Compare probabilistic predictions and simple information-preserving representations on prepared ML data; retain a parity-code contrast as an optional exact diagnostic. The former five-bit notebook is historical rather than the current proposed one-hour focus. |
+| L04 | Distributional evaluation and information preservation | Compare competing Iris probability forecasts and simple information-preserving representations on prepared data; retain a parity-code contrast as an optional exact diagnostic. The former five-bit notebook is historical rather than the current proposed one-hour focus. |
 | L05 | Generalized linear models, automatic differentiation and SGD | Connect a likelihood derivative with reverse-mode automatic differentiation and a checked stochastic parameter-update/evaluation loop. |
 | L06 | Latent-variable learning and expectation-maximization | Use conditional uncertainty in sufficient-statistic estimation and distinguish an exact EM improvement guarantee from arbitrary approximate hidden-value updates. |
 | L07 | Bayesian prediction via Laplace | Apply a local Gaussian posterior proxy to a small binary classifier, comparing predictive uncertainty with a point fit; retain checked one-dimensional quadrature as a diagnostic. |
@@ -97,6 +97,9 @@ Gaussian distributions recur for different reasons. L01 conditions a known model
 The main repeated proofs have one owner. L05 explains automatic derivatives; later lectures apply them. L06 proves the probability-bound identity; L09/L12 reuse it. L09 explains derivatives through random draws; L12 applies that calculation. L04 introduces shared information; L12 studies whether a hidden description actually retains information about data.
 
 ## Time and notebook responsibilities
+
+*Historical feasibility estimates for the earlier scope and notebook designs.* The L04 five-bit code lab and isolated L07/L09/L10 notebook calculations below describe the **previous** proposal; they must be recomputed for the revised practical tasks and should not be cited as validation of the new hour. The new suggested same-dataset comparison requires a scaffold and a runtime/learning pilot. Exact results and source references remain useful diagnostics but are not a replacement for student-method competence.
+
 
 | Meeting | Planned lecture minutes, including 12 for questions/slippage | Notebook minutes | What must be supplied rather than built by students |
 |---|---:|---:|---|

@@ -1,6 +1,6 @@
 ---
 name: lecture-scope
-description: Develop an agreed lecture scope from prior course material, Murphy Books 1 and 2, the course material ledger, and any authoritative syllabus before slide or notebook drafting begins.
+description: Develop an agreed lecture scope from prior course material, Murphy Books 1 and 2, the planned/actual curriculum maps, and any authoritative syllabus before slide or notebook drafting begins.
 ---
 
 # Develop a lecture scope
@@ -11,7 +11,7 @@ Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-
 
 Use `build` (default), `feasibility-review`, or `revision` as specified by the Lecture Development Coordinator (`../lecture-development/SKILL.md`) or an explicit user request. Follow the shared result contract in `../shared/backpressure.md`. The full five-part iterative process below is **Build mode only**.
 
-- **Build:** investigate actual prior lecture artifacts, material ledger, books, and instructor goals; compare forward paths; obtain decisions and produce the five-part Lecture Scope. When coordinated, return consequential questions to the coordinator rather than opening a parallel instructor conversation.
+- **Build:** investigate actual prior lecture artifacts, the planned and actual curriculum maps, books, and instructor goals; compare forward paths; obtain decisions and produce the five-part Lecture Scope. When coordinated, return consequential questions to the coordinator rather than opening a parallel instructor conversation.
 - **Feasibility Review:** assess a **proposed lecture brief, provisional Scope, goals, or course-level constraints** against the actual course boundary, source argument, prerequisites, notebook and time. Return `feasible`, `feasible-with-risks`, or `blocked`, with stage-owned issues and minimum repairs; when assigned a source-arc check, report its separate classification. Reconstructing the *source* argument for review is allowed; do **not** construct or revise the proposed lecture's arc, mathematical spine, sections, or slides. If no meaningful target exists, report the limitation.
 - **Revision:** given a specific backpressure item and the current approved Scope, inspect the relevant evidence, propose the smallest Scope-level change, and modify only affected Scope fields **after instructor approval where consequential**. Preserve unaffected outcomes, covered/deferred decisions, and mathematical depths. Identify section and slide artifacts now requiring revalidation. Do not rebuild the entire scope or redesign sections.
 

@@ -1,6 +1,6 @@
 # L04 — lecture-scope reconciliation state
 
-**Working branch:** `scope-l04-l12-after-architecture-20261014`, based on architecture merge `730b5cbde055cc166f48f1a73dc63df190e6187b`.
+**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`, based on the merged architecture and the superseded L04-first kickoff. **Current priority is L01–L03 reciprocal reconciliation; L04's existing scope and pending notebook choice remain untouched until L04 is reached.**
 **Current stage:** Lecture Scope, reconciliation/revision discussion pending instructor decision. No revised lecture scope or notebook has been approved or implemented in this kickoff.
 **Authoritative files:** [course architecture](../../course_architecture.typ), [prospective curriculum map](../../curriculum_map.typ), [actual curriculum map](../../curriculum_map_actual.typ), [scope](lecture_scope.md), [course review status](../course_architecture_scope/STATUS.md), and [scoping kickoff](../START_SCOPING.md).
 
@@ -14,7 +14,7 @@ The prospective curriculum map introduces a more direct ML evaluation/representa
 
 ## Starting decision and review requirements
 
-First compare keeping the approved coding endpoint, adopting the proposed Iris/performance endpoint, or an actually feasible focused hybrid. Assess their common lecture mathematics (entropy, KL, mutual information, data processing, coding), practical ML relevance, distinct computational work, source faithfulness, and time. Ask **one consequential question**: which notebook capability should L04 prioritize? Do not change the approved scope without a new decision.
+When L04 is reached, first compare keeping the approved coding endpoint, adopting the proposed Iris/performance endpoint, or an actually feasible focused hybrid. Assess their common lecture mathematics (entropy, KL, mutual information, data processing, coding), practical ML relevance, distinct computational work, source faithfulness, and time. Ask **one consequential question**: which notebook capability should L04 prioritize? Do not change the approved scope without a new decision.
 
 After that decision: revise only affected Scope components, obtain appropriate source-arc and Section Design feasibility reviews, record actual reviewer provenance and instructor approval, and synchronize only `curriculum_map.typ` where an approved curriculum decision changes. The actual map remains blank until teaching occurs. Move to L05 only after this L04 checkpoint or an explicit instructor decision to defer it.
 

@@ -44,21 +44,25 @@
 
 This document defines the *intellectual purpose and planned progression* of the course. It is the primary reference when selecting lecture scopes, weighing changes across lectures, and interpreting the relationship between mathematical results and applications. The #link("advanced_statistics_2027_1_syllabus.typ")[student syllabus] is a concise description of this architecture; approved lecture scopes determine their own detailed teaching commitments. Actual delivery and source coverage are recorded in #link("Lectures/material_ledger.md")[the material ledger]. These authorities should be reconciled when they disagree, not silently overwritten.
 
-= What the course is about
+= What the course is for
 
-Understanding probabilistic machine learning is understanding *the probabalistic formulation of machine language problems*, *how different machine language problems are expressed in this machinery*, and *why specific classes of learning problems apply different computational approaches to the same machinery*. The goal is to achieve a coherent and integrated view of how the structured data, the questions being asked, and the computational tools are all related through the probabalistic formulation. This will not be a catalogue of models and it is not a progression from one approximation algorithm to the next. Each mathematical advance is motivated by a kind of task and available experience for which our existing models, performance criteria, or computations are insufficient.
+The goal is *working competence in probabilistic machine learning*: given a substantive dataset and a scientific or practical question, students should be able to recognize the kind of learning problem, select and use an appropriate model and computational method, assess the result, and explain when another approach would be preferable. They should leave familiar with specific algorithms *as working tools*, not simply with their derivations or names. This is a graduate course in which students already know probability and Bayesian statistics; it develops that background into the ability to tackle new machine-learning problems.
+
+A *coherent probabilistic understanding* is the main intellectual instrument for developing this competence, *not an end in itself*. Models, performance criteria, conditioning, marginalization, optimization and approximation provide a common language for comparing apparently different algorithms. Their mathematical derivations matter: without them, students cannot see what an algorithm computes, why its assumptions help, when it fails, or how it differs from an alternative. Yet coherence must serve the problems. We should not organize a lecture merely to fill in another piece of a beautiful general theory, nor reduce the semester to a catalogue of algorithms and applications.
+
+The course therefore has *two intertwined threads*. One develops the mathematical ability to formulate and compare methods. The other builds a concrete repertoire: particular learning problems, datasets, implementations, performance checks and diagnoses. Every substantive lecture should advance both threads at an appropriate depth. The algorithm or mathematical principle is an *exemplar* of a transferable idea; the example is substantial enough that students learn how to use and question the method, rather than merely recognize its algebra. Practical competence here means credible, guided first use and informed method selection—not unassisted production mastery of every technique after one notebook.
 
 == From learning problems to mathematical formulations
 
-A *learning task* specifies what a system should accomplish; its *experience* specifies the data, feedback, or interaction available. Its success must be defined by a *performance criterion*. The same dataset may support prediction, generation, discovery, or action; data alone do not specify the learning problem.
+A *learning task* specifies what a system should accomplish; its *experience* is the data, feedback, or interaction available. The *structure and scale* of that experience matter. Its success must be judged by a *performance requirement*: what predictions, distributions, representations or decisions must be good, and how good is good enough? The same dataset can support prediction, generation, discovery or action, each with different legitimate criteria.
 
-The mathematical formulation has *two distinct, related objects*. A probabilistic model describes the relevant observed and unobserved variables, their dependencies, and our uncertainty. A performance functional defines what counts as a good prediction, representation, decision, or learned distribution—often by taking an expectation with respect to a relevant distribution. For example, a predictive action $a$ may be evaluated by
+The mathematical formulation contains *two distinct, related objects*. A probabilistic model represents relevant observed and latent variables, their dependencies, and uncertainty. A performance functional specifies what counts as a good answer. For example, a predictive action $a$ can be evaluated by
 
-$ cal(R)(a) = integral L(a,y) p(y) dif y. $
+$ cal(R)(a) = integral L(a, y) p(y) dif y. $
 
-The distribution under which we evaluate actual performance need not be the same as our fitted model. Distinguishing a mismatch of models from an error of computation is itself part of the discipline.
+The distribution under which actual performance is assessed need not equal the model we fit. Model mismatch, the choice of training surrogate, and numerical or approximation error are different possible sources of failure.
 
-The formulation then gives us probabilistic *queries*. These are generally addressed with specific integrals on the probabilistic models: conditioning, marginalization, and summarizing are three operations developed explicitly  that may deliver the quantities required to evaluate or optimize performance. They are tractable in some models, but the course deals primarily with how queries can be approached when computation is a challenge.
+A formulation gives us *probabilistic queries*: conditional distributions, marginal probabilities, expectations, predictions or decisions, often requiring integrals or optimizations. L01 explicitly introduces conditioning, marginalization and summarizing a joint distribution. The rest of the course develops both richer probabilistic models and ways to perform the necessary computations at useful scale. A student's practical question is not merely "Which formula applies?" but "Which answer do I need, how can I compute it, and how can I tell whether it is good enough?"
 
 == The task–model–performance–computation relationship
 
@@ -66,7 +70,7 @@ The formulation then gives us probabilistic *queries*. These are generally addre
   #block(width: 91%)[
     #concept-card(
       [Learning problem],
-      [Task and question · available experience · data structure and scale],
+      [Recognizable task · available experience · data structure and scale · required performance],
     )
     #v(5pt)
     #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
@@ -78,12 +82,12 @@ The formulation then gives us probabilistic *queries*. These are generally addre
       gutter: 10pt,
       concept-card(
         [Probabilistic model],
-        [Joint and conditional distributions; observed and latent variables; structural assumptions; posterior and predictive queries],
+        [Observed and latent variables; dependencies, structural assumptions, posterior and predictive queries],
         tint: pale-blue,
       ),
       concept-card(
         [Performance functional],
-        [Expected loss, predictive score, distributional discrepancy, information retained, or decision utility; required fidelity],
+        [Expected loss, predictive score, distributional discrepancy, information retained or decision utility; required fidelity],
         tint: pale-blue,
       ),
     )
@@ -91,38 +95,42 @@ The formulation then gives us probabilistic *queries*. These are generally addre
     #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
     #v(5pt)
     #concept-card(
-      [Induced computational demand and approach],
-      [Required query or optimization · cost from data structure and scale · exact algorithms, tractable proxies, and numerical approximations],
+      [Induced computational demand and method choice],
+      [Required query or optimization · cost at relevant scale · exact computation or defensible approximation],
       tint: rgb("#F5F6F7"),
     )
     #v(5pt)
     #align(center)[#text(size: 14pt, fill: blue)[$arrow.b$]]
     #v(5pt)
     #concept-card(
-      [Learned model, answer, or decision],
-      [Evaluate performance on the original task; identify remaining model, objective, and computational limitations],
+      [Use, check, and compare on a concrete problem],
+      [Fit or infer · evaluate task performance · diagnose model and computation · choose a next move],
       tint: rgb("#F5F6F7"),
     )
     #v(3pt)
-    #text(size: 8pt, fill: muted)[The arrows describe the logical dependence, not a one-way workflow. Results and computational limits can motivate revising the formulation.]
+    #text(size: 8pt, fill: muted)[A reasoning framework, not a rigid recipe: failures in application can lead us to revise the task, model, criterion or algorithm.]
   ]
 ]
 
-The three major *moves* in the course extend *(i) what probabilistic models can represent, (ii) what performance functionals can express, and (iii) what computational methods can achieve*. The computational challenge is not a fourth, independent feature of the learning problem. It *emerges* from the structure and scale of the data, the probabilistic query and performance requirement, and the computational resources available. A mathematical move is justified by how it resolves that particular demand; no move is an end in itself.
+The course's main mathematical *moves* broaden *(i) what probabilistic models can express, (ii) what performance functionals can distinguish, and (iii) what computational methods can deliver*. The computational obstacle is *induced* by the data structure and size, the model and query, the performance requirement, and available resources. An algorithm becomes appropriate because it meets those particular demands, not because the syllabus has reached its chapter.
 
 == The ideal quantity and the practical calculation
 
-One key move in the course is to substitue a tractable proxy for an ideal mathematical target. A desired performance functional may be replaced during training by an empirical score or surrogate objective. Likewise, an ideal posterior or expectation may be represented by a point estimate, a local Gaussian approximation, a variational distribution, or samples. Some structured problems admit *exact* solutions, so computation is not synonymous with approximation.
+A desired performance functional may be estimated by an empirical score or replaced for training by a surrogate objective. An ideal posterior or expectation may be approached using a point estimate, a Laplace or variational distribution, exact message passing, or a finite sample average. These substitutions are mathematically different; they must not all be called "posterior approximations." Some models make the relevant operation *exactly* tractable.
 
-The central goal of the course is to develop an understanding of the possible substitutions and the situations in which they are appropriate. Each substitution has different meanings and limitations. The appropriate criterion for assessing the approximation depends on the *original question*, *the probabilistic formulation*, and *the computational power available* not merely whether an internal algorithm converged.
+Every computational move should answer three linked questions: *Under what structural and data-scale conditions does it work? What computation does it save, compared with a plausible alternative? Is the resulting accuracy sufficient for the task we care about?* For example, matching local posterior curvature (L07) and optimizing a variational distribution (L09) can both yield a Gaussian proxy, but the former uses local geometry and the latter fits a distributional objective. Either proxy may be sampled later. MCMC (L10) instead targets an integral through a dependent sample average. Exact sequence messages (L08) exploit conditional independence and need no posterior-family approximation. These distinctions must become practical judgments, not only definitions students can repeat.
 
-For any proposed *approximation*, ask three distinct questions. *Validity regime:* what properties of the data and posterior, and which probabilistic queries, permit adequate accuracy? *Computational payoff:* how do time, memory, and repeated-query costs scale, relative to exact methods and competing approximations? *Performance sufficiency:* which errors matter for the original task, and how will they be checked? These conditions determine whether a shortcut is worth taking. They apply just as much to a local Gaussian (L07) or a fitted variational family (L09) as to finite Monte Carlo averages (L10) or amortized inference (L12); none is justified merely by being computationally convenient.
+== How mathematical depth becomes practical familiarity
+
+Each lecture needs a recognizable *problem encounter*: what is observed, what must be predicted, inferred, generated or decided, and how success will be checked. Its mathematical argument then explains a method's assumptions, what is computed and the regime in which the method pays off. Finally, students should see and use the approach on a concrete dataset, inspect its output and failures, and compare it with at least one meaningful baseline or alternative when feasible. This is a *design test*, not a mandatory slide sequence; some lectures develop representation or performance rather than a new algorithm.
+
+A transparent toy model and a credible practical example have *different instructional jobs*. A small controlled case can expose a theorem, exact reference, bias or numerical failure that is otherwise hidden. A substantive case demonstrates why one would use the method and what it means to evaluate an answer. A lecture or notebook may use both, with much of the code or data preparation supplied, rather than forcing every student to implement two complete applications in an hour. Whenever possible, revisit an earlier problem with a new method: the difference between tools becomes visible when the question, dataset and performance criterion stay fixed.
+
+The approximately two-hour lecture is responsible for the mathematical reasoning, conceptual comparisons and interpretation of representative results. The approximately one-hour notebook builds a bounded but real capability: *construct or run* a method, *read and validate* its output, and *judge* whether it answers the problem. Avoid notebooks that consist only of reproducing a plot or checking a derivative, but also avoid notebooks so elaborate that students spend the hour debugging scaffolding rather than understanding machine learning.
 
 == The role of Murphy and mathematical depth
 
-Murphy's books provide the central spine of the course's progression and guide the choice of material, the explanatory logic, the depth of the coverage, and the mathematical language. The course as a whole and each lecture provides only partial coverage, relative to Murphy's second book. Material is selected and occasionally re-ordered. 
-
-A detailed understanding of the mathematical development of the material is an essential part of the course. As such, many of the mathematical developments in Murphy are presented in lecture or in the self-work notebooks. The first Murphy book often provides more detailed and scaffolded mathematical derivations, and is used as a reference for the course. The second Murphy book is the primary source fo the underlying logic of the course (as explained above) and for its structure.
+Murphy's two books provide the main mathematical and conceptual source. Book 2 supplies the broader logic and methods; Book 1 often supplies more gradual derivations or useful introductory examples. The course is a deliberate selection, not comprehensive chapter coverage. Formal proofs and calculations are retained where they explain a method's ability, limits, or relation to other methods. Their pedagogical value is tested by the understanding and problem-solving judgment they make possible—not by the number of pages or results reproduced.
 
 = How the semester develops
 

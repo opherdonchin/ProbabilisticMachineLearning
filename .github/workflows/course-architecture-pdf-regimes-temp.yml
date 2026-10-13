@@ -1,4 +1,5 @@
 name: Render architecture PDF (temporary review branch)
+# Retry transient workflow registration after branch creation
 on:
   push:
     branches: [course-architecture-regimes-l07-l12-20261013]

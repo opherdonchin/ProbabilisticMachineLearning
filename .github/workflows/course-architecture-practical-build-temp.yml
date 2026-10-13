@@ -1,4 +1,5 @@
 name: Build revised course architecture (temporary)
+# Final stable-head render after all text and preview cleanup
 on:
   push:
     branches: [course-architecture-practical-mastery-20261013]

@@ -1,6 +1,6 @@
 # L01 — scope and artifact reconciliation state
 
-**Stage:** instructor-led Lecture Scope / initial diagnosis proposed; awaiting the first endpoint decision.
+**Stage:** instructor-led Lecture Scope / notebook emphasis clarified; intellectual arc and query selection remain under discussion.
 **Working branch:** `rescope-l01-l12-architecture-alignment-20261014`, created from `scope-l04-l12-after-architecture-20261014` at `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
 **Course-wide sources:** `course_architecture.typ`, `curriculum_map.typ`, `curriculum_map_actual.typ`, `Lectures/START_SCOPING.md`.
 **No revised L01 scope, design, notebook, or new pedagogical approval exists yet.** No class has yet been taught.
@@ -13,9 +13,11 @@
 
 **Review evidence:** Separate delegated Lecture Scope analyses by `/root/l01_existing_argument` and `/root/l01_architecture_tensions`, retained verbatim in [existing-material assessment](reconciliation/existing_material_assessment.md) and [architecture assessment](reconciliation/architecture_assessment.md). These are initial conceptual assessments, not formal source-arc/Section Design previews or implementation validation. Coordinator checked current source, PDF text, selected rendered pages, book passages, prior decision records and named branch content. Historical persona reviews target an earlier production revision and remain simulated reader evidence.
 
-**Open instructor decision:** Should the required practical endpoint include evaluating missing-measurement reconstruction against an unconditional-mean baseline, beyond implementing and cross-checking a supplied Gaussian posterior? Recommendation: preserve the existing Gaussian derivational chain and broad model/query framework, while strengthening the task-performance connection within the one-hour notebook. Any replacement of existing PyMC/taxonomy work or architecture wording remains instructor-owned.
+**Accepted instructor direction (current discussion, 2026-10-14):** The notebook's strongest message should be that the same dataset and probabilistic formulation can support different questions. This clarifies the intended emphasis; it does not approve a revised Scope, concrete query set or notebook implementation. The coordinator's earlier reconstruction-baseline proposal is secondary to this endpoint.
 
-**Uncertainties and next owner:** Instructor responds to that one question; coordinator then continues the intellectual-arc discussion. No rewriting of Scope, slides, notebook, architecture or curriculum allocation is authorized yet. Before freezing L01, reconcile L02's asserted precision/information-form prerequisite and L03's actual entry conditions. The referenced material ledger is absent; notebook clean local/Colab execution and student-time feasibility are unverified. Current-source correctness concerns are recorded in the matrix for author repair at the appropriate stage.
+**Open instructor decision:** Which contrasting queries should students actually formulate and answer under one fixed Gaussian model? The existing PyMC and exact-LGS routes compute the same missing-block posterior; changing representation or algorithm alone does not establish the intended different-question lesson. A provisional route contrasts marginal prediction/generation, conditional reconstruction, and a posterior expectation or event probability. Exact query selection, context, mathematical depths, timing and retained PyMC comparison remain unapproved.
+
+**Uncertainties and next owner:** Coordinator continues the intellectual-arc discussion with the notebook's different-question emphasis, keeping the query set provisional. No rewriting of Scope, slides, notebook, architecture or curriculum allocation is authorized yet. Before freezing L01, reconcile L02's asserted precision/information-form prerequisite and L03's actual entry conditions. Notebook clean local/Colab execution and student-time feasibility are unverified. Current-source correctness concerns are recorded in the matrix for author repair at the appropriate stage.
 
 **Impact:** No downstream approvals invalidated or artifacts rewritten at this checkpoint. Scope, architecture L01 description, coverage specification and notebook handoff may require selective changes after decisions. Keep actual coverage untouched.
 

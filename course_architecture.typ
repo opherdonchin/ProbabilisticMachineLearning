@@ -193,13 +193,14 @@ An unlabeled collection of high-dimensional observations creates different tasks
 *L13 — Demonstrate practical selection and justification on a new problem.*
 Student presentations should begin with a recognizable dataset and problem, identify the task and performance requirement, select a plausible probabilistic model and method, and show an actual result with a meaningful check or comparison. Mathematical explanations should clarify what their algorithms deliver and what remains uncertain. The course's success is visible when students can use a concrete method *and* give a principled reason for choosing or rejecting it—not when they can only recite the unified architecture or reproduce a worked notebook.
 
+#set page(flipped: true)
+
 = Proposed lecture and problem-solving practice map
 
 The thirteen-meeting plan is a *revisable course proposal*, not a set of commitments protected from educational criticism. L01 has been delivered, L02 has an agreed design, and L03 and the earlier L04 coding split have prior instructor decisions that must be recorded when proposals change. Those historical facts are not reasons to retain a weaker future plan. Existing lecture-scope files, review records, source readings and notebook references remain evidence to reconcile before implementation; a change here is *not* an executed or instructor-approved replacement of those artifacts.
 
 Each row connects an identifiable learning problem, a mathematical exemplar, and *bounded hands-on competence*. One notebook should generally provide meaningful use and evaluation of a method on data; when the chosen derivation needs a tiny exactly checkable example, supplied code or reference results can keep that diagnostic alongside the application. L07, L09 and L10 particularly benefit from revisiting a shared Bayesian prediction problem so that students compare methods, not just benchmark unrelated algorithms. Practical datasets, scaffolding, runtime and the one-hour limit still require separate feasibility checks.
 
-#set page(flipped: true)
 #set text(size: 8pt)
 #set par(leading: 0.55em, spacing: 0.6em)
 
@@ -409,10 +410,15 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 )
 
 #set page(flipped: false)
+#set text(size: 11pt)
+#set par(leading: 1em, spacing: 0.8em)
 
 = Selection, omissions, and what students actually gain
 
 This course develops a usable and intellectually connected repertoire, not an exhaustive survey of Murphy. The choices below trade some topical breadth for repeated *method use*, *comparison of output with a task-specific criterion*, and *diagnosis of failure*. They are current design hypotheses rather than completed student trials. The #link("Lectures/course_architecture_scope/architecture_audit.md")[architecture audit] records evidence and feasibility concerns; the current semester's lecture scopes and notebook drivers must be reconciled before declaring new assignments final.
+
+#set text(size: 8.5pt)
+#set par(leading: 0.65em, spacing: 0.7em)
 
 #table(
   columns: (65mm, 51mm, 1fr), inset: 4pt, stroke: 0.45pt + rule,

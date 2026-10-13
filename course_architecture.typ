@@ -199,6 +199,7 @@ The thirteen-meeting plan is a *revisable course proposal*, not a set of commitm
 
 Each row connects an identifiable learning problem, a mathematical exemplar, and *bounded hands-on competence*. One notebook should generally provide meaningful use and evaluation of a method on data; when the chosen derivation needs a tiny exactly checkable example, supplied code or reference results can keep that diagnostic alongside the application. L07, L09 and L10 particularly benefit from revisiting a shared Bayesian prediction problem so that students compare methods, not just benchmark unrelated algorithms. Practical datasets, scaffolding, runtime and the one-hour limit still require separate feasibility checks.
 
+#set page(flipped: true)
 #set text(size: 8pt)
 #set par(leading: 0.55em, spacing: 0.6em)
 

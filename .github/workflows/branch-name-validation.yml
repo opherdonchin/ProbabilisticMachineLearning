@@ -1,0 +1,31 @@
+name: Branch name validation
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited, ready_for_review]
+
+jobs:
+  branch-name:
+    name: Branch name validation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      HEAD_BRANCH: ${{ github.head_ref }}
+    steps:
+      - name: Check branch naming convention
+        shell: bash
+        run: |
+          set -euo pipefail
+          case "$HEAD_BRANCH" in
+            l02-section-titles-summaries|lecture-3-authoring|scope-l03-l12-course-architecture|slide-authoring-refactor)
+              echo "Grandfathered existing branch: $HEAD_BRANCH"
+              exit 0
+              ;;
+          esac
+          if [[ "$HEAD_BRANCH" =~ ^(feat|fix|docs|refactor|test|chore|lecture)/[a-z0-9]+(-[a-z0-9]+)+$ ]]; then
+            echo "Valid branch name: $HEAD_BRANCH"
+          else
+            echo "::error::Use <type>/<scope>-<specific-outcome> (e.g. lecture/l03-verify-d-separation). See docs/branch-management.md."
+            exit 1
+          fi

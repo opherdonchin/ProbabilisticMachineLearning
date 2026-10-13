@@ -211,7 +211,7 @@ The course grade is based on four components:
   [
     - Selected 6.1 / 6.2.1–6.2.2 / 6.3 Uncertainty and shared information
   ],
-  [Compare provided probabilistic predictions on a classification dataset using held-out log score, accuracy and simple reliability checks; evaluate label information retained by a discrete feature representation. Use the parity-code calculation as an optional exactly checkable information/error contrast.],
+  [Compare provided probabilistic predictions on the Iris classification dataset using held-out log score, accuracy and simple reliability checks; evaluate label information retained by a discrete feature representation. Use the parity-code calculation as an optional exactly checkable information/error contrast.],
   [Choose and interpret probabilistic performance measures on real predictions, distinguishing scoring, prediction error and information retained.],
 )
 

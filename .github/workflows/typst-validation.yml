@@ -74,6 +74,8 @@ jobs:
           cmp -s course_architecture.pdf build/typst-validation/course_architecture.pdf || (echo "ERROR: committed course_architecture.pdf does not match source" && exit 1)
           typst compile --root . --creation-timestamp 0 curriculum_map.typ build/typst-validation/curriculum_map.pdf
           cmp -s curriculum_map.pdf build/typst-validation/curriculum_map.pdf || (echo "ERROR: committed curriculum_map.pdf does not match source" && exit 1)
+          typst compile --root . --creation-timestamp 0 curriculum_map_actual.typ build/typst-validation/curriculum_map_actual.pdf
+          cmp -s curriculum_map_actual.pdf build/typst-validation/curriculum_map_actual.pdf || (echo "ERROR: committed curriculum_map_actual.pdf does not match source" && exit 1)
           typst compile --root . advanced_statistics_2027_1_syllabus.typ build/typst-validation/advanced_statistics_2027_1_syllabus.pdf
 
       - name: Upload compiled Typst documents

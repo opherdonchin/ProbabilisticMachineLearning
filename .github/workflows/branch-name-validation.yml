@@ -18,7 +18,7 @@ jobs:
         run: |
           set -euo pipefail
           case "$HEAD_BRANCH" in
-            course-architecture-practical-mastery-20261013|l02-section-titles-summaries|lecture-3-authoring|scope-l03-l12-course-architecture|slide-authoring-refactor)
+            l02-section-titles-summaries|lecture-3-authoring|scope-l03-l12-course-architecture|slide-authoring-refactor)
               echo "Grandfathered existing branch: $HEAD_BRANCH"
               exit 0
               ;;

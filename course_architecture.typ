@@ -169,7 +169,7 @@ Suppose several physiological measurements are missing for some participants, or
 These lectures are *not four unrelated algorithms*, and they are not a staircase of increasingly advanced approximations. They offer different answers to overlapping problems: posterior summaries, predictions, hidden-state probabilities and decisions. Their value depends on the structure and scale of the data/model, the desired query, available resources and tolerable error. Students should learn the *specific mechanics* of each and compare which one they would use. In particular, L07 and L09 both build tractable posterior distributions; L08 exploits structure for *exact* marginalization; L10 estimates target integrals with dependent draws. A shared probabilistic prediction problem across L07, L09 and L10, together with controlled diagnostic examples, would make these differences visible without requiring three unrelated applications.
 
 *L07 — Use posterior geometry when an approximate Gaussian answer is sufficient (Laplace).*
-In Bayesian logistic prediction, a fitted coefficient vector alone does not express parameter uncertainty or posterior-averaged predictive probabilities. If the posterior is smooth, regular and strongly concentrated near a well-identified mode, Laplace constructs a Gaussian proxy from the mode and inverse Hessian. We can then compute or sample from its approximate marginals and predictions without the original posterior integrals. The computational payoff is strong when the parameter dimension and Hessian cost are moderate; neglected modes, boundaries, asymmetry and important tails may invalidate a downstream decision even if the fit looks good near its peak. Students should *use* the approximation to predict with uncertainty, not just compute a curvature. The one-parameter logistic example remains a transparent comparison with checked quadrature, but should be connected to an actual small binary-classification problem and a point-prediction baseline.
+In Bayesian logistic prediction, a fitted coefficient vector alone does not express parameter uncertainty or posterior-averaged predictive probabilities. If the posterior is smooth, regular and strongly concentrated near a well-identified mode, Laplace constructs a Gaussian proxy from the mode and inverse Hessian. We can then compute or sample from its approximate marginals and predictions without the original posterior integrals. The computational payoff is strong when the parameter dimension and Hessian cost are moderate; neglected modes, boundaries, asymmetry and important tails may invalidate a downstream decision even if the fit looks good near its peak. Students should *use* the approximation to predict with uncertainty, not just compute a curvature. The one-parameter logistic example remains a transparent comparison with checked quadrature, but should be connected to an actual small, overlapping binary-classification problem and a point-prediction baseline.
 
 *L08 — Exploit local dependence for exact inference in a hidden-state sequence (message passing).*
 Given noisy observations over time, a practical question is whether the underlying system changed state, when, and with what uncertainty. An HMM expresses conditional independence through local transitions and emissions. Filtering, smoothing, sequence evidence and the most probable whole path are distinct answers. Forward–backward dynamic programming rearranges sums over $K^T$ possible histories into reusable local messages, taking $O(T K^2)$ work for dense finite-state transitions. This is exact for the stated model, unlike a posterior-family approximation. Students should infer and interpret state probabilities on a sequence and distinguish an uncertain boundary from a forced segmentation; a tiny enumerated case checks the code. A behavioral-state or sensor-sequence interpretation gives the algorithm a recognizable use, while the casino HMM remains an accessible mathematical testbed. The linear-Gaussian Kalman comparison shows another structural regime permitting exact filtering.
@@ -291,7 +291,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 
   [5],
   [*Generalized linear models, automatic differentiation and SGD* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [Gaussian, Bernoulli, Poisson and categorical conditional prediction; GLM links, canonical gradients and convexity when applicable. MLE/MAP point fitting via autodiff and mini-batch SGD. Use predictive probabilities and held-out scores to judge fitted classifiers.],
   [
     - 15.1 / 15.1.1 / 15.1.3 Common model structure and derivative
@@ -307,7 +307,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 
   [6],
   [*Latent-variable learning and expectation-maximization* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [Latent-variable joint likelihood and observed-data marginal likelihood; ELBO/KL identity, exact EM conditional expectations and monotonic improvement. Use conditional second moments for missing-data Gaussian parameter fitting; recognize mixture responsibilities and missingness assumptions.],
   [
     - Selected 6.5.1 / 6.5.3 Probability bound and EM
@@ -322,7 +322,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 
   [7],
   [*Bayesian computation: grid reference and Laplace approximation* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [Bayesian logistic-regression predictions and parameter uncertainty; MAP versus posterior queries; Laplace mode/Hessian construction, conditions for local Gaussian validity, computational scaling, and query-specific error.],
   [
     - 7.1–7.3 What posterior questions require: short introduction
@@ -331,11 +331,11 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
     - Selected 15.3.5–15.3.6 One-parameter logistic example
   ],
   [],
-  [*Bayesian binary classification, first inference route.* Use a prepared binary subset of the Iris task, with few parameters, to compare point predictions with posterior-averaged predictions from a Laplace Gaussian. A one-parameter restriction and checked numerical grid provide an exactness *diagnostic*, not the practical motivation. Inspect uncertainty and when local curvature is misleading. *Competence:* Construct and use a Laplace posterior proxy and evaluate the downstream prediction. #link("https://stat238.berkeley.edu/spring-2026/codelecturethirtysix238spring2026/")[Reference for numerical check]. *Feasibility:* Supply fitting and Hessian helpers; do not require two complete independent fits.],
+  [*Bayesian binary classification, first inference route.* Use a prepared, overlapping two-class subset of the Iris task, with few parameters, to compare point predictions with posterior-averaged predictions from a Laplace Gaussian. A one-parameter restriction and checked numerical grid provide an exactness *diagnostic*, not the practical motivation. Inspect uncertainty and when local curvature is misleading. *Competence:* Construct and use a Laplace posterior proxy and evaluate the downstream prediction. #link("https://stat238.berkeley.edu/spring-2026/codelecturethirtysix238spring2026/")[Reference for numerical check]. *Feasibility:* Supply fitting and Hessian helpers; do not require two complete independent fits.],
 
   [8],
   [*Exact inference in structured sequence models* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [HMM filtering, smoothing, evidence and path MAP as different answers to a hidden-state problem. Forward–backward factorization and exact dynamic programming; scaling, computational cost, and brief linear-Gaussian Kalman comparison.],
   [
     - 9.2.1–9.2.5 Hidden-state calculations and scaling
@@ -347,7 +347,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 
   [9],
   [*Variational inference: posterior geometry and pathwise gradients* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [Variational distributional optimization via reverse KL/ELBO, approximation-family and optimizer error, pathwise gradients, and mean-field limitations. Contrast the fitted Gaussian with Laplace on the same kind of posterior query.],
   [
     - 10.1.1–10.1.2 Fitting a restricted distribution
@@ -356,11 +356,11 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
     - 10.3.1 Coordinate updates; 10.1.5 learned inference: introduction only
   ],
   [],
-  [*Bayesian binary classification, second inference route.* With prepared likelihood and optimizer code, fit a diagonal-Gaussian variational posterior for the binary Iris model used in L07; compare task-relevant predictions and uncertainty with Laplace and a supplied reference. A correlated Gaussian with known answer isolates mean-field family error from optimization error. *Competence:* Fit and diagnose a variational posterior and decide whether lost dependence matters for the prediction. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/10/linreg_bayes_svi_hmc.ipynb")[Reference VI implementation]. *Feasibility:* Limit student code to the defining objective, parameters, and interpretive comparisons.],
+  [*Bayesian binary classification, second inference route.* With prepared likelihood and optimizer code, fit a diagonal-Gaussian variational posterior for the overlapping binary Iris model used in L07; compare task-relevant predictions and uncertainty with Laplace and a supplied reference. A correlated Gaussian with known answer isolates mean-field family error from optimization error. *Competence:* Fit and diagnose a variational posterior and decide whether lost dependence matters for the prediction. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/10/linreg_bayes_svi_hmc.ipynb")[Reference VI implementation]. *Feasibility:* Limit student code to the defining objective, parameters, and interpretive comparisons.],
 
   [10],
   [*Monte Carlo and MCMC: invariance, mixing and estimator error* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [Monte Carlo estimators for posterior queries; MCMC target invariance versus mixing, Metropolis–Hastings correction, Gibbs full-conditionals, finite-run error and query-dependent effective sample size.],
   [
     - 11.2–11.2.2 Averages and sampling error
@@ -373,7 +373,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 
   [11],
   [*Neural conditional models: heteroskedastic likelihood and regularization* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [Nonlinear differentiable conditional models with learned mean and positive scale, heteroskedastic Gaussian log score, SGD/AD reuse, regularized point fitting and differences between conditional noise and weight uncertainty.],
   [
     - Selected 16.2.1–16.2.2 / 16.3.1 Small feedforward networks
@@ -388,7 +388,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 
   [12],
   [*Variational autoencoders: amortized inference and rate–distortion* \
-  #note[Proposed teaching scope]],
+  #note[Revisable proposal]],
   [High-dimensional latent generative model and per-case approximate posterior; shared amortized encoder, neural decoder, ELBO and pathwise training, reconstruction/rate tradeoff, posterior collapse and representation identifiability.],
   [
     - Selected 21.1–21.2 Model, inference network and training objective

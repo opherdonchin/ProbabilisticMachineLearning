@@ -68,7 +68,7 @@ Use, when available:
 
 - the actual previous lecture deck or other delivered lecture artifact;
 - the actual previous lecture notebook and any assigned recording;
-- `Lectures/material_ledger.md`;
+- `curriculum_map.typ` (planned) and `curriculum_map_actual.typ` (taught);
 - the relevant parts of Murphy Book 1;
 - the relevant parts of Murphy Book 2;
 - an authoritative course syllabus, if one exists;

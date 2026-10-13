@@ -1,5 +1,7 @@
 # Current course proposal and review status
 
+**Architecture interpretation update (2026-10-13):** The [canonical course architecture](../../course_architecture.typ) now distinguishes method suitability through (i) structural/scale and posterior-geometry conditions, (ii) actual computational benefit relative to available exact or approximate alternatives, and (iii) error acceptable for the target performance/query. L07/L09 distributional approximations, L08 exact messages, L10 target sampling, L11 nonlinear likelihoods and L12 amortized inference are distinguished explicitly. This is an interpretation of the *proposed* course, not an approval or rewrite of the scope files or a completed independent feasibility review. The older L03 reconciliation and version registry below remain historical evidence.
+
 ## Current focus: recover the existing L03 agreement
 
 The instructor identified `lecture-3-authoring` as the location of the already agreed L03 scope. That scope has been restored on this proposal branch. The batch run had missed the agreement and replaced its graphical-model argument with a lecture organized around image restoration. No fresh choice of L03 route is needed.

@@ -13,7 +13,7 @@ Both syllabi, the future ledger, notebook audit, architecture explanation and te
 ## Mechanical checks
 
 - Exact normalized comparison against the accepted source passed. The other nine scope texts are byte-identical to baseline `2499e988706005b12c62f0d2bfb037f47b7c0c9e`.
-- All 66 protected L01/L02 files and the delivered L01 solution are unchanged. Formal L01/L02/L13 blocks, plan L01/L02 rows and the complete delivered-ledger prefix are byte-identical. Planned coverage does not advance delivered coverage.
+- All 66 protected L01/L02 files and the prepared L01 solution are unchanged. Formal L01/L02/L13 blocks, plan L01/L02 rows and the prepared L01 coverage details are byte-identical. Planned material is not actual classroom coverage.
 - Both syllabi retain 13 numbered meetings, weekly Wednesdays from 21 October 2026 to 13 January 2027. L13 remains projects.
 - The local reference check passed for 137 Markdown/Typst links; original individual and whole-course review records remain unchanged contiguous evidence.
 - `python scripts/check_codex_setup.py` passed for nine skills and five profiles. The skill-creator validator passed for the scope skill. `git diff --check` passed after formatting-only hard-break cleanup.

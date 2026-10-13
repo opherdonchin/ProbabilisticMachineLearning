@@ -28,7 +28,7 @@ Upstream Lecture Scope and Section Design contracts constrain all three slide st
 
 ## Source-of-truth hierarchy
 
-The course-wide intellectual purpose and planned sequence are defined in [course_architecture.typ](../course_architecture.typ) and its [PDF](../course_architecture.pdf). The syllabus is a concise student-facing summary; the [architecture audit](course_architecture_scope/architecture_audit.md) tests proposals against that authority, and the material ledger records actual coverage. For each approved lecture, detailed scope and section contracts remain authoritative unless the instructor explicitly revises them.
+The course-wide intellectual purpose and progression are in [course_architecture.typ](../course_architecture.typ). The [curriculum map](../curriculum_map.typ) holds the prospective topic, source and notebook allocation; the syllabus is its concise student-facing summary. The [architecture audit](course_architecture_scope/architecture_audit.md) tests proposals against the architecture. The [actual curriculum map](../curriculum_map_actual.typ) mirrors the planned map but records substantive lecture coverage and notebook work only after each meeting; prepared teaching artifacts are not classroom delivery. For each approved lecture, scope and section contracts remain authoritative unless the instructor explicitly revises them.
 
 
 

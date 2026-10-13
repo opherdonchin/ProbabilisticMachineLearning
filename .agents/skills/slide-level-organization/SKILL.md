@@ -76,7 +76,7 @@ When an actual deck already exists, inspect enough of it to understand the local
 - prior results that can be carried forward rather than redeveloped;
 - recurring pedagogical structures already used in the course.
 
-Use `Lectures/README.md` only for the current slide-system pipeline and `Lectures/material_ledger.md` when curriculum state matters. Do not import production geometry or authoring mechanics into organization. When a brief design note needs course design vocabulary, consult `Lectures/slide_design_conventions.md`.
+Use `Lectures/README.md` only for the current slide-system pipeline and `curriculum_map.typ` and `curriculum_map_actual.typ` when curriculum state matters. Do not import production geometry or authoring mechanics into organization. When a brief design note needs course design vocabulary, consult `Lectures/slide_design_conventions.md`.
 
 Do not treat an old outline, abandoned draft, or source-book table of contents as more authoritative than the current instructor decision, agreed scope, or actual delivered material.
 

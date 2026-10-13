@@ -4,7 +4,7 @@ Course-development repository for probabilistic machine learning.
 
 ## Course architecture
 
-The authoritative account of the course's intellectual purpose, mathematical progression, and 13-meeting teaching allocation is [course_architecture.typ](course_architecture.typ) ([readable PDF](course_architecture.pdf)). The [student syllabus](advanced_statistics_2027_1_syllabus.typ) summarizes it; [architecture_audit.md](Lectures/course_architecture_scope/architecture_audit.md) assesses how proposed lecture scopes align with it.
+The course's intellectual purpose and mathematical progression are defined in [course_architecture.typ](course_architecture.typ) ([PDF](course_architecture.pdf)). Detailed proposed teaching allocations, Murphy readings, notebook practice and reference material are in the [curriculum map](curriculum_map.typ) ([PDF](curriculum_map.pdf)). The [student syllabus](advanced_statistics_2027_1_syllabus.typ) summarizes the plan; [architecture_audit.md](Lectures/course_architecture_scope/architecture_audit.md) tests scope proposals. The [actual curriculum map](curriculum_map_actual.typ) will be filled in alongside the proposed map as teaching proceeds; no class has yet been taught.
 
 ## Notebook development
 

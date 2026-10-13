@@ -19,6 +19,19 @@ These instructions apply to the entire repository.
   regenerated or removed; do not knowingly leave stale generated outputs beside
   updated source.
 
+## Branch naming and lifecycle
+
+- For new work, use `<type>/<scope>-<specific-outcome>` branch names (for example,
+  `lecture/l03-verify-d-separation` or `fix/l02-retrospective-summaries`).
+  Do not name branches after an agent, a date, or a vague stage such as “authoring.”
+- Read `docs/branch-management.md` before creating, renaming, merging, or
+  deleting branches. Record the intended base, outcome, and approval state in
+  the associated PR or issue. Do not conflate a merge into an integration
+  branch with a merge into `main`.
+- Delete completed branch heads after verifying incorporation; review unmerged
+  branches individually before retiring them. Never discard unique work merely
+  because it is old or has been replaced in a later plan.
+
 ## Lecture development coordination
 
 - In Codex IDE/CLI, invoke `$lecture-development` for the instructor-facing

@@ -11,7 +11,7 @@ The instructor identified `lecture-3-authoring` as the location of the already a
 
 The live lecture runs from L02’s Markov chain through DAG factorization and directed independence, then undirected models and Ising interpretation. The image prior, Gaussian likelihood, posterior, local conditional and simpler restoration algorithm remain new student notebook work. The [L03 register](../L03_Graphical_Models/development_state.md) identifies exact authority and stage status; read the [scope](../L03_Graphical_Models/lecture_scope.md) with its [questions](questions_and_hesitations.md). The instructor chooses where to stop for discussion; there is no automatic question-by-question sequence.
 
-**Course-wide intellectual authority:** [course_architecture.typ](../../course_architecture.typ). The proposed lecture allocation has moved to [curriculum_map.typ](../../curriculum_map.typ). The [material ledger](../material_ledger.md) tracks authored materials, not classes taught; the empty [actual-teaching record](../material_lecture_actual.md) will start with the first meeting. Instructor-approved scopes retain their own authority; disagreements must be reconciled rather than silently changed.
+**Course-wide intellectual authority:** [course_architecture.typ](../../course_architecture.typ). The proposed lecture allocation has moved to [curriculum_map.typ](../../curriculum_map.typ). The parallel [actual curriculum map](../../curriculum_map_actual.typ) has the same columns and lecture rows, and starts empty until the first meeting. Instructor-approved scopes retain their own authority; disagreements must be reconciled rather than silently changed.
 
 ## What is agreed and what remains proposed
 

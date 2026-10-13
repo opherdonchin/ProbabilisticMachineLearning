@@ -1,5 +1,7 @@
 # L03 — current authority and development state
 
+**2026-10-14 instructor reopening:** The revised course goal now warrants re-scoping **L01–L03** against their existing decks, designs and approvals, with informed changes possible on both the early lectures and the architecture. The restored L03 scope below remains the correct historical instructor agreement and starting point, but is not irrevocable. Do not discard it or import the proposed section design automatically; undertake two-way alignment after L01/L02 and discuss consequential changes with the instructor. Working branch: `rescope-l01-l12-architecture-alignment-20261014`. No L03 scope change has yet been approved.
+
 This register indexes accepted decisions and remaining work; the [scope](lecture_scope.md) owns the pedagogy.
 
 ## Branches, revisions and stage

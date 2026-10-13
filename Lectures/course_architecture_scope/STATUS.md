@@ -1,5 +1,8 @@
 # Current course proposal and review status
 
+**New course-architecture proposal (2026-10-13):** The instructor requested a comprehensive revision of the architecture to make *practical familiarity with algorithms and particular data problems* the educational end, with mathematical coherence/depth as the means. The instructor explicitly allowed revisiting earlier wording and future lecture commitments. This proposal changes candidate practice, notably L04's notebook emphasis (probabilistic evaluation and representation rather than five-bit coding) and shared classifier application across L07/L09/L10, while retaining small exact diagnostic testbeds. The scope-file hashes and earlier instructor agreements documented below remain *historically true* but do not constitute approval for or validation of the new proposed exercises. A source-grounded scope and one-hour feasibility review is needed before implementing changed exercises.
+
+
 **Architecture interpretation update (2026-10-13):** The [canonical course architecture](../../course_architecture.typ) now distinguishes method suitability through (i) structural/scale and posterior-geometry conditions, (ii) actual computational benefit relative to available exact or approximate alternatives, and (iii) error acceptable for the target performance/query. L07/L09 distributional approximations, L08 exact messages, L10 target sampling, L11 nonlinear likelihoods and L12 amortized inference are distinguished explicitly. This is an interpretation of the *proposed* course, not an approval or rewrite of the scope files or a completed independent feasibility review. The older L03 reconciliation and version registry below remain historical evidence.
 
 ## Current focus: recover the existing L03 agreement

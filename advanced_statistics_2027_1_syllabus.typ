@@ -87,13 +87,13 @@
 
 = Syllabus
 
-This course develops probabilistic machine learning by asking *which mathematical approaches are appropriate to which families of learning problems, and why*. Starting from the task, the structure and scale of the available data, and the performance required, we formulate a probabilistic model and the queries it must answer. These requirements determine what is hard to compute, when model structure admits an exact solution, and when an approximation is worthwhile. Students learn to evaluate a method's assumptions, computational cost and accuracy *for the question that matters*—whether predicting, generating, discovering structure or making scientific inferences. The full rationale and lecture plan are given in #link("course_architecture.pdf")[the course architecture] (#link("course_architecture.typ")[source]).
+This course builds *working competence with probabilistic machine-learning methods*. Students learn to recognize a meaningful learning problem, formulate it probabilistically, select and use an appropriate computational approach, evaluate its predictions or inferences, and explain what the method does and does not justify. Mathematical derivations provide the shared reasoning that makes a repertoire of algorithms transferable rather than a catalogue of recipes. The goal is not abstract coherence alone, and not operating algorithms without understanding their assumptions. The full rationale and evolving practice plan are in #link("course_architecture.pdf")[the course architecture] (#link("course_architecture.typ")[source]).
 
-The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 is used selectively when it gives needed background or a more pedagogical derivation. The proposed progression starts with probabilistic representations, conditional independence and performance measures. It then studies parameter fitting from complete and incomplete observations; local Gaussian approximation, exact inference by message passing, optimized variational distributions and sample-based estimation of expectations as *different computational responses* to different structures and accuracy needs. The final lectures use differentiable neural probability models for expressive prediction and amortized inference for latent-variable generation and discovery.
+The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 supplies selected background and scaffolding. The proposed progression builds a toolkit for probabilistic modeling and evaluating performance; parameter fitting from complete and incomplete data; posterior approximation, exact structured inference and sampling; and expressive neural prediction and generation. In L07, L09 and L10, a *shared Bayesian prediction problem* is proposed so students can compare techniques against the same questions rather than only against unrelated toy examples.
 
-Each meeting includes approximately two hours of mathematical lecture and one hour of guided notebook work. Lectures and notebooks have complementary jobs: the lecture establishes mathematics, while the notebook solves a particular application and builds transferable skills.
+Each meeting includes approximately two hours of mathematical lecture and one hour of guided notebook work. Lectures develop the ideas, derivations, use conditions and comparisons. Notebooks supply *bounded practical use* on recognizable datasets: run or complete a method, inspect outputs, compare an informative baseline, and diagnose task-relevant errors. Small exact examples remain valuable as diagnostics but need not substitute for substantive machine-learning experience. Revised future notebook details remain subject to feasibility review.
 
-*Software progression.* Students enter with experience in Python, NumPy, PyMC, Bambi and ArviZ. The proposed plan introduces PyTorch in L05 for automatic differentiation and optimization, uses NumPy/SciPy for numerical checks, and later reuses PyTorch to train neural and generative models. JAX is not required.
+*Software progression.* Students enter with experience in Python, NumPy, PyMC, Bambi and ArviZ. The proposal uses NumPy/SciPy for probability, numerical checks and introductory inference, and introduces PyTorch in L05 for automatic differentiation and subsequent neural or variational fitting. JAX is not required.
 
 = Additional materials
 
@@ -101,7 +101,7 @@ Each meeting includes approximately two hours of mathematical lecture and one ho
 2. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
 3. Course notes, exercises, notebook solutions and project materials: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[course repository].
 
-The descriptions specify the mathematical work and its computational application. Book references identify selected preparation, not every subsection; focused reading guidance for the teaching choices is in #link("Lectures/course_architecture_scope/questions_and_hesitations.md")[questions and hesitations]. L03 restores the existing instructor-agreed graphical-model scope and notebook boundary. The instructor selected the simpler image algorithm and lighter L04 coding example. Other detailed choices await instructor review. An independent revision review checked the readable wording, preserved mathematics and lighter L04 choice; see #link("Lectures/course_architecture_scope/STATUS.md")[review records]. Future notebooks have not been written or run. They must be tested locally, in Google Colab and within the student hour before release.
+The schedule is a *revisable proposal* for future lectures and notebooks. L01's actual delivery, earlier L02/L03 decisions and the prior L04 coding choice remain documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register], but are not immutable design constraints. The revised practical exercises—especially L04 evaluation and the linked L07/L09/L10 comparison—require scope reconciliation, data packaging, runtime checks and a one-hour student pilot before adoption. Previous independent reviews apply only to the versions they reviewed.
 
 = Prerequisites
 
@@ -129,7 +129,7 @@ The course grade is based on four components:
 
 = Schedule
 
-#text(size: 8pt, weight: "semibold", fill: blue)[The 13-meeting order is agreed. L03’s agreed scope is restored; L04’s lighter example is selected. Other detailed teaching choices remain proposals. L01/L02 material is unchanged. Future notebook code and timing have not been tested.]
+#text(size: 8pt, weight: "semibold", fill: blue)[Proposed 13-meeting sequence. Revisions to future notebook examples are *not yet implemented or approved*. Earlier scope decisions and delivered material remain recorded; data, runtime and pedagogy require separate checks.]
 
 #lecture(
   1,
@@ -211,8 +211,8 @@ The course grade is based on four components:
   [
     - Selected 6.1 / 6.2.1–6.2.2 / 6.3 Uncertainty and shared information
   ],
-  [Extend the three-bit lecture parity code into a five-bit correcting code; establish minimum distance three and single-flip recovery. Use supplied enumeration of four messages and 32 received words to calculate MAP error and mutual information, comparing the rate/reliability tradeoff with the lecture code.],
-  [Calculate information and decision risk from one finite joint distribution without conflating information gain, code rate and guaranteed error correction.],
+  [Compare provided probabilistic predictions on the Iris classification dataset using held-out log score, accuracy and simple reliability checks; evaluate label information retained by a discrete feature representation. Use the parity-code calculation as an optional exactly checkable information/error contrast.],
+  [Choose and interpret probabilistic performance measures on real predictions, distinguishing scoring, prediction error and information retained.],
 )
 
 #lecture(
@@ -264,8 +264,8 @@ The course grade is based on four components:
     - Selected 15.3.5–15.3.6 One-parameter logistic example
   ],
   [],
-  [Build a stable quadrature reference for the fixed eight-observation logistic posterior, challenge domain and mesh separately, and assess Laplace error in moments and prediction. Solver/plot helpers are supplied.],
-  [Validate the numerical reference as well as the posterior approximation, and separate local curvature matching from global integral/prediction accuracy.],
+  [For a prepared binary Iris prediction problem, compare a point fit with Laplace-averaged probabilities and coefficient uncertainty; use a one-parameter numerical grid as a separately validated error diagnostic. Fit and integration helpers supplied.],
+  [Construct and use a Laplace posterior proxy for probabilistic prediction, then check query-specific accuracy against a baseline.],
 )
 
 #lecture(
@@ -279,8 +279,8 @@ The course grade is based on four components:
     - Selected 8.1.2 / 8.2.2 Gaussian filtering: short application
   ],
   [],
-  [Implement scaled HMM likelihood messages and marginals in NumPy. Check tiny-sequence enumeration and an asymmetric-transition case to expose orientation errors. Simulation, reference and plotting code are supplied.],
-  [Use sum-product dynamic programming to obtain exact sequence probabilities and marginals while controlling numerical scaling.],
+  [Infer changing hidden states from a prepared noisy behavioral/instrument sequence using scaled forward–backward messages; interpret filtering and smoothing probabilities and verify calculations on a tiny enumerated sequence.],
+  [Apply exact message passing to a time-dependent state estimation problem, explain uncertain transitions and verify the implementation.],
 )
 
 #lecture(
@@ -295,8 +295,8 @@ The course grade is based on four components:
     - 10.3.1 Coordinate updates; 10.1.5 learned inference: introduction only
   ],
   [],
-  [Fit a diagonal Gaussian to controlled known-noise regression using reparameterized PyTorch gradients. Compare exact posterior and analytic best-diagonal solution; use fixed-noise, matched-estimator gradient checks and query-specific predictive variances.],
-  [Separate optimization error from variational-family error, and differentiate a parameter-dependent expectation with correct full-data likelihood/prior scaling.],
+  [Use scaffolded VI to fit a diagonal Gaussian posterior for the same small binary Iris predictor as L07. Compare predictive uncertainties with Laplace and a supplied reference; use a known correlated Gaussian as a diagnostic for the best possible mean-field approximation.],
+  [Fit and evaluate a variational posterior; distinguish family restriction, optimization error and prediction consequences.],
 )
 
 #lecture(
@@ -311,8 +311,8 @@ The course grade is based on four components:
     - Selected 12.6.3 Dependent-sample error; 12.5.3 Hamiltonian mechanics only
   ],
   [],
-  [Implement the NumPy MH kernel on a fixed bimodal target. Compare proposal scales and dispersed starts; assess the mean and probability above zero against exact references. Supplied diagnostics flag stuck chains and query-dependent error.],
-  [Check transition validity separately from finite exploration and quantify uncertainty for a specified Monte Carlo query.],
+  [Run a supplied MH sampler for the shared binary-classification posterior and compare its predictive estimates with L07/L09 results; use a known bimodal target to diagnose poor mixing and failure on tail or mode-sensitive queries.],
+  [Run, diagnose and interpret an MCMC posterior estimate; distinguish stationary-target correctness from finite-run accuracy.],
 )
 
 #lecture(
@@ -345,8 +345,8 @@ The course grade is based on four components:
     - Selected 21.4 When the model ignores hidden coordinates
   ],
   [],
-  [Complete the compact mobility VAE loss and one bounded joint fit. Use fresh, consistently normalized supplied beta comparisons; evaluate expected-q reconstruction NLL and average prior KL, keeping encoder-mean visualizations separate.],
-  [Integrate amortized variational inference with a neural likelihood and assess a defined distortion/rate tradeoff without treating rate as mutual information or latent patterns as identified causes.],
+  [Fit or complete a small mobility-measurement VAE, compare prior generation with reconstruction, inspect latent descriptions and evaluate two controlled reconstruction/rate tradeoffs.],
+  [Use and critique a latent generative model for reconstruction, generation and descriptive representations without overinterpreting hidden factors.],
 )
 
 #lecture(

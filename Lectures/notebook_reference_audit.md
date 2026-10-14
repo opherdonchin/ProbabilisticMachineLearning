@@ -1,6 +1,6 @@
 # What the proposed notebooks ask students to do
 
-**Historical implementation/reference audit (2026-10-13):** The references and mathematical checks below belong to the previous notebook proposals. The new [course architecture](../course_architecture.typ) emphasizes practical ML applications and proposes a different L04 notebook and a shared L07/L09/L10 classifier exercise. New notebooks are not built or validated; consult the current architecture and do not treat the old per-lecture checks as implementation evidence for the newer exercises.
+**Implementation/reference audit:** L04 now follows the instructor-selected Iris evaluation endpoint. The remaining tasks and identified reference checks concern existing scope proposals; the newer shared L07/L09/L10 classifier still requires reconciliation. Earlier coding checks do not validate the new L04 handoff. No future notebook is implemented or runtime-validated; use the current scope/register and distinguish inspected reference code from a course adaptation.
 
 
 This record separates the central student task from the programs the authors must supply. A 60-minute lab is not a promise that students build a complete inference or training system from scratch. All future course adaptations are still unwritten/unrun; inspecting a reference notebook does not test the proposed student task.
@@ -19,15 +19,13 @@ Construct an Ising prior and Gaussian observation likelihood; derive the joint, 
 
 **Choice or limitation:** The existing agreed scope requires this simpler method as notebook work. It differs from Murphy’s sampling/mean-field algorithms and does not promise a global optimum or posterior uncertainty. Completing both the mathematical model and algorithm in one hour remains demanding and untested. [Detailed scope](L03_Graphical_Models/lecture_scope.md).
 
-### L04 — Information theory: mutual information, processing and noisy coding
+### L04 — Evaluate prepared Iris probability forecasts
 
-Extend the lecture's 2-message-bit + parity code to `c5(m1,m2)=(m1,m2,m1,m2,m1 XOR m2)`; prove minimum distance 3; implement/check MAP decoding and use a supplied 4×32 channel enumeration to compare MI, Bayes error and rate with the three-bit and uncoded baselines.
+**Selected endpoint, instructor 2026-10-14:** Compute held-out accuracy and mean negative log score for prepared forecasts, compare a supplied training-frequency baseline, and explain disagreement between hard-label and probability scoring. The three-bit parity example remains live; five-bit code construction is no longer required student work.
 
-**Skill practised:** Construct a correcting code and use a finite probability model to compare guaranteed single-error correction, average noisy-channel error, mutual information and transmission cost.
+**Students complete:** probability/label alignment, selected-class log-score and accuracy reductions, and interpretation of model comparisons. **Authors supply:** the fixed data split, training-only preprocessing and prediction generation, forecast arrays/class order, stable scoring helpers, descriptive top-label reliability summaries and a bounded same-law representation/information comparison. No model training, second coding implementation or population mutual-information estimator is required.
 
-**Authors supply:** 32 received-word enumeration, vectorized probability/axis helpers, lecture-code and uncoded benchmark outputs, log-zero/tie-safe utilities, plots and noise sweep; students retain codeword-distance analysis and decoder implementation. These helpers/checkpoints are requirements for future authoring, not existing validated course files.
-
-**Choice or limitation:** The instructor chose the **lighter three-bit code for the lecture and stronger five-bit code for the notebook**. The former detects but cannot guarantee recovery; the latter corrects up to one error at higher transmission cost. One-hour workload remains untested. [Detailed scope](L04_Information_Theory/lecture_scope.md).
+**Readiness:** This is a new course-constructed handoff anchored in Murphy Book 2 §§5.1.6/5.2.4 and §§5.3.1–5.3.4. Earlier coding arithmetic/reference reviews do not validate it. Current-target source/Section Design review, a worked solution, student timing and clean local uv/hosted Colab checks remain required. See [L04 scope](L04_Information_Theory/lecture_scope.md) and its register for review and approval status.
 
 ### L05 — Generalized linear models, automatic differentiation and SGD
 
@@ -125,7 +123,7 @@ Validate the instructor solution before decomposing the exercise. Use Gaussian n
 
 ### L04
 
-The lecture uses a four-message/eight-received-word three-bit model: it detects a single flip without guaranteed correction. The student notebook uses the **course-constructed five-bit code** with four messages/32 received words (vectorized 4×32 joint table, not hand enumeration). Verify pairwise minimum distance 3, single-flip decoding, marginal/joint normalization, posterior ties and impossible observations. At α=0.2, five-bit optimal message error ≈0.22176 versus 0.36 for the lecture's three-bit code; MI ≈1.12343 bits/message. Five transmitted bits reduce the rate to 2/5. These are untested notebook targets, not a guaranteed one-hour completion.
+Validate fixed holdout/class ordering and identical cases for all forecasts and the training-frequency baseline. Probability rows must be finite, nonnegative and normalized. Score the observed class with natural logarithms; zero probability for an observed class means infinite loss, while rounding or clipping changes the evaluated forecast. Keep scoring units consistent across L04/L05. Verify accuracy and score reductions and the supplied comparisons before writing student questions. Top-label confidence-versus-correctness reliability displays are descriptive on this small dataset; fixed bins and support counts do not establish a population calibration guarantee. The supplied representation comparison specifies one finite joint law for the label, original discrete representation and processed representation, with a label-independent processing rule; it does not estimate population MI from sparse Iris bins. No source forecast/run is selected using test outcomes. One-hour completion remains unmeasured.
 
 ### L05
 

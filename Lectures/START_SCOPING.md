@@ -1,6 +1,6 @@
 # Start lecture scoping — post-architecture handoff
 
-**Working branch:** `scope-l04-l12-after-architecture-20261014`
+**Working branch:** `assess-l04-l12-reconciliation-20261014`, isolated worktree `/tmp/pml-l04-l12-reconciliation`, based on `origin/scope-l04-l12-after-architecture-20261014` at `16850fb`.
 **Frozen starting point:** merge commit `730b5cbde055cc166f48f1a73dc63df190e6187b` on `scope-l03-l12-course-architecture` (PR #16, already merged).
 **Stage:** Lecture Scope / instructor-led reconciliation and revision; **not** slides, Section Design, or notebook implementation.
 **Initial target:** L04 Information Theory, then L05–L12 in teaching order, resolving cross-lecture dependencies as necessary.
@@ -18,7 +18,7 @@
 - **L01:** prepared lecture and solved notebook; not yet taught. Do not invent delivery information.
 - **L02:** agreed exponential-family/Markov-chain design; use as a prerequisite assumption but confirm final drafted artifacts later.
 - **L03:** instructor-agreed live graphical-model scope and notebook-only Ising image-restoration model and local algorithm. **Do not redo L03 scope**; proposed seven-section design on `lecture-3-authoring` is not fully approved and has separate review issues.
-- **L04:** previously selected three-bit parity/detection example in the lecture **and five-bit correction/decoding extension in the notebook**. A newer course-map proposal would instead devote the notebook primarily to Iris probabilistic scoring and information preservation, using parity coding as a smaller diagnostic. This is a **real unresolved instructor decision**, not authorization to replace the earlier agreed scope.
+- **L04:** On 2026-10-14 the instructor selected the recommended focused Iris probability-evaluation notebook, replacing the previous five-bit student construction. Keep the live three-bit parity example and information-theory mathematics. Full-scope acceptance, live emphasis and detailed handoff remain separate; see the L04 and [reconciliation registers](course_architecture_scope/reconciliation/development_state.md).
 - **L05–L12:** existing detailed scope files are proposals and review evidence, not blanket instructor approval of the newer curriculum-map examples. Preserve proven decisions, explicitly reopen consequential changes, and do not replace a scope merely because a newer map is more recent.
 
 ## The teaching principle to protect
@@ -35,11 +35,11 @@ Do not mischaracterize L05–L10 as increasingly advanced posterior approximatio
 4. Have Section Design evaluate the provisional scope in `feasibility-review` mode without producing section contracts. Obtain instructor approval for consequential choices, write/update only the target lecture's scope and compact development-state record, and synchronize the *prospective* curriculum map. Record review provenance and any unresolved notebook validation. Never update the actual map before class.
 5. Continue lecture by lecture, with cross-lecture checks where topics/examples recur. Preserve the accepted course spine rather than redoing prior approvals.
 
-## Immediate instructor discussion: L04
+## Current L04 checkpoint
 
-First reconcile the course's performance/information ambition with the earlier coding choice. The existing L04 scope builds entropy, KL, mutual information, data processing and a three-bit parity demonstration, with a five-bit correcting-code *student notebook*. The newer map proposes Iris probability forecasts, calibration/log-score, and an information-preserving representation as the notebook's main task; parity becomes optional small exact diagnostics. This may improve recognizable ML relevance but risks losing a substantive student construction and breaking a prior agreement. Consider whether a focused hybrid can genuinely fit one hour and still let students *use* information theory, rather than merely calculate metrics.
+The notebook-endpoint decision is resolved: prepared Iris forecasts, student accuracy/log-score comparisons and supplied reliability/bounded information interpretation. The required five-bit construction is removed; live parity remains. Develop the affected handoff without silently rewriting the communication-led intellectual arc or live allocations. Obtain current-target source/Section Design review, then present any consequential live-emphasis change as one decision. No full-scope acceptance or notebook implementation is implied.
 
-**First response to the instructor:** briefly summarize the prior approved boundary, the newer alternative, the mathematical and practical gains/losses, and one recommended way to resolve the conflict. End with **one focused question about L04's notebook endpoint**. Do not produce a full revised L04 scope or start discussing L05 before the instructor responds.
+**Next instructor interaction:** do not ask the resolved notebook-endpoint question again. Report the targeted revision and review findings, distinguishing acceptance of Iris from pending detailed scope decisions. Continue one consequential decision at a time; preserve the separate L01 workstream.
 
 ## Later decisions to surface only when their lectures arise
 

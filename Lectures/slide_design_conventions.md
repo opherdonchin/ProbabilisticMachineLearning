@@ -140,8 +140,12 @@ with the object where they make its operation intelligible. Established L01
 proofs use such cues as “Center”, explicit variable mappings, and the reason
 joint Gaussianity turns zero covariance into independence. Text that is itself
 being inspected, such as an algorithm or passage, is also a legitimate object.
-This is not a ban on words, a fixed word budget, or permission to remove
-mathematical assumptions. Put task framing and takeaway interpretation in key
+This is not a ban on words or a fixed word budget. Conditions belong on the
+slide when they explain a necessary inference or materially affect how students
+interpret or use the result. Established assumptions, technical qualifications
+and routine algebra may remain implicit in the projected explanation; record
+consequential elisions and their supporting context in the existing design
+rationale/constraints. Put task framing and takeaway interpretation in key
 points; avoid several peer headings that repeat those takeaways. Removing local
 guidance while leaving a stack of equations does not satisfy this convention.
 
@@ -190,9 +194,14 @@ already-established key point rather than inventing a new formulation.
 
 ### Mathematical content should be exact before authoring
 
-Design should use real equations, notation, limits, and labels whenever they are
-known. Do not defer substantive mathematical choices to production simply
-because the design document is not the final deck.
+Specify the selected visible equations, notation and labels precisely before
+authoring. Separately check the underlying result and its conditions against the
+source. The projected explanation may be informal or abbreviated: preserve the
+essential reasoning while selecting which details students need to see at this
+point. Mathematical reference completeness does not require displaying every
+qualification, algebraic step or equivalent formulation. Explicit instructor
+requirements for formal treatment still apply. Do not defer the selection of
+visible mathematics to production.
 
 For derivations:
 
@@ -313,15 +322,37 @@ design/authoring boundary.
 
 ### Density is a design problem before it is a font-size problem
 
-Do not solve an overloaded slide by assuming production can shrink it.
+Assess both spatial and cognitive density at actual presentation scale.
+Spatial density concerns mathematical scale, spacing, grouping and competing
+regions. Cognitive density concerns how much new notation, reasoning and how
+many relationships students must read and connect simultaneously. Fewer symbols
+or more whitespace do not by themselves make an explanation easier to follow.
+
+At each meaningful state, identify the central mathematical object or result,
+its supporting material, and the intended reading/inference path. Use inspected
+completed course slides as concrete evidence for scale, spacing, hierarchy and
+object/key-point roles, without treating their geometry as a template. Avoid
+peer blocks of similar weight, unnecessary labels, fragmented equalities and
+stacks whose logical relationships require the reader to reconstruct them.
+
+Resolve pressure through content selection, semantic regrouping, spatial
+composition or negotiated slide boundaries. Do not resolve it by shrinking
+important content, removing essential guidance or adding reveals that hide
+needed comparisons and merely postpone a crowded final state. Both the
+handout and the most demanding reveal must be understandable.
 
 Generate backpressure when:
 
-- important equations cannot remain readable;
-- a figure's labels would need to become tiny;
-- key points compete with the main object;
-- two teaching moves are packed into one slide;
-- a comparison cannot be seen simultaneously.
+- important equations or figure labels cannot remain readable at course scale;
+- the central result is difficult to locate among supporting material;
+- key points or peer blocks compete with the main object;
+- too many new elements or relationships require simultaneous attention;
+- a reasoning step or comparison cannot be followed in the proposed composition.
+
+Design reconsiders selected content and semantic relationships; Authoring offers
+concrete realizations and measured render evidence; Organization reconsiders
+teaching boundaries and provisional count. Preserve the agreed depth and scope;
+a nominal layout or slide allocation is not an instructor constraint.
 
 ### Course visual style
 

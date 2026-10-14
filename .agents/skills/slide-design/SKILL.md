@@ -176,6 +176,19 @@ For each slide specify:
 - summary candidates when justified;
 - unresolved design constructs explicitly.
 
+Before layout, select the projected argument. For details that materially affect
+density, distinguish what students must see, what the actual prior context
+allows them to assume, and what belongs only to mathematical checking. Keep
+essential transformations and reasons students cannot yet supply visible;
+technical qualifications, routine algebra and repeated formulations may remain
+implicit when this improves understanding. Record consequential choices and
+supporting context in the existing `rationale`/`constraints`, rather than adding
+a per-line inventory or new artifact. A Derive/Prove commitment does not by
+itself require a fully qualified theorem and every proof line on the slide;
+honor any explicitly agreed formal standard and return genuine depth changes
+upstream. Use the course convention's distinction between checked mathematics
+and the selected explanation.
+
 Ordinary mathematical objects should be light on explanatory text, following
 [the object/key-point convention](../../../Lectures/slide_design_conventions.md#objects-and-key-points).
 Keep equations, figures, intrinsic labels/conditions and local mathematical
@@ -184,8 +197,9 @@ takeaway interpretation in key points. Light text is not an equation-only rule:
 removing a centering label, substitution map or reason for an implication can
 remove the argument. Key points can accompany the step they interpret rather
 than wait for the final reveal.
-This is a semantic choice made before layout, not a word-count target or a reason
-to omit mathematics. Text may itself be an inspected object (e.g. an algorithm).
+This is a semantic choice made before layout, not a word-count target. Preserve
+the selected essential reasoning rather than stripping its guidance. Text may
+itself be an inspected object (e.g. an algorithm).
 
 Keep object and key-point roles distinct in the composition and through reveals.
 Prefer a layout with a separate key-point slot. A generic label grid does not
@@ -231,7 +245,12 @@ Check:
 
 - title/body alignment;
 - clarity of the dominant object;
-- real equation/figure density;
+- spatial density at course mathematical scale and spacing;
+- cognitive density: simultaneous new notation, reasoning and relationships;
+- whether the central object/result is identifiable and support is subordinate;
+- whether grouping and reading order expose the mathematical relationships;
+- whether visible qualifications, labels and algebra earn their place;
+- whether intended elisions are supported by the actual student context;
 - layout relationships;
 - reveal state logic;
 - whether requested entry emphasis helps locate the new material without adding competing chrome;
@@ -248,7 +267,13 @@ sequence: what is being established, which previous expression each new operatio
 acts on, what licenses it, and how the result answers the opening question. Keep
 a load-bearing equation syntactically whole; make its terms and connection to
 the proof readable without giving every equation equal visual weight. An A4 design render or a complete list of
-labels cannot establish final slide readability or alignment by itself.
+labels cannot establish final slide readability or alignment by itself. Compare
+actual meaningful reveals and the final handout with completed course precedents
+at the same slide scale. Judge whether students can follow and relate the visible
+steps, not just whether content fits. If normal-scale realization remains crowded,
+reconsider selection/grouping with Authoring and boundaries/count with Organization;
+request genuinely different compositions or divisions where evidence is needed.
+Do not strip essential explanations or conceal excessive density behind reveals.
 
 Where practical, `design.typ` should fail visibly on structural mistakes such
 as unknown labels or contradictory references.

@@ -1,6 +1,8 @@
 # L01 — reassessment of the rejected after-slides
 
-**Current instructor steering:** the instructor clarified that the intended fix is tighter bidirectional coupling between Organization, Design and Authoring, with coordinator-facilitated negotiation. The further slide-repair retry was stopped. Read the [current negotiation record](slide_coupling_negotiation.md) and [shared protocol](../../../.agents/skills/shared/slide-convergence.md) first. No successful replacement render is claimed.
+**Record target:** reassessment of the rejected after-slides and the ensuing process discussion at baseline `0967e4f`. The instructor requested tighter bidirectional coupling between Organization, Design and Authoring, and that slide-repair retry was stopped. The [initial negotiation](slide_coupling_negotiation.md) and [shared protocol](../../../.agents/skills/shared/slide-convergence.md) followed. No successful replacement render was claimed by that discussion.
+
+**Current result:** a subsequently commissioned coupled test produced a new isolated candidate. Read [slide_coupled_test.md](slide_coupled_test.md) first for the current recommendation and review/approval status. The diagnosis and proposed repair below describe this reassessment's original target, not instructor acceptance of the new slides.
 
 **Underlying instructor assessment:** the after-slides remain unlike the deck and their equations do not communicate a clear argument. All the originally identified concerns matter. The linked reports preserve separate raw evidence. The production lecture source/PDF remain unchanged. Any candidate remains a proposed isolated repair.
 
@@ -27,7 +29,7 @@ Read the [paired audit](slide_reasoning_paired_audit.md) for exact candidate/sou
 
 ## Scope of the repair and review
 
-The organization specialist finds the accepted two-slide proof viable. Revision 2 of the [owning organization](squared_loss_slide_organization.md) preserves its titles/order, `m,V,r` notation, mathematical depth, finite-second-moment regime, endpoint and live allocation. No lecture-scope or section-boundary change is proposed. Its clarified teaching sequence is a provisional experiment handoff, not approval of replacement slides.
+At this reassessment's target revision, the organization specialist found the two-slide proof viable. Revision 2 preserved its titles/order, `m,V,r` notation, mathematical depth, finite-second-moment regime, endpoint and live allocation. No lecture-scope or section-boundary change was proposed. That clarified sequence was a provisional experiment handoff, not approval. The [current owning organization](squared_loss_slide_organization.md) now records the subsequently tested O4/D2 candidate; the earlier text remains in Git.
 
 The skills now distinguish local mathematical guidance from task framing and takeaway prose. They require actual predecessor checks and reconstruction of the visible argument, alongside faithful typed-role lowering and mathematical syntax checks. These changes address demonstrated failures; structural skill validation does not establish their pedagogical effectiveness.
 

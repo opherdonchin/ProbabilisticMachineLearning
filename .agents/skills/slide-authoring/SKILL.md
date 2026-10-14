@@ -9,6 +9,14 @@ Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-
 
 Use this skill after slide design is approved.
 
+Under Lecture Development coordination,
+[the coupled slide protocol](../shared/slide-convergence.md) also permits an
+explicitly scoped exploratory build against provisional design to test fit,
+grouping and reveals. Return implementation alternatives and measured evidence
+to Design and Organization; do not only reject their artifact. This isolated
+prototype is not a read-only feasibility review, production completion or
+permission to replace approved lecture sources.
+
 The primary responsibility is:
 
 > Realize the approved student-visible explanation faithfully, maintainably, and legibly in the live production system.

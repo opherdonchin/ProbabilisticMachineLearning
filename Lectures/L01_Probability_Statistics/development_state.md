@@ -2,10 +2,12 @@
 
 **Purpose:** coordinator workflow register. The instructor's teaching proposal is [lecture_scope.md](lecture_scope.md); this file records its status, decisions, evidence and next owners.
 **Maintainer:** Lecture Development Coordinator (`/root`); initialized at branch kickoff and maintained during this session.
-**Working branch:** second process investigation on child branch `test/l01-reasoning-alignment-20261014`, from alignment-branch commit `15042b8`. Integration destination remains `rescope-l01-l12-architecture-alignment-20261014`; do not work on `main`. The first investigation used `test/l01-slide-skills-20261014`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
-**Stage:** renewed process/design analysis following instructor rejection of the isolated after-slide comparison. All alignment dimensions remain obligations; the earlier experimental readiness judgments did not establish an intelligible reasoning sequence or sufficient resemblance to the deck. Live mathematical depth remains accepted. No complete five-part Scope is approved; no class has been taught.
+**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`. The second process investigation and coordination revision used child branch `test/l01-reasoning-alignment-20261014`, from alignment-branch commit `15042b8`, and are integrated here; do not work on `main`. The first investigation used `test/l01-slide-skills-20261014`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
+**Stage:** coordinator-process discussion: tighter bidirectional Organization–Design–Authoring coupling, following explicit instructor redirection. The slide-repair retry was stopped. Current production and all experimental candidates remain unapproved for alignment. Live mathematical depth remains accepted. No complete five-part Scope is approved; no class has been taught.
 
 ## Current instructor request — process first
+
+**Latest steering (current discussion, 2026-10-14):** the instructor said that repeated slide repairs were missing the intended process change. Keep Scope and Section Design largely independent, while Organization, Design and Authoring negotiate realistic slide choices bidirectionally, facilitated by the coordinator with two or three concurrent specialists. The coordinator stopped the active design retry and ran one guided offer/counteroffer exchange among the three existing specialists; no additional sources or renders were generated in that exchange. The [shared coupled-slide protocol](../../.agents/skills/shared/slide-convergence.md) and specialist/coordinator pointers now describe that workflow. Read the [negotiation record](reconciliation/slide_coupling_negotiation.md) for what was agreed and what remains hypothetical. Do not automatically resume the slide retry while this coordination discussion is active.
 
 On 2026-10-14 the instructor paused the proposed whole-deck redevelopment and asked how the design, authoring, review and coordination process produced and accepted misaligned slides. The decisive convention is that mathematical/visual objects are usually light on text, with necessary explanation in key points. The instructor proposed fresh-agent calibration on slide 64 and transfer validation on slide 65. This authorizes isolated skill experiments and refinement, not automatic replacement of the actual deck or a claim that its design is now approved.
 
@@ -78,10 +80,10 @@ Exact command, PDF hash, preview findings and original production review are in 
 
 | Owner | Action | Gate / status |
 |---|---|---|
-| Instructor, through coordinator discussion | Assess process diagnosis and isolated slide comparison | Loss-proof depth accepted; actual slide alignment rejected; experimental revisions unpromoted |
+| Instructor, through coordinator discussion | Assess the bidirectional coordination model and guide the next commission | Current discussion concerns process; no further rendering automatically dispatched |
 | Lecture Scope specialist through coordinator | Develop notebook handoff, then examples and contract iteratively; reconcile L02/L03 prerequisites | After spine discussion; not yet dispatched |
 | Coordinator and separate reviewers | Arrange source-arc review where needed and lightweight Section Design preview | After coherent five-part provisional Scope; not commissioned |
-| Coordinator and fresh specialist agents | Reassess every alignment concern and develop/review the actual paired reasoning sequence | Earlier readiness judgments reopened by instructor; new work remains experimental; no whole-deck quality claim |
+| Coordinator and relevant specialists | Use offers/counteroffers and scoped prototypes to converge on a realistic Organization/Design/Authoring contract when slide work resumes | Coupled protocol installed; guided exchange completed; no successful new render or independent forward-test claimed |
 | Bounded live slide team / coordinator | Apply accepted candidate revisions and check their integration into L01 | Await process/candidate discussion; production source/PDF unchanged |
 | Other section/slide/notebook authors | Other live revisions and recorded-session development | Await corresponding upstream acceptance; not started |
 

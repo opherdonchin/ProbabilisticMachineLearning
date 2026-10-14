@@ -110,6 +110,13 @@ When such a recommendation arises, preserve the current specification in the dra
 
 The approved organization is a contract for the downstream design stage.
 
+Under Lecture Development coordination, use
+[the coupled slide protocol](../shared/slide-convergence.md) to test provisional
+teaching moves with Design and Authoring before freezing that contract. Offer
+and reconsider boundaries/count/titles within your authority in response to
+visible-argument and production evidence. Discuss alternatives with their owners;
+do not treat a nominal count or a positive preview as proof of realizability.
+
 For each slide, the handoff should make recoverable:
 
 - final-style title;

@@ -17,6 +17,14 @@ The primary question is:
 
 Work one section at a time unless the instructor explicitly asks otherwise.
 
+Under Lecture Development coordination,
+[the coupled slide protocol](../shared/slide-convergence.md) permits explicitly
+labeled exploration of provisional Organization with Authoring before formal
+design approval. Offer semantic arrangements and invariants, ask for measured
+production counteroffers, and negotiate Organization changes with its owner.
+This informs a coherent proposed contract; it does not authorize production
+replacement or silently change approved teaching decisions.
+
 ## Operating modes
 
 Use `build` (default), `feasibility-review`, or `revision`. Follow `../shared/backpressure.md` for the common mode/result/ownership contract. When the Lecture Development Coordinator (`../lecture-development/SKILL.md`) is active, return decisions and review results through the coordinator, not a second instructor-facing conversation.

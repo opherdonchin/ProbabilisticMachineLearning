@@ -66,6 +66,23 @@ These instructions apply to the entire repository.
 
 For **L01–L03** in the 2027-1 revision, the instructor has explicitly reopened scope decisions following a major change to the course architecture. Recover prior decisions, source branches, lecture decks, design artifacts, worked solutions, and notebook pedagogy before proposing changes. Judge the architecture against the strongest existing teaching argument as well as judging existing materials against the architecture; if existing material demonstrates a better course-wide principle, propose an explicit architecture revision rather than forcing the material to fit. Make the smallest effective revision, but allow substantial restructuring when evidence and instructor decisions justify it. First reconcile and approve scopes, then return to Section Design, Slide-Level Organization, Slide Design, Slide Authoring and notebook validation, reusing effective existing work. From L04 onward, start scope work from the architecture and curriculum map while preserving documented prior choices unless expressly revised. See `Lectures/START_SCOPING.md` for the current branch, evidence inventory, and opening discussion. Do not update `curriculum_map_actual.typ` until lectures are taught.
 
+## Course development coordination
+
+- For course-wide priorities, concurrent lecture/notebook/skill work, or
+  "What should we do next?", read and follow
+  `.agents/skills/course-development/SKILL.md` (`$course-development`). Discover
+  work and instructor approvals across relevant branches and worktrees, not
+  just `main`; reconcile live files with their owning records before dispatch.
+- Reuse existing lecture and notebook skills. Distinguish artifact, skill,
+  instructor-decision, branch and runtime blockers; restrict each to its actual
+  dependencies. A slide-process failure does not automatically block unrelated
+  scope development or notebook feasibility. A next-action question authorizes
+  assessment and recommendations, not lecture production or merges.
+- Keep persistent course coordination limited to active cross-course assignments
+  and unresolved dependencies not already owned elsewhere. Lecture registers
+  retain lecture status and approvals; architecture and curriculum maps retain
+  their existing authority. Do not create duplicate task histories or ledgers.
+
 ## Lecture development coordination
 
 - In Codex IDE/CLI, invoke `$lecture-development` for the instructor-facing

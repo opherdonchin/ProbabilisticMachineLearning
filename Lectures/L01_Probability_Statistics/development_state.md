@@ -1,6 +1,6 @@
 # L01 — scope and artifact reconciliation state
 
-**Stage:** instructor-led Lecture Scope / operation-centered notebook direction agreed in principle; whole-lecture intellectual arc remains under discussion.
+**Stage:** Lecture Scope build / provisional intellectual arc ready for instructor discussion. Operation-centered notebook direction agreed in principle; whole-lecture arc awaits instructor acceptance.
 **Maintainer:** Lecture Development Coordinator (`/root`). The register was initialized at the branch kickoff before this session; the coordinator updated it during the current review and discussion.
 **Working branch:** `rescope-l01-l12-architecture-alignment-20261014`, created from `scope-l04-l12-after-architecture-20261014` at `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
 **Course-wide sources:** `course_architecture.typ`, `curriculum_map.typ`, `curriculum_map_actual.typ`, `Lectures/START_SCOPING.md`.
@@ -20,7 +20,9 @@
 
 **Open instructor decisions:** Whole-lecture endpoint and intellectual arc; required mathematical treatment depths (particularly the residual proof and quadratic decomposition); concrete measurement context; live/notebook time allocation and the retained role of PyMC/exact comparison. The coordinator should bring a concrete arc proposal to the instructor rather than ask the instructor to independently resolve the matrix's entire issue list.
 
-**Uncertainties and next owner:** Coordinator arranges a bounded Lecture Scope reconciliation proposal and returns the intellectual arc to the instructor. Scope drafting for discussion is part of the authorized workflow; downstream slide/notebook rewriting and architecture/map changes await their relevant decisions. Before freezing L01, reconcile L02's asserted precision/information-form prerequisite and L03's actual entry conditions. Notebook clean local/Colab execution and student-time feasibility are unverified. Current-source correctness concerns are recorded in the matrix for author repair at the appropriate stage.
+**Current proposal and review:** [lecture_scope.md](lecture_scope.md), blob `120056e4fd426832f9275d03b765b960b0f03898`, authored by `/root/l01_existing_argument` under a bounded Lecture Scope `build` commission at `ab5fdcdaa4aaa22d4ba0bb2bc701ddceee5d6b49`. It contains the intellectual arc only, with a recommendation to preserve the general-to-operational route, a measurement-first alternative, and proposed proof-depth/time tradeoffs. Coordinator read the complete proposal for clarity, mathematical distinctions, agreement fidelity and stage boundaries; this is a same-context coordination check, not independent source-arc or Section Design validation.
+
+**Uncertainties and next owner:** Instructor discusses the concrete arc through the coordinator. The remaining four Scope parts, downstream design/authoring, architecture/map edits and L02 advancement are excluded from the completed commission. No additional instructor answer was needed before commissioning; unsettled depth/time/context choices are now presented against the proposal. Before freezing L01, reconcile L02's asserted precision/information-form prerequisite and L03's actual entry conditions. Notebook clean local/Colab execution and student-time feasibility are unverified. Current-source correctness concerns are recorded in the matrix for author repair at the appropriate stage.
 
 **Impact:** No downstream approvals invalidated or artifacts rewritten at this checkpoint. Scope, architecture L01 description, coverage specification and notebook handoff may require selective changes after decisions. Keep actual coverage untouched.
 
@@ -36,7 +38,7 @@
 
 | Action | Owner | Trigger / status |
 |---|---|---|
-| Prepare a provisional whole-lecture intellectual arc from existing material and the agreed notebook direction; identify smallest revisions, unresolved depth/time choices and any architecture amendment | Coordinator commissions Lecture Scope specialist; specialist owns the proposal | Immediate next substantive work; not yet dispatched |
+| Prepare a provisional whole-lecture intellectual arc from existing material and the agreed notebook direction; identify smallest revisions, unresolved depth/time choices and any architecture amendment | `/root/l01_existing_argument`, Lecture Scope specialist; coordinator owns dispatch and instructor presentation | Returned in `lecture_scope.md`; first part only, proposed; coordinator check completed |
 | Review that arc and decide consequential endpoint, emphasis and depth choices | Instructor, through coordinator discussion | When the concrete proposal is presented; no blanket approval of this register or matrix is required |
 | Develop mathematical spine, notebook handoff, examples and lecture contract iteratively; check L02/L03 prerequisite effects | Lecture Scope specialist, coordinated by `/root`; instructor accepts teaching commitments | After arc agreement; no automatic advance to L02 |
 | Commission source-arc review where needed and a lightweight Section Design feasibility preview; adjudicate findings | Coordinator arranges separate reviewers; reviewers assess, instructor approves Scope | Once the five-part provisional Scope is coherent; not yet commissioned |

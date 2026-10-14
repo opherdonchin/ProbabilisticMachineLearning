@@ -8,7 +8,7 @@
 
 The instructor's “Sounds good,” recorded in [development state](development_state.md), accepts in principle using the same dataset and probabilistic formulation to answer different questions: the hidden-block distribution $p(z\mid y)$, its summary $E[Z\mid y]$ under squared loss, and the forward measurement distribution $p(y)=\int p(z,y)\,dz$, with a short generation activity. Conditioning, summarization and marginalization are operations; inference, prediction and generation are uses that can combine those operations.
 
-The instructor subsequently explicitly chose the current route, citing the substantial existing work and the absence of a deep architecture-driven reason to reorder it. They also selected a separate recorded full proof of quadratic separation, while retaining the residual derivation and stated/interpreted identity live. They endorsed using the existing Section Design → Slide Organization → Slide Design → Slide Authoring skills for that recording under the coordinator. These choices do not approve every milestone refinement, timing, taxonomy reduction, new context or proposed addition. Whether students must watch the recording remains open.
+The instructor subsequently explicitly chose the current route, citing the substantial existing work and the absence of a deep architecture-driven reason to reorder it. They also selected a separate recorded full proof of quadratic separation, while retaining the residual derivation and stated/interpreted identity live. They endorsed using the existing Section Design → Slide Organization → Slide Design → Slide Authoring skills for that recording under the coordinator. These choices do not approve every milestone refinement, timing, taxonomy reduction, new context or proposed addition. The instructor clarified that the proof is required course content and may appear on the exam; viewing itself is not recorded, evaluated or monitored.
 
 ## 1. What the existing artifacts do
 
@@ -92,17 +92,17 @@ Thus $E[Z\mid y]$ is appropriate for that loss, not automatically every decision
 
 **Recording development commitment:** develop the full block-elimination proof from Murphy Book 2 §2.3.1.5, “Derivation: moment form.” Entry knowledge is Gaussian block notation, the centered residual and its Schur-complement covariance. The endpoint is the quadratic identity and the factorization $p(x_1,x_2)=p(x_1\mid x_2)p(x_2)$. The live residual argument stands alone: understanding it does not depend on viewing this additional proof. The exact recorded treatment, equation selection and duration will be developed in the mathematical-spine discussion and recording brief.
 
-The planned separate source is `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`. No recording or deck exists yet; the path is a development target. Student-required versus optional status is pending clarification and must not be inferred from the authoring commitment. The accepted workflow applies the existing design/authoring stages under the coordinator; it does not start those stages automatically.
+The planned separate source is `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`. No recording or deck exists yet; the path is a development target. Students are responsible for the proof as examinable content, regardless of whether they watch the video. Viewing is not recorded, evaluated or monitored, and no particular exam question is promised. The accepted workflow applies the existing design/authoring stages under the coordinator; it does not start those stages automatically.
 
 The proposed allocations total 110 minutes plus approximately 10 for discussion/slippage: plausible but tight. Current PDF has 67 pages/seven sections; calibration's 70/eight count is stale. No measured delivery time exists. The separate one-hour notebook needs selective reuse to accommodate accepted forward/generation questions; its exact PyMC balance and context await the notebook-handoff discussion, not a new decision here.
 
 L02/L03 retain Gaussian density, conditioning, joint reasoning and simple graph prerequisites. L02 already introduces $\Lambda=\Sigma^{-1}$ in its Gaussian rewrite; reconcile its inaccurate L01 information-coordinate attribution there. No later lecture is rescoped.
 
-**Remaining decisions:** recording's required/optional student status; mathematical depths beyond the accepted proof boundary; concrete context; proposed additions/reductions and live/notebook workload, including PyMC's role. The selected route supports proceeding to mathematical-spine discussion through the coordinator. The remaining four Scope parts have not been drafted or approved; appropriate source-arc review and Section Design preview still precede complete Scope approval.
+**Remaining decisions:** mathematical depths beyond the accepted proof boundary; concrete context; proposed additions/reductions and live/notebook workload, including PyMC's role. The selected route supports proceeding to mathematical-spine discussion through the coordinator. The remaining four Scope parts have not been drafted or approved; appropriate source-arc review and Section Design preview still precede complete Scope approval.
 
 ## Source records and checking material
 
-Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `d1ffd4c3407b686677c84ebd8aa3375b30da142f`; preceding arc blob `682261132ed686f5f9eb80a95facadb597ad10e8`. Reviewed source blobs:
+Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `d91ec44d43808a2c97dfaf7f4637687e76f9252a`; preceding arc blob `d78c83aa8b0be881b6f6e272a339a3b23df017ee`. Reviewed source blobs:
 
 - Deck: `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`.
 - Coverage specification: `c4457bc4fdb11df14de54658f20e487030766328`.

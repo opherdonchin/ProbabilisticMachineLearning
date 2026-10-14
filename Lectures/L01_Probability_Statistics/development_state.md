@@ -9,13 +9,13 @@
 
 **Handoff source revision:** `a685e2c1bef606d63acff87c2a12b5a11466bf2a`; the subsequent handoff commit adds this section. The instructor requested committing and syncing the current stack before resuming from another VS Code connected to the office.
 
-Start with this register and the current [scope](lecture_scope.md), then load the canonical lecture-development skill including its recorded-session coordination. Retain the accepted route, operation-centered notebook direction and live/recorded proof boundary. Do not reopen those decisions merely because the chat/session changes. The required-versus-optional recording question remains unanswered; silence and a session change do not decide it.
+Start with this register and the current [scope](lecture_scope.md), then load the canonical lecture-development skill including its recorded-session coordination. Retain the accepted route, operation-centered notebook direction and live/recorded proof boundary. Do not reopen those decisions merely because the chat/session changes. The instructor subsequently clarified that the recorded proof is required, examinable course content; viewing is not recorded, evaluated or monitored.
 
 **Next work:** commission the Lecture Scope specialist to propose the mathematical spine, separating live and recorded treatment, while preserving the current clear separation of existing material, critique, recommendations and instructor choices. The recording brief must specify proof assumptions, normalization, source equations, endpoint and extent. Remaining Scope parts then proceed iteratively. No mathematical-spine or downstream recording/slide/notebook task is currently running or completed; no video or new Typst recording source exists.
 
 Suggested opening message in the new session:
 
-> Resume L01 reconciliation on `rescope-l01-l12-architecture-alignment-20261014` using `$lecture-development`. Read `Lectures/L01_Probability_Statistics/development_state.md` and `lecture_scope.md`; reconcile them with the current branch before continuing. The lecture route and separate recorded block-elimination proof are already selected. Continue with the mathematical spine, preserving live/recorded boundaries and the different-questions notebook aim. Keep unresolved decisions explicit and do not advance to L02.
+> Resume L01 reconciliation on `rescope-l01-l12-architecture-alignment-20261014` using `$lecture-development`. Read `Lectures/L01_Probability_Statistics/development_state.md` and `lecture_scope.md`; reconcile them with the current branch before continuing. The lecture route and separate recorded block-elimination proof are already selected; the proof is examinable content, with no tracked or assessed viewing. Continue with the mathematical spine, preserving live/recorded boundaries and the different-questions notebook aim. Keep unresolved decisions explicit and do not advance to L02.
 
 Git carries the artifacts, decisions and review evidence; this register is the durable handoff rather than assuming that the new VS Code exposes the same chat history.
 
@@ -25,26 +25,28 @@ Current discussion, 2026-10-14: the notebook's strongest message is that the sam
 
 **Subsequent explicit decisions (current discussion, 2026-10-14):** retain the current route because of the strong existing work and absence of a deep architecture-driven reason to reorder it. Keep residual conditioning and the stated/interpreted quadratic identity live; prepare the full block-elimination proof as a separate recorded session with a dedicated Typst deck. Use the existing section/organization/design/authoring skills under coordination.
 
-These decisions do not settle all proposed refinements, concrete measurement context, exact workload, other mathematical depths or PyMC balance. Baseline reconstruction evaluation is a possible supporting exercise, not the central endpoint. Required versus optional viewing of the recording is pending an explicit instructor answer.
+**Recording obligation clarified (instructor's async answer, 2026-10-14):** the proof is required course content and may appear on the exam. Viewing the video is not recorded, evaluated or monitored. This defines content responsibility, not compulsory video watching or a promised exam question. The live proof and notebook remain independently sufficient for their agreed endpoints.
+
+These decisions do not settle all proposed refinements, concrete measurement context, exact workload, other mathematical depths or PyMC balance. Baseline reconstruction evaluation is a possible supporting exercise, not the central endpoint.
 
 ## Current proposal and instructor decisions
 
-**Current artifact:** [lecture_scope.md](lecture_scope.md), by Lecture Scope specialist `/root/l01_existing_argument`, current blob `d78c83aa8b0be881b6f6e272a339a3b23df017ee`. Its route/proof-boundary decisions are accepted; remaining refinements and timings are proposed. Decision-revision baseline: `d1ffd4c3407b686677c84ebd8aa3375b30da142f`.
+**Current artifact:** [lecture_scope.md](lecture_scope.md), by Lecture Scope specialist `/root/l01_existing_argument`, current blob `fb2775ac8d25d891bf8a2f5c3031ef58542afc94`. Its route/proof-boundary and recording-content obligation decisions are accepted; remaining refinements and timings are proposed. Current clarification baseline: `d91ec44d43808a2c97dfaf7f4637687e76f9252a`.
 
 **Remaining proposals:** strengthen the concrete problem/query connection and squared-loss interpretation; selectively reduce repeated exposition if needed to fit the agreed notebook direction. These refinements have not been silently approved by the decision to retain the route. The recording proof is an addition to existing materials, not an existing live proof being relocated.
 
 **Source-analysis correction:** the architecture already includes incomplete/noisy measurements, different questions and the three operations. No substantive architecture amendment is justified on this point. Any later notebook-description synchronization follows accepted handoff changes.
 
-**Instructor's next task:** decide required/optional recording viewing, then review the mathematical-spine proposal when presented. The earlier route choice is closed. Context, notebook workload and PyMC balance are handled when their Scope parts are developed.
+**Instructor's next task:** review the mathematical-spine proposal when presented. The route choice and recording-content obligation are closed. Context, notebook workload and PyMC balance are handled when their Scope parts are developed.
 
 ## Live and recorded delivery units
 
 | Unit | Accepted content boundary | Stage / next owner |
 |---|---|---|
 | Live L01 | Current formulation → Gaussian geometry/conditioning → LGS route; residual derivation and interpreted quadratic identity remain live | Scope mathematical spine: Lecture Scope specialist through coordinator |
-| `recording:quadratic-separation` | Full block-elimination proof of the joint quadratic separation and conditional/marginal factorization; separate slide source | Scope recording contract/depth/source selection first; downstream section/slide stages not started |
+| `recording:quadratic-separation` | Full block-elimination proof of the joint quadratic separation and conditional/marginal factorization; separate slide source; required/examinable content, unmonitored viewing | Scope recording contract/depth/source selection first; downstream section/slide stages not started |
 
-Planned recording production path: `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`, with its own section design, organization and design specifications in that directory when authored. No placeholder source or recording exists yet. The live proof and notebook do not depend on this additional proof; required student viewing remains open. Keep preparation, validated slides, video production and actual assignment separate.
+Planned recording production path: `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`, with its own section design, organization and design specifications in that directory when authored. No placeholder source or recording exists yet. The live proof and notebook do not depend on this additional proof; its content remains examinable. Keep preparation, validated slides, video production and actual assignment separate; do not introduce viewing-compliance tracking.
 
 The mathematical spine/recording brief must make invertibility/positive-definiteness assumptions and normalization explicit: separating the exponent alone must not be presented as a complete density-factorization proof. This is author checking work, not an instructor approval question.
 
@@ -52,7 +54,6 @@ The mathematical spine/recording brief must make invertibility/positive-definite
 
 | Owner | Action | Gate / status |
 |---|---|---|
-| Instructor, through coordinator discussion | Decide required versus optional recording viewing | Question pending; this does not block recording-workflow preparation |
 | Lecture Scope specialist and coordinator | Develop mathematical spine with explicit live/recorded depths; then handoff, examples and contract iteratively; reconcile L02/L03 prerequisites | Current route and proof boundary accepted; next substantive stage, not yet dispatched |
 | Coordinator and separate reviewers | Arrange source-arc review where needed and lightweight Section Design preview | After coherent five-part provisional Scope; not commissioned |
 | Owning section/slide/notebook authors | Selectively revise live work; develop recorded-session sections, organization, design and standalone deck; validate artifacts | After each unit's corresponding upstream acceptance; not started |
@@ -63,7 +64,7 @@ Correctness, source verification, compilation and clean local/hosted Colab execu
 
 - [Existing-material assessment](reconciliation/existing_material_assessment.md), by `/root/l01_existing_argument`, and [architecture assessment](reconciliation/architecture_assessment.md), by `/root/l01_architecture_tensions`: separate initial analyses, not formal feasibility previews or runtime validation.
 - [Supporting reconciliation matrix](reconciliation/matrix.md): coordinator synthesis, updated to reflect current decisions and source corrections. Original raw reports remain unchanged.
-- [Recorded-session workflow check](reconciliation/recorded_session_workflow_review.md), by `/root/recorded_session_workflow_check`: independent read-only behavior test of coordinator-skill blob `45a2e60970697b809ca595c614848bb0988a1270`. It found the existing specialists usable for the separate recording, with stale register status and one ambiguity about separately accepted recording briefs. Coordinator reconciled the register and clarified that boundary in current skill blob `1ec41d751f86aed447062b9675b6b4e878564cf2`; those small repairs were coordinator-checked, not independently re-reviewed. `quick_validate.py` passed frontmatter/skill validation. This is workflow testing, not Scope/Section Design, mathematical or runtime validation.
+- [Recorded-session workflow check](reconciliation/recorded_session_workflow_review.md), by `/root/recorded_session_workflow_check`: independent read-only behavior test of coordinator-skill blob `45a2e60970697b809ca595c614848bb0988a1270`. It found the existing specialists usable for the separate recording, with stale register status and one ambiguity about separately accepted recording briefs. Coordinator reconciled the register and clarified that boundary in subsequent skill blob `1ec41d751f86aed447062b9675b6b4e878564cf2`; those small repairs were coordinator-checked, not independently re-reviewed. The later instructor clarification distinguishes examinable content from viewing compliance; the skill now records these separately. `quick_validate.py` passed frontmatter/skill validation. This is workflow testing, not Scope/Section Design, mathematical or runtime validation.
 - [Targeted communication review](reconciliation/communication_review.md) by `/root/l01_architecture_tensions` of working-tree scope blob `b37da7ffa4d1982ea1da0218ab01073b0aa093b5`: separate from the author; finds the main status-separation problem resolved and identifies three remaining repairs. Coordinator checked those repairs in final blob `682261132ed686f5f9eb80a95facadb597ad10e8`: current matrix withdraws the unsupported architecture amendment, register identifies the current version, computational complexity is explicitly author checking material, and correction attribution is accurate. This disposition is a coordinator recheck, not a second independent review. No source-arc, Section Design, mathematical or runtime validation is claimed.
 - Historical persona reports target deck blob `69886a29870e4edd9d3fdde79c252b3e0037de54` at `e518d93f9566645da2eeff96e56662960f66d5a4`. They are simulated-reader evidence, not classroom results or validation of the production refactor.
 

@@ -1,9 +1,10 @@
 # L01 — scope and artifact reconciliation state
 
-**Stage:** instructor-led Lecture Scope / notebook emphasis clarified; intellectual arc and query selection remain under discussion.
+**Stage:** instructor-led Lecture Scope / operation-centered notebook direction agreed in principle; whole-lecture intellectual arc remains under discussion.
+**Maintainer:** Lecture Development Coordinator (`/root`). The register was initialized at the branch kickoff before this session; the coordinator updated it during the current review and discussion.
 **Working branch:** `rescope-l01-l12-architecture-alignment-20261014`, created from `scope-l04-l12-after-architecture-20261014` at `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
 **Course-wide sources:** `course_architecture.typ`, `curriculum_map.typ`, `curriculum_map_actual.typ`, `Lectures/START_SCOPING.md`.
-**No revised L01 scope, design, notebook, or new pedagogical approval exists yet.** No class has yet been taught.
+**No complete revised L01 Scope, slide design or notebook implementation is approved yet.** The limited notebook-direction agreement is recorded below. No class has yet been taught.
 
 ## Initial review checkpoint — 2026-10-14
 
@@ -15,9 +16,11 @@
 
 **Accepted instructor direction (current discussion, 2026-10-14):** The notebook's strongest message should be that the same dataset and probabilistic formulation can support different questions. This clarifies the intended emphasis; it does not approve a revised Scope, concrete query set or notebook implementation. The coordinator's earlier reconstruction-baseline proposal is secondary to this endpoint.
 
-**Open instructor decision:** Which contrasting queries should students actually formulate and answer under one fixed Gaussian model? In the current discussion the instructor asks whether the three questions can explicitly exercise summarization, marginalization and conditioning, and connect to inference, prediction and generation. The coordinator recommends that relationship while preserving the distinction between probability operations and task/model uses: there is no one-to-one correspondence. A provisional LGS query set is a point reconstruction $E[Z\mid y]$, a forward measurement distribution $p(y)=\int p(z,y)\,dz$, and a hidden-block posterior $p(z\mid y)$. Summarizing the posterior builds on conditioning; generation can draw new cases from the same forward model. The existing PyMC and exact-LGS routes compute the same conditional query. Exact query selection, context, mathematical depths, timing and retained PyMC comparison remain unapproved.
+**Subsequent limited agreement (current discussion, 2026-10-14):** The instructor responded “Sounds good” to the proposal that the three main notebook questions exercise conditioning, summarization and marginalization, with inference, prediction and generation as concrete uses. The query types are agreed in principle: hidden-block distribution $p(z\mid y)$, point reconstruction $E[Z\mid y]$ under squared loss, and forward measurement distribution $p(y)=\int p(z,y)\,dz$, accompanied by a short generation activity. Summarizing the posterior builds on conditioning; task uses and probability operations do not pair one-to-one. This is acceptance of the pedagogical direction, not the complete lecture scope, notebook design or workload.
 
-**Uncertainties and next owner:** Coordinator continues the intellectual-arc discussion with the notebook's different-question emphasis, keeping the query set provisional. No rewriting of Scope, slides, notebook, architecture or curriculum allocation is authorized yet. Before freezing L01, reconcile L02's asserted precision/information-form prerequisite and L03's actual entry conditions. Notebook clean local/Colab execution and student-time feasibility are unverified. Current-source correctness concerns are recorded in the matrix for author repair at the appropriate stage.
+**Open instructor decisions:** Whole-lecture endpoint and intellectual arc; required mathematical treatment depths (particularly the residual proof and quadratic decomposition); concrete measurement context; live/notebook time allocation and the retained role of PyMC/exact comparison. The coordinator should bring a concrete arc proposal to the instructor rather than ask the instructor to independently resolve the matrix's entire issue list.
+
+**Uncertainties and next owner:** Coordinator arranges a bounded Lecture Scope reconciliation proposal and returns the intellectual arc to the instructor. Scope drafting for discussion is part of the authorized workflow; downstream slide/notebook rewriting and architecture/map changes await their relevant decisions. Before freezing L01, reconcile L02's asserted precision/information-form prerequisite and L03's actual entry conditions. Notebook clean local/Colab execution and student-time feasibility are unverified. Current-source correctness concerns are recorded in the matrix for author repair at the appropriate stage.
 
 **Impact:** No downstream approvals invalidated or artifacts rewritten at this checkpoint. Scope, architecture L01 description, coverage specification and notebook handoff may require selective changes after decisions. Keep actual coverage untouched.
 
@@ -29,13 +32,17 @@
 - `review/` reports and original figure/author notebooks in the L01 directory; characterize what they actually evaluated, which version, and what remains open.
 - `slide-authoring-refactor` carries `slide_deck_07.typ` as a possible historical comparison; inspect only if it contains relevant accepted teaching moves.
 
-## Required first analysis
+## Next actions and owners
 
-1. Read and characterize the *existing lecture's real mathematical argument*, relevant figures and examples, time/density, and the practical notebook endpoint, independently of the new architecture.
-2. Explain how the new course's educational goal changes—or validates—that argument. Test whether the task/model/query/performance framing and concrete Gaussian application develop a genuine method repertoire, and whether the volume of framing vs computation is appropriate. Do not prejudge that changes are needed.
-3. Look forward to L02's exponential-family/Markov-chain commitments and L03's graphical-model argument, so L01 reallocations do not create gaps or repetitions.
-4. State specific opportunities for minimal revisions to the scope, course architecture, section boundaries, slide-design content and notebook; distinguish required versus optional improvements. Nothing downstream should be rewritten before scope-level acceptance.
-5. Ask the instructor a single consequential question about L01's endpoint/emphasis; discuss iteratively. Later record decisions, source evidence and feasibility-review provenance here.
+| Action | Owner | Trigger / status |
+|---|---|---|
+| Prepare a provisional whole-lecture intellectual arc from existing material and the agreed notebook direction; identify smallest revisions, unresolved depth/time choices and any architecture amendment | Coordinator commissions Lecture Scope specialist; specialist owns the proposal | Immediate next substantive work; not yet dispatched |
+| Review that arc and decide consequential endpoint, emphasis and depth choices | Instructor, through coordinator discussion | When the concrete proposal is presented; no blanket approval of this register or matrix is required |
+| Develop mathematical spine, notebook handoff, examples and lecture contract iteratively; check L02/L03 prerequisite effects | Lecture Scope specialist, coordinated by `/root`; instructor accepts teaching commitments | After arc agreement; no automatic advance to L02 |
+| Commission source-arc review where needed and a lightweight Section Design feasibility preview; adjudicate findings | Coordinator arranges separate reviewers; reviewers assess, instructor approves Scope | Once the five-part provisional Scope is coherent; not yet commissioned |
+| Revisit existing sections, organization, design and production; implement accepted notebook handoff; repair mathematical/source errors and validate artifacts | Owning section/slide/notebook specialists; coordinator routes work | After corresponding upstream acceptance; no slide or notebook edits started |
+
+Correctness, source verification, compilation and local/Colab execution belong to authors/reviewers. They are not instructor action items. `curriculum_map.typ` and `curriculum_map_actual.typ` are the only course-wide material tracking documents; keep the actual map untouched until teaching.
 
 ## Current accepted authority
 

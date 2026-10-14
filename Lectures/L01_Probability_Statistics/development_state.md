@@ -5,6 +5,20 @@
 **Working branch:** `rescope-l01-l12-architecture-alignment-20261014`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
 **Stage:** Lecture Scope, current route and live/recorded proof boundary accepted. Mathematical-spine development is next; no complete five-part Scope is approved. No class has been taught.
 
+## Resume from the office VS Code
+
+**Handoff source revision:** `a685e2c1bef606d63acff87c2a12b5a11466bf2a`; the subsequent handoff commit adds this section. The instructor requested committing and syncing the current stack before resuming from another VS Code connected to the office.
+
+Start with this register and the current [scope](lecture_scope.md), then load the canonical lecture-development skill including its recorded-session coordination. Retain the accepted route, operation-centered notebook direction and live/recorded proof boundary. Do not reopen those decisions merely because the chat/session changes. The required-versus-optional recording question remains unanswered; silence and a session change do not decide it.
+
+**Next work:** commission the Lecture Scope specialist to propose the mathematical spine, separating live and recorded treatment, while preserving the current clear separation of existing material, critique, recommendations and instructor choices. The recording brief must specify proof assumptions, normalization, source equations, endpoint and extent. Remaining Scope parts then proceed iteratively. No mathematical-spine or downstream recording/slide/notebook task is currently running or completed; no video or new Typst recording source exists.
+
+Suggested opening message in the new session:
+
+> Resume L01 reconciliation on `rescope-l01-l12-architecture-alignment-20261014` using `$lecture-development`. Read `Lectures/L01_Probability_Statistics/development_state.md` and `lecture_scope.md`; reconcile them with the current branch before continuing. The lecture route and separate recorded block-elimination proof are already selected. Continue with the mathematical spine, preserving live/recorded boundaries and the different-questions notebook aim. Keep unresolved decisions explicit and do not advance to L02.
+
+Git carries the artifacts, decisions and review evidence; this register is the durable handoff rather than assuming that the new VS Code exposes the same chat history.
+
 ## Instructor-agreed teaching direction
 
 Current discussion, 2026-10-14: the notebook's strongest message is that the same dataset and probabilistic formulation support different questions. The instructor's subsequent “Sounds good” accepts in principle a hidden-block distribution $p(z\mid y)$, its squared-loss mean summary $E[Z\mid y]$, and a forward measurement distribution $p(y)=\int p(z,y)\,dz$, with a short generation activity. Conditioning, summarization and marginalization can combine in inference, prediction and generation; they do not pair one-to-one.

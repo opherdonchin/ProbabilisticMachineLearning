@@ -1,0 +1,29 @@
+{
+  "source": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-side.typ",
+  "sha256": "6739086e73791c1b90657e09978ad9f9f84341f5f1b9eb344cc4d10b7c8fda82",
+  "warnings": [],
+  "pages": {
+    "handout": 4,
+    "presentation": 12
+  },
+  "previews": [
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-handout-1.png",
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-presentation-1.png",
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-presentation-2.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-handout-1.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-presentation-1.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-presentation-2.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-presentation-3.png",
+    "centering-the-error-makes-the-posterior-mean-optimal-548da9e4-handout-1.png",
+    "centering-the-error-makes-the-posterior-mean-optimal-548da9e4-presentation-1.png",
+    "centering-the-error-makes-the-posterior-mean-optimal-548da9e4-presentation-2.png",
+    "centering-the-error-makes-the-posterior-mean-optimal-548da9e4-presentation-3.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-handout-1.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-1.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-2.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-3.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-4.png"
+  ],
+  "visual_review": "pending",
+  "status": "mechanical-pass"
+}

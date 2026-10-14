@@ -124,6 +124,26 @@ Typical objects include:
 Interpretation should explain what the object means, what changes, what matters,
 or what conclusion follows.
 
+### Objects and key points
+
+**Instructor convention (2026-10-14):** mathematical and visual objects are
+usually light on text; necessary explanatory text belongs in key points. The
+object is what students inspect, derive or compare. Key points supply motivation,
+interpretation and what the result establishes. Decide this division before
+choosing cards or geometry, and preserve it in production even if a layout sketch
+uses a generic grid.
+
+Equations, axes, short intrinsic labels and conditions needed to read a proof
+can remain with the object. Text that is itself being inspected, such as an
+algorithm or passage, is also a legitimate object. This is not a ban on words,
+a fixed word budget, or permission to remove mathematical assumptions. Sentence-
+length framing and explanatory headings around an equation normally belong in
+key points; do not repeat them as several peer object headings.
+
+For an existing-deck insertion, inspect immediate neighbor renders and a relevant
+established teaching slide before deriving the content/role contract. A shared
+font, theme or successful compile does not establish alignment with that contract.
+
 ### Titles are claims or teaching moves
 
 Titles should recover the section argument when read in order. Prefer specific
@@ -180,6 +200,11 @@ For derivations:
 
 Carry an earlier equation, model, or figure when students need it to understand
 the new operation without mentally reconstructing context.
+
+A recall object must contain knowledge established in the identified earlier
+material. Definitions carried forward do not make newly derived consequences
+recall. New reasoning belongs in the main proof object even when it uses those
+definitions.
 
 Carried-forward material should be visibly subordinate to the new object. Its
 role is orientation, not repetition.

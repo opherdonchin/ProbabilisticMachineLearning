@@ -39,6 +39,11 @@ Before designing, read:
 - neighboring slides/sections when continuity matters;
 - mature Lecture 1 precedent when a concrete course example helps.
 
+When producing executable `.typ` mathematics, use the available Typst-authoring
+skill and verified current syntax/documentation alongside this pedagogical skill.
+A rendered equation must preserve the intended delimiters and attachment grouping;
+compilation alone does not establish that.
+
 Use `Lectures/README.md` only as the pipeline/index document.
 
 ## Authority
@@ -103,6 +108,14 @@ not yet expressible in the constrained vocabulary.
 
 ### 1. Establish the design contract
 
+For an insertion into an existing deck, inspect rendered immediate neighbors
+and a relevant established teaching slide (a proof precedent for a new proof).
+Extract a brief visual/notation contract before choosing content: what is the
+inspected object, what explanation belongs in key points, what prior knowledge
+is carried forward, and how the deck distinguishes new reasoning from recall.
+Apply the instructor's course conventions; sharing a theme is not sufficient
+continuity. Report concrete precedent evidence, not merely that files were read.
+
 Extract from the upstream artifacts:
 
 - section purpose;
@@ -148,6 +161,25 @@ For each slide specify:
 - summary candidates when justified;
 - unresolved design constructs explicitly.
 
+Ordinary mathematical objects should be light on explanatory text, following
+[the object/key-point convention](../../../Lectures/slide_design_conventions.md#objects-and-key-points).
+Keep equations, figures and indispensable local labels/conditions in the object;
+put motivation, interpretation and sentence-length explanation in key points.
+This is a semantic choice made before layout, not a word-count target or a reason
+to omit mathematics. Text may itself be an inspected object (e.g. an algorithm).
+
+Keep object and key-point roles distinct in the composition and through reveals.
+Prefer a layout with a separate key-point slot. A generic label grid does not
+make every label a mathematical object; if the intended relation cannot be
+expressed faithfully, use an explicit design escape/backpressure rather than
+flattening the roles. Do not duplicate the same explanation as both a titled
+object and a takeaway.
+
+For each recalled mathematical item, identify where it was established. A
+previous definition does not make a newly proved consequence recalled knowledge.
+Use ordinary proof objects for new reasoning; a recall object is subordinate
+because students already possess its content, not because space is scarce.
+
 A design may temporarily use syntax that `design.typ` does not yet support if
 that makes the intended structure clearer.
 
@@ -165,6 +197,13 @@ pattern.
 
 ### 5. Compile and inspect the design document
 
+Run `python scripts/check_typst_math_attachments.py <design-file>` after editing
+executable design mathematics, and resolve new hits before handoff. Use documented
+math constructors for compound delimiters (e.g. norms inside expectations) rather
+than assuming adjacent shorthand characters will parse as intended. For ambiguous
+delimiters or attachments, check local syntax and inspect the rendered expression;
+use a minimal parsed-content probe when visual inspection cannot resolve it.
+
 The rendered design document is itself a review artifact.
 
 Check:
@@ -179,6 +218,12 @@ Check:
 - summary nominations;
 - unresolved escape hatches;
 - section continuity.
+
+Compare the candidate explanation with the selected precedent contract. Identify
+any prose retained in the object and why it is intrinsic to reading that object;
+check that key points still occupy their interpretation role, and that new proof
+steps receive teaching attention. An A4 design render or a complete list of
+labels cannot establish final slide readability or alignment by itself.
 
 Where practical, `design.typ` should fail visibly on structural mistakes such
 as unknown labels or contradictory references.

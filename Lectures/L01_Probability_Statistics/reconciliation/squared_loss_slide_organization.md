@@ -1,46 +1,62 @@
-# L01 — bounded squared-loss addition
+# L01 — bounded squared-loss organization
 
-**Status and authority:** provisional experimental repair, revision 2 (2026-10-14). The instructor explicitly requested adding the derivation slides to the live lecture and subsequently rejected both the original production and the after-candidates' design alignment. The accepted mathematical depth remains intact; this revision clarifies the paired teaching sequence in response to those failures. It does not approve a replacement design or production deck. This contract covers that insertion only; the full reconciled Lecture Scope and the rest of the deck's design stages remain unfinished. Organization revision under the slide-level-organization skill; downstream design and authoring are delegated separately. No full Section Design or Lecture Scope approval is implied.
+**Status:** O4/D2 proposed isolated candidate, 2026-10-14. Fresh separate review completed: feasible-with-risks, with no material mathematical or design-fidelity issue and advisory cumulative-density/pacing concerns. Instructor acceptance pending. The instructor accepts the full vector proof live, but has rejected the existing insertion's design. This organization records the selected coupled candidate, not promotion to the live lecture. The live slide source/PDF still contain the rejected old insertion. Baseline `0967e4fc20fd4f93a58692bbc0c74f5917fbf18b` preserves the prior organization in Git. Final disposition belongs to the forthcoming [coupled test record](slide_coupled_test.md).
 
-**Existing section:** Linear Gaussian systems. Insert after “Inference often combines conditioning and summarizing” and before “Sensor fusion combines measurements according to their uncertainty”. Keep the existing retrospective section summary. This is an internal proof, not a new section or a recording.
+**Boundary and entry:** an internal cluster in Linear Gaussian systems, after actual page63, “Inference often combines conditioning and summarizing”, and before actual page66, “Sensor fusion combines measurements according to their uncertainty”. Page63 establishes the conditional Gaussian and mean summary, but neither a loss criterion nor optimality. Conditional expectations, mean/covariance, the Gaussian conditioning result (page48), Gaussian Bayes (page59), and scalar application (page61) are available. Preserve the existing retrospective section summary. The separate quadratic-separation recording is unchanged.
 
-**Actual entry and endpoint:** the preceding slide establishes the conditional Gaussian $p(z\mid y)$, its mean summary $\hat z=E[z\mid y]=\mu_{z\mid y}$, and the distinction between that summary and the whole posterior. Mean/covariance and expectations are available; squared-loss risk and the optimality of that summary are not established by that slide. Introduce the criterion for choosing an action, then prove why the conditional mean is the optimal point estimate under squared Euclidean loss, while the conditional distribution still carries uncertainty. Finite conditional second moments suffice; Gaussianity supplies the mean/covariance already computed.
+## Selected organization
 
-| Order | Slide title | Teaching move |
-|---|---|---|
-| 1 | A point estimate needs a loss function | Connect the preceding mean summary to the problem of choosing a reconstruction action. Define squared loss and conditional risk, introduce the shared abbreviations once, and center the pointwise error at the conditional mean. End with the complete pointwise expansion, without averaging or claiming optimality. |
-| 2 | The conditional mean minimizes squared-error risk | Carry the actual pointwise expansion forward. Take conditional expectation as new reasoning, evaluate the centered cross-term and residual energy, derive the intact risk identity, and use its nonnegative squared-distance term to establish the unique optimum and minimum risk. Relate this result to the already identified Gaussian mean. |
+1. **A point estimate needs a loss function.** Supply the criterion for choosing a reconstruction from the posterior: choose an unrestricted action $a$ to minimize conditional expected squared error $R(a\mid y)$, without yet identifying the optimum. At fixed observed $y$, introduce the action, squared loss, conditional risk, moments and centered residual; end with the complete pointwise squared expansion. Distinguish the random residual $r=z-m$ from fixed displacement $m-a$. This is pointwise algebra, without averaging or claiming optimality.
+2. **The conditional mean uniquely minimizes squared-error risk.** Take conditional expectation of the actual expansion as new reasoning, evaluate the centered cross-term and residual energy, and assemble the intact risk identity. Use nonnegativity and its equality case to establish the unique optimum and minimum risk, then return to the previously computed Gaussian mean. The proof licenses the decision; the covariance trace describes remaining model expected squared error.
 
-**Slide 1 intention and carry-forward constraint:** a summary extracted from a posterior is not yet a justified choice of action. Let $z\in\mathbb R^d$ be the unknown vector and $a\in\mathbb R^d$ an arbitrary reconstruction after observing $y$. Introduce $L(a,z)=\|z-a\|^2$ and $R(a\mid y)=E[L(a,z)\mid y]$; make the connection between this criterion and the action explicit. At fixed observed $y$, $a$ is fixed and uncertainty remains in $z$. State the finite conditional second-moment condition before it is used.
+## Mathematical and teaching constraints
 
-Use the deck's notation $z,y$. Introduce $m=E[z\mid y]$, $V=\operatorname{Cov}[z\mid y]$, and $r=z-m$ once on this slide. Explicitly identify the already established Gaussian correspondence $m=\mu_{z\mid y}$ and $V=\Sigma_{z\mid y}$ there; the definitions of $m,V$ are general conditional moments, not a Gaussian assumption. Do not defer this correspondence until students have already needed it on the following slide. Establish the pointwise decomposition
+At a fixed observed $y$, assume $E[\|z\|^2\mid y]<\infty$. The unknown is $z\in\mathbb R^d$; the unrestricted chosen reconstruction $a\in\mathbb R^d$ is fixed at this observation. Define
+
+$$
+L(a,z)=\|z-a\|^2,\qquad R(a\mid y)=E[L(a,z)\mid y].
+$$
+
+Introduce $m=E[z\mid y]$, $V=\operatorname{Cov}[z\mid y]$, and $r=z-m$ before reuse. Identify the already established Gaussian correspondence $m=\mu_{z\mid y}$, $V=\Sigma_{z\mid y}$ immediately, while preserving the general meaning of the moments. Establish
 
 $$
 z-a=r+(m-a),\qquad
 \|z-a\|^2=\|r\|^2+2r^T(m-a)+\|m-a\|^2.
 $$
 
-The criterion interpretation belongs with the loss/risk definitions; the centering move prepares the three terms for conditional averaging. Make both relationships recoverable rather than making an interpretation of the criterion appear to be a consequence of the centered algebra. Do not cancel the cross-term or prove the minimizer here.
-
-**Slide 2 intention and dependency constraint:** recall consists only of the definitions, conditions and pointwise expansion actually established on slide 1. Applying conditional expectation to that expansion is the first new proof operation, not recall:
+On the second slide, averaging is new work rather than recall:
 
 $$
 R(a\mid y)=E[\|r\|^2\mid y]+2E[r^T(m-a)\mid y]+\|m-a\|^2.
 $$
 
-Show why $E[r\mid y]=E[z\mid y]-m=0$ and why the fixed-$y$ action permits
-$E[r^T(m-a)\mid y]=E[r\mid y]^T(m-a)=0$. Evaluate the other moment as
-$E[\|r\|^2\mid y]=\sum_{j=1}^d E[r_j^2\mid y]=\sum_{j=1}^d V_{jj}=\operatorname{tr}V$.
-These are new evaluations of the terms in the averaged expansion. Their relationship to that expansion must remain readable. Substitute them to obtain the load-bearing, intact identity
+Show the local licenses for evaluation:
 
 $$
-R(a\mid y)=E[\|z-a\|^2\mid y]=\operatorname{tr}V+\|m-a\|^2.
+E[r\mid y]=E[z\mid y]-m=0,\qquad
+E[r^T(m-a)\mid y]=E[r\mid y]^T(m-a)=0,
 $$
 
-The squared distance is nonnegative and vanishes only at $a=m$, so the unique minimizer is $a^*(y)=m$ and the minimum risk is $\operatorname{tr}V$. Connect each conclusion to the term that establishes it: covariance trace is the remaining model expected squared error; displacement from the mean adds squared distance. Return to the preceding slide's Gaussian mean summary using the correspondence already established on slide 1. The proof uses finite conditional second moments, not Gaussianity. Identify the criterion as conditional expected loss under the model. No universal optimality for other losses or automatic real-data guarantee follows.
+where fixed $m-a$ permits factorization, and
 
-**Extent and constraints:** two slides, approximately 2–4 live minutes (unmeasured). The possibility of later reduction or relocation does not remove this time from the live budget. No additional loss catalogue, experiment, notebook revision or quadratic-separation proof. The scalar L2-loss result is Murphy Book 1 §5.1.5.1; the vector decomposition is a course elaboration.
+$$
+V=E[rr^T\mid y],\qquad
+E[\|r\|^2\mid y]=\sum_{j=1}^d E[r_j^2\mid y]
+=\sum_{j=1}^d V_{jj}=\operatorname{tr}V.
+$$
 
-**Implementation handoff:** exact student-visible mathematics, semantic grouping, hierarchy and cumulative reveal states belong to `squared_loss_slide_design.typ`; authoring lowers those slides into the current deck. The design must distinguish genuine carry-forward from new reasoning and make each new operation and its conclusion legible. Keep necessary earlier context available, preserve the intact risk identity, and avoid replacing competing headings with an undifferentiated equation sequence. These are teaching relationships, not a finished layout or reveal geometry. Routine layout choices are within the explicit insertion request. Consequential changes to depth, allocation or section endpoint return to the instructor.
+The intact load-bearing identity is
 
-**Open issues and validation:** no title, order, slide-count, notation, proof-depth or section-boundary change is proposed. The replacement design remains provisional. Review the actual pair after the preceding slide, every reveal and both final states for established-before-use notation, honest recall provenance, action status, mathematical/conclusion relationships and readable proof hierarchy. Retain the existing retrospective section summary. The 2–4 minute allocation remains an unmeasured estimate; check it after the coherent paired repair rather than silently reducing proof depth.
+$$
+R(a\mid y)=\operatorname{tr}V+\|m-a\|^2.
+$$
+
+Since the squared distance is nonnegative, with equality only when $a=m$, establish the unique $a^*(y)=m$ and $\min_{a\in\mathbb R^d}R(a\mid y)=\operatorname{tr}V$. Apply the earlier Gaussian correspondence to recover $a^*(y)=\hat z=\mu_{z\mid y}$ and minimum risk $\operatorname{tr}\Sigma_{z\mid y}$. Finite conditional second moments suffice without Gaussianity. This is conditional model expected loss, not an empirical performance guarantee. The scalar result is recorded from Murphy Book1 §5.1.5.1; the vector decomposition is a course elaboration.
+
+## Design direction and extent
+
+The first slide's criterion/action state precedes the new centering definitions and immediate Gaussian mapping; the final beat is the pointwise expansion. Task framing belongs with the criterion interpretation, while intrinsic fixed-y action status remains available to license averaging. The selected second-slide realization retains the established pointwise premise, visibly introduces averaging, and keeps local moment proofs adjacent to the intact identity and subsequent choice. Proof supports remain inspectable while conclusions appear. Exact student-visible groups/reveals belong to Design and geometry to Authoring.
+
+The two-slide choice follows comparison of complete actual adjacent proof/result and three-slide prototypes. It is provisional and may reopen on new evidence. Current first/second slides have three/five presentation states. The prior2–4 minute estimate remains unmeasured; no substantive teaching-time, depth, live/recorded boundary or section endpoint change has been enacted. Prototype fit and guided builder agreement do not establish classroom pacing or instructor acceptance.
+
+**Current candidate alignment:** reviewed scratch Design SHA-256 `f9c373733c6a181684e1dffadffe9473282407fe0c81a930e9f5a73c7e7b539d`; reviewed full scratch source SHA-256 `74d34ddba30899feb971e229270276e43ee559b9699c3ccfff231aacba159131`. The standalone four-slide candidate package `squared_loss_candidate.typ` includes the unchanged neighbors and the same two candidate bodies; it is separate from the live deck. Raw offers, corrections and observed evidence are retained in the coordinator's coupled test record and the scratch Organization report. Fresh separate review is complete with the feasible-with-risks assessment above; instructor acceptance remains pending. Current owning artifact versions and final disposition belong to the coupled test record. No upstream change is proposed.

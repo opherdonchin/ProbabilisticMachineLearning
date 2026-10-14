@@ -1,6 +1,8 @@
 # L01 — coupled slide-stage negotiation
 
-**Status:** the instructor redirected the work from another slide repair to the coordination process. The coordinator stopped the active retry and facilitated a guided, read-only exchange among the existing Organization, Design and Authoring agents. No new slide source or render was produced in that exchange. The [shared protocol](../../../.agents/skills/shared/slide-convergence.md) is installed with pointers in the coordinator and all three specialist skills. Its written form has structural checks, not an independent behavioral forward-test.
+**Record target:** the process discussion preserved in baseline `0967e4f`, before the subsequent behavioral test. The instructor redirected another slide repair to coordination; the coordinator stopped that retry and facilitated a guided, read-only exchange among the existing Organization, Design and Authoring agents. No new source or render was produced in that exchange. The [shared protocol](../../../.agents/skills/shared/slide-convergence.md) was then installed with specialist/coordinator pointers. The exchange itself did not test agents using that written protocol.
+
+**Current reading route:** the instructor later commissioned a real test. Read [slide_coupled_test.md](slide_coupled_test.md) for its candidate, observed process corrections, separate output review and remaining approval gate. The original offers and limits below remain evidence of the initial discussion.
 
 ## Coordinator's account of the exchange
 

@@ -1,0 +1,17 @@
+{
+  "source": "tmp/l01-skill-test/calibration64/slide_deck.typ",
+  "sha256": "b5cb1af08b2a5d98861b0c03b705df634e14f67d934f7cb7e95a4f353e2e2716",
+  "warnings": [],
+  "pages": {
+    "handout": 1,
+    "presentation": 3
+  },
+  "previews": [
+    "a-point-estimate-needs-a-loss-function-99da211a-handout-1.png",
+    "a-point-estimate-needs-a-loss-function-99da211a-presentation-1.png",
+    "a-point-estimate-needs-a-loss-function-99da211a-presentation-2.png",
+    "a-point-estimate-needs-a-loss-function-99da211a-presentation-3.png"
+  ],
+  "visual_review": "pending",
+  "status": "mechanical-pass"
+}

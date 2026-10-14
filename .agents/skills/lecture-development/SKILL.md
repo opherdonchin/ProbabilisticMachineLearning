@@ -61,6 +61,13 @@ Give the specialist a bounded task envelope:
 
 A skill reference alone does **not** launch an agent or load instructions. Use actual available delegation facilities; do not claim to have spawned agents without doing so. If none are available, run the stages serially in the existing context: explicitly load the relevant skill, switch modes, preserve artifact boundaries, and disclose that review was a same-agent feasibility check rather than independent validation.
 
+For existing-deck insertions, carry a compact precedent-derived visual/notation
+contract through design and authoring, including the instructor's division
+between the inspected object and key-point explanation. Do not prescribe a
+mini-exposition or layout in the dispatch merely to enumerate required coverage.
+If fixed extent would prevent a coherent explanation, let the owning stage
+surface that pressure rather than equating coverage with quality.
+
 Do not start multiple agents editing the same artifact concurrently. Delegate analysis in parallel only if the outputs are nonconflicting; integrate changes through the artifact's owning stage.
 
 ## Coordinator interaction with the instructor
@@ -89,6 +96,22 @@ For each stage:
 3. **Adjudicate:** classify findings by severity and owning stage. Ask the original specialist to respond to technically substantive objections and propose a minimal repair. Consult the instructor if the repair changes a pedagogical commitment. Re-review only after a material change.
 4. **Approve and hand off:** record accepted artifact/version, residual advisory risks, and the exact next-stage input. Advance only after necessary instructor approval.
 5. **Execution feedback:** later construction can reveal new structural problems despite a successful preview. Route them to the **nearest owning upstream stage**, commission targeted revision, and revalidate affected downstream artifacts.
+
+Keep feasibility, design fidelity, comparative alignment and mechanical
+validation distinct. A constructible design, an unclipped slide, and a matching
+final reveal answer different questions. Before accepting an existing-deck
+addition, examine the candidate alongside relevant established renders and test
+the instructor's visual/semantic contract, including what belongs in objects
+versus key points and whether recalled material was actually established.
+
+For a separate quality review, provide the mathematical contract, course
+standards, candidate and precedent renders, without the anticipated fault list,
+builder's defense or preferred verdict. Record whether the reviewer was separate
+from the builder, whether it later implemented its own preview, and whether its
+assessment was blind or seeded. A seeded critique can adjudicate a hypothesis;
+it cannot be reported as independent discovery. The coordinator owns the final
+comparative judgment and must route semantic failures even after mechanical
+checks pass. These checks do not grant instructor approval.
 
 For Slide Authoring there is no mandatory sixth pedagogical preview. Its own mechanical and visual validation is the build gate; a separate targeted implementation review may be requested when useful. For a brand-new lecture request, Lecture Scope can first test a proposed lecture brief against current curriculum and time constraints using its own `feasibility-review` mode, but the normal preview of Scope itself is performed by Section Design.
 

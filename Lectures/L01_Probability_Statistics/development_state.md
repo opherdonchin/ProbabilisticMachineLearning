@@ -2,8 +2,14 @@
 
 **Purpose:** coordinator workflow register. The instructor's teaching proposal is [lecture_scope.md](lecture_scope.md); this file records its status, decisions, evidence and next owners.
 **Maintainer:** Lecture Development Coordinator (`/root`); initialized at branch kickoff and maintained during this session.
-**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
-**Stage:** Lecture Scope remains provisional. The accepted bounded live squared-loss slide insertion is implemented and production-validated. Current route and live/recorded quadratic-proof boundary remain accepted. No complete five-part Scope is approved; no class has been taught.
+**Working branch:** process investigation on `test/l01-slide-skills-20261014`, created from alignment-branch commit `4b69e7e`. Integration destination remains `rescope-l01-l12-architecture-alignment-20261014`; do not work on `main`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
+**Stage:** process/skill investigation before further slide or whole-deck redevelopment. The instructor rejected the alignment of slides 64–65 after their bounded mechanical/render checks. Their live mathematical depth remains accepted; their design quality is reopened. No complete five-part Scope is approved; no class has been taught.
+
+## Current instructor request — process first
+
+On 2026-10-14 the instructor paused the proposed whole-deck redevelopment and asked how the design, authoring, review and coordination process produced and accepted misaligned slides. The decisive convention is that mathematical/visual objects are usually light on text, with necessary explanation in key points. The instructor proposed fresh-agent calibration on slide 64 and transfer validation on slide 65. This authorizes isolated skill experiments and refinement, not automatic replacement of the actual deck or a claim that its design is now approved.
+
+The production source/PDF remain exactly at `4b69e7e` during the experiment. Historical render/compile results below remain factual; they did not establish comparative alignment. A later critique was given suspected faults by the coordinator and cannot count as blind discovery. Fresh tests distinguish those review conditions explicitly. Scope, notebook, recording and L02 work remain paused while this bounded investigation runs.
 
 ## Resume from the office VS Code
 

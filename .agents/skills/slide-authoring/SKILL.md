@@ -20,7 +20,7 @@ Work one approved section or an explicit slide allowlist at a time unless the in
 Use `build` (default), `feasibility-review`, or `revision`. Follow `../shared/backpressure.md` for common modes and issue ownership. When the Lecture Development Coordinator (`../lecture-development/SKILL.md`) is active, send instructor decisions and backpressure through the coordinator.
 
 - **Build:** lower the approved design to `slide_deck.typ` using the workflow below, compile handout and presentation, run checks and inspect changed render states.
-- **Feasibility Review:** inspect a **provisional Slide Design specification** against the current `design.typ`, live `course.typ` API, fonts/assets available in the repository, reveal semantics, and production constraints. Identify likely layout overflow, illegible density, impossible/unsupported primitives, missing assets, or unimplementable reveal behavior. Return `feasible`, `feasible-with-risks`, or `blocked` with actual evidence, owner, smallest fix, and uncertainty. **Do not** generate `slide_deck.typ`, rewrite `slide_design.typ`, or claim compilation/render validation of a production deck that has not been built.
+- **Feasibility Review:** inspect a **provisional Slide Design specification** against the current `design.typ`, live `course.typ` API, fonts/assets available in the repository, reveal semantics, and production constraints. Test preservation of semantic roles and the existing deck's object/key-point convention as well as constructibility. Identify likely layout overflow, illegible density, impossible/unsupported primitives, missing assets, or unimplementable reveal behavior. Return `feasible`, `feasible-with-risks`, or `blocked` with actual evidence, owner, smallest fix, and uncertainty. **Do not** generate `slide_deck.typ`, rewrite `slide_design.typ`, or claim compilation/render validation of a production deck that has not been built.
 - **Revision:** accept focused feedback from compilation/visual inspection, instructor, or changed approved design. Apply the smallest production-level correction, recompile and visually recheck affected output states. If a faithful implementation is impossible without changing the intended explanation or teaching sequence, return explicit Slide Design (or earlier owner) backpressure instead of silently redesigning.
 
 A feasibility review is optional before implementation; actual mechanical and visual validation remain mandatory at the Build completion gate. Under coordination, preview scheduling and human approval belong to the coordinator, not the authoring agent.
@@ -89,6 +89,13 @@ Record the exact section/slide allowlist, approved design artifact, target produ
 
 ### 2. Inspect the live production API
 
+Check the design's precedent/role contract against the existing rendered deck.
+Trace typed key points to the production `key-points:` region and mathematical
+objects to `object:`. A generic grid in the design is not permission to flatten
+both roles into `object:`. If placement contradicts semantic roles, return
+Slide Design backpressure before tuning geometry. Likewise, newly derived
+mathematics marked as recall is a design issue, not a request to shrink the proof.
+
 Read the current `course.typ` signatures and relevant neighboring source.
 
 ### 3. Lower the final-state composition first
@@ -140,7 +147,18 @@ Use the repository review workflow documented in `Lectures/README.md`.
 
 Inspect every changed state and the final handout for legibility, hierarchy, equation density, figure readability, alignment, spacing, reveal stability, premature answers, missing content, and fidelity to the approved design.
 
-Mechanical success is not visual approval.
+Compare the final state with the selected established proof/neighbor renders,
+not only with its own design sketch. Verify that the mathematical object remains
+light on explanatory prose, its equation/figure stays coherent, and necessary
+interpretation occupies the separate key-point region. Short intrinsic labels
+and mathematically necessary conditions can stay with their object; a paragraph
+of explanation cannot be made into an object merely by grouping it in a card.
+If a faithful render violates this course convention, report design backpressure.
+
+Report mechanical validity, design fidelity and comparative alignment separately,
+with actual evidence for each. Inspecting every state establishes coverage of
+review; it does not itself establish any of those judgments. Mechanical success
+is not visual approval.
 
 ### 9. Surface backpressure
 

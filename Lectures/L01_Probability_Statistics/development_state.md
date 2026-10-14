@@ -2,14 +2,20 @@
 
 **Purpose:** coordinator workflow register. The instructor's teaching proposal is [lecture_scope.md](lecture_scope.md); this file records its status, decisions, evidence and next owners.
 **Maintainer:** Lecture Development Coordinator (`/root`); initialized at branch kickoff and maintained during this session.
-**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`. The process investigation used child branch `test/l01-slide-skills-20261014`, created from alignment-branch commit `4b69e7e`, and is integrated here; do not work on `main`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
-**Stage:** process/skill investigation before further slide or whole-deck redevelopment. The instructor rejected the alignment of slides 64–65 after their bounded mechanical/render checks. Their live mathematical depth remains accepted; their design quality is reopened. No complete five-part Scope is approved; no class has been taught.
+**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`. The second process investigation and coordination revision used child branch `test/l01-reasoning-alignment-20261014`, from alignment-branch commit `15042b8`, and are integrated here; do not work on `main`. The first investigation used `test/l01-slide-skills-20261014`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
+**Stage:** coordinator-process discussion: tighter bidirectional Organization–Design–Authoring coupling, following explicit instructor redirection. The slide-repair retry was stopped. Current production and all experimental candidates remain unapproved for alignment. Live mathematical depth remains accepted. No complete five-part Scope is approved; no class has been taught.
 
 ## Current instructor request — process first
+
+**Latest steering (current discussion, 2026-10-14):** the instructor said that repeated slide repairs were missing the intended process change. Keep Scope and Section Design largely independent, while Organization, Design and Authoring negotiate realistic slide choices bidirectionally, facilitated by the coordinator with two or three concurrent specialists. The coordinator stopped the active design retry and ran one guided offer/counteroffer exchange among the three existing specialists; no additional sources or renders were generated in that exchange. The [shared coupled-slide protocol](../../.agents/skills/shared/slide-convergence.md) and specialist/coordinator pointers now describe that workflow. Read the [negotiation record](reconciliation/slide_coupling_negotiation.md) for what was agreed and what remains hypothetical. Do not automatically resume the slide retry while this coordination discussion is active.
 
 On 2026-10-14 the instructor paused the proposed whole-deck redevelopment and asked how the design, authoring, review and coordination process produced and accepted misaligned slides. The decisive convention is that mathematical/visual objects are usually light on text, with necessary explanation in key points. The instructor proposed fresh-agent calibration on slide 64 and transfer validation on slide 65. This authorizes isolated skill experiments and refinement, not automatic replacement of the actual deck or a claim that its design is now approved.
 
 The production source/PDF remain exactly at `4b69e7e`. Historical render/compile results below remain factual; they did not establish comparative alignment. A later critique was given suspected faults by the coordinator and cannot count as blind discovery. The [process investigation and experimental record](reconciliation/slide_skill_experiment.md) distinguishes those review conditions and preserves failures as well as improvements. Isolated candidates remain unpromoted. Scope, notebook, recording, whole-deck redevelopment and L02 work await the instructor's response to this investigation.
+
+**Latest instructor assessment (current discussion, 2026-10-14):** all identified misalignments need attention: new reasoning presented as recall, mathematics/conclusion relationships, central-equation fragmentation, preceding-slide continuity, and reveal logic. The instructor finds the experimental after-slides an equation jumble with inadequate guidance and still unlike the actual deck. This reopens their comparative readiness judgments; it does not undo the recorded syntax/correctness checks. Inspect the actual 63 → candidate 64 → candidate 65 sequence and established proof/reveal precedents before revising any further rules or candidate slides. Any isolated revision remains proposed, not approved for production.
+
+The [current reassessment](reconciliation/slide_reasoning_reassessment.md) is the first reading route. A separately delegated organization audit identified a new averaging operation inside supposed recall and a mismatch between the actual candidate pair. An independently selected precedent analysis identified the local proof warrants and operation mappings the earlier comparison missed. The organization specialist's revision 2 preserves all accepted commitments and is a provisional experimental handoff, not a new approved lecture design.
 
 ## Resume from the office VS Code
 
@@ -74,10 +80,10 @@ Exact command, PDF hash, preview findings and original production review are in 
 
 | Owner | Action | Gate / status |
 |---|---|---|
-| Instructor, through coordinator discussion | Assess process diagnosis and isolated slide comparison | Loss-proof depth accepted; actual slide alignment rejected; experimental revisions unpromoted |
+| Instructor, through coordinator discussion | Assess the bidirectional coordination model and guide the next commission | Current discussion concerns process; no further rendering automatically dispatched |
 | Lecture Scope specialist through coordinator | Develop notebook handoff, then examples and contract iteratively; reconcile L02/L03 prerequisites | After spine discussion; not yet dispatched |
 | Coordinator and separate reviewers | Arrange source-arc review where needed and lightweight Section Design preview | After coherent five-part provisional Scope; not commissioned |
-| Coordinator and fresh specialist agents | Process audit, skill refinement, calibration and transfer tests | Findings in experimental record; failed first transfer retained; no whole-deck quality claim |
+| Coordinator and relevant specialists | Use offers/counteroffers and scoped prototypes to converge on a realistic Organization/Design/Authoring contract when slide work resumes | Coupled protocol installed; guided exchange completed; no successful new render or independent forward-test claimed |
 | Bounded live slide team / coordinator | Apply accepted candidate revisions and check their integration into L01 | Await process/candidate discussion; production source/PDF unchanged |
 | Other section/slide/notebook authors | Other live revisions and recorded-session development | Await corresponding upstream acceptance; not started |
 
@@ -93,6 +99,8 @@ Correctness, source verification, compilation and clean local/hosted Colab execu
 - Historical persona reports target deck blob `69886a29870e4edd9d3fdde79c252b3e0037de54` at `e518d93f9566645da2eeff96e56662960f66d5a4`. They are simulated-reader evidence, not classroom results or validation of the production refactor.
 
 **Open author checks:** malformed expanded marginal covariance product; coin uncertainty wording; sensor-noise independence and prior regime; sampling/error interpretation; clean local and Colab notebook execution; one-hour student feasibility. Current deck: 69 handout pages/seven sections (67 before this insertion). The calibration's older count is stale. Teaching times remain unmeasured.
+
+**New render evidence to check before broader redevelopment:** the precedent analyst found later proof steps missing from the supplied presentation sequences for logical pages 41 (affine covariance), 47 (marginal projection) and 49 (conditional covariance), although present in source. The complete page-48 sequence supplies a sound proof precedent. No implementation cause or repair is claimed; authoring owns source/output reconciliation. This is documented in the [raw precedent report](reconciliation/slide_reasoning_precedents.md) and was not silently repaired during the bounded pair experiment.
 
 **Prerequisite reconciliation:** L02 introduces precision in its own Gaussian rewrite but inaccurately attributes information coordinates to L01. Resolve attribution before Scope freezing rather than automatically add an L01 unit. L03's joint/conditioning/simple-graph entry remains supported.
 

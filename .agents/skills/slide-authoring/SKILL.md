@@ -9,6 +9,14 @@ Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-
 
 Use this skill after slide design is approved.
 
+Under Lecture Development coordination,
+[the coupled slide protocol](../shared/slide-convergence.md) also permits an
+explicitly scoped exploratory build against provisional design to test fit,
+grouping and reveals. Return implementation alternatives and measured evidence
+to Design and Organization; do not only reject their artifact. This isolated
+prototype is not a read-only feasibility review, production completion or
+permission to replace approved lecture sources.
+
 The primary responsibility is:
 
 > Realize the approved student-visible explanation faithfully, maintainably, and legibly in the live production system.
@@ -102,6 +110,8 @@ hierarchy rather than reproducing a visually similar generic card. A generic gri
 both roles into `object:`. If placement contradicts semantic roles, return
 Slide Design backpressure before tuning geometry. Likewise, newly derived
 mathematics marked as recall is a design issue, not a request to shrink the proof.
+Preserve local proof warrants and operation labels as well as equations: a bare
+equation stack can violate design fidelity even when prose has a separate slot.
 
 Read the current `course.typ` signatures and relevant neighboring source.
 
@@ -151,7 +161,11 @@ subscript grouping in the rendered equations. Use verified math constructors for
 compound notation; when meaning remains uncertain, a minimal parsed-content query
 can distinguish a legal parse from the intended expression.
 
-Compile both handout mode and presentation/reveal mode.
+Compile both handout mode and presentation/reveal mode. For a linked insertion,
+inspect the actual predecessor and the affected slides together, not only
+isolated slide briefs. Verify that carried equations and notation were really
+established, and that each reveal makes the intended operation and its reason
+visible. Stable positions and cumulative persistence alone do not establish flow.
 
 ### 8. Perform targeted visual review
 

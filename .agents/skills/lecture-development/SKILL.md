@@ -70,6 +70,29 @@ surface that pressure rather than equating coverage with quality.
 
 Do not start multiple agents editing the same artifact concurrently. Delegate analysis in parallel only if the outputs are nonconflicting; integrate changes through the artifact's owning stage.
 
+## Coupled Organization, Design and Authoring
+
+For substantial slide sequences and cross-stage execution pressure, follow
+[the coupled slide protocol](../shared/slide-convergence.md). Keep the relevant
+two or three specialists in an active exchange of offers, counteroffers and
+concrete evidence. Scope and Section Design retain their intellectual contracts
+and lightweight previews; slide-level choices converge through this tighter
+loop before they are frozen for production.
+
+Identify explicit instructor constraints separately from provisional stage
+choices and coordinator dispatch restrictions. Allow an owning stage to propose
+revisions to its slide count, granularity, semantic grouping or realization
+rather than forcing every failure back into the original envelope. Facilitate
+actual peer responses; do not substitute repeated serial verdicts for negotiation.
+
+When feasibility requires a render, commission an explicitly isolated exploratory
+build with provisional inputs and a bounded question. This is distinct from a
+read-only feasibility review and does not grant production or instructor approval.
+Use the resulting evidence to converge on a coherent Organization/Design set
+through the existing approval gates. Preserve disagreements and escalate real
+teaching tradeoffs; stop or redirect the loop immediately when the instructor
+steers the discussion.
+
 ## Coordinator interaction with the instructor
 
 The instructor is mathematically mature and is learning the later methods. Explain each concern with precise objects, relevant equations/assumptions and the actual competing teaching goals; do not reduce it to a generic choice between simple and complex. Use unfamiliar method names with a short explanation, and offer verified section titles/numbers plus what to read for when background study is useful. Distinguish the depth taught in class from recommended instructor preparation. Separate teaching decisions from correctness checks authors own. Include this background in specialist dispatches, and check both clarity and mathematical substance before forwarding output. A glossary alone does not explain a concern, and elementary prose alone does not preserve its substance.
@@ -111,7 +134,10 @@ from the builder, whether it later implemented its own preview, and whether its
 assessment was blind or seeded. A seeded critique can adjudicate a hypothesis;
 it cannot be reported as independent discovery. The coordinator owns the final
 comparative judgment and must route semantic failures even after mechanical
-checks pass. These checks do not grant instructor approval.
+checks pass. Evaluate linked slides as an actual sequence; do not substitute an
+assumed prerequisite brief for a newly authored predecessor. A held-out test
+still needs authentic upstream artifacts. Test whether the visible argument can
+be reconstructed, not just whether roles, equations and images are present. These checks do not grant instructor approval.
 
 For Slide Authoring there is no mandatory sixth pedagogical preview. Its own mechanical and visual validation is the build gate; a separate targeted implementation review may be requested when useful. For a brand-new lecture request, Lecture Scope can first test a proposed lecture brief against current curriculum and time constraints using its own `feasibility-review` mode, but the normal preview of Scope itself is performed by Section Design.
 

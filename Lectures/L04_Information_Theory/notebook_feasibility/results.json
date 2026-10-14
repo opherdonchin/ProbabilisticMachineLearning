@@ -1,0 +1,253 @@
+{
+  "status": "author-only feasibility; no student-time or Colab validation",
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.0.2",
+    "scipy": "1.16.3",
+    "sklearn": "1.9.1"
+  },
+  "split_seed": 2027,
+  "train_n": 105,
+  "test_n": 45,
+  "train_ids_sha256": "d61a02b2315f68acc52ca779f9b7e0455c8daa3eda5d48f2a52ba2ac36074900",
+  "test_ids_sha256": "be88ff565a4500a86ae605703dca8adaf5a26fe769590757fc16726eea7eaa26",
+  "raw_feature_sha256": "248cf49d5d8a36e909c2e28628fd2cca34fdc48b4bf4e8039918fdfd0bb84d0b",
+  "training_center": [
+    3.742857142857143,
+    1.1952380952380952
+  ],
+  "training_scale": [
+    1.7632144424510665,
+    0.740190574222477
+  ],
+  "classes": [
+    "setosa",
+    "versicolor",
+    "virginica"
+  ],
+  "features": [
+    "petal length (cm)",
+    "petal width (cm)"
+  ],
+  "diagnostic_logit_multipliers": [
+    0.25,
+    4.0
+  ],
+  "forecast_scores": {
+    "prepared_softmax": {
+      "accuracy": 0.9555555555555556,
+      "mean_nll_nats": 0.14996872162573618,
+      "mean_nll_bits": 0.21635913097790704
+    },
+    "supplied_lower_confidence": {
+      "accuracy": 0.9555555555555556,
+      "mean_nll_nats": 0.5492856663615648,
+      "mean_nll_bits": 0.7924517068912194
+    },
+    "supplied_higher_confidence": {
+      "accuracy": 0.9555555555555556,
+      "mean_nll_nats": 0.055988188568343505,
+      "mean_nll_bits": 0.08077388199590534
+    },
+    "training_frequency_baseline": {
+      "accuracy": 0.3333333333333333,
+      "mean_nll_nats": 1.0986122886681096,
+      "mean_nll_bits": 1.584962500721156
+    }
+  },
+  "same_label_confidence_diagnostics_checked": true,
+  "top_label_reliability": {
+    "prepared_softmax": [
+      {
+        "lower": 0.0,
+        "upper": 0.2,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.4,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.6000000000000001,
+        "count": 2,
+        "mean_confidence": 0.5433999628471281,
+        "observed_correctness": 0.0
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.8,
+        "count": 6,
+        "mean_confidence": 0.7132012764335226,
+        "observed_correctness": 1.0
+      },
+      {
+        "lower": 0.8,
+        "upper": 1.0,
+        "count": 37,
+        "mean_confidence": 0.9207854961088531,
+        "observed_correctness": 1.0
+      }
+    ],
+    "supplied_lower_confidence": [
+      {
+        "lower": 0.0,
+        "upper": 0.2,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.4,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.6000000000000001,
+        "count": 21,
+        "mean_confidence": 0.4943897264653672,
+        "observed_correctness": 0.9047619047619048
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.8,
+        "count": 24,
+        "mean_confidence": 0.6659595695361594,
+        "observed_correctness": 1.0
+      },
+      {
+        "lower": 0.8,
+        "upper": 1.0,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      }
+    ],
+    "supplied_higher_confidence": [
+      {
+        "lower": 0.0,
+        "upper": 0.2,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.4,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.6000000000000001,
+        "count": 1,
+        "mean_confidence": 0.5675420820518392,
+        "observed_correctness": 0.0
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.8,
+        "count": 1,
+        "mean_confidence": 0.7699284667522499,
+        "observed_correctness": 0.0
+      },
+      {
+        "lower": 0.8,
+        "upper": 1.0,
+        "count": 43,
+        "mean_confidence": 0.9952273403715847,
+        "observed_correctness": 1.0
+      }
+    ],
+    "training_frequency_baseline": [
+      {
+        "lower": 0.0,
+        "upper": 0.2,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.4,
+        "count": 45,
+        "mean_confidence": 0.33333333333333337,
+        "observed_correctness": 0.3333333333333333
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.6000000000000001,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.8,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      },
+      {
+        "lower": 0.8,
+        "upper": 1.0,
+        "count": 0,
+        "mean_confidence": null,
+        "observed_correctness": null
+      }
+    ]
+  },
+  "finite_information": {
+    "provenance": "course-constructed law, not Iris population estimate",
+    "p_y_r": [
+      [
+        0.2,
+        0.025,
+        0.025,
+        0.1
+      ],
+      [
+        0.025,
+        0.2,
+        0.025,
+        0.075
+      ],
+      [
+        0.025,
+        0.025,
+        0.2,
+        0.075
+      ]
+    ],
+    "kernel_z_given_r": [
+      [
+        1.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "label_entropy_bits": 1.584068055375491,
+    "I_y_r_bits": 0.4998843355963021,
+    "I_y_z_bits": 0.1801909181233463
+  }
+}

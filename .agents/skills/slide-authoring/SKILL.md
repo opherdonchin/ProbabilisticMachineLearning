@@ -37,6 +37,11 @@ Before authoring, read:
 - `Lectures/design.typ` only as needed to interpret design-stage structures;
 - mature Lecture 1 source when a concrete production precedent helps.
 
+For executable `.typ` mathematics, use the available Typst-authoring skill and
+verified current syntax/documentation. Check the rendered mathematical grouping,
+not just whether the equation compiles; shorthand delimiters can parse legally
+while representing a different expression.
+
 Use `Lectures/README.md` only as the pipeline/index document.
 
 ## Authority
@@ -90,8 +95,10 @@ Record the exact section/slide allowlist, approved design artifact, target produ
 ### 2. Inspect the live production API
 
 Check the design's precedent/role contract against the existing rendered deck.
-Trace typed key points to the production `key-points:` region and mathematical
-objects to `object:`. A generic grid in the design is not permission to flatten
+Trace typed key points to the production `key-points:` slot (or the exported
+`key-points(...)` wrapper when the entire region must reveal independently), and
+mathematical objects to `object:`. Preserve the course's semantic helper and text
+hierarchy rather than reproducing a visually similar generic card. A generic grid in the design is not permission to flatten
 both roles into `object:`. If placement contradicts semantic roles, return
 Slide Design backpressure before tuning geometry. Likewise, newly derived
 mathematics marked as recall is a design issue, not a request to shrink the proof.
@@ -137,7 +144,12 @@ After editing a lecture `.typ` file, run:
 python scripts/check_typst_math_attachments.py <edited-file>
 ```
 
-Fix new hits introduced by the edit.
+Fix new hits introduced by the edit. The design input must also have passed
+its attachment check; report failures upstream rather than silently copying or
+repairing mathematically different parsed content. Inspect delimiters and exponent/
+subscript grouping in the rendered equations. Use verified math constructors for
+compound notation; when meaning remains uncertain, a minimal parsed-content query
+can distinguish a legal parse from the intended expression.
 
 Compile both handout mode and presentation/reveal mode.
 

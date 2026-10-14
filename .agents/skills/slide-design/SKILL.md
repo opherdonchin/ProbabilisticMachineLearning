@@ -39,6 +39,11 @@ Before designing, read:
 - neighboring slides/sections when continuity matters;
 - mature Lecture 1 precedent when a concrete course example helps.
 
+When producing executable `.typ` mathematics, use the available Typst-authoring
+skill and verified current syntax/documentation alongside this pedagogical skill.
+A rendered equation must preserve the intended delimiters and attachment grouping;
+compilation alone does not establish that.
+
 Use `Lectures/README.md` only as the pipeline/index document.
 
 ## Authority
@@ -191,6 +196,13 @@ Do not generalize a one-off case unless repeated use demonstrates a stable
 pattern.
 
 ### 5. Compile and inspect the design document
+
+Run `python scripts/check_typst_math_attachments.py <design-file>` after editing
+executable design mathematics, and resolve new hits before handoff. Use documented
+math constructors for compound delimiters (e.g. norms inside expectations) rather
+than assuming adjacent shorthand characters will parse as intended. For ambiguous
+delimiters or attachments, check local syntax and inspect the rendered expression;
+use a minimal parsed-content probe when visual inspection cannot resolve it.
 
 The rendered design document is itself a review artifact.
 

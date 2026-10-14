@@ -69,7 +69,7 @@ For **L01–L03** in the 2027-1 revision, the instructor has explicitly reopened
 ## Course development coordination
 
 - For course-wide priorities, concurrent lecture/notebook/skill work, or
-  "What should we do next?", read and follow
+  "What should we do next?" or "What needs my attention?", read and follow
   `.agents/skills/course-development/SKILL.md` (`$course-development`). Discover
   work and instructor approvals across relevant branches and worktrees, not
   just `main`; reconcile live files with their owning records before dispatch.
@@ -78,6 +78,12 @@ For **L01–L03** in the 2027-1 revision, the instructor has explicitly reopened
   dependencies. A slide-process failure does not automatically block unrelated
   scope development or notebook feasibility. A next-action question authorizes
   assessment and recommendations, not lecture production or merges.
+- Before dispatch, recover declared active sessions and their branch/worktree,
+  owners and write scopes. Separate worktrees do not permit competing writes to
+  the same future artifact. External sessions are not presumed controllable.
+  Under deferred review, collect instructor questions in owning artifacts and
+  index them persistently; wait only dependent work and continue independent
+  authorized tasks. Present one prioritized question when review is requested.
 - Keep persistent course coordination limited to active cross-course assignments
   and unresolved dependencies not already owned elsewhere. Lecture registers
   retain lecture status and approvals; architecture and curriculum maps retain

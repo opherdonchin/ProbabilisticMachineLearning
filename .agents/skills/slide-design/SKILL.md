@@ -111,8 +111,9 @@ not yet expressible in the constrained vocabulary.
 For an insertion into an existing deck, inspect rendered immediate neighbors
 and a relevant established teaching slide (a proof precedent for a new proof).
 Extract a brief visual/notation contract before choosing content: what is the
-inspected object, what explanation belongs in key points, what prior knowledge
-is carried forward, and how the deck distinguishes new reasoning from recall.
+inspected object, which transformations and local reasons make its argument
+readable, what explanation belongs in key points, what prior knowledge is
+carried forward, and how the deck distinguishes new reasoning from recall.
 Apply the instructor's course conventions; sharing a theme is not sufficient
 continuity. Report concrete precedent evidence, not merely that files were read.
 
@@ -163,8 +164,12 @@ For each slide specify:
 
 Ordinary mathematical objects should be light on explanatory text, following
 [the object/key-point convention](../../../Lectures/slide_design_conventions.md#objects-and-key-points).
-Keep equations, figures and indispensable local labels/conditions in the object;
-put motivation, interpretation and sentence-length explanation in key points.
+Keep equations, figures, intrinsic labels/conditions and local mathematical
+warrants where students need them to follow the object. Put task framing and
+takeaway interpretation in key points. Light text is not an equation-only rule:
+removing a centering label, substitution map or reason for an implication can
+remove the argument. Key points can accompany the step they interpret rather
+than wait for the final reveal.
 This is a semantic choice made before layout, not a word-count target or a reason
 to omit mathematics. Text may itself be an inspected object (e.g. an algorithm).
 
@@ -175,8 +180,10 @@ expressed faithfully, use an explicit design escape/backpressure rather than
 flattening the roles. Do not duplicate the same explanation as both a titled
 object and a takeaway.
 
-For each recalled mathematical item, identify where it was established. A
-previous definition does not make a newly proved consequence recalled knowledge.
+For each recalled mathematical item, check the actual preceding student-visible
+state and identify where it was established. A functional prerequisite brief is
+not evidence that an adjacent candidate taught it. A previous definition does
+not make a newly averaged or otherwise transformed consequence recalled knowledge.
 Use ordinary proof objects for new reasoning; a recall object is subordinate
 because students already possess its content, not because space is scarce.
 
@@ -222,7 +229,11 @@ Check:
 Compare the candidate explanation with the selected precedent contract. Identify
 any prose retained in the object and why it is intrinsic to reading that object;
 check that key points still occupy their interpretation role, and that new proof
-steps receive teaching attention. An A4 design render or a complete list of
+steps receive teaching attention. Reconstruct the argument from the visible
+sequence: what is being established, which previous expression each new operation
+acts on, what licenses it, and how the result answers the opening question. Keep
+a load-bearing equation syntactically whole; make its terms and connection to
+the proof readable without giving every equation equal visual weight. An A4 design render or a complete list of
 labels cannot establish final slide readability or alignment by itself.
 
 Where practical, `design.typ` should fail visibly on structural mistakes such

@@ -2,7 +2,11 @@
 
 **Instructor request:** investigate the process before repairing slides 64–65 or redeveloping the deck. Mathematical/visual objects should usually be light on text, with necessary explanation in key points. This document is the coordinator's reading route and experimental record; the linked reports preserve raw review evidence.
 
-**Status:** the investigation and two rounds of skill experiments are complete. Slide-64 calibration passed; the first frozen-skill slide-65 transfer failed full validation. A second refinement produced an informed slide-65 repair and a successful fresh transfer to a different L01 proof, affine mean/covariance transformation. A final fresh review accepted the production candidates but requested two design-source norm-grouping repairs; a separate designer corrected them and the reviewer confirmed the bounded issue resolved. The actual deck/PDF, scope commitments, notebooks and recording remain unchanged. Experimental outputs are not instructor-approved slides.
+**Current status:** the instructor rejected the after-slides in the comparison packet as an inadequately guided jumble of equations, still unlike the actual deck. All identified alignment concerns remain obligations, including recall, mathematics/conclusion relationships, equation coherence, preceding-slide continuity and reveal reasoning. The first two rounds below record what agents actually did and judged; their comparative readiness judgments are reopened by this instructor assessment. The actual deck/PDF, scope commitments, notebooks and recording remain unchanged. Experimental outputs are not instructor-approved slides.
+
+The first refinement's reduction of prose was overinterpreted as successful alignment. The instructor's convention did not license removing the local cues that explain an argument. The prior experiment also withheld actual candidate 64 from candidate-65 design and review, replacing that dependency with a functional brief. A new paired audit and a broader analysis of actual proof/reveal precedents examine what those controls missed. Their findings and any subsequent proposal will be distinguished from the raw historical verdicts below.
+
+**Start with the [current reassessment](slide_reasoning_reassessment.md).** It addresses every alignment concern, the new paired audit, the actual precedents and the proposed repair. The trial table and readiness statements below preserve earlier agent judgments; they do not override the instructor's rejection.
 
 ## What happened
 
@@ -38,7 +42,7 @@ Observed criteria, fixed before revised trials: coherent mathematical object; ex
 
 The second-round reviewer received candidate sources, fixed criteria and actual manifest paths, without the process audit, builder reports or the coordinator's suspected defects. The designer's final norm repair and the reviewer's targeted recheck are informed follow-up. The affine author initially lacked exact neighbor-image paths in the coordinator's dispatch and honestly reported that limitation; after receiving the paths it completed the comparison without changing its source. The coordinator also had to generate the canonical manifest rather than assume a manual compile/render run had produced one. These are input/handoff weaknesses, not missing checks silently counted as complete.
 
-## What the evidence supports
+## Earlier interpretation of the evidence — now reopened
 
 The original failure was a sequence of lost obligations. The coordinator gave a mathematics-and-extent brief without a concrete precedent-derived visual contract; design put explanation into the objects and new reasoning into recall; authoring lost typed key-point roles; review examined mechanical/readability questions; coordination promoted those checks into a stronger alignment claim. The later seeded critique then looked more independent than its actual evidence warranted. More agents alone would have repeated the same acceptance conditions.
 

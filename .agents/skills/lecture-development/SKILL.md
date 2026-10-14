@@ -111,7 +111,10 @@ from the builder, whether it later implemented its own preview, and whether its
 assessment was blind or seeded. A seeded critique can adjudicate a hypothesis;
 it cannot be reported as independent discovery. The coordinator owns the final
 comparative judgment and must route semantic failures even after mechanical
-checks pass. These checks do not grant instructor approval.
+checks pass. Evaluate linked slides as an actual sequence; do not substitute an
+assumed prerequisite brief for a newly authored predecessor. A held-out test
+still needs authentic upstream artifacts. Test whether the visible argument can
+be reconstructed, not just whether roles, equations and images are present. These checks do not grant instructor approval.
 
 For Slide Authoring there is no mandatory sixth pedagogical preview. Its own mechanical and visual validation is the build gate; a separate targeted implementation review may be requested when useful. For a brand-new lecture request, Lecture Scope can first test a proposed lecture brief against current curriculum and time constraints using its own `feasibility-review` mode, but the normal preview of Scope itself is performed by Section Design.
 

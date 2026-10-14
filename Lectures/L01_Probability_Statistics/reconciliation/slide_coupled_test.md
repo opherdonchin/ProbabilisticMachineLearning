@@ -53,11 +53,11 @@ This demonstrates a better result on the bounded pair after genuine cross-stage 
 |---|---|
 | [Organization](squared_loss_slide_organization.md) | `13092a48132cc69e093edadc4a85b1b1f8794489838e531cd4b166ab7b345383` |
 | [Design](squared_loss_slide_design.typ) | `007e929fa8ef252e93ae4f9a07265be617a71f4c90f4fd6c71a5bac82fd93486` |
-| [Standalone source](squared_loss_candidate.typ) | `7da35cbe201c25f75e375f6c5bf33ee6b38cdc5d96332f7a815a8f05012e4caf` |
+| [Standalone source](squared_loss_candidate.typ) | `65e53c43aec474b83c3548e60a4c50d34653fca3516a417655eca9f7afd4dced` |
 | Handout | `70a8a565c9e41964acc4e404c760c3ff581b8e94c32393578a82d77c613ff3fe` |
 | Presentation | `e695b94431b44fc37465e6a4ce87c7c3d6272b32935e962fe96ad9bd8e271bd7` |
 
-The current standalone source compiles with zero warnings into four handout pages and fourteen presentation states; the math-attachment check passes. All four bodies are byte-identical to the full source reviewed separately. Pixel comparison across all eighteen states found only the changed slide counters. The current owning Design changes only import/status/evidence notes from the separately reviewed specification; it compiles and was coordinator-compared, not independently re-reviewed. Organization's current copy likewise updates its record and presentation without changing the teaching commitments.
+The current standalone source compiles with zero warnings into four handout pages and fourteen presentation states; the math-attachment check passes. All four bodies are byte-identical to the full source reviewed separately after trimming only newline padding at slide boundaries. The final EOF hygiene correction leaves both PDF hashes unchanged. Pixel comparison across all eighteen states found only the changed slide counters. The current owning Design changes only import/status/evidence notes from the separately reviewed specification; it compiles and was coordinator-compared, not independently re-reviewed. Organization's current copy likewise updates its record and presentation without changing the teaching commitments.
 
 Raw evidence: [Organization exchange](slide_coupled_organization_report.md), [Design exchange](slide_coupled_design_report.md), [Authoring report](slide_coupled_authoring_report.md), [immutable image-first review](slide_coupled_image_review.md), [subsequent source review](slide_coupled_source_review.md), and [standalone packaging check](slide_coupled_packaging_report.md). Their earlier pending-status statements record the stage at which they were written; this document owns the current disposition.
 

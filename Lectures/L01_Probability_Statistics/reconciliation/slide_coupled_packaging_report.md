@@ -4,9 +4,9 @@ The isolated candidate is packaged at `Lectures/L01_Probability_Statistics/recon
 
 ## Exact source binding
 
-The four level-2 slide bodies were extracted from the reviewed full-sequence source `build/l01-coupled/final/slide_deck.typ` (SHA-256 `74d34ddba30899feb971e229270276e43ee559b9699c3ccfff231aacba159131`). Each extracted heading-plus-body substring in the standalone file is byte-identical to its counterpart in that source:
+The four level-2 slide bodies were extracted from the reviewed full-sequence source `build/l01-coupled/final/slide_deck.typ` (SHA-256 `74d34ddba30899feb971e229270276e43ee559b9699c3ccfff231aacba159131`). The original reviewed heading-plus-body slice hashes are retained below exactly as recorded before the terminal-whitespace cleanup. That earlier last slice included three extra newline bytes after the final `)`; the standalone source now ends with exactly one newline. For the final equality check, extraction trims newline padding at each slide boundary before byte comparison; all four body substrings then match the reviewed source exactly. The mathematical content and all internal body whitespace are unchanged.
 
-| Slide body | SHA-256 |
+| Original reviewed heading/body slice, including boundary newline padding | SHA-256 |
 | --- | --- |
 | Actual 63 — Inference often combines conditioning and summarizing | `14c610c63999036779e936280ce9db7dc5778e3afc04e7198534e0eca3f0fdc5` |
 | Candidate 64 — A point estimate needs a loss function | `3d42c7317f31bc20277868b0f0050f873aec7323fe6d7bfa38c0aec969dab2a8` |
@@ -21,11 +21,11 @@ The course theme normally creates a visible level-1 section divider. Including t
 
 ## Validation and hashes
 
-The canonical `scripts/review_slides.py` workflow compiled both modes and checked Typst math attachments. It reported zero warnings, four handout pages, and fourteen presentation states. The standalone header, footer and representative slide states were visually inspected; a pixel comparison against all eighteen current review PNGs found each image identical outside the slide-counter rectangle `(1126, 681)–(1203, 696)`. Source extraction was also checked byte-for-byte for all four slide bodies.
+The canonical `scripts/review_slides.py` workflow compiled both modes and checked Typst math attachments after the EOF-only change. It reported zero warnings, four handout pages, and fourteen presentation states. The standalone header, footer and representative slide states were visually inspected; the previous pixel comparison remains applicable because only terminal source whitespace changed. Source extraction was checked byte-for-byte for all four bodies after trimming newline padding at the slide boundaries.
 
-- Standalone Typst source SHA-256: `7da35cbe201c25f75e375f6c5bf33ee6b38cdc5d96332f7a815a8f05012e4caf`
+- Standalone Typst source SHA-256: `65e53c43aec474b83c3548e60a4c50d34653fca3516a417655eca9f7afd4dced`
 - Handout PDF SHA-256: `70a8a565c9e41964acc4e404c760c3ff581b8e94c32393578a82d77c613ff3fe`
 - Presentation PDF SHA-256: `e695b94431b44fc37465e6a4ce87c7c3d6272b32935e962fe96ad9bd8e271bd7`
-- Canonical review manifest SHA-256: `2f143c6307658bc311a947b0f322b1db6a3039895223b4e1df60e744d50ee7c0`
+- Canonical review manifest SHA-256: `db7be3b733c3a33d03814fe3315f5a85775abea0413a2c36dacb177486001a43`
 
 These hashes identify the exact package files and render report. Packaging does not promote the candidate to the live lecture source or resolve instructor acceptance.

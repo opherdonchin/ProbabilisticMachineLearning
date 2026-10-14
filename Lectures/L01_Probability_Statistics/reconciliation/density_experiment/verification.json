@@ -1,0 +1,26 @@
+{
+  "baseline": "a804af644a7ccb282c2ca113f78f4a2a12b1fc4d",
+  "frozen_instructions_commit": "61acb414c5956202add5f7ddbdbbdbfaadc5f304",
+  "frozen_instruction_and_source_hashes_match": true,
+  "all_six_current_source_pdf_bindings_match": true,
+  "independent_review_hashes": {
+    "review/phase1_render_review.md": "ff9e4c0bdcc0966db560d86b670f4e8b3cc3a6f53a6a2fc4312f65d4b640f8e7",
+    "review/phase1_exposure.json": "472d3e6c0586f1017cd5b51393e8086cbe4c8e85d2431361dc37a899ef2ebc13",
+    "review/phase2_source_process_review.md": "67077969293a898be2e8adaee233caeb3dcf6f39e9383f036a17e570969d10c6",
+    "review/phase2_exposure.json": "cff5d1b306bc1a470555c2847ae1a926e3e419864efa0c3e96764bdb563a766d"
+  },
+  "phase1_frozen_before_source_release": true,
+  "parent_branch": "rescope-l01-l12-architecture-alignment-20261014",
+  "parent_HEAD": "a804af644a7ccb282c2ca113f78f4a2a12b1fc4d",
+  "parent_status_unchanged": "?? tmp/prune_verified_branches_2026-10-13.sh",
+  "production_and_course_documents_unchanged": true,
+  "allowed_diff_scope_only": true,
+  "comparison_pages": 17,
+  "comparison_pixel_fidelity_all_pages": true,
+  "instructor_links_resolve": true,
+  "mechanical_status": {
+    "loss_candidates": "0 warnings; complete4/12,4/12,5/12",
+    "gaussian_candidates": "real blank-wrapper warning; complete6/15, selected3/12 each"
+  },
+  "quality_gate": "Independent render and source reviews completed; instructor acceptance pending. No general reliability/classroom/timing validation."
+}

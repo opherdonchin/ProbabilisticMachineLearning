@@ -142,6 +142,7 @@
   key-points: [
     #stack(
       spacing: sp("s"),
+      only("1")[- Centering removes the average cross-term with the fixed offset.],
       uncover("2-")[- Risk is residual uncertainty plus squared distance from the posterior mean.],
       uncover("3-")[- The posterior mean minimizes model expected squared error; covariance measures what remains.],
     )

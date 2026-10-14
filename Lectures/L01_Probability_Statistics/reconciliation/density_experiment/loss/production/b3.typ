@@ -122,12 +122,14 @@
         ),
       ),
       [#block(height: 2.2cm)[
-        #align(center + horizon)[
-          #stack(
-            spacing: sp("xs"),
-            text(size: fs("m"), weight: "semibold")[Conditional squared-error risk],
-            uncover("2-")[align(center)[#text(size: 1.1em)[$R(a|y)=op("tr") V+norm(m-a)^2$]]],
-          )
+        #uncover("2-")[
+          #align(center + horizon)[
+            #stack(
+              spacing: sp("xs"),
+              text(size: fs("m"), weight: "semibold")[Conditional squared-error risk],
+              align(center)[#text(size: 1.1em)[$R(a|y)=op("tr") V+norm(m-a)^2$]],
+            )
+          ]
         ]
       ]],
     )

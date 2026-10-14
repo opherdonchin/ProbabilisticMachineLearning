@@ -1,0 +1,216 @@
+{
+  "sequences": [
+    {
+      "sequence": "01",
+      "handout": [
+        "item-001.png",
+        "item-002.png",
+        "item-003.png",
+        "item-004.png"
+      ],
+      "presentation": [
+        "item-005.png",
+        "item-001.png",
+        "item-006.png",
+        "item-002.png",
+        "item-007.png",
+        "item-008.png",
+        "item-003.png",
+        "item-009.png",
+        "item-010.png",
+        "item-011.png",
+        "item-004.png"
+      ]
+    },
+    {
+      "sequence": "02",
+      "handout": [
+        "item-001.png",
+        "item-012.png",
+        "item-013.png",
+        "item-004.png"
+      ],
+      "presentation": [
+        "item-005.png",
+        "item-001.png",
+        "item-014.png",
+        "item-015.png",
+        "item-012.png",
+        "item-016.png",
+        "item-017.png",
+        "item-018.png",
+        "item-019.png",
+        "item-013.png",
+        "item-009.png",
+        "item-010.png",
+        "item-011.png",
+        "item-004.png"
+      ]
+    },
+    {
+      "sequence": "03",
+      "handout": [
+        "item-001.png",
+        "item-020.png",
+        "item-021.png",
+        "item-004.png"
+      ],
+      "presentation": [
+        "item-005.png",
+        "item-001.png",
+        "item-022.png",
+        "item-023.png",
+        "item-020.png",
+        "item-024.png",
+        "item-025.png",
+        "item-021.png",
+        "item-009.png",
+        "item-010.png",
+        "item-011.png",
+        "item-004.png"
+      ]
+    },
+    {
+      "sequence": "04",
+      "handout": [
+        "item-001.png",
+        "item-020.png",
+        "item-026.png",
+        "item-004.png"
+      ],
+      "presentation": [
+        "item-005.png",
+        "item-001.png",
+        "item-022.png",
+        "item-023.png",
+        "item-020.png",
+        "item-027.png",
+        "item-028.png",
+        "item-026.png",
+        "item-009.png",
+        "item-010.png",
+        "item-011.png",
+        "item-004.png"
+      ]
+    },
+    {
+      "sequence": "05",
+      "handout": [
+        "item-001.png",
+        "item-020.png",
+        "item-029.png",
+        "item-030.png",
+        "item-004.png"
+      ],
+      "presentation": [
+        "item-005.png",
+        "item-001.png",
+        "item-022.png",
+        "item-023.png",
+        "item-020.png",
+        "item-031.png",
+        "item-029.png",
+        "item-030.png",
+        "item-009.png",
+        "item-010.png",
+        "item-011.png",
+        "item-004.png"
+      ]
+    },
+    {
+      "sequence": "06",
+      "handout": [
+        "item-032.png",
+        "item-050.png",
+        "item-034.png"
+      ],
+      "presentation": [
+        "item-035.png",
+        "item-036.png",
+        "item-036.png",
+        "item-032.png",
+        "item-051.png",
+        "item-052.png",
+        "item-053.png",
+        "item-050.png",
+        "item-040.png",
+        "item-041.png",
+        "item-041.png",
+        "item-034.png"
+      ]
+    },
+    {
+      "sequence": "07",
+      "handout": [
+        "item-032.png",
+        "item-033.png",
+        "item-034.png"
+      ],
+      "presentation": [
+        "item-035.png",
+        "item-036.png",
+        "item-036.png",
+        "item-032.png",
+        "item-037.png",
+        "item-038.png",
+        "item-039.png",
+        "item-033.png",
+        "item-040.png",
+        "item-041.png",
+        "item-041.png",
+        "item-034.png"
+      ]
+    },
+    {
+      "sequence": "08",
+      "handout": [
+        "item-032.png",
+        "item-042.png",
+        "item-034.png"
+      ],
+      "presentation": [
+        "item-035.png",
+        "item-036.png",
+        "item-036.png",
+        "item-032.png",
+        "item-043.png",
+        "item-044.png",
+        "item-045.png",
+        "item-042.png",
+        "item-040.png",
+        "item-041.png",
+        "item-041.png",
+        "item-034.png"
+      ]
+    },
+    {
+      "sequence": "09",
+      "handout": [
+        "item-032.png",
+        "item-046.png",
+        "item-034.png"
+      ],
+      "presentation": [
+        "item-035.png",
+        "item-036.png",
+        "item-036.png",
+        "item-032.png",
+        "item-047.png",
+        "item-048.png",
+        "item-049.png",
+        "item-046.png",
+        "item-040.png",
+        "item-041.png",
+        "item-041.png",
+        "item-034.png"
+      ]
+    }
+  ],
+  "additional_course_slides": [
+    "item-054.png",
+    "item-050.png",
+    "item-055.png",
+    "item-056.png"
+  ],
+  "deduplication": "Shared image IDs have exactly identical pixels above the footer (top94%); original full-resolution images retained. These references can be viewed once. Differences confined to footer numbering/section label are ignored for shared-body deduplication. Every distinct rendered body and every meaningful reveal is listed."
+}

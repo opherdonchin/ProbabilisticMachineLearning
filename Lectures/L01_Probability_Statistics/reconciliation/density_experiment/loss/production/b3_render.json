@@ -1,0 +1,30 @@
+{
+  "source": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/b3.typ",
+  "sha256": "cbe2a6e18c7dcfa8b71b07723b298f7e401cf5d0350556c16c4b361ceef1de5f",
+  "warnings": [],
+  "pages": {
+    "handout": 5,
+    "presentation": 12
+  },
+  "previews": [
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-handout-1.png",
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-presentation-1.png",
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-presentation-2.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-handout-1.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-presentation-1.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-presentation-2.png",
+    "choose-a-reconstruction-by-its-conditional-squared-error-risk-be7660f9-presentation-3.png",
+    "centering-separates-residual-uncertainty-from-estimation-error-40adca70-handout-1.png",
+    "centering-separates-residual-uncertainty-from-estimation-error-40adca70-presentation-1.png",
+    "centering-separates-residual-uncertainty-from-estimation-error-40adca70-presentation-2.png",
+    "the-posterior-mean-minimizes-squared-error-risk-6d1ee259-handout-1.png",
+    "the-posterior-mean-minimizes-squared-error-risk-6d1ee259-presentation-1.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-handout-1.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-1.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-2.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-3.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-4.png"
+  ],
+  "visual_review": "pending",
+  "status": "mechanical-pass"
+}

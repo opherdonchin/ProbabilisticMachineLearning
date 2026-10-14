@@ -1,6 +1,6 @@
 ---
 name: lecture-development
-description: Coordinate end-to-end lecture development through specialized Scope, Section Design, Slide Organization, Slide Design, and Slide Authoring skills, with instructor-facing decisions, delegation, reviews, and shared state.
+description: Coordinate live lectures and linked recorded sessions through specialized Scope, Section Design, Slide Organization, Slide Design, and Slide Authoring skills, with instructor-facing decisions, delegation, reviews, and shared state.
 ---
 
 # Coordinate lecture development
@@ -91,6 +91,20 @@ For each stage:
 5. **Execution feedback:** later construction can reveal new structural problems despite a successful preview. Route them to the **nearest owning upstream stage**, commission targeted revision, and revalidate affected downstream artifacts.
 
 For Slide Authoring there is no mandatory sixth pedagogical preview. Its own mechanical and visual validation is the build gate; a separate targeted implementation review may be requested when useful. For a brand-new lecture request, Lecture Scope can first test a proposed lecture brief against current curriculum and time constraints using its own `feasibility-review` mode, but the normal preview of Scope itself is performed by Section Design.
+
+## Recorded sessions linked to a lecture
+
+Use the existing specialists for a recorded session; a recording is a distinct delivery unit within the lecture's intellectual commitments, not a new design stage. Lecture Scope owns its purpose, mathematical depth, sources, entry knowledge, endpoint, approximate duration, and boundary with live teaching and the notebook. Record whether student viewing is required or optional and when it is needed; if the instructor has not decided, leave that field open rather than infer it from the decision to prepare a recording. A proof-only recording can deepen an established method without needing its own unrelated dataset or notebook. A bounded recording brief may be approved separately while the live five-part Scope is still being developed, provided instructor acceptance covers that recording contract and unresolved live decisions cannot change its prerequisites, purpose or boundaries. The decision to prepare a recording alone is not approval of that full contract; keep downstream work pending where the contract or dependencies are unresolved.
+
+A `Recording candidate` still counts against live time. Only an instructor decision to develop the material as `Recording` moves its substantive treatment out of live time. Count any live introduction/result/interpretation separately, and track required recording time as student workload. Do not assume a required recording has been produced or viewed when defining later student knowledge. Changes to prerequisites, required viewing, mathematical depth or the live/recorded allocation return to Lecture Scope and the instructor.
+
+Dispatch Section Design → Slide-Level Organization → Slide Design → Slide Authoring with the normal modes, previews and acceptance gates. Add a delivery-unit identifier such as `recording:quadratic-separation` to each task envelope, along with exact recording-scope commitments, prerequisites, source versions, target paths and the live material that must remain intact. For a short session, a single coherent section contract may suffice; recording does not authorize skipping organization/design or silently adding a second lecture. Preserve section retrospective summaries and put connections at receiving beginnings. Carry forward only knowledge actually available at the intended viewing point.
+
+Give each session separate artifacts and a standalone Typst production source. A useful lecture-local arrangement is `recordings/<session>/section_design.md`, `slide_organization.md`, `slide_design.typ`, and `slide_deck.typ`, with matching current renders. These are destinations for completed stage work, not placeholders to create at kickoff. Pass the explicit paths and the course design/production API to specialists; nested files may need different relative imports. Reuse appropriate approved mathematics and assets while preserving a coherent session entry and endpoint. Do not implement a recording by merely hiding live slides or appending an unreviewed proof to the live deck.
+
+Use the lecture's existing `development_state.md` to track the live and recorded units' artifact versions, approvals, reviews, dependency boundaries, required/optional status and next owners. A recording's approval does not approve the live lecture or vice versa. Independent units may be developed in parallel once their upstream contracts are accepted and file ownership/dependencies are explicit. Preview and execution backpressure follow the same nearest-owner routing as live work.
+
+Validate recorded-session slides through the same compilation, reveal and visual checks as the live deck. Report slide readiness separately from video capture, review, assignment and publication: a validated deck is not a produced or delivered recording. Do not write speaker notes merely because delivery is recorded. Update planned descriptions only after relevant decisions; actual coverage remains a record of teaching and student activity, not preparation.
 
 ## Resolving disagreement and stopping loops
 

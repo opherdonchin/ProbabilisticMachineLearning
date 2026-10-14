@@ -1,12 +1,14 @@
 # L01 provisional Lecture Scope — intellectual arc only
 
-**Recommendation:** retain the formulation framework and Gaussian residual/LGS argument. Add a concrete problem-to-query connection and the squared-loss reason for a posterior mean; extend notebook questions to forward prediction and generation. Fund these by reducing repeated taxonomy/dataset exposition. Keep quadratic separation at its existing interpretation depth.
+**Agreed route:** retain the current formulation-to-Gaussian/LGS progression. Keep the residual derivation and stated/interpreted quadratic identity live; develop the full block-elimination proof in a separate recorded session. **Remaining proposal:** add the concrete problem-to-query and squared-loss connections, and selectively reduce repeated taxonomy/dataset exposition to accommodate the agreed notebook direction. These refinements and their timing await discussion.
 
-**Status:** proposed for instructor discussion, 2026-10-14; intellectual arc only, not an approved Scope. This revision separates facts, criticism, proposals and decisions. Exact versions are recorded below.
+**Status:** intellectual arc with selected instructor decisions, 2026-10-14; not a complete approved Scope. Route and live/recorded proof boundary are accepted. Remaining depths, refinements and workload are proposed. Exact versions are recorded below.
 
 ## Accepted instructor direction
 
-The instructor's “Sounds good,” recorded in [development state](development_state.md), accepts in principle using the same dataset and probabilistic formulation to answer different questions: the hidden-block distribution $p(z\mid y)$, its summary $E[Z\mid y]$ under squared loss, and the forward measurement distribution $p(y)=\int p(z,y)\,dz$, with a short generation activity. Conditioning, summarization and marginalization are operations; inference, prediction and generation are uses that can combine those operations. Sequence, mathematical depth, concrete context, workload and PyMC's retained role remain unapproved.
+The instructor's “Sounds good,” recorded in [development state](development_state.md), accepts in principle using the same dataset and probabilistic formulation to answer different questions: the hidden-block distribution $p(z\mid y)$, its summary $E[Z\mid y]$ under squared loss, and the forward measurement distribution $p(y)=\int p(z,y)\,dz$, with a short generation activity. Conditioning, summarization and marginalization are operations; inference, prediction and generation are uses that can combine those operations.
+
+The instructor subsequently explicitly chose the current route, citing the substantial existing work and the absence of a deep architecture-driven reason to reorder it. They also selected a separate recorded full proof of quadratic separation, while retaining the residual derivation and stated/interpreted identity live. They endorsed using the existing Section Design → Slide Organization → Slide Design → Slide Authoring skills for that recording under the coordinator. These choices do not approve every milestone refinement, timing, taxonomy reduction, new context or proposed addition. Whether students must watch the recording remains open.
 
 ## 1. What the existing artifacts do
 
@@ -32,7 +34,7 @@ The [solved notebook](../../InClass/Solutions/lecture1_missing_data.ipynb) suppl
 
 **Proposed mathematical endpoint:** explain how one joint distribution supports different queries and why Gaussian structure makes their computation exact. **Proposed practical endpoint:** formulate and compute a hidden-value distribution, choose a justified point summary, predict possible measurements and generate another case. These uses serve the broader formulation framework; Gaussian imputation is an application, not the lecture's intellectual purpose.
 
-The following milestones are proposals, not section boundaries. All remain live provisionally; timings are unmeasured allocations.
+These milestones preserve the accepted route; they are not section boundaries. Their detailed refinements and timing remain proposed. The residual derivation and interpreted quadratic identity stay live; the full block-elimination proof has a separate recorded-session development commitment.
 
 ### A. Bayesian reactivation — keep and clarify; about 10 minutes
 
@@ -68,7 +70,7 @@ $$
 \Sigma_{1\mid2}=\Sigma_{11}-B\Sigma_{21}.
 $$
 
-Keep the Schur-complement interpretation and the displayed quadratic separation at state/interpret depth, matching the existing presentation. A full block-quadratic proof would be an **addition**, discussed below. Sources: Book 2 §§2.3.1.3 and 2.3.1.5.
+Keep the Schur-complement interpretation and displayed quadratic separation at state/interpret depth live, as accepted. Develop the full block-quadratic proof separately for the recorded session; it is an addition to existing materials. Sources: Book 2 §§2.3.1.3 and 2.3.1.5.
 
 **Retrospective:** residual independence establishes the conditional Gaussian law; its covariance is the unexplained variation and does not depend on measured values.
 
@@ -86,21 +88,21 @@ Thus $E[Z\mid y]$ is appropriate for that loss, not automatically every decision
 
 **Retrospective:** one model supports inverse inference and forward prediction; uncertainty controls evidence combination, while a criterion determines the useful summary.
 
-## 4. Instructor choices and next gate
+## 4. Agreed boundary, remaining decisions and next gate
 
-**Route — recommended default:** preserve the existing general-to-operational sequence with the added concrete connection. **Alternative:** begin with the supplied measurement problem, use a stated conditioning result early, then reconstruct its justification and introduce broader formulation categories. The same notebook endpoint survives; the alternative improves immediate practical motivation but reorders more existing material and initially asks students to use an unproved result.
+**Recording development commitment:** develop the full block-elimination proof from Murphy Book 2 §2.3.1.5, “Derivation: moment form.” Entry knowledge is Gaussian block notation, the centered residual and its Schur-complement covariance. The endpoint is the quadratic identity and the factorization $p(x_1,x_2)=p(x_1\mid x_2)p(x_2)$. The live residual argument stands alone: understanding it does not depend on viewing this additional proof. The exact recorded treatment, equation selection and duration will be developed in the mathematical-spine discussion and recording brief.
 
-**Proof depth — recommended default:** retain the live residual proof sketch and interpreted quadratic identity. **Alternative:** additionally prove the joint quadratic separation by block elimination. This adds a second route to the same conditional law, strengthens algebraic ownership, and requires time from framing or LGS interpretation. It is not removal of an existing full proof.
+The planned separate source is `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`. No recording or deck exists yet; the path is a development target. Student-required versus optional status is pending clarification and must not be inferred from the authoring commitment. The accepted workflow applies the existing design/authoring stages under the coordinator; it does not start those stages automatically.
 
 The proposed allocations total 110 minutes plus approximately 10 for discussion/slippage: plausible but tight. Current PDF has 67 pages/seven sections; calibration's 70/eight count is stale. No measured delivery time exists. The separate one-hour notebook needs selective reuse to accommodate accepted forward/generation questions; its exact PyMC balance and context await the notebook-handoff discussion, not a new decision here.
 
 L02/L03 retain Gaussian density, conditioning, joint reasoning and simple graph prerequisites. L02 already introduces $\Lambda=\Sigma^{-1}$ in its Gaussian rewrite; reconcile its inaccurate L01 information-coordinate attribution there. No later lecture is rescoped.
 
-**Next gate:** discuss this arc through the coordinator. Only after arc agreement develop the remaining four Scope parts, then obtain appropriate source-arc review and Section Design preview before complete Scope approval.
+**Remaining decisions:** recording's required/optional student status; mathematical depths beyond the accepted proof boundary; concrete context; proposed additions/reductions and live/notebook workload, including PyMC's role. The selected route supports proceeding to mathematical-spine discussion through the coordinator. The remaining four Scope parts have not been drafted or approved; appropriate source-arc review and Section Design preview still precede complete Scope approval.
 
 ## Source records and checking material
 
-Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `7d47bd4615f8ad08a37d6cd0543658447e362f45`; preceding proposal blob `120056e4fd426832f9275d03b765b960b0f03898`. Reviewed source blobs:
+Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `d1ffd4c3407b686677c84ebd8aa3375b30da142f`; preceding arc blob `682261132ed686f5f9eb80a95facadb597ad10e8`. Reviewed source blobs:
 
 - Deck: `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`.
 - Coverage specification: `c4457bc4fdb11df14de54658f20e487030766328`.

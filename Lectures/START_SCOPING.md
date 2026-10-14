@@ -74,4 +74,6 @@ The architecture, instructor-approved lecture scopes, existing artifacts, and so
 
 ## Status and handoff boundary
 
+**L01 decisions during reconciliation (2026-10-14):** retain the current lecture route. Keep the residual conditioning derivation and stated/interpreted quadratic separation live; develop the full block-elimination proof as a separate recording with its own Typst deck. Coordinate it through the existing design/authoring skills under the [recorded-session section of lecture-development](../.agents/skills/lecture-development/SKILL.md#recorded-sessions-linked-to-a-lecture). This is a development commitment, not a produced recording or full Scope approval. The L01 register owns current viewing requirements, artifact status and next actions.
+
 This is a revised kickoff, not approval of any revised scope, slide design or notebook. Existing L01–L03 artifacts are preserved on their source branches. A blank new L01 register may be created to record the reconciliation; do not claim it was independently reviewed. The previous L04-first plan is superseded by this explicit instructor direction.

@@ -1,8 +1,8 @@
-# L01 provisional Lecture Scope — intellectual arc only
+# L01 provisional Lecture Scope — intellectual arc and mathematical spine
 
 **Agreed route:** retain the current formulation-to-Gaussian/LGS progression. Keep the residual derivation and stated/interpreted quadratic identity live; develop the full block-elimination proof in a separate recorded session. **Remaining proposal:** add the concrete problem-to-query and squared-loss connections, and selectively reduce repeated taxonomy/dataset exposition to accommodate the agreed notebook direction. These refinements and their timing await discussion.
 
-**Status:** intellectual arc with selected instructor decisions, 2026-10-14; not a complete approved Scope. Route and live/recorded proof boundary are accepted. Remaining depths, refinements and workload are proposed. Exact versions are recorded below.
+**Status:** intellectual arc with selected instructor decisions and a proposed mathematical spine, 2026-10-14; not a complete approved Scope. Route and live/recorded proof boundary are accepted. Remaining depths, refinements and workload are proposed. Exact versions are recorded below.
 
 ## Accepted instructor direction
 
@@ -90,7 +90,7 @@ Thus $E[Z\mid y]$ is appropriate for that loss, not automatically every decision
 
 ## 4. Agreed boundary, remaining decisions and next gate
 
-**Recording development commitment:** develop the full block-elimination proof from Murphy Book 2 §2.3.1.5, “Derivation: moment form.” Entry knowledge is Gaussian block notation, the centered residual and its Schur-complement covariance. The endpoint is the quadratic identity and the factorization $p(x_1,x_2)=p(x_1\mid x_2)p(x_2)$. The live residual argument stands alone: understanding it does not depend on viewing this additional proof. The exact recorded treatment, equation selection and duration will be developed in the mathematical-spine discussion and recording brief.
+**Recording development commitment:** develop the full block-elimination proof from Murphy Book 2 §2.3.1.5, “Derivation: moment form.” Entry knowledge is Gaussian block notation, the centered residual and its Schur-complement covariance. The endpoint is the quadratic identity and the factorization $p(x_1,x_2)=p(x_1\mid x_2)p(x_2)$. The live residual argument stands alone: understanding it does not depend on viewing this additional proof. The mathematical-spine proposal below makes the proof obligation and provisional recording contract explicit; acceptance of that detailed contract remains pending.
 
 The planned separate source is `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`. No recording or deck exists yet; the path is a development target. Students are responsible for the proof as examinable content, regardless of whether they watch the video. Viewing is not recorded, evaluated or monitored, and no particular exam question is promised. The accepted workflow applies the existing design/authoring stages under the coordinator; it does not start those stages automatically.
 
@@ -98,11 +98,79 @@ The proposed allocations total 110 minutes plus approximately 10 for discussion/
 
 L02/L03 retain Gaussian density, conditioning, joint reasoning and simple graph prerequisites. L02 already introduces $\Lambda=\Sigma^{-1}$ in its Gaussian rewrite; reconcile its inaccurate L01 information-coordinate attribution there. No later lecture is rescoped.
 
-**Remaining decisions:** mathematical depths beyond the accepted proof boundary; concrete context; proposed additions/reductions and live/notebook workload, including PyMC's role. The selected route supports proceeding to mathematical-spine discussion through the coordinator. The remaining four Scope parts have not been drafted or approved; appropriate source-arc review and Section Design preview still precede complete Scope approval.
+**Remaining decisions:** mathematical depths beyond the accepted proof boundary; concrete context; proposed additions/reductions and live/notebook workload, including PyMC's role. The mathematical spine below is now proposed for discussion. Notebook handoff, concrete examples and lecture contract have not been drafted; appropriate source-arc review and Section Design preview still precede complete Scope approval.
+
+## Part 2 — Mathematical spine: proposed treatment and accepted boundaries
+
+**Recommendation:** preserve the existing mathematical chain and use its results for the accepted different-question aim. Add only a short live justification of the squared-loss posterior mean. The recording completes the selected second proof route; it does not carry prerequisites needed to understand live conditioning or begin the notebook. Detailed depths below are proposals unless marked **accepted**.
+
+### Existing mathematics and recommended live treatment
+
+The model parameters remain supplied. For the ordinary densities/inverses used here, assume joint covariance $\Sigma\succ0$; in an LGS assume $\Sigma_z\succ0$, $\Omega\succ0$ and independent Gaussian noise. Degenerate Gaussian measures are outside this treatment. Finite second moments suffice for the squared-loss identity, independently of Gaussianity.
+
+| Mathematical object and baseline | Arc role and practical purpose | Delivery and recommended depth/status |
+|---|---|---|
+| Joint model, Bayes, conditional/marginal laws and expectations: existing coin, three-operation and LGS material | A–B: identify the observed/unknown variables and requested answer; distinguish a distribution from its summary | **Live: review/state; work** the concrete query distinction. Retention follows the accepted route; the strengthened concrete hinge remains proposed. |
+| Empirical risk and zero-one loss: existing Iris material | B: make a performance criterion explicit; prevent training loss from being mistaken for future-case performance | **Live: state/work** the existing average-loss example; clarify generalization without adding a validation unit. Exact exposition remains proposed. |
+| Gaussian density, covariance/correlation, contours, affine moments: existing geometry and covariance proof | C: retain dependence and construct measurement/joint blocks | **Live: state/interpret** density and geometry; **derive** $\operatorname{Cov}(AX+b)=A\Sigma A^T$; **state** Gaussian affine closure. Preserve the existing level; no Gaussian-integral proof or information-form unit. |
+| Block marginals and independent residual: existing selection, mean and covariance derivations | D: compute a hidden-block distribution, not merely a linear predictor | **Live: derive** marginals and residual conditioning; this live derivation is **accepted**. **Work** the bivariate numerical check; retain explicit Gaussianity in the covariance-to-independence step. |
+| LGS joint blocks, gain, posterior and forward law: existing state/measurement development | E: one model supplies inverse inference and forward prediction | **Live: apply** affine and conditioning rules; recommend **derive** joint entries through moments and **work** the scalar gain regimes. This proposed depth makes existing reuse explicit rather than introducing another theorem family. |
+| Schur complement and separated quadratic: existing residual interpretation and displayed identity | D–E: connect remaining uncertainty with density factorization | **Live: state/interpret**, **accepted**. **Recording: prove** the complete factorization, also **accepted** in purpose/allocation; detailed contract below is proposed. |
+
+The live residual argument must establish $r\perp X_2$, not just zero covariance: $(r,X_2)$ is jointly Gaussian, $E[r]=0$ and $\operatorname{Cov}(r,X_2)=0$. Therefore $X_1\mid X_2=x_2$ has the shifted Gaussian law already displayed in the arc. Its covariance reduction is positive semidefinite and independent of the observed value within this Gaussian regime. Students apply the distribution and explain why conditioning differs from marginalization; no general covariance-independence rule is implied.
+
+For the LGS, carry the same results into
+
+$$
+\mu_y=W\mu_z+b,\quad V_y=W\Sigma_zW^T+\Omega,\quad C=\Sigma_zW^T,
+$$
+$$
+K=CV_y^{-1},\quad E[Z\mid y]=\mu_z+K(y-\mu_y),\quad
+\operatorname{Cov}(Z\mid y)=\Sigma_z-KC^T.
+$$
+
+Here $V_y$ denotes the observed marginal covariance; these are existing joint/update results carried forward, not fresh content each time. Marginalization gives $p(y)=\mathcal N(\mu_y,V_y)$ under fixed parameters. Generation draws from this marginal, or from the equivalent state/measurement construction; it does not estimate this observation's hidden state. Sensor-fusion interpretation retains all prior and conditional-noise assumptions.
+
+### Proposed addition and notebook use
+
+**New live proof proposed:** the current deck extracts $E[Z\mid y]$ but does not prove its squared-loss optimality. Recommend **derive**, in about 2–4 minutes within milestone E, the risk decomposition already shown in the arc, using the centered cross-term's zero expectation. **Then apply**: the mean minimizes conditional expected squared error, whereas its covariance describes uncertainty about the unknown value. The accepted mean/squared-loss query does not itself approve this new proof depth. No other loss catalogue or reconstruction-baseline experiment is added.
+
+**Notebook: apply**, rather than rederive, the conditional, summary and forward laws. Existing joint-to-LGS translation and exact/sampled comparison remain reusable evidence; adding forward prediction/generation implements the agreed direction, with workload and PyMC balance still to be settled in the handoff. Sample-based summaries have Monte Carlo error; direct draws from an analytically known Gaussian do not turn it into an approximate posterior family. Parameter fitting remains outside this spine.
+
+### Recorded-session mathematical contract — proposed details within accepted boundary
+
+**Entry:** after live block notation, residual conditioning and Schur-complement interpretation; matrix multiplication/transposition and determinants are prior mathematical knowledge. **Endpoint:** prove the normalized joint density is the conditional Gaussian times its marginal. **Delivery:** `Recording`, full block-elimination proof; required/examinable content, with no tracked, evaluated or monitored viewing. It is not a prerequisite to the live derivation or notebook. Target duration **20–30 minutes**, a complexity-based estimate, not measured or approved workload. The separate Typst path remains the planned path above; downstream stages and video production have not begun.
+
+Write $H=\Sigma_{22}$, $B=\Sigma_{12}H^{-1}$ and $S=\Sigma_{11}-BH B^T$. From $\Sigma\succ0$, prove $H,S\succ0$, so every inverse and determinant below is valid. Block elimination gives
+
+$$
+T=\begin{pmatrix}I&-B\\0&I\end{pmatrix},\qquad
+T\Sigma T^T=\begin{pmatrix}S&0\\0&H\end{pmatrix},\qquad
+\Sigma^{-1}=T^T\begin{pmatrix}S^{-1}&0\\0&H^{-1}\end{pmatrix}T.
+$$
+
+With $u=x_2-\mu_2$ and $r=x_1-\mu_1-Bu$, the inverse/congruence identity proves
+
+$$
+(x-\mu)^T\Sigma^{-1}(x-\mu)=r^TS^{-1}r+u^TH^{-1}u.
+$$
+
+Complete the proof using $\det T=1$, hence $\det\Sigma=\det S\det H$. The determinant and dimension-dependent $(2\pi)$ factors then split the normalizer, establishing
+
+$$
+\mathcal N(x;\mu,\Sigma)
+=\mathcal N(x_1;\mu_1+Bu,S)\,\mathcal N(x_2;\mu_2,H).
+$$
+
+Exponent separation alone is insufficient for this normalized equality. Murphy develops the block-inverse/exponent route and states factorization; the explicit determinant/normalizer argument is the course's completion of that proof, not a separately displayed Murphy derivation. No Woodbury proof, second Schur orientation or information-form calculus is required.
+
+### Mathematical-depth choice for discussion
+
+**Recommended:** derive the short squared-loss decomposition live, closing the performance-to-summary connection. **Alternative:** state the minimum-mean-square-error result live and apply it in the notebook without proof. The alternative saves a few minutes but leaves the criterion's choice of summary asserted rather than established. Accepted residual/recorded proof decisions are unchanged. The spine and detailed recording contract remain authored proposals, not independent feasibility approval.
 
 ## Source records and checking material
 
-Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `d91ec44d43808a2c97dfaf7f4637687e76f9252a`; preceding arc blob `d78c83aa8b0be881b6f6e272a339a3b23df017ee`. Reviewed source blobs:
+Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `5ba226342cbca91a1d52b5bd88bc7efeeee04b37`; input arc blob `fb2775ac8d25d891bf8a2f5c3031ef58542afc94`. All live source blobs below were verified unchanged for mathematical-spine development:
 
 - Deck: `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`.
 - Coverage specification: `c4457bc4fdb11df14de54658f20e487030766328`.
@@ -111,6 +179,8 @@ Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `d91e
 - Planned map: `63fb5cea0a7b0a4c908c8f803e550d087d20a412`.
 
 Murphy, *Probabilistic Machine Learning: Advanced Topics*, December 10, 2025 online edition: Chapter 1, printed pp. 1–2, for model/task distinctions; §2.3.1.1 “Definition”; §2.3.1.3 “Marginals and conditionals of an MVN”; §2.3.1.5 “Derivation: moment form,” for the source's block-quadratic argument; §§2.3.2.1 “Joint distribution,” 2.3.2.2 “Posterior distribution (Bayes’ rule for Gaussians),” and 2.3.2.3 “Example: Sensor fusion with known measurement noise,” for joint-to-forward/inverse reuse. Murphy, *Probabilistic Machine Learning: An Introduction*, April 18, 2025 online edition: §3.2.4 “Example: conditioning a 2d Gaussian”; §3.2.5 “Example: Imputing missing values”; §5.1.5.1 “L2 loss,” for the mean/loss distinction. The course residual proof reorganizes the source derivation; its synthetic example is course-constructed.
+
+**Spine source check:** Book 2 §2.3.1.1, Eqs. 2.71–2.73 (density/geometry); §2.3.1.3, Eqs. 2.75–2.79 (blocks/marginals/conditionals); §2.3.1.5, Eqs. 2.88–2.92 (block inverse/Schur complements), 2.94–2.103 (separated exponent, factorization and conditional parameters); §§2.3.2.1–2.3.2.2, Eqs. 2.118–2.126 and 2.129 (LGS/posterior/marginal). Book 1 §3.1.1, Eq. 3.5 (affine covariance), §3.2.5 (imputation), and §5.1.5.1, Eqs. 5.32–5.34 (squared-loss posterior mean). The vector risk decomposition and explicit determinant step are course elaborations. The recording's SPD assumption guarantees both full and Schur inverses; mere invertibility of two diagonal blocks alone does not. Source inspection used local edition extracts; no new implementation, rehearsal, runtime or independent mathematical review was performed.
 
 **Author checking material, not a student-visible teaching commitment:** dense conditioning factors an observed $D\times D$ covariance in $O(D^3)$ work. Fixed parameters and observation pattern permit reuse of factors/gain; subsequent $L$-dimensional posterior means cost $O(LD)$. This is an exact structural computational advantage over generic sampling for these queries, not a claim that sampling is necessary at this example's scale. Factorization/reuse complexity is absent from the existing deck; this analysis does not add it to the proposed live teaching.
 

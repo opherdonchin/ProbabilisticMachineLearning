@@ -55,6 +55,13 @@ what may vary, what must remain, owner, isolated output location and evidence to
 return. A final-state or difficult-reveal prototype may suffice before rendering
 the whole cluster. Compare genuinely different alternatives where useful.
 
+Attach each result to the realized content version, object-to-region/reveal
+relationships and actual complete states inspected. A filename or candidate
+label does not establish that its proposed arrangement was implemented. The
+affected owners must confirm that realization before using fit evidence to
+change the teaching sequence. A fitted state with missing mathematics is not
+capacity evidence for the complete explanation.
+
 This authoring experiment can precede formal design approval. It is neither a
 production commission nor permission to publish or replace approved lecture
 sources. Its results inform Organization and Design revisions; it cannot grant

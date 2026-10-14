@@ -154,10 +154,16 @@ Record only the section-level information that controls detailed design:
 
 Do not duplicate the entire upstream section plan.
 
-### 3. Design the whole section in pseudo-Typst
+### 3. Explore the explanation, then complete the section design
 
 Before forcing the section into the current API, write the design you actually
-want.
+want. In a coupled exploratory loop, first capture the exact mathematical content,
+semantic relationships and reveal states of the uncertain slide or cluster.
+Offer that bounded slice to Authoring for a discriminating prototype, then use
+the returned evidence to revise the owning design and, where needed, negotiate
+Organization. Do not require a finished whole-section A4 specification before
+learning whether its explanation can be realized. After those uncertainties
+resolve, complete and review the whole coherent section specification below.
 
 For each slide specify:
 

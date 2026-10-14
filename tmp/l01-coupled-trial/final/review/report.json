@@ -1,0 +1,31 @@
+{
+  "source": "build/l01-coupled/final/slide_deck.typ",
+  "sha256": "74d34ddba30899feb971e229270276e43ee559b9699c3ccfff231aacba159131",
+  "warnings": [],
+  "pages": {
+    "handout": 69,
+    "presentation": 165
+  },
+  "previews": [
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-handout-1.png",
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-presentation-1.png",
+    "inference-often-combines-conditioning-and-summarizing-bbfe4d9d-presentation-2.png",
+    "a-point-estimate-needs-a-loss-function-99da211a-handout-1.png",
+    "a-point-estimate-needs-a-loss-function-99da211a-presentation-1.png",
+    "a-point-estimate-needs-a-loss-function-99da211a-presentation-2.png",
+    "a-point-estimate-needs-a-loss-function-99da211a-presentation-3.png",
+    "the-conditional-mean-uniquely-minimizes-squared-error-risk-b4beff45-handout-1.png",
+    "the-conditional-mean-uniquely-minimizes-squared-error-risk-b4beff45-presentation-1.png",
+    "the-conditional-mean-uniquely-minimizes-squared-error-risk-b4beff45-presentation-2.png",
+    "the-conditional-mean-uniquely-minimizes-squared-error-risk-b4beff45-presentation-3.png",
+    "the-conditional-mean-uniquely-minimizes-squared-error-risk-b4beff45-presentation-4.png",
+    "the-conditional-mean-uniquely-minimizes-squared-error-risk-b4beff45-presentation-5.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-handout-1.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-1.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-2.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-3.png",
+    "sensor-fusion-combines-measurements-according-to-their-uncertainty-0332c474-presentation-4.png"
+  ],
+  "visual_review": "author-inspected",
+  "status": "mechanical-pass"
+}

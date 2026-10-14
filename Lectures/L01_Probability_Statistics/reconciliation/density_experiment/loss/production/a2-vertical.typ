@@ -69,20 +69,18 @@
   object: [
     #stack(
       spacing: sp("m"),
-      text(size: fs("m"), weight: "semibold")[Choose a reconstruction after observing $y$],
-      align(center)[$m=E[z|y]$],
-      [Unknown $z in RR^d$; choose $a in RR^d$ to reconstruct it.],
+      text(size: fs("m"), weight: "semibold")[Observed $y$; choose $a in RR^d$ to reconstruct unknown $z in RR^d$],
       text(size: fs("m"), weight: "semibold")[Squared-error criterion],
       align(center)[$L(a,z)=norm(z-a)^2, quad R(a|y)=E[L(a,z)|y]$],
       uncover("2-")[
         #stack(
           spacing: sp("s"),
-          text(size: fs("m"), weight: "semibold")[Center the error at the conditional mean],
-          align(center)[$r=z-m, quad z-a=r+(m-a)$],
+          text(size: fs("m"), weight: "semibold")[Center at the conditional mean],
+          align(center)[$m=E[z|y], quad r=z-m, quad z-a=r+(m-a)$],
         )
       ],
       uncover("3-")[
-        align(center)[$norm(z-a)^2=norm(r)^2+2r^T (m-a)+norm(m-a)^2$]
+        #align(center)[$norm(z-a)^2=norm(r)^2+2r^T (m-a)+norm(m-a)^2$]
       ],
     )
   ],
@@ -90,7 +88,7 @@
     #stack(
       spacing: sp("s"),
       [- Choose $a$ to minimize conditional expected squared error $R(a|y)$.],
-      uncover("2-")[- Given $y$, $a$ and $m$ are fixed; the residual $r$ remains random.],
+      uncover("2-")[- Given $y$, offset $m-a$ is fixed; uncertainty remains in $r$.],
     )
   ],
 )
@@ -101,44 +99,51 @@
 #content-block(
   object: [
     #stack(
-      spacing: sp("m"),
+      spacing: sp("s"),
       recall-card(
-        label: [Average the centered expansion],
+        label: [Average; $m-a$ fixed],
         from: [Previous slide: pointwise squared-error expansion],
         size: fs("s"),
-      )[
-        $norm(z-a)^2=norm(r)^2+2r^T (m-a)+norm(m-a)^2$
-      ],
-      text(size: fs("m"), weight: "semibold")[Take $E[dot|y]$; $m-a$ is fixed],
-      align(center)[$E[r|y]=E[z|y]-m=0$],
-      align(center)[$E[r^T (m-a)|y]=E[r|y]^T (m-a)=0$],
-      text(size: fs("s"), weight: "semibold")[With $V=op("Cov")[z|y]=E[r r^T|y]$],
-      align(center)[$E[norm(r)^2|y]=sum_(j=1)^d E[r_j^2|y]=op("tr") V$],
+      )[$norm(z-a)^2=norm(r)^2+2r^T (m-a)+norm(m-a)^2$],
+      grid(
+        columns: cols("equal"),
+        gutter: sp("l"),
+        align: top,
+        stack(
+          spacing: sp("xs"),
+          align(center)[$E[r|y]=E[z|y]-m=0$],
+          align(center)[$E[r^T (m-a)|y]=E[r|y]^T (m-a)=0$],
+        ),
+        stack(
+          spacing: sp("xs"),
+          align(center)[$V=op("Cov")[z|y]$],
+          align(center)[$E[norm(r)^2|y]=sum_(j=1)^d E[r_j^2|y]=op("tr") V$],
+        ),
+      ),
       uncover("2-")[
         #stack(
-          spacing: sp("s"),
+          spacing: sp("xs"),
           text(size: fs("m"), weight: "semibold")[Conditional squared-error risk],
-          align(center)[#text(size: 1.08em)[$R(a|y)=op("tr") V+norm(m-a)^2$]],
+          align(center)[#text(size: 1.1em)[$R(a|y)=op("tr") V+norm(m-a)^2$]],
         )
       ],
       uncover("3-")[
         #stack(
-          spacing: sp("s"),
-          text(size: fs("m"), weight: "semibold")[Optimal reconstruction],
-          align(center)[$norm(m-a)^2>=0 quad "with equality iff" quad a=m$],
-          align(center)[$a^*(y)=m=E[z|y], quad min_a R(a|y)=op("tr") V$],
+          spacing: sp("xs"),
+          align(center)[$norm(m-a)^2>=0 quad "equality iff" quad a=m$],
+          align(center)[$a^*(y)=m=E[z|y]$],
+          align(center)[$min_a R(a|y)=op("tr") V$],
+          align(center)[$"Earlier Gaussian:" quad a^*(y)=mu_(z|y)$],
+          align(center)[$min_a R(a|y)=op("tr") Sigma_(z|y)$],
         )
-      ],
-      uncover("3-")[
-        align(center)[$"For the conditional Gaussian:" quad a^*(y)=mu_(z|y), quad min_a R(a|y)=op("tr") Sigma_(z|y)$]
       ],
     )
   ],
   key-points: [
     #stack(
       spacing: sp("s"),
-      uncover("2-")[- Risk is residual uncertainty plus the squared distance of the chosen estimate from the mean.],
-      uncover("3-")[- The conditional mean minimizes model expected squared error.],
+      uncover("2-")[- Risk is residual uncertainty plus squared distance from the posterior mean.],
+      uncover("3-")[- The posterior mean minimizes model expected squared error; covariance measures what remains.],
     )
   ],
 )

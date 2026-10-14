@@ -121,28 +121,30 @@
           align(center)[$E[norm(r)^2|y]=sum_(j=1)^d E[r_j^2|y]=op("tr") V$],
         ),
       ),
-      block(height: 2.2cm)[
-        #uncover("2-")[
-          #align(center + horizon)[
-            #stack(
-              spacing: sp("xs"),
-              text(size: fs("m"), weight: "semibold")[Conditional squared-error risk],
-              align(center)[#text(size: 1.1em)[$R(a|y)=op("tr") V+norm(m-a)^2$]],
-            )
-          ]
+      [#block(height: 2.2cm)[
+        #align(center + horizon)[
+          #stack(
+            spacing: sp("xs"),
+            text(size: fs("m"), weight: "semibold")[Conditional squared-error risk],
+            uncover("2-")[align(center)[#text(size: 1.1em)[$R(a|y)=op("tr") V+norm(m-a)^2$]]],
+          )
         ]
-      ],
+      ]],
     )
   ],
   key-points: [
-    block(height: 1.1cm)[
-      #uncover("2-")[- Risk is residual uncertainty plus squared distance from the posterior mean.]
+    #block(height: 1.1cm)[
+      #stack(
+        spacing: sp("s"),
+        only("1")[- Centering removes the average cross-term with the fixed offset.],
+        only("2")[- Risk is residual uncertainty plus squared distance from the posterior mean.],
+      )
     ]
   ],
 )
 
 
-== The posterior mean removes the avoidable squared error
+== The posterior mean minimizes squared-error risk
 
 #content-block(
   object: [
@@ -157,23 +159,15 @@
       align(center)[$norm(m-a)^2>=0 quad "equality iff" quad a=m$],
       align(center)[$a^*(y)=m=E[z|y]$],
           align(center)[$min_a R(a|y)=op("tr") V$],
-      block(height: 2.2cm)[
-        #uncover("2-")[
-          #align(center)[
-            $"For the conditional Gaussian:" quad a^*(y)=mu_(z|y)$\
-            $min_a R(a|y)=op("tr") Sigma_(z|y)$
-          ]
-        ]
-      ],
+      align(center)[$"For the conditional Gaussian:" quad a^*(y)=mu_(z|y)$],
+      align(center)[$min_a R(a|y)=op("tr") Sigma_(z|y)$],
     )
   ],
   key-points: [
     #stack(
       spacing: sp("s"),
       [- The conditional mean minimizes model expected squared error.],
-      block(height: 1.2cm)[
-        #uncover("2-")[- The posterior covariance describes uncertainty that remains after the mean action is chosen.]
-      ]
+      [- The posterior covariance describes uncertainty that remains after the mean action is chosen.]
     )
   ],
 )

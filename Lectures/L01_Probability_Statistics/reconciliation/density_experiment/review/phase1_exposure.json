@@ -1,0 +1,1470 @@
+{
+  "phase": "Phase 1: render-only review",
+  "frozen_before_source_release": true,
+  "allowed_evidence": [
+    "render_order.json",
+    "rendered/*.png"
+  ],
+  "other_repository_material_read": false,
+  "builders_consulted": false,
+  "render_order_sha256": "3c10c2dbc2d680bb0d0062aade70847abd661f65ccee66a1db869230096dad64",
+  "inventory_reference_count": 146,
+  "unique_body_count": 56,
+  "inspected_unique_body_count": 56,
+  "all_sequence_orders_assessed": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09"
+  ],
+  "deduplication_basis": "Shared image IDs have exactly identical pixels above the footer (top94%); original full-resolution images retained. These references can be viewed once. Differences confined to footer numbering/section label are ignored for shared-body deduplication. Every distinct rendered body and every meaningful reveal is listed.",
+  "inspected_images": [
+    {
+      "inspection_order": 1,
+      "image_id": "item-001.png",
+      "relative_path": "rendered/item-001.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "6bb76bab806cf90ba9e4285648dccbaf4df8a37434cb538f62ab1e17a6cc3d15",
+      "reference_count": 10
+    },
+    {
+      "inspection_order": 2,
+      "image_id": "item-002.png",
+      "relative_path": "rendered/item-002.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "a09059318b170799f52ab8d1b080f2599d366f5c1b3c6ba0d8e17828e1bb6824",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 3,
+      "image_id": "item-003.png",
+      "relative_path": "rendered/item-003.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "4c23bfb01a2161ea8891dc20875cc3514f1b2bfb9ff6cdecdaf5ad2fd7ff7dc9",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 4,
+      "image_id": "item-004.png",
+      "relative_path": "rendered/item-004.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "cbb106ba355529b0f16adce13dfad9ece32f50182e9c96623ebc6f725a4d841d",
+      "reference_count": 10
+    },
+    {
+      "inspection_order": 5,
+      "image_id": "item-005.png",
+      "relative_path": "rendered/item-005.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "cb06700d2f14c5da993ef3a421e21db9e78c701802fc26a0e06454be11d0289a",
+      "reference_count": 5
+    },
+    {
+      "inspection_order": 6,
+      "image_id": "item-006.png",
+      "relative_path": "rendered/item-006.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "7fff270e2ab1b9346949b9c0a5c8ca17f852b28613bd77a36b560172ceb34bda",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 7,
+      "image_id": "item-007.png",
+      "relative_path": "rendered/item-007.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "6106806e1638a7e84e4b8f0f07ad4dc206c0cc3404610d55547bd6998a504776",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 8,
+      "image_id": "item-008.png",
+      "relative_path": "rendered/item-008.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "7de2af387601b5ab9eaff9e439fd29a2f35963f1971ac5ceaad6daa8005bfd20",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 9,
+      "image_id": "item-009.png",
+      "relative_path": "rendered/item-009.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "0e1cda4caddfae2e9ce0344957711157459d293319fcab344b93c32f6ac7f8d9",
+      "reference_count": 5
+    },
+    {
+      "inspection_order": 10,
+      "image_id": "item-010.png",
+      "relative_path": "rendered/item-010.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "f7c554d52595b333fc77a73406b99fe326237b692fe168de7df1c90bd6a373be",
+      "reference_count": 5
+    },
+    {
+      "inspection_order": 11,
+      "image_id": "item-011.png",
+      "relative_path": "rendered/item-011.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "2e34d8b92737f845e383e1d36bd9cace6512fbf919d3d8229515f6f8a9d1a7d9",
+      "reference_count": 5
+    },
+    {
+      "inspection_order": 12,
+      "image_id": "item-012.png",
+      "relative_path": "rendered/item-012.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "ffaaae1e8e7404f0e6012f40cd72336fe5dc648188751122635c935fb5bfe26a",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 13,
+      "image_id": "item-013.png",
+      "relative_path": "rendered/item-013.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "b3d9521c81db00f79ac096e069feeb3fb7cbb284a9397f6cb85bec251123389a",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 14,
+      "image_id": "item-014.png",
+      "relative_path": "rendered/item-014.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "0bc86d5c7459fc381954a2d4824b40212ad4606cb4ca8afe9d2e2b177a09dd82",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 15,
+      "image_id": "item-015.png",
+      "relative_path": "rendered/item-015.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "5881333f12dc19111bf99601f41f3728322cf925dac161cb8dc8b579fce99071",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 16,
+      "image_id": "item-016.png",
+      "relative_path": "rendered/item-016.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "3bef804393c894645db2fd2ad6face5bdd7c677df86460209e427954fe754511",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 17,
+      "image_id": "item-017.png",
+      "relative_path": "rendered/item-017.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "4f1947692aaa5803844ec4f3e9a5dec044eb1ff7add1fae399827ef99c5f4700",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 18,
+      "image_id": "item-018.png",
+      "relative_path": "rendered/item-018.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "ff8ae57eafdc400c2715bd1216ff5381d1c45504f8ca6461683b25835790b8c1",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 19,
+      "image_id": "item-019.png",
+      "relative_path": "rendered/item-019.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "ae91b8009e9c493b1e716e94224a83f61d8509f67c0f54defb392f313efa3818",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 20,
+      "image_id": "item-020.png",
+      "relative_path": "rendered/item-020.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "d91acb88f74b8598a169369f722959c45a463eff9baf2ded1caf729c4ce64b81",
+      "reference_count": 6
+    },
+    {
+      "inspection_order": 21,
+      "image_id": "item-021.png",
+      "relative_path": "rendered/item-021.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "fee9f0c0b3ac4c6798e06812e26fcd32aff288f492ea7eb804c0c6732b6340f3",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 22,
+      "image_id": "item-022.png",
+      "relative_path": "rendered/item-022.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "f8710ba6f815ef9949a261294168fab44fbf74f8fdb0655ca7ca4634bcdeba90",
+      "reference_count": 3
+    },
+    {
+      "inspection_order": 23,
+      "image_id": "item-023.png",
+      "relative_path": "rendered/item-023.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "9e3d077aef1050fc37cfb3c2e9dbf36d8fcc513dd0b2421afa7a32aeee6ee22b",
+      "reference_count": 3
+    },
+    {
+      "inspection_order": 24,
+      "image_id": "item-024.png",
+      "relative_path": "rendered/item-024.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "c9cb62a39a1f40e3ed44eee06bea62b52e94bbe7d95ebb2a2db62b2cda8200d3",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 25,
+      "image_id": "item-025.png",
+      "relative_path": "rendered/item-025.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "1ae4861bf7d375bd3a926d9d2da20f2512af84aca9897636f2393ba93f094cf1",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 26,
+      "image_id": "item-026.png",
+      "relative_path": "rendered/item-026.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "702f3b6d964e2bd63a7f8edfd3808a835206db1e89b699a50f95f4e202791849",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 27,
+      "image_id": "item-027.png",
+      "relative_path": "rendered/item-027.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "9295318656810c37992a0488a5f063129a2767c09abd0c9b14485130d81d7690",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 28,
+      "image_id": "item-028.png",
+      "relative_path": "rendered/item-028.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "f93f644f1800b7145d5b7ecbbc8b4abe0b49fede9a8cb27cc3090d8d2d1d8486",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 29,
+      "image_id": "item-029.png",
+      "relative_path": "rendered/item-029.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "1de096410599cee7046e6906847b131152af284a4f16e9e78c85e261415cfc5e",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 30,
+      "image_id": "item-030.png",
+      "relative_path": "rendered/item-030.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "b499d36975372ea41b425bbe44ade7725248770a16e4426dc958288525e695dd",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 31,
+      "image_id": "item-031.png",
+      "relative_path": "rendered/item-031.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "299bd8c39cb068cbaa3c5c927308ea645d66ea7999eeeaaeeda57402dc52f06d",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 32,
+      "image_id": "item-032.png",
+      "relative_path": "rendered/item-032.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "4727962eb4f6e8fc2a3c062be7908387b7ded973e8f8e15981902d3ad24b6f4f",
+      "reference_count": 8
+    },
+    {
+      "inspection_order": 33,
+      "image_id": "item-050.png",
+      "relative_path": "rendered/item-050.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "f13126a77ea56ef1b1d7d7b832629e7c31beec53427aef58cb4304be5ba7ea04",
+      "reference_count": 3
+    },
+    {
+      "inspection_order": 34,
+      "image_id": "item-034.png",
+      "relative_path": "rendered/item-034.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "3aac919ec9ce01e87ef15570739cb65966aa351fecfd02da83a11f7325522e72",
+      "reference_count": 8
+    },
+    {
+      "inspection_order": 35,
+      "image_id": "item-035.png",
+      "relative_path": "rendered/item-035.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "3eeeda4a72b3757691a234c303d1910f40d30b1bc222872bb26652b86aee1255",
+      "reference_count": 4
+    },
+    {
+      "inspection_order": 36,
+      "image_id": "item-036.png",
+      "relative_path": "rendered/item-036.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "4d74233c8f93e702dcf20890239b2ce741335c8ab5f3ad341ba67c851be9d230",
+      "reference_count": 8
+    },
+    {
+      "inspection_order": 37,
+      "image_id": "item-051.png",
+      "relative_path": "rendered/item-051.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "e993414bd956b57261650fd4a6612ddb2aa8af93a2485bfe1ef1894e7a179088",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 38,
+      "image_id": "item-052.png",
+      "relative_path": "rendered/item-052.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "56c517de283b23cbabeb45985787ab3739577cac6a0f9f4685a450f17d3fb168",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 39,
+      "image_id": "item-053.png",
+      "relative_path": "rendered/item-053.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "e06e4bbaf46eb261fc98c2aa32e07ff1e442ab9d17523e24f46a9f9d0b52e559",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 40,
+      "image_id": "item-040.png",
+      "relative_path": "rendered/item-040.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "dad71ff4fba502cfc4a845831e5ced7b777545a0467aec88f8ba91f9290e178a",
+      "reference_count": 4
+    },
+    {
+      "inspection_order": 41,
+      "image_id": "item-041.png",
+      "relative_path": "rendered/item-041.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "3aa5dd00a0495324600b59292a42b0b85ae9515dbe819bafc6a8b1b93aa7358e",
+      "reference_count": 8
+    },
+    {
+      "inspection_order": 42,
+      "image_id": "item-033.png",
+      "relative_path": "rendered/item-033.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "1ec7427d03d43f77fa48e1874014b5b15b3847e6bfcdd6cc7f8543e406f0b343",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 43,
+      "image_id": "item-037.png",
+      "relative_path": "rendered/item-037.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "4e48d00c37994bec5c38b5f2f64a24f031701918ba23b1a2dd77f53a9f60af2e",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 44,
+      "image_id": "item-038.png",
+      "relative_path": "rendered/item-038.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "5491a4c3183945fea15c2f3cf2c1c570b916b6e9166ba2ce646bbf11a25c4ff1",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 45,
+      "image_id": "item-039.png",
+      "relative_path": "rendered/item-039.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "d18e0e59a9cfece9bc42504b07ef4fcaa5cf554d4e943a2abf6abd334fa21fd0",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 46,
+      "image_id": "item-042.png",
+      "relative_path": "rendered/item-042.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "093e2c158825d71020579a48a76ea7410b91dfdc9fa9101cc6db20122622cc8d",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 47,
+      "image_id": "item-043.png",
+      "relative_path": "rendered/item-043.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "85a1b0b97779eaf2fc0eebee25351b69bfb957733947f32571cf601df78a4d2b",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 48,
+      "image_id": "item-044.png",
+      "relative_path": "rendered/item-044.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "5f57349bb9d277b9b159ab1953c1ecb9cc71db02f371dfc91ef778a07922c40e",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 49,
+      "image_id": "item-045.png",
+      "relative_path": "rendered/item-045.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "efa434571e1f4de77d1a93d13313c874c7fea9d631861a024012b7f87fa0f114",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 50,
+      "image_id": "item-046.png",
+      "relative_path": "rendered/item-046.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "6f320332d8a263bb32e8e10920164a063c4c99e5ee2c18b6ce71e8232bc53782",
+      "reference_count": 2
+    },
+    {
+      "inspection_order": 51,
+      "image_id": "item-047.png",
+      "relative_path": "rendered/item-047.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "bd9366c4ffd0975065031558f3ef44bbb5f149d0d6821388eeb3416d01c14827",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 52,
+      "image_id": "item-048.png",
+      "relative_path": "rendered/item-048.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "bce87a14e9fe0945291e1b06fd4b01c6f64b4dbca4bd8a57160d8a27aa875d09",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 53,
+      "image_id": "item-049.png",
+      "relative_path": "rendered/item-049.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "8eb0b293aca62da94f10902247cb93d6bb106bd1cee095a75cc23925e24179e1",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 54,
+      "image_id": "item-054.png",
+      "relative_path": "rendered/item-054.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "c34bb1a7fe5e34df8400ac4bea9b612fb8f5ae3e2f8522b962d405b96656cde0",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 55,
+      "image_id": "item-055.png",
+      "relative_path": "rendered/item-055.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "163d3e534701ec30b855ee7f4c3d5f4a4808dfe374733613df9e3934d2fce01c",
+      "reference_count": 1
+    },
+    {
+      "inspection_order": 56,
+      "image_id": "item-056.png",
+      "relative_path": "rendered/item-056.png",
+      "inspection_method": "tools.view_image with detail=original; full-resolution image visually inspected",
+      "width_px": 1263,
+      "height_px": 711,
+      "sha256": "b464567981ff88db89787fb9fdc4b70d634c43213b83efded5077abf4ac30cb6",
+      "reference_count": 1
+    }
+  ],
+  "assessed_references": [
+    {
+      "sequence": "01",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-002.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-003.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "handout",
+      "position": 4,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-005.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-006.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-002.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-007.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-008.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-003.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-009.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-010.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-011.png"
+    },
+    {
+      "sequence": "01",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-012.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-013.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "handout",
+      "position": 4,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-005.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-014.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-015.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-012.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-016.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-017.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-018.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-019.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-013.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-009.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-010.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 13,
+      "image_id": "item-011.png"
+    },
+    {
+      "sequence": "02",
+      "mode": "presentation",
+      "position": 14,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-020.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-021.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "handout",
+      "position": 4,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-005.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-022.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-023.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-020.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-024.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-025.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-021.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-009.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-010.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-011.png"
+    },
+    {
+      "sequence": "03",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-020.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-026.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "handout",
+      "position": 4,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-005.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-022.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-023.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-020.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-027.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-028.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-026.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-009.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-010.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-011.png"
+    },
+    {
+      "sequence": "04",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-020.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-029.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "handout",
+      "position": 4,
+      "image_id": "item-030.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "handout",
+      "position": 5,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-005.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-001.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-022.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-023.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-020.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-031.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-029.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-030.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-009.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-010.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-011.png"
+    },
+    {
+      "sequence": "05",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-004.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-050.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-035.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-051.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-052.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-053.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-050.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-040.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "06",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-033.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-035.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-037.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-038.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-039.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-033.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-040.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "07",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-042.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-035.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-043.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-044.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-045.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-042.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-040.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "08",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "handout",
+      "position": 1,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "handout",
+      "position": 2,
+      "image_id": "item-046.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "handout",
+      "position": 3,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 1,
+      "image_id": "item-035.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 2,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 3,
+      "image_id": "item-036.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 4,
+      "image_id": "item-032.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 5,
+      "image_id": "item-047.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 6,
+      "image_id": "item-048.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 7,
+      "image_id": "item-049.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 8,
+      "image_id": "item-046.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 9,
+      "image_id": "item-040.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 10,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 11,
+      "image_id": "item-041.png"
+    },
+    {
+      "sequence": "09",
+      "mode": "presentation",
+      "position": 12,
+      "image_id": "item-034.png"
+    },
+    {
+      "sequence": null,
+      "mode": "additional_course_slide",
+      "position": 1,
+      "image_id": "item-054.png"
+    },
+    {
+      "sequence": null,
+      "mode": "additional_course_slide",
+      "position": 2,
+      "image_id": "item-050.png"
+    },
+    {
+      "sequence": null,
+      "mode": "additional_course_slide",
+      "position": 3,
+      "image_id": "item-055.png"
+    },
+    {
+      "sequence": null,
+      "mode": "additional_course_slide",
+      "position": 4,
+      "image_id": "item-056.png"
+    }
+  ],
+  "limitations": [
+    "Static renders establish visible reasoning and design; they do not establish classroom performance, instructor narration, reveal timing, or the development process.",
+    "Repeated body IDs were inspected once and assessed at every listed occurrence."
+  ]
+}

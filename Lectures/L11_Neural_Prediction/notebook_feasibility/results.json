@@ -1,0 +1,317 @@
+{
+  "config": {
+    "data_seed": 20261014,
+    "n_train": 320,
+    "n_validation": 80,
+    "n_test": 80,
+    "hidden": 32,
+    "epochs": 800,
+    "validation_every": 20,
+    "lr": 0.01,
+    "sd_floor": 0.03,
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "threads": 1,
+    "training": "full batch Adam; minimum validation NLL checkpoint"
+  },
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "numpy": "2.0.2"
+  },
+  "checks": {
+    "loss_reference_abs_error": 4.440892098500626e-16,
+    "mean_gradient_max_error": 6.938893903907228e-18,
+    "scale_gradient_max_error": 5.551115123125783e-17,
+    "float64_gradcheck": true,
+    "shared_hidden_gradient_sum_max_error": 5.551115123125783e-17,
+    "mean_and_scale_path_norms": [
+      0.5312148953539935,
+      0.3711752503737719
+    ]
+  },
+  "generating_law": {
+    "mean": "sin(1.5*x)+0.2*x",
+    "sd": "0.15+0.5*sigmoid(1.5*x)",
+    "x": "iid uniform[-3,3]"
+  },
+  "affine": {
+    "nll": 1.184434520079495,
+    "mse": 0.6213460144454205,
+    "mean_function_rmse": 0.6349901967971657,
+    "sd_function_rmse": 0.47174083087578694,
+    "min_sd": 0.8367706939472426,
+    "coverage": 0.9625,
+    "regional": {
+      "x<0": {
+        "n": 40,
+        "coverage": 1.0,
+        "wilson95": [
+          0.9123754607496077,
+          1.0
+        ],
+        "mean_sd": 0.8367706939472426
+      },
+      "x>=0": {
+        "n": 40,
+        "coverage": 0.925,
+        "wilson95": [
+          0.8013546984090248,
+          0.9741644432281419
+        ],
+        "mean_sd": 0.8367706939472426
+      }
+    }
+  },
+  "oracle": {
+    "nll": 0.33084867442162047,
+    "mse": 0.16497183121275735,
+    "mean_function_rmse": 0.0,
+    "sd_function_rmse": 0.0,
+    "min_sd": 0.15557670507844068,
+    "coverage": 0.9625,
+    "regional": {
+      "x<0": {
+        "n": 40,
+        "coverage": 0.975,
+        "wilson95": [
+          0.8711834051199223,
+          0.9955732825922052
+        ],
+        "mean_sd": 0.2369680709416337
+      },
+      "x>=0": {
+        "n": 40,
+        "coverage": 0.95,
+        "wilson95": [
+          0.834958291820748,
+          0.9861796228538989
+        ],
+        "mean_sd": 0.5656862401226272
+      }
+    }
+  },
+  "heteroskedastic": [
+    {
+      "seed": 17,
+      "selected_epoch": 180,
+      "validation_nll": 0.6014321446418762,
+      "training_seconds": 0.2674187800148502,
+      "metrics": {
+        "nll": 0.3982311432665476,
+        "mse": 0.1788325457265102,
+        "mean_function_rmse": 0.1303001662799887,
+        "sd_function_rmse": 0.03740238927865418,
+        "min_sd": 0.1461779922246933,
+        "coverage": 0.925,
+        "regional": {
+          "x<0": {
+            "n": 40,
+            "coverage": 0.925,
+            "wilson95": [
+              0.8013546984090248,
+              0.9741644432281419
+            ],
+            "mean_sd": 0.21727976202964783
+          },
+          "x>=0": {
+            "n": 40,
+            "coverage": 0.925,
+            "wilson95": [
+              0.8013546984090248,
+              0.9741644432281419
+            ],
+            "mean_sd": 0.5272771120071411
+          }
+        }
+      },
+      "parameters": 130
+    },
+    {
+      "seed": 29,
+      "selected_epoch": 740,
+      "validation_nll": 0.6053332090377808,
+      "training_seconds": 0.2814019559882581,
+      "metrics": {
+        "nll": 0.3929137635731374,
+        "mse": 0.17584485394898997,
+        "mean_function_rmse": 0.12760511945405043,
+        "sd_function_rmse": 0.052745551314857884,
+        "min_sd": 0.15007975697517395,
+        "coverage": 0.9125,
+        "regional": {
+          "x<0": {
+            "n": 40,
+            "coverage": 0.9,
+            "wilson95": [
+              0.7694792561952611,
+              0.9604211124044252
+            ],
+            "mean_sd": 0.21114253997802734
+          },
+          "x>=0": {
+            "n": 40,
+            "coverage": 0.925,
+            "wilson95": [
+              0.8013546984090248,
+              0.9741644432281419
+            ],
+            "mean_sd": 0.5171732306480408
+          }
+        }
+      },
+      "parameters": 130
+    },
+    {
+      "seed": 43,
+      "selected_epoch": 140,
+      "validation_nll": 0.6032823324203491,
+      "training_seconds": 0.27174757700413465,
+      "metrics": {
+        "nll": 0.38596661135978966,
+        "mse": 0.17365325258007328,
+        "mean_function_rmse": 0.11708093083770406,
+        "sd_function_rmse": 0.04053015654110117,
+        "min_sd": 0.14473383128643036,
+        "coverage": 0.9375,
+        "regional": {
+          "x<0": {
+            "n": 40,
+            "coverage": 0.925,
+            "wilson95": [
+              0.8013546984090248,
+              0.9741644432281419
+            ],
+            "mean_sd": 0.20878252387046814
+          },
+          "x>=0": {
+            "n": 40,
+            "coverage": 0.95,
+            "wilson95": [
+              0.834958291820748,
+              0.9861796228538989
+            ],
+            "mean_sd": 0.5284296870231628
+          }
+        }
+      },
+      "parameters": 130
+    }
+  ],
+  "fixed_scale_nonlinear": [
+    {
+      "seed": 17,
+      "selected_epoch": 100,
+      "validation_nll": 0.7829076051712036,
+      "training_seconds": 0.20141598500777036,
+      "metrics": {
+        "nll": 0.5514592516201697,
+        "mse": 0.17619859759121298,
+        "mean_function_rmse": 0.1226573420521152,
+        "sd_function_rmse": 0.18165686105851764,
+        "min_sd": 0.40974611043930054,
+        "coverage": 0.9125,
+        "regional": {
+          "x<0": {
+            "n": 40,
+            "coverage": 0.975,
+            "wilson95": [
+              0.8711834051199223,
+              0.9955732825922052
+            ],
+            "mean_sd": 0.40974611043930054
+          },
+          "x>=0": {
+            "n": 40,
+            "coverage": 0.85,
+            "wilson95": [
+              0.7092737396097997,
+              0.9293890829149256
+            ],
+            "mean_sd": 0.40974611043930054
+          }
+        }
+      },
+      "parameters": 97
+    },
+    {
+      "seed": 29,
+      "selected_epoch": 80,
+      "validation_nll": 0.792991042137146,
+      "training_seconds": 0.20697520999237895,
+      "metrics": {
+        "nll": 0.5657394303817485,
+        "mse": 0.1813389191599232,
+        "mean_function_rmse": 0.13880022791910224,
+        "sd_function_rmse": 0.1820983064334097,
+        "min_sd": 0.41654086112976074,
+        "coverage": 0.9,
+        "regional": {
+          "x<0": {
+            "n": 40,
+            "coverage": 0.975,
+            "wilson95": [
+              0.8711834051199223,
+              0.9955732825922052
+            ],
+            "mean_sd": 0.41654086112976074
+          },
+          "x>=0": {
+            "n": 40,
+            "coverage": 0.825,
+            "wilson95": [
+              0.6804970794560755,
+              0.9125469700311694
+            ],
+            "mean_sd": 0.41654086112976074
+          }
+        }
+      },
+      "parameters": 97
+    },
+    {
+      "seed": 43,
+      "selected_epoch": 120,
+      "validation_nll": 0.786937415599823,
+      "training_seconds": 0.18978087801951915,
+      "metrics": {
+        "nll": 0.5583837692389771,
+        "mse": 0.17864498191388217,
+        "mean_function_rmse": 0.12597471700402266,
+        "sd_function_rmse": 0.1817951296716245,
+        "min_sd": 0.4123331904411316,
+        "coverage": 0.9125,
+        "regional": {
+          "x<0": {
+            "n": 40,
+            "coverage": 0.975,
+            "wilson95": [
+              0.8711834051199223,
+              0.9955732825922052
+            ],
+            "mean_sd": 0.4123331904411316
+          },
+          "x>=0": {
+            "n": 40,
+            "coverage": 0.85,
+            "wilson95": [
+              0.7092737396097997,
+              0.9293890829149256
+            ],
+            "mean_sd": 0.4123331904411316
+          }
+        }
+      },
+      "parameters": 97
+    }
+  ],
+  "limits": [
+    "Same fixed data split across three initialization seeds; no independent dataset replication.",
+    "Configuration not selected by test outcomes; validation checkpoint selection uses no test observations.",
+    "Coarse coverage estimates have large binomial uncertainty and are not a calibration guarantee.",
+    "Fixed weight predictions model conditional variation; no weight posterior was fitted.",
+    "CPU probe only: no Colab, student timing or final worked solution claim."
+  ]
+}

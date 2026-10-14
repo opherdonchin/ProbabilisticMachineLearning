@@ -1,0 +1,1203 @@
+{
+  "status": "author-only finite-run probe; no convergence guarantee or Colab/student-time pass",
+  "asymmetric_check": {
+    "target": [
+      0.3333333333333333,
+      0.6666666666666666
+    ],
+    "proposal": [
+      [
+        0.75,
+        0.25
+      ],
+      [
+        0.5,
+        0.5
+      ]
+    ],
+    "correct_transition": [
+      [
+        0.75,
+        0.25
+      ],
+      [
+        0.125,
+        0.875
+      ]
+    ],
+    "invariance_error": 0.0,
+    "omitted_proposal_ratio_transition": [
+      [
+        0.75,
+        0.25
+      ],
+      [
+        0.25,
+        0.75
+      ]
+    ],
+    "wrong_invariance_error": 0.08333333333333337
+  },
+  "query_order": [
+    "intercept",
+    "slope",
+    "P(Y=1|x=-2)",
+    "x=-1",
+    "x=0",
+    "x=1",
+    "x=2"
+  ],
+  "reference": [
+    0.06739633532805585,
+    1.4619808352779935,
+    0.07006192083106011,
+    0.20906199759844227,
+    0.5164444736472937,
+    0.8090913539721725,
+    0.9354760982176401
+  ],
+  "classifier_runs": [
+    {
+      "seed": 11,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.8488666666666667,
+      "repeat_fraction": 0.15114340956063738,
+      "seconds": 0.1504767070291564,
+      "proposal_scale": 0.3,
+      "start": [
+        -1.9431990576085083,
+        -0.6287100722127166
+      ],
+      "queries": [
+        {
+          "mean": 0.07273192973816392,
+          "batch_mcse": 0.02113246620719293,
+          "ess": 147.5218109633509,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4263094092850548,
+          "batch_mcse": 0.022511299329831667,
+          "ess": 230.2596206149352,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.07277876925199679,
+          "batch_mcse": 0.0024956370317917196,
+          "ess": 329.0620836374937,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.21433420109741863,
+          "batch_mcse": 0.003836159034242778,
+          "ess": 299.2403024091646,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5175273220187709,
+          "batch_mcse": 0.005105568521524974,
+          "ess": 150.38355456679767,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8037684991859437,
+          "batch_mcse": 0.004876598281566822,
+          "ess": 172.67505537238773,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9319910144796707,
+          "batch_mcse": 0.0028127767744310214,
+          "ess": 233.81269226697546,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.005335594410108044,
+        -0.03567142599293738,
+        0.002716848420937376,
+        0.005272203498976447,
+        0.0010828483714780957,
+        -0.0053228547862274045,
+        -0.0034850837379745148
+      ]
+    },
+    {
+      "seed": 22,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.8519333333333333,
+      "repeat_fraction": 0.14807653843589572,
+      "seconds": 0.14073744101915509,
+      "proposal_scale": 0.3,
+      "start": [
+        2.0568009423914915,
+        3.3712899277872834
+      ],
+      "queries": [
+        {
+          "mean": 0.07730639045303225,
+          "batch_mcse": 0.019256474931129055,
+          "ess": 166.2927761965678,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4985654969128797,
+          "batch_mcse": 0.02552058994851097,
+          "ess": 183.40365536057837,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.06599206053226109,
+          "batch_mcse": 0.00275104499474319,
+          "ess": 236.11972604584554,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.20432313432514487,
+          "batch_mcse": 0.00423133907626248,
+          "ess": 228.27032200472894,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5188938453925834,
+          "batch_mcse": 0.004700308324967626,
+          "ess": 166.35476318382115,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8147832845795151,
+          "batch_mcse": 0.004918815165254422,
+          "ess": 160.05697766583455,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.938724812454787,
+          "batch_mcse": 0.002983650196200001,
+          "ess": 222.24646911013537,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.009910055124976877,
+        0.03658466163488705,
+        -0.004069860298798911,
+        -0.0047388632732972,
+        0.0024493717452888086,
+        0.00569193060734674,
+        0.0032487142371441236
+      ]
+    },
+    {
+      "seed": 33,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.8564666666666667,
+      "repeat_fraction": 0.14354290286019067,
+      "seconds": 0.14194173098076135,
+      "proposal_scale": 0.3,
+      "start": [
+        -1.9431990576085083,
+        3.3712899277872834
+      ],
+      "queries": [
+        {
+          "mean": 0.08345953053111314,
+          "batch_mcse": 0.0166763990672744,
+          "ess": 250.25074387333686,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4704094301547384,
+          "batch_mcse": 0.025855710224497997,
+          "ess": 181.65767174809508,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.0696218484802378,
+          "batch_mcse": 0.003157654854821007,
+          "ess": 202.5052877029975,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.20980014241888367,
+          "batch_mcse": 0.0044931957990328964,
+          "ess": 219.42155921045676,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5203843264645928,
+          "batch_mcse": 0.004071083335276835,
+          "ess": 250.6984402612877,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8122551602268527,
+          "batch_mcse": 0.004419254054624945,
+          "ess": 197.8871129639754,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9370975249071856,
+          "batch_mcse": 0.0028251574060596724,
+          "ess": 203.71722814662866,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.016063195203057476,
+        0.008428594876744855,
+        -0.0004400723508222598,
+        0.0007381448204431262,
+        0.003939852817296918,
+        0.00316380625468049,
+        0.0016214266895446805
+      ]
+    },
+    {
+      "seed": 44,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.8518,
+      "repeat_fraction": 0.14814320954730315,
+      "seconds": 0.14085822401102632,
+      "proposal_scale": 0.3,
+      "start": [
+        2.0568009423914915,
+        -0.6287100722127166
+      ],
+      "queries": [
+        {
+          "mean": 0.0367092436706177,
+          "batch_mcse": 0.016954529229866844,
+          "ess": 236.28414997642435,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4639078659209812,
+          "batch_mcse": 0.024117246461560233,
+          "ess": 197.55205087008096,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.06674764308300687,
+          "batch_mcse": 0.0025571808154543486,
+          "ess": 268.5731572241428,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.2026481211126713,
+          "batch_mcse": 0.003836357505412532,
+          "ess": 232.16738349718182,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5089678814060276,
+          "batch_mcse": 0.004150086235896968,
+          "ess": 236.28657146786853,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8044030069326804,
+          "batch_mcse": 0.004797056740126667,
+          "ess": 215.65693082829512,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9334887343020352,
+          "batch_mcse": 0.003063768739578816,
+          "ess": 237.58592466255567,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.030687091657438173,
+        0.0019270306429870487,
+        -0.0033142777480532903,
+        -0.0064138764857721575,
+        -0.007476592241267732,
+        -0.004688347039493057,
+        -0.001987363915610052
+      ]
+    },
+    {
+      "seed": 11,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.5566,
+      "repeat_fraction": 0.4434295619707981,
+      "seconds": 0.14166095096152276,
+      "proposal_scale": 1.0,
+      "start": [
+        -1.9431990576085083,
+        -0.6287100722127166
+      ],
+      "queries": [
+        {
+          "mean": 0.06856064772628585,
+          "batch_mcse": 0.009772593551377521,
+          "ess": 927.9903912713006,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4543464820680434,
+          "batch_mcse": 0.011522438709399625,
+          "ess": 1191.3371698554276,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.07078799851667028,
+          "batch_mcse": 0.0013879356862307904,
+          "ess": 1357.0981239453945,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.21017303418003716,
+          "batch_mcse": 0.002092847082417104,
+          "ess": 1295.3743013889257,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5166961032261265,
+          "batch_mcse": 0.002380519763652257,
+          "ess": 931.7485647284624,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8082307400804469,
+          "batch_mcse": 0.002405559634853973,
+          "ess": 1082.665332594551,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9347046215139202,
+          "batch_mcse": 0.0015015491516872862,
+          "ess": 1234.3377812393762,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.0011643123982302273,
+        -0.007634353209961198,
+        0.0007260776856100604,
+        0.001111036581594893,
+        0.0002516295788310696,
+        -0.0008606138917255368,
+        -0.0007714767037247938
+      ]
+    },
+    {
+      "seed": 22,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.5568666666666666,
+      "repeat_fraction": 0.44316287752516836,
+      "seconds": 0.13998603890649974,
+      "proposal_scale": 1.0,
+      "start": [
+        2.0568009423914915,
+        3.3712899277872834
+      ],
+      "queries": [
+        {
+          "mean": 0.07241721791471885,
+          "batch_mcse": 0.009894976741567293,
+          "ess": 1077.0843816286033,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4783605232609045,
+          "batch_mcse": 0.011357157762030189,
+          "ess": 1094.6543138026864,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.06839128968030843,
+          "batch_mcse": 0.0013314733292276277,
+          "ess": 1431.9967899669364,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.20742479092745866,
+          "batch_mcse": 0.0020112408534333536,
+          "ess": 1305.9081508777317,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5176178879819046,
+          "batch_mcse": 0.0024053528107676964,
+          "ess": 1081.7604844982673,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.811955814698473,
+          "batch_mcse": 0.0023697086786133017,
+          "ess": 969.8580010364038,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9374617927817471,
+          "batch_mcse": 0.0014722842430113464,
+          "ess": 1194.8342347275998,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.005020882586662723,
+        0.016379687982903457,
+        -0.001670631150750973,
+        -0.0016372066709814947,
+        0.0011734143346175951,
+        0.0028644607263000887,
+        0.0019856945641031354
+      ]
+    },
+    {
+      "seed": 33,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.559,
+      "repeat_fraction": 0.4410294019601307,
+      "seconds": 0.14265803701709956,
+      "proposal_scale": 1.0,
+      "start": [
+        -1.9431990576085083,
+        3.3712899277872834
+      ],
+      "queries": [
+        {
+          "mean": 0.07376321813561536,
+          "batch_mcse": 0.00918581507928542,
+          "ess": 974.36555377623,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4620855638986214,
+          "batch_mcse": 0.011527318205028768,
+          "ess": 1095.9364873645993,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.06925506465619895,
+          "batch_mcse": 0.0013746249113386925,
+          "ess": 1334.8433899255785,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.2091924375936782,
+          "batch_mcse": 0.00199471828254794,
+          "ess": 1322.486855778371,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5179439307970061,
+          "batch_mcse": 0.0022333953020069663,
+          "ess": 978.6218371926059,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8101749156798635,
+          "batch_mcse": 0.0022791866133110086,
+          "ess": 1041.8562194029753,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9363846036086809,
+          "batch_mcse": 0.0014391842539636746,
+          "ess": 1179.5075669431242,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.006366882807559732,
+        0.00010472862063060084,
+        -0.0008068561748614533,
+        0.00013043999523704164,
+        0.0014994571497088938,
+        0.0010835617076850879,
+        0.000908505391042369
+      ]
+    },
+    {
+      "seed": 44,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.5583333333333333,
+      "repeat_fraction": 0.4416294419627975,
+      "seconds": 0.14031469693873078,
+      "proposal_scale": 1.0,
+      "start": [
+        2.0568009423914915,
+        -0.6287100722127166
+      ],
+      "queries": [
+        {
+          "mean": 0.06437757069441351,
+          "batch_mcse": 0.008797014853344408,
+          "ess": 1295.3769976473852,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.469040542307898,
+          "batch_mcse": 0.011073233012107267,
+          "ess": 1090.7973655007931,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.06844275517709049,
+          "batch_mcse": 0.0012849168261500074,
+          "ess": 1268.7624192711146,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.20705880418408326,
+          "batch_mcse": 0.0019319131265796486,
+          "ess": 1234.8701550594235,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5156979440345868,
+          "batch_mcse": 0.0021434587995355888,
+          "ess": 1300.9559881002845,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8097209045958946,
+          "batch_mcse": 0.0021779265448361863,
+          "ess": 1200.307417083339,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9360757308488759,
+          "batch_mcse": 0.001374164690687083,
+          "ess": 1246.5727546172313,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.003018764633642257,
+        0.0070597070299049935,
+        -0.0016191656539693428,
+        -0.002003193414359672,
+        -0.0007465296127059373,
+        0.0006295506237191661,
+        0.0005996326312353029
+      ]
+    },
+    {
+      "seed": 11,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.1734,
+      "repeat_fraction": 0.8266551103406894,
+      "seconds": 0.14138887694571167,
+      "proposal_scale": 3.0,
+      "start": [
+        -1.9431990576085083,
+        -0.6287100722127166
+      ],
+      "queries": [
+        {
+          "mean": 0.06712841641743297,
+          "batch_mcse": 0.009254303068236179,
+          "ess": 1095.4005857903476,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4528559077481078,
+          "batch_mcse": 0.012933496678968,
+          "ess": 992.9464421984445,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.07210118288335783,
+          "batch_mcse": 0.0017066045297190345,
+          "ess": 1090.4900834490609,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.2111281272288436,
+          "batch_mcse": 0.0023774362253008306,
+          "ess": 1147.7662062901195,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5164119210452693,
+          "batch_mcse": 0.002267626339311513,
+          "ess": 1088.9046123103367,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8076094555414505,
+          "batch_mcse": 0.002439729911617381,
+          "ess": 948.1200408144766,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9341285108924967,
+          "batch_mcse": 0.0016579143428252891,
+          "ess": 1019.08464499674,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.0002679189106238322,
+        -0.009124927529884586,
+        0.0020392620522977772,
+        0.002066129630400676,
+        -3.255260202605914e-05,
+        -0.0014818984307229943,
+        -0.0013475873251475035
+      ]
+    },
+    {
+      "seed": 22,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.17786666666666667,
+      "repeat_fraction": 0.8221881458763918,
+      "seconds": 0.14067698805592954,
+      "proposal_scale": 3.0,
+      "start": [
+        2.0568009423914915,
+        3.3712899277872834
+      ],
+      "queries": [
+        {
+          "mean": 0.07667127402733306,
+          "batch_mcse": 0.007290538789609844,
+          "ess": 1363.4083126785767,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4679386112955144,
+          "batch_mcse": 0.012687914079272146,
+          "ess": 950.257016613823,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.06882872680773527,
+          "batch_mcse": 0.001460145553764458,
+          "ess": 1185.9369131754881,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.20859665071023945,
+          "batch_mcse": 0.0019538858213212994,
+          "ess": 1257.438626100612,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5186960258440343,
+          "batch_mcse": 0.0017826617100253042,
+          "ess": 1357.4816798893564,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8114925409809574,
+          "batch_mcse": 0.0023221537696397477,
+          "ess": 1077.2259980050985,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9367556655452199,
+          "batch_mcse": 0.0014954186172967962,
+          "ess": 1228.315545835598,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.009274938699277327,
+        0.005957776017522232,
+        -0.0012331940233236416,
+        -0.0004653468882027667,
+        0.0022515521967453322,
+        0.00240118700878611,
+        0.0012795673275743935
+      ]
+    },
+    {
+      "seed": 33,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.16913333333333333,
+      "repeat_fraction": 0.8309220614707648,
+      "seconds": 0.14269684895407408,
+      "proposal_scale": 3.0,
+      "start": [
+        -1.9431990576085083,
+        3.3712899277872834
+      ],
+      "queries": [
+        {
+          "mean": 0.07625640513904622,
+          "batch_mcse": 0.009142232817221466,
+          "ess": 1090.711201390022,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.4809532119580615,
+          "batch_mcse": 0.011160160852745592,
+          "ess": 1071.8301975772458,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.06843584785739659,
+          "batch_mcse": 0.0012842387504990518,
+          "ess": 1236.5356859648514,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.20756207103070082,
+          "batch_mcse": 0.0020835944752958845,
+          "ess": 1114.6201936570612,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5186463383115407,
+          "batch_mcse": 0.0022354764073022025,
+          "ess": 1082.9192731368596,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8131091375460161,
+          "batch_mcse": 0.002099782341437104,
+          "ess": 1098.568499827288,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9381246384129752,
+          "batch_mcse": 0.0012827145964429876,
+          "ess": 1199.9221284841185,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.008860069810990467,
+        0.018972376680060687,
+        -0.0016260729736631008,
+        -0.0014999265677379803,
+        0.0022018646642507633,
+        0.004017783573848188,
+        0.0026485401953270094
+      ]
+    },
+    {
+      "seed": 44,
+      "transitions": 15000,
+      "discard": 3000,
+      "acceptance": 0.17106666666666667,
+      "repeat_fraction": 0.8289219281285419,
+      "seconds": 0.1414687749929726,
+      "proposal_scale": 3.0,
+      "start": [
+        2.0568009423914915,
+        -0.6287100722127166
+      ],
+      "queries": [
+        {
+          "mean": 0.06074611894657333,
+          "batch_mcse": 0.009135632836465558,
+          "ess": 1176.397057558472,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.454800196491059,
+          "batch_mcse": 0.011512507925396665,
+          "ess": 1112.601992481006,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.07066994967688627,
+          "batch_mcse": 0.0014816760576170933,
+          "ess": 1133.8688767629965,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.2092204300976,
+          "batch_mcse": 0.0021930371120859947,
+          "ess": 1044.0362234259173,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.5147837595838219,
+          "batch_mcse": 0.002238366543708953,
+          "ess": 1165.6835980146986,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.8071496278889418,
+          "batch_mcse": 0.002218534893594508,
+          "ess": 1233.794449664934,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.9344521092610425,
+          "batch_mcse": 0.0014204705226290423,
+          "ess": 1308.3554021955974,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.006650216381482388,
+        -0.007180638786950189,
+        0.0006080288458263639,
+        0.00015843249915328816,
+        -0.0016607140634701256,
+        -0.0019417260832307326,
+        -0.0010239889566183713
+      ]
+    }
+  ],
+  "bimodal_runs": [
+    {
+      "seed": 17,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.9298,
+      "repeat_fraction": 0.07021404280856171,
+      "seconds": 0.20525372202973813,
+      "proposal_sd": 0.2,
+      "start": -4.0,
+      "crossings": 0,
+      "queries": [
+        {
+          "mean": -3.8552655836283454,
+          "batch_mcse": 0.12117567580224842,
+          "ess": 18.312020330284156,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.0,
+          "batch_mcse": null,
+          "ess": null,
+          "warning": "constant query; global error unassessed"
+        }
+      ],
+      "reference_error": [
+        -5.4552655836283455,
+        -0.6999873315032668
+      ]
+    },
+    {
+      "seed": 29,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.9388,
+      "repeat_fraction": 0.0612122424484897,
+      "seconds": 0.20612448605243117,
+      "proposal_sd": 0.2,
+      "start": -4.0,
+      "crossings": 0,
+      "queries": [
+        {
+          "mean": -4.036774823609097,
+          "batch_mcse": 0.11619255006289142,
+          "ess": 39.465275075783985,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.0,
+          "batch_mcse": null,
+          "ess": null,
+          "warning": "constant query; global error unassessed"
+        }
+      ],
+      "reference_error": [
+        -5.636774823609096,
+        -0.6999873315032668
+      ]
+    },
+    {
+      "seed": 17,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.9298,
+      "repeat_fraction": 0.07021404280856171,
+      "seconds": 0.2033486741129309,
+      "proposal_sd": 0.2,
+      "start": 4.0,
+      "crossings": 0,
+      "queries": [
+        {
+          "mean": 4.144734416371634,
+          "batch_mcse": 0.1211756758022481,
+          "ess": 18.312020330284234,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.0,
+          "batch_mcse": null,
+          "ess": null,
+          "warning": "constant query; global error unassessed"
+        }
+      ],
+      "reference_error": [
+        2.5447344163716337,
+        0.30001266849673325
+      ]
+    },
+    {
+      "seed": 29,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.9388,
+      "repeat_fraction": 0.0612122424484897,
+      "seconds": 0.2083690830040723,
+      "proposal_sd": 0.2,
+      "start": 4.0,
+      "crossings": 0,
+      "queries": [
+        {
+          "mean": 3.9632251763909156,
+          "batch_mcse": 0.11619255006289146,
+          "ess": 39.46527507578393,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 1.0,
+          "batch_mcse": null,
+          "ess": null,
+          "warning": "constant query; global error unassessed"
+        }
+      ],
+      "reference_error": [
+        2.3632251763909156,
+        0.30001266849673325
+      ]
+    },
+    {
+      "seed": 17,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.4424,
+      "repeat_fraction": 0.5575115023004601,
+      "seconds": 0.2076582961017266,
+      "proposal_sd": 2.5,
+      "start": -4.0,
+      "crossings": 46,
+      "queries": [
+        {
+          "mean": 1.4489460971904473,
+          "batch_mcse": 0.4158560166191707,
+          "ess": 27.171083540818948,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.679,
+          "batch_mcse": 0.051330164292224166,
+          "ess": 26.506617155412464,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.15105390280955278,
+        -0.020987331503266704
+      ]
+    },
+    {
+      "seed": 29,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.4438,
+      "repeat_fraction": 0.5563112622524505,
+      "seconds": 0.2083666769322008,
+      "proposal_sd": 2.5,
+      "start": -4.0,
+      "crossings": 37,
+      "queries": [
+        {
+          "mean": 0.8961941627839087,
+          "batch_mcse": 0.42728195622546056,
+          "ess": 44.73750451363026,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.6205,
+          "batch_mcse": 0.051857896972530904,
+          "ess": 43.08098847363514,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.7038058372160914,
+        -0.0794873315032667
+      ]
+    },
+    {
+      "seed": 17,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.4432,
+      "repeat_fraction": 0.5567113422684536,
+      "seconds": 0.2102073059650138,
+      "proposal_sd": 2.5,
+      "start": 4.0,
+      "crossings": 46,
+      "queries": [
+        {
+          "mean": 1.3459041995692604,
+          "batch_mcse": 0.4173882441428434,
+          "ess": 29.750509984165866,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.66575,
+          "batch_mcse": 0.05127989366048299,
+          "ess": 29.26530842343807,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.25409580043073965,
+        -0.0342373315032668
+      ]
+    },
+    {
+      "seed": 29,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.4462,
+      "repeat_fraction": 0.5539107821564313,
+      "seconds": 0.20754140906501561,
+      "proposal_sd": 2.5,
+      "start": 4.0,
+      "crossings": 37,
+      "queries": [
+        {
+          "mean": 1.4691621823715333,
+          "batch_mcse": 0.40282024518955967,
+          "ess": 53.142456013418,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.6935,
+          "batch_mcse": 0.04957937497979913,
+          "ess": 51.84230960855518,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.1308378176284668,
+        -0.006487331503266747
+      ]
+    },
+    {
+      "seed": 17,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.1068,
+      "repeat_fraction": 0.8931786357271454,
+      "seconds": 0.20888779300730675,
+      "proposal_sd": 20.0,
+      "start": -4.0,
+      "crossings": 180,
+      "queries": [
+        {
+          "mean": 1.8608124639543175,
+          "batch_mcse": 0.2347732253152992,
+          "ess": 251.42664930093432,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.72575,
+          "batch_mcse": 0.02904041671993588,
+          "ess": 228.45614435724863,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.26081246395431745,
+        0.025762668496733254
+      ]
+    },
+    {
+      "seed": 29,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.1124,
+      "repeat_fraction": 0.8875775155031006,
+      "seconds": 0.20808345405384898,
+      "proposal_sd": 20.0,
+      "start": -4.0,
+      "crossings": 190,
+      "queries": [
+        {
+          "mean": 1.3271386918755539,
+          "batch_mcse": 0.287201033466806,
+          "ess": 197.32181151110348,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.661,
+          "batch_mcse": 0.03316479786099585,
+          "ess": 199.4697730081358,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.2728613081244462,
+        -0.03898733150326672
+      ]
+    },
+    {
+      "seed": 17,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.1042,
+      "repeat_fraction": 0.8957791558311662,
+      "seconds": 0.20740807196125388,
+      "proposal_sd": 20.0,
+      "start": 4.0,
+      "crossings": 184,
+      "queries": [
+        {
+          "mean": 1.7279622520023499,
+          "batch_mcse": 0.24400082862473096,
+          "ess": 219.88470896953254,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.7205,
+          "batch_mcse": 0.030654066288266064,
+          "ess": 192.37993307840466,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        0.12796225200234979,
+        0.020512668496733277
+      ]
+    },
+    {
+      "seed": 29,
+      "transitions": 5000,
+      "discard": 1000,
+      "acceptance": 0.1116,
+      "repeat_fraction": 0.888377675535107,
+      "seconds": 0.21300208196043968,
+      "proposal_sd": 20.0,
+      "start": 4.0,
+      "crossings": 192,
+      "queries": [
+        {
+          "mean": 1.2481082315619847,
+          "batch_mcse": 0.26831383772325323,
+          "ess": 207.5084581350328,
+          "warning": "conditional estimate; not convergence proof"
+        },
+        {
+          "mean": 0.65525,
+          "batch_mcse": 0.03216610841850772,
+          "ess": 201.58791949548475,
+          "warning": "conditional estimate; not convergence proof"
+        }
+      ],
+      "reference_error": [
+        -0.3518917684380154,
+        -0.04473733150326675
+      ]
+    }
+  ]
+}

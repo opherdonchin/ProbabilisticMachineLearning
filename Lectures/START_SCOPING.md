@@ -3,7 +3,7 @@
 **Working branch:** `assess-l04-l12-reconciliation-20261014`, isolated worktree `/tmp/pml-l04-l12-reconciliation`, based on `origin/scope-l04-l12-after-architecture-20261014` at `16850fb`.
 **Frozen starting point:** merge commit `730b5cbde055cc166f48f1a73dc63df190e6187b` on `scope-l03-l12-course-architecture` (PR #16, already merged).
 **Stage:** Lecture Scope / instructor-led reconciliation and revision; **not** slides, Section Design, or notebook implementation.
-**Initial target:** L04 Information Theory, then L05–L12 in teaching order, resolving cross-lecture dependencies as necessary.
+**Current research mode:** parallel L05–L12 scope/notebook-feasibility investigation with deferred instructor review, explicitly requested 2026-10-14. Continue independent tasks when local decisions arise; only their affected downstream work waits. The [review queue](course_architecture_scope/reconciliation/instructor_review_queue.md) indexes owning decision records. Ask one highest-leverage question only when the instructor requests review.
 **Protected:** `main`. Do not merge to it; do not merge this scoping branch without a separate instructor request.
 
 ## Authority and inputs
@@ -39,7 +39,7 @@ Do not mischaracterize L05–L10 as increasingly advanced posterior approximatio
 
 The notebook-endpoint decision is resolved: prepared Iris forecasts, student accuracy/log-score comparisons and supplied reliability/bounded information interpretation. The required five-bit construction is removed; live parity remains. Develop the affected handoff without silently rewriting the communication-led intellectual arc or live allocations. Obtain current-target source/Section Design review, then present any consequential live-emphasis change as one decision. No full-scope acceptance or notebook implementation is implied.
 
-**Next instructor interaction:** do not ask the resolved notebook-endpoint question again. Report the targeted revision and review findings, distinguishing acceptance of Iris from pending detailed scope decisions. Continue one consequential decision at a time; preserve the separate L01 workstream.
+**Next instructor interaction:** do not ask the resolved notebook-endpoint question again. The instructor now requests deferred review: record the pending live-emphasis item at its owner, continue other investigations, and present the highest-leverage unresolved question only when asked for review. Preserve the separate L01 workstream.
 
 ## Later decisions to surface only when their lectures arise
 

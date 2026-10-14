@@ -1,0 +1,685 @@
+{
+  "config": {
+    "split_seed": 20261014,
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "betas": [
+      1,
+      4
+    ],
+    "n_train": 245,
+    "n_validation": 52,
+    "n_test": 52,
+    "hidden": 32,
+    "latent": 4,
+    "decoder_variance": 0.5,
+    "epochs": 300,
+    "batch_size": 32,
+    "lr": 0.003,
+    "validation_every": 20,
+    "validation_mc": 16,
+    "test_mc": 64,
+    "threads": 1,
+    "checkpoint": "minimum validation D+beta R; matching split and settings for both betas"
+  },
+  "source": {
+    "url": "https://raw.githubusercontent.com/narslab/mobile-emissions-typology/049cb033a9814c0ec3df99ece5144d07688aa648/data/tidy/raw-data-cluster.csv",
+    "sha256": "05e02113771a0ab550a9e7a0098d099ee348820564b68bcdc6c71a28b24418d6",
+    "rows": 349,
+    "total_columns": 57,
+    "selected_features": [
+      "Node Density (/sq km)",
+      "Intersection Density (/sq km)",
+      "Street Density (km/sq km)",
+      "Circuity Average",
+      "Car Mode Share",
+      "Transit Mode Share",
+      "Bicycle Mode Share",
+      "Walking Mode Share",
+      "Working from Home Share",
+      "Median Household Income",
+      "Employment Rate (%)",
+      "Unemployment Rate (%)",
+      "Population Density (/sq km)",
+      "Built-Up Area Proportion",
+      "Cooling Degree Days (\u00b0Df)",
+      "Heating Degree Days (\u00b0Df)",
+      "Average Temperature (\u00b0F)",
+      "Precipitation (in)",
+      "GDP ($)"
+    ]
+  },
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "numpy": "2.0.2"
+  },
+  "checks": {
+    "event_nll_reference_max_error": 7.105427357601002e-15,
+    "kl_reference_max_error": 0.0,
+    "kl_mean_gradient_max_error": 0.0,
+    "kl_logvariance_gradient_max_error": 0.0,
+    "fixed_noise_pathwise_gradcheck": true,
+    "network_gradient_norms": {
+      "enc.0.weight": 2.258491277694702,
+      "enc.0.bias": 0.8960305452346802,
+      "mu.weight": 3.040280818939209,
+      "mu.bias": 2.131258010864258,
+      "logvar.weight": 1.0684922933578491,
+      "logvar.bias": 0.7690923810005188,
+      "dec.0.weight": 5.17035436630249,
+      "dec.0.bias": 2.620117664337158,
+      "dec.2.weight": 14.773171424865723,
+      "dec.2.bias": 5.313272476196289
+    }
+  },
+  "transformations": {
+    "log1p_clipped_below_zero": [
+      "GDP ($)",
+      "Median Household Income",
+      "Population Density (/sq km)",
+      "Node Density (/sq km)",
+      "Cooling Degree Days (\u00b0Df)",
+      "Heating Degree Days (\u00b0Df)",
+      "Intersection Density (/sq km)",
+      "Street Density (km/sq km)"
+    ],
+    "mode_percent_divided_100": [
+      "Car Mode Share",
+      "Transit Mode Share",
+      "Bicycle Mode Share",
+      "Walking Mode Share"
+    ],
+    "observed_negative_values_clipped": {
+      "GDP ($)": 0,
+      "Median Household Income": 0,
+      "Population Density (/sq km)": 0,
+      "Node Density (/sq km)": 0,
+      "Cooling Degree Days (\u00b0Df)": 0,
+      "Heating Degree Days (\u00b0Df)": 0,
+      "Intersection Density (/sq km)": 0,
+      "Street Density (km/sq km)": 0
+    },
+    "raw_ranges": {
+      "Node Density (/sq km)": {
+        "min": 0.2801509281128372,
+        "max": 20.3740250395531
+      },
+      "Intersection Density (/sq km)": {
+        "min": 0.2049566628868088,
+        "max": 17.52685967824378
+      },
+      "Street Density (km/sq km)": {
+        "min": 0.1644571006610994,
+        "max": 5.1924411061169335
+      },
+      "Circuity Average": {
+        "min": 1.0164512673910464,
+        "max": 1.2757082746374788
+      },
+      "Car Mode Share": {
+        "min": 54.741959048691335,
+        "max": 95.98823382150456
+      },
+      "Transit Mode Share": {
+        "min": 0.0297716980836428,
+        "max": 29.835681831489342
+      },
+      "Bicycle Mode Share": {
+        "min": 0.0,
+        "max": 7.370757002785264
+      },
+      "Walking Mode Share": {
+        "min": 0.6296623706943346,
+        "max": 12.862844702467344
+      },
+      "Working from Home Share": {
+        "min": 1.665384192590964,
+        "max": 12.93045677597873
+      },
+      "Median Household Income": {
+        "min": 41200.0,
+        "max": 129343.0
+      },
+      "Employment Rate (%)": {
+        "min": 0.215,
+        "max": 0.722
+      },
+      "Unemployment Rate (%)": {
+        "min": 0.024,
+        "max": 0.1369999999999999
+      },
+      "Population Density (/sq km)": {
+        "min": 2.945933628604638,
+        "max": 895.3893121874814
+      },
+      "Built-Up Area Proportion": {
+        "min": 0.8733095786320841,
+        "max": 63.07966617553152
+      },
+      "Cooling Degree Days (\u00b0Df)": {
+        "min": 33.0,
+        "max": 4746.0
+      },
+      "Heating Degree Days (\u00b0Df)": {
+        "min": 169.0,
+        "max": 9411.0
+      },
+      "Average Temperature (\u00b0F)": {
+        "min": 39.875,
+        "max": 77.26666666666667
+      },
+      "Precipitation (in)": {
+        "min": 2.69,
+        "max": 91.23
+      },
+      "GDP ($)": {
+        "min": 2947975.0,
+        "max": 2025634058.0
+      }
+    },
+    "corrected_source_units": {
+      "Employment Rate (%)": "fraction [0,1]",
+      "Unemployment Rate (%)": "fraction [0,1]",
+      "Built-Up Area Proportion": "percent [0,100]"
+    },
+    "raw_inverse_roundtrip_max_abs_error": 8.344650268554688e-07,
+    "raw_inverse_roundtrip_max_relative_error": 1.827028746344918e-15,
+    "train_standardized_mean_max_abs": 2.3181909906428218e-14,
+    "heldout_standardized_mean_max_abs": 0.2373298138576234,
+    "log_inverse_is_global_bijection": false
+  },
+  "supplied_deterministic_comparisons": {
+    "train_mean_nll": 28.689725339160933,
+    "rank4_pca_mean_reconstruction_nll": 15.329028831568966
+  },
+  "fits": [
+    {
+      "seed": 17,
+      "beta": 1,
+      "selected_epoch": 260,
+      "validation_selected_objective": 22.717103004455566,
+      "training_seconds": 1.1467634439468384,
+      "train": {
+        "D": 15.79008960723877,
+        "R": 3.9993999004364014,
+        "D_mc_se": 0.011970148421823978,
+        "mean_code_reconstruction_nll": 14.119303703308105,
+        "per_latent_rate": [
+          0.7790783643722534,
+          0.7441909909248352,
+          1.294065237045288,
+          1.1820651292800903
+        ],
+        "encoder_mean_sd": [
+          0.8866605162620544,
+          0.8580042719841003,
+          0.9952921271324158,
+          0.940116286277771
+        ]
+      },
+      "test": {
+        "D": 16.366458892822266,
+        "R": 3.875389337539673,
+        "D_mc_se": 0.03019687905907631,
+        "mean_code_reconstruction_nll": 14.725826263427734,
+        "per_latent_rate": [
+          0.6922937631607056,
+          0.6920032501220703,
+          1.3542683124542236,
+          1.1368238925933838
+        ],
+        "encoder_mean_sd": [
+          0.7780842185020447,
+          0.8164823055267334,
+          1.0393438339233398,
+          0.88979172706604
+        ]
+      },
+      "prior_decoder_means_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.025,
+        "scalar_violation_fractions": {
+          "Intersection Density (/sq km)": 0.0005,
+          "Street Density (km/sq km)": 0.0005,
+          "Transit Mode Share": 0.0085,
+          "Bicycle Mode Share": 0.0035,
+          "Precipitation (in)": 0.013
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "prior_full_observations_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.471,
+        "scalar_violation_fractions": {
+          "Node Density (/sq km)": 0.0025,
+          "Intersection Density (/sq km)": 0.003,
+          "Street Density (km/sq km)": 0.0005,
+          "Car Mode Share": 0.003,
+          "Transit Mode Share": 0.2395,
+          "Bicycle Mode Share": 0.208,
+          "Walking Mode Share": 0.052,
+          "Working from Home Share": 0.001,
+          "Built-Up Area Proportion": 0.0515,
+          "Precipitation (in)": 0.0295
+        },
+        "four_commute_share_sum_over_100_fraction": 0.03,
+        "nonfinite_fraction": 0.0
+      },
+      "mean_code_reconstruction_support": {
+        "n": 52,
+        "any_scalar_bound_violation_fraction": 0.0,
+        "scalar_violation_fractions": {},
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "decoder_noise_empirical_mean_square": 0.5019959211349487,
+      "parameters": 1691
+    },
+    {
+      "seed": 17,
+      "beta": 4,
+      "selected_epoch": 280,
+      "validation_selected_objective": 29.167816162109375,
+      "training_seconds": 1.1531609119847417,
+      "train": {
+        "D": 21.665611267089844,
+        "R": 1.1840845346450806,
+        "D_mc_se": 0.022345811128616333,
+        "mean_code_reconstruction_nll": 19.477296829223633,
+        "per_latent_rate": [
+          0.0007251531933434308,
+          0.001484802458435297,
+          0.5644423961639404,
+          0.6174320578575134
+        ],
+        "encoder_mean_sd": [
+          0.031016020104289055,
+          0.044663410633802414,
+          0.8257430791854858,
+          0.8245041966438293
+        ]
+      },
+      "test": {
+        "D": 21.15755271911621,
+        "R": 1.170917272567749,
+        "D_mc_se": 0.07580678164958954,
+        "mean_code_reconstruction_nll": 18.91878890991211,
+        "per_latent_rate": [
+          0.0007520061335526407,
+          0.001429657218977809,
+          0.6341849565505981,
+          0.5345506072044373
+        ],
+        "encoder_mean_sd": [
+          0.03186009079217911,
+          0.0441901832818985,
+          0.8949651718139648,
+          0.7042662501335144
+        ]
+      },
+      "prior_decoder_means_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.0005,
+        "scalar_violation_fractions": {
+          "Transit Mode Share": 0.0005
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "prior_full_observations_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.427,
+        "scalar_violation_fractions": {
+          "Node Density (/sq km)": 0.0015,
+          "Street Density (km/sq km)": 0.0005,
+          "Car Mode Share": 0.001,
+          "Transit Mode Share": 0.208,
+          "Bicycle Mode Share": 0.219,
+          "Walking Mode Share": 0.0335,
+          "Built-Up Area Proportion": 0.0355,
+          "Precipitation (in)": 0.008
+        },
+        "four_commute_share_sum_over_100_fraction": 0.028,
+        "nonfinite_fraction": 0.0
+      },
+      "mean_code_reconstruction_support": {
+        "n": 52,
+        "any_scalar_bound_violation_fraction": 0.0,
+        "scalar_violation_fractions": {},
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "decoder_noise_empirical_mean_square": 0.5019959211349487,
+      "parameters": 1691
+    },
+    {
+      "seed": 29,
+      "beta": 1,
+      "selected_epoch": 300,
+      "validation_selected_objective": 23.047710418701172,
+      "training_seconds": 1.1633995139272884,
+      "train": {
+        "D": 15.714391708374023,
+        "R": 4.120136737823486,
+        "D_mc_se": 0.011698211543262005,
+        "mean_code_reconstruction_nll": 13.97445011138916,
+        "per_latent_rate": [
+          0.8758634328842163,
+          1.227870225906372,
+          0.8202071189880371,
+          1.19619619846344
+        ],
+        "encoder_mean_sd": [
+          0.9192140102386475,
+          0.9882993698120117,
+          0.8916327953338623,
+          0.9568458795547485
+        ]
+      },
+      "test": {
+        "D": 16.163944244384766,
+        "R": 3.953932046890259,
+        "D_mc_se": 0.028349287807941437,
+        "mean_code_reconstruction_nll": 14.508646011352539,
+        "per_latent_rate": [
+          0.7912715077400208,
+          1.2551485300064087,
+          0.7513296604156494,
+          1.1561821699142456
+        ],
+        "encoder_mean_sd": [
+          0.8281403183937073,
+          1.0201678276062012,
+          0.8194574117660522,
+          0.8824253082275391
+        ]
+      },
+      "prior_decoder_means_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.0475,
+        "scalar_violation_fractions": {
+          "Street Density (km/sq km)": 0.0005,
+          "Transit Mode Share": 0.01,
+          "Bicycle Mode Share": 0.0215,
+          "Precipitation (in)": 0.016
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "prior_full_observations_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.4775,
+        "scalar_violation_fractions": {
+          "Node Density (/sq km)": 0.0035,
+          "Intersection Density (/sq km)": 0.007,
+          "Street Density (km/sq km)": 0.0015,
+          "Car Mode Share": 0.001,
+          "Transit Mode Share": 0.2325,
+          "Bicycle Mode Share": 0.2205,
+          "Walking Mode Share": 0.0435,
+          "Working from Home Share": 0.0005,
+          "Built-Up Area Proportion": 0.0485,
+          "Precipitation (in)": 0.0345
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0345,
+        "nonfinite_fraction": 0.0
+      },
+      "mean_code_reconstruction_support": {
+        "n": 52,
+        "any_scalar_bound_violation_fraction": 0.019230769230769232,
+        "scalar_violation_fractions": {
+          "Bicycle Mode Share": 0.019230769230769232
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "decoder_noise_empirical_mean_square": 0.5019959211349487,
+      "parameters": 1691
+    },
+    {
+      "seed": 29,
+      "beta": 4,
+      "selected_epoch": 300,
+      "validation_selected_objective": 29.68347454071045,
+      "training_seconds": 1.1475603800499812,
+      "train": {
+        "D": 22.033098220825195,
+        "R": 1.1587417125701904,
+        "D_mc_se": 0.03467506542801857,
+        "mean_code_reconstruction_nll": 19.19919776916504,
+        "per_latent_rate": [
+          0.19230036437511444,
+          0.47271493077278137,
+          0.0004059421771671623,
+          0.49332043528556824
+        ],
+        "encoder_mean_sd": [
+          0.567500114440918,
+          0.796465277671814,
+          0.02686614915728569,
+          0.7854506969451904
+        ]
+      },
+      "test": {
+        "D": 21.640291213989258,
+        "R": 1.0973635911941528,
+        "D_mc_se": 0.06553009152412415,
+        "mean_code_reconstruction_nll": 18.72931671142578,
+        "per_latent_rate": [
+          0.13352574408054352,
+          0.4484848976135254,
+          0.0003103567287325859,
+          0.5150425434112549
+        ],
+        "encoder_mean_sd": [
+          0.45215484499931335,
+          0.7662999629974365,
+          0.0223408043384552,
+          0.8097894787788391
+        ]
+      },
+      "prior_decoder_means_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.0005,
+        "scalar_violation_fractions": {
+          "Transit Mode Share": 0.0005
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "prior_full_observations_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.391,
+        "scalar_violation_fractions": {
+          "Node Density (/sq km)": 0.001,
+          "Intersection Density (/sq km)": 0.0035,
+          "Street Density (km/sq km)": 0.0005,
+          "Car Mode Share": 0.0005,
+          "Transit Mode Share": 0.198,
+          "Bicycle Mode Share": 0.1885,
+          "Walking Mode Share": 0.031,
+          "Built-Up Area Proportion": 0.0345,
+          "Precipitation (in)": 0.0045
+        },
+        "four_commute_share_sum_over_100_fraction": 0.03,
+        "nonfinite_fraction": 0.0
+      },
+      "mean_code_reconstruction_support": {
+        "n": 52,
+        "any_scalar_bound_violation_fraction": 0.0,
+        "scalar_violation_fractions": {},
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "decoder_noise_empirical_mean_square": 0.5019959211349487,
+      "parameters": 1691
+    },
+    {
+      "seed": 43,
+      "beta": 1,
+      "selected_epoch": 280,
+      "validation_selected_objective": 22.42293882369995,
+      "training_seconds": 1.1441003819927573,
+      "train": {
+        "D": 15.94175910949707,
+        "R": 3.943749189376831,
+        "D_mc_se": 0.012283260002732277,
+        "mean_code_reconstruction_nll": 14.197282791137695,
+        "per_latent_rate": [
+          1.2854180335998535,
+          0.734515368938446,
+          0.684916079044342,
+          1.2388994693756104
+        ],
+        "encoder_mean_sd": [
+          1.0092582702636719,
+          0.8819006085395813,
+          0.8686515688896179,
+          0.9688565135002136
+        ]
+      },
+      "test": {
+        "D": 16.383220672607422,
+        "R": 3.781602144241333,
+        "D_mc_se": 0.0355992466211319,
+        "mean_code_reconstruction_nll": 14.718146324157715,
+        "per_latent_rate": [
+          1.2186840772628784,
+          0.6615127921104431,
+          0.6325269341468811,
+          1.2688781023025513
+        ],
+        "encoder_mean_sd": [
+          0.920544445514679,
+          0.8023317456245422,
+          0.8001781702041626,
+          1.0233726501464844
+        ]
+      },
+      "prior_decoder_means_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.041,
+        "scalar_violation_fractions": {
+          "Transit Mode Share": 0.018,
+          "Bicycle Mode Share": 0.011,
+          "Precipitation (in)": 0.0135
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "prior_full_observations_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.471,
+        "scalar_violation_fractions": {
+          "Node Density (/sq km)": 0.0035,
+          "Intersection Density (/sq km)": 0.0075,
+          "Street Density (km/sq km)": 0.001,
+          "Car Mode Share": 0.0035,
+          "Transit Mode Share": 0.226,
+          "Bicycle Mode Share": 0.2135,
+          "Walking Mode Share": 0.0415,
+          "Working from Home Share": 0.0025,
+          "Built-Up Area Proportion": 0.0475,
+          "Precipitation (in)": 0.0365
+        },
+        "four_commute_share_sum_over_100_fraction": 0.0375,
+        "nonfinite_fraction": 0.0
+      },
+      "mean_code_reconstruction_support": {
+        "n": 52,
+        "any_scalar_bound_violation_fraction": 0.0,
+        "scalar_violation_fractions": {},
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "decoder_noise_empirical_mean_square": 0.5019959211349487,
+      "parameters": 1691
+    },
+    {
+      "seed": 43,
+      "beta": 4,
+      "selected_epoch": 200,
+      "validation_selected_objective": 29.047208309173584,
+      "training_seconds": 1.160128425923176,
+      "train": {
+        "D": 21.83811378479004,
+        "R": 1.131447196006775,
+        "D_mc_se": 0.023912832140922546,
+        "mean_code_reconstruction_nll": 19.276412963867188,
+        "per_latent_rate": [
+          0.580764651298523,
+          0.0019241474801674485,
+          0.001396944746375084,
+          0.5473614931106567
+        ],
+        "encoder_mean_sd": [
+          0.8318960666656494,
+          0.05593531206250191,
+          0.04966042935848236,
+          0.8121278882026672
+        ]
+      },
+      "test": {
+        "D": 21.425739288330078,
+        "R": 1.0986440181732178,
+        "D_mc_se": 0.07753049582242966,
+        "mean_code_reconstruction_nll": 18.778526306152344,
+        "per_latent_rate": [
+          0.5004374384880066,
+          0.001977614127099514,
+          0.0013276903191581368,
+          0.5949013233184814
+        ],
+        "encoder_mean_sd": [
+          0.7243847846984863,
+          0.05385822802782059,
+          0.049190256744623184,
+          0.8723996877670288
+        ]
+      },
+      "prior_decoder_means_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.0,
+        "scalar_violation_fractions": {},
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "prior_full_observations_support": {
+        "n": 2000,
+        "any_scalar_bound_violation_fraction": 0.4205,
+        "scalar_violation_fractions": {
+          "Node Density (/sq km)": 0.001,
+          "Intersection Density (/sq km)": 0.004,
+          "Car Mode Share": 0.001,
+          "Transit Mode Share": 0.218,
+          "Bicycle Mode Share": 0.1925,
+          "Walking Mode Share": 0.039,
+          "Built-Up Area Proportion": 0.0335,
+          "Precipitation (in)": 0.006
+        },
+        "four_commute_share_sum_over_100_fraction": 0.027,
+        "nonfinite_fraction": 0.0
+      },
+      "mean_code_reconstruction_support": {
+        "n": 52,
+        "any_scalar_bound_violation_fraction": 0.0,
+        "scalar_violation_fractions": {},
+        "four_commute_share_sum_over_100_fraction": 0.0,
+        "nonfinite_fraction": 0.0
+      },
+      "decoder_noise_empirical_mean_square": 0.5019959211349487,
+      "parameters": 1691
+    }
+  ],
+  "limits": [
+    "No population MI estimator: reported R is sample average encoder-to-prior KL.",
+    "Expected held-out D differs from decoder-at-encoder-mean reconstruction score.",
+    "Conditional fixed split and three seeds; no independent spatial/external validation.",
+    "Prior outputs are standardized-space Gaussian model cases, not physically validated MSAs.",
+    "No data/checkpoints redistributed; CPU probe is not Colab/student timing or final worked solution."
+  ]
+}

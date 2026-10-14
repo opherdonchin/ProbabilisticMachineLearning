@@ -1,0 +1,1289 @@
+{
+  "purpose": "conditional feasibility only; no hosted Colab or learner timing validation",
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.0.2",
+    "scipy": "1.16.3",
+    "sklearn": "1.9.1"
+  },
+  "tiny_iteration": {
+    "means": [
+      [
+        -1.0,
+        -1.0
+      ],
+      [
+        0.0,
+        1.0
+      ],
+      [
+        2.0,
+        1.0
+      ]
+    ],
+    "updated_mu": [
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "updated_covariance": [
+      [
+        1.5555555555555556,
+        0.8888888888888888
+      ],
+      [
+        0.8888888888888888,
+        1.1388888888888888
+      ]
+    ],
+    "old_ll": -7.640343926904915,
+    "new_ll": -7.137887259555043
+  },
+  "disconnected_pattern_counterexample": {
+    "correlations": [
+      -0.9,
+      0.0,
+      0.9
+    ],
+    "observed_ll": [
+      -5.675754132818691,
+      -5.675754132818691,
+      -5.675754132818691
+    ]
+  },
+  "runs": [
+    {
+      "kind": "synthetic_gaussian",
+      "seed": 2027,
+      "description": {
+        "features": [
+          "constructed_measurement_1",
+          "constructed_measurement_2",
+          "constructed_measurement_3",
+          "constructed_measurement_4"
+        ],
+        "true_mu": [
+          0.3,
+          -0.5,
+          0.7,
+          0.1
+        ],
+        "true_covariance": [
+          [
+            0.9999999999999998,
+            0.6956521739130435,
+            0.6400773364645232,
+            0.3711507856994986
+          ],
+          [
+            0.6956521739130435,
+            0.9999999999999998,
+            0.6217894125655369,
+            0.4639384821243733
+          ],
+          [
+            0.6400773364645232,
+            0.6217894125655369,
+            1.0000000000000002,
+            0.6244571138007718
+          ],
+          [
+            0.3711507856994986,
+            0.4639384821243733,
+            0.6244571138007718,
+            1.0000000000000002
+          ]
+        ],
+        "source": "course-constructed Gaussian measurement surrogate",
+        "raw_measurement_sha256": "64b44457c50cb17adbc2f05162152bd5f9a4fc2805f48d9789457b667e321d10"
+      },
+      "train_rows": 395,
+      "test_rows": 196,
+      "complete_train_rows": 85,
+      "complete_train_centered_rank": 4,
+      "fully_missing_train_rows_excluded": 5,
+      "fully_missing_test_rows_excluded": 4,
+      "train_pairwise_coobservation_counts": [
+        [
+          283,
+          200,
+          196,
+          200
+        ],
+        [
+          200,
+          284,
+          191,
+          191
+        ],
+        [
+          196,
+          191,
+          275,
+          187
+        ],
+        [
+          200,
+          191,
+          187,
+          277
+        ]
+      ],
+      "test_hidden_entries": 222,
+      "methods": {
+        "exact_EM": {
+          "test_reconstruction_mse": 0.5432658571494176,
+          "observed_test_mean_ll": -3.466234015331062,
+          "marginal_missing_95pct_interval_coverage": 0.954954954954955,
+          "mean_missing_conditional_variance": 0.5550267070029561,
+          "observed_train_ll": -1433.1854279316244,
+          "iterations": 16,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1659.431186728532
+            },
+            {
+              "step": 5,
+              "ll": -1433.8168039823847
+            },
+            {
+              "step": 10,
+              "ll": -1433.189527939472
+            },
+            {
+              "step": 15,
+              "ll": -1433.1854615894292
+            },
+            {
+              "step": 16,
+              "ll": -1433.1854279316244
+            }
+          ],
+          "min_ll_increment": 3.365780480635294e-05,
+          "decreasing_steps_tolerance_1e8": 0,
+          "min_covariance_eigenvalue_across_run": 0.23929706841976708,
+          "final_covariance_eigenvalues": [
+            0.23929706841976708,
+            0.3571226244071091,
+            0.7384977172517951,
+            3.2442617481774785
+          ],
+          "stopped_by_tolerance": true,
+          "covariance_frobenius_error_vs_truth": 0.6330874141835183
+        },
+        "complete_case_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5631152750032282,
+          "observed_test_mean_ll": -3.4945405249488246,
+          "marginal_missing_95pct_interval_coverage": 0.9504504504504504,
+          "mean_missing_conditional_variance": 0.5531546528027924,
+          "observed_train_ll": -1440.0476995305773
+        },
+        "ordinary_mean_imputed_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5543639702845345,
+          "observed_test_mean_ll": -3.537063958993918,
+          "marginal_missing_95pct_interval_coverage": 0.9504504504504504,
+          "mean_missing_conditional_variance": 0.5913279917369916,
+          "observed_train_ll": -1474.2079677019879
+        },
+        "mean_only_iterative_diagnostic": {
+          "test_reconstruction_mse": 0.5765030735896316,
+          "observed_test_mean_ll": -3.602548967240691,
+          "marginal_missing_95pct_interval_coverage": 0.8378378378378378,
+          "mean_missing_conditional_variance": 0.35326675333306673,
+          "observed_train_ll": -1501.2126100887567,
+          "iterations": 45,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1659.431186728532
+            },
+            {
+              "step": 5,
+              "ll": -1491.396682079007
+            },
+            {
+              "step": 10,
+              "ll": -1498.4540873621638
+            },
+            {
+              "step": 15,
+              "ll": -1500.5377864060947
+            },
+            {
+              "step": 20,
+              "ll": -1501.0540401736134
+            },
+            {
+              "step": 25,
+              "ll": -1501.1755468035517
+            },
+            {
+              "step": 30,
+              "ll": -1501.2040047604096
+            },
+            {
+              "step": 35,
+              "ll": -1501.2106769183638
+            },
+            {
+              "step": 40,
+              "ll": -1501.2122425697014
+            },
+            {
+              "step": 45,
+              "ll": -1501.2126100887567
+            }
+          ],
+          "min_ll_increment": -17.14122803005239,
+          "decreasing_steps_tolerance_1e8": 43,
+          "min_covariance_eigenvalue_across_run": 0.08262049538303548,
+          "final_covariance_eigenvalues": [
+            0.08262049538303548,
+            0.27375388239382736,
+            0.6163509052701661,
+            3.1660586164725277
+          ],
+          "stopped_by_tolerance": true
+        },
+        "ordinary_column_mean_imputation": {
+          "test_reconstruction_mse": 0.9002051862457301
+        },
+        "oracle_known_parameters_diagnostic": {
+          "test_reconstruction_mse": 0.5354495402491296,
+          "observed_test_mean_ll": -3.436300603319332,
+          "marginal_missing_95pct_interval_coverage": 0.954954954954955,
+          "mean_missing_conditional_variance": 0.5375415527805852
+        }
+      },
+      "train_observation_mask_sha256": "6f2fe942a9915e0bbc31d8454ef5cd5afd00b9869ac2f19c12a206f5c35aceaf",
+      "test_observation_mask_sha256": "8d3f7095865df5b7be7c3635e5965ba9d0b5aa4d296fadc8a5fefa1ea2e84a9c",
+      "elapsed_seconds": 0.12209110800176859
+    },
+    {
+      "kind": "synthetic_gaussian",
+      "seed": 5,
+      "description": {
+        "features": [
+          "constructed_measurement_1",
+          "constructed_measurement_2",
+          "constructed_measurement_3",
+          "constructed_measurement_4"
+        ],
+        "true_mu": [
+          0.3,
+          -0.5,
+          0.7,
+          0.1
+        ],
+        "true_covariance": [
+          [
+            0.9999999999999998,
+            0.6956521739130435,
+            0.6400773364645232,
+            0.3711507856994986
+          ],
+          [
+            0.6956521739130435,
+            0.9999999999999998,
+            0.6217894125655369,
+            0.4639384821243733
+          ],
+          [
+            0.6400773364645232,
+            0.6217894125655369,
+            1.0000000000000002,
+            0.6244571138007718
+          ],
+          [
+            0.3711507856994986,
+            0.4639384821243733,
+            0.6244571138007718,
+            1.0000000000000002
+          ]
+        ],
+        "source": "course-constructed Gaussian measurement surrogate",
+        "raw_measurement_sha256": "aa2e8b3ae6d17cc357d9e17133100a569e74c697027f5431a49ab2ffedf9736f"
+      },
+      "train_rows": 398,
+      "test_rows": 198,
+      "complete_train_rows": 80,
+      "complete_train_centered_rank": 4,
+      "fully_missing_train_rows_excluded": 2,
+      "fully_missing_test_rows_excluded": 2,
+      "train_pairwise_coobservation_counts": [
+        [
+          273,
+          181,
+          193,
+          173
+        ],
+        [
+          181,
+          272,
+          184,
+          191
+        ],
+        [
+          193,
+          184,
+          279,
+          184
+        ],
+        [
+          173,
+          191,
+          184,
+          269
+        ]
+      ],
+      "test_hidden_entries": 242,
+      "methods": {
+        "exact_EM": {
+          "test_reconstruction_mse": 0.5282147471667619,
+          "observed_test_mean_ll": -3.6294832944575566,
+          "marginal_missing_95pct_interval_coverage": 0.9504132231404959,
+          "mean_missing_conditional_variance": 0.5140763858524139,
+          "observed_train_ll": -1343.8394824888064,
+          "iterations": 20,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1536.159836292764
+            },
+            {
+              "step": 5,
+              "ll": -1344.8940835102717
+            },
+            {
+              "step": 10,
+              "ll": -1343.8661391475296
+            },
+            {
+              "step": 15,
+              "ll": -1343.8403394398135
+            },
+            {
+              "step": 20,
+              "ll": -1343.8394824888064
+            }
+          ],
+          "min_ll_increment": 2.9194836770329857e-05,
+          "decreasing_steps_tolerance_1e8": 0,
+          "min_covariance_eigenvalue_across_run": 0.2362405555384058,
+          "final_covariance_eigenvalues": [
+            0.2362405555384058,
+            0.30292593618237845,
+            0.7284570547469081,
+            2.6488306559956083
+          ],
+          "stopped_by_tolerance": true,
+          "covariance_frobenius_error_vs_truth": 0.2006244814238435
+        },
+        "complete_case_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5526410260729685,
+          "observed_test_mean_ll": -3.6891325663151577,
+          "marginal_missing_95pct_interval_coverage": 0.9256198347107438,
+          "mean_missing_conditional_variance": 0.505090162301334,
+          "observed_train_ll": -1365.2674118681016
+        },
+        "ordinary_mean_imputed_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5701038125983487,
+          "observed_test_mean_ll": -3.787983121177445,
+          "marginal_missing_95pct_interval_coverage": 0.9297520661157025,
+          "mean_missing_conditional_variance": 0.5091536952644892,
+          "observed_train_ll": -1386.6734311715952
+        },
+        "mean_only_iterative_diagnostic": {
+          "test_reconstruction_mse": 0.5588107047567685,
+          "observed_test_mean_ll": -4.061528982851674,
+          "marginal_missing_95pct_interval_coverage": 0.8471074380165289,
+          "mean_missing_conditional_variance": 0.30744829335511287,
+          "observed_train_ll": -1430.3833811862817,
+          "iterations": 43,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1536.159836292764
+            },
+            {
+              "step": 5,
+              "ll": -1409.6706685276229
+            },
+            {
+              "step": 10,
+              "ll": -1425.435609596224
+            },
+            {
+              "step": 15,
+              "ll": -1429.4749690385115
+            },
+            {
+              "step": 20,
+              "ll": -1430.2169997368624
+            },
+            {
+              "step": 25,
+              "ll": -1430.3517523554156
+            },
+            {
+              "step": 30,
+              "ll": -1430.3772409478852
+            },
+            {
+              "step": 35,
+              "ll": -1430.3822275135417
+            },
+            {
+              "step": 40,
+              "ll": -1430.383224976655
+            },
+            {
+              "step": 43,
+              "ll": -1430.3833811862817
+            }
+          ],
+          "min_ll_increment": -15.52546506058502,
+          "decreasing_steps_tolerance_1e8": 41,
+          "min_covariance_eigenvalue_across_run": 0.06206942885363343,
+          "final_covariance_eigenvalues": [
+            0.06206942885363343,
+            0.22876251594073638,
+            0.6751303355599428,
+            2.5786381875271207
+          ],
+          "stopped_by_tolerance": true
+        },
+        "ordinary_column_mean_imputation": {
+          "test_reconstruction_mse": 1.0167233834253284
+        },
+        "oracle_known_parameters_diagnostic": {
+          "test_reconstruction_mse": 0.5346069532795404,
+          "observed_test_mean_ll": -3.600280548920577,
+          "marginal_missing_95pct_interval_coverage": 0.9380165289256198,
+          "mean_missing_conditional_variance": 0.5388417494519372
+        }
+      },
+      "train_observation_mask_sha256": "25305a4465059fe54fbd3c1381c39eac333384e0810c1f780f67628aeec2921e",
+      "test_observation_mask_sha256": "bc2994d27f494ed2af91955c70048c6d5c32c04491e1e29e6335b6f9512f4aaa",
+      "elapsed_seconds": 0.12472371303010732
+    },
+    {
+      "kind": "synthetic_gaussian",
+      "seed": 17,
+      "description": {
+        "features": [
+          "constructed_measurement_1",
+          "constructed_measurement_2",
+          "constructed_measurement_3",
+          "constructed_measurement_4"
+        ],
+        "true_mu": [
+          0.3,
+          -0.5,
+          0.7,
+          0.1
+        ],
+        "true_covariance": [
+          [
+            0.9999999999999998,
+            0.6956521739130435,
+            0.6400773364645232,
+            0.3711507856994986
+          ],
+          [
+            0.6956521739130435,
+            0.9999999999999998,
+            0.6217894125655369,
+            0.4639384821243733
+          ],
+          [
+            0.6400773364645232,
+            0.6217894125655369,
+            1.0000000000000002,
+            0.6244571138007718
+          ],
+          [
+            0.3711507856994986,
+            0.4639384821243733,
+            0.6244571138007718,
+            1.0000000000000002
+          ]
+        ],
+        "source": "course-constructed Gaussian measurement surrogate",
+        "raw_measurement_sha256": "1c625217c86c799734ff68214c86ecc5e19e99fbd1d2b309f5312e740196c6e8"
+      },
+      "train_rows": 399,
+      "test_rows": 199,
+      "complete_train_rows": 101,
+      "complete_train_centered_rank": 4,
+      "fully_missing_train_rows_excluded": 1,
+      "fully_missing_test_rows_excluded": 1,
+      "train_pairwise_coobservation_counts": [
+        [
+          297,
+          203,
+          206,
+          208
+        ],
+        [
+          203,
+          279,
+          189,
+          197
+        ],
+        [
+          206,
+          189,
+          278,
+          199
+        ],
+        [
+          208,
+          197,
+          199,
+          281
+        ]
+      ],
+      "test_hidden_entries": 236,
+      "methods": {
+        "exact_EM": {
+          "test_reconstruction_mse": 0.507183245384024,
+          "observed_test_mean_ll": -3.5136756809013927,
+          "marginal_missing_95pct_interval_coverage": 0.9533898305084746,
+          "mean_missing_conditional_variance": 0.5514523813869103,
+          "observed_train_ll": -1419.4398210298093,
+          "iterations": 17,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1626.3127444757276
+            },
+            {
+              "step": 5,
+              "ll": -1420.0022386197163
+            },
+            {
+              "step": 10,
+              "ll": -1419.4445636567957
+            },
+            {
+              "step": 15,
+              "ll": -1419.4398975376353
+            },
+            {
+              "step": 17,
+              "ll": -1419.4398210298093
+            }
+          ],
+          "min_ll_increment": 2.4428142069155e-05,
+          "decreasing_steps_tolerance_1e8": 0,
+          "min_covariance_eigenvalue_across_run": 0.24390339204894726,
+          "final_covariance_eigenvalues": [
+            0.24390339204894726,
+            0.3068302126359928,
+            0.8033221724025897,
+            2.767464641666403
+          ],
+          "stopped_by_tolerance": true,
+          "covariance_frobenius_error_vs_truth": 0.2822164283071106
+        },
+        "complete_case_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5237134066834479,
+          "observed_test_mean_ll": -3.5226059874263975,
+          "marginal_missing_95pct_interval_coverage": 0.9449152542372882,
+          "mean_missing_conditional_variance": 0.5105975498529794,
+          "observed_train_ll": -1425.0499004849241
+        },
+        "ordinary_mean_imputed_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5448492666391505,
+          "observed_test_mean_ll": -3.5269443478573765,
+          "marginal_missing_95pct_interval_coverage": 0.9533898305084746,
+          "mean_missing_conditional_variance": 0.5508361279629527,
+          "observed_train_ll": -1458.1333533375284
+        },
+        "mean_only_iterative_diagnostic": {
+          "test_reconstruction_mse": 0.5492092138582623,
+          "observed_test_mean_ll": -3.777330784565176,
+          "marginal_missing_95pct_interval_coverage": 0.8728813559322034,
+          "mean_missing_conditional_variance": 0.3631099036603933,
+          "observed_train_ll": -1482.633793037115,
+          "iterations": 55,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1626.3127444757276
+            },
+            {
+              "step": 5,
+              "ll": -1474.3558820776202
+            },
+            {
+              "step": 10,
+              "ll": -1479.3049710007735
+            },
+            {
+              "step": 15,
+              "ll": -1481.4284566563665
+            },
+            {
+              "step": 20,
+              "ll": -1482.2297601511718
+            },
+            {
+              "step": 25,
+              "ll": -1482.5020327786053
+            },
+            {
+              "step": 30,
+              "ll": -1482.5912674502813
+            },
+            {
+              "step": 35,
+              "ll": -1482.6201746842346
+            },
+            {
+              "step": 40,
+              "ll": -1482.6295042524375
+            },
+            {
+              "step": 45,
+              "ll": -1482.6325117005385
+            },
+            {
+              "step": 50,
+              "ll": -1482.6334807997844
+            },
+            {
+              "step": 55,
+              "ll": -1482.633793037115
+            }
+          ],
+          "min_ll_increment": -14.943542141937769,
+          "decreasing_steps_tolerance_1e8": 53,
+          "min_covariance_eigenvalue_across_run": 0.09281130479506018,
+          "final_covariance_eigenvalues": [
+            0.09281130479506018,
+            0.21596001779078816,
+            0.6814779152653376,
+            2.7249289048980883
+          ],
+          "stopped_by_tolerance": true
+        },
+        "ordinary_column_mean_imputation": {
+          "test_reconstruction_mse": 0.984914334581832
+        },
+        "oracle_known_parameters_diagnostic": {
+          "test_reconstruction_mse": 0.5149755490626255,
+          "observed_test_mean_ll": -3.4990538235935955,
+          "marginal_missing_95pct_interval_coverage": 0.9491525423728814,
+          "mean_missing_conditional_variance": 0.5442557372692752
+        }
+      },
+      "train_observation_mask_sha256": "2d29db66ce0406a5782a45bbb93c7517ae9ac7341edeb216d21c1371dc2907f5",
+      "test_observation_mask_sha256": "181fe35ffd93f064c81c22a12b2687e6ef7611a13ecc5af95b70a6c2d792c192",
+      "elapsed_seconds": 0.13849818403832614
+    },
+    {
+      "kind": "diabetes_measurements",
+      "seed": 2027,
+      "description": {
+        "features": [
+          "bmi",
+          "bp",
+          "s1",
+          "s2"
+        ],
+        "source": "sklearn bundled diabetes raw physiological measurements",
+        "target_used": false,
+        "raw_measurement_sha256": "d052f39550acee840558061a5cda168cfd95a69965f981a2f6fe6af7ddd7bd4f",
+        "observed_train_center": [
+          26.317889908256877,
+          94.36718446601944,
+          188.7351598173516,
+          115.49292452830197
+        ],
+        "observed_train_scale": [
+          4.303572352947504,
+          13.574352309280092,
+          35.97009407684156,
+          31.10789344914504
+        ],
+        "train_marginal_skew": [
+          0.5796912998930827,
+          0.4403101319446,
+          0.31449784434565,
+          0.3159264737170348
+        ],
+        "train_marginal_excess_kurtosis": [
+          0.17511557039428816,
+          -0.22487021963878995,
+          0.21128437741577244,
+          0.6414818411297327
+        ]
+      },
+      "train_rows": 294,
+      "test_rows": 146,
+      "complete_train_rows": 86,
+      "complete_train_centered_rank": 4,
+      "fully_missing_train_rows_excluded": 0,
+      "fully_missing_test_rows_excluded": 2,
+      "train_pairwise_coobservation_counts": [
+        [
+          218,
+          151,
+          165,
+          167
+        ],
+        [
+          151,
+          206,
+          154,
+          143
+        ],
+        [
+          165,
+          154,
+          219,
+          155
+        ],
+        [
+          167,
+          143,
+          155,
+          212
+        ]
+      ],
+      "test_hidden_entries": 158,
+      "methods": {
+        "exact_EM": {
+          "test_reconstruction_mse": 0.647348345201344,
+          "observed_test_mean_ll": -3.5903122831681684,
+          "marginal_missing_95pct_interval_coverage": 0.930379746835443,
+          "mean_missing_conditional_variance": 0.6210236573648812,
+          "observed_train_ll": -1058.8018192741547,
+          "iterations": 15,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1213.192445889995
+            },
+            {
+              "step": 5,
+              "ll": -1060.5975162398047
+            },
+            {
+              "step": 10,
+              "ll": -1058.803945843932
+            },
+            {
+              "step": 15,
+              "ll": -1058.8018192741547
+            }
+          ],
+          "min_ll_increment": 1.7035628616213216e-05,
+          "decreasing_steps_tolerance_1e8": 0,
+          "min_covariance_eigenvalue_across_run": 0.08940866220920575,
+          "final_covariance_eigenvalues": [
+            0.08940866220920575,
+            0.6675733116306571,
+            1.081936259286839,
+            2.1670629262077954
+          ],
+          "stopped_by_tolerance": true
+        },
+        "complete_case_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.6535060439028565,
+          "observed_test_mean_ll": -3.639071555165191,
+          "marginal_missing_95pct_interval_coverage": 0.9367088607594937,
+          "mean_missing_conditional_variance": 0.5823299941118854,
+          "observed_train_ll": -1064.4816175275769
+        },
+        "ordinary_mean_imputed_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.6771508902901433,
+          "observed_test_mean_ll": -3.7122557153039235,
+          "marginal_missing_95pct_interval_coverage": 0.9430379746835443,
+          "mean_missing_conditional_variance": 0.5808442450040094,
+          "observed_train_ll": -1114.2730770390185
+        },
+        "mean_only_iterative_diagnostic": {
+          "test_reconstruction_mse": 0.6515324008534864,
+          "observed_test_mean_ll": -3.726932791381864,
+          "marginal_missing_95pct_interval_coverage": 0.8860759493670886,
+          "mean_missing_conditional_variance": 0.44132376660520134,
+          "observed_train_ll": -1093.665654919241,
+          "iterations": 44,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1213.192445889995
+            },
+            {
+              "step": 5,
+              "ll": -1093.101678674414
+            },
+            {
+              "step": 10,
+              "ll": -1093.6328027854875
+            },
+            {
+              "step": 15,
+              "ll": -1093.6565781579707
+            },
+            {
+              "step": 20,
+              "ll": -1093.6612205485055
+            },
+            {
+              "step": 25,
+              "ll": -1093.663431916791
+            },
+            {
+              "step": 30,
+              "ll": -1093.6645898715299
+            },
+            {
+              "step": 35,
+              "ll": -1093.6651969767877
+            },
+            {
+              "step": 40,
+              "ll": -1093.6655143759137
+            },
+            {
+              "step": 44,
+              "ll": -1093.665654919241
+            }
+          ],
+          "min_ll_increment": -13.936853650228613,
+          "decreasing_steps_tolerance_1e8": 42,
+          "min_covariance_eigenvalue_across_run": 0.04758010661429163,
+          "final_covariance_eigenvalues": [
+            0.04758010661429163,
+            0.3995595374758171,
+            0.9190413424154534,
+            2.042062010457986
+          ],
+          "stopped_by_tolerance": true
+        },
+        "ordinary_column_mean_imputation": {
+          "test_reconstruction_mse": 0.9551561351138832
+        }
+      },
+      "train_observation_mask_sha256": "0e83a6b497f5372d7ab2d1098fb60cfb737cbb31cf6dadbf080b6e3168343713",
+      "test_observation_mask_sha256": "d6fd68b9618d1e715dd315332a379afed06d7a28a3bf33094a8e3e5ffd22f299",
+      "elapsed_seconds": 0.11737630690913647
+    },
+    {
+      "kind": "diabetes_measurements",
+      "seed": 5,
+      "description": {
+        "features": [
+          "bmi",
+          "bp",
+          "s1",
+          "s2"
+        ],
+        "source": "sklearn bundled diabetes raw physiological measurements",
+        "target_used": false,
+        "raw_measurement_sha256": "a60b049134fe586131e1f6249e7a01d7484e8464fce65b28d82440e5fcbd224a",
+        "observed_train_center": [
+          26.455405405405404,
+          94.66338164251208,
+          188.08629441624365,
+          117.05778894472367
+        ],
+        "observed_train_scale": [
+          4.4197695271907875,
+          13.538927028617636,
+          34.19587746362458,
+          30.87990560195426
+        ],
+        "train_marginal_skew": [
+          0.5056795825164626,
+          0.2850494808485923,
+          0.40439307255869616,
+          0.3157873839226064
+        ],
+        "train_marginal_excess_kurtosis": [
+          -0.046736784063197145,
+          -0.29364388475119085,
+          0.3751629018816893,
+          0.23568671953165055
+        ]
+      },
+      "train_rows": 291,
+      "test_rows": 143,
+      "complete_train_rows": 66,
+      "complete_train_centered_rank": 4,
+      "fully_missing_train_rows_excluded": 3,
+      "fully_missing_test_rows_excluded": 5,
+      "train_pairwise_coobservation_counts": [
+        [
+          222,
+          155,
+          143,
+          153
+        ],
+        [
+          155,
+          207,
+          140,
+          138
+        ],
+        [
+          143,
+          140,
+          197,
+          137
+        ],
+        [
+          153,
+          138,
+          137,
+          199
+        ]
+      ],
+      "test_hidden_entries": 167,
+      "methods": {
+        "exact_EM": {
+          "test_reconstruction_mse": 0.6003287932190452,
+          "observed_test_mean_ll": -3.887568239173588,
+          "marginal_missing_95pct_interval_coverage": 0.9101796407185628,
+          "mean_missing_conditional_variance": 0.595125718231725,
+          "observed_train_ll": -1016.9117627340406,
+          "iterations": 20,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1170.6242898938551
+            },
+            {
+              "step": 5,
+              "ll": -1022.3992967167487
+            },
+            {
+              "step": 10,
+              "ll": -1016.952896161552
+            },
+            {
+              "step": 15,
+              "ll": -1016.9125194943895
+            },
+            {
+              "step": 20,
+              "ll": -1016.9117627340406
+            }
+          ],
+          "min_ll_increment": 2.2141916019791097e-05,
+          "decreasing_steps_tolerance_1e8": 0,
+          "min_covariance_eigenvalue_across_run": 0.07356761701298838,
+          "final_covariance_eigenvalues": [
+            0.07356761701298838,
+            0.6162830571585218,
+            1.1201782787189312,
+            2.201473634597003
+          ],
+          "stopped_by_tolerance": true
+        },
+        "complete_case_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5923337104301966,
+          "observed_test_mean_ll": -4.0186540740066015,
+          "marginal_missing_95pct_interval_coverage": 0.9101796407185628,
+          "mean_missing_conditional_variance": 0.5581881861726905,
+          "observed_train_ll": -1025.3376406895227
+        },
+        "ordinary_mean_imputed_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.6258329146462279,
+          "observed_test_mean_ll": -3.8532509396867956,
+          "marginal_missing_95pct_interval_coverage": 0.9401197604790419,
+          "mean_missing_conditional_variance": 0.5771546224863404,
+          "observed_train_ll": -1078.566013617685
+        },
+        "mean_only_iterative_diagnostic": {
+          "test_reconstruction_mse": 0.6585318434355876,
+          "observed_test_mean_ll": -4.461946072405794,
+          "marginal_missing_95pct_interval_coverage": 0.8562874251497006,
+          "mean_missing_conditional_variance": 0.4238531627955415,
+          "observed_train_ll": -1061.254008517586,
+          "iterations": 75,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1170.6242898938551
+            },
+            {
+              "step": 5,
+              "ll": -1056.7970246058474
+            },
+            {
+              "step": 10,
+              "ll": -1059.7965648241047
+            },
+            {
+              "step": 15,
+              "ll": -1060.8093437094576
+            },
+            {
+              "step": 20,
+              "ll": -1061.0918249972035
+            },
+            {
+              "step": 25,
+              "ll": -1061.1803901698277
+            },
+            {
+              "step": 30,
+              "ll": -1061.21582512986
+            },
+            {
+              "step": 35,
+              "ll": -1061.233051616906
+            },
+            {
+              "step": 40,
+              "ll": -1061.2422984622392
+            },
+            {
+              "step": 45,
+              "ll": -1061.247460590068
+            },
+            {
+              "step": 50,
+              "ll": -1061.250382219109
+            },
+            {
+              "step": 55,
+              "ll": -1061.2520431891473
+            },
+            {
+              "step": 60,
+              "ll": -1061.252988738872
+            },
+            {
+              "step": 65,
+              "ll": -1061.2535272077807
+            },
+            {
+              "step": 70,
+              "ll": -1061.2538338717063
+            },
+            {
+              "step": 75,
+              "ll": -1061.254008517586
+            }
+          ],
+          "min_ll_increment": -17.200231635956015,
+          "decreasing_steps_tolerance_1e8": 73,
+          "min_covariance_eigenvalue_across_run": 0.031361316584565216,
+          "final_covariance_eigenvalues": [
+            0.031361316584565216,
+            0.398751525384553,
+            0.9677192976378314,
+            2.0316737544752597
+          ],
+          "stopped_by_tolerance": true
+        },
+        "ordinary_column_mean_imputation": {
+          "test_reconstruction_mse": 1.035496720400606
+        }
+      },
+      "train_observation_mask_sha256": "472685b7f4cdbc8dc8517b7e953d8a8a4f6184a7bb09acb6547bf653ed4ddd69",
+      "test_observation_mask_sha256": "3a16ae64bc1fb71edee3039546983bf8c11c6c24b982b417dc92c0ba736309f9",
+      "elapsed_seconds": 0.1720129019813612
+    },
+    {
+      "kind": "diabetes_measurements",
+      "seed": 17,
+      "description": {
+        "features": [
+          "bmi",
+          "bp",
+          "s1",
+          "s2"
+        ],
+        "source": "sklearn bundled diabetes raw physiological measurements",
+        "target_used": false,
+        "raw_measurement_sha256": "96d783620fe52db7487e498e525d1f8e1e1389cefca726d7b018dd3c26ff2b16",
+        "observed_train_center": [
+          26.059278350515445,
+          94.97835820895523,
+          188.93867924528303,
+          115.78840579710149
+        ],
+        "observed_train_scale": [
+          4.2360555342831985,
+          14.193154919123993,
+          32.57793289119421,
+          32.167530376172735
+        ],
+        "train_marginal_skew": [
+          0.5406300400865937,
+          -0.01988702328989787,
+          0.23375346424550716,
+          0.657432883987923
+        ],
+        "train_marginal_excess_kurtosis": [
+          -0.1170025699374353,
+          -0.7605463280876963,
+          0.15829253328020343,
+          1.0252924866624848
+        ]
+      },
+      "train_rows": 294,
+      "test_rows": 148,
+      "complete_train_rows": 67,
+      "complete_train_centered_rank": 4,
+      "fully_missing_train_rows_excluded": 0,
+      "fully_missing_test_rows_excluded": 0,
+      "train_pairwise_coobservation_counts": [
+        [
+          194,
+          130,
+          139,
+          134
+        ],
+        [
+          130,
+          201,
+          147,
+          143
+        ],
+        [
+          139,
+          147,
+          212,
+          142
+        ],
+        [
+          134,
+          143,
+          142,
+          207
+        ]
+      ],
+      "test_hidden_entries": 187,
+      "methods": {
+        "exact_EM": {
+          "test_reconstruction_mse": 0.5842406627939088,
+          "observed_test_mean_ll": -3.5123773355653602,
+          "marginal_missing_95pct_interval_coverage": 0.9358288770053476,
+          "mean_missing_conditional_variance": 0.6127748157455153,
+          "observed_train_ll": -1015.5210800662986,
+          "iterations": 21,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1155.0159660286035
+            },
+            {
+              "step": 5,
+              "ll": -1020.5999535713759
+            },
+            {
+              "step": 10,
+              "ll": -1015.572757353597
+            },
+            {
+              "step": 15,
+              "ll": -1015.5223977523906
+            },
+            {
+              "step": 20,
+              "ll": -1015.5211045398271
+            },
+            {
+              "step": 21,
+              "ll": -1015.5210800662986
+            }
+          ],
+          "min_ll_increment": 2.4473528469570738e-05,
+          "decreasing_steps_tolerance_1e8": 0,
+          "min_covariance_eigenvalue_across_run": 0.09683253716950366,
+          "final_covariance_eigenvalues": [
+            0.09683253716950366,
+            0.5208149929997203,
+            1.1358790518616115,
+            2.3636429217526116
+          ],
+          "stopped_by_tolerance": true
+        },
+        "complete_case_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.5860001607908806,
+          "observed_test_mean_ll": -3.541130834769556,
+          "marginal_missing_95pct_interval_coverage": 0.93048128342246,
+          "mean_missing_conditional_variance": 0.6524910116168523,
+          "observed_train_ll": -1022.543364779722
+        },
+        "ordinary_mean_imputed_fit_conditional_prediction": {
+          "test_reconstruction_mse": 0.658521149111529,
+          "observed_test_mean_ll": -3.665013434153772,
+          "marginal_missing_95pct_interval_coverage": 0.9411764705882353,
+          "mean_missing_conditional_variance": 0.5837726345821886,
+          "observed_train_ll": -1085.285552401107
+        },
+        "mean_only_iterative_diagnostic": {
+          "test_reconstruction_mse": 0.6274449902105405,
+          "observed_test_mean_ll": -3.8726679132277737,
+          "marginal_missing_95pct_interval_coverage": 0.8449197860962567,
+          "mean_missing_conditional_variance": 0.41691770347823615,
+          "observed_train_ll": -1075.7460347677966,
+          "iterations": 36,
+          "observed_train_ll_trace_every_5_steps": [
+            {
+              "step": 0,
+              "ll": -1155.0159660286035
+            },
+            {
+              "step": 5,
+              "ll": -1062.6029015837523
+            },
+            {
+              "step": 10,
+              "ll": -1072.177265764452
+            },
+            {
+              "step": 15,
+              "ll": -1075.2894790275682
+            },
+            {
+              "step": 20,
+              "ll": -1075.6954686081954
+            },
+            {
+              "step": 25,
+              "ll": -1075.740501107769
+            },
+            {
+              "step": 30,
+              "ll": -1075.7454591470412
+            },
+            {
+              "step": 35,
+              "ll": -1075.7460101034499
+            },
+            {
+              "step": 36,
+              "ll": -1075.7460347677966
+            }
+          ],
+          "min_ll_increment": -11.366060496663295,
+          "decreasing_steps_tolerance_1e8": 34,
+          "min_covariance_eigenvalue_across_run": 0.034255878020906884,
+          "final_covariance_eigenvalues": [
+            0.034255878020906884,
+            0.3113089160296632,
+            1.037203036730405,
+            2.2682374563970926
+          ],
+          "stopped_by_tolerance": true
+        },
+        "ordinary_column_mean_imputation": {
+          "test_reconstruction_mse": 0.9628975597552529
+        }
+      },
+      "train_observation_mask_sha256": "fab7ec30cfa52c027c7fd1acf7130821cef07175a2ad5db42d21aaabc0885966",
+      "test_observation_mask_sha256": "27e7a3e0e2e120ff3b5c8064a87a9201b305462af6a932fe2df912ece7ecbf42",
+      "elapsed_seconds": 0.12553620897233486
+    }
+  ]
+}

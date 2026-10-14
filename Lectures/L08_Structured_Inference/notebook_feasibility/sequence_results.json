@@ -1,0 +1,325 @@
+{
+  "status": "author-only exact checks/conditional feasibility; no Colab or student-time pass",
+  "oracle_tests": [
+    {
+      "pi": [
+        0.5,
+        0.5
+      ],
+      "A": [
+        [
+          0.8,
+          0.2
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "B": [
+        [
+          0.7,
+          0.3
+        ],
+        [
+          0.3,
+          0.7
+        ]
+      ],
+      "y": [
+        0,
+        0,
+        1
+      ],
+      "evidence": 0.11779999999999999,
+      "max_smoothing_error": 1.1102230246251565e-16,
+      "max_filter_error": 1.1102230246251565e-16,
+      "filtered": [
+        [
+          0.7,
+          0.3
+        ],
+        [
+          0.791970802919708,
+          0.20802919708029194
+        ],
+        [
+          0.4711375212224109,
+          0.5288624787775891
+        ]
+      ],
+      "smoothed": [
+        [
+          0.7427843803056027,
+          0.2572156196943973
+        ],
+        [
+          0.7,
+          0.3
+        ],
+        [
+          0.4711375212224109,
+          0.5288624787775891
+        ]
+      ],
+      "path_MAP": [
+        0,
+        0,
+        0
+      ],
+      "marginal_modes": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "pi": [
+        0.3,
+        0.7
+      ],
+      "A": [
+        [
+          0.93,
+          0.07
+        ],
+        [
+          0.31,
+          0.69
+        ]
+      ],
+      "B": [
+        [
+          0.8,
+          0.2
+        ],
+        [
+          0.25,
+          0.75
+        ]
+      ],
+      "y": [
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "evidence": 0.02123984155514906,
+      "max_smoothing_error": 2.220446049250313e-16,
+      "max_filter_error": 1.1102230246251565e-16,
+      "filtered": [
+        [
+          0.10256410256410256,
+          0.8974358974358974
+        ],
+        [
+          0.656176992146818,
+          0.34382300785318204
+        ],
+        [
+          0.40300353574269815,
+          0.5969964642573019
+        ],
+        [
+          0.25328787477817577,
+          0.7467121252218242
+        ],
+        [
+          0.7371316647481989,
+          0.26286833525180114
+        ]
+      ],
+      "smoothed": [
+        [
+          0.10049631953698772,
+          0.8995036804630122
+        ],
+        [
+          0.3651102823413025,
+          0.6348897176586976
+        ],
+        [
+          0.2944446516957486,
+          0.7055553483042515
+        ],
+        [
+          0.38052809046588154,
+          0.6194719095341185
+        ],
+        [
+          0.7371316647481989,
+          0.26286833525180114
+        ]
+      ],
+      "path_MAP": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "marginal_modes": [
+        1,
+        1,
+        1,
+        1,
+        0
+      ]
+    }
+  ],
+  "impossible_observation_handled": true,
+  "simulated_encounter": {
+    "provenance": "simulated known fair/loaded die model; seed84; no empirical sensor/behavior claims",
+    "T": 200,
+    "model": {
+      "pi": [
+        0.5,
+        0.5
+      ],
+      "A": [
+        [
+          0.95,
+          0.05
+        ],
+        [
+          0.1,
+          0.9
+        ]
+      ],
+      "B": [
+        [
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666,
+          0.16666666666666666
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.5
+        ]
+      ]
+    },
+    "log_evidence": -342.62815121851827,
+    "log_scores": {
+      "filter": 0.5117529396677046,
+      "smoother": 0.41351147653055187,
+      "independent": 0.6107159550233111
+    },
+    "accuracy": {
+      "filter": 0.765,
+      "smoother": 0.83,
+      "independent": 0.705
+    },
+    "mean_loaded_state_probabilities": {
+      "filter": 0.37224528264066753,
+      "smoother": 0.38006476590637317
+    },
+    "final_filter_smoother_error": 0.0,
+    "truth_transitions": 10
+  },
+  "scaling": [
+    {
+      "K": 2,
+      "T": 200,
+      "median_seconds": 0.0012986049987375736,
+      "dense_message_multiplies": 1592,
+      "stored_float_count": 1400,
+      "log10_enumerated_paths": 60.20599913279624
+    },
+    {
+      "K": 2,
+      "T": 2000,
+      "median_seconds": 0.009076450020074844,
+      "dense_message_multiplies": 15992,
+      "stored_float_count": 14000,
+      "log10_enumerated_paths": 602.0599913279624
+    },
+    {
+      "K": 2,
+      "T": 20000,
+      "median_seconds": 0.09132729505654424,
+      "dense_message_multiplies": 159992,
+      "stored_float_count": 140000,
+      "log10_enumerated_paths": 6020.599913279624
+    },
+    {
+      "K": 8,
+      "T": 200,
+      "median_seconds": 0.0009163570357486606,
+      "dense_message_multiplies": 25472,
+      "stored_float_count": 5000,
+      "log10_enumerated_paths": 180.6179973983887
+    },
+    {
+      "K": 8,
+      "T": 2000,
+      "median_seconds": 0.009135828935541213,
+      "dense_message_multiplies": 255872,
+      "stored_float_count": 50000,
+      "log10_enumerated_paths": 1806.179973983887
+    },
+    {
+      "K": 8,
+      "T": 20000,
+      "median_seconds": 0.0954344910569489,
+      "dense_message_multiplies": 2559872,
+      "stored_float_count": 500000,
+      "log10_enumerated_paths": 18061.799739838872
+    },
+    {
+      "K": 16,
+      "T": 200,
+      "median_seconds": 0.0009318359661847353,
+      "dense_message_multiplies": 101888,
+      "stored_float_count": 9800,
+      "log10_enumerated_paths": 240.82399653118495
+    },
+    {
+      "K": 16,
+      "T": 2000,
+      "median_seconds": 0.00941792200319469,
+      "dense_message_multiplies": 1023488,
+      "stored_float_count": 98000,
+      "log10_enumerated_paths": 2408.2399653118496
+    },
+    {
+      "K": 16,
+      "T": 20000,
+      "median_seconds": 0.0975499200867489,
+      "dense_message_multiplies": 10239488,
+      "stored_float_count": 980000,
+      "log10_enumerated_paths": 24082.399653118497
+    }
+  ],
+  "kalman": {
+    "provenance": "simulated scalar known-parameter linear Gaussian model",
+    "F": 0.9,
+    "Q": 0.2,
+    "R": 0.5,
+    "joint_conditioning_max_error": 2.220446049250313e-16,
+    "one_step_predictive_variance": [
+      1.5,
+      0.9700000000000001,
+      0.8962371134020619,
+      0.8790553286938517,
+      0.8746390734575428,
+      0.8734759277909966,
+      0.8731676236778287,
+      0.8730857666858293
+    ]
+  },
+  "seasonal_matrix_kalman": {
+    "state_dimension": 8,
+    "T": 12,
+    "known_Q_singular": true,
+    "joint_conditioning_max_error": 1.3322676295501878e-15,
+    "model": "level plus seven rotating seasonal effects; Q_level=.001,R=.09"
+  }
+}

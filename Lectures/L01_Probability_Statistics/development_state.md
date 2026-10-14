@@ -1,51 +1,63 @@
-# L01 — scope and artifact reconciliation state
+# L01 — development state
 
-**Stage:** Lecture Scope build / provisional intellectual arc ready for instructor discussion. Operation-centered notebook direction agreed in principle; whole-lecture arc awaits instructor acceptance.
-**Maintainer:** Lecture Development Coordinator (`/root`). The register was initialized at the branch kickoff before this session; the coordinator updated it during the current review and discussion.
-**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`, created from `scope-l04-l12-after-architecture-20261014` at `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
-**Course-wide sources:** `course_architecture.typ`, `curriculum_map.typ`, `curriculum_map_actual.typ`, `Lectures/START_SCOPING.md`.
-**No complete revised L01 Scope, slide design or notebook implementation is approved yet.** The limited notebook-direction agreement is recorded below. No class has yet been taught.
+**Purpose:** coordinator workflow register. The instructor's teaching proposal is [lecture_scope.md](lecture_scope.md); this file records its status, decisions, evidence and next owners.
+**Maintainer:** Lecture Development Coordinator (`/root`); initialized at branch kickoff and maintained during this session.
+**Working branch:** `rescope-l01-l12-architecture-alignment-20261014`. Branch kickoff source: `16850fbda82ff9a4a0a665ddab52115cda14a2bf`.
+**Stage:** Lecture Scope, intellectual arc only. Presentation revision ready for instructor review; no complete five-part Scope is approved. No class has been taught.
 
-## Initial review checkpoint — 2026-10-14
+## Instructor-agreed teaching direction
 
-**Last-reviewed baseline:** `692d10372f4e1cd091ae1e2977402900148f33c7`. Reviewed deck source `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`, PDF `8d9ffbf49873bd890d0aee1c8b7262c897176a7c`, coverage specification `c4457bc4fdb11df14de54658f20e487030766328`, solved notebook `ab441941c8b526151a927bfbcf292bd9bc629ce5`, architecture `cb111196e44df211e39864be596233a1a3f22aba`, curriculum map `63fb5cea0a7b0a4c908c8f803e550d087d20a412`.
+Current discussion, 2026-10-14: the notebook's strongest message is that the same dataset and probabilistic formulation support different questions. The instructor's subsequent “Sounds good” accepts in principle a hidden-block distribution $p(z\mid y)$, its squared-loss mean summary $E[Z\mid y]$, and a forward measurement distribution $p(y)=\int p(z,y)\,dz$, with a short generation activity. Conditioning, summarization and marginalization can combine in inference, prediction and generation; they do not pair one-to-one.
 
-**Inspection artifact:** [two-way reconciliation matrix](reconciliation/matrix.md), with mathematical/practical outcomes, recommendations, downstream effects and source/evidence limitations. These are proposals, not an approved scope.
+That agreement does not settle the whole lecture arc, concrete measurement context, proof depth, exact workload or PyMC balance. Baseline reconstruction evaluation is a possible supporting exercise, not the central endpoint.
 
-**Review evidence:** Separate delegated Lecture Scope analyses by `/root/l01_existing_argument` and `/root/l01_architecture_tensions`, retained verbatim in [existing-material assessment](reconciliation/existing_material_assessment.md) and [architecture assessment](reconciliation/architecture_assessment.md). These are initial conceptual assessments, not formal source-arc/Section Design previews or implementation validation. Coordinator checked current source, PDF text, selected rendered pages, book passages, prior decision records and named branch content. Historical persona reviews target an earlier production revision and remain simulated reader evidence.
+## Current proposal and instructor decisions
 
-**Accepted instructor direction (current discussion, 2026-10-14):** The notebook's strongest message should be that the same dataset and probabilistic formulation can support different questions. This clarifies the intended emphasis; it does not approve a revised Scope, concrete query set or notebook implementation. The coordinator's earlier reconstruction-baseline proposal is secondary to this endpoint.
+**Proposal:** [lecture_scope.md](lecture_scope.md), by Lecture Scope specialist `/root/l01_existing_argument`, current blob `682261132ed686f5f9eb80a95facadb597ad10e8`. The preceding committed proposal was blob `120056e4fd426832f9275d03b765b960b0f03898` at `7d47bd4615f8ad08a37d6cd0543658447e362f45`.
 
-**Subsequent limited agreement (current discussion, 2026-10-14):** The instructor responded “Sounds good” to the proposal that the three main notebook questions exercise conditioning, summarization and marginalization, with inference, prediction and generation as concrete uses. The query types are agreed in principle: hidden-block distribution $p(z\mid y)$, point reconstruction $E[Z\mid y]$ under squared loss, and forward measurement distribution $p(y)=\int p(z,y)\,dz$, accompanied by a short generation activity. Summarizing the posterior builds on conditioning; task uses and probability operations do not pair one-to-one. This is acceptance of the pedagogical direction, not the complete lecture scope, notebook design or workload.
+**Recommended defaults, not accepted decisions:** retain the existing general-to-operational route with a concrete problem/query connection; retain the residual argument and the stated/interpreted quadratic identity. A measurement-first opening is an alternative. A full block-elimination proof would be an addition to the existing deck, not retention of a second proof already present.
 
-**Open instructor decisions:** Whole-lecture endpoint and intellectual arc; required mathematical treatment depths (particularly the residual proof and quadratic decomposition); concrete measurement context; live/notebook time allocation and the retained role of PyMC/exact comparison. The coordinator should bring a concrete arc proposal to the instructor rather than ask the instructor to independently resolve the matrix's entire issue list.
+**Source-analysis correction:** the architecture already includes incomplete/noisy measurements, different questions and the three operations. No substantive architecture amendment is justified on this point. Any later notebook-description synchronization follows accepted handoff changes.
 
-**Current proposal and review:** [lecture_scope.md](lecture_scope.md), blob `120056e4fd426832f9275d03b765b960b0f03898`, authored by `/root/l01_existing_argument` under a bounded Lecture Scope `build` commission at `ab5fdcdaa4aaa22d4ba0bb2bc701ddceee5d6b49`. It contains the intellectual arc only, with a recommendation to preserve the general-to-operational route, a measurement-first alternative, and proposed proof-depth/time tradeoffs. Coordinator read the complete proposal for clarity, mathematical distinctions, agreement fidelity and stage boundaries; this is a same-context coordination check, not independent source-arc or Section Design validation.
-
-**Uncertainties and next owner:** Instructor discusses the concrete arc through the coordinator. The remaining four Scope parts, downstream design/authoring, architecture/map edits and L02 advancement are excluded from the completed commission. No additional instructor answer was needed before commissioning; unsettled depth/time/context choices are now presented against the proposal. Before freezing L01, reconcile L02's asserted precision/information-form prerequisite and L03's actual entry conditions. Notebook clean local/Colab execution and student-time feasibility are unverified. Current-source correctness concerns are recorded in the matrix for author repair at the appropriate stage.
-
-**Impact:** No downstream approvals invalidated or artifacts rewritten at this checkpoint. Scope, architecture L01 description, coverage specification and notebook handoff may require selective changes after decisions. Keep actual coverage untouched.
-
-## Existing authored work to inspect
-
-- `slide_deck.typ` (starting blob `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`) and its PDF; the deck has substantial Beta–Binomial/Bayesian reactivation, task/experience/performance framing, datasets and probabilistic queries, multivariate Gaussian conditioning, linear Gaussian inference and sensor fusion.
-- `lecture_01_coverage_spec.typ` (blob `c4457bc4fdb11df14de54658f20e487030766328`): prior design rationale and topics; may not perfectly reflect the later deck. Do not treat it as an unchangeable approved five-part Lecture Scope.
-- `InClass/Solutions/lecture1_missing_data.ipynb` (blob `ab441941c8b526151a927bfbcf292bd9bc629ce5`) and `InClass/Preparation/` worked solution and authoring report. The solved notebook is Q&A-first; it models missing data through a conditional Gaussian by both PyMC and exact linear-Gaussian calculation. Check mathematical and runtime completeness before student use.
-- `review/` reports and original figure/author notebooks in the L01 directory; characterize what they actually evaluated, which version, and what remains open.
-- `slide-authoring-refactor` carries `slide_deck_07.typ` as a possible historical comparison; inspect only if it contains relevant accepted teaching moves.
+**Instructor's next task:** review the recommendations and choices in the revised scope. The matrix is supporting assessment; it is not a row-by-row approval request. Context, notebook workload and PyMC balance are handled when their Scope parts are developed.
 
 ## Next actions and owners
 
-| Action | Owner | Trigger / status |
+| Owner | Action | Gate / status |
 |---|---|---|
-| Prepare a provisional whole-lecture intellectual arc from existing material and the agreed notebook direction; identify smallest revisions, unresolved depth/time choices and any architecture amendment | `/root/l01_existing_argument`, Lecture Scope specialist; coordinator owns dispatch and instructor presentation | Returned in `lecture_scope.md`; first part only, proposed; coordinator check completed |
-| Review that arc and decide consequential endpoint, emphasis and depth choices | Instructor, through coordinator discussion | When the concrete proposal is presented; no blanket approval of this register or matrix is required |
-| Develop mathematical spine, notebook handoff, examples and lecture contract iteratively; check L02/L03 prerequisite effects | Lecture Scope specialist, coordinated by `/root`; instructor accepts teaching commitments | After arc agreement; no automatic advance to L02 |
-| Commission source-arc review where needed and a lightweight Section Design feasibility preview; adjudicate findings | Coordinator arranges separate reviewers; reviewers assess, instructor approves Scope | Once the five-part provisional Scope is coherent; not yet commissioned |
-| Revisit existing sections, organization, design and production; implement accepted notebook handoff; repair mathematical/source errors and validate artifacts | Owning section/slide/notebook specialists; coordinator routes work | After corresponding upstream acceptance; no slide or notebook edits started |
+| Scope specialist `/root/l01_existing_argument` | Repair the proposal's separation of existing facts, critique, recommendations and choices | Completed; no new pedagogical choices accepted |
+| Coordinator `/root` | Reconcile supporting documents, check the revision and present the scope as the primary reading document | Completed; raw reports preserved and review limitations stated |
+| Instructor, through coordinator discussion | Judge the route and proof-depth recommendations against concrete alternatives | After readable arc proposal is returned; no blanket register/matrix approval |
+| Lecture Scope specialist and coordinator | Develop mathematical spine, notebook handoff, examples and contract iteratively; reconcile L02/L03 prerequisites | After arc agreement; no automatic L02 advancement |
+| Coordinator and separate reviewers | Arrange source-arc review where needed and lightweight Section Design preview | After coherent five-part provisional Scope; not commissioned |
+| Owning section/slide/notebook authors | Selectively revise existing work, repair mathematical errors, regenerate and validate artifacts | After corresponding upstream acceptance; not started |
 
-Correctness, source verification, compilation and local/Colab execution belong to authors/reviewers. They are not instructor action items. `curriculum_map.typ` and `curriculum_map_actual.typ` are the only course-wide material tracking documents; keep the actual map untouched until teaching.
+Correctness, source verification, compilation and clean local/hosted Colab execution are author/reviewer responsibilities. Actual coverage stays untouched until teaching.
 
-## Current accepted authority
+## Review evidence and its limits
 
-The instructor explicitly authorized reconsidering L01–L03 in both directions (existing lecture and architecture) on 2026-10-14. Earlier authored work and instructor decisions remain important evidence but not an automatic veto on a justified revision. The architecture is the current course-level baseline, not beyond criticism. No current lecture-delivery evidence exists.
+- [Existing-material assessment](reconciliation/existing_material_assessment.md), by `/root/l01_existing_argument`, and [architecture assessment](reconciliation/architecture_assessment.md), by `/root/l01_architecture_tensions`: separate initial analyses, not formal feasibility previews or runtime validation.
+- [Supporting reconciliation matrix](reconciliation/matrix.md): coordinator synthesis, updated to reflect current decisions and source corrections. Original raw reports remain unchanged.
+- [Targeted communication review](reconciliation/communication_review.md) by `/root/l01_architecture_tensions` of working-tree scope blob `b37da7ffa4d1982ea1da0218ab01073b0aa093b5`: separate from the author; finds the main status-separation problem resolved and identifies three remaining repairs. Coordinator checked those repairs in final blob `682261132ed686f5f9eb80a95facadb597ad10e8`: current matrix withdraws the unsupported architecture amendment, register identifies the current version, computational complexity is explicitly author checking material, and correction attribution is accurate. This disposition is a coordinator recheck, not a second independent review. No source-arc, Section Design, mathematical or runtime validation is claimed.
+- Historical persona reports target deck blob `69886a29870e4edd9d3fdde79c252b3e0037de54` at `e518d93f9566645da2eeff96e56662960f66d5a4`. They are simulated-reader evidence, not classroom results or validation of the production refactor.
+
+**Open author checks:** malformed expanded marginal covariance product; coin uncertainty wording; sensor-noise independence and prior regime; sampling/error interpretation; clean local and Colab notebook execution; one-hour student feasibility. The actual deck is 67 pages/seven sections; the calibration's older count is stale. Teaching times remain unmeasured.
+
+**Prerequisite reconciliation:** L02 introduces precision in its own Gaussian rewrite but inaccurately attributes information coordinates to L01. Resolve attribution before Scope freezing rather than automatically add an L01 unit. L03's joint/conditioning/simple-graph entry remains supported.
+
+## Exact source records
+
+Reviewed course artifacts are unchanged during this communication revision. Initial analysis source commit: `692d10372f4e1cd091ae1e2977402900148f33c7`; Scope build commission: `ab5fdcdaa4aaa22d4ba0bb2bc701ddceee5d6b49`.
+
+| Artifact | Reviewed blob |
+|---|---|
+| `slide_deck.typ` | `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79` |
+| `slide_deck.pdf` | `8d9ffbf49873bd890d0aee1c8b7262c897176a7c` |
+| `lecture_01_coverage_spec.typ` | `c4457bc4fdb11df14de54658f20e487030766328` |
+| `InClass/Solutions/lecture1_missing_data.ipynb` | `ab441941c8b526151a927bfbcf292bd9bc629ce5` |
+| `course_architecture.typ` | `cb111196e44df211e39864be596233a1a3f22aba` |
+| `curriculum_map.typ` | `63fb5cea0a7b0a4c908c8f803e550d087d20a412` |
+
+Course-wide sources: architecture, planned/actual maps and [START_SCOPING](../START_SCOPING.md). The two maps are the sole course-wide tracking documents; the actual map is blank until teaching. The instructor reopened L01–L03 for two-way reconciliation on 2026-10-14, but implementation still follows stage acceptance.
+
+**Presentation requirement:** future instructor-facing documents must distinguish existing facts, critique, recommendations, agreed directions and decisions. The coordinator's check and future commissions follow [the instruction in START_SCOPING](../START_SCOPING.md#make-instructor-facing-claims-and-decisions-distinguishable). Only communication and source-analysis corrections were requested here; no new teaching commitment or stage advancement is implied.

@@ -1,79 +1,115 @@
 # L01 provisional Lecture Scope — intellectual arc only
 
-**Status:** proposed for instructor discussion, 2026-10-14; not an agreed Scope or independent feasibility verdict. Only the intellectual arc is developed; four Scope parts await discussion.
+**Recommendation:** retain the formulation framework and Gaussian residual/LGS argument. Add a concrete problem-to-query connection and the squared-loss reason for a posterior mean; extend notebook questions to forward prediction and generation. Fund these by reducing repeated taxonomy/dataset exposition. Keep quadratic separation at its existing interpretation depth.
 
-**Baseline:** branch `rescope-l01-l12-architecture-alignment-20261014`, HEAD `ab5fdcdaa4aaa22d4ba0bb2bc701ddceee5d6b49`. Reviewed blobs: deck `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`; coverage specification `c4457bc4fdb11df14de54658f20e487030766328`; solved notebook `ab441941c8b526151a927bfbcf292bd9bc629ce5`; architecture `cb111196e44df211e39864be596233a1a3f22aba`; planned map `63fb5cea0a7b0a4c908c8f803e550d087d20a412`. Core L01 artifacts match named source branches; no branch was switched or merged. [Raw assessments and reconciliation](reconciliation/matrix.md) retain earlier evidence.
+**Status:** proposed for instructor discussion, 2026-10-14; intellectual arc only, not an approved Scope. This revision separates facts, criticism, proposals and decisions. Exact versions are recorded below.
 
-**Accepted direction:** the instructor's “Sounds good,” recorded in [development state](development_state.md), accepts different questions on one formulation in principle: conditioning $p(z\mid y)$, summarizing $E[Z\mid y]$ under squared loss, and marginalizing $p(y)$, with hidden-value inference, forward prediction and short generation. Operations and uses overlap; sequence, depths, timing and implementation remain proposed.
+## Accepted instructor direction
 
-## Reconstructing the arguments
+The instructor's “Sounds good,” recorded in [development state](development_state.md), accepts in principle using the same dataset and probabilistic formulation to answer different questions: the hidden-block distribution $p(z\mid y)$, its summary $E[Z\mid y]$ under squared loss, and the forward measurement distribution $p(y)=\int p(z,y)\,dz$, with a short generation activity. Conditioning, summarization and marginalization are operations; inference, prediction and generation are uses that can combine those operations. Sequence, mathematical depth, concrete context, workload and PyMC's retained role remain unapproved.
 
-The existing lecture establishes learning-problem formulation, then makes joint probability operational. Covariance geometry and affine rules justify marginals; an independent residual justifies conditionals; these rules construct a linear-Gaussian joint and uncertainty-weighted state update. Forward prediction and posterior summaries reuse the model. The notebook presently compares two computations of one conditional, rather than contrasting questions.
+## 1. What the existing artifacts do
 
-Murphy Book 2, *Advanced Topics*, December 10, 2025 online edition, Chapter 1 (printed pp. 1–2), links model choice to task, available data and success metrics. Its §2.3 moves from Gaussian geometry through closed marginal/conditional laws, block-quadratic derivation, and linear measurement models to posterior and forward measurement distributions. The existing residual proof is a justified reorganization of §2.3.1.5 “Derivation: moment form”: it gives the Schur complement a probabilistic meaning without first proving a block inverse. Book 1, *An Introduction*, April 18, 2025 online edition, §3.2.5 “Example: Imputing missing values” applies conditioning and separates its posterior from the mean used as an imputation; §5.1.5.1 “L2 loss” explains why that mean is appropriate. The course's synthetic 3+4-dimensional example is distinct from Murphy's imputation example.
+The [deck](slide_deck.typ) begins with **“A familiar modeling language”**: Beta–Bernoulli modeling, observed/unknown quantities, graphs, Bayes and conjugacy. **“From statistics to machine-learning problems,” “Classes of machine learning problems,”** and **“From datasets to learning problems”** use Iris features, labels, zero-one loss and a probabilistic classifier; distinguish experience from task; and illustrate dataset uses through MNIST, CIFAR-10 and IMDB. **“Summary: Probability for machine learning”** presents the three operations.
 
-**Recommended reconciliation:** preserve this mathematical chain and strengthen its formulation-to-query hinge. Keep the experience/task distinction and concrete Iris illustration; reduce repeated symbolic/catalogue material only as needed to fund the hinge and interpretation. Do not restore the coverage specification's unimplemented MLE/MAP unit automatically. A small architecture-side amendment should describe L01 as **Gaussian inference for incomplete and noisy measurements**, with different questions on one model, rather than foreground imputation alone. No architecture or map amendment is made here.
+The remaining argument is cumulative. **“Joint Gaussian distributions and geometry”** develops covariance, contours and affine rules. **“Marginals and conditionals of a Gaussian”** obtains marginals by coordinate selection and derives conditional means and covariances through an independent Gaussian residual. **“The Schur complement is the residual covariance”** interprets the resulting matrix. **“The joint quadratic separates into conditional and marginal parts”** displays and interprets an identity; it does not prove a second complete conditioning derivation.
 
-## Proposed intellectual destination and validity regime
+**“Linear Gaussian systems”** constructs the state/measurement joint, applies conditioning, interprets the gain through scalar noise regimes, and illustrates sensor fusion. **“Inference often combines conditioning and summarizing”** distinguishes a distribution from an estimate. **“The same model can also predict measurements”** obtains the forward marginal from the same joint.
 
-The problem family is correlated continuous measurements, some hidden or noisy. Experience here is a supplied/calibrated model, not parameter fitting from a training sample. The existing seven-dimensional example establishes controlled method use, not realism or a scaling bottleneck.
+The [solved notebook](../../InClass/Solutions/lecture1_missing_data.ipynb) supplies a seven-dimensional Gaussian with known parameters, hides three coordinates of one simulated observation, samples their conditional posterior with PyMC, rewrites the joint as an LGS, and compares exact and sampled means/SDs. Its final comparison answers one conditional query by two computational routes. The [coverage specification](lecture_01_coverage_spec.typ) proposes an estimation/MLE/MAP bridge and a different book-based notebook route; those units are not implemented in the current deck/notebook.
 
-**Mathematical endpoint:** students explain how one joint model supports distributions and summaries through different operations, and why affine Gaussian closure makes the answers exact. **Practical endpoint:** students formulate and compute a hidden-block distribution, choose its mean when squared reconstruction loss is intended, obtain the forward measurement law, and distinguish generating another case from estimating this case's hidden values. They interpret remaining uncertainty and check equations against a reference computation.
+## 2. Critique: evidence and teaching consequences
 
-The model requires jointly Gaussian variables with positive-definite covariance, or a Gaussian state with independent additive Gaussian noise and a linear measurement law. Dense conditioning factors an observed $D\times D$ covariance, costing $O(D^3)$; with fixed parameters and observation pattern, the factorization and gain can be reused, and a subsequent $L$-dimensional posterior mean costs $O(LD)$. This analytic structure avoids generic sampling for these queries. Seven dimensions illustrate the saving, not a need for approximation. Numerical error remains; incorrect covariance, nonlinear dependence, non-Gaussian tails or omitted parameter uncertainty can still give misleading answers. The Gaussian conditional covariance's independence from measured values is a validity restriction, not a universal property of Bayesian inference.
+**Formulation connects less strongly to computation than the Gaussian argument does.** The taxonomy/query material repeats symbolic descriptions; sustained model-to-answer computation occurs later. Students can retain category names without learning to choose variables, query and criterion. Historical persona reports identify this hinge, but are simulated readings of an earlier rendering, not classroom outcomes.
 
-## Provisional macro milestones
+**The notebook does not yet exercise the accepted different-question endpoint.** PyMC and exact LGS calculation compute the same $p(z\mid y)$. Their agreement is useful computational checking, but does not by itself teach forward prediction or generation. The consequence is a handoff mismatch, not a reason to discard its guided questions or representation translation.
 
-These milestones are not a section partition. All are provisionally live; allocations within 120 minutes are unmeasured estimates.
+**Correction to the previous architecture assessment:** `course_architecture.typ`, L01 paragraph, already explicitly includes incomplete/noisy measurements, different questions, prediction, hidden-state inference, generation and the three operations. The earlier reconciliation recommendation to amend it to include these ideas overstated the evidence. No substantive architecture amendment is presently justified on this point. The lecture's sensor-fusion and Gaussian development fit that framework; eventual synchronization of its brief notebook description should follow accepted scope decisions.
 
-### 1. Reactivate the model–question distinction — about 10 minutes
+**Exact calculation has a limited validity regime.** Supplied parameters mean inference within a model. Gaussianity, linear measurements and independent additive Gaussian noise permit exact answers. Incorrect covariance, nonlinearity, non-Gaussian tails, numerical error or ignored parameter uncertainty can still undermine the answer. Seven controlled dimensions demonstrate the method, not realism or a bottleneck.
 
-**Entry/reason:** students bring undergraduate probability, Bayesian modeling and matrix algebra. Recall the Beta–Bernoulli model and observed/unknown distinction rather than reteaching inference. Ask what a posterior supplies and what another requested output would require. Graphs are notation here, not general graphical-model theory. Source: existing opening and Book 2 Chapter 1.
+## 3. Concrete proposed arc and changes
 
-**Treatment:** review model, Bayes and conjugacy; interpret uncertainty in the displayed example without asserting universal uncertainty reduction.
+**Proposed mathematical endpoint:** explain how one joint distribution supports different queries and why Gaussian structure makes their computation exact. **Proposed practical endpoint:** formulate and compute a hidden-value distribution, choose a justified point summary, predict possible measurements and generate another case. These uses serve the broader formulation framework; Gaussian imputation is an application, not the lecture's intellectual purpose.
 
-**Retrospective:** a model specifies uncertain quantities; an answer depends on the question asked of it.
+The following milestones are proposals, not section boundaries. All remain live provisionally; timings are unmeasured allocations.
 
-### 2. Formulate learning problems and make the query concrete — about 35 minutes
+### A. Bayesian reactivation — keep and clarify; about 10 minutes
 
-**Transition/reason:** familiar Bayesian quantities become useful ML answers only after specifying task, available experience and performance. Retain Iris as a concrete task/experience/loss instance and experience versus task as distinct axes. Then enact the conversion on the supplied measurement formulation: observations, hidden quantities, and requested distribution or point answer. Source: Book 2 Chapter 1; existing Iris/taxonomy material; Book 1 §3.2.5 and §5.1.5.1.
+Students enter with probability, Bayesian modeling and matrix algebra. Retain the coin model, Bayes and conjugacy as review. Clarify that a posterior is a distribution over an unknown quantity and that the displayed uncertainty reduction is particular to that example. This retains the existing entry rather than building a new estimation unit. Source: existing opening and Book 2 Chapter 1.
 
-**Treatment:** work one formulation; mention broader task families through their roles rather than requiring every custom symbolic template. Distinguish training risk from future-case performance, and parameter learning from inference with given parameters. Motivate a conditional expectation as a loss-dependent summary; defer its short derivation to milestone 5.
+**Retrospective:** a model specifies uncertain quantities; the answer depends on the question asked of it.
 
-**Retrospective:** a dataset does not determine its task, query or success criterion; inference and parameter fitting have different unknowns.
+### B. Learning-problem formulation — keep the core; add a worked connection; about 35 minutes
 
-### 3. Represent and transform joint Gaussian uncertainty — about 20 minutes
+Beginning from that distinction, retain Iris and the experience/task distinction. **Add** one supplied-measurement formulation: observed/hidden components and a requested distribution, estimate or forward law. **Reduce** repeated full symbolic task mappings and repeated dataset task catalogues, preserving distinct input/experience examples. Explain future-case performance versus training risk and fixed-parameter inference versus fitting. Context remains supplied; no new dataset or estimation unit is selected. Sources: Book 2 Chapter 1; Book 1 §3.2.5 and §5.1.5.1.
 
-**Transition/reason:** the measurement questions require a joint distribution that retains dependence. Gaussian structure makes that distribution manageable. Source: Book 2 §2.3.1.1 “Definition”; existing affine and three-operation explanations; Book 1 §3.2.4 “Example: conditioning a 2d Gaussian.”
+**Retrospective:** a dataset does not determine its task, query or criterion; parameter fitting and variable inference have different unknowns.
 
-**Treatment:** review covariance/correlation, work contour interpretation, derive affine covariance transformation, and state affine Gaussian closure. Contrast integrating a coordinate with fixing and normalizing a slice. Mahalanobis distance supports geometry; it is not a separate application endpoint.
+### C. Gaussian representation and geometry — retain; about 20 minutes
 
-**Retrospective:** mean and covariance encode Gaussian joint uncertainty; affine operations preserve the family, while marginalization and conditioning use different information.
+The measurement questions require dependence to remain represented. Retain covariance/correlation, contours, affine covariance derivation and the marginal-versus-conditional visual comparison. State affine Gaussian closure explicitly because the following proof uses it. Mahalanobis distance supports geometry rather than introducing another application. Sources: Book 2 §2.3.1.1; Book 1 §3.2.4.
 
-### 4. Explain Gaussian conditioning through residual uncertainty — about 25 minutes
+**Retrospective:** mean and covariance represent Gaussian uncertainty; affine transformations preserve the family, while ignoring and observing coordinates are different operations.
 
-**Transition/reason:** the preceding geometry distinguishes the operations but does not establish their answers. Source: Book 2 §2.3.1.3 “Marginals and conditionals of an MVN” and §2.3.1.5 “Derivation: moment form.”
+### D. Gaussian conditioning — retain the residual argument and interpreted identity; about 25 minutes
 
-**Treatment:** derive marginals by selection; sketch the residual argument with $B=\Sigma_{12}\Sigma_{22}^{-1}$ and $r=X_1-\mu_1-B(X_2-\mu_2)$. Joint Gaussianity plus zero residual cross-covariance gives independence. Derive the conditional mean and residual covariance; work a bivariate check. Interpret the Schur complement. Provisionally state and interpret the quadratic separation rather than adding a second full derivation.
+The geometry distinguishes operations; this milestone establishes their answers. Retain coordinate-selection marginalization, the residual proof sketch and bivariate check. For
 
-**Retrospective:** conditioning shifts the mean and removes explained covariance; Gaussian residual independence establishes the entire conditional law, not just its moments.
+$$
+B=\Sigma_{12}\Sigma_{22}^{-1},\qquad
+r=X_1-\mu_1-B(X_2-\mu_2),
+$$
 
-### 5. Use one linear-Gaussian model for inverse and forward questions — about 20 minutes
+zero cross-covariance and joint Gaussianity establish residual independence. This gives the conditional mean and covariance
 
-**Transition/reason:** a generative state/measurement description must supply the joint blocks needed by the established rules. Source: Book 2 §§2.3.2.1 “Joint distribution,” 2.3.2.2 “Posterior distribution (Bayes’ rule for Gaussians),” 2.3.2.3 “Example: Sensor fusion with known measurement noise”; Book 1 §5.1.5.1.
+$$
+\mu_{1\mid2}=\mu_1+B(x_2-\mu_2),\qquad
+\Sigma_{1\mid2}=\Sigma_{11}-B\Sigma_{21}.
+$$
 
-**Treatment:** derive the LGS joint blocks and apply conditioning to the gain update; work scalar uncertainty regimes. Contrast $p(z\mid y)$ with $p(y)=\int p(z,y)\,dz$: forward prediction under fixed parameters, not posterior prediction averaged over uncertain parameters. Briefly derive $\arg\min_a E[\|Z-a\|^2\mid y]=E[Z\mid y]$. Interpret sensor fusion with explicit conditional-noise and prior assumptions; generation uses the probability laws, rather than defining another inference operation.
+Keep the Schur-complement interpretation and the displayed quadratic separation at state/interpret depth, matching the existing presentation. A full block-quadratic proof would be an **addition**, discussed below. Sources: Book 2 §§2.3.1.3 and 2.3.1.5.
 
-**Retrospective:** the same measurement model answers inverse and forward questions; uncertainty controls evidence combination, and a loss determines which posterior summary is useful.
+**Retrospective:** residual independence establishes the conditional Gaussian law; its covariance is the unexplained variation and does not depend on measured values.
 
-## Extent, alternative and decisions returned
+### E. LGS questions and useful outputs — retain; add the loss connection; about 20 minutes
 
-The allocations total about 110 minutes, leaving roughly 10 for questions and slippage. Assessment: **plausible but tight**, especially residual reasoning plus LGS interpretation. The instructor's earlier L01 length judgment is the strongest available anchor; no rehearsal or teaching time exists. Current PDF has 67 pages/seven sections, not timing calibration's stale 70/eight. Repeated equations are carried support, not equal amounts of novelty. The separate 60-minute guided notebook must reuse existing questions selectively to add forward prediction/generation; retaining every current PyMC/API step plus those additions is not presumed feasible.
+The preceding rules require joint blocks; derive those blocks from the existing LGS state/measurement model, then retain the gain, scalar noise regimes, sensor fusion and forward marginal. **Add** the brief squared-loss argument:
 
-A serious alternative begins from the supplied measurement problem before the broad taxonomy, states conditioning for early use, then reconstructs its Gaussian justification and LGS interpretation. It preserves the same notebook aim and mathematical endpoint, improves immediate practical motivation, but changes more of the opening and asks students to use a result before understanding why it holds. Recommend the existing general-to-operational route with a concrete hinge first.
+$$
+E[\|Z-a\|^2\mid y]
+=\operatorname{tr}\operatorname{Cov}(Z\mid y)
++\|E[Z\mid y]-a\|^2.
+$$
 
-**Instructor choices for discussion:** (1) retain that route or adopt the measurement-first alternative; (2) endorse the residual proof sketch with quadratic separation interpreted, or require both derivations live, which needs additional time funded from framing or LGS interpretation. These are proposed commitments, not technical approval requests.
+Thus $E[Z\mid y]$ is appropriate for that loss, not automatically every decision. Forward $p(y)$ uses fixed parameters, not averaging over their posterior. Generation uses the model's laws; it is not another probability operation. Explicit sensor-noise dependence and prior assumptions are author corrections. Sources: Book 2 §§2.3.2.1–2.3.2.3; Book 1 §5.1.5.1.
 
-**Prerequisite effects:** preserve Gaussian density, quadratic reasoning, conditioning, joint reasoning and simple graph familiarity for L02/L03. L02 already introduces $\Lambda=\Sigma^{-1}$ during its Gaussian rewrite; correcting its claim that L01 taught information coordinates appears smaller than adding an L01 unit. L03's entry assumptions remain supported; no d-separation or plates are established here. Neither later lecture is rescoped.
+**Retrospective:** one model supports inverse inference and forward prediction; uncertainty controls evidence combination, while a criterion determines the useful summary.
 
-**Next gate:** instructor discusses the arc through the coordinator. After agreement, develop four remaining Scope parts iteratively, then obtain source-arc review where warranted and Section Design preview before complete Scope approval. Downstream implementation remains gated.
+## 4. Instructor choices and next gate
+
+**Route — recommended default:** preserve the existing general-to-operational sequence with the added concrete connection. **Alternative:** begin with the supplied measurement problem, use a stated conditioning result early, then reconstruct its justification and introduce broader formulation categories. The same notebook endpoint survives; the alternative improves immediate practical motivation but reorders more existing material and initially asks students to use an unproved result.
+
+**Proof depth — recommended default:** retain the live residual proof sketch and interpreted quadratic identity. **Alternative:** additionally prove the joint quadratic separation by block elimination. This adds a second route to the same conditional law, strengthens algebraic ownership, and requires time from framing or LGS interpretation. It is not removal of an existing full proof.
+
+The proposed allocations total 110 minutes plus approximately 10 for discussion/slippage: plausible but tight. Current PDF has 67 pages/seven sections; calibration's 70/eight count is stale. No measured delivery time exists. The separate one-hour notebook needs selective reuse to accommodate accepted forward/generation questions; its exact PyMC balance and context await the notebook-handoff discussion, not a new decision here.
+
+L02/L03 retain Gaussian density, conditioning, joint reasoning and simple graph prerequisites. L02 already introduces $\Lambda=\Sigma^{-1}$ in its Gaussian rewrite; reconcile its inaccurate L01 information-coordinate attribution there. No later lecture is rescoped.
+
+**Next gate:** discuss this arc through the coordinator. Only after arc agreement develop the remaining four Scope parts, then obtain appropriate source-arc review and Section Design preview before complete Scope approval.
+
+## Source records and checking material
+
+Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `7d47bd4615f8ad08a37d6cd0543658447e362f45`; preceding proposal blob `120056e4fd426832f9275d03b765b960b0f03898`. Reviewed source blobs:
+
+- Deck: `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`.
+- Coverage specification: `c4457bc4fdb11df14de54658f20e487030766328`.
+- Solved notebook: `ab441941c8b526151a927bfbcf292bd9bc629ce5`.
+- Architecture: `cb111196e44df211e39864be596233a1a3f22aba`.
+- Planned map: `63fb5cea0a7b0a4c908c8f803e550d087d20a412`.
+
+Murphy, *Probabilistic Machine Learning: Advanced Topics*, December 10, 2025 online edition: Chapter 1, printed pp. 1–2, for model/task distinctions; §2.3.1.1 “Definition”; §2.3.1.3 “Marginals and conditionals of an MVN”; §2.3.1.5 “Derivation: moment form,” for the source's block-quadratic argument; §§2.3.2.1 “Joint distribution,” 2.3.2.2 “Posterior distribution (Bayes’ rule for Gaussians),” and 2.3.2.3 “Example: Sensor fusion with known measurement noise,” for joint-to-forward/inverse reuse. Murphy, *Probabilistic Machine Learning: An Introduction*, April 18, 2025 online edition: §3.2.4 “Example: conditioning a 2d Gaussian”; §3.2.5 “Example: Imputing missing values”; §5.1.5.1 “L2 loss,” for the mean/loss distinction. The course residual proof reorganizes the source derivation; its synthetic example is course-constructed.
+
+**Author checking material, not a student-visible teaching commitment:** dense conditioning factors an observed $D\times D$ covariance in $O(D^3)$ work. Fixed parameters and observation pattern permit reuse of factors/gain; subsequent $L$-dimensional posterior means cost $O(LD)$. This is an exact structural computational advantage over generic sampling for these queries, not a claim that sampling is necessary at this example's scale. Factorization/reuse complexity is absent from the existing deck; this analysis does not add it to the proposed live teaching.
+
+[Reconciliation evidence](reconciliation/matrix.md) preserves historical review versions, source errors and runtime limitations. This revision performed source/communication checks, not independent feasibility, runtime or student validation. No architecture, map, deck or notebook was changed.

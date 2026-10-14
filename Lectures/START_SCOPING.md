@@ -52,6 +52,18 @@ The architecture, instructor-approved lecture scopes, existing artifacts, and so
 
 ## Interaction and gatekeeping
 
+### Make instructor-facing claims and decisions distinguishable
+
+**Instructor feedback (2026-10-14):** Across lecture-scoping documents, the instructor could not reliably distinguish description of existing artifacts, critique, highlighted choices and concrete recommendations. This is a communication requirement for subsequent scope work, not a change in mathematical level or teaching commitments.
+
+- Use one primary teaching proposal for the current discussion. The scope is the instructor's reading document; reconciliation matrices, registers and raw reports support it. Do not make the instructor reconstruct the proposal by combining all of them.
+- State the recommendation and the exact changes from the actual deck/notebook near the beginning. Distinguish **existing material**, **assessment/critique**, **recommended changes**, and **instructor decisions** with meaningful headings or local labels. Do not silently change a paragraph from one role to another.
+- Keep instructor-agreed directions distinct from newly proposed sequences, treatment depths, examples and timing. A previously planned unit is not existing teaching merely because it appears in a coverage specification.
+- For each recommended retain/add/reduce/reorder/defer action, identify the current baseline, concrete change, reason and mathematical/practical consequence. Preserve important equations and assumptions in the main explanation; move exact Git identifiers and extended source records to checking material.
+- Present each consequential choice with a recommended default, a serious alternative, and what the alternative gains or costs. Describe an added derivation as an addition if the current deck only states its result. Do not create an apparent decision by misdescribing the baseline.
+- Separate author-owned correctness repairs and workflow actions from instructor-owned pedagogical choices. State who acts next and what decision gates that action.
+- Before handing over a document, have the coordinator check whether the reader can identify what already exists, what is criticized, what is proposed, what is agreed, and precisely what they are being asked to decide. A targeted communication review can help; do not label it mathematical, source-arc or Section Design validation.
+
 1. **Begin with L01.** Inspect the actual existing deck and Gaussian missing-data solved notebook, the L01 coverage specification and review reports, and the current architecture's L01 role. Compare their *intellectual arcs and practical outcomes*, not only section lists.
 2. In the first reply, give a concise, balanced diagnosis (strong existing components, possible mismatches, uncertainty) and ask **one genuinely consequential instructor question** about the L01 endpoint/emphasis. Do not propose a full deck rewrite, nor produce ten lecture scopes.
 3. Once the instructor responds, iterate Scope's five parts: intellectual arc → mathematical spine → notebook handoff → concrete examples → lecture contract. Obtain stage-appropriate feasibility review and explicit instructor acceptance; record version/provenance in a compact L01 `development_state.md`.

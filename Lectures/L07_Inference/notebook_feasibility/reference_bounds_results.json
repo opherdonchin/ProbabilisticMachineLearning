@@ -1,0 +1,255 @@
+{
+  "status": "rigorous analytic tail envelope; ordinary float64 evaluation, not directed-rounding machine certification; mesh error unproved",
+  "task": "author reference-quality check only; no new lecture/student-work commitments",
+  "data_sha256": "aa06b8008ceba42efc654be0f83fdafc786239c9e8f13146044d078f5aab8f23",
+  "analytic_model_dimension": 2,
+  "anchors": [
+    {
+      "anchor": [
+        0.05680094239149164,
+        1.3712899277872834
+      ],
+      "gradient": [
+        8.581950428077079e-11,
+        2.954148037304094e-11
+      ],
+      "gradient_norm": 9.076170105076259e-11,
+      "energy_at_anchor": 32.39273611114175,
+      "lower_energy_precision": [
+        [
+          0.25,
+          0.0
+        ],
+        [
+          0.0,
+          0.25
+        ]
+      ],
+      "upper_energy_precision": [
+        [
+          15.25,
+          1.8235413179468196e-14
+        ],
+        [
+          1.8235413179468196e-14,
+          15.249999999999991
+        ]
+      ],
+      "upper_density_envelope_mean": [
+        0.05680094204821362,
+        1.3712899276691175
+      ],
+      "lower_density_envelope_mean": [
+        0.05680094238586413,
+        1.3712899277853463
+      ],
+      "upper_density_envelope_covariance": [
+        [
+          4.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "lower_density_envelope_covariance": [
+        [
+          0.06557377049180328,
+          -7.841080646909201e-17
+        ],
+        [
+          -7.841080646909201e-17,
+          0.06557377049180332
+        ]
+      ],
+      "log_normalizer_lower_bound": -33.27943854778583,
+      "log_normalizer_upper_bound": -29.168564683612516,
+      "normalizer_envelope_ratio": 61.00000000000017,
+      "log_gradient_residual_ratio_correction": 1.620528467730098e-20,
+      "boxes": [
+        {
+          "radius": 8.0,
+          "coordinate_tail_probabilities": [
+            6.377464379538095e-05,
+            0.0004606693729040999
+          ],
+          "gaussian_outside_union_bound": 0.0005244440166994809,
+          "gaussian_outside_independent": 0.0005244146376743165,
+          "gaussian_outside_mills_union_bound": 0.0005644641395944337,
+          "normalized_target_tail_union_bound": 0.03199108501866842,
+          "normalized_target_tail_independent_bound": 0.0319892928981334,
+          "normalized_target_tail_mills_bound": 0.03443231251526055,
+          "bounded_sigmoid_tail_only_error_bound": 0.03199108501866842,
+          "coordinate_absolute_tail_moment_bound": [
+            2.7950171411641063,
+            3.3875379463049704
+          ],
+          "coordinate_conditional_mean_truncation_error_bound": [
+            3.0509458213134537,
+            3.643466626454318
+          ]
+        },
+        {
+          "radius": 10.0,
+          "coordinate_tail_probabilities": [
+            5.793078556301331e-07,
+            8.009992329421895e-06
+          ],
+          "gaussian_outside_union_bound": 8.58930018505203e-06,
+          "gaussian_outside_independent": 8.589295544800549e-06,
+          "gaussian_outside_mills_union_bound": 9.003986884730664e-06,
+          "normalized_target_tail_union_bound": 0.0005239473112881752,
+          "normalized_target_tail_independent_bound": 0.0005239470282328349,
+          "normalized_target_tail_mills_bound": 0.000549243199968572,
+          "bounded_sigmoid_tail_only_error_bound": 0.0005239473112881752,
+          "coordinate_absolute_tail_moment_bound": [
+            0.3576957653381829,
+            0.43352434604784723
+          ],
+          "coordinate_conditional_mean_truncation_error_bound": [
+            0.3629352384510647,
+            0.438763819160729
+          ]
+        }
+      ]
+    },
+    {
+      "anchor": [
+        0.06680094239149163,
+        1.3612899277872834
+      ],
+      "gradient": [
+        0.12321882911759778,
+        -0.07725583087287807
+      ],
+      "gradient_norm": 0.14543501384800878,
+      "energy_at_anchor": 32.39373708383588,
+      "lower_energy_precision": [
+        [
+          0.25,
+          0.0
+        ],
+        [
+          0.0,
+          0.25
+        ]
+      ],
+      "upper_energy_precision": [
+        [
+          15.25,
+          1.8235413179468196e-14
+        ],
+        [
+          1.8235413179468196e-14,
+          15.249999999999991
+        ]
+      ],
+      "upper_density_envelope_mean": [
+        -0.4260743740788995,
+        1.6703132512787957
+      ],
+      "lower_density_envelope_mean": [
+        0.058721019170665543,
+        1.366355883910095
+      ],
+      "upper_density_envelope_covariance": [
+        [
+          4.0,
+          0.0
+        ],
+        [
+          0.0,
+          4.0
+        ]
+      ],
+      "lower_density_envelope_covariance": [
+        [
+          0.06557377049180328,
+          -7.841080646909201e-17
+        ],
+        [
+          -7.841080646909201e-17,
+          0.06557377049180332
+        ]
+      ],
+      "log_normalizer_lower_bound": -33.279746033815925,
+      "log_normalizer_upper_bound": -29.127262969800704,
+      "normalizer_envelope_ratio": 63.59170669811893,
+      "log_gradient_residual_ratio_correction": 0.04160919984190919,
+      "boxes": [
+        {
+          "radius": 8.0,
+          "coordinate_tail_probabilities": [
+            8.884793440900629e-05,
+            0.0007764974706826823
+          ],
+          "gaussian_outside_union_bound": 0.0008653454050916886,
+          "gaussian_outside_independent": 0.0008652764148953446,
+          "gaussian_outside_mills_union_bound": 0.0009374183290377554,
+          "normalized_target_tail_union_bound": 0.05502879119315557,
+          "normalized_target_tail_independent_bound": 0.05502440398882462,
+          "normalized_target_tail_mills_bound": 0.05961203143360968,
+          "bounded_sigmoid_tail_only_error_bound": 0.05502879119315557,
+          "coordinate_absolute_tail_moment_bound": [
+            3.825280812347022,
+            4.874481186094085
+          ],
+          "coordinate_conditional_mean_truncation_error_bound": [
+            4.265511141892267,
+            5.314711515639329
+          ]
+        },
+        {
+          "radius": 10.0,
+          "coordinate_tail_probabilities": [
+            9.395077835762395e-07,
+            1.5581006096379988e-05
+          ],
+          "gaussian_outside_union_bound": 1.6520513879956228e-05,
+          "gaussian_outside_independent": 1.6520499241479724e-05,
+          "gaussian_outside_mills_union_bound": 1.737402622210335e-05,
+          "normalized_target_tail_union_bound": 0.0010505676731563792,
+          "normalized_target_tail_independent_bound": 0.0010505667422706748,
+          "normalized_target_tail_mills_bound": 0.0011048439796814235,
+          "bounded_sigmoid_tail_only_error_bound": 0.0010505676731563792,
+          "coordinate_absolute_tail_moment_bound": [
+            0.5285430325304308,
+            0.673512140545298
+          ],
+          "coordinate_conditional_mean_truncation_error_bound": [
+            0.5390487092619946,
+            0.6840178172768617
+          ]
+        }
+      ]
+    }
+  ],
+  "consistency_checks": [
+    {
+      "points_checked": 710,
+      "minimum_lower_energy_slack": 0.0,
+      "minimum_upper_energy_slack": 0.0,
+      "gradient_finite_difference_max_error": 9.373178455618358e-09,
+      "square_completion_max_error": 1.8189894035458565e-12,
+      "minimum_sampled_hessian_slack": 0.0,
+      "meaning": "numerical consistency tests complement structural analytic inequalities; do not prove them by sampling"
+    },
+    {
+      "points_checked": 710,
+      "minimum_lower_energy_slack": 0.0,
+      "minimum_upper_energy_slack": 0.0,
+      "gradient_finite_difference_max_error": 9.429947545047668e-09,
+      "square_completion_max_error": 9.094947017729282e-13,
+      "minimum_sampled_hessian_slack": 0.0,
+      "meaning": "numerical consistency tests complement structural analytic inequalities; do not prove them by sampling"
+    }
+  ],
+  "numerical_normalizer_diagnostic": {
+    "radius": 10.0,
+    "step": 0.04,
+    "log_normalizer_trapezoidal": -32.68119639484097,
+    "status": "uncertified finite-box numerical diagnostic; no mesh-error bound"
+  },
+  "warning": "bounded-query truncation bound cannot be used directly for unbounded coefficient moments"
+}

@@ -4,9 +4,9 @@ COMMIT='049cb033a9814c0ec3df99ece5144d07688aa648'
 BASE=f'https://raw.githubusercontent.com/narslab/mobile-emissions-typology/{COMMIT}/'
 cache=pathlib.Path('/tmp/pml-l12-public-source');cache.mkdir(exist_ok=True)
 patterns={'msa-modeshare-income-employment-2020-dataprocessing.ipynb':
-          ["combined_df['Employment Rate']", "combined_df['Unemployment Rate']"],
+          ["combined_df['Employment Rate']", "combined_df['Unemployment Rate']", "return (row / row.sum()) * 100"],
           'exploratory-factor-analysis.ipynb':
-          ['row_sum_1/row_sum*100',"'Employment Rate':'Employment Rate (%)'", "'Proportion of Built-Up Area': 'Built-Up Area Proportion'", "'proportion of openland area':'Proportion of Built-Up Area'"]}
+          ['row_sum_1/row_sum*100',"'Employment Rate':'Employment Rate (%)'", "'Proportion of Built-Up Area': 'Built-Up Area Proportion'", "'proportion of openland area':'Proportion of Built-Up Area'", "'Worked from home':'Worked from Home (mode share %)'", "'Worked from Home (mode share %)': 'Working from Home Share'"]}
 expected={'msa-modeshare-income-employment-2020-dataprocessing.ipynb':'ef3dac3493fad7fa9ffa54a49f788493a0e94176f2f37b1ffc6410952b4d0be8',
           'exploratory-factor-analysis.ipynb':'8b3929662119f2c5e236dd1d8ebc6cffb664be3627bd2bfa9cda295f5d093b5f'}
 result={}

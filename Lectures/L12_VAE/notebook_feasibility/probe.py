@@ -42,6 +42,7 @@ raw=np.array([[float(row[f]) for f in FEATURES] for row in rows])
 assert raw.shape==(349,19) and np.isfinite(raw).all()
 log_idx=[FEATURES.index(f) for f in LOG_FEATURES]
 share_idx=[FEATURES.index(f) for f in SHARE_FEATURES]
+five_commute_idx=share_idx+[FEATURES.index('Working from Home Share')]
 transformed=raw.copy(); transformed[:,share_idx]/=100
 raw_ranges={f:dict(min=float(raw[:,j].min()),max=float(raw[:,j].max())) for j,f in enumerate(FEATURES)}
 clipped_counts={f:int((raw[:,FEATURES.index(f)]<0).sum()) for f in LOG_FEATURES}
@@ -134,6 +135,7 @@ def support_summary(samples):
     return dict(n=len(rr),any_scalar_bound_violation_fraction=float(violated.any(1).mean()),
                 scalar_violation_fractions={f:float(violated[:,j].mean()) for j,f in enumerate(FEATURES) if violated[:,j].any()},
                 four_commute_share_sum_over_100_fraction=float((rr[:,share_idx].sum(1)>100).mean()),
+                five_commute_share_sum_over_100_fraction=float((rr[:,five_commute_idx].sum(1)>100).mean()),
                 nonfinite_fraction=float((~np.isfinite(rr)).any(1).mean()))
 
 def fit(seed,beta):
@@ -180,6 +182,7 @@ results=dict(config=CONFIG,source=dict(url=URL,sha256=SHA,rows=349,total_columns
              versions=dict(torch=torch.__version__,numpy=np.__version__),checks=checks,
              transformations=dict(log1p_clipped_below_zero=LOG_FEATURES,mode_percent_divided_100=SHARE_FEATURES,
                                   observed_negative_values_clipped=clipped_counts,raw_ranges=raw_ranges,
+                                  observed_five_commute_share_sum_range=[float(raw[:,five_commute_idx].sum(1).min()),float(raw[:,five_commute_idx].sum(1).max())],
                                   corrected_source_units={'Employment Rate (%)':'fraction [0,1]','Unemployment Rate (%)':'fraction [0,1]','Built-Up Area Proportion':'percent [0,100]'},
                                   raw_inverse_roundtrip_max_abs_error=float(np.abs(inverse(standardized)-raw).max()),
                                   raw_inverse_roundtrip_max_relative_error=float((np.abs(inverse(standardized)-raw)/np.maximum(1,np.abs(raw))).max()),

@@ -30,18 +30,18 @@ Do not mischaracterize L05–L10 as increasingly advanced posterior approximatio
 ## Scoping process
 
 1. **Before changing a scope:** verify its latest blob/branch, prior instructor approvals and immediate prerequisites. Reconstruct the preceding lecture argument and Murphy's relevant argument. Identify any tension with the newer architecture and practical notebook proposal.
-2. Present a concise diagnosis and a small number of *substantively different* alternatives only where choice is open. Provide mathematics, rationale, meaningful application and opportunity cost; say which prior decision an option changes. Ask **one consequential question at a time**, following the instructor's preferred pace.
+2. Record a concise diagnosis and *substantively different* alternatives only where choice is open. Provide mathematics, rationale, meaningful application and opportunity cost; say which prior decision an option changes and exactly which work waits. Link its owner from the compact review queue. Under the current deferred mode, ask **one consequential question only when the instructor requests review**.
 3. Once the instructor chooses, develop the five Lecture Scope parts *iteratively*: intellectual arc; mathematical spine with treatment depth; notebook handoff; concrete examples; lecture contract. Do not make slides, section outlines, generated figures or notebooks in this phase. Identify deferrals, exact Book 2/Book 1 passages, realistic live/notebook workloads and genuine recording candidates.
 4. Have Section Design evaluate the provisional scope in `feasibility-review` mode without producing section contracts. Obtain instructor approval for consequential choices, write/update only the target lecture's scope and compact development-state record, and synchronize the *prospective* curriculum map. Record review provenance and any unresolved notebook validation. Never update the actual map before class.
-5. Continue lecture by lecture, with cross-lecture checks where topics/examples recur. Preserve the accepted course spine rather than redoing prior approvals.
+5. Continue independent lecture/source/feasibility investigations in parallel, with cross-lecture checks where topics/examples recur. Pending choices hold only their dependent work. Preserve the accepted course spine rather than redoing prior approvals.
 
 ## Current L04 checkpoint
 
-The notebook-endpoint decision is resolved: prepared Iris forecasts, student accuracy/log-score comparisons and supplied reliability/bounded information interpretation. The required five-bit construction is removed; live parity remains. Develop the affected handoff without silently rewriting the communication-led intellectual arc or live allocations. Obtain current-target source/Section Design review, then present any consequential live-emphasis change as one decision. No full-scope acceptance or notebook implementation is implied.
+The notebook-endpoint decision is resolved: prepared Iris forecasts, student accuracy/log-score comparisons and supplied reliability/bounded information interpretation. The required five-bit construction is removed; live parity remains. Current-target source and Section Design previews are complete, as is an additional isolated evaluation probe. The live-emphasis choice is recorded for deferred review; it does not hold later investigations. No full-scope acceptance or final notebook implementation is implied.
 
 **Next instructor interaction:** do not ask the resolved notebook-endpoint question again. The instructor now requests deferred review: record the pending live-emphasis item at its owner, continue other investigations, and present the highest-leverage unresolved question only when asked for review. Preserve the separate L01 workstream.
 
-## Later decisions to surface only when their lectures arise
+## Later decisions indexed for deferred review
 
 - **L05:** breadth of GLMs plus first PyTorch/autodiff/SGD in one meeting.
 - **L06:** missing-data Gaussian EM versus a biomedical segmentation example; exact expected second moments and one-hour workload.
@@ -53,4 +53,4 @@ The notebook-endpoint decision is resolved: prepared Iris forecasts, student acc
 
 ## Status at handoff
 
-This file creates no new pedagogical approval. The target L04 conflict is **pending**; prior scope documents remain untouched. Before starting each discussion, check current branch and commits for intervening changes.
+This file creates no new pedagogical approval. The selected L04 endpoint is recorded in its scope; its live-emphasis choice and the later proposals remain pending. L05–L12 independent investigations and targeted technical reviews are complete. See the review queue and reconciliation register for owners and exact boundaries. Before resuming, check current branch and commits for intervening changes.

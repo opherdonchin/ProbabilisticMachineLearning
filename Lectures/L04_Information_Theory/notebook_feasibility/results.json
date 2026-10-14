@@ -56,6 +56,12 @@
     }
   },
   "same_label_confidence_diagnostics_checked": true,
+  "numerical_diagnostic": {
+    "finite_logit_underflow_nll_nats": 1000.3132616875182,
+    "exponentiated_target_probability": 0.0,
+    "finite_subnormal_nll_nats": 744.3132616875182,
+    "interpretation": "finite logit-space loss; floating-point zero is not structural zero"
+  },
   "top_label_reliability": {
     "prepared_softmax": [
       {

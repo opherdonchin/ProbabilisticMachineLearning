@@ -180,6 +180,10 @@
         "max": 2025634058.0
       }
     },
+    "observed_five_commute_share_sum_range": [
+      92.71326796182863,
+      99.74582119952194
+    ],
     "corrected_source_units": {
       "Employment Rate (%)": "fraction [0,1]",
       "Unemployment Rate (%)": "fraction [0,1]",
@@ -201,7 +205,7 @@
       "beta": 1,
       "selected_epoch": 260,
       "validation_selected_objective": 22.717103004455566,
-      "training_seconds": 1.1467634439468384,
+      "training_seconds": 1.1799010290997103,
       "train": {
         "D": 15.79008960723877,
         "R": 3.9993999004364014,
@@ -249,6 +253,7 @@
           "Precipitation (in)": 0.013
         },
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "prior_full_observations_support": {
@@ -267,6 +272,7 @@
           "Precipitation (in)": 0.0295
         },
         "four_commute_share_sum_over_100_fraction": 0.03,
+        "five_commute_share_sum_over_100_fraction": 0.368,
         "nonfinite_fraction": 0.0
       },
       "mean_code_reconstruction_support": {
@@ -274,6 +280,7 @@
         "any_scalar_bound_violation_fraction": 0.0,
         "scalar_violation_fractions": {},
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "decoder_noise_empirical_mean_square": 0.5019959211349487,
@@ -284,7 +291,7 @@
       "beta": 4,
       "selected_epoch": 280,
       "validation_selected_objective": 29.167816162109375,
-      "training_seconds": 1.1531609119847417,
+      "training_seconds": 1.1727038570679724,
       "train": {
         "D": 21.665611267089844,
         "R": 1.1840845346450806,
@@ -328,6 +335,7 @@
           "Transit Mode Share": 0.0005
         },
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "prior_full_observations_support": {
@@ -344,6 +352,7 @@
           "Precipitation (in)": 0.008
         },
         "four_commute_share_sum_over_100_fraction": 0.028,
+        "five_commute_share_sum_over_100_fraction": 0.3755,
         "nonfinite_fraction": 0.0
       },
       "mean_code_reconstruction_support": {
@@ -351,6 +360,7 @@
         "any_scalar_bound_violation_fraction": 0.0,
         "scalar_violation_fractions": {},
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "decoder_noise_empirical_mean_square": 0.5019959211349487,
@@ -361,7 +371,7 @@
       "beta": 1,
       "selected_epoch": 300,
       "validation_selected_objective": 23.047710418701172,
-      "training_seconds": 1.1633995139272884,
+      "training_seconds": 1.16771485703066,
       "train": {
         "D": 15.714391708374023,
         "R": 4.120136737823486,
@@ -408,6 +418,7 @@
           "Precipitation (in)": 0.016
         },
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "prior_full_observations_support": {
@@ -426,6 +437,7 @@
           "Precipitation (in)": 0.0345
         },
         "four_commute_share_sum_over_100_fraction": 0.0345,
+        "five_commute_share_sum_over_100_fraction": 0.366,
         "nonfinite_fraction": 0.0
       },
       "mean_code_reconstruction_support": {
@@ -435,6 +447,7 @@
           "Bicycle Mode Share": 0.019230769230769232
         },
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "decoder_noise_empirical_mean_square": 0.5019959211349487,
@@ -445,7 +458,7 @@
       "beta": 4,
       "selected_epoch": 300,
       "validation_selected_objective": 29.68347454071045,
-      "training_seconds": 1.1475603800499812,
+      "training_seconds": 1.1668828560505062,
       "train": {
         "D": 22.033098220825195,
         "R": 1.1587417125701904,
@@ -489,6 +502,7 @@
           "Transit Mode Share": 0.0005
         },
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "prior_full_observations_support": {
@@ -506,6 +520,7 @@
           "Precipitation (in)": 0.0045
         },
         "four_commute_share_sum_over_100_fraction": 0.03,
+        "five_commute_share_sum_over_100_fraction": 0.3705,
         "nonfinite_fraction": 0.0
       },
       "mean_code_reconstruction_support": {
@@ -513,6 +528,7 @@
         "any_scalar_bound_violation_fraction": 0.0,
         "scalar_violation_fractions": {},
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "decoder_noise_empirical_mean_square": 0.5019959211349487,
@@ -523,7 +539,7 @@
       "beta": 1,
       "selected_epoch": 280,
       "validation_selected_objective": 22.42293882369995,
-      "training_seconds": 1.1441003819927573,
+      "training_seconds": 1.1484752509277314,
       "train": {
         "D": 15.94175910949707,
         "R": 3.943749189376831,
@@ -569,6 +585,7 @@
           "Precipitation (in)": 0.0135
         },
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "prior_full_observations_support": {
@@ -587,6 +604,7 @@
           "Precipitation (in)": 0.0365
         },
         "four_commute_share_sum_over_100_fraction": 0.0375,
+        "five_commute_share_sum_over_100_fraction": 0.3675,
         "nonfinite_fraction": 0.0
       },
       "mean_code_reconstruction_support": {
@@ -594,6 +612,7 @@
         "any_scalar_bound_violation_fraction": 0.0,
         "scalar_violation_fractions": {},
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "decoder_noise_empirical_mean_square": 0.5019959211349487,
@@ -604,7 +623,7 @@
       "beta": 4,
       "selected_epoch": 200,
       "validation_selected_objective": 29.047208309173584,
-      "training_seconds": 1.160128425923176,
+      "training_seconds": 1.1514152260497212,
       "train": {
         "D": 21.83811378479004,
         "R": 1.131447196006775,
@@ -646,6 +665,7 @@
         "any_scalar_bound_violation_fraction": 0.0,
         "scalar_violation_fractions": {},
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "prior_full_observations_support": {
@@ -662,6 +682,7 @@
           "Precipitation (in)": 0.006
         },
         "four_commute_share_sum_over_100_fraction": 0.027,
+        "five_commute_share_sum_over_100_fraction": 0.3775,
         "nonfinite_fraction": 0.0
       },
       "mean_code_reconstruction_support": {
@@ -669,6 +690,7 @@
         "any_scalar_bound_violation_fraction": 0.0,
         "scalar_violation_fractions": {},
         "four_commute_share_sum_over_100_fraction": 0.0,
+        "five_commute_share_sum_over_100_fraction": 0.0,
         "nonfinite_fraction": 0.0
       },
       "decoder_noise_empirical_mean_square": 0.5019959211349487,

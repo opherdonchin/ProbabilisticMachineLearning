@@ -38,6 +38,8 @@ The script separately checks a structural counterexample: one-dimensional margin
 
 All methods use the same train/test rows and hidden test entries. “Ordinary mean imputation” below means fill training blanks with observed column means, fit one Gaussian to that filled matrix, then use its conditional mean for test prediction. A direct column-mean test-imputation baseline is also recorded. “Complete case” fits the Gaussian only on complete training rows, then predicts conditionally. The diagnostic “mean-only iteration” runs EM's conditional means but omits `C_n` from parameter updates; it is not a legitimate exact-EM alternative. The oracle uses known generating parameters only on the synthetic route.
 
+Every table entry averages squared error over hidden test entries. Physiological errors are in **observed-training standardized coordinates**, dimensionless with raw-coordinate weights `s_j⁻²`; they are not errors in BMI, pressure or cholesterol units. The synthetic route retains its declared unit-variance coordinate convention. Observed likelihood comparisons are meaningful here only within the same split, mask and transformation; absolute levels across routes or changing observed dimensions are not comparable. This reporting clarification addresses EARLY-02 in the [raw technical review](../course_architecture_scope/reconciliation/reviews/early_probe_validation.md), without changing results or the proposed task.
+
 | Route / seed | Exact-EM test MSE | Complete-case fit test MSE | Mean-imputed fit test MSE | Direct column-mean test MSE | Mean-only diagnostic test MSE |
 |---|---:|---:|---:|---:|---:|
 | Gaussian / 2027 | 0.5433 | 0.5631 | 0.5544 | 0.9002 | 0.5765 |

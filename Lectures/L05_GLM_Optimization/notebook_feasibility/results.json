@@ -7,6 +7,11 @@
     "sklearn": "1.9.1"
   },
   "cpu_threads": 1,
+  "numerical_diagnostic": {
+    "finite_logit_underflow_nll_nats": 1000.313232421875,
+    "exponentiated_target_probability": 0.0,
+    "interpretation": "finite logit-space loss; floating-point zero is not structural zero"
+  },
   "required_route": [
     {
       "seed": 2027,
@@ -72,7 +77,7 @@
         "classification_error": 0.047619047619047616
       },
       "test": {
-        "mean_nll_nats": 0.10476332902908325,
+        "mean_nll_nats": 0.10476331412792206,
         "classification_error": 0.044444444444444446
       },
       "frequency_baseline_test": {
@@ -117,7 +122,7 @@
           "full_train_nll": 0.13645274937152863
         }
       ],
-      "elapsed_seconds": 0.0975706169847399
+      "elapsed_seconds": 0.11009650002233684
     },
     {
       "seed": 5,
@@ -228,7 +233,7 @@
           "full_train_nll": 0.1180727630853653
         }
       ],
-      "elapsed_seconds": 0.09843934699892998
+      "elapsed_seconds": 0.09200223197694868
     },
     {
       "seed": 17,
@@ -290,11 +295,11 @@
       "uncleared_gradient_doubling_max_abs_error": 1.3877787807814457e-17,
       "common_logit_shift_loss_error": 2.4424906541753444e-15,
       "train": {
-        "mean_nll_nats": 0.11666805297136307,
+        "mean_nll_nats": 0.11666806787252426,
         "classification_error": 0.02857142857142857
       },
       "test": {
-        "mean_nll_nats": 0.14649367332458496,
+        "mean_nll_nats": 0.14649368822574615,
         "classification_error": 0.06666666666666667
       },
       "frequency_baseline_test": {
@@ -339,7 +344,7 @@
           "full_train_nll": 0.11666806787252426
         }
       ],
-      "elapsed_seconds": 0.09643727808725089
+      "elapsed_seconds": 0.09125337505247444
     }
   ],
   "conditional_supplied_full_batch_comparison": {
@@ -451,7 +456,7 @@
         "full_train_nll": 0.1361815333366394
       }
     ],
-    "elapsed_seconds": 0.1283927789190784
+    "elapsed_seconds": 0.11078054597601295
   },
   "large_learning_rate_diagnostic": {
     "seed": 2027,
@@ -517,7 +522,7 @@
       "classification_error": 0.0380952380952381
     },
     "test": {
-      "mean_nll_nats": 0.16841784119606018,
+      "mean_nll_nats": 0.168417826294899,
       "classification_error": 0.06666666666666667
     },
     "frequency_baseline_test": {
@@ -562,6 +567,6 @@
         "full_train_nll": 0.11719772964715958
       }
     ],
-    "elapsed_seconds": 0.09167572995647788
+    "elapsed_seconds": 0.09240613004658371
   }
 }

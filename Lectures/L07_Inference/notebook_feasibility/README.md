@@ -6,6 +6,7 @@ locked uv environment from the reconciliation worktree:
 
 ```bash
 .venv/bin/python Lectures/L07_Inference/notebook_feasibility/classifier_probe.py
+.venv/bin/python Lectures/L07_Inference/notebook_feasibility/reference_bounds.py
 .venv/bin/python Lectures/L09_Variational_Inference/notebook_feasibility/pathwise_probe.py
 .venv/bin/python Lectures/L10_MCMC/notebook_feasibility/mh_probe.py
 .venv/bin/python Lectures/L08_Structured_Inference/notebook_feasibility/sequence_probe.py
@@ -38,3 +39,11 @@ identifiable raw pilot evidence, not approval or a substitute for those records.
 No Colab run, lecture rehearsal, student completion trial or publication pass is
 claimed. Only affected endpoint/production choices await instructor decisions;
 independent correctness/source research may continue.
+
+The added [reference-bound check](reference_bounds.md) uses global Hessian bounds
+and a gradient-residual correction to bound target mass outside each grid box.
+At radius10 its analytic Gaussian-envelope tail bound is about`.000524` for
+bounded sigmoid queries, with a separate conservative Mills formula about
+`.000550`. It does not certify trapezoidal mesh error, unbounded log loss or the
+displayed coefficient moments. Numeric evaluation is float64 rather than
+interval/directed-rounding arithmetic. This adds no teaching commitment.

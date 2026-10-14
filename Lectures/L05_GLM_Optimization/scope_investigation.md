@@ -18,6 +18,8 @@ The current proposal can support guided competence in setting up, fitting and ev
 
 The frequency baseline is fitted on training labels only; balanced training classes make it uniform. Its predicted-label tie is explicitly resolved by `argmax` choosing the first class. Its probability score remains well defined. These are outcomes of these finite runs, not an accuracy guarantee, calibration validation, or evidence of a unique finite MLE. All-class softmax contains common-score-shift redundancy.
 
+The [independent technical review](../course_architecture_scope/reconciliation/reviews/early_probe_validation.md) found that the original evaluation wrapper used `-log(softmax)` despite stable training loss. That reviewed source remains in commit `de2f020`; the author repaired evaluation to gather normalized log probabilities directly. The explicit finite-logit underflow check now yields finite loss `1000.313232` nats in float32 even when the target probability exponentiates to zero. Selected fits, random draws and label predictions are unchanged; mean NLL differences are only floating-point evaluation differences. This supplied-logit utility requires finite log probabilities; structural zero forecasts retain their separate infinite-loss meaning. No instructor choice is involved.
+
 For a batch `X:B×2` and one-hot targets `T:B×3`, the checked formulas are
 
 $$

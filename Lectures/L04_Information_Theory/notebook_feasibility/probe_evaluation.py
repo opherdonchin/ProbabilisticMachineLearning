@@ -27,7 +27,8 @@ def scores(log_p, labels):
     assert np.isfinite(log_p).all() and np.allclose(p.sum(1), 1)
     predicted = p.argmax(1)
     losses = -log_p[np.arange(len(labels)), labels]
-    assert np.allclose(losses, -np.log(p[np.arange(len(labels)), labels]))
+    # Score in log space: exp(log_p) can underflow or lose relative precision
+    # in the subnormal range, even when the finite logit-space loss is accurate.
     return dict(accuracy=float((predicted == labels).mean()),
                 mean_nll_nats=float(losses.mean()),
                 mean_nll_bits=float(losses.mean() / np.log(2)))
@@ -94,6 +95,15 @@ def main():
     # Correctly conditional-independent processing, including zero-kernel cases.
     assert np.allclose(joint, joint.sum(2)[:, :, None] * kernel[None, :, :])
 
+    extreme_log_p = log_probabilities(np.array([[0., -1000., -1.]]))
+    extreme_score = scores(extreme_log_p, np.array([1]))
+    assert np.exp(extreme_log_p[0, 1]) == 0
+    assert np.isclose(extreme_score["mean_nll_nats"], 1000. + np.log1p(np.exp(-1.)))
+    subnormal_log_p = log_probabilities(np.array([[0., -744., -1.]]))
+    subnormal_score = scores(subnormal_log_p, np.array([1]))
+    assert 0 < np.exp(subnormal_log_p[0, 1]) < np.finfo(float).tiny
+    assert np.isclose(subnormal_score["mean_nll_nats"], 744. + np.log1p(np.exp(-1.)))
+
     result = dict(status="author-only feasibility; no student-time or Colab validation",
                   versions=dict(python=platform.python_version(), numpy=np.__version__,
                                 scipy=scipy.__version__, sklearn=sklearn.__version__),
@@ -106,6 +116,11 @@ def main():
                   diagnostic_logit_multipliers=[.25, 4.],
                   forecast_scores={name: scores(lp, labels[te]) for name, lp in forecasts.items()},
                   same_label_confidence_diagnostics_checked=True,
+                  numerical_diagnostic=dict(
+                      finite_logit_underflow_nll_nats=extreme_score["mean_nll_nats"],
+                      exponentiated_target_probability=0.,
+                      finite_subnormal_nll_nats=subnormal_score["mean_nll_nats"],
+                      interpretation="finite logit-space loss; floating-point zero is not structural zero"),
                   top_label_reliability={name: reliability(lp, labels[te]) for name, lp in forecasts.items()},
                   finite_information=dict(provenance="course-constructed law, not Iris population estimate",
                                           p_y_r=p_yr.tolist(), kernel_z_given_r=kernel.tolist(),

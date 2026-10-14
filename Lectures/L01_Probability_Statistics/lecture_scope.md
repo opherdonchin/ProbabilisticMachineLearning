@@ -1,8 +1,8 @@
 # L01 provisional Lecture Scope — intellectual arc and mathematical spine
 
-**Agreed route:** retain the current formulation-to-Gaussian/LGS progression. Keep the residual derivation and stated/interpreted quadratic identity live; develop the full block-elimination proof in a separate recorded session. **Remaining proposal:** add the concrete problem-to-query and squared-loss connections, and selectively reduce repeated taxonomy/dataset exposition to accommodate the agreed notebook direction. These refinements and their timing await discussion.
+**Agreed route:** retain the current formulation-to-Gaussian/LGS progression. Keep the residual derivation and stated/interpreted quadratic identity live; develop the full block-elimination proof in a separate recorded session. The short squared-error posterior-mean derivation is now also accepted for live teaching. **Remaining proposal:** strengthen the concrete problem-to-query connection and selectively reduce repeated taxonomy/dataset exposition. These other refinements and timing await discussion.
 
-**Status:** intellectual arc with selected instructor decisions and a proposed mathematical spine, 2026-10-14; not a complete approved Scope. Route and live/recorded proof boundary are accepted. Remaining depths, refinements and workload are proposed. Exact versions are recorded below.
+**Status:** intellectual arc with selected instructor decisions and a proposed mathematical spine, 2026-10-14; not a complete approved Scope. Route, live/recorded proof boundary and live squared-error derivation are accepted. Remaining depths, refinements and workload are proposed. Exact versions are recorded below.
 
 ## Accepted instructor direction
 
@@ -10,7 +10,9 @@ The instructor's “Sounds good,” recorded in [development state](development_
 
 The instructor subsequently explicitly chose the current route, citing the substantial existing work and the absence of a deep architecture-driven reason to reorder it. They also selected a separate recorded full proof of quadratic separation, while retaining the residual derivation and stated/interpreted identity live. They endorsed using the existing Section Design → Slide Organization → Slide Design → Slide Authoring skills for that recording under the coordinator. These choices do not approve every milestone refinement, timing, taxonomy reduction, new context or proposed addition. The instructor clarified that the proof is required course content and may appear on the exam; viewing itself is not recorded, evaluated or monitored.
 
-## 1. What the existing artifacts do
+**Subsequent explicit decision:** “Let's go ahead and add the derivation slides to the lecture. We can always reduce or move them to recording later.” This accepts the short squared-error posterior-mean proof live now. Its time remains in the live budget until an explicit later reduction or relocation decision. The two slides have been added after the LGS conditioning/summarizing material, at handout pages 64–65 of the [69-page deck](slide_deck.pdf). The [bounded authoring/validation report](reconciliation/squared_loss_authoring_review.md) records compilation and author/coordinator visual checks; this does not approve the whole Scope.
+
+## 1. What the existing artifacts do — baseline before the accepted insertion
 
 The [deck](slide_deck.typ) begins with **“A familiar modeling language”**: Beta–Bernoulli modeling, observed/unknown quantities, graphs, Bayes and conjugacy. **“From statistics to machine-learning problems,” “Classes of machine learning problems,”** and **“From datasets to learning problems”** use Iris features, labels, zero-one loss and a probabilistic classifier; distinguish experience from task; and illustrate dataset uses through MNIST, CIFAR-10 and IMDB. **“Summary: Probability for machine learning”** presents the three operations.
 
@@ -74,9 +76,9 @@ Keep the Schur-complement interpretation and displayed quadratic separation at s
 
 **Retrospective:** residual independence establishes the conditional Gaussian law; its covariance is the unexplained variation and does not depend on measured values.
 
-### E. LGS questions and useful outputs — retain; add the loss connection; about 20 minutes
+### E. LGS questions and useful outputs — retain; accepted live loss derivation; about 20 minutes proposed
 
-The preceding rules require joint blocks; derive those blocks from the existing LGS state/measurement model, then retain the gain, scalar noise regimes, sensor fusion and forward marginal. **Add** the brief squared-loss argument:
+The preceding rules require joint blocks; derive those blocks from the existing LGS state/measurement model, then retain the gain, scalar noise regimes, sensor fusion and forward marginal. **Accepted addition: derive live** the brief squared-loss argument:
 
 $$
 E[\|Z-a\|^2\mid y]
@@ -94,7 +96,7 @@ Thus $E[Z\mid y]$ is appropriate for that loss, not automatically every decision
 
 The planned separate source is `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`. No recording or deck exists yet; the path is a development target. Students are responsible for the proof as examinable content, regardless of whether they watch the video. Viewing is not recorded, evaluated or monitored, and no particular exam question is promised. The accepted workflow applies the existing design/authoring stages under the coordinator; it does not start those stages automatically.
 
-The proposed allocations total 110 minutes plus approximately 10 for discussion/slippage: plausible but tight. Current PDF has 67 pages/seven sections; calibration's 70/eight count is stale. No measured delivery time exists. The separate one-hour notebook needs selective reuse to accommodate accepted forward/generation questions; its exact PyMC balance and context await the notebook-handoff discussion, not a new decision here.
+The proposed allocations total 110 minutes plus approximately 10 for discussion/slippage: plausible but tight. The baseline PDF had 67 pages/seven sections; the two-slide addition makes the current handout 69 pages. Calibration's 70/eight count is stale. No measured delivery time exists. The separate one-hour notebook needs selective reuse to accommodate accepted forward/generation questions; its exact PyMC balance and context await the notebook-handoff discussion, not a new decision here.
 
 L02/L03 retain Gaussian density, conditioning, joint reasoning and simple graph prerequisites. L02 already introduces $\Lambda=\Sigma^{-1}$ in its Gaussian rewrite; reconcile its inaccurate L01 information-coordinate attribution there. No later lecture is rescoped.
 
@@ -102,7 +104,7 @@ L02/L03 retain Gaussian density, conditioning, joint reasoning and simple graph 
 
 ## Part 2 — Mathematical spine: proposed treatment and accepted boundaries
 
-**Recommendation:** preserve the existing mathematical chain and use its results for the accepted different-question aim. Add only a short live justification of the squared-loss posterior mean. The recording completes the selected second proof route; it does not carry prerequisites needed to understand live conditioning or begin the notebook. Detailed depths below are proposals unless marked **accepted**.
+**Recommendation:** preserve the existing mathematical chain and use its results for the accepted different-question aim. The short live squared-loss justification is now **accepted**. The recording completes the selected second proof route; it does not carry prerequisites needed to understand live conditioning or begin the notebook. Other detailed depths below remain proposals unless marked **accepted**.
 
 ### Existing mathematics and recommended live treatment
 
@@ -131,9 +133,9 @@ $$
 
 Here $V_y$ denotes the observed marginal covariance; these are existing joint/update results carried forward, not fresh content each time. Marginalization gives $p(y)=\mathcal N(\mu_y,V_y)$ under fixed parameters. Generation draws from this marginal, or from the equivalent state/measurement construction; it does not estimate this observation's hidden state. Sensor-fusion interpretation retains all prior and conditional-noise assumptions.
 
-### Proposed addition and notebook use
+### Accepted live addition and proposed notebook use
 
-**New live proof proposed:** the current deck extracts $E[Z\mid y]$ but does not prove its squared-loss optimality. Recommend **derive**, in about 2–4 minutes within milestone E, the risk decomposition already shown in the arc, using the centered cross-term's zero expectation. **Then apply**: the mean minimizes conditional expected squared error, whereas its covariance describes uncertainty about the unknown value. The accepted mean/squared-loss query does not itself approve this new proof depth. No other loss catalogue or reconstruction-baseline experiment is added.
+**Accepted new live proof:** the baseline deck extracts $E[Z\mid y]$ without proving squared-loss optimality. The instructor now accepts **derive live** the risk decomposition shown in the arc, using the centered cross-term's zero expectation. The provisional 2–4-minute allowance remains in milestone E's live budget; its measured duration and whole-lecture fit are unverified. **Then apply**: the mean minimizes conditional expected squared error, whereas covariance describes uncertainty about the unknown value. The two slides are now implemented after the existing LGS condition/summarize explanation, with bounded production validation recorded above. Other losses and reconstruction-baseline experiments remain outside this bounded addition.
 
 **Notebook: apply**, rather than rederive, the conditional, summary and forward laws. Existing joint-to-LGS translation and exact/sampled comparison remain reusable evidence; adding forward prediction/generation implements the agreed direction, with workload and PyMC balance still to be settled in the handoff. Sample-based summaries have Monte Carlo error; direct draws from an analytically known Gaussian do not turn it into an approximate posterior family. Parameter fitting remains outside this spine.
 
@@ -164,13 +166,13 @@ $$
 
 Exponent separation alone is insufficient for this normalized equality. Murphy develops the block-inverse/exponent route and states factorization; the explicit determinant/normalizer argument is the course's completion of that proof, not a separately displayed Murphy derivation. No Woodbury proof, second Schur orientation or information-form calculus is required.
 
-### Mathematical-depth choice for discussion
+### Status after the live-derivation decision
 
-**Recommended:** derive the short squared-loss decomposition live, closing the performance-to-summary connection. **Alternative:** state the minimum-mean-square-error result live and apply it in the notebook without proof. The alternative saves a few minutes but leaves the criterion's choice of summary asserted rather than established. Accepted residual/recorded proof decisions are unchanged. The spine and detailed recording contract remain authored proposals, not independent feasibility approval.
+The short squared-loss proof depth is settled for live teaching; it is no longer an open choice between proving and stating the result. Any later reduction or move to recording requires a further instructor decision. The separate full quadratic-separation recording boundary remains intact. Other spine depths and the detailed recording contract remain authored proposals, not complete Scope approval or independent feasibility validation.
 
 ## Source records and checking material
 
-Revision baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `5ba226342cbca91a1d52b5bd88bc7efeeee04b37`; input arc blob `fb2775ac8d25d891bf8a2f5c3031ef58542afc94`. All live source blobs below were verified unchanged for mathematical-spine development:
+Decision-update baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `18d652d28a9139a9b1ab7189190ead1005d7c236`. Mathematical-spine construction used HEAD `5ba226342cbca91a1d52b5bd88bc7efeeee04b37` and input arc blob `fb2775ac8d25d891bf8a2f5c3031ef58542afc94`. The following hashes preserve the examined baseline; the accepted insertion has changed the live deck through separately owned implementation work. Current validated deck source SHA-256: `5c4d188124c261ea0a576f4eb46fceeec136076bd3e9f9098305fee73b84006c`, with evidence in the bounded report linked above:
 
 - Deck: `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`.
 - Coverage specification: `c4457bc4fdb11df14de54658f20e487030766328`.
@@ -184,4 +186,4 @@ Murphy, *Probabilistic Machine Learning: Advanced Topics*, December 10, 2025 onl
 
 **Author checking material, not a student-visible teaching commitment:** dense conditioning factors an observed $D\times D$ covariance in $O(D^3)$ work. Fixed parameters and observation pattern permit reuse of factors/gain; subsequent $L$-dimensional posterior means cost $O(LD)$. This is an exact structural computational advantage over generic sampling for these queries, not a claim that sampling is necessary at this example's scale. Factorization/reuse complexity is absent from the existing deck; this analysis does not add it to the proposed live teaching.
 
-[Reconciliation evidence](reconciliation/matrix.md) preserves historical review versions, source errors and runtime limitations. This revision performed source/communication checks, not independent feasibility, runtime or student validation. No architecture, map, deck or notebook was changed.
+[Reconciliation evidence](reconciliation/matrix.md) preserves historical review versions, source errors and runtime limitations. This Scope edit records the accepted live addition; its separately owned slide implementation and validation are tracked by the coordinator. No independent feasibility, runtime or student validation is claimed for this decision update.

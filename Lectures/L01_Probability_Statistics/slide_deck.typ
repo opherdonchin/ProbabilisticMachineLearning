@@ -1217,7 +1217,7 @@
               columns: cols("equal"),
               gutter: sp("s"),
               schema-node([Prediction], [$x_* arrow.r hat(y)_*$], density: "prose"),
-              schema-node([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
+              schema-node([Generation], [$x_* tilde p_D (x|c)$], density: "prose", fill: palette.paper),
               schema-node([Discovery], [$x_* arrow.r hat(z)_*$], density: "prose", fill: palette.paper),
               schema-node([Action], [$x_t arrow.r a_t$], density: "prose"),
             )
@@ -1518,9 +1518,9 @@
             text(size: 0.55em)[
               #stack(
                 spacing: 0.32em,
-                schema-node([Prediction], [$hat(y)=f_D(x_*)$], density: "prose"),
-                schema-node([Discovery], [$hat(z)=f_D(x_*)$], density: "prose", fill: palette.paper),
-                schema-node([Generation], [$x_* tilde p_D(x|c)$], density: "prose", fill: palette.paper),
+                schema-node([Prediction], [$hat(y)=f_D (x_*)$], density: "prose"),
+                schema-node([Discovery], [$hat(z)=f_D (x_*)$], density: "prose", fill: palette.paper),
+                schema-node([Generation], [$x_* tilde p_D (x|c)$], density: "prose", fill: palette.paper),
               )
             ],
           )
@@ -1546,7 +1546,7 @@
 #content-block(
   object: [
     #section-summary-visual[
-      #align(center)[Joint distribution: $p_D(x_"obs",z,y_*)$]
+      #align(center)[Joint distribution: $p_D (x_"obs",z,y_*)$]
       #v(0.45em)
       #grid(
         columns: cols("three"),
@@ -2721,6 +2721,103 @@
   ],
 )
 
+
+
+== A point estimate needs a loss function
+
+#content-block(
+  object: [
+    #stack(
+      spacing: sp("m"),
+      text(size: fs("m"), weight: "semibold")[Choose a reconstruction after observing $y$],
+      align(center)[$m=E[z|y], quad V=op("Cov")[z|y]$],
+      [Choose any estimate $a in RR^d$ to reconstruct the unknown vector $z in RR^d$],
+      align(center)[$L(a,z)=norm(z-a)^2, quad R(a|y)=E[L(a,z)|y]$],
+      uncover("2-")[
+        #stack(
+          spacing: sp("s"),
+          text(size: fs("m"), weight: "semibold")[Center the error at the conditional mean],
+          align(center)[$r=z-m, quad z-a=r+(m-a)$],
+          align(center)[$norm(z-a)^2=norm(r)^2+2r^T (m-a)+norm(m-a)^2$],
+        )
+      ],
+    )
+  ],
+  key-points: [
+    #stack(
+      spacing: sp("s"),
+      [- A reconstruction is judged by conditional expected squared error],
+      uncover("2-")[- Given $y$, the chosen $a$ is fixed; uncertainty remains in $z$],
+    )
+  ],
+)
+
+
+== The conditional mean minimizes squared-error risk
+
+#content-block(
+  object: [
+    #grid(
+      columns: (1fr, 1fr),
+      column-gutter: sp("m"),
+      row-gutter: sp("s"),
+      align: top,
+      grid.cell(colspan: 2)[
+        #recall-card(
+          label: [Average the centered expansion],
+          from: [Previous slide: $r=z-m$, $V=op("Cov")[z|y]$],
+        )[
+          #stack(
+            spacing: sp("s"),
+            align(center)[$E[r|y]=0$],
+            align(center)[$E[2r^T (m-a)|y]=2E[r|y]^T (m-a)=0$],
+            align(center)[$E[norm(r)^2|y]=sum_(j=1)^d V_(j j)=op("tr")(V)$],
+          )
+        ]
+      ],
+      grid.cell(colspan: 2)[
+        #uncover("2-")[
+          #stack(
+            spacing: sp("s"),
+            text(size: fs("m"), weight: "semibold")[Conditional squared-error risk],
+            grid(
+              columns: (auto, 1fr, auto, 1.3fr),
+              column-gutter: 0.3em,
+              row-gutter: sp("xs"),
+              align: center + horizon,
+              [$R(a|y)=$], [$op("tr")(V)$], [$+$], [$norm(m-a)^2$],
+              [], [Remaining uncertainty], [],
+              [Excess risk from the chosen estimate],
+            ),
+          )
+        ]
+      ],
+      uncover("3-")[
+        #stack(
+          spacing: sp("s"),
+          text(size: fs("m"), weight: "semibold")[Optimal reconstruction],
+          align(center)[$a^*(y)=m=E[z|y]$],
+          align(center)[$min_a R(a|y)=op("tr")(V)$],
+        )
+      ],
+      uncover("3-")[
+        #stack(
+          spacing: sp("s"),
+          text(size: fs("m"), weight: "semibold")[For the conditional Gaussian],
+          align(center)[$m=mu_(z|y), quad V=Sigma_(z|y)$],
+        )
+      ],
+      grid.cell(colspan: 2)[
+        #uncover("2-")[- This decomposition needs finite conditional second moments, not Gaussianity.]
+      ],
+      grid.cell(colspan: 2)[
+        #uncover("3-")[- The conditional mean minimizes model expected squared error; covariance describes the uncertainty that remains.]
+      ],
+    )
+    #v(sp("xs"))
+    #source-note[Murphy, Book 1 §5.1.5.1; vector decomposition: course elaboration]
+  ],
+)
 
 
 == Sensor fusion combines measurements according to their uncertainty

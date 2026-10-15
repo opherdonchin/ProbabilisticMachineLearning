@@ -1,5 +1,13 @@
 # L12 — Learning a small hidden description of each observation
 
+**Instructor direction, 2026-10-15:** City data are preferred; investigate a fixed
+transformation to unconstrained observation coordinates, a decoder distribution
+there, and inverse-transform generation. The [owning direction/task record](reconciliation/city_transform_direction.md)
+preserves provenance and exact boundaries. Final transforms and zero treatment
+remain unselected. The baseline Gaussian/preprocessing proposal below remains
+evidence, not acceptance of its original-unit support failures. Preserve the
+VAE intellectual contract while testing this route; whole-Scope approval is separate.
+
 **Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
 Suppose we have 19 measurements describing each metropolitan area and want a small learned description that can approximately reconstruct them. The description is not observed. A probability model can draw a four-number hidden description and use a network to predict the 19 measurements from it. For an existing observation, another network estimates which hidden descriptions could have produced it.

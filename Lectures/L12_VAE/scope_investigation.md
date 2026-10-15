@@ -1,5 +1,13 @@
 # L12 scope investigation: a compact VAE and its generative limits
 
+**Current instructor direction, 2026-10-15:** City data preferred; investigate
+unconstrained observation transforms and inverse-map generation before revisiting
+the older application choice. [Owning record](reconciliation/city_transform_direction.md).
+No final transformed model or zero policy is approved. Raw-Gaussian results below
+retain their exact baseline meaning; they do not show that a transformed city
+model must violate the same constraints. L12-APPLICATION now routes to this
+bounded investigation; L12-GENERATIVE-ENDPOINT remains a separate later question.
+
 **Stage/mode:** Lecture Scope / feasibility-review with explicitly authorized isolated author probes. **Specialist:** `/root/investigate_l11_l12`, 2026-10-14. **Target:** `lecture_scope.md` at baseline `5e4c86ee3518958157d21d6bcb4c51bcdab3537e`; existing scope remains unchanged. Target scope blob `22fa2d8307ef7cb621456521383b6c352dcd451a`. **Verdict:** feasible with risks for learning and critically evaluating the proposed standardized-space latent model. It is unsuitable as evidence of physically valid generated metropolitan areas. These are different performance requirements, and the latter was never promised by the current scope.
 
 New CPU evidence establishes that the 19-feature/four-latent candidate can be trained and scored within a bounded supplied driver. The β comparison survives correct likelihood/KL normalization and held-out preprocessing. A more consequential empirical result is that full prior-generated observations violate simple raw-variable bounds much more often than decoder means. The notebook can therefore teach use and criticism of a generative model; it must not present only attractive means and call them observation samples.

@@ -71,8 +71,9 @@ student-time/notebook/runtime validation.
 
 ## Inquiry returned; route decision pending
 
-The two owning reports above contain the substantive comparison and actual
-source/feasibility review. Builder recommends posterior geometry through
+Returned builder `b9e0a0e` and reviewer `4cbacf5` (both clean); the review
+checks that final builder revision. The two owning reports above contain the
+substantive comparison and actual source/feasibility review. Builder recommends posterior geometry through
 algorithm-level HMC; blocked HMM inference and large-data Langevin are serious
 alternative endpoints. Reviewer finds these source-faithful selective arguments;
 HMC and blocking remain feasible with timing/application risks, while Langevin

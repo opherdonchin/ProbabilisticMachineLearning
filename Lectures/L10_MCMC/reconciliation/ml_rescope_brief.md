@@ -68,3 +68,22 @@ builder. Return precise objections/counteroffers to coordinator. No new agents.
 Complete a bounded evidence pass; unresolved consequential choices are deferred
 to instructor. Agreement and source inspection do not grant approval or establish
 student-time/notebook/runtime validation.
+
+## Inquiry returned; route decision pending
+
+The two owning reports above contain the substantive comparison and actual
+source/feasibility review. Builder recommends posterior geometry through
+algorithm-level HMC; blocked HMM inference and large-data Langevin are serious
+alternative endpoints. Reviewer finds these source-faithful selective arguments;
+HMC and blocking remain feasible with timing/application risks, while Langevin
+has a larger new prerequisite and practical-validation burden. No source-level
+blocker prevents considering the recommendation. Exact source/render evidence,
+reviewed revisions and author-owned corrections stay in the reports.
+
+The current instructor choice is which competence should replace the old
+introductory proof allocation. A route decision would authorize development of
+that Scope proposal, not grant whole-Scope approval or choose its dataset. The
+existing MH screenings do not validate HMC. Timing, the mixed-entry bridge,
+application payoff and student workload remain provisional; downstream previews
+and validation should follow the chosen route, not launch all three routes.
+No route, required recording, production or architecture/map change is approved.

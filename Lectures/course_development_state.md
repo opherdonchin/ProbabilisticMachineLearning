@@ -379,7 +379,9 @@ writes below; coordinator alone owns the brief/scope notice and this index.
 | `/root/l10_ml_routes` | `rescope/l10-ml-routes-20261015`; `/tmp/pml-l10-ml-routes-20261015` | `Lectures/L10_MCMC/reconciliation/ml_route_options.md` |
 | `/root/l10_murphy_review` | `review/l10-ml-source-20261015`; `/tmp/pml-l10-ml-source-review-20261015` | `Lectures/L10_MCMC/reconciliation/murphy_source_review.md` |
 
-Collected route comparison and source/feasibility review in the artifacts above.
+Collected builder `b9e0a0e` and source/feasibility reviewer `4cbacf5`, both
+clean, in the artifacts above. Review checks that final builder revision;
+no agent remains active.
 Builder recommends geometry-informed computation through algorithm-level HMC;
 blocked HMM inference is a serious alternative, and large-data Langevin has
 higher prerequisite/application-validation risk. Reviewer finds the selective

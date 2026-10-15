@@ -7,9 +7,17 @@ already includes a short Kalman predict/condition comparison; it does not derive
 a complete Gaussian filter or smoother. This is support in principle for a
 lecture-to-notebook transfer, not selection of a dataset, Gaussian smoothing depth,
 parameter-learning method, student/supplied allocation, workload or full Scope.
-The [bounded handoff proposal](reconciliation/gaussian_handoff.md) explains the
-mathematical connection and [development register](development_state.md) records
-remaining decisions and validation.
+
+**Accepted authoring approach — 2026-10-16:** Start from Oke's existing notebook
+and retain its package-backed fitting/forecasting workflow as the initial
+scaffold. Students can work through the relevant equations or computational
+reasoning, call the prepared package and check its results. Reimplementing N4SID
+or a filter is not a default requirement; supplying a fixed model instead of the
+existing fitting workflow is not the default either. Modify the source as
+concrete teaching needs emerge. The [bounded handoff proposal](reconciliation/gaussian_handoff.md)
+contains a provisional source-cell → reasoning → package → interpretation map;
+the [development register](development_state.md) records remaining decisions and
+validation. This accepts the approach, not a final workload or every source cell.
 
 **Source-status correction — 2026-10-16:** The PS2 sheet is Oke's course
 material, and both `PS2-kalman-forecasting.ipynb` and
@@ -23,17 +31,20 @@ The handoff preserves exact paths, hashes, cell references and source defects.
 The notebooks call model fitting and forecasting through Darts; they do not expose
 forward-filter or backward-smoother algorithms, and no clean runtime has been
 validated. N4SID is the source exercise's additional system-identification
-procedure, separate from Kalman state inference. Supplying model parameters or
-training remains a recommendation, not a new accepted allocation.
+procedure, separate from Kalman state inference. Prepared fitting calls can stay
+in the starting workflow, with their mathematical role explained at the needed
+depth. Detailed system-identification theory is not thereby assigned.
 
 **Effect on the body below:** The categorical lecture and its short Gaussian
 comparison remain the baseline under review. The old assertion that the notebook
 must repeat HMM forward/backward implementation is reopened by the Gaussian
 transfer direction. Its replacement handoff and any affected live preparation
 remain provisional. The old either-HMM-or-full-forecasting comparison does not
-rule out a bounded Gaussian-transfer notebook. No RTS smoother, N4SID training,
-new full lecture plan, section/slide development or student notebook is authorized
-by this narrow record. Existing reviews and author probes retain their original
+rule out a bounded Gaussian-transfer notebook. Its own-code learning endpoint
+is also reopened by the accepted package-backed walkthrough approach. No new
+required RTS smoother, student N4SID derivation/implementation, full lecture plan,
+section/slide development or student-notebook drafting is authorized by this
+record. Existing reviews and author probes retain their original
 targets; no whole-Scope or measured teaching-time validation is implied.
 
 **Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.

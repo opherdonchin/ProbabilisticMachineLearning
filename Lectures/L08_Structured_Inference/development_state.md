@@ -1,6 +1,6 @@
 # L08 development state
 
-## Current revision and authority — 2026-10-15
+## Current revision and authority — updated 2026-10-16
 
 Lecture Scope / revision; bounded decision record only. Branch
 `resume/l08-gaussian-handoff-20261015`, worktree
@@ -26,19 +26,28 @@ course copy; live Dropbox completeness is not established.
 - Support in principle: categorical sequence inference in the lecture can feed a
   Gaussian time-series notebook. The baseline already includes a brief Kalman
   comparison; no complete Gaussian filter/smoother derivation is assumed taught.
-- Proposed transfer: HMM sum/product and state separator → continuous-state
-  integration with Gaussian mean/covariance messages → prediction and conditioning
-  using L01. The defining Gaussian formulas are checking material in the handoff,
-  not an approved new live-depth or student-code allocation.
-- A supplied RTS backward comparison is optional and new; existing probes contain
-  no Gaussian backward smoother. Forecasting and retrospective smoothing must use
-  their distinct information sets and evaluation targets.
-- N4SID fits state-space model parameters; Kalman inference uses such a model.
-  Supplying specified or already fitted parameters is a workload recommendation,
-  not approval of N4SID learning, a package, dimension search or final allocation.
-- No dataset, seasonal model, smoothing depth, student/supplied split, accuracy
-  threshold, measured one-hour workload or whole Scope is selected by this record.
-  No actual teaching or notebook publication is recorded.
+- **Accepted authoring approach, 2026-10-16:** start with Oke's actual existing
+  notebook and its fitting/forecasting workflow. Give a scaffolded mathematical or
+  computational walkthrough, call the prepared package and check whether results
+  make sense. Do not require students to recreate package internals or replace
+  the source with the agent's seasonal prototype merely to expose code. Modify
+  the existing notebook as concrete teaching needs emerge.
+- Proposed transfer: HMM sums and state separator → Gaussian mean/covariance
+  predict/condition using L01 → interpretation of the source's forecasts. The
+  handoff now maps exact source cells to reasoning, package calls and result
+  checks. **Apply/work** Gaussian conditioning; **state/interpret** fitting's role
+  provisionally. Detailed derivation and scalar/matrix extent are not approved.
+- Retain prepared `.fit()`/`.predict()` calls and dimensional-comparison opportunity
+  as the initial scaffold. N4SID identifies a model; Kalman state inference is
+  conditional on it. Neither a student N4SID/filter implementation nor discarding
+  dimension comparison/supplying a fixed model is the default requirement.
+  Forecast draws need not integrate over uncertainty about fitted parameters.
+- A package-backed RTS comparison remains optional and new; a walkthrough could
+  support it without student reimplementation, but no smoother objective/depth is
+  selected. Existing source notebooks and probes have no Gaussian backward pass.
+- No new dataset/seasonal model, final cell selection, comparison count,
+  student/supplied allocation, accuracy threshold, measured one-hour workload or
+  whole Scope is selected here. No actual teaching or publication is recorded.
 
 ## Evidence and validation
 
@@ -57,24 +66,24 @@ Author-owned repairs recorded in the handoff: template MAPE truth/prediction
 order, missing quantile `alpha` in template/solution pinball loss, and the
 solution's 2017 forecast window versus the question sheet's late-2018 spike.
 These need correction and validation before reuse, not instructor approval.
- The October 14
-seasonal traffic model was the agent investigator's post hoc same-period
+The October 14 seasonal traffic model was the agent investigator's post hoc same-period
 exploration following a weak scalar result, not an approved/independently tested
 application. The checked Gaussian algorithms are forward filters, not RTS.
 
 Only documentation/reference consistency and source-code inspection were checked
 for this revision; metric signatures were verified against official scikit-learn
-documentation. No new
-code or probes, student workload trial, rehearsal, clean notebook run or hosted
-Colab check occurred. No existing output was regenerated or relabeled as current
+documentation. No new code or probes, student workload trial, rehearsal, clean
+notebook run or hosted Colab check occurred. No existing output was regenerated or relabeled as current
 student material.
 
 ## Open decisions and next owner
 
 Coordinator continues instructor review. Lecture Scope must later reconcile the
-notebook contract and any necessary live preparation: scalar/matrix treatment,
-student versus supplied calculation, optional backward comparison, specified
-versus fitted model, dataset/query and evaluation design. Then obtain the affected
+notebook contract and any necessary live preparation: scalar/matrix walkthrough
+depth, worked reasoning/output checks around the source package calls, retained
+dimension-comparison extent, optional backward comparison, dataset/query and
+evaluation design. The existing fitted-model workflow is the accepted starting
+scaffold; no own-code implementation is a default gate. Then obtain the affected
 feasibility preview before whole-Scope approval. Author/reviewer responsibilities
 include numerical/source checks and an honest fresh evaluation of any selected
 empirical model; these are not instructor approval questions.

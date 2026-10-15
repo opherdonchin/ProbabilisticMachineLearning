@@ -2,9 +2,11 @@
 
 **Status:** Lecture Scope / revision; bounded decision record and provisional
 handoff only. Instructor direction recorded 2026-10-15; local-source availability
-corrected 2026-10-16. The instructor supports the transfer in principle,
-conditional on the lecture's categorical focus. No final application, treatment
-depth, student workload or whole Scope is selected here.
+corrected 2026-10-16. On that date the instructor accepted an existing-notebook-first,
+package-backed mathematical walkthrough approach. Gaussian transfer remains
+conditional on the lecture's categorical focus. No new dataset/model, final
+mathematical depth, student workload, smoother objective or whole Scope is selected
+here.
 
 ## What the instructor has decided
 
@@ -21,6 +23,17 @@ categorical, and its fourteen-minute Gaussian allocation is not a full Gaussian
 filter derivation or smoothing lesson. The new direction supports a notebook
 extension; it does not silently enlarge that live allocation or approve a second
 complete student HMM lab alongside a complete Gaussian lab.
+
+**Accepted approach, 2026-10-16:** The instructor explains that “we don't really
+have to have them redo what's done in a package if we give them a scaffolded
+walkthrough of the math or the computational steps that are inside it.” Students
+can follow equations, call the prepared package and test whether its results make
+sense. Start by tracking the actual existing notebook; modify it as concrete
+teaching needs emerge. This accepts Oke's fitting/forecasting workflow as the
+starting scaffold, not the agent's seasonal replacement or a requirement to write
+an exposed filter. Retain its dimensional-comparison opportunity for evaluation
+rather than discard it by default. Final cell selection and mathematical/student
+work depths remain provisional.
 
 ## The mathematical transfer and what students would practise
 
@@ -60,14 +73,25 @@ $$
  P_t=P_t^--G_tS_tG_t^T.
 $$
 
-The proposal is to **apply/work**, rather than prove again, the carried Gaussian
-conditioning result. Students could complete or inspect the mean/covariance
-predict-and-condition calculation, distinguish state uncertainty from observation
-noise, and use `N(Hm_t^-,S_t)` to assess predictions made before seeing `y_t`.
-Whether they complete scalar or matrix code and which formula/scaffolding is
-supplied remains an instructor-owned depth choice. The new competence is to
-recognize and use the same sequence inference logic with a different exact
-message representation, rather than memorize an unrelated filter formula.
+The provisional treatment is **apply/work** for the carried Gaussian
+conditioning result: step through the prediction/conditioning equations and
+interpret the covariance and innovation, then connect those operations to the
+package's forecast calculation. **State/interpret** the fitting procedure's role;
+there is no new commitment to derive or implement N4SID. Proving Gaussian
+conditioning again is not required by this transfer. Students can establish
+understanding through a scaffolded calculation, a package run and reasoned output
+checks without reproducing the package implementation. Exact scalar/matrix depth
+and the worked calculations still need a bounded handoff decision; they are not
+predefined student code blanks here.
+
+For a fitted model write `psi_hat=(F_hat,H_hat,Q_hat,R_hat)`. Exact Gaussian state
+inference is conditional on those values. The package's forecast may represent
+`p(y_future | y_train,psi_hat)`; this is different from averaging over a posterior
+for `psi` itself. State uncertainty, process/observation variation and parameter
+uncertainty therefore need separate interpretation. Sampling predictive paths or
+plotting quantiles alone does not demonstrate integration over fitting uncertainty.
+The source's `.fit()` plus `.predict()` workflow must be explained and checked at
+this role level, without teaching an additional full system-identification method.
 
 For fixed state/observation dimensions, repeated queries advance a fixed-size
 belief rather than recondition the growing joint distribution of the whole
@@ -84,10 +108,12 @@ A **supplied RTS smoother** could extend the analogy from forward to backward
 information: compare `p(z_t|y_(1:t))` with `p(z_t|y_(1:T))`. RTS means
 Rauch–Tung–Striebel, the Gaussian backward-smoothing procedure. This is a new
 optional proposal requiring source/numerical and student-work feasibility checks;
-it is absent from the existing traffic probe. It is not a promised derivation,
-student implementation or inference competence merely because a supplied routine
-can display its output. Retain filtering as a coherent bounded endpoint if the
-backward extension adds too much unfamiliar work; its inclusion remains open.
+it is absent from the existing traffic probe and Oke's forecasting notebooks.
+A supplied smoother can support understanding through a scaffolded account of
+its equations and output checks; a student implementation is not required in
+principle. Its actual mathematical treatment and purpose remain undecided.
+Retain filtering/forecasting as a coherent bounded endpoint if the backward
+extension adds too much unfamiliar work; its inclusion remains open.
 
 Forecasting asks for `p(y_(t+h)|y_(1:t))` before those future observations arrive.
 Smoothing uses future observations to revise an earlier hidden state. A smoother
@@ -136,14 +162,15 @@ The principal split trains before 2019-01-01 and predicts the first ninety days
 of 2019. Template cells 6–7 build Darts series, call
 `KalmanForecaster(dim_x=100).fit(...)`, then `predict(h, num_samples=100)`;
 5%, median and 95% forecasts are extracted. The question sheet identifies the
-fitting backend as N4SID; these notebook cells hide its mathematics inside
-`.fit()`. Solution cells 16–23 compare dimensions 50, 100, 200, 300, 400 and 500,
+fitting backend as N4SID; these notebook cells delegate fitting to `.fit()`. Solution cells 16–23 compare dimensions 50, 100, 200, 300, 400 and 500,
 including desktop-specific MAE; the template/solution also display forecast plots
 and labeled quantile-loss comparisons. This is an existing fitted-model
-forecasting workflow, not exposed implementation of Gaussian predict/condition
-messages or a backward smoother. Reading it does not validate runtime or learner
-extent. The source availability gap is closed; its suitability for the proposed
-inference-transfer task still needs review.
+forecasting workflow that supplies package calculations. The accepted approach
+is to add the necessary mathematical/computational walkthrough and result checks,
+not to replace these calls with a new student implementation by default. It
+contains no backward smoother. Reading it does not validate runtime or learner
+extent. The source availability gap is closed; exact adaptation for the inference
+transfer still needs review.
 
 The related lecture source is also available at
 `Lectures/M2-Inference-Algorithms/M2a-Gaussian-Filtering-and-Smoothing/M2a-Gaussian-Filtering-Smoothing.tex`
@@ -179,13 +206,39 @@ corrected scoring and eventual hosted Colab execution remain author validation.
 **N4SID** is a numerical subspace system-identification procedure: it estimates a
 linear state-space model from observed time-series data, with the state dimension
 chosen externally. Kalman filtering then infers latent states using that model.
-Learning dynamics/noise and selecting dimension are additional objectives beyond
-conditional Gaussian inference. The source exercise's dimension search would
-practise this broader workflow; supplying a specified model would give up that
-particular fitting skill while retaining the inference transfer. A bounded
-recommendation is to supply parameters or an already fitted model and any training
-driver. It is not acceptance of a fitting package, learning method, dimension
-search, data source or final student/supplied allocation.
+Learning dynamics/noise and selecting dimension are additional operations beyond
+conditional Gaussian inference, but students can use them through prepared code
+while explaining their purpose. Preserve the source fitting calls and dimension
+comparison as the starting scaffold; neither a student N4SID implementation nor
+a replacement fixed-parameter model is required by default. More detailed fitting
+theory or a substantial dimension search would need its own depth/workload
+decision. This distinction bounds the mathematical lesson without discarding the
+existing notebook's practical workflow.
+
+## Provisional source-to-learning map
+
+The following map uses the exact template/solution hashes above; cell numbers are
+zero-based. It is a handoff proposal, not a drafted Q&A notebook, approved schedule
+or commitment to retain every row/cell. Prepared code remains the computational
+engine; the walkthrough supplies the reasoning needed to interpret and challenge
+its answers.
+
+| Actual source cells | Mathematical/computational reasoning and proposed depth | Prepared package calculation | Interpretation or check |
+|---|---|---|---|
+| Template 3, 6; solution 3, 14 | **Work/interpret:** define a daily observation and its device, units, calendar frequency and missing-day convention. | Existing aggregation and Darts `TimeSeries.from_group_dataframe`. | Check that a missing count is not silently treated as an observed zero; review the two added tablet rows and date alignment. |
+| Template 4; solution 9, 12–13 | **Work:** identify training observations, forecast origin, validation window and horizon. | Existing pre-2019 split and computed `h`. | Confirm ninety future daily timestamps and the information available at the origin. This is not rolling one-day assimilation. |
+| Template 7; solution 16 | **State/interpret:** fitted state dimension and dynamics/noise parameter roles; fitting versus conditional state inference. No N4SID derivation is required by this proposal. | Existing `KalmanForecaster(...).fit(series)`. | Identify what was learned from training data; distinguish latent-state covariance from uncertainty about fitted parameters. |
+| Template 7; solution 16 | **Apply/work:** trace Gaussian predict/condition mathematics and propagation beyond the forecast origin, reusing L01 conditioning. Exact scalar/matrix extent remains open. | Existing `predict(h, num_samples=100)` and quantile extraction. | Explain what the median and interval summarize, how uncertainty evolves across the horizon, and why future observed validation values cannot enter this forecast. |
+| Solution 17, 21–23 | **Work/interpret:** connect dimension to model flexibility, fitting/forecast cost and predictive error. | Existing fits for dimensions 50, 100, 200, 300, 400 and 500; category-specific error extraction. | Interpret the validation curve instead of treating dimension as a universal accuracy ranking; if selecting by it, reserve independent evaluation. Exact retained comparison extent is provisional. |
+| Template 10–12; solution 24–25 | **Apply/work:** distinguish point loss, quantile loss and interval behavior; connect score to forecast query. | Existing prediction merge, corrected score calls and plotting. | Check timestamp/device correspondence, prediction-versus-observation order, `alpha=q`, and whether interval/failure behavior makes sense. Stored plots do not replace checks. |
+| Solution 27–32; question 3(e) | **Work/interpret if retained:** explain what pre-event training can and cannot forecast. | Existing pre-spike fit/predict/plot scaffold after the dated-window defect is resolved. | Reconcile 2017/2018 source mismatch first; an unmodeled future event need not be predictable from preceding traffic. This row adds no new chosen event or model. |
+
+This preserves the practical fitted-model workflow while allowing the mathematics
+to remain explicit. A later author can insert focused reasoning/checks around the
+existing calls and adjust the retained cells when the lesson takes concrete shape.
+No own-code implementation, new model, supplied smoother, exact comparison count
+or final one-hour schedule is inferred from this map. The source repairs recorded
+above remain author-owned implementation work; no source notebook is edited here.
 
 ## What the existing investigation actually establishes
 
@@ -224,9 +277,11 @@ extension is retained, inspect §8.2.3 **The Kalman (RTS) smoother** and
 support the transfer; no whole-chapter coverage is implied.
 
 The coordinator returns only consequential choices to the instructor: exact live
-Gaussian preparation; scalar versus matrix student practice and supplied parts;
-filtering/forecasting alone versus a supplied backward comparison; specified versus
-supplied-fitted parameters; and application/data/query/performance choices. The
+Gaussian preparation and scalar versus matrix walkthrough depth; precise worked
+reasoning and output checks around the existing fitting/forecast calls; retained
+dimension-comparison extent; filtering/forecasting alone versus a backward
+comparison; and application/data/query/performance choices. The existing source
+workflow is the accepted starting point, not a completed final allocation. The
 current one-hour notebook envelope remains a constraint, not a demonstrated
 schedule. Scope reconciliation and its affected feasibility preview must precede
 whole-Scope approval and production. No section/slide/notebook code, new pilot,

@@ -1,0 +1,276 @@
+{
+  "multinomial_iris": {
+    "checks": [
+      {
+        "full": false,
+        "value_difference": 2.842170943040401e-14,
+        "manual_autograd_max_difference": 7.105427357601002e-15
+      },
+      {
+        "full": true,
+        "value_difference": 1.4210854715202004e-14,
+        "manual_autograd_max_difference": 3.552713678800501e-15
+      }
+    ],
+    "method_summary": {
+      "Laplace": {
+        "approximate_reverse_KL": 0.0681604954637578,
+        "marginal_SD_relative_errors": [
+          -0.014807671848744097,
+          -0.018841451670830067,
+          -0.020599266206432154,
+          -0.01958303551805929
+        ],
+        "stochastic_errors": []
+      },
+      "diagonal VI": {
+        "approximate_reverse_KL": 1.1592906696451308,
+        "marginal_SD_relative_errors": [
+          -0.4614213047877149,
+          -0.5098750376857661,
+          -0.41852357289793185,
+          -0.49218091951521403
+        ],
+        "stochastic_errors": [
+          0.013716339471855132,
+          0.011849388691142063,
+          0.015243374735282034
+        ]
+      },
+      "full VI": {
+        "approximate_reverse_KL": 0.022928898298872014,
+        "marginal_SD_relative_errors": [
+          -0.017991704650069384,
+          -0.024410607995111522,
+          -0.02016997651158292,
+          -0.02633284101074984
+        ],
+        "stochastic_errors": [
+          0.0038198253256198633,
+          0.0034575781641192904,
+          0.0012760094574222336
+        ]
+      }
+    },
+    "heldout_scores": {
+      "Laplace": {
+        "heldout_log_loss": 0.5829705390690622,
+        "classification_error": 0.2,
+        "class_decisions_differ_from_reference": 0
+      },
+      "diagonal VI": {
+        "heldout_log_loss": 0.5726060006129661,
+        "classification_error": 0.2,
+        "class_decisions_differ_from_reference": 0
+      },
+      "full VI": {
+        "heldout_log_loss": 0.5736570057528773,
+        "classification_error": 0.2,
+        "class_decisions_differ_from_reference": 0
+      },
+      "reference": {
+        "heldout_log_loss": 0.5737284676061523,
+        "classification_error": 0.2
+      }
+    },
+    "reference_prediction_spread_last3": 9.890493680719814e-06,
+    "reference_qmc_power_change_max": 1.250701657823372e-05
+  },
+  "challenger": {
+    "checks": [
+      {
+        "full": false,
+        "value_difference": 0.0,
+        "manual_autograd_max_difference": 8.881784197001252e-16
+      },
+      {
+        "full": true,
+        "value_difference": 0.0,
+        "manual_autograd_max_difference": 6.661338147750939e-16
+      }
+    ],
+    "method_summary": {
+      "Laplace": {
+        "approximate_reverse_KL": 0.09526481230313522,
+        "marginal_SD_relative_errors": [
+          -0.05176973982130029,
+          -0.09228353241466614
+        ],
+        "stochastic_errors": []
+      },
+      "diagonal VI": {
+        "approximate_reverse_KL": 0.05281002857799777,
+        "marginal_SD_relative_errors": [
+          -0.04552033542291134,
+          -0.08080002816809806
+        ],
+        "stochastic_errors": [
+          0.007545672089805073,
+          0.007572732276124733,
+          0.006242668663823503
+        ]
+      },
+      "full VI": {
+        "approximate_reverse_KL": 0.029095973783764606,
+        "marginal_SD_relative_errors": [
+          -0.023844217931289102,
+          -0.061869554840000784
+        ],
+        "stochastic_errors": [
+          0.006798420637508237,
+          0.005787187649307794,
+          0.009425404192797693
+        ]
+      }
+    },
+    "heldout_scores": null,
+    "reference_prediction_spread_last3": 2.2013337429849233e-06,
+    "reference_qmc_power_change_max": 2.160235713755121e-06,
+    "extended_grids": [
+      {
+        "radius": 14,
+        "step": 0.04,
+        "n": 491401,
+        "logZ_unnormalized": -9.797261242957145,
+        "mean": [
+          -1.0746291844757003,
+          -1.645100655098713
+        ],
+        "covariance": [
+          [
+            0.30902805723409554,
+            0.09360704970336534
+          ],
+          [
+            0.09360704970336534,
+            0.48948424857064593
+          ]
+        ],
+        "marginal_skewness": [
+          -0.25997643771358636,
+          -0.5320510052168562
+        ],
+        "predictions": [
+          [
+            0.01689496965090986,
+            0.9831050303490887
+          ],
+          [
+            0.11048631751870489,
+            0.8895136824812943
+          ],
+          [
+            0.2686582454918559,
+            0.7313417545081428
+          ],
+          [
+            0.7504516477780958,
+            0.24954835222190277
+          ],
+          [
+            0.9561327014978486,
+            0.043867298502150424
+          ]
+        ],
+        "outer_unit_mass": 3.5898168319118225e-20,
+        "seconds": 1.9200336249778047
+      },
+      {
+        "radius": 14,
+        "step": 0.02,
+        "n": 1962801,
+        "logZ_unnormalized": -9.797261242957145,
+        "mean": [
+          -1.0746291844757914,
+          -1.645100655098647
+        ],
+        "covariance": [
+          [
+            0.3090280572340957,
+            0.0936070497033654
+          ],
+          [
+            0.0936070497033654,
+            0.48948424857064604
+          ]
+        ],
+        "marginal_skewness": [
+          -0.25997643771311585,
+          -0.5320510052171015
+        ],
+        "predictions": [
+          [
+            0.016894969650909846,
+            0.9831050303490851
+          ],
+          [
+            0.11048631751870457,
+            0.8895136824812921
+          ],
+          [
+            0.26865824549185524,
+            0.7313417545081408
+          ],
+          [
+            0.7504516477780939,
+            0.24954835222190205
+          ],
+          [
+            0.956132701497844,
+            0.04386729850215032
+          ]
+        ],
+        "outer_unit_mass": 3.805631444227516e-20,
+        "seconds": 7.135815053945407
+      }
+    ],
+    "tail_bound": {
+      "radius": 14,
+      "strong_convexity": 0.25,
+      "mode_gradient_norm": 2.658761779316085e-10,
+      "envelope_center": [
+        -0.9905529384508307,
+        -1.4001072715155418
+      ],
+      "envelope_integral_over_box_mass_ratio": 11.56554050638886,
+      "envelope_tail_probability": 1.8783241628739233e-10,
+      "posterior_outside_box_upper_bound": 2.1723834189847308e-09,
+      "qualification": "analytic envelope inequality evaluated float64, denominator numerical grid integral; not interval-certified; mesh still separate"
+    },
+    "gaussian_prediction_integration": {
+      "Laplace": {
+        "gh240_predictions": [
+          0.9597827759038016,
+          0.8505113454204379,
+          0.6920939230216985,
+          0.26610593813834604,
+          0.06507322013777476
+        ],
+        "gh160_240_max_difference": 3.027278427936153e-11,
+        "qmc_vs_gh240_max_difference": 2.4216052778303077e-07
+      },
+      "full VI": {
+        "gh240_predictions": [
+          0.9773797001369277,
+          0.8891162821224747,
+          0.7329935502692999,
+          0.24923716965846296,
+          0.04483003635189446
+        ],
+        "gh160_240_max_difference": 4.157318933550869e-11,
+        "qmc_vs_gh240_max_difference": 5.445506060242078e-07
+      },
+      "diagonal VI": {
+        "gh240_predictions": [
+          0.9760981265519433,
+          0.8838759425636238,
+          0.7294509442684963,
+          0.25154058693720754,
+          0.041312761101695655
+        ],
+        "gh160_240_max_difference": 3.904399026311012e-11,
+        "qmc_vs_gh240_max_difference": 4.810661882528877e-07
+      }
+    }
+  }
+}

@@ -174,15 +174,15 @@
   "artifacts": [
     {
       "path": "Lectures/L09_Variational_Inference/notebook_geometry/REPORT.md",
-      "sha256": "6052b7f55f5cf541b6c78aa34e528d14a358be3bab323de576078e567b69bfb2"
+      "sha256": "14bb9d6311c1480fec0b196eab5e5b95494a55652dcf03589597dde7a9e417e3"
     },
     {
-      "path": "Lectures/L09_Variational_Inference/notebook_geometry/audit_execution.log",
+      "path": "Lectures/L09_Variational_Inference/notebook_geometry/audit_execution.txt",
       "sha256": "77dd684094bfb933b69b268f5521fad07108aff0852eab4b4004d085ad34bf4a"
     },
     {
       "path": "Lectures/L09_Variational_Inference/notebook_geometry/audit_probe.py",
-      "sha256": "c0bdf67d741e62c23ffc1f3b4d73631a1309062ec72b283108255938bc88a55d"
+      "sha256": "3d1b8ad8cc272731e765535be2a790d9c49aed2f60f3e9cee215bf354c34288b"
     },
     {
       "path": "Lectures/L09_Variational_Inference/notebook_geometry/audit_results.json",
@@ -194,19 +194,19 @@
     },
     {
       "path": "Lectures/L09_Variational_Inference/notebook_geometry/challenger_geometry.svg",
-      "sha256": "797ee00171950ea57dfddd29908b8a22c34e8c7f8ad03e9305761fa10d0e9fd2"
+      "sha256": "9d402b4aa643a03da2f3caf2c050ddef5e307219f7f79db1cf44a6bb1a68369c"
     },
     {
       "path": "Lectures/L09_Variational_Inference/notebook_geometry/challenger_results.json",
       "sha256": "9949f6dce690e718c2cf62a5beb7f34257a1d61f07c0d6a9e119a68ac7a2d308"
     },
     {
-      "path": "Lectures/L09_Variational_Inference/notebook_geometry/execution.log",
-      "sha256": "7fd9321edd62df435944926d1df4f9982ca407c89aa50f84f5e63629a51f998f"
-    },
-    {
       "path": "Lectures/L09_Variational_Inference/notebook_geometry/execution_notes.md",
       "sha256": "efc75e1d4ec9b962fa62d26a48524aebfbdb66e41e9fb55bc446479ef20a46f0"
+    },
+    {
+      "path": "Lectures/L09_Variational_Inference/notebook_geometry/geometry_execution.txt",
+      "sha256": "7fd9321edd62df435944926d1df4f9982ca407c89aa50f84f5e63629a51f998f"
     },
     {
       "path": "Lectures/L09_Variational_Inference/notebook_geometry/geometry_probe.py",

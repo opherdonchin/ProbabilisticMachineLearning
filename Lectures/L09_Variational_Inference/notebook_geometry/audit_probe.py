@@ -98,7 +98,7 @@ def main():
     for name,fit in {'Laplace':r['laplace'],'full VI':r['fits']['full']['diagnostic_fit'],'diagonal VI':r['fits']['diagonal']['diagnostic_fit']}.items():
         axes[2].plot(temps,100*(np.array(fit['predictions'])[:,1]-ref),marker='o',color=colors[name],label=name)
     axes[2].axhline(0,color='black',lw=.7);axes[2].axvspan(31,53,color='gray',alpha=.12);axes[2].set(xlabel='temperature °F (shading = extrapolation)',ylabel='prediction error (percentage points)',title='Error in probability of any thermal distress');axes[2].legend(frameon=False)
-    fig.tight_layout();fig.savefig(HERE/'challenger_geometry.svg');fig.savefig(HERE/'challenger_geometry.png',dpi=130);plt.close(fig)
+    fig.tight_layout();fig.savefig(HERE/'challenger_geometry.svg');svg=HERE/'challenger_geometry.svg';svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n');fig.savefig(HERE/'challenger_geometry.png',dpi=130);plt.close(fig)
     (HERE/'audit_results.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
     print(json.dumps(result,indent=2))
 

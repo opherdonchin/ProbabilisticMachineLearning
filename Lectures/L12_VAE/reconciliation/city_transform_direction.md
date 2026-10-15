@@ -4,9 +4,54 @@ Current discussion, 2026-10-15: instructor says “I like the city example bette
 I think,” and proposes transforming observations to unconstrained space, encoding
 and decoding there, then transforming back. This records a city preference and
 authorizes investigation of that route. It does not select a final transform,
-zero treatment, likelihood or complete Scope. Existing raw-Gaussian failures are
+likelihood or complete Scope. The zero rule is subsequently accepted below.
+Existing raw-Gaussian failures are
 evidence for that exact older model, not a blocker against transformed models.
 Do not repeat the handwriting-versus-city question while this route is assessed.
+
+## Accepted zero replacement — 2026-10-15
+
+Instructor's exact response to the concrete half-minimum proposal: “This sounds
+prefect. Let's go with it.” Accepted rule: compute half the smallest strictly
+positive bicycle fraction **in the training split only**. For the current fixed
+data/split, minimum is `0.000187758167480285`, so
+`delta = 0.0000938790837401425` (about 0.00939 percentage point). Reuse that fixed
+training-derived value for any recorded bicycle zeros in validation/test;
+do not recalculate from held-out data. Here one zero is in training, the other
+in validation, and none in test. For each affected row set the zero part to delta
+and multiply every other commuting part, including residual, by `1-delta`.
+This preserves closure and positive-part ratios, without dropping rows.
+
+The factor one-half is an agreed preprocessing convention, not an estimate of
+true cycling prevalence. Survey margins establish uncertainty, not that exact
+replacement. Log-ratio inversion recovers the adjusted composition. No structural
+zero model, whole-Scope approval, acceptance of all other proposed transforms,
+student notebook/publication approval or source-data mutation follows. The older
+probe's fixed `1e-5` was exploratory; use this accepted rule for its continuation.
+
+## Zero-rule validation follow-up
+
+Owner `/root/l12_city_transform`, current branch/worktree verified clean at
+`0c621d3` before recording this answer; launch base is the next decision commit.
+Mode worked-solution revision / teacher-only validation using the existing skills.
+Exact allowed writes remain `Lectures/L12_VAE/notebook_geometry/`; coordinator
+alone owns this decision, scope notice, old question pointer and course index.
+Worker is not alone and must not revert or edit any other owner/input/shared file.
+
+Implement the accepted training-derived rule in the current reproducible probe
+and report; regenerate affected current results rather than leaving obsolete
+nominal-policy outputs beside updated code. Preserve original raw evidence through
+its committed input revision. Reuse baseline evidence where practical; no model,
+data, split, architecture or broader transform search. Check value/data provenance,
+closure, positive-part ratios, roundtrip to adjusted data, finite log-ratios,
+and affected fit/reconstruction behavior. Evaluate the accepted value and a small
+declared sensitivity around it; explicitly inspect bicycle reconstructions for
+the two affected rows, not just aggregate loss/rate. Do not select delta by score.
+Retain honest observation-noise versus mean-backtransform labels, source GDP and
+joint climate limitations, and local-only/estimated-time status. Return exact
+diff/input revisions, numeric findings and any actual blocker or teaching issue.
+This validation is unblocked; final pedagogical authoring and shared adoption
+retain their existing gates. No new instructor permission is needed for checks.
 
 Source base `61f113e`, exact data/version and baseline model are in existing
 scope_investigation.md and notebook_feasibility/probe.py. Preserve live VAE/ELBO,

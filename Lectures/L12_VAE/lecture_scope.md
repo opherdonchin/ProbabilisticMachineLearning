@@ -3,8 +3,13 @@
 **Instructor direction, 2026-10-15:** City data are preferred; investigate a fixed
 transformation to unconstrained observation coordinates, a decoder distribution
 there, and inverse-transform generation. The [owning direction/task record](reconciliation/city_transform_direction.md)
-preserves provenance and exact boundaries. Final transforms and zero treatment
-remain unselected. The baseline Gaussian/preprocessing proposal below remains
+preserves provenance and exact boundaries. **Zero replacement accepted in this
+discussion:** use half the smallest positive training bicycle share
+(`delta = 0.0000938790837401425` for the fixed split), replace recorded bicycle
+zeros and proportionally rescale the other commuting parts including residual.
+This is a supplied preprocessing approximation with targeted validation, not
+estimated true prevalence. Other final transforms remain unselected.
+The baseline Gaussian/preprocessing proposal below remains
 evidence, not acceptance of its original-unit support failures. Preserve the
 VAE intellectual contract while testing this route; whole-Scope approval is separate.
 

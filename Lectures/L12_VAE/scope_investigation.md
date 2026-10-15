@@ -3,7 +3,9 @@
 **Current instructor direction, 2026-10-15:** City data preferred; investigate
 unconstrained observation transforms and inverse-map generation before revisiting
 the older application choice. [Owning record](reconciliation/city_transform_direction.md).
-No final transformed model or zero policy is approved. Raw-Gaussian results below
+The half-minimum-positive-training bicycle replacement is now accepted, with
+exact rule/provenance in that owning record and the scope notice. Final acceptance
+of the other transformed-model choices remains open. Raw-Gaussian results below
 retain their exact baseline meaning; they do not show that a transformed city
 model must violate the same constraints. L12-APPLICATION now routes to this
 bounded investigation; L12-GENERATIVE-ENDPOINT remains a separate later question.

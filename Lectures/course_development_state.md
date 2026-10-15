@@ -326,7 +326,7 @@ or merges. Independent course work continues. The instructor selected L09 Challe
 the current discussion; record and active bounded revision are below.
 
 
-## Active L09 application reconciliation; L10 review
+## L09 reconciliation collected; L10 intellectual arc reopened
 
 Instructor answer 2026-10-15: “Use Challenger thermal distress (recommended).”
 Owning direction and Scope/investigation notices:
@@ -367,3 +367,38 @@ source-arc review flags HMC depth and theorem-first ordering as genuine teaching
 tradeoffs. Eight Schools adds a noncentering explanation not yet funded by that
 baseline. Do not re-ask the dataset choice before resolving the instructor's
 coverage concern. L09 revision and other independent work continue.
+
+
+## Active L10 MCMC-for-ML route inquiry
+
+Instructor explicitly reopens the introductory L10 arc in the current discussion:
+departmental undergraduates already had this lecture; some external entrants
+lack the background. Seek a richer Murphy path for MCMC **for machine learning**,
+with the most insight for least unnecessary struggle. A bounded bridge is needed;
+do not preserve the old MH-proof-first scope merely because it exists. Notebook
+Eight Schools/bioassay selection remains deferred until the intellectual route.
+No new algorithm depth, recording, five-part Scope or production is approved.
+
+Owning brief and scope direction notice:
+`rescope/l10-mcmc-for-ml-20261015@24aafc5`,
+`/tmp/pml-l10-ml-rescope-20261015`,
+`Lectures/L10_MCMC/reconciliation/ml_rescope_brief.md`.
+Prior L10 computational evidence remains at0e5a393; current accepted L09
+application/provisional Scope is39dd5dc. Architecture/map changes are later
+consequences to propose if needed, not blockers against the instructor's revision.
+
+Two actual agents launched from24aafc5 in separate worktrees, with exact sole
+writes below; coordinator alone owns the brief/scope notice and this index.
+
+| Owner | Branch / worktree | Sole allowed write |
+|---|---|---|
+| `/root/l10_ml_routes` | `rescope/l10-ml-routes-20261015`; `/tmp/pml-l10-ml-routes-20261015` | `Lectures/L10_MCMC/reconciliation/ml_route_options.md` |
+| `/root/l10_murphy_review` | `review/l10-ml-source-20261015`; `/tmp/pml-l10-ml-source-review-20261015` | `Lectures/L10_MCMC/reconciliation/murphy_source_review.md` |
+
+First owner compares2–3 substantive source-based routes, endpoint/depth/MLtask/
+prerequisite/extent tradeoffs; second reconstructs Murphy/prior-course argument
+independently before seeing those options, then critiques them. This is initial
+Scope inquiry, not frozen Scope, sections/slides or notebook work. No new probes,
+variant search, shared/API/map/environment edits, merges or additional agents.
+Independent course work remains unblocked. Defer instructor route choice until
+there is a concrete, source-grounded comparison; no algorithm is selected yet.

@@ -1,7 +1,7 @@
 # Joint slide-judgment result
 
-Status: bounded collaborative investigation complete; decision-page preference
-recorded, setup-page judgment pending.
+Status: bounded collaborative investigation complete; decision-page and setup-page
+preferences recorded. Joint skill-learning interpretation continues.
 No skill, convention, API or live lecture was edited or adopted. Task envelope
 is brief.md at `1b6434b`; B3 preference and accepted mathematics remain intact.
 
@@ -50,15 +50,19 @@ Provisional learning: make the mathematical relation from decomposition to
 decision directly readable. The chosen realization supplies positive instructor
 evidence for that hypothesis. Generalization remains under joint investigation.
 
-**L01-SETUP-JUDGMENT — presented, awaiting answer.** Compare the same handout's
-pp2/5: named criterion/centered-error groups versus a continuous operation
-sequence. Same B3 mathematics and sequence. Serious options: page2, page5,
-neither/mixed preference. Priority high for distinguishing a relation-specific
-preference from a whole-layout rule. Recommendation: collect this existing
-matched comparison before commissioning new variants. Exactly dependent:
-instructor-guided refinement of reusable design hypotheses and any later proposed
-instruction change. Independent notebook/source work continues. No new renders
-are needed merely to ask this question.
+**L01-SETUP-JUDGMENT — resolved, 2026-10-15.** Instructor selected
+“Page 2 — named groups” in the current discussion. The same handout's pp2/5
+compare named criterion/centered-error groups with a continuous operation sequence,
+preserving B3 mathematics and sequence. Serious options were page2, page5,
+neither/mixed preference. The selected setup and decision come from different
+candidate families: page2 names mathematical inputs/groups; page7 exposes terms
+and consequences. This supports choosing a composition by the specific teaching
+relationship rather than promoting all of A or B. Geometry, wording and hierarchy
+still vary together; this is preference evidence, not a causal test or universal
+rule. Both questions are resolved; do not re-ask them. The joint team can now
+interpret both results and propose minimal instruction/interaction changes.
+Shared-skill promotion retains its separate explicit approval gate. Independent
+notebook/source work continues; no new variants are commissioned.
 
 ## Evidence for the resolved decision pair
 
@@ -76,15 +80,16 @@ available for the subsequent, separate comparison.
 
 Live production remains behind existing approval/validation gates. Independent
 scope/source/notebook research continues. No additional variants are commissioned
-while setup judgment waits.
+without a new material uncertainty and bounded commission.
 
 ## Bounded feedback follow-up
 
 Design and Organization may update only their existing owned reports on their
-respective clean branches after the collected commits above. Input: this exact
-instructor answer and the frozen `314f31e` renders. Return a short interpretation
+respective branches after the collected commits above, preserving current owned
+follow-up changes. Input: both exact instructor answers and the frozen
+`314f31e` renders. Return a short interpretation
 of what is supported, what remains confounded, and consequences for skill
 interaction; do not edit the rendered alternatives, shared skills or contracts.
-The setup answer is not required for this limited interpretation; mark it pending.
+Both judgments are available; no further answer is needed for this interpretation.
 No new variant, production, universal rule or adoption is authorized. Coordinator
 owns this record and instructor questions. All earlier disjoint ownership holds.

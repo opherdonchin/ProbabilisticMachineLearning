@@ -518,3 +518,45 @@ runtime/env changes, student notebook production, full-Scope rebuild or merges.
 Pedagogy specimen is for alignment and does not establish one-hour timing or
 complete notebook approval. Keep exact raw evidence and provenance in owning
 reports. Root alone updates this routing index.
+
+L06 direction record returned at `f71ba6a`, three assigned files only, clean.
+Notebook-pedagogy specimen returned in its sole report; it is a proposed alignment
+example, not an approved exemplar or mature authoring process. No dedicated
+notebook agent profile exists: this work uses general subagents instructed with
+the notebook skills. The inherited skills and L01 draft are evidence, not proof
+of instructor acceptance or teaching/runtime validation.
+
+Instructor clarification, 2026-10-16: computational goals are an appropriate
+level for notebook scoping. The concern is a coding-centered independent-work
+scope with theoretical/interpretive questions appended around it. The guided
+notebook instead needs a **sturdy, focused computational/intellectual spine**
+that supports integrated theoretical and technical development through local
+steps. Do not replace computational scope with a premature exercise outline,
+or describe the correction as merely increasing question count/scaffolding.
+Judge breadth and competing activities by their contribution to that spine.
+L06 owner resumes the same three-file boundary at `f71ba6a` to record this
+criterion; pedagogy reviewer resumes its sole report to assess/specify the
+proposed spine and how its specimen serves it. Neither changes a skill or grants
+whole-notebook approval; background source/technical checks retain their owners.
+
+Latest L06 direction record `b32ac56` collects the clarified computational-spine
+criterion. The pedagogy report is proposed alignment evidence only; coordinator
+preserves it on its review branch without treating it as an approved exemplar.
+AIS separate seeded review is committed at `b3dbed6`: no algorithm blocker;
+selective replay passed, two author-owned source-index/timer wording repairs.
+Oke package/source review returned at `6e85c6c`: source/API/noise-law issues and
+a no-observation forecast-covariance concern need author validation; no package
+runtime was claimed and no instructor choice is needed to check correctness.
+
+Background task `l08_package_repair_validation`, worked-solution bounded
+validation, owner `/root/l10_ais_contract`, branch
+`validate/l08-package-repair-20261016`, worktree
+`/tmp/pml-l08-package-repair-20261016`, input `6e85c6c`. Sole writes
+`Lectures/L08_Structured_Inference/notebook_feasibility/oke_package_checks/`.
+Reproduce the reported missing-observation covariance issue against pinned
+upstream source, validate the smallest source-preserving correction and explain
+the correlated-noise Gaussian conditioning bridge. Preserve the Oke workflow;
+no model replacement, source-Oke/installed-package edits, dependency changes,
+student notebook, fullScope or maps/skills/merges. Use existing NumPy/SciPy for
+analytic/oracle checks; state clearly when the package itself cannot execute.
+Commit code/raw evidence/report. Coordinator continues L11-NETWORK-ROLE review.

@@ -55,10 +55,22 @@ portable):
 
 ## Current routing
 
-No delegated task remains running. Base revisions, owners, input objects, allowed
-writes and raw results live in the current reports linked below; finished task
-envelopes are removed from this index. All three actual task diffs passed their
-disjoint write boundaries. No task changed an approved artifact.
+L02-Q1 is resolved by the instructor's 2026-10-15 answer, “I think the notebook
+will be sufficient without the expansion.” Accepted record: isolated continuation
+`resume/l02-notebook-contract-20261015@c8e9b2a`, Section 8 Notebook handoff and
+lecture-local `development_state.md`. Required endpoint remains fit/inspect/
+score/generate; held-out baseline comparison and failed-output diagnosis optional.
+The new decision authorizes this limited contract clarification, not whole-Scope
+or design approval. The earlier three assessment diffs passed their boundaries.
+
+| Active task / owner | Base, branch/worktree | Allowed writes / deliverable | Dependencies and status |
+|---|---|---|---|
+| L02-WORKED-SOLUTION / `/root/l02_worked_solution` | `c8e9b2a`; `resume/l02-notebook-contract-20261015`; `/tmp/pml-l02-notebook-contract-20261015` | `InClass/Preparation/lecture2_bigram_worked_solution.py`, `lecture2_bigram_worked_solution_handoff.md`, optional `figures/lecture2_bigram_counts.svg`; `Lectures/L02_Exponential_Families/reconciliation/notebook_worked_solution_result.md` | Q1 recorded: unblocked and actually delegated. Executed teacher example and handoff, no expanded required evaluation, no Q&A/student notebook. Worker never edits contracts/register/maps. |
+| L02-PLAN-SYNC / `/root/l02_plan_sync` | `61f113e`; `sync/l02-notebook-plan-20261015`; `/tmp/pml-l02-notebook-plan-20261015` | `course_architecture.typ`, `course_architecture.pdf`, `curriculum_map.typ`, `curriculum_map.pdf` only | Q1 resolved; actually delegated L02-only wording sync and matching PDF regeneration, preserving all other lecture decisions. Independent of worked-solution execution. |
+
+Root alone updates the accepted contract/register, this index and the resolved
+question pointer. Source investigation worktrees remain unchanged except the
+question report's resolution pointer. No experimental skill or slide is in scope.
 
 New follow-ups require an authorized envelope and a fresh ownership check. The
 current request authorizes bounded execution of work actually unblocked by an
@@ -83,18 +95,14 @@ slide acceptance or Q1 answer was needed. It is not a validated student notebook
   questions/evidence stay in their owning `scope_investigation.md` files. Its
   prior coding-versus-Iris endpoint question is resolved by the documented Iris
   selection; do not reopen it from older kickoff files.
-- **P1 / L02-Q1 — notebook evaluation contract:** early-course
-  handoff readiness/rework priority. Owning question/options/recommendation and
+- **Resolved / L02-Q1 — notebook evaluation contract:** owning question/options and
   source evidence: [current L02 review](/tmp/pml-l02-course-review-20261014/Lectures/L02_Exponential_Families/reconciliation/course_review.md#l02-q1--notebook-evaluation-contract),
   branch `reconcile/l02-course-review-20261014`, commit `9e02665`, path
   `Lectures/L02_Exponential_Families/reconciliation/course_review.md`.
-  Status: collected from actual agent return, awaiting instructor. Only adding
-  required held-out independent-character
-  comparison/failed-output diagnosis to the notebook contract and its dependent
-  final production wait. Existing baby-name reference selection is not reasked.
-  Source/asset/extent verification can continue; corpus-independent technical
-  checks completed. Accepted
-  live Time Machine/Gamma/section-count commitments are not reopened.
+  Resolution: existing endpoint retained; authoritative answer recorded at
+  `c8e9b2a` in the isolated L02 continuation. Worked solution is now dispatched;
+  publication and full lecture/notebook approvals remain separate. Existing
+  baby-name reference and live Time Machine/Gamma/section-count commitments stay.
 - L03 returned **no new instructor question**. [Current recovery/source check](/tmp/pml-l03-course-review-20261014/Lectures/L03_Graphical_Models/reconciliation/course_review.md),
   `reconcile/l03-course-review-20261014@ce02104`, path
   `Lectures/L03_Graphical_Models/reconciliation/course_review.md`, owns the exact
@@ -102,16 +110,16 @@ slide acceptance or Q1 answer was needed. It is not a validated student notebook
   Do not carry forward its discharged missing-edge blocker or turn extent risk
   into a demonstrated overrun. Full Section Design acceptance remains pending;
   no new source/extent/ICM task is currently dispatched.
-- No answer or complete-artifact approval is inferred from this test. Review order puts
-  this early notebook handoff ahead of later group choices because the imminent
-  prerequisite/assignment contract is unresolved; later queue priorities remain
-  owned by their session. Reassess urgency when review is actually requested.
+- L01-LOSS-LAYOUT is now the single presented instructor question, via an async
+  request on 2026-10-15. B3 separates decomposition and decision across three
+  slides; A2-vertical is the denser two-slide alternative. Both have six target
+  reveal states; timing is unmeasured. No answer or skill adoption inferred.
 
 Local worktree links are conveniences; the stated Git revisions/paths are the
 portable evidence references (`git show <revision>:<path>`). On an answer, the
 owning scope/contract and lecture register receive its provenance; this index
-retains only a resolution/handoff pointer. No instructor answer has been given
-  during this integration and no dependent production has been resumed.
+retains only a resolution/handoff pointer. The L02 technical worked-solution
+stage has resumed; no student notebook or live deck has been promoted.
 
 ## Integrated review order and deduplication
 
@@ -124,7 +132,7 @@ assumed and no proposal is promoted by this order.
 
 | Order | Owning decision(s) | What an answer unblocks / distinction |
 |---|---|---|
-| 1 | L02-Q1, linked review at `9e02665` | Required notebook evaluation handoff and bounded worked-solution commission. Retain baby-name reference and live Time Machine commitments. |
+| Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; bounded worked solution dispatched. |
 | 2 | L01-LOSS-LAYOUT, experiment report at `2c1b7fa` | Selected loss arrangement: B3 versus A2-vertical; counts/time tradeoff. Does not adopt the skill patch or approve the rest of L01. |
 | 3 | L01-GAUSSIAN-LAYOUT, same report | Result-first A versus derivation-first C. Full standalone artifacts still need the independent wrapper correction. |
 | 4 | L01-SKILL-ADOPTION, same report/Phase2 | Explicit decision on narrow revision and provisional adoption. Keep frozen evidence intact; do not make this a prerequisite of other scope/notebook work. |
@@ -148,9 +156,9 @@ this index does not invent decisions before a coherent proposal is ready.
 
 ## L02-Q1 record and resumption boundary
 
-Status: awaiting the instructor's first answer in integration mode. Record that
-answer with current-discussion provenance in the existing **Section 8 Notebook
-handoff** of L02 `section_design.md`, and in its owning `development_state.md`.
+Status: answer recorded, existing endpoint retained. Current-discussion provenance
+is in **Section 8 Notebook handoff** of L02 `section_design.md`, and its owning
+`development_state.md`, at `c8e9b2a` in the isolated continuation.
 That handoff is the current detailed contract; no separate approved five-part
 L02 Scope exists. Use an isolated continuation from the recovered authoritative
 fix revision `6872177`, not the corrupted/stale L02 files in this index branch.
@@ -158,13 +166,12 @@ Modify only the accepted notebook requirement; preserve live mathematics,
 section organization and historical approval evidence. Link the resolved item
 here and in the owning question report; do not replace the raw recovery findings.
 
-After recording an answer, reserve a disjoint bounded worked-solution task through
-the existing skill, with base/input versions, owner, allowed writes, output and
-validation gates. For the recommended option: supply dataset/split/boundary and
-scoring infrastructure; validate held-out baseline comparison plus failure
-diagnosis while retaining fit/score/generate. Zero-probability MLE failures must
-remain visible; any finite-score comparator must be explicitly identified.
+The disjoint worked-solution task is reserved above using the existing skill.
+Its input is the retained fit/inspect/score/generate endpoint, not the rejected
+required evaluation expansion. Supply data/boundary/scoring infrastructure;
+zero-probability MLE behavior must be technically honest without turning it into
+an additional required student diagnosis or silently selecting smoothing.
 Collect an executed technical result and report before opening the next question.
 Q&A/student notebook production, whole-Scope acceptance, local/hosted notebook
 validation, publishing and merges retain their separate gates. No worked-solution
-task is launched before the endpoint answer.
+task was launched for implementation until the endpoint answer was recorded.

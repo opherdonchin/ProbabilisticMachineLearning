@@ -29,6 +29,45 @@ zero model, whole-Scope approval, acceptance of all other proposed transforms,
 student notebook/publication approval or source-data mutation follows. The older
 probe's fixed `1e-5` was exploratory; use this accepted rule for its continuation.
 
+## Required generation and critique — accepted 2026-10-15
+
+Instructor selected “Require generation and critique; replace the extra traversal
+(recommended)” in the current discussion. Required notebook encounter: compare
+reconstruction of observed cities, decoder means from prior latent draws, and
+full prior-generated observations including observation noise and the complete
+inverse observation map. Include one supplied model-criticism diagnostic, with
+support compliance distinguished from plausible joint city relationships.
+Replace the optional extra latent traversal; do not append a second student fit
+or a new likelihood/Jacobian implementation exercise. The one-hour envelope and
+accepted ELBO/pathwise/rate-not-MI commitments remain. Exact activity allocation
+still needs feasibility review; this acceptance is not measured learner time,
+approval of every transform, whole-Scope acceptance or publication permission.
+L12-GENERATIVE-ENDPOINT is resolved; do not re-ask it.
+
+## Bounded receiving-workload preview
+
+Owner `/root/l12_notebook_preview`, Section Design / feasibility-review, separate
+isolated `review/l12-notebook-contract-20261015` worktree
+`/tmp/pml-l12-notebook-contract-review-20261015`. Base will be the committed
+accepted scope and returned zero-rule validation revision, recorded before launch.
+Exact sole write: `Lectures/L12_VAE/reconciliation/notebook_contract_feasibility.md`.
+All other branches/inputs are read-only; reviewer is not alone and must not
+revert peers, change the Scope or author sections/slides/notebook questions/code.
+
+Read the current five-part scope with its limited accepted changes, source/actual
+student-knowledge/timing records, and current computational assessment. Check
+whether the receiving explanation and required one-hour encounter can coexist
+with the live intellectual contract. Identify student-written versus supplied
+work, prerequisite refresh, protected comparison/critique and funding from the
+removed traversal. Distinguish conditional later-course prerequisites and rough
+time estimates from actual learner evidence. Offer smallest allocation/supply
+repairs; do not silently weaken required mathematics or add full derivations.
+Return feasible/with-risks/blocked, exact target revision, owning severity and
+minimum repair, remaining gates and only genuine instructor decisions. This is
+a bounded preview, not full Section Design, independent technical validation,
+notebook production, approval or a timed pilot. Source/math/runtime checks and
+other course work can continue independently.
+
 ## Zero-rule validation follow-up
 
 Owner `/root/l12_city_transform`, current branch/worktree verified clean at

@@ -119,6 +119,15 @@ The cumulative student-knowledge file contains entry/L01 state, so scoped L05/L0
 
 ### L12-GENERATIVE-ENDPOINT — required generation encounter
 
+**Resolved, current discussion 2026-10-15:** instructor selected “Require
+generation and critique; replace the extra traversal (recommended).” The owning
+scope Part 3 and contract now require the three-way comparison plus one supplied
+criticism diagnostic. [Decision and follow-up boundary](reconciliation/city_transform_direction.md).
+The earlier raw-Gaussian evidence below retains its source meaning; current
+transformed-model evidence is in notebook_geometry/assessment.md. No whole-Scope,
+transform-bundle, student-time or publication approval follows. The old options
+below are retained as decision evidence, not an unanswered question.
+
 **Status:** awaiting instructor decision; owner Lecture Scope. Eventual accepted answer belongs in [lecture_scope.md](lecture_scope.md).
 
 **Question:** Should the notebook protect one supplied comparison of reconstruction, prior decoder means and full prior observation draws—including domain failures—by replacing the optional secondary traversal?

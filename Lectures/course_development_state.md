@@ -193,8 +193,8 @@ assumed and no proposal is promoted by this order.
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
 | Resolved; joint interpretation collected | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
-| Direction recorded; evidence under review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Candidate probes returned; independent technical audit running. Datasets/families unselected. L09 comparison will be reformulated after selection. |
-| Current review | L12-APPLICATION, then L12-GENERATIVE-ENDPOINT | Choose the application/model performance contract before its required display. Related, not duplicate: generation can remain required even when it exposes domain failure. |
+| Direction recorded; technical review collected | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Candidate probes and independent technical audit returned; teaching continuity remains to reconcile. Datasets/families unselected. L09 comparison will be reformulated after selection. |
+| Direction recorded; investigating | L12-APPLICATION, then L12-GENERATIVE-ENDPOINT | City preferred; fixed unconstrained observation transforms under investigation. Required generation display remains a separate later contract. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |
 | 9 | L11-NETWORK-ROLE | Funded model/inference-network bridge and conditional L12 entry knowledge. |
@@ -249,14 +249,35 @@ no dataset/model/family/sampler is selected and no student notebook is approved.
 Their reports own findings, raw failures, candidate hour budgets and limitations.
 Architecture/maps and unrelated live commitments remain unchanged.
 
-Active independent reviewer `/root/inference_geometry_review`: branch
-`review/inference-geometry-20261015`, worktree
-`/tmp/pml-inference-geometry-review-20261015`, base `aa464c8`. Exact sole write:
+Independent review completed at `review/inference-geometry-20261015@dcf2a81`,
+`/tmp/pml-inference-geometry-review-20261015`, owning
 `Lectures/course_architecture_scope/reconciliation/notebook_geometry/technical_review.md`.
-Inputs are the three returned branches at stated revisions, read-only. Envelope
-in the owning joint record limits selective scratch replays, model/reference/
-VI/MCMC technical checks and family continuity. No new candidate search, scope
-approval, learner-time/Colab claim, shared environment/skill/map edits or merges.
-Final selection/affected Scope handoffs await reviewed evidence and instructor
-choice; independent source work continues. L12-APPLICATION is the next ready
-instructor question while these technical checks and slide interpretation run.
+Verdict feasible-with-risks, no blocking technical defect. Exact replay evidence
+and qualifications remain in that report; joint owner collected its pointer.
+No reviewer remains active. Family continuity (L09 student diagonal versus L10
+supplied full Gaussian) and task-error requirements need teaching reconciliation
+before final candidate selection. No whole Scope or learner/Colab approval.
+
+## Active city observation-transform investigation
+
+Instructor 2026-10-15 prefers city data and proposes encode/decode in unconstrained
+observation coordinates followed by an inverse transformation. Authoritative
+L12 scope notice and direction/envelope:
+`investigate/l12-city-transform-20261015@3919d6a`, worktree
+`/tmp/pml-l12-city-transform-20261015`,
+`Lectures/L12_VAE/reconciliation/city_transform_direction.md`.
+Final transform/zero policy and whole Scope remain unselected. The earlier
+raw-Gaussian support failures are not evidence against a transformed model.
+Do not re-ask city versus digits while this route is investigated.
+
+Actual worker `/root/l12_city_transform`, same isolated branch/worktree, base
+`3919d6a`. Exact allowed write prefix `Lectures/L12_VAE/notebook_geometry/`;
+coordinator alone owns the scope notice/direction and existing question pointer.
+Bounded deliverable: one fixed-transform route with source/domain audit, correct
+Jacobian bookkeeping, explicit treatment of two recorded zero bicycle shares,
+compact actual VAE fit and full inverse-transformed generation checks where
+justified, plus proposed student/supplied workload. No hidden replacement/data
+pruning, final student notebook, shared skill/API/map/environment writes, merges
+or publication. All other source artifacts are read-only. Exact report will own
+results and unresolved questions. L12 generation-display depth is a later
+separate choice; independent course work remains free to proceed.

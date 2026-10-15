@@ -426,3 +426,53 @@ or publishing in either assignment. The scope record may complete independently
 of the pilot; the pilot must not treat student-time estimates as measured or a
 passing local script as hosted Colab validation. Continue one-at-a-time review
 while these tasks run; collect results by their returned revisions.
+
+Collected AIS direction record: `resume/l10-ais-selection-20261015@017144c`;
+the owning L10 `development_state.md` and Scope notice retain the exact limited
+acceptance. Scope writer completed; computational pilot returned for coordinator
+boundary/source/result review and commit, not accepted as a student notebook.
+
+## L08 Gaussian transfer direction — delegated record, 2026-10-15
+
+Instructor clarification in replacement discussion: the PS2 sheet is from Oke's
+course; the materials are available and the named notebook may be obtainable
+from him. This authorizes no message to Oke. The instructor supports extending
+the categorical-HMM logic to Gaussian time series in the notebook, conditional
+on the lecture's categorical focus. Current baseline actually contains a short
+Kalman comparison, not a derived Gaussian smoother. Detailed live Gaussian
+depth, student/supplied allocation, learned versus specified parameters, final
+dataset/model and whole-Scope acceptance remain open.
+
+Task `l08_gaussian_contract`, Lecture Scope/revision, owner
+`/root/l10_ais_contract` (reused specialist, new bounded assignment), base
+`61f113e`, branch `resume/l08-gaussian-handoff-20261015`, worktree
+`/tmp/pml-l08-gaussian-handoff-20261015`. Sole writes:
+`Lectures/L08_Structured_Inference/lecture_scope.md` (controlling notice only),
+`Lectures/L08_Structured_Inference/development_state.md`, and
+`Lectures/L08_Structured_Inference/reconciliation/gaussian_handoff.md`.
+Record exact limited acceptance and source provenance, explain lecture→notebook
+transfer and keep N4SID fitting separate from state inference. No full Scope,
+RTS implementation, new pilot, student notebook, maps, shared skills, env edits,
+messages or merges. The owning report must state that the earlier seasonal pilot
+was an agent's post hoc same-period exploration, and contains no backward smoother.
+Commit the bounded record; coordinator continues discussion without waiting.
+
+L08 direction/source records returned at `be30791` (preceded by `ea19ab4`).
+Both Oke forecasting notebooks are available in the parent PS2 folder; current
+source records correct the earlier narrow-search absence claim. The original
+source remains unchanged. Instructor steering 2026-10-16 now explicitly selects
+an **existing-notebook-first, package-backed mathematical walkthrough**: students
+can work through equations/computational reasoning, call the prepared package,
+and check whether its results make sense. Reimplementing a package is not a
+default learning requirement. Start with Oke's actual notebook and modify it as
+concrete teaching needs emerge; do not replace it with the agent's seasonal
+prototype merely to expose code. Fitting can remain a prepared package call;
+detailed N4SID theory, smoothing and whole-notebook/timing approval are separate.
+
+Resume `l08_gaussian_contract` on the same branch/worktree, input `be30791`,
+owner `/root/l10_ais_contract`, same three-file write reservation. Deliverable:
+record the accepted authoring approach and a compact provisional map from Oke's
+actual source cells to mathematical walkthrough, package calculation and student
+interpretation/check. No rewritten/student notebook, runtime/env work, new model,
+new required smoother, section/slide work, source-file edits or merges. Correctness
+repairs remain author-owned. Commit the bounded handoff update in the background.

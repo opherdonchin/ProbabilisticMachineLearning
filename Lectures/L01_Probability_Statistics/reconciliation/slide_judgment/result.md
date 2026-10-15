@@ -1,6 +1,7 @@
 # Joint slide-judgment result
 
-Status: bounded collaborative investigation complete, instructor judgment pending.
+Status: bounded collaborative investigation complete; decision-page preference
+recorded, setup-page judgment pending.
 No skill, convention, API or live lecture was edited or adopted. Task envelope
 is brief.md at `1b6434b`; B3 preference and accepted mathematics remain intact.
 
@@ -35,7 +36,31 @@ tie inferred preferences to exact instructor comparisons as hypotheses and test
 their limits on a distinct teaching move before proposing a convention. Existing
 skills already require semantic grouping, actual renders and counteroffers.
 
-## Deferred instructor judgment
+## Instructor judgment and remaining comparison
+
+**L01-RELATION-JUDGMENT — decision pair resolved, 2026-10-15.** Instructor's
+exact answer in the current discussion: “I would say that page 7 is much clearer.”
+This prefers B's decision explanation over A's decision explanation in the exact
+committed handout pair. It does not approve all of B, the setup arrangement,
+production promotion or a shared skill/convention revision. Term attachment,
+consequence alignment and subordinate Gaussian emphasis vary together; the
+answer does not isolate a causal explanation or approve a universal template.
+
+Provisional learning: make the mathematical relation from decomposition to
+decision directly readable. The chosen realization supplies positive instructor
+evidence for that hypothesis. Generalization remains under joint investigation.
+
+**L01-SETUP-JUDGMENT — presented, awaiting answer.** Compare the same handout's
+pp2/5: named criterion/centered-error groups versus a continuous operation
+sequence. Same B3 mathematics and sequence. Serious options: page2, page5,
+neither/mixed preference. Priority high for distinguishing a relation-specific
+preference from a whole-layout rule. Recommendation: collect this existing
+matched comparison before commissioning new variants. Exactly dependent:
+instructor-guided refinement of reusable design hypotheses and any later proposed
+instruction change. Independent notebook/source work continues. No new renders
+are needed merely to ask this question.
+
+## Evidence for the resolved decision pair
 
 **L01-RELATION-JUDGMENT.** Priority high: earliest live deck and reusable workflow,
 but no known teaching deadline. Owner: instructor preference evidence for joint
@@ -49,7 +74,17 @@ do not promote a layout or rule from specialist agreement alone. Evidence is
 the exact committed D3/render sources above; setup pp2/5 and transfer remain
 available for the subsequent, separate comparison.
 
-Exactly waiting: instructor-guided refinement of these hypotheses and any
-proposed skill/convention adoption. Live production remains behind its existing
-approval/validation gates. Independent scope/source/notebook research continues.
-No additional variants are running or commissioned while this judgment waits.
+Live production remains behind existing approval/validation gates. Independent
+scope/source/notebook research continues. No additional variants are commissioned
+while setup judgment waits.
+
+## Bounded feedback follow-up
+
+Design and Organization may update only their existing owned reports on their
+respective clean branches after the collected commits above. Input: this exact
+instructor answer and the frozen `314f31e` renders. Return a short interpretation
+of what is supported, what remains confounded, and consequences for skill
+interaction; do not edit the rendered alternatives, shared skills or contracts.
+The setup answer is not required for this limited interpretation; mark it pending.
+No new variant, production, universal rule or adoption is authorized. Coordinator
+owns this record and instructor questions. All earlier disjoint ownership holds.

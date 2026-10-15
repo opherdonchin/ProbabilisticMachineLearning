@@ -128,10 +128,12 @@ slide acceptance or Q1 answer was needed. It is not a validated student notebook
   Do not carry forward its discharged missing-edge blocker or turn extent risk
   into a demonstrated overrun. Full Section Design acceptance remains pending;
   no new source/extent/ICM task is currently dispatched.
-- L01-LOSS-LAYOUT is now the single presented instructor question, via an async
-  request on 2026-10-15. B3 separates decomposition and decision across three
-  slides; A2-vertical is the denser two-slide alternative. Both have six target
-  reveal states; timing is unmeasured. No answer or skill adoption inferred.
+- L01-LOSS-LAYOUT: instructor response, 2026-10-15, “B3 is much better, if I've
+  understood things,” followed by unresolved layout concerns. B3 is the preferred
+  teaching sequence; visual acceptance and production promotion remain open.
+  Current request is a read-only comparison of experiment comparison.pdf pp.7/11
+  with actual L01 slide_deck.pdf pp.58–61. No candidate or skill revision is
+  commissioned by that comparison request. Preserve the frozen experiment.
 
 Local worktree links are conveniences; the stated Git revisions/paths are the
 portable evidence references (`git show <revision>:<path>`). On an answer, the

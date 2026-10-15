@@ -194,7 +194,7 @@ assumed and no proposal is promoted by this order.
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
 | Resolved; joint interpretation collected | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
 | Direction recorded; technical review collected | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Candidate probes and independent technical audit returned; teaching continuity remains to reconcile. Datasets/families unselected. L09 comparison will be reformulated after selection. |
-| Direction recorded; investigating | L12-APPLICATION, then L12-GENERATIVE-ENDPOINT | City preferred; fixed unconstrained observation transforms under investigation. Required generation display remains a separate later contract. |
+| Zero rule accepted; current review | L12-APPLICATION / L12-GENERATIVE-ENDPOINT | City preference and training-derived half-minimum zero replacement recorded; validation running. Required generation/critique versus extra latent traversal is presented separately. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |
 | 9 | L11-NETWORK-ROLE | Funded model/inference-network bridge and conditional L12 entry knowledge. |
@@ -258,7 +258,7 @@ No reviewer remains active. Family continuity (L09 student diagonal versus L10
 supplied full Gaussian) and task-error requirements need teaching reconciliation
 before final candidate selection. No whole Scope or learner/Colab approval.
 
-## City observation-transform evidence returned
+## City observation-transform evidence and active zero-rule validation
 
 Instructor 2026-10-15 prefers city data and proposes encode/decode in unconstrained
 observation coordinates followed by an inverse transformation. Authoritative
@@ -266,7 +266,7 @@ L12 scope notice and direction/envelope:
 `investigate/l12-city-transform-20261015@3919d6a`, worktree
 `/tmp/pml-l12-city-transform-20261015`,
 `Lectures/L12_VAE/reconciliation/city_transform_direction.md`.
-Final transform/zero policy and whole Scope remain unselected. The earlier
+The zero policy is now accepted below; other final transform choices and whole Scope remain unselected. The earlier
 raw-Gaussian support failures are not evidence against a transformed model.
 Do not re-ask city versus digits while this route is investigated.
 
@@ -286,6 +286,19 @@ support constraints, while climate relationships remain poorly reproduced;
 source GDP monetary units remain unverified. Two bicycle zeros were traced to
 ACS estimates with nonzero margins of error; explicit replacement and sensitivity
 were tested as a continuous approximation. This is builder evidence pending
-independent review, not final model/Scope approval. The instructor currently asks
-about standard zero handling, not an epsilon-selection or final-policy decision. L12 generation-display depth is a later
-separate choice; independent course work remains free to proceed.
+independent review, not final model/Scope approval. Instructor accepted the concrete half-minimum training rule in the current
+discussion, exact provenance at `c0a2a4f` in the owning L12 direction, scope and
+investigation notices. Use half the smallest positive TRAINING bicycle fraction;
+fixed split gives delta .0000938790837401425. This is an accepted supplied
+preprocessing convention, not estimated prevalence or whole-model approval.
+
+Active `/root/l12_city_transform` follow-up: same isolated branch/worktree, base
+`c0a2a4f`; sole write prefix remains `Lectures/L12_VAE/notebook_geometry/`.
+The owning direction record bounds update of current probe/report/results and
+small sensitivity with explicit bicycle reconstructions, no model/transform
+search. Coordinator alone writes scope/direction/index. Previous0c621d3 owns
+initial experimental evidence. No student authoring, shared/map/env edits or
+merges. L12-GENERATIVE-ENDPOINT is now presented concurrently: protect full
+observation generation/critique by replacing the optional extra traversal, or
+keep generation removable. That teaching choice is unanswered; its resolution
+is not needed for the authorized zero-rule technical checks.

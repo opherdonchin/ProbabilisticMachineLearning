@@ -162,9 +162,10 @@ No skill/API/live lecture edits or promotion. This is guided joint learning, not
 an independent review, timing validation or instructor acceptance. Both matched judgments are now resolved in `slide_judgment/result.md` at
 `experiment/slide-judgment-20261015@0495b9e`: instructor prefers decision p7 and
 setup p2. No whole-layout or shared-skill approval follows. Organization and
-Design are updating only their existing reports with the combined interpretation;
-this unblocks joint learning, not new variants or production. Their current
-branches/worktrees and report-only reservations above remain in force.
+Design completed report-only interpretation at `db35126` and `1ec557d`.
+The owning root result collects both judgments and the minimal protocol proposal.
+No slide follow-up remains active; new variants, production and shared-skill
+adoption are not implied. The background technical notebook audit continues.
 
 Track unresolved alignment as a limitation on affected slide production, with
 instructor review and behavioral validation before broad reliance. No evidence
@@ -191,7 +192,7 @@ assumed and no proposal is promoted by this order.
 |---|---|---|
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
-| Resolved; joint interpretation running | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
+| Resolved; joint interpretation collected | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
 | Direction recorded; evidence under review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Candidate probes returned; independent technical audit running. Datasets/families unselected. L09 comparison will be reformulated after selection. |
 | Current review | L12-APPLICATION, then L12-GENERATIVE-ENDPOINT | Choose the application/model performance contract before its required display. Related, not duplicate: generation can remain required even when it exposes domain failure. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |

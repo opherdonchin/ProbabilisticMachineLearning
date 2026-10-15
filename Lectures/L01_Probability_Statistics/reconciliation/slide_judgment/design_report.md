@@ -1,8 +1,8 @@
 # Design report: joint slide judgment
 
-Status: exploratory D3 consolidated after actual prototype inspection and one
-bounded relation-attachment repair. Ready for coordinator/instructor comparison;
-no visual acceptance is claimed.
+Status: exploratory D3 complete; exact setup and decision preferences recorded
+on 2026-10-15. Both comparisons are resolved. No whole-variant approval,
+production promotion or skill adoption is claimed.
 Owner: Design. Worktree `/tmp/pml-slide-judgment-design-20261015`, branch
 `experiment/slide-judgment-design-20261015`, task base `1b6434b`.
 Only `design/` and this report are owned. No production approval, shared skill/API
@@ -112,8 +112,9 @@ within A's mathematical object. No count or depth pressure followed.
 A final setup makes criterion and centering locatable as named objects; its
 expansion is intact and visibly their consequence below. A decision distinguishes
 general action/minimum from Gaussian use. Its equally large named headings still
-make the specialization prominent; whether this prominence is helpful remains
-an instructor question. New support stays visible through averaging; the zero
+make the specialization prominent. The later instructor preference below
+disfavors A as a bundle in this decision comparison; the effect of prominence
+alone remains unresolved. New support stays visible through averaging; the zero
 cross-term and trace identification are new proof work, not mislabeled recall.
 
 B setup has a continuous centering/squaring path with local operation cues. It
@@ -132,7 +133,8 @@ and keeps the application label subordinate. Design accepts this as a faithful
 realization of the provisional relation. The positivity condition is explicitly
 encoded as ‘nonnegative; zero iff a=m’ on the norm term, replacing its separate
 ≥0 line. D3 records this Design-owned equivalent selection, not an accidental
-omission. Braces being useful or aesthetically preferred remains instructor-owned.
+omission. The later preference for this rendered bundle does not isolate whether
+braces themselves help or are aesthetically preferred.
 
 Transfer final state retains the joint distribution, all model-specific blocks,
 both general conditioning formulas, explicit substitution, posterior density and
@@ -155,26 +157,96 @@ requiring columns, underbraces, larger headings or borders.
 The smallest proposed instruction change is one sentence in the coupled
 interaction protocol, for coordinator review only:
 
-> When investigating instructor visual preferences, keep each proposed principle
-> tied to the instructor's exact comparison as a hypothesis, and test its limits
-> on a different mathematical teaching move before proposing a convention change.
+> Record each instructor preference against the exact mathematical teaching move
+> and rendered state; allow mixed composition choices within a sequence, and name
+> co-varying changes before proposing a skill rule.
 
-The interaction change is a compact paired judgment prompt attached to actual
-states: which realization makes the intended inference easier to follow, and
-which specific relationship remains hard to read? Include the actual predecessor
-and the Gaussian counterexample to transferring term labels. This solicits
-instructor evidence about an explanation, rather than a vague density verdict.
-It adds no per-slide checklist or persistent stage gate. No shared instructions
-were changed; inherited experimental skill wording remains unaccepted.
+The actionable interaction change is to record judgments per mathematical move,
+not use them as a ballot for an entire variant family. Organization supplies the
+inference/endpoint; Design may choose different compositions within one sequence;
+Authoring checks actual correspondences; the coordinator records the instructor's
+exact pair-specific preference and its unresolved confounds. A different move,
+such as the existing Gaussian transfer, bounds what a hypothesis could mean;
+it supplies no instructor preference unless one was obtained. This adds no new
+prototype or per-slide gate. No shared instructions were changed; inherited
+experimental skill wording remains unaccepted.
 
-## Instructor-owned unresolved choices
+## Instructor feedback: exact comparisons
 
-Which realization better exposes the argument; whether the Gaussian application
-needs A’s prominent named region or B’s subordinate mapping; whether B’s term
-annotations help students read an intact equality; whether B setup’s operation
-cues sufficiently improve on the earlier centered stack. These are concrete visual judgments for
-the coordinator to bring to the instructor after actual renders. Agent agreement
-cannot settle them or establish classroom effectiveness and timing.
+**L01-RELATION-JUDGMENT, 2026-10-15.** The instructor answered:
+
+> I would say that page 7 is much clearer.
+
+Provenance: current instructor discussion, relayed through the coordinator and
+recorded in `/tmp/pml-slide-judgment-20261015/Lectures/L01_Probability_Statistics/reconciliation/slide_judgment/result.md`
+at commit `dd379ef` (“Record instructor preference for term-linked decision
+explanation”). The compared artifact is Authoring commit `314f31e`,
+`production/risk_variants_handout.pdf`, exact SHA256
+`6e1fd7a3f1962d5f5199e771869337866c1f12c730cb26d64995e76242491d1b`:
+one-based p4 is A’s static decision; p7 is B’s static decision. These correspond
+to presentation p7/p13, not to the frozen density experiment’s comparison.pdf p7.
+Authoring’s clean commit and the handout hash were rechecked for this follow-up.
+No new render, contract change or alternative was commissioned.
+
+**L01-SETUP-JUDGMENT, 2026-10-15.** The instructor selected:
+
+> Page 2 — named groups
+
+The coordinator's same `result.md` records this answer and both resolved
+judgments at commit `0495b9e` (“Record preference for named setup groups and
+relate both judgments”). It compares the same frozen `314f31e` handout pp2/5:
+p2 is A’s named criterion/centered-error setup; p5 is B’s continuous operation
+setup. Both retain criterion, centering and intact expansion. This is a separate
+choice from decision pp4/7; no further answer is needed for the bounded analysis.
+
+The instructor prefers the realized B decision explanation over A in this pair.
+Both preserve the move R(a|y)=tr V+||m−a||²: nonnegativity with equality exactly
+at a=m yields the unique action a*(y)=m and attained minimum tr V, then the
+Gaussian posterior supplies application parameter names. This is positive
+evidence for investigating whether making that inference directly readable is a
+reusable judgment. It adds instructor clarity evidence to the specialists’ earlier
+realization check; it does not identify why p7 was clearer.
+
+Term-local warrants, alignment of consequences and Gaussian outputs, and
+subordinate Gaussian emphasis varied together. B also promotes A’s small recall
+identity into the main annotated argument, with different geometry and heading
+emphasis. The response cannot isolate any of these as the cause, establish that
+underbraces are generally preferred, or show named groups/cards/columns generally
+inferior. The supported unit is the exact move, content and realized pair.
+
+### Combined learning and confounds
+
+The preferred setup realization contains named criterion and centered-error
+groups feeding an intact expansion. The preferred decision realization contains
+attached term warrants and aligned consequences/application. These selections cross
+candidate families within the same three-move sequence: describing the answers
+as whole-A or whole-B preference would be inaccurate. They support investigating
+composition by the mathematical relation: introducing and relating criterion and
+centering is a different job from reading a known decomposition as an optimum.
+They do not show that this relation caused the preference. Setup wording,
+labels, grouping, spatial arrangement and hierarchy varied together; p2 cannot
+isolate a preference for naming, borders or columns. Decision confounds remain
+as above; p7 cannot establish a general preference for annotation or Gaussian
+demotion. The Gaussian transfer has no recorded instructor judgment in this pass.
+
+Design and Organization negotiated this combined interpretation. Organization
+emphasized that the same titles, boundaries, count and depth admit different
+preferred compositions; there is no evidence here for splitting a move or
+reducing mathematics. Design cautioned against attributing either preference to
+one layout feature, and both agreed on the move-specific protocol proposal above.
+Organization names the inference; Design chooses a proposed reading relation;
+Authoring checks that the actual state realizes it; instructor answers update
+only the corresponding hypothesis. Preference can vary within a coherent
+sequence without changing its approved intellectual argument.
+
+The earlier render repairs remain fidelity evidence: the p7 answer concerns the
+final attached-term realization, not the earlier detached-label state carrying
+B’s name. Exact state provenance plus acceptance of mixed composition choices is
+the actionable joint-learning proposal. It adopts no layout, inherited skill
+wording or shared instruction. Both questions are resolved and will not be
+re-asked for this report. Generalization to other moves, causal attribution,
+classroom effectiveness and timing remain unestablished. No new variants, renders,
+contracts or instructor input are needed for this bounded interpretation.
 
 ## Handoff and validation boundary
 
@@ -187,8 +259,9 @@ not book-source re-verification, teaching time or classroom outcomes. This was
 guided joint negotiation, not independent validation. No shared skill writes,
 production approval, merge, publication or live artifact change occurred.
 
-Owned files are complete and `git diff --check` passed. The commit attempt failed
-before staging because the shared repository worktree metadata is read-only:
-`.git/worktrees/pml-slide-judgment-design-20261015/index.lock` could not be created.
-The three files remain uncommitted at the exact worktree paths above; no merge
-or broader repository mutation was attempted.
+The coordinator collected the completed three Design artifacts in commit
+`0ee8ba5` after the earlier local commit attempt encountered read-only worktree
+metadata. A clean tree at `0ee8ba5` was verified before this bounded follow-up.
+Only this existing report changed for the instructor feedback; the D3 contract,
+peer-exchange artifact, renders, shared skills and live lecture remain unchanged.
+The follow-up is ready for coordinator collection; `git diff --check` passes.

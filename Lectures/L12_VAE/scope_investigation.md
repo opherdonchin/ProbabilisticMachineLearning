@@ -128,7 +128,7 @@ transformed-model evidence is in notebook_geometry/assessment.md. No whole-Scope
 transform-bundle, student-time or publication approval follows. The old options
 below are retained as decision evidence, not an unanswered question.
 
-**Status:** awaiting instructor decision; owner Lecture Scope. Eventual accepted answer belongs in [lecture_scope.md](lecture_scope.md).
+**Status:** resolved by the current-discussion acceptance recorded in [lecture_scope.md](lecture_scope.md), Part3 and contract; owner Lecture Scope. Historical question/options below explain the accepted tradeoff.
 
 **Question:** Should the notebook protect one supplied comparison of reconstruction, prior decoder means and full prior observation draws—including domain failures—by replacing the optional secondary traversal?
 
@@ -142,7 +142,7 @@ below are retained as decision evidence, not an unanswered question.
 
 ### L12-APPLICATION — what the mobility example should accomplish
 
-**Status:** awaiting instructor decision; owner Lecture Scope. Eventual answer belongs in [lecture_scope.md](lecture_scope.md).
+**Status:** city direction and zero rule recorded in [lecture_scope.md](lecture_scope.md); transformed-model evidence under independent review. Do not re-ask city versus digits. Final whole-Scope and remaining transform acceptance are separate.
 
 **Question:** Should the final practical encounter retain mobility as a descriptive Gaussian representation/generate-and-critique task, or require a different support-respecting generative application?
 

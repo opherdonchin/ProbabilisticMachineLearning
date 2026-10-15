@@ -1,5 +1,12 @@
 # L09 scope investigation — objective, family and stochastic fitting
 
+**Current application decision, 2026-10-15:** Challenger thermal distress selected
+for L09 by the instructor; [owning accepted record](reconciliation/challenger_contract.md).
+Reviewed evidence is notebook_geometry/REPORT.md at `f64fb54` and independent
+review `dcf2a81`. This supersedes the application-unselected status in the older
+joint/classifier evidence below, not its numerical findings. Student/supplied
+family allocation and complete Scope remain provisional.
+
 **Current decision, 2026-10-15:** The old shared-classifier selection is replaced
 by the instructor's [geometry-led cumulative direction](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md),
 recorded in the three owning scopes. Existing probes below remain valid evidence

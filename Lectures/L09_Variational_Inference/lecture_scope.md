@@ -1,5 +1,13 @@
 # L09 — Fitting a simpler distribution when the posterior is hard to compute
 
+**Application decision, current discussion 2026-10-15:** Instructor selected
+Challenger flight-level thermal distress for the cumulative Laplace → VI notebook
+comparison. The [owning accepted direction and task](reconciliation/challenger_contract.md)
+fixes provenance and boundaries. Existing Gaussian examples retain their live
+mathematical/diagnostic role; older notebook/example commitments below are under
+bounded reconciliation. Exact student/supplied work and whole-Scope approval
+remain separate. Do not re-ask Challenger versus multinomial Iris.
+
 **Instructor revision — 2026-10-15:** The notebook direction is now geometry-led
 method selection with cumulative comparison: L07 Laplace against a checked
 numerical reference; L09 revisit Laplace before an appropriate VI family; L10

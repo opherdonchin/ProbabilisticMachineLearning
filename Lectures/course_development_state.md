@@ -63,10 +63,28 @@ score/generate; held-out baseline comparison and failed-output diagnosis optiona
 The new decision authorizes this limited contract clarification, not whole-Scope
 or design approval. The earlier three assessment diffs passed their boundaries.
 
-| Active task / owner | Base, branch/worktree | Allowed writes / deliverable | Dependencies and status |
-|---|---|---|---|
-| L02-WORKED-SOLUTION / `/root/l02_worked_solution` | `c8e9b2a`; `resume/l02-notebook-contract-20261015`; `/tmp/pml-l02-notebook-contract-20261015` | `InClass/Preparation/lecture2_bigram_worked_solution.py`, `lecture2_bigram_worked_solution_handoff.md`, optional `figures/lecture2_bigram_counts.svg`; `Lectures/L02_Exponential_Families/reconciliation/notebook_worked_solution_result.md` | Q1 recorded: unblocked and actually delegated. Executed teacher example and handoff, no expanded required evaluation, no Q&A/student notebook. Worker never edits contracts/register/maps. |
-| L02-PLAN-SYNC / `/root/l02_plan_sync` | `61f113e`; `sync/l02-notebook-plan-20261015`; `/tmp/pml-l02-notebook-plan-20261015` | `course_architecture.typ`, `course_architecture.pdf`, `curriculum_map.typ`, `curriculum_map.pdf` only | Q1 resolved; actually delegated L02-only wording sync and matching PDF regeneration, preserving all other lecture decisions. Independent of worked-solution execution. |
+No delegated task remains running. The L02 decision→record→unblock→dispatch→result
+cycle is complete. Current results, not a duplicated task history:
+
+- `resume/l02-notebook-contract-20261015@22ecb91`,
+  `/tmp/pml-l02-notebook-contract-20261015`: the lecture register links the
+  [worked solution](</tmp/pml-l02-notebook-contract-20261015/InClass/Preparation/lecture2_bigram_worked_solution.py>),
+  structured handoff and `reconciliation/notebook_worked_solution_result.md`.
+  Those artifacts own the task receipt, source/data hashes and raw validation.
+  Real-data execution and coordinator replay passed; required student endpoint
+  remains fit/inspect/score/generate. Ready for a separately scoped pedagogical
+  handoff; learner-time and eventual local/hosted notebook validation remain open.
+- `sync/l02-notebook-plan-20261015@9aa63eb`,
+  `/tmp/pml-l02-notebook-plan-20261015`: authoritative prospective L02 wording
+  now matches Q1 in `course_architecture.typ` and `curriculum_map.typ`, with
+  matching regenerated PDFs. Builds/visual checks passed; only the two L02
+  source passages and their PDF regions changed. Other lecture choices remain
+  intact. No actual-teaching map, live slide or experimental skill changed.
+- `reconcile/l02-course-review-20261014@a09083c`: the original question now
+  links its resolution to the accepted contract; raw recovery findings remain.
+
+Finished write envelopes remain in their owning result records. Both delegated
+tasks passed their disjoint path boundaries; no follow-up is silently running.
 
 Root alone updates the accepted contract/register, this index and the resolved
 question pointer. Source investigation worktrees remain unchanged except the
@@ -100,7 +118,7 @@ slide acceptance or Q1 answer was needed. It is not a validated student notebook
   branch `reconcile/l02-course-review-20261014`, commit `9e02665`, path
   `Lectures/L02_Exponential_Families/reconciliation/course_review.md`.
   Resolution: existing endpoint retained; authoritative answer recorded at
-  `c8e9b2a` in the isolated L02 continuation. Worked solution is now dispatched;
+  `c8e9b2a` in the isolated L02 continuation. Worked solution completed at `22ecb91`;
   publication and full lecture/notebook approvals remain separate. Existing
   baby-name reference and live Time Machine/Gamma/section-count commitments stay.
 - L03 returned **no new instructor question**. [Current recovery/source check](/tmp/pml-l03-course-review-20261014/Lectures/L03_Graphical_Models/reconciliation/course_review.md),
@@ -119,7 +137,7 @@ Local worktree links are conveniences; the stated Git revisions/paths are the
 portable evidence references (`git show <revision>:<path>`). On an answer, the
 owning scope/contract and lecture register receive its provenance; this index
 retains only a resolution/handoff pointer. The L02 technical worked-solution
-stage has resumed; no student notebook or live deck has been promoted.
+stage has completed; no student notebook or live deck has been promoted.
 
 ## Integrated review order and deduplication
 
@@ -132,7 +150,7 @@ assumed and no proposal is promoted by this order.
 
 | Order | Owning decision(s) | What an answer unblocks / distinction |
 |---|---|---|
-| Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; bounded worked solution dispatched. |
+| Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | 2 | L01-LOSS-LAYOUT, experiment report at `2c1b7fa` | Selected loss arrangement: B3 versus A2-vertical; counts/time tradeoff. Does not adopt the skill patch or approve the rest of L01. |
 | 3 | L01-GAUSSIAN-LAYOUT, same report | Result-first A versus derivation-first C. Full standalone artifacts still need the independent wrapper correction. |
 | 4 | L01-SKILL-ADOPTION, same report/Phase2 | Explicit decision on narrow revision and provisional adoption. Keep frozen evidence intact; do not make this a prerequisite of other scope/notebook work. |
@@ -166,12 +184,15 @@ Modify only the accepted notebook requirement; preserve live mathematics,
 section organization and historical approval evidence. Link the resolved item
 here and in the owning question report; do not replace the raw recovery findings.
 
-The disjoint worked-solution task is reserved above using the existing skill.
+The disjoint worked-solution task completed using the existing skill.
 Its input is the retained fit/inspect/score/generate endpoint, not the rejected
 required evaluation expansion. Supply data/boundary/scoring infrastructure;
 zero-probability MLE behavior must be technically honest without turning it into
 an additional required student diagnosis or silently selecting smoothing.
-Collect an executed technical result and report before opening the next question.
+Executed technical result/handoff and synchronized prospective documents are
+collected above. The next question, L01-LOSS-LAYOUT, was presented concurrently
+with L02 implementation at the instructor's explicit request; do not make the
+instructor wait for routine record/build/commit work before explaining review.
 Q&A/student notebook production, whole-Scope acceptance, local/hosted notebook
 validation, publishing and merges retain their separate gates. No worked-solution
 task was launched for implementation until the endpoint answer was recorded.

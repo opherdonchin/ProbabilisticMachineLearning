@@ -1,0 +1,3595 @@
+{
+  "status": "teacher-only computational feasibility; no student or Colab claim",
+  "source": {
+    "url": "https://raw.githubusercontent.com/narslab/mobile-emissions-typology/049cb033a9814c0ec3df99ece5144d07688aa648/data/tidy/raw-data-cluster.csv",
+    "sha256": "05e02113771a0ab550a9e7a0098d099ee348820564b68bcdc6c71a28b24418d6",
+    "base_probe_sha256": "f428d4f64694a3ddc0e2913e1350aa2c343132b9539be89723b0358f279bbff3",
+    "input_sha256": {
+      "course_architecture.typ": "80900b1b96a7a362944d1bd33b7a1b701f57f52d9436be8d88fae3cf0a51572a",
+      "curriculum_map.typ": "d2cf9b0a294a96b3eba9056bf49ab3e1d5b2ba8eeb75306b0e9eeb059cad4e86",
+      "curriculum_map_actual.typ": "f83ccef392edee0a7a2b30c4d0cf14239d6028794cbe10323df02be50f163b53",
+      "Lectures/L12_VAE/lecture_scope.md": "3a867870c875fe96f0ec83c00793292ec811ab0ad9195f4a468cec8b8a4f014c",
+      "Lectures/L12_VAE/scope_investigation.md": "4e5ef71f5afda57bb87f6f4cb5aaa40b39ee36597d5d30ef08df6490f321d0dc",
+      "Lectures/L12_VAE/notebook_feasibility/source_units.json": "af6bf188f51c05686da53314e9618e72b4843fe7495abdd88cddffbb287bbea5",
+      ".agents/skills/teaching-notebook-authoring/references/student-knowledge.md": "3b2d7d0a2db115e87577c168a025306cebdb4a852a6550b537a56418af7f6ce9",
+      "pyproject.toml": "57af339bd50b38ddd6f4aace9721eb90b102f93aa283088ea03a023bfa260290",
+      "uv.lock": "1c204f020852c67025544c422bacc5dc9a72ee3a51a87d42159c36e81f1cd64f"
+    },
+    "config_sha256": "a6127773743dfd1622fb87ebf012159080e589c49d11fb8be39aff4eecb6d34c",
+    "this_probe_sha256": "83eb53204cf3b7f98c333369bf0ee8390f01b63f8885b99927f75d2845372371",
+    "split_indices_sha256": "97f433fef3561d941f0c2f8e13f2343cc99f38f5949c7f394c15779431c95fdb"
+  },
+  "config": {
+    "split_seed": 20261014,
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "betas": [
+      1,
+      4
+    ],
+    "n_train": 245,
+    "n_validation": 52,
+    "n_test": 52,
+    "hidden": 32,
+    "latent": 4,
+    "decoder_variance": 0.5,
+    "epochs": 300,
+    "batch_size": 32,
+    "lr": 0.003,
+    "validation_every": 20,
+    "validation_mc": 16,
+    "test_mc": 64,
+    "threads": 1,
+    "checkpoint": "minimum validation D+beta R; matching split and settings for both betas"
+  },
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "numpy": "2.0.2",
+    "python": "3.12.13"
+  },
+  "checks": {
+    "jacobian_autodiff_abs_error": 7.105427357601002e-15,
+    "original_zero_rows": [
+      11,
+      94
+    ],
+    "test_has_only_interior_compositions": true,
+    "approximated_rows_by_split": {
+      "train": [
+        11
+      ],
+      "validation": [
+        94
+      ],
+      "test": []
+    },
+    "baseline_roundtrip_max_relative_error": 1.827028746344918e-15,
+    "baseline_train_center_max_abs": 2.3181909906428218e-14,
+    "baseline_train_scale_max_error": 7.771561172376096e-16,
+    "fixed_transform_roundtrip_max_relative_error": 4.900294729380002e-15,
+    "fixed_transform_train_center_max_abs": 7.318499547878042e-14,
+    "fixed_transform_train_scale_max_error": 6.661338147750939e-16,
+    "baseline_max_D_R_difference_from_committed_probe": 0.0
+  },
+  "approximation": {
+    "delta": 1e-05,
+    "sensitivity_delta": 0.0001,
+    "affected_rows": [
+      {
+        "index": 11,
+        "msa": "Anniston-Oxford, AL",
+        "original": [
+          95.02840609094171,
+          0.6103613592684112,
+          0.0,
+          1.2164987644934424,
+          2.4752370694206847
+        ],
+        "replaced": [
+          95.02745580688081,
+          0.6103552556548185,
+          0.001,
+          1.2164865995057976,
+          2.4752123170499907
+        ]
+      },
+      {
+        "index": 94,
+        "msa": "East Stroudsburg, PA",
+        "original": [
+          88.08545290293029,
+          3.486315575178451,
+          0.0,
+          1.5408496939931036,
+          5.519575534716832
+        ],
+        "replaced": [
+          88.08457204840126,
+          3.4862807120226993,
+          0.001,
+          1.5408342854961639,
+          5.5195203389614855
+        ]
+      }
+    ],
+    "rule": "Replace zero composition part by delta and multiply all nonzero parts, including residual, by (1-number_of_zeros*delta). Only two rows altered; no rows removed."
+  },
+  "raw_ranges": {
+    "Node Density (/sq km)": [
+      0.2801509281128372,
+      20.3740250395531
+    ],
+    "Intersection Density (/sq km)": [
+      0.2049566628868088,
+      17.52685967824378
+    ],
+    "Street Density (km/sq km)": [
+      0.1644571006610994,
+      5.1924411061169335
+    ],
+    "Circuity Average": [
+      1.0164512673910464,
+      1.2757082746374788
+    ],
+    "Car Mode Share": [
+      54.741959048691335,
+      95.98823382150456
+    ],
+    "Transit Mode Share": [
+      0.0297716980836428,
+      29.835681831489342
+    ],
+    "Bicycle Mode Share": [
+      0.0,
+      7.370757002785264
+    ],
+    "Walking Mode Share": [
+      0.6296623706943346,
+      12.862844702467344
+    ],
+    "Working from Home Share": [
+      1.665384192590964,
+      12.93045677597873
+    ],
+    "Median Household Income": [
+      41200.0,
+      129343.0
+    ],
+    "Employment Rate (%)": [
+      0.215,
+      0.722
+    ],
+    "Unemployment Rate (%)": [
+      0.024,
+      0.1369999999999999
+    ],
+    "Population Density (/sq km)": [
+      2.945933628604638,
+      895.3893121874814
+    ],
+    "Built-Up Area Proportion": [
+      0.8733095786320841,
+      63.07966617553152
+    ],
+    "Cooling Degree Days (\u00b0Df)": [
+      33.0,
+      4746.0
+    ],
+    "Heating Degree Days (\u00b0Df)": [
+      169.0,
+      9411.0
+    ],
+    "Average Temperature (\u00b0F)": [
+      39.875,
+      77.26666666666667
+    ],
+    "Precipitation (in)": [
+      2.69,
+      91.23
+    ],
+    "GDP ($)": [
+      2947975.0,
+      2025634058.0
+    ]
+  },
+  "transforms": [
+    {
+      "kind": "baseline",
+      "delta": null,
+      "center": [
+        1.6036254640354624,
+        1.404213504004061,
+        0.9451631866565338,
+        1.0793526556130066,
+        0.8850303744093452,
+        0.013243494546718484,
+        0.004752563191025845,
+        0.023382691592304532,
+        6.149972340489893,
+        10.990960053411564,
+        0.5773755102040817,
+        0.05405714285714284,
+        4.249624907512962,
+        14.398743113178178,
+        7.035538849830059,
+        8.11058436260765,
+        57.66658380709523,
+        41.878395808699096,
+        16.84049477146605
+      ],
+      "scale": [
+        0.5151379366269322,
+        0.4875351099077637,
+        0.2715771865793377,
+        0.0347459562320138,
+        0.046384909400851,
+        0.018673435368659355,
+        0.006713318962007979,
+        0.015268472183257106,
+        2.0662176223634043,
+        0.16160640971007695,
+        0.06174541057261266,
+        0.015340116807686613,
+        0.8245579899408967,
+        9.929276373980086,
+        0.8140721152040171,
+        0.7724618481579878,
+        8.791998798990702,
+        19.824109708696984,
+        1.1952779168737258
+      ],
+      "mean_test_logjac": -45.881362920596686
+    },
+    {
+      "kind": "fixed_transform",
+      "delta": 1e-05,
+      "center": [
+        1.3296451555373359,
+        1.2163403656730594,
+        0.4071482164200975,
+        -2.6228835313441854,
+        4.4129610711781515,
+        -0.2980796410019485,
+        -1.334206959304183,
+        0.6206705109894696,
+        1.6899675049281737,
+        10.990942985783505,
+        0.4523272883464717,
+        -2.899478705837164,
+        4.229301059259128,
+        -2.0000576051133314,
+        7.034173397519006,
+        8.110128213057925,
+        6.2485497796222695,
+        3.5513462037750294,
+        16.840494692107832
+      ],
+      "scale": [
+        0.6785675012816436,
+        0.2956033262135079,
+        0.48422280167238557,
+        0.429111686180145,
+        0.4753308920512256,
+        1.032434185481574,
+        1.0793769736113115,
+        0.7233117099260985,
+        0.5284316522092493,
+        0.16160903215222444,
+        0.2562077245251957,
+        0.28808184940490544,
+        0.8412063789434767,
+        0.8157603754081934,
+        0.8157840167787744,
+        0.7730258581426396,
+        0.016951275714145744,
+        0.7084165040084124,
+        1.1952779715634985
+      ],
+      "mean_test_logjac": -39.402493695509776
+    }
+  ],
+  "real_training": {
+    "support": {
+      "n": 245,
+      "nonfinite_fraction": 0.0,
+      "positive_or_shifted_bound_failure_fraction": 0.0,
+      "individual_fraction_bound_failure_fraction": 0.0,
+      "commute_joint_support_failure_fraction": 0.0,
+      "circuity_below_one_fraction": 0.0,
+      "intersection_density_above_node_density_fraction": 0.0,
+      "employment_plus_unemployment_above_one_fraction": 0.0
+    },
+    "selected_q05_q50_q95": {
+      "Intersection Density (/sq km)": [
+        0.8147850711267043,
+        3.0047366229521555,
+        8.178514595626904
+      ],
+      "Circuity Average": [
+        1.0355221524328702,
+        1.0766279597842494,
+        1.1366923318742546
+      ],
+      "Transit Mode Share": [
+        0.16951781497468366,
+        0.7687200495015966,
+        4.3432720145948975
+      ],
+      "Bicycle Mode Share": [
+        0.05444601105356188,
+        0.2765298174179504,
+        1.6712806746169833
+      ],
+      "Built-Up Area Proportion": [
+        3.2923514506238596,
+        11.678632007751627,
+        35.28615440760085
+      ],
+      "Cooling Degree Days (\u00b0Df)": [
+        252.66666666666663,
+        1137.428571428571,
+        3984.4999999999995
+      ],
+      "Heating Degree Days (\u00b0Df)": [
+        655.7,
+        4287.285714285715,
+        7530.866666666666
+      ],
+      "Average Temperature (\u00b0F)": [
+        45.472,
+        56.25714285714286,
+        73.96
+      ],
+      "Precipitation (in)": [
+        6.636,
+        42.25666666666667,
+        70.86
+      ],
+      "GDP ($)": [
+        4972090.8,
+        15677698.0,
+        272273929.99999905
+      ]
+    },
+    "omitted_commute_share_q05_q50_q95": [
+      0.005616069315108785,
+      0.010347649341393206,
+      0.02020472160854181
+    ],
+    "correlation_offdiagonal_rmse": 0.0,
+    "nearest_training_raw_sd_distance_q50_q95": [
+      0.0,
+      0.0
+    ],
+    "any_feature_outside_training_range_fraction": 0.0,
+    "annual_climate_residual_degree_days_q05_q50_q95": [
+      8.200000000000001,
+      41.200000000000955,
+      72.35999999999986
+    ]
+  },
+  "real_test": {
+    "support": {
+      "n": 52,
+      "nonfinite_fraction": 0.0,
+      "positive_or_shifted_bound_failure_fraction": 0.0,
+      "individual_fraction_bound_failure_fraction": 0.0,
+      "commute_joint_support_failure_fraction": 0.0,
+      "circuity_below_one_fraction": 0.0,
+      "intersection_density_above_node_density_fraction": 0.0,
+      "employment_plus_unemployment_above_one_fraction": 0.0
+    },
+    "selected_q05_q50_q95": {
+      "Intersection Density (/sq km)": [
+        0.6102455028901911,
+        2.930142732888418,
+        8.838633291309145
+      ],
+      "Circuity Average": [
+        1.0368381012374757,
+        1.0756126561438755,
+        1.1518465682343748
+      ],
+      "Transit Mode Share": [
+        0.12155389147375424,
+        0.6303975344291524,
+        4.562612011021514
+      ],
+      "Bicycle Mode Share": [
+        0.06811312796270946,
+        0.3010014525466025,
+        1.3065016773850164
+      ],
+      "Built-Up Area Proportion": [
+        3.316347517705043,
+        11.614612269804228,
+        30.15261606391101
+      ],
+      "Cooling Degree Days (\u00b0Df)": [
+        407.6,
+        984.0,
+        2910.9466666666654
+      ],
+      "Heating Degree Days (\u00b0Df)": [
+        1431.8,
+        4900.75,
+        7246.224999999999
+      ],
+      "Average Temperature (\u00b0F)": [
+        46.33,
+        54.0625,
+        68.69299999999998
+      ],
+      "Precipitation (in)": [
+        8.791,
+        39.235,
+        69.87533333333333
+      ],
+      "GDP ($)": [
+        3953312.0,
+        9964106.0,
+        217490721.99999976
+      ]
+    },
+    "omitted_commute_share_q05_q50_q95": [
+      0.006783829390421115,
+      0.009933996350082963,
+      0.018532588002192315
+    ],
+    "correlation_offdiagonal_rmse": 0.11616647096842789,
+    "nearest_training_raw_sd_distance_q50_q95": [
+      1.7655478595182421,
+      3.852063374597495
+    ],
+    "any_feature_outside_training_range_fraction": 0.09615384615384616,
+    "annual_climate_residual_degree_days_q05_q50_q95": [
+      12.987499999998882,
+      48.250000000000114,
+      72.52000000000014
+    ]
+  },
+  "fits": [
+    {
+      "kind": "baseline",
+      "zero_replacement_delta": null,
+      "seed": 17,
+      "beta": 1,
+      "selected_epoch": 260,
+      "training_seconds": 1.1069432660005987,
+      "validation_selected_objective": 22.717103004455566,
+      "test": {
+        "D": 16.366458892822266,
+        "D_mc_se": 0.03019687905907631,
+        "R": 3.875389337539673,
+        "per_latent_rate": [
+          0.6922937631607056,
+          0.6920032501220703,
+          1.3542683124542236,
+          1.1368238925933838
+        ],
+        "mean_code_D": 14.725826263427734,
+        "raw_units_expected_decoder_NLL": 62.24782181341895,
+        "raw_units_negative_ELBO": 66.12321115095862
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.5026357926575644,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.5359444182868339,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.5803559386411803,
+          0.5982452655566591,
+          0.5262587767228626,
+          0.5468001772602236,
+          0.28415275935296325,
+          0.40464676801442784,
+          0.44952935141501826,
+          0.46025530457522473,
+          0.46356758106486584,
+          0.7566122191508663,
+          0.521858973739511,
+          0.5447103071230587,
+          0.31104797277148777,
+          0.5876860067624179,
+          0.34699441699470485,
+          0.29993384730185346,
+          0.26374829549768886,
+          0.43334933643489865,
+          0.7777663793562436
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.16032545900150091,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.2407001670803377,
+          "Circuity Average": 0.0002126255375991537,
+          "Transit Mode Share": 0.009356455894798776,
+          "Bicycle Mode Share": 0.0047057448077396785,
+          "Built-Up Area Proportion": -0.017576079250570587,
+          "Cooling Degree Days (\u00b0Df)": 164.56202527057462,
+          "Heating Degree Days (\u00b0Df)": 805.6199749464986,
+          "Average Temperature (\u00b0F)": -0.025853134446684578,
+          "Precipitation (in)": 0.005554730178836564,
+          "GDP ($)": 5529585.781743345
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.013,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.012,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.02319923903687,
+            3.1099919525279294,
+            7.813591357649869
+          ],
+          "Circuity Average": [
+            1.043811930813566,
+            1.0789746293994695,
+            1.1274629483897782
+          ],
+          "Transit Mode Share": [
+            0.3022667584394792,
+            0.8348059992849881,
+            3.6912412925707265
+          ],
+          "Bicycle Mode Share": [
+            0.09960886175661259,
+            0.3443424576426892,
+            1.3024514841471568
+          ],
+          "Built-Up Area Proportion": [
+            7.741081648319019,
+            11.92520605180305,
+            29.857143528631777
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            389.3628938411845,
+            1168.7231428539678,
+            3187.045108764498
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            964.5295263473657,
+            4001.3936921202376,
+            7310.685703935124
+          ],
+          "Average Temperature (\u00b0F)": [
+            45.90695861962842,
+            57.070505282392375,
+            70.5223163837695
+          ],
+          "Precipitation (in)": [
+            14.111044023631862,
+            42.9717721973725,
+            61.574360846609736
+          ],
+          "GDP ($)": [
+            7665032.289116288,
+            17892068.166270234,
+            150864006.90762517
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.007068994764964176,
+          0.01109825821775412,
+          0.019340510444608664
+        ],
+        "correlation_offdiagonal_rmse": 0.11455132177649614,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.5760825453880916,
+          2.76131765560858
+        ],
+        "any_feature_outside_training_range_fraction": 0.055,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -362.3899922348089,
+          118.63805109002033,
+          467.2831998485426
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.039,
+          "individual_fraction_bound_failure_fraction": 0.0515,
+          "commute_joint_support_failure_fraction": 0.667,
+          "circuity_below_one_fraction": 0.008,
+          "intersection_density_above_node_density_fraction": 0.3685,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.6495459648931275,
+            3.0957235650053363,
+            9.826079359232201
+          ],
+          "Circuity Average": [
+            1.0257510054973418,
+            1.0795104098950397,
+            1.1445811178921994
+          ],
+          "Transit Mode Share": [
+            -1.2755712568469442,
+            1.0379076164855452,
+            4.565030494408119
+          ],
+          "Bicycle Mode Share": [
+            -0.4312863654078985,
+            0.4452835385062438,
+            1.5784773017272642
+          ],
+          "Built-Up Area Proportion": [
+            -0.18234722243478094,
+            13.53381378257375,
+            32.15063799747152
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            252.73435043765843,
+            1182.56117251949,
+            4581.3659690247705
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            739.5271249410475,
+            3651.708505373608,
+            12085.973900245195
+          ],
+          "Average Temperature (\u00b0F)": [
+            42.12851956467825,
+            57.197748921645854,
+            73.82858915337864
+          ],
+          "Precipitation (in)": [
+            7.128702233589361,
+            42.4384792213458,
+            71.7883722223094
+          ],
+          "GDP ($)": [
+            3384522.511944445,
+            19363914.891215466,
+            240646265.9675339
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          -0.05434250917499479,
+          0.012637724488924307,
+          0.07788464231118206
+        ],
+        "correlation_offdiagonal_rmse": 0.1413660583818039,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          3.010099480134744,
+          5.145917849406934
+        ],
+        "any_feature_outside_training_range_fraction": 0.6935,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6684.102115265405,
+          58.81056223350873,
+          5466.146306648454
+        ]
+      }
+    },
+    {
+      "kind": "baseline",
+      "zero_replacement_delta": null,
+      "seed": 17,
+      "beta": 4,
+      "selected_epoch": 280,
+      "training_seconds": 1.1469300979515538,
+      "validation_selected_objective": 29.167816162109375,
+      "test": {
+        "D": 21.15755271911621,
+        "D_mc_se": 0.07580678164958954,
+        "R": 1.170917272567749,
+        "per_latent_rate": [
+          0.0007520061335526407,
+          0.001429657218977809,
+          0.6341849565505981,
+          0.5345506072044373
+        ],
+        "mean_code_D": 18.91878890991211,
+        "raw_units_expected_decoder_NLL": 67.0389156397129,
+        "raw_units_negative_ELBO": 68.20983291228065
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.697562454769277,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.6796996827905524,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.7746224141694102,
+          0.8058129273646026,
+          0.7671685594084396,
+          0.9660592362381196,
+          0.525637109032696,
+          0.4890880497855802,
+          0.5480670394863579,
+          0.6866089283299367,
+          0.7340860755154733,
+          0.9871290718513133,
+          0.7419938841013769,
+          0.671461725817483,
+          0.4744031294268179,
+          0.6979291161832925,
+          0.5484434334475571,
+          0.5727987466211789,
+          0.5367163757311277,
+          0.7206142367182505,
+          0.7236350719564419
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.1100217016238671,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.23078792949815718,
+          "Circuity Average": 0.0002126255000239885,
+          "Transit Mode Share": 0.00935644956678744,
+          "Bicycle Mode Share": 0.004705740164944322,
+          "Built-Up Area Proportion": -0.01757604209855046,
+          "Cooling Degree Days (\u00b0Df)": 193.67132132111544,
+          "Heating Degree Days (\u00b0Df)": 690.2539256298867,
+          "Average Temperature (\u00b0F)": -0.025853163521098566,
+          "Precipitation (in)": 0.005554770989590452,
+          "GDP ($)": 6104423.248042464
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0005,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.2877494272071308,
+            3.0574312260577123,
+            6.563258701109305
+          ],
+          "Circuity Average": [
+            1.0678142328388698,
+            1.0766616213081166,
+            1.1000585493984012
+          ],
+          "Transit Mode Share": [
+            0.6271505494629702,
+            0.8960360644542602,
+            3.971613699625403
+          ],
+          "Bicycle Mode Share": [
+            0.19282500149824353,
+            0.2877157640371706,
+            1.2158128387516691
+          ],
+          "Built-Up Area Proportion": [
+            9.824613094584208,
+            13.446230637644515,
+            22.119314247504747
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            437.1620536490743,
+            1122.1998850746343,
+            2475.166576976298
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1223.88465310526,
+            3928.9235560502702,
+            6404.012634365574
+          ],
+          "Average Temperature (\u00b0F)": [
+            48.52745068686588,
+            56.49333452597878,
+            67.23335142381927
+          ],
+          "Precipitation (in)": [
+            27.178934687489647,
+            41.11579310332336,
+            54.389423269424455
+          ],
+          "GDP ($)": [
+            11063019.714463707,
+            16901964.59059122,
+            92288133.52735034
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.009013403000818427,
+          0.010961523967000897,
+          0.016406001312529936
+        ],
+        "correlation_offdiagonal_rmse": 0.24505990986730594,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.322548894839267,
+          2.3037189952715234
+        ],
+        "any_feature_outside_training_range_fraction": 0.0025,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -3.011070502323658,
+          280.5109669125102,
+          494.00665139563364
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.012,
+          "individual_fraction_bound_failure_fraction": 0.0355,
+          "commute_joint_support_failure_fraction": 0.653,
+          "circuity_below_one_fraction": 0.003,
+          "intersection_density_above_node_density_fraction": 0.374,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.8298357619500744,
+            3.0458168788275697,
+            8.764757840135735
+          ],
+          "Circuity Average": [
+            1.0344751096700735,
+            1.0776774672883558,
+            1.1239894346676227
+          ],
+          "Transit Mode Share": [
+            -1.148130658073539,
+            1.161087664324966,
+            4.549821774253891
+          ],
+          "Bicycle Mode Share": [
+            -0.4479811707479388,
+            0.38683847601723,
+            1.5282092911819158
+          ],
+          "Built-Up Area Proportion": [
+            1.3745307215828113,
+            14.04441854095235,
+            27.4610328454482
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            307.4452042236218,
+            1117.3042842746431,
+            3798.4729239778057
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            971.8111999487718,
+            3674.9110155910857,
+            10985.930451406437
+          ],
+          "Average Temperature (\u00b0F)": [
+            44.28359414197272,
+            56.93128108101566,
+            70.64920042405402
+          ],
+          "Precipitation (in)": [
+            14.254885306763265,
+            41.53238021836134,
+            66.5917780613059
+          ],
+          "GDP ($)": [
+            3814822.5372756384,
+            19229109.18409,
+            152922916.58605623
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          -0.056070388634725035,
+          0.012589855315579657,
+          0.07677451532678947
+        ],
+        "correlation_offdiagonal_rmse": 0.15558640436393184,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.783229596018808,
+          4.57362756485396
+        ],
+        "any_feature_outside_training_range_fraction": 0.593,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6290.683728132577,
+          234.69883063798716,
+          5319.469475694199
+        ]
+      }
+    },
+    {
+      "kind": "baseline",
+      "zero_replacement_delta": null,
+      "seed": 29,
+      "beta": 1,
+      "selected_epoch": 300,
+      "training_seconds": 1.2158404139336199,
+      "validation_selected_objective": 23.047710418701172,
+      "test": {
+        "D": 16.163944244384766,
+        "D_mc_se": 0.028349287807941437,
+        "R": 3.953932046890259,
+        "per_latent_rate": [
+          0.7912715077400208,
+          1.2551485300064087,
+          0.7513296604156494,
+          1.1561821699142456
+        ],
+        "mean_code_D": 14.508646011352539,
+        "raw_units_expected_decoder_NLL": 62.04530716498145,
+        "raw_units_negative_ELBO": 65.99923921187171
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.4772914977925462,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.48282511044705034,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.5860705070584963,
+          0.5951717822359569,
+          0.521280935001663,
+          0.5572662963991897,
+          0.27927822873233443,
+          0.3970320448184395,
+          0.45360424837502544,
+          0.43781226659199085,
+          0.4316734676535104,
+          0.729016986499384,
+          0.506707394158608,
+          0.5362389119328597,
+          0.3271725270121146,
+          0.6097752363786432,
+          0.3436685457752686,
+          0.3182540854902028,
+          0.28554375720102115,
+          0.3510573971123412,
+          0.5001312195171752
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.14204551668901227,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.23154722140428463,
+          "Circuity Average": 0.00021262553225609437,
+          "Transit Mode Share": 0.009356456356745368,
+          "Bicycle Mode Share": 0.004705744079936847,
+          "Built-Up Area Proportion": -0.017576102775349156,
+          "Cooling Degree Days (\u00b0Df)": 167.0956684675209,
+          "Heating Degree Days (\u00b0Df)": 813.1558427639993,
+          "Average Temperature (\u00b0F)": -0.02585313943633949,
+          "Precipitation (in)": 0.0055547351731242145,
+          "GDP ($)": 5407420.7062506955
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.017,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0315,
+          "circuity_below_one_fraction": 0.001,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.9473019261924922,
+            3.0413721009435206,
+            7.34101261367563
+          ],
+          "Circuity Average": [
+            1.0403565352060906,
+            1.0777739141896316,
+            1.1379726654156248
+          ],
+          "Transit Mode Share": [
+            0.238661835066909,
+            0.9022240715425294,
+            3.3775560481822873
+          ],
+          "Bicycle Mode Share": [
+            0.058787564214891015,
+            0.3525711292906849,
+            1.3251728171913246
+          ],
+          "Built-Up Area Proportion": [
+            8.01314206417496,
+            12.421108119321032,
+            30.2050638644119
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            393.9301060499845,
+            1042.3085267422211,
+            3206.4041212383436
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            948.8961710710192,
+            4020.501209754086,
+            7493.49763856785
+          ],
+          "Average Temperature (\u00b0F)": [
+            46.54442765643655,
+            56.67912966297844,
+            70.54783066952027
+          ],
+          "Precipitation (in)": [
+            12.092134449991539,
+            44.4733514466014,
+            63.35132959329473
+          ],
+          "GDP ($)": [
+            7029768.008543088,
+            17179543.04438774,
+            117897509.56607004
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.008627819353924999,
+          0.011667163766829747,
+          0.01954985738114478
+        ],
+        "correlation_offdiagonal_rmse": 0.10856895089337713,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.5932789054040302,
+          2.9010392798286846
+        ],
+        "any_feature_outside_training_range_fraction": 0.075,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -465.45853984598335,
+          60.04532863013003,
+          553.3417138819028
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0495,
+          "individual_fraction_bound_failure_fraction": 0.0485,
+          "commute_joint_support_failure_fraction": 0.665,
+          "circuity_below_one_fraction": 0.012,
+          "intersection_density_above_node_density_fraction": 0.3745,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.5988872447288303,
+            3.1031457778139906,
+            9.224210232738075
+          ],
+          "Circuity Average": [
+            1.0221385611009253,
+            1.0798472724913522,
+            1.1512406123228203
+          ],
+          "Transit Mode Share": [
+            -1.2333994871928742,
+            1.1498509757664688,
+            4.102229053187834
+          ],
+          "Bicycle Mode Share": [
+            -0.43193718123012764,
+            0.4335875204699937,
+            1.5873256159018876
+          ],
+          "Built-Up Area Proportion": [
+            0.15532390260684503,
+            13.626126840784238,
+            31.6623915153522
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            274.6283452032609,
+            1056.2740198058327,
+            4468.111099002118
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            732.8397626318233,
+            3684.188515544926,
+            11713.915513469517
+          ],
+          "Average Temperature (\u00b0F)": [
+            41.710447665248765,
+            56.87609921871898,
+            73.8784014712411
+          ],
+          "Precipitation (in)": [
+            5.2116930854985135,
+            43.19566816345766,
+            73.40901019671236
+          ],
+          "GDP ($)": [
+            3156953.8726522475,
+            18092541.356341407,
+            161727604.3453969
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          -0.053077765957586655,
+          0.013721423863950255,
+          0.07727252501463812
+        ],
+        "correlation_offdiagonal_rmse": 0.15550546056650286,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          3.019234185614278,
+          5.223223091098062
+        ],
+        "any_feature_outside_training_range_fraction": 0.706,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6565.811929606172,
+          -45.381466060539196,
+          5327.158463747315
+        ]
+      }
+    },
+    {
+      "kind": "baseline",
+      "zero_replacement_delta": null,
+      "seed": 29,
+      "beta": 4,
+      "selected_epoch": 300,
+      "training_seconds": 1.1703290609875694,
+      "validation_selected_objective": 29.68347454071045,
+      "test": {
+        "D": 21.640291213989258,
+        "D_mc_se": 0.06553009152412415,
+        "R": 1.0973635911941528,
+        "per_latent_rate": [
+          0.13352574408054352,
+          0.4484848976135254,
+          0.0003103567287325859,
+          0.5150425434112549
+        ],
+        "mean_code_D": 18.72931671142578,
+        "raw_units_expected_decoder_NLL": 67.52165413458594,
+        "raw_units_negative_ELBO": 68.6190177257801
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.687527259289202,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.6673332920332223,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.7119918237735425,
+          0.7514093288993574,
+          0.7173600433477128,
+          0.944896661487322,
+          0.5080694989370176,
+          0.49099506848687363,
+          0.5431799412562843,
+          0.6911612847334875,
+          0.7276209820608411,
+          1.0229450339356507,
+          0.717411290816192,
+          0.6359460163726536,
+          0.45292161581277235,
+          0.6703826236703908,
+          0.516400797407711,
+          0.6339881196812838,
+          0.5359292649058379,
+          0.7620199571330596,
+          0.7377174289267615
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.10811834958079072,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.23730442321050815,
+          "Circuity Average": 0.00021262550154066417,
+          "Transit Mode Share": 0.009356452127880832,
+          "Bicycle Mode Share": 0.004705744278983959,
+          "Built-Up Area Proportion": -0.017576090252114263,
+          "Cooling Degree Days (\u00b0Df)": 199.90230674798414,
+          "Heating Degree Days (\u00b0Df)": 604.7400078865835,
+          "Average Temperature (\u00b0F)": -0.025853171229542227,
+          "Precipitation (in)": 0.005554752130219498,
+          "GDP ($)": 6277065.942962528
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0005,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.2404925025182394,
+            3.028411476833489,
+            6.5913324519899685
+          ],
+          "Circuity Average": [
+            1.0664379368158081,
+            1.0769171091128356,
+            1.1018484180948431
+          ],
+          "Transit Mode Share": [
+            0.6675071364239316,
+            0.9713159085121295,
+            3.3489694424596546
+          ],
+          "Bicycle Mode Share": [
+            0.2093687441009062,
+            0.35335622376860265,
+            1.114459397469876
+          ],
+          "Built-Up Area Proportion": [
+            9.814168224520035,
+            13.247812898689634,
+            22.07347637500091
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            498.37442386566346,
+            1161.6845787571415,
+            2448.2136862572543
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1260.545621392346,
+            3623.9872475248535,
+            6052.263224680936
+          ],
+          "Average Temperature (\u00b0F)": [
+            49.21361897215425,
+            57.47375125093309,
+            67.54994226177676
+          ],
+          "Precipitation (in)": [
+            27.3589529394172,
+            42.403248699217244,
+            53.60399517157203
+          ],
+          "GDP ($)": [
+            10446841.146938886,
+            16838654.313710757,
+            86898521.26157816
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.009038789472972913,
+          0.011677920103267792,
+          0.01685089141887979
+        ],
+        "correlation_offdiagonal_rmse": 0.2457153104687044,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.382528858927625,
+          2.3157001960412944
+        ],
+        "any_feature_outside_training_range_fraction": 0.0015,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          52.991951607161404,
+          282.0090853131852,
+          451.0233690999493
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0065,
+          "individual_fraction_bound_failure_fraction": 0.0345,
+          "commute_joint_support_failure_fraction": 0.628,
+          "circuity_below_one_fraction": 0.001,
+          "intersection_density_above_node_density_fraction": 0.3755,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.730964753583453,
+            3.0266401867450465,
+            8.711938039562058
+          ],
+          "Circuity Average": [
+            1.0361720416376792,
+            1.0781073876905332,
+            1.1264033741862962
+          ],
+          "Transit Mode Share": [
+            -1.029366811936927,
+            1.2484247943725424,
+            4.059693758934345
+          ],
+          "Bicycle Mode Share": [
+            -0.37180309972736825,
+            0.4318585589831473,
+            1.4807146935789808
+          ],
+          "Built-Up Area Proportion": [
+            1.1554872065195279,
+            13.790331791866226,
+            28.01869991916717
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            333.4713702861136,
+            1141.8855831042902,
+            3822.174282224873
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            953.0132900578855,
+            3454.0309211521944,
+            10191.958067238016
+          ],
+          "Average Temperature (\u00b0F)": [
+            44.5863628487064,
+            57.646711699651604,
+            71.72931745013135
+          ],
+          "Precipitation (in)": [
+            15.513998186271278,
+            41.93402448421644,
+            67.63934759662995
+          ],
+          "GDP ($)": [
+            3957563.317970316,
+            19163415.256894894,
+            134563487.98917666
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          -0.054685285484892786,
+          0.012981743048009087,
+          0.07686015863199168
+        ],
+        "correlation_offdiagonal_rmse": 0.17012292234749812,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.8074131906381923,
+          4.375995278251701
+        ],
+        "any_feature_outside_training_range_fraction": 0.5675,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -5950.8246779759675,
+          188.70892955280988,
+          5306.172108836504
+        ]
+      }
+    },
+    {
+      "kind": "baseline",
+      "zero_replacement_delta": null,
+      "seed": 43,
+      "beta": 1,
+      "selected_epoch": 280,
+      "training_seconds": 1.1641195310512558,
+      "validation_selected_objective": 22.42293882369995,
+      "test": {
+        "D": 16.383220672607422,
+        "D_mc_se": 0.0355992466211319,
+        "R": 3.781602144241333,
+        "per_latent_rate": [
+          1.2186840772628784,
+          0.6615127921104431,
+          0.6325269341468811,
+          1.2688781023025513
+        ],
+        "mean_code_D": 14.718146324157715,
+        "raw_units_expected_decoder_NLL": 62.26458359320411,
+        "raw_units_negative_ELBO": 66.04618573744544
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.4867508893727448,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.4977396182598938,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.5116088143553188,
+          0.5231711567527151,
+          0.46473837767437826,
+          0.5243885325477665,
+          0.2681919640909823,
+          0.3593111385318395,
+          0.435977804039997,
+          0.5815787741324843,
+          0.4237841445858803,
+          0.8027916062124945,
+          0.5575649201268049,
+          0.52702324334986,
+          0.3121761392924483,
+          0.6228941892058468,
+          0.3594793430574127,
+          0.32636229913747583,
+          0.3233269702156179,
+          0.40636186673726166,
+          0.5850511138140638
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.1430681283832546,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.2389820461796921,
+          "Circuity Average": 0.00021262527442234003,
+          "Transit Mode Share": 0.009356455222256477,
+          "Bicycle Mode Share": 0.00470574496404666,
+          "Built-Up Area Proportion": -0.017576052321248703,
+          "Cooling Degree Days (\u00b0Df)": 155.07143387605868,
+          "Heating Degree Days (\u00b0Df)": 804.3214027015615,
+          "Average Temperature (\u00b0F)": -0.025853140971562993,
+          "Precipitation (in)": 0.005554695020510536,
+          "GDP ($)": 5376992.299881143
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0135,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0275,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.0494726902594869,
+            3.0349755869530832,
+            7.297318609818447
+          ],
+          "Circuity Average": [
+            1.0428303363261948,
+            1.0776159120323472,
+            1.1277602622114105
+          ],
+          "Transit Mode Share": [
+            0.22601344178388347,
+            0.8987798760290099,
+            3.9407332971996567
+          ],
+          "Bicycle Mode Share": [
+            0.10310500257849098,
+            0.32521979357133507,
+            1.35945846855053
+          ],
+          "Built-Up Area Proportion": [
+            7.93700229696661,
+            11.775087824982926,
+            28.69494086461048
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            361.4734955982545,
+            1099.1539769708452,
+            3150.3502896105438
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            897.556570484395,
+            4141.077281508573,
+            7207.53605391455
+          ],
+          "Average Temperature (\u00b0F)": [
+            46.61585102338319,
+            56.34586161056659,
+            70.74730564670607
+          ],
+          "Precipitation (in)": [
+            11.9552321658135,
+            42.742821972566944,
+            63.9563023029637
+          ],
+          "GDP ($)": [
+            6954906.83167464,
+            17541984.77581987,
+            129833373.27634647
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.007861668445451575,
+          0.011554689857798117,
+          0.019157064487240947
+        ],
+        "correlation_offdiagonal_rmse": 0.123799283258544,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.5701344710181293,
+          2.804019911567885
+        ],
+        "any_feature_outside_training_range_fraction": 0.0735,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -334.24503153642775,
+          140.06820981515102,
+          514.3453931250516
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0495,
+          "individual_fraction_bound_failure_fraction": 0.0475,
+          "commute_joint_support_failure_fraction": 0.656,
+          "circuity_below_one_fraction": 0.0105,
+          "intersection_density_above_node_density_fraction": 0.376,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.6148149341318915,
+            3.037723551099334,
+            9.024426842317473
+          ],
+          "Circuity Average": [
+            1.0247014175470233,
+            1.0780318180337805,
+            1.1439184245073764
+          ],
+          "Transit Mode Share": [
+            -1.2912477696403732,
+            1.0927059780751889,
+            4.56240562887032
+          ],
+          "Bicycle Mode Share": [
+            -0.4405627827051071,
+            0.4157925374820769,
+            1.6611664400242194
+          ],
+          "Built-Up Area Proportion": [
+            0.1292192437000027,
+            13.329806273886355,
+            31.10523394893352
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            243.1435121626435,
+            1058.7563387756968,
+            4430.368627045923
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            746.2509213851005,
+            3733.521400003252,
+            12121.226193263574
+          ],
+          "Average Temperature (\u00b0F)": [
+            42.86422038075604,
+            56.7594668474602,
+            72.85054614452001
+          ],
+          "Precipitation (in)": [
+            4.361097418854893,
+            42.27494349946086,
+            73.88335579321081
+          ],
+          "GDP ($)": [
+            3072963.2879499965,
+            18720258.06327243,
+            178954270.5456415
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          -0.05559460258892448,
+          0.012734664351301994,
+          0.07734734677517167
+        ],
+        "correlation_offdiagonal_rmse": 0.1461911162024517,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.9989485468430193,
+          5.330126314656749
+        ],
+        "any_feature_outside_training_range_fraction": 0.6895,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -7418.716230502486,
+          47.04131150236333,
+          5364.391413220997
+        ]
+      }
+    },
+    {
+      "kind": "baseline",
+      "zero_replacement_delta": null,
+      "seed": 43,
+      "beta": 4,
+      "selected_epoch": 200,
+      "training_seconds": 1.1667169120628387,
+      "validation_selected_objective": 29.047208309173584,
+      "test": {
+        "D": 21.425739288330078,
+        "D_mc_se": 0.07753049582242966,
+        "R": 1.0986440181732178,
+        "per_latent_rate": [
+          0.5004374384880066,
+          0.001977614127099514,
+          0.0013276903191581368,
+          0.5949013233184814
+        ],
+        "mean_code_D": 18.778526306152344,
+        "raw_units_expected_decoder_NLL": 67.30710220892676,
+        "raw_units_negative_ELBO": 68.40574622709998
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.6946105646202844,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.6760136698078782,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.7527802132561067,
+          0.7845442756705892,
+          0.7460800981387533,
+          0.9352170677194008,
+          0.5260817121612736,
+          0.5177798213146177,
+          0.5175584154661773,
+          0.6930296411111855,
+          0.7273623990948137,
+          1.0074597129663418,
+          0.7423714535338999,
+          0.6669559374535724,
+          0.4780647166149268,
+          0.6673450481026303,
+          0.5206160247410851,
+          0.6148730687089267,
+          0.5400637517706355,
+          0.7442681167746831,
+          0.7430599573001738
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.1093942552382047,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.22763698828697576,
+          "Circuity Average": 0.00021262536590926917,
+          "Transit Mode Share": 0.009356447875241702,
+          "Bicycle Mode Share": 0.004705743750228239,
+          "Built-Up Area Proportion": -0.017576087938024898,
+          "Cooling Degree Days (\u00b0Df)": 195.06344420533196,
+          "Heating Degree Days (\u00b0Df)": 652.3871926107361,
+          "Average Temperature (\u00b0F)": -0.025853139212426157,
+          "Precipitation (in)": 0.0055547769664592295,
+          "GDP ($)": 6284370.117178946
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.2118062644735876,
+            2.9774927874364576,
+            6.364687210455281
+          ],
+          "Circuity Average": [
+            1.0696407471536251,
+            1.0758063511162987,
+            1.107288320207573
+          ],
+          "Transit Mode Share": [
+            0.5681432534033145,
+            0.9280537709691483,
+            3.808883956763332
+          ],
+          "Bicycle Mode Share": [
+            0.1976183273533569,
+            0.3397209080304642,
+            1.355087644788476
+          ],
+          "Built-Up Area Proportion": [
+            9.717029642731674,
+            13.149119199595273,
+            22.353811978915925
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            442.4049728893006,
+            1123.9149398945951,
+            2574.3231083354462
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1220.3278448658061,
+            3870.081272465553,
+            6197.981364456419
+          ],
+          "Average Temperature (\u00b0F)": [
+            48.86547439895935,
+            56.72625100852866,
+            67.95021348819803
+          ],
+          "Precipitation (in)": [
+            27.809724136253077,
+            40.73806009909151,
+            52.302472808345875
+          ],
+          "GDP ($)": [
+            10862439.045112962,
+            17020499.812487543,
+            84939210.09959425
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.0087871328800049,
+          0.011520169430325855,
+          0.01744467722334386
+        ],
+        "correlation_offdiagonal_rmse": 0.25423886615880015,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.339946101783788,
+          2.340340505295385
+        ],
+        "any_feature_outside_training_range_fraction": 0.0035,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          17.897819460885877,
+          260.7908717837804,
+          473.4412184358208
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0075,
+          "individual_fraction_bound_failure_fraction": 0.0335,
+          "commute_joint_support_failure_fraction": 0.6475,
+          "circuity_below_one_fraction": 0.0005,
+          "intersection_density_above_node_density_fraction": 0.376,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.7341993191889493,
+            2.9988567038743943,
+            8.555620206346056
+          ],
+          "Circuity Average": [
+            1.0361099458194638,
+            1.078340255422361,
+            1.126907400279752
+          ],
+          "Transit Mode Share": [
+            -1.1069681892430776,
+            1.110230616274232,
+            4.529114317410697
+          ],
+          "Bicycle Mode Share": [
+            -0.41295073751803574,
+            0.42910937782108705,
+            1.626939734023786
+          ],
+          "Built-Up Area Proportion": [
+            1.583792394841306,
+            13.968777935098766,
+            27.52288143298091
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            291.9690360094468,
+            1101.7202594643131,
+            3878.876374963255
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            862.2563498262024,
+            3583.0725561585177,
+            10630.595786286143
+          ],
+          "Average Temperature (\u00b0F)": [
+            44.231764621674685,
+            57.07794801680926,
+            71.23123687628085
+          ],
+          "Precipitation (in)": [
+            14.999376028491596,
+            41.07519693157309,
+            65.9959048045173
+          ],
+          "GDP ($)": [
+            3950430.768618023,
+            18829931.79733388,
+            140540511.91048613
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          -0.05529489241547497,
+          0.01284531785289128,
+          0.07651278914646821
+        ],
+        "correlation_offdiagonal_rmse": 0.15236329409378416,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.793779391022082,
+          4.557462373779526
+        ],
+        "any_feature_outside_training_range_fraction": 0.5905,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6386.0259903829965,
+          167.4232192846498,
+          5280.969967342578
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 1e-05,
+      "seed": 17,
+      "beta": 1,
+      "selected_epoch": 140,
+      "training_seconds": 1.1712990280939266,
+      "validation_selected_objective": 22.514851808547974,
+      "test": {
+        "D": 17.550518035888672,
+        "D_mc_se": 0.029804302379488945,
+        "R": 3.76694655418396,
+        "per_latent_rate": [
+          0.710452675819397,
+          0.8146339058876038,
+          1.1463488340377808,
+          1.0955113172531128
+        ],
+        "mean_code_D": 15.725204467773438,
+        "raw_units_expected_decoder_NLL": 56.95301173139845,
+        "raw_units_negative_ELBO": 60.71995828558241
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.5694736518220042,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.5690624638663588,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.6639992323373507,
+          0.6797291266953632,
+          0.5899285951562092,
+          0.4779158471684833,
+          0.5915679553397784,
+          0.721777340479481,
+          0.5773186712519589,
+          0.670206568488811,
+          0.6436305876930802,
+          0.6715556383415617,
+          0.4735157332255548,
+          0.5663243945304673,
+          0.34705108358155745,
+          0.613408284947457,
+          0.4403712994055041,
+          0.4250823181695916,
+          0.39592560628350987,
+          0.37470636350970044,
+          0.6710320141508419
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.21121940469554187,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.32842395658145396,
+          "Circuity Average": 0.0036828916094863162,
+          "Transit Mode Share": 0.23414053864247142,
+          "Bicycle Mode Share": 0.09924443258704632,
+          "Built-Up Area Proportion": 1.1965832934476213,
+          "Cooling Degree Days (\u00b0Df)": 173.6184837715358,
+          "Heating Degree Days (\u00b0Df)": 711.1263871903302,
+          "Average Temperature (\u00b0F)": 0.011279002590733,
+          "Precipitation (in)": 5.321550534297781,
+          "GDP ($)": 4887540.121149535
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.0708844444507433,
+            3.076750697968513,
+            7.485822561568409
+          ],
+          "Circuity Average": [
+            1.040285958494913,
+            1.0761467893274244,
+            1.1196879450452042
+          ],
+          "Transit Mode Share": [
+            0.33527443762333137,
+            0.7127837494959659,
+            2.9348325627292087
+          ],
+          "Bicycle Mode Share": [
+            0.08156215584116636,
+            0.2692114876528049,
+            0.9713796418552912
+          ],
+          "Built-Up Area Proportion": [
+            7.124388799893989,
+            11.127489514239688,
+            26.510595855309624
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            333.38923216146156,
+            1132.9355179575116,
+            3055.7002262197857
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1012.4994514936822,
+            3946.8069506727124,
+            7245.502064190851
+          ],
+          "Average Temperature (\u00b0F)": [
+            46.52478104864033,
+            56.64136608790852,
+            69.88326577930847
+          ],
+          "Precipitation (in)": [
+            10.422060738828387,
+            40.92829591964259,
+            62.76192980804718
+          ],
+          "GDP ($)": [
+            5672707.511165622,
+            17358485.25984752,
+            140907279.99087265
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.006782719644530799,
+          0.010464507214670016,
+          0.019677923014802846
+        ],
+        "correlation_offdiagonal_rmse": 0.14661303353238894,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.507648643102105,
+          2.583572381448003
+        ],
+        "any_feature_outside_training_range_fraction": 0.0265,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -423.1616563416013,
+          165.52219871521106,
+          832.5542615032455
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.8168884729196234,
+            2.927486692138515,
+            9.678902007799174
+          ],
+          "Circuity Average": [
+            1.0332452216702548,
+            1.074389472215533,
+            1.1496754248007992
+          ],
+          "Transit Mode Share": [
+            0.16231009843053001,
+            0.7671029456924754,
+            5.149721638408193
+          ],
+          "Bicycle Mode Share": [
+            0.045907291863647406,
+            0.273933550242087,
+            1.8156433342264429
+          ],
+          "Built-Up Area Proportion": [
+            4.144999616135055,
+            11.739872423562623,
+            32.322108110624434
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            236.87046087615545,
+            1120.3741901088938,
+            4367.135926692075
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            813.185228623168,
+            3562.3084705250703,
+            11505.731161086002
+          ],
+          "Average Temperature (\u00b0F)": [
+            43.02285503721876,
+            56.995293100625304,
+            72.96451047204874
+          ],
+          "Precipitation (in)": [
+            8.574426292706377,
+            38.39652880870436,
+            97.24185257041768
+          ],
+          "GDP ($)": [
+            2629429.4069585227,
+            18689486.168933675,
+            195875791.686789
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.005380372711953796,
+          0.010558194873836024,
+          0.022852414679118395
+        ],
+        "correlation_offdiagonal_rmse": 0.14727049540333428,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.9462312362297123,
+          6.385450243894944
+        ],
+        "any_feature_outside_training_range_fraction": 0.3855,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6698.954765519374,
+          108.63710084959956,
+          5290.610768764769
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 1e-05,
+      "seed": 17,
+      "beta": 4,
+      "selected_epoch": 80,
+      "training_seconds": 1.160380266024731,
+      "validation_selected_objective": 28.747966766357422,
+      "test": {
+        "D": 22.733186721801758,
+        "D_mc_se": 0.07732205837965012,
+        "R": 0.9619669318199158,
+        "per_latent_rate": [
+          0.0012664665700867772,
+          0.005540718790143728,
+          0.5387124419212341,
+          0.4164472222328186
+        ],
+        "mean_code_D": 20.107351303100586,
+        "raw_units_expected_decoder_NLL": 62.135680417311534,
+        "raw_units_negative_ELBO": 63.09764734913145
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.7672749767057502,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.7271284829963032,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.8095879714519117,
+          0.8415687402824256,
+          0.7813533569536408,
+          1.0436185821962707,
+          0.7335866517263929,
+          0.8247957599831583,
+          0.7275402924094685,
+          0.7131499124992999,
+          0.8336255851947559,
+          1.0391447728364152,
+          0.7132008999507188,
+          0.6678532612752967,
+          0.5399397138167508,
+          0.7063823203001413,
+          0.5452328273511153,
+          0.657502342036104,
+          0.5570322910093745,
+          0.7702854142718444,
+          0.8442083611426706
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.17534316334113564,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.3400822802062502,
+          "Circuity Average": 0.0034661742585523347,
+          "Transit Mode Share": 0.24321975792315859,
+          "Bicycle Mode Share": 0.096103266124424,
+          "Built-Up Area Proportion": 1.2089413213267477,
+          "Cooling Degree Days (\u00b0Df)": 197.93982074251517,
+          "Heating Degree Days (\u00b0Df)": 594.7169674291256,
+          "Average Temperature (\u00b0F)": 0.011318170782864456,
+          "Precipitation (in)": 4.785871956538539,
+          "GDP ($)": 6334123.972919118
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.2383482378197954,
+            3.0531020816079986,
+            6.431268552388795
+          ],
+          "Circuity Average": [
+            1.0645915473255843,
+            1.0713983614751397,
+            1.0872506081960818
+          ],
+          "Transit Mode Share": [
+            0.44025710641297905,
+            0.7333236052207225,
+            2.117538177996545
+          ],
+          "Bicycle Mode Share": [
+            0.18540573002534702,
+            0.2524673458914851,
+            0.6322098481284297
+          ],
+          "Built-Up Area Proportion": [
+            7.470787535751593,
+            12.012452401284882,
+            18.170891953581734
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            523.6951489746655,
+            1144.6797622023573,
+            2559.0813427056064
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1230.743593107001,
+            3666.326391214867,
+            6099.7566337420085
+          ],
+          "Average Temperature (\u00b0F)": [
+            48.96314918163243,
+            57.44089428239175,
+            68.17845129216924
+          ],
+          "Precipitation (in)": [
+            19.67672902744586,
+            36.8760228109191,
+            49.02781454926408
+          ],
+          "GDP ($)": [
+            11594295.815495234,
+            16030807.293248266,
+            97138720.42897208
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.008338356491515837,
+          0.010189957930912208,
+          0.01853611000251763
+        ],
+        "correlation_offdiagonal_rmse": 0.2932343600585328,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.366258426093172,
+          2.012141216134111
+        ],
+        "any_feature_outside_training_range_fraction": 0.0015,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -115.5381719990909,
+          275.13010629253637,
+          522.1325886097954
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.9135397430707783,
+            2.91747377438043,
+            8.560210762284468
+          ],
+          "Circuity Average": [
+            1.0429052219144592,
+            1.0719368412811878,
+            1.1237758463499123
+          ],
+          "Transit Mode Share": [
+            0.18733183307303422,
+            0.7799711491731481,
+            3.9813940427690078
+          ],
+          "Bicycle Mode Share": [
+            0.06596508878530873,
+            0.2843271188894512,
+            1.3444262429512204
+          ],
+          "Built-Up Area Proportion": [
+            4.257045366710512,
+            11.744207540619664,
+            27.5474907016305
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            337.38629773156634,
+            1160.0144954510308,
+            4000.887303351553
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            905.2396231902704,
+            3404.7025755337418,
+            10443.794506086379
+          ],
+          "Average Temperature (\u00b0F)": [
+            44.980825208686916,
+            57.826358119851136,
+            71.46032856298304
+          ],
+          "Precipitation (in)": [
+            13.268839656287383,
+            35.75335104806931,
+            82.37666946201969
+          ],
+          "GDP ($)": [
+            3874300.0723349736,
+            18997865.41095327,
+            148335039.58442187
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.0058811863526814,
+          0.010689317716710667,
+          0.02099722117171942
+        ],
+        "correlation_offdiagonal_rmse": 0.1645250716495975,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.736616411844042,
+          5.32255207132822
+        ],
+        "any_feature_outside_training_range_fraction": 0.2605,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6013.622859517328,
+          145.745514523822,
+          5232.1536195296785
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 1e-05,
+      "seed": 29,
+      "beta": 1,
+      "selected_epoch": 200,
+      "training_seconds": 1.157813391997479,
+      "validation_selected_objective": 22.55180788040161,
+      "test": {
+        "D": 17.491212844848633,
+        "D_mc_se": 0.027285506948828697,
+        "R": 3.7709691524505615,
+        "per_latent_rate": [
+          0.9369824528694153,
+          1.1511050462722778,
+          0.5437502264976501,
+          1.1391313076019287
+        ],
+        "mean_code_D": 15.836333274841309,
+        "raw_units_expected_decoder_NLL": 56.89370654035841,
+        "raw_units_negative_ELBO": 60.66467569280897
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.5560733684888313,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.5547895483519502,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.6330972364137123,
+          0.6443131526589764,
+          0.5818575704305693,
+          0.6548811824725931,
+          0.5072468141373941,
+          0.6347107410707372,
+          0.5681137126596316,
+          0.6190099553352074,
+          0.5900044535272135,
+          0.707862291829789,
+          0.4635576019898114,
+          0.6080134848721043,
+          0.29436539297734404,
+          0.5972045259190625,
+          0.3661669098391797,
+          0.39125386003866097,
+          0.36641208600847597,
+          0.38382090815579617,
+          0.6927429993781188
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.20871274307993928,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.3218981507770575,
+          "Circuity Average": 0.0036473956364740934,
+          "Transit Mode Share": 0.2349087415789058,
+          "Bicycle Mode Share": 0.10755551967674323,
+          "Built-Up Area Proportion": 1.2104485998694239,
+          "Cooling Degree Days (\u00b0Df)": 174.83619012807134,
+          "Heating Degree Days (\u00b0Df)": 753.2685445303459,
+          "Average Temperature (\u00b0F)": 0.011310523017151297,
+          "Precipitation (in)": 5.049072224722888,
+          "GDP ($)": 5215074.238130415
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.0688294501310347,
+            3.0041583725200476,
+            7.127543624702276
+          ],
+          "Circuity Average": [
+            1.0403610286834024,
+            1.077071160773825,
+            1.1121938386570376
+          ],
+          "Transit Mode Share": [
+            0.3722747546551145,
+            0.7252507763459485,
+            2.8885591817468113
+          ],
+          "Bicycle Mode Share": [
+            0.0927655583278924,
+            0.283745138952451,
+            1.0095517531647733
+          ],
+          "Built-Up Area Proportion": [
+            6.519034783096081,
+            11.15371372008753,
+            24.346212845133927
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            408.0809830408191,
+            1128.6383963633905,
+            3449.2609970754947
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            942.7299455013124,
+            3952.367177643021,
+            7329.831681115381
+          ],
+          "Average Temperature (\u00b0F)": [
+            46.7728609730182,
+            56.84364473487409,
+            71.352452081531
+          ],
+          "Precipitation (in)": [
+            10.620633639921635,
+            38.33826063611379,
+            68.17287131006483
+          ],
+          "GDP ($)": [
+            6648573.777844749,
+            17307636.651889384,
+            112455468.89071694
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.006859614126851027,
+          0.010214291757207505,
+          0.02065278716807201
+        ],
+        "correlation_offdiagonal_rmse": 0.1436335831457739,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.468188557814051,
+          2.7055656834060846
+        ],
+        "any_feature_outside_training_range_fraction": 0.0305,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -348.97475993813157,
+          134.82931821160133,
+          614.1693910436769
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.7662035527371698,
+            2.9446467225488897,
+            9.088320685507547
+          ],
+          "Circuity Average": [
+            1.034484660696509,
+            1.073888387397707,
+            1.1430096129970946
+          ],
+          "Transit Mode Share": [
+            0.16835163477972118,
+            0.8093306041060968,
+            4.568785989701123
+          ],
+          "Bicycle Mode Share": [
+            0.04976461215617229,
+            0.286850789508455,
+            1.813474227954198
+          ],
+          "Built-Up Area Proportion": [
+            3.8853459809899373,
+            11.411800314522438,
+            31.958246864997786
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            278.97556018486955,
+            1114.669078381925,
+            4569.551826112659
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            749.4027561919702,
+            3685.8806056164667,
+            11173.970670626448
+          ],
+          "Average Temperature (\u00b0F)": [
+            42.83568731090838,
+            57.30213472432331,
+            74.37701370535241
+          ],
+          "Precipitation (in)": [
+            8.54759460028892,
+            35.97022346418824,
+            99.88610699587464
+          ],
+          "GDP ($)": [
+            2940568.402152594,
+            18607736.44390508,
+            175863132.30157447
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.00534183267021694,
+          0.010393555684148792,
+          0.023407762407777536
+        ],
+        "correlation_offdiagonal_rmse": 0.14999411247572758,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.980475692714708,
+          5.969507187209136
+        ],
+        "any_feature_outside_training_range_fraction": 0.424,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6624.7390199027805,
+          53.42978689556776,
+          5516.772947129832
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 1e-05,
+      "seed": 29,
+      "beta": 4,
+      "selected_epoch": 300,
+      "training_seconds": 1.1617130750091746,
+      "validation_selected_objective": 28.563313961029053,
+      "test": {
+        "D": 22.371013641357422,
+        "D_mc_se": 0.06352806091308594,
+        "R": 1.0430258512496948,
+        "per_latent_rate": [
+          0.5405808091163635,
+          0.4747976064682007,
+          0.0010681197745725513,
+          0.026579342782497406
+        ],
+        "mean_code_D": 19.912139892578125,
+        "raw_units_expected_decoder_NLL": 61.7735073368672,
+        "raw_units_negative_ELBO": 62.81653318811689
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.7426418577044186,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.7083746841543468,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.8305252683266723,
+          0.8558676378487743,
+          0.8193114945966516,
+          1.012824158624472,
+          0.6666971207710507,
+          0.7601989861158338,
+          0.7129094830974038,
+          0.6953183878643986,
+          0.7842565753135938,
+          0.9640643477281172,
+          0.7055897401432295,
+          0.6879439996700998,
+          0.4969850025028121,
+          0.6984410501014684,
+          0.512143503774756,
+          0.6175710856168987,
+          0.5317143761335841,
+          0.742220153581351,
+          0.7859062018297485
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.18134227774281592,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.3396011054415373,
+          "Circuity Average": 0.003429519717489282,
+          "Transit Mode Share": 0.24611220805999057,
+          "Bicycle Mode Share": 0.10455118602851846,
+          "Built-Up Area Proportion": 1.223691410885376,
+          "Cooling Degree Days (\u00b0Df)": 182.7726446900951,
+          "Heating Degree Days (\u00b0Df)": 630.0943006546463,
+          "Average Temperature (\u00b0F)": 0.011305747280278666,
+          "Precipitation (in)": 4.77518642331977,
+          "GDP ($)": 6471922.020574067
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.2524698234807372,
+            2.930589336567009,
+            6.239612218120028
+          ],
+          "Circuity Average": [
+            1.0574488622100948,
+            1.0731886476438097,
+            1.0917365805562773
+          ],
+          "Transit Mode Share": [
+            0.49378751431117773,
+            0.7070170782408263,
+            2.0104708802020785
+          ],
+          "Bicycle Mode Share": [
+            0.16923756862457287,
+            0.2585451162843025,
+            0.6004072721804924
+          ],
+          "Built-Up Area Proportion": [
+            7.5453973109433745,
+            11.81890929288273,
+            18.31484198397071
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            493.10988743968613,
+            1143.0599465625414,
+            2793.666688198807
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1073.4819087640756,
+            3617.2619186432794,
+            6183.48021759932
+          ],
+          "Average Temperature (\u00b0F)": [
+            49.125396660121005,
+            57.49656259158081,
+            68.99612038550164
+          ],
+          "Precipitation (in)": [
+            20.22244662567947,
+            36.83129720470377,
+            48.882192708403046
+          ],
+          "GDP ($)": [
+            12491189.515497046,
+            15874812.770856682,
+            83046324.8758546
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.008393013883639605,
+          0.01029067772406661,
+          0.018191922236447302
+        ],
+        "correlation_offdiagonal_rmse": 0.2690167525772045,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.3642950980005386,
+          1.9419601116738539
+        ],
+        "any_feature_outside_training_range_fraction": 0.002,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          20.170820909730995,
+          272.4824579020869,
+          458.4207210730792
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.8847193856318578,
+            2.871717941552431,
+            8.574734030380782
+          ],
+          "Circuity Average": [
+            1.0417383594488625,
+            1.072871028526173,
+            1.126747839886767
+          ],
+          "Transit Mode Share": [
+            0.18792637986583516,
+            0.7941973043813499,
+            3.4762332081676215
+          ],
+          "Bicycle Mode Share": [
+            0.06788392927604762,
+            0.2777389049692798,
+            1.3616646960555525
+          ],
+          "Built-Up Area Proportion": [
+            4.580721827800839,
+            11.65927896582377,
+            27.274657677692776
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            318.81833100176044,
+            1165.76125411054,
+            4215.469812792846
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            784.4061568760823,
+            3439.9160420334097,
+            9630.66600396192
+          ],
+          "Average Temperature (\u00b0F)": [
+            44.198880267914745,
+            57.835054734311825,
+            72.78577615942167
+          ],
+          "Precipitation (in)": [
+            13.43098879920691,
+            35.32684612194015,
+            81.14000216511002
+          ],
+          "GDP ($)": [
+            3918540.2648221734,
+            18789563.574339144,
+            129016119.13556196
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.0059524057405290435,
+          0.010609732749418399,
+          0.021291536992050396
+        ],
+        "correlation_offdiagonal_rmse": 0.17041069043936571,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.7328022414900817,
+          5.062646058823398
+        ],
+        "any_feature_outside_training_range_fraction": 0.265,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -5916.688776729174,
+          176.14207928652422,
+          5302.104657918921
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 1e-05,
+      "seed": 43,
+      "beta": 1,
+      "selected_epoch": 240,
+      "training_seconds": 1.163145256927237,
+      "validation_selected_objective": 22.628490924835205,
+      "test": {
+        "D": 17.33074188232422,
+        "D_mc_se": 0.03244282677769661,
+        "R": 3.846205234527588,
+        "per_latent_rate": [
+          1.0684771537780762,
+          1.1658222675323486,
+          0.7338021397590637,
+          0.8781036138534546
+        ],
+        "mean_code_D": 15.602263450622559,
+        "raw_units_expected_decoder_NLL": 56.733235577833995,
+        "raw_units_negative_ELBO": 60.57944081236158
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.5542928699994162,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.5473393617329787,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.6632117164126324,
+          0.6800289852992165,
+          0.5929387952929734,
+          0.6475226797392817,
+          0.510567010972543,
+          0.6461102707580002,
+          0.560364125941539,
+          0.6443638239767442,
+          0.5822243690230262,
+          0.6796608643168112,
+          0.46653237129012703,
+          0.6255450447772368,
+          0.2771272003689033,
+          0.6240797922540215,
+          0.3768970758730315,
+          0.3959746424546375,
+          0.35535579490042235,
+          0.3205430424291656,
+          0.5941707701711286
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.20838501639955853,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.3207638890174487,
+          "Circuity Average": 0.0036835166773671046,
+          "Transit Mode Share": 0.2026869239428994,
+          "Bicycle Mode Share": 0.10808875163567283,
+          "Built-Up Area Proportion": 1.2005575935136674,
+          "Cooling Degree Days (\u00b0Df)": 171.833923815172,
+          "Heating Degree Days (\u00b0Df)": 757.2784187240682,
+          "Average Temperature (\u00b0F)": 0.011310193738662377,
+          "Precipitation (in)": 5.12404790562843,
+          "GDP ($)": 5398542.600340206
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.032247586242138,
+            2.993277841892941,
+            7.6409079092792425
+          ],
+          "Circuity Average": [
+            1.0394756163269434,
+            1.07447841375729,
+            1.1193773443597024
+          ],
+          "Transit Mode Share": [
+            0.3207514481850024,
+            0.7041696508813386,
+            2.796914605388916
+          ],
+          "Bicycle Mode Share": [
+            0.07352100601608136,
+            0.26593088513466845,
+            1.0035222697626933
+          ],
+          "Built-Up Area Proportion": [
+            6.84584922428129,
+            11.231269097804162,
+            25.459744859348653
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            410.4334822290209,
+            1127.920013490755,
+            3206.91347491491
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            986.5458324306098,
+            3784.7394864773337,
+            6797.046840309101
+          ],
+          "Average Temperature (\u00b0F)": [
+            47.50551074715179,
+            57.18507860737844,
+            70.84506082628342
+          ],
+          "Precipitation (in)": [
+            9.58659428735886,
+            38.92240593760759,
+            67.0274021543545
+          ],
+          "GDP ($)": [
+            6680422.302759169,
+            16594532.35441627,
+            143891677.56562087
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.006851372664212163,
+          0.010527669567825026,
+          0.0187765974135921
+        ],
+        "correlation_offdiagonal_rmse": 0.12158901975766191,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.4625193620531767,
+          2.6408010843274816
+        ],
+        "any_feature_outside_training_range_fraction": 0.017,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -295.6572820463066,
+          131.0282001537347,
+          623.9978503470454
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.7908198726960434,
+            2.895495104373629,
+            9.776151006126403
+          ],
+          "Circuity Average": [
+            1.0348257124295444,
+            1.0724302413351259,
+            1.1496615682420366
+          ],
+          "Transit Mode Share": [
+            0.1489222659577737,
+            0.7372011345888876,
+            4.580599103679483
+          ],
+          "Bicycle Mode Share": [
+            0.04058423835181593,
+            0.27479575350380686,
+            1.7269158453441165
+          ],
+          "Built-Up Area Proportion": [
+            4.2677831571308396,
+            11.516167053382578,
+            32.05600516983883
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            276.34987663560656,
+            1165.874037144245,
+            4474.343986015837
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            719.3698623409451,
+            3519.397391647859,
+            11405.397232472556
+          ],
+          "Average Temperature (\u00b0F)": [
+            43.570808544985795,
+            57.43633894517603,
+            74.19526455381188
+          ],
+          "Precipitation (in)": [
+            8.250228018676804,
+            36.766458613809775,
+            102.00468381413741
+          ],
+          "GDP ($)": [
+            2747945.5247010784,
+            18585005.60582961,
+            194040847.4287816
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.005385461329787339,
+          0.01060734869997898,
+          0.021433699491480843
+        ],
+        "correlation_offdiagonal_rmse": 0.16024373073336956,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.980865746182492,
+          6.267340696295989
+        ],
+        "any_feature_outside_training_range_fraction": 0.418,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6762.832851720307,
+          57.4735280864341,
+          5314.448252125883
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 1e-05,
+      "seed": 43,
+      "beta": 4,
+      "selected_epoch": 220,
+      "training_seconds": 1.1752281240187585,
+      "validation_selected_objective": 28.71696662902832,
+      "test": {
+        "D": 22.740476608276367,
+        "D_mc_se": 0.07053066045045853,
+        "R": 0.9880660176277161,
+        "per_latent_rate": [
+          0.4279990792274475,
+          0.021844489499926567,
+          0.0013673750218003988,
+          0.536855161190033
+        ],
+        "mean_code_D": 19.953214645385742,
+        "raw_units_expected_decoder_NLL": 62.14297030378614,
+        "raw_units_negative_ELBO": 63.13103632141386
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.751592385486334,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.7171197681520548,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.8329394457007242,
+          0.8621207286355644,
+          0.8126515958411691,
+          1.0301142003873218,
+          0.6887448554000468,
+          0.7949591449299147,
+          0.7193375107286475,
+          0.6951885699001463,
+          0.7999454385565897,
+          1.0009804183087392,
+          0.7029911180151452,
+          0.6780945173865396,
+          0.5189484897935032,
+          0.7091708641871641,
+          0.5214913178810274,
+          0.6119336636945869,
+          0.5326086305048778,
+          0.7364685640602334,
+          0.7916450910993597
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.18030612985733013,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.3389595501493401,
+          "Circuity Average": 0.0034396184495730786,
+          "Transit Mode Share": 0.2541182774584434,
+          "Bicycle Mode Share": 0.09966375680028511,
+          "Built-Up Area Proportion": 1.2056871674783833,
+          "Cooling Degree Days (\u00b0Df)": 191.34238709464074,
+          "Heating Degree Days (\u00b0Df)": 627.6979515393668,
+          "Average Temperature (\u00b0F)": 0.01130943798321482,
+          "Precipitation (in)": 4.88879263055048,
+          "GDP ($)": 6502031.997877654
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.2645334342158023,
+            2.963097024711246,
+            6.372106058967071
+          ],
+          "Circuity Average": [
+            1.0609426185791946,
+            1.0731794443052414,
+            1.0913461428271207
+          ],
+          "Transit Mode Share": [
+            0.47308410681778174,
+            0.7357477389879807,
+            2.1309349679646967
+          ],
+          "Bicycle Mode Share": [
+            0.1778929461030286,
+            0.26877148082252833,
+            0.6604602241648013
+          ],
+          "Built-Up Area Proportion": [
+            7.6032140330261395,
+            11.709449183919126,
+            17.47826545820012
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            491.76410632893015,
+            1138.9717532829272,
+            2680.4168562048208
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1184.0535650068075,
+            3676.1541254752237,
+            6025.226958383485
+          ],
+          "Average Temperature (\u00b0F)": [
+            49.233487167003766,
+            57.30452409645545,
+            68.48930387226528
+          ],
+          "Precipitation (in)": [
+            19.03258134546892,
+            36.544942586701566,
+            49.636248801418006
+          ],
+          "GDP ($)": [
+            11877800.969815632,
+            16420606.789940404,
+            82603433.14175892
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.008438785732601378,
+          0.010309140791681881,
+          0.018017288490446377
+        ],
+        "correlation_offdiagonal_rmse": 0.26100095032163967,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.361223817702692,
+          1.9702756380902375
+        ],
+        "any_feature_outside_training_range_fraction": 0.0025,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -40.8282058293875,
+          257.73510646091523,
+          523.4962710627965
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.9187568419445723,
+            2.84202949170682,
+            8.054740906037312
+          ],
+          "Circuity Average": [
+            1.042889458926015,
+            1.0732599802621547,
+            1.1288245336064424
+          ],
+          "Transit Mode Share": [
+            0.18740287387371501,
+            0.7936034122398496,
+            3.9733548018692764
+          ],
+          "Bicycle Mode Share": [
+            0.06646496008546962,
+            0.294302939718443,
+            1.448528808972351
+          ],
+          "Built-Up Area Proportion": [
+            4.433539822898129,
+            11.406514730327325,
+            26.95732725891817
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            308.70281788126795,
+            1143.386133944367,
+            3936.604469567142
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            836.9726752401239,
+            3423.717521028785,
+            10320.634264561773
+          ],
+          "Average Temperature (\u00b0F)": [
+            44.79303116894344,
+            57.868974822329164,
+            71.8387241467526
+          ],
+          "Precipitation (in)": [
+            12.953393112888293,
+            34.90322392055516,
+            82.81894670943082
+          ],
+          "GDP ($)": [
+            4000183.971011772,
+            18923314.535305664,
+            142642994.33863494
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.005887810433240831,
+          0.010656980517976034,
+          0.02110736665963528
+        ],
+        "correlation_offdiagonal_rmse": 0.16331414757042192,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.7249361333802713,
+          5.221270752442473
+        ],
+        "any_feature_outside_training_range_fraction": 0.2705,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6129.795442898657,
+          144.16444882751028,
+          5243.69058357648
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 0.0001,
+      "seed": 17,
+      "beta": 1,
+      "selected_epoch": 140,
+      "training_seconds": 1.165906832087785,
+      "validation_selected_objective": 22.258838176727295,
+      "test": {
+        "D": 17.56110382080078,
+        "D_mc_se": 0.029798896983265877,
+        "R": 3.7842419147491455,
+        "per_latent_rate": [
+          0.7108933329582214,
+          0.8132213950157166,
+          1.1571300029754639,
+          1.1029975414276123
+        ],
+        "mean_code_D": 15.731157302856445,
+        "raw_units_expected_decoder_NLL": 56.93001912611893,
+        "raw_units_negative_ELBO": 60.714261040868074
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.5682050628071094,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.5685347498090176,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.6645743046928518,
+          0.6809243410619662,
+          0.59131115537607,
+          0.46755753394653216,
+          0.5846678994739412,
+          0.7155017257697399,
+          0.5669624195782507,
+          0.6690816934510493,
+          0.6356166749027988,
+          0.6673924900040865,
+          0.47776246637819086,
+          0.5668220340990014,
+          0.34820436959391954,
+          0.6117162325886073,
+          0.4406417774881739,
+          0.42766339514614005,
+          0.39880338436049023,
+          0.37669679789986077,
+          0.6821999115916798
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.21086801917754014,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.3294016155465296,
+          "Circuity Average": 0.0036716329884385335,
+          "Transit Mode Share": 0.23417340656716523,
+          "Bicycle Mode Share": 0.0882097430114252,
+          "Built-Up Area Proportion": 1.2041914690290776,
+          "Cooling Degree Days (\u00b0Df)": 171.7534955045083,
+          "Heating Degree Days (\u00b0Df)": 720.7374186777292,
+          "Average Temperature (\u00b0F)": 0.01127927876057555,
+          "Precipitation (in)": 5.257073452223807,
+          "GDP ($)": 4880262.353477169
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.0673778834606655,
+            3.0846434808570944,
+            7.513305959108469
+          ],
+          "Circuity Average": [
+            1.0403668414002305,
+            1.0763168713301758,
+            1.119516640407492
+          ],
+          "Transit Mode Share": [
+            0.3322045492422156,
+            0.7185347515357288,
+            2.956057610027631
+          ],
+          "Bicycle Mode Share": [
+            0.0911840309282192,
+            0.2681398355381953,
+            0.9771493459223628
+          ],
+          "Built-Up Area Proportion": [
+            7.190518111466379,
+            11.09485377330016,
+            26.453613866109126
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            332.4697811975888,
+            1133.862812242351,
+            3088.3807881339285
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            986.109322655553,
+            3927.1930877032187,
+            7234.719152961621
+          ],
+          "Average Temperature (\u00b0F)": [
+            46.54430758903328,
+            56.68680214024073,
+            69.98418144779286
+          ],
+          "Precipitation (in)": [
+            10.385149925746134,
+            40.79436201113874,
+            63.26244050958455
+          ],
+          "GDP ($)": [
+            5704595.379664548,
+            17459610.802141502,
+            144978356.24239665
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.006767139266530298,
+          0.01046762530445361,
+          0.019720416774036506
+        ],
+        "correlation_offdiagonal_rmse": 0.14662636217890804,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.5078783911020235,
+          2.5918997181386234
+        ],
+        "any_feature_outside_training_range_fraction": 0.0275,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -411.6200013865622,
+          168.92900752692822,
+          828.945795156465
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.8204009279155801,
+            2.9306386949516643,
+            9.61546939608646
+          ],
+          "Circuity Average": [
+            1.0334742383432594,
+            1.0744778769659074,
+            1.1515219785397428
+          ],
+          "Transit Mode Share": [
+            0.161008212884038,
+            0.7645012863794465,
+            5.138648305060496
+          ],
+          "Bicycle Mode Share": [
+            0.04932936416791737,
+            0.2744500141498294,
+            1.8000312776097043
+          ],
+          "Built-Up Area Proportion": [
+            4.138797213973843,
+            11.749417933716776,
+            32.373646196918145
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            238.54195346589592,
+            1119.1854288259633,
+            4418.388861948925
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            806.3904700230063,
+            3559.3846649181655,
+            11428.704007692015
+          ],
+          "Average Temperature (\u00b0F)": [
+            43.088270723808805,
+            57.02303947186016,
+            73.13941414156504
+          ],
+          "Precipitation (in)": [
+            8.553978428902617,
+            38.36994946090902,
+            97.60801695707484
+          ],
+          "GDP ($)": [
+            2637217.5843300475,
+            18742104.607091002,
+            195189178.81025803
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.005378207644580852,
+          0.010562166634467629,
+          0.022886017117241444
+        ],
+        "correlation_offdiagonal_rmse": 0.14689584255462793,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.9492866569558576,
+          6.3742371560348445
+        ],
+        "any_feature_outside_training_range_fraction": 0.3855,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -6683.551408552454,
+          119.14526331430216,
+          5311.127366628365
+        ]
+      }
+    },
+    {
+      "kind": "fixed_transform",
+      "zero_replacement_delta": 0.0001,
+      "seed": 17,
+      "beta": 4,
+      "selected_epoch": 80,
+      "training_seconds": 1.1795173060381785,
+      "validation_selected_objective": 28.446478366851807,
+      "test": {
+        "D": 22.761600494384766,
+        "D_mc_se": 0.07737726718187332,
+        "R": 0.9650917649269104,
+        "per_latent_rate": [
+          0.0010787015780806541,
+          0.005773159209638834,
+          0.5375558137893677,
+          0.4206840693950653
+        ],
+        "mean_code_D": 20.139142990112305,
+        "raw_units_expected_decoder_NLL": 62.13051579970291,
+        "raw_units_negative_ELBO": 63.09560756462982
+      },
+      "reconstruction": {
+        "mean_code_backtransform_raw_sd_RMSE": 0.7677978974918044,
+        "conditional_observation_MC_mean_raw_sd_RMSE": 0.7277799495740706,
+        "mean_code_backtransform_per_feature_raw_sd_RMSE": [
+          0.8103603915454947,
+          0.8421957824989468,
+          0.78061352769961,
+          1.0435317468384082,
+          0.7336287525713817,
+          0.8254763913391253,
+          0.725241989059083,
+          0.7112333754636967,
+          0.8355593739710007,
+          1.0394392977463136,
+          0.7142274289048206,
+          0.6704151094312418,
+          0.5418959818361796,
+          0.7063537578363004,
+          0.5470021367124541,
+          0.6584606265677766,
+          0.5585486801272603,
+          0.7716703578362938,
+          0.8449985227440602
+        ],
+        "conditional_MC_mean_vs_backtransform_raw_sd_RMS_difference": 0.17473364586572568,
+        "conditional_MC_mean_vs_backtransform_selected_median_difference": {
+          "Intersection Density (/sq km)": 0.3385404162544179,
+          "Circuity Average": 0.0034693569368227095,
+          "Transit Mode Share": 0.24315364066546102,
+          "Bicycle Mode Share": 0.08976835676236786,
+          "Built-Up Area Proportion": 1.2092746511231374,
+          "Cooling Degree Days (\u00b0Df)": 197.30326220995045,
+          "Heating Degree Days (\u00b0Df)": 594.1600118695949,
+          "Average Temperature (\u00b0F)": 0.011317703208742813,
+          "Precipitation (in)": 4.768500531221861,
+          "GDP ($)": 6327038.66798553
+        }
+      },
+      "prior_decoder_mean_backtransforms": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            1.2382940705278351,
+            3.05220565674689,
+            6.426664965448485
+          ],
+          "Circuity Average": [
+            1.064617986665802,
+            1.071438558055961,
+            1.087287839347056
+          ],
+          "Transit Mode Share": [
+            0.43996878814558077,
+            0.7326620917243114,
+            2.118378969066607
+          ],
+          "Bicycle Mode Share": [
+            0.18730164915887695,
+            0.2543221455523222,
+            0.6354389961829761
+          ],
+          "Built-Up Area Proportion": [
+            7.447487412900407,
+            12.001986300820262,
+            18.250127135003627
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            522.6652473586408,
+            1145.3539801358893,
+            2558.2224940940305
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            1228.7175175809055,
+            3669.8483391758937,
+            6084.556749722328
+          ],
+          "Average Temperature (\u00b0F)": [
+            48.98335313129449,
+            57.438432890963384,
+            68.15013512263717
+          ],
+          "Precipitation (in)": [
+            19.631923168063768,
+            36.789584969297366,
+            49.20157054363236
+          ],
+          "GDP ($)": [
+            11639367.92078354,
+            16013429.617573585,
+            96305040.66902469
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.00833315871232404,
+          0.01018887725863804,
+          0.018530266297025755
+        ],
+        "correlation_offdiagonal_rmse": 0.29280146761886944,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          1.3677360211626577,
+          2.0110655994839584
+        ],
+        "any_feature_outside_training_range_fraction": 0.0015,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -99.94339741841162,
+          276.088000239381,
+          519.6713344822333
+        ]
+      },
+      "prior_full_observations": {
+        "support": {
+          "n": 2000,
+          "nonfinite_fraction": 0.0,
+          "positive_or_shifted_bound_failure_fraction": 0.0,
+          "individual_fraction_bound_failure_fraction": 0.0,
+          "commute_joint_support_failure_fraction": 0.0,
+          "circuity_below_one_fraction": 0.0,
+          "intersection_density_above_node_density_fraction": 0.0,
+          "employment_plus_unemployment_above_one_fraction": 0.0
+        },
+        "selected_q05_q50_q95": {
+          "Intersection Density (/sq km)": [
+            0.9121414023056373,
+            2.920678235130464,
+            8.586655770121343
+          ],
+          "Circuity Average": [
+            1.0427931055775024,
+            1.0718916481084015,
+            1.123954221484325
+          ],
+          "Transit Mode Share": [
+            0.18672707796523078,
+            0.7771329224337771,
+            3.9866212520123825
+          ],
+          "Bicycle Mode Share": [
+            0.06855491496212604,
+            0.2866078164316796,
+            1.2936518075792076
+          ],
+          "Built-Up Area Proportion": [
+            4.250486114100718,
+            11.755202580942884,
+            27.55370235492835
+          ],
+          "Cooling Degree Days (\u00b0Df)": [
+            339.40673684973916,
+            1158.6723104219836,
+            3975.6113755793062
+          ],
+          "Heating Degree Days (\u00b0Df)": [
+            903.0011408946784,
+            3404.625500189809,
+            10421.795952656807
+          ],
+          "Average Temperature (\u00b0F)": [
+            44.992655688449325,
+            57.86876931395949,
+            71.46145140709699
+          ],
+          "Precipitation (in)": [
+            13.225083045356017,
+            35.680988422555345,
+            82.42823244705495
+          ],
+          "GDP ($)": [
+            3872885.77502578,
+            18937786.48454337,
+            148629455.8283082
+          ]
+        },
+        "omitted_commute_share_q05_q50_q95": [
+          0.005863822482927839,
+          0.010679556790552769,
+          0.020969586627682266
+        ],
+        "correlation_offdiagonal_rmse": 0.1643342777806002,
+        "nearest_training_raw_sd_distance_q50_q95": [
+          2.732131093353817,
+          5.3112892614019325
+        ],
+        "any_feature_outside_training_range_fraction": 0.261,
+        "annual_climate_residual_degree_days_q05_q50_q95": [
+          -5975.870250467223,
+          142.90745819299514,
+          5228.282086692946
+        ]
+      }
+    }
+  ],
+  "sensitivity_transform": {
+    "delta": 0.0001,
+    "center": [
+      1.3296451555373359,
+      1.2163403656730594,
+      0.4071482164200975,
+      -2.6228835313441854,
+      4.4129610711781515,
+      -0.2980796410019484,
+      -1.3248082854350223,
+      0.6206705109894696,
+      1.6899675049281737,
+      10.990942985783505,
+      0.4523272883464717,
+      -2.899478705837164,
+      4.229301059259128,
+      -2.0000576051133314,
+      7.034173397519006,
+      8.110128213057925,
+      6.2485497796222695,
+      3.5513462037750294,
+      16.840494692107832
+    ],
+    "scale": [
+      0.6785675012816436,
+      0.2956033262135079,
+      0.48422280167238557,
+      0.429111686180145,
+      0.4753308920512257,
+      1.032434185481574,
+      1.0437349816087242,
+      0.7233117099260985,
+      0.5284316522092491,
+      0.16160903215222444,
+      0.2562077245251957,
+      0.28808184940490544,
+      0.8412063789434767,
+      0.8157603754081934,
+      0.8157840167787744,
+      0.7730258581426396,
+      0.016951275714145744,
+      0.7084165040084124,
+      1.1952779715634985
+    ]
+  }
+}

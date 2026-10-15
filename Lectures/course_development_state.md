@@ -476,3 +476,22 @@ actual source cells to mathematical walkthrough, package calculation and student
 interpretation/check. No rewritten/student notebook, runtime/env work, new model,
 new required smoother, section/slide work, source-file edits or merges. Correctness
 repairs remain author-owned. Commit the bounded handoff update in the background.
+
+Collected L08 package-backed handoff at `0c9ae3c`, clean, restricted to the three
+assigned documents. AIS pilot source/raw results are committed at `5056902`;
+the imported `.names` metadata retains original bytes/whitespace for provenance.
+The pilot is author evidence, not yet a separate technical review or a selected
+application. These completed assignments no longer reserve further writes.
+
+## Background author checks while reviewing L06 — 2026-10-16
+
+| Owner / stage | Isolated input and worktree | Sole write and bounded deliverable |
+|---|---|---|
+| `/root/l10_ais_contract`, worked-solution source/package feasibility review | `review/l08-oke-package-20261016`, base `0c9ae3c`, `/tmp/pml-l08-oke-package-review-20261016` | `Lectures/L08_Structured_Inference/reconciliation/oke_package_review.md`: inspect actual Oke notebooks/lecture and package semantics against accepted walkthrough approach; check available runtime/imports without installations; specify concrete correctness repairs and mathematical checks, without rewriting notebooks or changing the selected approach. |
+| `/root/l10_ais_technical_review`, separate seeded technical review | `review/l10-ais-technical-20261016`, base `5056902`, `/tmp/pml-l10-ais-review-20261016` | `Lectures/L10_MCMC/notebook_ais/technical_review.md`: verify corrected AIS law/indexing, source-error claims, tail/moment qualification, reference/cost/query-error interpretation; selective temporary replays if useful, no result/code changes or new algorithm/dataset search. |
+
+No environment/dependency edits, shared skills, architecture/maps, production,
+source-Oke-file edits, contact, merge or publishing in either envelope. Both are
+author-owned checks, not new instructor choices or final acceptance. Preserve
+identifiable raw checking evidence in the respective sole report. Commit results;
+coordinator continues one-at-a-time review of L06-DATA-ENDPOINT meanwhile.

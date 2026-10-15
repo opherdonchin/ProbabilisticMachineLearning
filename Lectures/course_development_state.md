@@ -495,3 +495,26 @@ source-Oke-file edits, contact, merge or publishing in either envelope. Both are
 author-owned checks, not new instructor choices or final acceptance. Preserve
 identifiable raw checking evidence in the respective sole report. Commit results;
 coordinator continues one-at-a-time review of L06-DATA-ENDPOINT meanwhile.
+
+## L06 direction and notebook-pedagogy alignment — 2026-10-16
+
+Instructor selects real measurements with artificial missingness as the L06
+notebook direction; no separate supplied synthetic activity is required. Author
+correctness checks remain separate from student activities. Exact variable/mask
+choices and full Scope/runtime readiness are not implied. Instructor reiterates
+that notebooks develop theoretical and technical understanding through small,
+coherent, properly scaffolded steps; a high-level fit/run/compare task list does
+not establish the actual learning sequence or its feasibility. The existing
+teaching-notebook-authoring skill and L01 solved Q&A are primary local evidence;
+do not require the instructor to restate their established pedagogy.
+
+| Task / owner | Isolated branch/worktree and input | Exact sole writes / deliverable |
+|---|---|---|
+| `l06_real_contract`, Lecture Scope/revision | `resume/l06-real-measurements-20261016`, `/tmp/pml-l06-real-measurements-20261016`, base `61f113e` | `Lectures/L06_EM/lecture_scope.md` (limited controlling revision), `development_state.md`, `reconciliation/real_measurements_handoff.md`: accepted data direction/no required synthetic student activity, theory/computation scaffolding expectation and provenance; preserve live math and unresolved whole-Scope gates. |
+| `notebook_pedagogy_alignment`, teaching-notebook-authoring/bounded review | `review/notebook-pedagogy-20261016`, `/tmp/pml-notebook-pedagogy-review-20261016`, base `61f113e`; actual current skill/L01 solved notebook read from integration worktree | `Lectures/L06_EM/reconciliation/notebook_pedagogy_review.md`: inspect skill, knowledge record, actual solved Q&A and L06 validated real-data computation; diagnose coordinator framing versus skill/artifact gaps. Provide one short concrete solved Q&A specimen using the real-data route (not a new synthetic exercise), making theoretical/technical development and visible setup explicit. No full notebook or generic questionnaire. |
+
+Both are delegated background work. No shared-skill revisions, source Oke edits,
+runtime/env changes, student notebook production, full-Scope rebuild or merges.
+Pedagogy specimen is for alignment and does not establish one-hour timing or
+complete notebook approval. Keep exact raw evidence and provenance in owning
+reports. Root alone updates this routing index.

@@ -52,7 +52,7 @@ The Gamma example protects a useful architectural principle: practical competenc
 
 ### L02-Q1 — Notebook evaluation contract
 
-**Stable ID:** `L02-Q1` · **Status:** queued, unanswered · **Owner:** instructor via Lecture Scope coordinator · **Priority:** P1, early-course readiness: this determines the notebook handoff and prevents authoring an unapproved evaluation burden. Historical live commitments and independent evidence work do not wait.
+**Stable ID:** `L02-Q1` · **Status:** resolved, existing endpoint retained · **Owner:** instructor via Lecture Scope coordinator. **Resolution (current discussion, 2026-10-15):** “I think the notebook will be sufficient without the expansion.” The accepted boundary is recorded in Section 8's Notebook handoff and `development_state.md` on `resume/l02-notebook-contract-20261015`, commit `c8e9b2a`. Fit/inspect/score/generate remains required; baseline comparison and failed-output diagnosis optional. The original question, alternatives and recovery evidence below remain the reviewed proposal, not pending approval or the accepted contract. Worked-solution resumption and source-plan synchronization are coordinated through the course index; this answer does not approve the full Scope, design or student notebook.
 
 **Question:** Keeping the existing baby-name bigram reference and the approved live Time Machine example, should the one-hour notebook require held-out log-score comparison with an independent-character baseline and diagnosis of a failed/implausible output?
 

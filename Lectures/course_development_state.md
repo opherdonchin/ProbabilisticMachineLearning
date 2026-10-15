@@ -193,7 +193,7 @@ assumed and no proposal is promoted by this order.
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
 | Resolved; joint interpretation collected | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
-| L09 selected; L10 current review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | L09 Challenger selected; bounded Scope/handoff reconciliation running. L10 Eight Schools versus bioassay choice presented; L07/final family allocation remain separate. |
+| L09 selected; L10 current review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | L09 Challenger selected; bounded Scope/handoff reconciliation returned at39dd5dc. L10 Eight Schools versus bioassay choice presented; L07/final family allocation remain separate. |
 | Limited decisions recorded; reviews collected | L12-APPLICATION / L12-GENERATIVE-ENDPOINT | Zero rule3e27b86 and required generation582ff0e retained; reviews85af01b/aac62bb feasible-with-risks. Whole Scope/transform adoption and learner/runtime readiness remain separate. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |
@@ -338,15 +338,19 @@ prior/query provenance. Whole Scope, numerical tolerance and exact student/
 supplied family allocation are not approved. Original evidencef64fb54 and
 independent reviewdcf2a81 remain the sources; no fresh fits/search needed.
 
-Actual owner `/root/l09_contract_reconciliation`, Lecture Scope/revision,
+Completed owner `/root/l09_contract_reconciliation`, Lecture Scope/revision,
 base172686c, same isolated branch/worktree. Exact allowed writes:
 `Lectures/L09_Variational_Inference/lecture_scope.md` and
 `Lectures/L09_Variational_Inference/reconciliation/challenger_handoff_review.md`.
 Coordinator alone owns decision/investigation pointers/index. Deliverable:
 coherent provisional application reconciliation and within-hour student/supplied
 handoff proposal, preserving live Gaussian diagnostic, ELBO/pathwise/CAVI depths
-and time envelope. Return consequential pressure; do not silently replace core
-live mathematics. Reconcile L09/L10 family continuity honestly. No new probes,
+and time envelope. Returned `39dd5dc`, tree clean; scope and
+`challenger_handoff_review.md` own the coherent revision and proposed student
+diagonal / supplied full-family split. No new fit or technical blocker. The
+60-minute proposal has no reserve; affected feasibility preview and later
+student-work/whole-Scope acceptance remain gates. No writer remains active.
+Do not silently replace core live mathematics. Reconcile L09/L10 family continuity honestly. No new probes,
 sections/slides/student notebooks, shared/map/env changes, merges or Scope freeze.
 
 Current next instructor decision: L10 Eight Schools versus bioassay, supported by

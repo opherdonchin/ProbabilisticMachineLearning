@@ -21,7 +21,7 @@ dispatch; explicit current continuation envelopes supersede only named paths.
 |---|---|---|
 | L01 experiment, `experiment/l01-density-20261014@2c1b7fa` | `/tmp/pml-l01-density-20261014`; [result](/tmp/pml-l01-density-20261014/Lectures/L01_Probability_Statistics/reconciliation/density_experiment/report.md) | Frozen alternatives and proposed skill patch remain isolated. L01/slide skills/APIs/conventions reserved from unrelated tasks; adoption and candidate promotion need separate explicit decisions. |
 | L04–L12, `assess-l04-l12-reconciliation-20261014@61f113e` | `/tmp/pml-l04-l12-reconciliation`; `Lectures/course_architecture_scope/reconciliation/development_state.md` | Scope/probe investigation complete; its scopes, group queue, maps/syllabus and shared scope skills remain outside unrelated write envelopes. |
-| Course coordination, `course-development-20261014@f9ce8fa` | This worktree; this index | Integration updates only this index. Existing skill and AGENTS instructions suffice; no infrastructure or skill changes commissioned. |
+| Course coordination, `course-development-20261014@f9ce8fa` | This worktree; this index and course-development skill | Actual resumption exposed an avoidable serial review wait. A narrow skill clarification now presents the next ready question while authorized execution runs. No new infrastructure, other skills or AGENTS changes. |
 
 Current evidence (paths are relative to their stated worktrees; Git pointers are
 portable):

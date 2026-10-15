@@ -142,6 +142,12 @@ pending owner handoff rather than editing it concurrently. If implementation
 permission is missing, mark `decision resolved; execution awaits authorization`.
 Do not manufacture an instructor answer to test this transition.
 
+During an active instructor-review session, present the next ready decision
+while authorized work from the previous answer runs. Wait for results only when
+they materially determine that next decision; routine recording, authoring,
+validation and commits must not make the instructor wait. Outside an active
+review session, continue collecting questions under deferred review.
+
 ## Persist only missing coordination information
 
 Existing lecture `development_state.md` files own lecture status and approvals;

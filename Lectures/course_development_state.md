@@ -355,4 +355,11 @@ in `/tmp/pml-l10-geometry-20261015`, independently checked atdcf2a81.
 Eight Schools recommendation is conditional on feasible hierarchy/noncentering
 explanation; same MH algorithm and counterevidence of centered-chain failure must
 survive. Bioassay is a smaller logistic continuation with tail/query limitations.
-No L10 application choice has yet been received. This does not block L09 revision.
+Instructor now requests the actual L10 lecture coverage before selecting the
+notebook. Application choice is deferred for that Scope discussion; no answer
+has been inferred. Current live proposal is MC error + invariance/MH proof +
+bounded Gibbs + dependent-error diagnostics, with HMC recognition only. Existing
+source-arc review flags HMC depth and theorem-first ordering as genuine teaching
+tradeoffs. Eight Schools adds a noncentering explanation not yet funded by that
+baseline. Do not re-ask the dataset choice before resolving the instructor's
+coverage concern. L09 revision and other independent work continue.

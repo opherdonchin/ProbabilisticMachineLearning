@@ -68,6 +68,31 @@ a bounded preview, not full Section Design, independent technical validation,
 notebook production, approval or a timed pilot. Source/math/runtime checks and
 other course work can continue independently.
 
+## Returned zero-rule validation and technical review
+
+Collected `3e27b86`: only notebook_geometry/assessment.md, probe.py and
+results.json changed. Exact half-minimum, train-only derivation, compositional
+adjustment, finite coordinates, roundtrip and full-generation support checks
+passed. Sensitivity did affect rare bicycle reconstructions, despite preserving
+the broad beta/rate tradeoff. Those are limitations to report, not another
+request for the instructor to choose a numerical epsilon. The report owns raw
+findings; no whole model or learner readiness is approved.
+
+Independent technical reviewer `/root/l12_transform_review`, isolated branch
+`review/l12-transform-20261015`, worktree `/tmp/pml-l12-transform-review-20261015`.
+Input: exact `3e27b86` probe/assessment/source records, accepted scope at `582ff0e`.
+Sole writable artifact: `Lectures/L12_VAE/reconciliation/transform_technical_review.md`.
+Review actual variable semantics and triangular/logratio transformations,
+Jacobian/scaler, zero replacement and no-leak provenance, roundtrip target,
+distribution labels, reference score comparability, sensitivity and limitations.
+Selectively replay independent checks in /tmp with the existing locked interpreter;
+do not repeat every fit, search variants, alter inputs or approve model/Scope.
+Read relevant existing specialist instructions; worker is not alone and may not
+revert peers, touch shared artifacts or spawn more agents. Return exact checked
+revisions, independence, feasible/with-risks/blocked, owner/severity/evidence and
+smallest repair. Any source corrections remain author work. This review can run
+beside the receiving-workload preview; neither blocks unrelated course work.
+
 ## Zero-rule validation follow-up
 
 Owner `/root/l12_city_transform`, current branch/worktree verified clean at

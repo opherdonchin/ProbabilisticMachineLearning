@@ -399,3 +399,30 @@ bounded Scope and affected feasibility preview, then validate its application;
 do not repeat all candidate investigations. No production, shared-skill or
 environment edits, merges or further dispatch is implied by these reports.
 Independent course work remains unblocked.
+
+## AIS selection and delegated continuation — 2026-10-15
+
+The instructor selected AIS as the L10 notebook direction in replacement thread
+`01a14017-0a80-7150-b7e7-c6511cb25698`: “I like the idea of AIS. I think it will
+work well.” The latest steering explicitly requires delegating/backgrounding
+this work while instructor review continues. This selects the notebook method;
+the dataset, detailed student workload, live treatment depths and whole Scope
+remain subject to their owning contracts and review. The preceding discussion
+proposes IS → MCMC → HMC, with only a light Murphy-based NUTS reference, through
+accuracy of task-relevant performance estimates versus computation. It does not
+approve a complete live Scope. Read the exact prior exchanges in thread
+`01a13b84-cc43-76e2-a709-9ef2700a21bf` rather than promoting earlier route options.
+
+New isolated assignments, both based on `13b209b`:
+
+| Task / owner | Branch and worktree | Exact writes / deliverable / gate |
+|---|---|---|
+| `l10_ais_contract`, Lecture Scope/revision | `resume/l10-ais-selection-20261015`; `/tmp/pml-l10-ais-selection-20261015` | Only `Lectures/L10_MCMC/lecture_scope.md`, `reconciliation/ml_rescope_brief.md`, `development_state.md` within that lecture: record AIS selection/provenance, reconcile current direction and pending commitments. No full Scope build, new probes or production. Commit bounded result. |
+| `l10_ais_pilot`, worked-solution feasibility/build | `investigate/l10-ais-pilot-20261015`; `/tmp/pml-l10-ais-pilot-20261015` | Only `Lectures/L10_MCMC/notebook_ais/`: one bounded computational/source pilot and report, using repository uv without changing environment. Reuse L09 Challenger/current evidence as initial candidate, with a tractable diagnostic only if needed. Dataset and measured learner feasibility remain unapproved; no student notebook, slides or Scope edits. Commit code/raw evidence/report and return limitations. |
+
+Coordinator alone owns this index. Other worktree reservations remain intact;
+no shared skills, architecture/maps, syllabus, live slides, environment, merges
+or publishing in either assignment. The scope record may complete independently
+of the pilot; the pilot must not treat student-time estimates as measured or a
+passing local script as hosted Colab validation. Continue one-at-a-time review
+while these tasks run; collect results by their returned revisions.

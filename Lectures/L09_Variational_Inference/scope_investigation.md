@@ -1,5 +1,13 @@
 # L09 scope investigation — objective, family and stochastic fitting
 
+**Current decision, 2026-10-15:** The old shared-classifier selection is replaced
+by the instructor's [geometry-led cumulative direction](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md),
+recorded in the three owning scopes. Existing probes below remain valid evidence
+for their exact configurations, not selected notebook examples. Dataset/family
+selection awaits the new bounded research. L09's old Gaussian-only comparison
+question is deferred for reformulation after family selection; no diagonal or
+Gaussian restriction is newly approved.
+
 **Stage/mode:** Lecture Scope / feasibility-review with author-only probes, investigator `/root/investigate_l07_l10`, 2026-10-14; worktree `/tmp/pml-l04-l12-reconciliation`, starting commit `5e4c86e`. Current scope blob `89ee9f324fd0384972ff1ef52c446d6b146367d6`. **Verdict: feasible-with-risks.** [Current scope](lecture_scope.md) remains unchanged. This file owns only the open question below; the shared model choice is owned by [L07-SHARED-CLASSIFIER](../L07_Inference/scope_investigation.md#l07-shared-classifier--awaiting-decision-owner-l07-scope-affects-l07l09l10).
 
 ## Actual stochastic evidence

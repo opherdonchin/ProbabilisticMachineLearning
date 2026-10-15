@@ -1,5 +1,13 @@
 # L07 scope investigation — fixed-query Bayesian computation
 
+**Current decision, 2026-10-15:** The old shared-classifier selection is replaced
+by the instructor's [geometry-led cumulative direction](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md),
+recorded in the three owning scopes. Existing probes below remain valid evidence
+for their exact configurations, not selected notebook examples. Dataset/family
+selection awaits the new bounded research. L09's old Gaussian-only comparison
+question is deferred for reformulation after family selection; no diagonal or
+Gaussian restriction is newly approved.
+
 **Stage/mode:** Lecture Scope / feasibility-review with authorized author-only computational probes. Investigator `/root/investigate_l07_l10`, 2026-10-14. Worktree `/tmp/pml-l04-l12-reconciliation`, branch `assess-l04-l12-reconciliation-20261014`, starting commit `5e4c86e`. Current scope target blob `43c403d65e58e1b852517dd7b2785de1f84933e8`. **Verdict: feasible-with-risks.** This file owns the open investigation questions below; acceptance must later be recorded in [lecture_scope.md](lecture_scope.md). No scope or prior instructor choice has been replaced.
 
 ## New evidence and its practical meaning

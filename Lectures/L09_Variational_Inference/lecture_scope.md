@@ -1,5 +1,16 @@
 # L09 — Fitting a simpler distribution when the posterior is hard to compute
 
+**Instructor revision — 2026-10-15:** The notebook direction is now geometry-led
+method selection with cumulative comparison: L07 Laplace against a checked
+numerical reference; L09 revisit Laplace before an appropriate VI family; L10
+revisit that family before MCMC. Dataset continuity is optional. Examples,
+families and samplers remain unselected pending computational investigation.
+The [joint accepted direction and bounded research](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md)
+owns the shared decision and qualifications. The notebook/example commitments
+below are baseline proposals requiring reconciliation where they conflict with
+this direction; this notice does not approve the whole scope or change live
+mathematical depth. Existing review evidence remains tied to its original target.
+
 **Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
 Suppose two regression coefficients can compensate for each other: several combinations fit the data almost equally well. A best-fit pair hides that uncertainty. Ideally we want the posterior distribution over both coefficients, but in a more complicated model it may be expensive to compute. This lecture chooses a simpler distribution and adjusts it to approximate the posterior.

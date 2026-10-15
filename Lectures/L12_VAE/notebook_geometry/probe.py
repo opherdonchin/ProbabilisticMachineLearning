@@ -28,6 +28,21 @@ perm=np.random.default_rng(CONFIG['split_seed']).permutation(349)
 tr,va,te=perm[:245],perm[245:297],perm[297:]
 ci=np.array([FEATURES.index(f) for f in SHARE_FEATURES+['Working from Home Share']])
 li=np.array([FEATURES.index(f) for f in LOG_FEATURES])
+bicycle=FEATURES.index('Bicycle Mode Share')
+bicycle_part=list(ci).index(bicycle)
+DECISION_COMMIT='c0a2a4f'
+PRIOR_EVIDENCE_COMMIT='0c621d3'
+SENSITIVITY_FACTORS=[.5,2.]
+
+def training_half_minimum(training_observations):
+    """Only training observations are an argument; held-out values cannot set delta."""
+    fractions=training_observations[:,bicycle]/100
+    return .5*float(fractions[fractions>0].min())
+
+delta=training_half_minimum(raw[tr])
+assert math.isclose(delta,0.0000938790837401425,rel_tol=1e-14)
+zero_rows=np.flatnonzero(raw[:,bicycle]==0)
+assert zero_rows.tolist()==[11,94]
 # All remaining dimensions use log(x-lower), including Fahrenheit above absolute zero.
 positive=np.array([j for j in range(19) if j not in ci and j not in [1,10,11,13]])
 lower=np.zeros(19);lower[3]=1.;lower[16]=-459.67
@@ -38,11 +53,34 @@ def composition(a):
     return np.column_stack([c,1-c.sum(1)])
 
 def interior_approximation(a,delta):
-    out=a.copy();c=composition(a);zero=c==0
-    for i in np.flatnonzero(zero.any(1)):
-        k=zero[i].sum();c[i,~zero[i]]*=1-k*delta;c[i,zero[i]]=delta
-    out[:,ci]=100*c[:,:5]
+    out=a.copy();c=composition(a);zero=c[:,bicycle_part]==0
+    assert 0<delta<1
+    assert (np.delete(c,bicycle_part,axis=1)>0).all()
+    # Accepted policy applies only to recorded bicycle zeros, with no changes to other rows.
+    c[zero]*=1-delta;c[zero,bicycle_part]=delta
+    out[np.ix_(np.flatnonzero(zero),ci)]=100*c[zero,:5]
     return out
+
+def approximation_checks(a,delta):
+    before=composition(a);adjusted=interior_approximation(a,delta);after=composition(adjusted)
+    zero=before[:,bicycle_part]==0;positive_parts=[j for j in range(6) if j!=bicycle_part]
+    expected=before.copy();expected[zero]*=1-delta;expected[zero,bicycle_part]=delta
+    # Compare all positive-part ratios against the residual, including its adjusted value.
+    oldratios=before[zero][:,positive_parts]/before[zero,5,None]
+    newratios=after[zero][:,positive_parts]/after[zero,5,None]
+    result=dict(delta=float(delta),rows_changed=np.flatnonzero((adjusted!=a).any(1)).tolist(),
+        explicit_six_part_replacement_max_abs_error=float(abs(after-expected).max()),
+        closure_max_abs_error=float(abs(after.sum(1)-1).max()),
+        positive_part_ratio_max_relative_error=float(abs(newratios/oldratios-1).max()),
+        zero_rows_bicycle_fraction=after[zero,bicycle_part].tolist(),
+        all_parts_positive=bool((after>0).all()),
+        unaltered_nonzero_rows_exact=bool(np.array_equal(a[~zero],adjusted[~zero])),
+        noncommuting_coordinates_exact=bool(np.array_equal(a[:,[j for j in range(19) if j not in ci]],adjusted[:,[j for j in range(19) if j not in ci]])))
+    assert result['rows_changed']==zero_rows.tolist()
+    assert result['all_parts_positive'] and result['unaltered_nonzero_rows_exact'] and result['noncommuting_coordinates_exact']
+    assert result['explicit_six_part_replacement_max_abs_error']<1e-14
+    assert result['closure_max_abs_error']<1e-14 and result['positive_part_ratio_max_relative_error']<1e-12
+    return result
 
 class Geometry:
     def __init__(self,kind,delta=None):
@@ -122,6 +160,35 @@ def evaluate(model,X,inds,draws,seed):
     return dict(D=float(D.mean()),D_mc_se=float(D.mean(-1).std(unbiased=True)/math.sqrt(draws)),
                 R=float(r.sum(-1).mean()),per_latent_rate=r.mean(0).tolist(),mean_code_D=float(dm.mean()))
 
+@torch.no_grad()
+def affected_bicycle_reconstructions(model,X,geo):
+    """Two diagnostic rows, encoded after declared preprocessing; not test evaluation."""
+    draws=4096;mu,ell=model.encode(X[zero_rows]);mean_u=model.dec(mu)
+    mean_back=geo.inverse(mean_u.numpy())[:,bicycle]
+    fixed_generator=torch.Generator().manual_seed(906)
+    fixed_noise=torch.randn(draws,len(zero_rows),19,generator=fixed_generator)*math.sqrt(.5)
+    fixed=geo.inverse((mean_u[None]+fixed_noise).reshape(-1,19).numpy()).reshape(draws,len(zero_rows),19)[:,:,bicycle]
+    q_generator=torch.Generator().manual_seed(907)
+    latent_noise=torch.randn(draws,len(zero_rows),4,generator=q_generator)
+    z=mu[None]+torch.exp(.5*ell)[None]*latent_noise
+    decoder_mean=model.dec(z.reshape(-1,4)).reshape(draws,len(zero_rows),19)
+    q_noise=torch.randn(draws,len(zero_rows),19,generator=q_generator)*math.sqrt(.5)
+    posterior_reconstruction=geo.inverse((decoder_mean+q_noise).reshape(-1,19).numpy()).reshape(draws,len(zero_rows),19)[:,:,bicycle]
+    def describe(values,target):
+        return dict(draws=draws,mean_percent=float(values.mean()),
+            mean_MC_SE_percent=float(values.std(ddof=1)/math.sqrt(draws)),
+            q05_q50_q95_percent=np.quantile(values,[.05,.5,.95]).tolist(),
+            fraction_at_or_below_adjusted_input=float((values<=target).mean()))
+    out=[]
+    for j,i in enumerate(zero_rows):
+        target=float(geo.observed[i,bicycle])
+        out.append(dict(index=int(i),msa=rows[i]['msa'],split='train' if i in tr else 'validation',
+            original_bicycle_percent=float(raw[i,bicycle]),encoded_bicycle_percent=target,
+            mean_code_decoder_mean_backtransform_percent=float(mean_back[j]),
+            decoder_noise_at_fixed_encoder_mean_code=describe(fixed[:,j],target),
+            encoder_q_latent_plus_decoder_noise_reconstruction=describe(posterior_reconstruction[:,j],target)))
+    return out
+
 def fit(geo,seed,beta):
     X=torch.tensor(geo.standardized,dtype=torch.float32)
     torch.manual_seed(seed);model=VAE();opt=torch.optim.Adam(model.parameters(),lr=.003)
@@ -156,10 +223,11 @@ def fit(geo,seed,beta):
        conditional_MC_mean_vs_backtransform_selected_median_difference={FEATURES[j]:float(np.median(mcmean[:,j]-back[:,j])) for j in selected})
     return dict(kind=geo.kind,zero_replacement_delta=geo.delta,seed=seed,beta=beta,selected_epoch=chosen,
        training_seconds=seconds,validation_selected_objective=best,test=test,reconstruction=recon,
+       affected_bicycle_reconstructions=affected_bicycle_reconstructions(model,X,geo),
        prior_decoder_mean_backtransforms=summaries(geo.inverse(um.numpy())),
        prior_full_observations=summaries(geo.inverse(uo.numpy())))
 
-geos=[Geometry('baseline'),Geometry('fixed_transform',1e-5)]
+geos=[Geometry('baseline'),Geometry('fixed_transform',delta)]
 g=geos[1]
 # Independent Jacobian check of the complete 19-dimensional standardized map.
 x=torch.tensor(g.observed[0],dtype=torch.float64,requires_grad=True)
@@ -176,6 +244,13 @@ checks=dict(jacobian_autodiff_abs_error=abs(float(ld)-float(g.logjac(g.observed[
             original_zero_rows=np.flatnonzero((raw[:,ci]==0).any(1)).tolist(),
             test_has_only_interior_compositions=bool((composition(raw[te])>0).all()),
             approximated_rows_by_split={n:[int(i) for i in ids if i in [11,94]] for n,ids in [('train',tr),('validation',va),('test',te)]})
+checks['accepted_zero_policy']=approximation_checks(raw,delta)
+# An explicit leakage check changes held-out bicycle measurements only. Derivation still sees training only.
+changed_holdout=raw.copy();changed_holdout[np.concatenate([va,te]),bicycle]=1e-20
+checks['delta_unchanged_when_heldout_bicycle_values_perturbed']=training_half_minimum(changed_holdout[tr])==delta
+assert checks['delta_unchanged_when_heldout_bicycle_values_perturbed']
+checks['accepted_ALR_all_finite']=bool(np.isfinite(g.forward(g.observed)[:,ci]).all())
+assert checks['accepted_ALR_all_finite']
 for geo in geos:
     back=geo.inverse(geo.standardized)
     checks[geo.kind+'_roundtrip_max_relative_error']=float(np.max(np.abs(back-geo.observed)/np.maximum(1,np.abs(geo.observed))))
@@ -185,14 +260,18 @@ assert checks['jacobian_autodiff_abs_error']<1e-10
 assert max(v for k,v in checks.items() if 'roundtrip' in k)<1e-12
 results=dict(status='teacher-only computational feasibility; no student or Colab claim',
  source=dict(url=URL,sha256=SHA,base_probe_sha256=hashlib.sha256(BASE.read_bytes()).hexdigest(),
-             input_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in ['course_architecture.typ','curriculum_map.typ','curriculum_map_actual.typ','Lectures/L12_VAE/lecture_scope.md','Lectures/L12_VAE/scope_investigation.md','Lectures/L12_VAE/notebook_feasibility/source_units.json','.agents/skills/teaching-notebook-authoring/references/student-knowledge.md','pyproject.toml','uv.lock']},
+             decision_commit=DECISION_COMMIT,prior_exploratory_evidence_commit=PRIOR_EVIDENCE_COMMIT,
+             input_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in ['course_architecture.typ','curriculum_map.typ','curriculum_map_actual.typ','Lectures/L12_VAE/reconciliation/city_transform_direction.md','Lectures/L12_VAE/lecture_scope.md','Lectures/L12_VAE/scope_investigation.md','Lectures/L12_VAE/notebook_feasibility/source_units.json','.agents/skills/teaching-notebook-authoring/references/student-knowledge.md','pyproject.toml','uv.lock']},
              config_sha256=hashlib.sha256(json.dumps(CONFIG,sort_keys=True).encode()).hexdigest(),
              this_probe_sha256=hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),
              split_indices_sha256=hashlib.sha256(perm.astype('<i8').tobytes()).hexdigest()),
  config=CONFIG,versions=dict(torch=torch.__version__,numpy=np.__version__,python=platform.python_version()),checks=checks,
- approximation=dict(delta=1e-5,sensitivity_delta=1e-4,affected_rows=[dict(index=int(i),msa=rows[i]['msa'],
+ approximation=dict(delta=delta,positive_training_bicycle_min_fraction=2*delta,
+   positive_training_minimum_rows=[dict(index=int(i),msa=rows[i]['msa'],bicycle_percent=float(raw[i,bicycle])) for i in tr if raw[i,bicycle]/100==2*delta],
+   sensitivity_factors=SENSITIVITY_FACTORS,derivation='Half the smallest strictly positive training bicycle fraction; frozen for all splits. One-half is an instructor-accepted convention, not statistical prevalence estimation.',
+   affected_rows=[dict(index=int(i),msa=rows[i]['msa'],
    original=raw[i,ci].tolist(),replaced=g.observed[i,ci].tolist()) for i in [11,94]],
-   rule='Replace zero composition part by delta and multiply all nonzero parts, including residual, by (1-number_of_zeros*delta). Only two rows altered; no rows removed.'),
+   rule='Replace recorded bicycle zero by the frozen training-derived delta and multiply every other commuting part, including residual, by (1-delta). Only two rows altered; no rows removed.'),
  raw_ranges={f:[float(raw[:,j].min()),float(raw[:,j].max())] for j,f in enumerate(FEATURES)},
  transforms=[dict(kind=geo.kind,delta=geo.delta,center=geo.center.tolist(),scale=geo.scale.tolist(),
                    mean_test_logjac=float(geo.logjac(raw[te]).mean())) for geo in geos],
@@ -202,10 +281,17 @@ for geo in geos:
         for beta in CONFIG['betas']:
             f=fit(geo,seed,beta);results['fits'].append(f)
             print(geo.kind,geo.delta,seed,beta,'D/R',f['test']['D'],f['test']['R'],flush=True)
-# One declared sensitivity at each beta, seed 17; no model selection from this comparison.
-geo=Geometry('fixed_transform',1e-4)
-results['sensitivity_transform']=dict(delta=geo.delta,center=geo.center.tolist(),scale=geo.scale.tolist())
-for beta in CONFIG['betas']:results['fits'].append(fit(geo,17,beta))
+# Two declared nearby factors, each beta at seed 17; neither selects the accepted policy.
+results['sensitivity_transforms']=[]
+for factor in SENSITIVITY_FACTORS:
+    geo=Geometry('fixed_transform',delta*factor)
+    back=geo.inverse(geo.standardized)
+    extra=approximation_checks(raw,geo.delta)
+    extra['roundtrip_max_relative_error']=float(np.max(np.abs(back-geo.observed)/np.maximum(1,np.abs(geo.observed))))
+    extra['ALR_all_finite']=bool(np.isfinite(geo.forward(geo.observed)[:,ci]).all())
+    assert extra['roundtrip_max_relative_error']<1e-12 and extra['ALR_all_finite']
+    results['sensitivity_transforms'].append(dict(factor=factor,delta=geo.delta,center=geo.center.tolist(),scale=geo.scale.tolist(),checks=extra))
+    for beta in CONFIG['betas']:results['fits'].append(fit(geo,17,beta))
 # Exact baseline reproduction excluding timings and new diagnostics.
 old=json.loads((HERE.parent/'notebook_feasibility/results.json').read_text())
 results['checks']['baseline_max_D_R_difference_from_committed_probe']=max(abs(a['test'][k]-b['test'][k]) for a,b in zip(results['fits'][:6],old['fits']) for k in ['D','R'])

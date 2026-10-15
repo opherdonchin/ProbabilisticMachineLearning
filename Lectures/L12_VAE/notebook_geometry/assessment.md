@@ -1,23 +1,29 @@
 # City observations in unconstrained coordinates: bounded feasibility result
 
-**Status:** teacher-only Lecture Scope/worked-solution feasibility, 2026-10-15;
-**verdict: feasible with risks**. This tests the instructor's proposal recorded in
-[city_transform_direction.md](../reconciliation/city_transform_direction.md), at
-base `3919d6a`, without selecting a final observation model or revising Scope.
-The city preference and fixed-transform investigation are authorized; the zero
-approximation and final teaching contract are proposals. The implemented route
-keeps the 19-dimensional observation, four-dimensional Gaussian latent inference,
-ELBO/pathwise-gradient structure, network, split, optimizer and seeds. It provides
-a coherent continuous proxy for the indicators and fixes the audited support
-failures. It does **not** produce physically validated metropolitan areas.
+**Status:** teacher-only worked-solution revision, 2026-10-15;
+**verdict: feasible with risks; accepted zero rule validated**. This implements the
+instructor's training-derived half-minimum convention recorded in
+[city_transform_direction.md](../reconciliation/city_transform_direction.md),
+launch input `c0a2a4f`. The exact response was “This sounds prefect. Let's go with
+it.” That accepts the concrete zero rule, not true cycling prevalence, every
+other proposed transform, a complete Scope or student publication. The original
+exploratory evidence remains in Git at `0c621d3`; current code/results below use
+the accepted convention and replace the earlier nominal-policy artifacts.
 
-Recommendation: retain this route for the proposed city **representation and
-generate-and-critique** exercise, with supplied transforms, an explicit two-row
-survey-zero approximation and required full observation draws. Make the remaining
-climate inconsistency part of judging the model against its descriptive task.
-Choosing a model of the survey recording process itself would require materially
-different likelihood work; that is a teaching endpoint choice, not a reason to
-leave this bounded technical investigation unfinished.
+The implemented route keeps the 19-dimensional observation, four-dimensional
+Gaussian latent inference, ELBO/pathwise-gradient structure, network, split,
+optimizer and seeds. It provides a coherent continuous proxy for the indicators
+and fixes the audited support failures. It does **not** produce physically
+validated metropolitan areas. Recommendation: retain the proposed city
+**representation and generate-and-critique** route with supplied transforms,
+the accepted explicit survey-zero adjustment. Subsequent instructor direction, recorded at `582ff0e`,
+requires the reconstruction / prior decoder-mean / full prior-observation
+comparison and one model-criticism diagnostic, replacing the optional extra
+traversal. Make the remaining climate inconsistency and coarse reconstruction of
+rare bicycle shares visible. A genuine survey recording model would require
+different likelihood work; accepting this preprocessing convention does not
+claim that model has been built. No further instructor answer is needed to
+validate the accepted rule.
 
 ## Data and zero audit
 
@@ -66,15 +72,29 @@ explains that rare population characteristics may be absent from the survey
 sample. It supplies no justified deterministic censoring threshold or latent
 positive value for these particular records.
 
-For this **continuous approximation only**, replace each zero composition part
-by fixed `δ=10⁻⁵` (0.001 percentage point), multiply all originally nonzero parts,
-including residual, by `1−kδ`, where k is that row's number of zeros. All 349 rows
-remain; no hidden clipping/dropping occurs. Here k=1 in two rows only. Their
-positive parts retain their mutual ratios, but their observations change; the
-inverse recovers the replacement, not the original zero. The exact before/after
-vectors are in results. δ is a declared proxy resolution, not estimated from
-held-out values or justified by ACS precision. A sole declared sensitivity uses
-`δ=10⁻⁴`, seed 17, both β values. No model is selected from that comparison.
+For this **continuous approximation**, derive the replacement from training:
+
+$$
+\delta=\frac{1}{2}\min_{i\in\mathrm{train}:\,x_{i,\mathrm{bike}}>0}
+       \frac{x_{i,\mathrm{bike}}}{100}
+       =0.0000938790837401425.
+$$
+
+The minimizing training row is **Decatur, AL**, index 84, bicycle share
+`0.0187758167480285%`: minimum fraction `0.000187758167480285`. Thus each
+recorded zero becomes `0.00938790837401425%`, or about 0.00939 percentage
+point. Freeze this training-derived δ for validation/test; never recompute a
+held-out minimum. Multiply **all five other parts**, including the residual,
+by `1−δ`. All 349 rows remain; only the two zero rows change. Every originally
+positive part ratio is preserved, while the inverse recovers the adjusted
+composition rather than the original zero. The exact before/after vectors are
+in results. The factor one-half is the accepted convention, not an estimate
+of true cycling prevalence or a quantity inferred from ACS margins of error.
+
+The declared sensitivity uses **δ/2 and 2δ**, seed 17, both β values (four
+additional fits). These are checks around the accepted convention, not candidate
+policies selected by loss. Their replacements are 0.00469395 and 0.01877582
+percentage point. No other transform, model, split or architecture is searched.
 
 The fixed existing split places row 11 in training, 94 in validation, neither in
 test. Consequently every one of the 52 unchanged test cases has a genuine finite
@@ -216,8 +236,14 @@ No environment/dependency/lock changes, source data copies, checkpoints, student
 notebooks or plots are committed. Scratch downloads stay under `/tmp`. Python,
 NumPy/PyTorch versions, exact data/config/split/probe/input hashes, train centers
 and scales, every selected epoch, per-latent rates and diagnostics are in results.
-The model/loss/config definitions are imported by AST from the unchanged baseline
-source without running its output-writing driver. This prevents accidental
+Technical execution records the exact `c0a2a4f` run inputs; the generation
+encounter decision at `582ff0e` changes the pedagogical handoff, not these
+computations. No new fit is required for that decision.
+The current run has **16 fits**: six baseline, six accepted-map and four
+declared sensitivities. Baseline fits are rerun to verify exact reproduction
+and add matching affected-row diagnostic labels; their underlying model and
+D/R results are unchanged. The model/loss/config definitions are imported by AST
+from the unchanged baseline source without running its output-writing driver. This prevents accidental
 baseline implementation drift. Baseline D/R reproduce its six committed fits
 **bit for bit**. Both routes use the same original 245/52/52 split; seeds
 17/29/43; 19→32/four-latent/32→19 network (1,691 parameters); variance .5;
@@ -230,9 +256,9 @@ test data are identical and interior for both.
 | Model/objective, three seeds | Test D in own standardized coordinates | Test R | Raw CSV-coordinate negative ELBO | Backtransformed mean-code RMSE / training raw SD |
 |---|---:|---:|---:|---:|
 | Original preprocessing, β1 | 16.164–16.383 | 3.782–3.954 | 65.999–66.123 | .477–.503 |
-| Fixed map δ10⁻⁵, β1 | 17.331–17.551 | 3.767–3.846 | 60.579–60.720 | .554–.570 |
+| Fixed map, accepted δ, β1 | 17.398–17.568 | 3.703–3.798 | 60.566–60.711 | .555–.570 |
 | Original preprocessing, β4 | 21.158–21.640 | 1.097–1.171 | 68.210–68.619 | .688–.698 |
-| Fixed map δ10⁻⁵, β4 | 22.371–22.740 | .962–1.043 | 62.817–63.131 | .743–.767 |
+| Fixed map, accepted δ, β4 | 22.407–22.791 | .959–1.044 | 62.820–63.120 | .742–.768 |
 
 R and scores are nats/case. Expected D MC standard errors are recorded conditional
 on these cases/weights, not sampling uncertainty for a new dataset. Each fit
@@ -243,15 +269,35 @@ universal superiority. No held-out criterion was used to choose a new architectu
 or to tune δ. Larger β retains a lower-rate/higher-distortion comparison across
 these fitted seeds, without establishing an optimal frontier or population MI.
 
-At seed 17, increasing δ to 10⁻⁴ changes β1 D/R from 17.5505/3.7669 to
-17.5611/3.7842 and raw negative ELBO from 60.7200 to 60.7143. β4 changes from
-22.7332/.9620 to 22.7616/.9651 and raw negative ELBO 63.0976 to 63.0956.
-That limited sensitivity leaves the qualitative finding intact; it does not
-validate a survey observation model or justify choosing a preferred δ by score.
+The seed-17 sensitivity preserves the broad β comparison, but not every rare
+bicycle reconstruction magnitude:
 
-Author checks pass: full 19×19 Jacobian against float64 automatic differentiation
-(error `7.11e-15`), forward/inverse round trip relative error `4.91e-15` against
-**approximated** observations, train mean/SD checks, dimensions and finite loss.
+| Replacement | β1 D / R | β1 raw negative ELBO | β4 D / R | β4 raw negative ELBO |
+|---|---:|---:|---:|---:|
+| δ/2 | 17.5565 / 3.7807 | 60.7152 | 22.7356 / .9676 | 63.0813 |
+| Accepted δ | 17.5604 / 3.7808 | 60.7109 | 22.7911 / .9594 | 63.1201 |
+| 2δ | 17.5696 / 3.7879 | 60.7203 | 22.7702 / .9654 | 63.0984 |
+
+The same selected epochs at seed 17 (140 for β1, 80 for β4) result at all three
+replacement levels. Neither score nor reconstruction chooses a different rule.
+This is finite-fit evidence, not invariance to zero handling or validation of
+a survey observation model. The affected-row results below expose sensitivity
+that small aggregate loss changes can conceal.
+
+Author checks pass for the accepted rule: training-only derivation and an
+explicit held-out perturbation check; rows changed exactly `[11,94]`; all
+nonzero-bicycle rows and noncommuting coordinates **exactly unchanged**; six-part
+replacement discrepancy `1.61e-16`; closure error zero; preserved positive-part
+ratios within `2.43e-14` relative error; finite log ratios for all 349 adjusted
+rows; full 19×19 Jacobian agrees with float64 automatic differentiation to the
+reported machine precision (zero discrepancy in this run); round-trip relative
+error below `4.91e-15` against **adjusted** observations; training mean/SD,
+dimensions and finite loss checks. Both sensitivity maps also pass replacement,
+closure, ratio, finite-log-ratio and adjusted round-trip checks. The accepted
+δ is derived by a function that receives only training observations, and then
+passed unchanged to every row's preprocessing. Replacing held-out bicycle values
+with arbitrarily tiny positives does not change its value.
+
 The baseline's independently checked analytic KL, event-summed Normal NLL and
 pathwise gradients are reused, not rewritten. The map does not change those
 latent calculations. The old source's log1p+clipping is not mistaken for a global
@@ -259,8 +305,8 @@ bijection; on actual nonnegative inputs its inverse/derivative used for scores
 agree with this extended baseline model.
 
 For 2,000 same-seed prior latent and observation-noise draws per fit, all six
-fixed-map fits and both sensitivities have **zero nonfinite or audited support
-failures**: positivity/shifted bounds, individual fractions, whole commuting
+accepted-map fits and all four sensitivity fits have **zero nonfinite or
+audited support failures**: positivity/shifted bounds, individual fractions, whole commuting
 composition, circuity, intersection≤node and e+u₀≤1. That observation complements
 the analytic support proof. Old 39–48% scalar failures concerned the old model.
 Our stronger combined commuting check also includes negative individual parts
@@ -268,7 +314,7 @@ and negative residual: the old baseline fails it in 62.8–66.7%, a different
 statistic from its old five-share-sum-only 36–38% failure.
 
 Realism remains materially limited. The fixed-map generated feature correlations
-have off-diagonal RMSE .147–.170 relative to training correlations; the 52 real
+have off-diagonal RMSE .147–.178 relative to training correlations; the 52 real
 test cases give .116 by the same diagnostic. A median generated case lies
 2.72–2.98 training-raw-SD units from its nearest training case, versus 1.77 for
 a median real test case; these distances are descriptive checks, not independent
@@ -290,6 +336,54 @@ cross-variable urban/weather relationships. A final task requiring credible
 synthetic cities would require another observation-model investigation; it is
 not achieved by these support results.
 
+## Bicycle reconstructions for the two adjusted records
+
+The encoded bicycle input is `0.0093879%` in each zero row. The **Anniston**
+record is a training reconstruction; **East Stroudsburg** is a validation
+reconstruction, and validation already selects the checkpoint. These are
+specific reconstruction diagnostics, not two new independent held-out tests.
+Each is encoded **after** its accepted adjustment and train-fitted transform.
+The original recorded zero is retained as a comparison label and is never passed
+through a logarithm.
+
+The table gives ranges across the three fixed model seeds, in **percentage
+points of bicycle share**. It separates three actual computations:
+
+| Row / β | Decoder-mean backtransform at encoder mean code | Mean over decoder noise, fixed encoder mean code | Mean over encoder-q latent draws **and** decoder noise |
+|---|---:|---:|---:|
+| Anniston, β1 | .0535–.0637 | .0742–.0881 | .0891–.1003 |
+| East Stroudsburg, β1 | .1030–.1502 | .1373–.2004 | .1623–.2207 |
+| Anniston, β4 | .1793–.1876 | .2465–.2578 | .2658–.2847 |
+| East Stroudsburg, β4 | .1982–.2076 | .2638–.2761 | .3099–.3313 |
+
+The two means use 4,096 Monte Carlo draws; q-plus-noise mean standard errors
+are about .0014–.0050 percentage point. The last column samples
+`Z~qφ(z|S(adjusted x))`, `U~pθ(u|Z)`, then backtransforms. It is an
+**encoder-based reconstruction distribution**, not the exact model posterior
+predictive distribution or a prior-generated city. The middle column instead
+fixes z at the encoder mean and draws only observation noise; the first omits
+both sources of randomness. Full quantiles and MC errors are recorded per row,
+seed, β and sensitivity in results.
+
+For seed 17, β1 q-plus-noise 5/50/95 percentiles are
+`.0163/.0661/.2821%` (Anniston) and `.0290/.1168/.4939%` (East Stroudsburg).
+Only 1.07% and .171% of these draws lie at or below the adjusted input. The
+continuous model assigns no mass to exactly zero. Reconstruction moves these
+rare shares upward, more at β4; replacing a boundary input does not make the
+fitted low-dimensional VAE interpolate it or model the survey observation
+mechanism. That is a task-relevant reconstruction limitation rather than a
+failed preprocessing implementation.
+
+The small declared sensitivity is visible locally: at seed 17, β1, changing
+δ/2 → δ → 2δ changes the q-plus-noise reconstruction mean from
+`.0843 → .0979 → .1143%` for Anniston and
+`.1532 → .1703 → .2002%` for East Stroudsburg. These are all substantially
+above the respective adjusted inputs; aggregate D/R stability should not be
+reported as accurate rare-share recovery. β4 means vary less over these factors
+but are farther above the small inputs. These diagnostics support retaining the
+model as a descriptive approximation with explicit limitations; they do not
+reopen the accepted factor by selecting whichever reconstruction looks best.
+
 ## Queries, supplied work and downstream consequences
 
 `S⁻¹(dθ(μ₍φ₎(S(x))))` is a **backtransformed mean-code reconstruction**, not
@@ -305,7 +399,7 @@ Logistic and composition expectations generally require integration; network
 ratios introduce further dependence in raw coordinates. The probe averages
 1,024 decoder-noise draws at each **fixed mean code** to demonstrate the
 distinction, not to approximate latent-posterior averaging. The two reconstructed
-summaries differ by about .20–.22 raw-SD RMS units at β1 in the final route;
+summaries differ by about .204–.212 raw-SD RMS units at β1 in the final route;
 results record exact values. Integrating over `q(z|x)` as well answers yet another
 approximate reconstruction query. Keep labels tied to the actual distribution
 being averaged.
@@ -322,8 +416,9 @@ not a direct information estimate or causal factor discovery.
 Supply all data access, exact unit labels/proxy policy, split/scaler, T/T⁻¹,
 model skeleton, driver, β4 fit and plotting/diagnostic code. Students should
 **apply** the existing reparameterization and **work** the event-summed loss;
-run one fit; reconstruct real cases; generate full observations; compare rate
-and task diagnostics with the supplied second β; explain a support success and
+run one fit; reconstruct real cases; compare reconstructions, prior decoder-mean
+backtransforms and full prior observations; use one climate-consistency diagnostic; compare rate and the
+stated task scores with the supplied second β; explain a support success and
 a joint-realism failure. Keep the Jacobian proof as instructor checking material
 or a stated density-bookkeeping result, rather than silently adding a new
 student derivation to the VAE lab. No new Jacobian coding, source archaeology,
@@ -331,9 +426,9 @@ PCA fit, MI estimator or zero-model fitting belongs in the one-hour task.
 
 A **60-minute estimate, not a pilot**, is: 5 minutes for supplied data/model and
 zero caveat; 15 to complete latent sampling and loss; 8 to run/check one fit;
-10 to reconstruct and distinguish mean backtransforms from full draws; 12 to
-inspect composition and climate diagnostics; 8 to interpret the supplied β
-comparison; 2 for a retrospective explanation of what the fitted model delivers.
+10 to compare reconstruction / prior decoder-mean / full-generation summaries;
+12 to inspect one supplied climate-consistency diagnostic; 8 to interpret the
+supplied β comparison; 2 for a retrospective explanation of what the fitted model delivers.
 It is conditional on planned L06/L09/L11 encounters and supplied software. The
 knowledge record actually covers only course entry/L01, so later fluency is not
 established evidence. Scaffold PyTorch event axes, `exp(logvar/2)`, noise shapes,
@@ -341,7 +436,10 @@ zeroing gradients and held-out preprocessing. A full student derivation of the
 observation map/Jacobian would materially enlarge the workload and needs scope
 review; roughly 6–10 minutes for a supplied-map receiving explanation is a
 lecture planning estimate, not measured delivery time. The existing 112-minute
-live estimate is already tight.
+live estimate is already tight. The required comparison and one criticism
+diagnostic replace the optional extra traversal; they do not add another fit
+or a new exercise block to the hour. Geometric support checks and further
+author diagnostics remain supplied rather than additional student tasks.
 
 The current deliverable is a validated computational probe and mathematical
 handoff, **not a publishable worked/student notebook**. No independent review,
@@ -358,22 +456,29 @@ sign error and Eq. 21.7’s log-variance ambiguity; reuse the checked course los
 
 Remaining items have distinct owners:
 
-- **Instructor/Scope:** accept a continuous descriptive proxy with explicit survey
-  zero replacement versus require a model of recorded zeros; decide whether the
-  generation/critique encounter is protected within the existing time budget.
-  These change endpoint, treatment depth and interpretation, not numeric correctness.
+- **Instructor/Scope:** the half-minimum zero convention is accepted and
+  validated. The reconstruction / decoder-mean / full-generation comparison
+  plus one model-criticism diagnostic is required, replacing the optional extra
+  traversal. Final acceptance of the remaining proposed transforms and complete
+  Scope remains separate. A later demand to model recorded survey zeros rather
+  than use this proxy would reopen an endpoint/likelihood commitment; no such
+  decision is required for the authorized checks reported here.
 - **Worked-solution author:** if the proxy is accepted, carry these exact formulas,
   support and score checks into a clean worked solution; resolve or label the GDP
   source indicator and provenance, supply fitted comparison and reproducible plots.
   This technical work need not become an instructor approval question.
 - **Section Design and notebook pedagogy:** recheck the receiving explanation,
   required full-draw/realism activity and one-hour workload. Preserve the ELBO,
-  joint-gradient and rate-not-MI commitments; remove a secondary traversal if
-  time must fund required generation. Scope owns any consequential removal.
+  joint-gradient and rate-not-MI commitments; the instructor has assigned the
+  optional extra traversal's time to the required comparison and one criticism
+  diagnostic. Validate that concrete receiving workload before publication.
 - **Publication/runtime owner:** clean local notebook execution and fresh hosted
   Colab 2026.07 CPU run, source attribution/packaging and actual student timing.
   No learner readiness follows merely from these fast CPU fits.
 
 No course map, approved historical scope, source data or shared skill was changed.
-The next owner can make the teaching decision from this evidence without reopening
-the city-versus-handwriting preference.
+No technical blocker was found for the accepted convention. Rare-share
+reconstruction, climate consistency, unverified GDP units and unmeasured student/
+Colab readiness remain advisory limitations with the owners above. The next
+owner can continue the Scope/worked-solution handoff without reopening the city
+preference or asking the instructor to approve routine numeric checks.

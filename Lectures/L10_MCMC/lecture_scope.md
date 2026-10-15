@@ -1,23 +1,46 @@
 # L10 — Sampling from a distribution: a correct algorithm can still give a poor estimate
 
-**Scope reopened by instructor, 2026-10-15:** This introductory MH/error-focused
-proposal repeats departmental undergraduate material. Seek a richer path through
-Murphy as **MCMC for machine learning**, with a bounded bridge for students from
-other backgrounds. The [owning brief](reconciliation/ml_rescope_brief.md) records
-the goals, authority and inquiry boundary. The arc/depth allocation below is an
-earlier baseline, not a newly accepted contract. No replacement route is yet
-selected; notebook application choice waits for the lecture direction.
+**Current instructor decisions — 2026-10-15:** The introductory MH/error-focused
+proposal below is reopened because it repeats departmental undergraduate
+material. The instructor proposes **importance sampling (IS) → MCMC → Hamiltonian
+Monte Carlo (HMC)** through the computation required to characterize a
+specified performance functional accurately. NUTS receives only a light
+Murphy-based reference; no supplementary NUTS development is wanted. This is a
+promising live direction under discussion, not approval of its detailed depths,
+examples, time allocation or complete Scope. The instructor's earlier instruction
+“Don't develop it: explore the idea” remains the boundary on full development.
 
-**Instructor revision — 2026-10-15:** The notebook direction is now geometry-led
-method selection with cumulative comparison: L07 Laplace against a checked
-numerical reference; L09 revisit Laplace before an appropriate VI family; L10
-revisit that family before MCMC. Dataset continuity is optional. Examples,
-families and samplers remain unselected pending computational investigation.
-The [joint accepted direction and bounded research](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md)
-owns the shared decision and qualifications. The notebook/example commitments
-below are baseline proposals requiring reconciliation where they conflict with
-this direction; this notice does not approve the whole scope or change live
-mathematical depth. Existing review evidence remains tied to its original target.
+**Accepted notebook direction:** In the replacement discussion the instructor
+selected **annealed importance sampling (AIS)**: “I like the idea of AIS. I think
+it will work well.” AIS extends the proposed live argument by combining importance
+correction with transitions through intermediate targets. The separately delegated
+bounded pilot tests a useful accuracy–compute comparison; it does not select the
+dataset, VI family, transition kernel, queries, student/supplied allocation or
+required live preparation. The [owning brief](reconciliation/ml_rescope_brief.md)
+and [development register](development_state.md) preserve the exact authority,
+remaining decisions and separate pilot ownership. Instructor review continues
+while these bounded tasks run.
+
+**Cumulative comparison constraint:** Preserve the accepted L07 → L09 → L10
+[geometry/task-driven direction](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md):
+L07 compares Laplace with a checked numerical reference; L09 revisits Laplace
+before VI; L10 revisits the selected VI family before sampling. Dataset continuity
+is optional. L09's accepted Challenger application and provisional diagonal-student /
+full-Gaussian-supplied split are recorded at
+`resume/l09-challenger-contract-20261015@39dd5dc`; the split is still an instructor
+choice. Reusing the supplied full family is distinct from continuing the student's
+diagonal implementation. AIS selection approves neither that split nor Challenger
+as L10's dataset.
+
+**Status of the body below:** Sections 1–5 retain the earlier baseline for the
+pending Scope reconciliation; they are not a newly approved contract. In
+particular, the old mixture/MH notebook and the table's omission of AIS are
+replaced by the accepted AIS direction above. The old live IS/HMC depths, examples,
+mathematical spine and timing remain under review. No full replacement Scope,
+recording obligation, Section Design, slide development or student notebook is
+authorized by this narrow decision record. Existing reviews retain their original
+targets; the AIS source/technical check and affected Scope/feasibility review remain
+necessary before freezing a reconciled Scope.
 
 **Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 

@@ -29,10 +29,22 @@ the handoff record; the worker does not edit contracts, maps, skills or slides.
 No concurrent file ownership is granted. Teacher-only execution and handoff
 are the deliverable; solved/student Q&A authoring remains a separate stage.
 
-**Status:** read-only source/data preparation complete; implementation awaits
-the coordinator's decision-record commit. Local/hosted notebook validation and
-student-hour feasibility are not established. Architecture/map synchronization
-will be a separate disjoint assignment preserving other lectures' decisions.
+**Status/result:** the decision-record commit `c8e9b2a` unblocked an actual
+delegated worked-solution build. [Executed source](../../InClass/Preparation/lecture2_bigram_worked_solution.py),
+[handoff](../../InClass/Preparation/lecture2_bigram_worked_solution_handoff.md)
+and [result receipt](reconciliation/notebook_worked_solution_result.md) now
+implement the retained endpoint on 32,033 names/228,146 boundary-aware transitions.
+Counts, normalization, likelihood/score semantics, deterministic generation,
+zero support and termination passed; coordinator replay also passed. Training
+mean NLL is 2.4540144892 nats/transition, an in-sample fit summary. Support and
+termination checking remain teacher-facing; no expanded student evaluation is
+required. Source data are pinned and cached outside the repository.
+
+The worked solution is ready for a separately scoped pedagogical handoff, not
+publication. Student-hour feasibility, adapted notebook execution and hosted
+Colab validation remain outstanding. L02-only architecture/map synchronization
+and matching PDF regeneration passed on disjoint branch
+`sync/l02-notebook-plan-20261015@9aa63eb`; no branch content was merged.
 
 ## Repository and current revisions
 

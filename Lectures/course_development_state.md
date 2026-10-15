@@ -159,8 +159,12 @@ pointers, exact evidence and **L01-RELATION-JUDGMENT**. All task writes stayed
 inside their reserved prefixes; agent Git metadata restrictions were resolved by
 coordinator commits. Actual peer negotiation and rendered transfer were completed.
 No skill/API/live lecture edits or promotion. This is guided joint learning, not
-an independent review, timing validation or instructor acceptance. No further
-slide experiment is running while the matched judgment pair awaits feedback.
+an independent review, timing validation or instructor acceptance. Both matched judgments are now resolved in `slide_judgment/result.md` at
+`experiment/slide-judgment-20261015@0495b9e`: instructor prefers decision p7 and
+setup p2. No whole-layout or shared-skill approval follows. Organization and
+Design are updating only their existing reports with the combined interpretation;
+this unblocks joint learning, not new variants or production. Their current
+branches/worktrees and report-only reservations above remain in force.
 
 Track unresolved alignment as a limitation on affected slide production, with
 instructor review and behavioral validation before broad reliance. No evidence
@@ -187,9 +191,9 @@ assumed and no proposal is promoted by this order.
 |---|---|---|
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
-| Ready for review | L01-RELATION-JUDGMENT, joint result record | Learn instructor preference from actual risk handout pp4/7; no whole-layout/skill adoption inferred. |
-| Direction recorded; investigating | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Posterior/task-led cumulative notebooks; datasets/families unselected. L09-GAUSSIAN-COMPARISON deferred for reformulation after family evidence. |
-| 6 | L12-APPLICATION, then L12-GENERATIVE-ENDPOINT | Choose the application/model performance contract before its required display. Related, not duplicate: generation can remain required even when it exposes domain failure. |
+| Resolved; joint interpretation running | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
+| Direction recorded; evidence under review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Candidate probes returned; independent technical audit running. Datasets/families unselected. L09 comparison will be reformulated after selection. |
+| Current review | L12-APPLICATION, then L12-GENERATIVE-ENDPOINT | Choose the application/model performance contract before its required display. Related, not duplicate: generation can remain required even when it exposes domain failure. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |
 | 9 | L11-NETWORK-ROLE | Funded model/inference-network bridge and conditional L12 entry knowledge. |
@@ -232,31 +236,26 @@ validation, publishing and merges retain their separate gates. No worked-solutio
 task was launched for implementation until the endpoint answer was recorded.
 
 
-## Active geometry-led notebook investigation
+## Geometry-led notebook evidence and active independent review
 
-Instructor's detailed response, 2026-10-15: choose methods through relevant
-posterior geometry and task performance, revisit each preceding method, allow
-new datasets, validate examples before selection, avoid a strict power hierarchy.
-Authoritative decision notices are in L07/L09/L10 scopes on
-`investigate/inference-notebook-geometry-20261015@e8a0f6c`, worktree
-`/tmp/pml-inference-notebook-geometry-20261015`. The joint owning record
-`Lectures/course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md`
-has the full accepted direction, qualifications and task envelopes. The existing
-group queue has the resolution/reformulation pointers. Architecture/maps and
-unrelated live commitments remain unchanged; no dataset/family/sampler selected.
+Instructor's detailed 2026-10-15 direction is recorded in L07/L09/L10 scope
+notices at `e8a0f6c`. Owning record and returned evidence pointers:
+`investigate/inference-notebook-geometry-20261015@aa464c8`,
+`/tmp/pml-inference-notebook-geometry-20261015`,
+`Lectures/course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md`.
+L07 `d2404b3`, L09 `f64fb54` and L10 `0e5a393` completed bounded actual probes;
+no dataset/model/family/sampler is selected and no student notebook is approved.
+Their reports own findings, raw failures, candidate hour budgets and limitations.
+Architecture/maps and unrelated live commitments remain unchanged.
 
-Three actual workers launched from `e8a0f6c`, each in its own worktree:
-
-| Owner | Branch / worktree | Exact allowed repository-relative prefix |
-|---|---|---|
-| `/root/l07_geometry` | `investigate/l07-geometry-20261015`; `/tmp/pml-l07-geometry-20261015` | `Lectures/L07_Inference/notebook_geometry/` |
-| `/root/l09_geometry` | `investigate/l09-geometry-20261015`; `/tmp/pml-l09-geometry-20261015` | `Lectures/L09_Variational_Inference/notebook_geometry/` |
-| `/root/l10_geometry` | `investigate/l10-geometry-20261015`; `/tmp/pml-l10-geometry-20261015` | `Lectures/L10_MCMC/notebook_geometry/` |
-
-Deliverable: bounded executed candidate evidence and proposed cumulative hour
-budgets, not student notebooks or a claimed learner pilot. All can screen now;
-L10's final comparison depends on L09's candidate family, communicated directly.
-Negative evidence is a valid result. No duplicate old probe runs without a new
-question, no artificial winner, no shared environment/skill/map writes or merges.
-Final selection and affected Scope/Section handoffs await evidence and instructor
-review; independent research continues. Other queued decisions retain their owners.
+Active independent reviewer `/root/inference_geometry_review`: branch
+`review/inference-geometry-20261015`, worktree
+`/tmp/pml-inference-geometry-review-20261015`, base `aa464c8`. Exact sole write:
+`Lectures/course_architecture_scope/reconciliation/notebook_geometry/technical_review.md`.
+Inputs are the three returned branches at stated revisions, read-only. Envelope
+in the owning joint record limits selective scratch replays, model/reference/
+VI/MCMC technical checks and family continuity. No new candidate search, scope
+approval, learner-time/Colab claim, shared environment/skill/map edits or merges.
+Final selection/affected Scope handoffs await reviewed evidence and instructor
+choice; independent source work continues. L12-APPLICATION is the next ready
+instructor question while these technical checks and slide interpretation run.

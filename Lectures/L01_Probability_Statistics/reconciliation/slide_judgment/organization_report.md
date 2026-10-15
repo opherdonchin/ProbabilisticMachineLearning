@@ -172,27 +172,114 @@ and
 `b45fb4aa9ad36d850241e27d568005764773f44b91c80e2f48ef63f082d97fcc`. This is
 negotiated builder evidence, not independent validation.
 
-## Residual instructor decisions and limits
+## Instructor feedback: decision pair
 
-Return two concrete comparisons through the coordinator: whether A's named
-criterion/centered-error regions or B's successive error operations better expose
-the setup; and whether A's general-result/application separation or B's term-to-
-consequence reading better explains why the action and minimum follow together.
-The Gaussian application must remain mathematically subordinate in either case;
-its preferred visual prominence is still instructor-owned. The transfer shows
-that the relational principle can be instantiated for substitution, but is not
-evidence that its exact geometry improves on original actual59.
+**L01-RELATION-JUDGMENT, 2026-10-15.** Instructor: “I would say that page 7
+is much clearer.” The owning provenance is coordinator `result.md` at `dd379ef`
+in `/tmp/pml-slide-judgment-20261015/Lectures/L01_Probability_Statistics/reconciliation/slide_judgment/`.
+The comparison is exactly Authoring commit `314f31e`, risk handout p4 (A decision)
+versus p7 (B decision), whose final source/PDF hashes are recorded above. It is
+not a comparison of setup pp2/5 or a new two-versus-three-slide decision.
 
-No Scope or Section Design decision is reopened. Count, endpoint, depth and
-live/recorded boundary remain unchanged. No classroom observation, measured
-teaching time, independent validation, instructor visual acceptance or reliable
-general style preference is claimed. Shared skill changes remain proposals;
-recurrent learning requires instructor response to these realized alternatives.
+This is positive instructor evidence for the realized B decision explanation.
+The two pages preserve the same mathematical move: from
+R(a|y)=tr V+||m−a||², use nonnegativity and equality iff a=m to establish both
+the unique action a*=m and attained minimum tr V; then specialize the posterior
+parameters to the Gaussian case. B attaches those warrants to the actual risk
+terms and aligns the general and Gaussian consequences. A instead names the
+general decision and Gaussian application as separate regions. The preference
+supports the candidate hypothesis that this decision is clearer when the
+relation from decomposition to jointly attained action/value is directly
+readable, rather than recoverable chiefly by moving among named groups.
+
+That explanation is a hypothesis about the preference, not an isolated causal
+finding. Term-local annotations, spatial alignment of consequences, subdued
+Gaussian emphasis, promotion of the risk identity from subordinate recall to
+annotated main argument, wording and overall geometry vary together. The answer does not establish that underbraces caused the
+improvement, that named groups or cards are generally inferior, that every
+Gaussian application should receive this prominence, or that B's setup is
+preferred. Mathematical equivalence and content preservation make the pair
+informative; they do not make it a controlled single-factor comparison.
+
+## Instructor feedback: setup pair
+
+**L01-SETUP-JUDGMENT, 2026-10-15.** Instructor selected “Page 2 — named
+groups.” Both answers are now recorded in the same coordinator `result.md` at
+`0495b9e`; the earlier decision record remains identifiable at `dd379ef`.
+The frozen Authoring commit is still `314f31e`, with the same handout hash above.
+This second comparison is p2 (A setup) versus p5 (B setup), not the decision pair.
+Both preserve loss, conditional risk, vector domain, conditional mean, residual,
+centered error and complete squared expansion. Page2 names the criterion and
+centered-error groups before their full-width expansion; page5 uses a continuous
+operation sequence. Naming, spatial grouping, equation arrangement and hierarchy
+vary together, so the answer does not identify one of them as the cause.
+
+## Joint interpretation and consequences for Organization
+
+Organization and Design exchanged interpretations after the decision answer. Both agree
+that the evidence supports the realized B decision bundle, with its components
+confounded. Design explicitly cautioned that named grouping is not isolated as
+the cause of A's lower preference and identified risk-identity promotion as an
+additional confound; this report preserves both qualifications. Organization's additional implication is that a stable title,
+teaching move and boundary can receive substantially different visual judgments.
+Visual difficulty should therefore first prompt joint inspection of the internal
+argument; this instance supplies no reason to split the decision move, reduce
+its depth or reopen B3's accepted sequence.
+
+The Organization handoff can name the load-bearing inference—constant residual
+risk plus a nonnegative distance gives the unique action and its attained
+value—while leaving the visible realization to Design and Authoring. A useful
+interaction habit is to index each instructor judgment by teaching move, exact
+complete state and comparator. That permits a preference to inform the next
+hypothesis without becoming a whole-layout rule. Existing coupled-development
+instructions already allow this; the answer does not by itself justify adopting
+new skill text or adding another gate.
+
+Organization and Design exchanged both-answer interpretations and agree on the
+following limit:
+the instructor selected A for setup and B for decision within the same unchanged
+B3 sequence. The setup introduces two mathematical objects/operations whose
+relation enables the expansion; the decision uses a known identity to establish
+an optimizer and its attained value. Composition may serve these different
+relations differently. The supported current preference is this pair of
+realizations, not “named groups for every setup” or “annotate every decision.”
+The two answers do not authorize assembling a new live deck from p2 and p7.
+
+Minimal actionable interaction proposal, agreed with Design: record each
+preference against the exact mathematical move and complete rendered state; allow
+mixed composition choices within a sequence; name co-varying changes before
+proposing a skill rule. In the coupled work, Organization
+states the inference or relation that each teaching move must make readable;
+Design offers a composition suited to that move rather than requiring one
+candidate family across the sequence; Authoring checks that the actual complete
+state realizes that relation; record instructor preference against the exact
+pair and keep causal hypotheses distinct. This can be one clarification of the
+existing handoff/feedback practice, without a new checklist, approval gate or
+layout rule. Any shared-skill wording remains a coordinator proposal requiring
+its own explicit approval. No further answer or prototype is needed to complete
+this bounded interpretation.
+
+## Remaining genuine uncertainty and limits
+
+Both requested judgments are resolved. What remains uncertain is why the
+instructor preferred each bundle, how the preferred complete states work during
+live explanation, and how far the relation-level hypotheses transfer to other
+mathematical moves. These are limits on generalization, not missing answers that
+block this report. The conditioning transfer shows that a relation-first
+hypothesis can be instantiated for substitution; it has no instructor comparison
+establishing superiority to original actual59. The risk-specific
+constant/nonnegative-term annotations must not be imported into that move.
+
+B3 preference survives. No Scope or Section Design decision is reopened. Count,
+endpoint, depth and live/recorded boundary remain unchanged. The page2 and page7
+answers are visual preference evidence for those exact pairs, not whole-A or
+whole-B approval, production promotion, measured comprehension, classroom
+effectiveness, timing, or a reliable general style rule. Shared skill changes
+remain proposals.
 
 ## Delivery status
 
-Only `organization.md` and this report were written. `git diff --check` passed.
-The normal commit attempt failed before staging because shared Git worktree
-metadata is read-only. An escalation for the exact two-file commit was rejected
-when automatic permission review missed its deadline; it did not return a safety
-finding. Files remain uncommitted at the paths above for coordinator recovery.
+Coordinator committed the original two Organization artifacts at `a24339e`.
+The isolated branch was verified clean at that commit before this follow-up.
+Only this report was changed for the bounded feedback analysis; organization,
+prototypes, shared instructions and live content remain untouched.

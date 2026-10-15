@@ -1,7 +1,8 @@
 # L08: carrying categorical sequence inference into Gaussian time series
 
-**Status, 2026-10-15:** Lecture Scope / revision; bounded decision record and
-provisional handoff only. The instructor supports the transfer in principle,
+**Status:** Lecture Scope / revision; bounded decision record and provisional
+handoff only. Instructor direction recorded 2026-10-15; local-source availability
+corrected 2026-10-16. The instructor supports the transfer in principle,
 conditional on the lecture's categorical focus. No final application, treatment
 depth, student workload or whole Scope is selected here.
 
@@ -109,9 +110,71 @@ Problem 3, lines 301–310, names `PS2-Kalman-filter-forecasting`, cites the
 and asks for three device-series plots, validation error for at least five state
 dimensions, and forecasting after truncating training before the late-2018 spike.
 This is reference material from Oke's course, not earlier delivered work in the
-current course. The named solved notebook was absent from the inspected
-`PS2-Questions` and `PS2-Solutions` directories; the instructor says it may be
-obtained from Oke. No message or request to Oke is authorized by that statement.
+current course.
+
+**Correction of the limited earlier search, 2026-10-16:** Both actual notebooks
+are directly under the parent `PS2/` directory, alongside the CSV:
+
+| Actual source, relative to the local Oke `spring-2026/` course root | Cells | SHA256 |
+|---|---:|---|
+| `PS2/PS2-kalman-forecasting.ipynb` | 13 | `8d1b9d23e1caefff7e53bfd134879b3e56da871b01da728067bc6fd3949e0dd2` |
+| `PS2/PS2-kalman-forecasting-solution.ipynb` | 33 | `44e877e75bdc2b04a2ad5d067785d38e8f7942d80731b46ca1770404f05fb79c` |
+
+The actual filenames differ from the question sheet's
+`PS2-Kalman-filter-forecasting` spelling. Earlier absence reports describe searches
+only in `PS2-Questions/` and `PS2-Solutions/`; extending that result to the whole
+available course was incorrect. The original reports remain unmodified as raw
+review evidence; this current source-status record corrects their inference.
+We already have the required template and solution locally. No contact to Oke is
+needed to recover these files, and no message was authorized or sent. The root
+is the substantial local OneDrive course copy identified above; no live Dropbox
+inventory/completeness check has been performed. No student submissions were read.
+
+**What the notebooks actually teach:** Both aggregate sessions by date and device,
+append two tablet zero-fill rows, and form desktop/tablet/mobile time series.
+The principal split trains before 2019-01-01 and predicts the first ninety days
+of 2019. Template cells 6–7 build Darts series, call
+`KalmanForecaster(dim_x=100).fit(...)`, then `predict(h, num_samples=100)`;
+5%, median and 95% forecasts are extracted. The question sheet identifies the
+fitting backend as N4SID; these notebook cells hide its mathematics inside
+`.fit()`. Solution cells 16–23 compare dimensions 50, 100, 200, 300, 400 and 500,
+including desktop-specific MAE; the template/solution also display forecast plots
+and labeled quantile-loss comparisons. This is an existing fitted-model
+forecasting workflow, not exposed implementation of Gaussian predict/condition
+messages or a backward smoother. Reading it does not validate runtime or learner
+extent. The source availability gap is closed; its suitability for the proposed
+inference-transfer task still needs review.
+
+The related lecture source is also available at
+`Lectures/M2-Inference-Algorithms/M2a-Gaussian-Filtering-and-Smoothing/M2a-Gaussian-Filtering-Smoothing.tex`
+under that same course root, SHA256
+`c6c7a3c68b2e177a406f34cf493b2880b7411fc6eac75a2db49a55c7b56785bd`.
+Inspection finds general filtering/smoothing goals, Bayes filtering, Gaussian
+predict/update and posterior-predictive equations. RTS appears only in the
+outlook's further-topics list (lines 518–527); it is not a derived smoother in
+that lecture. These external teaching materials do not establish coverage in
+the current PML course.
+
+**Author-owned source repairs before reuse:** Cell indices below are zero-based;
+these are correctness issues to fix and verify, not new instructor approvals.
+
+- Template cell 10 calls MAPE with median prediction first and observations
+  second. MAPE is asymmetric; the observed sessions must be `y_true`. See the
+  [official MAPE API](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_percentage_error.html).
+  The solution's reversed MAE argument order does not change MAE, which is symmetric.
+- Template cell 11 and solution cell 24 label losses at quantiles `.05`, `.5`
+  and `.95`, but omit `alpha=q` from `mean_pinball_loss`. Its
+  [documented default is `.5`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_pinball_loss.html),
+  so the tail-quantile labels currently do not identify the loss actually computed.
+- Question-sheet Problem 3(e), line 310, asks about the late-2018 spike. Solution
+  cell 27 instead trains before **2017-11-01** and evaluates from that date to
+  **2018-01-31**; cell 29 reuses the earlier `h=90`. The solution's period therefore
+  does not answer the dated question as written. Verify the intended event/window
+  against the data before adapting that exercise.
+
+No source notebook was edited or executed here. Stored outputs are not evidence
+of a clean run on the current environment; package/API compatibility, preparation,
+corrected scoring and eventual hosted Colab execution remain author validation.
 
 **N4SID** is a numerical subspace system-identification procedure: it estimates a
 linear state-space model from observed time-series data, with the state dimension

@@ -11,13 +11,20 @@ The [bounded handoff proposal](reconciliation/gaussian_handoff.md) explains the
 mathematical connection and [development register](development_state.md) records
 remaining decisions and validation.
 
-The instructor identifies the PS2 question sheet as **Oke's course material** and
-says the named forecasting notebook may be obtainable from him. This records
-source availability, not a recovered executable notebook or permission to contact
-him. N4SID is an additional procedure for identifying state-space model parameters
-from data; it is separate from Kalman inference with a specified model. Supplying
-specified or previously fitted parameters is a recommendation for bounding the
-notebook, not an approved learning allocation.
+**Source-status correction — 2026-10-16:** The PS2 sheet is Oke's course
+material, and both `PS2-kalman-forecasting.ipynb` and
+`PS2-kalman-forecasting-solution.ipynb` have now been located and inspected directly
+in the local course's `PS2/` directory. Earlier searches covered only
+`PS2-Questions/` and `PS2-Solutions/`; their limited negative result must not be
+read as absence from the available course material. We already have the forecasting
+notebook and solution; no request to Oke is needed to obtain them. This is a
+substantial local OneDrive course copy, not verified completeness of a live Dropbox.
+The handoff preserves exact paths, hashes, cell references and source defects.
+The notebooks call model fitting and forecasting through Darts; they do not expose
+forward-filter or backward-smoother algorithms, and no clean runtime has been
+validated. N4SID is the source exercise's additional system-identification
+procedure, separate from Kalman state inference. Supplying model parameters or
+training remains a recommendation, not a new accepted allocation.
 
 **Effect on the body below:** The categorical lecture and its short Gaussian
 comparison remain the baseline under review. The old assertion that the notebook

@@ -12,9 +12,14 @@ Other owners' worktrees and artifacts remain intact.
 In replacement thread `01a14017-0a80-7150-b7e7-c6511cb25698`, the instructor
 supports extending categorical-HMM logic to Gaussian time series in the notebook,
 conditional on the lecture's categorical focus. He identifies the PS2 question
-sheet as Oke's course material and says its notebook may be obtainable from him;
-no contact is authorized. The exact statement and original source pointer are in
-[gaussian_handoff.md](reconciliation/gaussian_handoff.md).
+sheet as Oke's course material and said its notebook might be obtainable from him.
+**Source correction, 2026-10-16:** both template and solution are already present
+directly in the local course's `PS2/` directory. Earlier limited searches only
+covered `PS2-Questions/` and `PS2-Solutions/`. We already have the required notebooks;
+no request to Oke is needed. No contact was authorized or made. Exact statement,
+source paths/hashes/cell references and the correction are in
+[gaussian_handoff.md](reconciliation/gaussian_handoff.md). This is a local OneDrive
+course copy; live Dropbox completeness is not established.
 
 ## Accepted direction versus provisional proposals
 
@@ -38,14 +43,28 @@ no contact is authorized. The exact statement and original source pointer are in
 ## Evidence and validation
 
 Read the current L08 Scope and October 14 investigation/probes/results; original
-Oke question sheet Problem 3 and its hash; relevant architecture/map boundaries;
+Oke question sheet Problem 3 and its hash; both actual forecasting notebooks;
+related M2a Gaussian filtering lecture source; relevant architecture/map boundaries;
 and Murphy B2 December 10, 2025 categorical and Gaussian filtering/smoothing
-passages. Existing review evidence retains its original targets. The October 14
+passages. Existing raw review evidence retains its original targets and is not
+rewritten; the current correction closes its overgeneralized source-absence claim.
+The notebooks aggregate three device series, fit a Darts forecaster, predict
+ninety days and explore state dimensions; they expose neither filter nor smoother
+recurrences. Oke's lecture has Gaussian filtering equations, with RTS only named
+in its outlook. No clean source-notebook execution is established.
+
+Author-owned repairs recorded in the handoff: template MAPE truth/prediction
+order, missing quantile `alpha` in template/solution pinball loss, and the
+solution's 2017 forecast window versus the question sheet's late-2018 spike.
+These need correction and validation before reuse, not instructor approval.
+ The October 14
 seasonal traffic model was the agent investigator's post hoc same-period
 exploration following a weak scalar result, not an approved/independently tested
 application. The checked Gaussian algorithms are forward filters, not RTS.
 
-Only documentation/reference consistency was checked for this revision. No new
+Only documentation/reference consistency and source-code inspection were checked
+for this revision; metric signatures were verified against official scikit-learn
+documentation. No new
 code or probes, student workload trial, rehearsal, clean notebook run or hosted
 Colab check occurred. No existing output was regenerated or relabeled as current
 student material.

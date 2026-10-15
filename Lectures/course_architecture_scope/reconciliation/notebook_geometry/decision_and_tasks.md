@@ -3,8 +3,13 @@
 Instructor decision, current discussion 2026-10-15. Owner: L07/L09/L10
 Lecture Scope notebook handoffs; this record preserves their joint direction and
 bounded research envelope. Source base `61f113e`. The old shared-Iris question
-is replaced by this direction, not answered A. No dataset, model, variational
-family, sampler or complete scope is approved.
+is replaced by this direction, not answered A. **Subsequent application decision,
+2026-10-15:** L09 Challenger thermal distress is selected in the owning continuation
+`resume/l09-challenger-contract-20261015@172686c`,
+`Lectures/L09_Variational_Inference/reconciliation/challenger_contract.md`.
+L07/L10 applications, final student/supplied family allocation, samplers and
+complete scopes retain their separate gates. Existing evidence below is not
+superseded numerically by this limited selection.
 
 ## Accepted direction
 

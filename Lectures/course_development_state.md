@@ -258,7 +258,7 @@ No reviewer remains active. Family continuity (L09 student diagonal versus L10
 supplied full Gaussian) and task-error requirements need teaching reconciliation
 before final candidate selection. No whole Scope or learner/Colab approval.
 
-## Active city observation-transform investigation
+## City observation-transform evidence returned
 
 Instructor 2026-10-15 prefers city data and proposes encode/decode in unconstrained
 observation coordinates followed by an inverse transformation. Authoritative
@@ -270,14 +270,22 @@ Final transform/zero policy and whole Scope remain unselected. The earlier
 raw-Gaussian support failures are not evidence against a transformed model.
 Do not re-ask city versus digits while this route is investigated.
 
-Actual worker `/root/l12_city_transform`, same isolated branch/worktree, base
-`3919d6a`. Exact allowed write prefix `Lectures/L12_VAE/notebook_geometry/`;
-coordinator alone owns the scope notice/direction and existing question pointer.
+Worker `/root/l12_city_transform` completed at `0c621d3`, same isolated
+branch/worktree, base `3919d6a`; tree clean. Exact writes stayed under
+`Lectures/L12_VAE/notebook_geometry/`; `assessment.md` owns the returned report,
+probes, raw results and source records. No worker remains active. Coordinator
+alone owns the scope notice/direction and existing question pointer.
 Bounded deliverable: one fixed-transform route with source/domain audit, correct
 Jacobian bookkeeping, explicit treatment of two recorded zero bicycle shares,
 compact actual VAE fit and full inverse-transformed generation checks where
 justified, plus proposed student/supplied workload. No hidden replacement/data
 pruning, final student notebook, shared skill/API/map/environment writes, merges
-or publication. All other source artifacts are read-only. Exact report will own
-results and unresolved questions. L12 generation-display depth is a later
+or publication. All other source artifacts are read-only. The assessment owns
+results and unresolved questions: full inverse-transform draws satisfy audited
+support constraints, while climate relationships remain poorly reproduced;
+source GDP monetary units remain unverified. Two bicycle zeros were traced to
+ACS estimates with nonzero margins of error; explicit replacement and sensitivity
+were tested as a continuous approximation. This is builder evidence pending
+independent review, not final model/Scope approval. The instructor currently asks
+about standard zero handling, not an epsilon-selection or final-policy decision. L12 generation-display depth is a later
 separate choice; independent course work remains free to proceed.

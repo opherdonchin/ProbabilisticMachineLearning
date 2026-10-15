@@ -193,7 +193,7 @@ assumed and no proposal is promoted by this order.
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
 | Resolved; joint interpretation collected | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
-| L09 selected; L10 current review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | L09 Challenger selected; bounded Scope/handoff reconciliation returned at39dd5dc. L10 Eight Schools versus bioassay choice presented; L07/final family allocation remain separate. |
+| L09 selected; L10 current review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | L09 Challenger selected; bounded Scope/handoff reconciliation returned at39dd5dc. L10 intellectual arc reopened as MCMC for ML; dataset choice deferred. L07/final family allocation remain separate. |
 | Limited decisions recorded; reviews collected | L12-APPLICATION / L12-GENERATIVE-ENDPOINT | Zero rule3e27b86 and required generation582ff0e retained; reviews85af01b/aac62bb feasible-with-risks. Whole Scope/transform adoption and learner/runtime readiness remain separate. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |
@@ -353,23 +353,7 @@ student-work/whole-Scope acceptance remain gates. No writer remains active.
 Do not silently replace core live mathematics. Reconcile L09/L10 family continuity honestly. No new probes,
 sections/slides/student notebooks, shared/map/env changes, merges or Scope freeze.
 
-Current next instructor decision: L10 Eight Schools versus bioassay, supported by
-`investigate/l10-geometry-20261015@0e5a393`, owning notebook_geometry/report.md
-in `/tmp/pml-l10-geometry-20261015`, independently checked atdcf2a81.
-Eight Schools recommendation is conditional on feasible hierarchy/noncentering
-explanation; same MH algorithm and counterevidence of centered-chain failure must
-survive. Bioassay is a smaller logistic continuation with tail/query limitations.
-Instructor now requests the actual L10 lecture coverage before selecting the
-notebook. Application choice is deferred for that Scope discussion; no answer
-has been inferred. Current live proposal is MC error + invariance/MH proof +
-bounded Gibbs + dependent-error diagnostics, with HMC recognition only. Existing
-source-arc review flags HMC depth and theorem-first ordering as genuine teaching
-tradeoffs. Eight Schools adds a noncentering explanation not yet funded by that
-baseline. Do not re-ask the dataset choice before resolving the instructor's
-coverage concern. L09 revision and other independent work continue.
-
-
-## Active L10 MCMC-for-ML route inquiry
+## L10 MCMC-for-ML route comparison
 
 Instructor explicitly reopens the introductory L10 arc in the current discussion:
 departmental undergraduates already had this lecture; some external entrants
@@ -387,7 +371,7 @@ Prior L10 computational evidence remains at0e5a393; current accepted L09
 application/provisional Scope is39dd5dc. Architecture/map changes are later
 consequences to propose if needed, not blockers against the instructor's revision.
 
-Two actual agents launched from24aafc5 in separate worktrees, with exact sole
+Two actual agents worked from24aafc5 in separate worktrees, with exact sole
 writes below; coordinator alone owns the brief/scope notice and this index.
 
 | Owner | Branch / worktree | Sole allowed write |
@@ -395,10 +379,21 @@ writes below; coordinator alone owns the brief/scope notice and this index.
 | `/root/l10_ml_routes` | `rescope/l10-ml-routes-20261015`; `/tmp/pml-l10-ml-routes-20261015` | `Lectures/L10_MCMC/reconciliation/ml_route_options.md` |
 | `/root/l10_murphy_review` | `review/l10-ml-source-20261015`; `/tmp/pml-l10-ml-source-review-20261015` | `Lectures/L10_MCMC/reconciliation/murphy_source_review.md` |
 
-First owner compares2–3 substantive source-based routes, endpoint/depth/MLtask/
-prerequisite/extent tradeoffs; second reconstructs Murphy/prior-course argument
-independently before seeing those options, then critiques them. This is initial
-Scope inquiry, not frozen Scope, sections/slides or notebook work. No new probes,
-variant search, shared/API/map/environment edits, merges or additional agents.
-Independent course work remains unblocked. Defer instructor route choice until
-there is a concrete, source-grounded comparison; no algorithm is selected yet.
+Collected route comparison and source/feasibility review in the artifacts above.
+Builder recommends geometry-informed computation through algorithm-level HMC;
+blocked HMM inference is a serious alternative, and large-data Langevin has
+higher prerequisite/application-validation risk. Reviewer finds the selective
+arguments source-faithful, with provisional timing and no demonstrated HMC
+application yet. Existing MH screening is not HMC validation. Original-PDF
+checks corrected a text-extraction allegation about Eq.12.122; it is not a
+Murphy prior-sign error. Exact review versions and source evidence live in the
+owning reports, not here.
+
+Current instructor decision: which new mathematical/practical endpoint should
+replace introductory MH/convergence-proof depth? Recommendation is HMC geometry,
+with a bounded mixed-entry bridge. No route, notebook, recording, full Scope or
+architecture/map change is approved. Following a route decision, develop the
+bounded Scope and affected feasibility preview, then validate its application;
+do not repeat all candidate investigations. No production, shared-skill or
+environment edits, merges or further dispatch is implied by these reports.
+Independent course work remains unblocked.

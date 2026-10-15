@@ -1,16 +1,17 @@
 # Joint slide-judgment result
 
-Status: bounded collaborative investigation complete; decision-page and setup-page
-preferences recorded. Joint skill-learning interpretation continues.
+Status: bounded collaborative investigation and joint feedback interpretation
+complete; decision-page and setup-page preferences recorded. Shared instruction
+changes remain proposals awaiting explicit adoption authorization.
 No skill, convention, API or live lecture was edited or adopted. Task envelope
 is brief.md at `1b6434b`; B3 preference and accepted mathematics remain intact.
 
 ## Collected evidence
 
-- Organization: `experiment/slide-judgment-organization-20261015@a24339e`,
+- Organization: `experiment/slide-judgment-organization-20261015@db35126`,
   `/tmp/pml-slide-judgment-organization-20261015`, this directory's
   `organization.md` and `organization_report.md`.
-- Design: `experiment/slide-judgment-design-20261015@0ee8ba5`,
+- Design: `experiment/slide-judgment-design-20261015@1ec557d`,
   `/tmp/pml-slide-judgment-design-20261015`, `design/provisional_design.md`,
   `design/peer_exchange.md`, `design_report.md`. Final D3 SHA256
   `b45fb4aa9ad36d850241e27d568005764773f44b91c80e2f48ef63f082d97fcc`.
@@ -83,6 +84,16 @@ scope/source/notebook research continues. No additional variants are commissione
 without a new material uncertainty and bounded commission.
 
 ## Bounded feedback follow-up
+
+Completed: Organization `db35126`, Design `1ec557d`; only their owned reports
+changed. Both judgments were incorporated through a further peer exchange.
+Minimal actionable protocol proposal: bind preference to the exact mathematical
+move/rendered pair; allow different compositions within a coherent sequence;
+name co-varying changes before proposing a reusable rule. Organization identifies
+the inference, Design proposes its visible relationship, and Authoring checks the
+actual realization. No new layout template, checklist or approval gate is needed.
+No further background slide task is running; adoption and transfer validation
+remain separate. Independent course work continues.
 
 Design and Organization may update only their existing owned reports on their
 respective branches after the collected commits above, preserving current owned

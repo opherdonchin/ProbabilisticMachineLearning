@@ -193,8 +193,8 @@ assumed and no proposal is promoted by this order.
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
 | Resolved; joint interpretation collected | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
-| Direction recorded; technical review collected | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Candidate probes and independent technical audit returned; teaching continuity remains to reconcile. Datasets/families unselected. L09 comparison will be reformulated after selection. |
-| Zero rule accepted; current review | L12-APPLICATION / L12-GENERATIVE-ENDPOINT | City preference and training-derived half-minimum zero replacement recorded; validation running. Required generation/critique versus extra latent traversal is presented separately. |
+| Current review / L09 application | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Reviewed L09 Challenger versus multinomial Iris application choice presented while L12 checks run. No application/family selected yet; student/supplied family continuity still needs reconciliation. |
+| Limited decisions recorded; reviews running | L12-APPLICATION / L12-GENERATIVE-ENDPOINT | Zero rule validated at3e27b86; required generation/critique replaces extra traversal at582ff0e. Independent technical and receiving-workload previews running; whole Scope remains provisional. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |
 | 9 | L11-NETWORK-ROLE | Funded model/inference-network bridge and conditional L12 entry knowledge. |
@@ -292,13 +292,34 @@ investigation notices. Use half the smallest positive TRAINING bicycle fraction;
 fixed split gives delta .0000938790837401425. This is an accepted supplied
 preprocessing convention, not estimated prevalence or whole-model approval.
 
-Active `/root/l12_city_transform` follow-up: same isolated branch/worktree, base
-`c0a2a4f`; sole write prefix remains `Lectures/L12_VAE/notebook_geometry/`.
-The owning direction record bounds update of current probe/report/results and
-small sensitivity with explicit bicycle reconstructions, no model/transform
-search. Coordinator alone writes scope/direction/index. Previous0c621d3 owns
-initial experimental evidence. No student authoring, shared/map/env edits or
-merges. L12-GENERATIVE-ENDPOINT is now presented concurrently: protect full
-observation generation/critique by replacing the optional extra traversal, or
-keep generation removable. That teaching choice is unanswered; its resolution
-is not needed for the authorized zero-rule technical checks.
+Zero-rule validation completed at `3e27b86`: current probe/results/report use the
+accepted train-derived rule; exact value, closure/ratios/roundtrip and generation
+support checks passed. Bicycle reconstructions remain coarse and sensitivity
+changes the rare-share reconstructions despite a stable broad beta tradeoff.
+Owning report retains those limitations, climate inconsistency and unresolved
+source GDP units. No author remains active on this implementation.
+
+Instructor's generation answer is recorded in L12 Part3/contract and owning
+direction at `582ff0e`: require reconstruction/prior-decoder-mean/full-observation
+comparison plus one supplied model-criticism diagnostic; replace the optional
+extra traversal. L12-GENERATIVE-ENDPOINT is resolved, not another pending question.
+Whole model, exact transforms, one-hour feasibility and publication remain separate.
+
+Two actual independent reviews launched from `934fb5f`; owning task envelopes
+are in `Lectures/L12_VAE/reconciliation/city_transform_direction.md` on
+`/tmp/pml-l12-city-transform-20261015`:
+
+| Owner | Branch / isolated worktree | Exact sole allowed write |
+|---|---|---|
+| `/root/l12_notebook_preview` | `review/l12-notebook-contract-20261015`; `/tmp/pml-l12-notebook-contract-review-20261015` | `Lectures/L12_VAE/reconciliation/notebook_contract_feasibility.md` |
+| `/root/l12_transform_review` | `review/l12-transform-20261015`; `/tmp/pml-l12-transform-review-20261015` | `Lectures/L12_VAE/reconciliation/transform_technical_review.md` |
+
+Inputs are committed accepted scope582ff0e and computational evidence3e27b86,
+read-only. First review checks receiving knowledge, supplied/student work and
+one-hour allocation without sections/notebook production. Second independently
+checks transforms/source semantics/Jacobian/distribution labels and selective
+replays, not a new variant search. Reviews do not grant instructor acceptance,
+Colab readiness or measured student time. No shared/API/map/env/live source edits
+or merges. Independent course work continues. Current instructor question is
+L09 application direction: reviewed Challenger thermal-distress model versus
+multinomial Iris, linked in the L09 owning report atf64fb54; no answer yet.

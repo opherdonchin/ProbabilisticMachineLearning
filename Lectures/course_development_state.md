@@ -63,8 +63,8 @@ score/generate; held-out baseline comparison and failed-output diagnosis optiona
 The new decision authorizes this limited contract clarification, not whole-Scope
 or design approval. The earlier three assessment diffs passed their boundaries.
 
-No delegated task remains running. The L02 decision→record→unblock→dispatch→result
-cycle is complete. Current results, not a duplicated task history:
+The L02 decision→record→unblock→dispatch→result cycle is complete. A separate
+joint slide-judgment investigation is now running below. Current L02 results:
 
 - `resume/l02-notebook-contract-20261015@22ecb91`,
   `/tmp/pml-l02-notebook-contract-20261015`: the lecture register links the
@@ -84,7 +84,7 @@ cycle is complete. Current results, not a duplicated task history:
   links its resolution to the accepted contract; raw recovery findings remain.
 
 Finished write envelopes remain in their owning result records. Both delegated
-tasks passed their disjoint path boundaries; no follow-up is silently running.
+L02 tasks passed their disjoint path boundaries.
 
 Root alone updates the accepted contract/register, this index and the resolved
 question pointer. Source investigation worktrees remain unchanged except the
@@ -131,9 +131,40 @@ slide acceptance or Q1 answer was needed. It is not a validated student notebook
 - L01-LOSS-LAYOUT: instructor response, 2026-10-15, “B3 is much better, if I've
   understood things,” followed by unresolved layout concerns. B3 is the preferred
   teaching sequence; visual acceptance and production promotion remain open.
-  Current request is a read-only comparison of experiment comparison.pdf pp.7/11
-  with actual L01 slide_deck.pdf pp.58–61. No candidate or skill revision is
-  commissioned by that comparison request. Preserve the frozen experiment.
+  The comparison of experiment pp.7/11 with actual L01 pp.58–61 led to the
+  instructor's explicit clarification: learn good design through recurrent joint
+  Organization–Design–Authoring interaction, rather than repair particular slides.
+  The instructor now authorizes that effort in the background while reviewing
+  another decision. The bounded task below owns the new evidence; preserve the
+  frozen experiment. Return to L01 when the team has concrete results.
+
+## Active background slide-judgment work
+
+Authorized 2026-10-15; envelope at
+`experiment/slide-judgment-20261015@1b6434b`,
+`Lectures/L01_Probability_Statistics/reconciliation/slide_judgment/brief.md`,
+worktree `/tmp/pml-slide-judgment-20261015`. All three actual specialist agents
+were launched from that revision in separate worktrees, with disjoint writes
+under the same `slide_judgment/` prefix:
+
+| Owner | Branch / worktree suffix | Reserved paths under prefix |
+|---|---|---|
+| `/root/slide_judgment_organization` | `experiment/slide-judgment-organization-20261015`; `/tmp/pml-slide-judgment-organization-20261015` | `organization.md`, `organization_report.md` |
+| `/root/slide_judgment_design` | `experiment/slide-judgment-design-20261015`; `/tmp/pml-slide-judgment-design-20261015` | `design/`, `design_report.md` |
+| `/root/slide_judgment_authoring` | `experiment/slide-judgment-authoring-20261015`; `/tmp/pml-slide-judgment-authoring-20261015` | `production/`, `authoring_report.md` |
+
+Organization can analyze the teaching roles immediately; Design negotiates
+contrasting explanations; Authoring inspects precedents immediately and builds
+after provisional Design agreement. Deliverable: actual peer exchange, bounded
+rendered alternatives and a distinct transfer case, with proposed minimal skill
+changes and deferred questions. The envelope owns details; no skill/API/live
+lecture edits or promotion are authorized. Coordinator alone owns brief/result.
+This is guided joint learning, not an independent review or instructor acceptance.
+
+Track unresolved alignment as a limitation on affected slide production, with
+instructor review and behavioral validation before broad reliance. No evidence
+justifies blocking unrelated scope/source work or notebook feasibility. Review
+of **L07-SHARED-CLASSIFIER** has been presented concurrently; answer pending.
 
 Local worktree links are conveniences; the stated Git revisions/paths are the
 portable evidence references (`git show <revision>:<path>`). On an answer, the
@@ -153,10 +184,8 @@ assumed and no proposal is promoted by this order.
 | Order | Owning decision(s) | What an answer unblocks / distinction |
 |---|---|---|
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
-| 2 | L01-LOSS-LAYOUT, experiment report at `2c1b7fa` | Selected loss arrangement: B3 versus A2-vertical; counts/time tradeoff. Does not adopt the skill patch or approve the rest of L01. |
-| 3 | L01-GAUSSIAN-LAYOUT, same report | Result-first A versus derivation-first C. Full standalone artifacts still need the independent wrapper correction. |
-| 4 | L01-SKILL-ADOPTION, same report/Phase2 | Explicit decision on narrow revision and provisional adoption. Keep frozen evidence intact; do not make this a prerequisite of other scope/notebook work. |
-| 5 | L07-SHARED-CLASSIFIER | One application/model owner for L07/L09/L10; three matched notebook endpoints. L09-GAUSSIAN-COMPARISON follows conditionally, not as another shared-task question. |
+| Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
+| Current | L07-SHARED-CLASSIFIER | One application/model owner for L07/L09/L10; three matched notebook endpoints. L09-GAUSSIAN-COMPARISON follows conditionally, not as another shared-task question. |
 | 6 | L12-APPLICATION, then L12-GENERATIVE-ENDPOINT | Choose the application/model performance contract before its required display. Related, not duplicate: generation can remain required even when it exposes domain failure. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |

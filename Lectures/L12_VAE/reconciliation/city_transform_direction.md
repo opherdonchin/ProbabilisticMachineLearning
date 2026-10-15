@@ -93,6 +93,30 @@ revisions, independence, feasible/with-risks/blocked, owner/severity/evidence an
 smallest repair. Any source corrections remain author work. This review can run
 beside the receiving-workload preview; neither blocks unrelated course work.
 
+## Independent reviews collected
+
+Both reviews completed without a correctness blocker or new instructor question:
+
+- `review/l12-transform-20261015@aac62bb`,
+  `/tmp/pml-l12-transform-review-20261015`, owning transform_technical_review.md.
+  Independent source reconstruction, transform/Jacobian checks and one selective
+  fit replay support the reported technical results. GDP provenance, bicycle
+  sensitivity and joint climate realism remain explicit limitations.
+- `review/l12-notebook-contract-20261015@85af01b`,
+  `/tmp/pml-l12-notebook-contract-review-20261015`, owning
+  notebook_contract_feasibility.md. Proposed 60-minute allocation protects
+  10 refresh, 15 sample/loss/checks, 8 fit/summaries, 9 required comparison,
+  7 one supplied critique, 6 supplied beta/rate/pattern interpretation, 5 reserve.
+  The estimated live receiving explanation is 6–10 minutes; existing optional
+  cuts plus part of live reserve can fund it without changing core depths.
+
+Verdicts feasible-with-risks; neither establishes measured learner time, final
+Scope/transform adoption, publication or Colab readiness. Exact evidence and
+repair ownership remain in their reports; no review remains active. Continue
+later Scope/worked-solution reconciliation without re-asking the accepted city,
+zero or required-generation choices. No merge or final notebook is commissioned
+by collecting these reports.
+
 ## Zero-rule validation follow-up
 
 Owner `/root/l12_city_transform`, current branch/worktree verified clean at

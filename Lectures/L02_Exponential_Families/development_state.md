@@ -2,6 +2,38 @@
 
 This is the coordinator’s workflow index. The syllabus, section contract, slide organization, and slide design own their respective content.
 
+## Current isolated continuation — 2026-10-15
+
+**Branch/worktree:** `resume/l02-notebook-contract-20261015`,
+`/tmp/pml-l02-notebook-contract-20261015`, created from recovered authoritative
+fix commit `6872177f4223c57119f92036b0b178fd6f31a83f`. The repository/review
+records below describe that historical baseline, not this continuation's HEAD.
+
+**Accepted L02-Q1 / provenance:** the instructor's current-discussion answer,
+“I think the notebook will be sufficient without the expansion,” selects the
+existing fit/inspect/score/generate endpoint. Section 8's Notebook handoff records
+the exact boundary: baseline comparison and failed-output diagnosis optional;
+existing baby-name reference and live Time Machine commitments preserved.
+No full reconciled Scope, design, student notebook or publication is approved.
+
+**Unblocked work / authorization:** the standing 2026-10-15 integration request
+authorizes a bounded worked-solution commission after recording the answer.
+`/root/l02_worked_solution` owns only
+`InClass/Preparation/lecture2_bigram_worked_solution.py`,
+`InClass/Preparation/lecture2_bigram_worked_solution_handoff.md`,
+`Lectures/L02_Exponential_Families/reconciliation/notebook_worked_solution_result.md`
+and, if needed, `InClass/Preparation/figures/lecture2_bigram_counts.svg`.
+Its input is this accepted handoff plus frozen fix artifacts and current notebook
+skills read from the course-development worktree. Root owns this register and
+the handoff record; the worker does not edit contracts, maps, skills or slides.
+No concurrent file ownership is granted. Teacher-only execution and handoff
+are the deliverable; solved/student Q&A authoring remains a separate stage.
+
+**Status:** read-only source/data preparation complete; implementation awaits
+the coordinator's decision-record commit. Local/hosted notebook validation and
+student-hour feasibility are not established. Architecture/map synchronization
+will be a separate disjoint assignment preserving other lectures' decisions.
+
 ## Repository and current revisions
 
 - Branch: `fix/l02-retrospective-summaries`; HEAD `8e71086d2dc7bcb1c423ae98d4b6c5bdc06a9a0c`.

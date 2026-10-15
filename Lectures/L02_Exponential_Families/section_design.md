@@ -533,6 +533,18 @@ The live lecture establishes the factorization, count statistics, and learning r
 
 Optional notebook extension: sparse counts and Dirichlet/MAP smoothing.
 
+**Accepted notebook boundary — L02-Q1, instructor discussion, 2026-10-15:**
+“I think the notebook will be sufficient without the expansion.” Retain
+fit / inspect / score / generate as the required one-hour endpoint, using the
+existing baby-name bigram reference. Held-out comparison with an independent-
+character baseline and diagnosis of an implausible generated output are optional,
+not required student tasks. Keep supplied setup and explicit sequence-boundary,
+start/end and scoring conventions. In-sample likelihood is a fit summary, not a
+claim of held-out predictive performance. Authors must handle zero-support
+scores honestly; no hidden smoothing or additional required estimator follows.
+This decision preserves the live Time Machine example and its scope/depth; it
+does not accept a complete adapted notebook, whole reconciled Scope or publication.
+
 ### Boundary / exclusions
 
 - Stop before Book 2 §2.6.4 stationary distributions.

@@ -1,5 +1,34 @@
 # L08 — Recovering hidden states in a sequence: looking forward and backward
 
+**Instructor direction — 2026-10-15:** The instructor supports extending the
+categorical-HMM lecture's logic to **Gaussian time series in the notebook**,
+conditional on the lecture's categorical focus. The current live proposal below
+already includes a short Kalman predict/condition comparison; it does not derive
+a complete Gaussian filter or smoother. This is support in principle for a
+lecture-to-notebook transfer, not selection of a dataset, Gaussian smoothing depth,
+parameter-learning method, student/supplied allocation, workload or full Scope.
+The [bounded handoff proposal](reconciliation/gaussian_handoff.md) explains the
+mathematical connection and [development register](development_state.md) records
+remaining decisions and validation.
+
+The instructor identifies the PS2 question sheet as **Oke's course material** and
+says the named forecasting notebook may be obtainable from him. This records
+source availability, not a recovered executable notebook or permission to contact
+him. N4SID is an additional procedure for identifying state-space model parameters
+from data; it is separate from Kalman inference with a specified model. Supplying
+specified or previously fitted parameters is a recommendation for bounding the
+notebook, not an approved learning allocation.
+
+**Effect on the body below:** The categorical lecture and its short Gaussian
+comparison remain the baseline under review. The old assertion that the notebook
+must repeat HMM forward/backward implementation is reopened by the Gaussian
+transfer direction. Its replacement handoff and any affected live preparation
+remain provisional. The old either-HMM-or-full-forecasting comparison does not
+rule out a bounded Gaussian-transfer notebook. No RTS smoother, N4SID training,
+new full lecture plan, section/slide development or student notebook is authorized
+by this narrow record. Existing reviews and author probes retain their original
+targets; no whole-Scope or measured teaching-time validation is implied.
+
 **Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
 Imagine watching a sequence of die rolls without knowing when the casino switches from a fair die to a loaded one. We want the probability of each hidden die choice, given the rolls. A calculation using only rolls seen so far can support a live decision. A calculation using the whole sequence can revise earlier beliefs. This lecture shows how both calculations can be exact without listing every possible history.

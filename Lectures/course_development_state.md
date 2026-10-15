@@ -193,8 +193,8 @@ assumed and no proposal is promoted by this order.
 | Resolved | L02-Q1, original review `9e02665`, accepted contract `c8e9b2a` | Existing required endpoint retained; worked solution `22ecb91` and plan sync `9aa63eb` completed. |
 | Deferred to background results | L01-LOSS-LAYOUT, L01-GAUSSIAN-LAYOUT, L01-SKILL-ADOPTION | B3 sequence preferred. Learn design judgment jointly before returning with concrete evidence; avoid another premature local layout/adoption question. No skill adoption or whole-L01 approval. |
 | Resolved; joint interpretation collected | L01-RELATION-JUDGMENT and L01-SETUP-JUDGMENT, owning result `0495b9e` | Preferred decision p7 and setup p2; proposed reusable learning returns from Design/Organization, no adoption yet. |
-| Current review / L09 application | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | Reviewed L09 Challenger versus multinomial Iris application choice presented while L12 checks run. No application/family selected yet; student/supplied family continuity still needs reconciliation. |
-| Limited decisions recorded; reviews running | L12-APPLICATION / L12-GENERATIVE-ENDPOINT | Zero rule validated at3e27b86; required generation/critique replaces extra traversal at582ff0e. Independent technical and receiving-workload previews running; whole Scope remains provisional. |
+| L09 selected; L10 current review | L07-GEOMETRY-SEQUENCE (replaces L07-SHARED-CLASSIFIER) | L09 Challenger selected; bounded Scope/handoff reconciliation running. L10 Eight Schools versus bioassay choice presented; L07/final family allocation remain separate. |
+| Limited decisions recorded; reviews collected | L12-APPLICATION / L12-GENERATIVE-ENDPOINT | Zero rule3e27b86 and required generation582ff0e retained; reviews85af01b/aac62bb feasible-with-risks. Whole Scope/transform adoption and learner/runtime readiness remain separate. |
 | 7 | L08-APPLICATION-PRIORITY | Primary HMM/Kalman practice; final algorithm-specific handoff. L08-SOURCE-CLOSURE is a separate funded explanatory choice. |
 | 8 | L06-DATA-ENDPOINT, then L06-BASELINE-PRIORITY | Dataset/oracle commitment first, comparison depth second; later ELBO work does not await either. |
 | 9 | L11-NETWORK-ROLE | Funded model/inference-network bridge and conditional L12 entry knowledge. |
@@ -305,7 +305,7 @@ comparison plus one supplied model-criticism diagnostic; replace the optional
 extra traversal. L12-GENERATIVE-ENDPOINT is resolved, not another pending question.
 Whole model, exact transforms, one-hour feasibility and publication remain separate.
 
-Two actual independent reviews launched from `934fb5f`; owning task envelopes
+Two actual independent reviews completed from `934fb5f`; owning task envelopes
 are in `Lectures/L12_VAE/reconciliation/city_transform_direction.md` on
 `/tmp/pml-l12-city-transform-20261015`:
 
@@ -318,8 +318,41 @@ Inputs are committed accepted scope582ff0e and computational evidence3e27b86,
 read-only. First review checks receiving knowledge, supplied/student work and
 one-hour allocation without sections/notebook production. Second independently
 checks transforms/source semantics/Jacobian/distribution labels and selective
-replays, not a new variant search. Reviews do not grant instructor acceptance,
-Colab readiness or measured student time. No shared/API/map/env/live source edits
-or merges. Independent course work continues. Current instructor question is
-L09 application direction: reviewed Challenger thermal-distress model versus
-multinomial Iris, linked in the L09 owning report atf64fb54; no answer yet.
+replays, not a new variant search. Reviews at `85af01b` (workload) and `aac62bb` (technical) both return
+feasible-with-risks, no correctness blocker or new instructor question. Owning
+direction record collects their results; neither reviewer remains active.
+Reviews do not grant instructor acceptance, Colab readiness or measured student time. No shared/API/map/env/live source edits
+or merges. Independent course work continues. The instructor selected L09 Challenger in
+the current discussion; record and active bounded revision are below.
+
+
+## Active L09 application reconciliation; L10 review
+
+Instructor answer 2026-10-15: “Use Challenger thermal distress (recommended).”
+Owning direction and Scope/investigation notices:
+`resume/l09-challenger-contract-20261015@172686c`, isolated worktree
+`/tmp/pml-l09-challenger-contract-20261015`,
+`Lectures/L09_Variational_Inference/reconciliation/challenger_contract.md`.
+Application only: reviewed erosion-or-blowby binary flight-level model and frozen
+prior/query provenance. Whole Scope, numerical tolerance and exact student/
+supplied family allocation are not approved. Original evidencef64fb54 and
+independent reviewdcf2a81 remain the sources; no fresh fits/search needed.
+
+Actual owner `/root/l09_contract_reconciliation`, Lecture Scope/revision,
+base172686c, same isolated branch/worktree. Exact allowed writes:
+`Lectures/L09_Variational_Inference/lecture_scope.md` and
+`Lectures/L09_Variational_Inference/reconciliation/challenger_handoff_review.md`.
+Coordinator alone owns decision/investigation pointers/index. Deliverable:
+coherent provisional application reconciliation and within-hour student/supplied
+handoff proposal, preserving live Gaussian diagnostic, ELBO/pathwise/CAVI depths
+and time envelope. Return consequential pressure; do not silently replace core
+live mathematics. Reconcile L09/L10 family continuity honestly. No new probes,
+sections/slides/student notebooks, shared/map/env changes, merges or Scope freeze.
+
+Current next instructor decision: L10 Eight Schools versus bioassay, supported by
+`investigate/l10-geometry-20261015@0e5a393`, owning notebook_geometry/report.md
+in `/tmp/pml-l10-geometry-20261015`, independently checked atdcf2a81.
+Eight Schools recommendation is conditional on feasible hierarchy/noncentering
+explanation; same MH algorithm and counterevidence of centered-chain failure must
+survive. Bioassay is a smaller logistic continuation with tail/query limitations.
+No L10 application choice has yet been received. This does not block L09 revision.

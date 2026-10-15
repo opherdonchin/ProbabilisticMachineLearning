@@ -106,3 +106,13 @@ unvalidated. No model selection, Scope approval, learner pilot, new candidate,
 dependency edit, merges or student authoring. Worker is not alone and must not
 revert peers or modify any input. Further teaching feasibility and instructor
 selection remain separate from this technical review.
+
+**Review collected:** `review/inference-geometry-20261015@dcf2a81`, owning
+`technical_review.md` in that worktree. Verdict feasible-with-risks; alternate
+references and selected stochastic/chain replays found no blocking technical
+defect. L10 revisits the supplied full-Gaussian comparator from L09, whereas the
+proposed student implementation is diagonal; that teaching continuity needs
+reconciliation. Claimed task tolerances remain author illustrations until agreed.
+Review is complete, not a live assignment or model/Scope approval. Exact findings,
+checks and hashes remain in its owning report. No rerun or new candidate search
+is commissioned by collecting this result.

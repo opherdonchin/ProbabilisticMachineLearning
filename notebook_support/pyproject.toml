@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pml-course-support"
+version = "0.1.0"
+description = "Small plotting helpers for the Probabilistic Machine Learning course"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26", "matplotlib>=3.8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["course_support", "course_support.*"]
+namespaces = false

@@ -1,0 +1,102 @@
+{
+  "all_14_supplied_cells_produce_visible_feedback": true,
+  "clean_local_execution": "all 23 code cells; no error outputs",
+  "mathematical_computation_AST_unchanged_after_removing_print_statements": true,
+  "no_additional_random_draws": true,
+  "all_18_question_answer_pairs_unchanged": true,
+  "schemas_valid": true,
+  "student_mechanically_generated": true,
+  "saved_instructor_run": "f4e2ff7: three code cells executed; no saved errors",
+  "outputs": [
+    {
+      "cell_id": "f74c9e0d",
+      "output": [
+        "Course plotting tools are ready."
+      ]
+    },
+    {
+      "cell_id": "ffccfdcc",
+      "output": [
+        "Hidden / recorded block sizes: 3 / 4\nJoint mean mu: [-0.5  0.5  1.   0.   0.5 -0.5  1. ]"
+      ]
+    },
+    {
+      "cell_id": "5789bf47",
+      "output": [
+        "Joint covariance Sigma shape: (7, 7)"
+      ]
+    },
+    {
+      "cell_id": "2d5d6faf",
+      "output": [
+        "Observed block x2_obs: [-0.184131 -0.069738 -0.077779  0.919187]"
+      ]
+    },
+    {
+      "cell_id": "64649d5d",
+      "output": [
+        "[rendered figure or result]"
+      ]
+    },
+    {
+      "cell_id": "e7ec24be",
+      "output": [
+        "Central 90% interval multiplier: 1.644854"
+      ]
+    },
+    {
+      "cell_id": "82a5c2f7",
+      "output": [
+        "Hidden simulation truth (evaluation only): [-0.980927 -0.275007  1.892047]",
+        "[rendered figure or result]"
+      ]
+    },
+    {
+      "cell_id": "0bc2f36f",
+      "output": [
+        "Conditional model expected risk: 1.399058823529412\nThis case's realized squared error: 1.5920294059108695"
+      ]
+    },
+    {
+      "cell_id": "346363ce",
+      "output": [
+        "Original marginal mean recovered: True\nOriginal marginal covariance recovered: True\nSame conditional mean recovered: True\nSame conditional covariance recovered: True"
+      ]
+    },
+    {
+      "cell_id": "483537ed",
+      "output": [
+        "Fresh-case generator initialized with seed: 2028"
+      ]
+    },
+    {
+      "cell_id": "2bb1810a",
+      "output": [
+        "[rendered figure or result]"
+      ]
+    },
+    {
+      "cell_id": "9137557e",
+      "output": [
+        "Shape, covariance and variance-reduction checks passed."
+      ]
+    },
+    {
+      "cell_id": "3c2f1169",
+      "output": [
+        "Fixed-case answers and LGS moment checks passed."
+      ]
+    },
+    {
+      "cell_id": "bcb9b998",
+      "output": [
+        "Generator mean and covariance match the original joint."
+      ]
+    }
+  ],
+  "sha256": {
+    "InClass/Solutions/lecture1_missing_data.ipynb": "2020c18e4ae65c206b3ec8441b9dfefe195b433992be44f8f5ff978fbe44c476",
+    "InClass/lecture1_missing_data.ipynb": "16aa9be4f36cd4b60dd340edcd8e9c04b990e28a7d1fd552928f1b8d7e602496",
+    "build/notebooks/InClass/Solutions/lecture1_missing_data.executed.ipynb": "dbf9696d7ca4d6b122adbf1a24b51eb1b8f66b1d13f9baf61899e24b055b013b"
+  }
+}

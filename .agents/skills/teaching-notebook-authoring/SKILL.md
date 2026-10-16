@@ -406,6 +406,7 @@ Before considering the pair complete, check the following.
 - Is the expected student action clear?
 - Does each Explanation to read make a coherent teaching move rather than document a supplied cell?
 - Are Code to run notes brief, with any larger shared idea consolidated before the relevant code?
+- Does each supplied code cell show a concise, meaningful result or specific check confirmation, without extra random draws or premature answers?
 - Does prose respect the student-knowledge baseline rather than narrate obvious syntax?
 - Has non-instructional setup been bundled rather than pointlessly decomposed?
 - Are tightly coupled actions kept together when separating them would teach nothing new?

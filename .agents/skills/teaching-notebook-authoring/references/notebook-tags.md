@@ -19,6 +19,8 @@ Keep supplied code cells short and coherent. Their preceding Markdown should nor
 
 When code notes grow long, inspect the surrounding Markdown for a shared concept that deserves a consolidated **Explanation to read** before the relevant code. Draw from several cells if needed, then shorten the local code notes to what remains specific to each operation. Do not fragment a larger explanation into many code notes, relabel a long implementation description without improving it, or duplicate the consolidated explanation beside every cell. Required retrospective section summaries remain concise.
 
+Every supplied code cell should produce concise, meaningful visible feedback: a representative value or array, an informative shape, a plot, an initialized configuration, or a confirmation of specific checks. Existing useful output is sufficient; avoid exhaustive dumps or generic success messages when a concrete result is available. Print check confirmations only after assertions pass. Do not introduce extra random draws, change computation state, or reveal answers prematurely merely to create feedback.
+
 Supplied setup may span several short cells under one material boundary. Do not rely on hidden tags or a visible `[GIVEN]` marker to tell students what to do.
 
 Number questions consistently within sections. Each question has exactly one immediate unnumbered answer cell, including when its answer is supplied as an example. Student-written code belongs under **Questions to answer**, not **Code to run**.

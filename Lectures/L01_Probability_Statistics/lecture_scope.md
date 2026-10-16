@@ -1,8 +1,8 @@
 # L01 provisional Lecture Scope — intellectual arc and mathematical spine
 
-**Agreed route:** retain the current formulation-to-Gaussian/LGS progression. Keep the residual derivation and stated/interpreted quadratic identity live; develop the full block-elimination proof in a separate recorded session. The short squared-error posterior-mean derivation is now also accepted for live teaching. **Remaining proposal:** strengthen the concrete problem-to-query connection and selectively reduce repeated taxonomy/dataset exposition. These other refinements and timing await discussion.
+**Agreed route:** retain the current formulation-to-Gaussian/LGS progression. Keep the residual derivation and stated/interpreted quadratic identity live; develop the full block-elimination proof in a separate recorded session. The short squared-error posterior-mean derivation is also accepted for live teaching. **Accepted bounded refinement, 2026-10-16:** activate the existing bivariate Gaussian example as a task-to-query checkpoint, funded provisionally by shortening the second verbal explanation of the repeated Task/Performance grid. [Exact decision and content](goal_alignment_review.md#current-source-assessment-and-concrete-choice--2026-10-16). Other reductions and whole-lecture timing remain unresolved.
 
-**Status:** intellectual arc with selected instructor decisions and a proposed mathematical spine, 2026-10-14; not a complete approved Scope. Route, live/recorded proof boundary and live squared-error derivation are accepted. Remaining depths, refinements and workload are proposed. Exact versions are recorded below.
+**Status:** intellectual arc with selected instructor decisions and a proposed mathematical spine, updated 2026-10-16; not a complete approved Scope. Route, live/recorded proof boundary, live squared-error derivation and the bounded checkpoint are accepted. Remaining depths, other refinements and workload are proposed. Exact versions are recorded below.
 
 ## Accepted instructor direction
 
@@ -46,9 +46,9 @@ Students enter with probability, Bayesian modeling and matrix algebra. Retain th
 
 **Retrospective:** a model specifies uncertain quantities; the answer depends on the question asked of it.
 
-### B. Learning-problem formulation — keep the core; add a worked connection; about 35 minutes
+### B. Learning-problem formulation — keep the core; shorten the repeated recap; about 35 minutes proposed
 
-Beginning from that distinction, retain Iris and the experience/task distinction. **Add** one supplied-measurement formulation: observed/hidden components and a requested distribution, estimate or forward law. **Reduce** repeated full symbolic task mappings and repeated dataset task catalogues, preserving distinct input/experience examples. Explain future-case performance versus training risk and fixed-parameter inference versus fitting. Context remains supplied; no new dataset or estimation unit is selected. Sources: Book 2 Chapter 1; Book 1 §3.2.5 and §5.1.5.1.
+Beginning from that distinction, retain Iris and the experience/task distinction. The instructor accepted a shorter second verbal walkthrough of the repeated Task/Performance grid on current p33, preserving its distinct query/performance key points and the experience/task examples. This provisionally funds the existing bivariate example's task-to-query checkpoint in milestone D; no additional early measurement example or broader taxonomy reduction is commissioned. Explain future-case performance versus training risk and fixed-parameter inference versus fitting. No new dataset or estimation unit is selected. Sources: Book 2 Chapter 1; Book 1 §3.2.5 and §5.1.5.1.
 
 **Retrospective:** a dataset does not determine its task, query or criterion; parameter fitting and variable inference have different unknowns.
 
@@ -74,7 +74,7 @@ $$
 \Sigma_{1\mid2}=\Sigma_{11}-B\Sigma_{21}.
 $$
 
-Keep the Schur-complement interpretation and displayed quadratic separation at state/interpret depth live, as accepted. Develop the full block-quadratic proof separately for the recorded session; it is an addition to existing materials. Sources: Book 2 §§2.3.1.3 and 2.3.1.5.
+Keep the Schur-complement interpretation and displayed quadratic separation at state/interpret depth live, as accepted. In the existing bivariate numerical example, **work/apply** the accepted checkpoint: distinguish the supplied parameters from the missing variable, choose the conditional law given the recorded coordinate, then contrast its marginal when that coordinate is unobserved. Neither calculation fits model parameters. Develop the full block-quadratic proof separately for the recorded session; it is an addition to existing materials. Sources: Book 2 §§2.3.1.3 and 2.3.1.5.
 
 **Retrospective:** residual independence establishes the conditional Gaussian law; its covariance is the unexplained variation and does not depend on measured values.
 
@@ -114,7 +114,7 @@ The model parameters remain supplied. For the ordinary densities/inverses used h
 
 | Mathematical object and baseline | Arc role and practical purpose | Delivery and recommended depth/status |
 |---|---|---|
-| Joint model, Bayes, conditional/marginal laws and expectations: existing coin, three-operation and LGS material | A–B: identify the observed/unknown variables and requested answer; distinguish a distribution from its summary | **Live: review/state; work** the concrete query distinction. Retention follows the accepted route; the strengthened concrete hinge remains proposed. |
+| Joint model, Bayes, conditional/marginal laws and expectations: existing coin, three-operation and LGS material | A–B and D: identify the observed/unknown variables and requested answer; distinguish a distribution from its summary | **Live: review/state; work/apply** the concrete query distinction in the accepted bivariate checkpoint. The existing route and that bounded strengthening are accepted; complete Scope approval remains pending. |
 | Empirical risk and zero-one loss: existing Iris material | B: make a performance criterion explicit; prevent training loss from being mistaken for future-case performance | **Live: state/work** the existing average-loss example; clarify generalization without adding a validation unit. Exact exposition remains proposed. |
 | Gaussian density, covariance/correlation, contours, affine moments: existing geometry and covariance proof | C: retain dependence and construct measurement/joint blocks | **Live: state/interpret** density and geometry; **derive** $\operatorname{Cov}(AX+b)=A\Sigma A^T$; **state** Gaussian affine closure. Preserve the existing level; no Gaussian-integral proof or information-form unit. |
 | Block marginals and independent residual: existing selection, mean and covariance derivations | D: compute a hidden-block distribution, not merely a linear predictor | **Live: derive** marginals and residual conditioning; this live derivation is **accepted**. **Work** the bivariate numerical check; retain explicit Gaussianity in the covariance-to-independence step. |

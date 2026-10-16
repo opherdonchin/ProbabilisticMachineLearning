@@ -1,0 +1,4 @@
+Original notebook git blob ab441941c8b526151a927bfbcf292bd9bc629ce5.
+79 cells preserve exact source and order after omitting only original cell index 2 (%pip installer).
+Outputs/execution counts cleared before run.
+One separate author-only diagnostic cell is appended by exploratory_execute.py after these 79 cells.

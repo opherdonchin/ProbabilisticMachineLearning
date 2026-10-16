@@ -4,6 +4,10 @@
 
 Use [Lecture Development](../../.agents/skills/lecture-development/SKILL.md), with the relevant specialists for bounded revision and validation. Continue independent source, production and runtime work through delegation while the instructor considers consequential choices. Present one such choice at a time. Do not reopen settled proof depth or repeat resolved design comparisons.
 
+**Delivery pass resumed 2026-10-16:** current work is on `lecture/l01-delivery-readiness`, based on common `main@8889ac0`. The instructor accepted the existing bivariate example as a task-to-query checkpoint, provisionally funded by a shorter second explanation of the repeated Task/Performance grid. That checkpoint, missing proof reveals on current p47/p49, the malformed covariance-selection matrix and sensor-prior qualifications have been repaired in source and matching handout. Current build: **69 handout pages / 163 presentation states**, warning-free; affected states and neighbors were inspected. See the owning [development state](development_state.md) for exact revisions and evidence. The existing loss insertion still awaits acceptance of its coherent selected replacement; full Scope approval is not inferred.
+
+**Current instructor question:** [L01-NOTEBOOK-COMPUTATION](goal_alignment_review.md#l01-notebook-computation--pymcs-role-in-the-one-hour-handoff), exact computation as core with a short supplied PyMC comparison versus retaining guided PyMC-first model-building. Actual checks now support the draft's analytic computation and its PyMC API/sampling path in an isolated uv environment; the repository-locked full run and hosted Colab validation are still outstanding. Do not re-ask the resolved checkpoint choice.
+
 ## What we already have
 
 The existing lecture's strongest argument proceeds from learning-problem formulation through Gaussian representation and conditioning to linear Gaussian systems. Preserve that developed route. A joint model supports several questions: a hidden-value distribution by conditioning, an observation law by marginalization, and a useful point summary by an expectation/decision criterion. Parameter fitting and conditioning on observed variables remain distinct jobs. The seven-dimensional controlled notebook example demonstrates these operations; it is not evidence of a large-data computational bottleneck.
@@ -32,13 +36,13 @@ If a pending asset is absent from the lean consolidated tree, inspect the exact 
 - **Design preferences:** the instructor selected B3's separated decomposition/decision direction, then setup **page 2, named groups**, and decision **page 7, explicit relation/consequences**, in the exact later comparison. These selections do not approve all of candidate A or B, a universal layout rule, whole-candidate promotion or shared-skill adoption. The live insertion still needs reconciliation with this evidence.
 - Each section ends retrospectively. Put necessary connections at the beginning of the receiving section. No speaker notes during slide development.
 
-## First two instructor questions, with evidence prepared first
+## Alignment and timing decisions
 
-**L01-JOINT-QUERY:** Does the existing lecture establish that students can translate task and observations into a joint model, a precise query and the required operation? Inspect actual examples and checks before assuming something is absent. If needed, propose one targeted transition/checkpoint in an existing example, distinguishing unknown model parameters from unknown variables. The choice is unchanged material with adequate evidence versus a small strengthening, funded within existing time.
+**L01-JOINT-QUERY — resolved in this delivery session:** the current deck already explains the model/query/operation translation; the instructor accepted a brief checkpoint in its existing bivariate Gaussian example so students perform that translation themselves. Exact content, funding and provenance are in [goal_alignment_review.md](goal_alignment_review.md). Preserve the supplied-parameter versus unknown-variable distinction.
 
 **L01-GAUSSIAN-TIME:** Does a timed run protect understanding of conditioning, posterior uncertainty and LGS inference? The older coverage specification devotes about 55–65 minutes to introductory framing and another 55–65 to the rest; this establishes a crowding risk, not a measured overrun. Measure the actual sequence. If necessary, offer specific compression of repeated framing/review, preserving accepted live mathematics; do not quietly transfer proofs to recording.
 
-These are review questions, not permission gates for source checks, timing measurements or runtime validation. Their detailed options and ownership remain in [goal_alignment_review.md](goal_alignment_review.md).
+The remaining timing question does not block source checks or runtime validation. Its detailed options and ownership remain in [goal_alignment_review.md](goal_alignment_review.md). No timed teaching/rehearsal evidence exists yet; do not convert source counts or fast kernel execution into a delivery-time claim.
 
 ## Concrete finalization work
 

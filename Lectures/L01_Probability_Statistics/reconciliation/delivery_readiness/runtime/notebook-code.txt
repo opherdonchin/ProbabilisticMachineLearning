@@ -1,0 +1,353 @@
+CELL 2
+%pip install -q \
+    "pymc==6.3.2" \
+    "arviz-base==1.3.0" \
+    "arviz-stats==1.3.2"
+
+
+CELL 3
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import pymc as pm
+import arviz_base as azb
+import arviz_stats as azs
+
+RANDOM_SEED = 2027
+rng = np.random.default_rng(RANDOM_SEED)
+
+print("PyMC:", pm.__version__)
+
+
+CELL 5
+n1 = 3
+n2 = 4
+
+mu1 = np.array([-0.5, 0.5, 1.0])
+mu2 = np.array([0.0, 0.5, -0.5, 1.0])
+mu = np.concatenate([mu1, mu2])
+
+sigma1 = 1.0
+sigma2 = 1.2
+rho1 = 0.70
+rho2 = 0.80
+kappa = 0.90
+
+Sigma11 = sigma1**2 * (
+    (1 - rho1) * np.eye(n1)
+    + rho1 * np.ones((n1, n1))
+)
+
+Sigma22 = sigma2**2 * (
+    (1 - rho2) * np.eye(n2)
+    + rho2 * np.ones((n2, n2))
+)
+
+Sigma12 = (
+    kappa
+    * sigma1
+    * sigma2
+    * np.sqrt(rho1 * rho2)
+    * np.ones((n1, n2))
+)
+
+Sigma21 = Sigma12.T
+
+
+CELL 12
+Sigma = np.block([
+    [Sigma11, Sigma12],
+    [Sigma21, Sigma22],
+])
+
+print(Sigma.shape)
+
+
+CELL 17
+sd = np.sqrt(np.diag(Sigma))
+Corr = Sigma / np.outer(sd, sd)
+
+plt.figure(figsize=(6, 5))
+plt.imshow(Corr, vmin=-1, vmax=1)
+plt.colorbar(label="correlation")
+plt.axvline(n1 - 0.5)
+plt.axhline(n1 - 0.5)
+plt.xticks(range(n1 + n2))
+plt.yticks(range(n1 + n2))
+plt.title("Correlation structure of the joint Gaussian")
+plt.tight_layout()
+plt.show()
+
+
+CELL 20
+x_complete = rng.multivariate_normal(
+    mean=mu,
+    cov=Sigma,
+)
+
+x1_true = x_complete[:n1]
+x2_obs = x_complete[n1:]
+
+print("Hidden x1:", np.round(x1_true, 3))
+print("Observed x2:", np.round(x2_obs, 3))
+
+
+CELL 30
+x_partial = x_complete.copy()
+x_partial[:n1] = np.nan
+
+x_partial
+
+
+CELL 34
+model = pm.Model()
+
+
+CELL 36
+with model:
+    x = pm.MvNormal(
+        "x",
+        mu=mu,
+        cov=Sigma,
+        observed=x_partial,
+    )
+
+
+CELL 38
+with model:
+    idata = pm.sample(
+        draws=2000,
+        tune=1000,
+        chains=4,
+        random_seed=RANDOM_SEED,
+        nuts={"target_accept": 0.9},
+    )
+
+print(type(idata))
+print(idata["posterior"].data_vars)
+
+
+CELL 41
+pymc_summary = azs.summary(
+    idata,
+    var_names=["x_unobserved"],
+    ci_prob=0.90,
+    ci_kind="hdi",
+    kind="stats",
+)
+
+pymc_summary
+
+
+CELL 43
+x1_posterior = azb.extract(
+    idata,
+    var_names="x_unobserved",
+)
+
+sample_dim = "sample"
+component_dim = next(
+    dim for dim in x1_posterior.dims
+    if dim != sample_dim
+)
+
+posterior_samples = (
+    x1_posterior
+    .transpose(sample_dim, component_dim)
+    .values
+)
+
+positions = np.arange(n1) + 1
+
+def plot_component_posteriors(samples, truth, title):
+    plt.figure(figsize=(8, 4.5))
+    plt.violinplot(
+        [samples[:, i] for i in range(samples.shape[1])],
+        positions=positions,
+        showmeans=True,
+        showextrema=False,
+    )
+    plt.scatter(
+        positions,
+        truth,
+        marker="D",
+        s=45,
+        label="Hidden true value",
+    )
+    plt.xticks(
+        positions,
+        [f"x1[{i}]" for i in range(n1)],
+    )
+    plt.ylabel("value")
+    plt.title(title)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
+
+plot_component_posteriors(
+    posterior_samples,
+    x1_true,
+    "PyMC posterior",
+)
+
+
+CELL 47
+mu_z = mu1
+Sigma_z = Sigma11
+y = x2_obs
+
+
+CELL 51
+W = np.linalg.solve(
+    Sigma11,
+    Sigma12,
+).T
+
+W
+
+
+CELL 53
+b = mu2 - W @ mu1
+b
+
+
+CELL 57
+Omega = (
+    Sigma22
+    - Sigma21
+    @ np.linalg.solve(
+        Sigma11,
+        Sigma12,
+    )
+)
+
+Omega
+
+
+CELL 59
+m = W @ mu_z + b
+
+S = (
+    W
+    @ Sigma_z
+    @ W.T
+    + Omega
+)
+
+print("Mean check:", np.allclose(m, mu2))
+print("Covariance check:", np.allclose(S, Sigma22))
+
+
+CELL 65
+lgs_mean = (
+    mu_z
+    + Sigma_z
+    @ W.T
+    @ np.linalg.solve(
+        S,
+        y - m,
+    )
+)
+
+lgs_mean
+
+
+CELL 67
+lgs_cov = (
+    Sigma_z
+    - Sigma_z
+    @ W.T
+    @ np.linalg.solve(
+        S,
+        W @ Sigma_z,
+    )
+)
+
+lgs_cov
+
+
+CELL 69
+lgs_sd = np.sqrt(np.diag(lgs_cov))
+
+print("Posterior mean:")
+print(np.round(lgs_mean, 3))
+
+print("Posterior SD:")
+print(np.round(lgs_sd, 3))
+
+print("Posterior covariance:")
+print(np.round(lgs_cov, 3))
+
+
+CELL 72
+lgs_plot_samples = rng.multivariate_normal(
+    mean=lgs_mean,
+    cov=lgs_cov,
+    size=posterior_samples.shape[0],
+)
+
+plot_component_posteriors(
+    lgs_plot_samples,
+    x1_true,
+    "Exact linear-Gaussian posterior",
+)
+
+
+CELL 75
+comparison = pd.DataFrame({
+    "PyMC mean": pymc_summary["mean"].to_numpy(),
+    "LGS mean": lgs_mean,
+    "PyMC SD": pymc_summary["sd"].to_numpy(),
+    "LGS SD": lgs_sd,
+})
+
+comparison.index = [
+    f"x1[{i}]"
+    for i in range(n1)
+]
+
+comparison
+
+
+CELL 78
+plot_positions = np.arange(n1)
+offset = 0.07
+
+plt.figure(figsize=(8, 4.5))
+
+plt.errorbar(
+    plot_positions - offset,
+    pymc_summary["mean"].to_numpy(),
+    yerr=pymc_summary["sd"].to_numpy(),
+    fmt="o",
+    capsize=4,
+    label="PyMC mean ± SD",
+)
+
+plt.errorbar(
+    plot_positions + offset,
+    lgs_mean,
+    yerr=lgs_sd,
+    fmt="o",
+    capsize=4,
+    label="Exact LGS mean ± SD",
+)
+
+plt.scatter(
+    plot_positions,
+    x1_true,
+    marker="D",
+    s=45,
+    label="Hidden true value",
+)
+
+plt.xticks(
+    plot_positions,
+    [f"x1[{i}]" for i in range(n1)],
+)
+
+plt.ylabel("value")
+plt.title("Posterior comparison")
+plt.legend()
+plt.tight_layout()
+plt.show()

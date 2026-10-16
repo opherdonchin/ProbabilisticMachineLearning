@@ -1,5 +1,15 @@
 # L12 scope investigation: a compact VAE and its generative limits
 
+**Current instructor direction, 2026-10-15:** City data preferred; investigate
+unconstrained observation transforms and inverse-map generation before revisiting
+the older application choice. [Owning record](reconciliation/city_transform_direction.md).
+The half-minimum-positive-training bicycle replacement is now accepted, with
+exact rule/provenance in that owning record and the scope notice. Final acceptance
+of the other transformed-model choices remains open. Raw-Gaussian results below
+retain their exact baseline meaning; they do not show that a transformed city
+model must violate the same constraints. L12-APPLICATION now routes to this
+bounded investigation; L12-GENERATIVE-ENDPOINT remains a separate later question.
+
 **Stage/mode:** Lecture Scope / feasibility-review with explicitly authorized isolated author probes. **Specialist:** `/root/investigate_l11_l12`, 2026-10-14. **Target:** `lecture_scope.md` at baseline `5e4c86ee3518958157d21d6bcb4c51bcdab3537e`; existing scope remains unchanged. Target scope blob `22fa2d8307ef7cb621456521383b6c352dcd451a`. **Verdict:** feasible with risks for learning and critically evaluating the proposed standardized-space latent model. It is unsuitable as evidence of physically valid generated metropolitan areas. These are different performance requirements, and the latter was never promised by the current scope.
 
 New CPU evidence establishes that the 19-feature/four-latent candidate can be trained and scored within a bounded supplied driver. The β comparison survives correct likelihood/KL normalization and held-out preprocessing. A more consequential empirical result is that full prior-generated observations violate simple raw-variable bounds much more often than decoder means. The notebook can therefore teach use and criticism of a generative model; it must not present only attractive means and call them observation samples.
@@ -109,7 +119,16 @@ The cumulative student-knowledge file contains entry/L01 state, so scoped L05/L0
 
 ### L12-GENERATIVE-ENDPOINT — required generation encounter
 
-**Status:** awaiting instructor decision; owner Lecture Scope. Eventual accepted answer belongs in [lecture_scope.md](lecture_scope.md).
+**Resolved, current discussion 2026-10-15:** instructor selected “Require
+generation and critique; replace the extra traversal (recommended).” The owning
+scope Part 3 and contract now require the three-way comparison plus one supplied
+criticism diagnostic. [Decision and follow-up boundary](reconciliation/city_transform_direction.md).
+The earlier raw-Gaussian evidence below retains its source meaning; current
+transformed-model evidence is in notebook_geometry/assessment.md. No whole-Scope,
+transform-bundle, student-time or publication approval follows. The old options
+below are retained as decision evidence, not an unanswered question.
+
+**Status:** resolved by the current-discussion acceptance recorded in [lecture_scope.md](lecture_scope.md), Part3 and contract; owner Lecture Scope. Historical question/options below explain the accepted tradeoff.
 
 **Question:** Should the notebook protect one supplied comparison of reconstruction, prior decoder means and full prior observation draws—including domain failures—by replacing the optional secondary traversal?
 
@@ -123,7 +142,7 @@ The cumulative student-knowledge file contains entry/L01 state, so scoped L05/L0
 
 ### L12-APPLICATION — what the mobility example should accomplish
 
-**Status:** awaiting instructor decision; owner Lecture Scope. Eventual answer belongs in [lecture_scope.md](lecture_scope.md).
+**Status:** city direction and zero rule recorded in [lecture_scope.md](lecture_scope.md); transformed-model evidence under independent review. Do not re-ask city versus digits. Final whole-Scope and remaining transform acceptance are separate.
 
 **Question:** Should the final practical encounter retain mobility as a descriptive Gaussian representation/generate-and-critique task, or require a different support-respecting generative application?
 

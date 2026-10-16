@@ -1,0 +1,52 @@
+# Next session: finish L01 for delivery
+
+**Handoff prepared 2026-10-16.** The instructor requested consolidation of live branches into `main`, followed by a fresh conversation prioritizing L01 for delivery the following week. Start from the resulting common `main`; verify its HEAD and working tree before making changes. Old worktree paths and branch restrictions in historical reports are provenance, not instructions to recreate those workstreams. This handoff indexes current work; the owning scope, design and approval records retain authority.
+
+Use [Lecture Development](../../../.agents/skills/lecture-development/SKILL.md), with the relevant specialists for bounded revision and validation. Continue independent source, production and runtime work through delegation while the instructor considers consequential choices. Present one such choice at a time. Do not reopen settled proof depth or repeat resolved design comparisons.
+
+## What we already have
+
+The existing lecture's strongest argument proceeds from learning-problem formulation through Gaussian representation and conditioning to linear Gaussian systems. Preserve that developed route. A joint model supports several questions: a hidden-value distribution by conditioning, an observation law by marginalization, and a useful point summary by an expectation/decision criterion. Parameter fitting and conditioning on observed variables remain distinct jobs. The seven-dimensional controlled notebook example demonstrates these operations; it is not evidence of a large-data computational bottleneck.
+
+Read [development_state.md](development_state.md), [lecture_scope.md](lecture_scope.md), [goal_alignment_review.md](goal_alignment_review.md), and the current [slide source](slide_deck.typ) together. The coverage specification is useful timing/source evidence but is not approval of a complete revised scope. Also reconcile `course_architecture.typ`, the planned map and actual map at the current HEAD. No lecture has yet been taught in the recovered records; preparation must not be recorded as delivery.
+
+| Strongest asset | Status and exact recovery source |
+|---|---|
+| Existing live deck, figures and Gaussian/LGS argument | Developed source and PDF; the recovered `a804af6` register identifies 69 handout pages / 162 presentation states. Rebuild and recount the consolidated source rather than treating those numbers as current validation. |
+| Reconciled arc and mathematical spine | Selected instructor decisions accepted; the complete five-part Scope remains unfinished/unapproved. Recover from `a804af6` if reconciliation is needed. |
+| Density/candidate comparison and independent review | `experiment/l01-density-20261014@2c1b7fa`; comparison and raw reports under `reconciliation/density_experiment/`. Render-first review assessed all meaningful target states; this is not measured classroom timing. |
+| Latest bounded design judgments | `experiment/slide-judgment-20261015@dfcf736`, with Organization `db35126`, Design `1ec557d` and Authoring `314f31e`; see `reconciliation/slide_judgment/result.md` and the exact rendered pair it identifies. |
+| Existing solved missing-data notebook | `InClass/Solutions/lecture1_missing_data.ipynb`, worked source and authoring report under `InClass/Preparation/`. It is a reusable draft, not an instructor-approved exemplar or publication-validated notebook. |
+| New L01 alignment/timing questions | `194a190` / `fe4058d`, now owned by `goal_alignment_review.md` and indexed in the instructor review queue. |
+
+If a pending asset is absent from the lean consolidated tree, inspect the exact commit above before rebuilding it; do not restore obsolete variants wholesale. Preserve identifiable raw review evidence and source records.
+
+## Decisions to preserve
+
+- Retain the existing formulation → Gaussian → LGS route. The different-query notebook direction was accepted in principle: hidden-block conditioning, squared-loss mean summarization, forward marginalization and a short generation activity. Its detailed handoff and workload were not approved.
+- **Live:** derive Gaussian conditioning by the independent-residual argument; state and interpret the separated quadratic identity. Joint Gaussianity is essential to the zero-covariance → independence step.
+- **Live:** derive the finite-second-moment vector squared-loss identity
+  $$R(a\mid y)=\operatorname{tr}\operatorname{Cov}(Z\mid y)+\|E[Z\mid y]-a\|^2.$$
+  Explain its unique conditional-mean minimizer and minimum risk. This proof depth is settled; a later reduction requires an instructor decision. Its earlier 2–4-minute estimate is unmeasured.
+- **Separate recording:** develop the full block-elimination/quadratic-separation proof. Its purpose and allocation are accepted; the proposed 20–30-minute detailed contract is not. The proof is required/examinable content; video viewing is not monitored, evaluated or compulsory. No recording deck/video has been produced. The live residual argument must stand alone.
+- **Design preferences:** the instructor selected B3's separated decomposition/decision direction, then setup **page 2, named groups**, and decision **page 7, explicit relation/consequences**, in the exact later comparison. These selections do not approve all of candidate A or B, a universal layout rule, whole-candidate promotion or shared-skill adoption. The live insertion still needs reconciliation with this evidence.
+- Each section ends retrospectively. Put necessary connections at the beginning of the receiving section. No speaker notes during slide development.
+
+## First two instructor questions, with evidence prepared first
+
+**L01-JOINT-QUERY:** Does the existing lecture establish that students can translate task and observations into a joint model, a precise query and the required operation? Inspect actual examples and checks before assuming something is absent. If needed, propose one targeted transition/checkpoint in an existing example, distinguishing unknown model parameters from unknown variables. The choice is unchanged material with adequate evidence versus a small strengthening, funded within existing time.
+
+**L01-GAUSSIAN-TIME:** Does a timed run protect understanding of conditioning, posterior uncertainty and LGS inference? The older coverage specification devotes about 55–65 minutes to introductory framing and another 55–65 to the rest; this establishes a crowding risk, not a measured overrun. Measure the actual sequence. If necessary, offer specific compression of repeated framing/review, preserving accepted live mathematics; do not quietly transfer proofs to recording.
+
+These are review questions, not permission gates for source checks, timing measurements or runtime validation. Their detailed options and ownership remain in [goal_alignment_review.md](goal_alignment_review.md).
+
+## Concrete finalization work
+
+1. **Scope and extent:** reconcile current source against accepted decisions, assess the two questions above, and complete the remaining notebook handoff/examples/lecture contract. Obtain the lightweight Section Design feasibility review before complete Scope acceptance. Reuse existing effective teaching; do not restart all stages merely to normalize files.
+2. **Selected slide sequence:** translate the accepted setup/decision preferences into one coherent proposal through the owning Organization–Design–Authoring exchange. The previous two-slide candidate is superseded as a recommendation by later comparisons. Do not infer live-deck promotion from favorable reviews. Author-owned fixes include missing reveal objects reported for original pages 41/47/49, standalone Gaussian wrapper/blank-page warnings, prior/noise qualifications in sensor fusion, and covariance/uncertainty wording. Confirm each against current source and actual output before repairing; historical page numbers may shift.
+3. **Production verification:** after the affected content is accepted, regenerate matching handout/presentation outputs; inspect every affected reveal and authentic neighboring slides. Check full emitted PDFs as well as selected excerpts, warnings, footer metadata, equation legibility and source/output consistency. Separate design fidelity from comparative quality and measured timing.
+4. **Recording:** settle its bounded contract, then use the normal specialist stages for a separate source/deck. Check positive-definite covariance and Schur-complement assumptions, block elimination, determinant/normalizer factors and normalized density factorization; exponent separation alone is insufficient. Report deck readiness separately from capture and publication. Verified source route: Murphy Book 2, December 10, 2025 online edition, §2.3.1.5, “Derivation: moment form.”
+5. **Notebook:** begin with the actual existing solved draft. Its old spine is joint Gaussian → conditional PyMC sampling → LGS translation → exact posterior → comparison. Reconcile that with the accepted multiple-query direction and decide PyMC's role explicitly. Computational goals can scope the notebook, but they must support a focused mathematical argument with substantial theoretical, technical and interpretive scaffolding. Students need not reimplement package internals: step through relevant equations/computations, call supplied machinery, and check outputs against the reasoning. Do not append disconnected theory questions to a coding assignment, or add a synthetic check merely by convention.
+6. **Notebook readiness:** first validate the worked computation, then the solved Q&A and mechanically generated student version. Use repository uv, inspect imports and pins, run clean top-to-bottom locally, and complete a clean hosted Colab run against the course target before publication. The old authoring report's provisional PyMC/ArviZ claims are not runtime evidence. Verify returned objects, imputed-variable names, summaries, plotting and analytic/sampling comparison against the actual environment. Direct samples from a known conditional Gaussian and a generic sampler have different computational/error roles.
+
+Update the owning `development_state.md` as each item actually advances. Keep complete-Scope approval, design acceptance, implementation validation, hosted notebook validation and teaching delivered as separate statuses. Resolve only the dependencies affected by each open question; later-course work should not displace L01 delivery preparation.

@@ -1,0 +1,59 @@
+{
+  "checked_date": "2026-10-16",
+  "sources": [
+    {
+      "file": "upstream/nfoursid_kalman.py",
+      "url": "https://raw.githubusercontent.com/spmvg/nfoursid/3a5e75e3840c5b643e47d5cdc9435af879ebb578/src/nfoursid/kalman.py",
+      "sha256": "f3ae6d2f597a682313159c202575b3b5f0e5341eff816f719d1948e70ff4bfec"
+    },
+    {
+      "file": "upstream/darts_kalman_filter.py",
+      "url": "https://raw.githubusercontent.com/unit8co/darts/8485efe592b33f95e2db500378e1d1b35b8defc1/darts/models/filtering/kalman_filter.py",
+      "sha256": "fb2004c021d947d8fffb9ce11b09b9417412b1a48e0c1b4d6f6f1ae081a4b154"
+    },
+    {
+      "file": "upstream/darts_kalman_forecaster.py",
+      "url": "https://raw.githubusercontent.com/unit8co/darts/4b0b72fa03580ec39f7beee35b40912485a1bb54/darts/models/forecasting/kalman_forecaster.py",
+      "sha256": "c4a7ddc778317b94620802a48cc9a2598ba45a2d8d07d391dd0d352162f2e4a8"
+    },
+    {
+      "file": "upstream/nfoursid_LICENSE",
+      "url": "https://raw.githubusercontent.com/spmvg/nfoursid/1e306879f9e697cd275f17d01dc96182b74ac97d/LICENSE",
+      "sha256": "c0615b31b9d61f4359b332390b5920b921e73ad5ea324a9df129ee28b9f89637"
+    },
+    {
+      "file": "upstream/darts_LICENSE",
+      "url": "https://raw.githubusercontent.com/unit8co/darts/05192e9b9e7ed5d0bcabc27543424bd2776b3ce4/LICENSE",
+      "sha256": "a9f5092af3beb16a4e210725e991ebfc9bcca4420644730e969f8418173eb31e"
+    },
+    {
+      "file": "upstream/nfoursid_state_space.py",
+      "url": "https://raw.githubusercontent.com/spmvg/nfoursid/1e306879f9e697cd275f17d01dc96182b74ac97d/src/nfoursid/state_space.py",
+      "sha256": "75d2febc24b145dc566bdc0824b9660c85d794200256384677f7b7515aebfdb8"
+    }
+  ],
+  "release_checks": [
+    {
+      "name": "nfoursid",
+      "version": "1.0.2",
+      "url": "https://files.pythonhosted.org/packages/8d/36/fae16163620cbf04de0e50f67d946782ff4964e65276852dceea8a3c655a/nfoursid-1.0.2-py3-none-any.whl",
+      "wheel_sha256": "2b51f319346a65bd2a66554d9bfd7846feb9ad359fad678566dfa3f124eace70",
+      "module_matches": {
+        "nfoursid/kalman.py": true,
+        "nfoursid/state_space.py": true
+      },
+      "installed": false
+    },
+    {
+      "name": "darts",
+      "version": "0.48.0",
+      "url": "https://files.pythonhosted.org/packages/a4/a6/4b10449add8d3bde8ebc3bdf96da6357b7a4177df26b7ff74ca3c816ee23/darts-0.48.0-py3-none-any.whl",
+      "wheel_sha256": "27dd67793987c5e5092a462cd99784ff149b9acbb4ff68430e7d2c8cffb6a000",
+      "module_matches": {
+        "darts/models/filtering/kalman_filter.py": true,
+        "darts/models/forecasting/kalman_forecaster.py": true
+      },
+      "installed": false
+    }
+  ]
+}

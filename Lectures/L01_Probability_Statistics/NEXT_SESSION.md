@@ -18,7 +18,7 @@ Use [Lecture Development](../../.agents/skills/lecture-development/SKILL.md), wi
 
 **Current notebook feedback:** the instructor requested meaningful visible output from every Code to run cell. All fourteen supplied cells now show selected values/shapes, plots, initialized configuration or specific check confirmations. [Current validation](reconciliation/delivery_readiness/runtime/output_feedback/validation.json) captures those outputs from a clean full local execution; all Q&A pairs and mathematical computation remain unchanged. The authoring guidance records this convention. Review continues in chat; public installation and hosted readiness remain pending.
 
-**Current answer formatting:** the instructor requested `##### start answer` and `##### end answer` around solved answers. All 18 answer-content cells now have separate Markdown boundaries tagged `solution-boundary`; the generator removes those 36 cells, so the student notebook is exactly unchanged. All existing solved cells, including five executed code cells and their saved outputs, are preserved. Both schemas and all question/start/answer/end groups validate; no computational change or new full execution occurred.
+**Current answer formatting:** the instructor requested `##### *start answer*` and `##### *end answer*` around solved answers. All 18 answer-content cells now have separate Markdown boundaries tagged `solution-boundary`; the generator removes those 36 cells, so the student notebook is exactly unchanged. All existing solved cells, including five executed code cells and their saved outputs, are preserved. Both schemas and all question/start/answer/end groups validate; no computational change or new full execution occurred.
 
 ## What we already have
 

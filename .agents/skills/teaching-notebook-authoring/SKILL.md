@@ -362,7 +362,7 @@ The typical instructional rhythm is:
 
 1. **Explanation to read**, where a substantive teaching move is needed, develops a coherent mathematical or technical idea;
 2. **Code to run**, where needed, supplies short supporting cells with brief preceding implementation notes; the material heading supplies the run instruction;
-3. **Questions to answer** contains numbered `exercise-question` cells, each paired with one unnumbered `solution` Markdown or code cell; in the solved source, separate Markdown cells bracket that answer with `##### start answer` and `##### end answer`, tagged `solution-boundary`;
+3. **Questions to answer** contains numbered `exercise-question` cells, each paired with one unnumbered `solution` Markdown or code cell; in the solved source, separate Markdown cells bracket that answer with `##### *start answer*` and `##### *end answer*`, tagged `solution-boundary`;
 4. repeat for the next coherent step.
 
 Use `#` for the notebook title, `##` for sections, `###` for those three material boundaries and `####` for content titles and numbered questions. Repeat a boundary when the material type changes; consecutive questions may share one. Keep student-written code within Questions to answer. Do not supply a target calculation merely to fill the supporting-code step. Substantial setup may precede the numbered questions.

@@ -76,7 +76,7 @@ The solved notebook should contain the full, correct answer rather than a hint.
 
 ## `solution-boundary`
 
-Use on separate Markdown cells immediately before and after each solved answer-content cell, including code answers. Their exact contents under the current hierarchy are `##### start answer` and `##### end answer`. The marker heading is one level deeper than ordinary notebook content headings (currently level four).
+Use on separate Markdown cells immediately before and after each solved answer-content cell, including code answers. Their exact contents under the current hierarchy are `##### *start answer*` and `##### *end answer*`. The marker heading is one level deeper than ordinary notebook content headings (currently level four).
 
 These cells visually bracket the answer without changing its Markdown/code type or splitting its content. The student generator removes both boundary cells entirely, preserving one immediate unnumbered placeholder (or retained supplied answer) per question. Do not tag boundary cells `solution`, which would turn them into extra placeholders.
 

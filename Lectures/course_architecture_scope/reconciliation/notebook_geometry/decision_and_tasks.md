@@ -75,3 +75,34 @@ selection blocks dependent final authoring, not other candidate/source work.
 Independent technical review, Scope reconciliation, instructor selection, final
 worked solutions, pedagogical authoring, workload trial and local/hosted Colab
 checks retain separate gates. Fast scripts do not validate an hour of student work.
+
+## Returned evidence and independent technical review
+
+All three bounded investigations returned without selecting examples. Exact
+task results remain in their owning branches, not merged here:
+
+- L07 `investigate/l07-geometry-20261015@d2404b3`,
+  `/tmp/pml-l07-geometry-20261015/Lectures/L07_Inference/notebook_geometry/report.md`.
+- L09 `investigate/l09-geometry-20261015@f64fb54`,
+  `/tmp/pml-l09-geometry-20261015/Lectures/L09_Variational_Inference/notebook_geometry/REPORT.md`.
+- L10 `investigate/l10-geometry-20261015@0e5a393`,
+  `/tmp/pml-l10-geometry-20261015/Lectures/L10_MCMC/notebook_geometry/report.md`.
+
+Next bounded owner `/root/inference_geometry_review`: independent technical
+review, base this record's next commit; branch `review/inference-geometry-20261015`,
+worktree `/tmp/pml-inference-geometry-review-20261015`. Exact allowed write:
+`Lectures/course_architecture_scope/reconciliation/notebook_geometry/technical_review.md`.
+All candidate worktrees are read-only inputs at the stated commits. First inspect
+models/objectives/reference algorithms and source records, then compare builder
+claims. Selectively replay decisive checks with scratch output in `/tmp`; do not
+repeat candidate search or rewrite scripts. Check densities/coordinates/Jacobians,
+references/tails, actual stochastic fits and chain failure evidence, query versus
+density error, same-family versus criterion comparisons, and numerical precision.
+Also flag whether L10 actually revisits the L09 proposed student/supplied family,
+and whether author-proposed tolerances are being mistaken for instructor choices.
+Return `feasible | feasible-with-risks | blocked`, exact checked revisions,
+independence, findings with owner/severity/smallest repair, and what remains
+unvalidated. No model selection, Scope approval, learner pilot, new candidate,
+dependency edit, merges or student authoring. Worker is not alone and must not
+revert peers or modify any input. Further teaching feasibility and instructor
+selection remain separate from this technical review.

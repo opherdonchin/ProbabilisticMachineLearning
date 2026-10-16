@@ -1,0 +1,25 @@
+# Frozen L01 density/process experiment
+
+Read instructor_request.md. Work only in /tmp/pml-l01-density-20261014 on experiment/l01-density-20261014. ALL shell commands must set workdir to that worktree; load its absolute skill paths, not the catalog paths in the parent checkout. Instructions are frozen at commit61acb414c5956202add5f7ddbdbbdbfaadc5f304 and hashes in inputs/manifest.json; do not modify them. Organization's existing negotiation contract is sufficient and unchanged.
+
+This is an instructor-authorized isolated exploratory build/revision using provisional inputs, not production or pedagogical approval. Production deck, maps, scopes, notebooks and existing candidate remain read-only. Each role owns only its assigned artifact paths. You are not alone; do not revert or overwrite others' edits. Record exact input/instruction versions and raw material offers/counteroffers and corrections in your report. Before overwriting a meaningful failed variant, notify the coordinator and leave its source intact until its Git checkpoint is captured. Avoid old-copy/archive trees; current comparisons are distinct live experimental alternatives, Git preserves superseded attempts.
+
+Use real peer negotiation. Organization owns teaching moves, boundaries/titles/count; Design owns selected visible content, semantic grouping, hierarchy and reveals; Authoring owns realization and offers concrete alternatives/evidence. Preserve agreed mathematical depth, intellectual endpoints, course route and section endings. Projected presentation need not carry every formal qualification or routine algebraic step. Provisional source count, labels, persistence and composition are not instructor locks. Report tradeoffs and uncertainties without treating fit or mutual agreement as quality approval. Do not change source files in the instructor's checkout.
+
+## Case: squared-error optimality
+
+Recover the existing argument from actual production slides63–66, the current separate squared_loss_candidate.typ/PDF, and the relevant accepted scope discussion. The intellectual endpoint is to derive the posterior-mean reconstruction from conditional expected squared Euclidean error for a vector, and interpret the residual uncertainty. Maintain an understandable progression from loss to conditional risk to decomposition and optimality. Necessary assumptions/validity are checking responsibilities; mathematical selection for projection belongs to Design under the current instructor request. Neither desired omissions, layout nor slide count is prescribed here.
+
+Supply unchanged actual63 before the candidate and actual66 after it. Inspect completed course precedents48,59,61 and their actual mathematical roles. A provisional organization and mathematical selection must be negotiated against genuinely different realizations/divisions where informative. Return actual normal-scale render evidence, a coherent current proposed organization/design set, and current comparative alternatives that test meaningful uncertainty. The instructor asks that any two/three-slide tradeoffs be reported; these counts are alternatives to evaluate, not mandated allocations or a preferred verdict.
+
+## Case: Gaussian independence
+
+A separate fresh team tests the argument of actual48 between actual47 and49. The endpoint is an understandable derivation of the Gaussian conditional mean through a residual, zero covariance and independence; Gaussianity's role in that implication must remain clear. Recover actual entry and subsequent use, rather than treating this as a detached theorem. Use completed covariance39, Gaussian Bayes59 and scalar61 as appropriate visual/notation precedents. No preferred layout, omission list or slide allocation is prescribed. Return candidate organization/design and actual handout plus all meaningful reveal states at normal course scale.
+
+## Production evidence
+
+Use the existing course API and canonical scripts/review_slides.py/check_typst_math_attachments.py; UV_CACHE_DIR=/tmp/uvcache avoids the read-only global cache. Prototype sources may precede approval within this isolated experiment. Include authentic neighbors without altering their bodies. Label direct evidence, own judgments and estimates separately. Record every complete realized state and source hash; a missing agreed object cannot establish capacity. Check actual equations and grouping, not just compilation. No speaker notes.
+
+Baseline renders and the full baseline two-mode PDFs are in build/slide-review/L01_Probability_Statistics/slide_deck; the original source is lecture-local slide_deck.typ. The inputs directory will contain compact immutable baseline/context/precedent render inventories. Builders may read source and standards, but should not import earlier fault lists or builder defenses into this fresh experiment.
+
+Independent review is commissioned after candidate construction; do not pre-write or claim its verdict. Frozen instructions remain unchanged through both cases and review. Report their successes/failures; any further patch revision is a recommendation for the instructor, not silent post-test tuning.

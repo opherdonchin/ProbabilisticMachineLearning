@@ -92,7 +92,7 @@ Lectures/<lecture>/slide_deck.typ
 
 Supporting production artifacts may include lecture-local generated figures, author-facing figure notebooks, standalone Typst schematics, and local helper modules.
 
-Design-only metadata such as `section-design-notes(...)` and ordinary-slide summary nominations do not become visible production content.
+Design-only metadata such as `section-design-notes(...)` and ordinary-slide summary nominations do not become visible production content. `rationale`/`constraints` may also contain source conditions, checking mathematics and intentional elisions. These are not extra display requirements. Preserve Design's selected explanation; do not restore omitted qualifications or routine algebra merely to make the projected slide mathematically self-contained.
 
 ## Lowering workflow
 
@@ -110,8 +110,11 @@ hierarchy rather than reproducing a visually similar generic card. A generic gri
 both roles into `object:`. If placement contradicts semantic roles, return
 Slide Design backpressure before tuning geometry. Likewise, newly derived
 mathematics marked as recall is a design issue, not a request to shrink the proof.
-Preserve local proof warrants and operation labels as well as equations: a bare
-equation stack can violate design fidelity even when prose has a separate slot.
+Preserve the selected local proof warrants and operation labels as well as
+equations: a bare equation stack can violate design fidelity even when prose has
+a separate slot. If an intended elision would break an inference in the actual
+student context, return a concrete Design question with the mathematical reason
+and a minimal alternative; do not unilaterally restore the reference proof.
 
 Read the current `course.typ` signatures and relevant neighboring source.
 
@@ -119,10 +122,15 @@ Read the current `course.typ` signatures and relevant neighboring source.
 
 For each slide:
 
-1. identify the labeled semantic objects;
-2. instantiate the corresponding production layout;
-3. place those object bodies in their approved relationships;
-4. establish readable final-state geometry.
+1. identify the selected objects, central result and support relationships;
+2. realize the approved composition at scale/spacing evidenced by course slides;
+3. check grouping, alignment and the reading path between mathematical elements;
+4. test final-state and demanding-reveal spatial/cognitive density.
+
+When the composition is doubtful, offer Design concrete alternative realizations
+and render evidence for their hierarchy and relationships. Identify what each
+alternative preserves, changes and costs. Confirm the realized object/region/reveal
+mapping before treating capacity as evidence about a proposed explanation.
 
 Do this before adding complex reveal mechanics.
 
@@ -144,7 +152,7 @@ Do not add or remove teaching clicks merely because another implementation is ea
 
 Only after the approved composition exists should you tune widths, line breaks, spacing, calibrated font size, and optical alignment.
 
-Do not solve substantive density problems by shrinking important content below normal classroom readability.
+Do not solve substantive density problems by shrinking important content below normal classroom readability. Offer Design specific omissions, compressions or changes to persistence, explaining what understanding they preserve and what they cost. Design owns changes to visible content; Organization owns changes to slide granularity. A readable incomplete explanation can be intentional; missing agreed visible content is an implementation defect.
 
 ### 7. Run mechanical checks
 
@@ -171,7 +179,15 @@ visible. Stable positions and cumulative persistence alone do not establish flow
 
 Use the repository review workflow documented in `Lectures/README.md`.
 
-Inspect every changed state and the final handout for legibility, hierarchy, equation density, figure readability, alignment, spacing, reveal stability, premature answers, missing content, and fidelity to the approved design.
+Inspect every meaningful changed state and the final handout at actual slide
+scale for legibility, central-object dominance, grouping, alignment, spacing,
+figure readability and both spatial and cognitive density. Assess how much the
+student must simultaneously read, interpret and relate, including repeated
+context and competing similarly weighted regions. Check whether each reveal
+directs attention to a meaningful inference while preserving needed continuity.
+Clipping checks, fewer equations, less text or more whitespace are not substitutes
+for comprehension. Check premature answers, missing agreed content and fidelity
+to the selected explanation separately.
 
 Compare the final state with the selected established proof/neighbor renders,
 not only with its own design sketch. Verify that the mathematical object remains

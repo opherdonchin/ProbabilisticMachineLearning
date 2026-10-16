@@ -1,0 +1,31 @@
+{
+  "source": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-result-proof.typ",
+  "sha256": "ca8cf2462a4a4d6afe73c4578d470afdab7efdb55fea562be476eebb8bc052ad",
+  "warnings": [
+    "unknown font family: \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b[touying] detecting slide content is empty at page 2 (slide 2, subslide 1, content height: 0pt, available height: 373.56pt).",
+    "unknown font family: \b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b[touying] detecting slide content is empty at page 2 (slide 2, subslide 1, content height: 0pt, available height: 373.56pt)."
+  ],
+  "pages": {
+    "handout": 6,
+    "presentation": 15
+  },
+  "previews": [
+    "marginalization-keeps-the-matching-blocks-3fc75697-handout-1.png",
+    "marginalization-keeps-the-matching-blocks-3fc75697-presentation-1.png",
+    "marginalization-keeps-the-matching-blocks-3fc75697-presentation-2.png",
+    "marginalization-keeps-the-matching-blocks-3fc75697-presentation-3.png",
+    "marginalization-keeps-the-matching-blocks-3fc75697-presentation-4.png",
+    "conditioning-shifts-the-mean-by-an-observed-deviation-45ab94fd-handout-1.png",
+    "conditioning-shifts-the-mean-by-an-observed-deviation-45ab94fd-presentation-1.png",
+    "conditioning-shifts-the-mean-by-an-observed-deviation-45ab94fd-presentation-2.png",
+    "conditioning-shifts-the-mean-by-an-observed-deviation-45ab94fd-presentation-3.png",
+    "conditioning-shifts-the-mean-by-an-observed-deviation-45ab94fd-presentation-4.png",
+    "conditioning-removes-explained-covariance-ee0fd26b-handout-1.png",
+    "conditioning-removes-explained-covariance-ee0fd26b-presentation-1.png",
+    "conditioning-removes-explained-covariance-ee0fd26b-presentation-2.png",
+    "conditioning-removes-explained-covariance-ee0fd26b-presentation-3.png",
+    "conditioning-removes-explained-covariance-ee0fd26b-presentation-4.png"
+  ],
+  "visual_review": "pending",
+  "status": "review-warnings"
+}

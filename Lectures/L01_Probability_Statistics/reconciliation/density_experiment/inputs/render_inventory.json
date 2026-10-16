@@ -1,0 +1,205 @@
+{
+  "original_loss": [
+    {
+      "actual_page": 63,
+      "handout": "original_loss/actual-63-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 64,
+      "handout": "original_loss/actual-64-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 65,
+      "handout": "original_loss/actual-65-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 66,
+      "handout": "original_loss/actual-66-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    }
+  ],
+  "original_independence": [
+    {
+      "actual_page": 47,
+      "handout": "original_independence/actual-47-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 48,
+      "handout": "original_independence/actual-48-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 49,
+      "handout": "original_independence/actual-49-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    }
+  ],
+  "precedents": [
+    {
+      "actual_page": 39,
+      "handout": "precedents/actual-39-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 48,
+      "handout": "precedents/actual-48-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 59,
+      "handout": "precedents/actual-59-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    },
+    {
+      "actual_page": 61,
+      "handout": "precedents/actual-61-handout.png",
+      "committed_vs_source_generated_pixels_equal": true
+    }
+  ],
+  "original_loss_presentation_order": [
+    {
+      "title": "Inference often combines conditioning and summarizing",
+      "state": 1,
+      "canonical_page": 148,
+      "image": "original_loss/slide-1-state-1.png"
+    },
+    {
+      "title": "Inference often combines conditioning and summarizing",
+      "state": 2,
+      "canonical_page": 149,
+      "image": "original_loss/slide-1-state-2.png"
+    },
+    {
+      "title": "A point estimate needs a loss function",
+      "state": 1,
+      "canonical_page": 150,
+      "image": "original_loss/slide-2-state-1.png"
+    },
+    {
+      "title": "A point estimate needs a loss function",
+      "state": 2,
+      "canonical_page": 151,
+      "image": "original_loss/slide-2-state-2.png"
+    },
+    {
+      "title": "The conditional mean minimizes squared-error risk",
+      "state": 1,
+      "canonical_page": 152,
+      "image": "original_loss/slide-3-state-1.png"
+    },
+    {
+      "title": "The conditional mean minimizes squared-error risk",
+      "state": 2,
+      "canonical_page": 153,
+      "image": "original_loss/slide-3-state-2.png"
+    },
+    {
+      "title": "The conditional mean minimizes squared-error risk",
+      "state": 3,
+      "canonical_page": 154,
+      "image": "original_loss/slide-3-state-3.png"
+    },
+    {
+      "title": "Sensor fusion combines measurements according to their uncertainty",
+      "state": 1,
+      "canonical_page": 155,
+      "image": "original_loss/slide-4-state-1.png"
+    },
+    {
+      "title": "Sensor fusion combines measurements according to their uncertainty",
+      "state": 2,
+      "canonical_page": 156,
+      "image": "original_loss/slide-4-state-2.png"
+    },
+    {
+      "title": "Sensor fusion combines measurements according to their uncertainty",
+      "state": 3,
+      "canonical_page": 157,
+      "image": "original_loss/slide-4-state-3.png"
+    },
+    {
+      "title": "Sensor fusion combines measurements according to their uncertainty",
+      "state": 4,
+      "canonical_page": 158,
+      "image": "original_loss/slide-4-state-4.png"
+    }
+  ],
+  "original_independence_presentation_order": [
+    {
+      "title": "Marginalization keeps the matching blocks",
+      "state": 1,
+      "canonical_page": 105,
+      "image": "original_independence/slide-1-state-1.png"
+    },
+    {
+      "title": "Marginalization keeps the matching blocks",
+      "state": 2,
+      "canonical_page": 106,
+      "image": "original_independence/slide-1-state-2.png"
+    },
+    {
+      "title": "Marginalization keeps the matching blocks",
+      "state": 3,
+      "canonical_page": 107,
+      "image": "original_independence/slide-1-state-3.png"
+    },
+    {
+      "title": "Marginalization keeps the matching blocks",
+      "state": 4,
+      "canonical_page": 108,
+      "image": "original_independence/slide-1-state-4.png"
+    },
+    {
+      "title": "Conditioning shifts the mean by an observed deviation",
+      "state": 1,
+      "canonical_page": 109,
+      "image": "original_independence/slide-2-state-1.png"
+    },
+    {
+      "title": "Conditioning shifts the mean by an observed deviation",
+      "state": 2,
+      "canonical_page": 110,
+      "image": "original_independence/slide-2-state-2.png"
+    },
+    {
+      "title": "Conditioning shifts the mean by an observed deviation",
+      "state": 3,
+      "canonical_page": 111,
+      "image": "original_independence/slide-2-state-3.png"
+    },
+    {
+      "title": "Conditioning shifts the mean by an observed deviation",
+      "state": 4,
+      "canonical_page": 112,
+      "image": "original_independence/slide-2-state-4.png"
+    },
+    {
+      "title": "Conditioning removes explained covariance",
+      "state": 1,
+      "canonical_page": 113,
+      "image": "original_independence/slide-3-state-1.png"
+    },
+    {
+      "title": "Conditioning removes explained covariance",
+      "state": 2,
+      "canonical_page": 114,
+      "image": "original_independence/slide-3-state-2.png"
+    },
+    {
+      "title": "Conditioning removes explained covariance",
+      "state": 3,
+      "canonical_page": 115,
+      "image": "original_independence/slide-3-state-3.png"
+    },
+    {
+      "title": "Conditioning removes explained covariance",
+      "state": 4,
+      "canonical_page": 116,
+      "image": "original_independence/slide-3-state-4.png"
+    }
+  ]
+}

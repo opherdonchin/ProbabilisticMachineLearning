@@ -1,0 +1,15 @@
+# Isolated L01 instruction experiment
+
+**Stage/status:** authorized exploratory Organization–Design–Authoring experiment completed and independently reviewed; proposals await instructor review. This register does not change the live lecture's approval state.
+
+**Repository/revision:** worktree `/tmp/pml-l01-density-20261014`, branch `experiment/l01-density-20261014`; baseline `a804af6`; frozen instruction commit `61acb41`; current candidate/source/input commit `06f4560`; render-only review frozen at `4b9b277`. Exact identities are in [input manifest](inputs/manifest.json), [output manifest](outputs_manifest.json), and [verification](verification.json). The instructor checkout remains on `rescope-l01-l12-architecture-alignment-20261014` at `a804af6`.
+
+**Authorization/provenance:** the [verbatim instructor request](instructor_request.md) authorizes the four-file experimental patch, fresh teams on squared loss and Gaussian independence, render-first independent review, and a report followed by a stop. It prohibits production modification and experimental skill promotion. It does not approve a candidate count/layout, complete lecture scope or production release.
+
+**Current results:** six comparative candidates and their full target-state excerpts; [17-page comparison](comparison.pdf); [coordinator assessment/recommendation](report.md); six specialist reports under `loss/` and `independence/`. Organization owns boundaries/titles, Design owns selected reasoning and reveals, Authoring owns realization. The reports were written by the respective agents; coordinator recommendations are identified separately from their judgments.
+
+**Review evidence:** a fresh separate reviewer saw only rendered sequences/context/precedents for [Phase1](review/phase1_render_review.md), then source/contracts/process after that report was frozen, for [Phase2](review/phase2_source_process_review.md). Exposure records retain exact images and file identities. All 56 distinct bodies / 146 references were assessed. The review is independent of builders, not classroom or statistical validation. The test has no matched old-skill control or measured lecture timing.
+
+**Open decisions/next owner:** instructor reviews B3 versus the shorter A2 vertical alternative, Gaussian A versus C, and the recommendation to revise narrowly before provisional skill adoption. Coordinator should resume only after instructor steering. No automatic promotion, merge, push or L02 progression.
+
+**Known next implementation work:** Authoring should correct the standalone Gaussian blank wrapper page before claiming complete-artifact readiness. Production owners should separately address original slides 47/49's missing reveal objects and slide 66's prior/noise qualification. These are recorded, not repaired in this experiment. Frozen instruction revisions are proposed in the report but have not been applied. Production deck, scope, architecture, maps, notebooks, live development register and active skills remain unchanged.

@@ -1,0 +1,5211 @@
+{
+  "status": "PASS: bounded extracted-method checks, not full package execution",
+  "python": "/home/opher/Repositories/ProbabilisticMachineLearning/.venv/bin/python",
+  "python_version": "3.12.13 (main, Aug  7 2026, 02:25:39) [Clang 22.1.3 ]",
+  "numpy_version": "2.0.2",
+  "script_sha256": "0e5eeeea1eca68e68d677e0f45e729ee82fbd83d89f7b4d420f32dcc39b76075",
+  "tolerance": 2e-12,
+  "case_count": 8,
+  "max_corrected_state_moment_error": 6.661338147750939e-16,
+  "max_corrected_missing_output_error": 4.440892098500626e-16,
+  "imports": {
+    "pandas": "ModuleNotFoundError(\"No module named 'pandas'\")",
+    "darts": "ModuleNotFoundError(\"No module named 'darts'\")",
+    "nfoursid": "ModuleNotFoundError(\"No module named 'nfoursid'\")"
+  },
+  "full_package_execution": false,
+  "environment_modified": false,
+  "patch_extra_nonblank_lines": 4,
+  "source_manifest": {
+    "checked_date": "2026-10-16",
+    "sources": [
+      {
+        "file": "upstream/nfoursid_kalman.py",
+        "url": "https://raw.githubusercontent.com/spmvg/nfoursid/3a5e75e3840c5b643e47d5cdc9435af879ebb578/src/nfoursid/kalman.py",
+        "sha256": "f3ae6d2f597a682313159c202575b3b5f0e5341eff816f719d1948e70ff4bfec"
+      },
+      {
+        "file": "upstream/darts_kalman_filter.py",
+        "url": "https://raw.githubusercontent.com/unit8co/darts/8485efe592b33f95e2db500378e1d1b35b8defc1/darts/models/filtering/kalman_filter.py",
+        "sha256": "fb2004c021d947d8fffb9ce11b09b9417412b1a48e0c1b4d6f6f1ae081a4b154"
+      },
+      {
+        "file": "upstream/darts_kalman_forecaster.py",
+        "url": "https://raw.githubusercontent.com/unit8co/darts/4b0b72fa03580ec39f7beee35b40912485a1bb54/darts/models/forecasting/kalman_forecaster.py",
+        "sha256": "c4a7ddc778317b94620802a48cc9a2598ba45a2d8d07d391dd0d352162f2e4a8"
+      },
+      {
+        "file": "upstream/nfoursid_LICENSE",
+        "url": "https://raw.githubusercontent.com/spmvg/nfoursid/1e306879f9e697cd275f17d01dc96182b74ac97d/LICENSE",
+        "sha256": "c0615b31b9d61f4359b332390b5920b921e73ad5ea324a9df129ee28b9f89637"
+      },
+      {
+        "file": "upstream/darts_LICENSE",
+        "url": "https://raw.githubusercontent.com/unit8co/darts/05192e9b9e7ed5d0bcabc27543424bd2776b3ce4/LICENSE",
+        "sha256": "a9f5092af3beb16a4e210725e991ebfc9bcca4420644730e969f8418173eb31e"
+      },
+      {
+        "file": "upstream/nfoursid_state_space.py",
+        "url": "https://raw.githubusercontent.com/spmvg/nfoursid/1e306879f9e697cd275f17d01dc96182b74ac97d/src/nfoursid/state_space.py",
+        "sha256": "75d2febc24b145dc566bdc0824b9660c85d794200256384677f7b7515aebfdb8"
+      }
+    ],
+    "release_checks": [
+      {
+        "name": "nfoursid",
+        "version": "1.0.2",
+        "url": "https://files.pythonhosted.org/packages/8d/36/fae16163620cbf04de0e50f67d946782ff4964e65276852dceea8a3c655a/nfoursid-1.0.2-py3-none-any.whl",
+        "wheel_sha256": "2b51f319346a65bd2a66554d9bfd7846feb9ad359fad678566dfa3f124eace70",
+        "module_matches": {
+          "nfoursid/kalman.py": true,
+          "nfoursid/state_space.py": true
+        },
+        "installed": false
+      },
+      {
+        "name": "darts",
+        "version": "0.48.0",
+        "url": "https://files.pythonhosted.org/packages/a4/a6/4b10449add8d3bde8ebc3bdf96da6357b7a4177df26b7ff74ca3c816ee23/darts-0.48.0-py3-none-any.whl",
+        "wheel_sha256": "27dd67793987c5e5092a462cd99784ff149b9acbb4ff68430e7d2c8cffb6a000",
+        "module_matches": {
+          "darts/models/filtering/kalman_filter.py": true,
+          "darts/models/forecasting/kalman_forecaster.py": true
+        },
+        "installed": false
+      }
+    ]
+  },
+  "cases": [
+    {
+      "case": "scalar_single_missing",
+      "A": [
+        [
+          1.0
+        ]
+      ],
+      "B": [
+        []
+      ],
+      "C": [
+        [
+          1.0
+        ]
+      ],
+      "D": [
+        []
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 0.5,
+        "corrected": 0.0
+      },
+      "max_missing_output_moment_error": {
+        "original": 0.5,
+        "corrected": 0.0
+      },
+      "observed_branch_bitwise_preserved": false,
+      "steps": [
+        {
+          "t": 0,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              2.0
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "max_abs_error": 0.5,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "output_moment_error": 0.5
+          },
+          "oracle_output_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              2.0
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                1.0
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                2.0
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                2.0
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case": "scalar_repeated_missing",
+      "A": [
+        [
+          1.0
+        ]
+      ],
+      "B": [
+        []
+      ],
+      "C": [
+        [
+          1.0
+        ]
+      ],
+      "D": [
+        []
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 5.381974248927039,
+        "corrected": 0.0
+      },
+      "max_missing_output_moment_error": {
+        "original": 5.381974248927039,
+        "corrected": 0.0
+      },
+      "observed_branch_bitwise_preserved": false,
+      "steps": [
+        {
+          "t": 0,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              2.0
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "max_abs_error": 0.5,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "output_moment_error": 0.5
+          },
+          "oracle_output_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              2.0
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                1.0
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                2.0
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                2.0
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 1,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              2.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              2.0
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              3.0
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5999999999999999
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5999999999999999
+              ]
+            ],
+            "max_abs_error": 1.4000000000000001,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.5999999999999999
+              ]
+            ],
+            "output_moment_error": 1.4000000000000001
+          },
+          "oracle_output_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              3.0
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                2.0
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                3.0
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                3.0
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 2,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              3.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              3.0
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              4.0
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6153846153846153
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.615384615384615
+              ]
+            ],
+            "max_abs_error": 2.384615384615385,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.6153846153846154
+              ]
+            ],
+            "output_moment_error": 2.3846153846153846
+          },
+          "oracle_output_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              4.0
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                3.0
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                4.0
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                4.0
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 3,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              4.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              4.0
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              5.0
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6176470588235292
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6176470588235292
+              ]
+            ],
+            "max_abs_error": 3.382352941176471,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.6176470588235292
+              ]
+            ],
+            "output_moment_error": 3.382352941176471
+          },
+          "oracle_output_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              5.0
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                4.0
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                5.0
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                5.0
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 4,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              5.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              5.0
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              6.0
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6179775280898876
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6179775280898874
+              ]
+            ],
+            "max_abs_error": 4.382022471910113,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.6179775280898876
+              ]
+            ],
+            "output_moment_error": 4.382022471910112
+          },
+          "oracle_output_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              6.0
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                5.0
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                6.0
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                6.0
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 5,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              6.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              6.0
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              7.0
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6180257510729613
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.618025751072961
+              ]
+            ],
+            "max_abs_error": 5.381974248927039,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.6180257510729614
+              ]
+            ],
+            "output_moment_error": 5.381974248927039
+          },
+          "oracle_output_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              7.0
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                6.0
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0
+              ]
+            ],
+            "next_covariance": [
+              [
+                7.0
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.0
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                7.0
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "case": "scalar_observed_only",
+      "A": [
+        [
+          1.0
+        ]
+      ],
+      "B": [
+        []
+      ],
+      "C": [
+        [
+          1.0
+        ]
+      ],
+      "D": [
+        []
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 6.661338147750939e-16,
+        "corrected": 6.661338147750939e-16
+      },
+      "max_missing_output_moment_error": {
+        "original": 0.0,
+        "corrected": 0.0
+      },
+      "observed_branch_bitwise_preserved": true,
+      "steps": [
+        {
+          "t": 0,
+          "observed": true,
+          "y": [
+            [
+              0.7
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.5
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.5
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "max_abs_error": 0.0
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "max_abs_error": 0.0
+          }
+        },
+        {
+          "t": 1,
+          "observed": true,
+          "y": [
+            [
+              -0.2
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.5
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.019999999999999907
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.6000000000000001
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.019999999999999907
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.6
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.019999999999999907
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5999999999999999
+              ]
+            ],
+            "next_mean": [
+              [
+                0.019999999999999907
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5999999999999999
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.019999999999999907
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5999999999999999
+              ]
+            ],
+            "next_mean": [
+              [
+                0.019999999999999907
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5999999999999999
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16
+          }
+        },
+        {
+          "t": 2,
+          "observed": true,
+          "y": [
+            [
+              1.3
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.019999999999999907
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.6
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.8076923076923078
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.6153846153846154
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.8076923076923078
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.6153846153846154
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.8076923076923078
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6153846153846153
+              ]
+            ],
+            "next_mean": [
+              [
+                0.8076923076923078
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.615384615384615
+              ]
+            ],
+            "max_abs_error": 4.440892098500626e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.8076923076923078
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6153846153846153
+              ]
+            ],
+            "next_mean": [
+              [
+                0.8076923076923078
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.615384615384615
+              ]
+            ],
+            "max_abs_error": 4.440892098500626e-16
+          }
+        },
+        {
+          "t": 3,
+          "observed": true,
+          "y": [
+            [
+              0.1
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.8076923076923078
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.6153846153846154
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.37058823529411766
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.6176470588235299
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.37058823529411766
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.6176470588235299
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.37058823529411766
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6176470588235292
+              ]
+            ],
+            "next_mean": [
+              [
+                0.37058823529411766
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6176470588235292
+              ]
+            ],
+            "max_abs_error": 6.661338147750939e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.37058823529411766
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6176470588235292
+              ]
+            ],
+            "next_mean": [
+              [
+                0.37058823529411766
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6176470588235292
+              ]
+            ],
+            "max_abs_error": 6.661338147750939e-16
+          }
+        },
+        {
+          "t": 4,
+          "observed": true,
+          "y": [
+            [
+              -0.4
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.37058823529411766
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.6176470588235299
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.10561797752808999
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.617977528089888
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.10561797752808999
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.617977528089888
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                -0.10561797752808988
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6179775280898876
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.10561797752808988
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6179775280898874
+              ]
+            ],
+            "max_abs_error": 6.661338147750939e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.10561797752808988
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6179775280898876
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.10561797752808988
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6179775280898874
+              ]
+            ],
+            "max_abs_error": 6.661338147750939e-16
+          }
+        }
+      ]
+    },
+    {
+      "case": "scalar_observed_and_missing",
+      "A": [
+        [
+          1.0
+        ]
+      ],
+      "B": [
+        []
+      ],
+      "C": [
+        [
+          1.0
+        ]
+      ],
+      "D": [
+        []
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 1.884615384615385,
+        "corrected": 4.440892098500626e-16
+      },
+      "max_missing_output_moment_error": {
+        "original": 1.8846153846153846,
+        "corrected": 4.440892098500626e-16
+      },
+      "observed_branch_bitwise_preserved": false,
+      "steps": [
+        {
+          "t": 0,
+          "observed": true,
+          "y": [
+            [
+              0.7
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.5
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.5
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "max_abs_error": 0.0
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "max_abs_error": 0.0
+          }
+        },
+        {
+          "t": 1,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.5
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              1.5
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              2.5
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5999999999999999
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.5999999999999999
+              ]
+            ],
+            "max_abs_error": 0.9000000000000001,
+            "darts_expression_output_mean": [
+              [
+                0.35
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.5999999999999999
+              ]
+            ],
+            "output_moment_error": 0.9000000000000001
+          },
+          "oracle_output_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              2.5
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                1.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                2.5
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.35
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                2.5
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 2,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              2.5
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              2.5
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              3.5
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6153846153846153
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.615384615384615
+              ]
+            ],
+            "max_abs_error": 1.884615384615385,
+            "darts_expression_output_mean": [
+              [
+                0.35
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.6153846153846154
+              ]
+            ],
+            "output_moment_error": 1.8846153846153846
+          },
+          "oracle_output_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              3.5
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.35
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                2.5
+              ]
+            ],
+            "next_mean": [
+              [
+                0.35
+              ]
+            ],
+            "next_covariance": [
+              [
+                3.5
+              ]
+            ],
+            "max_abs_error": 0.0,
+            "darts_expression_output_mean": [
+              [
+                0.35
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                3.5
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 3,
+          "observed": true,
+          "y": [
+            [
+              -0.2
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.35
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              3.5
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.07777777777777783
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.7777777777777777
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.07777777777777783
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.7777777777777777
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.010294117647058787
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6176470588235292
+              ]
+            ],
+            "next_mean": [
+              [
+                0.010294117647058787
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6176470588235292
+              ]
+            ],
+            "max_abs_error": 0.16013071895424846
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.07777777777777778
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.7777777777777781
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.07777777777777778
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.7777777777777781
+              ]
+            ],
+            "max_abs_error": 4.440892098500626e-16
+          }
+        },
+        {
+          "t": 4,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              -0.07777777777777783
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.7777777777777777
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.07777777777777783
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              1.7777777777777777
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.07777777777777783
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              2.7777777777777777
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.010294117647058787
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6179775280898876
+              ]
+            ],
+            "next_mean": [
+              [
+                0.010294117647058787
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.6179775280898874
+              ]
+            ],
+            "max_abs_error": 1.1598002496878903,
+            "darts_expression_output_mean": [
+              [
+                0.010294117647058787
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.6179775280898876
+              ]
+            ],
+            "output_moment_error": 1.15980024968789
+          },
+          "oracle_output_mean": [
+            [
+              -0.07777777777777783
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              2.7777777777777777
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.07777777777777778
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                1.7777777777777781
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.07777777777777778
+              ]
+            ],
+            "next_covariance": [
+              [
+                2.777777777777778
+              ]
+            ],
+            "max_abs_error": 4.440892098500626e-16,
+            "darts_expression_output_mean": [
+              [
+                -0.07777777777777778
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                2.777777777777778
+              ]
+            ],
+            "output_moment_error": 4.440892098500626e-16
+          }
+        },
+        {
+          "t": 5,
+          "observed": true,
+          "y": [
+            [
+              0.4
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              -0.07777777777777783
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              2.7777777777777777
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.27352941176470585
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.7352941176470589
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.27352941176470585
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              1.7352941176470589
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.2511423882857864
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.6180257510729613
+              ]
+            ],
+            "next_mean": [
+              [
+                0.2511423882857864
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.618025751072961
+              ]
+            ],
+            "max_abs_error": 0.1172683665740979
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.2735294117647059
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.7352941176470589
+              ]
+            ],
+            "next_mean": [
+              [
+                0.2735294117647059
+              ]
+            ],
+            "next_covariance": [
+              [
+                1.7352941176470589
+              ]
+            ],
+            "max_abs_error": 5.551115123125783e-17
+          }
+        }
+      ]
+    },
+    {
+      "case": "scalar_correlated_observed_only",
+      "A": [
+        [
+          1.0
+        ]
+      ],
+      "B": [
+        []
+      ],
+      "C": [
+        [
+          1.0
+        ]
+      ],
+      "D": [
+        []
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          0.7,
+          0.4
+        ],
+        [
+          0.4,
+          0.3
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 4.440892098500626e-16,
+        "corrected": 4.440892098500626e-16
+      },
+      "max_missing_output_moment_error": {
+        "original": 0.0,
+        "corrected": 0.0
+      },
+      "observed_branch_bitwise_preserved": true,
+      "steps": [
+        {
+          "t": 0,
+          "observed": true,
+          "y": [
+            [
+              0.8
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.4705882352941177
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.4117647058823529
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.1470588235294119
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.4705882352941177
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.4117647058823529
+              ]
+            ],
+            "next_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.1470588235294119
+              ]
+            ],
+            "max_abs_error": 0.0
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.4705882352941177
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.4117647058823529
+              ]
+            ],
+            "next_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.1470588235294119
+              ]
+            ],
+            "max_abs_error": 0.0
+          }
+        },
+        {
+          "t": 1,
+          "observed": true,
+          "y": [
+            [
+              -0.3
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.1470588235294119
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.49236111111111075
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.1215277777777779
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.03958333333333286
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.09374999999999978
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.492361111111111
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.12152777777777787
+              ]
+            ],
+            "next_mean": [
+              [
+                0.039583333333333304
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.09375
+              ]
+            ],
+            "max_abs_error": 4.440892098500626e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.492361111111111
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.12152777777777787
+              ]
+            ],
+            "next_mean": [
+              [
+                0.039583333333333304
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.09375
+              ]
+            ],
+            "max_abs_error": 4.440892098500626e-16
+          }
+        },
+        {
+          "t": 2,
+          "observed": true,
+          "y": [
+            [
+              0.4
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.03958333333333286
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.09374999999999978
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.08215223097112824
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.08267716535433056
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.263779527559055
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.08661417322834652
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.08215223097112859
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.08267716535433071
+              ]
+            ],
+            "next_mean": [
+              [
+                0.2637795275590551
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.08661417322834641
+              ]
+            ],
+            "max_abs_error": 3.469446951953614e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.08215223097112859
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.08267716535433071
+              ]
+            ],
+            "next_mean": [
+              [
+                0.2637795275590551
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.08661417322834641
+              ]
+            ],
+            "max_abs_error": 3.469446951953614e-16
+          }
+        },
+        {
+          "t": 3,
+          "observed": true,
+          "y": [
+            [
+              1.2
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.263779527559055
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.08661417322834652
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.366866866866867
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.077077077077077
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.8429429429429429
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.08558558558558582
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.3668668668668668
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.07707707707707705
+              ]
+            ],
+            "next_mean": [
+              [
+                0.8429429429429429
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.08558558558558554
+              ]
+            ],
+            "max_abs_error": 2.7755575615628914e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.3668668668668668
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.07707707707707705
+              ]
+            ],
+            "next_mean": [
+              [
+                0.8429429429429429
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.08558558558558554
+              ]
+            ],
+            "max_abs_error": 2.7755575615628914e-16
+          }
+        }
+      ]
+    },
+    {
+      "case": "scalar_correlated_mixed",
+      "A": [
+        [
+          1.0
+        ]
+      ],
+      "B": [
+        []
+      ],
+      "C": [
+        [
+          1.0
+        ]
+      ],
+      "D": [
+        []
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          0.7,
+          0.4
+        ],
+        [
+          0.4,
+          0.3
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 0.6361026817219477,
+        "corrected": 3.3306690738754696e-16
+      },
+      "max_missing_output_moment_error": {
+        "original": 0.3452769936485536,
+        "corrected": 2.220446049250313e-16
+      },
+      "observed_branch_bitwise_preserved": false,
+      "steps": [
+        {
+          "t": 0,
+          "observed": true,
+          "y": [
+            [
+              0.8
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.4705882352941177
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.4117647058823529
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.1470588235294119
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.4705882352941177
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.4117647058823529
+              ]
+            ],
+            "next_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.1470588235294119
+              ]
+            ],
+            "max_abs_error": 0.0
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.4705882352941177
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.4117647058823529
+              ]
+            ],
+            "next_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.1470588235294119
+              ]
+            ],
+            "max_abs_error": 0.0
+          }
+        },
+        {
+          "t": 1,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.1470588235294119
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.1470588235294119
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.44705882352941195
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.12152777777777787
+              ]
+            ],
+            "next_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.09375
+              ]
+            ],
+            "max_abs_error": 0.35330882352941195,
+            "darts_expression_output_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.8215277777777779
+              ]
+            ],
+            "output_moment_error": 0.025531045751634007
+          },
+          "oracle_output_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              0.8470588235294119
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.1470588235294119
+              ]
+            ],
+            "next_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.4470588235294119
+              ]
+            ],
+            "max_abs_error": 5.551115123125783e-17,
+            "darts_expression_output_mean": [
+              [
+                0.6588235294117647
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.8470588235294119
+              ]
+            ],
+            "output_moment_error": 0.0
+          }
+        },
+        {
+          "t": 2,
+          "observed": true,
+          "y": [
+            [
+              -0.3
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              0.6588235294117647
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.44705882352941195
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.2851282051282049
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.2728205128205128
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.1215384615384616
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.5455766558591941
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.08267716535433071
+              ]
+            ],
+            "next_mean": [
+              [
+                0.06238999536822609
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.08661417322834641
+              ]
+            ],
+            "max_abs_error": 0.2604484507309892
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.2851282051282051
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.2728205128205129
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.04923076923076919
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.1215384615384616
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16
+          }
+        },
+        {
+          "t": 3,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.1215384615384616
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.1215384615384616
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.42153846153846164
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.06238999536822609
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.07707707707707705
+              ]
+            ],
+            "next_mean": [
+              [
+                0.06238999536822609
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.08558558558558554
+              ]
+            ],
+            "max_abs_error": 0.3359528759528761,
+            "darts_expression_output_mean": [
+              [
+                0.06238999536822609
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.777077077077077
+              ]
+            ],
+            "output_moment_error": 0.1116207645989955
+          },
+          "oracle_output_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              0.8215384615384616
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.04923076923076919
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.1215384615384616
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.04923076923076919
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.4215384615384616
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16,
+            "darts_expression_output_mean": [
+              [
+                -0.04923076923076919
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.8215384615384616
+              ]
+            ],
+            "output_moment_error": 2.220446049250313e-16
+          }
+        },
+        {
+          "t": 4,
+          "observed": false,
+          "y": null,
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.42153846153846164
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.42153846153846164
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.7215384615384615
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.06238999536822609
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.07626146788990823
+              ]
+            ],
+            "next_mean": [
+              [
+                0.06238999536822609
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.08543577981651373
+              ]
+            ],
+            "max_abs_error": 0.6361026817219477,
+            "darts_expression_output_mean": [
+              [
+                0.06238999536822609
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.7762614678899082
+              ]
+            ],
+            "output_moment_error": 0.3452769936485536
+          },
+          "oracle_output_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              1.1215384615384618
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.04923076923076919
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.4215384615384616
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.04923076923076919
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.7215384615384616
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16,
+            "darts_expression_output_mean": [
+              [
+                -0.04923076923076919
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.1215384615384616
+              ]
+            ],
+            "output_moment_error": 2.220446049250313e-16
+          }
+        },
+        {
+          "t": 5,
+          "observed": true,
+          "y": [
+            [
+              0.4
+            ]
+          ],
+          "u": [],
+          "oracle_prior_mean": [
+            [
+              -0.04923076923076941
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.7215384615384615
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.1787878787878786
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.35530303030303045
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.305194805194805
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.13668831168831197
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.09911352485438049
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.07614250255511751
+              ]
+            ],
+            "next_mean": [
+              [
+                0.27104865350902024
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.0854139290407358
+              ]
+            ],
+            "max_abs_error": 0.27916052774791295
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.17878787878787883
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.35530303030303034
+              ]
+            ],
+            "next_mean": [
+              [
+                0.30519480519480524
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.13668831168831164
+              ]
+            ],
+            "max_abs_error": 3.3306690738754696e-16
+          }
+        }
+      ]
+    },
+    {
+      "case": "matrix_correlated_mixed_with_controls",
+      "A": [
+        [
+          0.8,
+          0.25
+        ],
+        [
+          -0.1,
+          0.7
+        ]
+      ],
+      "B": [
+        [
+          0.2
+        ],
+        [
+          -0.1
+        ]
+      ],
+      "C": [
+        [
+          1.0,
+          -0.4
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "D": [
+        [
+          0.1
+        ],
+        [
+          -0.05
+        ]
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          0.6,
+          0.1,
+          0.1,
+          0.04
+        ],
+        [
+          0.1,
+          0.5,
+          -0.02,
+          0.08
+        ],
+        [
+          0.1,
+          -0.02,
+          0.25,
+          0.03
+        ],
+        [
+          0.04,
+          0.08,
+          0.03,
+          0.2
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 0.32517557397652674,
+        "corrected": 2.220446049250313e-16
+      },
+      "max_missing_output_moment_error": {
+        "original": 0.3271321549707349,
+        "corrected": 2.220446049250313e-16
+      },
+      "observed_branch_bitwise_preserved": false,
+      "steps": [
+        {
+          "t": 0,
+          "observed": true,
+          "y": [
+            [
+              0.8
+            ],
+            [
+              -0.2
+            ]
+          ],
+          "u": [
+            [
+              0.2
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.4107301098054325
+            ],
+            [
+              -0.29940281256020035
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.39395106915815836,
+              0.08476208822962819
+            ],
+            [
+              0.08476208822962819,
+              0.37276054710075124
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.340947794259295
+            ],
+            [
+              -0.2652802928144866
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.4855687728761318,
+              0.09723271046041226
+            ],
+            [
+              0.09723271046041226,
+              0.3125409362357927
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.4107301098054324
+              ],
+              [
+                -0.2994028125602003
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.3939510691581585,
+                0.08476208822962814
+              ],
+              [
+                0.08476208822962816,
+                0.37276054710075135
+              ]
+            ],
+            "next_mean": [
+              [
+                0.3409477942592949
+              ],
+              [
+                -0.2652802928144866
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.48556877287613187,
+                0.09723271046041221
+              ],
+              [
+                0.09723271046041222,
+                0.31254093623579277
+              ]
+            ],
+            "max_abs_error": 1.1102230246251565e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.4107301098054324
+              ],
+              [
+                -0.2994028125602003
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.3939510691581585,
+                0.08476208822962814
+              ],
+              [
+                0.08476208822962816,
+                0.37276054710075135
+              ]
+            ],
+            "next_mean": [
+              [
+                0.3409477942592949
+              ],
+              [
+                -0.2652802928144866
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.48556877287613187,
+                0.09723271046041221
+              ],
+              [
+                0.09723271046041222,
+                0.31254093623579277
+              ]
+            ],
+            "max_abs_error": 1.1102230246251565e-16
+          }
+        },
+        {
+          "t": 1,
+          "observed": false,
+          "y": null,
+          "u": [
+            [
+              -0.1
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.340947794259295
+            ],
+            [
+              -0.2652802928144866
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.4855687728761318,
+              0.09723271046041226
+            ],
+            [
+              0.09723271046041226,
+              0.3125409362357927
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.340947794259295
+            ],
+            [
+              -0.2652802928144866
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.4855687728761318,
+              0.09723271046041226
+            ],
+            [
+              0.09723271046041226,
+              0.3125409362357927
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.18643816220381434
+            ],
+            [
+              -0.20979098439607013
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.6191909073396263,
+              0.09786866210749372
+            ],
+            [
+              0.09786866210749372,
+              0.34438816701984204
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.3409477942592949
+              ],
+              [
+                -0.2652802928144866
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.28191761331737736,
+                0.06950710929520182
+              ],
+              [
+                0.06950710929520185,
+                0.20823798137378946
+              ]
+            ],
+            "next_mean": [
+              [
+                0.18643816220381426
+              ],
+              [
+                -0.20979098439607008
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.4087926358296832,
+                0.06724885643865693
+              ],
+              [
+                0.06724885643865693,
+                0.25407658440087055
+              ]
+            ],
+            "max_abs_error": 0.2103982715099431,
+            "darts_expression_output_mean": [
+              [
+                0.43705991138508954
+              ],
+              [
+                -0.13903467539973033
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.8596300029010222,
+                0.13979248731640817
+              ],
+              [
+                0.1397924873164082,
+                0.666791287586385
+              ]
+            ],
+            "output_moment_error": 0.19815915140450668
+          },
+          "oracle_output_mean": [
+            [
+              0.4370599113850896
+            ],
+            [
+              -0.1390346753997303
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              1.057789154305529,
+              0.1671082065112695
+            ],
+            [
+              0.1671082065112695,
+              0.7505634174532845
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.3409477942592949
+              ],
+              [
+                -0.2652802928144866
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.48556877287613187,
+                0.09723271046041221
+              ],
+              [
+                0.09723271046041222,
+                0.31254093623579277
+              ]
+            ],
+            "next_mean": [
+              [
+                0.18643816220381426
+              ],
+              [
+                -0.20979098439607008
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.6191909073396263,
+                0.09786866210749372
+              ],
+              [
+                0.0978686621074937,
+                0.34438816701984204
+              ]
+            ],
+            "max_abs_error": 1.1102230246251565e-16,
+            "darts_expression_output_mean": [
+              [
+                0.43705991138508954
+              ],
+              [
+                -0.13903467539973033
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.057789154305529,
+                0.1671082065112695
+              ],
+              [
+                0.1671082065112695,
+                0.7505634174532846
+              ]
+            ],
+            "output_moment_error": 1.1102230246251565e-16
+          }
+        },
+        {
+          "t": 2,
+          "observed": true,
+          "y": [
+            [
+              -0.35
+            ],
+            [
+              0.5
+            ]
+          ],
+          "u": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.18643816220381434
+            ],
+            [
+              -0.20979098439607013
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.6191909073396263,
+              0.09786866210749372
+            ],
+            [
+              0.09786866210749372,
+              0.34438816701984204
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.0049147838555446445
+            ],
+            [
+              0.10321599933626388
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.3208562086053335,
+              0.0717783293502348
+            ],
+            [
+              0.0717783293502348,
+              0.2217785218295581
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.06434355798817516
+            ],
+            [
+              0.12365461283256987
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.42762103447875244,
+              0.06678928302570697
+            ],
+            [
+              0.06678928302570697,
+              0.2595570577864683
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.03216343807634772
+              ],
+              [
+                0.04823019135497708
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.25323692168474066,
+                0.05477299382159721
+              ],
+              [
+                0.05477299382159719,
+                0.18031953355203184
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.06179425447398107
+              ],
+              [
+                0.08456135107471346
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.38594807326096225,
+                0.059417779415442754
+              ],
+              [
+                0.059417779415442726,
+                0.24635307130497303
+              ]
+            ],
+            "max_abs_error": 0.06761928692059282
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.004914783855544752
+              ],
+              [
+                0.10321599933626396
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.32085620860533354,
+                0.07177832935023482
+              ],
+              [
+                0.07177832935023479,
+                0.22177852182955804
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.06434355798817512
+              ],
+              [
+                0.12365461283257001
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.42762103447875266,
+                0.06678928302570697
+              ],
+              [
+                0.06678928302570694,
+                0.2595570577864682
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16
+          }
+        },
+        {
+          "t": 3,
+          "observed": false,
+          "y": null,
+          "u": [
+            [
+              0.3
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              -0.06434355798817516
+            ],
+            [
+              0.12365461283256987
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.42762103447875244,
+              0.06678928302570697
+            ],
+            [
+              0.06678928302570697,
+              0.2595570577864683
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.06434355798817516
+            ],
+            [
+              0.12365461283256987
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.42762103447875244,
+              0.06678928302570697
+            ],
+            [
+              0.06678928302570697,
+              0.2595570577864683
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.03943880681760237
+            ],
+            [
+              0.06299258478161644
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.5666154913883388,
+              0.07694506877308495
+            ],
+            [
+              0.07694506877308495,
+              0.322108669036558
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                -0.06179425447398107
+              ],
+              [
+                0.08456135107471346
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.2439855353415828,
+                0.050762870003223465
+              ],
+              [
+                0.050762870003223465,
+                0.1762220421652207
+              ]
+            ],
+            "next_mean": [
+              [
+                0.03170493418949351
+              ],
+              [
+                0.035372371199697536
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.3796581061773704,
+                0.05824108895145089
+              ],
+              [
+                0.05824108895145089,
+                0.2454485134864673
+              ]
+            ],
+            "max_abs_error": 0.18695738521096839,
+            "darts_expression_output_mean": [
+              [
+                -0.06561879490386646
+              ],
+              [
+                0.040290229964974555
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.8315707660854393,
+                0.12895531997776685
+              ],
+              [
+                0.12895531997776682,
+                0.638785646800436
+              ]
+            ],
+            "output_moment_error": 0.18414797121858262
+          },
+          "oracle_output_mean": [
+            [
+              -0.08380540312120306
+            ],
+            [
+              0.07105497866842081
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              1.015718737304022,
+              0.15055423218258968
+            ],
+            [
+              0.15055423218258968,
+              0.7045939289307162
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.06434355798817512
+              ],
+              [
+                0.12365461283257001
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.42762103447875266,
+                0.06678928302570697
+              ],
+              [
+                0.06678928302570694,
+                0.2595570577864682
+              ]
+            ],
+            "next_mean": [
+              [
+                0.0394388068176024
+              ],
+              [
+                0.06299258478161651
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.5666154913883388,
+                0.07694506877308496
+              ],
+              [
+                0.07694506877308493,
+                0.322108669036558
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16,
+            "darts_expression_output_mean": [
+              [
+                -0.08380540312120313
+              ],
+              [
+                0.07105497866842099
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.015718737304022,
+                0.15055423218258973
+              ],
+              [
+                0.15055423218258968,
+                0.704593928930716
+              ]
+            ],
+            "output_moment_error": 1.8041124150158794e-16
+          }
+        },
+        {
+          "t": 4,
+          "observed": false,
+          "y": null,
+          "u": [
+            [
+              -0.2
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.03943880681760237
+            ],
+            [
+              0.06299258478161644
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.5666154913883388,
+              0.07694506877308495
+            ],
+            [
+              0.07694506877308495,
+              0.322108669036558
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.03943880681760237
+            ],
+            [
+              0.06299258478161644
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.5666154913883388,
+              0.07694506877308495
+            ],
+            [
+              0.07694506877308495,
+              0.322108669036558
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0072991916494859685
+            ],
+            [
+              0.06015092866537124
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.6635437338125556,
+              0.08220538956393098
+            ],
+            [
+              0.08220538956393098,
+              0.35272709311356487
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.03170493418949351
+              ],
+              [
+                0.035372371199697536
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.241439917411812,
+                0.05011401215165623
+              ],
+              [
+                0.050114012151656215,
+                0.17572475471561488
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.005792959848480814
+              ],
+              [
+                0.04159016642083893
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.3782405813145045,
+                0.05820292019465075
+              ],
+              [
+                0.058202920194650724,
+                0.24532992471142812
+              ]
+            ],
+            "max_abs_error": 0.32517557397652674,
+            "darts_expression_output_mean": [
+              [
+                -0.0024440142903855086
+              ],
+              [
+                0.044638883797656737
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                0.8294646684449853,
+                0.12813815072255813
+              ],
+              [
+                0.1281381507225581,
+                0.6381579236029961
+              ]
+            ],
+            "output_moment_error": 0.3271321549707349
+          },
+          "oracle_output_mean": [
+            [
+              -0.0057582270950441855
+            ],
+            [
+              0.06828182918881359
+            ]
+          ],
+          "oracle_output_covariance": [
+            [
+              1.1565968234157202,
+              0.16564877370259035
+            ],
+            [
+              0.16564877370259035,
+              0.7534365898463179
+            ]
+          ],
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0394388068176024
+              ],
+              [
+                0.06299258478161651
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.5666154913883388,
+                0.07694506877308496
+              ],
+              [
+                0.07694506877308493,
+                0.322108669036558
+              ]
+            ],
+            "next_mean": [
+              [
+                0.007299191649486045
+              ],
+              [
+                0.06015092866537132
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.6635437338125556,
+                0.082205389563931
+              ],
+              [
+                0.08220538956393098,
+                0.35272709311356487
+              ]
+            ],
+            "max_abs_error": 8.326672684688674e-17,
+            "darts_expression_output_mean": [
+              [
+                -0.005758227095044206
+              ],
+              [
+                0.06828182918881369
+              ]
+            ],
+            "darts_expression_output_covariance": [
+              [
+                1.15659682341572,
+                0.16564877370259037
+              ],
+              [
+                0.16564877370259035,
+                0.7534365898463179
+              ]
+            ],
+            "output_moment_error": 2.220446049250313e-16
+          }
+        },
+        {
+          "t": 5,
+          "observed": true,
+          "y": [
+            [
+              1.1
+            ],
+            [
+              0.2
+            ]
+          ],
+          "u": [
+            [
+              0.1
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.0072991916494859685
+            ],
+            [
+              0.06015092866537124
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.6635437338125556,
+              0.08220538956393098
+            ],
+            [
+              0.08220538956393098,
+              0.35272709311356487
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.5634473907595546
+            ],
+            [
+              0.007145857591240243
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.33080634552157984,
+              0.06759634555390548
+            ],
+            [
+              0.06759634555390548,
+              0.22478150969039865
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.5609040498721739
+            ],
+            [
+              -0.026297603584750844
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.4300494347407505,
+              0.06507825348626939
+            ],
+            [
+              0.06507825348626939,
+              0.26176907139367794
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.40234041415030936
+              ],
+              [
+                0.00016440884323301597
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.24087801500518888,
+                0.050071793684981714
+              ],
+              [
+                0.05007179368498169,
+                0.17566288665851476
+              ]
+            ],
+            "next_mean": [
+              [
+                0.45579243210355735
+              ],
+              [
+                -0.0027868126149772146
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.37798381311942575,
+                0.058236989623775146
+              ],
+              [
+                0.05823698962377512,
+                0.24530006905252927
+              ]
+            ],
+            "max_abs_error": 0.16110697660924528
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.5634473907595546
+              ],
+              [
+                0.007145857591240264
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.33080634552158,
+                0.06759634555390548
+              ],
+              [
+                0.06759634555390547,
+                0.2247815096903987
+              ]
+            ],
+            "next_mean": [
+              [
+                0.560904049872174
+              ],
+              [
+                -0.026297603584750834
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.4300494347407507,
+                0.06507825348626942
+              ],
+              [
+                0.06507825348626939,
+                0.26176907139367794
+              ]
+            ],
+            "max_abs_error": 1.6653345369377348e-16
+          }
+        }
+      ]
+    },
+    {
+      "case": "matrix_correlated_observed_only",
+      "A": [
+        [
+          0.8,
+          0.25
+        ],
+        [
+          -0.1,
+          0.7
+        ]
+      ],
+      "B": [
+        [
+          0.2
+        ],
+        [
+          -0.1
+        ]
+      ],
+      "C": [
+        [
+          1.0,
+          -0.4
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "D": [
+        [
+          0.1
+        ],
+        [
+          -0.05
+        ]
+      ],
+      "noise_covariance_v_then_w": [
+        [
+          0.6,
+          0.1,
+          0.1,
+          0.04
+        ],
+        [
+          0.1,
+          0.5,
+          -0.02,
+          0.08
+        ],
+        [
+          0.1,
+          -0.02,
+          0.25,
+          0.03
+        ],
+        [
+          0.04,
+          0.08,
+          0.03,
+          0.2
+        ]
+      ],
+      "max_state_moment_error": {
+        "original": 2.7755575615628914e-16,
+        "corrected": 2.7755575615628914e-16
+      },
+      "max_missing_output_moment_error": {
+        "original": 0.0,
+        "corrected": 0.0
+      },
+      "observed_branch_bitwise_preserved": true,
+      "steps": [
+        {
+          "t": 0,
+          "observed": true,
+          "y": [
+            [
+              0.8
+            ],
+            [
+              -0.24
+            ]
+          ],
+          "u": [
+            [
+              0.2
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.40356386052783677
+            ],
+            [
+              -0.3263725679059912
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.39395106915815836,
+              0.08476208822962819
+            ],
+            [
+              0.08476208822962819,
+              0.37276054710075124
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.3291119244846852
+            ],
+            [
+              -0.2861702947408977
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.4855687728761318,
+              0.09723271046041226
+            ],
+            [
+              0.09723271046041226,
+              0.3125409362357927
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.40356386052783655
+              ],
+              [
+                -0.32637256790599106
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.3939510691581585,
+                0.08476208822962814
+              ],
+              [
+                0.08476208822962816,
+                0.37276054710075135
+              ]
+            ],
+            "next_mean": [
+              [
+                0.32911192448468496
+              ],
+              [
+                -0.28617029474089767
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.48556877287613187,
+                0.09723271046041221
+              ],
+              [
+                0.09723271046041222,
+                0.31254093623579277
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.40356386052783655
+              ],
+              [
+                -0.32637256790599106
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.3939510691581585,
+                0.08476208822962814
+              ],
+              [
+                0.08476208822962816,
+                0.37276054710075135
+              ]
+            ],
+            "next_mean": [
+              [
+                0.32911192448468496
+              ],
+              [
+                -0.28617029474089767
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.48556877287613187,
+                0.09723271046041221
+              ],
+              [
+                0.09723271046041222,
+                0.31254093623579277
+              ]
+            ],
+            "max_abs_error": 2.220446049250313e-16
+          }
+        },
+        {
+          "t": 1,
+          "observed": true,
+          "y": [
+            [
+              -0.35
+            ],
+            [
+              0.105
+            ]
+          ],
+          "u": [
+            [
+              -0.1
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.3291119244846852
+            ],
+            [
+              -0.2861702947408977
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.4855687728761318,
+              0.09723271046041226
+            ],
+            [
+              0.09723271046041226,
+              0.3125409362357927
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.05397073783108186
+            ],
+            [
+              -0.11926777266012102
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.2819176133173773,
+              0.06950710929520185
+            ],
+            [
+              0.06950710929520185,
+              0.20823798137378946
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              -0.09984342045502048
+            ],
+            [
+              -0.06914951829353361
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.4087926358296833,
+              0.06724885643865693
+            ],
+            [
+              0.06724885643865693,
+              0.2540765844008706
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.05397073783108158
+              ],
+              [
+                -0.1192677726601209
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.28191761331737736,
+                0.06950710929520182
+              ],
+              [
+                0.06950710929520185,
+                0.20823798137378946
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.09984342045502059
+              ],
+              [
+                -0.06914951829353352
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.4087926358296832,
+                0.06724885643865693
+              ],
+              [
+                0.06724885643865693,
+                0.25407658440087055
+              ]
+            ],
+            "max_abs_error": 2.7755575615628914e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.05397073783108158
+              ],
+              [
+                -0.1192677726601209
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.28191761331737736,
+                0.06950710929520182
+              ],
+              [
+                0.06950710929520185,
+                0.20823798137378946
+              ]
+            ],
+            "next_mean": [
+              [
+                -0.09984342045502059
+              ],
+              [
+                -0.06914951829353352
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.4087926358296832,
+                0.06724885643865693
+              ],
+              [
+                0.06724885643865693,
+                0.25407658440087055
+              ]
+            ],
+            "max_abs_error": 2.7755575615628914e-16
+          }
+        },
+        {
+          "t": 2,
+          "observed": true,
+          "y": [
+            [
+              0.2
+            ],
+            [
+              -0.06
+            ]
+          ],
+          "u": [
+            [
+              0.0
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              -0.09984342045502048
+            ],
+            [
+              -0.06914951829353361
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.4087926358296833,
+              0.06724885643865693
+            ],
+            [
+              0.06724885643865693,
+              0.2540765844008706
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.0016168418633160618
+            ],
+            [
+              -0.08686035970321951
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.25323692168474066,
+              0.054772993821597185
+            ],
+            [
+              0.054772993821597185,
+              0.18031953355203184
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.008225281891408542
+            ],
+            [
+              -0.05280212692954768
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.38594807326096214,
+              0.05941777941544275
+            ],
+            [
+              0.05941777941544275,
+              0.24635307130497303
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.0016168418633160375
+              ],
+              [
+                -0.08686035970321937
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.25323692168474066,
+                0.05477299382159721
+              ],
+              [
+                0.05477299382159719,
+                0.18031953355203184
+              ]
+            ],
+            "next_mean": [
+              [
+                0.008225281891408434
+              ],
+              [
+                -0.05280212692954758
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.38594807326096225,
+                0.059417779415442754
+              ],
+              [
+                0.059417779415442726,
+                0.24635307130497303
+              ]
+            ],
+            "max_abs_error": 1.3877787807814457e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.0016168418633160375
+              ],
+              [
+                -0.08686035970321937
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.25323692168474066,
+                0.05477299382159721
+              ],
+              [
+                0.05477299382159719,
+                0.18031953355203184
+              ]
+            ],
+            "next_mean": [
+              [
+                0.008225281891408434
+              ],
+              [
+                -0.05280212692954758
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.38594807326096225,
+                0.059417779415442754
+              ],
+              [
+                0.059417779415442726,
+                0.24635307130497303
+              ]
+            ],
+            "max_abs_error": 1.3877787807814457e-16
+          }
+        },
+        {
+          "t": 3,
+          "observed": true,
+          "y": [
+            [
+              -0.1
+            ],
+            [
+              0.03
+            ]
+          ],
+          "u": [
+            [
+              0.3
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.008225281891408542
+            ],
+            [
+              -0.05280212692954768
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.38594807326096214,
+              0.05941777941544275
+            ],
+            [
+              0.05941777941544275,
+              0.24635307130497303
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              -0.03908325179009385
+            ],
+            [
+              -0.011731717162646565
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.24398553534158263,
+              0.05076287000322345
+            ],
+            [
+              0.05076287000322345,
+              0.1762220421652207
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.003937934264031606
+            ],
+            [
+              -0.028822580838365933
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.3796581061773703,
+              0.058241088951450914
+            ],
+            [
+              0.058241088951450914,
+              0.24544851348646723
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                -0.03908325179009398
+              ],
+              [
+                -0.011731717162646503
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.2439855353415828,
+                0.050762870003223465
+              ],
+              [
+                0.050762870003223465,
+                0.1762220421652207
+              ]
+            ],
+            "next_mean": [
+              [
+                0.003937934264031641
+              ],
+              [
+                -0.02882258083836589
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.3796581061773704,
+                0.05824108895145089
+              ],
+              [
+                0.05824108895145089,
+                0.2454485134864673
+              ]
+            ],
+            "max_abs_error": 1.6653345369377348e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                -0.03908325179009398
+              ],
+              [
+                -0.011731717162646503
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.2439855353415828,
+                0.050762870003223465
+              ],
+              [
+                0.050762870003223465,
+                0.1762220421652207
+              ]
+            ],
+            "next_mean": [
+              [
+                0.003937934264031641
+              ],
+              [
+                -0.02882258083836589
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.3796581061773704,
+                0.05824108895145089
+              ],
+              [
+                0.05824108895145089,
+                0.2454485134864673
+              ]
+            ],
+            "max_abs_error": 1.6653345369377348e-16
+          }
+        },
+        {
+          "t": 4,
+          "observed": true,
+          "y": [
+            [
+              0.4
+            ],
+            [
+              -0.12
+            ]
+          ],
+          "u": [
+            [
+              -0.2
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.003937934264031606
+            ],
+            [
+              -0.028822580838365933
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.3796581061773703,
+              0.058241088951450914
+            ],
+            [
+              0.058241088951450914,
+              0.24544851348646723
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.13455127048146315
+            ],
+            [
+              -0.09821996645874204
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.24143991741181203,
+              0.0501140121516562
+            ],
+            [
+              0.0501140121516562,
+              0.17572475471561486
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.0931677930914045
+            ],
+            [
+              -0.06390834303708876
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.37824058131450444,
+              0.05820292019465072
+            ],
+            [
+              0.05820292019465072,
+              0.2453299247114281
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.1345512704814633
+              ],
+              [
+                -0.0982199664587421
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.241439917411812,
+                0.05011401215165623
+              ],
+              [
+                0.050114012151656215,
+                0.17572475471561488
+              ]
+            ],
+            "next_mean": [
+              [
+                0.09316779309140466
+              ],
+              [
+                -0.06390834303708881
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.3782405813145045,
+                0.05820292019465075
+              ],
+              [
+                0.058202920194650724,
+                0.24532992471142812
+              ]
+            ],
+            "max_abs_error": 1.6653345369377348e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.1345512704814633
+              ],
+              [
+                -0.0982199664587421
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.241439917411812,
+                0.05011401215165623
+              ],
+              [
+                0.050114012151656215,
+                0.17572475471561488
+              ]
+            ],
+            "next_mean": [
+              [
+                0.09316779309140466
+              ],
+              [
+                -0.06390834303708881
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.3782405813145045,
+                0.05820292019465075
+              ],
+              [
+                0.058202920194650724,
+                0.24532992471142812
+              ]
+            ],
+            "max_abs_error": 1.6653345369377348e-16
+          }
+        },
+        {
+          "t": 5,
+          "observed": true,
+          "y": [
+            [
+              1.1
+            ],
+            [
+              -0.33
+            ]
+          ],
+          "u": [
+            [
+              0.1
+            ]
+          ],
+          "oracle_prior_mean": [
+            [
+              0.0931677930914045
+            ],
+            [
+              -0.06390834303708876
+            ]
+          ],
+          "oracle_prior_covariance": [
+            [
+              0.37824058131450444,
+              0.05820292019465072
+            ],
+            [
+              0.05820292019465072,
+              0.2453299247114281
+            ]
+          ],
+          "oracle_filtered_mean": [
+            [
+              0.4023297064392816
+            ],
+            [
+              -0.2412890574761686
+            ]
+          ],
+          "oracle_filtered_covariance": [
+            [
+              0.24087801500518868,
+              0.05007179368498173
+            ],
+            [
+              0.05007179368498173,
+              0.1756628866585148
+            ]
+          ],
+          "oracle_next_mean": [
+            [
+              0.4036573841148155
+            ],
+            [
+              -0.22690520931401006
+            ]
+          ],
+          "oracle_next_covariance": [
+            [
+              0.37798381311942564,
+              0.05823698962377513
+            ],
+            [
+              0.05823698962377513,
+              0.24530006905252932
+            ]
+          ],
+          "original": {
+            "filtered_mean": [
+              [
+                0.4023297064392817
+              ],
+              [
+                -0.24128905747616855
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.24087801500518888,
+                0.050071793684981714
+              ],
+              [
+                0.05007179368498169,
+                0.17566288665851476
+              ]
+            ],
+            "next_mean": [
+              [
+                0.40365738411481544
+              ],
+              [
+                -0.22690520931401006
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.37798381311942575,
+                0.058236989623775146
+              ],
+              [
+                0.05823698962377512,
+                0.24530006905252927
+              ]
+            ],
+            "max_abs_error": 1.942890293094024e-16
+          },
+          "corrected": {
+            "filtered_mean": [
+              [
+                0.4023297064392817
+              ],
+              [
+                -0.24128905747616855
+              ]
+            ],
+            "filtered_covariance": [
+              [
+                0.24087801500518888,
+                0.050071793684981714
+              ],
+              [
+                0.05007179368498169,
+                0.17566288665851476
+              ]
+            ],
+            "next_mean": [
+              [
+                0.40365738411481544
+              ],
+              [
+                -0.22690520931401006
+              ]
+            ],
+            "next_covariance": [
+              [
+                0.37798381311942575,
+                0.058236989623775146
+              ],
+              [
+                0.05823698962377512,
+                0.24530006905252927
+              ]
+            ],
+            "max_abs_error": 1.942890293094024e-16
+          }
+        }
+      ]
+    }
+  ],
+  "dropping_cross_covariance_counterfactual": [
+    {
+      "t": 0,
+      "next_mean_error": 0.04785397803891367,
+      "next_covariance_error": 0.07376228087073783
+    },
+    {
+      "t": 1,
+      "next_mean_error": 0.06033153978013889,
+      "next_covariance_error": 0.08163518978638529
+    },
+    {
+      "t": 2,
+      "next_mean_error": 0.009413647310318626,
+      "next_covariance_error": 0.08420933351860838
+    },
+    {
+      "t": 3,
+      "next_mean_error": 0.021703529418100297,
+      "next_covariance_error": 0.08390148729676461
+    },
+    {
+      "t": 4,
+      "next_mean_error": 0.030756984847820294,
+      "next_covariance_error": 0.0832470687351019
+    },
+    {
+      "t": 5,
+      "next_mean_error": 0.1141275250344862,
+      "next_covariance_error": 0.08289799008583809
+    }
+  ]
+}

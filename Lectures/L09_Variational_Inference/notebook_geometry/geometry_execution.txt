@@ -1,0 +1,8 @@
+case multinomial_iris
+multinomial_iris full False objective 71.26757310583966 grad 1.2724940270611528e-07
+multinomial_iris full True objective 70.1312113344934 grad 3.6408742601583534e-08
+DONE multinomial_iris Laplace 0.012948887303073309 fullVI 0.00026769467422504967
+case challenger
+challenger full False objective 13.07424269906464 grad 5.107566351727755e-08
+challenger full True objective 13.050528644270408 grad 6.3830396113773285e-09
+DONE challenger Laplace 0.03924779533081829 fullVI 0.005725274392736263

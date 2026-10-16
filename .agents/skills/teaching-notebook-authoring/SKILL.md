@@ -5,6 +5,8 @@ description: Transform a validated worked solution into a fine-grained solved Q&
 
 # Teaching-notebook authoring
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
+
 Use this skill **after** a worked solution exists. Its job is not to invent a new solution. Its job is to expose the existing solution as the course's characteristic fine-grained, AI-assisted question-and-answer sequence.
 
 Read before authoring:

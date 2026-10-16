@@ -1,0 +1,366 @@
+{
+  "status": "teacher-only author check; not independently reviewed/student timed/Colab run",
+  "base_commit": "e8a0f6c",
+  "metadata": {
+    "train_ids": [
+      102,
+      139,
+      134,
+      132,
+      84,
+      130,
+      148,
+      129,
+      65,
+      124,
+      59,
+      142,
+      56,
+      70,
+      61,
+      90,
+      68,
+      51,
+      119,
+      58,
+      53,
+      64,
+      118,
+      77,
+      112,
+      123,
+      86,
+      69,
+      89,
+      125,
+      140,
+      131,
+      85,
+      80,
+      99,
+      100,
+      97,
+      127,
+      79,
+      71,
+      108,
+      106,
+      136,
+      52,
+      122,
+      55,
+      98,
+      135,
+      94,
+      87,
+      81,
+      107,
+      143,
+      138,
+      133,
+      126,
+      67,
+      146,
+      149,
+      95
+    ],
+    "test_ids": [
+      57,
+      121,
+      104,
+      78,
+      144,
+      50,
+      92,
+      75,
+      83,
+      66,
+      113,
+      111,
+      115,
+      147,
+      82,
+      141,
+      145,
+      62,
+      60,
+      114,
+      137,
+      120,
+      103,
+      105,
+      96,
+      73,
+      116,
+      88,
+      74,
+      72,
+      54,
+      128,
+      101,
+      109,
+      91,
+      63,
+      110,
+      93,
+      76,
+      117
+    ],
+    "feature": "sepal length (cm)",
+    "labels": "versicolor=0, virginica=1",
+    "center": 6.2733333333333325,
+    "scale": 0.6843163660828879,
+    "prior_covariance": [
+      [
+        4.0,
+        0.0
+      ],
+      [
+        0.0,
+        4.0
+      ]
+    ],
+    "iris_array_sha256": "aa06b8008ceba42efc654be0f83fdafc786239c9e8f13146044d078f5aab8f23"
+  },
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.0.2",
+    "scipy": "1.16.3",
+    "sklearn": "1.9.1"
+  },
+  "input_sha256": {
+    "AGENTS.md": "09334cf4998745fe9364211e9808816dc5fa8ecd4c4806b05f26923ce4e1b29b",
+    "course_architecture.typ": "80900b1b96a7a362944d1bd33b7a1b701f57f52d9436be8d88fae3cf0a51572a",
+    "curriculum_map.typ": "d2cf9b0a294a96b3eba9056bf49ab3e1d5b2ba8eeb75306b0e9eeb059cad4e86",
+    "curriculum_map_actual.typ": "f83ccef392edee0a7a2b30c4d0cf14239d6028794cbe10323df02be50f163b53",
+    "Lectures/L07_Inference/lecture_scope.md": "44ec01139fe4f8f1fe6dd28888424614cf97eb73ccce7d66210d01cb5073029a",
+    "Lectures/L07_Inference/scope_investigation.md": "470ff25990fd82e6424a8c7b0d411d2935266ca8212cd27ae152232e38132a3c",
+    "Lectures/L01_Probability_Statistics/slide_deck.typ": "cafd67e0f71fe3ee6bca14e8a7bf2b52504722bfaf861fd6fedc4957691e7d89",
+    "Lectures/L05_GLM_Optimization/lecture_scope.md": "facd0fb5c80ac5d9040b2ed92c61f038a8b49b02e9d61aa702a83e9de9f9f460",
+    "Lectures/course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md": "3eb27d5d70a16a2385620b1971c9f7076c51bb0c7c57947e693655ab4bdaaeb0",
+    "Lectures/course_architecture_scope/reviews/L07_review.md": "03dc1d8e17f0e57b01ff435459fbf513c924c0de4e6367f27b400b19dba4d14c",
+    "Lectures/course_architecture_scope/reconciliation/reviews/inference_probe_validation.md": "e39d0f7850691d821a4e230a4cedbf0d175bbcad470860c12e574754007e8bad",
+    "Lectures/L07_Inference/notebook_feasibility/classifier_probe.py": "519a8e8680df24818ffede2b3e40318a8a6ca45768999183192f352ee39265a3",
+    "Lectures/L07_Inference/notebook_feasibility/classifier_results.json": "da74dc516997234f063bdea46ef180206af60da3f2cc063c8b9fbd9c5fa40d7c",
+    "Lectures/L07_Inference/notebook_feasibility/reference_bounds.md": "05be5fa8edaf42f796712642c766ffa9a0c0af3d77b9cb5b3b128d42f202656a",
+    "Lectures/L07_Inference/notebook_feasibility/reference_bounds_results.json": "38fefa2fc21dd5f9f20ff79c852224fe34ba15334d1dadda7e52f8c4105093fe",
+    ".agents/skills/lecture-scope/SKILL.md": "bced10aae7f146b0183e89cab044a3ca0460d91fdf3ab7ec7fba11b169ef9f3a",
+    ".agents/skills/worked-solution-authoring/SKILL.md": "8fd6b03d5309dc805454edff2f316c81bdd383e9ec622a20bcdfe34f8b79d352",
+    ".agents/skills/shared/backpressure.md": "576bd81a09d9805338e78f3036959c60dc1840be2904263f2cd438b04ecbef40",
+    ".agents/skills/lecture-scope/references/timing-calibration.md": "df2d19bf3d136c69c2c16890bb25aa20da121538bec8c7b3567bafb18372f58e",
+    ".agents/skills/teaching-notebook-authoring/references/student-knowledge.md": "3b2d7d0a2db115e87577c168a025306cebdb4a852a6550b537a56418af7f6ce9"
+  },
+  "script_sha256": "a5eebca78e07b2575dc1c6ed8137c33108435745eb7955acdd7d37cf63df029f",
+  "geometry_grids": [
+    {
+      "radius": 8.0,
+      "step": 0.04,
+      "nodes": 160801,
+      "log_normalizer": -32.68119639484097,
+      "mean": [
+        0.06739633532805502,
+        1.4619808352779766
+      ],
+      "covariance": [
+        [
+          0.09440826185283673,
+          0.015310509811744807
+        ],
+        [
+          0.015310509811744808,
+          0.16436409762039245
+        ]
+      ],
+      "marginal_skewness": [
+        0.03480272498334786,
+        0.33407303466542554
+      ],
+      "marginal_excess_kurtosis": [
+        0.06940748380169381,
+        0.21575863089393277
+      ],
+      "laplace_whitened_mean": [
+        0.035276487057965655,
+        0.22946552712803928
+      ],
+      "laplace_whitened_second_moment": [
+        [
+          1.0477620087723476,
+          0.012966144021911015
+        ],
+        [
+          0.01296614402191101,
+          1.1278953792558768
+        ]
+      ],
+      "kl_p_q_box": 0.04173805676071721,
+      "half_L1_on_box": 0.07106466336318096,
+      "gaussian_mass_on_box": 1.0000000000000002,
+      "stored_array_bytes": 19299360,
+      "seconds": 0.24582090904004872
+    },
+    {
+      "radius": 10.0,
+      "step": 0.04,
+      "nodes": 251001,
+      "log_normalizer": -32.68119639484097,
+      "mean": [
+        0.06739633532805586,
+        1.4619808352779942
+      ],
+      "covariance": [
+        [
+          0.09440826185283933,
+          0.015310509811744928
+        ],
+        [
+          0.015310509811744928,
+          0.16436409762039728
+        ]
+      ],
+      "marginal_skewness": [
+        0.03480272498334021,
+        0.3340730346652848
+      ],
+      "marginal_excess_kurtosis": [
+        0.06940748380154815,
+        0.21575863089373026
+      ],
+      "laplace_whitened_mean": [
+        0.035276487057966106,
+        0.22946552712803914
+      ],
+      "laplace_whitened_second_moment": [
+        [
+          1.0477620087723503,
+          0.012966144021911239
+        ],
+        [
+          0.012966144021911225,
+          1.1278953792558788
+        ]
+      ],
+      "kl_p_q_box": 0.0417380567607173,
+      "half_L1_on_box": 0.07106466336318092,
+      "gaussian_mass_on_box": 1.0000000000000002,
+      "stored_array_bytes": 30124160,
+      "seconds": 0.3426170109305531
+    },
+    {
+      "radius": 10.0,
+      "step": 0.02,
+      "nodes": 1002001,
+      "log_normalizer": -32.68119639484097,
+      "mean": [
+        0.0673963353280557,
+        1.4619808352779955
+      ],
+      "covariance": [
+        [
+          0.0944082618528394,
+          0.015310509811744958
+        ],
+        [
+          0.015310509811744958,
+          0.1643640976203974
+        ]
+      ],
+      "marginal_skewness": [
+        0.03480272498334776,
+        0.33407303466527416
+      ],
+      "marginal_excess_kurtosis": [
+        0.06940748380152995,
+        0.2157586308936943
+      ],
+      "laplace_whitened_mean": [
+        0.035276487057965905,
+        0.2294655271280395
+      ],
+      "laplace_whitened_second_moment": [
+        [
+          1.0477620087723531,
+          0.012966144021911234
+        ],
+        [
+          0.01296614402191123,
+          1.127895379255882
+        ]
+      ],
+      "kl_p_q_box": 0.041738056760717374,
+      "half_L1_on_box": 0.07106362184347707,
+      "gaussian_mass_on_box": 1.0,
+      "stored_array_bytes": 120248160,
+      "seconds": 1.6941801880020648
+    }
+  ],
+  "ellipse_masses": [
+    {
+      "gaussian_nominal": 0.5,
+      "reference": 0.4882261659002555,
+      "refinement_change": 0.0,
+      "error": -0.011773834099744473
+    },
+    {
+      "gaussian_nominal": 0.9,
+      "reference": 0.8808452899118419,
+      "refinement_change": 2.220446049250313e-16,
+      "error": -0.019154710088158167
+    },
+    {
+      "gaussian_nominal": 0.95,
+      "reference": 0.9328203355580851,
+      "refinement_change": 0.0,
+      "error": -0.017179664441914877
+    },
+    {
+      "gaussian_nominal": 0.99,
+      "reference": 0.9799738779875005,
+      "refinement_change": 2.220446049250313e-16,
+      "error": -0.010026122012499528
+    }
+  ],
+  "mode_hessian_eigenvalues": [
+    6.419184757161352,
+    11.469831374157707
+  ],
+  "mean_error_in_reference_sd": [
+    -0.03448355773458038,
+    -0.22369705560920447
+  ],
+  "laplace_sd_relative_error": [
+    -0.02247755911980287,
+    -0.03595728246165242
+  ],
+  "reused_task_evidence": {
+    "max_prediction_error": 0.014776415383373265,
+    "holdout_log_loss": {
+      "reference": 0.5786769844608353,
+      "laplace": 0.578455216264334,
+      "point": 0.5779043352859154,
+      "frequency": 0.6931471805599453
+    },
+    "source": "classifier_results.json; not rerun"
+  },
+  "repeated_query": {
+    "query_count": 100,
+    "z_range": [
+      -2,
+      2
+    ],
+    "gaussian_parameters_bytes": 48,
+    "projected_GH_nodes_per_query": 32,
+    "median_seconds": 3.285100683569908e-05,
+    "all_seconds": [
+      4.9862079322338104e-05,
+      3.5887002013623714e-05,
+      3.3171032555401325e-05,
+      3.2199081033468246e-05,
+      3.285100683569908e-05,
+      3.186892718076706e-05,
+      3.176904283463955e-05
+    ],
+    "projection_vs_old_2d_GH_max_change": 5.551115123125783e-16
+  },
+  "seconds": 2.3536818580469117
+}

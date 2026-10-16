@@ -10,9 +10,9 @@ Current trajectory:
 
 Exponential-family representation → Gaussian canonical derivation → moments from the log-partition function → MLE as moment matching → maximum entropy → Gamma rainfall application → categorical counts → Markov learning from transition counts.
 
-Proposed content-slide count: **45** (excluding title and section-divider slides).
+Proposed section-slide count: **53**, including eight section title slides and eight section summaries. The separate lecture title slide brings the planned deck to **54 slides**; the lecture-level notebook handoff is not a slide.
 
-Section 2 is intentionally self-contained and can later move wholesale to a recording. Every section ends with an explicitly labeled summary slide.
+Section 2 is intentionally self-contained and can later move wholesale to a recording. Each section begins with a title slide and ends with an explicitly labeled summary slide. On each title slide, the numbered heading is the full title; subtitle and abbreviated footer title are specified below it.
 
 ---
 
@@ -31,11 +31,21 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. Different distributions can share the same algebraic structure
+### 1. Exponential families give familiar distributions a common form
+
+**Role:** Section title.
+
+**Subtitle:** Bernoulli reveals the shared roles of data statistics, parameters, and normalization.
+
+**Abbreviated title:** Exponential-family form.
+
+**Intention / goal:** Open the question of how familiar distributions can be described in common coordinates.
+
+### 2. Different distributions can share the same algebraic structure
 
 **Intention / goal:** Motivate why the lecture is changing representation. Students should see exponential families as a way to expose common structure across familiar distributions, not as another catalogue of probability distributions.
 
-### 2. Exponential families separate data statistics from natural parameters
+### 3. Exponential families separate data statistics from natural parameters
 
 **Intention / goal:** State
 
@@ -45,26 +55,31 @@ and establish the four roles `h`, `T`, `η`, and `A` before specializing it.
 
 **Design note:** Keep the general form persistent enough that later examples can map their terms onto it.
 
-### 3. Bernoulli already has the exponential-family form
+### 4. Bernoulli already has the exponential-family form
 
 **Intention / goal:** Work from the ordinary Bernoulli probability to the exponential-family representation. Make `T(x)=x` and the natural parameter emerge from familiar algebra.
 
-### 4. Bernoulli log odds are its natural parameter
+### 5. Bernoulli log odds are its natural parameter
 
 **Intention / goal:** Interpret `η = log(p/(1-p))` and identify `A(η)`. The new coordinates should feel meaningful rather than like arbitrary algebraic rewriting.
 
 **Design note:** Carry forward the result of the previous slide rather than restarting the derivation.
 
-### 5. One representation exposes the same ingredients across families
+### 6. One representation exposes the same ingredients across families
 
 **Role:** Summary.
 
-**Intention / goal:** Consolidate the four pieces of exponential-family structure and point forward to the Gaussian as a richer familiar test case.
+**Intention / goal:** Consolidate the four pieces of exponential-family structure—`h`, `T`, `η`, and `A`—using the Bernoulli mapping established in this section.
+
+**Summary candidates (from earlier slides):**
+
+- Slide 3's annotated general form, to recall the distinct jobs of `h`, `T`, `η`, and `A`.
+- Slides 4–5's Bernoulli mapping and log-odds relation, to recall how one familiar model instantiates that form.
 
 ## Issues / critique
 
 - The section is now intentionally lightweight. The Gaussian no longer competes with the introductory purpose.
-- Five slides for 10–12 minutes appears plausible.
+- Six slides including the title slide for 10–12 minutes appears plausible.
 
 ## Upstream change requests
 
@@ -78,7 +93,7 @@ None.
 
 - **Purpose:** work through the full Gaussian-to-exponential-family algebra in one removable unit.
 - **Endpoint:** students can identify Gaussian sufficient statistics, natural parameters, and normalizer from the ordinary multivariate Gaussian density.
-- **Sources:** Murphy Book 2 §2.4.2.5 plus Lecture 1 Gaussian precision/information-form material.
+- **Sources:** Murphy Book 2 §2.4.2.5 plus Lecture 1 Gaussian density/covariance material as carry-forward context; precision/information coordinates are introduced here.
 - **Treatment:** full canonical rewrite live.
 - **Extent:** ~8–10 minutes.
 - **Status:** whole-section recording candidate.
@@ -87,33 +102,48 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. The Gaussian density hides an exponential-family representation
+### 1. A Gaussian can be rewritten in exponential-family coordinates
+
+**Role:** Section title.
+
+**Subtitle:** From the familiar density to precision and information coordinates.
+
+**Abbreviated title:** Gaussian coordinates.
+
+**Intention / goal:** Frame the algebraic rewrite as a test of the common form from Section 1.
+
+### 2. The Gaussian density hides an exponential-family representation
 
 **Intention / goal:** Start from the familiar multivariate Gaussian density and pose the task: rearrange it into `h(x) exp(ηᵀT(x)-A(η))` without changing the model.
 
-### 2. Expanding the quadratic separates data-dependent and parameter-only terms
+### 3. Expanding the quadratic separates data-dependent and parameter-only terms
 
-**Intention / goal:** Introduce `Λ=Σ^{-1}` and expand `(x-μ)^TΛ(x-μ)`. Students should see which terms contain `x` and which do not.
+**Intention / goal:** Introduce the precision matrix `Λ=Σ^{-1}` and expand `(x-μ)^TΛ(x-μ)`. Students should see which terms contain `x` and which do not.
 
 **Design note:** Progressive algebra; keep the original Gaussian density visible as context.
 
-### 3. The Gaussian sufficient statistics are `x` and `xxᵀ`
+### 4. The Gaussian sufficient statistics are `x` and `xxᵀ`
 
 **Intention / goal:** Group the data-dependent terms and identify the sufficient-statistic structure explicitly.
 
-### 4. Precision and precision-weighted mean are Gaussian natural parameters
+### 5. Precision and precision-weighted mean are Gaussian natural parameters
 
-**Intention / goal:** Identify natural parameters corresponding to `-½Λ` and `Λμ`, together with the parameter-only normalizing term. Connect these coordinates directly to the information/precision form from Lecture 1.
+**Intention / goal:** Identify natural parameters corresponding to `-½Λ` and `Λμ`, together with the parameter-only normalizing term. Introduce these precision/information coordinates as a reparameterization of the familiar Gaussian density from Lecture 1.
 
-### 5. Gaussian information coordinates are exponential-family coordinates
+### 6. Gaussian information coordinates are exponential-family coordinates
 
 **Role:** Summary.
 
 **Intention / goal:** Consolidate the complete mapping from ordinary Gaussian parameters `(μ,Σ)` to the exponential-family pieces. The section should be independently removable to a recording without creating a conceptual gap in Section 3.
 
+**Summary candidates (from earlier slides):**
+
+- Slide 3's expanded quadratic with data-dependent and parameter-only terms separated, to recall where the mapping comes from.
+- Slides 4–5's pairing of `T(x)=(x,xxᵀ)` with `Λμ` and `-½Λ`, to recall the Gaussian natural coordinates introduced in this section.
+
 ## Issues / critique
 
-- The section is deliberately self-contained. If moved to a recording, Section 1 can point directly to Section 3 using Bernoulli as the only live worked member of the family.
+- The section is deliberately self-contained. If moved to a recording, Section 3 can open directly from Section 1's Bernoulli example as the live worked member of the family.
 - Matrix vectorization/symmetry details should not create extra teaching moves unless implementation proves they are necessary for correctness.
 
 ## Upstream change requests
@@ -137,17 +167,27 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. The normalizer must change when the natural parameter changes
+### 1. The log-partition function connects parameters to moments
+
+**Role:** Section title.
+
+**Subtitle:** Normalization links natural parameters to means and covariance.
+
+**Abbreviated title:** Log-partition moments.
+
+**Intention / goal:** Frame the question of what the normalizing term reveals about a model's statistics.
+
+### 2. The normalizer must change when the natural parameter changes
 
 **Intention / goal:** Pose the problem behind `A(η)`: for every value of `η`, the density must still integrate or sum to one. This creates the identity from which the moment result follows.
 
-### 2. Differentiating normalization exposes the expected sufficient statistic
+### 3. Differentiating normalization exposes the expected sufficient statistic
 
 **Intention / goal:** Carry out the central differentiation step carefully enough that students can see why an expectation of `T(X)` appears.
 
 **Design note:** Progressive derivation; retain the normalization identity as carry-forward context.
 
-### 3. The gradient of the log-partition function is the mean parameter
+### 4. The gradient of the log-partition function is the mean parameter
 
 **Intention / goal:** State and interpret
 
@@ -155,11 +195,11 @@ No clarification is needed before a first organization draft.
 
 Separate the result students should retain from the derivational algebra that produced it.
 
-### 4. Bernoulli shows natural and mean parameters are two coordinates for one family
+### 5. Bernoulli shows natural and mean parameters are two coordinates for one family
 
 **Intention / goal:** Use `A'(η)` for Bernoulli to recover `p` and make the logistic map `η ↔ p` the concrete example of natural versus mean parameterization.
 
-### 5. Differentiating again turns curvature into covariance
+### 6. Differentiating again turns curvature into covariance
 
 **Intention / goal:** Give the derivational sketch leading to
 
@@ -167,16 +207,22 @@ Separate the result students should retain from the derivational algebra that pr
 
 Students should understand the covariance result and the resulting convexity of `A` without expanding into a separate convex-analysis topic.
 
-### 6. The log-partition function converts parameters into moments
+### 7. The log-partition function converts parameters into moments
 
 **Role:** Summary.
 
-**Intention / goal:** Consolidate the first- and second-derivative identities and hand off to estimation: if model moments are functions of `η`, observed sufficient statistics can tell us how to choose `η`.
+**Intention / goal:** Consolidate the first- and second-derivative identities: `∇A(η)` gives the mean sufficient statistic, while `∇²A(η)` gives its covariance.
+
+**Summary candidates (from earlier slides):**
+
+- Slides 2–3's normalization identity and differentiation step, to recall why model moments arise from `A`.
+- Slide 4's `∇A(η)=Eη[T(X)]` and Slide 6's `∇²A(η)=Covη[T(X)]`, to recall the paired mean and covariance results.
+- Slide 5's Bernoulli natural-to-mean parameter map, to recall a concrete instance of the first identity.
 
 ## Issues / critique
 
 - The section now has one continuous argument: normalization → first derivative → mean coordinates → second derivative/covariance.
-- Six slides for 18–20 minutes is compatible with the two derivational teaching moves.
+- Seven slides including the title slide for 18–20 minutes is compatible with the two derivational teaching moves.
 
 ## Upstream change requests
 
@@ -199,15 +245,25 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. An IID sample enters the likelihood through its aggregate sufficient statistic
+### 1. Learning an exponential-family model means matching model moments to data
+
+**Role:** Section title.
+
+**Subtitle:** IID likelihoods turn observed statistics into an estimation rule.
+
+**Abbreviated title:** Moment matching.
+
+**Intention / goal:** Frame the question of how observed data determine the natural parameter of a specified family.
+
+### 2. An IID sample enters the likelihood through its aggregate sufficient statistic
 
 **Intention / goal:** Form the exponential-family sample likelihood/log likelihood and show the repeated single-observation terms collecting into `T(D)=ΣnT(xn)`.
 
-### 2. Differentiating the likelihood reuses the log-partition moment identity
+### 3. Differentiating the likelihood reuses the log-partition moment identity
 
 **Intention / goal:** Differentiate the log likelihood while carrying forward `∇A(η)=Eη[T(X)]` from Section 3.
 
-### 3. The likelihood gradient compares empirical and model statistics
+### 4. The likelihood gradient compares empirical and model statistics
 
 **Intention / goal:** Isolate and interpret
 
@@ -215,7 +271,7 @@ No clarification is needed before a first organization draft.
 
 Students should see the score as a discrepancy between what the data contain and what the current model expects.
 
-### 4. At the MLE, model moments match empirical moments
+### 5. At the MLE, model moments match empirical moments
 
 **Intention / goal:** Set the score to zero and foreground
 
@@ -225,11 +281,11 @@ This is the central learning result of the lecture.
 
 **Design note:** A brief note may mention that convexity of `A` makes the regular exponential-family log likelihood concave; do not create a separate slide for this consequence.
 
-### 5. Bernoulli moment matching recovers the sample proportion
+### 6. Bernoulli moment matching recovers the sample proportion
 
 **Intention / goal:** Perform a quick sanity check using a model students already know. The general machinery should collapse immediately to the familiar Bernoulli MLE.
 
-### 6. Maximum likelihood in an exponential family is moment matching
+### 7. Maximum likelihood in an exponential family is moment matching
 
 **Role:** Summary.
 
@@ -237,12 +293,18 @@ This is the central learning result of the lecture.
 
 `data → sufficient statistic → likelihood gradient → matched model moment`
 
-and close the MLE argument before changing questions in Section 5.
+and close the MLE argument.
+
+**Summary candidates (from earlier slides):**
+
+- Slide 2's dataset statistic `T(D)=ΣnT(xn)`, to recall how the sample enters the likelihood.
+- Slides 4–5's score discrepancy and moment-matching condition, to recall the derivation's central comparison and result.
+- Slide 6's Bernoulli sample-proportion check, to recall a familiar instance of the general rule.
 
 ## Issues / critique
 
 - Removing maximum entropy and the standalone concavity slide makes this section a single coherent estimation argument.
-- Six slides for 16–18 minutes appears plausible given that Slides 1–4 carry the derivation.
+- Seven slides including the title slide for 16–18 minutes appears plausible given that Slides 2–5 carry the derivation.
 
 ## Upstream change requests
 
@@ -264,23 +326,39 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. Moment constraints state what we know about an otherwise unknown distribution
+### 1. Moment constraints and maximum entropy lead to exponential families
+
+**Role:** Section title.
+
+**Subtitle:** Choose a distribution from expected features and a reference measure.
+
+**Abbreviated title:** Maximum entropy.
+
+**Intention / goal:** Frame the model-construction question that begins with known feature expectations.
+
+### 2. Moment constraints state what we know about an otherwise unknown distribution
 
 **Intention / goal:** Start from constraints `E[f_k(X)] = F_k`. Make clear that the constraints are inputs to a new model-construction problem, not consequences of the MLE derivation.
 
-### 2. Maximum entropy chooses the least committed distribution satisfying those constraints
+### 3. Maximum entropy chooses the least committed distribution satisfying those constraints
 
 **Intention / goal:** Explain Murphy's more general minimum-KL-to-`q` formulation and the uniform-`q` special case of maximum entropy. The principle is to satisfy the constraints without adding unsupported structure.
 
-### 3. Lagrange multipliers turn feature constraints into exponential-family natural parameters
+### 4. Lagrange multipliers turn feature constraints into exponential-family natural parameters
 
 **Intention / goal:** Give the proof sketch: constrained optimization yields an exponential form in the features `f_k(x)`, with the multipliers becoming natural parameters and the reference distribution becoming the base measure.
 
-### 4. Moment constraints plus maximum entropy produce an exponential-family model
+### 5. Moment constraints plus maximum entropy produce an exponential-family model
 
 **Role:** Summary.
 
-**Intention / goal:** Consolidate the reverse direction relative to Section 4: Section 4 assumed an exponential family and learned its parameters; Section 5 starts from feature constraints and derives an exponential-family form.
+**Intention / goal:** Consolidate how expected-feature constraints, the minimum-KL principle, and Lagrange multipliers yield an exponential-family form.
+
+**Summary candidates (from earlier slides):**
+
+- Slide 2's feature constraints `E[f_k(X)]=F_k`, to recall what information the construction starts from.
+- Slide 3's minimum-KL-to-`q` principle and uniform-reference special case, to recall the selection criterion.
+- Slide 4's multiplier-to-natural-parameter mapping, to recall why the solution has exponential-family form.
 
 ## Issues / critique
 
@@ -307,25 +385,40 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. Rainfall amounts are positive and strongly right-skewed
+### 1. Maximum likelihood fits a Gamma model to rainfall data
+
+**Role:** Section title.
+
+**Subtitle:** Two sufficient statistics connect a positive-data fit to the general learning rule.
+
+**Abbreviated title:** Gamma rainfall fit.
+
+**Intention / goal:** Frame the real-data test of the general MLE rule with a two-parameter positive-data model.
+
+### 2. Rainfall amounts are positive and strongly right-skewed
 
 **Intention / goal:** Begin with the actual precipitation data. Establish the empirical modeling problem and why a symmetric Gaussian is not an obvious choice.
 
 **Design note:** Data visualization should dominate.
 
-### 2. A Gamma model summarizes the rainfall through `x` and `log x`
+### 3. A Gamma model summarizes the rainfall through `x` and `log x`
 
 **Intention / goal:** Introduce the Gamma model only far enough to identify `T(x)=(log x,x)` and connect the family to the exponential-family machinery already established.
 
-### 3. The Gamma MLE depends on `Σx` and `Σlog x`
+### 4. The Gamma MLE depends on `Σx` and `Σlog x`
 
 **Intention / goal:** Apply Section 4 directly: the sample likelihood reduces to two aggregate statistics, and the MLE matches their model expectations. Acknowledge the digamma equation without making numerical solution a teaching move.
 
-### 4. A low-dimensional sufficient statistic determines a useful rainfall fit
+### 5. A low-dimensional sufficient statistic determines a useful rainfall fit
 
 **Role:** Summary.
 
 **Intention / goal:** Return to the empirical distribution with the fitted Gamma overlaid. Consolidate the data-to-statistics-to-fit chain visually rather than adding more algebra.
+
+**Summary candidates (from earlier slides):**
+
+- Slide 2’s rainfall distribution, to recall the empirical shape that motivated the model.
+- Slides 3–4’s `T(x)=(log x,x)` and sample aggregates `Σlog x`, `Σx`, to recall the compression used by the fit.
 
 ## Issues / critique
 
@@ -353,19 +446,29 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. Categorical data replace one binary indicator with a one-hot vector
+### 1. Categorical distributions extend the same learning rule to multiple outcomes
+
+**Role:** Section title.
+
+**Subtitle:** One-hot indicators turn observations into normalized counts.
+
+**Abbreviated title:** Categorical learning.
+
+**Intention / goal:** Frame a `K`-outcome extension of Bernoulli that reuses the exponential-family form and general MLE rule.
+
+### 2. Categorical data replace one binary indicator with a one-hot vector
 
 **Intention / goal:** Move from Bernoulli to `K` mutually exclusive outcomes using indicator variables. This should feel like a structural extension of familiar binary data.
 
-### 2. Category indicators are the sufficient statistics
+### 3. Category indicators are the sufficient statistics
 
-**Intention / goal:** Identify `T(x)` and its expectation. Students should see that `E[T_k(X)] = p_k`, setting up normalized counts as moment matching.
+**Intention / goal:** Identify the one-hot `T(x)` and base measure on the category support. Students should see that `E[T_k(X)] = p_k`, setting up normalized counts as moment matching.
 
-### 3. Natural parameters become category probabilities through softmax
+### 4. Natural parameters become category probabilities through softmax
 
-**Intention / goal:** Develop the natural-parameter representation only far enough to explain the softmax map and reference-category/redundancy issue.
+**Intention / goal:** Identify the categorical log-partition term and develop the natural-parameter representation far enough to explain the softmax map and reference-category/redundancy issue.
 
-### 4. Category counts are sufficient statistics, and normalization gives their MLE
+### 5. Category counts are sufficient statistics, and normalization gives their MLE
 
 **Intention / goal:** Combine sample aggregation and estimation in one move:
 
@@ -373,16 +476,22 @@ No clarification is needed before a first organization draft.
 
 Students should recognize “count and normalize” as the categorical instance of the same moment-matching rule.
 
-### 5. For categorical models, learning means count and normalize
+### 6. For categorical models, learning means count and normalize
 
 **Role:** Summary.
 
-**Intention / goal:** Consolidate the section in exactly the form needed by the next section: one categorical distribution can be learned from counts without a fresh MLE derivation.
+**Intention / goal:** Consolidate the categorical exponential-family mapping and how its probabilities are learned from indicator statistics and normalized counts without a fresh MLE derivation.
+
+**Summary candidates (from earlier slides):**
+
+- Slides 2–3's one-hot indicator vector and `E[T_k(X)]=p_k`, to recall the categorical statistic and its model moment.
+- Slide 4's log-partition/softmax map, to recall how natural coordinates yield category probabilities.
+- Slide 5's counts `N_k` and normalized MLE `p̂_k=N_k/N`, to recall the count-and-normalize result.
 
 ## Issues / critique
 
 - Combining the old count slide and MLE slide removes an unnecessary separation between a statistic and the immediate estimator derived from it.
-- Five slides for 10–12 minutes appears plausible; only the softmax slide requires substantial new algebra.
+- Six slides including the title slide for 10–12 minutes appears plausible; only the softmax slide requires substantial new algebra.
 
 ## Upstream change requests
 
@@ -396,7 +505,7 @@ None.
 
 - **Purpose:** turn categorical estimation into a learned sequence model and establish the notebook handoff.
 - **Endpoint:** students can read the first-order factorization, interpret rows of `A` as categorical conditionals, identify transition counts as sufficient statistics, derive normalized-count MLE, and understand scoring/generation.
-- **Sources:** Murphy Book 2 §§2.6.1–2.6.3 and Figs. 2.15–2.17.
+- **Sources:** Murphy Book 2 §§2.6.1–2.6.3 and Figs. 2.15/2.17; course-generated first-order character sample from the validated *The Time Machine* bigram transition matrix.
 - **Treatment:** factorization State + Motivate; transition matrix Work/Apply; transition-count MLE Apply prior results.
 - **Empirical application:** character-level text modeling.
 - **Extent:** ~20–24 minutes.
@@ -406,11 +515,21 @@ No clarification is needed before a first organization draft.
 
 ## Proposed slides
 
-### 1. Sequence models need conditional probabilities, not independent draws
+### 1. A Markov model learns one categorical distribution for each preceding state
+
+**Role:** Section title.
+
+**Subtitle:** Transition counts fit conditional categorical models for sequence data.
+
+**Abbreviated title:** Markov learning.
+
+**Intention / goal:** Frame the shift from one categorical model to a collection of conditional categorical models for sequences.
+
+### 2. Sequence models need conditional probabilities, not independent draws
 
 **Intention / goal:** Establish why the categorical model from Section 7 is insufficient for text or other ordered data. The next symbol depends on context.
 
-### 2. A first-order Markov model keeps only the previous state as context
+### 3. A first-order Markov model keeps only the previous state as context
 
 **Intention / goal:** State the Markov assumption and factorization
 
@@ -418,15 +537,15 @@ No clarification is needed before a first organization draft.
 
 Use the state-transition diagram to make the conditional structure concrete.
 
-### 3. Each transition-matrix row is one categorical distribution
+### 4. Each transition-matrix row is one categorical distribution
 
 **Intention / goal:** Connect Markov structure directly to Section 7. For a fixed previous state `j`, the row `Aj·` is simply a categorical model over the next state.
 
-### 4. Transition counts are the sufficient statistics for a Markov chain
+### 5. Transition counts are the sufficient statistics for a Markov chain
 
 **Intention / goal:** Introduce `Njk` by counting observed `j→k` transitions and show how the sequence likelihood groups into row-wise categorical factors.
 
-### 5. Normalizing each row gives the maximum-likelihood transition matrix
+### 6. Normalizing each row gives the maximum-likelihood transition matrix
 
 **Intention / goal:** Reuse categorical moment matching to obtain
 
@@ -434,43 +553,53 @@ Use the state-transition diagram to make the conditional structure concrete.
 
 The result should feel inevitable from Sections 4 and 7 rather than like another independent MLE derivation.
 
-### 6. Character bigrams turn text into a transition-count matrix
+### 7. Character bigrams turn text into a transition-count matrix
 
 **Intention / goal:** Move to the real-data application. Use Murphy's raw bigram-count visualization to show how a corpus becomes `Njk`.
 
 **Design note:** Let the empirical matrix be the dominant object; connect selected cells back to actual character transitions.
 
-### 7. Row normalization turns bigram counts into next-character distributions
+### 8. Row normalization turns bigram counts into next-character distributions
 
-**Intention / goal:** Use Murphy's normalized version of the same matrix to make the fitted conditional probabilities visible. This is the empirical counterpart of Slide 5.
+**Intention / goal:** Use Murphy's normalized version of the same matrix to make the fitted conditional probabilities visible. This is the empirical counterpart of Slide 6.
 
-### 8. The fitted Markov model assigns probabilities to new sequences
+### 9. The fitted Markov model assigns probabilities to new sequences
 
 **Intention / goal:** Reuse the factorization with learned `Â` to show how an unseen string receives a probability. This establishes the model as more than a descriptive transition table.
 
-### 9. Sampling the fitted transitions generates new text
+### 10. Sampling the fitted transitions generates new text
 
-**Intention / goal:** Show the generative consequence using Murphy's generated-text example. Students should see generation as repeated sampling from the learned row corresponding to the current state.
+**Intention / goal:** Show the generative consequence using an explicitly labeled course-generated first-order character sample from the same validated *The Time Machine* bigram transition matrix used in this section, with a declared initial distribution or starting character. Students should see generation as repeated sampling from the learned row corresponding to the current state.
 
-### 10. From text to a fitted Markov model — and into the notebook
+### 11. From text to a fitted Markov model
 
 **Role:** Summary.
 
 **Intention / goal:** Consolidate
 
-`text → transition counts → normalized rows → sequence probability / generation`
+`text → transition counts → normalized rows → sequence probability / generation`.
 
-and hand off explicitly to the one-hour notebook.
+**Summary candidates (from earlier slides):**
+
+- Slides 3–4’s factorization and transition-matrix rows, to recall the model’s conditional structure.
+- Slides 5–8’s transition counts and row normalization, to recall the data-to-parameter map.
+- Slides 9–10’s sequence scoring and generation, to recall what the fitted model does.
 
 ## Issues / critique
 
-- Ten slides for 20–24 minutes is plausible because several are empirical/visual rather than algebra-heavy.
+- Eleven slides including the title slide for 20–24 minutes is plausible because several are empirical/visual rather than algebra-heavy.
 - Raw counts and normalized rows remain separate teaching moves because they distinguish the observed data from the learned conditional model.
 - Sequence scoring and generation remain separate because they are distinct uses of the same fitted model.
 
 ## Upstream change requests
 
 None.
+
+---
+
+# Lecture-level notebook handoff
+
+After the Section 8 summary, introduce the one-hour student notebook as a separate lecture-level activity, not as part of a section summary or an additional slide. The notebook operationalizes the established chain `sequence data → transition counts → fitted transition matrix → inspection / scoring / generation`. The proposed section-slide count remains 53.
 
 ---
 
@@ -491,20 +620,20 @@ The titles now recover a more explicit lecture argument:
 
 ## Extent
 
-Proposed content slides by section:
+Proposed section slides, including title and summary slides:
 
-- Section 1: 5
-- Section 2: 5
-- Section 3: 6
-- Section 4: 6
-- Section 5: 4
-- Section 6: 4
-- Section 7: 5
-- Section 8: 10
+- Section 1: 6
+- Section 2: 6
+- Section 3: 7
+- Section 4: 7
+- Section 5: 5
+- Section 6: 5
+- Section 7: 6
+- Section 8: 11
 
-**Total: 45 content slides.**
+**Total: 53 section slides** (8 title slides, 37 other teaching slides, and 8 summaries). With the separate lecture title slide, the planned deck has **54 slides**.
 
-Moving Section 2 to a recording would reduce the live deck to about 40 content slides without damaging the remaining dependency chain.
+Moving Section 2 to a recording would reduce the live deck to 47 section slides, or 48 including the lecture title, without damaging the remaining dependency chain.
 
 ## Main backpressure items
 

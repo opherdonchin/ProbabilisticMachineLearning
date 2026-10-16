@@ -1,0 +1,61 @@
+{
+  "msa-modeshare-income-employment-2020-dataprocessing.ipynb": {
+    "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/msa-modeshare-income-employment-2020-dataprocessing.ipynb",
+    "sha256": "ef3dac3493fad7fa9ffa54a49f788493a0e94176f2f37b1ffc6410952b4d0be8",
+    "matches": [
+      {
+        "cell_index_zero_based": 5,
+        "cell_source_sha256": "a3b1439183cf024a9d3bb6b94c5303743ff51bf5ada5006d97c5dcd8c07fd1e8",
+        "exact_relevant_lines": [
+          "    return (row / row.sum()) * 100"
+        ]
+      },
+      {
+        "cell_index_zero_based": 17,
+        "cell_source_sha256": "f25466b82d17faa421072e76a8f38787fe2046d401bc72bb070db6b14caaa9fc",
+        "exact_relevant_lines": [
+          "combined_df['Employment Rate'] = combined_df['Employment Rate'].str.rstrip('%').astype('float') / 100",
+          "combined_df['Unemployment Rate'] = combined_df['Unemployment Rate'].str.rstrip('%').astype('float') / 100"
+        ]
+      }
+    ]
+  },
+  "exploratory-factor-analysis.ipynb": {
+    "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/exploratory-factor-analysis.ipynb",
+    "sha256": "8b3929662119f2c5e236dd1d8ebc6cffb664be3627bd2bfa9cda295f5d093b5f",
+    "matches": [
+      {
+        "cell_index_zero_based": 11,
+        "cell_source_sha256": "55dbaf9c538652742bd8c1c0a8f307e8adeb7264b4603c840b8007aa5c8fcee4",
+        "exact_relevant_lines": [
+          "factors_df['proportion of openland area'] = row_sum_1/row_sum*100"
+        ]
+      },
+      {
+        "cell_index_zero_based": 13,
+        "cell_source_sha256": "d07da030b225db082e6b4b8b629d132254e8f1dffe82fd448eda3e2733adf823",
+        "exact_relevant_lines": [
+          "    'Worked from home':'Worked from Home (mode share %)',",
+          "    'Employment Rate':'Employment Rate (%)',",
+          "    'proportion of openland area':'Proportion of Built-Up Area'"
+        ]
+      },
+      {
+        "cell_index_zero_based": 14,
+        "cell_source_sha256": "a896f85b135c0a457e299f3fff91dcdef25d5a05e6dd8c13a67c4bcbba1fb772",
+        "exact_relevant_lines": [
+          "data_standardized.rename(columns={'Proportion of Built-Up Area': 'Built-Up Area Proportion'}, inplace=True)",
+          "data_standardized.rename(columns={'Worked from Home (mode share %)': 'Working from Home Share'}, inplace=True)"
+        ]
+      },
+      {
+        "cell_index_zero_based": 15,
+        "cell_source_sha256": "92be7bfcca7981fab450d359ee6a8956c129c00620c58fe2c9e9dfacd2183744",
+        "exact_relevant_lines": [
+          "factors_df.rename(columns={'Proportion of Built-Up Area': 'Built-Up Area Proportion'}, inplace=True)",
+          "factors_df.rename(columns={'Worked from Home (mode share %)': 'Working from Home Share'}, inplace=True)"
+        ]
+      }
+    ]
+  }
+}

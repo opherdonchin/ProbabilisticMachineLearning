@@ -10,7 +10,7 @@ import tomllib
 ROOT = Path(__file__).resolve().parents[1]
 SKILLS_DIR = ROOT / ".agents" / "skills"
 SKILLS = (
-    "lecture-development", "lecture-scope", "section-design",
+    "course-development", "lecture-development", "lecture-scope", "section-design",
     "slide-level-organization", "slide-design", "slide-authoring",
     "build-teaching-notebook", "worked-solution-authoring",
     "teaching-notebook-authoring",

@@ -1,0 +1,572 @@
+{
+  "purpose": "isolated feasibility evidence; no learner timing or hosted Colab validation",
+  "versions": {
+    "python": "3.12.13",
+    "torch": "2.14.0+cpu",
+    "numpy": "2.0.2",
+    "sklearn": "1.9.1"
+  },
+  "cpu_threads": 1,
+  "numerical_diagnostic": {
+    "finite_logit_underflow_nll_nats": 1000.313232421875,
+    "exponentiated_target_probability": 0.0,
+    "interpretation": "finite logit-space loss; floating-point zero is not structural zero"
+  },
+  "required_route": [
+    {
+      "seed": 2027,
+      "batch_size": 32,
+      "steps": 800,
+      "learning_rate": 0.15,
+      "features": [
+        "petal length (cm)",
+        "petal width (cm)"
+      ],
+      "train_n": 105,
+      "test_n": 45,
+      "raw_feature_sha256": "248cf49d5d8a36e909c2e28628fd2cca34fdc48b4bf4e8039918fdfd0bb84d0b",
+      "train_ids_sha256": "d61a02b2315f68acc52ca779f9b7e0455c8daa3eda5d48f2a52ba2ac36074900",
+      "test_ids_sha256": "be88ff565a4500a86ae605703dca8adaf5a26fe769590757fc16726eea7eaa26",
+      "train_center": [
+        3.742857142857143,
+        1.1952380952380952
+      ],
+      "train_scale": [
+        1.7632144424510665,
+        0.740190574222477
+      ],
+      "train_class_counts": [
+        35,
+        35,
+        35
+      ],
+      "test_class_counts": [
+        15,
+        15,
+        15
+      ],
+      "shapes": {
+        "X": [
+          105,
+          2
+        ],
+        "W": [
+          3,
+          2
+        ],
+        "b": [
+          3
+        ],
+        "logits": [
+          32,
+          3
+        ],
+        "probabilities": [
+          45,
+          3
+        ],
+        "integer_targets": [
+          105
+        ]
+      },
+      "manual_autograd_max_abs_error_float64": 1.1102230246251565e-16,
+      "uncleared_gradient_doubling_max_abs_error": 2.220446049250313e-16,
+      "common_logit_shift_loss_error": 2.220446049250313e-16,
+      "train": {
+        "mean_nll_nats": 0.13645274937152863,
+        "classification_error": 0.047619047619047616
+      },
+      "test": {
+        "mean_nll_nats": 0.10476331412792206,
+        "classification_error": 0.044444444444444446
+      },
+      "frequency_baseline_test": {
+        "mean_nll_nats": 1.0986122886681096,
+        "classification_error": 0.6666666666666666
+      },
+      "train_trace": [
+        {
+          "step": 1,
+          "full_train_nll": 1.0122933387756348
+        },
+        {
+          "step": 101,
+          "full_train_nll": 0.3282524347305298
+        },
+        {
+          "step": 201,
+          "full_train_nll": 0.24245844781398773
+        },
+        {
+          "step": 301,
+          "full_train_nll": 0.20231212675571442
+        },
+        {
+          "step": 401,
+          "full_train_nll": 0.1788095086812973
+        },
+        {
+          "step": 501,
+          "full_train_nll": 0.16379638016223907
+        },
+        {
+          "step": 601,
+          "full_train_nll": 0.15310709178447723
+        },
+        {
+          "step": 701,
+          "full_train_nll": 0.1433699131011963
+        },
+        {
+          "step": 800,
+          "full_train_nll": 0.13645274937152863
+        }
+      ],
+      "elapsed_seconds": 0.11009650002233684
+    },
+    {
+      "seed": 5,
+      "batch_size": 32,
+      "steps": 800,
+      "learning_rate": 0.15,
+      "features": [
+        "petal length (cm)",
+        "petal width (cm)"
+      ],
+      "train_n": 105,
+      "test_n": 45,
+      "raw_feature_sha256": "248cf49d5d8a36e909c2e28628fd2cca34fdc48b4bf4e8039918fdfd0bb84d0b",
+      "train_ids_sha256": "3b4f5301567ea0d204a199e818a17b1cf522baf5f7ba9a575aac94f0036f54ff",
+      "test_ids_sha256": "fd8ce308d7a3abf2526c293c403dfee3b142076c45dbdb0dc74a8264b4ad5ff7",
+      "train_center": [
+        3.7771428571428562,
+        1.204761904761905
+      ],
+      "train_scale": [
+        1.730744796618036,
+        0.7529473455796357
+      ],
+      "train_class_counts": [
+        35,
+        35,
+        35
+      ],
+      "test_class_counts": [
+        15,
+        15,
+        15
+      ],
+      "shapes": {
+        "X": [
+          105,
+          2
+        ],
+        "W": [
+          3,
+          2
+        ],
+        "b": [
+          3
+        ],
+        "logits": [
+          32,
+          3
+        ],
+        "probabilities": [
+          45,
+          3
+        ],
+        "integer_targets": [
+          105
+        ]
+      },
+      "manual_autograd_max_abs_error_float64": 5.551115123125783e-17,
+      "uncleared_gradient_doubling_max_abs_error": 1.1102230246251565e-16,
+      "common_logit_shift_loss_error": 4.440892098500626e-16,
+      "train": {
+        "mean_nll_nats": 0.1180727630853653,
+        "classification_error": 0.02857142857142857
+      },
+      "test": {
+        "mean_nll_nats": 0.13835464417934418,
+        "classification_error": 0.08888888888888889
+      },
+      "frequency_baseline_test": {
+        "mean_nll_nats": 1.0986122886681096,
+        "classification_error": 0.6666666666666666
+      },
+      "train_trace": [
+        {
+          "step": 1,
+          "full_train_nll": 0.978776752948761
+        },
+        {
+          "step": 101,
+          "full_train_nll": 0.3158947229385376
+        },
+        {
+          "step": 201,
+          "full_train_nll": 0.22812990844249725
+        },
+        {
+          "step": 301,
+          "full_train_nll": 0.1872585117816925
+        },
+        {
+          "step": 401,
+          "full_train_nll": 0.16250966489315033
+        },
+        {
+          "step": 501,
+          "full_train_nll": 0.14628244936466217
+        },
+        {
+          "step": 601,
+          "full_train_nll": 0.1342872679233551
+        },
+        {
+          "step": 701,
+          "full_train_nll": 0.12511344254016876
+        },
+        {
+          "step": 800,
+          "full_train_nll": 0.1180727630853653
+        }
+      ],
+      "elapsed_seconds": 0.09200223197694868
+    },
+    {
+      "seed": 17,
+      "batch_size": 32,
+      "steps": 800,
+      "learning_rate": 0.15,
+      "features": [
+        "petal length (cm)",
+        "petal width (cm)"
+      ],
+      "train_n": 105,
+      "test_n": 45,
+      "raw_feature_sha256": "248cf49d5d8a36e909c2e28628fd2cca34fdc48b4bf4e8039918fdfd0bb84d0b",
+      "train_ids_sha256": "59e5daa958ab616dd280fe50014e5c5264712008260e1664138ab6072ee4d5fa",
+      "test_ids_sha256": "77bca674ccb031f9fac70f0f6d80d7c38f3a67cbd45fd4d00a799e1adfee6328",
+      "train_center": [
+        3.765714285714286,
+        1.1904761904761907
+      ],
+      "train_scale": [
+        1.7772546282413895,
+        0.7529654149426606
+      ],
+      "train_class_counts": [
+        35,
+        35,
+        35
+      ],
+      "test_class_counts": [
+        15,
+        15,
+        15
+      ],
+      "shapes": {
+        "X": [
+          105,
+          2
+        ],
+        "W": [
+          3,
+          2
+        ],
+        "b": [
+          3
+        ],
+        "logits": [
+          32,
+          3
+        ],
+        "probabilities": [
+          45,
+          3
+        ],
+        "integer_targets": [
+          105
+        ]
+      },
+      "manual_autograd_max_abs_error_float64": 5.551115123125783e-17,
+      "uncleared_gradient_doubling_max_abs_error": 1.3877787807814457e-17,
+      "common_logit_shift_loss_error": 2.4424906541753444e-15,
+      "train": {
+        "mean_nll_nats": 0.11666806787252426,
+        "classification_error": 0.02857142857142857
+      },
+      "test": {
+        "mean_nll_nats": 0.14649368822574615,
+        "classification_error": 0.06666666666666667
+      },
+      "frequency_baseline_test": {
+        "mean_nll_nats": 1.0986122886681096,
+        "classification_error": 0.6666666666666666
+      },
+      "train_trace": [
+        {
+          "step": 1,
+          "full_train_nll": 1.0188535451889038
+        },
+        {
+          "step": 101,
+          "full_train_nll": 0.31034305691719055
+        },
+        {
+          "step": 201,
+          "full_train_nll": 0.22555303573608398
+        },
+        {
+          "step": 301,
+          "full_train_nll": 0.18637368083000183
+        },
+        {
+          "step": 401,
+          "full_train_nll": 0.16075542569160461
+        },
+        {
+          "step": 501,
+          "full_train_nll": 0.14473041892051697
+        },
+        {
+          "step": 601,
+          "full_train_nll": 0.13270936906337738
+        },
+        {
+          "step": 701,
+          "full_train_nll": 0.12382413446903229
+        },
+        {
+          "step": 800,
+          "full_train_nll": 0.11666806787252426
+        }
+      ],
+      "elapsed_seconds": 0.09125337505247444
+    }
+  ],
+  "conditional_supplied_full_batch_comparison": {
+    "seed": 2027,
+    "batch_size": 105,
+    "steps": 800,
+    "learning_rate": 0.15,
+    "features": [
+      "petal length (cm)",
+      "petal width (cm)"
+    ],
+    "train_n": 105,
+    "test_n": 45,
+    "raw_feature_sha256": "248cf49d5d8a36e909c2e28628fd2cca34fdc48b4bf4e8039918fdfd0bb84d0b",
+    "train_ids_sha256": "d61a02b2315f68acc52ca779f9b7e0455c8daa3eda5d48f2a52ba2ac36074900",
+    "test_ids_sha256": "be88ff565a4500a86ae605703dca8adaf5a26fe769590757fc16726eea7eaa26",
+    "train_center": [
+      3.742857142857143,
+      1.1952380952380952
+    ],
+    "train_scale": [
+      1.7632144424510665,
+      0.740190574222477
+    ],
+    "train_class_counts": [
+      35,
+      35,
+      35
+    ],
+    "test_class_counts": [
+      15,
+      15,
+      15
+    ],
+    "shapes": {
+      "X": [
+        105,
+        2
+      ],
+      "W": [
+        3,
+        2
+      ],
+      "b": [
+        3
+      ],
+      "logits": [
+        105,
+        3
+      ],
+      "probabilities": [
+        45,
+        3
+      ],
+      "integer_targets": [
+        105
+      ]
+    },
+    "manual_autograd_max_abs_error_float64": 1.1102230246251565e-16,
+    "uncleared_gradient_doubling_max_abs_error": 2.220446049250313e-16,
+    "common_logit_shift_loss_error": 2.220446049250313e-16,
+    "train": {
+      "mean_nll_nats": 0.1361815184354782,
+      "classification_error": 0.047619047619047616
+    },
+    "test": {
+      "mean_nll_nats": 0.10404263436794281,
+      "classification_error": 0.044444444444444446
+    },
+    "frequency_baseline_test": {
+      "mean_nll_nats": 1.0986122886681096,
+      "classification_error": 0.6666666666666666
+    },
+    "train_trace": [
+      {
+        "step": 1,
+        "full_train_nll": 1.0097962617874146
+      },
+      {
+        "step": 101,
+        "full_train_nll": 0.32560649514198303
+      },
+      {
+        "step": 201,
+        "full_train_nll": 0.24268624186515808
+      },
+      {
+        "step": 301,
+        "full_train_nll": 0.20294272899627686
+      },
+      {
+        "step": 401,
+        "full_train_nll": 0.17925837635993958
+      },
+      {
+        "step": 501,
+        "full_train_nll": 0.16336506605148315
+      },
+      {
+        "step": 601,
+        "full_train_nll": 0.151859849691391
+      },
+      {
+        "step": 701,
+        "full_train_nll": 0.14308108389377594
+      },
+      {
+        "step": 800,
+        "full_train_nll": 0.1361815333366394
+      }
+    ],
+    "elapsed_seconds": 0.11078054597601295
+  },
+  "large_learning_rate_diagnostic": {
+    "seed": 2027,
+    "batch_size": 32,
+    "steps": 800,
+    "learning_rate": 10.0,
+    "features": [
+      "petal length (cm)",
+      "petal width (cm)"
+    ],
+    "train_n": 105,
+    "test_n": 45,
+    "raw_feature_sha256": "248cf49d5d8a36e909c2e28628fd2cca34fdc48b4bf4e8039918fdfd0bb84d0b",
+    "train_ids_sha256": "d61a02b2315f68acc52ca779f9b7e0455c8daa3eda5d48f2a52ba2ac36074900",
+    "test_ids_sha256": "be88ff565a4500a86ae605703dca8adaf5a26fe769590757fc16726eea7eaa26",
+    "train_center": [
+      3.742857142857143,
+      1.1952380952380952
+    ],
+    "train_scale": [
+      1.7632144424510665,
+      0.740190574222477
+    ],
+    "train_class_counts": [
+      35,
+      35,
+      35
+    ],
+    "test_class_counts": [
+      15,
+      15,
+      15
+    ],
+    "shapes": {
+      "X": [
+        105,
+        2
+      ],
+      "W": [
+        3,
+        2
+      ],
+      "b": [
+        3
+      ],
+      "logits": [
+        32,
+        3
+      ],
+      "probabilities": [
+        45,
+        3
+      ],
+      "integer_targets": [
+        105
+      ]
+    },
+    "manual_autograd_max_abs_error_float64": 1.1102230246251565e-16,
+    "uncleared_gradient_doubling_max_abs_error": 2.220446049250313e-16,
+    "common_logit_shift_loss_error": 2.220446049250313e-16,
+    "train": {
+      "mean_nll_nats": 0.11719773709774017,
+      "classification_error": 0.0380952380952381
+    },
+    "test": {
+      "mean_nll_nats": 0.168417826294899,
+      "classification_error": 0.06666666666666667
+    },
+    "frequency_baseline_test": {
+      "mean_nll_nats": 1.0986122886681096,
+      "classification_error": 0.6666666666666666
+    },
+    "train_trace": [
+      {
+        "step": 1,
+        "full_train_nll": 0.43818724155426025
+      },
+      {
+        "step": 101,
+        "full_train_nll": 0.08755550533533096
+      },
+      {
+        "step": 201,
+        "full_train_nll": 0.07116004824638367
+      },
+      {
+        "step": 301,
+        "full_train_nll": 0.06263868510723114
+      },
+      {
+        "step": 401,
+        "full_train_nll": 0.06111869215965271
+      },
+      {
+        "step": 501,
+        "full_train_nll": 0.06285663694143295
+      },
+      {
+        "step": 601,
+        "full_train_nll": 0.057954128831624985
+      },
+      {
+        "step": 701,
+        "full_train_nll": 0.057841598987579346
+      },
+      {
+        "step": 800,
+        "full_train_nll": 0.11719772964715958
+      }
+    ],
+    "elapsed_seconds": 0.09240613004658371
+  }
+}

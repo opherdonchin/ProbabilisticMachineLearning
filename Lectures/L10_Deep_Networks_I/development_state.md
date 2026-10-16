@@ -1,0 +1,15 @@
+# L10 Deep Networks I development state
+
+**Branch/input:** `lecture/course-deep-network-contracts`, `/tmp/pml-deep-network-contracts`, initial base `a804af6`; sequence proposal `bf31866`. Resolve the Scope commit with `git log -1 --format=%H -- Lectures/L10_Deep_Networks_I/lecture_scope.md`.
+
+**Authority/status:** Instructor's complete two-lecture revision mandate, dated current discussion 2026-10-16, settles replacing MCMC/AIS L10 and retaining L07/L08/L09/L12. Coordinator subsequently commissioned this full Scope under that division. Image/CNN detailed contract is author-built, separately previewed feasible with advisory risks, awaiting required acceptance; whole Scope is not instructor-approved or downstream-validated.
+
+**Ownership:** `/root/l06_real_contract`, Lecture Scope/build, owns this Scope/state, paired L11 Scope/state and shared sequence/adjacent-repair reports only. Other specialists work concurrently; do not revert or edit their files. Root alone integrates architecture/maps/syllabus/main.
+
+**Preserved/reused:** L05's likelihood/gradient/PyTorch foundation; Murphy's differentiable composition and structural blocks; actual native Torch LeNet source as initial scaffold; recent small-step integrated theory/technical notebook direction. Former L11 heteroskedastic mathematics is evidence, not an added second mandatory fit. Former L10 sampling algorithms and AIS requirement are released by the mandate, not shifted to this lecture.
+
+**Current endpoint:** learned representations → locality/tied filters → composition/qualified spatial behavior → probabilistic image prediction and evaluation. Notebook: prepared Fashion-MNIST LeNet-shaped workflow plus supplied dense comparison. Original source Sigmoid/AvgPool and loader semantics remain explicit; bounded validated activation/capacity adaptations are allowed when labeled.
+
+**Review/limits:** Separate Section Design/source-arc preview by `/root/branch_reconciliation_audit` returned **feasible with advisory risks**, no mathematical/architectural blocker, on repaired substantive target `0973ed248d601c003354e41daadfffb5b467091e`. Raw report `/tmp/pml-deep-network-review.md` is owned by the reviewer/coordinator; it records the initial targets and two repaired clarity issues. The later Scope status-only update does not change reviewed content. Advisory dependencies are receiving-scope reconciliation, actual live extent and scaffolded learner/runtime validation. This preview is not instructor acceptance or downstream validation. Source inspected directly; no source-clean notebook, full fit, learner timing or hosted Colab pass is claimed. Timing112+60 is provisional. torchvision/loading, checkpoint continuation and held-out evaluation repairs remain author-owned implementation work.
+
+**Next owner:** Reviewer returns nearest-owner issues; coordinator adopts/disposes and records acceptance before downstream section work. If source/data feasibility fails, return exact impact before substituting the dataset or central teaching purpose. No actual-map update or publication is implied.

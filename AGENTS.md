@@ -31,6 +31,75 @@ These instructions apply to the entire repository.
 - Delete completed branch heads after verifying incorporation; review unmerged
   branches individually before retiring them. Never discard unique work merely
   because it is old or has been replaced in a later plan.
+## Writing for the instructor and students
+
+- Write for a mathematically mature instructor: probability, calculus, linear
+  algebra and Bayesian reasoning are available, while the later course methods
+  and Murphy's organization may be unfamiliar. Do not confuse unfamiliarity with
+  a method with a need to lower the mathematical level of the discussion.
+- State the mathematical issue and its teaching consequence in clear connected
+  prose. Use the correct method names and technical terms, explaining their role
+  when first needed. Preserve distinctions between objectives, distributions,
+  algorithms and guarantees rather than replacing them with generic descriptions.
+- Include decision-relevant equations, assumptions and counterexamples in the main
+  explanation when they make the concern precise. Define notation and explain
+  what the equation establishes. Long derivations, implementation details and Git
+  identifiers can follow as checking material; important mathematics should not
+  be hidden merely to make the document look simple.
+- Explain what is proposed at derive/prove, work/apply, state or mention depth;
+  what students will actually practise; what the competing choice adds or loses;
+  and why the difference affects time, prerequisites or the course endpoint.
+  These are teaching decisions. Formula correctness and software validation
+  remain author/reviewer responsibilities rather than instructor approval tasks.
+- When a concern requires unfamiliar background, provide a focused reading route:
+  verified book/edition, section numbers and titles, and what to look for there.
+  Prefer the relevant passage to a whole-chapter list. Flag pertinent source
+  errors. Give enough context to understand the stakes now, while being honest
+  about what reading is needed to assess the mathematics in detail.
+- Keep mathematical meaning precise. A simpler example may have a weaker
+  guarantee, which must be stated: error detection is not guaranteed correction,
+  an invariant chain need not mix quickly, and a variational penalty need not
+  equal mutual information. Explain such distinctions rather than just naming
+  them or presenting an unexplained catalogue of exclusions.
+- Before handing over work, check both clarity and substance. Can the reader
+  identify the exact mathematical objects, the concern and the teaching tradeoff?
+  Are the equations/conditions needed to judge it visible? Have terms been
+  explained without removing the issue that made the decision consequential?
+- This rule applies to all course and notebook skills, including specialists.
+  Student material must still follow the knowledge established at that point in
+  the course. Preserve identifiable raw review evidence and exact source records;
+  readable summaries complement them and do not replace their mathematical claims.
+
+## Course-wide intellectual authority
+
+`course_architecture.typ` is the single authoritative statement of the course's intellectual framework, rationale, and planned lecture progression. `curriculum_map.typ` owns proposed topic allocation, Book 1/2 readings and notebook examples; lecture scopes own approved detailed commitments. `curriculum_map_actual.typ` mirrors that plan and records substantive lecture and notebook activity only after each class. The two maps are the only course-wide material tracking documents. Start from the family of learning problems (task, available experience, data structure *and scale*, required performance), then identify the probabilistic model, its queries, and the computation appropriate to it. **The course's educational objective is working competence with machine-learning problems and specific algorithms; probabilistic coherence and mathematical depth serve that practical and transferable judgment rather than displace it.** Each proposed lecture must connect its reusable mathematical argument to a recognizable learning problem and a bounded application/evaluation exercise. Do not mistake a checked toy derivation for practical familiarity, or a notebook that runs for understanding of its assumptions. For each technical move, distinguish *validity regime* (when it answers the task well enough), *computational payoff* (time/memory and repeated-query scaling versus alternatives), and *task-relevant error* (what the approximation or algorithm fails to preserve). Exact inference, a posterior distributional proxy, and a sampling estimate of a target expectation are not interchangeable. Laplace and Gaussian VI can have the same output family while fitting it by different mathematical criteria; drawing samples is not the distinction. Do not turn a worked example or a chosen notebook into the lecture's intellectual purpose. The student syllabus summarizes the architecture; `Lectures/course_architecture_scope/architecture_audit.md` evaluates proposed scopes against it rather than independently defining course philosophy. Actual teaching must be recorded separately from prepared materials. Instructor-approved lecture scopes remain the record of what was agreed; the instructor may explicitly reopen future commitments. When architecture proposals change them, document the difference and seek appropriate feasibility review before implementing new scope or notebook work. Do not silently rewrite historical facts or claim a proposal is delivered.
+
+## Reconciliation of existing lectures with revised course goals
+
+For **L01–L03** in the 2027-1 revision, the instructor has explicitly reopened scope decisions following a major change to the course architecture. Recover prior decisions, source branches, lecture decks, design artifacts, worked solutions, and notebook pedagogy before proposing changes. Judge the architecture against the strongest existing teaching argument as well as judging existing materials against the architecture; if existing material demonstrates a better course-wide principle, propose an explicit architecture revision rather than forcing the material to fit. Make the smallest effective revision, but allow substantial restructuring when evidence and instructor decisions justify it. First reconcile and approve scopes, then return to Section Design, Slide-Level Organization, Slide Design, Slide Authoring and notebook validation, reusing effective existing work. From L04 onward, start scope work from the architecture and curriculum map while preserving documented prior choices unless expressly revised. See `Lectures/START_SCOPING.md` for the current branch, evidence inventory, and opening discussion. Do not update `curriculum_map_actual.typ` until lectures are taught.
+
+## Course development coordination
+
+- For course-wide priorities, concurrent lecture/notebook/skill work, or
+  "What should we do next?" or "What needs my attention?", read and follow
+  `.agents/skills/course-development/SKILL.md` (`$course-development`). Discover
+  work and instructor approvals across relevant branches and worktrees, not
+  just `main`; reconcile live files with their owning records before dispatch.
+- Reuse existing lecture and notebook skills. Distinguish artifact, skill,
+  instructor-decision, branch and runtime blockers; restrict each to its actual
+  dependencies. A slide-process failure does not automatically block unrelated
+  scope development or notebook feasibility. A next-action question authorizes
+  assessment and recommendations, not lecture production or merges.
+- Before dispatch, recover declared active sessions and their branch/worktree,
+  owners and write scopes. Separate worktrees do not permit competing writes to
+  the same future artifact. External sessions are not presumed controllable.
+  Under deferred review, collect instructor questions in owning artifacts and
+  index them persistently; wait only dependent work and continue independent
+  authorized tasks. Present one prioritized question when review is requested.
+- Keep persistent course coordination limited to active cross-course assignments
+  and unresolved dependencies not already owned elsewhere. Lecture registers
+  retain lecture status and approvals; architecture and curriculum maps retain
+  their existing authority. Do not create duplicate task histories or ledgers.
 
 ## Lecture development coordination
 
@@ -67,7 +136,7 @@ These instructions apply to the entire repository.
   recording candidates. Its current numbers are provisional priors and should
   be replaced or sharpened as actual course timing data accumulate.
 - The scope process must use actual previous course artifacts and
-  `Lectures/material_ledger.md`, explore alternative routes with the instructor,
+  `curriculum_map.typ` and `curriculum_map_actual.typ`, explore alternative routes with the instructor,
   and establish an agreed intellectual arc, mathematical spine, notebook handoff,
   concrete examples, and lecture contract.
 - Do not collapse scope development into slide-level or notebook drafting. Those

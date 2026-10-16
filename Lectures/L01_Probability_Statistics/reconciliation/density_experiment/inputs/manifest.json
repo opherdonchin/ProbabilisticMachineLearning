@@ -1,0 +1,30 @@
+{
+  "baseline": "a804af644a7ccb282c2ca113f78f4a2a12b1fc4d",
+  "frozen_instructions_commit": "61acb414c5956202add5f7ddbdbbdbfaadc5f304",
+  "worktree": "/tmp/pml-l01-density-20261014",
+  "experimental_branch": "experiment/l01-density-20261014",
+  "files": {
+    ".agents/skills/slide-design/SKILL.md": "2b4252cca1fd9fc11827cef8c39aec16a0fd22a71f652f183b3535369b9edd80",
+    ".agents/skills/slide-authoring/SKILL.md": "4d0bcb5a3a2c0b2656437fe30db7ab8530bdad892ea98114c07ca80b8551134d",
+    ".agents/skills/shared/slide-convergence.md": "3255d69b04613c2930a350f2f21bb5cf2ebbf062991ce6ddcf54e2779a4b47d3",
+    "Lectures/slide_design_conventions.md": "3f08006ca31e4d4bf113a7598d13116f6b02c0a4dcb7f9078d83b676319ab938",
+    ".agents/skills/slide-level-organization/SKILL.md": "5d782c775dc2d6a01d73230d982e7f5980503908eeae979dad409ec33d87d91d",
+    ".agents/skills/shared/backpressure.md": "5fe6ba181dfd5f67b459c16c13215d01f1f4bade7e2f9da52f5161ae72d6122d",
+    "Lectures/L01_Probability_Statistics/slide_deck.typ": "5c4d188124c261ea0a576f4eb46fceeec136076bd3e9f9098305fee73b84006c",
+    "Lectures/L01_Probability_Statistics/slide_deck.pdf": "413adedbb3ff072a469753ee5f42f53a4aa8b776c4cf61c4c47c4449b6a96381",
+    "Lectures/L01_Probability_Statistics/lecture_scope.md": "5013bf9aa09440d52caeda9c17b2807d4b10f79915e1ef20a245c3ec68207db2",
+    "Lectures/L01_Probability_Statistics/reconciliation/squared_loss_candidate.typ": "65e53c43aec474b83c3548e60a4c50d34653fca3516a417655eca9f7afd4dced",
+    "Lectures/L01_Probability_Statistics/reconciliation/squared_loss_candidate.pdf": "70a8a565c9e41964acc4e404c760c3ff581b8e94c32393578a82d77c613ff3fe"
+  },
+  "profiles": {
+    "organization": "slide_organization / gpt-6.1-sol medium",
+    "design": "slide_design / gpt-6.1-sol high",
+    "authoring": "slide_authoring / gpt-6-luna high"
+  },
+  "controls": "Fixed instruction version and baseline/context artifacts; fresh independent builder teams for the two cases. Original renders are comparison baselines, not a matched old-skill agent control. No skill edits during the test.",
+  "local_primary_sources": {
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Resources/book1.pdf": "89749245bc8065d7575f990815c621a091de3facca1585168fc0369542742dcf",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Resources/book2-1.pdf": "54d6bfa8cc4a367bb553bea1c5127ca63696a9655b2ca1f6137a8584dccfdbaf"
+  },
+  "local_primary_sources_note": "Large ignored local books are read-only in the parent checkout. Identity added to the input inventory during attribution verification; these files and the frozen instruction version were not changed."
+}

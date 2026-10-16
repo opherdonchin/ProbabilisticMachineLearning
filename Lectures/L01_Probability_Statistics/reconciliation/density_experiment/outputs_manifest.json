@@ -1,0 +1,237 @@
+{
+  "instructions_commit": "61acb414c5956202add5f7ddbdbbdbfaadc5f304",
+  "candidates": {
+    "a2-side": {
+      "source": "loss/production/a2-side.typ",
+      "source_sha256": "1314b8e1807b0001299a88fdd34fcbdb798188e442041a0b79e7a5ad6ba399d7",
+      "render_report": "loss/production/a2-side_render.json",
+      "handout": {
+        "path": "loss/production/a2-side.pdf",
+        "sha256": "1b3f04689129784210c023d0728025a9a658e06d9fac3c17462752d839623643",
+        "pages": 4,
+        "full_output_pages": 4,
+        "selected_full_pdf_pages_1_based": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "presentation": {
+        "path": "loss/production/a2-side_presentation.pdf",
+        "sha256": "f68745baa49c765d5ca6607570e82f2dd934cd600de85c77a4a42912aa089261",
+        "pages": 12,
+        "full_output_pages": 12,
+        "selected_full_pdf_pages_1_based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    "a2-vertical": {
+      "source": "loss/production/a2-vertical.typ",
+      "source_sha256": "2d552a9f48e07e078c060662ea796c4aef601f44290eae122082c03a995543eb",
+      "render_report": "loss/production/a2-vertical_render.json",
+      "handout": {
+        "path": "loss/production/a2-vertical.pdf",
+        "sha256": "f3f648f0029cae2df960c51ae4ee5f0da34a3078f6a91bd41792050ecd5a6561",
+        "pages": 4,
+        "full_output_pages": 4,
+        "selected_full_pdf_pages_1_based": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "presentation": {
+        "path": "loss/production/a2-vertical_presentation.pdf",
+        "sha256": "6811e84e58db573b9601ba3f9f701af21d973e817ffe45aba3dea7a33af5e3a5",
+        "pages": 12,
+        "full_output_pages": 12,
+        "selected_full_pdf_pages_1_based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    "b3": {
+      "source": "loss/production/b3.typ",
+      "source_sha256": "cbe2a6e18c7dcfa8b71b07723b298f7e401cf5d0350556c16c4b361ceef1de5f",
+      "render_report": "loss/production/b3_render.json",
+      "handout": {
+        "path": "loss/production/b3.pdf",
+        "sha256": "9b1f38fc01d819a71c09cdba647449a5261ef0570e373a6568a9bd22a6828692",
+        "pages": 5,
+        "full_output_pages": 5,
+        "selected_full_pdf_pages_1_based": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "presentation": {
+        "path": "loss/production/b3_presentation.pdf",
+        "sha256": "4ec5d29231246e5ea8dad3ce92d40d08446920a9b86ad0736090be9f828a00b4",
+        "pages": 12,
+        "full_output_pages": 12,
+        "selected_full_pdf_pages_1_based": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    "independence-result-proof": {
+      "source": "independence/production/independence-result-proof.typ",
+      "source_sha256": "ca8cf2462a4a4d6afe73c4578d470afdab7efdb55fea562be476eebb8bc052ad",
+      "render_report": "independence/production/independence-result-proof_render.json",
+      "handout": {
+        "path": "independence/production/independence-result-proof.pdf",
+        "sha256": "a264b779101f5da4b39e7cdde8ed356255fdb2f431f5aa6a5ef8695c6a9226d3",
+        "pages": 3,
+        "full_output_pages": 6,
+        "selected_full_pdf_pages_1_based": [
+          4,
+          5,
+          6
+        ]
+      },
+      "presentation": {
+        "path": "independence/production/independence-result-proof_presentation.pdf",
+        "sha256": "ca64779d332ea2876c51e56a077d117e688d08ab0b69c71446c35023b2314a2b",
+        "pages": 12,
+        "full_output_pages": 15,
+        "selected_full_pdf_pages_1_based": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    },
+    "independence-proof-led": {
+      "source": "independence/production/independence-proof-led.typ",
+      "source_sha256": "c8f4a299e78372450834f96849976c4a559ca2a0aa3ed19d315133266df57a21",
+      "render_report": "independence/production/independence-proof-led_render.json",
+      "handout": {
+        "path": "independence/production/independence-proof-led.pdf",
+        "sha256": "e7ef6040b4a62c1272a5c46520c528c43c1d5a9e9e9687731c5b6e0e2eb1c914",
+        "pages": 3,
+        "full_output_pages": 6,
+        "selected_full_pdf_pages_1_based": [
+          4,
+          5,
+          6
+        ]
+      },
+      "presentation": {
+        "path": "independence/production/independence-proof-led_presentation.pdf",
+        "sha256": "6850f570f5b945e85f045e203ba4b33458163ac1b89995c03a801dc4aadf4ab6",
+        "pages": 12,
+        "full_output_pages": 15,
+        "selected_full_pdf_pages_1_based": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    },
+    "independence-proof-led-hierarchy": {
+      "source": "independence/production/independence-proof-led-hierarchy.typ",
+      "source_sha256": "a3e8221d31d5a87492d2ac1f4a700bca33328c8819c9abb02eae6e131d9dcf06",
+      "render_report": "independence/production/independence-proof-led-hierarchy_render.json",
+      "handout": {
+        "path": "independence/production/independence-proof-led-hierarchy.pdf",
+        "sha256": "c83e0979541c607dd269bac0d48f8cd8dfb17a2273878044ec2240df48f950cc",
+        "pages": 3,
+        "full_output_pages": 6,
+        "selected_full_pdf_pages_1_based": [
+          4,
+          5,
+          6
+        ]
+      },
+      "presentation": {
+        "path": "independence/production/independence-proof-led-hierarchy_presentation.pdf",
+        "sha256": "4f540c181949accb662fd6ef77949f78e93db6c50347dbe585ffdbc24478bc9d",
+        "pages": 12,
+        "full_output_pages": 15,
+        "selected_full_pdf_pages_1_based": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    }
+  },
+  "neutral_sequence_mapping": {
+    "03": "a2-side",
+    "04": "a2-vertical",
+    "05": "b3",
+    "07": "independence-result-proof",
+    "08": "independence-proof-led",
+    "09": "independence-proof-led-hierarchy",
+    "01": "original actual63\u201366",
+    "02": "previous separate squared_loss_candidate",
+    "06": "original actual47\u201349"
+  },
+  "unique_rendered_bodies": 56
+}

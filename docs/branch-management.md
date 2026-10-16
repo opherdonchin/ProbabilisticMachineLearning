@@ -32,9 +32,9 @@ Avoid names such as `lecture-3-authoring`, `new-work`, `claude/task-xyz`, or `co
 
 For an active branch with no PR, arrange a PR or issue that names its intent and owner. During routine course/repository reviews, flag unmerged branches that have had no activity for **14 days** for *review*, not automatic deletion. Recheck a branch's content against its intended destination before calling it stale: inactivity alone is not a reliable criterion.
 
-## Temporary legacy exceptions
+## Legacy branch reconciliation
 
-The PR-name CI check permits some pre-policy branches while they are reconciled. These are *not* templates for new names: `l02-section-titles-summaries`, `lecture-3-authoring`, `scope-l03-l12-course-architecture`, and `slide-authoring-refactor`. Remove each exception when the corresponding branch is retired or deliberately renamed.
+The pre-policy branches were individually reconciled under the instructor’s October 16 consolidation request. Their unique history is incorporated in main, with superseded variants excluded from the current tree. New PR heads follow the naming rule above; no legacy CI exceptions remain.
 
 ## Enforcement
 

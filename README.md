@@ -2,6 +2,10 @@
 
 Course-development repository for probabilistic machine learning.
 
+## Course architecture
+
+The course's intellectual purpose and mathematical progression are defined in [course_architecture.typ](course_architecture.typ) ([PDF](course_architecture.pdf)). Detailed proposed teaching allocations, Murphy readings, notebook practice and reference material are in the [curriculum map](curriculum_map.typ) ([PDF](curriculum_map.pdf)). The [student syllabus](advanced_statistics_2027_1_syllabus.typ) summarizes the plan; [architecture_audit.md](Lectures/course_architecture_scope/architecture_audit.md) tests scope proposals. The [actual curriculum map](curriculum_map_actual.typ) will be filled in alongside the proposed map as teaching proceeds; no class has yet been taught.
+
 ## Notebook development
 
 The student runtime is Google Colab; uv provides the reproducible local check

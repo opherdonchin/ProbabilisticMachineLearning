@@ -1,0 +1,13 @@
+{
+  "status": "PASS: bounded extracted-method checks, not full package execution",
+  "case_count": 8,
+  "max_corrected_state_moment_error": 6.661338147750939e-16,
+  "max_corrected_missing_output_error": 4.440892098500626e-16,
+  "imports": {
+    "pandas": "ModuleNotFoundError(\"No module named 'pandas'\")",
+    "darts": "ModuleNotFoundError(\"No module named 'darts'\")",
+    "nfoursid": "ModuleNotFoundError(\"No module named 'nfoursid'\")"
+  }
+}
+scalar missing original/corrected: {'filtered_mean': [[0.0]], 'filtered_covariance': [[0.5]], 'next_mean': [[0.0]], 'next_covariance': [[1.5]], 'max_abs_error': 0.5, 'darts_expression_output_mean': [[0.0]], 'darts_expression_output_covariance': [[1.5]], 'output_moment_error': 0.5} {'filtered_mean': [[0.0]], 'filtered_covariance': [[1.0]], 'next_mean': [[0.0]], 'next_covariance': [[2.0]], 'max_abs_error': 0.0, 'darts_expression_output_mean': [[0.0]], 'darts_expression_output_covariance': [[2.0]], 'output_moment_error': 0.0}
+drop-S max next mean error: 0.1141275250344862

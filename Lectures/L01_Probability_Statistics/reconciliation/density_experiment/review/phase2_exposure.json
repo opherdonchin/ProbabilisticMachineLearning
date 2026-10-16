@@ -1,0 +1,555 @@
+{
+  "phase": "Phase 2: source/contract/process review",
+  "phase1_unchanged": true,
+  "baseline": "a804af644a7ccb282c2ca113f78f4a2a12b1fc4d",
+  "instruction_commit": "61acb414c5956202add5f7ddbdbbdbfaadc5f304",
+  "candidate_commit": "06f4560",
+  "phase1_commit": "4b9b277",
+  "read_sources": [
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/instructor_request.md",
+      "sha256": "5379e66bd24759e562a0dbf085b50b3b694afff656b99c1ed8eb10af53bad546",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/task.md",
+      "sha256": "b3910526455e88fbf9c7f8aa7cbdf27a4410d7f1b0b7ba23e8fadadb3d48bea2",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/inputs/manifest.json",
+      "sha256": "d99c78bfac775cfb8f3579ad03702dea53ae9e908e39595e48fd1e83aa6efa15",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/outputs_manifest.json",
+      "sha256": "771b1ad085ff20916d188ba144b80d0e9a2f48b9e41c75b29344671021ccf1ee",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/organization.md",
+      "sha256": "80fa626e2c71d74bf379b7f991c7bf2a3607664292042fbf15410677d6aee0f9",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/organization_report.md",
+      "sha256": "1dfc68b5d5784acf564e610f03960e4fb6005507216d8dab8b62e76d54d65b05",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/organization.md",
+      "sha256": "5edb2cc2f325f5bc8603adfa4d345286d8961d925fa74c0bc9319be513598616",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/organization_report.md",
+      "sha256": "1d1b26b76e38453d63f1b4e24e924433b85d1dda024c4257865c659296b66e6e",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/design_report.md",
+      "sha256": "2320ba9a2baeba4987ae55ed6de3edf8f5fe58019d7cad1619358d9d2652e7bc",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/design_report.md",
+      "sha256": "38500f858f1cb37dbdb34c365801682edb4f7f7f93177384051312ebb508cc52",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/authoring_report.md",
+      "sha256": "eba4810a106f7ea91a93634f155db8756216a7ba556b94e126c09773e7652312",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/authoring_report.md",
+      "sha256": "803bd3a4534981e1733cfe5372ebf533f128a76f412f9281ce56a327947cd037",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/design.typ",
+      "sha256": "33d5d17a1ec90c047337fc3bc46d027144a89b7952d2812b0992c5b501a3c758",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/design_A2.typ",
+      "sha256": "007d6d1bec55080b730e0ed21dd4150c9fcf2be073c90d17dbd7adaf7ed20349",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/design_A2_vertical.typ",
+      "sha256": "0587bbb1037bed9e8da3287c3612622eecf3cf9396c6e760c9c88ea0b6a2a291",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/design_B3.typ",
+      "sha256": "3081c2589c880b8ac104fa46ee0c0a0c9b4aed53ac4d6d9e11ba5497cfddb629",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/design_common.typ",
+      "sha256": "7b1ca944d2d3a2aafb7d47d2fef99c5d6e86a6f3ca0173fd2f8dd82127b6e13b",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led-hierarchy.typ",
+      "sha256": "a3e8221d31d5a87492d2ac1f4a700bca33328c8819c9abb02eae6e131d9dcf06",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led.typ",
+      "sha256": "c8f4a299e78372450834f96849976c4a559ca2a0aa3ed19d315133266df57a21",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-result-proof.typ",
+      "sha256": "ca8cf2462a4a4d6afe73c4578d470afdab7efdb55fea562be476eebb8bc052ad",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-side.typ",
+      "sha256": "1314b8e1807b0001299a88fdd34fcbdb798188e442041a0b79e7a5ad6ba399d7",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-vertical.typ",
+      "sha256": "2d552a9f48e07e078c060662ea796c4aef601f44290eae122082c03a995543eb",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/b3.typ",
+      "sha256": "cbe2a6e18c7dcfa8b71b07723b298f7e401cf5d0350556c16c4b361ceef1de5f",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led-hierarchy_render.json",
+      "sha256": "941671d5f68906d79801f77bc5a6931e17f54299a80067953fc4ee490d32a20c",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led_render.json",
+      "sha256": "617fbfdb2a495efe7a932f6520fd956bd77adab74971a65f3d39d7f6e451bb9c",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-result-proof_render.json",
+      "sha256": "086e29bdfbafbee9d88c9d881cf07b8a24d6bf9820ad8c6ab8b9f3a203f9750f",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-side_render.json",
+      "sha256": "4cd801f7f22b2b1f258e5911a548d6c2c1bb42c798ccdaf66c44ecfd7f20b997",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-vertical_render.json",
+      "sha256": "e44c02190ee10992b08b9204876a927dde32164ff69c602f023ae9b394642cbb",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/b3_render.json",
+      "sha256": "8ea3ff9d53edc456c9b4cbda5996e9b062a878992f1d02c256114039eec788b9",
+      "coverage": "full text"
+    },
+    {
+      "path": ".agents/skills/slide-design/SKILL.md",
+      "sha256": "2b4252cca1fd9fc11827cef8c39aec16a0fd22a71f652f183b3535369b9edd80",
+      "coverage": "full text"
+    },
+    {
+      "path": ".agents/skills/slide-authoring/SKILL.md",
+      "sha256": "4d0bcb5a3a2c0b2656437fe30db7ab8530bdad892ea98114c07ca80b8551134d",
+      "coverage": "full text"
+    },
+    {
+      "path": ".agents/skills/shared/slide-convergence.md",
+      "sha256": "3255d69b04613c2930a350f2f21bb5cf2ebbf062991ce6ddcf54e2779a4b47d3",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/slide_design_conventions.md",
+      "sha256": "3f08006ca31e4d4bf113a7598d13116f6b02c0a4dcb7f9078d83b676319ab938",
+      "coverage": "full text"
+    },
+    {
+      "path": ".agents/skills/slide-level-organization/SKILL.md",
+      "sha256": "5d782c775dc2d6a01d73230d982e7f5980503908eeae979dad409ec33d87d91d",
+      "coverage": "full text"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/lecture_scope.md",
+      "sha256": "5013bf9aa09440d52caeda9c17b2807d4b10f79915e1ef20a245c3ec68207db2",
+      "coverage": "relevant accepted decisions, mathematical spine, regime assumptions, timing, and recorded/live boundary"
+    },
+    {
+      "path": "Lectures/L01_Probability_Statistics/slide_deck.typ",
+      "sha256": "5c4d188124c261ea0a576f4eb46fceeec136076bd3e9f9098305fee73b84006c",
+      "coverage": "relevant context/API excerpts and searches"
+    },
+    {
+      "path": "Lectures/course.typ",
+      "sha256": "c9140eb4c1ea0a3528f4671f0016d6817c2efb810884296953947e4f309f56ea",
+      "coverage": "relevant context/API excerpts and searches"
+    }
+  ],
+  "primary_source_records": {
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Resources/book1.pdf": "89749245bc8065d7575f990815c621a091de3facca1585168fc0369542742dcf",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Resources/book2-1.pdf": "54d6bfa8cc4a367bb553bea1c5127ca63696a9655b2ca1f6137a8584dccfdbaf"
+  },
+  "primary_source_pages": {
+    "book1.pdf": {
+      "edition": "April 18, 2025",
+      "visual_pdf_pages": [
+        206
+      ],
+      "text_pdf_pages": [
+        204,
+        205,
+        206,
+        207
+      ],
+      "relevant_section": "5.1.5 / 5.1.5.1 L2 loss"
+    },
+    "book2-1.pdf": {
+      "edition": "December 10, 2025",
+      "visual_pdf_pages": [
+        58
+      ],
+      "text_pdf_pages": [
+        58,
+        59,
+        60,
+        61,
+        64
+      ],
+      "relevant_sections": [
+        "2.3.1.3 Marginals and conditionals of an MVN",
+        "2.3.1.5 Derivation: moment form",
+        "2.3.2.3 Example: Sensor fusion with known measurement noise"
+      ]
+    }
+  },
+  "additional_full_resolution_images_inspected": [
+    {
+      "path": "/tmp/pml-density-phase2-independence-result-proof-1.png",
+      "sha256": "d957a1d3e7c9832ef03ae4b791a985d51ab315c03158ece021ad4663bb96e43c",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-independence-result-proof-2.png",
+      "sha256": "8792fd61e2e0839fe73f71b22fd54079b31f49ee29096a08cac02f3bd8702b72",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-independence-result-proof-3.png",
+      "sha256": "a36412ab25e58280f18106c272ccaad84defdd16c3e126dccbc0f0418fec4294",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-book1-206.png",
+      "sha256": "af274a1b62bc93d4b14006d37b7d10329e20a3624c1ea34b66e1bc90081479e8",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-book2-0058.png",
+      "sha256": "c12a3884d170cc46e3605fcb3f24683763f133d934df8f76c919b4f35aa55a21",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-failure-1.png",
+      "sha256": "21cdcbb14c35f5f0aa6d2a268d46612129bd41a7b353c30295c90b1ae42567b8",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-failure-2.png",
+      "sha256": "e9a06a25b43ab0536d4d91337e4f326a263d2ba842accfb655015888743cc9ff",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-failure-3.png",
+      "sha256": "b499d36975372ea41b425bbe44ade7725248770a16e4426dc958288525e695dd",
+      "method": "view_image(detail=original)"
+    },
+    {
+      "path": "/tmp/pml-density-phase2-failure-4.png",
+      "sha256": "9782a56493da84cc877135d0d78e4ac239936d971dd1462929e97f9b67d4e563",
+      "method": "view_image(detail=original)"
+    }
+  ],
+  "wrapper_deduplication": "Handout pages 1\u20133 rendered for all three Gaussian complete PDFs; corresponding PNG SHA-256 hashes are identical. Their unique bodies were viewed once.",
+  "complete_pdf_inventory": [
+    {
+      "candidate": "a2-side",
+      "mode": "handout",
+      "canonical_complete_path": "build/slide-review/production/a2-side/handout.pdf",
+      "sha256": "4b9a2b2c3c0738bd14f3766f324a2044a73f04708d3fdf679ab347ac85a3e00c",
+      "complete_pages": 4,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-side.pdf",
+      "selected_pages": 4,
+      "selected_full_pdf_pages_1_based": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 4
+    },
+    {
+      "candidate": "a2-side",
+      "mode": "presentation",
+      "canonical_complete_path": "build/slide-review/production/a2-side/presentation.pdf",
+      "sha256": "cac2b9f3ab85fcbbcc42c9d454a701b6307bea9ef51561b69fb4e8ba8f6a6030",
+      "complete_pages": 12,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-side_presentation.pdf",
+      "selected_pages": 12,
+      "selected_full_pdf_pages_1_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 12
+    },
+    {
+      "candidate": "a2-vertical",
+      "mode": "handout",
+      "canonical_complete_path": "build/slide-review/production/a2-vertical/handout.pdf",
+      "sha256": "381068943f096002e3f092d4f93ff6e9587f8020f47d16beeaed629253b76edd",
+      "complete_pages": 4,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-vertical.pdf",
+      "selected_pages": 4,
+      "selected_full_pdf_pages_1_based": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 4
+    },
+    {
+      "candidate": "a2-vertical",
+      "mode": "presentation",
+      "canonical_complete_path": "build/slide-review/production/a2-vertical/presentation.pdf",
+      "sha256": "6ef80dc0d55c4e8d89d9a36d0a37e3c6543df996e3bfb7bd7efd644666c1e09c",
+      "complete_pages": 12,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/a2-vertical_presentation.pdf",
+      "selected_pages": 12,
+      "selected_full_pdf_pages_1_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 12
+    },
+    {
+      "candidate": "b3",
+      "mode": "handout",
+      "canonical_complete_path": "build/slide-review/production/b3/handout.pdf",
+      "sha256": "be53931c32fc3e4dbd045e603ace967980d8c4fd46dac6d5ad6c8fc8dc9be076",
+      "complete_pages": 5,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/b3.pdf",
+      "selected_pages": 5,
+      "selected_full_pdf_pages_1_based": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 5
+    },
+    {
+      "candidate": "b3",
+      "mode": "presentation",
+      "canonical_complete_path": "build/slide-review/production/b3/presentation.pdf",
+      "sha256": "a8c7f55c6dcd1f0a3dc8d32b0930103c2a9933b2ce0dcabb8cfa45394bdc921b",
+      "complete_pages": 12,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/loss/production/b3_presentation.pdf",
+      "selected_pages": 12,
+      "selected_full_pdf_pages_1_based": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 12
+    },
+    {
+      "candidate": "independence-result-proof",
+      "mode": "handout",
+      "canonical_complete_path": "build/slide-review/production/independence-result-proof/handout.pdf",
+      "sha256": "8e9137bc38ad07b440f3de5c9502176e718d1b428e6067cbc2871387801c9bd5",
+      "complete_pages": 6,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-result-proof.pdf",
+      "selected_pages": 3,
+      "selected_full_pdf_pages_1_based": [
+        4,
+        5,
+        6
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 6
+    },
+    {
+      "candidate": "independence-result-proof",
+      "mode": "presentation",
+      "canonical_complete_path": "build/slide-review/production/independence-result-proof/presentation.pdf",
+      "sha256": "604cc7f7706e1c630a6a43b5e618abddfc2a517349566c1ebe7e19348c24e7dd",
+      "complete_pages": 15,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-result-proof_presentation.pdf",
+      "selected_pages": 12,
+      "selected_full_pdf_pages_1_based": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 15
+    },
+    {
+      "candidate": "independence-proof-led",
+      "mode": "handout",
+      "canonical_complete_path": "build/slide-review/production/independence-proof-led/handout.pdf",
+      "sha256": "31d92112ccc63244506a6c9b01b095718f81f8dd6c7dac9af7e6ccf1a29bb371",
+      "complete_pages": 6,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led.pdf",
+      "selected_pages": 3,
+      "selected_full_pdf_pages_1_based": [
+        4,
+        5,
+        6
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 6
+    },
+    {
+      "candidate": "independence-proof-led",
+      "mode": "presentation",
+      "canonical_complete_path": "build/slide-review/production/independence-proof-led/presentation.pdf",
+      "sha256": "9b1544f9fd06e8befbf767d824f336d226a4c54159851d68a5f1fafcab6152d1",
+      "complete_pages": 15,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led_presentation.pdf",
+      "selected_pages": 12,
+      "selected_full_pdf_pages_1_based": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 15
+    },
+    {
+      "candidate": "independence-proof-led-hierarchy",
+      "mode": "handout",
+      "canonical_complete_path": "build/slide-review/production/independence-proof-led-hierarchy/handout.pdf",
+      "sha256": "1ac9988aa2e690cdec3a04b34b97453da4631bebde0a9be51576c96f9a4044c1",
+      "complete_pages": 6,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led-hierarchy.pdf",
+      "selected_pages": 3,
+      "selected_full_pdf_pages_1_based": [
+        4,
+        5,
+        6
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 6
+    },
+    {
+      "candidate": "independence-proof-led-hierarchy",
+      "mode": "presentation",
+      "canonical_complete_path": "build/slide-review/production/independence-proof-led-hierarchy/presentation.pdf",
+      "sha256": "28f05c5942f7751d2e2fd05846de5cb3928e7a172999557e9e3eb837ce02631b",
+      "complete_pages": 15,
+      "selected_pdf_path": "Lectures/L01_Probability_Statistics/reconciliation/density_experiment/independence/production/independence-proof-led-hierarchy_presentation.pdf",
+      "selected_pages": 12,
+      "selected_full_pdf_pages_1_based": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "inventory_verified_with": "pdfinfo; warning JSON; selected states inspected in Phase 1; complete wrapper pages inspected in Phase 2",
+      "pdfinfo_verified_complete_pages": 15
+    }
+  ],
+  "git_checkpoint_image_records": [
+    {
+      "commit": "5748947",
+      "path": "tmp/density-first-realizations/a2-vertical/centering-the-error-makes-the-posterior-mean-optimal-548da9e4-handout-1.png"
+    },
+    {
+      "commit": "cd1d755",
+      "path": "tmp/density-second-realizations/b3/the-posterior-mean-removes-the-avoidable-squared-error-16e5f8b0-handout-1.png"
+    },
+    {
+      "commit": "f73c76f",
+      "path": "tmp/density-b3-reveal/render/the-posterior-mean-minimizes-squared-error-risk-6d1ee259-presentation-1.png"
+    },
+    {
+      "commit": "f73c76f",
+      "path": "tmp/density-b3-reveal/render/the-posterior-mean-minimizes-squared-error-risk-6d1ee259-presentation-2.png"
+    }
+  ],
+  "limits": [
+    "No source edits, candidate edits, instruction edits, or promotion.",
+    "No matched old-skill control, statistical replication, timing measurement, or student/classroom validation.",
+    "Phase 1 remains the independent render assessment; Phase 2 does not overwrite it."
+  ]
+}

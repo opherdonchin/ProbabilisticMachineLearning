@@ -124,6 +124,31 @@ Typical objects include:
 Interpretation should explain what the object means, what changes, what matters,
 or what conclusion follows.
 
+### Objects and key points
+
+**Instructor convention (2026-10-14):** mathematical and visual objects are
+usually light on text; necessary explanatory text belongs in key points. The
+object is what students inspect, derive or compare. Key points supply motivation,
+interpretation and what the result establishes. Local mathematical reasons and
+operation labels help students follow the inspected argument; they are not
+replaced by a final takeaway. Decide this division before
+choosing cards or geometry, and preserve it in production even if a layout sketch
+uses a generic grid.
+
+Equations, axes, intrinsic labels, conditions and local proof warrants can remain
+with the object where they make its operation intelligible. Established L01
+proofs use such cues as “Center”, explicit variable mappings, and the reason
+joint Gaussianity turns zero covariance into independence. Text that is itself
+being inspected, such as an algorithm or passage, is also a legitimate object.
+This is not a ban on words, a fixed word budget, or permission to remove
+mathematical assumptions. Put task framing and takeaway interpretation in key
+points; avoid several peer headings that repeat those takeaways. Removing local
+guidance while leaving a stack of equations does not satisfy this convention.
+
+For an existing-deck insertion, inspect immediate neighbor renders and a relevant
+established teaching slide before deriving the content/role contract. A shared
+font, theme or successful compile does not establish alignment with that contract.
+
 ### Titles are claims or teaching moves
 
 Titles should recover the section argument when read in order. Prefer specific
@@ -173,13 +198,25 @@ For derivations:
 
 - expose conceptual steps, not every algebraic motion;
 - retain prior lines when comparison or causality depends on them;
+- keep the target, operation and mathematical reason for each implication legible;
+- keep a central equality syntactically whole while explaining its term roles;
 - reveal the mapping or interpretation only after the algebra that motivates it;
 - avoid animation that turns a derivation into click-by-click transcription.
+
+Key points may interpret an intermediate result as it appears. A reveal should
+add a meaningful operation or consequence to the currently visible argument,
+not merely another equation followed by all explanations on the last click.
 
 ### Carry-forward material is subordinate but deliberate
 
 Carry an earlier equation, model, or figure when students need it to understand
 the new operation without mentally reconstructing context.
+
+A recall object must contain knowledge established in the identified earlier
+material. Check the actual previous slide and its reveal states, including when
+that slide is another provisional candidate. Definitions carried forward do not
+make newly averaged or otherwise transformed consequences recall. New reasoning
+belongs in the main proof object even when it uses those definitions.
 
 Carried-forward material should be visibly subordinate to the new object. Its
 role is orientation, not repetition.

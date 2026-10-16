@@ -1,0 +1,22 @@
+--- nfoursid1.0.2/kalman.py
++++ candidate/kalman.py
+@@ -111,6 +111,9 @@
+             self.r + self.state_space.c @ p_pred @ self.state_space.c.T
+         )
+ 
++        if y is None:
++            k_filtered = np.zeros_like(k_filtered)
++
+         self.p_filtereds.append(
+             p_pred - k_filtered @ self.state_space.c @ p_pred
+         )
+@@ -123,6 +126,9 @@
+         k_pred = (self.s + self.state_space.a @ p_pred @ self.state_space.c.T) @ np.linalg.pinv(
+             self.r + self.state_space.c @ p_pred @ self.state_space.c.T
+         )
++
++        if y is None:
++            k_pred = np.zeros_like(k_pred)
+ 
+         self.p_predicteds.append(
+             self.state_space.a @ p_pred @ self.state_space.a.T

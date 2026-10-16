@@ -1,0 +1,359 @@
+{
+  "commit": "049cb033a9814c0ec3df99ece5144d07688aa648",
+  "records": {
+    "bin/jupyter/preprocessing/msa-modeshare-income-employment-2020-dataprocessing.ipynb": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/msa-modeshare-income-employment-2020-dataprocessing.ipynb",
+      "sha256": "ef3dac3493fad7fa9ffa54a49f788493a0e94176f2f37b1ffc6410952b4d0be8",
+      "matches": [
+        {
+          "cell_index_zero_based": 1,
+          "cell_sha256": "9204c1448bf3a94a83e488b02197922cbb2a69115e6597f88dfeacf97ac066fe",
+          "exact_relevant_lines": [
+            "mods_df = pd.read_csv('../../data/raw/ACSDT5Y2020.B08006-2024-07-01T191933.csv') # modeshares (for commuting)",
+            "inc_df = pd.read_csv('../../data/raw/ACSST5Y2020.S1903-2024-07-02T123158.csv') # modeshares (for commuting)",
+            "em_df = pd.read_csv('../../data/raw/ACSST5Y2020.S2301-2024-07-02T122928.csv') # modeshares (for commuting)"
+          ]
+        },
+        {
+          "cell_index_zero_based": 5,
+          "cell_sha256": "a3b1439183cf024a9d3bb6b94c5303743ff51bf5ada5006d97c5dcd8c07fd1e8",
+          "exact_relevant_lines": [
+            "    return (row / row.sum()) * 100"
+          ]
+        },
+        {
+          "cell_index_zero_based": 16,
+          "cell_sha256": "40e459c863d2a62dc27f7ff37ea417eb4288d03b7b4b94805433819831885369",
+          "exact_relevant_lines": [
+            "#Since the employment-population ratio includes everyone, and the unemployment rate includes only those in the labor force, these two rates will not add up to 1. "
+          ]
+        },
+        {
+          "cell_index_zero_based": 17,
+          "cell_sha256": "f25466b82d17faa421072e76a8f38787fe2046d401bc72bb070db6b14caaa9fc",
+          "exact_relevant_lines": [
+            "combined_df['Employment Rate'] = combined_df['Employment Rate'].str.rstrip('%').astype('float') / 100",
+            "combined_df['Unemployment Rate'] = combined_df['Unemployment Rate'].str.rstrip('%').astype('float') / 100"
+          ]
+        }
+      ]
+    },
+    "bin/jupyter/preprocessing/exploratory-factor-analysis.ipynb": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/exploratory-factor-analysis.ipynb",
+      "sha256": "8b3929662119f2c5e236dd1d8ebc6cffb664be3627bd2bfa9cda295f5d093b5f",
+      "matches": [
+        {
+          "cell_index_zero_based": 3,
+          "cell_sha256": "ee83176317b39ff816f24675bee3443137254384b2a38221dc75ef4fcba19ea3",
+          "exact_relevant_lines": [
+            "factors_df = factors_df.drop(columns=['Taxicab, motorcycle, or other means'])"
+          ]
+        },
+        {
+          "cell_index_zero_based": 4,
+          "cell_sha256": "0795c4638bceba44856269054c3d05110f4a6cc154475f7ad1c9060d0b252211",
+          "exact_relevant_lines": [
+            "factors_df['Population density (people/sq km)'] = factors_df['Total population']/factors_df['Area (sq km)']"
+          ]
+        },
+        {
+          "cell_index_zero_based": 5,
+          "cell_sha256": "6f63cb9faa2c1ed7772e1d3745c06be9856ddfd14c6fed34a5f740fea231ac1f",
+          "exact_relevant_lines": [
+            "cols_to_sum = ['Barren Land (Rock/Sand/Clay)',",
+            "row_sum = factors_df[cols_to_sum].sum(axis=1)"
+          ]
+        },
+        {
+          "cell_index_zero_based": 11,
+          "cell_sha256": "55dbaf9c538652742bd8c1c0a8f307e8adeb7264b4603c840b8007aa5c8fcee4",
+          "exact_relevant_lines": [
+            "cols_to_normalize = ['Developed, High Intensity', 'Developed, Low Intensity',",
+            "# row_sum = factors_df[cols_to_normalize].sum(axis=1)",
+            "# factors_df[cols_to_normalize] = factors_df[cols_to_normalize].div(row_sum, axis=0)*100",
+            "row_sum_1 = factors_df[cols_to_normalize].sum(axis=1)",
+            "factors_df['proportion of openland area'] = row_sum_1/row_sum*100",
+            "# factors_df[cols_to_normalize] = factors_df[cols_to_normalize].div(row_sum, axis=0)*100"
+          ]
+        },
+        {
+          "cell_index_zero_based": 13,
+          "cell_sha256": "d07da030b225db082e6b4b8b629d132254e8f1dffe82fd448eda3e2733adf823",
+          "exact_relevant_lines": [
+            "    'GDP': 'GDP ($)',",
+            "    'Population density (people/sq km)': 'Population Density (people/sq km)',",
+            "    'Employment Rate':'Employment Rate (%)',",
+            "    'Circuity average':'Circuity Average',",
+            "    'proportion of openland area':'Proportion of Built-Up Area'"
+          ]
+        },
+        {
+          "cell_index_zero_based": 17,
+          "cell_sha256": "292181e6b4c5136fed4da696f0ea440e2ff33f008b099c536c7abf3648755799",
+          "exact_relevant_lines": [
+            "        'Median Household Income', 'Households', 'Employment Rate (%)', 'Unemployment Rate (%)', ",
+            "        'Population', 'Population Density (/sq km)', 'GDP ($)'"
+          ]
+        }
+      ]
+    },
+    "bin/jupyter/preprocessing/other-climate-data.ipynb": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/other-climate-data.ipynb",
+      "sha256": "8be15472a301e0cbd05dac61d49a771f7a62ea762ee33da60e4bda225c272428",
+      "matches": [
+        {
+          "cell_index_zero_based": 0,
+          "cell_sha256": "ca0db01bf5390955442aad0fd3558939a849c09653f6589d9796c2a0f388242a",
+          "exact_relevant_lines": [
+            "averageT = pd.read_csv('../../data/raw/average_temperature.csv', skiprows=4, on_bad_lines='skip')",
+            "precipitation = pd.read_csv('../../data/raw/precipitation.csv', skiprows=4, on_bad_lines='skip')"
+          ]
+        },
+        {
+          "cell_index_zero_based": 4,
+          "cell_sha256": "436a3dc32eb6a32e1595b301f0f0aae5c3cea4b49f650f247c7ff1540c4fd51a",
+          "exact_relevant_lines": [
+            "result = merged_data_1.groupby('MSA')['Value'].sum() / merged_data_1.groupby('MSA')['County Name'].count()",
+            "result.columns = ['MSA', 'Average Temperature (F)']"
+          ]
+        },
+        {
+          "cell_index_zero_based": 5,
+          "cell_sha256": "fac7c840cb6dff4649a0a30a535d336e2572e6142b8cc49bfa98f90772bd997f",
+          "exact_relevant_lines": [
+            "result_2 = merged_data_2.groupby('MSA')['Value'].sum() / merged_data_2.groupby('MSA')['County Name'].count()",
+            "result_2.columns = ['MSA', 'Precipitation (inches)']"
+          ]
+        },
+        {
+          "cell_index_zero_based": 6,
+          "cell_sha256": "02328fdd9ad01d8f0e3d9ce6674ed529f109f7a579c104a080c9f0cb5a359e1c",
+          "exact_relevant_lines": [
+            "result_1 = merged_data_3.groupby('MSA')['Value'].sum() / merged_data_3.groupby('MSA')['County Name'].count()"
+          ]
+        }
+      ]
+    },
+    "bin/jupyter/preprocessing/county-cooling-degree-days-MSA.ipynb": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/county-cooling-degree-days-MSA.ipynb",
+      "sha256": "d4c60ee20d28cec3423895c4264f21f40c8fbaf01ffe04a509bd4b5d58d0cf3c",
+      "matches": [
+        {
+          "cell_index_zero_based": 0,
+          "cell_sha256": "86612b272528861858a31fb2b6862279bd2a8547935c5285064aefaf264a54df",
+          "exact_relevant_lines": [
+            "CDD = pd.read_csv('../../data/raw/cooling_degree_days.csv', skiprows=4, on_bad_lines='skip')"
+          ]
+        },
+        {
+          "cell_index_zero_based": 4,
+          "cell_sha256": "62c630edaf6c02b3d897e67709eee402b283c71b3208d19b9af9f0ed459a0785",
+          "exact_relevant_lines": [
+            "grouped_msa_sector = merged_data.groupby(['MSA'])['Value'].sum().reset_index()",
+            "grouped_msa_sector.rename(columns={'Value': 'Cooling Degree Days'}, inplace=True)"
+          ]
+        },
+        {
+          "cell_index_zero_based": 5,
+          "cell_sha256": "b4f419dc1d7d5e2a2fd077fd57b6ad850aa77b43a812022373667bb2997af9aa",
+          "exact_relevant_lines": [
+            "result = merged_data.groupby('MSA')['Value'].sum() / merged_data.groupby('MSA')['County Name'].count()"
+          ]
+        },
+        {
+          "cell_index_zero_based": 6,
+          "cell_sha256": "2530c3ff480b19cc57320e95bcbfd22ed794fb3f9bf9cc5d433b59a0917fab9e",
+          "exact_relevant_lines": [
+            "result.columns = ['MSA', 'Cooling Degree Days']"
+          ]
+        }
+      ]
+    },
+    "bin/jupyter/preprocessing/county-heating-degree-days-MSA.ipynb": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/county-heating-degree-days-MSA.ipynb",
+      "sha256": "e08bf1c77d4923be85bbe2865221b0017e51675e0e699c1fd9eed80194a043d6",
+      "matches": [
+        {
+          "cell_index_zero_based": 0,
+          "cell_sha256": "0d39eb79202a7ec5ba509dc4461ed6e53f7caebd6b356628a0726ffaa2519afa",
+          "exact_relevant_lines": [
+            "HDD = pd.read_csv('../../data/raw/heating_degree_days.csv',skiprows=4)"
+          ]
+        },
+        {
+          "cell_index_zero_based": 9,
+          "cell_sha256": "dc6d4684b99e8398c034f8f5d79687350a6c7cb10540bf01ad6f848a53e668be",
+          "exact_relevant_lines": [
+            "grouped_msa_sector = merged_data.groupby(['MSA'])['Value'].sum().reset_index()",
+            "grouped_msa_sector.rename(columns={'Value': 'Heating Degree Days'}, inplace=True)"
+          ]
+        },
+        {
+          "cell_index_zero_based": 10,
+          "cell_sha256": "b4f419dc1d7d5e2a2fd077fd57b6ad850aa77b43a812022373667bb2997af9aa",
+          "exact_relevant_lines": [
+            "result = merged_data.groupby('MSA')['Value'].sum() / merged_data.groupby('MSA')['County Name'].count()"
+          ]
+        },
+        {
+          "cell_index_zero_based": 13,
+          "cell_sha256": "f3a1afcb35e8e1720bc927d2b0f8edf630397cd0d389858e37a4179f2629bee0",
+          "exact_relevant_lines": [
+            "result.columns = ['MSA', 'Heating Degree Days']"
+          ]
+        }
+      ]
+    },
+    "bin/jupyter/preprocessing/raw-gdp-data-processing.ipynb": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/raw-gdp-data-processing.ipynb",
+      "sha256": "84fc2d2b6bea542b5b4dc6d7e7f76edb71a63f8a02fe53585f45d934a63f8e79",
+      "matches": [
+        {
+          "cell_index_zero_based": 1,
+          "cell_sha256": "81f08cbc4cfb45166fe11b8b542bb7b2cba719b4ceb1d058d11ec8a13a1e46e8",
+          "exact_relevant_lines": [
+            "gdp_df = pd.read_csv('../../data/raw/Table.csv') # modeshares (for commuting)"
+          ]
+        },
+        {
+          "cell_index_zero_based": 3,
+          "cell_sha256": "a3810995b55f9fd500e447bbf49ea39ef8c84773ac6225db9f61233b1a4037bc",
+          "exact_relevant_lines": [
+            "# Filter rows where Description is 'All industry total' or 'Government and government enterprises'",
+            "filtered_df = gdp_df[(gdp_df['Unnamed: 2'] == '1') | (gdp_df['Unnamed: 2'] == '83')]",
+            "filtered_df['Unnamed: 4'] = pd.to_numeric(filtered_df['Unnamed: 4'], errors='coerce')",
+            "# Group by Metropolitan Statistical Area and sum the values in Unnamed: 4",
+            "gdp_df = filtered_df.groupby('Unnamed: 1')['Unnamed: 4'].sum().reset_index()"
+          ]
+        },
+        {
+          "cell_index_zero_based": 4,
+          "cell_sha256": "d043a6f03aa27615934255350cd950030426e0c240ea96736d56fe20cd4b3ae7",
+          "exact_relevant_lines": [
+            "gdp_df.columns = ['MSA', 'GDP']"
+          ]
+        }
+      ]
+    },
+    "bin/jupyter/preprocessing/all-data-aggregation.ipynb": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/bin/jupyter/preprocessing/all-data-aggregation.ipynb",
+      "sha256": "b9a25b7dbc038c824cef6f8b03f44412b60b6c57e93b0fe97abf389b7da1c81e",
+      "matches": [
+        {
+          "cell_index_zero_based": 1,
+          "cell_sha256": "1f271a68d9a338f3af3c47d9a78d1a776cda496a159aa2d4051f29ae7365494b",
+          "exact_relevant_lines": [
+            "osmdf = pd.read_csv('../../data/raw/msa-osm-stats.csv')"
+          ]
+        },
+        {
+          "cell_index_zero_based": 3,
+          "cell_sha256": "d75a0a3984282299d81b2708548ce3b1d323e56b4f0669ed52a8b912c85574d9",
+          "exact_relevant_lines": [
+            "merged_msa.edge_length_total = merged_msa.edge_length_total/1000 #from m to km",
+            "merged_msa.edge_length_avg = merged_msa.edge_length_avg/1000 #from m to km",
+            "merged_msa.street_length_total = merged_msa.street_length_total/1000 #m -> km",
+            "merged_msa.edge_density_km = merged_msa.edge_density_km/1000",
+            "merged_msa.street_density_km = merged_msa.street_density_km/1000",
+            "'n': 'Node count',",
+            "'intersection_count': 'Intersection count',",
+            "'node_density_km': 'Node density (per sq km)',",
+            "'intersection_density_km': 'Intersection density (per sq km)',",
+            "'edge_density_km': 'Edge density (km/sq km)',",
+            "'street_density_km': 'Street density (km/sq km)',",
+            "'builing_area_sqkm': 'Building area (sq km)',",
+            "'area_sqkm': 'Area (sq km)',"
+          ]
+        }
+      ]
+    },
+    "README.md": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/README.md",
+      "sha256": "24eca762f5564c3078852fbc918170a79ac44dc3c9d365e5d921ecc8e0baf313"
+    },
+    "data/raw/ACSDT5Y2020.B08006-2024-07-01T191933.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/raw/ACSDT5Y2020.B08006-2024-07-01T191933.csv",
+      "sha256": "1b56925a4586cfbe67d16040174d129f46108000f1c86f8e33cd8e607472c47e"
+    },
+    "data/raw/msa-osm-stats.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/raw/msa-osm-stats.csv",
+      "sha256": "dbbdab066441a383e1e7553e8b33660102a7ae3e03aa48b1914fd45f5f3ffaf1"
+    },
+    "data/raw/ACSST5Y2020.S2301-2024-07-02T122928.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/raw/ACSST5Y2020.S2301-2024-07-02T122928.csv",
+      "sha256": "b6c3dc614cf73b357addb6c6057970b37dfab44dec4fa360ca0a44c9c713c19d"
+    },
+    "data/raw/average_temperature.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/raw/average_temperature.csv",
+      "sha256": "6f5f99248c8c05d94d8e7569b826f8833b70a41a720acfec7f2e81e3726a6123",
+      "metadata_header": [
+        "# Title: January - December 2020 Contiguous U.S. County Average Temperature",
+        "# Units: Degrees Fahrenheit",
+        "# Missing: -99",
+        "# Note: Period of Record: 129 Years"
+      ]
+    },
+    "data/raw/cooling_degree_days.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/raw/cooling_degree_days.csv",
+      "sha256": "937d17d747e4f46821024eadc0d7b019172c7d5e3aaa8a4e38e0a5eee1eaec93",
+      "metadata_header": [
+        "# Title: January - December 2020 Contiguous U.S. County Cooling Degree Days",
+        "# Units: Fahrenheit Degree-Days",
+        "# Missing: -99",
+        "# Note: Period of Record: 129 Years"
+      ]
+    },
+    "data/raw/heating_degree_days.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/raw/heating_degree_days.csv",
+      "sha256": "8b6ee01c0af0dcc69d09757927f4c747ca638a9354945689c725eee1fa410e82",
+      "metadata_header": [
+        "# Title: January - December 2020 Contiguous U.S. County Heating Degree Days,,,,,,,",
+        "# Units: Fahrenheit Degree-Days,,,,,,,",
+        "# Missing: -99,,,,,,,",
+        "# Note: Period of Record: 129 Years,,,,,,,"
+      ]
+    },
+    "data/tidy/msa-modeshare-employment-salary.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/tidy/msa-modeshare-employment-salary.csv",
+      "sha256": "c74babc0829b3404e69dca00a5b628249da401c8b043e851beac1a3550b41982"
+    },
+    "data/tidy/msa-gdp.csv": {
+      "url": "https://github.com/narslab/mobile-emissions-typology/blob/049cb033a9814c0ec3df99ece5144d07688aa648/data/tidy/msa-gdp.csv",
+      "sha256": "9eaafa23922a25b302670b99d95e36ce89e78e873c8cdcf9fc7680bdd258e8c5"
+    }
+  },
+  "zero_records": [
+    {
+      "msa": "Anniston-Oxford, AL",
+      "raw_row_zero_based": 14,
+      "label": "Bicycle",
+      "estimate": "0",
+      "margin_of_error": "\u00b129",
+      "total_workers": "47,349",
+      "total_margin_of_error": "\u00b11,068",
+      "tidy_bicycle": "0.0"
+    },
+    {
+      "msa": "East Stroudsburg, PA",
+      "raw_row_zero_based": 14,
+      "label": "Bicycle",
+      "estimate": "0",
+      "margin_of_error": "\u00b126",
+      "total_workers": "78,593",
+      "total_margin_of_error": "\u00b11,492",
+      "tidy_bicycle": "0.0"
+    }
+  ],
+  "six_category_count_to_percentage_max_abs_error": 1.4210854715202004e-14,
+  "primary_reading": {
+    "census_zero": "https://www.census.gov/help/topics/faq.in-the-estimate-column-for-my-acs-table-value-of-0.html",
+    "osmnx": "https://osmnx.readthedocs.io/en/stable/user-reference.html#osmnx.stats.circuity_avg",
+    "census_S2301": "https://data.census.gov/table/ACSST5Y2020.S2301",
+    "census_definitions": "https://www2.census.gov/programs-surveys/acs/tech_docs/subject_definitions/2020_ACSSubjectDefinitions.pdf",
+    "NOAA": "https://www.cpc.ncep.noaa.gov/pacdir/DDdir/",
+    "NIST": "https://www.nist.gov/si-redefinition/kelvin-introduction",
+    "change_of_variables": "https://mc-stan.org/docs/stan-users-guide/reparameterization.html",
+    "simplex": "https://mc-stan.org/docs/reference-manual/transforms.html#unit-simplex"
+  },
+  "limitation": "Pinned GDP preprocessing references missing data/raw/Table.csv. Exact price basis/year/multiplier of GDP ($) not established; keep as source GDP indicator, not verified dollar amount. An unrelated available lagdp1223.xlsx is not proof of this column provenance."
+}

@@ -23,7 +23,7 @@ Every supplied code cell should produce concise, meaningful visible feedback: a 
 
 Supplied setup may span several short cells under one material boundary. Do not rely on hidden tags or a visible `[GIVEN]` marker to tell students what to do.
 
-Number questions consistently within sections. Each question has exactly one unnumbered answer-content cell, including when its answer is supplied as an example. In the solved notebook, bracket that cell with solved-only Markdown headings as specified below. In the student notebook, its answer/placeholder immediately follows the question. Student-written code belongs under **Questions to answer**, not **Code to run**.
+Number questions consistently within sections. Each question has exactly one unnumbered answer-content cell, including when its answer is supplied as an example. In the solved notebook, put the start/end markers inside that same cell as specified below. In the student notebook, its answer/placeholder immediately follows the question. Student-written code belongs under **Questions to answer**, not **Code to run**.
 
 ## `explanation`
 
@@ -58,7 +58,7 @@ Questions may be simple. Granularity is deliberate.
 
 ## `solution`
 
-Use on the answer-content cell belonging to an `exercise-question` when that answer should be replaced by a placeholder in the student self-work version. Solved-only boundary cells surround it; they are not additional answer-content cells.
+Use on the answer-content cell belonging to an `exercise-question` when that answer should be replaced by a placeholder in the student self-work version. The start/end markers are part of this same cell, not separate cells.
 
 For code cells, the generated self-work placeholder is:
 
@@ -74,11 +74,13 @@ For Markdown cells, the generated self-work placeholder is:
 
 The solved notebook should contain the full, correct answer rather than a hint.
 
-## `solution-boundary`
+## Answer markers
 
-Use on separate Markdown cells immediately before and after each solved answer-content cell, including code answers. Their exact contents under the current hierarchy are `##### *start answer*` and `##### *end answer*`. The marker heading is one level deeper than ordinary notebook content headings (currently level four).
+In each solved answer cell, put `##### *start answer*` before the answer and `##### *end answer*` after it, with blank lines separating the markers from the answer. The marker heading is one level deeper than ordinary notebook content headings (currently level four).
 
-These cells visually bracket the answer without changing its Markdown/code type or splitting its content. The student generator removes both boundary cells entirely, preserving one immediate unnumbered placeholder (or retained supplied answer) per question. Do not tag boundary cells `solution`, which would turn them into extra placeholders.
+For a Markdown answer these are headings within the answer cell. For a code answer the exact same lines are Python comments within the code cell. Do not add marker cells or change the answer cell’s type. The generator replaces the entire `solution` cell, including its markers, with one placeholder of the same type.
+
+Solved and student notebooks must have the same number of cells and the same cell types in the same order. Keep corresponding cell IDs stable.
 
 ## `given`
 
@@ -108,7 +110,7 @@ Normally follow such a question with a `given` answer cell rather than a `soluti
 
 ## Pairing rule
 
-In the solved notebook, each question is followed by a start boundary, one corresponding answer-content cell, and an end boundary. The answer is tagged `solution`, or `given` for a deliberate `given-answer` example. After boundary removal, the generated student notebook retains one immediate answer/placeholder per question.
+In both notebooks, each question is followed immediately by one corresponding answer-content cell. The answer is tagged `solution`, or `given` for a deliberate `given-answer` example. Solved answer markers stay inside that cell; generation preserves the count, type and order of cells.
 
 Do not separate a question and its answer by unrelated exposition. The solved notebook should read naturally as Q&A.
 

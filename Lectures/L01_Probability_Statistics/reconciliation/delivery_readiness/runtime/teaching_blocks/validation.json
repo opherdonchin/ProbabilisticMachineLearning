@@ -1,0 +1,61 @@
+{
+  "cells": 146,
+  "code_cells": 23,
+  "question_answer_pairs": 18,
+  "question_and_answer_cells_exactly_preserved": true,
+  "all_code_cells_and_order_exactly_preserved": true,
+  "valid_solved_and_student_schemas": true,
+  "mechanical_student_derivation": true,
+  "material_headings": {
+    "Explanation to read": 20,
+    "Code to run": 10,
+    "Questions to answer": 14
+  },
+  "supplied_code_note_word_counts_excluding_heading": [
+    38,
+    28,
+    19,
+    38,
+    29,
+    15,
+    33,
+    27,
+    31,
+    24,
+    29,
+    19,
+    28,
+    30
+  ],
+  "supplied_code_cell_lines": [
+    12,
+    10,
+    5,
+    9,
+    1,
+    1,
+    5,
+    3,
+    9,
+    2,
+    3,
+    7,
+    7,
+    7
+  ],
+  "source_sha256": {
+    "InClass/Solutions/lecture1_missing_data.ipynb": "073d1e46001602076b5766c5fdec866b926185a5c48a43b480de62cefa95195e",
+    "InClass/lecture1_missing_data.ipynb": "9e6d8caaf4362bdc8061a555ec475f24aa8d54aeecc7b1c3ea693f9b4f00e80c"
+  },
+  "clean_local_execution": "passed",
+  "executed_code_cells": 23,
+  "error_outputs": 0,
+  "inline_figures": 3,
+  "figures_pixel_identical_to_previous_support_package_run": true,
+  "executed_notebook_sha256": "e9155ea121122a91ed5348b8ef65fd2bdc57b54ec20968d6013138262f499287",
+  "review": "coordinator authored and checked; no separate review commissioned for this consolidation",
+  "release_limits": [
+    "package pin is local; no successful public install asserted",
+    "fresh hosted Colab run and student timing pending"
+  ]
+}

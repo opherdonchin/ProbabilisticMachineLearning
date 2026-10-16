@@ -1,0 +1,2 @@
+Executed InClass/Solutions/lecture1_missing_data.ipynb
+Saved clean execution record to build/notebooks/InClass/Solutions/lecture1_missing_data.executed.ipynb

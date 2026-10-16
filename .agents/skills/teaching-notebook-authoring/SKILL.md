@@ -360,12 +360,14 @@ Then update `.agents/skills/teaching-notebook-authoring/references/student-knowl
 
 The typical instructional rhythm is:
 
-1. **Explanation to read** establishes the mathematics and any unfamiliar code operations;
-2. **Code to run**, where needed, supplies short supporting cells with full preceding Markdown explanations; the material heading supplies the run instruction;
+1. **Explanation to read**, where a substantive teaching move is needed, develops a coherent mathematical or technical idea;
+2. **Code to run**, where needed, supplies short supporting cells with brief preceding implementation notes; the material heading supplies the run instruction;
 3. **Questions to answer** contains numbered `exercise-question` cells, each immediately followed by one unnumbered `solution` Markdown or code cell;
 4. repeat for the next coherent step.
 
 Use `#` for the notebook title, `##` for sections, `###` for those three material boundaries and `####` for content titles and numbered questions. Repeat a boundary when the material type changes; consecutive questions may share one. Keep student-written code within Questions to answer. Do not supply a target calculation merely to fill the supporting-code step. Substantial setup may precede the numbered questions.
+
+Keep implementation documentation under Code to run. Explain non-obvious meaning, assumptions and behavior using the student-knowledge baseline; avoid narrating familiar syntax or repeating readable assignments. Introduce unfamiliar operations at their point of use. If code notes become long, examine several neighboring cells for a common idea and consolidate it into a substantive Explanation to read before the code, leaving short local notes. Do not make every Markdown paragraph a separate Explanation or pad retrospective summaries to make them long.
 
 Use `given-answer` when an answer should remain visible in the student version because it establishes shared information rather than testing student work.
 
@@ -402,6 +404,9 @@ Before considering the pair complete, check the following.
 - Does each question have a complete answer immediately available in the solved version?
 - Is every question answerable from information visible before the answer cell?
 - Is the expected student action clear?
+- Does each Explanation to read make a coherent teaching move rather than document a supplied cell?
+- Are Code to run notes brief, with any larger shared idea consolidated before the relevant code?
+- Does prose respect the student-knowledge baseline rather than narrate obvious syntax?
 - Has non-instructional setup been bundled rather than pointlessly decomposed?
 - Are tightly coupled actions kept together when separating them would teach nothing new?
 - Are specialized probability targets anchored to the lecture's task framing where appropriate?

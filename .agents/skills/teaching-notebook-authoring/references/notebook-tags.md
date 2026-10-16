@@ -13,13 +13,19 @@ Use the following student-facing Markdown hierarchy:
 
 Repeat a material boundary when the material type changes, rather than before every cell of the same type. Prefer local sequences of explanation, short supplied supporting code, then student work. Supply code only when it supports the mathematical target; keep the calculations students are meant to implement as questions.
 
-Keep supplied code cells short and coherent. Explain their purpose, inputs, operations and expected output in preceding Markdown. The **Code to run** material heading supplies the instruction; do not repeat “Run the code below” before each cell. Brief code comments complement that explanation. Supplied setup may span several short cells under one material boundary. Do not rely on hidden tags or a visible `[GIVEN]` marker to tell students what to do.
+Reserve **Explanation to read** for a coherent teaching move that students need to absorb: a mathematical argument or representation from the lecture, or a substantive technical idea about code, packages or computation. Keep implementation documentation with **Code to run**. The distinction is the instructional purpose of the block; the presence of prose alone does not make it an Explanation.
+
+Keep supplied code cells short and coherent. Their preceding Markdown should normally be one short paragraph explaining only the non-obvious purpose, inputs, operations or output. Use the established student-knowledge baseline: avoid narrating familiar syntax, readable assignments or facts already supplied nearby. Introduce unfamiliar operations where they are used. The **Code to run** heading supplies the instruction; do not repeat “Run the code below.” Brief code comments complement the notes.
+
+When code notes grow long, inspect the surrounding Markdown for a shared concept that deserves a consolidated **Explanation to read** before the relevant code. Draw from several cells if needed, then shorten the local code notes to what remains specific to each operation. Do not fragment a larger explanation into many code notes, relabel a long implementation description without improving it, or duplicate the consolidated explanation beside every cell. Required retrospective section summaries remain concise.
+
+Supplied setup may span several short cells under one material boundary. Do not rely on hidden tags or a visible `[GIVEN]` marker to tell students what to do.
 
 Number questions consistently within sections. Each question has exactly one immediate unnumbered answer cell, including when its answer is supplied as an example. Student-written code belongs under **Questions to answer**, not **Code to run**.
 
 ## `explanation`
 
-Use on ordinary reading cells: mathematical background, interpretation, introductory guidance and retrospective summaries. Explanations are unnumbered. They remain in the student notebook; the generator removes only `solution` content.
+Use on substantive mathematical or technical teaching, first-notebook orientation and retrospective summaries. Keep documentation of a particular supplied code cell under Code to run. Explanations are unnumbered. They remain in the student notebook; the generator removes only `solution` content.
 
 ## `run-instruction`
 

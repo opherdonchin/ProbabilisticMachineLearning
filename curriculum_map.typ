@@ -50,7 +50,7 @@ Because no lecture has yet been given, every entry remains prospective in the cl
 
 = Proposed lecture and problem-solving practice map
 
-The thirteen-meeting allocation is a *revisable course proposal*, not a record of teaching delivered or a replacement for approved lecture scopes. L01 materials have been authored but the first class has not yet been taught; L02 has an agreed design; L03 has an earlier agreed scope; and the earlier L04 coding split records prior instructor decisions. Proposed alternatives in this table do not silently amend those decisions. Check the lecture scopes and review records before implementing any change.
+The thirteen-meeting allocation is a *revisable course proposal*, not a teaching record or replacement for approved scopes. L01 is prepared but untaught; L02 has an agreed design; L03 has an earlier agreed scope. On 2026-10-14 the instructor selected Iris evaluation for L04, retaining live parity; its full revised scope remains provisional. Other proposed alternatives do not amend prior decisions. Check scopes and review records before implementation.
 
 Each row connects an identifiable learning problem, a mathematical exemplar, and *bounded hands-on competence*. One notebook should generally provide meaningful use and evaluation of a method on data; when the chosen derivation needs a tiny exactly checkable example, supplied code or reference results can keep that diagnostic alongside the application. L07, L09 and L10 particularly benefit from revisiting a shared Bayesian prediction problem so that students compare methods, not just benchmark unrelated algorithms. Practical datasets, scaffolding, runtime and the one-hour limit still require separate feasibility checks.
 
@@ -131,7 +131,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
 
   [4],
   [*Information theory: distributional comparison and information preservation* \
-  #note[Revisable proposal]],
+  #note[Iris endpoint selected]],
   [Proper probabilistic scoring, entropy, cross-entropy, KL divergence, mutual information and data processing. Judge predictive distributions and representations in terms of the task's performance, not accuracy alone. A small noisy-code construction illustrates information versus error and rate.],
   [
     - 5.1.3 / 5.1.6; 5.2.1 / 5.2.4 Information and uncertainty
@@ -142,7 +142,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
   [
     - Selected 6.1 / 6.2.1–6.2.2 / 6.3 Uncertainty and shared information
   ],
-  [*Compare probabilistic predictions and information-preserving representations.* Given prepared predictions and labels for the Iris classification dataset, compare accuracy, held-out log score and a simple reliability check; examine a discrete feature representation and calculate what label information it retains. Use a small finite channel/parity example as an optional exact check of error versus information and resource rate. *Competence:* Choose and interpret performance measures; explain why the best classifier by one metric may not be best for another task. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/05/error_correcting_code_demo.ipynb")[Coding reference; supplementary]. *Proposal change:* The previously selected five-bit correcting-code notebook is no longer the default one-hour exercise; feasibility and source coverage require review.],
+  [*Evaluate prepared Iris forecasts.* Compare held-out accuracy and mean log loss with a supplied class-frequency baseline; interpret supplied reliability and bounded information examples. No training or population-MI estimation. *Competence:* Distinguish a correct label from a good probability forecast. *Selected 2026-10-14:* replaces five-bit student construction; three-bit parity stays live. #link("Lectures/L04_Information_Theory/lecture_scope.md")[Detailed scope] and one-hour feasibility remain provisional.],
 
   [5],
   [*Generalized linear models, automatic differentiation and SGD* \

@@ -101,7 +101,7 @@ Each meeting includes approximately two hours of mathematical lecture and one ho
 2. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
 3. Course notes, exercises, notebook solutions and project materials: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[course repository].
 
-The schedule is a *revisable proposal* for lectures and notebooks. L01 has prepared materials but has not yet been taught. Earlier L02/L03 decisions and the prior L04 coding choice are documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register]; proposing an alternative does not silently amend their approved scopes. The revised practical exercises—especially L04 evaluation and the linked L07/L09/L10 comparison—require scope reconciliation, data packaging, runtime checks and a one-hour student pilot before adoption. Previous independent reviews apply only to the versions they reviewed.
+The schedule is a *revisable proposal* for lectures and notebooks. L01 has prepared materials but has not yet been taught. Earlier L02/L03 decisions and the current L04 decision are documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register]. On 2026-10-14 the instructor selected Iris probability evaluation for L04, retaining the live parity example; the detailed scope and one-hour workload remain under review. The linked L07/L09/L10 comparison remains proposed. Data packaging, runtime checks and a student pilot are still required before notebook release. Previous independent reviews apply only to the versions they reviewed.
 
 = Prerequisites
 
@@ -211,7 +211,7 @@ The course grade is based on four components:
   [
     - Selected 6.1 / 6.2.1–6.2.2 / 6.3 Uncertainty and shared information
   ],
-  [Compare provided probabilistic predictions on the Iris classification dataset using held-out log score, accuracy and simple reliability checks; evaluate label information retained by a discrete feature representation. Use the parity-code calculation as an optional exactly checkable information/error contrast.],
+  [Evaluate prepared Iris probability forecasts using held-out mean log score and accuracy, against a supplied class-frequency baseline. Interpret supplied reliability and bounded information/representation examples. No classifier training or population mutual-information estimation is required. The live three-bit parity example provides an exactly checkable information/error contrast.],
   [Choose and interpret probabilistic performance measures on real predictions, distinguishing scoring, prediction error and information retained.],
 )
 

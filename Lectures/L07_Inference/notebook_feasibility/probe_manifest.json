@@ -1,0 +1,64 @@
+{
+  "baseline": "5e4c86e",
+  "python": "3.12.13",
+  "execution": "isolated locked uv, author probes, no hosted Colab/student timing",
+  "files": [
+    {
+      "path": "Lectures/L07_Inference/notebook_feasibility/README.md",
+      "sha256": "fff14fc0f051b09b6f07cfc908f12b94b9b804c71977f996dfd903c42915ae24"
+    },
+    {
+      "path": "Lectures/L07_Inference/notebook_feasibility/classifier_probe.py",
+      "sha256": "519a8e8680df24818ffede2b3e40318a8a6ca45768999183192f352ee39265a3"
+    },
+    {
+      "path": "Lectures/L07_Inference/notebook_feasibility/classifier_results.json",
+      "sha256": "da74dc516997234f063bdea46ef180206af60da3f2cc063c8b9fbd9c5fa40d7c"
+    },
+    {
+      "path": "Lectures/L07_Inference/notebook_feasibility/reference_bounds.md",
+      "sha256": "05be5fa8edaf42f796712642c766ffa9a0c0af3d77b9cb5b3b128d42f202656a"
+    },
+    {
+      "path": "Lectures/L07_Inference/notebook_feasibility/reference_bounds.py",
+      "sha256": "068acf422e33179b85e57bc67ea53aea7ddf337cc973e943ee71f85ff4e4a9e6"
+    },
+    {
+      "path": "Lectures/L07_Inference/notebook_feasibility/reference_bounds_results.json",
+      "sha256": "38fefa2fc21dd5f9f20ff79c852224fe34ba15334d1dadda7e52f8c4105093fe"
+    },
+    {
+      "path": "Lectures/L08_Structured_Inference/notebook_feasibility/sequence_probe.py",
+      "sha256": "f1b99eb54bec3113eeb98b20de70652767e1a97d89de2f2458837bd7cae9f791"
+    },
+    {
+      "path": "Lectures/L08_Structured_Inference/notebook_feasibility/sequence_results.json",
+      "sha256": "bec579f9261fccceb6bf02a96bfc3f0f79cb98cd5caa645b87335f74f706805a"
+    },
+    {
+      "path": "Lectures/L08_Structured_Inference/notebook_feasibility/traffic_probe.py",
+      "sha256": "1ab1bccde7c77ad7588e63945c287adb97c2798b328924dd9ac3fb84e3ab5f82"
+    },
+    {
+      "path": "Lectures/L08_Structured_Inference/notebook_feasibility/traffic_results.json",
+      "sha256": "e4fedb815804603e08bff16cf93e51b575880b6396844d0c8db89eb5f473fb84"
+    },
+    {
+      "path": "Lectures/L09_Variational_Inference/notebook_feasibility/pathwise_probe.py",
+      "sha256": "5cded9b66a5b1aa3202f70cd5d2516a1cc7c2ab646890e66794fb5c08ac9f754"
+    },
+    {
+      "path": "Lectures/L09_Variational_Inference/notebook_feasibility/pathwise_results.json",
+      "sha256": "01ec11b5b20b7e4259e7d2d08fb0c9ec66cd91dfe43e6bee615048b072aede4d"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_feasibility/mh_probe.py",
+      "sha256": "f0de87b2286738dd76aaccd76850f31dcd18467b3ed3efe607822eba3cfb64bf"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_feasibility/mh_results.json",
+      "sha256": "34152b6ed4b5cf4f9a2edad28a3065d9f2ddb483ab5fb6b8b1d9431aa804a4fe"
+    }
+  ],
+  "additional_reference_check": "2026-10-14: analytic Gaussian-envelope tail bound with gradient residual; float64 evaluation; mesh error remains unproved; original inference scripts/results unchanged by this extension"
+}

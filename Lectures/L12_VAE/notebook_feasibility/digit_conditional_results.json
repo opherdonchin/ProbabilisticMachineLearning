@@ -1,0 +1,36 @@
+{
+  "config": {
+    "seed": 17,
+    "split_seed": 20261014,
+    "n_train": 1397,
+    "n_validation": 200,
+    "n_test": 200,
+    "input": 64,
+    "hidden": 32,
+    "latent": 4,
+    "epochs": 100,
+    "batch_size": 64,
+    "lr": 0.003,
+    "beta": 1,
+    "observation": "Bernoulli per pixel after fixed threshold original intensity > 8",
+    "status": "conditional unapproved fallback; not MNIST/source convolutional notebook"
+  },
+  "versions": {
+    "torch": "2.14.0+cpu",
+    "sklearn": "1.9.1"
+  },
+  "selected_epoch": 100,
+  "training_seconds": 1.1308906979393214,
+  "test": {
+    "D": 14.614168167114258,
+    "R": 4.315368175506592,
+    "D_mc_se": 0.017062461003661156
+  },
+  "parameters": 4616,
+  "caveats": [
+    "No visual plausibility or student-time trial; binary support does not imply recognizable handwritten digits.",
+    "Thresholding discards grayscale information; this changes the task and observation likelihood.",
+    "No beta comparison, no claim to preserve the existing 19-feature mobility scope or \u03c4\u00b2=.5 Gaussian example.",
+    "No data/checkpoint copies stored; no hosted Colab claim."
+  ]
+}

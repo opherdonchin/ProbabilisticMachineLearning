@@ -1,0 +1,36 @@
+{
+  "cells": 159,
+  "code_cells": 23,
+  "question_answer_pairs": 18,
+  "questions_and_answers_preserved": true,
+  "supplied_code_cell_lines": [
+    12,
+    10,
+    5,
+    9,
+    1,
+    1,
+    5,
+    3,
+    9,
+    2,
+    3,
+    7,
+    7,
+    7
+  ],
+  "schemas_valid": true,
+  "material_heading_hierarchy_checked": true,
+  "immediate_unnumbered_answer_per_question": true,
+  "each_supplied_code_preceded_by_explained_run_instruction": true,
+  "mechanical_student_derivation": true,
+  "executed_source_transformation_clears_all_counts_and_outputs": true,
+  "inline_figures": 3,
+  "pixel_identical_reference_figures_checked": 3,
+  "sha256": {
+    "InClass/Solutions/lecture1_missing_data.ipynb": "deb6ad228920dfa4aadec9a8885475869bbe98ef75e94d1c04e04d2b39c59fff",
+    "InClass/lecture1_missing_data.ipynb": "23c8673641ee3f9bde81fc7217759ba5c7493b19005f4d47cf336ee46dddf342",
+    "scripts/make_self_work_notebook.py": "dcf6a5e26c64b7abf6fc7bb1ac2e8c46605fe3ed6b716d66c9ae1b608eca274f",
+    "build/notebooks/InClass/Solutions/lecture1_missing_data.executed.ipynb": "ab4f3a8aec67ebb274cc6b82c254d49c42d2af0de750f7ea48265886af5d5cbd"
+  }
+}

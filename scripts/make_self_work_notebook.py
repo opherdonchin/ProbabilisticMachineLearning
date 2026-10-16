@@ -10,6 +10,7 @@ def transform_cell(cell):
 
     if cell.get("cell_type") == "code":
         cell["outputs"] = []
+        cell["execution_count"] = None
 
     if "solution" not in tags:
         return cell

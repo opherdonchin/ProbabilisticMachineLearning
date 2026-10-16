@@ -234,7 +234,7 @@ Students should not be expected to infer library-specific behavior from a functi
 When a question asks about unfamiliar behavior — for example how PyMC treats missing values or what object `pm.sample` returns — use one of these patterns:
 
 1. provide a direct official-documentation link and ask students to answer from that documentation;
-2. provide the relevant behavior as a **[GIVEN]** explanation, then ask them to apply it;
+2. provide the relevant behavior under **Explanation to read**, then ask students to apply it;
 3. provide a minimal example and ask them to inspect its result.
 
 Prefer official package documentation over generic web search results.
@@ -360,12 +360,12 @@ Then update `.agents/skills/teaching-notebook-authoring/references/student-knowl
 
 The typical instructional rhythm is:
 
-1. `exercise-question` markdown cell;
-2. immediately following `solution` markdown or code cell;
-3. optional `given` material needed for the next step;
-4. the next question.
+1. **Explanation to read** establishes the mathematics and any unfamiliar code operations;
+2. **Code to run**, where needed, supplies short supporting cells with full preceding Markdown explanations and explicit run instructions;
+3. **Questions to answer** contains numbered `exercise-question` cells, each immediately followed by one unnumbered `solution` Markdown or code cell;
+4. repeat for the next coherent step.
 
-But substantial setup may precede the numbered questions, and a supplied code block may precede questions that ask students to understand, extend, or manipulate it.
+Use `#` for the notebook title, `##` for sections, `###` for those three material boundaries and `####` for content titles and numbered questions. Repeat a boundary when the material type changes; consecutive questions may share one. Keep student-written code within Questions to answer. Do not supply a target calculation merely to fill the supporting-code step. Substantial setup may precede the numbered questions.
 
 Use `given-answer` when an answer should remain visible in the student version because it establishes shared information rather than testing student work.
 

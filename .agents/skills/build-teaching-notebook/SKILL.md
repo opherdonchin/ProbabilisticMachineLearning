@@ -5,6 +5,8 @@ description: Orchestrate creation of a course teaching notebook by first produci
 
 # Build a teaching notebook
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
+
 Use this skill when the request is end-to-end: build a new course teaching notebook from lecture material, a book section, and/or a guiding prompt.
 
 This skill orchestrates two distinct stages. Keep them separate even when they happen in one conversation.

@@ -28,6 +28,12 @@ When coordinated, route the response to the **Lecture Development Coordinator** 
 
 **Execution backpressure:** While performing its own stage, a downstream skill discovers that an approved upstream artifact cannot be used coherently as written. Such findings are stronger evidence than a preview. Escalate them even if the earlier preview passed.
 
+For the coupled Organization–Design–Authoring loop, use
+[slide-convergence.md](slide-convergence.md). An issue can initiate an exchange
+of alternatives among its affected owners, not merely a serial rejection and
+retry. Provisional choices may be negotiated; an explicitly dispatched scratch
+build can supply evidence, while a `feasibility-review` remains read-only.
+
 ## Decision ownership
 
 - **Lecture Scope** owns the lecture purpose and endpoint, covered/deferred material, mathematical spine and depth, notebook handoff, examples promised, lecture-wide delivery status, and live-time envelope.

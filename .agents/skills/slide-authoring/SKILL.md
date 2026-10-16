@@ -5,7 +5,17 @@ description: Lower an approved slide-design specification into the course's Typs
 
 # Slide authoring
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
+
 Use this skill after slide design is approved.
+
+Under Lecture Development coordination,
+[the coupled slide protocol](../shared/slide-convergence.md) also permits an
+explicitly scoped exploratory build against provisional design to test fit,
+grouping and reveals. Return implementation alternatives and measured evidence
+to Design and Organization; do not only reject their artifact. This isolated
+prototype is not a read-only feasibility review, production completion or
+permission to replace approved lecture sources.
 
 The primary responsibility is:
 
@@ -18,7 +28,7 @@ Work one approved section or an explicit slide allowlist at a time unless the in
 Use `build` (default), `feasibility-review`, or `revision`. Follow `../shared/backpressure.md` for common modes and issue ownership. When the Lecture Development Coordinator (`../lecture-development/SKILL.md`) is active, send instructor decisions and backpressure through the coordinator.
 
 - **Build:** lower the approved design to `slide_deck.typ` using the workflow below, compile handout and presentation, run checks and inspect changed render states.
-- **Feasibility Review:** inspect a **provisional Slide Design specification** against the current `design.typ`, live `course.typ` API, fonts/assets available in the repository, reveal semantics, and production constraints. Identify likely layout overflow, illegible density, impossible/unsupported primitives, missing assets, or unimplementable reveal behavior. Return `feasible`, `feasible-with-risks`, or `blocked` with actual evidence, owner, smallest fix, and uncertainty. **Do not** generate `slide_deck.typ`, rewrite `slide_design.typ`, or claim compilation/render validation of a production deck that has not been built.
+- **Feasibility Review:** inspect a **provisional Slide Design specification** against the current `design.typ`, live `course.typ` API, fonts/assets available in the repository, reveal semantics, and production constraints. Test preservation of semantic roles and the existing deck's object/key-point convention as well as constructibility. Identify likely layout overflow, illegible density, impossible/unsupported primitives, missing assets, or unimplementable reveal behavior. Return `feasible`, `feasible-with-risks`, or `blocked` with actual evidence, owner, smallest fix, and uncertainty. **Do not** generate `slide_deck.typ`, rewrite `slide_design.typ`, or claim compilation/render validation of a production deck that has not been built.
 - **Revision:** accept focused feedback from compilation/visual inspection, instructor, or changed approved design. Apply the smallest production-level correction, recompile and visually recheck affected output states. If a faithful implementation is impossible without changing the intended explanation or teaching sequence, return explicit Slide Design (or earlier owner) backpressure instead of silently redesigning.
 
 A feasibility review is optional before implementation; actual mechanical and visual validation remain mandatory at the Build completion gate. Under coordination, preview scheduling and human approval belong to the coordinator, not the authoring agent.
@@ -34,6 +44,11 @@ Before authoring, read:
 - neighboring production source when continuity matters;
 - `Lectures/design.typ` only as needed to interpret design-stage structures;
 - mature Lecture 1 source when a concrete production precedent helps.
+
+For executable `.typ` mathematics, use the available Typst-authoring skill and
+verified current syntax/documentation. Check the rendered mathematical grouping,
+not just whether the equation compiles; shorthand delimiters can parse legally
+while representing a different expression.
 
 Use `Lectures/README.md` only as the pipeline/index document.
 
@@ -87,6 +102,17 @@ Record the exact section/slide allowlist, approved design artifact, target produ
 
 ### 2. Inspect the live production API
 
+Check the design's precedent/role contract against the existing rendered deck.
+Trace typed key points to the production `key-points:` slot (or the exported
+`key-points(...)` wrapper when the entire region must reveal independently), and
+mathematical objects to `object:`. Preserve the course's semantic helper and text
+hierarchy rather than reproducing a visually similar generic card. A generic grid in the design is not permission to flatten
+both roles into `object:`. If placement contradicts semantic roles, return
+Slide Design backpressure before tuning geometry. Likewise, newly derived
+mathematics marked as recall is a design issue, not a request to shrink the proof.
+Preserve local proof warrants and operation labels as well as equations: a bare
+equation stack can violate design fidelity even when prose has a separate slot.
+
 Read the current `course.typ` signatures and relevant neighboring source.
 
 ### 3. Lower the final-state composition first
@@ -128,9 +154,18 @@ After editing a lecture `.typ` file, run:
 python scripts/check_typst_math_attachments.py <edited-file>
 ```
 
-Fix new hits introduced by the edit.
+Fix new hits introduced by the edit. The design input must also have passed
+its attachment check; report failures upstream rather than silently copying or
+repairing mathematically different parsed content. Inspect delimiters and exponent/
+subscript grouping in the rendered equations. Use verified math constructors for
+compound notation; when meaning remains uncertain, a minimal parsed-content query
+can distinguish a legal parse from the intended expression.
 
-Compile both handout mode and presentation/reveal mode.
+Compile both handout mode and presentation/reveal mode. For a linked insertion,
+inspect the actual predecessor and the affected slides together, not only
+isolated slide briefs. Verify that carried equations and notation were really
+established, and that each reveal makes the intended operation and its reason
+visible. Stable positions and cumulative persistence alone do not establish flow.
 
 ### 8. Perform targeted visual review
 
@@ -138,7 +173,18 @@ Use the repository review workflow documented in `Lectures/README.md`.
 
 Inspect every changed state and the final handout for legibility, hierarchy, equation density, figure readability, alignment, spacing, reveal stability, premature answers, missing content, and fidelity to the approved design.
 
-Mechanical success is not visual approval.
+Compare the final state with the selected established proof/neighbor renders,
+not only with its own design sketch. Verify that the mathematical object remains
+light on explanatory prose, its equation/figure stays coherent, and necessary
+interpretation occupies the separate key-point region. Short intrinsic labels
+and mathematically necessary conditions can stay with their object; a paragraph
+of explanation cannot be made into an object merely by grouping it in a card.
+If a faithful render violates this course convention, report design backpressure.
+
+Report mechanical validity, design fidelity and comparative alignment separately,
+with actual evidence for each. Inspecting every state establishes coverage of
+review; it does not itself establish any of those judgments. Mechanical success
+is not visual approval.
 
 ### 9. Surface backpressure
 

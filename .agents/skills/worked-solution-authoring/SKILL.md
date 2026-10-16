@@ -5,6 +5,8 @@ description: Build and validate a technically correct worked computational examp
 
 # Worked-solution authoring
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
+
 Use this skill when developing the **technical solution** that will later become a teaching notebook. The purpose of this stage is to solve the intended problem correctly and coherently, not yet to design student exercises.
 
 ## Core principle

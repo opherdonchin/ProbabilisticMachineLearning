@@ -1,16 +1,18 @@
 ---
 name: lecture-scope
-description: Develop an agreed lecture scope from prior course material, Murphy Books 1 and 2, the course material ledger, and any authoritative syllabus before slide or notebook drafting begins.
+description: Develop an agreed lecture scope from prior course material, Murphy Books 1 and 2, the planned/actual curriculum maps, and any authoritative syllabus before slide or notebook drafting begins.
 ---
 
 # Develop a lecture scope
+
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
 
 ## Operating modes
 
 Use `build` (default), `feasibility-review`, or `revision` as specified by the Lecture Development Coordinator (`../lecture-development/SKILL.md`) or an explicit user request. Follow the shared result contract in `../shared/backpressure.md`. The full five-part iterative process below is **Build mode only**.
 
-- **Build:** investigate actual prior lecture artifacts, material ledger, books, and instructor goals; compare forward paths; obtain decisions and produce the five-part Lecture Scope. When coordinated, return consequential questions to the coordinator rather than opening a parallel instructor conversation.
-- **Feasibility Review:** review an instructor's **proposed lecture brief, goals, or provisional course-level constraints** against the actual course boundary, syllabus, source support, conceptual prerequisites, notebook expectations, and lecture time. Return `feasible`, `feasible-with-risks`, or `blocked` with stage-owned concerns and minimum repairs. **Do not** draft the intellectual arc, mathematical spine, full Scope, sections, or slides. If no meaningful brief exists to review, report that limitation.
+- **Build:** investigate actual prior lecture artifacts, the planned and actual curriculum maps, books, and instructor goals; compare forward paths; obtain decisions and produce the five-part Lecture Scope. When coordinated, return consequential questions to the coordinator rather than opening a parallel instructor conversation.
+- **Feasibility Review:** assess a **proposed lecture brief, provisional Scope, goals, or course-level constraints** against the actual course boundary, source argument, prerequisites, notebook and time. Return `feasible`, `feasible-with-risks`, or `blocked`, with stage-owned issues and minimum repairs; when assigned a source-arc check, report its separate classification. Reconstructing the *source* argument for review is allowed; do **not** construct or revise the proposed lecture's arc, mathematical spine, sections, or slides. If no meaningful target exists, report the limitation.
 - **Revision:** given a specific backpressure item and the current approved Scope, inspect the relevant evidence, propose the smallest Scope-level change, and modify only affected Scope fields **after instructor approval where consequential**. Preserve unaffected outcomes, covered/deferred decisions, and mathematical depths. Identify section and slide artifacts now requiring revalidation. Do not rebuild the entire scope or redesign sections.
 
 When operating standalone, interact with the instructor as described below. When coordinated, the coordinator arranges specialist reviews and instructor checkpoints.
@@ -44,11 +46,21 @@ Do not use it to:
 - write a slide-by-slide outline;
 - perform section-level or slide-level drafting that belongs to later skills.
 
-Exception: before scope approval, **obtain** a lightweight Section Design feasibility review, not a section design. The coordinator dispatches this review when active; in standalone mode request it directly. Follow `../shared/backpressure.md` and the review mode of `../section-design/SKILL.md`.
+Exception: before scope approval, obtain the source-arc and lightweight Section Design feasibility reviews described below, without designing sections. The coordinator dispatches them when active; in standalone mode request them directly. Follow `../shared/backpressure.md` and the review mode of `../section-design/SKILL.md`.
 
 The approximate time allocations in the scope are constraints for later drafting, not slide counts. Scope-stage timing is a planning estimate, not a validated rehearsal time.
 
+## Recover existing agreements before building
+
+Check the target lecture's scope and development register before treating it as new work. Inspect relevant local branches and available remote-tracking branches, especially any branch named by the instructor or recorded in course files. Refresh a named remote branch when access permits. Read its files without switching branches or merging; record the source commit and distinguish instructor-agreed scope from proposed downstream work. If relevant prior work is unavailable, report that authority gap instead of assuming no agreement exists.
+
+An existing agreed scope makes this a reconciliation or revision task. Compare current decisions and files, preserve accepted content, and seek a new pedagogical choice only for an actual unresolved conflict. Autonomous proposal authority does not erase earlier instructor agreements. New generic process fields do not retroactively invalidate an accepted scope or authorize adding section boundaries or timed milestones to it.
+
 ## Required sources
+
+Read the authoritative `../../../course_architecture.typ` (or its current compiled PDF) before designing or significantly revising a scope. Its task-family → model and performance → computation framework is the course-level criterion; this skill implements that framework rather than defining a competing course philosophy.
+
+
 
 Before proposing a new lecture scope, inspect the sources that establish the actual course state.
 
@@ -56,7 +68,7 @@ Use, when available:
 
 - the actual previous lecture deck or other delivered lecture artifact;
 - the actual previous lecture notebook and any assigned recording;
-- `Lectures/material_ledger.md`;
+- `curriculum_map.typ` (planned) and `curriculum_map_actual.typ` (taught);
 - the relevant parts of Murphy Book 1;
 - the relevant parts of Murphy Book 2;
 - an authoritative course syllabus, if one exists;
@@ -68,47 +80,34 @@ When estimating lecture extent, also read `references/timing-calibration.md`. It
 
 Do not infer the starting point from an old plan when actual lecture artifacts exist.
 
-Treat the material ledger as the canonical record of curriculum boundaries and prior section dispositions. A section that was merely mentioned is not thereby covered.
+Treat `curriculum_map_actual.typ` as the record of material actually taught and attempted; it is deliberately empty before the semester starts. Use `curriculum_map.typ`, agreed scopes, and prepared artifacts to determine the prospective authoring boundary. A section that was merely mentioned is not thereby covered.
 
 If an existing syllabus conflicts with actual delivered material or with a more recent instructor decision, surface the conflict rather than silently choosing one.
 
 ## Order of authority
 
-When constraints conflict, use this order:
+When constraints conflict, use this order (the course architecture governs course-wide goals but does not cancel instructor-approved local teaching):
 
-1. explicit current instructor decisions;
+1. explicit current instructor decisions and documented agreements for the target lecture, unless a later instructor decision revises them;
 2. actual previously delivered course material and the agreed Lecture Scope of prior lectures, when available;
-3. the current material ledger;
-4. an authoritative current syllabus;
-5. Murphy Book 2 and Book 1 as source texts;
-6. generic pedagogical preference.
+3. the course-wide intellectual framework and planned progression in `course_architecture.typ`;
+4. `curriculum_map_actual.typ` for actually taught coverage (and `curriculum_map.typ` for planned allocations);
+5. the student-facing syllabus as a summary;
+6. Murphy Book 2 and Book 1 as source texts;
+7. generic pedagogical preference.
 
 Book order matters, but it is not a command to cover every intervening section.
 
-## Core optimization principle
+## Decision priorities
 
-Optimize the lecture as a whole rather than maximizing any single criterion.
+Use these priorities in order, rather than treating all desirable qualities as equal scores:
 
-Protect these first:
+1. **Honor authority and actual student knowledge.** Preserve instructor decisions, delivered teaching, and accepted upstream scopes; do not assume missing prerequisites can be taught for free.
+2. **Choose a worthwhile intellectual argument.** The lecture needs a coherent mathematical question and endpoint, grounded in Murphy's source argument and L01's framework: task, experience, performance, probabilistic query, and the operations needed to answer it. A justified reorganization may be better than Murphy's order; an attractive application alone is not an argument.
+3. **Test feasibility as a gate.** The required mathematics and separate notebook must fit the students and available time. If not, first remove secondary breadth, redundant examples, or optional detail. Do not quietly sacrifice the core argument or claim implausible timing; return a consequential tradeoff to the instructor.
+4. **Optimize the feasible route.** Prefer a notebook that extends rather than repeats the lecture, useful applications, and transferable computational skills. Favor source order, nearby material, and consistent pacing when alternatives are otherwise comparably valuable.
 
-- internal coherence;
-- feasibility in the available time;
-- alignment with what students actually know;
-- coherence and continuity with previous lectures in pacing, coverage density, notation, mathematical depth, and intellectual style.
-
-Within those constraints, prefer:
-
-- a substantive and useful intellectual or applicative endpoint;
-- a strong handoff to the student notebook when a notebook is part of the lecture;
-- recognizable forward progress through the books;
-- reuse of nearby material before large forward jumps when pedagogical value is comparable.
-
-Do not include material merely because it lies numerically between two sections. Backfill earlier material when it materially enables the lecture. Otherwise leave it for later.
-
-Do not force a nominal syllabus topic into the lecture if doing so weakens the lecture's coherence or endpoint. Conversely, do not make large jumps through the books when a nearby route produces a comparably strong lecture.
-
-A good scope should feel like a plausible continuation of the course already taught, not an independently optimized standalone lecture.
-
+Do not teach a subsection just because it lies between two chosen passages, or force a nominal syllabus topic into an arc it weakens. Conversely, identify any essential source transition omitted or moved elsewhere. A good scope is a plausible continuation of the course, not an independently optimized standalone lecture.
 # Scope-development process
 
 ## 1. Establish the starting boundary
@@ -127,6 +126,15 @@ Identify, concisely:
 - what students can reasonably be assumed to know at the beginning of the new lecture.
 
 Do not turn this into a retrospective review of the whole course. Include only information that constrains the next scope.
+
+### Establish the intellectual starting point, not only prerequisites
+
+Before comparing routes, briefly reconstruct two arguments from the actual artifacts:
+
+- **Previous-course argument:** what mathematical question did the previous lecture develop, how did its representation/results/examples/applications relate, and what reusable understanding did it establish? Relate it where useful to L01's framework for specifying learning problems and answering probabilistic queries. Distinguish this from a list of formulas or a timing benchmark.
+- **Source argument:** independently of a favored notebook or proposed lecture, reconstruct the book's motivating question, the mathematical transitions linking its selected passages, and their intellectual endpoint. Distinguish the essential argument from examples and optional excursions; a list of section numbers is not this reconstruction.
+
+Use these as evidence, not fixed templates. The next lecture may deliberately change style or source order, but state what changes and why. A familiar example may motivate general mathematics; this does not make the example the lecture's purpose.
 
 ## 2. Solicit instructor goals, issues, and priorities
 
@@ -148,7 +156,7 @@ If these have already been supplied in the conversation, summarize them and ask 
 
 ## 3. Generate genuinely different forward paths
 
-Normally propose 3-6 plausible trajectories.
+When the destination is open, compare a small number of genuinely distinct trajectories (normally 2–3; more only if useful). If the instructor has fixed the arc, test its feasibility and consequential alternatives without reopening the accepted choice.
 
 Alternatives must differ pedagogically, not cosmetically. They may differ in endpoint, amount of backfill, which book provides the main exposition, whether a topic is deferred, whether a mathematical development is live or recorded, or how directly the lecture prepares the notebook.
 
@@ -163,6 +171,10 @@ For each path, state compactly:
 - likely recording opportunities when they materially affect feasibility;
 - why this path is worth considering.
 
+When plausible, include a serious route that preserves the source's mathematical argument and prior-course continuity **while keeping the same notebook application**. Do not make the instructor choose between a strong theoretical route and a useful application when both can coexist. If fixed constraints prevent that alternative, explain the conflict.
+
+State each route's reusable intellectual/mathematical endpoint separately from its notebook product. Choosing an accessible notebook algorithm does not by itself approve the lecture's organizing question or relative mathematical emphasis. An application-led lecture is legitimate when that emphasis is deliberate and justified; it is not the automatic consequence of finding a convenient worked example.
+
 Do not produce a slide outline at this stage.
 
 ## 4. Evaluate the alternatives
@@ -174,6 +186,7 @@ Include:
 - internal coherence;
 - substantive endpoint;
 - notebook handoff;
+- whether the selected ideas preserve a recognizable source argument, or form a better course-specific argument with justified departures;
 - forward progress through the books;
 - prerequisite burden and required backfill;
 - feasibility in the available lecture time;
@@ -181,7 +194,7 @@ Include:
 - whether any valuable but self-contained mathematical development is a plausible recording candidate;
 - implications for later lectures when they are material to the choice.
 
-Expose real tradeoffs. Do not manufacture a numerical score unless it genuinely clarifies the decision.
+Make consequential changes to the source's conceptual transitions explicit: which are developed here, explained elsewhere, or deliberately lost, and what replaces them. Check how each route advances or reframes L01's task–experience–performance and joint-model/query framework, including any computational approximation and its cost. Judge the mathematical argument, not section coverage or book order. Expose real tradeoffs; do not manufacture a numerical score unless it clarifies the decision.
 
 Recommend a path when the evidence is strong, but keep the alternatives visible enough for the instructor to redirect the design.
 
@@ -212,6 +225,10 @@ Build and review each part separately. If a later part reveals a structural prob
 ## 6a. Intellectual arc
 
 Build this first.
+
+Read the proposed arc as a developing argument before turning it into timed milestones: what question makes the first result necessary, what that result enables, and why the next development follows. Identify the probabilistic question and operation or computational obstacle motivating the new method, returning to L01 where illuminating. Briefly state how it preserves, rearranges or replaces the source's argument, and why; identify essential transitions explained in other lectures or omitted. For a multi-chapter synthesis, explain the new combined argument. Compare with the previous course rather than assuming a good notebook determines the lecture's purpose.
+
+The arc is neither a topic inventory nor the workflow of the notebook. Its examples should have explicit roles—motivation, worked instance, interpretation, counterexample or application. Preserve the reasons for transitions and the source mapping when later editing for readability; short prose must not erase the argument. The required milestone fields below help inspect this reasoning but filling them does not demonstrate it.
 
 Identify a small number of **provisional macro-level conceptual segments or milestones**, not slides and not finalized Section Design boundaries. These describe the intellectual route and its approximate time envelope; the Section Designer may split, combine, or shift them while preserving the instructor-approved coverage, mathematical depth, endpoint, examples, and live-time envelope. Scope segments are **not** a commitment to the number, titles, or exact boundaries of lecture sections.
 
@@ -357,6 +374,8 @@ When a previously established equation is needed again to make a subsequent deri
 
 The mathematical spine is selective. It is not a list of every equation in the source sections.
 
+For GitHub-rendered Markdown tables, escape literal pipes inside cells (including inline code and equations) as `\|`, or use LaTeX `\mid` within `$...$`. Keep long display equations outside tables, and check that every table row has the intended number of columns.
+
 Review the mathematical spine with the instructor before proceeding.
 
 ## 6c. Notebook handoff
@@ -437,9 +456,13 @@ Check that:
 - the notebook has a clear handoff;
 - the scope does not contain slide-level drafting.
 
-## Section Design feasibility review before approval
+## Source-arc and Section Design reviews before approval
 
-After assembling the five-part provisional Lecture Scope and checking its internal consistency, obtain **one preview feasibility review** using the review mode in `../section-design/SKILL.md` and `../shared/backpressure.md`. If the coordinator is active, signal that the artifact is ready and let the coordinator commission and adjudicate the review; otherwise request it yourself. Do this **before final instructor approval / freezing**, not as a substitute for the Scope Builder's own analysis.
+In addition to Murphy source-arc fidelity, begin by identifying a *genuine family of data-and-task problems*: the experience, data structure and scale; the task and probabilistic query; and the performance requirement. **Derive** the computational challenge from the operations that this formulation requires, their complexity at the relevant data scale, the tolerated error, and available resources. Do **not** list the computational obstacle as an independent characteristic of the task. Ask **why** the proposed modeling, performance, or computational move is a principled response *rather than just an algorithm looking for an application*. State what the move enables, the conditions under which it helps, the viable alternatives, and what remains unsolved. A shared task family may justify several alternative computational methods under different tractability or accuracy conditions (especially L07–L10); do not manufacture separate applications to distinguish methods. If this justification cannot be made from the source and prior course, report a **course-architecture gap** to the coordinator rather than assert alignment. Test every proposed method against *three concrete selection criteria*: (1) the structure/scale/query conditions under which it is accurate or exact, (2) the time, memory, Hessian/gradient, or repeated-query cost that it actually saves relative to relevant alternatives, and (3) whether remaining model, approximation-family, optimization, or numerical error matters for the original task's performance. Avoid claims that VI is defined by sampling, that it must be Gaussian/unimodal, that Laplace cannot support marginalization, or that an invariant MCMC transition establishes finite-run accuracy. Distinguish the motivating hard problem from a deliberately small tractable notebook used to measure approximation error. Add a second indispensable test: *after the lecture and notebook, what concrete learning problem could the student recognize and approach with this method, and what output could they interpret or challenge?* Expose the named dataset, method use, baseline, and one task-relevant failure or limitation at an appropriate level. A transparent derivation-only toy and a substantive practical application can have different roles; propose supplied scaffolding or revisit an earlier dataset rather than inflating the hour. Do not turn this into an algorithms-without-reasons catalogue, or require unrelated elaborate applications to prove practical relevance. A generic recap of the framework or a convenient notebook example is not evidence of a task-driven lecture.
+
+After assembling the five-part provisional Lecture Scope, obtain a **source-arc review** for a new or substantially redirected scope, using a separate reviewer where available. The reviewer first reconstructs the relevant book's intellectual progression from the source and actual prior course, **before** reading the proposed scope. Compare the two arcs as a faithful selection, justified reorganization, unjustified displacement by a narrower task, or fragmented collection. Test whether the lecture's contribution to L01's course-wide task/query and model-to-computation framework is intelligible without forcing every lecture to be about posterior approximation. For the latter two, recommend the smallest scope repair. Do not penalize deliberate departures or override instructor-agreed choices; distinguish same-context from independent review.
+
+Then obtain **one preview feasibility review** using the review mode in `../section-design/SKILL.md` and `../shared/backpressure.md`. If the coordinator is active, signal that the artifact is ready and let the coordinator commission and adjudicate the review; otherwise request it yourself. Do this **before final instructor approval / freezing**, not as a substitute for the Scope Builder's own analysis.
 
 Ask:
 
@@ -462,7 +485,7 @@ Treat the agreed scope as the source of truth for downstream lecture-drafting sk
 
 ## Material-ledger implications
 
-Consult `Lectures/material_ledger.md` throughout scope development, but do not silently rewrite the ledger while alternatives are still being explored.
+Consult `curriculum_map.typ` throughout scope development, but do not silently rewrite the prospective allocation while alternatives are being explored. Update `curriculum_map_actual.typ` only after actual teaching, not as part of scoping.
 
 After the instructor agrees to the scope:
 
@@ -480,6 +503,7 @@ At every stage, preserve course-level uniformity where it helps students build c
 
 Check for consistency in:
 
+- the course-wide intellectual argument, grounded in L01's task–experience–performance and joint-distribution/query framework: distinguish ideas actually explained elsewhere from those only named or reused;
 - terminology;
 - notation;
 - mathematical treatment depth;
@@ -500,6 +524,8 @@ The skill is complete when:
 - instructor goals and priorities have been incorporated;
 - multiple plausible routes were considered unless the instructor explicitly fixed the route;
 - the selected route was evaluated against coherence, endpoint, book progression, time, prerequisites, notebook integration, and prior-lecture alignment;
+- the previous-course, source and proposed reasoning were compared, consequential departures and example roles are explicit, and the contribution to L01's learning-problem/query framework is clear;
+- any required source-arc review identified no unresolved unjustified displacement or fragmentation;
 - the intellectual arc has been agreed;
 - the mathematical spine has been agreed, including treatment depth and any recording status;
 - the notebook handoff has been agreed;

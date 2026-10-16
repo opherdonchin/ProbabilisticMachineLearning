@@ -5,6 +5,8 @@ description: Construct a lecture's sequence of coherent intellectual sections fr
 
 # Design the lecture sections
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
+
 Use this skill after Lecture Scope has identified the lecture's destination, route, mathematical spine, examples, notebook handoff, and time budget, but before deciding slide titles or order.
 
 **Design sections as successive intellectual moves, not as an optimal partition of textbook pages.** The governing question is: *Given what students can now understand, what is the most valuable next move toward the agreed lecture endpoint?*
@@ -37,7 +39,9 @@ Read `../shared/backpressure.md` for severity, ownership, and revision rules. Fo
 
 ## Sources and authority
 
-Read the current agreed Lecture Scope, including its five parts, and any explicit current instructor decisions. Inspect the actual preceding lecture and notebook where they clarify the student starting state, relevant Book 2/Book 1 sections, the material ledger, and the course timing-calibration reference where extent is uncertain.
+The approved Lecture Scope owns the detailed mathematical and example commitments. For consequential changes in a section's intellectual destination or in its relationship to the broader course, consult `../../../course_architecture.typ` and send scope-level conflicts upstream; do not infer a new course-wide rationale from a single notebook or application. In a section that introduces an inference or approximation method, make the required query, source of computational cost, validity assumptions, and task-relevant accuracy consequence *mathematically legible*. Give students an explicit connection to the concrete machine-learning problem in which the technique is useful, without sacrificing the derivation. Make room for recognizing, using and checking the method; the notebook should not be reduced to reproducing an algebraic identity. Preserve the scope-approved method and example: a diagnostic toy problem need not itself demand the technique, but students should understand which harder regime motivates it.
+
+Read the current agreed Lecture Scope, including its five parts, and any explicit current instructor decisions. Inspect the actual preceding lecture and notebook where they clarify the student starting state, relevant Book 2/Book 1 sections, the planned `curriculum_map.typ`, actual `curriculum_map_actual.typ`, and course timing-calibration reference where extent is uncertain.
 
 Use `Lectures/L02_Exponential_Families/section_design.md` as an example **output contract**, not as a template for the sequence of intellectual moves in another lecture. Read `../slide-level-organization/SKILL.md` to understand what the downstream stage needs.
 
@@ -72,6 +76,14 @@ Check whether a plausible sequence of intellectual moves can:
 - establish prerequisite results before their use, at the specified mathematical depth;
 - fit required examples, derivations, notebook prerequisites, and live time;
 - respect source support, omissions, recording decisions, and essential module boundaries.
+
+Also challenge whether the defined endpoint and argument are justified, rather than checking only whether the selected route is constructible:
+
+- Can the reviewer identify the lecture's reusable mathematical understanding separately from its notebook product?
+- How does the proposed reasoning compare with the actual preceding lecture and the selected book passages? Which foundations are assumed, compressed, relocated or omitted, and is that justified by actual prior teaching or an explicit choice?
+- Do examples illustrate or motivate the argument, or has a convenient application silently displaced the intended subject? Was a source/continuity-led alternative with the same application considered when plausible?
+
+Return an unjustified organizing purpose or relative mathematical emphasis to Lecture Scope. Do not solve it by repartitioning sections, and do not enforce literal book order or one universal theory-first pattern. A route may be mathematically correct and teachable yet need a Scope-level choice about what lecture it is trying to be.
 
 Use a rough dependency/route sketch if necessary, **without producing section titles, a final partition, or slide moves**. Report only material concerns and their owners. Distinguish a genuine Scope conflict from a choice Section Design can make later. Return a short verdict: `feasible`, `feasible with advisory risks`, or `blocked`; for each issue give evidence, minimum repair, and impact. An absence of identified blockers is not a guarantee that later Section Design will succeed.
 

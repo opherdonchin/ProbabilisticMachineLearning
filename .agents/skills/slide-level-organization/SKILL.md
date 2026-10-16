@@ -5,6 +5,8 @@ description: Organize an already-scoped lecture section into an ordered sequence
 
 # Organize slides within a lecture section
 
+Follow the [repository writing requirements](../../../AGENTS.md#writing-for-the-instructor-and-students). Address a mathematically mature reader who may be unfamiliar with later methods: retain precise names, decision-relevant equations and assumptions, explain the concern clearly, and give verified focused book readings when needed. Clarity must preserve the mathematical substance rather than move every important distinction into checking notes.
+
 Use this skill when a lecture section has already been substantially scoped and the next task is to determine the sequence of individual slides before detailed visual design or Typst implementation.
 
 The primary responsibility of this skill is **slide titles and their order**.
@@ -74,7 +76,7 @@ When an actual deck already exists, inspect enough of it to understand the local
 - prior results that can be carried forward rather than redeveloped;
 - recurring pedagogical structures already used in the course.
 
-Use `Lectures/README.md` only for the current slide-system pipeline and `Lectures/material_ledger.md` when curriculum state matters. Do not import production geometry or authoring mechanics into organization. When a brief design note needs course design vocabulary, consult `Lectures/slide_design_conventions.md`.
+Use `Lectures/README.md` only for the current slide-system pipeline and `curriculum_map.typ` and `curriculum_map_actual.typ` when curriculum state matters. Do not import production geometry or authoring mechanics into organization. When a brief design note needs course design vocabulary, consult `Lectures/slide_design_conventions.md`.
 
 Do not treat an old outline, abandoned draft, or source-book table of contents as more authoritative than the current instructor decision, agreed scope, or actual delivered material.
 
@@ -107,6 +109,13 @@ When such a recommendation arises, preserve the current specification in the dra
 # Handoff to Slide Design
 
 The approved organization is a contract for the downstream design stage.
+
+Under Lecture Development coordination, use
+[the coupled slide protocol](../shared/slide-convergence.md) to test provisional
+teaching moves with Design and Authoring before freezing that contract. Offer
+and reconsider boundaries/count/titles within your authority in response to
+visible-argument and production evidence. Discuss alternatives with their owners;
+do not treat a nominal count or a positive preview as proof of realizability.
 
 For each slide, the handoff should make recoverable:
 

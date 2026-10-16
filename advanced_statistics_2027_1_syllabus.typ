@@ -35,10 +35,11 @@
 #let label(body) = text(font: "Noto Sans", size: 8.7pt, weight: "bold", fill: muted, body)
 
 #let lecture(number, date, title, topics, book2, book1, notebook, skill) = block(
-  breakable: true,
+  breakable: false,
   above: 0.32em,
   below: 0.9em,
 )[
+  #block(breakable: false)[
   #grid(
     columns: (1fr, auto),
     gutter: 8pt,
@@ -47,6 +48,7 @@
     [#text(font: "Noto Sans", size: 8.8pt, fill: muted)[#date]],
   )
   #text(font: "Noto Sans", size: 10.2pt, weight: "semibold", fill: blue)[#title]
+  ]
   #v(3pt)
   #grid(
     columns: (24mm, 1fr),
@@ -85,13 +87,13 @@
 
 = Syllabus
 
-This course develops modern machine learning through probabilistic models and the computations needed to use them. We describe a task by a joint probability distribution and a query: a posterior, marginal, predictive distribution, integral, expectation, or decision. The structure of a distribution and the required computation motivate exact algorithms, simplifying assumptions, or approximate inference. Students learn how those mathematical choices produce useful predictive, generative and scientific models.
+This course builds *working competence with probabilistic machine-learning methods*. Students learn to recognize a meaningful learning problem, formulate it probabilistically, select and use an appropriate computational approach, evaluate its predictions or inferences, and explain what the method does and does not justify. Mathematical derivations provide the shared reasoning that makes a repertoire of algorithms transferable rather than a catalogue of recipes. The goal is not abstract coherence alone, and not operating algorithms without understanding their assumptions. The full rationale and evolving practice plan are in #link("course_architecture.pdf")[the course architecture] (#link("course_architecture.typ")[source]).
 
-The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 is used selectively when it gives needed background or a more pedagogical derivation. The proposed course progression moves from exponential families and graphical models through information theory, differentiable optimization, EM, structured inference, VI and MCMC to neural networks and VAEs. Key GLM concepts are integrated into the optimization and neural-network lectures rather than assigned a separate meeting.
+The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 supplies selected background and scaffolding. The proposed progression builds a toolkit for probabilistic modeling and evaluating performance; parameter fitting from complete and incomplete data; posterior approximation, exact structured inference and sampling; and expressive neural prediction and generation. In L07, L09 and L10, a *shared Bayesian prediction problem* is proposed so students can compare techniques against the same questions rather than only against unrelated toy examples.
 
-Each meeting includes approximately two hours of mathematical lecture and one hour of guided notebook work. Lectures and notebooks have complementary jobs: the lecture establishes mathematics, while the notebook solves a particular application and builds transferable skills.
+Each meeting includes approximately two hours of mathematical lecture and one hour of guided notebook work. Lectures develop the ideas, derivations, use conditions and comparisons. Notebooks supply *bounded practical use* on recognizable datasets: run or complete a method, inspect outputs, compare an informative baseline, and diagnose task-relevant errors. Small exact examples remain valuable as diagnostics but need not substitute for substantive machine-learning experience. Revised future notebook details remain subject to feasibility review.
 
-**Software progression.** Students enter with experience in Python, NumPy, PyMC, Bambi and ArviZ. The proposed plan introduces PyTorch in L05 for automatic differentiation and optimization, develops scikit-learn and SciPy skills, and later reuses PyTorch to train neural and generative models. JAX is not required.
+*Software progression.* Students enter with experience in Python, NumPy, PyMC, Bambi and ArviZ. The proposal uses NumPy/SciPy for probability, numerical checks and introductory inference, and introduces PyTorch in L05 for automatic differentiation and subsequent neural or variational fitting. JAX is not required.
 
 = Additional materials
 
@@ -99,7 +101,7 @@ Each meeting includes approximately two hours of mathematical lecture and one ho
 2. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
 3. Course notes, exercises, notebook solutions and project materials: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[course repository].
 
-Section references below indicate preparation material rather than exact class coverage. Notebook applications are current plans; candidate exercises are subject to lecture scoping, runtime validation and available class time.
+The schedule is a *revisable proposal* for lectures and notebooks. L01 has prepared materials but has not yet been taught. Earlier L02/L03 decisions and the prior L04 coding choice are documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register]; proposing an alternative does not silently amend their approved scopes. The revised practical exercises—especially L04 evaluation and the linked L07/L09/L10 comparison—require scope reconciliation, data packaging, runtime checks and a one-hour student pilot before adoption. Previous independent reviews apply only to the versions they reviewed.
 
 = Prerequisites
 
@@ -127,7 +129,7 @@ The course grade is based on four components:
 
 = Schedule
 
-#text(size: 8pt, weight: "semibold", fill: blue)[Instructor-selected course architecture (2026-10-11). Individual L03–L12 lecture scopes and notebook choices remain provisional until agent-led scoping and feasibility review.]
+#text(size: 8pt, weight: "semibold", fill: blue)[Proposed 13-meeting sequence. No class has yet been taught. New notebook examples are not implemented or approved; check earlier scope decisions and separately validate data, runtime and student workload.]
 
 #lecture(
   1,
@@ -179,183 +181,172 @@ The course grade is based on four components:
 #lecture(
   3,
   [04.11.2026],
-  [Graphical models],
-  [Compact DAG review; undirected factorization and potentials; partition functions; Ising/Potts interactions; local Markov properties; comparison with directed graphs; factor graphs as preparation for later message passing.],
+  [Graphical models: factorization and conditional independence],
+  [Derive DAG factorization from the probability chain rule and independence assumptions; work the student network and parameter economy. Develop d-separation and directed Markov blankets. Define undirected potentials and global normalization, compare separation and independence expressivity, and interpret the binary Ising model. Image posterior and algorithm derivations belong to the notebook.],
   [
-    - 4.2.1–4.2.4 Directed graphs; independence
-    - 4.3.1–4.3.6 MRFs; potentials; Ising; CI
-    - 4.3.7–4.3.9 Sampling; inference; learning
-    - 4.5 Directed vs undirected models
-    - 4.6.1 Factor graphs
+    - 4.2.1–4.2.2 DAG factorization; student network
+    - 4.2.4 / selected 4.2.8 Independence; plates
+    - 4.3.1–4.3.2.1 / 4.3.6.1 Undirected models; Ising; separation
+    - 4.5.1 Directed/undirected independence comparison
+    - 4.3.8 Image restoration: notebook
   ],
   [
-    - 3.6.1 Graph representation
-    - 3.6.2 Graphical inference
+    - Optional 3.6.1–3.6.2 Graphical-model orientation
   ],
-  [Use an Ising model to restore a noisy image (candidate).],
-  [Implementing local conditional probability updates from a graph in NumPy.],
+  [Construct an Ising prior and Gaussian observation likelihood; derive the joint, posterior and single-site conditional. Implement or complete sequential local maximization (ICM) in a NumPy scaffold; compare with a pixelwise baseline and examine initialization or local-optimum limitations.],
+  [Build a probabilistic restoration model from local factors, derive its posterior update, and distinguish local maximization from a global optimum or posterior marginal inference.],
 )
 
 #lecture(
   4,
   [11.11.2026],
-  [Information theory: dependence, communication, and representations],
-  [Entropy, cross-entropy and KL; mutual information as a measure of dependence; the data-processing inequality; a concrete source- or channel-coding problem; rate-distortion as a bridge to later generative models. Full information bottleneck is deferred to the VAE context.],
+  [Information theory: mutual information, processing and noisy coding],
+  [Finite entropy, cross-entropy and KL divergence; derive mutual information and sketch the data-processing inequality with its conditional-independence premise. State source-length bounds. Work three-bit parity detection and posterior decoding, distinguishing information, Bayes message risk and a coding guarantee.],
   [
-    - 5.1.3–5.1.8 KL, MLE and Bayes
-    - 5.2.1–5.2.4 Entropy and cross-entropy
-    - 5.3.1–5.3.4 Mutual information, data processing, sufficient statistics
-    - 5.4.1–5.4.2 Source coding, rate-distortion (selected)
-    - 5.5 Channel coding (selected application)
-    - 5.6 Information bottleneck (brief orientation)
+    - 5.1.3 / 5.1.6; 5.2.1 / 5.2.4 Information and uncertainty
+    - 5.3.1–5.3.4 Shared information and processing
+    - 5.4.1 Code-length bounds: statement only
+    - 5.5 Noisy-channel example: three-bit parity model
   ],
   [
-    - 6.1 Entropy and cross-entropy
-    - 6.2.6 Forward/reverse KL (possible)
+    - Selected 6.1 / 6.2.1–6.2.2 / 6.3 Uncertainty and shared information
   ],
-  [Analyze a noisy parity-check code: compute entropy and mutual information and use posterior decoding to correct errors (candidate).],
-  [Finite-probability enumeration, dependence and channel information with NumPy.],
+  [Compare provided probabilistic predictions on the Iris classification dataset using held-out log score, accuracy and simple reliability checks; evaluate label information retained by a discrete feature representation. Use the parity-code calculation as an optional exactly checkable information/error contrast.],
+  [Choose and interpret probabilistic performance measures on real predictions, distinguishing scoring, prediction error and information retained.],
 )
 
 #lecture(
   5,
   [18.11.2026],
-  [Learning probabilistic models: GLMs and optimization],
-  [Build conditional exponential-family GLMs from the L02 foundation: Gaussian, Bernoulli and Poisson outcomes, canonical links, and the general likelihood gradient. Use multinomial softmax as a complete probabilistic prediction example; teach reverse-mode automatic differentiation and mini-batch stochastic gradient training to fit it. Brief MLE/MAP and log-loss evaluation connections; stochastic-distribution gradients remain for VI and VAEs.],
+  [Generalized linear models, automatic differentiation and SGD],
+  [Start from the familiar Bayesian regression likelihood and parameter prior; explain why Gaussian observations are unsuitable for binary responses and counts, without implying that the hierarchical model fails. Generalize the observation family using Gaussian/Bernoulli/Poisson GLMs and links. Contrast full posterior inference with MLE/MAP point fitting; derive the canonical NLL and vector softmax gradients, then reverse-mode autodiff and minibatch SGD.],
   [
-    - 15.1–15.1.1 GLM form, links, Gaussian/Bernoulli/Poisson
-    - 15.1.2 Noncanonical links (mention); 15.1.3 MLE and gradient derivation
-    - 15.3.2 Multinomial logistic regression
-    - 6.1–6.2 Optimization and automatic differentiation (selected)
-    - 6.3.1–6.3.2 Stochastic gradient descent and minibatches
-    - 14.1.2 MLE/MAP; 14.2.1 log loss (brief)
+    - 15.1 / 15.1.1 / 15.1.3 Common model structure and derivative
+    - 15.1.2 Brief alternative-link comparison
+    - 15.3.2 Three-class probabilities
+    - Selected 6.2; 6.3.1–6.3.2 Automatic differentiation and batch updates
   ],
   [
-    - 7.8 Matrix calculus
-    - 8.1–8.2 Gradient optimization
-    - 8.4.1–8.4.3 Stochastic gradient descent
-    - 10.2–10.3 Logistic regression (selected)
+    - Selected 7.8.2 / 7.8.5 Matrix derivatives
+    - Selected 8.2 / 8.4.1 / 8.4.3 Gradient and batch-update support
   ],
-  [Implement the three-class Iris categorical GLM: derive/compute its NLL, train with PyTorch autodiff and minibatch SGD, evaluate held-out probabilities and log loss.],
-  [PyTorch tensors, computational graphs, autograd, losses, optimizers and predictive evaluation.],
+  [Fit the three-class Iris softmax model in PyTorch; compare the manual mean-batch gradient with autograd at identical parameters, run visible SGD updates and evaluate held-out log loss/probabilities. Data preparation and program scaffolding are supplied.],
+  [Connect a likelihood derivative with reverse-mode automatic differentiation and a checked stochastic parameter-update/evaluation loop.],
 )
 
 #lecture(
   6,
   [25.11.2026],
-  [Latent-variable learning and EM],
-  [Mixture models; latent assignments; complete vs observed likelihood; EM as alternating inference and optimization; expected sufficient statistics; relation to exponential-family moment matching.],
+  [Latent-variable learning and expectation-maximization],
+  [Recall Bayesian latent-variable hierarchies and joint posterior inference, then distinguish point estimation by marginal likelihood from inference over all unknowns. Show why unknown latent values complicate direct fitting, and derive the ELBO/KL identity, exact E-step tightness and EM monotonicity. Apply Gaussian conditional first/second moments to unknown mean/covariance with missing data; briefly interpret mixture responsibilities and assumptions.],
   [
-    - 6.5.1–6.5.6 Bound optimization; EM
-    - 28.2 Mixture models
+    - Selected 6.5.1 / 6.5.3 Probability bound and EM
+    - 6.5.4 Gaussian missing-data updates
+    - 3.11 When the missing-data mechanism can be ignored
+    - 28.2.1 Group-assignment probabilities: brief example
   ],
   [
-    - 3.5 Gaussian and Bernoulli mixtures
-    - 8.7.1–8.7.3 Bound optimization; EM for GMMs
+    - Selected 3.5 / 8.7 Grouped observations and EM explanation
   ],
-  [Learn with EM from missing Gaussian data or segment MRI tissue (two candidates).],
-  [Writing explicit E/M iterations and verifying against existing fitters.],
+  [Assemble expected Gaussian sufficient statistics, including conditional covariance, and perform an E/M update inside a supplied iteration driver. Check observed likelihood and missing-entry reconstruction; no second full mixture fit.],
+  [Use conditional uncertainty in sufficient-statistic estimation and distinguish an exact EM improvement guarantee from arbitrary approximate hidden-value updates.],
 )
 
 #lecture(
   7,
   [02.12.2026],
-  [Inference as computation],
-  [Posterior, marginal, predictive and expected-value queries as sums / integrals; exact vs approximate inference; MAP; grid and Laplace approximation; variational inference, MCMC and SMC as contrasting strategies; how structural assumptions and computational budget determine the method.],
+  [Bayesian computation: grid reference and Laplace approximation],
+  [Posterior queries and parameterization-dependent MAP; derive scalar Laplace curvature and normalizer under positive-curvature conditions. Apply to proper-prior logistic regression, check quadrature domain and resolution, and compare posterior moments and predictive integrals.],
   [
-    - 7.1–7.2 Inference queries; latent patterns
-    - 7.3 Exact inference
-    - 7.4.1–7.4.7 Approximate inference
-    - 7.5 Evaluating inference
+    - 7.1–7.3 What posterior questions require: short introduction
+    - Selected 7.4.1–7.4.3 Most likely parameter, grid and Gaussian shortcut
+    - Selected 7.5 Checking approximation quality
+    - Selected 15.3.5–15.3.6 One-parameter logistic example
   ],
   [],
-  [Compare a grid posterior for Bayesian logistic regression against MAP and Laplace.],
-  [Numerical integration, optimization and approximation checks using SciPy.],
+  [For a prepared binary Iris prediction problem, compare a point fit with Laplace-averaged probabilities and coefficient uncertainty; use a one-parameter numerical grid as a separately validated error diagnostic. Fit and integration helpers supplied.],
+  [Construct and use a Laplace posterior proxy for probabilistic prediction, then check query-specific accuracy against a baseline.],
 )
 
 #lecture(
   8,
   [09.12.2026],
   [Exact inference in structured sequence models],
-  [Dynamic programming / message passing; hidden Markov models; forward-backward and Viterbi as exact summation / maximization over exponentially many latent-state sequences; Gaussian filtering as the continuous analogue; selected Kalman filtering if scope permits.],
+  [Derive scaled HMM forward/backward recursions, evidence and filtered/smoothed marginals; establish dense computational cost and distinguish joint path MAP from marginal modes. Give a compact Kalman-filter application of L01 Gaussian conditioning, without a second full sequence implementation.],
   [
-    - 8.1–8.2 Gaussian filtering; Kalman smoothing
-    - 9.1–9.2 Message passing; HMM inference
+    - 9.2.1–9.2.5 Hidden-state calculations and scaling
+    - 9.2.6 Whole history versus separate state decisions
+    - Selected 8.1.2 / 8.2.2 Gaussian filtering: short application
   ],
   [],
-  [Forecast a time series with a Kalman filter (candidate, Oke PS2).],
-  [Representing and testing structured state-space inference without JAX.],
+  [Infer changing hidden states from a prepared noisy behavioral/instrument sequence using scaled forward–backward messages; interpret filtering and smoothing probabilities and verify calculations on a tiny enumerated sequence.],
+  [Apply exact message passing to a time-dependent state estimation problem, explain uncertain transitions and verify the implementation.],
 )
 
 #lecture(
   9,
   [16.12.2026],
-  [Variational inference and amortized inference],
-  [Variational approximation as optimization; ELBO; mean-field structure; coordinate ascent; black-box / stochastic VI; reparameterization; amortized inference as learning a map from observations to approximate posteriors.],
+  [Variational inference: posterior geometry and pathwise gradients],
+  [Reuse L06 ELBO identity; optimize restricted reverse KL and work the correlated-Gaussian diagonal optimum. Derive the total pathwise gradient including direct parameter terms and regularity conditions; apply bounded coordinate-ascent VI and recognize amortization.],
   [
-    - 10.1 Variational objectives; amortization
-    - 10.2 Gradient-based VI
-    - 10.3 Coordinate-ascent VI
-    - 10.4 Structured variational posteriors
+    - 10.1.1–10.1.2 Fitting a restricted distribution
+    - 6.3.3 / 6.3.5; 10.2.1.1 Derivatives through Gaussian draws
+    - 6.3.4 Another gradient estimator: statement only
+    - 10.3.1 Coordinate updates; 10.1.5 learned inference: introduction only
   ],
   [],
-  [Compare a variational regression posterior against an MCMC reference.],
-  [Specifying and diagnosing variational approximation with PyMC or PyTorch.],
+  [Use scaffolded VI to fit a diagonal Gaussian posterior for the same small binary Iris predictor as L07. Compare predictive uncertainties with Laplace and a supplied reference; use a known correlated Gaussian as a diagnostic for the best possible mean-field approximation.],
+  [Fit and evaluate a variational posterior; distinguish family restriction, optimization error and prediction consequences.],
 )
 
 #lecture(
   10,
   [23.12.2026],
-  [Monte Carlo and MCMC],
-  [Monte Carlo approximation of integrals; proposal-based sampling; Metropolis-Hastings; Gibbs sampling; Hamiltonian Monte Carlo; diagnostics and the relation between sampling cost, posterior geometry and effective information.],
+  [Monte Carlo and MCMC: invariance, mixing and estimator error],
+  [Derive IID estimator variance, stationarity/detailed balance and the general Metropolis–Hastings ratio, retaining rejected states. Explain Gibbs cancellation briefly and dependent-sample error under its conditions. Distinguish invariant transitions, finite-run mixing and function-specific effective sample size; recognize HMC mechanics only.],
   [
-    - 11.1–11.2 Monte Carlo integration
-    - 11.4–11.5 Rejection; importance sampling
-    - 12.1–12.3 Metropolis-Hastings; Gibbs
-    - 12.5 Hamiltonian Monte Carlo
+    - 11.2–11.2.2 Averages and sampling error
+    - 2.6.4; 12.2.1–12.2.2 Invariant distribution and acceptance rule
+    - 12.3.1–12.3.2 Conditional-coordinate sampling: brief derivation
+    - Selected 12.6.3 Dependent-sample error; 12.5.3 Hamiltonian mechanics only
   ],
   [],
-  [Evaluate Metropolis proposals on a multimodal mixture target.],
-  [Implementing Markov transition proposals and measuring sampling efficiency.],
+  [Run a supplied MH sampler for the shared binary-classification posterior and compare its predictive estimates with L07/L09 results; use a known bimodal target to diagnose poor mixing and failure on tail or mode-sensitive queries.],
+  [Run, diagnose and interpret an MCMC posterior estimate; distinguish stationary-target correctness from finite-run accuracy.],
 )
 
 #lecture(
   11,
   [30.12.2026],
-  [Neural networks as probabilistic conditional models],
-  [From the L05 linear GLM predictor to nonlinear probabilistic networks: MLPs, training, and heteroskedastic predictive distributions; revisit weight decay as a Gaussian-prior analogue. Calibration is an optional brief evaluation extension rather than a second large topic.],
+  [Neural conditional models: heteroskedastic likelihood and regularization],
+  [Nonlinear feedforward mean/positive-scale model; derive heteroskedastic Gaussian NLL and output derivatives, reusing AD/SGD. Distinguish conditional observation noise from posterior weight uncertainty via total variance. Work the Gaussian-prior/L2 coefficient under mean-loss normalization.],
   [
-    - 16.1–16.2 Neural-network building blocks
-    - 16.3 MLPs; selected architectures
-    - 14.2.1–14.2.2 Scoring/calibration (optional brief diagnostic)
-    - 15.2.2 / 15.2.6 Gaussian prior and lasso (brief connection)
+    - Selected 16.2.1–16.2.2 / 16.3.1 Small feedforward networks
+    - 15.2.2.1 Gaussian prior and weight shrinkage
+    - 14.2.1 Evaluating predicted probabilities
   ],
   [
-    - 11.3–11.4 Ridge/lasso (optional brief prior connection)
-    - 13.2 MLPs; nonlinearities
-    - 13.3 Backpropagation
-    - 13.4 Network training
-    - 13.5.1–13.5.4 Early stopping; weight decay; dropout
-    - 13.5.6 SGD regularization
+    - 13.2.4.4 Noise that depends on input
+    - 13.5.2 Weight shrinkage; 13.5.1 stopping training: brief mention
   ],
-  [Fit a neural model that predicts both conditional mean and variance.],
-  [PyTorch nn.Module, nonlinear layers and probability-distribution outputs.],
+  [Fit one shallow PyTorch mean/scale network and compare held-out NLL, MSE and conditional intervals with a supplied fixed-scale nonlinear baseline and known data law. Match splits/shapes and estimate baseline noise using training data.],
+  [Implement and interpret a neural conditional likelihood, preserving standard-deviation/variance distinctions and the limits of fixed-weight predictive intervals.],
 )
 
 #lecture(
   12,
   [06.01.2027],
-  [Variational autoencoders: neural latent-variable models],
-  [Latent-variable generative model; encoder/decoder networks; amortized posterior; ELBO and reparameterization; reconstruction/KL as rate-distortion; β-VAE and posterior collapse. Connect to mutual information from L04 without requiring full supervised IB/InfoVAE derivations.],
+  [Variational autoencoders: amortized inference and rate–distortion],
+  [Generative model versus amortized posterior; joint encoder/decoder objective with event-summed Gaussian NLL and diagonal KL, then observation averaging. Reuse ELBO/pathwise/neural results. Derive rate as mutual information plus aggregate-posterior mismatch; interpret beta, collapse and nonidentifiability.],
   [
-    - 21.1–21.2 VAE model; ELBO; inference network
-    - 21.3.1 β-VAE (core); 21.3.2 InfoVAE (optional mention)
-    - 21.4 Posterior collapse
-    - 5.4.2 Rate-distortion (selected return); 5.6 IB (comparison only)
+    - Selected 21.1–21.2 Model, inference network and training objective
+    - 21.3.1 Changing the penalty weight
+    - Selected 5.4.2 Reconstruction/information tradeoff
+    - Selected 21.4 When the model ignores hidden coordinates
   ],
   [],
-  [Train a VAE for mobility variables (Oke PS4) or MNIST.],
-  [PyTorch encoder/decoder networks, reparameterization and ELBO diagnostics.],
+  [Fit or complete a small mobility-measurement VAE, compare prior generation with reconstruction, inspect latent descriptions and evaluate two controlled reconstruction/rate tradeoffs.],
+  [Use and critique a latent generative model for reconstruction, generation and descriptive representations without overinterpreting hidden factors.],
 )
 
 #lecture(

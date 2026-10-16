@@ -1,0 +1,298 @@
+{
+  "source_revision": "f64fb54de202378430da644fd66173507da16907",
+  "metadata": {
+    "data_sha256": "7f38e97b501414fe1c08dfef29432065f0114ed997f5099ce28036086ef1c236",
+    "center": 69.56521739130434,
+    "scale": 6.901959941907628,
+    "temperatures": [
+      66.0,
+      70.0,
+      69.0,
+      68.0,
+      67.0,
+      72.0,
+      73.0,
+      70.0,
+      57.0,
+      63.0,
+      70.0,
+      78.0,
+      67.0,
+      53.0,
+      67.0,
+      75.0,
+      70.0,
+      81.0,
+      76.0,
+      79.0,
+      75.0,
+      76.0,
+      58.0
+    ],
+    "binary_distress": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1
+    ],
+    "n_positive": 7,
+    "query_temperatures": [
+      31.0,
+      53.0,
+      60.0,
+      70.0,
+      81.0
+    ],
+    "outcome": "any primary O-ring erosion or blowby on a flight, not catastrophic failure",
+    "reference_class": "no thermal distress",
+    "coefficient_order": "intercept,slope",
+    "split": "all 23 historical flights, no holdout evaluation"
+  },
+  "prior": "N(0,4I) on standardized-regressor coefficients",
+  "full_q": {
+    "objective": 13.050528644270408,
+    "independent_higher_resolution_objective": 13.050528644270408,
+    "gradient_norm": 6.3830396113773285e-09,
+    "optimization_messages": [
+      "Optimization terminated successfully.",
+      "Optimization terminated successfully."
+    ],
+    "two_start_objective_difference": 1.7763568394002505e-15,
+    "seconds": 0.13203387695830315,
+    "theta": [
+      -1.072421737242859,
+      -1.6357778004474564,
+      -0.61129469558003,
+      -0.4445860849405886,
+      0.14069017380318422
+    ],
+    "mean": [
+      -1.072421737242859,
+      -1.6357778004474564
+    ],
+    "covariance": [
+      [
+        0.2944666894371154,
+        0.07634522037287814
+      ],
+      [
+        0.07634522037287814,
+        0.43078957170829757
+      ]
+    ],
+    "predictions": [
+      [
+        0.022620244043650543,
+        0.9773797559563492
+      ],
+      [
+        0.11088363274245494,
+        0.8891163672575448
+      ],
+      [
+        0.2670063812579383,
+        0.7329936187420614
+      ],
+      [
+        0.7507626543066208,
+        0.24923734569337935
+      ],
+      [
+        0.9551705081987117,
+        0.04482949180128844
+      ]
+    ],
+    "query_seconds": 0.06777550093829632,
+    "n_query_draws": 131072,
+    "max_predictive_probability_error": 0.005725274392736263
+  },
+  "diagonal_q": {
+    "objective": 13.07424269906464,
+    "independent_higher_resolution_objective": 13.07424269906464,
+    "gradient_norm": 5.107566351727755e-08,
+    "optimization_messages": [
+      "Optimization terminated successfully.",
+      "Optimization terminated successfully."
+    ],
+    "two_start_objective_difference": 3.552713678800501e-15,
+    "seconds": 0.10048661706969142,
+    "theta": [
+      -1.0548071770996368,
+      -1.628799084984045,
+      -0.6337505438837225,
+      -0.4414530811806851
+    ],
+    "mean": [
+      -1.0548071770996368,
+      -1.628799084984045
+    ],
+    "covariance": [
+      [
+        0.2815342729194501,
+        0.0
+      ],
+      [
+        0.0,
+        0.413579235082492
+      ]
+    ],
+    "predictions": [
+      [
+        0.02390192774374395,
+        0.9760980722562564
+      ],
+      [
+        0.11612386886859362,
+        0.8838761311314061
+      ],
+      [
+        0.270549028159291,
+        0.7294509718407091
+      ],
+      [
+        0.748459236474949,
+        0.25154076352505084
+      ],
+      [
+        0.958687719964493,
+        0.0413122800355074
+      ]
+    ],
+    "query_seconds": 0.0680445289472118,
+    "n_query_draws": 131072,
+    "max_predictive_probability_error": 0.007006958092829668
+  },
+  "reference": {
+    "radius": 14,
+    "step": 0.02,
+    "n": 1962801,
+    "logZ_unnormalized": -9.797261242957145,
+    "mean": [
+      -1.0746291844757914,
+      -1.645100655098647
+    ],
+    "covariance": [
+      [
+        0.3090280572340957,
+        0.0936070497033654
+      ],
+      [
+        0.0936070497033654,
+        0.48948424857064604
+      ]
+    ],
+    "marginal_skewness": [
+      -0.25997643771311585,
+      -0.5320510052171015
+    ],
+    "predictions": [
+      [
+        0.016894969650909846,
+        0.9831050303490851
+      ],
+      [
+        0.11048631751870457,
+        0.8895136824812921
+      ],
+      [
+        0.26865824549185524,
+        0.7313417545081408
+      ],
+      [
+        0.7504516477780939,
+        0.24954835222190205
+      ],
+      [
+        0.956132701497844,
+        0.04386729850215032
+      ]
+    ],
+    "outer_unit_mass": 3.805631444227516e-20,
+    "seconds": 7.135815053945407
+  },
+  "reference_qualifications": {
+    "radius": 14,
+    "strong_convexity": 0.25,
+    "mode_gradient_norm": 2.658761779316085e-10,
+    "envelope_center": [
+      -0.9905529384508307,
+      -1.4001072715155418
+    ],
+    "envelope_integral_over_box_mass_ratio": 11.56554050638886,
+    "envelope_tail_probability": 1.8783241628739233e-10,
+    "posterior_outside_box_upper_bound": 2.1723834189847308e-09,
+    "qualification": "analytic envelope inequality evaluated float64, denominator numerical grid integral; not interval-certified; mesh still separate"
+  },
+  "proxy_query_predictions": {
+    "Laplace": {
+      "gh240_predictions": [
+        0.9597827759038016,
+        0.8505113454204379,
+        0.6920939230216985,
+        0.26610593813834604,
+        0.06507322013777476
+      ],
+      "gh160_240_max_difference": 3.027278427936153e-11,
+      "qmc_vs_gh240_max_difference": 2.4216052778303077e-07
+    },
+    "full VI": {
+      "gh240_predictions": [
+        0.9773797001369277,
+        0.8891162821224747,
+        0.7329935502692999,
+        0.24923716965846296,
+        0.04483003635189446
+      ],
+      "gh160_240_max_difference": 4.157318933550869e-11,
+      "qmc_vs_gh240_max_difference": 5.445506060242078e-07
+    },
+    "diagonal VI": {
+      "gh240_predictions": [
+        0.9760981265519433,
+        0.8838759425636238,
+        0.7294509442684963,
+        0.25154058693720754,
+        0.041312761101695655
+      ],
+      "gh160_240_max_difference": 3.904399026311012e-11,
+      "qmc_vs_gh240_max_difference": 4.810661882528877e-07
+    }
+  },
+  "inputs": [
+    {
+      "path": "/tmp/pml-l09-geometry-20261015/Lectures/L09_Variational_Inference/notebook_geometry/challenger_results.json",
+      "sha256": "9949f6dce690e718c2cf62a5beb7f34257a1d61f07c0d6a9e119a68ac7a2d308"
+    },
+    {
+      "path": "/tmp/pml-l09-geometry-20261015/Lectures/L09_Variational_Inference/notebook_geometry/audit_results.json",
+      "sha256": "77dd684094bfb933b69b268f5521fad07108aff0852eab4b4004d085ad34bf4a"
+    },
+    {
+      "path": "/tmp/pml-l09-geometry-20261015/Lectures/L09_Variational_Inference/notebook_geometry/o-ring-erosion-or-blowby.data",
+      "sha256": "7f38e97b501414fe1c08dfef29432065f0114ed997f5099ce28036086ef1c236"
+    },
+    {
+      "path": "/tmp/pml-l09-geometry-20261015/Lectures/L09_Variational_Inference/notebook_geometry/o-ring-erosion.names",
+      "sha256": "a51ab13ee502b6749e67df6db19c31896c3f1c81661035e8ed66fa2ad4c100bc"
+    }
+  ]
+}

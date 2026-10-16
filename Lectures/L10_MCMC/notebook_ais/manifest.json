@@ -1,0 +1,65 @@
+{
+  "status": "bounded AIS author evidence; no independent review, learner or Colab validation",
+  "date": "2026-10-15",
+  "base_commit": "13b209b75b115d53a9f4d99f19cc7e38c3c12bad",
+  "interpreter": "/home/opher/Repositories/ProbabilisticMachineLearning/.venv/bin/python",
+  "run_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /home/opher/Repositories/ProbabilisticMachineLearning/.venv/bin/python Lectures/L10_MCMC/notebook_ais/ais_pilot.py > Lectures/L10_MCMC/notebook_ais/execution.txt 2>&1",
+  "input_versions": {
+    "L09_model_contract": "39dd5dc",
+    "L09_fits_reference": "f64fb54",
+    "independent_L09_review": "dcf2a81",
+    "coordinator_envelope": "/tmp/pml-course-development-20261014/Lectures/course_development_state.md"
+  },
+  "external_sources": [
+    {
+      "path": "/home/opher/Repositories/ProbabilisticMachineLearning/Resources/book2-1.pdf",
+      "sha256": "54d6bfa8cc4a367bb553bea1c5127ca63696a9655b2ca1f6137a8584dccfdbaf",
+      "role": "Murphy Advanced Topics online2025-12-10; printed pp492\u2013494; original PDF pp527\u2013528 visually checked"
+    },
+    {
+      "path": "/tmp/pml-book2.txt",
+      "sha256": "1d77150146caf0f7e44b88b20370292abe5b6bfc506ce92fe26509a7bdb131b6",
+      "role": "Murphy extracted text"
+    },
+    {
+      "path": "/tmp/pml-neal-ais-rev.pdf",
+      "sha256": "29ab10a694ad5062ab141bf8e60d4e03e8555af62e960e32b4ccc5639257340f",
+      "role": "Neal AIS Technical Report9805 revised Sept1998; primary PDF pp4\u20135 visually checked",
+      "url": "https://glizen.com/radfordneal/ftp/ais-rev.pdf"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/REPORT.md",
+      "sha256": "e9ff5d1fde997a9fe9cad88deedff397cd3f0efd3608db33aa99d7945c0f4699"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/ais_pilot.py",
+      "sha256": "1b2a385b1bc926f7e8e404bf880327c2fcec4d70e88e5fe41a7b733c027b0cc0"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/execution.txt",
+      "sha256": "59156a5eff6c4cf482206523e882cf47f19a6d667dd34b826c80140a33b840f5"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/frozen_inputs.json",
+      "sha256": "28be0186763a99860a0c23cb881562c18ef2da48f159b76fccb65786606ee9c2"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/o-ring-erosion-or-blowby.data",
+      "sha256": "7f38e97b501414fe1c08dfef29432065f0114ed997f5099ce28036086ef1c236"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/o-ring-erosion.names",
+      "sha256": "a51ab13ee502b6749e67df6db19c31896c3f1c81661035e8ed66fa2ad4c100bc"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/results.json",
+      "sha256": "919cb2fbe57c4ab9c4a04870d67caeee5a812bdc2ee0f25bb4a6fc2d82a434a7"
+    },
+    {
+      "path": "Lectures/L10_MCMC/notebook_ais/source_check.md",
+      "sha256": "5252acbae142464b04ee2312c7d1c8822ef693049f66b89f5b1b1b39f3b6033b"
+    }
+  ]
+}

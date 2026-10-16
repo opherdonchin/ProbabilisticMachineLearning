@@ -1,5 +1,13 @@
 # L10 — Sampling from a distribution: a correct algorithm can still give a poor estimate
 
+**Scope reopened by instructor, 2026-10-15:** This introductory MH/error-focused
+proposal repeats departmental undergraduate material. Seek a richer path through
+Murphy as **MCMC for machine learning**, with a bounded bridge for students from
+other backgrounds. The [owning brief](reconciliation/ml_rescope_brief.md) records
+the goals, authority and inquiry boundary. The arc/depth allocation below is an
+earlier baseline, not a newly accepted contract. No replacement route is yet
+selected; notebook application choice waits for the lecture direction.
+
 **Instructor revision — 2026-10-15:** The notebook direction is now geometry-led
 method selection with cumulative comparison: L07 Laplace against a checked
 numerical reference; L09 revisit Laplace before an appropriate VI family; L10

@@ -1,0 +1,72 @@
+/home/opher/.config/matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /tmp/matplotlib-ww5lwttd because there was an issue with the default path (/home/opher/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+Python executable: /home/opher/Repositories/ProbabilisticMachineLearning/.venv/bin/python
+Versions: numpy 2.0.2 scipy 1.16.3 matplotlib 3.10.0
+Fresh process; exact unchanged analytic code cells only. No PyMC/pandas substitutes.
+Executing original cell 5
+Executing original cell 12
+(7, 7)
+Executing original cell 17
+Executing original cell 20
+Hidden x1: [-0.981 -0.275  1.892]
+Observed x2: [-0.184 -0.07  -0.078  0.919]
+Executing original cell 47
+Executing original cell 51
+Executing original cell 53
+Executing original cell 57
+Executing original cell 59
+Mean check: True
+Covariance check: True
+Executing original cell 65
+Executing original cell 67
+Executing original cell 69
+Posterior mean:
+[-0.568  0.432  0.932]
+Posterior SD:
+[0.683 0.683 0.683]
+Posterior covariance:
+[[0.466 0.166 0.166]
+ [0.166 0.466 0.166]
+ [0.166 0.166 0.466]]
+Joint eigenvalues: [0.288          0.288          0.288          0.3
+ 0.3            0.582757432111 6.713242567889]
+Noise eigenvalues: [0.288   0.288   0.288   1.63008]
+Posterior eigenvalues: [0.3            0.3            0.799058823529]
+Hidden truth: [-0.980926505519 -0.27500660048   1.892047023038] Observed: [-0.184130936233 -0.069737546573 -0.077779038282  0.919187226273]
+W:
+[[0.33674916481 0.33674916481 0.33674916481]
+ [0.33674916481 0.33674916481 0.33674916481]
+ [0.33674916481 0.33674916481 0.33674916481]
+ [0.33674916481 0.33674916481 0.33674916481]]
+b:
+[-0.33674916481  0.16325083519 -0.83674916481  0.66325083519]
+Omega:
+[[0.62352 0.33552 0.33552 0.33552]
+ [0.33552 0.62352 0.33552 0.33552]
+ [0.33552 0.33552 0.62352 0.33552]
+ [0.33552 0.33552 0.33552 0.62352]]
+Algebraic max absolute errors: {
+  "marginal mean": 5.551115123125783e-17,
+  "marginal covariance": 0.0,
+  "cross covariance": 0.0,
+  "block versus LGS mean": 0.0,
+  "block versus LGS covariance": 0.0
+}
+Notebook rounded answer-key values: PASS
+Direct exact-Gaussian draws: 8000 draw_seconds: 0.00047887605614960194
+Exact mean:
+[-0.568086107743  0.431913892257  0.931913892257]
+Direct-draw sample mean:
+[-0.566681482626  0.421823572836  0.928418719316]
+Mean MCSE:
+[0.007635058457 0.007635058457 0.007635058457]
+Mean discrepancy / MCSE:
+[ 0.183970446928 -1.321577231839 -0.457779460398]
+Exact SD:
+[0.682900388912 0.682900388912 0.682900388912]
+Direct sample SD:
+[0.685370569522 0.683812837935 0.687103370951]
+Max abs covariance discrepancy: 0.007930459548449953
+Max abs covariance discrepancy / theoretical covariance sampling SE: 1.4324941031881335
+Plots: ['/tmp/l01-delivery-runtime/analytic-figure-1.png', '/tmp/l01-delivery-runtime/analytic-figure-2.png']
+ANALYTIC CHECK PASS; full notebook/API/local/hosted publication validation not asserted.

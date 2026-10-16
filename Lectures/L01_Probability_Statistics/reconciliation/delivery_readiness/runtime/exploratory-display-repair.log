@@ -1,0 +1,5 @@
+Resolved 74 packages in 663ms
+Prepared 2 packages in 310ms
+Installed 2 packages in 2ms
+ + jinja2==3.1.6
+ + markupsafe==3.0.4

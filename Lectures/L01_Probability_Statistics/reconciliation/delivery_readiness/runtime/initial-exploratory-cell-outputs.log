@@ -1,0 +1,199 @@
+CELL 2 EXECUTION 1
+PyMC: 6.3.2
+
+CELL 4 EXECUTION 2
+CELL 11 EXECUTION 3
+(7, 7)
+
+CELL 16 EXECUTION 4
+<Figure size 600x500 with 2 Axes>
+CELL 19 EXECUTION 5
+Hidden x1: [-0.981 -0.275  1.892]
+Observed x2: [-0.184 -0.07  -0.078  0.919]
+
+CELL 29 EXECUTION 6
+array([        nan,         nan,         nan, -0.18413094, -0.06973755,
+       -0.07777904,  0.91918723])
+CELL 33 EXECUTION 7
+CELL 35 EXECUTION 8
+/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/pymc/model/core.py:2061: ImputationWarning: Data in x contains missing values and will be automatically imputed from the sampling distribution.
+  warnings.warn(impute_message, ImputationWarning)
+
+CELL 37 EXECUTION 9
+Initializing NUTS using jitter+adapt_diag...
+
+Multiprocess sampling (4 chains in 4 jobs)
+
+NUTS: [x_unobserved]
+
+/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/rich/live.py:260: UserWarning: install 
+"ipywidgets" for Jupyter support
+  warnings.warn('install "ipywidgets" for Jupyter support')
+
+
+Sampling 4 chains for 1_000 tune and 2_000 draw iterations (4_000 + 8_000 draws total) took 1 seconds.
+
+<class 'xarray.core.datatree.DataTree'>
+Data variables:
+    x_unobserved  (chain, draw, x_unobserved_dim_0) float64 192kB -0.994 ... ...
+    x             (chain, draw, x_dim_0) float64 448kB -0.994 -0.347 ... 0.9192
+
+CELL 40 EXECUTION 10
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mFile [39m[32m/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/pandas/compat/_optional.py:158[39m, in [36mimport_optional_dependency[39m[34m(name, extra, min_version, errors)[39m
+[32m    157[39m [38;5;28;01mtry[39;00m:
+[32m--> [39m[32m158[39m     module = [30;43mimportlib[39;49m[30;43m.[39;49m[30;43mimport_module[39;49m[30;43m([39;49m[30;43mname[39;49m[30;43m)[39;49m
+[32m    159[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m [38;5;28;01mas[39;00m err:
+
+[36mFile [39m[32m~/.local/share/uv/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90[39m, in [36mimport_module[39m[34m(name, package)[39m
+[32m     89[39m         level += [32m1[39m
+[32m---> [39m[32m90[39m [38;5;28;01mreturn[39;00m [30;43m_bootstrap[39;49m[30;43m.[39;49m[30;43m_gcd_import[39;49m[30;43m([39;49m[30;43mname[39;49m[30;43m[[39;49m[30;43mlevel[39;49m[30;43m:[39;49m[30;43m][39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mpackage[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mlevel[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m<frozen importlib._bootstrap>:1387[39m, in [36m_gcd_import[39m[34m(name, package, level)[39m
+
+[36mFile [39m[32m<frozen importlib._bootstrap>:1360[39m, in [36m_find_and_load[39m[34m(name, import_)[39m
+
+[36mFile [39m[32m<frozen importlib._bootstrap>:1324[39m, in [36m_find_and_load_unlocked[39m[34m(name, import_)[39m
+
+[31mModuleNotFoundError[39m: No module named 'jinja2'
+
+The above exception was the direct cause of the following exception:
+
+[31mImportError[39m                               Traceback (most recent call last)
+[36mFile [39m[32m/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/arviz_stats/summary.py:420[39m, in [36mSummaryDataFrame._repr_latex_[39m[34m(self)[39m
+[32m    418[39m [38;5;28;01mif[39;00m [38;5;28mself[39m._fmt_map [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[32m    419[39m     [38;5;28;01mreturn[39;00m [38;5;28msuper[39m()._repr_latex_()
+[32m--> [39m[32m420[39m [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43mto_latex[39;49m[30;43m([39;49m[30;43mescape[39;49m[30;43m=[39;49m[30;43;01mTrue[39;49;00m[30;43m)[39;49m
+
+[36mFile [39m[32m/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/arviz_stats/summary.py:431[39m, in [36mSummaryDataFrame.to_latex[39m[34m(self, *args, **kwargs)[39m
+[32m    429[39m     [38;5;28;01mreturn[39;00m [38;5;28msuper[39m().to_latex(*args, **kwargs)
+[32m    430[39m kwargs.setdefault([33m"[39m[33mescape[39m[33m"[39m, [38;5;28;01mTrue[39;00m)
+[32m--> [39m[32m431[39m [38;5;28;01mreturn[39;00m [30;43mpd[39;49m[30;43m.[39;49m[30;43mDataFrame[39;49m[30;43m.[39;49m[30;43mto_latex[39;49m[30;43m([39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_display_df[39;49m[30;43m([39;49m[30;43m)[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43margs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/pandas/core/generic.py:3644[39m, in [36mNDFrame.to_latex[39m[34m(self, buf, columns, header, index, na_rep, formatters, float_format, sparsify, index_names, bold_rows, column_format, longtable, escape, encoding, decimal, multicolumn, multicolumn_format, multirow, caption, label, position)[39m
+[32m   3640[39m             [38;5;28;01melse[39;00m [38;5;28;01mNone[39;00m,
+[32m   3641[39m             [33m"bold_rows"[39m: bold_rows,
+[32m   3642[39m         }
+[32m   3643[39m 
+[32m-> [39m[32m3644[39m         return self._to_latex_via_styler(
+[32m   3645[39m             buf,
+[32m   3646[39m             hide=hide_,
+[32m   3647[39m             relabel_index=relabel_index_,
+
+[36mFile [39m[32m/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/pandas/core/generic.py:3703[39m, in [36mNDFrame._to_latex_via_styler[39m[34m(self, buf, hide, relabel_index, format, format_index, format_index_names, render_kwargs)[39m
+[32m   3699[39m         -------
+[32m   3700[39m         str [38;5;28;01mor[39;00m [38;5;28;01mNone[39;00m
+[32m   3701[39m             If buf [38;5;28;01mis[39;00m [38;5;28;01mNone[39;00m, returns the result [38;5;28;01mas[39;00m a string. Otherwise returns [38;5;28;01mNone[39;00m.
+[32m   3702[39m         """
+[32m-> [39m[32m3703[39m         [38;5;28;01mfrom[39;00m pandas.io.formats.style [38;5;28;01mimport[39;00m Styler
+[32m   3704[39m 
+[32m   3705[39m         self = cast([33m"DataFrame"[39m, self)
+[32m   3706[39m         styler = Styler(self, uuid=[33m""[39m)
+
+[36mFile [39m[32m/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/pandas/io/formats/style.py:36[39m
+[32m     29[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mcore[39;00m[34;01m.[39;00m[34;01mframe[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m (
+[32m     30[39m     DataFrame,
+[32m     31[39m     Series,
+[32m     32[39m )
+[32m     34[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mio[39;00m[34;01m.[39;00m[34;01mformats[39;00m[34;01m.[39;00m[34;01mformat[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m save_to_buffer
+[32m---> [39m[32m36[39m jinja2 = [30;43mimport_optional_dependency[39;49m[30;43m([39;49m[30;43m"[39;49m[30;43mjinja2[39;49m[30;43m"[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mextra[39;49m[30;43m=[39;49m[30;43m"[39;49m[30;43mDataFrame.style requires jinja2.[39;49m[30;43m"[39;49m[30;43m)[39;49m
+[32m     38[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mpandas[39;00m[34;01m.[39;00m[34;01mio[39;00m[34;01m.[39;00m[34;01mformats[39;00m[34;01m.[39;00m[34;01mstyle_render[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m (
+[32m     39[39m     CSSProperties,
+[32m     40[39m     CSSStyles,
+[32m   (...)[39m[32m     48[39m     refactor_levels,
+[32m     49[39m )
+[32m     51[39m [38;5;28;01mif[39;00m TYPE_CHECKING:
+
+[36mFile [39m[32m/tmp/l01-delivery-runtime/exploratory/.venv/lib/python3.12/site-packages/pandas/compat/_optional.py:161[39m, in [36mimport_optional_dependency[39m[34m(name, extra, min_version, errors)[39m
+[32m    159[39m [38;5;28;01mexcept[39;00m [38;5;167;01mImportError[39;00m [38;5;28;01mas[39;00m err:
+[32m    160[39m     [38;5;28;01mif[39;00m errors == [33m"[39m[33mraise[39m[33m"[39m:
+[32m--> [39m[32m161[39m         [38;5;28;01mraise[39;00m [38;5;167;01mImportError[39;00m(msg) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01merr[39;00m
+[32m    162[39m     [38;5;28;01mreturn[39;00m [38;5;28;01mNone[39;00m
+[32m    164[39m [38;5;66;03m# Handle submodules: if we have submodule, grab parent module from sys.modules[39;00m
+
+[31mImportError[39m: `Import Jinja2` failed. DataFrame.style requires jinja2. Use pip or conda to install the Jinja2 package.
+                  mean    sd hdi90_lb hdi90_ub
+x_unobserved[0]  -0.57  0.68     -1.7     0.56
+x_unobserved[1]   0.44  0.68     -0.7      1.5
+x_unobserved[2]   0.94  0.69    -0.19      2.1
+CELL 42 EXECUTION 11
+<Figure size 800x450 with 1 Axes>
+CELL 46 EXECUTION 12
+CELL 50 EXECUTION 13
+array([[0.33674916, 0.33674916, 0.33674916],
+       [0.33674916, 0.33674916, 0.33674916],
+       [0.33674916, 0.33674916, 0.33674916],
+       [0.33674916, 0.33674916, 0.33674916]])
+CELL 52 EXECUTION 14
+array([-0.33674916,  0.16325084, -0.83674916,  0.66325084])
+CELL 56 EXECUTION 15
+array([[0.62352, 0.33552, 0.33552, 0.33552],
+       [0.33552, 0.62352, 0.33552, 0.33552],
+       [0.33552, 0.33552, 0.62352, 0.33552],
+       [0.33552, 0.33552, 0.33552, 0.62352]])
+CELL 58 EXECUTION 16
+Mean check: True
+Covariance check: True
+
+CELL 64 EXECUTION 17
+array([-0.56808611,  0.43191389,  0.93191389])
+CELL 66 EXECUTION 18
+array([[0.46635294, 0.16635294, 0.16635294],
+       [0.16635294, 0.46635294, 0.16635294],
+       [0.16635294, 0.16635294, 0.46635294]])
+CELL 68 EXECUTION 19
+Posterior mean:
+[-0.568  0.432  0.932]
+Posterior SD:
+[0.683 0.683 0.683]
+Posterior covariance:
+[[0.466 0.166 0.166]
+ [0.166 0.466 0.166]
+ [0.166 0.166 0.466]]
+
+CELL 71 EXECUTION 20
+<Figure size 800x450 with 1 Axes>
+CELL 74 EXECUTION 21
+       PyMC mean  LGS mean   PyMC SD  LGS SD
+x1[0]  -0.573310 -0.568086  0.677365  0.6829
+x1[1]   0.435174  0.431914  0.681029  0.6829
+x1[2]   0.937995  0.931914  0.692606  0.6829
+CELL 77 EXECUTION 22
+<Figure size 800x450 with 1 Axes>
+CELL 79 EXECUTION 23
+EXPLORATORY PACKAGE VERSIONS
+numpy 2.0.2
+scipy 1.16.3
+matplotlib 3.10.0
+pandas 3.0.6
+pymc 6.3.2
+pytensor 3.3.4
+arviz-base 1.3.0
+arviz-stats 1.3.2
+xarray 2026.9.0
+nbclient 0.10.4
+nbformat 5.11.1
+ipykernel 6.31.0
+RESULT TYPE <class 'xarray.core.datatree.DataTree'>
+POSTERIOR VARIABLES ['x_unobserved', 'x']
+POSTERIOR SIZES {'chain': 4, 'draw': 2000, 'x_unobserved_dim_0': 3, 'x_dim_0': 7}
+SUMMARY COLUMNS ['mean', 'sd', 'hdi90_lb', 'hdi90_ub']
+SUMMARY INDEX ['x_unobserved[0]', 'x_unobserved[1]', 'x_unobserved[2]']
+EXTRACT TYPE <class 'xarray.core.dataarray.DataArray'> DIMS ('x_unobserved_dim_0', 'sample') SHAPE (3, 8000)
+PLOT SAMPLE SHAPE (8000, 3)
+ACTUAL SAMPLER STAT VARIABLES ['max_energy_error', 'largest_eigval', 'perf_counter_start', 'n_steps', 'tree_depth', 'step_size_bar', 'index_in_trajectory', 'step_size', 'diverging', 'acceptance_rate', 'energy_error', 'energy', 'lp', 'reached_max_treedepth', 'smallest_eigval', 'process_time_diff', 'divergences', 'perf_counter_diff']
+DIVERGENCES 0
+SUMMARY SIGNATURE (data, var_names=None, filter_vars=None, group='posterior', coords=None, sample_dims=None, kind='all', fmt='wide', ci_prob=None, ci_kind=None, round_to='auto', skipna=False)
+AUTHOR FULL SUMMARY
+                  mean    sd eti89_lb eti89_ub ess_bulk ess_tail r_hat mcse_mean mcse_sd
+x_unobserved[0]  -0.57  0.68     -1.6     0.52     4964     5521  1.00    0.0096   0.007
+x_unobserved[1]   0.44  0.68    -0.65      1.5     4685     5479  1.00      0.01  0.0065
+x_unobserved[2]   0.94  0.69    -0.16      2.1     4656     5499  1.00      0.01  0.0069
+ACTUAL MEAN DIFFERENCE [-0.00522386  0.00325982  0.00608075]
+ACTUAL SD DIFFERENCE [-0.00553568 -0.00187161  0.00970533]
+ACTUAL COVARIANCE DIFFERENCE [[-0.00747264  0.00177076  0.00424143]
+ [ 0.00177076 -0.00249476  0.0028553 ]
+ [ 0.00424143  0.0028553   0.01340971]]
+FULL ORIGINAL COMPUTATION COMPLETED; environment is exploratory scratch uv, not repository lock or hosted Colab.
+

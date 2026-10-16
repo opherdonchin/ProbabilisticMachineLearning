@@ -1,0 +1,62 @@
+Joint covariance:
+ [[1.       0.7      0.7      0.808198 0.808198 0.808198 0.808198]
+ [0.7      1.       0.7      0.808198 0.808198 0.808198 0.808198]
+ [0.7      0.7      1.       0.808198 0.808198 0.808198 0.808198]
+ [0.808198 0.808198 0.808198 1.44     1.152    1.152    1.152   ]
+ [0.808198 0.808198 0.808198 1.152    1.44     1.152    1.152   ]
+ [0.808198 0.808198 0.808198 1.152    1.152    1.44     1.152   ]
+ [0.808198 0.808198 0.808198 1.152    1.152    1.152    1.44    ]]
+Joint covariance eigenvalues: [0.288    0.288    0.288    0.3      0.3      0.582757 6.713243]
+Cross-block covariance: 0.8081979955431713
+Cross-block correlation: 0.6734983296193094
+
+Hidden simulation truth (evaluation only): [-0.980927 -0.275007  1.892047]
+Observed block: [-0.184131 -0.069738 -0.077779  0.919187]
+
+Exact conditional mean: [-0.568086  0.431914  0.931914]
+Exact conditional covariance:
+ [[0.466353 0.166353 0.166353]
+ [0.166353 0.466353 0.166353]
+ [0.166353 0.166353 0.466353]]
+Exact conditional SD: [0.6829 0.6829 0.6829]
+Conditional marginal 90% lower endpoints: [-1.691357 -0.691357 -0.191357]
+Conditional marginal 90% upper endpoints: [0.555185 1.555185 2.055185]
+Conditional correlation (intervals alone do not show dependence):
+ [[1.      0.35671 0.35671]
+ [0.35671 1.      0.35671]
+ [0.35671 0.35671 1.     ]]
+
+Squared-loss action                conditional risk    excess risk
+Conditional mean                       1.399058824    0.000000000
+Supplied unconditional mean            1.412965978    0.013907154
+Realized squared error, conditional-mean action: 1.5920294059108695
+Realized squared error, unconditional-mean action: 1.6276734258094632
+These two realized errors do not establish a per-case guarantee.
+
+LGS W:
+ [[0.336749 0.336749 0.336749]
+ [0.336749 0.336749 0.336749]
+ [0.336749 0.336749 0.336749]
+ [0.336749 0.336749 0.336749]]
+LGS b: [-0.336749  0.163251 -0.836749  0.663251]
+LGS Omega:
+ [[0.62352 0.33552 0.33552 0.33552]
+ [0.33552 0.62352 0.33552 0.33552]
+ [0.33552 0.33552 0.62352 0.33552]
+ [0.33552 0.33552 0.33552 0.62352]]
+Maximum block/LGS conditional mean difference: 0.0
+Maximum block/LGS conditional covariance difference: 0.0
+
+Forward measurement mean: [ 0.   0.5 -0.5  1. ]
+Forward measurement covariance:
+ [[1.44  1.152 1.152 1.152]
+ [1.152 1.44  1.152 1.152]
+ [1.152 1.152 1.44  1.152]
+ [1.152 1.152 1.152 1.44 ]]
+Fresh generated state: [0.238601 1.027457 0.377055]
+Fresh generated measurement: [0.914779 1.702883 1.062373 2.73511 ]
+
+VALIDATION PASSED: shapes, SPD, original numbers, block/LGS conditional,
+risk decomposition, exact forward moments, and generator population joint.
+Figures written to: /home/opher/Repositories/ProbabilisticMachineLearning/InClass/Preparation/lecture1_missing_data_figures
+Local clean-process validation only; hosted Colab readiness remains unchecked.

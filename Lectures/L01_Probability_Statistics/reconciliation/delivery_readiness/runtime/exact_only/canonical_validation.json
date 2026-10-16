@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "cells": 69,
+  "immediate_question_solution_pairs": 18,
+  "code_cells_executed": 17,
+  "student_code_placeholders": 9,
+  "student_markdown_placeholders": 9,
+  "inline_figure_cells": [
+    9,
+    25,
+    62
+  ],
+  "checks": [
+    "clean canonical executor",
+    "mechanical pair preservation and placeholders",
+    "cleared student outputs/counts",
+    "runtime numerical assertions"
+  ],
+  "sha256": {
+    "InClass/Preparation/lecture1_missing_data_worked_solution.py": "d859b53fcf1d3fb59dc0f15c1250bc568c0f5872b4e6509d4902ff863344e80b",
+    "InClass/Solutions/lecture1_missing_data.ipynb": "42dec1fa6d59af3f76e9102d3c07832b944bd3c225ed5947df2766b0e03ee9b7",
+    "InClass/lecture1_missing_data.ipynb": "82a1e46dbabcb73c80e9f9f21ae3860e1edf46b8aa21fcb58a6cee4438ca9077",
+    "build/notebooks/InClass/Solutions/lecture1_missing_data.executed.ipynb": "d15cc533d92ca94a72f8f7a2459df35c85aa544965c0b773700730857577d2c6"
+  }
+}

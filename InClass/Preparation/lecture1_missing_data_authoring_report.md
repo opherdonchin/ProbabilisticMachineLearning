@@ -1,408 +1,80 @@
-# Lecture 1 missing-data notebook — authoring report
+# L01 exact Gaussian notebook — authoring report
 
-## 1. Artifact identity
+Stage: teaching-notebook-authoring, revision. This is a bounded reviewable draft under the accepted exact-only route, not complete Scope/workload approval or a publication claim. Ownership is restricted to `/tmp/l01-exact-qa/`; no repository files or global knowledge records were edited.
 
-**Notebook:** `lecture1_missing_data_solved_notebook.ipynb`
-
-**Worked-solution source:** `lecture1_missing_data_worked_solution.py`
-
-**Lecture:** Lecture 1 — Probability, statistics, and Gaussian systems
-
-**Purpose:** Transform the validated Gaussian missing-data worked example into the course's solved Q&A teaching format while preserving the original mathematical route.
-
-The worked solution follows:
-
-\[
-p(x_1,x_2)
-\rightarrow
-p(x_1\mid x_2)
-\rightarrow
-\text{PyMC posterior sampling}
-\rightarrow
-\text{linear-Gaussian representation}
-\rightarrow
-\text{exact Gaussian posterior}
-\rightarrow
-\text{comparison}.
-\]
-
-The teaching notebook applies equations supplied in lecture rather than deriving them.
-
----
-
-## 2. Learning target
-
-By the end of the notebook, students should be able to:
-
-1. read the block structure of a partitioned multivariate Gaussian;
-2. connect a missing-data problem to the lecture's **discovery** task schema;
-3. formulate the concrete target \(p(x_1\mid x_2,\mu,\Sigma)\);
-4. use current PyMC missing-data behavior to sample that conditional posterior;
-5. map the same joint Gaussian into LGS notation;
-6. identify and implement \(W\), \(b\), and \(\Omega\);
-7. apply the lecture's exact LGS posterior equations;
-8. compare the sampled and analytic posterior summaries.
-
----
-
-## 3. Knowledge report before authoring
+## Knowledge report before authoring
 
 ### Assume familiar
 
-#### Probability / Bayesian reasoning
-
-- random variables and probability distributions;
-- conditional probability and Bayes' rule;
-- expectation and variance;
-- basic covariance and correlation;
-- posterior distributions and posterior uncertainty.
-
-#### Statistical modeling
-
-- observed versus unknown quantities;
-- basic graphical-model ideas;
-- ordinary Bayesian conditioning.
-
-#### Python / NumPy
-
-- arrays;
-- indexing and slicing;
-- ordinary arithmetic;
-- matrix multiplication with `@`;
-- basic Matplotlib.
-
-#### PyMC concepts
-
-- `pm.Model`;
-- common scalar distributions;
-- `observed=...`;
-- `pm.sample` as the operation used to draw posterior samples;
-- posterior draws/chains;
-- basic posterior summaries.
+Conditional probability, Bayes' rule, expectation, variance, basic covariance/correlation, posterior uncertainty, observed versus unknown quantities; mathematical matrix algebra and transposes; basic Python, NumPy arrays/slicing/arithmetic, `@`, and basic Matplotlib. Existing knowledge of probabilistic programming is irrelevant to the selected computation and creates no notebook prerequisite.
 
 ### Previously encountered — scaffold when needed
 
-- multivariate Gaussian distributions;
-- covariance matrices beyond pairwise covariance;
-- nontrivial matrix-dimension reasoning;
-- multidimensional posterior objects;
-- extending an already-created PyMC model by re-entering `with model:`.
+Multivariate Gaussians, covariance matrices beyond pairwise covariance, nontrivial matrix dimensions. Keep explicit block shapes and a notation checkpoint. Mathematical results established in the live lecture are supplied for application rather than re-proved: block conditioning, LGS moments and conditional equations, and vector squared-loss decomposition.
 
-### New / not yet established
+### New in this lecture/notebook
 
-#### Mathematical / representational
+Partitioned Gaussian notation and Schur-complement conditional covariance; applying an exact law to three hidden/four observed coordinates; distribution versus loss-selected action; minimum conditional model risk versus realized squared error; transparent joint-to-LGS factorization; old-case inverse query versus before-observation fresh-case marginal and generation. Numerical `np.linalg.solve`, matrix-right-hand-side solves, the transpose route for a right-side inverse, `np.block`, `np.diag`, `np.trace`, analytic normal quantiles/individual marginal intervals, and `rng.multivariate_normal` require local explanation. `np.allclose`/`np.testing.assert_allclose` and spectral checks appear only in visibly supplied author verification. No fast-moving inference package API is used; no version-drift exercise is needed.
 
-- partitioned Gaussian notation;
-- covariance blocks \(\Sigma_{11},\Sigma_{12},\Sigma_{21},\Sigma_{22}\);
-- conditional Gaussian inference as a missing-data method;
-- linear Gaussian system notation;
-- explicit translation \(x_1,x_2 \leftrightarrow z,y\);
-- mapping a joint Gaussian to \(W,b,\Omega\).
+This contract was written before the solved draft. Cumulative knowledge source: `.agents/skills/teaching-notebook-authoring/references/student-knowledge.md`; stale sampler-specific L01 entries do not establish a requirement to retain that route.
 
-#### Computational
+## Mathematical route and preserved scaffolding
 
-- `np.block`;
-- `np.linalg.solve`;
-- `np.allclose`;
-- `pm.MvNormal` with missing observed values;
-- PyMC handling of `np.nan` in observed data;
-- the current ArviZ/PyMC `xarray.DataTree` results representation;
-- `arviz_base.extract`;
-- modular `arviz_stats.summary`.
+The new 69-cell solved source has 18 immediate `exercise-question`/`solution` pairs: nine code answers and nine mathematical/prose answers. It preserves the original fine-grained block shapes, concrete covariance/correlation, task-schema mapping, transparent NumPy operations, explicit notation checkpoint, joint-to-LGS equations and interpretation of known-model outputs. It replaces the old two-route comparison with a connected sequence:
 
----
+1. Read the supplied block model and identify the hidden-case conditional target.
+2. Apply the block conditional mean/covariance with explicit linear solves; compute marginal SDs and analytic central intervals; explain why individual intervals do not give joint coverage.
+3. Apply the live squared-loss identity, select the conditional mean, compute its minimum conditional model risk, and distinguish that expectation from the supplied realized-error check.
+4. Translate the same joint into `mu_z`, `Sigma_z`, `W`, `b`, `Omega` with locally explained right-inverse transpose/solve syntax.
+5. Compute the fresh-case forward marginal; inspect supplied moment and same-conditional verification; distinguish the three probability queries.
+6. Generate exactly one unconditional fresh state, one independent noise vector and one measurement with the direct vector equation.
 
-## 4. Authoring decisions
+Every instructional question states the expected action, has the necessary formulas/facts visible beforehand, and is immediately followed by one complete solution cell. Sections close retrospectively. The last technical block is explicitly supplied author verification, not another assignment.
 
-### 4.1 Bundle artificial setup
+Arbitrary covariance construction, initial data, normal quantile, plots and checks are supplied infrastructure. `np.block` is demonstrated in setup; it is no longer a separate reconstruction task after setup already needs the full covariance. The useful covariance/correlation interpretation remains one coherent question. Conditional mean and covariance are distinct code questions; SD and interval endpoints form one coherent summary operation. The LGS algebraic identification, right-side-inverse implementation and residual-covariance computation retain explicit scaffolding without demanding another conditional implementation.
 
-The compound-symmetry covariance construction is an author-created device for generating a useful synthetic example. It is not itself a central Lecture 1 learning objective.
+## Accepted example and portability repair
 
-Therefore the notebook supplies:
+The seven-dimensional model, coordinate split and old numerical inference case are unchanged. The original full-precision seven-coordinate case is supplied data with truthful seed-2027 / NumPy-2.0.2 provenance. This implements the worked owner's author-level repair: repeated covariance eigenvalues can rotate the numerical SVD basis across numerical libraries, so runtime seed reproducibility is not a portable numerical answer key. Hidden truth remains stored separately and unprinted until all conditional moments/intervals have been computed. It never enters an inferred law.
 
-- dimensions of \(x_1\) and \(x_2\);
-- means;
-- covariance-family formulas;
-- numerical parameter choices;
-- code constructing the four covariance blocks.
+Fresh generation uses the separately supplied `FRESH_RANDOM_SEED = 2028` and `rng_new`. There are no fixed fresh-vector answer keys or strict seeded-draw assertions. No batched draws or unfamiliar reshaping/broadcasting are used. The substantive random equations remain those in the revised validated worked solution.
 
-Students reason with the resulting mathematical objects rather than reconstructing the arbitrary simulation machinery line by line.
+## Scope of student work and exclusions
 
-### 4.2 Use coherent local questions
+Required computation is block conditional moments, marginal summaries, mean action/minimum risk, same-joint LGS parameter translation, forward moments and one fresh case. The repeated LGS conditional and covariance/spectral/affine-generator checks are visibly supplied author verification. The unconditional-action risk comparison remains in the technical worked solution only, with no required baseline coding or study. Plot helpers use inline figures and write no external assets.
 
-The notebook deliberately combines steps when they form one mathematical/computational operation.
+The active notebook contains no PyMC, ArviZ, pandas, installation cell, package/container explanation, generic sampling comparison, conditional draw plot, sensitivity study, parameter estimation, baseline experiment, local path or forced backend. Exactness is limited to the supplied Gaussian model. Full covariance is retained and printed; individual intervals do not conceal that coordinate dependence. Expected risk is the sum of squared coordinate errors and is clearly distinguished from one realized error.
 
-Examples:
+## Knowledge state after a successful student completion — prospective
 
-- covariance and corresponding correlation are one question;
-- constructing the full covariance matrix, printing its dimensions, and checking the dimensions are one question;
-- sampling, checking the returned type, and inspecting posterior variables are one question.
+The following are proposed transitions after teaching and learner completion, not a claim that students already learned them.
 
-Fine granularity is retained where distinct concepts are being learned, not where a single action could merely be split into multiple numbered steps.
+### Assume familiar
 
-### 4.3 Anchor the specialized problem to Lecture 1
+Retain the entry baseline for conditioning, expectation, basic covariance/correlation, matrix algebra, basic Python/NumPy indexing and `@`. No new construct is promoted to independent fluency after one notebook.
 
-Before asking for \(p(x_1\mid x_2)\), the notebook restates the relevant Lecture 1 task schemas:
+### Previously encountered — scaffold when needed
 
-\[
-\text{prediction: }p_D(y_*\mid x_*),
-\qquad
-\text{discovery: }p_D(z_*\mid x_*).
-\]
+Propose moving partitioned Gaussian notation, conditional Schur-complement covariance, exact conditional implementation with `np.linalg.solve`, NumPy vector/matrix RHS shape reasoning, `np.diag`, `np.trace`, analytic marginal intervals, distribution/action/risk distinctions, explicit joint-to-LGS mapping and `W,b,Omega` computation, forward marginal query and direct one-case generation with `rng_new.multivariate_normal` here from new. `np.block` and `np.allclose` have been encountered in supplied code; they still need support when independently required. Covariance spectral/assertion and affine-generator APIs remain supplied checking code, not practiced student fluency.
 
-The student first identifies missing-value reconstruction as discovery, then maps
+### New in this lecture/notebook
 
-\[
-z_*=x_1,\qquad x_*=x_2.
-\]
+Nothing beyond the bounded listed route is established. Model fitting, missingness-mechanism analysis, empirical model validation, simultaneous Gaussian regions, physical/causal identification from an LGS factorization, tensor batching/broadcasting and independent numerical-analysis expertise remain unestablished. The notebook does not alter knowledge status of removed inference-package APIs.
 
-This preserves the lecture's framing rather than presenting conditioning as an isolated probability exercise.
+A separate `knowledge_change_report.md` identifies proposed future updates to the cumulative knowledge file. No global skill file was automatically changed.
 
-### 4.4 Make unfamiliar package behavior discoverable
+## Validation and review boundary
 
-Students are not asked to guess that PyMC automatically treats missing observed entries as unobserved variables.
+Clean-kernel scratch execution uses the repository uv environment after the parent's successful locked sync; no dependency or environment files were changed. The execution record, numerical outputs, extracted inline figures and validation log are in this scratch directory. All 17 code cells completed. All 18 question/answer pairs passed structural checks. The three inline figures were visually inspected: labels/legends are readable, no clipping or obscured data, individual interval wording retained. Source has only NumPy/Matplotlib/SciPy imports; no notebook data/figure file is needed. The numerical conditional mean, covariance, SD, minimum risk, LGS moment identities and generator population-joint identity agree with the validated worked route within stated tolerances.
 
-The notebook points them to the current PyMC introductory documentation and asks them to answer from it.
+The official repository executor check and mechanical self-work generation remain parent-owned. A scratch in-memory call to the same repository transformation checks preservation of questions/given cells and replacement/clearing of solution cells; no separately authored student narrative was created. Hosted Colab execution has not been performed by this worker. This is not a publication-ready or hosted-compatible claim.
 
-Similarly, the changed results container is made inspectable with
+## Subjective learner-time estimate
 
-```python
-type(idata)
-idata["posterior"].data_vars
-```
+Estimated **55–75 minutes** for a mathematically mature student using AI assistance as intended, including reading/running supplied cells: about 10 minutes for model/task inspection, 12–15 for conditional computation/interval interpretation, 8–10 for loss/risk, 12–15 for LGS translation, 8–10 for forward queries, and 5–10 for generation/consolidation. These are subjective author estimates, not measured learner timings; code execution speed provides no evidence for them. The one-hour target remains at risk, especially the transpose/solve identity and distinctions among three laws. No accepted mathematical target was silently removed to force a time claim. The parent/instructor own complete Scope and consequential workload choices.
 
-instead of being silently assumed.
+## Canonical integration — coordinator
 
-### 4.5 Scaffold model extension
+Integrated at `InClass/Solutions/lecture1_missing_data.ipynb` without substantive changes to the specialist source (SHA-256 `42dec1fa6d59af3f76e9102d3c07832b944bd3c225ed5947df2766b0e03ee9b7`). The student file at `InClass/lecture1_missing_data.ipynb` was mechanically generated by `scripts/make_self_work_notebook.py`. Official clean local execution and pair-preservation checks pass; [durable validation evidence](../../Lectures/L01_Probability_Statistics/reconciliation/delivery_readiness/runtime/exact_only/report.md) records commands, hashes, outputs and the separate non-blind Scope feasibility review. The coordinator inspected the three inline figures.
 
-Ordinary `pm.Model` use is familiar, but later re-entry into an existing model context may not be.
-
-The notebook therefore supplies
-
-```python
-model = pm.Model()
-```
-
-and explains that later
-
-```python
-with model:
-    ...
-```
-
-extends that model before asking students to add the `pm.MvNormal`.
-
-Unnecessary coordinate/dimension machinery was intentionally removed.
-
-### 4.6 Prefer current native ArviZ operations
-
-The worked solution used monolithic `arviz`, direct `.values.reshape`, and manual posterior means/SDs.
-
-The teaching notebook preserves the inference problem but modernizes incidental computational plumbing:
-
-- `arviz_stats.summary` for posterior summaries;
-- `arviz_base.extract` for extracting combined samples.
-
-Manual extraction is not turned into a learning objective.
-
-### 4.7 Manage the notation transition explicitly
-
-The notebook has a dedicated checkpoint before moving from partitioned-Gaussian notation
-
-\[
-x_1,x_2,\mu_1,\mu_2,\Sigma_{ij}
-\]
-
-to LGS notation
-
-\[
-z,y,\mu_z,\Sigma_z,W,b,\Omega,m,S.
-\]
-
-It establishes
-
-\[
-z=x_1,\qquad
-y=x_2,\qquad
-\mu_z=\mu_1,\qquad
-\Sigma_z=\Sigma_{11},
-\]
-
-and then keeps the exact-posterior section in LGS notation.
-
-The word **innovation** is introduced only at the notation checkpoint, where the equivalence
-
-\[
-x_2-\mu_2=y-m
-\]
-
-is explicit.
-
-### 4.8 Use prediction selectively
-
-The notebook retains the useful prediction about the visible correlation structure before plotting it.
-
-It does not insert prediction questions before every posterior calculation. Several earlier draft questions of that form were removed because they added rhythm rather than testing an important mechanism.
-
-### 4.9 Keep given material visibly distinguishable
-
-In the authoring notebook, supplied material is visibly marked **[GIVEN]** in addition to cell tags.
-
-Given material includes:
-
-- setup;
-- simulation;
-- documentation/background explanations;
-- plotting infrastructure;
-- lecture equations;
-- final consolidation.
-
-The student self-work notebook can therefore preserve these cells mechanically while removing ordinary `solution` cells.
-
----
-
-## 5. Notebook sequence
-
-1. **Given setup**
-   - define the block Gaussian and covariance construction.
-
-2. **Examine the covariance**
-   - block dimensions;
-   - concrete covariance and correlation;
-   - `np.block`;
-   - visible correlation structure.
-
-3. **Turn the data into a learning problem**
-   - generate a complete observation;
-   - hide \(x_1\);
-   - classify the task as discovery;
-   - write \(p(x_1\mid x_2,\mu,\Sigma)\).
-
-4. **PyMC route**
-   - represent missing entries;
-   - consult documentation for missing-data behavior;
-   - extend a PyMC model with `pm.MvNormal`;
-   - sample into `idata`;
-   - inspect the current returned object and posterior variables;
-   - summarize natively with ArviZ;
-   - display posterior.
-
-5. **LGS translation**
-   - explicitly map notation;
-   - identify \(W\) and \(b\);
-   - implement with `np.linalg.solve`;
-   - write and implement \(\Omega\);
-   - compute \(m,S\);
-   - verify the reconstructed marginal with `np.allclose`.
-
-6. **Exact LGS posterior**
-   - apply the lecture equations;
-   - display exact posterior.
-
-7. **Comparison**
-   - compare PyMC and exact means/SDs;
-   - display both solutions consistently.
-
----
-
-## 6. Relationship to the original worked solution
-
-The original worked solution remains the mathematical anchor.
-
-The solved teaching notebook intentionally changes some incidental implementation details:
-
-- removes the positive-definiteness/eigenvalue digression;
-- replaces monolithic `arviz` summaries with modular ArviZ;
-- replaces manual chain/draw reshaping with `arviz_base.extract`;
-- adds the Lecture 1 task-schema connection;
-- adds explicit notation-transition scaffolding;
-- reduces redundant posterior-correlation and prediction exercises.
-
-These changes do not alter:
-
-- the Gaussian model;
-- numerical parameter choices;
-- simulated observation;
-- PyMC missing-data target;
-- LGS mapping;
-- exact posterior equations;
-- substantive comparison between sampled and exact inference.
-
----
-
-## 7. Runtime/API validation status
-
-This artifact is an **authoring-complete draft, not yet a publication-validated course notebook**.
-
-The repository currently needs an explicit course target for PyMC and modular ArviZ. This notebook provisionally pins:
-
-- PyMC 6.3.2
-- arviz-base 1.3.0
-- arviz-stats 1.3.2
-
-Current PyMC 6.3.2 introductory documentation states that `pm.sample()` returns an `xarray.DataTree` under the ArviZ 1.x stack, while parts of the generated API reference still retain older `InferenceData` wording.
-
-Before publication, the notebook should be run top-to-bottom in the final course environment and the following should be verified from execution:
-
-1. `type(idata)`;
-2. exact posterior variable names created by missing-data imputation;
-3. `azs.summary` column names and ordering;
-4. `azb.extract` dimensions for `x_unobserved`;
-5. all plotting cells;
-6. numerical agreement with the exact LGS posterior.
-
-The answer key deliberately flags this rather than fabricating runtime output.
-
----
-
-## 8. Knowledge-state change after successful completion
-
-### Remain assume familiar
-
-- conditional/posterior reasoning;
-- basic covariance/correlation;
-- NumPy arrays and indexing;
-- matrix multiplication;
-- ordinary `pm.Model`;
-- `pm.sample` as a sampling operation.
-
-### Move from new to previously encountered — scaffold when needed
-
-After the notebook is actually run and finalized:
-
-- partitioned Gaussian notation;
-- covariance blocks;
-- Gaussian missing-data conditioning;
-- LGS notation;
-- the \(x_1,x_2\leftrightarrow z,y\) mapping;
-- `np.block`;
-- `np.linalg.solve`;
-- `np.allclose`;
-- PyMC automatic missing-data handling;
-- the current results container;
-- posterior group/variable inspection;
-- `arviz_base.extract`;
-- modular `arviz_stats.summary`.
-
-### Promote to assume familiar
-
-None yet.
-
-A single notebook exposure is not enough to justify independent fluency.
-
----
-
-## 9. Self-work transformation
-
-The solved notebook is the source of truth.
-
-The student version should be generated mechanically:
-
-- preserve all question cells;
-- preserve all `given` / **[GIVEN]** material;
-- replace ordinary code solutions with `# answer here`;
-- replace ordinary Markdown solutions with `- answer here`;
-- clear outputs and execution counts;
-- do not independently rewrite the student notebook.
-
-If the self-work notebook feels awkward, revise the solved notebook and regenerate.
+The L01 planned-map cell and matching PDF now link these current draft files. The cumulative knowledge reference's L01 section was reconciled as a prospective exact-only authoring contract; prior-course baseline facts are preserved and no actual student-knowledge promotion is recorded. Hosted runtime, learner-time and complete Scope approval remain pending.

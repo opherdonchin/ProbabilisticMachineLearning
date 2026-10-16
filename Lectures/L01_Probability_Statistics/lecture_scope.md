@@ -1,8 +1,10 @@
-# L01 provisional Lecture Scope — intellectual arc and mathematical spine
+# L01 provisional Lecture Scope — arc, mathematical spine and notebook handoff
 
 **Agreed route:** retain the current formulation-to-Gaussian/LGS progression. Keep the residual derivation and stated/interpreted quadratic identity live; develop the full block-elimination proof in a separate recorded session. The short squared-error posterior-mean derivation is also accepted for live teaching. **Accepted bounded refinement, 2026-10-16:** activate the existing bivariate Gaussian example as a task-to-query checkpoint, funded provisionally by shortening the second verbal explanation of the repeated Task/Performance grid. [Exact decision and content](goal_alignment_review.md#current-source-assessment-and-concrete-choice--2026-10-16). Other reductions and whole-lecture timing remain unresolved.
 
 **Status:** intellectual arc with selected instructor decisions and a proposed mathematical spine, updated 2026-10-16; not a complete approved Scope. Route, live/recorded proof boundary, live squared-error derivation and the bounded checkpoint are accepted. Remaining depths, other refinements and workload are proposed. Exact versions are recorded below.
+
+**Notebook decision, current session 2026-10-16:** “I think we can get rid of PyMC entirely. It takes away from the current focus of the notebook.” Remove PyMC entirely, including a supplied comparison, from the active L01 notebook and worked solution. Exact Gaussian conditioning/LGS computation, squared-loss summarization, forward marginalization and short generation are the accepted direction; the detailed handoff and learner-time validation remain separate. [Owning decision](goal_alignment_review.md#l01-notebook-computation--exact-computation-without-pymc).
 
 ## Accepted instructor direction
 
@@ -22,13 +24,13 @@ The remaining argument is cumulative. **“Joint Gaussian distributions and geom
 
 **“Linear Gaussian systems”** constructs the state/measurement joint, applies conditioning, interprets the gain through scalar noise regimes, and illustrates sensor fusion. **“Inference often combines conditioning and summarizing”** distinguishes a distribution from an estimate. **“The same model can also predict measurements”** obtains the forward marginal from the same joint.
 
-The [solved notebook](../../InClass/Solutions/lecture1_missing_data.ipynb) supplies a seven-dimensional Gaussian with known parameters, hides three coordinates of one simulated observation, samples their conditional posterior with PyMC, rewrites the joint as an LGS, and compares exact and sampled means/SDs. Its final comparison answers one conditional query by two computational routes. The [coverage specification](lecture_01_coverage_spec.typ) proposes an estimation/MLE/MAP bridge and a different book-based notebook route; those units are not implemented in the current deck/notebook.
+The recovered solved-notebook baseline (blob `ab441941c8b526151a927bfbcf292bd9bc629ce5`) supplies a seven-dimensional Gaussian with known parameters, hides three coordinates of one simulated observation, samples their conditional posterior with PyMC, rewrites the joint as an LGS, and compares exact and sampled means/SDs. Its final comparison answers one conditional query by two computational routes. The current decision reuses its controlled model and LGS translation while removing the sampler route. The [coverage specification](lecture_01_coverage_spec.typ) proposes an estimation/MLE/MAP bridge and a different book-based notebook route; those units are not implemented in the deck and are not added by this notebook revision.
 
 ## 2. Critique: evidence and teaching consequences
 
 **Formulation connects less strongly to computation than the Gaussian argument does.** The taxonomy/query material repeats symbolic descriptions; sustained model-to-answer computation occurs later. Students can retain category names without learning to choose variables, query and criterion. Historical persona reports identify this hinge, but are simulated readings of an earlier rendering, not classroom outcomes.
 
-**The notebook does not yet exercise the accepted different-question endpoint.** PyMC and exact LGS calculation compute the same $p(z\mid y)$. Their agreement is useful computational checking, but does not by itself teach forward prediction or generation. The consequence is a handoff mismatch, not a reason to discard its guided questions or representation translation.
+**The recovered notebook's two routes do not exercise the different-question endpoint.** PyMC and exact LGS calculation compute the same $p(z\mid y)$. The instructor has removed the sampler comparison to focus the revision on exact conditional, summary and forward/generation queries. Reuse effective guided questions and representation translation; do not replace the deleted sampler work with another lengthy sampling comparison.
 
 **Correction to the previous architecture assessment:** `course_architecture.typ`, L01 paragraph, already explicitly includes incomplete/noisy measurements, different questions, prediction, hidden-state inference, generation and the three operations. The earlier reconciliation recommendation to amend it to include these ideas overstated the evidence. No substantive architecture amendment is presently justified on this point. The lecture's sensor-fusion and Gaussian development fit that framework; eventual synchronization of its brief notebook description should follow accepted scope decisions.
 
@@ -98,11 +100,11 @@ Thus $E[Z\mid y]$ is appropriate for that loss, not automatically every decision
 
 The planned separate source is `Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ`. No recording or deck exists yet; the path is a development target. Students are responsible for the proof as examinable content, regardless of whether they watch the video. Viewing is not recorded, evaluated or monitored, and no particular exam question is promised. The accepted workflow applies the existing design/authoring stages under the coordinator; it does not start those stages automatically.
 
-The proposed allocations total 110 minutes plus approximately 10 for discussion/slippage: plausible but tight. The baseline PDF had 67 pages/seven sections; the two-slide addition makes the current handout 69 pages. Calibration's 70/eight count is stale. No measured delivery time exists. The separate one-hour notebook needs selective reuse to accommodate accepted forward/generation questions; its exact PyMC balance and context await the notebook-handoff discussion, not a new decision here.
+The proposed allocations total 110 minutes plus approximately 10 for discussion/slippage: plausible but tight. The baseline PDF had 67 pages/seven sections; the two-slide addition makes the current handout 69 pages. Calibration's 70/eight count is stale. No measured delivery time exists. The separate one-hour notebook uses exact computation without PyMC; its detailed handoff and learner-time fit remain to be validated.
 
 L02/L03 retain Gaussian density, conditioning, joint reasoning and simple graph prerequisites. L02 already introduces $\Lambda=\Sigma^{-1}$ in its Gaussian rewrite; reconcile its inaccurate L01 information-coordinate attribution there. No later lecture is rescoped.
 
-**Remaining decisions:** mathematical depths beyond the accepted proof boundary; concrete context; proposed additions/reductions and live/notebook workload, including PyMC's role. The mathematical spine below is now proposed for discussion. Notebook handoff, concrete examples and lecture contract have not been drafted; appropriate source-arc review and Section Design preview still precede complete Scope approval.
+**Remaining decisions:** mathematical depths beyond the accepted proof boundary, other proposed additions/reductions, and live/notebook workload. PyMC's removal is settled. The mathematical spine below is proposed for discussion; the exact-only notebook handoff is being specified from the accepted direction. Concrete examples and the lecture contract still need completion; appropriate source-arc review and Section Design preview precede complete Scope approval.
 
 ## Part 2 — Mathematical spine: proposed treatment and accepted boundaries
 
@@ -139,7 +141,7 @@ Here $V_y$ denotes the observed marginal covariance; these are existing joint/up
 
 **Accepted new live proof:** the baseline deck extracts $E[Z\mid y]$ without proving squared-loss optimality. The instructor now accepts **derive live** the risk decomposition shown in the arc, using the centered cross-term's zero expectation. The provisional 2–4-minute allowance remains in milestone E's live budget; its measured duration and whole-lecture fit are unverified. **Then apply**: the mean minimizes conditional expected squared error, whereas covariance describes uncertainty about the unknown value. The two slides are implemented after the LGS condition/summarize explanation; their design alignment is reopened, as recorded above. Other losses and reconstruction-baseline experiments remain outside this bounded addition.
 
-**Notebook: apply**, rather than rederive, the conditional, summary and forward laws. Existing joint-to-LGS translation and exact/sampled comparison remain reusable evidence; adding forward prediction/generation implements the agreed direction, with workload and PyMC balance still to be settled in the handoff. Sample-based summaries have Monte Carlo error; direct draws from an analytically known Gaussian do not turn it into an approximate posterior family. Parameter fitting remains outside this spine.
+**Notebook: apply**, rather than rederive, the conditional, summary and forward laws. Retain the existing joint-to-LGS translation; remove the exact/sampler comparison entirely. Apply conditional Gaussian formulas through transparent linear solves, choose the conditional mean and interpret minimum model risk, calculate the forward marginal, and generate a fresh case from the supplied model. Direct model generation is distinct from solving the missing-block query. Parameter fitting and generic posterior sampling remain outside this notebook. The detailed handoff/workload is specified separately below.
 
 ### Recorded-session mathematical contract — proposed details within accepted boundary
 
@@ -172,9 +174,89 @@ Exponent separation alone is insufficient for this normalized equality. Murphy d
 
 The short squared-loss proof depth is settled for live teaching; it is no longer an open choice between proving and stating the result. Any later reduction or move to recording requires a further instructor decision. The separate full quadratic-separation recording boundary remains intact. Other spine depths and the detailed recording contract remain authored proposals, not complete Scope approval or independent feasibility validation.
 
+## Part 3 — Notebook handoff: exact queries from one known Gaussian
+
+**Proposed handoff, 2026-10-16; not complete-Scope approval.** Revision trigger: the instructor's “I think we can get rid of PyMC entirely. It takes away from the current focus of the notebook.” The exact-only computation decision is accepted. This Part 3 proposal preserves the previously accepted hidden-block conditional, squared-loss mean summary, forward marginal and short generation direction; its complete student workload still requires review. It changes no live proof depth, lecture route, dataset, parameter-fitting commitment or recording boundary.
+
+### Problem, supplied model and entry boundary
+
+Students encounter incomplete multivariate measurements: four coordinates of one case are recorded, and three must be reconstructed with uncertainty. The controlled example retains the existing seven-dimensional joint Gaussian and original seed-2027 reference case. The complete case is supplied at full precision, with its NumPy 2.0.2 provenance, so platform-dependent Gaussian factorization cannot change the numerical exercise. A separate seed 2028 is used only for fresh-case generation. Its supplied means are $\mu_1=(-0.5,0.5,1)^T$ and $\mu_2=(0,0.5,-0.5,1)^T$; its covariance blocks remain
+
+$$
+\Sigma_{11}=0.3I_3+0.7J_3,\qquad
+\Sigma_{22}=1.2^2(0.2I_4+0.8J_4),\qquad
+\Sigma_{12}=0.9(1.2)\sqrt{0.7\cdot0.8}\,\mathbf1_3\mathbf1_4^T,
+$$
+
+with $J_d=\mathbf1_d\mathbf1_d^T$ and $\Sigma_{21}=\Sigma_{12}^T$. This is the existing course-constructed example, not a Murphy dataset. The model is known; the available experience for inference is the observed block of this case, not a training set for estimating its parameters. Write $Z=X_1\in\mathbb R^3$ and $Y=X_2\in\mathbb R^4$. The realized $y_{\rm obs}$ is observed; $z_{\rm true}$ is hidden during inference and retained separately only for checking the simulated reconstruction. Neither is a model parameter.
+
+Before the notebook, live teaching establishes Gaussian block notation, marginalization, conditional mean/covariance through the residual argument, LGS joint/update/forward laws, and why the conditional mean minimizes expected squared loss. Students bring matrix algebra and basic NumPy indexing/multiplication; unfamiliar numerical operations receive local scaffolding. The separate full block-elimination recording is required/examinable course content, but is **not a prerequisite** to this notebook: students apply the live results rather than reconstructing that proof.
+
+Source anchors retained from the Scope's checked editions are Murphy, *Probabilistic Machine Learning: An Introduction* (April 18, 2025), §3.2.5 “Example: Imputing missing values” and §5.1.5.1 “L2 loss”; and *Probabilistic Machine Learning: Advanced Topics* (December 10, 2025), §2.3.1.3 “Marginals and conditionals of an MVN,” §2.3.2.1 “Joint distribution” and §2.3.2.2 “Posterior distribution (Bayes’ rule for Gaussians).” Look for block conditioning, the criterion selecting the mean, and reuse of the same joint law for inverse and forward queries. These references support the method; the numerical construction above remains course-owned.
+
+### Work and useful output
+
+**Work/apply, not re-prove:** students identify the supplied, observed and unknown quantities; inspect the covariance dependence; formulate the hidden-block target $p(z\mid y_{\rm obs})$; and evaluate its block-Gaussian conditional with linear solves. They then translate the same joint into the lecture's LGS notation:
+
+$$
+Z\sim\mathcal N(\mu_z,\Sigma_z),\qquad
+Y=WZ+b+\varepsilon,\qquad
+\varepsilon\sim\mathcal N(0,\Omega),\quad\varepsilon\perp Z,
+$$
+$$
+\mu_z=\mu_1,\quad\Sigma_z=\Sigma_{11},\quad
+W=\Sigma_{21}\Sigma_{11}^{-1},\quad
+b=\mu_2-W\mu_1,\quad
+\Omega=\Sigma_{22}-W\Sigma_{12}.
+$$
+
+The translation is a factorization of the supplied joint, not model fitting or a second inference method. Students implement the block conditional once using linear solves rather than explicit matrix inverses; the LGS re-evaluation below is supplied verification of the same answer, not a second coding assignment. With $\mu_y=W\mu_z+b$, $V_y=W\Sigma_zW^T+\Omega$ and $C=\Sigma_zW^T$, the required conditional is
+
+$$
+p(z\mid y_{\rm obs})=\mathcal N(m,S),\qquad
+m=\mu_z+CV_y^{-1}(y_{\rm obs}-\mu_y),\qquad
+S=\Sigma_z-CV_y^{-1}C^T.
+$$
+
+The meaningful reconstruction output reports the three conditional means and marginal standard deviations, retains the joint covariance, and relates uncertainty to the separately retained hidden values. Marginal standard deviations do not describe every dependence in that joint distribution; any displayed coordinate interval has marginal coverage, not simultaneous coverage of the whole hidden vector. Students choose $a=m$ under squared loss and compute/interpret its minimum conditional model risk $R(m\mid y_{\rm obs})=\operatorname{tr}S$, applying the live identity
+
+$$
+R(a\mid y_{\rm obs})
+=E_{\rm model}[\|Z-a\|^2\mid y_{\rm obs}]
+=\operatorname{tr}S+\|m-a\|^2.
+$$
+
+Students distinguish this **model-based expected loss** from the single realized error $\|z_{\rm true}-a\|^2$. Optimal conditional risk does not guarantee exact recovery of a hidden realization. A single case cannot validate the model or establish average real-world performance. The unconditional-mean action's risk can remain author evidence or one short supplied interpretation; no extra student coding, baseline experiment, sensitivity study or repeated-case evaluation is required. Retain this fixed reference case and model even if their risk improvement is modest.
+
+Students also compute the **before-observations forward law**
+
+$$
+p(y)=\int p(y\mid z)p(z)\,dz=\mathcal N(\mu_y,V_y),
+$$
+
+checking that its moments reproduce the supplied $\mu_2,\Sigma_{22}$. This describes possible measurements for an unobserved case under fixed model parameters; conditioning on $y_{\rm obs}$ answers the different question about the hidden block of the existing case. A short generation activity uses the known laws to draw a fresh state and measurement, $z_{\rm new}\sim p(z)$ and $y_{\rm new}\sim p(y\mid z_{\rm new})$. Generation creates a new possible case; it is neither an approximation to the analytic conditional nor an extra inference algorithm.
+
+### Validity, computational payoff and extent
+
+Exactness is within the supplied Gaussian model, with positive-definite covariance blocks and Schur complements; the equivalent LGS has independent additive Gaussian noise. Linear algebra gives the full conditional and marginal parameters without fitting or numerical integration. Fixed parameters and an unchanged observation pattern allow matrix factorizations to be reused for more cases; seven dimensions demonstrate this structure, not a large-scale bottleneck. Factorization complexity is author checking context, not an added student derivation.
+
+The remaining distinctions are substantive: floating-point error is computational; residual conditional uncertainty persists even with exact arithmetic; and model mismatch or ignored parameter uncertainty can make exact model answers poor answers to a real task. The controlled hidden value lets students inspect one realized error, not diagnose these failures empirically. This establishes guided first use of Gaussian reconstruction and query choice; it does not establish population-model fitting or practical familiarity with uncontrolled missingness.
+
+**One-hour target, unvalidated learner time.** The extension beyond lecture is numerical formulation, block-to-LGS translation, implementation, output interpretation and switching queries on the same concrete case. Preserve fine-grained theoretical, technical and interpretive scaffolding; supply arbitrary setup, numerical validation and plotting infrastructure. Removing PyMC releases the old model/container/output/API work, but does not by itself prove that the remaining work fits. The downstream solved-Q&A revision and learner-time check must settle how much preliminary covariance inspection students complete versus receive. Keep the conditional-mean choice and minimum-risk calculation, accepted four query uses and LGS translation; escalate any required substantive reduction through Scope rather than silently cutting them. A fast technical execution is not a learner-time measurement.
+
+### Revision handoff to the coordinator
+
+**Verdict: feasible-with-risks**, as a bounded Scope proposal. The mathematics reuses the live results and the original concrete model; no new prerequisite method is needed. Confidence is high in the interface and lower in the one-hour student workload. The independent worked-solution revision owns technical execution; this document claims no new runtime, hosted Colab, learner or independent Section Design validation.
+
+**Exact changes proposed:** replace the old one-conditional/two-route handoff with exact conditional computation, a criterion-based summary, forward marginalization and short generation. Preserve the LGS translation, known parameters, original reference case, controlled context and lecture proof commitments. Remove every PyMC role, including supplied comparison.
+
+**Remaining ownership:** the coordinator/instructor own acceptance of this Part 3 and consequential workload choices. Notebook authoring owns the local scaffolding and mechanical student-version derivation; authoring/validation must remove stale comparison/setup/output text throughout the worked and solved/student artifacts and run the repository-locked and hosted Colab checks. The complete five-part Scope still needs its separately commissioned feasibility preview and acceptance. No slide change, push, merge, publication or actual-teaching record is authorized by this proposal.
+
+**Basis inspected:** delivery branch `lecture/l01-delivery-readiness@2d8d949d86ec7ba8dbc77fec25fb86d7cca58260`; live `lecture_scope.md`, `development_state.md`, `goal_alignment_review.md`; actual 80-cell solved notebook; existing worked source; architecture and planned/actual maps. The register already contains the current accepted PyMC-removal decision; older “pending PyMC” passages are historical/stale status, not a reopened choice. The actual map remains empty because no class has been taught. The specialist wrote only `/tmp/l01-exact-scope/`; the coordinator integrated this Part 3 and aligned its fixed-case provenance and supplied verification boundary with the validated worked/Q&A route.
+
 ## Source records and checking material
 
-Decision-update baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `18d652d28a9139a9b1ab7189190ead1005d7c236`. Mathematical-spine construction used HEAD `5ba226342cbca91a1d52b5bd88bc7efeeee04b37` and input arc blob `fb2775ac8d25d891bf8a2f5c3031ef58542afc94`. The following hashes preserve the examined baseline; the accepted insertion has changed the live deck through separately owned implementation work. Current deck source SHA-256: `5c4d188124c261ea0a576f4eb46fceeec136076bd3e9f9098305fee73b84006c`; the bounded report records mechanical/render checks, while comparative alignment is now reopened:
+Decision-update baseline: `rescope-l01-l12-architecture-alignment-20261014`, HEAD `18d652d28a9139a9b1ab7189190ead1005d7c236`. Mathematical-spine construction used HEAD `5ba226342cbca91a1d52b5bd88bc7efeeee04b37` and input arc blob `fb2775ac8d25d891bf8a2f5c3031ef58542afc94`. The following hashes preserve the examined baseline; the accepted insertion has changed the live deck through separately owned implementation work. Live-loss-insertion baseline source SHA-256: `5c4d188124c261ea0a576f4eb46fceeec136076bd3e9f9098305fee73b84006c`; the bounded report records mechanical/render checks, while comparative alignment is now reopened:
 
 - Deck: `235b8eeb48ec9075d2bcea82b6a377c0a45b6a79`.
 - Coverage specification: `c4457bc4fdb11df14de54658f20e487030766328`.

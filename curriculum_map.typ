@@ -96,7 +96,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
     - 4.3–4.3.1 Empirical risk
     - 4.6.1–4.6.2 Beta-binomial Bayes
   ],
-  [*Gaussian measurement imputation (authored, not yet taught).* Condition a multivariate Gaussian on observed measurements, infer missing values and their uncertainty. Reference: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/lecture-3-prep/InClass/Solutions/lecture1_missing_data.ipynb")[Existing L1 solved notebook].],
+  [*Exact Gaussian queries (draft, not yet taught).* Reconstruct three hidden measurements from four observed coordinates of a supplied joint Gaussian; compute conditional uncertainty, the squared-loss mean action and minimum model risk. Translate the same joint to an LGS, compute its fresh-case forward marginal and generate one new case. #link("InClass/Solutions/lecture1_missing_data.ipynb")[Solved Q&A] and #link("InClass/lecture1_missing_data.ipynb")[student version]. Local clean execution passes; hosted Colab and one-hour learner workload remain unvalidated.],
 
   [2],
   [*Exponential families and learning from sufficient statistics* \

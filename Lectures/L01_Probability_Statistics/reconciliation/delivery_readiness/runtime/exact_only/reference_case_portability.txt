@@ -1,0 +1,6 @@
+NumPy reference version: 2.0.2
+PASS: supplied original case exactly equals reference seed2027 draw, not merely rounded values.
+Full-precision supplied case: [-0.9809265055186939, -0.275006600480288, 1.8920470230380393, -0.18413093623310994, -0.06973754657319287, -0.07777903828206933, 0.9191872262734604]
+PASS: independent fresh generation seed2028; fixed case has no runtime RNG dependency.
+PASS: analytic checks from the revised script all executed successfully.
+Fresh generated coordinates are illustrative; no cross-platform numeric answer key is asserted.

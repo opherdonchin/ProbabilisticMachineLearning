@@ -112,53 +112,37 @@ Do not assume familiarity with:
 
 ## Lecture 1: Probability, statistics, and Gaussian systems
 
+**Prospective authoring contract, revised 2026-10-16.** The instructor removed PyMC entirely from L01. The exact-only solved/student pair has passed local validation; hosted execution and learner time remain pending. No class has been taught, so this section does not advance actual student knowledge. The course-entry baseline above, including prior-course package experience, is unchanged.
+
 ### Assume familiar and reused
 
-Authors may use without generic re-teaching:
-
-- Bayesian conditioning and posterior reasoning;
+- Bayesian conditioning, expectation and posterior uncertainty;
 - covariance/correlation at a basic level;
-- NumPy arrays and slicing;
-- matrix multiplication with `@`;
-- `pm.Model` as a modeling container;
-- ordinary observed PyMC variables;
-- `pm.sample` as the operation used to draw posterior samples;
-- the concept of posterior samples and basic summaries;
+- matrix algebra, NumPy arrays/slicing and `@`;
 - basic plotting.
 
-Do not assume the current return type of `pm.sample` is familiar merely because the function itself is familiar.
+No new construct is promoted to independent fluency after one notebook.
 
 ### Previously encountered — scaffold when needed
 
-- multivariate Gaussian distributions;
-- covariance matrices;
-- matrix shape reasoning;
-- manipulating multivariate posterior samples;
-- extending an already-created PyMC model through a later model context.
+At entry, retain support for multivariate Gaussians, covariance matrices and nontrivial matrix shapes. Live lecture results are supplied for application rather than re-proved in the notebook.
 
 ### New in Lecture 1 / first notebook sequence
 
-The lecture introduces or refreshes the mathematical material, and the notebook may apply it without derivation:
+Introduce or scaffold:
 
-- partitioned multivariate Gaussian notation;
-- covariance blocks $\Sigma_{11}$, $\Sigma_{12}$, $\Sigma_{21}$, $\Sigma_{22}$;
-- conditional Gaussian mean and covariance;
-- the Schur complement as conditional covariance;
-- linear-Gaussian-system notation;
-- exact posterior mean/covariance for a linear-Gaussian system.
+- partitioned Gaussian notation, covariance blocks, exact conditional mean/covariance and conditional covariance as a Schur complement;
+- exact conditional distribution versus a loss-selected action; the vector squared-loss identity, conditional-mean action and minimum conditional model risk; expected versus realized loss;
+- explicit joint-to-LGS notation mapping and `W`, `b`, `Omega`, followed by forward marginal moments;
+- old-case conditioning, a specified-state observation law, and the before-observation fresh-case marginal;
+- `np.linalg.solve` with vector/matrix right-hand sides and the symmetry/transpose route for a right-side inverse product;
+- `np.diag`, marginal SDs, normal quantiles and individual intervals versus simultaneous coverage;
+- `np.trace` for total conditional variance;
+- one fresh unconditional state and independent noise vector using `rng.multivariate_normal`, followed by the direct LGS vector equation.
 
-Computational constructs likely new and deserving explicit scaffolding:
+`np.block` and `np.allclose` are explained in supplied code. Spectral checks, assertion APIs and the affine-generator population check remain supplied author verification; do not infer independent fluency. Plotting and arbitrary covariance/data construction are supplied infrastructure. No inference-package API or comparison is part of this L01 route.
 
-- `np.block`;
-- `np.linalg.solve` as preferable to explicitly computing a matrix inverse;
-- `np.allclose` if used for a numerical equivalence check;
-- `pm.MvNormal` in a missing-data setting;
-- PyMC handling of `np.nan` entries in observed data;
-- `xarray.DataTree` as the current return container from `pm.sample` under the current PyMC/ArviZ stack;
-- inspecting the groups and variables in that DataTree;
-- `arviz_base.extract` for extracting/combining posterior samples;
-- `arviz_stats.summary` for native posterior summaries;
-- comparing a Monte Carlo multivariate posterior with an exact analytic Gaussian posterior.
+After actual completion, these new practiced constructs may move to “previously encountered — scaffold when needed”; supplied checking APIs still require support. The [notebook knowledge-change report](../../../../InClass/Preparation/lecture1_missing_data_knowledge_change_report.md) specifies that prospective transition. Model fitting, empirical model validation, uncontrolled missingness, simultaneous regions, physical/causal identification and advanced batching remain unestablished by this notebook.
 
 ## Maintenance after each notebook
 

@@ -1,0 +1,44 @@
+Observed block x2_obs: [-0.184131 -0.069738 -0.077779  0.919187]
+Conditional mean: [-0.568086  0.431914  0.931914]
+Shape: (3,)
+Conditional covariance:
+ [[0.466353 0.166353 0.166353]
+ [0.166353 0.466353 0.166353]
+ [0.166353 0.166353 0.466353]]
+Shape: (3, 3)
+Marginal SD: [0.6829 0.6829 0.6829]
+Individual 90% lower: [-1.691357 -0.691357 -0.191357]
+Individual 90% upper: [0.555185 1.555185 2.055185]
+Hidden simulation truth (evaluation only): [-0.980927 -0.275007  1.892047]
+Squared-loss action: [-0.568086  0.431914  0.931914]
+Minimum conditional model risk: 1.399058823529412
+Conditional model expected risk: 1.399058823529412
+This case's realized squared error: 1.5920294059108695
+W:
+ [[0.336749 0.336749 0.336749]
+ [0.336749 0.336749 0.336749]
+ [0.336749 0.336749 0.336749]
+ [0.336749 0.336749 0.336749]]
+b: [-0.336749  0.163251 -0.836749  0.663251]
+Shapes: (4, 3) (4,)
+Omega:
+ [[0.62352 0.33552 0.33552 0.33552]
+ [0.33552 0.62352 0.33552 0.33552]
+ [0.33552 0.33552 0.62352 0.33552]
+ [0.33552 0.33552 0.33552 0.62352]]
+Shape: (4, 4)
+Forward measurement mean: [ 0.   0.5 -0.5  1. ]
+Forward measurement covariance:
+ [[1.44  1.152 1.152 1.152]
+ [1.152 1.44  1.152 1.152]
+ [1.152 1.152 1.44  1.152]
+ [1.152 1.152 1.152 1.44 ]]
+Original marginal mean recovered: True
+Original marginal covariance recovered: True
+Same conditional mean recovered: True
+Same conditional covariance recovered: True
+Fresh generated state: [0.238601 1.027457 0.377055]
+Fresh independent noise: [0.698211 0.986316 1.345805 1.518542]
+Fresh generated measurement: [0.914779 1.702883 1.062373 2.73511 ]
+Shapes: (3,) (4,) (4,)
+Supplied author checks passed.

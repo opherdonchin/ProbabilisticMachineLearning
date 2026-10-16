@@ -2,7 +2,7 @@
 
 **Handoff prepared 2026-10-16.** The instructor requested consolidation of live branches into `main`, followed by a fresh conversation prioritizing L01 for delivery the following week. Start from the resulting common `main`; verify its HEAD and working tree before making changes. Old worktree paths and branch restrictions in historical reports are provenance, not instructions to recreate those workstreams. This handoff indexes current work; the owning scope, design and approval records retain authority.
 
-Use [Lecture Development](../../../.agents/skills/lecture-development/SKILL.md), with the relevant specialists for bounded revision and validation. Continue independent source, production and runtime work through delegation while the instructor considers consequential choices. Present one such choice at a time. Do not reopen settled proof depth or repeat resolved design comparisons.
+Use [Lecture Development](../../.agents/skills/lecture-development/SKILL.md), with the relevant specialists for bounded revision and validation. Continue independent source, production and runtime work through delegation while the instructor considers consequential choices. Present one such choice at a time. Do not reopen settled proof depth or repeat resolved design comparisons.
 
 ## What we already have
 

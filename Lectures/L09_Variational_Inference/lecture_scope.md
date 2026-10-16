@@ -71,7 +71,7 @@ Apply L05 automatic differentiation, keeping both mean and scale paths connected
 
 **End summary:** Independent noise plus a differentiable transform lets us compute the complete derivative of the sampled objective, including how means and spreads affect the draws.
 
-### D. Compare updating one distributional factor at a time — 16 minutes
+### D. Recognize updating one distributional factor at a time — 10 minutes
 
 Some models let us optimize one factor q_j exactly while holding the others fixed. This is **coordinate-ascent variational inference (CAVI)**. State its update: exponentiate the expected log joint probability, averaging over all other factors, and normalize.
 
@@ -81,7 +81,7 @@ An exact coordinate update improves the same bound. Noisy gradient steps need no
 
 **End summary:** Coordinate updates offer another way to improve the same restricted-distribution objective; they do not remove the family restriction.
 
-### E. Check objective signs, loss scaling and predictions — 13 minutes
+### E. Check objective signs, scaling, predictions and amortization — 19 minutes
 
 Write F as expected log likelihood **minus** KL to the prior. Use the corrected diagonal Gaussian KL in Part 2 and check that identical standard Normals give zero. The inspected book has a plus-sign error and a missing constant; later teaching must use the corrected expressions.
 
@@ -163,7 +163,7 @@ The first three examples keep the live mathematical checks independently solvabl
 
 **Correlated Gaussian, Work/Live B and reused D/E.** Course-constructed target mean zero, `S=[[1/2,2/5],[2/5,1/2]]`; determinant `9/100`, precision `Lambda=[[50/9,−40/9],[−40/9,50/9]]`. Best diagonal covariance is `D=(9/50)I`, versus exact marginal variances `1/2`; minimum reverse KL is `(1/2)log(25/9)≈0.510826` nats. Direct rational arithmetic checked these values. B2 Fig. 10.2 supplies the phenomenon, not these parameters or claims of source figure replication.
 
-For `v=(1,1)`, exact latent predictive variance is `9/5` versus diagonal `9/25`; for `v=(1,−1)`, exact is `1/5` versus diagonal `9/25`. Add known observation variance separately. Thus diagonal error can reverse direction for a linear query. One optional CAVI sweep starting at means `(1,−1)` gives `m_1=−4/5`, then `m_2=−16/25`, with variances `9/50`; this is coordinate distribution optimization, not a Gibbs sample or L03 coordinate MAP.
+For `v=(1,1)`, exact latent predictive variance is `9/5` versus diagonal `9/25`; for `v=(1,−1)`, exact is `1/5` versus diagonal `9/25`. Add known observation variance separately. Thus diagonal error can reverse direction for a linear query. Author checking evidence only (not assigned live or in the notebook): a CAVI sweep starting at means `(1,−1)` gives `m_1=−4/5`, then `m_2=−16/25`, with variances `9/50`; this is coordinate distribution optimization, not a Gibbs sample or L03 coordinate MAP.
 
 **Regression realization, Brief Work/Live B.** With standard Normal prior and noise variance 1, choose rows `X_1=(3/√2,−3/√2)`, `X_2=(1/(3√2),1/(3√2))`, observations `y=(0,0)`. Then `I+X^T X=Lambda` above and exact posterior is the same target. Algebra checked; course-constructed, not ruggedness/GDP observations. It shows that posterior correlation arises within familiar Gaussian regression. No fresh conjugate-posterior proof or empirical-accuracy claim.
 
@@ -195,7 +195,7 @@ This table preserves the reviewed source boundaries. The plain-language explanat
 | Allocation | Commitment / boundary |
 |---|---|
 | **Core/Live deep** | B2 §§10.1.1–10.1.2 restricted objective/geometry; §§6.3.3, 6.3.5.2 and §10.2.1.1 Gaussian total pathwise derivative. Generic bound identity reused from L06. |
-| **Short bridges** | §6.3.4 score-function contrast; §§10.3–10.3.1 CAVI update/application, numerical sweep optional; §10.1.5 amortization recognition. Gaussian KL/known-noise posterior applied, not complete source derivations. |
+| **Short bridges** | §6.3.4 score-function contrast; §§10.3–10.3.1 CAVI rule/recognition, numerical sweep omitted; §10.1.5 amortization explanation in the released six minutes. Gaussian KL/known-noise posterior applied, not complete source derivations. |
 | **Notebook owned — proposed allocation** | PyTorch refresh, one diagonal Challenger transform/objective and fit, fixed-noise gradient check; supplied Laplace/full-VI/numerical-reference query comparison and bounded exact-Gaussian/analytic-diagonal diagnostic. Full-Gaussian draw map recognized, not derived or independently fitted by students. |
 | **Deferred, named owners** | Bounded MC variance/diagnostic interpretation → L07; detailed chain theory and HMC mechanics omitted; learned composition/architecture → L10–L11; amortized encoder/decoder, VAE specialization and joint training → L12. |
 | **Omitted by course decision** | Full source GDP unknown-noise/HMC comparison; student full-covariance optimizer; low-rank/flow family implementation; natural gradients, ADVI transforms/Jacobian catalogue, control-variate/score estimator derivations, stochastic-variational-EM/VBEM model catalogue, Ising CAVI solver, EP/wake-sleep, semi-amortized inference, IWAE and normalizing flows. These are not hidden future obligations. |

@@ -349,7 +349,7 @@ of the unchanged Oke/pyprobml notebooks. One local fit is not a student timing
 trial, distribution-shift guarantee or hosted Colab pass.
 
 The previous heteroskedastic course probe remains separate exact evidence at
-`/tmp/pml-l04-l12-reconciliation/Lectures/L11_Neural_Prediction/notebook_feasibility/`:
+Git commit `0bdda8e`, path `Lectures/L11_Neural_Prediction/notebook_feasibility/`:
 its course-constructed 130-parameter two-head model fits in about .28–.31s per
 800 steps in its recorded one-thread run. That is useful Pair B feasibility, not
 newly reproduced here and not a reason to shrink Chapter 16 to that example.

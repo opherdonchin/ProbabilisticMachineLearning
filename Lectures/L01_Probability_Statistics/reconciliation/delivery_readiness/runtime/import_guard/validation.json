@@ -1,0 +1,22 @@
+{
+  "saved_instructor_run": "5259ef8",
+  "diagnosis": "saved kernel could not see editable plotting package; pip fallback failed because pip is absent",
+  "stale_kernel_cause": "inferred; fresh .venv process imports package, saved student run succeeds, saved solved run fails",
+  "simulated_stale_kernel": "clear RuntimeError with restart and uv sync guidance; no pip invocation attempted",
+  "schemas_valid": true,
+  "student_mechanically_generated": true,
+  "changed_source_cell_ids": [
+    "f74c9e0d",
+    "6f561548",
+    "b8f0db4b"
+  ],
+  "mathematical_code_questions_and_answers_unchanged": true,
+  "maximum_supplied_code_lines": 16,
+  "maximum_code_note_words": 38,
+  "sha256": {
+    "InClass/Solutions/lecture1_missing_data.ipynb": "169a8789936537174febe646f836d59cec0fdeb9a1bc4fecb6792cb86c4c4194",
+    "InClass/lecture1_missing_data.ipynb": "0231c3c1984cf2c1384cb6bbfb991940cae1c7181272b9ca55b60be1ccf1b340"
+  },
+  "clean_local_execution": "passed; all 23 code cells",
+  "executed_sha256": "131e38651f9d5e83a25d903ee979dfbfbbf6af31084be108c2340d5bc4234586"
+}

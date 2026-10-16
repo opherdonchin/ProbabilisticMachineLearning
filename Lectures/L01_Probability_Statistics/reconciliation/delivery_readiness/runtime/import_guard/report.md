@@ -1,0 +1,11 @@
+# L01 plotting import failure and restart guidance
+
+The instructor’s saved solved notebook failed in its first supplied code cell. The preceding stream output was `.venv/bin/python: No module named pip`; the final exception was `ModuleNotFoundError: No module named course_support`. The saved student notebook successfully loaded the plotting tools and observed case using the same environment metadata. Both runs and the instructor’s new bold emphasis on “solved notebook” were preserved in local commit `5259ef8` before revision.
+
+A fresh repository uv process imports `course_support.l01` from the editable package, version 0.1.0. Pip is absent from the uv environment. A stale solved kernel that predates the editable installation is the likely cause; the saved notebook alone does not prove its startup state. The immediate user action is to restart that notebook’s `.venv` kernel and run from the beginning. No package or dependency change was needed.
+
+The bootstrap now checks whether pip exists before attempting the missing-package installation. If neither the plotting package nor pip is visible, it raises a clear restart instruction, with `uv sync --locked` in the repository terminal as a fallback if restarting does not resolve the import. The local note documents this briefly. The supplied bootstrap is now 16 lines; mathematical code, all 18 Q&A pairs and their order are unchanged. The instructor’s wording edit was transferred to the solved source before mechanical student regeneration.
+
+A simulated kernel state with the editable source path absent and no pip reproduces the import condition. The new guard raises its intended RuntimeError and never invokes pip. Both schemas and exact student derivation pass. The official clean local executor completes all 23 code cells without errors; [raw output](execution.txt) and [source-specific validation](validation.json) retain the evidence. This is coordinator validation, not a new independent review.
+
+The existing package-publication and hosted-Colab gates remain open. This local repair does not validate public installation or hosted execution. For background on pip availability in uv notebooks, see [uv’s Jupyter guidance](https://docs.astral.sh/uv/guides/integration/jupyter/).

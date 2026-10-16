@@ -11,6 +11,8 @@ Use the following student-facing Markdown hierarchy:
 - `###` material boundary with italic text: `### *Explanation to read*`, `### *Code to run*`, or `### *Questions to answer*`;
 - `####` content title or numbered question.
 
+Use mathematical symbols inside math and map them to Python names in surrounding prose, for example `$m$` stored in `conditional_mean`. Keep underscored identifiers in code spans rather than embedding them unescaped in LaTeX text commands.
+
 Repeat a material boundary when the material type changes, rather than before every cell of the same type. Prefer local sequences of explanation, short supplied supporting code, then student work. Supply code only when it supports the mathematical target; keep the calculations students are meant to implement as questions.
 
 Reserve **Explanation to read** for a coherent teaching move that students need to absorb: a mathematical argument or representation from the lecture, or a substantive technical idea about code, packages or computation. Keep implementation documentation with **Code to run**. The distinction is the instructional purpose of the block; the presence of prose alone does not make it an Explanation.

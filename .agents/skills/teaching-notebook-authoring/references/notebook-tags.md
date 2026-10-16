@@ -8,7 +8,7 @@ Use the following student-facing Markdown hierarchy:
 
 - `#` notebook title;
 - `##` main section;
-- `###` material boundary: **Explanation to read**, **Code to run**, or **Questions to answer**;
+- `###` material boundary with italic text: `### *Explanation to read*`, `### *Code to run*`, or `### *Questions to answer*`;
 - `####` content title or numbered question.
 
 Repeat a material boundary when the material type changes, rather than before every cell of the same type. Prefer local sequences of explanation, short supplied supporting code, then student work. Supply code only when it supports the mathematical target; keep the calculations students are meant to implement as questions.

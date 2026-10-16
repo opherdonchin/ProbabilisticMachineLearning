@@ -1,0 +1,5 @@
+FASHION affine {'parameters': 7850, 'training_seconds': 0.41003246302716434, 'best_validation_epoch': 25} 0.5289143886566162 0.8205
+FASHION mlp {'parameters': 50890, 'training_seconds': 0.6881950629176572, 'best_validation_epoch': 25} 0.4912032833099365 0.8315
+FASHION cnn {'parameters': 61706, 'training_seconds': 9.924379074946046, 'best_validation_epoch': 24} 0.4926435852050781 0.813
+RNN 5.719226157991216 bestepoch 40 test {'transitions': 4999, 'mean_nll': 2.175432254419634, 'perplexity': 8.805990728044831} bigram {'transitions': 4999, 'mean_nll': 2.37762517697823, 'perplexity': 10.779273576418317, 'unsmoothed_zero_support_transitions': 17, 'raw_mle_mean_nll': None, 'raw_mle_status': 'infinite'}
+PASS actual-data fits and direct operator/math checks

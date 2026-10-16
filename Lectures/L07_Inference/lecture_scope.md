@@ -1,5 +1,16 @@
 # L07 — Approximate a posterior, then check what the approximation misses
 
+**Instructor revision — 2026-10-15:** The notebook direction is now geometry-led
+method selection with cumulative comparison: L07 Laplace against a checked
+numerical reference; L09 revisit Laplace before an appropriate VI family; L10
+revisit that family before MCMC. Dataset continuity is optional. Examples,
+families and samplers remain unselected pending computational investigation.
+The [joint accepted direction and bounded research](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md)
+owns the shared decision and qualifications. The notebook/example commitments
+below are baseline proposals requiring reconciliation where they conflict with
+this direction; this notice does not approve the whole scope or change live
+mathematical depth. Existing review evidence remains tied to its original target.
+
 **Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
 **How to read this scope:** Parts 1, 3 and 5 explain the teaching proposal without requiring knowledge of Murphy's books. Part 2 gives the mathematics needed by later authors. Part 4 identifies the examples and their sources. “Derive” means show the calculation; “state” means explain the result without proving it; “apply” means use something already taught. Live teaching and the separate notebook session have their own budgets. These are lecture-wide commitments, not a section or slide outline. Every later section must finish by summarizing what it taught; connections to earlier work belong at the beginning of the receiving section.

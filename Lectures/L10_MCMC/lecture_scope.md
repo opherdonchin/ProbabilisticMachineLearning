@@ -1,5 +1,16 @@
 # L10 — Sampling from a distribution: a correct algorithm can still give a poor estimate
 
+**Instructor revision — 2026-10-15:** The notebook direction is now geometry-led
+method selection with cumulative comparison: L07 Laplace against a checked
+numerical reference; L09 revisit Laplace before an appropriate VI family; L10
+revisit that family before MCMC. Dataset continuity is optional. Examples,
+families and samplers remain unselected pending computational investigation.
+The [joint accepted direction and bounded research](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md)
+owns the shared decision and qualifications. The notebook/example commitments
+below are baseline proposals requiring reconciliation where they conflict with
+this direction; this notice does not approve the whole scope or change live
+mathematical depth. Existing review evidence remains tied to its original target.
+
 **Status:** Rewritten for an instructor familiar with the course through L03–L04. The [course register](../course_architecture_scope/STATUS.md) records the exact current review and instructor-decision status. Lecture times are estimates; future notebooks have not been implemented or run.
 
 Suppose a probability distribution has two separated peaks. A sampler may spend thousands of steps around one peak and miss the other. Its average can then look stable while being wrong. This lecture explains both why a sampling algorithm targets the right distribution and why that fact alone does not make a short run reliable.

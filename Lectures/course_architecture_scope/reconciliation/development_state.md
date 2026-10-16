@@ -25,3 +25,14 @@ This is a workflow index for the [integrated assessment](integrated_assessment.m
 **Next owner/action:** the bounded independent source/data/math/runtime branches and their targeted checks are complete. Further task-specific implementation requires a queued selection and accepted scope; learner/hosted validation requires the chosen teaching artifact and appropriate runtime. Do not generate extra model variants or final notebooks to avoid those dependencies. When the instructor requests review, present one highest-leverage unresolved item, record the answer in its authoritative scope and unblock its affected work. Other pending questions stay open. New independent evidence can reopen research without waiting for unrelated choices. Reconcile this index against live files on resume.
 
 **L04 review/history checkpoint:** first reviewed Iris scope `79b8d471b2d0605bccb61c9f8b130c012b7ac68a` is preserved exactly in commit `68b6647`. Precision-refined scope `8299557943805d2515bf503c4fc791d7cbf93ed2`, preserved in commit `8c338d6`, has one bounded source recheck resolving the specified correctness concerns without new teaching/time commitments. The old report's statement that the first blob was unavailable describes that review moment; exact original content was subsequently recovered and byte-hash verified. Current scope `7b389b7d99de397420ad5445ed6b21729d60590f` changes only the concluding workflow instruction to reflect completed previews; substantive review disposition is unchanged. The L04 register owns live-emphasis and final scope status.
+
+
+**Current resumption — 2026-10-15:** The instructor replaced shared Iris selection
+with a geometry-led cumulative L07/L09/L10 notebook direction. The three scope
+notices and [joint decision/task record](notebook_geometry/decision_and_tasks.md)
+own its provenance and qualifications. No dataset/family/sampler is selected.
+This explicit new design task reopens bounded computational research; the prior
+instruction against extra variants while awaiting an answer does not prohibit
+this research. Investigators own only separate notebook_geometry prefixes.
+Dependent final authoring waits for candidate evidence and instructor selection;
+unrelated work remains independent. Original probe reviews retain their targets.

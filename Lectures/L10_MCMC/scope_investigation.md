@@ -1,5 +1,13 @@
 # L10 scope investigation — finite query estimates and exploration
 
+**Current decision, 2026-10-15:** The old shared-classifier selection is replaced
+by the instructor's [geometry-led cumulative direction](../course_architecture_scope/reconciliation/notebook_geometry/decision_and_tasks.md),
+recorded in the three owning scopes. Existing probes below remain valid evidence
+for their exact configurations, not selected notebook examples. Dataset/family
+selection awaits the new bounded research. L09's old Gaussian-only comparison
+question is deferred for reformulation after family selection; no diagonal or
+Gaussian restriction is newly approved.
+
 **Stage/mode:** Lecture Scope / feasibility-review and author-only computational probes, investigator `/root/investigate_l07_l10`, 2026-10-14; worktree `/tmp/pml-l04-l12-reconciliation`, starting commit `5e4c86e`. Scope target blob `9ce5a70b8ac1e1506820134b1a01d06b976c072f`. **Verdict: feasible-with-risks.** [Current scope](lecture_scope.md) remains unchanged. Shared practical task decision is owned by [L07-SHARED-CLASSIFIER](../L07_Inference/scope_investigation.md#l07-shared-classifier--awaiting-decision-owner-l07-scope-affects-l07l09l10); its question/options are not duplicated here.
 
 ## New finite-run evidence

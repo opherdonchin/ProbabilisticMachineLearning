@@ -111,7 +111,7 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
     - 2.6.1–2.6.3 Markov chains; language models
   ],
   [],
-  [*Character bigram prediction and generation.* Count transitions in baby names, fit a categorical transition matrix, compute held-out name log scores and generate plausible examples. Compare with an independent-character baseline and examine a failed or implausible output. *Competence:* Fit, score, generate and critique a simple distributional model. #link("https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/makemore/makemore_part1_bigrams.ipynb")[Reference notebook].],
+  [*Character bigram prediction and generation.* Count transitions in baby names, fit and inspect a categorical transition matrix, compute string log scores under the fitted model and generate examples. Held-out comparison with an independent-character baseline and diagnosis of failed or implausible outputs are optional extensions. *Competence:* Fit, inspect, score and generate with a simple distributional model. #link("https://github.com/karpathy/nn-zero-to-hero/blob/master/lectures/makemore/makemore_part1_bigrams.ipynb")[Reference notebook].],
 
   [3],
   [*Graphical models: factorization and conditional independence* \

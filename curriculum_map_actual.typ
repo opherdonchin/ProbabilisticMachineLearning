@@ -115,7 +115,7 @@ After each meeting, update the corresponding row with topics substantively taugh
   [Not yet attempted],
 
   [7],
-  [*Bayesian computation: grid reference and Laplace approximation* \
+  [*Inference overview and Laplace approximation* \
   #note[Not yet taught]],
   [—],
   [—],
@@ -131,7 +131,7 @@ After each meeting, update the corresponding row with topics substantively taugh
   [Not yet attempted],
 
   [9],
-  [*Variational inference: posterior geometry and pathwise gradients* \
+  [*Variational and amortized inference* \
   #note[Not yet taught]],
   [—],
   [—],
@@ -139,7 +139,7 @@ After each meeting, update the corresponding row with topics substantively taugh
   [Not yet attempted],
 
   [10],
-  [*Monte Carlo and MCMC: invariance, mixing and estimator error* \
+  [*Deep Neural Networks I: learned representations and images* \
   #note[Not yet taught]],
   [—],
   [—],
@@ -147,7 +147,7 @@ After each meeting, update the corresponding row with topics substantively taugh
   [Not yet attempted],
 
   [11],
-  [*Neural conditional models: heteroskedastic likelihood and regularization* \
+  [*Deep Neural Networks II: representing sequence context* \
   #note[Not yet taught]],
   [—],
   [—],

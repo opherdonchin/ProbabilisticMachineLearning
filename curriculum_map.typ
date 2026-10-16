@@ -52,7 +52,7 @@ Because no lecture has yet been given, every entry remains prospective in the cl
 
 The thirteen-meeting allocation is a *revisable course proposal*, not a teaching record or replacement for approved scopes. L01 is prepared but untaught; L02 has an agreed design; L03 has an earlier agreed scope. On 2026-10-14 the instructor selected Iris evaluation for L04, retaining live parity; its full revised scope remains provisional. Other proposed alternatives do not amend prior decisions. Check scopes and review records before implementation.
 
-Each row connects an identifiable learning problem, a mathematical exemplar, and *bounded hands-on competence*. One notebook should generally provide meaningful use and evaluation of a method on data; when the chosen derivation needs a tiny exactly checkable example, supplied code or reference results can keep that diagnostic alongside the application. L07, L09 and L10 particularly benefit from revisiting a shared Bayesian prediction problem so that students compare methods, not just benchmark unrelated algorithms. Practical datasets, scaffolding, runtime and the one-hour limit still require separate feasibility checks.
+Each row connects an identifiable learning problem, a mathematical exemplar, and *bounded hands-on competence*. One notebook should generally provide meaningful use and evaluation of a method on data; when the chosen derivation needs a tiny exactly checkable example, supplied code or reference results can keep that diagnostic alongside the application. L07 and L09 benefit from revisiting the accepted Challenger posterior so that students compare methods, not just benchmark unrelated algorithms. Practical datasets, scaffolding, runtime and the one-hour limit still require separate feasibility checks.
 
 #set text(size: 8pt)
 #set par(leading: 0.55em, spacing: 0.6em)
@@ -176,70 +176,68 @@ Each row connects an identifiable learning problem, a mathematical exemplar, and
   [*Fit a population model with incomplete measurements.* Work with a prepared multivariate measurement dataset with controlled missingness. Assemble expected sufficient statistics, including conditional covariance, and run EM in a supplied driver. Compare against a complete-case or mean-imputation baseline; assess observed-data log likelihood and held-out reconstruction separately. *Competence:* Fit, evaluate and diagnose an incomplete-data model and recognize when EM is or is not an appropriate tool. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/opt/gauss_imputation_em_demo.ipynb")[Reference notebook].],
 
   [7],
-  [*Bayesian computation: grid reference and Laplace approximation* \
-  #note[Revisable proposal]],
-  [Bayesian logistic-regression predictions and parameter uncertainty; MAP versus posterior queries; Laplace mode/Hessian construction, conditions for local Gaussian validity, computational scaling, and query-specific error.],
+  [*Inference overview and Laplace approximation* \
+  #note[Revisable implementation contract]],
+  [Posterior queries, local Gaussian approximation, checked numerical reference and sample-average error. Derive scalar Laplace and iid estimator variance; interpret dependent-sampler diagnostics under their conditions. Replace grid/coordinate detail to fund the comparison.],
   [
-    - 7.1–7.3 What posterior questions require: short introduction
-    - Selected 7.4.1–7.4.3 Most likely parameter, grid and Gaussian shortcut
-    - Selected 7.5 Checking approximation quality
-    - Selected 15.3.5–15.3.6 One-parameter logistic example
+    - 7.1–7.3 Inference questions and method choice
+    - Selected 7.4.1–7.4.3 Mode, numerical reference and Laplace
+    - 11.2–11.2.2 Sample averages and iid error; selected 12.6.3 diagnostics: interpretation
   ],
   [],
-  [*Bayesian binary classification, first inference route.* Use a prepared, overlapping two-class subset of the Iris task, with few parameters, to compare point predictions with posterior-averaged predictions from a Laplace Gaussian. A one-parameter restriction and checked numerical grid provide an exactness *diagnostic*, not the practical motivation. Inspect uncertainty and when local curvature is misleading. *Competence:* Construct and use a Laplace posterior proxy and evaluate the downstream prediction. #link("https://stat238.berkeley.edu/spring-2026/codelecturethirtysix238spring2026/")[Reference for numerical check]. *Feasibility:* Supply fitting and Hessian helpers; do not require two complete independent fits.],
+  [Use the 23-flight Challenger thermal-distress logistic posterior, with standardized temperature and proper Gaussian prior. Compare point and Laplace predictions with a supplied posterior sampler and checked two-dimensional reference. Work posterior-predictive averages and query-specific numerical error. Fitting, reference and diagnostics helpers supplied; no sampler construction or claim of exact MCMC output.],
 
   [8],
   [*Exact inference in structured sequence models* \
-  #note[Revisable proposal]],
-  [HMM filtering, smoothing, evidence and path MAP as different answers to a hidden-state problem. Forward–backward factorization and exact dynamic programming; scaling, computational cost, and brief linear-Gaussian Kalman comparison.],
+  #note[Revisable implementation contract]],
+  [Scaled categorical-HMM filtering, smoothing and evidence; joint path MAP versus marginal decisions; dense O(T K²) message cost. Compact Gaussian filtering comparison.],
   [
-    - 9.2.1–9.2.5 Hidden-state calculations and scaling
-    - 9.2.6 Whole history versus separate state decisions
-    - Selected 8.1.2 / 8.2.2 Gaussian filtering: short application
+    - 9.2.1–9.2.6 HMM messages, scaling and path queries
+    - Selected 8.1.2 / 8.2.2 Gaussian filtering
   ],
   [],
-  [*Infer hidden behavioral or instrument states from a noisy sequence.* Use a prepared labeled-context sequence and a small HMM: compute filtered/smoothed probabilities, identify uncertain transitions and compare a state-by-state prediction with path MAP or a naive baseline. Check a tiny enumerated sequence for correctness. *Competence:* Use exact message passing and interpret probabilistic state inference instead of merely producing a sequence of hard labels. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/misc/casino_hmm.ipynb")[Casino HMM diagnostic reference]. *Feasibility:* Prepare the sequence and model parameters; no full state-space-model fitting required.],
+  [Extend categorical-message logic to real Gaussian time series using the existing Oke PS2 Kalman package notebook. Scaffold conditional means/covariances, model fitting and predictive checks around package calls. Exact data/model depth remains to be frozen; current source and missing-observation repairs are checked in the lecture-local package-feasibility report, not a claim of full hosted execution.],
 
   [9],
-  [*Variational inference: posterior geometry and pathwise gradients* \
-  #note[Revisable proposal]],
-  [Variational distributional optimization via reverse KL/ELBO, approximation-family and optimizer error, pathwise gradients, and mean-field limitations. Contrast the fitted Gaussian with Laplace on the same kind of posterior query.],
+  [*Variational and amortized inference* \
+  #note[Revisable implementation contract]],
+  [ELBO/reverse KL, Gaussian family restriction, total pathwise gradients and optimizer error. Introduce the shared evidence-to-variational-parameters map; retain CAVI recognition while replacing its numerical sweep.],
   [
-    - 10.1.1–10.1.2 Fitting a restricted distribution
-    - 6.3.3 / 6.3.5; 10.2.1.1 Derivatives through Gaussian draws
-    - 6.3.4 Another gradient estimator: statement only
-    - 10.3.1 Coordinate updates; 10.1.5 learned inference: introduction only
+    - 10.1.1–10.1.2 Variational criterion
+    - 6.3.3 / 6.3.5; 10.2.1.1 Pathwise gradients
+    - 10.3.1 Coordinate rule; 10.1.5 amortization
   ],
   [],
-  [*Bayesian binary classification, second inference route.* With prepared likelihood and optimizer code, fit a diagonal-Gaussian variational posterior for the overlapping binary Iris model used in L07; compare task-relevant predictions and uncertainty with Laplace and a supplied reference. A correlated Gaussian with known answer isolates mean-field family error from optimization error. *Competence:* Fit and diagnose a variational posterior and decide whether lost dependence matters for the prediction. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/10/linreg_bayes_svi_hmc.ipynb")[Reference VI implementation]. *Feasibility:* Limit student code to the defining objective, parameters, and interpretive comparisons.],
+  [Fit a Gaussian variational approximation to the accepted Challenger thermal-distress posterior; compare specified predictive queries with Laplace, supplied sampling output and a checked reference. Use the known correlated Gaussian to separate family and optimization error. Diagonal student family versus supplied full-family comparison remains a detailed pedagogical choice. No MCMC-theory handoff to L10.],
 
   [10],
-  [*Monte Carlo and MCMC: invariance, mixing and estimator error* \
-  #note[Revisable proposal]],
-  [Monte Carlo estimators for posterior queries; MCMC target invariance versus mixing, Metropolis–Hastings correction, Gibbs full-conditionals, finite-run error and query-dependent effective sample size.],
+  [*Deep Neural Networks I: learned representations and images* \
+  #note[Revisable implementation contract]],
+  [GLM to learned nonlinear composition; categorical probability output; shared local filters, equivariance and receptive fields; one residual-gradient argument. Reuse AD/SGD rather than reteach a full optimizer.],
   [
-    - 11.2–11.2.2 Averages and sampling error
-    - 2.6.4; 12.2.1–12.2.2 Invariant distribution and acceptance rule
-    - 12.3.1–12.3.2 Conditional-coordinate sampling: brief derivation
-    - Selected 12.6.3 Dependent-sample error; 12.5.3 Hamiltonian mechanics only
+    - 16.1 Two probabilistic roles
+    - 16.2.1–16.2.5 Linear, nonlinear, convolutional, residual and normalization blocks
+    - 16.3.1–16.3.2 MLP and CNN composition
   ],
-  [],
-  [*Bayesian inference by sampling, third route.* With an MH driver and precomputed L07/L09 comparisons, estimate posterior expectations and predictive probabilities for the same small binary-classification model; examine run-to-run variability and query-specific error. A supplied bimodal target is a stress test for mixing and mode exploration. *Competence:* Run and diagnose MCMC estimates rather than equate stationarity with successful finite computation. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book2/12/mcmc_gmm_demo.ipynb")[Bimodal diagnostics reference]. *Feasibility:* Supply proposal, plotting and diagnostics so one hour is enough.],
+  [
+    - 13.1–13.2.5 Learned features and depth
+    - Selected 13.3–13.5 Training support; 14.2.1 convolution
+  ],
+  [Source-adapted PyTorch LeNet on Fashion-MNIST: connect a local filter calculation to package output, inspect shapes/sharing, run bounded updates and evaluate held-out log score and errors against a supplied dense baseline. Supply preparation, training driver and checkpoint; no architecture search. Source, data and workload evidence: Lectures/deep_networks_revision/notebook_source_feasibility.md. One hour, integrated mathematical/technical/interpretive steps.],
 
   [11],
-  [*Neural conditional models: heteroskedastic likelihood and regularization* \
-  #note[Revisable proposal]],
-  [Nonlinear differentiable conditional models with learned mean and positive scale, heteroskedastic Gaussian log score, SGD/AD reuse, regularized point fitting and differences between conditional noise and weight uncertainty.],
+  [*Deep Neural Networks II: representing sequence context* \
+  #note[Revisable implementation contract]],
+  [Autoregressive likelihood, shared recurrent state and bounded unrolled derivative; Jacobian products; worked causal attention and positional information; context/cost tradeoffs and model versus inference-network roles.],
   [
-    - Selected 16.2.1–16.2.2 / 16.3.1 Small feedforward networks
-    - 15.2.2.1 Gaussian prior and weight shrinkage
-    - 14.2.1 Evaluating predicted probabilities
+    - 16.2.7–16.2.8 Attention and recurrence
+    - 16.3.4–16.3.5 RNN and transformer composition
   ],
   [
-    - 13.2.4.4 Noise that depends on input
-    - 13.5.2 Weight shrinkage; 13.5.1 stopping training: brief mention
+    - 15.2.1 / 15.2.4–15.2.6 RNN and training
+    - Selected 15.4–15.5 Attention, positions and transformers
   ],
-  [*Conditional probability beyond a GLM.* Train a small mean/scale neural model on a prepared nonlinear dataset and evaluate against fixed-scale and simpler-function baselines. Compare held-out log score, mean error, and regional interval behavior, not just training loss. *Competence:* Assess whether a flexible predictive distribution earns its complexity and distinguish observation variability from parameter uncertainty. #link("https://github.com/probml/pyprobml/blob/d1ea4122dcf3c2a2c02eb4e05343203b26440827/notebooks/book1/13/mlp_1d_regression_hetero_tfp.ipynb")[Reference].],
+  [Source-adapted PyTorch character RNN on Time Machine text. Compare held-out token log score with a smoothed Markov baseline, trace hidden-state updates and resets, then contrast teacher-forced scoring with categorical generation. Supply corpus splits, driver and checkpoint; no second transformer training. Attention receives mathematical live treatment rather than another full notebook.],
 
   [12],
   [*Variational autoencoders: amortized inference and rate–distortion* \
@@ -277,12 +275,12 @@ This course develops a usable and intellectually connected repertoire, not an ex
   columns: (65mm, 51mm, 1fr), inset: 4pt, stroke: 0.45pt + rule,
   table.header(hdr[Other possible topic], hdr[Choice in this plan], hdr[What we give up]),
   [More advanced optimization], [Basic derivatives and small-batch updates are sufficient here], [No separate study of curved-geometry updates, expensive black-box search, transport or subset selection.],
-  [Particle methods for changing hidden states], [Exact sequence calculations in L08 and sampling theory in L10], [No method for tracking a complex changing state with a cloud of weighted samples (Book 2 Ch. 13).],
-  [MRI classification and continuous forecasting], [Missing-data fitting and discrete hidden-state lab selected], [Less biomedical and forecasting practice. Either application can replace its corresponding lab after review.],
-  [More complex regression and prediction checks], [Common models in L05 and one neural probability model in L11], [No full sparse/hierarchical regression, calibration or guaranteed prediction-interval course.],
-  [Larger inference toolkits], [One checked method per main lab], [No general-purpose graph solver, broad variational-family catalogue or full Hamiltonian sampler derivation.],
-  [Bayesian neural networks and Gaussian processes], [Small fitted networks only], [No separate treatment of uncertainty about network weights or Gaussian-process prediction.],
+  [Particle methods for changing hidden states], [Exact sequence calculations in L08; bounded sampling use in L07], [No method for tracking a complex changing state with a cloud of weighted samples (Book 2 Ch. 13).],
+  [MRI classification and continuous forecasting], [Real missing-data fitting and package-backed Gaussian sequence extension selected], [Dataset packaging, Gaussian sequence fitting and forecast evaluation remain bounded by one-hour feasibility.],
+  [More complex regression and prediction checks], [Common models in L05 and learned image/sequence representations in L10–L11], [No full sparse/hierarchical regression, calibration or guaranteed prediction-interval course.],
+  [Larger inference toolkits], [One checked method per main lab], [No general-purpose graph solver or broad variational-family catalogue. General MH/Gibbs/HMC/AIS algorithm competence is deliberately sacrificed for the two neural lectures.],
+  [Bayesian neural networks and Gaussian processes], [Fitted image/sequence networks and amortized inference maps], [No separate treatment of uncertainty about network weights or Gaussian-process prediction.],
   [Other generative models], [A variational autoencoder in L12], [No flow, diffusion or adversarial model teaching. These are different ways to learn data distributions and need their own time.],
   [A complete algorithm catalogue], [One working exemplar per lecture, with recurring dataset comparisons where they clarify choices], [Less survey breadth; more ability to explain, execute and diagnose selected techniques.],
-  [Every method on a different isolated toy problem], [A shared Bayesian classifier in L07/L09/L10 plus small transparent diagnostics], [Less variety in those notebooks, but a more meaningful comparison of posterior approximations and sampling at fixed task and performance.],
+  [Every method on a different isolated toy problem], [The Challenger posterior in L07/L09 plus small transparent diagnostics], [Less variety in those notebooks, but a more meaningful comparison of posterior approximations and sampling at fixed task and performance.],
 )

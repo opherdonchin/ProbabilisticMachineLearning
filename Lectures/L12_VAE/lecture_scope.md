@@ -1,3 +1,5 @@
+**Revision note (2026-10-16):** L10/L11 now provide two lectures on learned composition, architecture and model/inference roles. Apply the Gaussian reconstruction density directly from L01 in a bounded 4–6-minute calculation, replacing generic network/role recap. Recovered time supports the already accepted prior-generation and model-criticism work; no extra architecture or estimator is added. Existing city/transform/generation decisions and detailed normalization below remain. This is prospective reconciliation, not a teaching record.
+
 # L12 — Learning a small hidden description of each observation
 
 **Instructor direction, 2026-10-15:** City data are preferred; investigate a fixed
@@ -58,7 +60,7 @@ Distinguish reconstruction, which starts with a given x and draws z from its enc
 
 ### B. Define the reconstruction score and penalty in consistent units — 25 minutes
 
-Apply L06/L09's **evidence lower bound (ELBO)** and L11's Gaussian **negative log likelihood (NLL)** to one 19-feature observation. Fix the decoder covariance at `τ²I`, with **τ²=1/2**, in standardized coordinates. Its NLL is the sum of squared feature residuals plus the constant `(d/2)log π`; it is not mean feature squared error.
+Apply L06/L09's **evidence lower bound (ELBO)** and L01's Gaussian density to work the **negative log likelihood (NLL)** to one 19-feature observation. Fix the decoder covariance at `τ²I`, with **τ²=1/2**, in standardized coordinates. Its NLL is the sum of squared feature residuals plus the constant `(d/2)log π`; it is not mean feature squared error.
 
 The encoder-to-prior **Kullback–Leibler divergence (KL)** sums over its four latent coordinates. Sum each type of coordinate within an observation, then average observations across the batch. This keeps the relative weighting explicit. The coefficient **β** multiplies the KL penalty. At β=1 the minimized loss is negative ELBO; other β values change the objective.
 
@@ -123,7 +125,7 @@ In the table, **Derive** means work through the calculation; **Work** means carr
 | `p_theta(x,z)=N(z\|0,I) N(x\|d_theta(z),tau² I)`; `p_theta(x)=integral p_theta(x,z)dz` | **State/Motivate**, Live A. Likelihood in preprocessed standardized coordinates; not an exact support-respecting model for all raw percentages/counts. |
 | `q_phi(z\|x)=N(mu_phi(x),diag(exp ell_phi(x)))` | **State + Work shapes**, Live A/C; amortized rather than one freely optimized q per row. |
 | `F(x)=E_q log p_theta(x\|z)−KL(q_phi(z\|x)\|\|p(z))` | **Apply**, Live B; generic identity L06-owned. Restricted q/nonconvex training does not guarantee exact MLE. |
-| `−log p_theta(x\|z)=\|\|x−d_theta(z)\|\|²/(2tau²)+(d/2)log(2pi tau²)` | **Apply/Work**, Live B; L11-owned Gaussian NLL. At tau²=1/2 coefficient is one. |
+| `−log p_theta(x\|z)=\|\|x−d_theta(z)\|\|²/(2tau²)+(d/2)log(2pi tau²)` | **Apply/Work**, Live B; Gaussian NLL applied from L01 in this lecture. At tau²=1/2 coefficient is one. |
 | `r(x)=(1/2)sum_j[mu_j²+exp ell_j−1−ell_j]`; `L_beta=batch mean_n[E reconstruction NLL+beta r(x_n)]` | **Apply + Work**, Live B. Sum latent and observed event dimensions separately, then average observations; beta=1 standard negative ELBO. |
 | `z=mu_phi(x)+exp(ell_phi(x)/2)⊙epsilon`, `epsilon~N(0,I)` | **Apply**, Live C; L09-owned derivation/interchange conditions. No fresh change-of-variables proof. |
 | Reconstruction gradient to theta; chain through z to phi; `partial r/partial mu=mu`, `partial r/partial ell=(exp ell−1)/2` | **Work bounded application**, Live C; no full network reverse traversal. Keep gradients through both encoder mean and variance. |
@@ -136,7 +138,7 @@ In the table, **Derive** means work through the calculation; **Work** means carr
 
 **Student endpoint:** Complete a correctly scaled sampled loss, perform one bounded joint-training run, then interpret reconstruction, KL and supplied β comparisons. **Instructor acceptance, 2026-10-15:** require a comparison of observed-city reconstructions, decoder means from prior latent draws, and full prior-generated observations including decoder noise and complete inverse transformation, plus one supplied model-criticism diagnostic. Replace the optional extra latent traversal. The [owning decision record](reconciliation/city_transform_direction.md) preserves exact provenance. This accepts the encounter, not the whole scope or a measured hour. Use the instructor's inspected city notebook/data as the anchor. The smaller course model has `19→32` encoder hidden features, four means/four log variances, and a `4→32→19` decoder producing unconstrained observation means. Local compute feasibility is available in the current assessment; student timing remains unmeasured.
 
-**Supplied:** feature transformations, fixed training/held-out indices, training-only standardization, batched CPU data, model skeleton, optimizer/driver, seeds/settings, plots and estimator helpers. Preserve data masks and row mapping. External Cluster labels neither enter the loss nor validate recovered scientific factors. **Students complete:** the Gaussian sample transform and event-summed reconstruction/KL loss, value/gradient checks, and interpretation. Reuse L11 output assembly and L09 sampling, with refresh time included.
+**Supplied:** feature transformations, fixed training/held-out indices, training-only standardization, batched CPU data, model skeleton, optimizer/driver, seeds/settings, plots and estimator helpers. Preserve data masks and row mapping. External Cluster labels neither enter the loss nor validate recovered scientific factors. **Students complete:** the Gaussian sample transform and event-summed reconstruction/KL loss, value/gradient checks, and interpretation. Reuse L10 probability-output assembly, L11 shared-map roles and L09 sampling, with refresh time included.
 
 Run one β=1 fit through the bounded driver. Prepare consistently normalized β=1 and β=4 checkpoints/summaries for comparison if multiple fits exceed time. These must be produced and verified later; the source's β=4 checkpoints cannot be renamed course β=4. Do not add a convolutional model, learned decoder variance, a second full student fit or extensive coordinate-traversal suites.
 
@@ -164,7 +166,7 @@ About 6–8 conceptual visual groups support model/inference roles, per-case ver
 
 ## 5. Lecture contract — what this proposal commits to
 
-**Starting knowledge:** Probability/information, L06's lower-bound identity, L09's Gaussian approximation and differentiable sampling, and L11's nonlinear Gaussian model/PyTorch. No advanced sampler or Bayesian network-weight inference is assumed.
+**Starting knowledge:** Probability/information, L06's lower-bound identity, L09's Gaussian approximation and differentiable sampling, and L10–L11's nonlinear composition, PyTorch and model/inference roles. No advanced sampler or Bayesian network-weight inference is assumed.
 
 **Main question:** How do two networks learn an unobserved description of each case, and what can we honestly infer from that description? **Lecture endpoint:** distinguish model from inference, assemble the scaled loss and its derivative paths, derive rate = mutual information + aggregate-prior discrepancy, and diagnose unused or ambiguous codes cautiously. **Notebook endpoint:** one checked compact city workflow and supplied β comparison, with required reconstruction/prior-decoder-mean/full-observation comparison and one model-criticism diagnostic, replacing the extra traversal. The estimate is 112 live minutes plus 60 lab minutes, with no required recording; receiving-workload validation remains open.
 
@@ -184,7 +186,7 @@ This table preserves the reviewed source boundaries. The plain-language explanat
 | Allocation | Commitment / boundary |
 |---|---|
 | **Core/Live deep** | B2 §§21.1–21.2 model/amortization/joint objective; §21.3.1 beta tradeoff; §5.4.2 plus aggregate posterior definition for rate decomposition; §21.4 collapse diagnosis. Selective content, not all subsections. |
-| **Short bridges** | Correct Normal KL/pathwise machinery L09, Gaussian NLL/MLP L11, generic ELBO L06; §21.3.1.1 identification caution; §21.4.1 annealing Mention only. |
+| **Short bridges** | Correct Normal KL/pathwise machinery L09, Gaussian density L01; learned composition and inference-map roles L10–L11, generic ELBO L06; §21.3.1.1 identification caution; §21.4.1 annealing Mention only. |
 | **Notebook owned** | Refresh, loss assembly/checks, one bounded fit, held-out reconstruction/rate, supplied beta/pattern comparison, required reconstruction/prior-mean/full-generation encounter and one criticism diagnostic. |
 | **Optional** | Deterministic-AE comparison, sign-flip illustration, extra traversals. No formal-syllabus promise. |
 | **Omitted by course decision** | Full supervised IB/InfoVAE/total-correlation derivations, MMD/adversarial objectives, multimodal/semisupervised/sequential/hierarchical/VQ VAEs, IWAE/flows, free-bits/schedule implementation, identifiability theorem proof, learned mixed-type likelihood catalogue and multiple full lab fits. No debt passed to project meeting L13. |

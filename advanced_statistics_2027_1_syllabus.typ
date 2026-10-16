@@ -89,7 +89,7 @@
 
 This course builds *working competence with probabilistic machine-learning methods*. Students learn to recognize a meaningful learning problem, formulate it probabilistically, select and use an appropriate computational approach, evaluate its predictions or inferences, and explain what the method does and does not justify. Mathematical derivations provide the shared reasoning that makes a repertoire of algorithms transferable rather than a catalogue of recipes. The goal is not abstract coherence alone, and not operating algorithms without understanding their assumptions. The full rationale and evolving practice plan are in #link("course_architecture.pdf")[the course architecture] (#link("course_architecture.typ")[source]).
 
-The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 supplies selected background and scaffolding. The proposed progression builds a toolkit for probabilistic modeling and evaluating performance; parameter fitting from complete and incomplete data; posterior approximation, exact structured inference and sampling; and expressive neural prediction and generation. In L07, L09 and L10, a *shared Bayesian prediction problem* is proposed so students can compare techniques against the same questions rather than only against unrelated toy examples.
+The primary reference is Murphy's _Probabilistic Machine Learning: Advanced Topics_ (*Book 2*); Book 1 supplies selected background and scaffolding. The proposed progression builds a toolkit for probabilistic modeling and evaluating performance; parameter fitting from complete and incomplete data; posterior approximation and exact structured inference; two lectures on learned neural representations for images and sequences; and latent generation. L07 and L09 compare inference on the accepted Challenger thermal-distress posterior. L07 retains a bounded supplied-sampler encounter; the dedicated MCMC lecture and its algorithm derivations are deliberately omitted.
 
 Each meeting includes approximately two hours of mathematical lecture and one hour of guided notebook work. Lectures develop the ideas, derivations, use conditions and comparisons. Notebooks supply *bounded practical use* on recognizable datasets: run or complete a method, inspect outputs, compare an informative baseline, and diagnose task-relevant errors. Small exact examples remain valuable as diagnostics but need not substitute for substantive machine-learning experience. Revised future notebook details remain subject to feasibility review.
 
@@ -101,7 +101,7 @@ Each meeting includes approximately two hours of mathematical lecture and one ho
 2. Kevin P. Murphy, _Probabilistic Machine Learning: An Introduction_, MIT Press, 2022 (Book 1). #link("https://probml.github.io/pml-book/book1.html")[Online edition].
 3. Course notes, exercises, notebook solutions and project materials: #link("https://github.com/opherdonchin/ProbabilisticMachineLearning")[course repository].
 
-The schedule is a *revisable proposal* for lectures and notebooks. L01 has prepared materials but has not yet been taught. Earlier L02/L03 decisions and the current L04 decision are documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register]. On 2026-10-14 the instructor selected Iris probability evaluation for L04, retaining the live parity example; the detailed scope and one-hour workload remain under review. The linked L07/L09/L10 comparison remains proposed. Data packaging, runtime checks and a student pilot are still required before notebook release. Previous independent reviews apply only to the versions they reviewed.
+The schedule is a *revisable proposal* for lectures and notebooks. L01 has prepared materials but has not yet been taught. Earlier L02/L03 decisions and the current L04 decision are documented in the #link("Lectures/course_architecture_scope/STATUS.md")[review register]. On 2026-10-14 the instructor selected Iris probability evaluation for L04, retaining the live parity example; the detailed scope and one-hour workload remain under review. The two-lecture neural revision is accepted at architecture level; detailed scopes and notebook execution remain under review. Data packaging, runtime checks and a student pilot are still required before notebook release. Previous independent reviews apply only to the versions they reviewed.
 
 = Prerequisites
 
@@ -255,82 +255,80 @@ The course grade is based on four components:
 #lecture(
   7,
   [02.12.2026],
-  [Bayesian computation: grid reference and Laplace approximation],
-  [Posterior queries and parameterization-dependent MAP; derive scalar Laplace curvature and normalizer under positive-curvature conditions. Apply to proper-prior logistic regression, check quadrature domain and resolution, and compare posterior moments and predictive integrals.],
+  [Inference overview and Laplace approximation],
+  [Posterior queries, local Gaussian approximation, checked numerical reference and sample-average error. Derive scalar Laplace and iid estimator variance; interpret dependent-sampler diagnostics under their conditions. Replace grid/coordinate detail to fund the comparison.],
   [
-    - 7.1–7.3 What posterior questions require: short introduction
-    - Selected 7.4.1–7.4.3 Most likely parameter, grid and Gaussian shortcut
-    - Selected 7.5 Checking approximation quality
-    - Selected 15.3.5–15.3.6 One-parameter logistic example
+    - 7.1–7.3 Inference questions and method choice
+    - Selected 7.4.1–7.4.3 Mode, numerical reference and Laplace
+    - 11.2–11.2.2 Sample averages and iid error; selected 12.6.3 diagnostics: interpretation
   ],
   [],
-  [For a prepared binary Iris prediction problem, compare a point fit with Laplace-averaged probabilities and coefficient uncertainty; use a one-parameter numerical grid as a separately validated error diagnostic. Fit and integration helpers supplied.],
-  [Construct and use a Laplace posterior proxy for probabilistic prediction, then check query-specific accuracy against a baseline.],
+  [Use the 23-flight Challenger thermal-distress logistic posterior, with standardized temperature and proper Gaussian prior. Compare point and Laplace predictions with a supplied posterior sampler and checked two-dimensional reference. Work posterior-predictive averages and query-specific numerical error. Fitting, reference and diagnostics helpers supplied; no sampler construction or claim of exact MCMC output.],
+  [Choose and check posterior answers; distinguish proxy error, posterior spread and finite sampling error.],
 )
 
 #lecture(
   8,
   [09.12.2026],
   [Exact inference in structured sequence models],
-  [Derive scaled HMM forward/backward recursions, evidence and filtered/smoothed marginals; establish dense computational cost and distinguish joint path MAP from marginal modes. Give a compact Kalman-filter application of L01 Gaussian conditioning, without a second full sequence implementation.],
+  [Scaled categorical-HMM filtering, smoothing and evidence; joint path MAP versus marginal decisions; dense O(T K²) message cost. Compact Gaussian filtering comparison.],
   [
-    - 9.2.1–9.2.5 Hidden-state calculations and scaling
-    - 9.2.6 Whole history versus separate state decisions
-    - Selected 8.1.2 / 8.2.2 Gaussian filtering: short application
+    - 9.2.1–9.2.6 HMM messages, scaling and path queries
+    - Selected 8.1.2 / 8.2.2 Gaussian filtering
   ],
   [],
-  [Infer changing hidden states from a prepared noisy behavioral/instrument sequence using scaled forward–backward messages; interpret filtering and smoothing probabilities and verify calculations on a tiny enumerated sequence.],
-  [Apply exact message passing to a time-dependent state estimation problem, explain uncertain transitions and verify the implementation.],
+  [Extend categorical-message logic to real Gaussian time series using the existing Oke PS2 Kalman package notebook. Scaffold conditional means/covariances, model fitting and predictive checks around package calls. Exact data/model depth remains to be frozen; current source and missing-observation repairs are checked in the lecture-local package-feasibility report, not a claim of full hosted execution.],
+  [Transfer exact conditional-inference logic across categorical and Gaussian sequences.],
 )
 
 #lecture(
   9,
   [16.12.2026],
-  [Variational inference: posterior geometry and pathwise gradients],
-  [Reuse L06 ELBO identity; optimize restricted reverse KL and work the correlated-Gaussian diagonal optimum. Derive the total pathwise gradient including direct parameter terms and regularity conditions; apply bounded coordinate-ascent VI and recognize amortization.],
+  [Variational and amortized inference],
+  [ELBO/reverse KL, Gaussian family restriction, total pathwise gradients and optimizer error. Introduce the shared evidence-to-variational-parameters map; retain CAVI recognition while replacing its numerical sweep.],
   [
-    - 10.1.1–10.1.2 Fitting a restricted distribution
-    - 6.3.3 / 6.3.5; 10.2.1.1 Derivatives through Gaussian draws
-    - 6.3.4 Another gradient estimator: statement only
-    - 10.3.1 Coordinate updates; 10.1.5 learned inference: introduction only
+    - 10.1.1–10.1.2 Variational criterion
+    - 6.3.3 / 6.3.5; 10.2.1.1 Pathwise gradients
+    - 10.3.1 Coordinate rule; 10.1.5 amortization
   ],
   [],
-  [Use scaffolded VI to fit a diagonal Gaussian posterior for the same small binary Iris predictor as L07. Compare predictive uncertainties with Laplace and a supplied reference; use a known correlated Gaussian as a diagnostic for the best possible mean-field approximation.],
-  [Fit and evaluate a variational posterior; distinguish family restriction, optimization error and prediction consequences.],
+  [Fit a Gaussian variational approximation to the accepted Challenger thermal-distress posterior; compare specified predictive queries with Laplace, supplied sampling output and a checked reference. Use the known correlated Gaussian to separate family and optimization error. Diagonal student family versus supplied full-family comparison remains a detailed pedagogical choice. No MCMC-theory handoff to L10.],
+  [Fit and diagnose a variational posterior and explain amortized repeated-query computation.],
 )
 
 #lecture(
   10,
   [23.12.2026],
-  [Monte Carlo and MCMC: invariance, mixing and estimator error],
-  [Derive IID estimator variance, stationarity/detailed balance and the general Metropolis–Hastings ratio, retaining rejected states. Explain Gibbs cancellation briefly and dependent-sample error under its conditions. Distinguish invariant transitions, finite-run mixing and function-specific effective sample size; recognize HMC mechanics only.],
+  [Deep Neural Networks I: learned representations and images],
+  [GLM to learned nonlinear composition; categorical probability output; shared local filters, equivariance and receptive fields; one residual-gradient argument. Reuse AD/SGD rather than reteach a full optimizer.],
   [
-    - 11.2–11.2.2 Averages and sampling error
-    - 2.6.4; 12.2.1–12.2.2 Invariant distribution and acceptance rule
-    - 12.3.1–12.3.2 Conditional-coordinate sampling: brief derivation
-    - Selected 12.6.3 Dependent-sample error; 12.5.3 Hamiltonian mechanics only
+    - 16.1 Two probabilistic roles
+    - 16.2.1–16.2.5 Linear, nonlinear, convolutional, residual and normalization blocks
+    - 16.3.1–16.3.2 MLP and CNN composition
   ],
-  [],
-  [Run a supplied MH sampler for the shared binary-classification posterior and compare its predictive estimates with L07/L09 results; use a known bimodal target to diagnose poor mixing and failure on tail or mode-sensitive queries.],
-  [Run, diagnose and interpret an MCMC posterior estimate; distinguish stationary-target correctness from finite-run accuracy.],
+  [
+    - 13.1–13.2.5 Learned features and depth
+    - Selected 13.3–13.5 Training support; 14.2.1 convolution
+  ],
+  [Source-adapted PyTorch LeNet on Fashion-MNIST: connect a local filter calculation to package output, inspect shapes/sharing, run bounded updates and evaluate held-out log score and errors against a supplied dense baseline. Supply preparation, training driver and checkpoint; no architecture search. Source, data and workload evidence: Lectures/deep_networks_revision/notebook_source_feasibility.md. One hour, integrated mathematical/technical/interpretive steps.],
+  [Explain, fit and evaluate a learned compositional image representation.],
 )
 
 #lecture(
   11,
   [30.12.2026],
-  [Neural conditional models: heteroskedastic likelihood and regularization],
-  [Nonlinear feedforward mean/positive-scale model; derive heteroskedastic Gaussian NLL and output derivatives, reusing AD/SGD. Distinguish conditional observation noise from posterior weight uncertainty via total variance. Work the Gaussian-prior/L2 coefficient under mean-loss normalization.],
+  [Deep Neural Networks II: representing sequence context],
+  [Autoregressive likelihood, shared recurrent state and bounded unrolled derivative; Jacobian products; worked causal attention and positional information; context/cost tradeoffs and model versus inference-network roles.],
   [
-    - Selected 16.2.1–16.2.2 / 16.3.1 Small feedforward networks
-    - 15.2.2.1 Gaussian prior and weight shrinkage
-    - 14.2.1 Evaluating predicted probabilities
+    - 16.2.7–16.2.8 Attention and recurrence
+    - 16.3.4–16.3.5 RNN and transformer composition
   ],
   [
-    - 13.2.4.4 Noise that depends on input
-    - 13.5.2 Weight shrinkage; 13.5.1 stopping training: brief mention
+    - 15.2.1 / 15.2.4–15.2.6 RNN and training
+    - Selected 15.4–15.5 Attention, positions and transformers
   ],
-  [Fit one shallow PyTorch mean/scale network and compare held-out NLL, MSE and conditional intervals with a supplied fixed-scale nonlinear baseline and known data law. Match splits/shapes and estimate baseline noise using training data.],
-  [Implement and interpret a neural conditional likelihood, preserving standard-deviation/variance distinctions and the limits of fixed-weight predictive intervals.],
+  [Source-adapted PyTorch character RNN on Time Machine text. Compare held-out token log score with a smoothed Markov baseline, trace hidden-state updates and resets, then contrast teacher-forced scoring with categorical generation. Supply corpus splits, driver and checkpoint; no second transformer training. Attention receives mathematical live treatment rather than another full notebook.],
+  [Model sequence context and choose a computational architecture under explicit dependency/cost assumptions.],
 )
 
 #lecture(

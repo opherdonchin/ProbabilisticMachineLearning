@@ -24,8 +24,7 @@ retain separate ownership:
 
 - Organization offers teaching moves, boundaries, titles/order and count options.
 - Design offers visible arguments, object relationships, wording and reveals.
-- Authoring offers concrete layout alternatives and render evidence about scale,
-  spacing, hierarchy, relationships and density, as well as capacity/prototypes.
+- Authoring offers implementation alternatives, capacity evidence and prototypes.
 
 Anyone may propose a change; its owner decides how to revise the provisional
 artifact. Direct peer exchanges are useful, with material offers, disagreements
@@ -54,22 +53,14 @@ render to judge, explicitly dispatch a bounded exploratory `build` or `revision`
 with provisional inputs. Specify the uncertain question, exact content/version,
 what may vary, what must remain, owner, isolated output location and evidence to
 return. A final-state or difficult-reveal prototype may suffice before rendering
-the whole cluster. Compare genuinely different spatial compositions and teaching
-divisions where useful. Assess spatial and cognitive density at normal course
-scale: the visible argument, central result, support relationships and attention
-path matter as well as fit. Do not reward a candidate for fewer symbols or more
-whitespace without demonstrating greater comprehensibility.
+the whole cluster. Compare genuinely different alternatives where useful.
 
 Attach each result to the realized content version, object-to-region/reveal
 relationships and actual complete states inspected. A filename or candidate
 label does not establish that its proposed arrangement was implemented. The
 affected owners must confirm that realization before using fit evidence to
-change the teaching sequence. A fitted state with missing agreed student-visible
-mathematics is not capacity evidence for the complete intended explanation.
-Completeness here concerns Design's selected visible argument, not every
-qualification or line of the checked source proof. Intentional elisions and their
-supporting context remain in the existing design metadata; they must not be
-mistaken for missing production content.
+change the teaching sequence. A fitted state with missing mathematics is not
+capacity evidence for the complete explanation.
 
 This authoring experiment can precede formal design approval. It is neither a
 production commission nor permission to publish or replace approved lecture
@@ -85,13 +76,7 @@ can be expressed by Design's visible argument; Authoring can realize that
 argument with readable mathematics, coherent actual predecessor/reveal states,
 and course-style hierarchy. Necessary proof warrants, key-point roles,
 retrospective section endings and all accepted mathematical commitments survive.
-A successful fit check alone does not establish this agreement. Authoring returns
-layout alternatives and actual evidence rather than only overflow or font changes;
-Design reconsiders selection/grouping when the implementation is too dense;
-Organization reconsiders provisional boundaries/count when the argument remains
-unclear. None should silently weaken the agreed depth or treat a provisional
-allocation as an instructor commitment. Do not trade essential explanation for
-small type or reveals that hide necessary relations.
+A successful fit check alone does not establish this agreement.
 
 Before accepting convergence, inspect actual render evidence and distinguish
 remaining timing estimates and classroom uncertainties from checked output.

@@ -319,7 +319,7 @@
       columns: (1fr, 1fr),
       gutter: 5pt,
       if continuity == none { [] } else {
-        _notes-block([Continuity / handoff], continuity)
+        _notes-block([Continuity / entry context], continuity)
       },
       if constraints == none { [] } else {
         _notes-block([Constraints / open pressure], constraints)
@@ -544,7 +544,7 @@
 
   block(
     width: 100%,
-    breakable: true,
+    breakable: false,
     inset: 4pt,
     stroke: stroke,
     radius: 3pt,
@@ -604,7 +604,7 @@
           #if candidate.from != none {
             [ #text(size: 7.5pt, fill: design-muted)[(#candidate.from)]]
           }
-          [ #candidate.body]
+          #candidate.body
           #if candidate.reason != none {
             [ — #text(size: 7.5pt, fill: design-muted)[#candidate.reason]]
           }
@@ -638,18 +638,21 @@
     let n = 2
     for step in reveal.then {
       cells.push([STATE #n])
-      cells.push([+ #_labels-text(step.labels)])
+      cells.push([\+ #_labels-text(step.labels)])
       cells.push(if step.emphasize { [entry emphasis] } else { [—] })
       cells.push(if step.purpose == none { [] } else { step.purpose })
       n += 1
     }
 
-    grid(
-      columns: (auto, auto, auto, 1fr),
-      column-gutter: 0.9em,
-      row-gutter: 0.4em,
-      align: left + top,
-      ..cells,
+    block(
+      breakable: false,
+      grid(
+        columns: (auto, auto, auto, 1fr),
+        column-gutter: 0.9em,
+        row-gutter: 0.4em,
+        align: left + top,
+        ..cells,
+      ),
     )
   } else {
     block(
@@ -658,6 +661,7 @@
       stroke: 1.2pt + design-accent,
       fill: design-warn,
       radius: 3pt,
+      breakable: false,
     )[
       #text(weight: "bold", fill: design-accent)[DESIGN REVEAL — structured lowering unresolved]
       #v(4pt)
@@ -753,6 +757,7 @@
       stroke: 1.2pt + design-accent,
       fill: design-warn,
       radius: 3pt,
+      breakable: false,
     )[#backpressure]
   }
 }

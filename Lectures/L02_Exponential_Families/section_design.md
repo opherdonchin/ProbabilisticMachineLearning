@@ -17,7 +17,7 @@ Approximately 100–120 minutes total. Section 2 is deliberately self-contained 
 **Starting assumptions**
 
 - Students know Bernoulli/binomial models well from prior Bayesian statistics.
-- Lecture 1 established multivariate Gaussians, Gaussian conditioning, linear Gaussian systems, and precision coordinates.
+- Lecture 1 established the multivariate Gaussian density and covariance, Gaussian conditioning, and linear Gaussian systems. Section 2 introduces precision/information coordinates.
 - Entropy and KL divergence are review material rather than first exposure.
 
 **Global boundaries**
@@ -40,7 +40,7 @@ Introduce the exponential-family representation as a useful common coordinate sy
 
 ### Entry condition / transition in
 
-Lecture 1 ended with familiar probabilistic models and Gaussian information/precision coordinates. Begin from Bernoulli as a simple known distribution and ask whether apparently different families can share one algebraic form.
+Lecture 1 established familiar probabilistic models and Gaussian density/covariance geometry. Begin from Bernoulli as a simple known distribution and ask whether apparently different families can share one algebraic form.
 
 ### Endpoint
 
@@ -74,7 +74,7 @@ and understand conceptually why this representation is useful.
 ### Carry-forward / prerequisites
 
 - Bernoulli/binomial likelihoods.
-- Familiarity with Gaussian precision coordinates from Lecture 1.
+- Familiarity with Gaussian density and covariance from Lecture 1.
 
 ### Boundary / exclusions
 
@@ -96,11 +96,11 @@ Apparently different distributions can share one mathematical architecture that 
 
 ### Purpose / role
 
-Work through the full Gaussian-to-exponential-family algebra in one self-contained place. This gives students a substantial familiar example, connects directly to Lecture 1 precision/information coordinates, and makes the material easy to remove intact to a recording later.
+Work through the full Gaussian-to-exponential-family algebra in one self-contained place. This gives students a substantial familiar example, connects directly to Lecture 1 Gaussian work while introducing precision/information coordinates, and makes the material easy to remove intact to a recording later.
 
 ### Entry condition / transition in
 
-Section 1 established the general exponential-family form using Bernoulli. Students already know the multivariate Gaussian density and precision matrix from Lecture 1.
+Section 1 established the general exponential-family form using Bernoulli. Students already know the multivariate Gaussian density and covariance from Lecture 1; this section introduces the precision matrix.
 
 ### Endpoint
 
@@ -109,18 +109,18 @@ Students can see explicitly how the multivariate Gaussian density is rearranged 
 ### Sources
 
 - Murphy Book 2 §2.4.2.5 (multivariate Gaussian exponential-family example).
-- Lecture 1 Gaussian precision/information-form material as carry-forward context.
+- Lecture 1 Gaussian density/covariance material as carry-forward context.
 
 ### Assigned content
 
 - Start from the multivariate Gaussian density.
-- Introduce `Λ = Σ^{-1}`.
+- Introduce the precision matrix `Λ = Σ^{-1}`.
 - Expand the quadratic form `(x-μ)^T Λ (x-μ)`.
 - Separate data-dependent terms from parameter-only terms.
 - Identify sufficient statistics involving `x` and `xx^T`.
 - Identify natural parameters corresponding to `Λμ` and `-½Λ`.
 - Identify the normalizing/log-partition term sufficiently to complete the mapping.
-- Connect the result back to Lecture 1 information/precision coordinates.
+- Interpret the resulting precision/information coordinates as a reparameterization of the familiar Gaussian density from Lecture 1.
 
 ### Mathematical treatment constraints
 
@@ -131,7 +131,6 @@ Students can see explicitly how the multivariate Gaussian density is rearranged 
 ### Carry-forward / prerequisites
 
 - Multivariate Gaussian density.
-- Precision matrix `Λ = Σ^{-1}`.
 - Quadratic-form algebra from Lecture 1.
 
 ### Boundary / exclusions
@@ -144,7 +143,7 @@ Approximately 8–10 minutes.
 
 ### Take-home
 
-The Gaussian precision/information form from Lecture 1 is exactly an exponential-family natural-parameter representation.
+The Gaussian precision/information form established in this section is exactly an exponential-family natural-parameter representation.
 
 ---
 
@@ -494,8 +493,8 @@ Students can
 
 - Murphy Book 2 §§2.6.1–2.6.3.
 - Murphy Book 2 Fig. 2.15: state-transition diagrams.
-- Murphy Book 2 Fig. 2.16: generated character-level text.
 - Murphy Book 2 Fig. 2.17: raw and row-normalized character bigram counts.
+- Course-generated first-order character sample from the same validated *The Time Machine* bigram transition matrix used in this section.
 
 ### Assigned content
 
@@ -524,7 +523,7 @@ Students can
 
 `text data → unigram / bigram counts → row-normalized transition probabilities → fitted Markov model → generated or scored sequences`.
 
-Murphy's *The Time Machine* character bigram counts / normalized rows and generated-text examples are the primary source material.
+Murphy's *The Time Machine* character bigram counts / normalized rows are the primary empirical source material. Demonstrate generation with an actual, explicitly labeled course-generated first-order sample from that same validated transition matrix, using a declared initial distribution or starting character. The sample demonstrates repeated sampling from the fitted categorical rows.
 
 ### Notebook handoff
 
@@ -533,6 +532,18 @@ The live lecture establishes the factorization, count statistics, and learning r
 `sequence data → counts → fitted transition matrix → inspection / scoring / generation`.
 
 Optional notebook extension: sparse counts and Dirichlet/MAP smoothing.
+
+**Accepted notebook boundary — L02-Q1, instructor discussion, 2026-10-15:**
+“I think the notebook will be sufficient without the expansion.” Retain
+fit / inspect / score / generate as the required one-hour endpoint, using the
+existing baby-name bigram reference. Held-out comparison with an independent-
+character baseline and diagnosis of an implausible generated output are optional,
+not required student tasks. Keep supplied setup and explicit sequence-boundary,
+start/end and scoring conventions. In-sample likelihood is a fit summary, not a
+claim of held-out predictive performance. Authors must handle zero-support
+scores honestly; no hidden smoothing or additional required estimator follows.
+This decision preserves the live Time Machine example and its scope/depth; it
+does not accept a complete adapted notebook, whole reconciled Scope or publication.
 
 ### Boundary / exclusions
 

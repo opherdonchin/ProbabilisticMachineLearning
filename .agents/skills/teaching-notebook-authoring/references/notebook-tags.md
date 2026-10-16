@@ -23,7 +23,7 @@ Every supplied code cell should produce concise, meaningful visible feedback: a 
 
 Supplied setup may span several short cells under one material boundary. Do not rely on hidden tags or a visible `[GIVEN]` marker to tell students what to do.
 
-Number questions consistently within sections. Each question has exactly one immediate unnumbered answer cell, including when its answer is supplied as an example. Student-written code belongs under **Questions to answer**, not **Code to run**.
+Number questions consistently within sections. Each question has exactly one unnumbered answer-content cell, including when its answer is supplied as an example. In the solved notebook, bracket that cell with solved-only Markdown headings as specified below. In the student notebook, its answer/placeholder immediately follows the question. Student-written code belongs under **Questions to answer**, not **Code to run**.
 
 ## `explanation`
 
@@ -58,7 +58,7 @@ Questions may be simple. Granularity is deliberate.
 
 ## `solution`
 
-Use on the answer cell immediately following an `exercise-question` when that answer should be removed from the student self-work version.
+Use on the answer-content cell belonging to an `exercise-question` when that answer should be replaced by a placeholder in the student self-work version. Solved-only boundary cells surround it; they are not additional answer-content cells.
 
 For code cells, the generated self-work placeholder is:
 
@@ -73,6 +73,12 @@ For Markdown cells, the generated self-work placeholder is:
 ```
 
 The solved notebook should contain the full, correct answer rather than a hint.
+
+## `solution-boundary`
+
+Use on separate Markdown cells immediately before and after each solved answer-content cell, including code answers. Their exact contents under the current hierarchy are `##### start answer` and `##### end answer`. The marker heading is one level deeper than ordinary notebook content headings (currently level four).
+
+These cells visually bracket the answer without changing its Markdown/code type or splitting its content. The student generator removes both boundary cells entirely, preserving one immediate unnumbered placeholder (or retained supplied answer) per question. Do not tag boundary cells `solution`, which would turn them into extra placeholders.
 
 ## `given`
 
@@ -102,7 +108,7 @@ Normally follow such a question with a `given` answer cell rather than a `soluti
 
 ## Pairing rule
 
-Unless there is a deliberate `given-answer` pattern, every `exercise-question` should be followed immediately by its corresponding `solution` cell.
+In the solved notebook, each question is followed by a start boundary, one corresponding answer-content cell, and an end boundary. The answer is tagged `solution`, or `given` for a deliberate `given-answer` example. After boundary removal, the generated student notebook retains one immediate answer/placeholder per question.
 
 Do not separate a question and its answer by unrelated exposition. The solved notebook should read naturally as Q&A.
 

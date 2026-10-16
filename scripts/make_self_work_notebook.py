@@ -29,7 +29,11 @@ def make_self_work_notebook(source_path, output_path):
     with source_path.open("r", encoding="utf-8") as f:
         notebook = json.load(f)
 
-    notebook["cells"] = [transform_cell(cell) for cell in notebook["cells"]]
+    notebook["cells"] = [
+        transform_cell(cell)
+        for cell in notebook["cells"]
+        if "solution-boundary" not in cell.get("metadata", {}).get("tags", [])
+    ]
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as f:
@@ -41,7 +45,8 @@ def main():
     parser = argparse.ArgumentParser(
         description=(
             "Generate a student self-work notebook from a solved teaching notebook "
-            "by replacing cells tagged 'solution' with answer placeholders and "
+            "by removing solved-only answer markers, replacing cells tagged "
+            "'solution' with answer placeholders, and "
             "clearing code outputs/execution counts."
         )
     )

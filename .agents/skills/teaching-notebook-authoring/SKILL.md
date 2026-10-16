@@ -19,7 +19,7 @@ Read before authoring:
 
 ## Pedagogical model
 
-The solved notebook is authored **first as questions followed immediately by complete answers**. The student self-work notebook is then produced from that solved notebook by removing designated solution cells.
+The solved notebook is authored **first as questions followed by complete answers**, with only solved-only boundary headings around each answer-content cell. The student self-work notebook is then produced by removing those boundary cells and replacing designated solutions with placeholders.
 
 This is not an incidental format. It is the core pedagogy.
 
@@ -362,7 +362,7 @@ The typical instructional rhythm is:
 
 1. **Explanation to read**, where a substantive teaching move is needed, develops a coherent mathematical or technical idea;
 2. **Code to run**, where needed, supplies short supporting cells with brief preceding implementation notes; the material heading supplies the run instruction;
-3. **Questions to answer** contains numbered `exercise-question` cells, each immediately followed by one unnumbered `solution` Markdown or code cell;
+3. **Questions to answer** contains numbered `exercise-question` cells, each paired with one unnumbered `solution` Markdown or code cell; in the solved source, separate Markdown cells bracket that answer with `##### start answer` and `##### end answer`, tagged `solution-boundary`;
 4. repeat for the next coherent step.
 
 Use `#` for the notebook title, `##` for sections, `###` for those three material boundaries and `####` for content titles and numbered questions. Repeat a boundary when the material type changes; consecutive questions may share one. Keep student-written code within Questions to answer. Do not supply a target calculation merely to fill the supporting-code step. Substantial setup may precede the numbered questions.
@@ -384,6 +384,7 @@ Generate the self-work notebook mechanically with `scripts/make_self_work_notebo
 The transformation should:
 
 - preserve questions exactly;
+- remove cells tagged `solution-boundary` entirely, so answer markers do not appear in the student version;
 - preserve `given` cells;
 - preserve cells associated with `given-answer` questions;
 - replace `solution` code cells with `# answer here`;
@@ -401,7 +402,7 @@ Before considering the pair complete, check the following.
 
 - Does it run top to bottom under repository runtime rules?
 - Does it reproduce the worked solution's substantive results and figures?
-- Does each question have a complete answer immediately available in the solved version?
+- Does each question have exactly one complete answer-content cell, bracketed by start/end Markdown markers in the solved version?
 - Is every question answerable from information visible before the answer cell?
 - Is the expected student action clear?
 - Does each Explanation to read make a coherent teaching move rather than document a supplied cell?
@@ -421,7 +422,7 @@ Before considering the pair complete, check the following.
 ### Student notebook
 
 - Was it generated from the solved notebook rather than independently authored?
-- Are all designated solutions removed?
+- Are all designated solutions replaced by placeholders and all solved-only boundary cells removed?
 - Are all questions and supplied material preserved?
 - Can a student work linearly from top to bottom?
 - Would pasting an individual question into an AI chat normally produce enough context for a useful answer?

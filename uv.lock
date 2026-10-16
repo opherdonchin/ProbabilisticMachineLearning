@@ -6,6 +6,12 @@ resolution-markers = [
     "sys_platform == 'darwin'",
 ]
 
+[manifest]
+members = [
+    "pml-course-support",
+    "probabilistic-machine-learning",
+]
+
 [[package]]
 name = "anyio"
 version = "4.15.1"
@@ -958,6 +964,21 @@ wheels = [
 ]
 
 [[package]]
+name = "pml-course-support"
+version = "0.1.0"
+source = { editable = "notebook_support" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "matplotlib", specifier = ">=3.8" },
+    { name = "numpy", specifier = ">=1.26" },
+]
+
+[[package]]
 name = "probabilistic-machine-learning"
 version = "0.1.0"
 source = { virtual = "." }
@@ -968,6 +989,7 @@ dependencies = [
     { name = "nbclient" },
     { name = "nbformat" },
     { name = "numpy" },
+    { name = "pml-course-support" },
     { name = "scikit-learn" },
     { name = "scipy" },
     { name = "torch", version = "2.14.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "sys_platform == 'darwin'" },
@@ -982,6 +1004,7 @@ requires-dist = [
     { name = "nbclient", specifier = ">=0.10,<0.11" },
     { name = "nbformat", specifier = ">=5.10,<6" },
     { name = "numpy", specifier = "==2.0.2" },
+    { name = "pml-course-support", editable = "notebook_support" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "scipy", specifier = "==1.16.3" },
     { name = "torch", specifier = ">=2.14.0", index = "https://download.pytorch.org/whl/cpu" },

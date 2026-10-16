@@ -1,80 +1,43 @@
-# L01 exact Gaussian notebook — authoring report
+# L01 exact Gaussian notebook — current authoring report
 
-Stage: teaching-notebook-authoring, revision. This is a bounded reviewable draft under the accepted exact-only route, not complete Scope/workload approval or a publication claim. Ownership is restricted to `/tmp/l01-exact-qa/`; no repository files or global knowledge records were edited.
+Stage: teaching-notebook-authoring, revision. The instructor approved extracting only the three plotting functions and requested a first-notebook student introduction. This is a reviewable draft, with current local validation; full notebook/Scope acceptance, public distribution, hosted validation and learner-time evidence remain separate.
 
-## Knowledge report before authoring
-
-### Assume familiar
-
-Conditional probability, Bayes' rule, expectation, variance, basic covariance/correlation, posterior uncertainty, observed versus unknown quantities; mathematical matrix algebra and transposes; basic Python, NumPy arrays/slicing/arithmetic, `@`, and basic Matplotlib. Existing knowledge of probabilistic programming is irrelevant to the selected computation and creates no notebook prerequisite.
-
-### Previously encountered — scaffold when needed
-
-Multivariate Gaussians, covariance matrices beyond pairwise covariance, nontrivial matrix dimensions. Keep explicit block shapes and a notation checkpoint. Mathematical results established in the live lecture are supplied for application rather than re-proved: block conditioning, LGS moments and conditional equations, and vector squared-loss decomposition.
-
-### New in this lecture/notebook
-
-Partitioned Gaussian notation and Schur-complement conditional covariance; applying an exact law to three hidden/four observed coordinates; distribution versus loss-selected action; minimum conditional model risk versus realized squared error; transparent joint-to-LGS factorization; old-case inverse query versus before-observation fresh-case marginal and generation. Numerical `np.linalg.solve`, matrix-right-hand-side solves, the transpose route for a right-side inverse, `np.block`, `np.diag`, `np.trace`, analytic normal quantiles/individual marginal intervals, and `rng.multivariate_normal` require local explanation. `np.allclose`/`np.testing.assert_allclose` and spectral checks appear only in visibly supplied author verification. No fast-moving inference package API is used; no version-drift exercise is needed.
-
-This contract was written before the solved draft. Cumulative knowledge source: `.agents/skills/teaching-notebook-authoring/references/student-knowledge.md`; stale sampler-specific L01 entries do not establish a requirement to retain that route.
-
-## Mathematical route and preserved scaffolding
-
-The new 69-cell solved source has 18 immediate `exercise-question`/`solution` pairs: nine code answers and nine mathematical/prose answers. It preserves the original fine-grained block shapes, concrete covariance/correlation, task-schema mapping, transparent NumPy operations, explicit notation checkpoint, joint-to-LGS equations and interpretation of known-model outputs. It replaces the old two-route comparison with a connected sequence:
-
-1. Read the supplied block model and identify the hidden-case conditional target.
-2. Apply the block conditional mean/covariance with explicit linear solves; compute marginal SDs and analytic central intervals; explain why individual intervals do not give joint coverage.
-3. Apply the live squared-loss identity, select the conditional mean, compute its minimum conditional model risk, and distinguish that expectation from the supplied realized-error check.
-4. Translate the same joint into `mu_z`, `Sigma_z`, `W`, `b`, `Omega` with locally explained right-inverse transpose/solve syntax.
-5. Compute the fresh-case forward marginal; inspect supplied moment and same-conditional verification; distinguish the three probability queries.
-6. Generate exactly one unconditional fresh state, one independent noise vector and one measurement with the direct vector equation.
-
-Every instructional question states the expected action, has the necessary formulas/facts visible beforehand, and is immediately followed by one complete solution cell. Sections close retrospectively. The last technical block is explicitly supplied author verification, not another assignment.
-
-Arbitrary covariance construction, initial data, normal quantile, plots and checks are supplied infrastructure. `np.block` is demonstrated in setup; it is no longer a separate reconstruction task after setup already needs the full covariance. The useful covariance/correlation interpretation remains one coherent question. Conditional mean and covariance are distinct code questions; SD and interval endpoints form one coherent summary operation. The LGS algebraic identification, right-side-inverse implementation and residual-covariance computation retain explicit scaffolding without demanding another conditional implementation.
-
-## Accepted example and portability repair
-
-The seven-dimensional model, coordinate split and old numerical inference case are unchanged. The original full-precision seven-coordinate case is supplied data with truthful seed-2027 / NumPy-2.0.2 provenance. This implements the worked owner's author-level repair: repeated covariance eigenvalues can rotate the numerical SVD basis across numerical libraries, so runtime seed reproducibility is not a portable numerical answer key. Hidden truth remains stored separately and unprinted until all conditional moments/intervals have been computed. It never enters an inferred law.
-
-Fresh generation uses the separately supplied `FRESH_RANDOM_SEED = 2028` and `rng_new`. There are no fixed fresh-vector answer keys or strict seeded-draw assertions. No batched draws or unfamiliar reshaping/broadcasting are used. The substantive random equations remain those in the revised validated worked solution.
-
-## Scope of student work and exclusions
-
-Required computation is block conditional moments, marginal summaries, mean action/minimum risk, same-joint LGS parameter translation, forward moments and one fresh case. The repeated LGS conditional and covariance/spectral/affine-generator checks are visibly supplied author verification. The unconditional-action risk comparison remains in the technical worked solution only, with no required baseline coding or study. Plot helpers use inline figures and write no external assets.
-
-The active notebook contains no PyMC, ArviZ, pandas, installation cell, package/container explanation, generic sampling comparison, conditional draw plot, sensitivity study, parameter estimation, baseline experiment, local path or forced backend. Exactness is limited to the supplied Gaussian model. Full covariance is retained and printed; individual intervals do not conceal that coordinate dependence. Expected risk is the sum of squared coordinate errors and is clearly distinguished from one realized error.
-
-## Knowledge state after a successful student completion — prospective
-
-The following are proposed transitions after teaching and learner completion, not a claim that students already learned them.
+## Knowledge report before revision
 
 ### Assume familiar
 
-Retain the entry baseline for conditioning, expectation, basic covariance/correlation, matrix algebra, basic Python/NumPy indexing and `@`. No new construct is promoted to independent fluency after one notebook.
+Probability/Bayesian reasoning, expectation, variance, elementary covariance/correlation, matrix algebra; basic Python, NumPy arrays/indexing/arithmetic and `@`. These are entry assumptions, not evidence that this notebook has been taught. Existing prior-course inference-package experience is unrelated to the selected exact computation.
 
 ### Previously encountered — scaffold when needed
 
-Propose moving partitioned Gaussian notation, conditional Schur-complement covariance, exact conditional implementation with `np.linalg.solve`, NumPy vector/matrix RHS shape reasoning, `np.diag`, `np.trace`, analytic marginal intervals, distribution/action/risk distinctions, explicit joint-to-LGS mapping and `W,b,Omega` computation, forward marginal query and direct one-case generation with `rng_new.multivariate_normal` here from new. `np.block` and `np.allclose` have been encountered in supplied code; they still need support when independently required. Covariance spectral/assertion and affine-generator APIs remain supplied checking code, not practiced student fluency.
+Multivariate Gaussians, nontrivial covariance matrices and matrix shapes. Live lecture results are supplied for application: block conditioning, LGS moments/updates and vector squared-loss decomposition. Maintain explicit notation and numerical-operation explanations.
 
 ### New in this lecture/notebook
 
-Nothing beyond the bounded listed route is established. Model fitting, missingness-mechanism analysis, empirical model validation, simultaneous Gaussian regions, physical/causal identification from an LGS factorization, tensor batching/broadcasting and independent numerical-analysis expertise remain unestablished. The notebook does not alter knowledge status of removed inference-package APIs.
+First-course-notebook operation: questions and answer cells, Markdown/code editing, supplied versus student work, ordered execution and runtime state, interpreting outputs, AI-assisted help and final clean execution. The introduction explicitly supports these rather than assuming notebook fluency. Supplied helper import/install is explained; optional `help`/`inspect.getsource` permits transparency without a new required task.
 
-A separate `knowledge_change_report.md` identifies proposed future updates to the cumulative knowledge file. No global skill file was automatically changed.
+The mathematical/computational contract remains exact conditional mean/covariance and Schur complements, marginal summaries/intervals, action versus distribution and expected versus realized loss, explicit joint-to-LGS mapping, forward marginal and independent one-case generation. `np.linalg.solve` with vector/matrix RHS and symmetry/transposition, `np.diag`, `np.trace`, quantiles and one-vector Gaussian generation retain local scaffolding. Spectral/assertion/population checks are supplied, not independently practised competencies.
 
-## Validation and review boundary
+## Current student-facing structure
 
-Clean-kernel scratch execution uses the repository uv environment after the parent's successful locked sync; no dependency or environment files were changed. The execution record, numerical outputs, extracted inline figures and validation log are in this scratch directory. All 17 code cells completed. All 18 question/answer pairs passed structural checks. The three inline figures were visually inspected: labels/legends are readable, no clipping or obscured data, individual interval wording retained. Source has only NumPy/Matplotlib/SciPy imports; no notebook data/figure file is needed. The numerical conditional mean, covariance, SD, minimum risk, LGS moment identities and generator population-joint identity agree with the validated worked route within stated tolerances.
+Six introductory Markdown cells orient the learner to the problem, how to start/save a copy, what cells to run/edit, placeholders/givens, execution state, AI assistance and completion expectations. They add no grading or deadline rule; submission follows separate instructor instructions. The solved notebook remains the Q&A source; the student notebook is mechanically derived. Students are directed to work in their own copy of the student notebook and use the solved source as a reference.
 
-The official repository executor check and mechanical self-work generation remain parent-owned. A scratch in-memory call to the same repository transformation checks preservation of questions/given cells and replacement/clearing of solution cells; no separately authored student narrative was created. Hosted Colab execution has not been performed by this worker. This is not a publication-ready or hosted-compatible claim.
+The technical sequence is unchanged: known joint/task → exact block conditional and individual intervals → squared-loss mean action/minimum model risk → same-joint LGS translation → fresh-case forward marginal → one generated state/noise/measurement case. Fixed reference coordinates and the separate fresh-generation seed are preserved. Hidden truth enters evaluation only. No model fitting, second student conditional implementation, sampler, baseline study or sensitivity assignment is introduced.
 
-## Subjective learner-time estimate
+The notebook has **75 cells, 18 code cells, 18 immediate Q&A pairs (nine code and nine written answers), and three inline figures**. All original numbered questions and mathematical/code answers are unchanged. The new 849-word orientation adds reading time; the earlier subjective 55–75-minute author estimate did not measure this revised introduction and must not be treated as a timing guarantee.
 
-Estimated **55–75 minutes** for a mathematically mature student using AI assistance as intended, including reading/running supplied cells: about 10 minutes for model/task inspection, 12–15 for conditional computation/interval interpretation, 8–10 for loss/risk, 12–15 for LGS translation, 8–10 for forward queries, and 5–10 for generation/consolidation. These are subjective author estimates, not measured learner timings; code execution speed provides no evidence for them. The one-hour target remains at risk, especially the transpose/solve identity and distinctions among three laws. No accepted mathematical target was silently removed to force a time claim. The parent/instructor own complete Scope and consequential workload choices.
+Three plotting functions live in `notebook_support/src/course_support/l01.py`, with docstrings and explicit arguments. Notebook setup retains means, covariance blocks, fixed case and quantile; all target mathematics is visible. The small separate package requires only NumPy/Matplotlib, avoiding the root authoring environment's PyTorch/Jupyter dependencies in a Colab installation. The package revision and source link are fixed at `7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39`.
 
-## Canonical integration — coordinator
+## Validation and limitations
 
-Integrated at `InClass/Solutions/lecture1_missing_data.ipynb` without substantive changes to the specialist source (SHA-256 `42dec1fa6d59af3f76e9102d3c07832b944bd3c225ed5947df2766b0e03ee9b7`). The student file at `InClass/lecture1_missing_data.ipynb` was mechanically generated by `scripts/make_self_work_notebook.py`. Official clean local execution and pair-preservation checks pass; [durable validation evidence](../../Lectures/L01_Probability_Statistics/reconciliation/delivery_readiness/runtime/exact_only/report.md) records commands, hashes, outputs and the separate non-blind Scope feasibility review. The coordinator inspected the three inline figures.
+[Current validation evidence](../../Lectures/L01_Probability_Statistics/reconciliation/delivery_readiness/runtime/support_package/report.md) records source hashes, raw outputs and review provenance. Official clean local execution, numerical assertions, valid solved/student file schemas, mechanical student derivation, wheel metadata and a fresh isolated-kernel Git-install bootstrap pass. The isolated installation changes public HTTPS to local Git transport; **no hosted or public URL success is claimed**. The package worker checked pixel identity and independently read the student introduction; the coordinator inspected all three current inline figures. That reviewer also built the package, so the review is not blind.
 
-The L01 planned-map cell and matching PDF now link these current draft files. The cumulative knowledge reference's L01 section was reconciled as a prospective exact-only authoring contract; prior-course baseline facts are preserved and no actual student-knowledge promotion is recorded. Hosted runtime, learner-time and complete Scope approval remain pending.
+The old instructor run was preserved in Git before replacement. Current source outputs/counts are cleared; the executed copy lives under ignored `build/notebooks/`. The student placeholders are intentionally incomplete and are not claimed to run as a solved notebook.
+
+**Release blocker:** the pinned package commit remains local. The Colab install and GitHub source links need that revision published after explicit authorization, followed by a fresh hosted course-target run. Do not call this draft Colab-ready. Instructor review proceeds in ordinary chat, beginning with the opening through “Supplied plotting tools”; later exercises/slides/Scope await their own review.
+
+## Prospective knowledge-state change
+
+After actual successful teaching/completion, record these mathematical and computational constructs as previously encountered, with continued scaffolding; promote none to fluency after one notebook. Notebook cell workflow and the supplied import mechanism have been introduced, not independently mastered. Optional source inspection and supplied spectral/assertion checks remain supported tools. Prior-course baseline facts are preserved. The [knowledge-change report](lecture1_missing_data_knowledge_change_report.md) and prospective cumulative L01 section reflect this boundary; no delivered teaching is recorded.
+
+The student generator's redundant insertion of execution counts into Markdown cells was repaired during schema validation; L01 was regenerated and both files validate. Only code cells carry execution counts.

@@ -29,6 +29,13 @@ the `pytorch-cpu` extra index configured in `[tool.uv.sources]`). Only the VAE
 cell needs `torch`; every figure draws from its own seeded generator, so that
 cell can be skipped without changing any other figure.
 
+L01's supplied plotting functions are a small separate package in
+[`notebook_support/`](notebook_support/README.md). `uv sync --locked` installs it
+locally for notebook imports. The notebook retains its model and mathematical
+calculations; the package contains only plotting helpers. Colab distribution
+uses a pinned public Git revision of this subdirectory and requires its own
+hosted validation after that revision is published.
+
 Before publishing a notebook, connect it to the course-target runtime through
 the official Google Colab VS Code extension and run every cell from a fresh
 hosted runtime. The current baseline is Colab `2026.07` on CPU.

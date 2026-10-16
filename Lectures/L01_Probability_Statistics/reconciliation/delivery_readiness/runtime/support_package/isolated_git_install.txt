@@ -1,0 +1,4 @@
+Note: you may need to restart the kernel to use updated packages.
+Course plotting tools are ready.
+PASS: missing-package bootstrap installed pinned Git subdirectory in clean isolated kernel; all notebook cells then executed.
+Only Git transport changed from public HTTPS to local file; this is not a hosted Colab/public URL test.

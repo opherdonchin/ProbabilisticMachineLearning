@@ -16,6 +16,7 @@ dependencies = [
     "nbformat>=5.10,<6",
     "scikit-learn>=1.9.1",
     "torch>=2.14.0",
+    "pml-course-support",
 ]
 
 [tool.uv]
@@ -23,16 +24,23 @@ package = false
 
 [tool.uv.sources]
 torch = { index = "pytorch-cpu" }
+pml-course-support = { workspace = true, editable = true }
 
 [[tool.uv.index]]
 name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
+
+[tool.uv.workspace]
+members = [
+    "notebook_support",
+]
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
 platforms = ["linux-64"]
 
 [tool.pixi.pypi-dependencies]
+pml-course-support = { path = "notebook_support", editable = true }
 probabilistic-machine-learning = { path = ".", editable = true }
 
 [tool.pixi.tasks]

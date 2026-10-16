@@ -24,3 +24,7 @@ After actual completion, propose recording the following as encountered rather t
 The following remain unestablished by this notebook: model-parameter fitting, missingness-mechanism modeling, empirical model validation/population performance, simultaneous probability regions, physical or causal interpretation of the covariance-derived LGS, batching/advanced broadcasting, covariance spectral-analysis fluency, inference-library version/container APIs. Do not promote removed package workflows from an older draft.
 
 The coordinator removed sampler-specific planned L01 exposure from the cumulative reference, preserving course-entry package experience; do not claim those constructs were taught because an earlier draft listed them. This report proposes the transition, while the instructor/coordinator retains the timing and record of actual teaching.
+
+## Student-orientation/support revision
+
+The instructor identifies this as students' first course notebook. Introduce cell execution, question/answer and given-cell roles, Markdown/code placeholders, runtime state/order, AI-assisted checking, saving and final clean execution explicitly. After actual practice these may be recorded as encountered, with continued support. The supplied plotting-package import/install and optional `help`/source inspection do not establish package-management fluency. This adds no mathematical exercise or actual knowledge promotion; reading time is additional and unmeasured.

@@ -129,6 +129,8 @@ At entry, retain support for multivariate Gaussians, covariance matrices and non
 
 ### New in Lecture 1 / first notebook sequence
 
+The instructor identifies this as students' first course notebook: introduce the teaching-notebook workflow explicitly, regardless of prior Python experience. Scaffold cell execution, Markdown/code answer cells, supplied versus student work, top-to-bottom state/dependencies, saving, AI-assisted explanation/checking and final restart/run-all. The three plotting helpers are supplied imports; installation and optional `help`/source inspection do not establish package-management fluency. This remains a prospective authoring contract, not taught knowledge.
+
 Introduce or scaffold:
 
 - partitioned Gaussian notation, covariance blocks, exact conditional mean/covariance and conditional covariance as a Schur complement;

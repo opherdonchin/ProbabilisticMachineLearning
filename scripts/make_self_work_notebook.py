@@ -8,7 +8,6 @@ from pathlib import Path
 def transform_cell(cell):
     tags = set(cell.get("metadata", {}).get("tags", []))
 
-    cell["execution_count"] = None if cell.get("cell_type") == "code" else cell.get("execution_count")
     if cell.get("cell_type") == "code":
         cell["outputs"] = []
 

@@ -1,0 +1,42 @@
+{
+  "status": "local checks passed; public installation and hosted Colab pending",
+  "package_commit": "7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39",
+  "preserved_instructor_run_commit": "b925a7a",
+  "cells": 75,
+  "code_cells": 18,
+  "question_solution_pairs": 18,
+  "unchanged_numbered_questions_and_solutions": true,
+  "student_placeholders": {
+    "code": 9,
+    "markdown": 9
+  },
+  "inline_figures": 3,
+  "introductory_markdown_words": 849,
+  "validation": [
+    "uv sync --locked",
+    "official clean solved-notebook execution",
+    "mechanical student transformation and exact preservation",
+    "standalone wheel build; only NumPy/Matplotlib runtime requirements",
+    "missing-package bootstrap and complete execution in separate isolated kernel using pinned local Git commit",
+    "three helper plots pixel-identical to old functions (package worker); coordinator inspected all current inline plots",
+    "both solved/student notebook schemas valid; corrected generator code-only execution metadata"
+  ],
+  "limits": [
+    "isolated Git test substitutes local file transport for public HTTPS",
+    "bootstrap skips install if module already exists; does not verify its Git provenance",
+    "no hosted Colab check or measured student timing",
+    "first-use reading time added; no numbered exercise or mathematical answer changed"
+  ],
+  "sha256": {
+    "InClass/Solutions/lecture1_missing_data.ipynb": "1ae3a8a4bffc20300943716fd2fc54ae9e6399839e4a39671e8e8af577828a00",
+    "InClass/lecture1_missing_data.ipynb": "a2f45c1dff3847e7a12c2a01c25a0f8edbb7485d3defbfdd15ea501347933564",
+    "notebook_support/src/course_support/l01.py": "381bc6f67a4ce8df5064264f5a949baa5e4c2dfff287758b877c7d79d1ed645e",
+    "notebook_support/pyproject.toml": "6e58150dfee1567fbf3bc6a208eeadb8497f089eec5e30aaec8f6983ce352514",
+    "pyproject.toml": "4d30119e98b29817c0300f2c4f7bd213c45416cf8074338e384a0b33e540d207",
+    "uv.lock": "639806e74f1c359e971ac67dda772d86d4d4a1d85c4ac7898fdc77110feb382a",
+    "pixi.lock": "b04766d849a0c06cf504bc54fbf0d2dac7280433123414a474dd161dc08cda79",
+    "build/notebooks/InClass/Solutions/lecture1_missing_data.executed.ipynb": "5d754b95469a776feacbd6c85842fbba7cdaf2c89e8a871bdc9da66f30a64fb2",
+    "scripts/make_self_work_notebook.py": "360af0fe1ffad9f59b90ef03934766498f24ccd17069aafd92b3fc2d253dc519"
+  },
+  "review_target_solved_sha256": "1ae3a8a4bffc20300943716fd2fc54ae9e6399839e4a39671e8e8af577828a00"
+}

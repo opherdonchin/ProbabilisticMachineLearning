@@ -6,7 +6,7 @@ The instructor works with the **Lecture Development Coordinator** in one Codex c
 
 | Location | Authority |
 | --- | --- |
-| `.agents/skills/<name>/SKILL.md` | **Single canonical source** for each of the nine skills: procedure, modes, stage boundaries, review rules, supporting references |
+| `.agents/skills/<name>/SKILL.md` | **Single canonical source** for each skill: procedure, modes, stage boundaries, review rules, supporting references |
 | `.agents/skills/shared/backpressure.md` | Shared protocol referenced by the canonical skills |
 | `.codex/agents/<role>.toml` | Thin **Codex-specific launch profiles**: name, one-line description, model, reasoning effort, and pointer to the canonical skill |
 | `.codex/config.toml` | Subagent runtime/concurrency settings |

@@ -13,7 +13,7 @@ Use the following student-facing Markdown hierarchy:
 
 Repeat a material boundary when the material type changes, rather than before every cell of the same type. Prefer local sequences of explanation, short supplied supporting code, then student work. Supply code only when it supports the mathematical target; keep the calculations students are meant to implement as questions.
 
-Keep supplied code cells short and coherent. Explain their purpose, inputs, operations and expected output in preceding Markdown, with an explicit **Run the code cell below** instruction. Brief code comments complement that explanation. Supplied setup may span several short cells under one material boundary. Do not rely on hidden tags or a visible `[GIVEN]` marker to tell students what to do.
+Keep supplied code cells short and coherent. Explain their purpose, inputs, operations and expected output in preceding Markdown. The **Code to run** material heading supplies the instruction; do not repeat “Run the code below” before each cell. Brief code comments complement that explanation. Supplied setup may span several short cells under one material boundary. Do not rely on hidden tags or a visible `[GIVEN]` marker to tell students what to do.
 
 Number questions consistently within sections. Each question has exactly one immediate unnumbered answer cell, including when its answer is supplied as an example. Student-written code belongs under **Questions to answer**, not **Code to run**.
 
@@ -23,7 +23,7 @@ Use on ordinary reading cells: mathematical background, interpretation, introduc
 
 ## `run-instruction`
 
-Use on the Markdown cell immediately preceding each supplied code cell, alongside `given`. It explains the code and explicitly tells the student to run it. This is authoring metadata, not another visible material type.
+Use on the Markdown cell immediately preceding each supplied code cell, alongside `given`. It explains the code; the visible **Code to run** heading tells the student to run it. This is authoring metadata, not another visible material type.
 
 ## `section`
 
@@ -68,7 +68,7 @@ The solved notebook should contain the full, correct answer rather than a hint.
 
 ## `given`
 
-Use on supplied code and its run instructions, or an intentionally retained example answer. These cells remain visible in the student version. Use `explanation` for ordinary reading; both roles are preserved by the generator.
+Use on supplied code and its preceding explanations, or an intentionally retained example answer. These cells remain visible in the student version. Use `explanation` for ordinary reading; both roles are preserved by the generator.
 
 Typical uses:
 

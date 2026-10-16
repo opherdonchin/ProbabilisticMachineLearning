@@ -361,7 +361,7 @@ Then update `.agents/skills/teaching-notebook-authoring/references/student-knowl
 The typical instructional rhythm is:
 
 1. **Explanation to read** establishes the mathematics and any unfamiliar code operations;
-2. **Code to run**, where needed, supplies short supporting cells with full preceding Markdown explanations and explicit run instructions;
+2. **Code to run**, where needed, supplies short supporting cells with full preceding Markdown explanations; the material heading supplies the run instruction;
 3. **Questions to answer** contains numbered `exercise-question` cells, each immediately followed by one unnumbered `solution` Markdown or code cell;
 4. repeat for the next coherent step.
 

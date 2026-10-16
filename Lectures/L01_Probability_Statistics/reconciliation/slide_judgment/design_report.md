@@ -233,7 +233,8 @@ Design and Organization negotiated this combined interpretation. Organization
 emphasized that the same titles, boundaries, count and depth admit different
 preferred compositions; there is no evidence here for splitting a move or
 reducing mathematics. Design cautioned against attributing either preference to
-one layout feature, and both agreed on the move-specific protocol proposal above.
+one layout feature. Their shared interpretation motivates the move-specific
+protocol proposal above; it is not an adopted instruction.
 Organization names the inference; Design chooses a proposed reading relation;
 Authoring checks that the actual state realizes it; instructor answers update
 only the corresponding hypothesis. Preference can vary within a coherent

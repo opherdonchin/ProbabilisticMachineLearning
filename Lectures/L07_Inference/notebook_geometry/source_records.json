@@ -1,0 +1,47 @@
+[
+  {
+    "id": "uci_iris",
+    "url": "https://archive.ics.uci.edu/dataset/53/iris",
+    "resolved_url": "https://archive.ics.uci.edu/dataset/53/iris",
+    "accessed": "2026-10-15",
+    "bytes": 585453,
+    "sha256": "29207e8c5d3fc710d35aab452f6da3f7751a6c6472c47ff25fba962c7638d422",
+    "local_evidence": "/tmp/l07-geometry-uci_iris.html"
+  },
+  {
+    "id": "sklearn_load_iris",
+    "url": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html",
+    "resolved_url": "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html",
+    "accessed": "2026-10-15",
+    "bytes": 141163,
+    "sha256": "76600aebd1134fad1fb88223b5fd8455940aac3b56faa7650808e8ce1da28d0f",
+    "local_evidence": "/tmp/l07-geometry-sklearn_load_iris.html"
+  },
+  {
+    "id": "sklearn_iris_description",
+    "url": "https://scikit-learn.org/stable/datasets/toy_dataset.html",
+    "resolved_url": "https://scikit-learn.org/stable/datasets/toy_dataset.html",
+    "accessed": "2026-10-15",
+    "bytes": 69212,
+    "sha256": "75e09b5c3ec3e4c0f2957223171789b3ac1c5d4451ad78b50ea7fdfe3cd5a02b",
+    "local_evidence": "/tmp/l07-geometry-sklearn_iris_description.html"
+  },
+  {
+    "id": "installed_iris_csv",
+    "path": "/tmp/pml-l04-l12-reconciliation/.venv/lib/python3.12/site-packages/sklearn/datasets/data/iris.csv",
+    "sha256": "f13ffa8fdd56fd8e6c8d16d4081a3fbd3114bcd0aae4256c43205169cd9d1449",
+    "bytes": 2734
+  },
+  {
+    "id": "source_inference_book2",
+    "path": "/tmp/source_inference_book2.txt",
+    "sha256": "1d77150146caf0f7e44b88b20370292abe5b6bfc506ce92fe26509a7bdb131b6",
+    "bytes": 5037788
+  },
+  {
+    "id": "pml-book1",
+    "path": "/tmp/pml-book1.txt",
+    "sha256": "69291936872f6ced92a874015ed7b2d0d27962307bf84da5c5ca9b0fa2c9eb20",
+    "bytes": 2806516
+  }
+]

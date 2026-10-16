@@ -174,7 +174,7 @@ The useful test is: **would separating the steps teach a distinct concept?** If 
 
 ### 6. Anchor specialized problems to the lecture's framing
 
-When a notebook instantiates an abstract schema introduced in lecture, establish that schema before asking for the special case.
+When a notebook instantiates a task form introduced in lecture, state the task, variables and distribution explicitly before asking for the special case. A label such as “the lecture’s discovery schema” does not supply that explanation.
 
 For example, if the lecture defines probabilistic task forms such as prediction or discovery, either:
 
@@ -202,7 +202,7 @@ Each transition is a candidate for one or more questions, but not every implemen
 
 ### 8. Prefer concrete mathematical referents
 
-Ask for concrete quantities, objects, or transformations rather than vague discussion.
+Use concrete quantities, objects and operations in explanations and solved answers as well as questions. Give the reader the mathematical referent instead of relying on author shorthand; use the editorial pass below.
 
 Prefer:
 
@@ -394,6 +394,22 @@ The transformation should:
 
 Do not independently rewrite or simplify the student version after generating it. If the student notebook is awkward, fix the solved notebook and regenerate.
 
+## Student-facing prose review
+
+Use selected guidance from Google’s **Technical Writing One**, adapted to the course’s mathematical level and notebook conventions:
+
+- **Write for the knowledge gap.** Use the cumulative student-knowledge file to decide what needs explanation. Supply the missing concept without repeating familiar mathematics or syntax. [Audience](https://developers.google.com/tech-writing/one/audience).
+- **Define and name consistently.** Introduce unfamiliar terms and acronyms through their mathematical objects or code behavior. Make pronouns and references such as “this model” unambiguous. Keep names consistent across prose, equations and code; explain deliberate notation changes. [Words](https://developers.google.com/tech-writing/one/words).
+- **Name the operation.** Prefer a concrete subject and a precise verb: what is conditioned on, averaged, minimized or compared? Replace labels such as “supplied infrastructure” with the actual setup being supplied. [Clear sentences](https://developers.google.com/tech-writing/one/clear-sentences).
+- **Give each paragraph a purpose.** Its opening should orient the reader to the idea or task. Keep related reasoning together and move unrelated implementation details to their appropriate code notes. [Paragraphs](https://developers.google.com/tech-writing/one/paragraphs).
+- **Remove unneeded words.** Cut repeated instructions and code narration; retain the assumptions, equations and distinctions needed for correctness. Use concise sentences where they clarify the reasoning, without imposing word counts or padding brief code notes. [Short sentences](https://developers.google.com/tech-writing/one/short-sentences).
+
+These are adapted professional writing practices. Google [reports substantial internal use](https://developers.googleblog.com/teaching-the-art-of-great-documentation/) of the courses; that is evidence of adoption, not a controlled evaluation of this notebook’s learning outcomes. Course-specific mathematical and pedagogical requirements retain authority.
+
+After drafting, read the student version from the beginning with solutions hidden. At each explanation or question, identify the object being discussed, the information currently available, and what the student should understand or do. Resolve vague references, undefined notation and unnecessary background. Check solved answers for the same clarity, then verify that edits preserve mathematical conditions and meaning.
+
+When learner feedback is available, use a short [paraphrase check](https://digital.gov/guides/plain-language/test/paraphrase-testing): ask the learner to explain a passage and what they would do next in their own words. Revise misunderstandings in the text. Do not treat an author’s or automated reviewer’s assertion of clarity as an observed learner result. This is a useful feedback method, not an additional approval gate. Keyword scans may flag candidates; editorial judgment remains necessary.
+
 ## Validation
 
 Before considering the pair complete, check the following.
@@ -409,6 +425,7 @@ Before considering the pair complete, check the following.
 - Are Code to run notes brief, with any larger shared idea consolidated before the relevant code?
 - Does each supplied code cell show a concise, meaningful result or specific check confirmation, without extra random draws or premature answers?
 - Does prose respect the student-knowledge baseline rather than narrate obvious syntax?
+- Has the student-facing prose review resolved opaque labels, undefined terms and ambiguous references while preserving mathematical meaning?
 - Has non-instructional setup been bundled rather than pointlessly decomposed?
 - Are tightly coupled actions kept together when separating them would teach nothing new?
 - Are specialized probability targets anchored to the lecture's task framing where appropriate?

@@ -1,0 +1,26 @@
+{
+  "live_audit/report.md": {
+    "sha256": "fb859d1c9a4d598be9194c46e5332aed407db71899ec72aac54e08a630b57a68",
+    "bytes": 15913
+  },
+  "live_audit/findings.json": {
+    "sha256": "d5557cb418fdba752bef8efd6ece1779568c247ab53002cf8c7c21035e8c3195",
+    "bytes": 6969
+  },
+  "live_audit/manifest.json": {
+    "sha256": "855fcb58529ac0be1f5d9424a01cfd54e5ed7cbd4e5971c18cc438e62557e17a",
+    "bytes": 1152
+  },
+  "live_audit/coverage.json": {
+    "sha256": "baddd01264408a7fcdb7f430ded007283bb57c2802c2b231d7ac6a2f99d6162e",
+    "bytes": 19533
+  },
+  "live_audit/sections.json": {
+    "sha256": "7386fc4174546dd7b054fff912aeabd06183fb971bf921d0943998a7e2dc09d7",
+    "bytes": 1702
+  },
+  "live_audit/asset_inventory.json": {
+    "sha256": "b8b3d890b64240ce390e34198cbf6a6f8d792ba52d18a40f2bd945e76f4942d9",
+    "bytes": 6572
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "result": "technical repair recheck PASS",
+  "review_independent_of_repair_author": true,
+  "handout_pages_compared": 70,
+  "presentation_states_compared": 164,
+  "affected_handouts_visually_inspected": [
+    4,
+    8,
+    25,
+    33,
+    37,
+    41,
+    51,
+    56
+  ],
+  "affected_states_visually_inspected": [
+    6,
+    7,
+    8,
+    18,
+    19,
+    62,
+    63,
+    64,
+    65,
+    66,
+    79,
+    83,
+    84,
+    85,
+    94,
+    95,
+    96,
+    97,
+    119,
+    120,
+    121,
+    129,
+    130
+  ],
+  "actual_changed_handout_pages": [
+    4,
+    8,
+    25,
+    33,
+    37,
+    41,
+    51,
+    56
+  ],
+  "actual_changed_presentation_states": [
+    7,
+    8,
+    19,
+    62,
+    63,
+    64,
+    65,
+    66,
+    79,
+    83,
+    84,
+    85,
+    94,
+    95,
+    96,
+    97,
+    121,
+    129,
+    130
+  ],
+  "scoped_but_pixel_unchanged_states": [
+    6,
+    18,
+    119,
+    120
+  ],
+  "outside_allowlist_changes": [],
+  "all_70_handout_final_state_pairs_pixel_identical": true,
+  "accepted_loss_handout_pages": [
+    64,
+    65,
+    66
+  ],
+  "accepted_loss_presentation_states": [
+    151,
+    152,
+    153,
+    154,
+    155,
+    156
+  ],
+  "accepted_loss_and_context_handout_pages_unchanged": [
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68
+  ],
+  "accepted_loss_and_context_presentation_states_unchanged": [
+    145,
+    146,
+    147,
+    148,
+    149,
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162
+  ],
+  "remaining_technical_issues": [],
+  "finding_dispositions": [
+    {
+      "id": "F01",
+      "status": "resolved",
+      "handout": [
+        41
+      ],
+      "states": [
+        94,
+        95,
+        96,
+        97
+      ],
+      "evidence": "s95 shows centered vector; s96 reveals Cov[y]=E[(Ad)(Ad)^T]=A E[dd^T] A^T; s97 adds A\u03a3A^T, with full result in handout. All four states legible, no lost derivation, correct grouping."
+    },
+    {
+      "id": "F02",
+      "status": "resolved",
+      "handout": [
+        37,
+        56
+      ],
+      "states": [
+        83,
+        84,
+        85,
+        129,
+        130
+      ],
+      "evidence": "p37 states \u03c3\u00b2>0 and explicitly limits density/inverse formulas to \u03a3\u227b0. p56 states \u03a3_z\u227b0, \u03a9\u227b0. These suffice for the later ordinary inverses and nondegenerate joint/conditional densities. Affine moment identities are unchanged and do not require invertible A."
+    },
+    {
+      "id": "F03",
+      "status": "resolved",
+      "handout": [
+        25,
+        33
+      ],
+      "states": [
+        62,
+        63,
+        64,
+        65,
+        66,
+        79
+      ],
+      "evidence": "Both Action rows now show a_t~\u03c0_D(\u00b7|x_t) and (x_t,a_t)\u2192(x_(t+1),r_(t+1)) labelled environment. The sampled action is no longer applied as a function. All rows fit; preceding reveal geometry remains coherent."
+    },
+    {
+      "id": "F04",
+      "status": "resolved",
+      "handout": [
+        51
+      ],
+      "states": [
+        119,
+        120,
+        121
+      ],
+      "evidence": "Final state explicitly compares conditioning with the marginal; conditional N(1.2,.36) and marginal N(0,1) remain correct and visible. Question and first answer states unchanged."
+    },
+    {
+      "id": "F05",
+      "status": "resolved",
+      "handout": [
+        4
+      ],
+      "states": [
+        6,
+        7,
+        8
+      ],
+      "evidence": "p4 now qualifies independent Bernoulli tosses/Binomial count by Given \u03b8. This supplies the correct conditional law and independence assumption used in the conjugate likelihood."
+    },
+    {
+      "id": "A01",
+      "status": "resolved",
+      "handout": [
+        8
+      ],
+      "states": [
+        18,
+        19
+      ],
+      "evidence": "Posterior narrowing is now explicitly restricted to this displayed example."
+    },
+    {
+      "id": "A02",
+      "status": "resolved",
+      "handout": [
+        41
+      ],
+      "states": [
+        94,
+        95,
+        96,
+        97
+      ],
+      "evidence": "The p41 key point explicitly states preservation of Gaussianity under the displayed affine map; mean/covariance rules then supply the parameters. No new proof is implied."
+    },
+    {
+      "id": "A03",
+      "status": "deferred by coordinator/instructor",
+      "evidence": "Prior micro-label advisory remains separate; no redesign or new blocker is introduced."
+    }
+  ],
+  "instructor_scope_approval": false,
+  "timing_claim": false,
+  "canonical_files_written": false,
+  "independent_recompile": false
+}

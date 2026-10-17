@@ -1,0 +1,5 @@
+# Current repaired production
+
+Root compiled both modes from source `be9df1cfeb21dbd86d2c459ad31667f553d966bdb6b4d72b96b675a0e0c13dd5` with the repository’s pinned isolated slide-review environment. The resulting handout `fc6a97b5dbcbb15027a29b62a996ab722d99678caacccfa7824da1ac0d8aeb13` is promoted to the canonical [live handout](../../../slide_deck.pdf); presentation `ae056c522d45cfe099fb92bc0c02e08ce7eaaa3b8469172e7574f3693a87b4cc` is in ignored `build/slide-review/L01_Probability_Statistics/delivery/slide_deck_presentation.pdf`. No course layer, figure, notebook, proof depth, count or section order changed.
+
+The raw recheck report’s full rasters/PDF copies remain at `/tmp/l01-live-delivery-audit/repair_recheck/`. This repository retains its report, complete source delta, all pixel/geometry comparison results, coverage, exact hashes and four restored-proof images; `retained-evidence.json` identifies that footprint. The corrected canonical source/handout remain current rather than duplicating the old deck beside them. The accepted loss cluster and its wider context are unchanged.

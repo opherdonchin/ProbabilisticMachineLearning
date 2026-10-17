@@ -1,0 +1,39 @@
+# L01 delivery finalization
+
+The accepted notebook and live loss sequence are preserved. The complete live deck has been independently audited and its clear technical defects repaired; current local notebook execution and student derivation pass. The provisional separate recording is built and independently checked through all specialist stages. Whole Scope acceptance, measured teaching/learner time, recording acceptance/capture and public/hosted release remain separate.
+
+The instructor authorized these three unattended workstreams with “Go ahead” on 2026-10-17. Baseline: `lecture/l01-delivery-readiness@196e5e5`; the instructor notebook run was first preserved in `e5fb7e9`. [The manifest](manifest.json) binds exact input/output versions and disjoint assignments. Root owns canonical integration and current status; recording specialists work only in their assigned recording files in an isolated detached worktree. No export, merge, publication, additional learner simulation or notebook restructuring was performed.
+
+## Live lecture: audit and repairs complete
+
+Use the current [70-page handout](../../slide_deck.pdf). The presentation is [164 reveal states](../../../../build/slide-review/L01_Probability_Statistics/delivery/slide_deck_presentation.pdf). Both compile with zero warnings; the attachment checker passes.
+
+A reviewer separate from the repair author inspected the entire frozen deck: all 70 handouts and 164 states. The [raw audit](live_audit/report.md) identified a missing rendered affine-covariance proof, unstated nondegeneracy assumptions, Action notation applying an action as a function, an ambiguous conditioning comparison and an unqualified Binomial-count statement. Two related qualifiers clarify example-specific posterior narrowing and affine Gaussian closure. The smallest repairs preserve slide order, proof depth and count; no shared theme or figure changed.
+
+The [independent repair recheck](live_repairs/report.md) passes all findings F01–F05 and advisories A01/A02. All 23 scoped states and eight handouts were inspected. Exactly eight handouts and nineteen states changed; four scoped states precede the changed text and remain identical. All other renders, including the accepted loss sequence and its wider context, are pixel-identical to the frozen baseline. All 70 handouts match their final presentation states. Exact hashes, full comparison results, source delta and the restored proof images remain in `live_repairs/`.
+
+The raw audit’s small-label advisory A03 remains for projector rehearsal: pp4,16,27,29,34,70 contain illustrative/table/summary details smaller than body text. No clipping was found; whether individual entries must be readable is a teaching/design judgment. It is not a new technical blocker. [The rehearsal worksheet](rehearsal.md) gives actual page/state ranges and blank timing fields. No timing result is inferred from source counts.
+
+## Separate recording: provisional work
+
+The recording proves the density factorization independently of the live residual/independence argument. Its two sections establish reversible block elimination, positive-definite Schur blocks and the quadratic split; then determinant/dimension normalizers, integration and division identify the marginal and conditional laws. The live lecture and notebook do not depend on watching it.
+
+[The brief](../../recordings/quadratic_separation/recording_brief.md), [connected derivation](../../recordings/quadratic_separation/math_derivation.md), Section Design, Organization and compiled Design specification preserve the full route. [Independent mathematics review](recording_math/report.md) verified dimensions, SPD, inverse order, all normalizers, noncircular identification and exact Murphy editions/passages. Exact rational checks supplement the general proof review. Its one minor wording correction—an affine mean **can** depend on the observation—is incorporated in the current sources and design; unchanged means are possible when B vanishes or along its kernel.
+
+The [provisional recording handout](../../recordings/quadratic_separation/slide_deck.pdf) has **20 pages**; its [presentation](../../recordings/quadratic_separation/production_validation/slide_deck_presentation.pdf) has **47 reveal states**. Both compile without font/overflow warnings and pass the math-attachment check. The [final independent rendered review](recording_rendered/report.md) passes all 20 handouts, all 47 states and all 27 within-slide transitions. Earlier multiline collisions were repaired; every final reveal matches its handout’s mathematical content and word geometry. Eight pixel-difference notices are the prescribed transient emphasis backgrounds, with exact dispositions in the [production report](../../recordings/quadratic_separation/production_validation/authoring_report.md). No proof step was removed.
+
+The Design owner and coordinator resolved actual divider backpressure by using the course’s title-plus-subtitle section dividers; repeated objectives/previously established recall were removed from the specification without changing the twenty-slide sequence. Both sections close retrospectively. The 20–30-minute estimate remains unmeasured. No video, speaker notes or final instructor acceptance is claimed. The exact earlier reviewed prototype is preserved in Git commit `2860518`, then replaced by current artifacts; raw reviews retain their original hashes.
+
+## Notebook: accepted content, local success, release still pending
+
+The canonical [solved](../../../../InClass/Solutions/lecture1_missing_data.ipynb) and [student](../../../../InClass/lecture1_missing_data.ipynb) notebooks are byte-for-byte unchanged from the approved input to this work. Your saved partial execution remains intact. The [independent current check](release/report.md) records `uv sync --locked`, a clean top-to-bottom run of all 23 code cells, zero errors, three plots, valid schemas and a fresh mechanically generated student source matching all 146 cell types/IDs and sources. Scientific dependencies and package pins did not change.
+
+[Prepared local distribution copies](release/integration.md) include a clean student template, a completely executed solution and the already checked helper wheel under ignored `build/l01-release/`. These checking copies do not replace your working files or establish hosted success.
+
+Anonymous public checks found the helper commit unavailable, current student notebook URLs unavailable, and an older solved notebook on public `main`. The existing helper pin and wheel match current source; no speculative package correction is needed. The exact [release/Colab handoff](release/report.md#remaining-release-steps-and-runnable-handoff) explains what to publish after remote-export authorization, how to verify anonymous access and how to run a fresh hosted Colab 2026.07 CPU session through the official VS Code extension. A public feature branch and a merge into `main` are distinct. No hosted run or remote write was performed here.
+
+## Instructor return
+
+The next ready teaching item is **L01-RECORDING-CONTRACT**, owned by the [recording brief](../../recordings/quadratic_separation/recording_brief.md#l01-recording-contract--ready-for-instructor-review). Review the concrete proposed route/extent in chat; its purpose/examinable status and the live proof boundary are already settled. Complete Scope acceptance and the timing rehearsal remain separate. The current [handoff](../../NEXT_SESSION.md) and [lecture state](../../development_state.md) replace stale next-action prose while retaining links to identifiable raw evidence.
+
+No class has been taught; the actual curriculum map is unchanged. No notebook pedagogical review, proof relocation, architecture change, remote publication or merge is inferred from these technical results.

@@ -1,0 +1,26 @@
+{
+  "recording_math/report.md": {
+    "sha256": "9506dbbec1fe95b896223499908aad618cd61e801869e1881b77ba91f0f746e6",
+    "bytes": 7140
+  },
+  "recording_math/reviewed-input-hashes.json": {
+    "sha256": "0b1208dbfc17dc4d44b2e67a7d87fae6757038b5c73a5c4dff9485d0fd5fa9f8",
+    "bytes": 1033
+  },
+  "recording_math/final-input-stability.json": {
+    "sha256": "00b506dcb2bcacf7e10c5f859f9bc80ff06921175090f04497f0d4df5b2108cb",
+    "bytes": 661
+  },
+  "recording_math/algebra-results.json": {
+    "sha256": "02cfba37c9528d7f6fbb3adbe261fa2f3c2cecdc3d13a3f10d3011f4463229ff",
+    "bytes": 3932
+  },
+  "recording_math/check_algebra.py": {
+    "sha256": "4f2f0fd6d91a3912ec571b74a685e74bee498a36a7c636e092b33182307f3a5a",
+    "bytes": 4304
+  },
+  "recording_math/algebra-check.log": {
+    "sha256": "cda0397804de9a5eff0ebf9337e2ca3da6c28adf20fa3763e5d6779db6e379ac",
+    "bytes": 1111
+  }
+}

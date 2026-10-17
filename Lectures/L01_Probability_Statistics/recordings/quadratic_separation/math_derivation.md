@@ -230,7 +230,7 @@ $$
 
 This proves (1) as $p(x_1,x_2)=p(x_1\mid x_2)p(x_2)$, with the marginal and
 conditional independently identified by normalization. The conditional mean
-changes with $x_2$, while its covariance $S$ is constant in $x_2$. This does not
+is affine in $x_2$ and can depend on the observation, while its covariance $S$ is constant in $x_2$. This does not
 assert independence of $X_1$ and $X_2$; the residual $r$ contains the observed
 deviation. The proof used no covariance-to-independence argument from the live
 route.

@@ -1,0 +1,422 @@
+[
+  {
+    "handout_page": 1,
+    "final_state": 1,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 2,
+    "final_state": 2,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 3,
+    "final_state": 5,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 4,
+    "final_state": 8,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 5,
+    "final_state": 11,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 6,
+    "final_state": 14,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 7,
+    "final_state": 17,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 8,
+    "final_state": 19,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 9,
+    "final_state": 20,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 10,
+    "final_state": 21,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 11,
+    "final_state": 23,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 12,
+    "final_state": 26,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 13,
+    "final_state": 30,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 14,
+    "final_state": 35,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 15,
+    "final_state": 38,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 16,
+    "final_state": 40,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 17,
+    "final_state": 43,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 18,
+    "final_state": 47,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 19,
+    "final_state": 49,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 20,
+    "final_state": 52,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 21,
+    "final_state": 55,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 22,
+    "final_state": 56,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 23,
+    "final_state": 57,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 24,
+    "final_state": 61,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 25,
+    "final_state": 66,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 26,
+    "final_state": 67,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 27,
+    "final_state": 68,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 28,
+    "final_state": 69,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 29,
+    "final_state": 70,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 30,
+    "final_state": 73,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 31,
+    "final_state": 75,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 32,
+    "final_state": 78,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 33,
+    "final_state": 79,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 34,
+    "final_state": 80,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 35,
+    "final_state": 81,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 36,
+    "final_state": 82,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 37,
+    "final_state": 85,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 38,
+    "final_state": 88,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 39,
+    "final_state": 91,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 40,
+    "final_state": 93,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 41,
+    "final_state": 97,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 42,
+    "final_state": 99,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 43,
+    "final_state": 100,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 44,
+    "final_state": 101,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 45,
+    "final_state": 102,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 46,
+    "final_state": 104,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 47,
+    "final_state": 108,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 48,
+    "final_state": 112,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 49,
+    "final_state": 116,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 50,
+    "final_state": 118,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 51,
+    "final_state": 121,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 52,
+    "final_state": 124,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 53,
+    "final_state": 126,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 54,
+    "final_state": 127,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 55,
+    "final_state": 128,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 56,
+    "final_state": 130,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 57,
+    "final_state": 133,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 58,
+    "final_state": 135,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 59,
+    "final_state": 138,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 60,
+    "final_state": 141,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 61,
+    "final_state": 144,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 62,
+    "final_state": 148,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 63,
+    "final_state": 150,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 64,
+    "final_state": 153,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 65,
+    "final_state": 155,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 66,
+    "final_state": 156,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 67,
+    "final_state": 160,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 68,
+    "final_state": 162,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 69,
+    "final_state": 163,
+    "pixel_identical": true,
+    "difference_bbox": null
+  },
+  {
+    "handout_page": 70,
+    "final_state": 164,
+    "pixel_identical": true,
+    "difference_bbox": null
+  }
+]

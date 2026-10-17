@@ -1,0 +1,40 @@
+{
+  "frozen_slide_deck.typ": {
+    "bytes": 87127,
+    "sha256": "b13a173b6432f901a9f1bfad9c4aa08163f6a9b506fe01ed50e6cec07c0730cc"
+  },
+  "frozen_slide_deck.pdf": {
+    "bytes": 3660643,
+    "sha256": "2d12a7a69f6db9aa4813f2bc07b658d4e41fd7ef655aeca2a25718b1fb758a84"
+  },
+  "frozen_presentation.pdf": {
+    "bytes": 4216248,
+    "sha256": "55cc7647c780261663764b9d5b08133916f8c69ad5385505c44415184c3cb681"
+  },
+  "Resources/book1.pdf": {
+    "bytes": 92323940,
+    "sha256": "89749245bc8065d7575f990815c621a091de3facca1585168fc0369542742dcf"
+  },
+  "Resources/book2-1.pdf": {
+    "bytes": 151421194,
+    "sha256": "54d6bfa8cc4a367bb553bea1c5127ca63696a9655b2ca1f6137a8584dccfdbaf"
+  },
+  "review": {
+    "handout_pages": 70,
+    "presentation_states": 164,
+    "handout_contact_sheets": 12,
+    "presentation_contact_sheets": 28,
+    "all_contact_sheet_tiles_visually_inspected": true,
+    "all_handout_last_state_pixels_match": true,
+    "duplicate_adjacent_states": [
+      [
+        95,
+        96
+      ]
+    ],
+    "repository_writes": false,
+    "git_operations": false,
+    "timing_measurement": false,
+    "independent_recompile": false
+  }
+}

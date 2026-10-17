@@ -1,0 +1,227 @@
+{
+  "method": "Exact fractions; deterministic finite specializations supplement a manual general proof audit.",
+  "cases": [
+    {
+      "dimensions": [
+        2,
+        3
+      ],
+      "T_inverse_both_orders": true,
+      "covariance_congruence": true,
+      "inverse_congruence": true,
+      "expanded_inverse": true,
+      "quadratic_identity": true,
+      "determinant_identity": true,
+      "det_T": "1",
+      "S_positive_leading_minors": [
+        "646028/20283",
+        "9760753/81132"
+      ],
+      "H_positive_leading_minors": [
+        "56",
+        "3727",
+        "81132"
+      ],
+      "Sigma": [
+        [
+          "69",
+          "21",
+          "7",
+          "48",
+          "34"
+        ],
+        [
+          "21",
+          "60",
+          "42",
+          "14",
+          "-3"
+        ],
+        [
+          "7",
+          "42",
+          "56",
+          "-9",
+          "4"
+        ],
+        [
+          "48",
+          "14",
+          "-9",
+          "68",
+          "44"
+        ],
+        [
+          "34",
+          "-3",
+          "4",
+          "44",
+          "52"
+        ]
+      ],
+      "S": [
+        [
+          "646028/20283",
+          "37937/40566"
+        ],
+        [
+          "37937/40566",
+          "308681/81132"
+        ]
+      ],
+      "B": [
+        [
+          "4850/20283",
+          "14629/20283",
+          "1021/40566"
+        ],
+        [
+          "19555/20283",
+          "18773/20283",
+          "-74237/81132"
+        ]
+      ],
+      "quadratic_value": "705943009/1405548432"
+    },
+    {
+      "dimensions": [
+        3,
+        2
+      ],
+      "T_inverse_both_orders": true,
+      "covariance_congruence": true,
+      "inverse_congruence": true,
+      "expanded_inverse": true,
+      "quadratic_identity": true,
+      "determinant_identity": true,
+      "det_T": "1",
+      "S_positive_leading_minors": [
+        "139/4",
+        "25771/16",
+        "9760753/1600"
+      ],
+      "H_positive_leading_minors": [
+        "68",
+        "1600"
+      ],
+      "Sigma": [
+        [
+          "69",
+          "21",
+          "7",
+          "48",
+          "34"
+        ],
+        [
+          "21",
+          "60",
+          "42",
+          "14",
+          "-3"
+        ],
+        [
+          "7",
+          "42",
+          "56",
+          "-9",
+          "4"
+        ],
+        [
+          "48",
+          "14",
+          "-9",
+          "68",
+          "44"
+        ],
+        [
+          "34",
+          "-3",
+          "4",
+          "44",
+          "52"
+        ]
+      ],
+      "S": [
+        [
+          "139/4",
+          "101/8",
+          "97/8"
+        ],
+        [
+          "101/8",
+          "815/16",
+          "3911/80"
+        ],
+        [
+          "97/8",
+          "3911/80",
+          "20283/400"
+        ]
+      ],
+      "B": [
+        [
+          "5/8",
+          "1/8"
+        ],
+        [
+          "43/80",
+          "-41/80"
+        ],
+        [
+          "-161/400",
+          "167/400"
+        ]
+      ],
+      "quadratic_value": "705943009/1405548432"
+    },
+    {
+      "dimensions": [
+        1,
+        1
+      ],
+      "T_inverse_both_orders": true,
+      "covariance_congruence": true,
+      "inverse_congruence": true,
+      "expanded_inverse": true,
+      "quadratic_identity": true,
+      "determinant_identity": true,
+      "det_T": "1",
+      "S_positive_leading_minors": [
+        "845/27"
+      ],
+      "H_positive_leading_minors": [
+        "27"
+      ],
+      "Sigma": [
+        [
+          "35",
+          "-10"
+        ],
+        [
+          "-10",
+          "27"
+        ]
+      ],
+      "S": [
+        [
+          "845/27"
+        ]
+      ],
+      "B": [
+        [
+          "-10/27"
+        ]
+      ],
+      "quadratic_value": "1127/3380"
+    }
+  ],
+  "course_scalar": {
+    "rho": "4/5",
+    "H": "1",
+    "B": "4/5",
+    "S": "9/25",
+    "x2": "3/2",
+    "conditional_mean": "6/5",
+    "observed_quadratic": "9/4"
+  }
+}

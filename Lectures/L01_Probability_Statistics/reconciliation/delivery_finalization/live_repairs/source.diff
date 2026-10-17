@@ -1,0 +1,91 @@
+--- frozen
++++ repaired
+@@ -138,7 +138,7 @@
+     #text(size: fs("l"))[
+       - Beta for continuous variables on $[0,1]$.
+       #uncover("2-")[
+-        - Bernoulli for each yes/no outcome; Binomial for the count $N_1$.
++        - Given $theta$: independent Bernoulli tosses; Binomial for the count $N_1$.
+       ]
+       #uncover("3-")[
+         - Distributions are parameterized families
+@@ -327,7 +327,7 @@
+       ],
+       uncover("2-")[
+         - Posterior width represents remaining uncertainty
+-        - The uncertainty in the posterior is less than in the prior
++        - In this example, the posterior is narrower than the prior
+       ],
+     )
+   ],
+@@ -1073,7 +1073,8 @@
+       uncover("4-")[
+         #taxonomy-node(
+           [Action],
+-          [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
++          [Task: $D arrow.r a_t ~ pi_D (dot | x_t)$ \
++            $(x_t,a_t) arrow.r^("environment") (x_(t+1),r_(t+1))$],
+           [Performance: $f_P ({r_(t)})$],
+         )
+       ],
+@@ -1475,7 +1476,8 @@
+ 
+       taxonomy-node(
+         [Action],
+-        [Task: $D arrow.r a_* ~ pi_D (dot | {x_(t,*)}) arrow.r (x_(t+1), r_(t+1)) = a_t (x_t)$],
++        [Task: $D arrow.r a_t ~ pi_D (dot | x_t)$ \
++            $(x_t,a_t) arrow.r^("environment") (x_(t+1),r_(t+1))$],
+         [Performance: $f_P ({r_(t)})$],
+       ),
+       )
+@@ -1612,8 +1614,8 @@
+   key-points: [
+     #stack(
+       spacing: sp("l"),
+-      [- One variable: mean $mu$ and variance $sigma^2$],
+-      uncover("2-")[- Mean vector $mu in RR^D$ locates the cloud; covariance $Sigma in RR^(D times D)$ sets its shape],
++      [- One variable: mean $mu$ and positive variance $sigma^2>0$],
++      uncover("2-")[- Mean $mu in RR^D$; these densities and inverse formulas assume covariance $Sigma in RR^(D times D)$ with $Sigma succ 0$],
+       uncover("3-")[- Gaussian means, marginals, and conditionals have closed forms],
+     )
+   ],
+@@ -1767,6 +1769,9 @@
+ 
+ == Affine maps carry Gaussian means and covariances
+ 
++#slide(repeat: 4, self => [
++  #let uncover = utils.uncover.with(self: self)
++
+ #content-block(
+     object: [
+       #twocol[
+@@ -1799,10 +1804,11 @@
+       #source-note[Murphy, Book 1 §3.1.1, Eq. 3.5]
+     ],
+     key-points: [
+-      #uncover("2-")[- A shift changes the mean but not the covariance]
++      #uncover("2-")[- Gaussianity is preserved; a shift changes only the mean]
+       #uncover("4-")[- A linear map changes the scale, orientation, and dimension of variation]
+     ],
+   )
++])
+ 
+ == Mahalanobis distance uses the cloud's own scale
+ 
+@@ -2192,7 +2198,7 @@
+           #only("3")[
+             - With $X_2$ unobserved, marginalize it to obtain $p(X_1)$.
+             - Both calculations use supplied $mu,Sigma$; neither fits them.
+-            - The mean rises from $0$ to $1.2$; the variance falls from $1$ to $0.36$.
++            - Compared with the marginal, conditioning raises the mean to $1.2$ and reduces the variance to $0.36$.
+           ]
+         ]
+       ]
+@@ -2364,6 +2370,7 @@
+     #stack(
+       spacing: sp("s"),
+       [- This model specifies how an unknown state generates a noisy measurement],
++      [- The prior and noise covariances satisfy $Sigma_z succ 0$, $Omega succ 0$],
+       uncover("2-")[- Here the parameters $mu_z, Sigma_z, W, b, Omega$ are given],
+     )
+   ],

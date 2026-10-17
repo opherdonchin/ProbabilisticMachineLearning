@@ -1,0 +1,6 @@
+/home/opher/Repositories/ProbabilisticMachineLearning/.venv/lib/python3.12/site-packages/IPython/paths.py:60: UserWarning: IPython dir '/home/opher/.ipython' is not a writable location, using a temp directory.
+  warn("IPython dir '{}' is not a writable location,"
+/home/opher/Repositories/ProbabilisticMachineLearning/.venv/lib/python3.12/site-packages/IPython/paths.py:60: UserWarning: IPython dir '/home/opher/.ipython' is not a writable location, using a temp directory.
+  warn("IPython dir '{}' is not a writable location,"
+Executed InClass/Solutions/lecture1_missing_data.ipynb
+Saved clean execution record to build/notebooks/InClass/Solutions/lecture1_missing_data.executed.ipynb

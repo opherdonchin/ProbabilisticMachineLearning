@@ -1,0 +1,3 @@
+# Audit integration
+
+The complete independent review covered all 70 handouts and 164 reveal states at the frozen versions in `manifest.json`. Raw findings, coverage, section inventory and the report are retained here. The source/handout are recoverable at `196e5e5`; full frozen files and all inspected rasters/contact sheets remain under `/tmp/l01-live-delivery-audit/`. The current repository keeps the corrected production source/artifacts rather than a second obsolete deck. The separate `../live_repairs/` evidence records the exact repair and independent recheck. Original raw findings are not rewritten to imply they were already repaired when observed.

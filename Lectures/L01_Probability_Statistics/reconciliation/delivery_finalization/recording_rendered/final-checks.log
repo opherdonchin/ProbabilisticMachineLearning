@@ -1,0 +1,26 @@
+{
+  "all_existing_reveal_words_and_geometry_persist": true,
+  "all_47_states_inside_page": true,
+  "reviewed_inputs": {
+    "slide_deck.typ": {
+      "frozen_sha256": "2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d",
+      "current_sha256": "2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d",
+      "unchanged_during_review": true
+    },
+    "slide_design.typ": {
+      "frozen_sha256": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
+      "current_sha256": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
+      "unchanged_during_review": true
+    },
+    "slide_deck.pdf": {
+      "frozen_sha256": "ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51",
+      "current_sha256": "ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51",
+      "unchanged_during_review": true
+    },
+    "slide_deck_presentation.pdf": {
+      "frozen_sha256": "7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205",
+      "current_sha256": "7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205",
+      "unchanged_during_review": true
+    }
+  }
+}

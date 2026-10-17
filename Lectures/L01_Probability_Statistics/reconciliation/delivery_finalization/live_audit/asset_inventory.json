@@ -1,0 +1,206 @@
+[
+  {
+    "source_line": 109,
+    "reference": "figures/coin_model__beta_distribution.svg",
+    "exists": true,
+    "sha256": "414b5872f29ce4600ab1e9fe08d08e7a10ccdfed8473034f7bbf69560776790e"
+  },
+  {
+    "source_line": 128,
+    "reference": "figures/coin_model__bernoulli_likelihood.svg",
+    "exists": true,
+    "sha256": "aa3a818a0e307aae662784023659bd7abf0ac7c3f96febbc5e2c469f5a196da1"
+  },
+  {
+    "source_line": 316,
+    "reference": "figures/coin_model__prior_likelihood_posterior.svg",
+    "exists": true,
+    "sha256": "1f3b6c3b77acb2875a0f96b034b24f3d0dd2f28c26c40bb1e514a127a8983062"
+  },
+  {
+    "source_line": 344,
+    "reference": "figures/coin_model__prior_likelihood_posterior.svg",
+    "exists": true,
+    "sha256": "1f3b6c3b77acb2875a0f96b034b24f3d0dd2f28c26c40bb1e514a127a8983062"
+  },
+  {
+    "source_line": 442,
+    "reference": "figures/fisher_1936__iris_discriminant_histograms.png",
+    "exists": true,
+    "sha256": "01e4f69e23fa8089fe20aea8d8b2697b7eeb0f205f32638d4f1d0ca718ce128c"
+  },
+  {
+    "source_line": 474,
+    "reference": "figures/rosenblatt_1958__perceptron_organization.png",
+    "exists": true,
+    "sha256": "686e940af69635ee318af7a1fb53cb4c09a5e76af39deb265d8d71508dbf8679"
+  },
+  {
+    "source_line": 518,
+    "reference": "figures/mitchell_1997__machine_learning_cover.jpg",
+    "exists": true,
+    "sha256": "54c442f753e65179efc91db2482d55b9a173cfea4f3a7ad8fffb460613060492"
+  },
+  {
+    "source_line": 649,
+    "reference": "figures/book1_fig1_1a_setosa.png",
+    "exists": true,
+    "sha256": "0e59a77469ceff571c47ec04a17db02474af56f8df99a8963d61f94460d2040d"
+  },
+  {
+    "source_line": 656,
+    "reference": "figures/book1_fig1_1b_versicolor.png",
+    "exists": true,
+    "sha256": "139de0303771aa7789767397287b1e0035e199d3be5810be813594021e0d33ca"
+  },
+  {
+    "source_line": 663,
+    "reference": "figures/book1_fig1_1c_virginica.png",
+    "exists": true,
+    "sha256": "eae9b63de7698d6631bdf398a9fb0667e1f2c66bcfefb494f09d38172e6b981d"
+  },
+  {
+    "source_line": 732,
+    "reference": "figures/book1_fig1_3_iris_pairplot.png",
+    "exists": true,
+    "sha256": "550faab3a9f6918f221c36a0684c53c7fd08e1f2807fd8e7aa3b34227fd1b9dd"
+  },
+  {
+    "source_line": 1288,
+    "reference": "figures/book1_fig1_1a_setosa.png",
+    "exists": true,
+    "sha256": "0e59a77469ceff571c47ec04a17db02474af56f8df99a8963d61f94460d2040d"
+  },
+  {
+    "source_line": 1289,
+    "reference": "figures/book1_fig1_1b_versicolor.png",
+    "exists": true,
+    "sha256": "139de0303771aa7789767397287b1e0035e199d3be5810be813594021e0d33ca"
+  },
+  {
+    "source_line": 1290,
+    "reference": "figures/book1_fig1_1c_virginica.png",
+    "exists": true,
+    "sha256": "eae9b63de7698d6631bdf398a9fb0667e1f2c66bcfefb494f09d38172e6b981d"
+  },
+  {
+    "source_line": 1297,
+    "reference": "figures/book1_fig1_12a_mnist.png",
+    "exists": true,
+    "sha256": "ebe26686fd3d42631c854cebcdac258c34ab4b177eb29bcdf66500b005636b61"
+  },
+  {
+    "source_line": 1303,
+    "reference": "figures/book1_fig1_13b_cifar10.png",
+    "exists": true,
+    "sha256": "032e3844e5bb05cc9b4a73e50d94075c2fef6b99ca231f849058d2e5025508b8"
+  },
+  {
+    "source_line": 1309,
+    "reference": "figures/book1_table1_3_imdb.png",
+    "exists": true,
+    "sha256": "27a1f4e89105dfbb59a4725fab52ee3d7331aa49dc874657b941acedfd9d7ff8"
+  },
+  {
+    "source_line": 1337,
+    "reference": "figures/book1_fig1_12a_mnist.png",
+    "exists": true,
+    "sha256": "ebe26686fd3d42631c854cebcdac258c34ab4b177eb29bcdf66500b005636b61"
+  },
+  {
+    "source_line": 1378,
+    "reference": "figures/book1_fig1_13b_cifar10.png",
+    "exists": true,
+    "sha256": "032e3844e5bb05cc9b4a73e50d94075c2fef6b99ca231f849058d2e5025508b8"
+  },
+  {
+    "source_line": 1420,
+    "reference": "figures/book1_table1_3_imdb.png",
+    "exists": true,
+    "sha256": "27a1f4e89105dfbb59a4725fab52ee3d7331aa49dc874657b941acedfd9d7ff8"
+  },
+  {
+    "source_line": 1506,
+    "reference": "figures/book1_fig1_1a_setosa.png",
+    "exists": true,
+    "sha256": "0e59a77469ceff571c47ec04a17db02474af56f8df99a8963d61f94460d2040d"
+  },
+  {
+    "source_line": 1507,
+    "reference": "figures/book1_fig1_12a_mnist.png",
+    "exists": true,
+    "sha256": "ebe26686fd3d42631c854cebcdac258c34ab4b177eb29bcdf66500b005636b61"
+  },
+  {
+    "source_line": 1508,
+    "reference": "figures/book1_fig1_13b_cifar10.png",
+    "exists": true,
+    "sha256": "032e3844e5bb05cc9b4a73e50d94075c2fef6b99ca231f849058d2e5025508b8"
+  },
+  {
+    "source_line": 1509,
+    "reference": "figures/book1_table1_3_imdb.png",
+    "exists": true,
+    "sha256": "27a1f4e89105dfbb59a4725fab52ee3d7331aa49dc874657b941acedfd9d7ff8"
+  },
+  {
+    "source_line": 1517,
+    "reference": "figures/book1_fig1_12a_mnist.png",
+    "exists": true,
+    "sha256": "ebe26686fd3d42631c854cebcdac258c34ab4b177eb29bcdf66500b005636b61"
+  },
+  {
+    "source_line": 1641,
+    "reference": "generated/gaussian_operations__summarize.svg",
+    "exists": true,
+    "sha256": "2c847b85f62201052dc5d6e6560ee240e1176bb9538b441cd759277aabc1b2e0"
+  },
+  {
+    "source_line": 1654,
+    "reference": "generated/gaussian_operations__marginalize.svg",
+    "exists": true,
+    "sha256": "becd0bc88699bee53a8a8b93d63462e11237d5927ae94e866bd9113c173e6db7"
+  },
+  {
+    "source_line": 1667,
+    "reference": "generated/gaussian_operations__condition.svg",
+    "exists": true,
+    "sha256": "d396a1e746e17eb6ed5c8f86b0ff4011a9869c3bad1b9db541131f0ff6d164c2"
+  },
+  {
+    "source_line": 1845,
+    "reference": "generated/gaussian_contours.svg",
+    "exists": true,
+    "sha256": "be94036ed235c90a6222c5593f6ab99ce92c1a11ba71e378abdb835dcf138bcb"
+  },
+  {
+    "source_line": 1870,
+    "reference": "generated/gaussian_contours.svg",
+    "exists": true,
+    "sha256": "be94036ed235c90a6222c5593f6ab99ce92c1a11ba71e378abdb835dcf138bcb"
+  },
+  {
+    "source_line": 2934,
+    "reference": "generated/sensor_fusion_schematic.svg",
+    "exists": true,
+    "sha256": "7509d489e1721209c2f140848a11b0862d4924e16de9b907a175e9630ac51a1e"
+  },
+  {
+    "source_line": 3023,
+    "reference": "generated/sensor_fusion_schematic.svg",
+    "exists": true,
+    "sha256": "7509d489e1721209c2f140848a11b0862d4924e16de9b907a175e9630ac51a1e"
+  },
+  {
+    "source_line": 3059,
+    "reference": "figures/book1_fig1_12a_mnist.png",
+    "exists": true,
+    "sha256": "ebe26686fd3d42631c854cebcdac258c34ab4b177eb29bcdf66500b005636b61"
+  },
+  {
+    "source_line": 3110,
+    "reference": "generated/sensor_fusion_schematic.svg",
+    "exists": true,
+    "sha256": "7509d489e1721209c2f140848a11b0862d4924e16de9b907a175e9630ac51a1e"
+  }
+]

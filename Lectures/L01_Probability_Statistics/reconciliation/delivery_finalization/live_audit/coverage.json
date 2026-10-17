@@ -1,0 +1,726 @@
+[
+  {
+    "handout": 1,
+    "title": "Lecture 1 / Probability and Bayesian Statistics",
+    "states": [
+      1
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 2,
+    "title": "A familiar modeling language",
+    "states": [
+      2
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 3,
+    "title": "The Beta-Binomial model",
+    "states": [
+      3,
+      4,
+      5
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 4,
+    "title": "Models are built out of distributions",
+    "states": [
+      6,
+      7,
+      8
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 5,
+    "title": "Models can be drawn as graphs",
+    "states": [
+      9,
+      10,
+      11
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 6,
+    "title": "Bayes\u2019 rule combines prior and likelihood",
+    "states": [
+      12,
+      13,
+      14
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 7,
+    "title": "Conjugacy permits simple calculations",
+    "states": [
+      15,
+      16,
+      17
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 8,
+    "title": "The posterior is a distribution representing uncertainty",
+    "states": [
+      18,
+      19
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 9,
+    "title": "Summary: A familiar modeling language",
+    "states": [
+      20
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 10,
+    "title": "From statistics to machine-learning problems",
+    "states": [
+      21
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 11,
+    "title": "Statistics focuses on the unknown parameters",
+    "states": [
+      22,
+      23
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 12,
+    "title": "Machine learning grew out of computer science",
+    "states": [
+      24,
+      25,
+      26
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 13,
+    "title": "Early machine learning grew out of classification problems",
+    "states": [
+      27,
+      28,
+      29,
+      30
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 14,
+    "title": "Machine learning defined",
+    "states": [
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 15,
+    "title": "Supervised experience supports prediction",
+    "states": [
+      36,
+      37,
+      38
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 16,
+    "title": "Classification: Iris flowers",
+    "states": [
+      39,
+      40
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 17,
+    "title": "Exploratory data analysis",
+    "states": [
+      41,
+      42,
+      43
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 18,
+    "title": "Performance: empirical risk minimization",
+    "states": [
+      44,
+      45,
+      46,
+      47
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 19,
+    "title": "A loss function",
+    "states": [
+      48,
+      49
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 20,
+    "title": "A probabilistic perspective",
+    "states": [
+      50,
+      51,
+      52
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 21,
+    "title": "Task, experience, and performance",
+    "states": [
+      53,
+      54,
+      55
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 22,
+    "title": "Summary: From statistics to machine learning",
+    "states": [
+      56
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 23,
+    "title": "Classes of machine learning problems",
+    "states": [
+      57
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 24,
+    "title": "Experience taxonomy",
+    "states": [
+      58,
+      59,
+      60,
+      61
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 25,
+    "title": "Task taxonomy",
+    "states": [
+      62,
+      63,
+      64,
+      65,
+      66
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 26,
+    "title": "There are many combinations of experience and task",
+    "states": [
+      67
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 27,
+    "title": "Summary: Two taxonomies, three ingredients",
+    "states": [
+      68
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 28,
+    "title": "From datasets to learning problems",
+    "states": [
+      69
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 29,
+    "title": "Popular datasets",
+    "states": [
+      70
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 30,
+    "title": "MNIST: the same taxonomy, one dataset",
+    "states": [
+      71,
+      72,
+      73
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 31,
+    "title": "CIFAR-10: higher-dimensional inputs, the same questions",
+    "states": [
+      74,
+      75
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 32,
+    "title": "IMDB reviews: text as sequence data",
+    "states": [
+      76,
+      77,
+      78
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 33,
+    "title": "Learning problems become probabilistic queries",
+    "states": [
+      79
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 34,
+    "title": "Summary: From datasets to learning problems",
+    "states": [
+      80
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 35,
+    "title": "Summary: Probability for machine learning",
+    "states": [
+      81
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 36,
+    "title": "Joint Gaussian distributions and geometry",
+    "states": [
+      82
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 37,
+    "title": "Gaussians: a concrete example",
+    "states": [
+      83,
+      84,
+      85
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 38,
+    "title": "The three operations in multivariate Gaussian systems",
+    "states": [
+      86,
+      87,
+      88
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 39,
+    "title": "Covariance summarizes joint variation",
+    "states": [
+      89,
+      90,
+      91
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 40,
+    "title": "Correlation separates direction from units",
+    "states": [
+      92,
+      93
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 41,
+    "title": "Affine maps carry Gaussian means and covariances",
+    "states": [
+      94,
+      95,
+      96,
+      97
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 42,
+    "title": "Mahalanobis distance uses the cloud\u2019s own scale",
+    "states": [
+      98,
+      99
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 43,
+    "title": "Covariance controls the contour shape",
+    "states": [
+      100
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 44,
+    "title": "Summary: Joint Gaussian geometry",
+    "states": [
+      101
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 45,
+    "title": "Marginals and conditionals of a Gaussian",
+    "states": [
+      102
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 46,
+    "title": "Partition the variables and their parameters together",
+    "states": [
+      103,
+      104
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 47,
+    "title": "Marginalization keeps the matching blocks",
+    "states": [
+      105,
+      106,
+      107,
+      108
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 48,
+    "title": "Conditioning shifts the mean by an observed deviation",
+    "states": [
+      109,
+      110,
+      111,
+      112
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 49,
+    "title": "Conditioning removes explained covariance",
+    "states": [
+      113,
+      114,
+      115,
+      116
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 50,
+    "title": "The bivariate formula gives intuition",
+    "states": [
+      117,
+      118
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 51,
+    "title": "One observed coordinate can change both the estimate and its uncertainty",
+    "states": [
+      119,
+      120,
+      121
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 52,
+    "title": "The Schur complement is the residual covariance",
+    "states": [
+      122,
+      123,
+      124
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 53,
+    "title": "The joint quadratic separates into conditional and marginal parts",
+    "states": [
+      125,
+      126
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 54,
+    "title": "Summary: Marginals and conditionals of a Gaussian",
+    "states": [
+      127
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 55,
+    "title": "Linear Gaussian systems",
+    "states": [
+      128
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 56,
+    "title": "A linear Gaussian system is a model of state and measurement",
+    "states": [
+      129,
+      130
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 57,
+    "title": "One linear Gaussian system supports different questions",
+    "states": [
+      131,
+      132,
+      133
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 58,
+    "title": "A linear Gaussian model defines a joint Gaussian",
+    "states": [
+      134,
+      135
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 59,
+    "title": "Bayes\u2019 rule for Gaussians",
+    "states": [
+      136,
+      137,
+      138
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 60,
+    "title": "Bayes\u2019 rule as an update formula",
+    "states": [
+      139,
+      140,
+      141
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 61,
+    "title": "The scalar Gaussian update",
+    "states": [
+      142,
+      143,
+      144
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 62,
+    "title": "The update is weighted by relative uncertainty",
+    "states": [
+      145,
+      146,
+      147,
+      148
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 63,
+    "title": "Inference often combines conditioning and summarizing",
+    "states": [
+      149,
+      150
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 64,
+    "title": "Choose a reconstruction by its conditional squared-error risk",
+    "states": [
+      151,
+      152,
+      153
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 65,
+    "title": "Centering separates residual uncertainty from estimation error",
+    "states": [
+      154,
+      155
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 66,
+    "title": "The posterior mean minimizes squared-error risk",
+    "states": [
+      156
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 67,
+    "title": "Sensor fusion combines measurements according to their uncertainty",
+    "states": [
+      157,
+      158,
+      159,
+      160
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 68,
+    "title": "The same model can also predict measurements",
+    "states": [
+      161,
+      162
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 69,
+    "title": "Summary: Linear Gaussian systems",
+    "states": [
+      163
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  },
+  {
+    "handout": 70,
+    "title": "Lecture 1: four visual anchors",
+    "states": [
+      164
+    ],
+    "visual_review": "all corresponding contact-sheet tiles inspected; targeted full-size images listed in report",
+    "text_source_review": true
+  }
+]

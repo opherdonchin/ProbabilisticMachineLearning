@@ -1,0 +1,87 @@
+{
+  "checked_at_utc": "2026-10-17T06:51:55.644107+00:00",
+  "auth": "Anonymous GET only, no upload or credential use.",
+  "results": {
+    "repository": {
+      "url": "https://github.com/opherdonchin/ProbabilisticMachineLearning",
+      "final_url": "https://github.com/opherdonchin/ProbabilisticMachineLearning",
+      "status": 200,
+      "body_bytes": 309428,
+      "body_sha256": "1cbdd32a4c98e69dd466c09fb3f0525ad8dee924fea040879984ce423ca9eacb",
+      "content_type": "text/html; charset=utf-8",
+      "error_body_excerpt": null
+    },
+    "pinned_commit_api": {
+      "url": "https://api.github.com/repos/opherdonchin/ProbabilisticMachineLearning/commits/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39",
+      "final_url": "https://api.github.com/repos/opherdonchin/ProbabilisticMachineLearning/commits/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39",
+      "status": 422,
+      "body_bytes": 174,
+      "body_sha256": "205f2cbbfcb026ce9f7a764071d12fa2a321a1df4ade7df22f29b1b65c6ed015",
+      "content_type": "application/json; charset=utf-8",
+      "error_body_excerpt": "{\"message\":\"No commit found for SHA: 7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#get-a-commit\",\"status\":\"422\"}"
+    },
+    "pinned_helper_blob": {
+      "url": "https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39/notebook_support/src/course_support/l01.py",
+      "final_url": "https://github.com/opherdonchin/ProbabilisticMachineLearning/blob/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39/notebook_support/src/course_support/l01.py",
+      "status": 404,
+      "body_bytes": 184194,
+      "body_sha256": "737d680b0adff2eaa1328b2c7476c7a969d3b5d1aa5dfc71ae305a6e6a04f271",
+      "content_type": "text/html; charset=utf-8",
+      "error_body_excerpt": "\n\n\n\n  \n\n<!DOCTYPE html>\n<html\n  lang=\"en\"\n  \n  data-color-mode=\"auto\" data-light-theme=\"light\" data-dark-theme=\"dark\"\n  data-a11y-animated-images=\"system\" data-a11y-link-underlines=\"true\"\n  \n  >\n\n\n\n\n  <head>\n    <meta charset=\"utf-8\">\n  <link rel=\"dn"
+    },
+    "pinned_helper_raw": {
+      "url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39/notebook_support/src/course_support/l01.py",
+      "final_url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39/notebook_support/src/course_support/l01.py",
+      "status": 404,
+      "body_bytes": 14,
+      "body_sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "content_type": "text/plain; charset=utf-8",
+      "error_body_excerpt": "404: Not Found"
+    },
+    "pinned_package_manifest_raw": {
+      "url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39/notebook_support/pyproject.toml",
+      "final_url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39/notebook_support/pyproject.toml",
+      "status": 404,
+      "body_bytes": 14,
+      "body_sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "content_type": "text/plain; charset=utf-8",
+      "error_body_excerpt": "404: Not Found"
+    },
+    "main_student_raw": {
+      "url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/main/InClass/lecture1_missing_data.ipynb",
+      "final_url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/main/InClass/lecture1_missing_data.ipynb",
+      "status": 404,
+      "body_bytes": 14,
+      "body_sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "content_type": "text/plain; charset=utf-8",
+      "error_body_excerpt": "404: Not Found"
+    },
+    "main_solved_raw": {
+      "url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/main/InClass/Solutions/lecture1_missing_data.ipynb",
+      "final_url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/main/InClass/Solutions/lecture1_missing_data.ipynb",
+      "status": 200,
+      "body_bytes": 39865,
+      "body_sha256": "f114516ca6a9c0823c14da0a734822a8901e4fdccf237481d47d0e3a61f80a8c",
+      "content_type": "text/plain; charset=utf-8",
+      "error_body_excerpt": null
+    },
+    "current_commit_student_raw": {
+      "url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/196e5e56a75f833e8a06f7077b951865487d61cd/InClass/lecture1_missing_data.ipynb",
+      "final_url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/196e5e56a75f833e8a06f7077b951865487d61cd/InClass/lecture1_missing_data.ipynb",
+      "status": 404,
+      "body_bytes": 14,
+      "body_sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "content_type": "text/plain; charset=utf-8",
+      "error_body_excerpt": "404: Not Found"
+    },
+    "main_readme_control": {
+      "url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/main/README.md",
+      "final_url": "https://raw.githubusercontent.com/opherdonchin/ProbabilisticMachineLearning/main/README.md",
+      "status": 200,
+      "body_bytes": 2862,
+      "body_sha256": "ca5661eaa89c31c8cd5edbcec4a600a62332587a6aa42f60443212c775113ed0",
+      "content_type": "text/plain; charset=utf-8",
+      "error_body_excerpt": null
+    }
+  }
+}

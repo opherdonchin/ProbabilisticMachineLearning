@@ -149,7 +149,7 @@ gives $p(x_2)=\mathcal N(x_2;\mu_2,H)$. This marginal is strictly positive,
 and dividing the joint by it gives
 $p(x_1\mid x_2)=\mathcal N(x_1;\mu_1+Bu,S)$. This final check avoids using the
 target conditional law as an assumption of its own proof. **Interpret** the
-dependence: the conditional mean depends on $x_2$; the conditional covariance
+dependence: the conditional mean is affine in $x_2$ and can depend on the observation; the conditional covariance
 does not. The two original blocks are generally dependent despite the separated
 residual quadratic.
 

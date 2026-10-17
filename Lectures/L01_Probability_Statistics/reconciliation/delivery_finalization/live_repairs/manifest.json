@@ -1,0 +1,18 @@
+{
+  "repaired_slide_deck.typ": {
+    "bytes": 87418,
+    "sha256": "be9df1cfeb21dbd86d2c459ad31667f553d966bdb6b4d72b96b675a0e0c13dd5"
+  },
+  "repaired_handout.pdf": {
+    "bytes": 3677689,
+    "sha256": "fc6a97b5dbcbb15027a29b62a996ab722d99678caacccfa7824da1ac0d8aeb13"
+  },
+  "repaired_presentation.pdf": {
+    "bytes": 4244496,
+    "sha256": "ae056c522d45cfe099fb92bc0c02e08ce7eaaa3b8469172e7574f3693a87b4cc"
+  },
+  "production_report.json": {
+    "bytes": 2691,
+    "sha256": "4495aa45fb6c45aa86757d5c6088fdd6ea83fa94220444c9914f254deb08a320"
+  }
+}

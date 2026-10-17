@@ -1,0 +1,118 @@
+{
+  "release/report.md": {
+    "sha256": "3947b83ebb048251e2ecc2982d579b5cea1b96f7db6e975683880cf905a9efc5",
+    "bytes": 8492
+  },
+  "release/manifest.json": {
+    "sha256": "43844a6d90c326b5cafa30dac4730f4766c3693c850bcf48de99d7315f5d4d04",
+    "bytes": 5735
+  },
+  "release/validation.json": {
+    "sha256": "147d88bccfd3a0b2fe82a740d7aed2bf0f7f0a07fb4be90eab4371810fb88ec4",
+    "bytes": 7272
+  },
+  "release/cell-results.json": {
+    "sha256": "4a3ed5a42ff4d8a319328aebcf4927bee4d87304c3c0967461adc11b4a849b19",
+    "bytes": 8288
+  },
+  "release/public-access.json": {
+    "sha256": "8063581e026bac3b5ed71020546d0bc6f88bfc52449f6ae190032f9dec82aff2",
+    "bytes": 5551
+  },
+  "release/public-access.log": {
+    "sha256": "8063581e026bac3b5ed71020546d0bc6f88bfc52449f6ae190032f9dec82aff2",
+    "bytes": 5551
+  },
+  "release/check.py": {
+    "sha256": "b67486ee509e653c4893fd063b1fefc3f15fa22c1e38cd0dbe0aa2b894351f8c",
+    "bytes": 5887
+  },
+  "release/public_checks.py": {
+    "sha256": "a267c16f8c8cabf133011314514ba2905c338af000d0a31284f37e8a181b5aed",
+    "bytes": 2384
+  },
+  "release/finalize.py": {
+    "sha256": "a0b691a5872c5f1450bd679fb7bdafed04a9fc73578709ab2d9158715d31d70f",
+    "bytes": 2797
+  },
+  "release/uv-sync.log": {
+    "sha256": "df2c0acedd425cc388030f6d08fd814d19772e46b964f290f192eb8919234f6b",
+    "bytes": 60
+  },
+  "release/notebook-execution.log": {
+    "sha256": "6ecb335ce8a8a7eaf3088369d70c7fc08613d579ef89adc412d7a47dca0c861c",
+    "bytes": 686
+  },
+  "release/student-generation.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "release/validation.log": {
+    "sha256": "c4dfb4a8411074084f00f67b03bc75756bc432f284ba8e4c1f10d68ffc6eb983",
+    "bytes": 7938
+  },
+  "release/baseline.json": {
+    "sha256": "5c026ae090ab73a094cc91f7eec598e812e207ccd4db0f12a64ff0fc6575409e",
+    "bytes": 2552
+  },
+  "release/distribution-references.txt": {
+    "sha256": "289bb61716163b482ebb33d964016b8f5482dacff3c1eecb985847e8b2a4b90d",
+    "bytes": 175
+  },
+  "release/http-repository.headers": {
+    "sha256": "efd32d1f9ef4c953a26d62734f6da2067bcc8276120bb84b877c0f2c69b78f23",
+    "bytes": 5094
+  },
+  "release/http-main_readme_control.headers": {
+    "sha256": "8b3528ea5ba9ea352174db4300e85ebfd0a1893f1cae289f1ede59408af5f105",
+    "bytes": 874
+  },
+  "release/http-pinned_helper_blob.headers": {
+    "sha256": "b12981f84475fbcebeb917bc29f9a1801bf28fc9cb666975d3d9a66e1c7ddf1b",
+    "bytes": 5113
+  },
+  "release/http-current_commit_student_raw.headers": {
+    "sha256": "c68d0e9ad90a5884c2d220861f33acc165255bc9635eabc94e19994e8452d4b8",
+    "bytes": 773
+  },
+  "release/http-main_solved_raw.headers": {
+    "sha256": "158aa613d203a1ceb75a11d0e40b2c969d9e178aae7cdb84d9e9227931ed269c",
+    "bytes": 876
+  },
+  "release/http-main_student_raw.headers": {
+    "sha256": "8a5bbd32b1892e7751f4fe8e2faa951ce4f86262f145a59cf523c10505ae4b79",
+    "bytes": 772
+  },
+  "release/http-pinned_commit_api.headers": {
+    "sha256": "02716e3fd00c3f001fd5d9885d63e131318bb29691b1c67b7accccc31c5c429f",
+    "bytes": 1111
+  },
+  "release/http-pinned_package_manifest_raw.headers": {
+    "sha256": "5f875f711a1c92e9dc6d1a4dd19c58928fb4aa6ce438e80ace639cc5046e6b21",
+    "bytes": 772
+  },
+  "release/http-pinned_helper_raw.headers": {
+    "sha256": "e16eb3c533f2497d93a4e586bc945fc4f8eff13e41b230741953ede9cf2c01c9",
+    "bytes": 773
+  },
+  "release/http-current_commit_student_raw.body": {
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "bytes": 14
+  },
+  "release/http-main_student_raw.body": {
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "bytes": 14
+  },
+  "release/http-pinned_commit_api.body": {
+    "sha256": "205f2cbbfcb026ce9f7a764071d12fa2a321a1df4ade7df22f29b1b65c6ed015",
+    "bytes": 174
+  },
+  "release/http-pinned_package_manifest_raw.body": {
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "bytes": 14
+  },
+  "release/http-pinned_helper_raw.body": {
+    "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+    "bytes": 14
+  }
+}

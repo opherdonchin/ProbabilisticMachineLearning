@@ -1,0 +1,179 @@
+{
+  "findings": [
+    {
+      "id": "F01",
+      "kind": "production/reveal defect",
+      "severity": "high",
+      "handout_pages": [
+        41
+      ],
+      "presentation_states": [
+        94,
+        95,
+        96,
+        97
+      ],
+      "source_lines": [
+        1768,
+        1805
+      ],
+      "claim": "The authored covariance derivation is absent from the rendered handout and all presentation states.",
+      "evidence": "Source has Cov[y]=E[(Ad)(Ad)^T]=A E[dd^T] A^T=A\u03a3A^T, but p41/s95\u201397 end at y\u2212E[y]=Ad. s95 and s96 are pixel-identical.",
+      "smallest_repair": "Bind the nested reveals to an explicit four-state slide callback, retaining the authored derivation and all four states; inspect both modes.",
+      "owner": "Slide Authoring",
+      "status": "baseline defect; root notified and preparing repair"
+    },
+    {
+      "id": "F02",
+      "kind": "missing mathematical domain assumption",
+      "severity": "medium",
+      "handout_pages": [
+        37,
+        40,
+        42,
+        48,
+        49,
+        50,
+        53
+      ],
+      "presentation_states": [
+        83,
+        84,
+        85,
+        92,
+        93,
+        98,
+        99,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        125,
+        126
+      ],
+      "source_lines": [
+        1594,
+        1620
+      ],
+      "claim": "The nondegenerate Gaussian density/inverse sequence never states positive-definite covariance or positive scalar variance.",
+      "evidence": "The deck gives \u03a3\u2208R^(D\u00d7D), then |\u03a3|^(-1/2), \u03a3^(-1), \u03a322^(-1), and S^(-1). A covariance matrix may be merely positive semidefinite; these expressions need additional assumptions.",
+      "counterexample": "For X=(U,U), U~N(0,1), \u03a3=[[1,1],[1,1]] is a valid Gaussian covariance but has determinant zero and no ordinary inverse.",
+      "smallest_repair": "State at Gaussian entry that density/inverse formulas assume nondegenerate Gaussians, \u03a3\u227b0 (scalar \u03c3\u00b2>0); retain unrestricted affine moment identities, whose output covariance can be singular. For the later LGS inverse formulas, state positive-definite prior/noise covariances or otherwise ensure the relevant measurement covariance is invertible.",
+      "owner": "technical author/reviewer",
+      "status": "candidate for root adjudication"
+    },
+    {
+      "id": "F03",
+      "kind": "notation/type defect",
+      "severity": "medium",
+      "handout_pages": [
+        25,
+        33
+      ],
+      "presentation_states": [
+        65,
+        66,
+        79
+      ],
+      "source_lines": [
+        1076,
+        1478
+      ],
+      "claim": "The Action task row applies the sampled action as a state-to-state/reward function.",
+      "evidence": "The chain ends (x_(t+1),r_(t+1))=a_t(x_t), while a_* is drawn from \u03c0_D. No definition makes the action itself a function of the state producing the environment outcome.",
+      "smallest_repair": "Keep the same action row and replace that equality with a labelled environment transition (x_t,a_t) \u2192 (x_(t+1),r_(t+1)), or state the transition kernel. Keep indices consistent.",
+      "owner": "technical author; organization unchanged",
+      "status": "candidate for root adjudication"
+    },
+    {
+      "id": "F04",
+      "kind": "context/claim ambiguity",
+      "severity": "low",
+      "handout_pages": [
+        51
+      ],
+      "presentation_states": [
+        121
+      ],
+      "source_lines": [
+        2192,
+        2195
+      ],
+      "claim": "The final marginal-state interpretation repeats the conditional mean/variance change without naming the comparison.",
+      "evidence": "State121 first says X2 unobserved and marginalize to p(X1), then says the mean rises 0\u21921.2 and variance falls1\u21920.36. Those changes describe conditioning, not the immediately discussed marginal. The two displayed laws themselves are correct.",
+      "smallest_repair": "Prefix the repeated bullet with \u201cCompared with the marginal, conditioning\u2026\u201d or remove this duplicate bullet only after preserving the conditional interpretation in state120.",
+      "owner": "technical copy/context correction",
+      "status": "candidate for root adjudication"
+    },
+    {
+      "id": "F05",
+      "kind": "missing conditional qualifier",
+      "severity": "low-to-medium",
+      "handout_pages": [
+        3,
+        4,
+        7
+      ],
+      "presentation_states": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        15,
+        16,
+        17
+      ],
+      "source_lines": [
+        39,
+        150
+      ],
+      "claim": "The introduction calls the count N1 Binomial without conditioning on the random bias \u03b8, and does not explicitly state conditional independence of the tosses.",
+      "evidence": "\u03b8 has a Beta prior. Under conditional iid tosses, N1|\u03b8~Binomial(N,\u03b8); marginally N1 has the Beta\u2013Binomial prior-predictive law. The conjugate likelihood is valid under the conditional-independence assumption.",
+      "smallest_repair": "Qualify the p4 bullet \u201cGiven \u03b8: independent Bernoulli tosses; Binomial for the count N1.\u201d No new derivation or slide needed.",
+      "owner": "technical author/reviewer",
+      "status": "candidate for root adjudication"
+    }
+  ],
+  "advisories": [
+    {
+      "id": "A01",
+      "kind": "precision advisory",
+      "pages": [
+        8
+      ],
+      "text": "The posterior-uncertainty reduction is true in the displayed Beta(2,2)\u2192Beta(9,5) example. As a universal Bayesian claim it is false for a particular observation. Add \u201cIn this example\u201d if a copy repair is made; no need for a new counterexample slide."
+    },
+    {
+      "id": "A02",
+      "kind": "local explanatory warrant advisory",
+      "pages": [
+        41,
+        47,
+        48,
+        58
+      ],
+      "text": "p41 displays moment transformations, not the explicit affine-Gaussian closure law later used in p47 and p48. The law is true, but moments alone do not establish Gaussianity. A short \u201cIf x~N(\u03bc,\u03a3), Ax+b~N(A\u03bc+b,A\u03a3A\u1d40)\u201d states the required warrant without adding a proof. Treat as explanatory completeness, not an incorrect moment identity."
+    },
+    {
+      "id": "A03",
+      "kind": "legibility advisory",
+      "pages": [
+        4,
+        16,
+        27,
+        29,
+        34,
+        70
+      ],
+      "text": "Figure micro-labels, the Iris table, dataset ages and miniature summary formulas are small relative to normal body text. They remain recognizable illustrations at1200-pixel rendering, with no clipping. If students must read individual table entries or summary equations from a projector, enlarge the specific object; their intended illustrative/retrospective role is an instructor/design choice. No classroom viewing test was performed."
+    }
+  ]
+}

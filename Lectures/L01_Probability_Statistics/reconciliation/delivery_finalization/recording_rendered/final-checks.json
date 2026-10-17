@@ -1,0 +1,400 @@
+{
+  "all_existing_reveal_words_and_geometry_persist": true,
+  "all_47_states_inside_page": true,
+  "transitions": [
+    {
+      "previous_state": 3,
+      "next_state": 4,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 5,
+      "next_state": 6,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 6,
+      "next_state": 7,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 8,
+      "next_state": 9,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 10,
+      "next_state": 11,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 11,
+      "next_state": 12,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 13,
+      "next_state": 14,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 14,
+      "next_state": 15,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 16,
+      "next_state": 17,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 17,
+      "next_state": 18,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 19,
+      "next_state": 20,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 20,
+      "next_state": 21,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 22,
+      "next_state": 23,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 24,
+      "next_state": 25,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 25,
+      "next_state": 26,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 29,
+      "next_state": 30,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 30,
+      "next_state": 31,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 32,
+      "next_state": 33,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 33,
+      "next_state": 34,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 35,
+      "next_state": 36,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 36,
+      "next_state": 37,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 37,
+      "next_state": 38,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 39,
+      "next_state": 40,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 40,
+      "next_state": 41,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 42,
+      "next_state": 43,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 43,
+      "next_state": 44,
+      "existing_words_and_positions_persist": true
+    },
+    {
+      "previous_state": 45,
+      "next_state": 46,
+      "existing_words_and_positions_persist": true
+    }
+  ],
+  "state_bounds": [
+    {
+      "state": 1,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 2,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 3,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 4,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 5,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 6,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 7,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 8,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 9,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 10,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 11,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 12,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 13,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 14,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 15,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 16,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 17,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 18,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 19,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 20,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 21,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 22,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 23,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 24,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 25,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 26,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 27,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 28,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 29,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 30,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 31,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 32,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 33,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 34,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 35,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 36,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 37,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 38,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 39,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 40,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 41,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 42,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 43,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 44,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 45,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 46,
+      "all_word_boxes_inside": true,
+      "outside": []
+    },
+    {
+      "state": 47,
+      "all_word_boxes_inside": true,
+      "outside": []
+    }
+  ],
+  "reviewed_inputs": {
+    "slide_deck.typ": {
+      "frozen_sha256": "2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d",
+      "current_sha256": "2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d",
+      "unchanged_during_review": true
+    },
+    "slide_design.typ": {
+      "frozen_sha256": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
+      "current_sha256": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
+      "unchanged_during_review": true
+    },
+    "slide_deck.pdf": {
+      "frozen_sha256": "ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51",
+      "current_sha256": "ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51",
+      "unchanged_during_review": true
+    },
+    "slide_deck_presentation.pdf": {
+      "frozen_sha256": "7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205",
+      "current_sha256": "7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205",
+      "unchanged_during_review": true
+    }
+  }
+}

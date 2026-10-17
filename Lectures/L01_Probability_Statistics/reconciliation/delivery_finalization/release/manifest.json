@@ -1,0 +1,159 @@
+{
+  "created_at_utc": "2026-10-17T06:52:50.627791+00:00",
+  "baseline_commit": "196e5e56a75f833e8a06f7077b951865487d61cd",
+  "scope": "Read-only release validation; current source unchanged. uv cache excluded.",
+  "files": {
+    "baseline.json": {
+      "sha256": "5c026ae090ab73a094cc91f7eec598e812e207ccd4db0f12a64ff0fc6575409e",
+      "bytes": 2552
+    },
+    "baseline.log": {
+      "sha256": "5c026ae090ab73a094cc91f7eec598e812e207ccd4db0f12a64ff0fc6575409e",
+      "bytes": 2552
+    },
+    "cell-results.json": {
+      "sha256": "4a3ed5a42ff4d8a319328aebcf4927bee4d87304c3c0967461adc11b4a849b19",
+      "bytes": 8288
+    },
+    "check.py": {
+      "sha256": "b67486ee509e653c4893fd063b1fefc3f15fa22c1e38cd0dbe0aa2b894351f8c",
+      "bytes": 5887
+    },
+    "distribution-references.txt": {
+      "sha256": "289bb61716163b482ebb33d964016b8f5482dacff3c1eecb985847e8b2a4b90d",
+      "bytes": 175
+    },
+    "finalize.py": {
+      "sha256": "a0b691a5872c5f1450bd679fb7bdafed04a9fc73578709ab2d9158715d31d70f",
+      "bytes": 2797
+    },
+    "http-current_commit_student_raw.body": {
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "bytes": 14
+    },
+    "http-current_commit_student_raw.headers": {
+      "sha256": "c68d0e9ad90a5884c2d220861f33acc165255bc9635eabc94e19994e8452d4b8",
+      "bytes": 773
+    },
+    "http-main_readme_control.body": {
+      "sha256": "ca5661eaa89c31c8cd5edbcec4a600a62332587a6aa42f60443212c775113ed0",
+      "bytes": 2862
+    },
+    "http-main_readme_control.headers": {
+      "sha256": "8b3528ea5ba9ea352174db4300e85ebfd0a1893f1cae289f1ede59408af5f105",
+      "bytes": 874
+    },
+    "http-main_solved_raw.body": {
+      "sha256": "f114516ca6a9c0823c14da0a734822a8901e4fdccf237481d47d0e3a61f80a8c",
+      "bytes": 39865
+    },
+    "http-main_solved_raw.headers": {
+      "sha256": "158aa613d203a1ceb75a11d0e40b2c969d9e178aae7cdb84d9e9227931ed269c",
+      "bytes": 876
+    },
+    "http-main_student_raw.body": {
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "bytes": 14
+    },
+    "http-main_student_raw.headers": {
+      "sha256": "8a5bbd32b1892e7751f4fe8e2faa951ce4f86262f145a59cf523c10505ae4b79",
+      "bytes": 772
+    },
+    "http-pinned_commit_api.body": {
+      "sha256": "205f2cbbfcb026ce9f7a764071d12fa2a321a1df4ade7df22f29b1b65c6ed015",
+      "bytes": 174
+    },
+    "http-pinned_commit_api.headers": {
+      "sha256": "02716e3fd00c3f001fd5d9885d63e131318bb29691b1c67b7accccc31c5c429f",
+      "bytes": 1111
+    },
+    "http-pinned_helper_blob.body": {
+      "sha256": "737d680b0adff2eaa1328b2c7476c7a969d3b5d1aa5dfc71ae305a6e6a04f271",
+      "bytes": 184194
+    },
+    "http-pinned_helper_blob.headers": {
+      "sha256": "b12981f84475fbcebeb917bc29f9a1801bf28fc9cb666975d3d9a66e1c7ddf1b",
+      "bytes": 5113
+    },
+    "http-pinned_helper_raw.body": {
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "bytes": 14
+    },
+    "http-pinned_helper_raw.headers": {
+      "sha256": "e16eb3c533f2497d93a4e586bc945fc4f8eff13e41b230741953ede9cf2c01c9",
+      "bytes": 773
+    },
+    "http-pinned_package_manifest_raw.body": {
+      "sha256": "d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed",
+      "bytes": 14
+    },
+    "http-pinned_package_manifest_raw.headers": {
+      "sha256": "5f875f711a1c92e9dc6d1a4dd19c58928fb4aa6ce438e80ace639cc5046e6b21",
+      "bytes": 772
+    },
+    "http-repository.body": {
+      "sha256": "1cbdd32a4c98e69dd466c09fb3f0525ad8dee924fea040879984ce423ca9eacb",
+      "bytes": 309428
+    },
+    "http-repository.headers": {
+      "sha256": "efd32d1f9ef4c953a26d62734f6da2067bcc8276120bb84b877c0f2c69b78f23",
+      "bytes": 5094
+    },
+    "lecture1_missing_data.executed.ipynb": {
+      "sha256": "a2ae24b816e9a9040090914c7bf6d8f01a2b4c2cf77fff1354200506d44ca0bc",
+      "bytes": 191295
+    },
+    "notebook-execution.log": {
+      "sha256": "6ecb335ce8a8a7eaf3088369d70c7fc08613d579ef89adc412d7a47dca0c861c",
+      "bytes": 686
+    },
+    "pml_course_support-0.1.0-py3-none-any.whl": {
+      "sha256": "1f4bb86ca71205259f51e59a42a39e5d5037486310ff16cac8cdca5e45e803c9",
+      "bytes": 4525
+    },
+    "public-access.json": {
+      "sha256": "8063581e026bac3b5ed71020546d0bc6f88bfc52449f6ae190032f9dec82aff2",
+      "bytes": 5551
+    },
+    "public-access.log": {
+      "sha256": "8063581e026bac3b5ed71020546d0bc6f88bfc52449f6ae190032f9dec82aff2",
+      "bytes": 5551
+    },
+    "public_checks.py": {
+      "sha256": "a267c16f8c8cabf133011314514ba2905c338af000d0a31284f37e8a181b5aed",
+      "bytes": 2384
+    },
+    "report.md": {
+      "sha256": "3947b83ebb048251e2ecc2982d579b5cea1b96f7db6e975683880cf905a9efc5",
+      "bytes": 8492
+    },
+    "reused-isolated_git_install.txt": {
+      "sha256": "43045674ca5b57e1fb677ba9c8416c614e4912fc706bcd0371e1f4acb29c55f2",
+      "bytes": 329
+    },
+    "reused-wheel_build.txt": {
+      "sha256": "696a7ac0d45336d8238a785b20ffda09dfd6ef566232153d7c4199d1028cfb87",
+      "bytes": 2235
+    },
+    "student-generation.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "student.generated.ipynb": {
+      "sha256": "5031c25cb07b6691060fb874da47ee659ae1863f8291a359bed65896f071e7d6",
+      "bytes": 61223
+    },
+    "uv-sync.log": {
+      "sha256": "df2c0acedd425cc388030f6d08fd814d19772e46b964f290f192eb8919234f6b",
+      "bytes": 60
+    },
+    "validation.json": {
+      "sha256": "147d88bccfd3a0b2fe82a740d7aed2bf0f7f0a07fb4be90eab4371810fb88ec4",
+      "bytes": 7272
+    },
+    "validation.log": {
+      "sha256": "c4dfb4a8411074084f00f67b03bc75756bc432f284ba8e4c1f10d68ffc6eb983",
+      "bytes": 7938
+    }
+  }
+}

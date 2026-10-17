@@ -1,0 +1,1 @@
+InClass/Preparation/lecture2_bigram_worked_solution_handoff.md:103:  `https://raw.githubusercontent.com/karpathy/makemore/8f79bd0126eaef5eb82d346c9f85ae20ea1c476a/names.txt`.

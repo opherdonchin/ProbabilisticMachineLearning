@@ -1,0 +1,7 @@
+# Rendered review integration
+
+The raw final review applies to the exact source and PDFs now promoted to the canonical recording directory. All current shared course/design inputs match the isolated build worktree. The earlier snapshot’s exact production source, handout, presentation and four proof-stage inputs are preserved in local Git commit `2860518`, then replaced by the verified repair; no obsolete draft copy remains in the current tree.
+
+The general proof review preceded production. Its one minor interpretation correction is incorporated upstream. Production review then caught actual multiline collisions; `initial_snapshot_review.md` preserves the raw findings at its exact hashes. The current `report.md` and structured final checks cover the repaired source, all20 handouts, all47 states and all27 transitions. The apparent header-clipping concern was withdrawn after PDF coordinate and full-size raster checks.
+
+The repository retains complete structured coverage/results, checks and four final critical page renders. Full frozen inputs, all individual rasters and remaining contact sheets remain in `/tmp/l01-recording-math-review/rendered/`; its manifests identify those capture versions. The current canonical production PDFs and author contact sheets are also available in the recording’s `production_validation/` directory. Instructor acceptance and measured duration remain open.

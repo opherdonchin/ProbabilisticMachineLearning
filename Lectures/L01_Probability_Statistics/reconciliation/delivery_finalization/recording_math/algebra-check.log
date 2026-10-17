@@ -1,0 +1,11 @@
+{
+  "all_exact_identity_checks_pass": true,
+  "input_hashes": {
+    "/tmp/pml-l01-recording/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/recording_brief.md": "73d00c177d321f7d9d32ef406d4060dcd98ad892893c44ef743962fb6c2d739f",
+    "/tmp/pml-l01-recording/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/section_design.md": "d717d3a60af70212c1f74fefa33ff331a541e807ac8138e45d3b68ab826d7c4a",
+    "/tmp/pml-l01-recording/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/math_derivation.md": "346dcd2a3905b39b2810be5188c4327242fefeecc5b75b728c16cad460eeaa7d",
+    "/tmp/pml-l01-recording/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_organization.md": "05beb9d595435ecfbb71240251491d801d3e7c55a488e5090c2940654e2d753f",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Resources/book2-1.pdf": "54d6bfa8cc4a367bb553bea1c5127ca63696a9655b2ca1f6137a8584dccfdbaf",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Resources/book1.pdf": "89749245bc8065d7575f990815c621a091de3facca1585168fc0369542742dcf"
+  }
+}

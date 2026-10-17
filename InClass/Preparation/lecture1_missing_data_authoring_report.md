@@ -1,6 +1,6 @@
 # L01 exact Gaussian notebook — current authoring report
 
-Stage: teaching-notebook-authoring, revision. The instructor approved extracting only the three plotting functions, requested a first-notebook introduction, then selected visible read/run/answer boundaries. The current revision implements the instructor’s distinction between substantive teaching explanations and brief implementation notes, consolidating shared ideas across cells. This is a reviewable draft, with current local validation; full notebook/Scope acceptance, public distribution, hosted validation and learner-time evidence remain separate.
+Stage: teaching-notebook-authoring, revision. The instructor approved extracting only the three plotting functions, requested a first-notebook introduction, then selected visible read/run/answer boundaries. The current revision implements the instructor’s distinction between substantive teaching explanations and brief implementation notes, consolidating shared ideas across cells. The current notebook content and pedagogy are instructor-accepted. Full Scope acceptance, public distribution, hosted validation and learner-time evidence remain separate.
 
 ## Instructor acceptance — 2026-10-17
 
@@ -11,7 +11,7 @@ cell sources match `e5c52f6`; saved instructor outputs are preserved. Content an
 pedagogy review is closed. Hosted Colab validation, public availability of the
 pinned helper revision and actual learner timing remain separate. This approval
 does not approve the full lecture Scope or assert a complete instructor clean
-run. The next instructor review is the selected loss-slide sequence, indexed in
+run. The selected loss-slide sequence is also accepted and integrated. The next instructor review is the provisional recording and complete Scope, indexed in
 [the lecture state](../../Lectures/L01_Probability_Statistics/development_state.md).
 
 ## Knowledge report before revision
@@ -50,9 +50,9 @@ Three plotting functions live in `notebook_support/src/course_support/l01.py`, w
 
 [Output-feedback validation](../../Lectures/L01_Probability_Statistics/reconciliation/delivery_readiness/runtime/output_feedback/validation.json) captures actual output from all fourteen supplied cells in a clean 23-cell execution. Six formerly silent cells now print selected results or specific check confirmations. The final generator check names the verified moments. All 18 question/answer pairs are unchanged; removing print statements yields identical computation syntax trees, including unchanged random draws. Both schemas and mechanical student derivation pass. Existing authoring guidance now requires this feedback without exhaustive output or state changes solely for display. No dependency changed; hosted validation remains pending.
 
-The old instructor run was preserved in Git before replacement. The current solved source retains the instructor’s five executed code cells without errors; the inline-marker revision preserves the answer bodies, computational behavior and all saved outputs. The last full executed copy remains under ignored `build/notebooks/`. The generator clears student-template outputs/counts; the working student file retains the instructor’s saved execution state for unchanged code. The student placeholders are intentionally incomplete and are not claimed to run as a solved notebook.
+The old instructor run was preserved in Git before replacement. The current solved source retains the instructor’s fifteen executed code cells without errors (current saved run, preserved in `e5fb7e9`); the inline-marker revision preserves the answer bodies, computational behavior and all saved outputs. The last full executed copy remains under ignored `build/notebooks/`. The generator clears student-template outputs/counts; the working student file retains the instructor’s saved execution state for unchanged code. The student placeholders are intentionally incomplete and are not claimed to run as a solved notebook.
 
-**Release blocker:** the pinned package commit remains local. The Colab install and GitHub source links need that revision published after explicit authorization, followed by a fresh hosted course-target run. Do not call this draft Colab-ready. The current notebook is now instructor-accepted; the selected loss slides and full Scope await their own review in ordinary chat.
+**Release blocker:** anonymous checks on 2026-10-17 found the pinned helper commit unavailable (commit API 422; raw source 404), the current student notebook unavailable, and an older solved notebook on public `main`. Publish both the accepted notebooks and the existing helper pin through the approved branch workflow after remote-export authorization, then run the fresh hosted check. [Current independent runtime/release evidence](../../Lectures/L01_Probability_Statistics/reconciliation/delivery_finalization/release/report.md) records all 23 code cells passing locally, exact source hashes and the public/Colab handoff. The instructor’s saved outputs remain unchanged. Notebook content and loss slides are accepted; the full Scope and recording contract remain separate. Do not describe local success as Colab readiness.
 
 ## Current student-prose editorial review
 

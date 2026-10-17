@@ -30,3 +30,13 @@ Produce one coherent proposed route and a standalone recording deck through the
 existing Section Design → Organization → Design → Authoring stages. Coordinator
 may settle routine provisional choices and test feasibility; consequential
 changes stay visible for final instructor review.
+
+## L01-RECORDING-CONTRACT — ready for instructor review
+
+**Question:** accept the concrete two-section proof route in the [provisional handout](slide_deck.pdf) for the separate recording, subject to a timed rehearsal? Its proof allocation and required/examinable status are already accepted; this question concerns the completed detailed realization.
+
+**Recommendation:** retain this route: first justify block elimination, positive definiteness and quadratic separation; then prove determinant/dimension normalization and identify marginal/conditional laws by integration and division. This supplies the full proof without relying on the live independence argument. The [derivation](math_derivation.md) gives a connected reading version, while [Section Design](section_design.md) and [Organization](slide_organization.md) make the teaching sequence explicit.
+
+If the proposed extent is too long after rehearsal, ask for a specific tighter presentation preserving those proof obligations. Merely removing the normalizer or law-identification steps would leave the promised density proof incomplete. A different proof route or reduced treatment returns to Scope rather than being silently implemented. The 20–30-minute planning range is unmeasured; slide count does not establish it.
+
+Owner: instructor/coordinator. Priority: L01 delivery next week. Final capture depends on this acceptance and rehearsal. Independent live-deck checks and notebook release preparation can proceed separately. No video, publication, full Scope approval or viewing-monitoring requirement is implied by the draft.

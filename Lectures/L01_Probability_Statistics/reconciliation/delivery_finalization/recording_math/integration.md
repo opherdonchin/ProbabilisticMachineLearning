@@ -1,0 +1,5 @@
+# Mathematical review integration
+
+The raw independent report and exact algebra/source records are retained without rewriting the reviewed version. The inputs listed in `reviewed-input-hashes.json` are the provisional upstream versions from the isolated recording worktree. Original review-input copies and selected local-book page extracts/renders remain in `/tmp/l01-recording-math-review/`; the canonical books are identified by exact edition, pages and hashes in the report and current derivation.
+
+The coordinator applied the review’s minor wording correction to current Section Design, derivation and Organization: the conditional mean is affine in the observation and **can** depend on it; it need not change when B=0 or along its kernel. Design already incorporates that correction. Proof equations and teaching order are unchanged. The recording brief additionally carries the final instructor review question. Final current-file hashes belong to the delivery manifest; the raw review hashes continue to identify the exact inputs actually reviewed.

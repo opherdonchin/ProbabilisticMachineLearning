@@ -105,7 +105,7 @@ $$
 Conclude the normalized identity $p(x_1,x_2)=p(x_1\mid x_2)p(x_2)$. The positive-density ratio supplies a conditional-density version defined for every $x_2$; no conditioning on a positive-probability singleton or uniqueness assertion at null events is needed.
 
 **R2.7. The conditional mean retains the observed-block dependence**  
-**Intention / goal:** Interpret the established law: its mean $\mu_1+B(x_2-\mu_2)$ changes with the observation, while its covariance $S$ does not. Explain why the separated residual quadratic does not assert independence of $X_1$ and $X_2$: the first density factor still depends on $x_2$ through its mean. State the exact Gaussian/SPD validity regime and that a density proof does not establish adequacy of the supplied model. Do not develop singular-Gaussian or alternative-proof extensions.
+**Intention / goal:** Interpret the established law: its mean $\mu_1+B(x_2-\mu_2)$ is affine in the observation and can vary with it, while its covariance $S$ does not. Explain why the separated residual quadratic does not assert independence of $X_1$ and $X_2$: the first density factor can depend on $x_2$ through its mean. State the exact Gaussian/SPD validity regime and that a density proof does not establish adequacy of the supplied model. Do not develop singular-Gaussian or alternative-proof extensions.
 
 **R2.8. Retrospective: normalization completes Gaussian conditioning**  
 **Intention / goal:** Close the section and recording with the established result: the exponent, determinant and dimension factors all split; integrating then dividing identifies the Gaussian marginal and conditional without circularity. No new claim, assignment, notebook handoff or forward question.  

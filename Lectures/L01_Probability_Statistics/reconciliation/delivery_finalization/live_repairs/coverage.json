@@ -1,0 +1,89 @@
+[
+  {
+    "handout": 4,
+    "title": "Models are built out of distributions",
+    "states": [
+      6,
+      7,
+      8
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  },
+  {
+    "handout": 8,
+    "title": "The posterior is a distribution representing uncertainty",
+    "states": [
+      18,
+      19
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  },
+  {
+    "handout": 25,
+    "title": "Task taxonomy",
+    "states": [
+      62,
+      63,
+      64,
+      65,
+      66
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  },
+  {
+    "handout": 33,
+    "title": "Learning problems become probabilistic queries",
+    "states": [
+      79
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  },
+  {
+    "handout": 37,
+    "title": "Gaussians: a concrete example",
+    "states": [
+      83,
+      84,
+      85
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  },
+  {
+    "handout": 41,
+    "title": "Affine maps carry Gaussian means and covariances",
+    "states": [
+      94,
+      95,
+      96,
+      97
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  },
+  {
+    "handout": 51,
+    "title": "One observed coordinate can change both the estimate and its uncertainty",
+    "states": [
+      119,
+      120,
+      121
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  },
+  {
+    "handout": 56,
+    "title": "A linear Gaussian system is a model of state and measurement",
+    "states": [
+      129,
+      130
+    ],
+    "visual_review": "PASS: complete corresponding handout and every presentation state inspected at readable scale",
+    "text_source_review": true
+  }
+]

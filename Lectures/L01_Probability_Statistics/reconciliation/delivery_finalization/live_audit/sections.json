@@ -1,0 +1,100 @@
+[
+  {
+    "section": 1,
+    "title": "A familiar modeling language",
+    "handout_pages": [
+      2,
+      9
+    ],
+    "presentation_states": [
+      2,
+      20
+    ],
+    "handout_count": 8,
+    "presentation_state_count": 19
+  },
+  {
+    "section": 2,
+    "title": "From statistics to machine-learning problems",
+    "handout_pages": [
+      10,
+      22
+    ],
+    "presentation_states": [
+      21,
+      56
+    ],
+    "handout_count": 13,
+    "presentation_state_count": 36
+  },
+  {
+    "section": 3,
+    "title": "Classes of machine learning problems",
+    "handout_pages": [
+      23,
+      27
+    ],
+    "presentation_states": [
+      57,
+      68
+    ],
+    "handout_count": 5,
+    "presentation_state_count": 12
+  },
+  {
+    "section": 4,
+    "title": "From datasets to learning problems",
+    "handout_pages": [
+      28,
+      35
+    ],
+    "presentation_states": [
+      69,
+      81
+    ],
+    "handout_count": 8,
+    "presentation_state_count": 13
+  },
+  {
+    "section": 5,
+    "title": "Joint Gaussian distributions and geometry",
+    "handout_pages": [
+      36,
+      44
+    ],
+    "presentation_states": [
+      82,
+      101
+    ],
+    "handout_count": 9,
+    "presentation_state_count": 20
+  },
+  {
+    "section": 6,
+    "title": "Marginals and conditionals of a Gaussian",
+    "handout_pages": [
+      45,
+      54
+    ],
+    "presentation_states": [
+      102,
+      127
+    ],
+    "handout_count": 10,
+    "presentation_state_count": 26
+  },
+  {
+    "section": 7,
+    "title": "Linear Gaussian systems",
+    "handout_pages": [
+      55,
+      70
+    ],
+    "presentation_states": [
+      128,
+      164
+    ],
+    "handout_count": 16,
+    "presentation_state_count": 37
+  }
+]

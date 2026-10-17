@@ -1,0 +1,10 @@
+[
+  "Models are built out of distributions",
+  "The posterior is a distribution representing uncertainty",
+  "Task taxonomy",
+  "Learning problems become probabilistic queries",
+  "Gaussians: a concrete example",
+  "Affine maps carry Gaussian means and covariances",
+  "One observed coordinate can change both the estimate and its uncertainty",
+  "A linear Gaussian system is a model of state and measurement"
+]

@@ -1,0 +1,219 @@
+{
+  "authorization": {
+    "text": "Go ahead.",
+    "scope": "Previously proposed three workstreams: provisional recording, complete live-deck delivery audit with clear technical repairs, delivery-readiness consolidation. No remote publication or full-Scope approval."
+  },
+  "base_commit": "196e5e5",
+  "branch": "lecture/l01-delivery-readiness",
+  "inputs": {
+    "Lectures/L01_Probability_Statistics/slide_deck.typ": "b13a173b6432f901a9f1bfad9c4aa08163f6a9b506fe01ed50e6cec07c0730cc",
+    "Lectures/L01_Probability_Statistics/slide_deck.pdf": "2d12a7a69f6db9aa4813f2bc07b658d4e41fd7ef655aeca2a25718b1fb758a84",
+    "Lectures/L01_Probability_Statistics/lecture_scope.md": "a9ede9af5d9759ebc8d2e531298f31ad77b3845633751b24f035a2ad16dd96e3",
+    "InClass/Solutions/lecture1_missing_data.ipynb": "2af949f2e4198a31a654af474bcda52ab45a901cc8a77c59e8f6f6c67ce6998a",
+    "InClass/lecture1_missing_data.ipynb": "b593f6d4452a2748da3f61e02d91b84a3f64b27ac1051bf7307fdd03d649f0af",
+    "notebook_support/src/course_support/l01.py": "381bc6f67a4ce8df5064264f5a949baa5e4c2dfff287758b877c7d79d1ed645e",
+    "pyproject.toml": "4d30119e98b29817c0300f2c4f7bd213c45416cf8074338e384a0b33e540d207",
+    "uv.lock": "639806e74f1c359e971ac67dda772d86d4d4a1d85c4ac7898fdc77110feb382a"
+  },
+  "assignments": [
+    {
+      "id": "L01-RECORDING-SECTION",
+      "stage": "Section Design",
+      "mode": "build, explicitly provisional",
+      "owner": "/root/l01_recording_sections",
+      "worktree": "/tmp/pml-l01-recording",
+      "writes": [
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/section_design.md",
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/math_derivation.md"
+      ],
+      "deliverable": "Source-verified section contract and complete normalized proof; no slides yet",
+      "acceptance": "Coordinator provisional continuation; instructor retains final recording acceptance",
+      "status": "completed; write reservation closed; exact review artifacts retained"
+    },
+    {
+      "id": "L01-LIVE-DELIVERY-AUDIT",
+      "stage": "Independent technical/render audit",
+      "mode": "read-only review",
+      "owner": "/root/l01_live_delivery_audit",
+      "worktree": "/home/opher/Repositories/ProbabilisticMachineLearning",
+      "writes": [
+        "/tmp/l01-live-delivery-audit/"
+      ],
+      "deliverable": "Whole-deck correctness/reveal/asset report, source versions and concrete repair candidates",
+      "acceptance": "Root adjudicates technical repairs; pedagogical changes deferred",
+      "status": "completed; write reservation closed; exact review artifacts retained"
+    },
+    {
+      "id": "L01-DELIVERY-READINESS",
+      "stage": "Runtime/release/coordination",
+      "mode": "bounded validation and document reconciliation",
+      "owner": "/root",
+      "worktree": "/home/opher/Repositories/ProbabilisticMachineLearning",
+      "writes": [
+        "Lectures/L01_Probability_Statistics/reconciliation/delivery_finalization/",
+        "Lectures/L01_Probability_Statistics/NEXT_SESSION.md",
+        "Lectures/L01_Probability_Statistics/development_state.md",
+        "Lectures/course_development_state.md"
+      ],
+      "deliverable": "Accurate remaining gates, package/Colab handoff, current status and final review brief",
+      "acceptance": "No hosted/public success without actual evidence; no notebook pedagogy changes",
+      "status": "completed; write reservation closed; exact review artifacts retained"
+    },
+    {
+      "id": "L01-LOCAL-RELEASE-CHECK",
+      "stage": "Notebook runtime and package release audit",
+      "mode": "read-only source validation",
+      "owner": "/root/l01_release_readiness",
+      "worktree": "/home/opher/Repositories/ProbabilisticMachineLearning",
+      "writes": [
+        "/tmp/l01-release-readiness/",
+        "build/notebooks/"
+      ],
+      "deliverable": "Current local execution evidence, generated student-source match, exact public/helper/hosted blockers and runnable handoff",
+      "acceptance": "Root integrates evidence; no notebook source edits, exports, dependency changes or hosted success without actual evidence",
+      "status": "completed; write reservation closed; exact review artifacts retained"
+    },
+    {
+      "id": "L01-RECORDING-ORGANIZATION",
+      "stage": "Slide Organization",
+      "mode": "build, provisional",
+      "owner": "/root/l01_recording_organization",
+      "worktree": "/tmp/pml-l01-recording",
+      "writes": [
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_organization.md"
+      ],
+      "deliverable": "Complete ordered teaching moves from the two section contracts; structural/math feasibility concerns",
+      "acceptance": "Provisional continuation only; no final instructor acceptance",
+      "status": "completed; write reservation closed; exact review artifacts retained"
+    },
+    {
+      "id": "L01-RECORDING-DESIGN",
+      "stage": "Slide Design",
+      "mode": "build, provisional",
+      "owner": "/root/l01_recording_design",
+      "worktree": "/tmp/pml-l01-recording",
+      "writes": [
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.typ",
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.pdf"
+      ],
+      "deliverable": "Complete constrained visual specification for all20 teaching moves; compilation/render feasibility",
+      "acceptance": "Provisional, no instructor acceptance",
+      "status": "completed; write reservation closed; exact review artifacts retained"
+    },
+    {
+      "id": "L01-RECORDING-MATH-REVIEW",
+      "stage": "Independent mathematical review",
+      "mode": "read-only feasibility/correctness review",
+      "owner": "/root/l01_release_readiness",
+      "writes": [
+        "/tmp/l01-recording-math-review/",
+        "/tmp/l01-recording-math-review/rendered/"
+      ],
+      "deliverable": "Independent proof/source/sequence review, later rendered-mathematics recheck",
+      "acceptance": "No instructor approval; root routes technical repairs",
+      "status": "completed; write reservation closed; exact review artifacts retained"
+    },
+    {
+      "id": "L01-RECORDING-AUTHORING",
+      "stage": "Slide Authoring",
+      "mode": "build, expressly provisional",
+      "owner": "/root/l01_recording_authoring",
+      "worktree": "/tmp/pml-l01-recording",
+      "writes": [
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ",
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.pdf",
+        "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/",
+        "/tmp/l01-recording-production/"
+      ],
+      "status": "completed; write reservation closed; exact review artifacts retained",
+      "acceptance": "technical validation distinct from instructor acceptance"
+    }
+  ],
+  "recording_upstream": {
+    "recording_brief.md": "73d00c177d321f7d9d32ef406d4060dcd98ad892893c44ef743962fb6c2d739f",
+    "section_design.md": "d717d3a60af70212c1f74fefa33ff331a541e807ac8138e45d3b68ab826d7c4a",
+    "math_derivation.md": "346dcd2a3905b39b2810be5188c4327242fefeecc5b75b728c16cad460eeaa7d",
+    "slide_organization.md": "05beb9d595435ecfbb71240251491d801d3e7c55a488e5090c2940654e2d753f",
+    "slide_design.typ": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
+    "slide_design.pdf": "1d8c40436193a7ff21f1fc708484ee4b5f1681b3dfacc33466ee82fb3e40b22b"
+  },
+  "outputs": {
+    "Lectures/L01_Probability_Statistics/slide_deck.typ": "be9df1cfeb21dbd86d2c459ad31667f553d966bdb6b4d72b96b675a0e0c13dd5",
+    "Lectures/L01_Probability_Statistics/slide_deck.pdf": "fc6a97b5dbcbb15027a29b62a996ab722d99678caacccfa7824da1ac0d8aeb13",
+    "build/slide-review/L01_Probability_Statistics/delivery/slide_deck_presentation.pdf": "ae056c522d45cfe099fb92bc0c02e08ce7eaaa3b8469172e7574f3693a87b4cc",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/recording_brief.md": "f82f5edbc6cc400db8b0558fb0e57da17c9f9c66a5f5377d1fd40243678aaad5",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/section_design.md": "e6f7567c2336ec53a3d91e9554bae23051f10b6effeb7532076bc94f457032bc",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/math_derivation.md": "a5a1bf33e914862b92b07fd311cb9e9828dca753593b85a09cd7007eb4757a13",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_organization.md": "211ce35033ab8ac021e08be5dc9adb89cc966208ea25f185c120117f608c99c4",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.typ": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.pdf": "1d8c40436193a7ff21f1fc708484ee4b5f1681b3dfacc33466ee82fb3e40b22b",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ": "2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.pdf": "ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/slide_deck_presentation.pdf": "7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/authoring_report.md": "d41f4fec3ec8f26868425511f761c40536789f673048086a421440fe0fe3573b",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-05.jpg": "13035639238f8384a4933ed236ba2f9191059f587969b1df030ad7a9c5028a9f",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-04.jpg": "ba9cab28b0060e0eb3d38360450530b258c5c5d5957450f859559eff86489df7",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-03.jpg": "eb407ae77ce9f651f3d493f75b4abdfc0aa427e92cc3a977fc5c6a586fb80ffb",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-02.jpg": "adea9b5902dd8f7bade2ffb6ebf38adc9b6db995f559d2b3853c70771b489b0c",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-01.jpg": "b9bee899582bc9ad71259166560eaddc9f59b4fef5bd89278bbc4cc38bd0bd06",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-06.jpg": "a1330b1cab378e8ae63ae12cbd7af2e8a4d7590f4d4f4b56fbd89a81ca4671ee",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-05.jpg": "dec44e22a5117b07b6312e160cc62e2e7c7648a690cae59b57e835694142d0b1",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-04.jpg": "854179e3aff077f1083f1ce5fe87e697ce37bd5822037f440d5b5ef0aa539c45",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-03.jpg": "0a833e4e5df0af8a08d3700861332513b04f99d2c2fee8c70305e14413ee7b6b",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-02.jpg": "f2be47cb63f232b888176661ee6f8c3936b1f626ce4b3833aecafa7ed391a19c",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-01.jpg": "d36334fbd5eeead98e3a96ffb19b073ea1f5a47919dd9ae37dbddc9ff4e13d7a",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/render_report.json": "70304d0e4e5eaf362a24768ef943aa580dbda6ceef01a094efd82378ef656791",
+    "Lectures/L01_Probability_Statistics/lecture_scope.md": "e5d7d7fc090183b568fb1553aee3e1a25c7d6556b3881273b53de1a631f5a5f4",
+    "Lectures/course.typ": "c9140eb4c1ea0a3528f4671f0016d6817c2efb810884296953947e4f309f56ea",
+    "Lectures/design.typ": "1298eaf0bc8eec50e9ad7dcdda3a0d6811890b25d7315033176194bfb50c214c",
+    "InClass/Solutions/lecture1_missing_data.ipynb": "2af949f2e4198a31a654af474bcda52ab45a901cc8a77c59e8f6f6c67ce6998a",
+    "InClass/lecture1_missing_data.ipynb": "b593f6d4452a2748da3f61e02d91b84a3f64b27ac1051bf7307fdd03d649f0af",
+    "pyproject.toml": "4d30119e98b29817c0300f2c4f7bd213c45416cf8074338e384a0b33e540d207",
+    "uv.lock": "639806e74f1c359e971ac67dda772d86d4d4a1d85c4ac7898fdc77110feb382a"
+  },
+  "live_validation": {
+    "handout_pages": 70,
+    "presentation_states": 164,
+    "compiler_warnings": 0,
+    "independent_full_audit": true,
+    "independent_repair_recheck": "pass",
+    "changed_handout_pages": [
+      4,
+      8,
+      25,
+      33,
+      37,
+      41,
+      51,
+      56
+    ],
+    "changed_presentation_states": 19,
+    "all_70_final_state_handout_matches": true,
+    "accepted_loss_context_pixel_identical": true,
+    "timing_measured": false
+  },
+  "notebook_validation": {
+    "clean_local_run": "pass,23 code cells,3 plots,zero errors",
+    "source_notebooks_unchanged": true,
+    "student_source_derivation": "pass",
+    "public_release": "not available at checked current URLs",
+    "hosted_colab": "not run",
+    "candidate_manifest": "build/l01-release/manifest.json"
+  },
+  "recording_design_backpressure": "Resolved provisionally by root and Design: R1.1/R2.1 plain course section dividers with exact subtitles; repeated objectives/previously proved recall omitted from divider specification, preserving new mathematics and20-unit order. Actual production multiline overlap repaired at normal-size mathematics; independent final render review passes.",
+  "completion": "Three authorized workstreams complete. All write reservations closed. No publication, merge, instructor final recording/whole-Scope approval or teaching delivered.",
+  "prototype_history_commit": "2860518",
+  "recording_validation": {
+    "handout_pages": 20,
+    "presentation_states": 47,
+    "within_slide_transitions": 27,
+    "compiler_font_overflow_warnings": 0,
+    "intentional_final_emphasis_pixel_notices": 8,
+    "independent_mathematical_review": "pass",
+    "independent_final_rendered_review": "pass all20 handouts,all47 states,all27 transitions",
+    "instructor_acceptance": "pending final detailed recording contract",
+    "duration": "20\u201330 minutes provisional,unmeasured",
+    "video": "not captured",
+    "shared_course_inputs_identical_across_worktrees": true
+  }
+}

@@ -1,0 +1,781 @@
+{
+  "L01": {
+    "cells": {
+      "total": 91,
+      "counts": {
+        "Explanation": 27,
+        "Code": 28,
+        "Questions": 36
+      },
+      "percent": {
+        "Explanation": 29.67,
+        "Code": 30.77,
+        "Questions": 39.56
+      }
+    },
+    "characters": {
+      "total": 33125,
+      "counts": {
+        "Explanation": 15803,
+        "Code": 7149,
+        "Questions": 10173
+      },
+      "percent": {
+        "Explanation": 47.71,
+        "Code": 21.58,
+        "Questions": 30.71
+      }
+    },
+    "words": {
+      "total": 4960,
+      "counts": {
+        "Explanation": 2488,
+        "Code": 918,
+        "Questions": 1554
+      },
+      "percent": {
+        "Explanation": 50.16,
+        "Code": 18.51,
+        "Questions": 31.33
+      }
+    }
+  },
+  "01_linear_baseline.ipynb": {
+    "cells": {
+      "total": 107,
+      "counts": {
+        "Explanation": 11,
+        "Code": 14,
+        "Questions": 82
+      },
+      "percent": {
+        "Explanation": 10.28,
+        "Code": 13.08,
+        "Questions": 76.64
+      }
+    },
+    "characters": {
+      "total": 17105,
+      "counts": {
+        "Explanation": 2935,
+        "Code": 4623,
+        "Questions": 9547
+      },
+      "percent": {
+        "Explanation": 17.16,
+        "Code": 27.03,
+        "Questions": 55.81
+      }
+    },
+    "words": {
+      "total": 2603,
+      "counts": {
+        "Explanation": 530,
+        "Code": 503,
+        "Questions": 1570
+      },
+      "percent": {
+        "Explanation": 20.36,
+        "Code": 19.32,
+        "Questions": 60.32
+      }
+    }
+  },
+  "02_informative_slope_prior.ipynb": {
+    "cells": {
+      "total": 55,
+      "counts": {
+        "Explanation": 7,
+        "Code": 12,
+        "Questions": 36
+      },
+      "percent": {
+        "Explanation": 12.73,
+        "Code": 21.82,
+        "Questions": 65.45
+      }
+    },
+    "characters": {
+      "total": 10473,
+      "counts": {
+        "Explanation": 2232,
+        "Code": 3159,
+        "Questions": 5082
+      },
+      "percent": {
+        "Explanation": 21.31,
+        "Code": 30.16,
+        "Questions": 48.52
+      }
+    },
+    "words": {
+      "total": 1538,
+      "counts": {
+        "Explanation": 410,
+        "Code": 345,
+        "Questions": 783
+      },
+      "percent": {
+        "Explanation": 26.66,
+        "Code": 22.43,
+        "Questions": 50.91
+      }
+    }
+  },
+  "03_heavy_tailed_slope_prior.ipynb": {
+    "cells": {
+      "total": 47,
+      "counts": {
+        "Explanation": 6,
+        "Code": 10,
+        "Questions": 31
+      },
+      "percent": {
+        "Explanation": 12.77,
+        "Code": 21.28,
+        "Questions": 65.96
+      }
+    },
+    "characters": {
+      "total": 8687,
+      "counts": {
+        "Explanation": 1608,
+        "Code": 2744,
+        "Questions": 4335
+      },
+      "percent": {
+        "Explanation": 18.51,
+        "Code": 31.59,
+        "Questions": 49.9
+      }
+    },
+    "words": {
+      "total": 1288,
+      "counts": {
+        "Explanation": 304,
+        "Code": 301,
+        "Questions": 683
+      },
+      "percent": {
+        "Explanation": 23.6,
+        "Code": 23.37,
+        "Questions": 53.03
+      }
+    }
+  },
+  "04_varying_intercept.ipynb": {
+    "cells": {
+      "total": 181,
+      "counts": {
+        "Explanation": 10,
+        "Code": 9,
+        "Questions": 162
+      },
+      "percent": {
+        "Explanation": 5.52,
+        "Code": 4.97,
+        "Questions": 89.5
+      }
+    },
+    "characters": {
+      "total": 18317,
+      "counts": {
+        "Explanation": 2988,
+        "Code": 2810,
+        "Questions": 12519
+      },
+      "percent": {
+        "Explanation": 16.31,
+        "Code": 15.34,
+        "Questions": 68.35
+      }
+    },
+    "words": {
+      "total": 2718,
+      "counts": {
+        "Explanation": 504,
+        "Code": 317,
+        "Questions": 1897
+      },
+      "percent": {
+        "Explanation": 18.54,
+        "Code": 11.66,
+        "Questions": 69.79
+      }
+    }
+  },
+  "05_varying_intercept_slope.ipynb": {
+    "cells": {
+      "total": 91,
+      "counts": {
+        "Explanation": 6,
+        "Code": 25,
+        "Questions": 60
+      },
+      "percent": {
+        "Explanation": 6.59,
+        "Code": 27.47,
+        "Questions": 65.93
+      }
+    },
+    "characters": {
+      "total": 14426,
+      "counts": {
+        "Explanation": 1820,
+        "Code": 5953,
+        "Questions": 6653
+      },
+      "percent": {
+        "Explanation": 12.62,
+        "Code": 41.27,
+        "Questions": 46.12
+      }
+    },
+    "words": {
+      "total": 1985,
+      "counts": {
+        "Explanation": 293,
+        "Code": 641,
+        "Questions": 1051
+      },
+      "percent": {
+        "Explanation": 14.76,
+        "Code": 32.29,
+        "Questions": 52.95
+      }
+    }
+  },
+  "06_lognormal_regression.ipynb": {
+    "cells": {
+      "total": 35,
+      "counts": {
+        "Explanation": 2,
+        "Code": 10,
+        "Questions": 23
+      },
+      "percent": {
+        "Explanation": 5.71,
+        "Code": 28.57,
+        "Questions": 65.71
+      }
+    },
+    "characters": {
+      "total": 8277,
+      "counts": {
+        "Explanation": 714,
+        "Code": 3014,
+        "Questions": 4549
+      },
+      "percent": {
+        "Explanation": 8.63,
+        "Code": 36.41,
+        "Questions": 54.96
+      }
+    },
+    "words": {
+      "total": 1059,
+      "counts": {
+        "Explanation": 131,
+        "Code": 328,
+        "Questions": 600
+      },
+      "percent": {
+        "Explanation": 12.37,
+        "Code": 30.97,
+        "Questions": 56.66
+      }
+    }
+  },
+  "07_lognormal_varying_intercept_slope.ipynb": {
+    "cells": {
+      "total": 35,
+      "counts": {
+        "Explanation": 2,
+        "Code": 11,
+        "Questions": 22
+      },
+      "percent": {
+        "Explanation": 5.71,
+        "Code": 31.43,
+        "Questions": 62.86
+      }
+    },
+    "characters": {
+      "total": 8509,
+      "counts": {
+        "Explanation": 672,
+        "Code": 3153,
+        "Questions": 4684
+      },
+      "percent": {
+        "Explanation": 7.9,
+        "Code": 37.05,
+        "Questions": 55.05
+      }
+    },
+    "words": {
+      "total": 1003,
+      "counts": {
+        "Explanation": 118,
+        "Code": 341,
+        "Questions": 544
+      },
+      "percent": {
+        "Explanation": 11.76,
+        "Code": 34.0,
+        "Questions": 54.24
+      }
+    }
+  },
+  "08_lognormal_distributional.ipynb": {
+    "cells": {
+      "total": 35,
+      "counts": {
+        "Explanation": 2,
+        "Code": 11,
+        "Questions": 22
+      },
+      "percent": {
+        "Explanation": 5.71,
+        "Code": 31.43,
+        "Questions": 62.86
+      }
+    },
+    "characters": {
+      "total": 9144,
+      "counts": {
+        "Explanation": 669,
+        "Code": 3102,
+        "Questions": 5373
+      },
+      "percent": {
+        "Explanation": 7.32,
+        "Code": 33.92,
+        "Questions": 58.76
+      }
+    },
+    "words": {
+      "total": 1080,
+      "counts": {
+        "Explanation": 121,
+        "Code": 337,
+        "Questions": 622
+      },
+      "percent": {
+        "Explanation": 11.2,
+        "Code": 31.2,
+        "Questions": 57.59
+      }
+    }
+  },
+  "09_exgaussian_distributional.ipynb": {
+    "cells": {
+      "total": 33,
+      "counts": {
+        "Explanation": 2,
+        "Code": 11,
+        "Questions": 20
+      },
+      "percent": {
+        "Explanation": 6.06,
+        "Code": 33.33,
+        "Questions": 60.61
+      }
+    },
+    "characters": {
+      "total": 9152,
+      "counts": {
+        "Explanation": 716,
+        "Code": 3102,
+        "Questions": 5334
+      },
+      "percent": {
+        "Explanation": 7.82,
+        "Code": 33.89,
+        "Questions": 58.28
+      }
+    },
+    "words": {
+      "total": 1104,
+      "counts": {
+        "Explanation": 129,
+        "Code": 337,
+        "Questions": 638
+      },
+      "percent": {
+        "Explanation": 11.68,
+        "Code": 30.53,
+        "Questions": 57.79
+      }
+    }
+  },
+  "10_exgaussian_default_priors.ipynb": {
+    "cells": {
+      "total": 34,
+      "counts": {
+        "Explanation": 2,
+        "Code": 11,
+        "Questions": 21
+      },
+      "percent": {
+        "Explanation": 5.88,
+        "Code": 32.35,
+        "Questions": 61.76
+      }
+    },
+    "characters": {
+      "total": 9429,
+      "counts": {
+        "Explanation": 745,
+        "Code": 3102,
+        "Questions": 5582
+      },
+      "percent": {
+        "Explanation": 7.9,
+        "Code": 32.9,
+        "Questions": 59.2
+      }
+    },
+    "words": {
+      "total": 1180,
+      "counts": {
+        "Explanation": 142,
+        "Code": 337,
+        "Questions": 701
+      },
+      "percent": {
+        "Explanation": 12.03,
+        "Code": 28.56,
+        "Questions": 59.41
+      }
+    }
+  },
+  "11_exgaussian_flat_priors.ipynb": {
+    "cells": {
+      "total": 26,
+      "counts": {
+        "Explanation": 2,
+        "Code": 11,
+        "Questions": 13
+      },
+      "percent": {
+        "Explanation": 7.69,
+        "Code": 42.31,
+        "Questions": 50.0
+      }
+    },
+    "characters": {
+      "total": 8105,
+      "counts": {
+        "Explanation": 737,
+        "Code": 3102,
+        "Questions": 4266
+      },
+      "percent": {
+        "Explanation": 9.09,
+        "Code": 38.27,
+        "Questions": 52.63
+      }
+    },
+    "words": {
+      "total": 968,
+      "counts": {
+        "Explanation": 132,
+        "Code": 337,
+        "Questions": 499
+      },
+      "percent": {
+        "Explanation": 13.64,
+        "Code": 34.81,
+        "Questions": 51.55
+      }
+    }
+  },
+  "12_robust_student_t_and_loo.ipynb": {
+    "cells": {
+      "total": 28,
+      "counts": {
+        "Explanation": 2,
+        "Code": 11,
+        "Questions": 15
+      },
+      "percent": {
+        "Explanation": 7.14,
+        "Code": 39.29,
+        "Questions": 53.57
+      }
+    },
+    "characters": {
+      "total": 8413,
+      "counts": {
+        "Explanation": 734,
+        "Code": 3102,
+        "Questions": 4577
+      },
+      "percent": {
+        "Explanation": 8.72,
+        "Code": 36.87,
+        "Questions": 54.4
+      }
+    },
+    "words": {
+      "total": 941,
+      "counts": {
+        "Explanation": 124,
+        "Code": 337,
+        "Questions": 480
+      },
+      "percent": {
+        "Explanation": 13.18,
+        "Code": 35.81,
+        "Questions": 51.01
+      }
+    }
+  },
+  "Sleep pooled": {
+    "cells": {
+      "total": 707,
+      "counts": {
+        "Explanation": 54,
+        "Code": 146,
+        "Questions": 507
+      },
+      "percent": {
+        "Explanation": 7.64,
+        "Code": 20.65,
+        "Questions": 71.71
+      }
+    },
+    "characters": {
+      "total": 130037,
+      "counts": {
+        "Explanation": 16570,
+        "Code": 40966,
+        "Questions": 72501
+      },
+      "percent": {
+        "Explanation": 12.74,
+        "Code": 31.5,
+        "Questions": 55.75
+      }
+    },
+    "words": {
+      "total": 17467,
+      "counts": {
+        "Explanation": 2938,
+        "Code": 4461,
+        "Questions": 10068
+      },
+      "percent": {
+        "Explanation": 16.82,
+        "Code": 25.54,
+        "Questions": 57.64
+      }
+    }
+  },
+  "Sleep 01-05": {
+    "cells": {
+      "total": 481,
+      "counts": {
+        "Explanation": 40,
+        "Code": 70,
+        "Questions": 371
+      },
+      "percent": {
+        "Explanation": 8.32,
+        "Code": 14.55,
+        "Questions": 77.13
+      }
+    },
+    "characters": {
+      "total": 69008,
+      "counts": {
+        "Explanation": 11583,
+        "Code": 19289,
+        "Questions": 38136
+      },
+      "percent": {
+        "Explanation": 16.79,
+        "Code": 27.95,
+        "Questions": 55.26
+      }
+    },
+    "words": {
+      "total": 10132,
+      "counts": {
+        "Explanation": 2041,
+        "Code": 2107,
+        "Questions": 5984
+      },
+      "percent": {
+        "Explanation": 20.14,
+        "Code": 20.8,
+        "Questions": 59.06
+      }
+    }
+  },
+  "L01 without orientation": {
+    "cells": {
+      "total": 86,
+      "counts": {
+        "Code": 28,
+        "Explanation": 22,
+        "Questions": 36
+      },
+      "percent": {
+        "Explanation": 25.58,
+        "Code": 32.56,
+        "Questions": 41.86
+      }
+    },
+    "characters": {
+      "total": 28698,
+      "counts": {
+        "Code": 7149,
+        "Explanation": 11376,
+        "Questions": 10173
+      },
+      "percent": {
+        "Explanation": 39.64,
+        "Code": 24.91,
+        "Questions": 35.45
+      }
+    },
+    "words": {
+      "total": 4097,
+      "counts": {
+        "Code": 918,
+        "Explanation": 1625,
+        "Questions": 1554
+      },
+      "percent": {
+        "Explanation": 39.66,
+        "Code": 22.41,
+        "Questions": 37.93
+      }
+    }
+  },
+  "L01 teaching body": {
+    "cells": {
+      "total": 76,
+      "counts": {
+        "Code": 20,
+        "Questions": 36,
+        "Explanation": 20
+      },
+      "percent": {
+        "Explanation": 26.32,
+        "Code": 26.32,
+        "Questions": 47.37
+      }
+    },
+    "characters": {
+      "total": 24804,
+      "counts": {
+        "Code": 4645,
+        "Questions": 10173,
+        "Explanation": 9986
+      },
+      "percent": {
+        "Explanation": 40.26,
+        "Code": 18.73,
+        "Questions": 41.01
+      }
+    },
+    "words": {
+      "total": 3591,
+      "counts": {
+        "Code": 582,
+        "Questions": 1554,
+        "Explanation": 1455
+      },
+      "percent": {
+        "Explanation": 40.52,
+        "Code": 16.21,
+        "Questions": 43.27
+      }
+    }
+  },
+  "Sleep teaching bodies": {
+    "cells": {
+      "total": 564,
+      "counts": {
+        "Explanation": 29,
+        "Questions": 507,
+        "Code": 28
+      },
+      "percent": {
+        "Explanation": 5.14,
+        "Code": 4.96,
+        "Questions": 89.89
+      }
+    },
+    "characters": {
+      "total": 84709,
+      "counts": {
+        "Explanation": 7729,
+        "Questions": 72501,
+        "Code": 4479
+      },
+      "percent": {
+        "Explanation": 9.12,
+        "Code": 5.29,
+        "Questions": 85.59
+      }
+    },
+    "words": {
+      "total": 11924,
+      "counts": {
+        "Explanation": 1325,
+        "Questions": 10068,
+        "Code": 531
+      },
+      "percent": {
+        "Explanation": 11.11,
+        "Code": 4.45,
+        "Questions": 84.43
+      }
+    }
+  },
+  "Sleep 01-05 teaching bodies": {
+    "cells": {
+      "total": 428,
+      "counts": {
+        "Explanation": 29,
+        "Questions": 371,
+        "Code": 28
+      },
+      "percent": {
+        "Explanation": 6.78,
+        "Code": 6.54,
+        "Questions": 86.68
+      }
+    },
+    "characters": {
+      "total": 50344,
+      "counts": {
+        "Explanation": 7729,
+        "Questions": 38136,
+        "Code": 4479
+      },
+      "percent": {
+        "Explanation": 15.35,
+        "Code": 8.9,
+        "Questions": 75.75
+      }
+    },
+    "words": {
+      "total": 7840,
+      "counts": {
+        "Explanation": 1325,
+        "Questions": 5984,
+        "Code": 531
+      },
+      "percent": {
+        "Explanation": 16.9,
+        "Code": 6.77,
+        "Questions": 76.33
+      }
+    }
+  }
+}

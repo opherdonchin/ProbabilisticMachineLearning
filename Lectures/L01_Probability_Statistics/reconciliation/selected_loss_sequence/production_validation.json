@@ -1,0 +1,52 @@
+{
+  "decision": {
+    "date": "2026-10-17",
+    "instructor_text": "The three slide squared loss proof replacement is ok.",
+    "scope": "Exact selected three-slide replacement only; no whole Scope or recording approval"
+  },
+  "agent": "/root/l01_approved_loss_production",
+  "mode": "revision",
+  "base_source_sha256": "66ec0914f65f008b8ecacb20c2faad61e9b630dfd1f8b1dc5a9e8f196d073e7f",
+  "approved_patch_sha256": "3536ac868ab69bb6ca5eeaf3f82a43a15ca5054e6486381b033d8856fc69bb6a",
+  "production_source_sha256": "b13a173b6432f901a9f1bfad9c4aa08163f6a9b506fe01ed50e6cec07c0730cc",
+  "handout": {
+    "path": "Lectures/L01_Probability_Statistics/slide_deck.pdf",
+    "sha256": "2d12a7a69f6db9aa4813f2bc07b658d4e41fd7ef655aeca2a25718b1fb758a84",
+    "pages": 70
+  },
+  "presentation": {
+    "path": "build/slide-review/L01_Probability_Statistics/delivery/slide_deck_presentation.pdf",
+    "sha256": "55cc7647c780261663764b9d5b08133916f8c69ad5385505c44415184c3cb681",
+    "states": 164
+  },
+  "contextual_review": {
+    "handout_pages": [
+      63,
+      64,
+      65,
+      66,
+      67
+    ],
+    "presentation_states": [
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160
+    ],
+    "renders": 17,
+    "pixel_identical_to_approved": true,
+    "visual_inspection": "Slide Authoring independently realized and visually checked the exact approved design; this is fidelity/production validation, not blind pedagogical review"
+  },
+  "production_inputs": "Current shared course.typ, theme tree and L01 figure assets match the scratch build byte-for-byte",
+  "scope_approval": false,
+  "timing_measured": false,
+  "publication": false
+}

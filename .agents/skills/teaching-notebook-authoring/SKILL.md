@@ -38,7 +38,8 @@ Fine granularity is therefore a feature, not a sign of overscaffolding. But fine
 
 Preserve the Q&A-first and fine-grained structure, but change the **subject of the questions**.
 
-This course is about coherent understanding of machine-learning methods within a probabilistic framework. Questions should therefore focus on:
+This course develops working competence in machine-learning problems and methods
+through a coherent probabilistic understanding. Questions should therefore focus on:
 
 - the lecture's equations and representations;
 - identifying the role and shape of mathematical objects;
@@ -51,6 +52,47 @@ This course is about coherent understanding of machine-learning methods within a
 - new computational syntax or libraries when they are genuinely unfamiliar.
 
 Do not spend notebook time quizzing routine PyMC syntax that students already know.
+
+## Choose what students should construct
+
+Allocate intellectual work before choosing a material heading. For each coherent
+step, identify the capability students should acquire and the connection they
+should make themselves: formulation, mathematical representation, implementation,
+inspection or judgment.
+
+- Supply the premises: data, deliberately chosen assumptions, definitions,
+  conventions and lecture results. Ask students to make consequential connections
+  from them. Do not ask them to guess an unstated author choice.
+- Use scaffolded questions when students can reach a useful result from their
+  current knowledge, visible information and permitted documentation/AI help.
+  Questions can teach unfamiliar material through manageable intermediate
+  relationships; unfamiliarity alone is not a reason to explain the answer first.
+- Use a coherent explanation or worked example when students need a new idea,
+  representation or technique before attempting a meaningful application. Supply
+  enough foundation without routinely performing that application for them.
+- Supply code peripheral to the intended capability. Keep central method
+  calculations as student work where appropriate. Supplied code can also be an
+  object students inspect, explain or modify; difficulty and line count do not
+  determine its role.
+- Give each scaffolded question a distinct instructional purpose. Separating
+  meaning from implementation can help; separating every assignment need not.
+  Retrieval, rehearsal and applying supplied evaluation criteria are legitimate
+  purposes. An answer supported by preceding explanation is not automatically
+  redundant.
+
+Record a short rationale for these choices in the existing authoring report,
+grouped by learning step rather than by every cell. Identify what is supplied,
+what students construct, the prerequisite support and what their answer reveals.
+Question count and category percentages are descriptive checks, not targets.
+Do not optimize them by relabeling exposition or inventing extra exercises.
+Preserve the agreed mathematical route and instructor-owned scope decisions.
+
+For a requested delegated review or a substantial notebook build/revision, use
+[the delegated review process](references/delegated-review.md). Keep the author's
+guidelines separate from the learner's brief; the blind learner receives only
+[the learner protocol](references/learner-review.md), a knowledge/personality
+profile and sequential student-visible material. Never give that learner this
+skill, the authoring report, anticipated faults or the solved reference.
 
 ## Required knowledge report before authoring
 
@@ -282,6 +324,10 @@ The lecture normally supplies the mathematical result. The notebook should make 
 
 Do not require a derivation merely because one exists. A derivation belongs in the notebook only when deriving that result is itself an explicit learning objective.
 
+Short algebraic reasoning needed to apply a result, such as identifying the
+matrix equation to pass to a linear solver, can be scaffolded student work.
+Distinguish that application from assigning a new theorem proof.
+
 ### 15. Manage notation changes explicitly
 
 When two equivalent formulations use different notation, do not oscillate casually between them.
@@ -289,7 +335,8 @@ When two equivalent formulations use different notation, do not oscillate casual
 At each transition:
 
 1. state which notation is currently active;
-2. give an explicit mapping between the two systems;
+2. establish an explicit mapping between the two systems, either supplied or
+   through a bounded question before downstream calculations require it;
 3. keep a block of calculations within one notation where possible;
 4. translate back only when there is a specific reason.
 
@@ -472,4 +519,12 @@ Avoid:
 
 ## Completion criterion
 
-The notebook pair is complete when the **solved notebook is a coherent, fine-grained Q&A explanation of the validated worked solution**, the **student notebook is that same notebook with answer cells mechanically removed**, and the authoring record includes explicit before/after knowledge-state reports.
+The notebook pair is complete when the **solved notebook is a coherent,
+fine-grained Q&A explanation of the validated worked solution**, the **student
+notebook is that same notebook with solution contents mechanically replaced by
+placeholders**, and the authoring record includes explicit before/after
+knowledge-state reports. When delegated review applies, also record its actual
+learner coverage, independent informed findings, author response and disposition
+of consequential decisions. A partial or pending review is reported as such;
+it cannot satisfy a requested full-notebook review. Runtime/publication and
+instructor-acceptance requirements remain separate.

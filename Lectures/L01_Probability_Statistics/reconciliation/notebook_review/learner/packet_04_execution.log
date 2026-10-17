@@ -1,0 +1,89 @@
+/home/opher/.config/matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /tmp/matplotlib-0rl5slgt because there was an issue with the default path (/home/opher/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+/home/opher/Repositories/ProbabilisticMachineLearning/.venv/lib/python3.12/site-packages/IPython/paths.py:60: UserWarning: IPython dir '/home/opher/.ipython' is not a writable location, using a temp directory.
+  warn("IPython dir '{}' is not a writable location,"
+
+--- Supplied code block 1 ---
+import importlib.util
+
+if importlib.util.find_spec("course_support") is None:
+    if importlib.util.find_spec("pip") is None:
+        raise RuntimeError(
+            "Restart this notebook's .venv kernel. If the import still fails, "
+            "run `uv sync --locked` in the repository terminal, then restart again."
+        )
+    %pip install --quiet "pml-course-support @ git+https://github.com/opherdonchin/ProbabilisticMachineLearning.git@7304c542dd1b0bfd6762ea08d2cb384ffd7d2e39#subdirectory=notebook_support"
+
+from course_support.l01 import (
+    plot_joint_correlation,
+    plot_hidden_uncertainty,
+    plot_forward_measurements,
+)
+print("Course plotting tools are ready.")
+Course plotting tools are ready.
+
+--- Supplied code block 2 ---
+import numpy as np
+from scipy.stats import norm
+
+np.set_printoptions(precision=6, suppress=True)
+n1, n2 = 3, 4
+mu1 = np.array([-0.5, 0.5, 1.0])
+mu2 = np.array([0.0, 0.5, -0.5, 1.0])
+mu = np.concatenate([mu1, mu2])
+sigma1, sigma2 = 1.0, 1.2
+rho1, rho2, kappa = 0.70, 0.80, 0.90
+print("Hidden / recorded block sizes:", n1, "/", n2)
+print("Joint mean mu:", mu)
+Hidden / recorded block sizes: 3 / 4
+Joint mean mu: [-0.5  0.5  1.   0.   0.5 -0.5  1. ]
+
+--- Supplied code block 3 ---
+Sigma11 = sigma1**2 * ((1-rho1)*np.eye(n1) + rho1*np.ones((n1,n1)))
+Sigma22 = sigma2**2 * ((1-rho2)*np.eye(n2) + rho2*np.ones((n2,n2)))
+Sigma12 = kappa*sigma1*sigma2*np.sqrt(rho1*rho2)*np.ones((n1,n2))
+Sigma21 = Sigma12.T
+Sigma = np.block([[Sigma11, Sigma12], [Sigma21, Sigma22]])
+print("Joint covariance Sigma shape:", Sigma.shape)
+Joint covariance Sigma shape: (7, 7)
+
+--- Supplied code block 4 ---
+# Fixed reference case: original seed 2027 / NumPy 2.0.2 provenance.
+x_complete = np.array([
+    -0.9809265055186939, -0.275006600480288, 1.8920470230380393,
+    -0.18413093623310994, -0.06973754657319287,
+    -0.07777903828206933, 0.9191872262734604,
+])
+x1_true = x_complete[:n1].copy()  # Retained only for later evaluation.
+x2_obs = x_complete[n1:].copy()  # This is the inference input.
+print("Observed block x2_obs:", x2_obs)
+Observed block x2_obs: [-0.184131 -0.069738 -0.077779  0.919187]
+
+--- Supplied code block 5 ---
+_ = plot_joint_correlation(Sigma, n1)
+Saved plot: /tmp/l01-notebook-review-pilot/attempt/packet_01_plot_1.png
+
+Question 1.1 shape check from executed arrays:
+Sigma11 (3, 3)
+Sigma12 (3, 4)
+Sigma21 (4, 3)
+Sigma22 (4, 4)
+Sigma (7, 7)
+One cross-block covariance: 0.8081979955431713
+
+Question 1.2 calculations:
+Cross-block covariance: 0.8081979955431713
+Cross-block correlation: 0.6734983296193094
+Distinct hidden-coordinate correlation: 0.7
+Distinct recorded-coordinate correlation: 0.8
+
+Question 2.1 answer:
+innovation = x2_obs - mu2
+solved_innovation = np.linalg.solve(Sigma22, innovation)
+# Sigma12 (3,4) @ solved_innovation (4,) contracts the four entries to give (3,).
+conditional_mean = mu1 + Sigma12 @ solved_innovation
+print("Conditional mean:", conditional_mean)
+print("Conditional mean shape:", conditional_mean.shape)
+
+Conditional mean: [-0.568086  0.431914  0.931914]
+Conditional mean shape: (3,)

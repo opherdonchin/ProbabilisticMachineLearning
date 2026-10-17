@@ -1,0 +1,895 @@
+notebook,index,type,category,reason,prelude,orientation,characters,words,title
+L01,0,markdown,Excluded,Structural heading,True,False,43,9,Lecture 1 — Missing data and exact Gaussian queries
+L01,1,markdown,Excluded,Structural heading,True,False,14,3,Before you begin
+L01,2,markdown,Excluded,Structural heading,True,False,19,3,*Explanation to read*
+L01,3,markdown,Explanation,Teaching or orientation explanation,True,True,591,110,What you will do
+L01,4,markdown,Explanation,Teaching or orientation explanation,True,True,789,157,Save a copy and start the runtime
+L01,5,markdown,Explanation,Teaching or orientation explanation,True,True,1193,229,"Read, run, then answer"
+L01,6,markdown,Explanation,Teaching or orientation explanation,True,True,924,202,Using AI assistance
+L01,7,markdown,Explanation,Teaching or orientation explanation,True,True,930,165,What a finished notebook should contain
+L01,8,markdown,Excluded,Structural heading,True,False,21,3,Supplied plotting tools
+L01,9,markdown,Excluded,Structural heading,True,False,11,3,*Code to run*
+L01,10,markdown,Code,Supplied code or its implementation note,True,False,248,40,Load the plotting tools
+L01,11,code,Code,Supplied code or its implementation note,True,False,567,54,import importlib.util
+L01,12,markdown,Excluded,Structural heading,True,False,24,6,0. Known model and fixed case
+L01,13,markdown,Excluded,Structural heading,True,False,19,3,*Explanation to read*
+L01,14,markdown,Explanation,Teaching or orientation explanation,True,False,806,67,The supplied joint Gaussian
+L01,15,markdown,Explanation,Teaching or orientation explanation,True,False,584,103,Representing the blocks in NumPy
+L01,16,markdown,Excluded,Structural heading,True,False,11,3,*Code to run*
+L01,17,markdown,Code,Supplied code or its implementation note,True,False,251,38,Set the dimensions and model parameters
+L01,18,code,Code,Supplied code or its implementation note,True,False,303,54,import numpy as np
+L01,19,markdown,Code,Supplied code or its implementation note,True,False,180,29,Assemble the covariance blocks
+L01,20,code,Code,Supplied code or its implementation note,True,False,302,31,"Sigma11 = sigma1**2 * ((1-rho1)*np.eye(n1) + rho1*np.ones((n1,n1)))"
+L01,21,markdown,Code,Supplied code or its implementation note,True,False,281,47,Load the case and expose only its recorded block
+L01,22,code,Code,Supplied code or its implementation note,True,False,372,43,Fixed reference case: original seed 2027 / NumPy 2.0.2 provenance.
+L01,23,markdown,Excluded,Structural heading,False,False,37,9,1. Read the known joint and identify the task
+L01,24,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,25,markdown,Code,Supplied code or its implementation note,False,False,219,33,Display the known correlations
+L01,26,code,Code,Supplied code or its implementation note,False,False,34,4,"_ = plot_joint_correlation(Sigma, n1)"
+L01,27,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,28,markdown,Questions,Required question or worked student answer,False,False,236,34,1.1 Identify the covariance blocks — mathematics
+L01,29,markdown,Questions,Required question or worked student answer,False,False,209,25,"The shapes are $3\times3$, $3\times4$, $4\times3$, $4\times4$, and $7\times7$, respectively. Entry $(i,j)$ of $\Sigma_{12}$ is $\operatorname{Cov}(X_{1i},X_{2j}"
+L01,30,markdown,Questions,Required question or worked student answer,False,False,399,47,1.2 Calculate a covariance and its correlation — mathematics
+L01,31,markdown,Questions,Required question or worked student answer,False,False,339,34,$$
+L01,32,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,33,markdown,Explanation,Teaching or orientation explanation,False,False,382,68,The reconstruction task
+L01,34,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,35,markdown,Questions,Required question or worked student answer,False,False,325,53,1.3 Specify this reconstruction problem — prose and mathematics
+L01,36,markdown,Questions,Required question or worked student answer,False,False,388,60,"Here $z_*=X_1$ and $x_*=x_{2,\mathrm{obs}}$. The target is"
+L01,37,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,38,markdown,Explanation,Teaching or orientation explanation,False,False,191,31,Section summary
+L01,39,markdown,Excluded,Structural heading,False,False,41,6,2. Evaluate the exact conditional distribution
+L01,40,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,41,markdown,Explanation,Teaching or orientation explanation,False,False,756,97,Compute the hidden-block conditional distribution
+L01,42,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,43,markdown,Questions,Required question or worked student answer,False,False,292,47,2.1 Compute the conditional mean — code
+L01,44,code,Questions,Required question or worked student answer,False,False,218,28,innovation = x2_obs - mu2
+L01,45,markdown,Questions,Required question or worked student answer,False,False,274,44,2.2 Compute the conditional covariance — code
+L01,46,code,Questions,Required question or worked student answer,False,False,203,23,"solve result: (4,3); Sigma12 (3,4) @ result (4,3) gives (3,3)."
+L01,47,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,48,markdown,Explanation,Teaching or orientation explanation,False,False,469,68,Individual marginal intervals
+L01,49,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,50,markdown,Code,Supplied code or its implementation note,False,False,135,21,Set the normal interval multiplier
+L01,51,code,Code,Supplied code or its implementation note,False,False,66,8,z90 = norm.ppf(0.95)
+L01,52,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,53,markdown,Questions,Required question or worked student answer,False,False,361,55,2.3 Summarize the marginal uncertainties — code
+L01,54,code,Questions,Required question or worked student answer,False,False,287,28,conditional_sd = np.sqrt(np.diag(conditional_cov))
+L01,55,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,56,markdown,Code,Supplied code or its implementation note,False,False,265,41,Compare the conditional intervals with the withheld values
+L01,57,code,Code,Supplied code or its implementation note,False,False,156,16,"print(""Hidden simulation truth (evaluation only):"", x1_true)"
+L01,58,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,59,markdown,Questions,Required question or worked student answer,False,False,298,51,2.4 What has been computed? — prose
+L01,60,markdown,Questions,Required question or worked student answer,False,False,312,59,"The mean $m$ is a point summary; it omits the uncertainty about the unknown vector. Each interval describes one marginal coordinate, so its 90% statement does n"
+L01,61,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,62,markdown,Explanation,Teaching or orientation explanation,False,False,279,44,Section summary
+L01,63,markdown,Excluded,Structural heading,False,False,32,7,3. Select an action under squared loss
+L01,64,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,65,markdown,Explanation,Teaching or orientation explanation,False,False,853,125,A distribution and a loss determine the action
+L01,66,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,67,markdown,Questions,Required question or worked student answer,False,False,355,51,3.1 Choose the squared-loss action — mathematics
+L01,68,markdown,Questions,Required question or worked student answer,False,False,347,53,"The squared distance is nonnegative and vanishes exactly when $a=m$, so"
+L01,69,markdown,Questions,Required question or worked student answer,False,False,256,43,3.2 Compute the chosen action and its model risk — code
+L01,70,code,Questions,Required question or worked student answer,False,False,150,14,action_mean = conditional_mean
+L01,71,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,72,markdown,Code,Supplied code or its implementation note,False,False,181,32,Evaluate this case’s squared error
+L01,73,code,Code,Supplied code or its implementation note,False,False,160,16,realized_error_mean = np.sum((x1_true - action_mean)**2)
+L01,74,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,75,markdown,Questions,Required question or worked student answer,False,False,290,52,3.3 Separate expected risk from this draw's error — prose
+L01,76,markdown,Questions,Required question or worked student answer,False,False,375,54,"`risk_mean` averages squared error over $X_1\mid X_2=x_{2,\mathrm{obs}}$ under the supplied model. `realized_error_mean` uses one particular hidden value from t"
+L01,77,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,78,markdown,Explanation,Teaching or orientation explanation,False,False,255,40,Section summary
+L01,79,markdown,Excluded,Structural heading,False,False,44,10,4. Express the same joint as a linear Gaussian system
+L01,80,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,81,markdown,Explanation,Teaching or orientation explanation,False,False,502,83,"State, measurement and independent noise"
+L01,82,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,83,markdown,Questions,Required question or worked student answer,False,False,222,44,4.1 Identify the state and measurement — code with comments
+L01,84,code,Questions,Required question or worked student answer,False,False,134,36,"Z = X1 in R^3; mu_z has shape (3,) and Sigma_z has shape (3,3)."
+L01,85,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,86,markdown,Explanation,Teaching or orientation explanation,False,False,390,53,Find the measurement distribution given the state
+L01,87,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,88,markdown,Questions,Required question or worked student answer,False,False,201,36,4.2 Identify the LGS parameters — mathematics
+L01,89,markdown,Questions,Required question or worked student answer,False,False,272,25,$$
+L01,90,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,91,markdown,Explanation,Teaching or orientation explanation,False,False,382,44,Compute `W` with a transpose and `solve`
+L01,92,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,93,markdown,Questions,Required question or worked student answer,False,False,202,36,4.3 Implement the observation mean — code
+L01,94,code,Questions,Required question or worked student answer,False,False,107,18,"W = np.linalg.solve(Sigma11, Sigma12).T"
+L01,95,markdown,Questions,Required question or worked student answer,False,False,253,39,4.4 Implement the residual covariance — code
+L01,96,code,Questions,Required question or worked student answer,False,False,161,22,"Measurement noise has four components, so its covariance is (4,4)."
+L01,97,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,98,markdown,Explanation,Teaching or orientation explanation,False,False,215,44,Section summary
+L01,99,markdown,Excluded,Structural heading,False,False,34,8,5. Predict the measurements of a new case
+L01,100,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,101,markdown,Explanation,Teaching or orientation explanation,False,False,577,76,Average over the unknown state
+L01,102,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,103,markdown,Questions,Required question or worked student answer,False,False,249,51,5.1 Compute the forward marginal — code
+L01,104,code,Questions,Required question or worked student answer,False,False,191,36,mu_y = W @ mu_z + b
+L01,105,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,106,markdown,Explanation,Teaching or orientation explanation,False,False,505,70,The LGS must recover the original Gaussian results
+L01,107,markdown,Explanation,Teaching or orientation explanation,False,False,577,84,Reading numerical comparisons
+L01,108,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,109,markdown,Code,Supplied code or its implementation note,False,False,252,38,Check the LGS mean and covariance calculations
+L01,110,code,Code,Supplied code or its implementation note,False,False,570,55,"print(""Original marginal mean recovered:"", np.allclose(mu_y, mu2))"
+L01,111,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,112,markdown,Questions,Required question or worked student answer,False,False,390,60,5.2 Distinguish the three distributions — prose and mathematics
+L01,113,markdown,Questions,Required question or worked student answer,False,False,520,75,"(i) $p(z\mid y_{\mathrm{obs}})$ reconstructs the original hidden block, with mean/covariance already stored as `conditional_mean` and `conditional_cov`."
+L01,114,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,115,markdown,Explanation,Teaching or orientation explanation,False,False,217,29,Section summary
+L01,116,markdown,Excluded,Structural heading,False,False,35,7,6. Generate one new state and measurement
+L01,117,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,118,markdown,Explanation,Teaching or orientation explanation,False,False,621,75,Draw a state and independent measurement noise
+L01,119,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,120,markdown,Code,Supplied code or its implementation note,False,False,191,29,Initialize the new-case generator
+L01,121,code,Code,Supplied code or its implementation note,False,False,136,12,FRESH_RANDOM_SEED = 2028
+L01,122,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,123,markdown,Questions,Required question or worked student answer,False,False,361,60,6.1 Generate a new case — code
+L01,124,code,Questions,Required question or worked student answer,False,False,310,33,"z_new = rng_new.multivariate_normal(mu_z, Sigma_z)"
+L01,125,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,126,markdown,Code,Supplied code or its implementation note,False,False,212,34,Display new and recorded measurements
+L01,127,code,Code,Supplied code or its implementation note,False,False,73,9,_ = plot_forward_measurements(
+L01,128,markdown,Excluded,Structural heading,False,False,19,3,*Questions to answer*
+L01,129,markdown,Questions,Required question or worked student answer,False,False,304,59,6.2 What did generation establish? — prose
+L01,130,markdown,Questions,Required question or worked student answer,False,False,382,69,The new state is drawn from the unconditional state law and is not conditioned on the original measurement. Its new measurement follows the LGS equation with ne
+L01,131,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,132,markdown,Explanation,Teaching or orientation explanation,False,False,193,34,Section summary
+L01,133,markdown,Excluded,Structural heading,False,False,47,8,7. Check your calculations and consolidate the results
+L01,134,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,135,markdown,Explanation,Teaching or orientation explanation,False,False,747,122,What the covariance checks establish
+L01,136,markdown,Explanation,Teaching or orientation explanation,False,False,540,62,Check the generator’s mean and covariance
+L01,137,markdown,Excluded,Structural heading,False,False,11,3,*Code to run*
+L01,138,markdown,Code,Supplied code or its implementation note,False,False,189,26,Check shapes and covariance properties
+L01,139,code,Code,Supplied code or its implementation note,False,False,446,54,"assert mu.shape == (7,) and Sigma.shape == (7,7)"
+L01,140,markdown,Code,Supplied code or its implementation note,False,False,232,37,Check the fixed-case answers and reconstructed moments
+L01,141,code,Code,Supplied code or its implementation note,False,False,530,43,"np.testing.assert_allclose(conditional_mean, [-0.568,0.432,0.932], atol=5e-4, rtol=0)"
+L01,142,markdown,Code,Supplied code or its implementation note,False,False,239,41,Verify the generated joint mean and covariance
+L01,143,code,Code,Supplied code or its implementation note,False,False,359,33,"base_cov = np.block([[Sigma_z, np.zeros((n1,n2))],"
+L01,144,markdown,Excluded,Structural heading,False,False,19,3,*Explanation to read*
+L01,145,markdown,Explanation,Teaching or orientation explanation,False,False,1335,206,What this notebook established
+01_linear_baseline.ipynb,0,markdown,Explanation,Conceptual explanation supplied to students,True,False,199,35,Sleep deprivation 1 — Linear baseline
+01_linear_baseline.ipynb,1,markdown,Code,Supplied code or its implementation note,True,False,112,20,Setup
+01_linear_baseline.ipynb,2,code,Code,Supplied code or its implementation note,True,False,117,13,%pip install -q \
+01_linear_baseline.ipynb,3,code,Code,Supplied code or its implementation note,True,False,803,92,import numpy as np
+01_linear_baseline.ipynb,4,markdown,Explanation,Conceptual explanation supplied to students,True,False,550,102,Data
+01_linear_baseline.ipynb,5,code,Code,Supplied code or its implementation note,True,False,444,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+01_linear_baseline.ipynb,6,markdown,Code,Supplied code or its implementation note,True,False,142,28,"Each grey line is one participant, on the original study-day numbering. Days 0–1 were adaptation and training, day 2 is the baseline, and restriction begins aft"
+01_linear_baseline.ipynb,7,code,Code,Supplied code or its implementation note,True,False,812,70,"fig, ax = plt.subplots(figsize=(7, 4.2))"
+01_linear_baseline.ipynb,8,markdown,Code,Supplied code or its implementation note,True,False,156,25,Plotting helpers
+01_linear_baseline.ipynb,9,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+01_linear_baseline.ipynb,10,code,Code,Supplied code or its implementation note,True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+01_linear_baseline.ipynb,11,markdown,Code,Supplied code or its implementation note,True,False,61,9,plot_population
+01_linear_baseline.ipynb,12,code,Code,Supplied code or its implementation note,True,False,486,52,"def plot_population(dt, var, group=""posterior""):"
+01_linear_baseline.ipynb,13,markdown,Code,Supplied code or its implementation note,True,False,53,7,plot_participants
+01_linear_baseline.ipynb,14,code,Code,Supplied code or its implementation note,True,False,802,74,"def plot_participants(dt, group, var):"
+01_linear_baseline.ipynb,15,markdown,Excluded,Structural heading,False,False,35,9,1. Model — What model should we start with?
+01_linear_baseline.ipynb,16,markdown,Explanation,Conceptual explanation supplied to students,False,False,132,28,1.1 What is the simplest useful model we can start with?
+01_linear_baseline.ipynb,17,markdown,Explanation,Conceptual explanation supplied to students,False,False,228,37,"We will start with a population-level linear regression: reaction time changes linearly with days of sleep deprivation, with normally distributed variation arou"
+01_linear_baseline.ipynb,18,markdown,Questions,Required question or worked student answer,False,False,178,31,1.2 What role does each quantity play in the model?
+01_linear_baseline.ipynb,19,markdown,Questions,Required question or worked student answer,False,False,135,24,- `days`: input data
+01_linear_baseline.ipynb,20,markdown,Questions,Required question or worked student answer,False,False,200,40,1.3 What prior should we use for baseline reaction time?
+01_linear_baseline.ipynb,21,markdown,Questions,Required question or worked student answer,False,False,111,23,"The midpoint is 250 ms, and 50–450 ms is approximately $250 \pm 2(100)$ ms, so we use"
+01_linear_baseline.ipynb,22,markdown,Questions,Required question or worked student answer,False,False,98,20,1.4 Store the prior for `b0`.
+01_linear_baseline.ipynb,23,code,Questions,Required question or worked student answer,False,False,18,6,mu_b0 = 250
+01_linear_baseline.ipynb,24,markdown,Questions,Required question or worked student answer,False,False,341,63,1.5 What prior should we use for the daily effect of sleep deprivation?
+01_linear_baseline.ipynb,25,markdown,Questions,Required question or worked student answer,False,False,157,28,A Normal distribution centered at 0 with standard deviation 20 ms/day puts approximately 95% of its probability between −40 and +40 ms/day:
+01_linear_baseline.ipynb,26,markdown,Questions,Required question or worked student answer,False,False,98,20,1.6 Store the prior for `b1`.
+01_linear_baseline.ipynb,27,code,Questions,Required question or worked student answer,False,False,15,6,mu_b1 = 0
+01_linear_baseline.ipynb,28,markdown,Questions,Required question or worked student answer,False,False,185,40,1.7 What prior should we use for the residual variation?
+01_linear_baseline.ipynb,29,markdown,Questions,Required question or worked student answer,False,False,153,20,"For an Exponential distribution parameterized by its scale, the mean equals the scale. Therefore"
+01_linear_baseline.ipynb,30,markdown,Questions,Required question or worked student answer,False,False,77,16,1.8 Store the prior mean for `sd_y`.
+01_linear_baseline.ipynb,31,code,Questions,Required question or worked student answer,False,False,10,3,mu_sd_y = 50
+01_linear_baseline.ipynb,32,markdown,Questions,Required question or worked student answer,False,False,170,31,1.9 Which PyMC distribution functions do we need?
+01_linear_baseline.ipynb,33,markdown,Questions,Required question or worked student answer,False,False,31,3,`pm.Normal` and `pm.Exponential`.
+01_linear_baseline.ipynb,34,markdown,Questions,Required question or worked student answer,False,False,217,36,1.10 Implement the model in PyMC.
+01_linear_baseline.ipynb,35,code,Questions,Required question or worked student answer,False,False,388,45,"coords = {""obs_id"": np.arange(len(sleep))}"
+01_linear_baseline.ipynb,36,markdown,Excluded,Structural heading,False,False,68,14,2. Prior predictive check — What does the model imply before seeing the outcomes?
+01_linear_baseline.ipynb,37,markdown,Questions,Required question or worked student answer,False,False,242,51,2.1 What distribution describes the predictions of the model and priors?
+01_linear_baseline.ipynb,38,markdown,Questions,Required question or worked student answer,False,False,35,4,The **prior predictive distribution**.
+01_linear_baseline.ipynb,39,markdown,Questions,Required question or worked student answer,False,False,114,18,2.2 What PyMC function samples from that distribution?
+01_linear_baseline.ipynb,40,markdown,Questions,Required question or worked student answer,False,False,29,1,`pm.sample_prior_predictive`.
+01_linear_baseline.ipynb,41,markdown,Questions,Required question or worked student answer,False,False,95,16,2.3 Generate prior predictive reaction times.
+01_linear_baseline.ipynb,42,code,Questions,Required question or worked student answer,False,False,94,9,with model:
+01_linear_baseline.ipynb,43,markdown,Explanation,Conceptual explanation supplied to students,False,False,161,31,2.4 What should we look for in the prior predictive simulations?
+01_linear_baseline.ipynb,44,markdown,Explanation,Conceptual explanation supplied to students,False,False,352,62,We will use three broad criteria:
+01_linear_baseline.ipynb,45,markdown,Questions,Required question or worked student answer,False,False,139,23,2.5 Plot the prior predictive reaction times.
+01_linear_baseline.ipynb,46,code,Questions,Required question or worked student answer,False,False,57,4,"plot_participants(prior, ""prior_predictive"", ""y"")"
+01_linear_baseline.ipynb,47,markdown,Questions,Required question or worked student answer,False,False,146,27,2.6 Are the prior predictions reasonable enough to proceed?
+01_linear_baseline.ipynb,48,markdown,Questions,Required question or worked student answer,False,False,254,40,"Broadly, yes. The prior predictive distribution is deliberately wide and includes some extreme values, but it places substantial probability on realistic baseli"
+01_linear_baseline.ipynb,49,markdown,Excluded,Structural heading,False,False,50,11,3. Fit — What parameter values are compatible with the data?
+01_linear_baseline.ipynb,50,markdown,Questions,Required question or worked student answer,False,False,112,21,3.1 What PyMC function samples from the posterior?
+01_linear_baseline.ipynb,51,markdown,Questions,Required question or worked student answer,False,False,12,1,`pm.sample`.
+01_linear_baseline.ipynb,52,markdown,Questions,Required question or worked student answer,False,False,112,23,3.2 Fit the model.
+01_linear_baseline.ipynb,53,code,Questions,Required question or worked student answer,False,False,81,10,with model:
+01_linear_baseline.ipynb,54,markdown,Excluded,Structural heading,False,False,46,8,4. Diagnose — Did posterior sampling work adequately?
+01_linear_baseline.ipynb,55,markdown,Questions,Required question or worked student answer,False,False,123,27,4.1 What will tell us that sampling has succeeded?
+01_linear_baseline.ipynb,56,markdown,Questions,Required question or worked student answer,False,False,195,38,"We want to see no divergences, $\hat R$ values no larger than about 1.01, bulk and tail effective sample sizes comfortably in the hundreds or more, and traces i"
+01_linear_baseline.ipynb,57,markdown,Questions,Required question or worked student answer,False,False,133,26,4.2 What ArviZ Stats function gives us the main numerical diagnostics?
+01_linear_baseline.ipynb,58,markdown,Questions,Required question or worked student answer,False,False,14,1,`azs.summary`.
+01_linear_baseline.ipynb,59,markdown,Questions,Required question or worked student answer,False,False,168,23,4.3 Calculate the numerical diagnostics.
+01_linear_baseline.ipynb,60,code,Questions,Required question or worked student answer,False,False,160,11,"print(""Divergences:"", int(idata[""sample_stats""][""diverging""].sum().item()))"
+01_linear_baseline.ipynb,61,markdown,Questions,Required question or worked student answer,False,False,169,27,4.4 What ArviZ Plots function shows posterior distributions and traces together?
+01_linear_baseline.ipynb,62,markdown,Questions,Required question or worked student answer,False,False,22,1,`azp.plot_trace_dist`.
+01_linear_baseline.ipynb,63,markdown,Questions,Required question or worked student answer,False,False,89,14,4.5 Plot the posterior distributions and traces.
+01_linear_baseline.ipynb,64,code,Questions,Required question or worked student answer,False,False,56,4,"azp.plot_trace_dist(idata, var_names=[""b0"", ""b1"", ""sd_y""]);"
+01_linear_baseline.ipynb,65,markdown,Questions,Required question or worked student answer,False,False,96,17,4.6 Did sampling succeed?
+01_linear_baseline.ipynb,66,markdown,Questions,Required question or worked student answer,False,False,157,31,"Yes. The fit has no divergences, the $\hat R$ values are essentially 1, the effective sample sizes are large, and the traces show the chains mixing over the sam"
+01_linear_baseline.ipynb,67,markdown,Excluded,Structural heading,False,False,48,11,5. Interpret — What have we learned from the fitted model?
+01_linear_baseline.ipynb,68,markdown,Questions,Required question or worked student answer,False,False,173,29,5.1 What function plots the posterior distribution of a single variable?
+01_linear_baseline.ipynb,69,markdown,Questions,Required question or worked student answer,False,False,16,1,`azp.plot_dist`.
+01_linear_baseline.ipynb,70,markdown,Questions,Required question or worked student answer,False,False,78,16,5.2 Plot the posterior distribution of `b0`.
+01_linear_baseline.ipynb,71,code,Questions,Required question or worked student answer,False,False,66,6,azp.plot_dist(
+01_linear_baseline.ipynb,72,markdown,Questions,Required question or worked student answer,False,False,149,31,5.3 What baseline reaction times are credible?
+01_linear_baseline.ipynb,73,markdown,Questions,Required question or worked student answer,False,False,63,9,Approximately **257–283 ms** for the population baseline reaction time.
+01_linear_baseline.ipynb,74,markdown,Questions,Required question or worked student answer,False,False,78,16,5.4 Plot the posterior distribution of `b1`.
+01_linear_baseline.ipynb,75,code,Questions,Required question or worked student answer,False,False,66,6,azp.plot_dist(
+01_linear_baseline.ipynb,76,markdown,Questions,Required question or worked student answer,False,False,156,32,5.5 What daily effects are credible?
+01_linear_baseline.ipynb,77,markdown,Questions,Required question or worked student answer,False,False,37,5,Approximately **8–14 ms/day** of slowing.
+01_linear_baseline.ipynb,78,markdown,Questions,Required question or worked student answer,False,False,82,16,5.6 Plot the posterior distribution of `sd_y`.
+01_linear_baseline.ipynb,79,code,Questions,Required question or worked student answer,False,False,68,6,azp.plot_dist(
+01_linear_baseline.ipynb,80,markdown,Questions,Required question or worked student answer,False,False,158,32,5.7 What residual variation is credible?
+01_linear_baseline.ipynb,81,markdown,Questions,Required question or worked student answer,False,False,25,3,Approximately **46–56 ms**.
+01_linear_baseline.ipynb,82,markdown,Questions,Required question or worked student answer,False,False,183,31,5.8 Which model quantity represents the expected reaction time on each day?
+01_linear_baseline.ipynb,83,markdown,Questions,Required question or worked student answer,False,False,5,1,`mu`.
+01_linear_baseline.ipynb,84,markdown,Questions,Required question or worked student answer,False,False,125,19,5.9 Plot the population-average trajectory.
+01_linear_baseline.ipynb,85,code,Questions,Required question or worked student answer,False,False,37,3,"plot_population(idata, ""mu"")"
+01_linear_baseline.ipynb,86,markdown,Questions,Required question or worked student answer,False,False,132,26,5.10 What uncertainty do the bands represent?
+01_linear_baseline.ipynb,87,markdown,Questions,Required question or worked student answer,False,False,152,24,It is uncertainty about the **population-average mean reaction time** `mu`. It does not include the residual variability of future reaction-time observations ar
+01_linear_baseline.ipynb,88,markdown,Excluded,Structural heading,False,False,68,13,6. Prior sensitivity — Would modest changes in the priors alter our conclusions?
+01_linear_baseline.ipynb,89,markdown,Explanation,Conceptual explanation supplied to students,False,False,135,31,6.1 How can we check whether the posterior depends strongly on the priors?
+01_linear_baseline.ipynb,90,markdown,Explanation,Conceptual explanation supplied to students,False,False,413,77,"**Power-scaling sensitivity** slightly weakens and strengthens either the prior or the likelihood and asks how much the posterior changes. Conceptually, it repl"
+01_linear_baseline.ipynb,91,markdown,Questions,Required question or worked student answer,False,False,185,35,6.2 What would strong prior sensitivity mean?
+01_linear_baseline.ipynb,92,markdown,Questions,Required question or worked student answer,False,False,144,25,"It would tell us that the posterior conclusion for that parameter depends meaningfully on the prior specification, so modest alternative priors could change the"
+01_linear_baseline.ipynb,93,markdown,Code,Supplied code or its implementation note,False,False,187,35,6.3 What information does ArviZ need for power-scaling?
+01_linear_baseline.ipynb,94,code,Code,Supplied code or its implementation note,False,False,119,7,with model:
+01_linear_baseline.ipynb,95,markdown,Questions,Required question or worked student answer,False,False,139,21,6.4 What function summarizes power-scaling sensitivity?
+01_linear_baseline.ipynb,96,markdown,Questions,Required question or worked student answer,False,False,21,1,`azs.psense_summary`.
+01_linear_baseline.ipynb,97,markdown,Questions,Required question or worked student answer,False,False,83,11,6.5 Calculate power-scaling sensitivity.
+01_linear_baseline.ipynb,98,code,Questions,Required question or worked student answer,False,False,55,6,azs.psense_summary(
+01_linear_baseline.ipynb,99,markdown,Explanation,Conceptual explanation supplied to students,False,False,331,56,6.6 How should we read the sensitivity table?
+01_linear_baseline.ipynb,100,markdown,Questions,Required question or worked student answer,False,False,157,25,6.7 Does the sensitivity check flag a problem?
+01_linear_baseline.ipynb,101,markdown,Questions,Required question or worked student answer,False,False,91,19,No. The summary does not flag any of the three parameters; their prior sensitivities are all well below 0.05.
+01_linear_baseline.ipynb,102,markdown,Excluded,Structural heading,False,False,61,12,7. Posterior predictive check — Can the fitted model reproduce the data?
+01_linear_baseline.ipynb,103,markdown,Questions,Required question or worked student answer,False,False,212,39,7.1 What distribution describes new data generated from the fitted model?
+01_linear_baseline.ipynb,104,markdown,Questions,Required question or worked student answer,False,False,39,4,The **posterior predictive distribution**.
+01_linear_baseline.ipynb,105,markdown,Questions,Required question or worked student answer,False,False,117,17,7.2 What PyMC function samples from the posterior predictive distribution?
+01_linear_baseline.ipynb,106,markdown,Questions,Required question or worked student answer,False,False,33,1,`pm.sample_posterior_predictive`.
+01_linear_baseline.ipynb,107,markdown,Questions,Required question or worked student answer,False,False,141,23,7.3 Generate posterior predictive reaction times.
+01_linear_baseline.ipynb,108,code,Questions,Required question or worked student answer,False,False,114,8,with model:
+01_linear_baseline.ipynb,109,markdown,Explanation,Conceptual explanation supplied to students,False,False,150,28,7.4 What should we look for in the posterior predictive check?
+01_linear_baseline.ipynb,110,markdown,Explanation,Conceptual explanation supplied to students,False,False,284,43,Look for whether the model reproduces:
+01_linear_baseline.ipynb,111,markdown,Questions,Required question or worked student answer,False,False,180,28,7.5 Plot the posterior predictive reaction times.
+01_linear_baseline.ipynb,112,code,Questions,Required question or worked student answer,False,False,61,4,"plot_participants(idata, ""posterior_predictive"", ""y"")"
+01_linear_baseline.ipynb,113,markdown,Questions,Required question or worked student answer,False,False,140,27,7.6 What does the population-average model fail to reproduce most clearly?
+01_linear_baseline.ipynb,114,markdown,Questions,Required question or worked student answer,False,False,300,41,The clearest failure is **participant-to-participant differences in overall reaction-time level**: whole participants tend to remain systematically above or bel
+02_informative_slope_prior.ipynb,0,markdown,Explanation,Conceptual explanation supplied to students,True,False,302,60,Sleep deprivation 2 — Can the workflow reveal an inappropriate prior?
+02_informative_slope_prior.ipynb,1,markdown,Code,Supplied code or its implementation note,True,False,112,20,Setup
+02_informative_slope_prior.ipynb,2,code,Code,Supplied code or its implementation note,True,False,117,13,%pip install -q \
+02_informative_slope_prior.ipynb,3,code,Code,Supplied code or its implementation note,True,False,393,48,import numpy as np
+02_informative_slope_prior.ipynb,4,markdown,Explanation,Conceptual explanation supplied to students,True,False,550,102,Data
+02_informative_slope_prior.ipynb,5,code,Code,Supplied code or its implementation note,True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+02_informative_slope_prior.ipynb,6,markdown,Code,Supplied code or its implementation note,True,False,156,25,Plotting helpers
+02_informative_slope_prior.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+02_informative_slope_prior.ipynb,8,code,Code,Supplied code or its implementation note,True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+02_informative_slope_prior.ipynb,9,markdown,Code,Supplied code or its implementation note,True,False,89,15,plot_population
+02_informative_slope_prior.ipynb,10,code,Code,Supplied code or its implementation note,True,False,489,53,"def plot_population(dt, var, group=""posterior""):"
+02_informative_slope_prior.ipynb,11,markdown,Code,Supplied code or its implementation note,True,False,63,9,plot_participants
+02_informative_slope_prior.ipynb,12,code,Code,Supplied code or its implementation note,True,False,802,74,"def plot_participants(dt, group, var):"
+02_informative_slope_prior.ipynb,13,markdown,Excluded,Structural heading,False,False,21,5,1. Change the slope prior
+02_informative_slope_prior.ipynb,14,markdown,Explanation,Conceptual explanation supplied to students,False,False,77,18,1.1 What are we changing from Notebook 1?
+02_informative_slope_prior.ipynb,15,markdown,Explanation,Conceptual explanation supplied to students,False,False,173,35,"Only the prior for `b1`, the population-average change in reaction time per day of sleep deprivation, will change."
+02_informative_slope_prior.ipynb,16,markdown,Questions,Required question or worked student answer,False,False,198,39,1.2 What prior expresses strong skepticism about a daily effect?
+02_informative_slope_prior.ipynb,17,markdown,Questions,Required question or worked student answer,False,False,149,30,"Approximately 95% of a Normal distribution lies within about two standard deviations of its mean, so"
+02_informative_slope_prior.ipynb,18,markdown,Questions,Required question or worked student answer,False,False,167,33,1.3 Store the new prior for `b1`.
+02_informative_slope_prior.ipynb,19,code,Code,Supplied code or its implementation note,False,False,28,9,mu_b0 = 250
+02_informative_slope_prior.ipynb,20,code,Questions,Required question or worked student answer,False,False,14,6,mu_b1 = 0
+02_informative_slope_prior.ipynb,21,markdown,Questions,Required question or worked student answer,False,False,103,20,1.4 Build the model.
+02_informative_slope_prior.ipynb,22,code,Questions,Required question or worked student answer,False,False,388,45,"coords = {""obs_id"": np.arange(len(sleep))}"
+02_informative_slope_prior.ipynb,23,markdown,Excluded,Structural heading,False,False,64,11,2. Prior predictive check — Does the prior produce reasonable predictions?
+02_informative_slope_prior.ipynb,24,markdown,Questions,Required question or worked student answer,False,False,138,21,2.1 Generate prior predictive samples.
+02_informative_slope_prior.ipynb,25,code,Questions,Required question or worked student answer,False,False,94,9,with model:
+02_informative_slope_prior.ipynb,26,markdown,Questions,Required question or worked student answer,False,False,116,20,2.2 Plot the prior predictive reaction times.
+02_informative_slope_prior.ipynb,27,code,Questions,Required question or worked student answer,False,False,57,4,"plot_participants(prior, ""prior_predictive"", ""y"")"
+02_informative_slope_prior.ipynb,28,markdown,Questions,Required question or worked student answer,False,False,148,27,2.3 What criteria should we use for the prior predictive check?
+02_informative_slope_prior.ipynb,29,markdown,Questions,Required question or worked student answer,False,False,167,24,"The same three criteria apply: physical possibility, plausible reaction times near baseline, and enough room for meaningful seven-day changes without routinely "
+02_informative_slope_prior.ipynb,30,markdown,Explanation,Conceptual explanation supplied to students,False,False,351,60,The criteria from Notebook 1 were:
+02_informative_slope_prior.ipynb,31,markdown,Questions,Required question or worked student answer,False,False,182,34,2.4 Do the prior predictive simulations meet those criteria?
+02_informative_slope_prior.ipynb,32,markdown,Questions,Required question or worked student answer,False,False,302,56,No. The main problem is the third criterion.
+02_informative_slope_prior.ipynb,33,markdown,Excluded,Structural heading,False,False,43,10,3. Fit and diagnose — Can the model sample reliably?
+02_informative_slope_prior.ipynb,34,markdown,Questions,Required question or worked student answer,False,False,112,23,3.1 Fit the model.
+02_informative_slope_prior.ipynb,35,code,Questions,Required question or worked student answer,False,False,81,10,with model:
+02_informative_slope_prior.ipynb,36,markdown,Questions,Required question or worked student answer,False,False,164,22,3.2 Calculate the numerical diagnostics.
+02_informative_slope_prior.ipynb,37,code,Questions,Required question or worked student answer,False,False,160,11,"print(""Divergences:"", int(idata[""sample_stats""][""diverging""].sum().item()))"
+02_informative_slope_prior.ipynb,38,markdown,Questions,Required question or worked student answer,False,False,74,12,3.3 Plot the chain diagnostics.
+02_informative_slope_prior.ipynb,39,code,Questions,Required question or worked student answer,False,False,56,4,"azp.plot_trace_dist(idata, var_names=[""b0"", ""b1"", ""sd_y""]);"
+02_informative_slope_prior.ipynb,40,markdown,Questions,Required question or worked student answer,False,False,105,18,3.4 Did sampling succeed?
+02_informative_slope_prior.ipynb,41,markdown,Questions,Required question or worked student answer,False,False,202,38,Yes. The chains mix well and the standard sampling diagnostics are satisfactory.
+02_informative_slope_prior.ipynb,42,markdown,Excluded,Structural heading,False,False,62,12,4. Posterior predictive check — Does the fitted model reproduce the data?
+02_informative_slope_prior.ipynb,43,markdown,Questions,Required question or worked student answer,False,False,148,23,4.1 Generate posterior predictive reaction times.
+02_informative_slope_prior.ipynb,44,code,Questions,Required question or worked student answer,False,False,114,8,with model:
+02_informative_slope_prior.ipynb,45,markdown,Questions,Required question or worked student answer,False,False,163,25,4.2 Plot the posterior predictive reaction times.
+02_informative_slope_prior.ipynb,46,code,Questions,Required question or worked student answer,False,False,61,4,"plot_participants(idata, ""posterior_predictive"", ""y"")"
+02_informative_slope_prior.ipynb,47,markdown,Questions,Required question or worked student answer,False,False,173,32,4.3 What criteria should we use for the posterior predictive check?
+02_informative_slope_prior.ipynb,48,markdown,Questions,Required question or worked student answer,False,False,151,18,"We should compare participant levels, changes across days, and residual observation-to-observation variation, emphasizing systematic rather than isolated discre"
+02_informative_slope_prior.ipynb,49,markdown,Explanation,Conceptual explanation supplied to students,False,False,264,38,We compare whether the replicated data reproduce:
+02_informative_slope_prior.ipynb,50,markdown,Questions,Required question or worked student answer,False,False,179,32,4.4 Does the fitted model reproduce the observed data?
+02_informative_slope_prior.ipynb,51,markdown,Questions,Required question or worked student answer,False,False,207,33,No. The posterior predictive distribution does not reproduce the systematic increase across days adequately.
+02_informative_slope_prior.ipynb,52,markdown,Excluded,Structural heading,False,False,60,10,5. Prior sensitivity — Does the posterior reveal prior-data conflict?
+02_informative_slope_prior.ipynb,53,markdown,Explanation,Conceptual explanation supplied to students,False,False,515,97,5.1 Why is prior sensitivity useful here?
+02_informative_slope_prior.ipynb,54,code,Code,Supplied code or its implementation note,False,False,131,8,with model:
+02_informative_slope_prior.ipynb,55,markdown,Questions,Required question or worked student answer,False,False,83,11,5.2 Calculate power-scaling sensitivity.
+02_informative_slope_prior.ipynb,56,code,Questions,Required question or worked student answer,False,False,54,4,"azs.psense_summary(idata, var_names=[""b0"", ""b1"", ""sd_y""])"
+02_informative_slope_prior.ipynb,57,markdown,Questions,Required question or worked student answer,False,False,75,11,5.3 Visualize the sensitivity.
+02_informative_slope_prior.ipynb,58,code,Questions,Required question or worked student answer,False,False,81,8,azp.plot_psense_dist(
+02_informative_slope_prior.ipynb,59,markdown,Questions,Required question or worked student answer,False,False,225,37,5.4 Does the sensitivity analysis identify prior-data conflict?
+02_informative_slope_prior.ipynb,60,markdown,Questions,Required question or worked student answer,False,False,191,31,Yes. The sensitivity diagnostics flag prior-data conflict.
+03_heavy_tailed_slope_prior.ipynb,0,markdown,Explanation,Conceptual explanation supplied to students,True,False,347,73,Sleep deprivation 3 — Can heavy tails make a skeptical prior more robust?
+03_heavy_tailed_slope_prior.ipynb,1,markdown,Code,Supplied code or its implementation note,True,False,112,20,Setup
+03_heavy_tailed_slope_prior.ipynb,2,code,Code,Supplied code or its implementation note,True,False,117,13,%pip install -q \
+03_heavy_tailed_slope_prior.ipynb,3,code,Code,Supplied code or its implementation note,True,False,413,52,import numpy as np
+03_heavy_tailed_slope_prior.ipynb,4,markdown,Explanation,Conceptual explanation supplied to students,True,False,445,82,Data
+03_heavy_tailed_slope_prior.ipynb,5,code,Code,Supplied code or its implementation note,True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+03_heavy_tailed_slope_prior.ipynb,6,markdown,Code,Supplied code or its implementation note,True,False,86,15,Plotting helper
+03_heavy_tailed_slope_prior.ipynb,7,code,Code,Supplied code or its implementation note,True,False,1066,103,LM_VISUALS = {
+03_heavy_tailed_slope_prior.ipynb,8,markdown,Excluded,Structural heading,False,False,45,9,"1. Change the tail behavior, not the skeptical center"
+03_heavy_tailed_slope_prior.ipynb,9,markdown,Explanation,Conceptual explanation supplied to students,False,False,176,36,1.1 How can we keep a skeptical prior but make it less brittle?
+03_heavy_tailed_slope_prior.ipynb,10,markdown,Explanation,Conceptual explanation supplied to students,False,False,296,51,We can replace the Normal prior with a **heavy-tailed Student-t prior** that has the same center and scale.
+03_heavy_tailed_slope_prior.ipynb,11,markdown,Questions,Required question or worked student answer,False,False,115,25,1.2 How does the Student-t prior differ from the Normal prior?
+03_heavy_tailed_slope_prior.ipynb,12,code,Code,Supplied code or its implementation note,False,False,253,28,"x = np.linspace(-6, 6, 800)"
+03_heavy_tailed_slope_prior.ipynb,13,markdown,Questions,Required question or worked student answer,False,False,53,10,Where is the difference between the two priors most important?
+03_heavy_tailed_slope_prior.ipynb,14,markdown,Questions,Required question or worked student answer,False,False,173,33,"The two distributions are similar around zero, but the Student-t puts much more probability in the tails. Large slopes are still unusual under the Student-t pri"
+03_heavy_tailed_slope_prior.ipynb,15,markdown,Questions,Required question or worked student answer,False,False,130,26,1.3 Build the model with the heavy-tailed slope prior.
+03_heavy_tailed_slope_prior.ipynb,16,code,Code,Supplied code or its implementation note,False,False,49,18,mu_b0 = 250
+03_heavy_tailed_slope_prior.ipynb,17,code,Questions,Required question or worked student answer,False,False,399,46,"coords = {""obs_id"": np.arange(len(sleep))}"
+03_heavy_tailed_slope_prior.ipynb,18,markdown,Excluded,Structural heading,False,False,75,13,2. Prior predictive check — Does the heavy-tailed prior look acceptable before fitting?
+03_heavy_tailed_slope_prior.ipynb,19,markdown,Questions,Required question or worked student answer,False,False,95,16,2.1 Generate prior predictive reaction times.
+03_heavy_tailed_slope_prior.ipynb,20,code,Questions,Required question or worked student answer,False,False,94,9,with model:
+03_heavy_tailed_slope_prior.ipynb,21,markdown,Questions,Required question or worked student answer,False,False,81,12,2.2 Plot the prior predictive reaction times.
+03_heavy_tailed_slope_prior.ipynb,22,code,Questions,Required question or worked student answer,False,False,57,4,"plot_participants(prior, ""prior_predictive"", ""y"")"
+03_heavy_tailed_slope_prior.ipynb,23,markdown,Questions,Required question or worked student answer,False,False,247,42,2.3 Do the prior predictive simulations meet the criteria established in Notebook 1?
+03_heavy_tailed_slope_prior.ipynb,24,markdown,Questions,Required question or worked student answer,False,False,293,53,Not convincingly. The central prior predictive bands still favor trajectories with relatively little systematic change across days.
+03_heavy_tailed_slope_prior.ipynb,25,markdown,Questions,Required question or worked student answer,False,False,60,12,2.4 Does the prior predictive plot look very different from Notebook 2?
+03_heavy_tailed_slope_prior.ipynb,26,markdown,Questions,Required question or worked student answer,False,False,188,38,No. The central predictive intervals look quite similar because the two slope priors have the same center and scale near zero.
+03_heavy_tailed_slope_prior.ipynb,27,markdown,Excluded,Structural heading,False,False,43,10,3. Fit and diagnose — Can the model sample reliably?
+03_heavy_tailed_slope_prior.ipynb,28,markdown,Questions,Required question or worked student answer,False,False,104,23,3.1 Fit the model.
+03_heavy_tailed_slope_prior.ipynb,29,code,Questions,Required question or worked student answer,False,False,81,10,with model:
+03_heavy_tailed_slope_prior.ipynb,30,markdown,Questions,Required question or worked student answer,False,False,154,24,3.2 Check the sampling diagnostics.
+03_heavy_tailed_slope_prior.ipynb,31,code,Questions,Required question or worked student answer,False,False,160,11,"print(""Divergences:"", int(idata[""sample_stats""][""diverging""].sum().item()))"
+03_heavy_tailed_slope_prior.ipynb,32,code,Questions,Required question or worked student answer,False,False,56,4,"azp.plot_trace_dist(idata, var_names=[""b0"", ""b1"", ""sd_y""]);"
+03_heavy_tailed_slope_prior.ipynb,33,markdown,Questions,Required question or worked student answer,False,False,117,18,3.3 Did sampling succeed?
+03_heavy_tailed_slope_prior.ipynb,34,markdown,Questions,Required question or worked student answer,False,False,196,38,"Yes. The chains mix well, there are no divergences, and R-hat and effective sample sizes are satisfactory."
+03_heavy_tailed_slope_prior.ipynb,35,markdown,Excluded,Structural heading,False,False,61,12,4. Posterior predictive check — Did the heavier tails improve model fit?
+03_heavy_tailed_slope_prior.ipynb,36,markdown,Questions,Required question or worked student answer,False,False,156,25,4.1 Generate and plot posterior predictive reaction times.
+03_heavy_tailed_slope_prior.ipynb,37,code,Questions,Required question or worked student answer,False,False,175,12,with model:
+03_heavy_tailed_slope_prior.ipynb,38,markdown,Questions,Required question or worked student answer,False,False,72,14,4.2 Does the fitted model now meet the posterior predictive criteria from Notebook 1?
+03_heavy_tailed_slope_prior.ipynb,39,markdown,Questions,Required question or worked student answer,False,False,210,39,"Not fully. The model does a much better job of reproducing the increase in reaction time across days, but it still cannot reproduce the persistent differences a"
+03_heavy_tailed_slope_prior.ipynb,40,markdown,Questions,Required question or worked student answer,False,False,120,22,"4.3 Compared with Notebook 2, did changing only the prior tails improve the model's ability to reproduce the systematic increase across days?"
+03_heavy_tailed_slope_prior.ipynb,41,markdown,Questions,Required question or worked student answer,False,False,195,35,"Yes. The heavier-tailed prior allows the posterior slope to move much farther away from zero, so the posterior predictive trajectories show a substantially stro"
+03_heavy_tailed_slope_prior.ipynb,42,markdown,Excluded,Structural heading,False,False,66,12,5. Prior sensitivity — Did the heavy tails eliminate the prior–data conflict?
+03_heavy_tailed_slope_prior.ipynb,43,markdown,Explanation,Conceptual explanation supplied to students,False,False,63,11,5.1 Why check prior sensitivity if the posterior predictive fit improved?
+03_heavy_tailed_slope_prior.ipynb,44,markdown,Explanation,Conceptual explanation supplied to students,False,False,281,51,Improved prediction does not tell us whether the prior and likelihood are now in agreement.
+03_heavy_tailed_slope_prior.ipynb,45,markdown,Code,Supplied code or its implementation note,False,False,78,12,5.2 Prepare the information required for power-scaling.
+03_heavy_tailed_slope_prior.ipynb,46,code,Code,Supplied code or its implementation note,False,False,120,9,with model:
+03_heavy_tailed_slope_prior.ipynb,47,markdown,Questions,Required question or worked student answer,False,False,112,15,5.3 Calculate and visualize prior sensitivity.
+03_heavy_tailed_slope_prior.ipynb,48,code,Questions,Required question or worked student answer,False,False,54,4,"azs.psense_summary(idata, var_names=[""b0"", ""b1"", ""sd_y""])"
+03_heavy_tailed_slope_prior.ipynb,49,code,Questions,Required question or worked student answer,False,False,81,8,azp.plot_psense_dist(
+03_heavy_tailed_slope_prior.ipynb,50,markdown,Questions,Required question or worked student answer,False,False,101,17,5.4 Did the heavy-tailed prior eliminate the prior–data conflict?
+03_heavy_tailed_slope_prior.ipynb,51,markdown,Questions,Required question or worked student answer,False,False,206,38,No. The sensitivity analysis still flags prior–data conflict.
+04_varying_intercept.ipynb,0,markdown,Explanation,Conceptual explanation supplied to students,True,False,245,39,Sleep deprivation 4 — Varying intercepts
+04_varying_intercept.ipynb,1,markdown,Code,Supplied code or its implementation note,True,False,112,20,Setup
+04_varying_intercept.ipynb,2,code,Code,Supplied code or its implementation note,True,False,117,13,%pip install -q \
+04_varying_intercept.ipynb,3,code,Code,Supplied code or its implementation note,True,False,342,44,import numpy as np
+04_varying_intercept.ipynb,4,markdown,Explanation,Conceptual explanation supplied to students,True,False,432,80,Data
+04_varying_intercept.ipynb,5,code,Code,Supplied code or its implementation note,True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+04_varying_intercept.ipynb,6,markdown,Code,Supplied code or its implementation note,True,False,155,30,A different look at the data
+04_varying_intercept.ipynb,7,code,Code,Supplied code or its implementation note,True,False,233,28,"rt_by_day = sleep.pivot(index=""Subject"", columns=""Days"", values=""Reaction"")"
+04_varying_intercept.ipynb,8,markdown,Explanation,Conceptual explanation supplied to students,True,False,190,35,Participants who are relatively fast at baseline also tend to be relatively fast later in the experiment. We want a model that can preserve these participant di
+04_varying_intercept.ipynb,9,markdown,Code,Supplied code or its implementation note,True,False,149,22,Plotting helper
+04_varying_intercept.ipynb,10,code,Code,Supplied code or its implementation note,True,False,1086,102,LM_VISUALS = {
+04_varying_intercept.ipynb,11,markdown,Excluded,Structural heading,False,False,30,5,1. Build a varying-intercept model
+04_varying_intercept.ipynb,12,markdown,Explanation,Conceptual explanation supplied to students,False,False,244,48,1.1 What model can preserve participant differences and still estimate a sleep effect?
+04_varying_intercept.ipynb,13,markdown,Explanation,Conceptual explanation supplied to students,False,False,277,41,We will give every participant their own intercept while keeping one shared slope:
+04_varying_intercept.ipynb,14,markdown,Questions,Required question or worked student answer,False,False,152,24,1.2 Which regression parameter varies across participants?
+04_varying_intercept.ipynb,15,markdown,Questions,Required question or worked student answer,False,False,73,15,`b0` has one value for each participant. `b1` is one scalar shared by all participants.
+04_varying_intercept.ipynb,16,markdown,Questions,Required question or worked student answer,False,False,171,29,1.3 Create the participant labels and observation-to-participant index.
+04_varying_intercept.ipynb,17,code,Questions,Required question or worked student answer,False,False,242,18,"participants = sorted(sleep[""Subject""].unique(), key=int)"
+04_varying_intercept.ipynb,18,markdown,Explanation,Conceptual explanation supplied to students,False,False,196,45,1.4 We will build the model incrementally.
+04_varying_intercept.ipynb,19,markdown,Questions,Required question or worked student answer,False,False,143,27,1.5 What coordinate values belong to the observation dimension?
+04_varying_intercept.ipynb,20,markdown,Questions,Required question or worked student answer,False,False,61,11,`obs_id` should contain the integers from `0` through `len(sleep) - 1`.
+04_varying_intercept.ipynb,21,markdown,Questions,Required question or worked student answer,False,False,144,24,1.6 What coordinate values belong to the participant dimension?
+04_varying_intercept.ipynb,22,markdown,Questions,Required question or worked student answer,False,False,65,10,It should contain the ordered participant labels stored in `participants`.
+04_varying_intercept.ipynb,23,markdown,Questions,Required question or worked student answer,False,False,33,5,1.7 Create the coordinate dictionary.
+04_varying_intercept.ipynb,24,code,Questions,Required question or worked student answer,False,False,67,8,coords = {
+04_varying_intercept.ipynb,25,markdown,Questions,Required question or worked student answer,False,False,23,5,1.8 Create the empty model.
+04_varying_intercept.ipynb,26,code,Questions,Required question or worked student answer,False,False,41,4,model = pm.Model(coords=coords)
+04_varying_intercept.ipynb,27,markdown,Questions,Required question or worked student answer,False,False,103,21,1.9 What dimension does `days` use?
+04_varying_intercept.ipynb,28,markdown,Questions,Required question or worked student answer,False,False,26,3,"`days` uses `dims=""obs_id""`."
+04_varying_intercept.ipynb,29,markdown,Questions,Required question or worked student answer,False,False,24,6,1.10 Add `days` to the model.
+04_varying_intercept.ipynb,30,code,Questions,Required question or worked student answer,False,False,81,8,with model:
+04_varying_intercept.ipynb,31,markdown,Questions,Required question or worked student answer,False,False,119,20,1.11 What dimension does `participant_idx` use?
+04_varying_intercept.ipynb,32,markdown,Questions,Required question or worked student answer,False,False,41,4,"`participant_idx` also uses `dims=""obs_id""`."
+04_varying_intercept.ipynb,33,markdown,Questions,Required question or worked student answer,False,False,35,6,1.12 Add `participant_idx` to the model.
+04_varying_intercept.ipynb,34,code,Questions,Required question or worked student answer,False,False,100,10,with model:
+04_varying_intercept.ipynb,35,markdown,Questions,Required question or worked student answer,False,False,86,15,1.13 What does `mu_b0` represent?
+04_varying_intercept.ipynb,36,markdown,Questions,Required question or worked student answer,False,False,66,10,`mu_b0` is the population mean of the participant-specific intercepts `b0`.
+04_varying_intercept.ipynb,37,markdown,Questions,Required question or worked student answer,False,False,223,40,1.14 Choose the hyperprior parameters for `mu_b0`.
+04_varying_intercept.ipynb,38,markdown,Questions,Required question or worked student answer,False,False,61,12,A Normal distribution centered at 250 ms with standard deviation 100 ms.
+04_varying_intercept.ipynb,39,markdown,Questions,Required question or worked student answer,False,False,43,7,1.15 Store the hyperprior parameters for `mu_b0`.
+04_varying_intercept.ipynb,40,code,Questions,Required question or worked student answer,False,False,24,6,mu_mu_b0 = 250
+04_varying_intercept.ipynb,41,markdown,Questions,Required question or worked student answer,False,False,96,18,1.16 What distribution does `mu_b0` have?
+04_varying_intercept.ipynb,42,markdown,Questions,Required question or worked student answer,False,False,34,4,"`mu_b0 ~ Normal(mu_mu_b0, sd_mu_b0)`."
+04_varying_intercept.ipynb,43,markdown,Questions,Required question or worked student answer,False,False,25,6,1.17 Add `mu_b0` to the model.
+04_varying_intercept.ipynb,44,code,Questions,Required question or worked student answer,False,False,73,8,with model:
+04_varying_intercept.ipynb,45,markdown,Questions,Required question or worked student answer,False,False,86,15,1.18 What does `sd_b0` represent?
+04_varying_intercept.ipynb,46,markdown,Questions,Required question or worked student answer,False,False,88,11,`sd_b0` is the between-participant standard deviation of the participant-specific intercepts `b0`.
+04_varying_intercept.ipynb,47,markdown,Questions,Required question or worked student answer,False,False,138,28,1.19 Choose the hyperprior parameter for `sd_b0`.
+04_varying_intercept.ipynb,48,markdown,Questions,Required question or worked student answer,False,False,14,3,`sd_sd_b0 = 25`.
+04_varying_intercept.ipynb,49,markdown,Questions,Required question or worked student answer,False,False,42,7,1.20 Store the hyperprior parameter for `sd_b0`.
+04_varying_intercept.ipynb,50,code,Questions,Required question or worked student answer,False,False,11,3,sd_sd_b0 = 25
+04_varying_intercept.ipynb,51,markdown,Questions,Required question or worked student answer,False,False,75,13,1.21 What distribution does `sd_b0` have?
+04_varying_intercept.ipynb,52,markdown,Questions,Required question or worked student answer,False,False,36,3,`sd_b0 ~ Exponential(scale=sd_sd_b0)`.
+04_varying_intercept.ipynb,53,markdown,Questions,Required question or worked student answer,False,False,25,6,1.22 Add `sd_b0` to the model.
+04_varying_intercept.ipynb,54,code,Questions,Required question or worked student answer,False,False,66,7,with model:
+04_varying_intercept.ipynb,55,markdown,Questions,Required question or worked student answer,False,False,101,16,1.23 What distribution does each participant-specific `b0` have?
+04_varying_intercept.ipynb,56,markdown,Questions,Required question or worked student answer,False,False,53,6,"Each participant intercept follows `Normal(mu_b0, sd_b0)`."
+04_varying_intercept.ipynb,57,markdown,Questions,Required question or worked student answer,False,False,102,21,1.24 What dimension does `b0` use?
+04_varying_intercept.ipynb,58,markdown,Questions,Required question or worked student answer,False,False,29,3,"`b0` uses `dims=""participant""`."
+04_varying_intercept.ipynb,59,markdown,Questions,Required question or worked student answer,False,False,51,9,1.25 Add the participant-specific `b0` values to the model.
+04_varying_intercept.ipynb,60,code,Questions,Required question or worked student answer,False,False,81,11,with model:
+04_varying_intercept.ipynb,61,markdown,Questions,Required question or worked student answer,False,False,100,23,1.26 What is the size of `b1`?
+04_varying_intercept.ipynb,62,markdown,Questions,Required question or worked student answer,False,False,44,9,There is one scalar `b1` shared by all participants.
+04_varying_intercept.ipynb,63,markdown,Questions,Required question or worked student answer,False,False,167,34,1.27 What prior parameters did we use for `b1` in Notebook 1?
+04_varying_intercept.ipynb,64,markdown,Questions,Required question or worked student answer,False,False,23,7,`mu_b1 = 0` and `sd_b1 = 20`.
+04_varying_intercept.ipynb,65,markdown,Questions,Required question or worked student answer,False,False,35,7,1.28 Store the prior parameters for `b1`.
+04_varying_intercept.ipynb,66,code,Questions,Required question or worked student answer,False,False,15,6,mu_b1 = 0
+04_varying_intercept.ipynb,67,markdown,Questions,Required question or worked student answer,False,False,33,6,1.29 What distribution does `b1` have?
+04_varying_intercept.ipynb,68,markdown,Questions,Required question or worked student answer,False,False,25,4,"`b1 ~ Normal(mu_b1, sd_b1)`."
+04_varying_intercept.ipynb,69,markdown,Questions,Required question or worked student answer,False,False,22,6,1.30 Add `b1` to the model.
+04_varying_intercept.ipynb,70,code,Questions,Required question or worked student answer,False,False,61,8,with model:
+04_varying_intercept.ipynb,71,markdown,Questions,Required question or worked student answer,False,False,121,24,1.31 What is the size of `sd_y`?
+04_varying_intercept.ipynb,72,markdown,Questions,Required question or worked student answer,False,False,46,9,There is one scalar `sd_y` shared by all observations.
+04_varying_intercept.ipynb,73,markdown,Questions,Required question or worked student answer,False,False,121,28,1.32 What prior mean did we use for `sd_y` in Notebook 1?
+04_varying_intercept.ipynb,74,markdown,Questions,Required question or worked student answer,False,False,13,3,`mu_sd_y = 50`.
+04_varying_intercept.ipynb,75,markdown,Questions,Required question or worked student answer,False,False,36,7,1.33 Store the prior parameter for `sd_y`.
+04_varying_intercept.ipynb,76,code,Questions,Required question or worked student answer,False,False,10,3,mu_sd_y = 50
+04_varying_intercept.ipynb,77,markdown,Questions,Required question or worked student answer,False,False,35,6,1.34 What distribution does `sd_y` have?
+04_varying_intercept.ipynb,78,markdown,Questions,Required question or worked student answer,False,False,34,3,`sd_y ~ Exponential(scale=mu_sd_y)`.
+04_varying_intercept.ipynb,79,markdown,Questions,Required question or worked student answer,False,False,24,6,1.35 Add `sd_y` to the model.
+04_varying_intercept.ipynb,80,code,Questions,Required question or worked student answer,False,False,63,7,with model:
+04_varying_intercept.ipynb,81,markdown,Questions,Required question or worked student answer,False,False,184,31,1.36 How do we select the correct intercept for each observation?
+04_varying_intercept.ipynb,82,markdown,Questions,Required question or worked student answer,False,False,27,1,`b0[participant_idx_data]`.
+04_varying_intercept.ipynb,83,markdown,Questions,Required question or worked student answer,False,False,51,6,1.37 Construct the per-observation intercept expression.
+04_varying_intercept.ipynb,84,code,Questions,Required question or worked student answer,False,False,35,3,b0_for_obs = b0[participant_idx_data]
+04_varying_intercept.ipynb,85,markdown,Questions,Required question or worked student answer,False,False,107,18,1.38 What equation gives the expected reaction time `mu_y`?
+04_varying_intercept.ipynb,86,markdown,Questions,Required question or worked student answer,False,False,26,7,`mu_y = b0_for_obs + b1 * days`.
+04_varying_intercept.ipynb,87,markdown,Questions,Required question or worked student answer,False,False,36,6,1.39 Construct the expression for `mu_y`.
+04_varying_intercept.ipynb,88,code,Questions,Required question or worked student answer,False,False,28,7,mu_y_expr = b0_for_obs + b1 * days
+04_varying_intercept.ipynb,89,markdown,Questions,Required question or worked student answer,False,False,111,20,1.40 What dimension does `mu_y` use?
+04_varying_intercept.ipynb,90,markdown,Questions,Required question or worked student answer,False,False,26,3,"`mu_y` uses `dims=""obs_id""`."
+04_varying_intercept.ipynb,91,markdown,Questions,Required question or worked student answer,False,False,24,6,1.41 Add `mu_y` to the model.
+04_varying_intercept.ipynb,92,code,Questions,Required question or worked student answer,False,False,75,8,with model:
+04_varying_intercept.ipynb,93,markdown,Questions,Required question or worked student answer,False,False,104,19,1.42 What distribution does the observed outcome `y` have?
+04_varying_intercept.ipynb,94,markdown,Questions,Required question or worked student answer,False,False,22,4,"`y ~ Normal(mu_y, sd_y)`."
+04_varying_intercept.ipynb,95,markdown,Questions,Required question or worked student answer,False,False,105,20,1.43 What dimension does `y` use?
+04_varying_intercept.ipynb,96,markdown,Questions,Required question or worked student answer,False,False,23,3,"`y` uses `dims=""obs_id""`."
+04_varying_intercept.ipynb,97,markdown,Questions,Required question or worked student answer,False,False,30,7,1.44 Add `y` and complete the model.
+04_varying_intercept.ipynb,98,code,Questions,Required question or worked student answer,False,False,110,12,with model:
+04_varying_intercept.ipynb,99,markdown,Excluded,Structural heading,False,False,17,4,2. Examine the model
+04_varying_intercept.ipynb,100,markdown,Questions,Required question or worked student answer,False,False,58,11,2.1 What Python command gives a textual representation of the model?
+04_varying_intercept.ipynb,101,markdown,Questions,Required question or worked student answer,False,False,15,1,`print(model)`.
+04_varying_intercept.ipynb,102,markdown,Questions,Required question or worked student answer,False,False,26,5,2.2 Print the completed model.
+04_varying_intercept.ipynb,103,code,Questions,Required question or worked student answer,False,False,12,1,print(model)
+04_varying_intercept.ipynb,104,markdown,Questions,Required question or worked student answer,False,False,59,11,2.3 What PyMC function draws a graphical representation of the model?
+04_varying_intercept.ipynb,105,markdown,Questions,Required question or worked student answer,False,False,23,1,`pm.model_to_graphviz`.
+04_varying_intercept.ipynb,106,markdown,Questions,Required question or worked student answer,False,False,21,5,2.4 Draw the model graph.
+04_varying_intercept.ipynb,107,code,Questions,Required question or worked student answer,False,False,27,1,pm.model_to_graphviz(model)
+04_varying_intercept.ipynb,108,markdown,Excluded,Structural heading,False,False,22,4,3. Prior predictive check
+04_varying_intercept.ipynb,109,markdown,Explanation,Conceptual explanation supplied to students,False,False,481,73,3.1 What criteria will we use?
+04_varying_intercept.ipynb,110,markdown,Questions,Required question or worked student answer,False,False,121,22,3.2 Draw from the prior and prior predictive distributions.
+04_varying_intercept.ipynb,111,code,Questions,Required question or worked student answer,False,False,134,15,with model:
+04_varying_intercept.ipynb,112,markdown,Questions,Required question or worked student answer,False,False,153,21,3.3 Which variables describe the population-level prior?
+04_varying_intercept.ipynb,113,markdown,Questions,Required question or worked student answer,False,False,31,5,"`mu_b0`, `sd_b0`, `b1`, and `sd_y`."
+04_varying_intercept.ipynb,114,markdown,Questions,Required question or worked student answer,False,False,104,15,3.4 Plot the population-level priors.
+04_varying_intercept.ipynb,115,code,Questions,Required question or worked student answer,False,False,111,10,azp.plot_dist(
+04_varying_intercept.ipynb,116,markdown,Explanation,Conceptual explanation supplied to students,False,False,392,66,3.5 What should these population-level priors allow?
+04_varying_intercept.ipynb,117,markdown,Questions,Required question or worked student answer,False,False,51,8,3.6 Do the population-level priors satisfy those criteria?
+04_varying_intercept.ipynb,118,markdown,Questions,Required question or worked student answer,False,False,159,23,"Yes. They preserve the broad baseline, slope, and residual-scale assumptions from Notebook 1 while adding a moderately broad distribution for between-participan"
+04_varying_intercept.ipynb,119,markdown,Questions,Required question or worked student answer,False,False,86,14,3.7 Plot the prior predictive reaction times.
+04_varying_intercept.ipynb,120,code,Questions,Required question or worked student answer,False,False,57,4,"plot_participants(prior, ""prior_predictive"", ""y"")"
+04_varying_intercept.ipynb,121,markdown,Questions,Required question or worked student answer,False,False,64,12,3.8 Do the prior predictive samples satisfy the criteria from Question 3.1?
+04_varying_intercept.ipynb,122,markdown,Questions,Required question or worked student answer,False,False,145,18,"Broadly, yes. The hierarchy permits visible participant-to-participant baseline differences while retaining a broad range of plausible reaction-time trajectorie"
+04_varying_intercept.ipynb,123,markdown,Excluded,Structural heading,False,False,25,5,4. Fit the hierarchical model
+04_varying_intercept.ipynb,124,markdown,Questions,Required question or worked student answer,False,False,88,18,4.1 Sample from the posterior.
+04_varying_intercept.ipynb,125,code,Questions,Required question or worked student answer,False,False,81,10,with model:
+04_varying_intercept.ipynb,126,markdown,Excluded,Structural heading,False,False,16,4,5. Diagnose the fit
+04_varying_intercept.ipynb,127,markdown,Questions,Required question or worked student answer,False,False,155,24,5.1 Which parameters should we check at the population level?
+04_varying_intercept.ipynb,128,markdown,Questions,Required question or worked student answer,False,False,31,5,"`mu_b0`, `sd_b0`, `b1`, and `sd_y`."
+04_varying_intercept.ipynb,129,markdown,Questions,Required question or worked student answer,False,False,115,18,5.2 Calculate the numerical diagnostics for the population-level parameters.
+04_varying_intercept.ipynb,130,code,Questions,Required question or worked student answer,False,False,208,15,"print(""Divergences:"", int(idata[""sample_stats""][""diverging""].sum().item()))"
+04_varying_intercept.ipynb,131,markdown,Questions,Required question or worked student answer,False,False,87,11,5.3 Plot the sampling diagnostics for the population-level parameters.
+04_varying_intercept.ipynb,132,code,Questions,Required question or worked student answer,False,False,68,7,azp.plot_trace_dist(
+04_varying_intercept.ipynb,133,markdown,Questions,Required question or worked student answer,False,False,73,12,5.4 Do the population-level parameters meet the diagnostic criteria from Notebook 1?
+04_varying_intercept.ipynb,134,markdown,Questions,Required question or worked student answer,False,False,118,22,"Yes, provided the executed notebook shows no divergences, R-hat values at or below 1.01, adequate bulk and tail ESS, and well-mixed traces."
+04_varying_intercept.ipynb,135,markdown,Code,Supplied code or its implementation note,False,False,166,27,5.5 Why not plot diagnostics for all participant-specific intercepts at once?
+04_varying_intercept.ipynb,136,markdown,Questions,Required question or worked student answer,False,False,149,22,5.6 Which ArviZ argument selects particular coordinate values?
+04_varying_intercept.ipynb,137,markdown,Questions,Required question or worked student answer,False,False,22,4,The argument is `coords`.
+04_varying_intercept.ipynb,138,markdown,Questions,Required question or worked student answer,False,False,50,8,5.7 Choose a small representative subset of participants.
+04_varying_intercept.ipynb,139,code,Questions,Required question or worked student answer,False,False,174,14,diagnostic_participants = [
+04_varying_intercept.ipynb,140,markdown,Questions,Required question or worked student answer,False,False,68,9,5.8 Calculate diagnostics for the selected participant-specific `b0` values.
+04_varying_intercept.ipynb,141,code,Questions,Required question or worked student answer,False,False,99,8,azs.summary(
+04_varying_intercept.ipynb,142,markdown,Questions,Required question or worked student answer,False,False,39,8,5.9 Plot diagnostics for the same `b0` values.
+04_varying_intercept.ipynb,143,code,Questions,Required question or worked student answer,False,False,70,5,azp.plot_trace_dist(
+04_varying_intercept.ipynb,144,markdown,Questions,Required question or worked student answer,False,False,71,10,5.10 Do the inspected participant-level parameters meet the diagnostic criteria?
+04_varying_intercept.ipynb,145,markdown,Questions,Required question or worked student answer,False,False,92,16,"Yes, provided their R-hat, ESS, and traces meet the same criteria used for the population-level parameters."
+04_varying_intercept.ipynb,146,markdown,Excluded,Structural heading,False,False,27,5,6. Examine the fitted hierarchy
+04_varying_intercept.ipynb,147,markdown,Questions,Required question or worked student answer,False,False,108,16,6.1 What does `mu_b0` represent after fitting?
+04_varying_intercept.ipynb,148,markdown,Questions,Required question or worked student answer,False,False,8,1,`mu_b0`.
+04_varying_intercept.ipynb,149,markdown,Questions,Required question or worked student answer,False,False,41,7,6.2 Plot the posterior distribution of `mu_b0`.
+04_varying_intercept.ipynb,150,code,Questions,Required question or worked student answer,False,False,77,6,azp.plot_dist(
+04_varying_intercept.ipynb,151,markdown,Questions,Required question or worked student answer,False,False,129,18,6.3 What does `sd_b0` represent after fitting?
+04_varying_intercept.ipynb,152,markdown,Questions,Required question or worked student answer,False,False,8,1,`sd_b0`.
+04_varying_intercept.ipynb,153,markdown,Questions,Required question or worked student answer,False,False,41,7,6.4 Plot the posterior distribution of `sd_b0`.
+04_varying_intercept.ipynb,154,code,Questions,Required question or worked student answer,False,False,77,6,azp.plot_dist(
+04_varying_intercept.ipynb,155,markdown,Questions,Required question or worked student answer,False,False,117,15,6.5 What does `sd_y` represent after fitting?
+04_varying_intercept.ipynb,156,markdown,Questions,Required question or worked student answer,False,False,7,1,`sd_y`.
+04_varying_intercept.ipynb,157,markdown,Questions,Required question or worked student answer,False,False,40,7,6.6 Plot the posterior distribution of `sd_y`.
+04_varying_intercept.ipynb,158,code,Questions,Required question or worked student answer,False,False,76,6,azp.plot_dist(
+04_varying_intercept.ipynb,159,markdown,Questions,Required question or worked student answer,False,False,177,29,6.7 Which ArviZ plot is designed to show intervals for many one-dimensional posterior quantities compactly?
+04_varying_intercept.ipynb,160,markdown,Questions,Required question or worked student answer,False,False,18,1,`azp.plot_forest`.
+04_varying_intercept.ipynb,161,markdown,Questions,Required question or worked student answer,False,False,122,18,6.8 Plot the participant-specific posterior intercepts.
+04_varying_intercept.ipynb,162,code,Questions,Required question or worked student answer,False,False,108,10,azp.plot_forest(
+04_varying_intercept.ipynb,163,markdown,Explanation,Conceptual explanation supplied to students,False,False,248,35,6.9 What is partial pooling?
+04_varying_intercept.ipynb,164,markdown,Questions,Required question or worked student answer,False,False,136,26,6.10 What does `b1` represent in this model?
+04_varying_intercept.ipynb,165,markdown,Questions,Required question or worked student answer,False,False,5,1,`b1`.
+04_varying_intercept.ipynb,166,markdown,Questions,Required question or worked student answer,False,False,39,7,6.11 Plot the posterior distribution of `b1`.
+04_varying_intercept.ipynb,167,code,Questions,Required question or worked student answer,False,False,74,6,azp.plot_dist(
+04_varying_intercept.ipynb,168,markdown,Questions,Required question or worked student answer,False,False,194,43,6.12 Compare uncertainty in `b1` with Notebook 1.
+04_varying_intercept.ipynb,169,code,Questions,Required question or worked student answer,False,False,321,35,"notebook1_b1_hdi90 = (7.94, 14.07)"
+04_varying_intercept.ipynb,170,markdown,Questions,Required question or worked student answer,False,False,84,17,6.13 Which model gives the more precise estimate of the common slope?
+04_varying_intercept.ipynb,171,markdown,Questions,Required question or worked student answer,False,False,136,27,"The model with the smaller 90% HDI width gives the more precise estimate of the common slope. In the executed notebook, compare the two displayed values directl"
+04_varying_intercept.ipynb,172,markdown,Excluded,Structural heading,False,False,26,4,7. Posterior predictive check
+04_varying_intercept.ipynb,173,markdown,Explanation,Conceptual explanation supplied to students,False,False,283,42,7.1 What criteria will we use?
+04_varying_intercept.ipynb,174,markdown,Questions,Required question or worked student answer,False,False,44,6,7.2 Generate posterior predictive reaction times.
+04_varying_intercept.ipynb,175,code,Questions,Required question or worked student answer,False,False,114,8,with model:
+04_varying_intercept.ipynb,176,markdown,Questions,Required question or worked student answer,False,False,147,19,7.3 Which `plot_lm` argument selects particular participant coordinate values?
+04_varying_intercept.ipynb,177,markdown,Questions,Required question or worked student answer,False,False,9,1,`coords`.
+04_varying_intercept.ipynb,178,markdown,Questions,Required question or worked student answer,False,False,65,10,7.4 Plot posterior predictive reaction times.
+04_varying_intercept.ipynb,179,code,Questions,Required question or worked student answer,False,False,61,4,"plot_participants(idata, ""posterior_predictive"", ""y"")"
+04_varying_intercept.ipynb,180,markdown,Questions,Required question or worked student answer,False,False,121,19,7.5 Does the model reproduce persistent participant differences in overall reaction-time level?
+04_varying_intercept.ipynb,181,markdown,Questions,Required question or worked student answer,False,False,178,23,Yes. The varying-intercept structure lets the posterior predictive distributions follow persistent differences in participants' overall reaction-time levels muc
+04_varying_intercept.ipynb,182,markdown,Excluded,Structural heading,False,False,24,4,8. What limitation remains?
+04_varying_intercept.ipynb,183,markdown,Questions,Required question or worked student answer,False,False,117,25,8.1 How many slope parameters are in the model?
+04_varying_intercept.ipynb,184,markdown,Questions,Required question or worked student answer,False,False,21,5,There is one shared `b1`.
+04_varying_intercept.ipynb,185,markdown,Questions,Required question or worked student answer,False,False,157,29,8.2 What does that imply about participant trajectories?
+04_varying_intercept.ipynb,186,markdown,Questions,Required question or worked student answer,False,False,108,20,"Their expected trajectories can differ in level, but they must have the same slope. The expected regression lines are parallel."
+04_varying_intercept.ipynb,187,markdown,Questions,Required question or worked student answer,False,False,117,21,8.3 Plot a subset of participant-specific expected trajectories.
+04_varying_intercept.ipynb,188,code,Questions,Required question or worked student answer,False,False,177,14,trajectory_participants = participants[::3]
+05_varying_intercept_slope.ipynb,0,markdown,Explanation,Conceptual explanation supplied to students,True,False,257,46,Sleep deprivation 5 — Varying intercepts and slopes
+05_varying_intercept_slope.ipynb,1,markdown,Code,Supplied code or its implementation note,True,False,112,20,Setup
+05_varying_intercept_slope.ipynb,2,code,Code,Supplied code or its implementation note,True,False,117,13,%pip install -q \
+05_varying_intercept_slope.ipynb,3,code,Code,Supplied code or its implementation note,True,False,342,44,import numpy as np
+05_varying_intercept_slope.ipynb,4,markdown,Explanation,Conceptual explanation supplied to students,True,False,337,62,Data
+05_varying_intercept_slope.ipynb,5,code,Code,Supplied code or its implementation note,True,False,807,62,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+05_varying_intercept_slope.ipynb,6,markdown,Code,Supplied code or its implementation note,True,False,141,22,Plotting helper
+05_varying_intercept_slope.ipynb,7,code,Code,Supplied code or its implementation note,True,False,1086,102,LM_VISUALS = {
+05_varying_intercept_slope.ipynb,8,markdown,Excluded,Structural heading,False,False,45,6,"1. Read the varying-intercept, varying-slope model"
+05_varying_intercept_slope.ipynb,9,markdown,Explanation,Conceptual explanation supplied to students,False,False,488,71,1.1 The model
+05_varying_intercept_slope.ipynb,10,markdown,Code,Supplied code or its implementation note,False,False,226,38,1.2 The complete PyMC implementation
+05_varying_intercept_slope.ipynb,11,code,Code,Supplied code or its implementation note,False,False,1094,140,coords = {
+05_varying_intercept_slope.ipynb,12,code,Code,Supplied code or its implementation note,False,False,27,1,pm.model_to_graphviz(model)
+05_varying_intercept_slope.ipynb,13,markdown,Questions,Required question or worked student answer,False,False,90,15,1.3 Which quantities vary by participant?
+05_varying_intercept_slope.ipynb,14,markdown,Questions,Required question or worked student answer,False,False,57,10,"`b0`, `b1`, and `change_7` each contain one value per participant."
+05_varying_intercept_slope.ipynb,15,markdown,Questions,Required question or worked student answer,False,False,156,24,1.4 Which parameter is the population-average sleep-deprivation slope?
+05_varying_intercept_slope.ipynb,16,markdown,Questions,Required question or worked student answer,False,False,8,1,`mu_b1`.
+05_varying_intercept_slope.ipynb,17,markdown,Questions,Required question or worked student answer,False,False,130,20,1.5 Which parameters describe the population distribution of slopes?
+05_varying_intercept_slope.ipynb,18,markdown,Questions,Required question or worked student answer,False,False,98,15,"`mu_b1` is the center of the population distribution, and `sd_b1` is its between-participant standard deviation."
+05_varying_intercept_slope.ipynb,19,markdown,Questions,Required question or worked student answer,False,False,128,21,1.6 What controls the size of participant slope differences?
+05_varying_intercept_slope.ipynb,20,markdown,Questions,Required question or worked student answer,False,False,8,1,`sd_b1`.
+05_varying_intercept_slope.ipynb,21,markdown,Questions,Required question or worked student answer,False,False,158,27,1.7 What exchangeability assumption does the slope hierarchy make?
+05_varying_intercept_slope.ipynb,22,markdown,Questions,Required question or worked student answer,False,False,174,29,The participant slopes are treated as exchangeable draws from one common population distribution. Their labels do not impose an ordering or make one participant
+05_varying_intercept_slope.ipynb,23,markdown,Questions,Required question or worked student answer,False,False,158,28,1.8 Must `mu_b1` equal the average of these 18 participant slopes?
+05_varying_intercept_slope.ipynb,24,markdown,Questions,Required question or worked student answer,False,False,168,31,No. `mu_b1` is the center of the population distribution from which participant slopes are modeled as draws. The average of the 18 realized participant slopes c
+05_varying_intercept_slope.ipynb,25,markdown,Questions,Required question or worked student answer,False,False,132,15,1.9 Which participant-specific quantities determine `mu_y`?
+05_varying_intercept_slope.ipynb,26,markdown,Questions,Required question or worked student answer,False,False,61,7,The participant-specific intercept `b0[pidx]` and slope `b1[pidx]`.
+05_varying_intercept_slope.ipynb,27,markdown,Questions,Required question or worked student answer,False,False,119,21,1.10 What is the difference between `mu_y` and `y`?
+05_varying_intercept_slope.ipynb,28,markdown,Questions,Required question or worked student answer,False,False,135,24,`mu_y` is the expected reaction time for each observation. `y` is a possible observed reaction time and also includes residual variation controlled by `sd_y`.
+05_varying_intercept_slope.ipynb,29,markdown,Questions,Required question or worked student answer,False,False,62,10,1.11 What does `change_7` represent?
+05_varying_intercept_slope.ipynb,30,markdown,Questions,Required question or worked student answer,False,False,99,20,"`change_7` is the expected change in reaction time from day 0 to day 7 for each participant, measured in milliseconds."
+05_varying_intercept_slope.ipynb,31,markdown,Excluded,Structural heading,False,False,27,5,2. Check the prior implications
+05_varying_intercept_slope.ipynb,32,markdown,Explanation,Conceptual explanation supplied to students,False,False,324,47,2.1 Criteria
+05_varying_intercept_slope.ipynb,33,markdown,Code,Supplied code or its implementation note,False,False,50,11,2.2 Draw from the prior and inspect the new slope hierarchy.
+05_varying_intercept_slope.ipynb,34,code,Code,Supplied code or its implementation note,False,False,361,35,with model:
+05_varying_intercept_slope.ipynb,35,markdown,Questions,Required question or worked student answer,False,False,139,22,2.3 Are the slope priors reasonable?
+05_varying_intercept_slope.ipynb,36,markdown,Questions,Required question or worked student answer,False,False,308,52,"The priors are deliberately permissive. The 90% intervals for seven-day change span several hundred milliseconds for many participants, so the hierarchy clearly"
+05_varying_intercept_slope.ipynb,37,markdown,Code,Supplied code or its implementation note,False,False,47,8,2.4 Generate and plot prior predictive reaction times.
+05_varying_intercept_slope.ipynb,38,code,Code,Supplied code or its implementation note,False,False,57,4,"plot_participants(prior, ""prior_predictive"", ""y"")"
+05_varying_intercept_slope.ipynb,39,markdown,Questions,Required question or worked student answer,False,False,148,20,2.5 Do the prior predictive simulations satisfy the established criteria?
+05_varying_intercept_slope.ipynb,40,markdown,Questions,Required question or worked student answer,False,False,404,69,"Broadly, but with an important warning. The prior predictive distribution allows different participant levels and slopes, but its 90% bands reach below zero for"
+05_varying_intercept_slope.ipynb,41,markdown,Excluded,Structural heading,False,False,24,6,3. Fit and diagnose the model
+05_varying_intercept_slope.ipynb,42,markdown,Code,Supplied code or its implementation note,False,False,26,5,3.1 Sample from the posterior.
+05_varying_intercept_slope.ipynb,43,code,Code,Supplied code or its implementation note,False,False,81,10,with model:
+05_varying_intercept_slope.ipynb,44,markdown,Code,Supplied code or its implementation note,False,False,36,4,3.2 Check population-level diagnostics.
+05_varying_intercept_slope.ipynb,45,code,Code,Supplied code or its implementation note,False,False,219,16,"print(""Divergences:"", int(idata[""sample_stats""][""diverging""].sum().item()))"
+05_varying_intercept_slope.ipynb,46,code,Code,Supplied code or its implementation note,False,False,79,8,azp.plot_trace_dist(
+05_varying_intercept_slope.ipynb,47,markdown,Questions,Required question or worked student answer,False,False,172,31,3.3 Do the population-level parameters meet the diagnostic criteria?
+05_varying_intercept_slope.ipynb,48,markdown,Questions,Required question or worked student answer,False,False,217,39,"Yes. There are no divergences, every reported population-level R-hat is 1.00, and the bulk and tail ESS values are all comfortably above 2,800. The trace plots "
+05_varying_intercept_slope.ipynb,49,markdown,Code,Supplied code or its implementation note,False,False,43,8,3.4 Inspect a small subset of participant effects.
+05_varying_intercept_slope.ipynb,50,code,Code,Supplied code or its implementation note,False,False,568,49,participant_diagnostics = azs.summary(
+05_varying_intercept_slope.ipynb,51,code,Code,Supplied code or its implementation note,False,False,75,6,azp.plot_trace_dist(
+05_varying_intercept_slope.ipynb,52,markdown,Questions,Required question or worked student answer,False,False,64,10,3.5 Do the displayed participant-level parameters meet the same criteria?
+05_varying_intercept_slope.ipynb,53,markdown,Questions,Required question or worked student answer,False,False,200,37,"Yes. The all-participant screen shows no problematic R-hat or ESS value, and the displayed intercept and slope traces for participants 308, 337, and 372 mix wel"
+05_varying_intercept_slope.ipynb,54,markdown,Excluded,Structural heading,False,False,32,6,4. Examine the fitted slope hierarchy
+05_varying_intercept_slope.ipynb,55,markdown,Questions,Required question or worked student answer,False,False,72,9,4.1 Which parameter gives the population-average daily sleep-deprivation effect?
+05_varying_intercept_slope.ipynb,56,markdown,Questions,Required question or worked student answer,False,False,8,1,`mu_b1`.
+05_varying_intercept_slope.ipynb,57,markdown,Questions,Required question or worked student answer,False,False,47,8,4.2 Plot the posterior distribution of that parameter.
+05_varying_intercept_slope.ipynb,58,code,Questions,Required question or worked student answer,False,False,77,6,azp.plot_dist(
+05_varying_intercept_slope.ipynb,59,markdown,Questions,Required question or worked student answer,False,False,91,17,4.3 What range of population-average daily effects is credible?
+05_varying_intercept_slope.ipynb,60,markdown,Questions,Required question or worked student answer,False,False,142,24,"The 90% HDI for `mu_b1` is approximately **7.94–14.71 ms/day**. Under this model, the population distribution is centered on a clearly positive daily slowing ef"
+05_varying_intercept_slope.ipynb,61,markdown,Questions,Required question or worked student answer,False,False,69,8,4.4 Which parameter controls participant-to-participant variation in slopes?
+05_varying_intercept_slope.ipynb,62,markdown,Questions,Required question or worked student answer,False,False,8,1,`sd_b1`.
+05_varying_intercept_slope.ipynb,63,markdown,Questions,Required question or worked student answer,False,False,32,5,4.5 Plot its posterior distribution.
+05_varying_intercept_slope.ipynb,64,code,Questions,Required question or worked student answer,False,False,77,6,azp.plot_dist(
+05_varying_intercept_slope.ipynb,65,markdown,Questions,Required question or worked student answer,False,False,69,14,4.6 What range of slope-variation scales is credible?
+05_varying_intercept_slope.ipynb,66,markdown,Questions,Required question or worked student answer,False,False,140,20,The 90% HDI for `sd_b1` is approximately **4.74–10.06 ms/day**. This is the inferred between-participant standard deviation of daily sleep-deprivation effects.
+05_varying_intercept_slope.ipynb,67,markdown,Questions,Required question or worked student answer,False,False,63,8,4.7 Which posterior variable contains the participant-specific slopes?
+05_varying_intercept_slope.ipynb,68,markdown,Questions,Required question or worked student answer,False,False,5,1,`b1`.
+05_varying_intercept_slope.ipynb,69,markdown,Questions,Required question or worked student answer,False,False,37,5,4.8 Plot the participant-specific slopes.
+05_varying_intercept_slope.ipynb,70,code,Questions,Required question or worked student answer,False,False,108,10,azp.plot_forest(
+05_varying_intercept_slope.ipynb,71,markdown,Questions,Required question or worked student answer,False,False,142,23,4.9 Does the fitted model support meaningful heterogeneity in sleep-deprivation effects?
+05_varying_intercept_slope.ipynb,72,markdown,Questions,Required question or worked student answer,False,False,248,41,"Yes. The posterior for `sd_b1` is well above zero, and the participant slope intervals occupy visibly different regions. Some participants have slopes near zero"
+05_varying_intercept_slope.ipynb,73,markdown,Questions,Required question or worked student answer,False,False,63,9,4.10 Which variable gives each participant's expected seven-day change?
+05_varying_intercept_slope.ipynb,74,markdown,Questions,Required question or worked student answer,False,False,11,1,`change_7`.
+05_varying_intercept_slope.ipynb,75,markdown,Questions,Required question or worked student answer,False,False,50,6,4.11 Plot those participant-specific seven-day changes.
+05_varying_intercept_slope.ipynb,76,code,Questions,Required question or worked student answer,False,False,114,10,azp.plot_forest(
+05_varying_intercept_slope.ipynb,77,markdown,Excluded,Structural heading,False,False,40,5,5. Examine expected participant trajectories
+05_varying_intercept_slope.ipynb,78,markdown,Questions,Required question or worked student answer,False,False,78,11,5.1 Which variable represents expected reaction time without residual observation noise?
+05_varying_intercept_slope.ipynb,79,markdown,Questions,Required question or worked student answer,False,False,7,1,`mu_y`.
+05_varying_intercept_slope.ipynb,80,markdown,Questions,Required question or worked student answer,False,False,40,6,5.2 Plot the posterior expected trajectories.
+05_varying_intercept_slope.ipynb,81,code,Questions,Required question or worked student answer,False,False,53,4,"plot_participants(idata, ""posterior"", ""mu_y"")"
+05_varying_intercept_slope.ipynb,82,markdown,Questions,Required question or worked student answer,False,False,76,14,5.3 Can expected participant trajectories now differ in both baseline and rate of change?
+05_varying_intercept_slope.ipynb,83,markdown,Questions,Required question or worked student answer,False,False,113,21,"Yes. `b0` varies by participant and `b1` also varies by participant, so expected trajectories can differ in both intercept and slope."
+05_varying_intercept_slope.ipynb,84,markdown,Excluded,Structural heading,False,False,50,7,6. Posterior predictive check — participant trajectories
+05_varying_intercept_slope.ipynb,85,markdown,Code,Supplied code or its implementation note,False,False,51,8,6.1 Generate and plot posterior predictive reaction times.
+05_varying_intercept_slope.ipynb,86,code,Code,Supplied code or its implementation note,False,False,175,12,with model:
+05_varying_intercept_slope.ipynb,87,markdown,Questions,Required question or worked student answer,False,False,59,13,6.2 What is added when we move from `mu_y` to posterior predictive `y`?
+05_varying_intercept_slope.ipynb,88,markdown,Questions,Required question or worked student answer,False,False,97,13,Posterior predictive `y` includes residual observation-level variation controlled by `sd_y`; `mu_y` does not.
+05_varying_intercept_slope.ipynb,89,markdown,Questions,Required question or worked student answer,False,False,117,17,6.3 Does the model reproduce participant-to-participant differences in trajectories?
+05_varying_intercept_slope.ipynb,90,markdown,Questions,Required question or worked student answer,False,False,230,37,"Yes, substantially better than the common-slope model. The predictive bands now follow persistent differences in both participant level and rate of change. Isol"
+05_varying_intercept_slope.ipynb,91,markdown,Excluded,Structural heading,False,False,46,7,7. Posterior predictive check — overall distribution
+05_varying_intercept_slope.ipynb,92,markdown,Explanation,Conceptual explanation supplied to students,False,False,223,36,7.1 Why make another posterior predictive plot?
+05_varying_intercept_slope.ipynb,93,markdown,Code,Supplied code or its implementation note,False,False,47,7,7.2 Plot the observed and posterior-predictive ECDFs.
+05_varying_intercept_slope.ipynb,94,code,Code,Supplied code or its implementation note,False,False,86,8,azp.plot_ppc_dist(
+05_varying_intercept_slope.ipynb,95,markdown,Explanation,Conceptual explanation supplied to students,False,False,191,31,7.3 What would indicate adequate fit in this ECDF check?
+05_varying_intercept_slope.ipynb,96,markdown,Questions,Required question or worked student answer,False,False,114,18,7.4 Does the Gaussian likelihood reproduce the overall distribution well?
+05_varying_intercept_slope.ipynb,97,markdown,Questions,Required question or worked student answer,False,False,403,64,"Broadly, yes. The observed ECDF lies close to the posterior-predictive ECDFs across most of the distribution, with no large persistent displacement. This margin"
+06_lognormal_regression.ipynb,0,markdown,Explanation,Scientific introduction or data meaning,True,False,164,29,Sleep deprivation 6 — Lognormal regression
+06_lognormal_regression.ipynb,1,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,112,20,Setup
+06_lognormal_regression.ipynb,2,code,Code,"Supplied setup, helpers, or implementation note",True,False,117,13,%pip install -q \
+06_lognormal_regression.ipynb,3,code,Code,"Supplied setup, helpers, or implementation note",True,False,393,48,import numpy as np
+06_lognormal_regression.ipynb,4,markdown,Explanation,Scientific introduction or data meaning,True,False,550,102,Data
+06_lognormal_regression.ipynb,5,code,Code,"Supplied setup, helpers, or implementation note",True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+06_lognormal_regression.ipynb,6,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,156,25,Plotting helpers
+06_lognormal_regression.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+06_lognormal_regression.ipynb,8,code,Code,"Supplied setup, helpers, or implementation note",True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+06_lognormal_regression.ipynb,9,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,89,15,plot_population
+06_lognormal_regression.ipynb,10,code,Code,"Supplied setup, helpers, or implementation note",True,False,496,53,"def plot_population(dt, var, group=""posterior""):"
+06_lognormal_regression.ipynb,11,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,63,9,plot_participants
+06_lognormal_regression.ipynb,12,code,Code,"Supplied setup, helpers, or implementation note",True,False,809,74,"def plot_participants(dt, group, var):"
+06_lognormal_regression.ipynb,13,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,86,18,6.1 Priors on the wrong scale
+06_lognormal_regression.ipynb,14,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,189,33,"For a lognormal likelihood, `mu` is the location parameter of **log reaction time**. An intercept around 250 is therefore astronomically large. This is exactly "
+06_lognormal_regression.ipynb,15,code,Questions,Question and expanded worked answer; absent from student version,False,False,847,76,"bad_coords = {""obs_id"": np.arange(len(sleep))}"
+06_lognormal_regression.ipynb,16,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,102,21,6.2 Priors on the log scale
+06_lognormal_regression.ipynb,17,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,76,20,"The chapter centres the intercept at 5 on the log scale (about 150 ms), with a wide SD of 0.55."
+06_lognormal_regression.ipynb,18,code,Questions,Question and expanded worked answer; absent from student version,False,False,588,75,"coords = {""obs_id"": np.arange(len(sleep))}"
+06_lognormal_regression.ipynb,19,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,337,68,"Before fitting, ask what reaction times the priors make plausible. Each panel is one participant. The bands are the prior predictive distribution of a single ne"
+06_lognormal_regression.ipynb,20,code,Questions,Question and expanded worked answer; absent from student version,False,False,164,13,with model:
+06_lognormal_regression.ipynb,21,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,132,18,6.3 Population effect under a lognormal likelihood
+06_lognormal_regression.ipynb,22,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,122,26,"Do not interpret the fit until the sampler diagnostics are acceptable: no divergences, R-hat ≤ 1.01, and bulk and tail ESS in the hundreds or more."
+06_lognormal_regression.ipynb,23,code,Questions,Question and expanded worked answer; absent from student version,False,False,269,20,with model:
+06_lognormal_regression.ipynb,24,code,Questions,Question and expanded worked answer; absent from student version,False,False,67,4,"azp.plot_trace_dist(idata, var_names=[""intercept"", ""slope"", ""sigma""]);"
+06_lognormal_regression.ipynb,25,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,162,27,This plot shows posterior uncertainty in the population-average expected reaction time on each day (on the millisecond scale). It does not include the variation
+06_lognormal_regression.ipynb,26,code,Questions,Question and expanded worked answer; absent from student version,False,False,42,3,"plot_population(idata, ""mean_rt"")"
+06_lognormal_regression.ipynb,27,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,128,20,6.4 Predictive consequences of the likelihood
+06_lognormal_regression.ipynb,28,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,225,46,Now generate new reaction times from the fitted model. The layout is the same as in the prior predictive check; the difference is that these predictions are con
+06_lognormal_regression.ipynb,29,code,Questions,Question and expanded worked answer; absent from student version,False,False,188,12,with model:
+06_lognormal_regression.ipynb,30,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,174,28,The panel plot checks trajectories. This check pools all 144 measurements and asks whether simulated datasets reproduce the overall *shape* of the reaction-time
+06_lognormal_regression.ipynb,31,code,Questions,Question and expanded worked answer; absent from student version,False,False,91,6,"azp.plot_ppc_dist(idata, var_names=[""Reaction""], kind=""kde"", figure_kwargs={""figsize"": (7, 4)});"
+06_lognormal_regression.ipynb,32,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,110,21,6.5 Sensitivity on a transformed scale
+06_lognormal_regression.ipynb,33,code,Questions,Question and expanded worked answer; absent from student version,False,False,184,11,with model:
+06_lognormal_regression.ipynb,34,code,Questions,Question and expanded worked answer; absent from student version,False,False,92,8,azp.plot_psense_dist(
+06_lognormal_regression.ipynb,35,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,174,26,"A positive-only likelihood is scientifically attractive, but the main between-person structure is still missing. We next combine the lognormal response with var"
+07_lognormal_varying_intercept_slope.ipynb,0,markdown,Explanation,Scientific introduction or data meaning,True,False,122,16,Sleep deprivation 7 — Hierarchical lognormal regression
+07_lognormal_varying_intercept_slope.ipynb,1,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,112,20,Setup
+07_lognormal_varying_intercept_slope.ipynb,2,code,Code,"Supplied setup, helpers, or implementation note",True,False,117,13,%pip install -q \
+07_lognormal_varying_intercept_slope.ipynb,3,code,Code,"Supplied setup, helpers, or implementation note",True,False,393,48,import numpy as np
+07_lognormal_varying_intercept_slope.ipynb,4,markdown,Explanation,Scientific introduction or data meaning,True,False,550,102,Data
+07_lognormal_varying_intercept_slope.ipynb,5,code,Code,"Supplied setup, helpers, or implementation note",True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+07_lognormal_varying_intercept_slope.ipynb,6,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,156,25,Plotting helpers
+07_lognormal_varying_intercept_slope.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+07_lognormal_varying_intercept_slope.ipynb,8,code,Code,"Supplied setup, helpers, or implementation note",True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+07_lognormal_varying_intercept_slope.ipynb,9,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,89,15,plot_population
+07_lognormal_varying_intercept_slope.ipynb,10,code,Code,"Supplied setup, helpers, or implementation note",True,False,496,53,"def plot_population(dt, var, group=""posterior""):"
+07_lognormal_varying_intercept_slope.ipynb,11,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,63,9,plot_participants
+07_lognormal_varying_intercept_slope.ipynb,12,code,Code,"Supplied setup, helpers, or implementation note",True,False,809,74,"def plot_participants(dt, group, var):"
+07_lognormal_varying_intercept_slope.ipynb,13,code,Code,"Supplied setup, helpers, or implementation note",True,False,139,13,"participants = sorted(sleep[""Subject""].unique(), key=int)"
+07_lognormal_varying_intercept_slope.ipynb,14,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,146,23,7.1 Hierarchy on a multiplicative scale
+07_lognormal_varying_intercept_slope.ipynb,15,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,218,35,The linear predictor is now on the log reaction-time scale. Participant deviations therefore act multiplicatively after transforming back to milliseconds. As in
+07_lognormal_varying_intercept_slope.ipynb,16,code,Questions,Question and expanded worked answer; absent from student version,False,False,1362,125,"coords = {""obs_id"": np.arange(len(sleep)), ""participant"": participants}"
+07_lognormal_varying_intercept_slope.ipynb,17,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,258,49,"Before fitting, ask what reaction times the priors make plausible. Each panel is one participant. The bands are the prior predictive distribution of a single ne"
+07_lognormal_varying_intercept_slope.ipynb,18,code,Questions,Question and expanded worked answer; absent from student version,False,False,164,13,with model:
+07_lognormal_varying_intercept_slope.ipynb,19,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,126,16,7.2 Heterogeneity under the lognormal model
+07_lognormal_varying_intercept_slope.ipynb,20,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,122,26,"Do not interpret the fit until the sampler diagnostics are acceptable: no divergences, R-hat ≤ 1.01, and bulk and tail ESS in the hundreds or more."
+07_lognormal_varying_intercept_slope.ipynb,21,code,Questions,Question and expanded worked answer; absent from student version,False,False,320,24,with model:
+07_lognormal_varying_intercept_slope.ipynb,22,code,Questions,Question and expanded worked answer; absent from student version,False,False,117,6,"azp.plot_trace_dist(idata, var_names=[""intercept"", ""slope"", ""sigma"", ""participant_intercept_sd"", ""participant_slope_sd""]);"
+07_lognormal_varying_intercept_slope.ipynb,23,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,178,26,This plot shows posterior uncertainty in the expected reaction time (on the millisecond scale) of a *typical* participant. It does not include between-participa
+07_lognormal_varying_intercept_slope.ipynb,24,code,Questions,Question and expanded worked answer; absent from student version,False,False,53,3,"plot_population(idata, ""population_mean_rt"")"
+07_lognormal_varying_intercept_slope.ipynb,25,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,154,24,"Each panel shows posterior uncertainty in that participant's expected reaction time. These are mean trajectories, not new measurements. The next plot adds measu"
+07_lognormal_varying_intercept_slope.ipynb,26,code,Questions,Question and expanded worked answer; absent from student version,False,False,56,4,"plot_participants(idata, ""posterior"", ""mean_rt"")"
+07_lognormal_varying_intercept_slope.ipynb,27,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,125,18,7.3 Remaining distributional mismatch
+07_lognormal_varying_intercept_slope.ipynb,28,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,225,46,Now generate new reaction times from the fitted model. The layout is the same as in the prior predictive check; the difference is that these predictions are con
+07_lognormal_varying_intercept_slope.ipynb,29,code,Questions,Question and expanded worked answer; absent from student version,False,False,188,12,with model:
+07_lognormal_varying_intercept_slope.ipynb,30,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,174,28,The panel plot checks trajectories. This check pools all 144 measurements and asks whether simulated datasets reproduce the overall *shape* of the reaction-time
+07_lognormal_varying_intercept_slope.ipynb,31,code,Questions,Question and expanded worked answer; absent from student version,False,False,91,6,"azp.plot_ppc_dist(idata, var_names=[""Reaction""], kind=""kde"", figure_kwargs={""figsize"": (7, 4)});"
+07_lognormal_varying_intercept_slope.ipynb,32,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,125,19,7.4 Sensitivity of hierarchical scales
+07_lognormal_varying_intercept_slope.ipynb,33,code,Questions,Question and expanded worked answer; absent from student version,False,False,275,16,with model:
+07_lognormal_varying_intercept_slope.ipynb,34,code,Questions,Question and expanded worked answer; absent from student version,False,False,82,4,"azp.plot_psense_dist(idata, var_names=vars_for_sensitivity, visuals={""dist"": False});"
+07_lognormal_varying_intercept_slope.ipynb,35,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,125,21,The model still assumes one residual log-scale spread for everyone. The next expansion allows residual variability itself to vary by participant.
+08_lognormal_distributional.ipynb,0,markdown,Explanation,Scientific introduction or data meaning,True,False,119,19,Sleep deprivation 8 — Distributional lognormal model
+08_lognormal_distributional.ipynb,1,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,112,20,Setup
+08_lognormal_distributional.ipynb,2,code,Code,"Supplied setup, helpers, or implementation note",True,False,117,13,%pip install -q \
+08_lognormal_distributional.ipynb,3,code,Code,"Supplied setup, helpers, or implementation note",True,False,342,44,import numpy as np
+08_lognormal_distributional.ipynb,4,markdown,Explanation,Scientific introduction or data meaning,True,False,550,102,Data
+08_lognormal_distributional.ipynb,5,code,Code,"Supplied setup, helpers, or implementation note",True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+08_lognormal_distributional.ipynb,6,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,156,25,Plotting helpers
+08_lognormal_distributional.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+08_lognormal_distributional.ipynb,8,code,Code,"Supplied setup, helpers, or implementation note",True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+08_lognormal_distributional.ipynb,9,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,89,15,plot_population
+08_lognormal_distributional.ipynb,10,code,Code,"Supplied setup, helpers, or implementation note",True,False,496,53,"def plot_population(dt, var, group=""posterior""):"
+08_lognormal_distributional.ipynb,11,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,63,9,plot_participants
+08_lognormal_distributional.ipynb,12,code,Code,"Supplied setup, helpers, or implementation note",True,False,809,74,"def plot_participants(dt, group, var):"
+08_lognormal_distributional.ipynb,13,code,Code,"Supplied setup, helpers, or implementation note",True,False,139,13,"participants = sorted(sleep[""Subject""].unique(), key=int)"
+08_lognormal_distributional.ipynb,14,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,118,18,8.1 Modeling residual heterogeneity
+08_lognormal_distributional.ipynb,15,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,265,47,$$\log(\sigma_i)=\gamma_0+v_{s[i]}.$$
+08_lognormal_distributional.ipynb,16,code,Questions,Question and expanded worked answer; absent from student version,False,False,2007,176,"coords = {""obs_id"": np.arange(len(sleep)), ""participant"": participants}"
+08_lognormal_distributional.ipynb,17,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,258,49,"Before fitting, ask what reaction times the priors make plausible. Each panel is one participant. The bands are the prior predictive distribution of a single ne"
+08_lognormal_distributional.ipynb,18,code,Questions,Question and expanded worked answer; absent from student version,False,False,164,13,with model:
+08_lognormal_distributional.ipynb,19,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,107,17,8.2 Participant-specific residual scales
+08_lognormal_distributional.ipynb,20,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,122,26,"Do not interpret the fit until the sampler diagnostics are acceptable: no divergences, R-hat ≤ 1.01, and bulk and tail ESS in the hundreds or more."
+08_lognormal_distributional.ipynb,21,code,Questions,Question and expanded worked answer; absent from student version,False,False,353,25,with model:
+08_lognormal_distributional.ipynb,22,code,Questions,Question and expanded worked answer; absent from student version,False,False,151,9,azp.plot_trace_dist(
+08_lognormal_distributional.ipynb,23,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,178,26,This plot shows posterior uncertainty in the expected reaction time (on the millisecond scale) of a *typical* participant. It does not include between-participa
+08_lognormal_distributional.ipynb,24,code,Questions,Question and expanded worked answer; absent from student version,False,False,53,3,"plot_population(idata, ""population_mean_rt"")"
+08_lognormal_distributional.ipynb,25,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,118,18,"Each panel shows posterior uncertainty in that participant's expected reaction time. These are mean trajectories, not new measurements."
+08_lognormal_distributional.ipynb,26,code,Questions,Question and expanded worked answer; absent from student version,False,False,56,4,"plot_participants(idata, ""posterior"", ""mean_rt"")"
+08_lognormal_distributional.ipynb,27,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,119,20,"Posterior of each participant's residual SD on the log scale; roughly, the typical relative size of that person's day-to-day fluctuations."
+08_lognormal_distributional.ipynb,28,code,Questions,Question and expanded worked answer; absent from student version,False,False,156,12,azp.plot_forest(
+08_lognormal_distributional.ipynb,29,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,136,17,8.3 Predictive value of heteroskedasticity
+08_lognormal_distributional.ipynb,30,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,225,46,Now generate new reaction times from the fitted model. The layout is the same as in the prior predictive check; the difference is that these predictions are con
+08_lognormal_distributional.ipynb,31,code,Questions,Question and expanded worked answer; absent from student version,False,False,188,12,with model:
+08_lognormal_distributional.ipynb,32,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,174,28,The panel plot checks trajectories. This check pools all 144 measurements and asks whether simulated datasets reproduce the overall *shape* of the reaction-time
+08_lognormal_distributional.ipynb,33,code,Questions,Question and expanded worked answer; absent from student version,False,False,91,6,"azp.plot_ppc_dist(idata, var_names=[""Reaction""], kind=""kde"", figure_kwargs={""figsize"": (7, 4)});"
+08_lognormal_distributional.ipynb,34,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,96,13,8.4 Eliciting scale hierarchies
+08_lognormal_distributional.ipynb,35,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,238,37,"Distributional models can describe heteroskedasticity, but their scale parameters live on transformed scales and are harder to elicit. The chapter next explores"
+09_exgaussian_distributional.ipynb,0,markdown,Explanation,Scientific introduction or data meaning,True,False,166,27,Sleep deprivation 9 — Ex-Gaussian distributional model
+09_exgaussian_distributional.ipynb,1,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,112,20,Setup
+09_exgaussian_distributional.ipynb,2,code,Code,"Supplied setup, helpers, or implementation note",True,False,117,13,%pip install -q \
+09_exgaussian_distributional.ipynb,3,code,Code,"Supplied setup, helpers, or implementation note",True,False,342,44,import numpy as np
+09_exgaussian_distributional.ipynb,4,markdown,Explanation,Scientific introduction or data meaning,True,False,550,102,Data
+09_exgaussian_distributional.ipynb,5,code,Code,"Supplied setup, helpers, or implementation note",True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+09_exgaussian_distributional.ipynb,6,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,156,25,Plotting helpers
+09_exgaussian_distributional.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+09_exgaussian_distributional.ipynb,8,code,Code,"Supplied setup, helpers, or implementation note",True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+09_exgaussian_distributional.ipynb,9,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,89,15,plot_population
+09_exgaussian_distributional.ipynb,10,code,Code,"Supplied setup, helpers, or implementation note",True,False,496,53,"def plot_population(dt, var, group=""posterior""):"
+09_exgaussian_distributional.ipynb,11,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,63,9,plot_participants
+09_exgaussian_distributional.ipynb,12,code,Code,"Supplied setup, helpers, or implementation note",True,False,809,74,"def plot_participants(dt, group, var):"
+09_exgaussian_distributional.ipynb,13,code,Code,"Supplied setup, helpers, or implementation note",True,False,139,13,"participants = sorted(sleep[""Subject""].unique(), key=int)"
+09_exgaussian_distributional.ipynb,14,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,144,24,9.1 Modeling a right tail directly
+09_exgaussian_distributional.ipynb,15,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,382,72,"PyMC's ex-Gaussian uses `mu`, `sigma`, and `nu`; its expected reaction time is $\mu+\nu$. We model participant variation in `mu` and `sigma`; `nu` gets a popula"
+09_exgaussian_distributional.ipynb,16,code,Questions,Question and expanded worked answer; absent from student version,False,False,2090,188,"coords = {""obs_id"": np.arange(len(sleep)), ""participant"": participants}"
+09_exgaussian_distributional.ipynb,17,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,258,49,"Before fitting, ask what reaction times the priors make plausible. Each panel is one participant. The bands are the prior predictive distribution of a single ne"
+09_exgaussian_distributional.ipynb,18,code,Questions,Question and expanded worked answer; absent from student version,False,False,164,13,with model:
+09_exgaussian_distributional.ipynb,19,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,117,17,9.2 Ex-Gaussian components
+09_exgaussian_distributional.ipynb,20,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,122,26,"Do not interpret the fit until the sampler diagnostics are acceptable: no divergences, R-hat ≤ 1.01, and bulk and tail ESS in the hundreds or more."
+09_exgaussian_distributional.ipynb,21,code,Questions,Question and expanded worked answer; absent from student version,False,False,367,24,with model:
+09_exgaussian_distributional.ipynb,22,code,Questions,Question and expanded worked answer; absent from student version,False,False,165,8,"azp.plot_trace_dist(idata, var_names=[""intercept"", ""slope"", ""participant_intercept_sd"", ""participant_slope_sd"", ""sigma_intercept"", ""participant_sigma_sd"", ""nu_i"
+09_exgaussian_distributional.ipynb,23,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,178,26,This plot shows posterior uncertainty in the expected reaction time (on the millisecond scale) of a *typical* participant. It does not include between-participa
+09_exgaussian_distributional.ipynb,24,code,Questions,Question and expanded worked answer; absent from student version,False,False,53,3,"plot_population(idata, ""population_mean_rt"")"
+09_exgaussian_distributional.ipynb,25,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,118,18,"Each panel shows posterior uncertainty in that participant's expected reaction time. These are mean trajectories, not new measurements."
+09_exgaussian_distributional.ipynb,26,code,Questions,Question and expanded worked answer; absent from student version,False,False,56,4,"plot_participants(idata, ""posterior"", ""mean_rt"")"
+09_exgaussian_distributional.ipynb,27,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,117,16,9.3 Predictive behavior of the informed model
+09_exgaussian_distributional.ipynb,28,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,225,46,Now generate new reaction times from the fitted model. The layout is the same as in the prior predictive check; the difference is that these predictions are con
+09_exgaussian_distributional.ipynb,29,code,Questions,Question and expanded worked answer; absent from student version,False,False,188,12,with model:
+09_exgaussian_distributional.ipynb,30,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,174,28,The panel plot checks trajectories. This check pools all 144 measurements and asks whether simulated datasets reproduce the overall *shape* of the reaction-time
+09_exgaussian_distributional.ipynb,31,code,Questions,Question and expanded worked answer; absent from student version,False,False,91,6,"azp.plot_ppc_dist(idata, var_names=[""Reaction""], kind=""kde"", figure_kwargs={""figsize"": (7, 4)});"
+09_exgaussian_distributional.ipynb,32,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,114,21,9.4 Where priors may matter
+09_exgaussian_distributional.ipynb,33,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,211,37,"The ex-Gaussian is more flexible, which makes prior information more consequential. The next two notebooks repeat the same model with naive priors that ignore t"
+10_exgaussian_default_priors.ipynb,0,markdown,Explanation,Scientific introduction or data meaning,True,False,195,40,Sleep deprivation 10 — Priors that ignore the link function
+10_exgaussian_default_priors.ipynb,1,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,112,20,Setup
+10_exgaussian_default_priors.ipynb,2,code,Code,"Supplied setup, helpers, or implementation note",True,False,117,13,%pip install -q \
+10_exgaussian_default_priors.ipynb,3,code,Code,"Supplied setup, helpers, or implementation note",True,False,342,44,import numpy as np
+10_exgaussian_default_priors.ipynb,4,markdown,Explanation,Scientific introduction or data meaning,True,False,550,102,Data
+10_exgaussian_default_priors.ipynb,5,code,Code,"Supplied setup, helpers, or implementation note",True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+10_exgaussian_default_priors.ipynb,6,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,156,25,Plotting helpers
+10_exgaussian_default_priors.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+10_exgaussian_default_priors.ipynb,8,code,Code,"Supplied setup, helpers, or implementation note",True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+10_exgaussian_default_priors.ipynb,9,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,89,15,plot_population
+10_exgaussian_default_priors.ipynb,10,code,Code,"Supplied setup, helpers, or implementation note",True,False,496,53,"def plot_population(dt, var, group=""posterior""):"
+10_exgaussian_default_priors.ipynb,11,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,63,9,plot_participants
+10_exgaussian_default_priors.ipynb,12,code,Code,"Supplied setup, helpers, or implementation note",True,False,809,74,"def plot_participants(dt, group, var):"
+10_exgaussian_default_priors.ipynb,13,code,Code,"Supplied setup, helpers, or implementation note",True,False,139,13,"participants = sorted(sleep[""Subject""].unique(), key=int)"
+10_exgaussian_default_priors.ipynb,14,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,134,25,10.1 Naive log-link priors
+10_exgaussian_default_priors.ipynb,15,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,294,51,"Everything about the mean structure (`intercept`, `slope`, and their participant terms) is unchanged from notebook 9. Only the priors for the log-linear scale ("
+10_exgaussian_default_priors.ipynb,16,code,Questions,Question and expanded worked answer; absent from student version,False,False,1982,176,"coords = {""obs_id"": np.arange(len(sleep)), ""participant"": participants}"
+10_exgaussian_default_priors.ipynb,17,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,258,49,"Before fitting, ask what reaction times the priors make plausible. Each panel is one participant. The bands are the prior predictive distribution of a single ne"
+10_exgaussian_default_priors.ipynb,18,code,Questions,Question and expanded worked answer; absent from student version,False,False,164,13,with model:
+10_exgaussian_default_priors.ipynb,19,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,131,23,10.2 Posterior changes under naive priors
+10_exgaussian_default_priors.ipynb,20,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,122,26,"Do not interpret the fit until the sampler diagnostics are acceptable: no divergences, R-hat ≤ 1.01, and bulk and tail ESS in the hundreds or more."
+10_exgaussian_default_priors.ipynb,21,code,Questions,Question and expanded worked answer; absent from student version,False,False,367,24,with model:
+10_exgaussian_default_priors.ipynb,22,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,414,80,"These diagnostics failed: all four chains hit the maximum tree depth, sampling took about 6.5 minutes (versus under a minute for notebook 9), R-hat exceeded 1.0"
+10_exgaussian_default_priors.ipynb,23,code,Questions,Question and expanded worked answer; absent from student version,False,False,165,8,"azp.plot_trace_dist(idata, var_names=[""intercept"", ""slope"", ""participant_intercept_sd"", ""participant_slope_sd"", ""sigma_intercept"", ""participant_sigma_sd"", ""nu_i"
+10_exgaussian_default_priors.ipynb,24,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,105,18,This plot shows posterior uncertainty in the expected reaction time (on the millisecond scale) of a *typical* participant.
+10_exgaussian_default_priors.ipynb,25,code,Questions,Question and expanded worked answer; absent from student version,False,False,53,3,"plot_population(idata, ""population_mean_rt"")"
+10_exgaussian_default_priors.ipynb,26,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,74,11,Each panel shows posterior uncertainty in that participant's expected reaction time.
+10_exgaussian_default_priors.ipynb,27,code,Questions,Question and expanded worked answer; absent from student version,False,False,56,4,"plot_participants(idata, ""posterior"", ""mean_rt"")"
+10_exgaussian_default_priors.ipynb,28,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,98,16,10.3 Predictive robustness to naive priors
+10_exgaussian_default_priors.ipynb,29,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,151,31,Now generate new reaction times from the fitted model. The layout is the same as in the prior predictive check; the difference is that these predictions are con
+10_exgaussian_default_priors.ipynb,30,code,Questions,Question and expanded worked answer; absent from student version,False,False,188,12,with model:
+10_exgaussian_default_priors.ipynb,31,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,174,28,The panel plot checks trajectories. This check pools all 144 measurements and asks whether simulated datasets reproduce the overall *shape* of the reaction-time
+10_exgaussian_default_priors.ipynb,32,code,Questions,Question and expanded worked answer; absent from student version,False,False,91,6,"azp.plot_ppc_dist(idata, var_names=[""Reaction""], kind=""kde"", figure_kwargs={""figsize"": (7, 4)});"
+10_exgaussian_default_priors.ipynb,33,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,109,14,10.4 Parameter-level sensitivity
+10_exgaussian_default_priors.ipynb,34,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,452,83,"With this prior, sampling itself struggled (maximum tree depth on every chain, R-hat up to 1.05, ESS as low as ~170) even though the population intercept and sl"
+11_exgaussian_flat_priors.ipynb,0,markdown,Explanation,Scientific introduction or data meaning,True,False,187,30,Sleep deprivation 11 — Flat common-effect priors
+11_exgaussian_flat_priors.ipynb,1,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,112,20,Setup
+11_exgaussian_flat_priors.ipynb,2,code,Code,"Supplied setup, helpers, or implementation note",True,False,117,13,%pip install -q \
+11_exgaussian_flat_priors.ipynb,3,code,Code,"Supplied setup, helpers, or implementation note",True,False,342,44,import numpy as np
+11_exgaussian_flat_priors.ipynb,4,markdown,Explanation,Scientific introduction or data meaning,True,False,550,102,Data
+11_exgaussian_flat_priors.ipynb,5,code,Code,"Supplied setup, helpers, or implementation note",True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+11_exgaussian_flat_priors.ipynb,6,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,156,25,Plotting helpers
+11_exgaussian_flat_priors.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+11_exgaussian_flat_priors.ipynb,8,code,Code,"Supplied setup, helpers, or implementation note",True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+11_exgaussian_flat_priors.ipynb,9,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,89,15,plot_population
+11_exgaussian_flat_priors.ipynb,10,code,Code,"Supplied setup, helpers, or implementation note",True,False,496,53,"def plot_population(dt, var, group=""posterior""):"
+11_exgaussian_flat_priors.ipynb,11,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,63,9,plot_participants
+11_exgaussian_flat_priors.ipynb,12,code,Code,"Supplied setup, helpers, or implementation note",True,False,809,74,"def plot_participants(dt, group, var):"
+11_exgaussian_flat_priors.ipynb,13,code,Code,"Supplied setup, helpers, or implementation note",True,False,139,13,"participants = sorted(sleep[""Subject""].unique(), key=int)"
+11_exgaussian_flat_priors.ipynb,14,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,94,16,11.1 Removing prior information
+11_exgaussian_flat_priors.ipynb,15,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,363,53,The book removes most default priors while retaining hierarchical priors for varying coefficients. We express the same experiment by giving the common-effect pa
+11_exgaussian_flat_priors.ipynb,16,code,Questions,Question and expanded worked answer; absent from student version,False,False,1838,155,"coords = {""obs_id"": np.arange(len(sleep)), ""participant"": participants}"
+11_exgaussian_flat_priors.ipynb,17,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,166,31,"Improper flat priors do not define a proper prior predictive distribution, so unlike the preceding notebooks there is **no prior predictive check** here. That a"
+11_exgaussian_flat_priors.ipynb,18,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,114,17,11.2 Computational stability
+11_exgaussian_flat_priors.ipynb,19,code,Questions,Question and expanded worked answer; absent from student version,False,False,367,24,with model:
+11_exgaussian_flat_priors.ipynb,20,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,73,15,11.3 Reading a failed fit
+11_exgaussian_flat_priors.ipynb,21,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,144,24,Shown only to illustrate; with this many divergences these plots are not evidence. Each panel shows posterior uncertainty in that participant's expected reactio
+11_exgaussian_flat_priors.ipynb,22,code,Questions,Question and expanded worked answer; absent from student version,False,False,56,4,"plot_participants(idata, ""posterior"", ""mean_rt"")"
+11_exgaussian_flat_priors.ipynb,23,code,Questions,Question and expanded worked answer; absent from student version,False,False,188,12,with model:
+11_exgaussian_flat_priors.ipynb,24,code,Questions,Question and expanded worked answer; absent from student version,False,False,91,6,"azp.plot_ppc_dist(idata, var_names=[""Reaction""], kind=""kde"", figure_kwargs={""figsize"": (7, 4)});"
+11_exgaussian_flat_priors.ipynb,25,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,95,14,11.4 Weak identification
+11_exgaussian_flat_priors.ipynb,26,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,677,128,"The fit produced 2033 divergences out of 4000 draws, R-hat up to 1.01, and bulk ESS as low as ~390 — the sampler was genuinely struggling, not merely slow. The "
+12_robust_student_t_and_loo.ipynb,0,markdown,Explanation,Scientific introduction or data meaning,True,False,184,22,Sleep deprivation 12 — Robust likelihoods and PSIS-LOO
+12_robust_student_t_and_loo.ipynb,1,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,112,20,Setup
+12_robust_student_t_and_loo.ipynb,2,code,Code,"Supplied setup, helpers, or implementation note",True,False,117,13,%pip install -q \
+12_robust_student_t_and_loo.ipynb,3,code,Code,"Supplied setup, helpers, or implementation note",True,False,342,44,import numpy as np
+12_robust_student_t_and_loo.ipynb,4,markdown,Explanation,Scientific introduction or data meaning,True,False,550,102,Data
+12_robust_student_t_and_loo.ipynb,5,code,Code,"Supplied setup, helpers, or implementation note",True,False,450,31,"DATA_URL = ""https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/csv/lme4/sleepstudy.csv"""
+12_robust_student_t_and_loo.ipynb,6,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,156,25,Plotting helpers
+12_robust_student_t_and_loo.ipynb,7,markdown,Excluded,Structural heading,True,False,12,2,Format colors
+12_robust_student_t_and_loo.ipynb,8,code,Code,"Supplied setup, helpers, or implementation note",True,False,329,40,"orange mean line, blue 50% and 90% HDI bands, black observed points."
+12_robust_student_t_and_loo.ipynb,9,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,89,15,plot_population
+12_robust_student_t_and_loo.ipynb,10,code,Code,"Supplied setup, helpers, or implementation note",True,False,496,53,"def plot_population(dt, var, group=""posterior""):"
+12_robust_student_t_and_loo.ipynb,11,markdown,Code,"Supplied setup, helpers, or implementation note",True,False,63,9,plot_participants
+12_robust_student_t_and_loo.ipynb,12,code,Code,"Supplied setup, helpers, or implementation note",True,False,809,74,"def plot_participants(dt, group, var):"
+12_robust_student_t_and_loo.ipynb,13,code,Code,"Supplied setup, helpers, or implementation note",True,False,139,13,"participants = sorted(sleep[""Subject""].unique(), key=int)"
+12_robust_student_t_and_loo.ipynb,14,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,135,22,12.1 Difficult-to-predict observations
+12_robust_student_t_and_loo.ipynb,15,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,328,54,"We fit four standalone models here so the notebook does not depend on state from earlier notebooks: Gaussian and Student-t likelihoods, each with varying interc"
+12_robust_student_t_and_loo.ipynb,16,code,Questions,Question and expanded worked answer; absent from student version,False,False,1665,150,"coords = {""obs_id"": np.arange(len(sleep)), ""participant"": participants}"
+12_robust_student_t_and_loo.ipynb,17,code,Questions,Question and expanded worked answer; absent from student version,False,False,512,39,idatas = {}
+12_robust_student_t_and_loo.ipynb,18,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,199,29,These intervals use PSIS-LOO weighting rather than the ordinary full-data posterior predictive distribution. Large discrepancies help identify observations for 
+12_robust_student_t_and_loo.ipynb,19,code,Questions,Question and expanded worked answer; absent from student version,False,False,261,20,pc = azp.plot_loo_interval(
+12_robust_student_t_and_loo.ipynb,20,code,Questions,Question and expanded worked answer; absent from student version,False,False,262,20,pc = azp.plot_loo_interval(
+12_robust_student_t_and_loo.ipynb,21,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,121,16,12.2 Robust predictive calibration
+12_robust_student_t_and_loo.ipynb,22,code,Questions,Question and expanded worked answer; absent from student version,False,False,133,4,"azp.plot_loo_pit(idatas[""gaussian_slope""], var_names=[""Reaction""]);"
+12_robust_student_t_and_loo.ipynb,23,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,118,20,12.3 Predictive comparison
+12_robust_student_t_and_loo.ipynb,24,code,Questions,Question and expanded worked answer; absent from student version,False,False,310,36,loos = {
+12_robust_student_t_and_loo.ipynb,25,code,Questions,Question and expanded worked answer; absent from student version,False,False,29,1,azp.plot_compare(comparison);
+12_robust_student_t_and_loo.ipynb,26,code,Questions,Question and expanded worked answer; absent from student version,False,False,77,2,"azp.plot_khat(loos[""gaussian_slope""]);"
+12_robust_student_t_and_loo.ipynb,27,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,99,12,12.4 Prediction target
+12_robust_student_t_and_loo.ipynb,28,markdown,Questions,Question and expanded worked answer; absent from student version,False,False,328,55,"This comparison asks about prediction of another observation from an **already observed participant**, because rows—not whole participants—are left out. It is n"

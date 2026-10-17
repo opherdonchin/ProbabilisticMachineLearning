@@ -2,6 +2,18 @@
 
 Stage: teaching-notebook-authoring, revision. The instructor approved extracting only the three plotting functions, requested a first-notebook introduction, then selected visible read/run/answer boundaries. The current revision implements the instructor’s distinction between substantive teaching explanations and brief implementation notes, consolidating shared ideas across cells. This is a reviewable draft, with current local validation; full notebook/Scope acceptance, public distribution, hosted validation and learner-time evidence remain separate.
 
+## Instructor acceptance — 2026-10-17
+
+The instructor explicitly accepted the current notebook in chat after the
+Question 2.3 execution-order diagnosis: “All right. I got tired so I'm goingt to
+accept this. I think it's ok. What's next for L01?” The current solved/student
+cell sources match `e5c52f6`; saved instructor outputs are preserved. Content and
+pedagogy review is closed. Hosted Colab validation, public availability of the
+pinned helper revision and actual learner timing remain separate. This approval
+does not approve the full lecture Scope or assert a complete instructor clean
+run. The next instructor review is the selected loss-slide sequence, indexed in
+[the lecture state](../../Lectures/L01_Probability_Statistics/development_state.md).
+
 ## Knowledge report before revision
 
 ### Assume familiar
@@ -40,7 +52,7 @@ Three plotting functions live in `notebook_support/src/course_support/l01.py`, w
 
 The old instructor run was preserved in Git before replacement. The current solved source retains the instructor’s five executed code cells without errors; the inline-marker revision preserves the answer bodies, computational behavior and all saved outputs. The last full executed copy remains under ignored `build/notebooks/`. The generator clears student-template outputs/counts; the working student file retains the instructor’s saved execution state for unchanged code. The student placeholders are intentionally incomplete and are not claimed to run as a solved notebook.
 
-**Release blocker:** the pinned package commit remains local. The Colab install and GitHub source links need that revision published after explicit authorization, followed by a fresh hosted course-target run. Do not call this draft Colab-ready. Instructor review proceeds in ordinary chat, beginning with the opening and first read/run/answer sequence; later exercises/slides/Scope await their own review.
+**Release blocker:** the pinned package commit remains local. The Colab install and GitHub source links need that revision published after explicit authorization, followed by a fresh hosted course-target run. Do not call this draft Colab-ready. The current notebook is now instructor-accepted; the selected loss slides and full Scope await their own review in ordinary chat.
 
 ## Current student-prose editorial review
 
@@ -61,3 +73,17 @@ After actual successful teaching/completion, record these mathematical and compu
 The inline-answer-marker revision validates both schemas and all 18 immediate question/answer pairs. Both notebooks have 146 cells with the same type and ID sequence. Removing the inline marker text recovers each original answer body; Python syntax trees are unchanged, so the markers introduce only comments. The generated student notebook is exactly unchanged, including retained saved execution state. The obsolete marker-cell filter has been removed from the generator; it now transforms cells one-for-one. No computational code changed and no new full execution is claimed for this formatting-only revision.
 
 The student generator clears outputs and execution counts for every code cell, including supplied cells. Only code cells carry execution counts; both notebook schemas validate.
+
+## Delegated review process and bounded pilot
+
+The 2026-10-17 instructor discussion replaces numerical category targets with
+criteria for what students should construct and the support needed to do so.
+Those criteria and a separate blind-learner/informed-referee process are now in
+the existing notebook skills. The [process pilot](../../Lectures/L01_Probability_Statistics/reconciliation/notebook_review/report.md)
+records a fresh learner attempt and independent informed review of the opening
+through Question 2.2 only. Its five answers and local execution were correct;
+the referee recommends retaining that supported sequence and clarifying the
+evaluation-reference wording when notebook content is next revised. No notebook
+source or saved output changed. This partial pilot is not full-notebook review,
+hosted validation, learner timing or instructor acceptance. Raw attempts, input
+versions, operational intervention and review limitations remain linked there.

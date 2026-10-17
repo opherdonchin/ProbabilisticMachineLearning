@@ -47,6 +47,24 @@ Use the worked-solution handoff, the relevant lecture material, and the current 
 
 The second stage must not silently redesign the technical solution produced in Stage 1.
 
+## Delegated learning review
+
+For a substantial build/revision or an explicit independent-review request,
+coordinate [the notebook review process](../teaching-notebook-authoring/references/delegated-review.md)
+after a coherent student version exists. Separate its author, a fresh learner
+attempt with no author guidelines/answer key, and informed independent diagnosis.
+The coordinator may supply the informed review only when it did not author the
+candidate. Give the author the normal guidelines; give the learner only its
+profile, [learner protocol](../teaching-notebook-authoring/references/learner-review.md)
+and sequential student-visible material. Do not expose this orchestration skill
+or the author's rationale to the blind learner.
+
+Keep raw attempts and versioned findings. Route repairs through the author;
+return consequential pedagogical changes to the instructor in chat. A simulated
+learner pass does not establish student learning, human completion time, technical
+correctness, hosted execution or instructor approval. Minor fixes need only the
+affected checks, not a new full review cycle.
+
 ## Order of authority
 
 When constraints conflict, use this order:
@@ -96,4 +114,7 @@ A full notebook build is complete only when:
 - unfamiliar syntax is scaffolded according to the student-knowledge file;
 - prediction/manipulation questions are used where they can be checked directly;
 - the student notebook is generated from the solved notebook rather than independently authored;
+- when delegated review applies, its actual learner coverage, independent informed
+  findings, author response and unresolved instructor decisions are recorded;
+  partial/pending review does not count as a completed full-notebook review;
 - repository notebook-runtime checks have been run or any remaining hosted-Colab check is explicitly identified.

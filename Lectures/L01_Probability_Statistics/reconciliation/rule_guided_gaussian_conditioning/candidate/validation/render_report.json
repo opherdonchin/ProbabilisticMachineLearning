@@ -1,0 +1,15 @@
+{
+  "source": "Lectures/L01_Probability_Statistics/reconciliation/rule_guided_gaussian_conditioning/candidate/slide_deck.typ",
+  "sha256": "37a35df9b236649f094ed3f65fbbefb062f3d58c1529e8ffab6845fd75399979",
+  "warnings": [],
+  "pages": {
+    "handout": 17,
+    "presentation": 33
+  },
+  "previews": [
+    "from-a-joint-gaussian-to-a-conditional-density-5c6bd966-handout-1.png",
+    "from-a-joint-gaussian-to-a-conditional-density-5c6bd966-presentation-1.png"
+  ],
+  "visual_review": "pending",
+  "status": "mechanical-pass"
+}

@@ -1,0 +1,160 @@
+{
+  "slides": [
+    {
+      "number": 1,
+      "title": "Gaussian conditioning by block elimination",
+      "handout_page": 1,
+      "presentation_pages": [
+        1
+      ]
+    },
+    {
+      "number": 2,
+      "title": "From a joint Gaussian to a conditional density",
+      "handout_page": 2,
+      "presentation_pages": [
+        2
+      ]
+    },
+    {
+      "number": 3,
+      "title": "The joint density has a quadratic and a normalizing factor",
+      "handout_page": 3,
+      "presentation_pages": [
+        3,
+        4
+      ]
+    },
+    {
+      "number": 4,
+      "title": "The observed covariance block is invertible",
+      "handout_page": 4,
+      "presentation_pages": [
+        5,
+        6
+      ]
+    },
+    {
+      "number": 5,
+      "title": "Choose the row subtraction to cancel the cross block",
+      "handout_page": 5,
+      "presentation_pages": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "number": 6,
+      "title": "The matching column subtraction leaves a block diagonal matrix",
+      "handout_page": 6,
+      "presentation_pages": [
+        10,
+        11
+      ]
+    },
+    {
+      "number": 7,
+      "title": "The remaining covariance block is positive definite",
+      "handout_page": 7,
+      "presentation_pages": [
+        12,
+        13
+      ]
+    },
+    {
+      "number": 8,
+      "title": "The same subtraction produces the centered residual",
+      "handout_page": 8,
+      "presentation_pages": [
+        14,
+        15
+      ]
+    },
+    {
+      "number": 9,
+      "title": "The eliminated covariance gives the inverse in the density",
+      "handout_page": 9,
+      "presentation_pages": [
+        16,
+        17
+      ]
+    },
+    {
+      "number": 10,
+      "title": "Use the eliminated inverse in the quadratic",
+      "handout_page": 10,
+      "presentation_pages": [
+        18,
+        19
+      ]
+    },
+    {
+      "number": 11,
+      "title": "Block diagonal multiplication separates the quadratic",
+      "handout_page": 11,
+      "presentation_pages": [
+        20,
+        21
+      ]
+    },
+    {
+      "number": 12,
+      "title": "The same elimination also splits the determinant",
+      "handout_page": 12,
+      "presentation_pages": [
+        22,
+        23
+      ]
+    },
+    {
+      "number": 13,
+      "title": "Dimensions and determinants split the normalizing factor",
+      "handout_page": 13,
+      "presentation_pages": [
+        24,
+        25
+      ]
+    },
+    {
+      "number": 14,
+      "title": "Both parts combine into normalized Gaussian factors",
+      "handout_page": 14,
+      "presentation_pages": [
+        26,
+        27
+      ]
+    },
+    {
+      "number": 15,
+      "title": "Integrating out the residual identifies the marginal",
+      "handout_page": 15,
+      "presentation_pages": [
+        28,
+        29
+      ]
+    },
+    {
+      "number": 16,
+      "title": "Dividing by the marginal gives the conditional Gaussian",
+      "handout_page": 16,
+      "presentation_pages": [
+        30,
+        31
+      ]
+    },
+    {
+      "number": 17,
+      "title": "Zero cross-covariance removes the observation",
+      "handout_page": 17,
+      "presentation_pages": [
+        32,
+        33
+      ]
+    }
+  ],
+  "pdf_hashes": {
+    "slide_deck.pdf": "4c67a9de3f709381e8f3f8ea5992bc4d361ee307e9feeb5d08af99cc39da64d3",
+    "slide_deck_presentation.pdf": "c53aeaf2fbec205a1ac4bf78dcc9904fff1eafe397d334c7ec96782067d54321"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "method": "Deterministic floating-point specializations, not a general proof",
+  "numpy": "2.0.2",
+  "all_checks_pass": true,
+  "candidate_source_sha256": "37a35df9b236649f094ed3f65fbbefb062f3d58c1529e8ffab6845fd75399979",
+  "cases": [
+    {
+      "dimensions": [
+        1,
+        1
+      ],
+      "absolute_errors": {
+        "T_inverse_both_orders": 0.0,
+        "row_and_column_elimination": 2.472504535260452e-17,
+        "inverse_congruence": 2.7755575615628914e-17,
+        "quadratic_separation": 0.0,
+        "log_determinant_factorization": 1.942890293094024e-16,
+        "fully_normalized_density_factorization": 0.0
+      },
+      "minimum_eigenvalues": {
+        "Sigma": 1.0211164299756088,
+        "Sigma22": 1.0402618559256043,
+        "S": 5.925130163581574
+      }
+    },
+    {
+      "dimensions": [
+        2,
+        3
+      ],
+      "absolute_errors": {
+        "T_inverse_both_orders": 0.0,
+        "row_and_column_elimination": 3.460439512807484e-16,
+        "inverse_congruence": 1.1102230246251565e-16,
+        "quadratic_separation": 1.1102230246251565e-16,
+        "log_determinant_factorization": 1.7763568394002505e-15,
+        "fully_normalized_density_factorization": 1.7763568394002505e-15
+      },
+      "minimum_eigenvalues": {
+        "Sigma": 1.0053853798856853,
+        "Sigma22": 1.2452002399393591,
+        "S": 1.4412869703256415
+      }
+    },
+    {
+      "dimensions": [
+        3,
+        2
+      ],
+      "absolute_errors": {
+        "T_inverse_both_orders": 0.0,
+        "row_and_column_elimination": 5.499537977118694e-16,
+        "inverse_congruence": 1.1102230246251565e-16,
+        "quadratic_separation": 4.440892098500626e-16,
+        "log_determinant_factorization": 8.881784197001252e-16,
+        "fully_normalized_density_factorization": 0.0
+      },
+      "minimum_eigenvalues": {
+        "Sigma": 1.0829967271446501,
+        "Sigma22": 2.8847092539926193,
+        "S": 1.3553824912053385
+      }
+    },
+    {
+      "dimensions": [
+        4,
+        4
+      ],
+      "absolute_errors": {
+        "T_inverse_both_orders": 0.0,
+        "row_and_column_elimination": 2.220446049250313e-15,
+        "inverse_congruence": 2.220446049250313e-16,
+        "quadratic_separation": 1.7763568394002505e-15,
+        "log_determinant_factorization": 0.0,
+        "fully_normalized_density_factorization": 0.0
+      },
+      "minimum_eigenvalues": {
+        "Sigma": 1.0432805423575087,
+        "Sigma22": 1.6688870896878836,
+        "S": 1.3584538437385862
+      }
+    }
+  ]
+}

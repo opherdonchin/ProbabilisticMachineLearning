@@ -1,0 +1,125 @@
+I want you to conduct an experiment in **automatic, rule-guided mathematical slide design** for the *Probabilistic Machine Learning: Advanced Topics* course.
+
+**The objective is to produce the best initial mathematical exposition you can, autonomously, before receiving feedback from the instructor.**
+
+We have developed a multi-stage slide-production system, but its mathematical slides have not always made the reasoning as clear, economical, and easy to follow as we'd like. The slides are generally mathematically correct, but the presentation can obscure important operations, introduce unnecessary notation, or require students to reconstruct connections that should be made visible.
+
+Rather than addressing individual criticisms, we want to test whether explicitly applying existing mathematical-presentation principles can produce a substantially better initial design.
+
+## 1. Recover the repository and experiment instructions
+
+Repository:
+
+https://github.com/opherdonchin/ProbabilisticMachineLearning
+
+Working branch:
+
+`lecture/l01-delivery-readiness`
+
+The experiment instructions were added in commit `74adf46`.
+
+First check your local repository, current branch, working tree, and remote state. Fetch the latest remote state and safely incorporate the experiment files into your working environment without overwriting or resetting anyone's work.
+
+The two documents are in:
+
+`Lectures/L01_Probability_Statistics/reconciliation/rule_guided_gaussian_conditioning/`
+
+Read both documents completely:
+
+- `gaussian_conditioning_rule_guided_design_experiment.md`
+- `gaussian_conditioning_codex_prompt.txt`
+
+The Markdown document defines 15 numbered mathematical-exposition rules (R01–R15), explains their sources, and specifies a rule-application ledger.
+
+**Important override:** Both documents were originally written for an experiment with instructor consultation during design. That is NOT what we want in this first run. Ignore instructions to pause for instructor consultation or approval. Make the design decisions autonomously, document their rationale, and finish the complete initial candidate before presenting it to the instructor.
+
+Retain the mathematical scope, exposition rules, experiment isolation, validation requirements, and decision-provenance principles.
+
+## 2. Understand the mathematical task
+
+The target is the **separate recorded proof of the Gaussian conditioning formulas** in Lecture 1.
+
+This is distinct from the live lecture, which already develops Gaussian conditioning through an independent-residual argument.
+
+The recorded proof should develop the full block-matrix derivation of the conditional Gaussian distribution. In particular, the mathematics must establish the conditional mean and covariance, justify the relevant positive-definiteness and invertibility conditions, explain the block elimination and quadratic-form decomposition, and complete the factorization of the normalized Gaussian density, including its determinant and normalization factors.
+
+The authoritative textbook source is Murphy, *Probabilistic Machine Learning: Advanced Topics*, Section 2.3.1.5, together with relevant preceding material.
+
+Inspect the current recording material, the students' mathematical preparation as established in the live lecture, and the repository's existing slide-design and authoring conventions.
+
+Preserve the agreed mathematical purpose and depth, but do not assume the existing recording's organization, notation, slide layouts, or reveal structure are optimal.
+
+## 3. Produce a new rule-guided initial design
+
+Use R01–R15 proactively to design a coherent mathematical development from beginning to end.
+
+In particular, pay attention to:
+
+- establishing the mathematical question before introducing machinery;
+- introducing only the notation that contributes to understanding;
+- making consequential mathematical transformations and their justifications visible;
+- keeping related equations, matrix operations, and cancellations visually connected;
+- using layout, alignment, and signaling to communicate mathematical relationships;
+- introducing progressive reveals when they support the reasoning;
+- balancing mathematical detail against visual and cognitive load;
+- making the meaning of the resulting equations clear.
+
+These are not merely criteria for reviewing the finished slides. They should actively influence how you construct the mathematical explanation.
+
+The rules are guidelines, not inviolable constraints. When they conflict, use mathematical and pedagogical judgment and document meaningful exceptions.
+
+**Do not simply repair previously criticized slides.** We want a genuinely rule-driven initial design of the entire proof. You may use existing materials as sources and precedents, but don't mechanically reproduce them.
+
+You have discretion over slide organization, composition, local explanatory annotations, supporting diagrams, notation choices consistent with the course, and reveal structure, subject to the agreed mathematical scope.
+
+## 4. Work autonomously through the complete first pass
+
+For this initial experiment, do not request instructor feedback on alternative slide designs.
+
+When you encounter a consequential design choice, evaluate the alternatives yourself, choose the one you consider strongest, and record the reasoning in your design ledger.
+
+Do not pause after producing an outline, partial design, or representative slides. Continue through a complete candidate.
+
+Produce actual Typst/Touying slides using the course's visual language and infrastructure. Compile the candidate in presentation and handout modes and inspect the rendered slides, including meaningful intermediate reveal states.
+
+Keep the experiment isolated from the production lecture and recording files. Do not modify shared skills or conventions, and do not replace accepted artifacts. Do not merge or push experimental results without subsequent authorization.
+
+Only interrupt me if you encounter a genuine blocker that prevents safe or mathematically responsible progress and cannot be resolved from the available sources.
+
+## 5. Document how the rules influenced the design
+
+Create a **selective rule-application ledger** during design.
+
+For consequential design decisions, document:
+
+- The slide or reveal where the decision appears.
+- The relevant numbered rule or rules.
+- The actual design decision.
+- Why it should improve the mathematical explanation.
+- Any meaningful alternative considered.
+- Any deliberate exception to a rule.
+- Whether the intended effect is actually visible in the rendered slide.
+
+Keep this record useful for debugging. Avoid a ceremonial checklist claiming that every rule has been satisfied.
+
+The goal is to make it possible for us to distinguish failures of rule selection, rule application, rendering, and the underlying mathematical exposition.
+
+## 6. Deliver the baseline for instructor evaluation
+
+When the complete first-pass design is ready, present:
+
+1. The complete candidate slide deck, including a convenient way to inspect its presentation and handout PDFs.
+2. A compact summary of the mathematical argument and how it is organized.
+3. The selective rule-application ledger.
+4. A short account of the most consequential autonomous design decisions and alternatives you rejected.
+5. Any known mathematical, visual, or technical limitations, clearly distinguished from completed validation.
+
+Do not claim that the slides are pedagogically successful merely because they compile or because an expert reviewer can reconstruct the proof.
+
+Also, do not begin an extended cycle of self-criticism and redesign in pursuit of a hypothetical perfect result. Perform normal technical and visual validation, fix clear defects, and then freeze the coherent first-pass candidate for comparison.
+
+**The point is to obtain an independently generated baseline before the instructor begins directing revisions.**
+
+Once I have reviewed the resulting slides, we will discuss what worked, what didn't, and whether the numbered rules helped. Those observations may eventually inform our permanent slide-development process, but that is a separate decision.
+
+Please begin now, using the repository files and authoritative mathematical sources. Work through the full experiment autonomously and return when the initial candidate and accompanying documentation are ready.

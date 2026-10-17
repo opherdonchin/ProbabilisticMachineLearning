@@ -1,27 +1,23 @@
 # Recording production report
 
-**Status:** provisional production build; instructor review remains open.
+**Status:** revised production build; instructor review remains open.
 
-## Inputs and outputs
+## Sources and outputs
 
-- Design source: `slide_design.typ`, SHA256 `b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4`.
-- Production source: `slide_deck.typ`, SHA256 `2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d`.
-- Handout: `../slide_deck.pdf`, SHA256 `ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51`.
-- Presentation: `slide_deck_presentation.pdf`, SHA256 `7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205`.
-- Geometry and reveal validation: `render_report.json`.
+- Revised production design: `../slide_design.typ`, SHA256 `8ae54b1e7b387ff1c16b4559cc0487ddfb33dabd8c1b07705d9046d690c1b61a`.
+- Production source: `../slide_deck.typ`, SHA256 `d6fb9b38baea584c09c493ad8d8b6c8af3585029f6f52764330653fe9c0ffa81`.
+- Handout: `../slide_deck.pdf`, SHA256 `decf5b79dcdc4d9b6b24ae4238b9c706b756d907fc810bf1bd340732a9a99628`.
+- Presentation: `slide_deck_presentation.pdf`, SHA256 `8e2519dee6676aefc7ea308b6377840649e9f7ad8a53cccd4e24ef8e370b92fb`.
+- Machine render output and warnings: `render_report.json`.
 
-## Mechanical and visual checks
+## Validation and review
 
-The complete deck compiles to 20 handout pages and 47 presentation states. The math-attachment checker reports no possible run-on attachments. Extracted handout text contains no leaked Typst helper syntax. The render report has no compile, font, or overflow warnings.
+The revised deck has one continuous proof section, with no section divider or summary slide. It contains a title and 17 teaching slides. The handout has 18 pages; the presentation has 42 reveal states. The title retains recording number `L01-R01` and the requested subtitle.
 
-The render report records eight “Final reveal differs from handout” notices. These are expected transient entry-emphasis backgrounds on the newly revealed content; the equations and their geometry match the final handout. No extra click was introduced to remove the emphasis. The eight titles and raw warning strings are preserved in `render_report.json`.
+The full handout and presentation compile with Typst 0.15.0. The math-attachment checker reports no possible run-on attachments. Extracted handout text contains no leaked Typst helper syntax or the rejected labels “proof obligation,” “Prepared live,” and “normalizer.” The renderer reports no compile, font, or content-overflow warning. Its 16 remaining warnings are final-reveal/handout pixel differences from the transient emphasis on newly revealed content; all equations and layout remain present in both.
 
-All 47 presentation states were reviewed in contact sheets. Full-size render checks covered the full block-elimination and normalized-factorization algebra, including handout pages 5–11 and 14–20, with targeted full-size presentation states for the inverse, covariance congruence, quadratic, normalized factors, and marginal integration. The earlier overlap on pages 5, 6, 7, 11, and 16 is resolved by giving each multiline equation its own vertically padded block; primary proof mathematics remains at normal size. No overlap, clipped equation, or unintended state loss was observed. Contact sheets are included here as visual coverage records.
+Every handout page and every presentation reveal was visually inspected using the current full-size renders and contact sheets (`pdf-states-01.jpg`–`02.jpg`, `presentation-01.jpg`–`05.jpg`). This included the formula-spacing and dense algebra slides. No clipping, overlap, unintended state loss, or tight formula stacking was observed. The row-elimination slide's height warning was resolved by removing a redundant intermediate matrix result while retaining the multiplication, explicit cancellation `BH-BH=0`, and resulting covariance block.
 
-Textual and mathematical fidelity checks found no missing proof step in the reviewed source. R2.7 describes the conditional mean as affine in the observed block and says it can depend on the observation, since the coefficient may vanish. The proof retains complete Gaussian normalizers, the strict-positive-definiteness argument, integration to identify the marginal, and division by the positive marginal to identify the conditional. The algebra and reveal ordering received an earlier independent audit. A fresh independent rendered review of this frozen source passed: see `/tmp/l01-recording-math-review/rendered/final-review/report.md`. The reviewer checked source `2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d`, design `b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a`, handout `ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51`, and presentation `7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205`; all 20/47 pages/states, the prior collisions, final text geometry/content identity, and all 27 transitions passed.
+The revised argument labels the lecture's quadratic split as a target to prove; states why the cross-covariance cancellation is chosen and why `H` is invertible; connects the inverse covariance to the quadratic; carries the proved split into the exponential product; and accounts for determinant and dimension factors before identifying the normalized conditional by integration and division. Formula rows use the course's explicit math spacing API. The proof retains the positive-definiteness argument, full Gaussian coefficients, determinant identity, marginal integration, and division by the positive marginal. The final slide interprets how the conditional mean changes with the observation and keeps the model's exactness regime clear.
 
-## Decisions and limits
-
-The design owner accepted R1.1 and R2.1 as title-plus-subtitle section dividers. Their repeated prompt/recall cards were omitted without changing the 20-unit sequence or removing new mathematics; the subtitle and short-title metadata remain. This is a production implementation decision recorded by the design owner, not instructor approval of the recording.
-
-This is a provisional standalone recording deck. No teaching-time measurement has been made, and it is not final approval of the recording pedagogy or timing. No speaker notes were authored.
+A separate sequence/meaning and reveal audit passed against this source hash. The reviewer also authored `slide_organization.md`, so this is a distinct stage review rather than a blind review. The reviewer found no material semantic or readability concern; all handout/final-state text matched, every earlier reveal was contained in the final state, and no formulas were lost. The reviewer’s scoped report and supporting evidence are available in [the integrated review](../../../reconciliation/delivery_finalization/recording_sequence_review/report.md), with `checks.json`, `title-order.json`, and `review_checks.py` alongside it. Instructor review of the revised recording and a measured rehearsal remain open; no duration claim is made. No speaker notes were authored.

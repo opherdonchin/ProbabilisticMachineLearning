@@ -1,42 +1,65 @@
-# Provisional recording brief: quadratic separation of a Gaussian
+# L01-R01 — provisional recording brief
 
-The instructor authorized producing a provisional deck for later review in the
-2026-10-17 “Go ahead” to the unattended-work package. The full proof’s separate
-recording allocation and required/examinable status were already accepted;
-detailed extent and final recording acceptance remain open. The existing
-`lecture_scope.md` Part 2 supplies the mathematical contract.
+**Title:** Quadratic separation of a Gaussian.
+**Subtitle:** A proof of the formula for the conditional density of a Gaussian.
 
-Purpose: complete the second proof route to Gaussian conditioning by proving
-the normalized density factorization, rather than relying on the live
-independent-residual argument. Start after live block notation, residual
-conditioning and Schur-complement interpretation, with prior matrix/determinant
-knowledge. The live lecture and notebook stand without watching this recording.
+The separate recording allocation and required/examinable content are accepted.
+The instructor's 2026-10-17 review authorizes revising the complete presentation
+for clarity and changes the recording convention: **exactly one section, with no
+section-heading or section-summary slides**. This overrides the ordinary live
+lecture-section bookends. Preserve the full mathematical depth; final acceptance
+of this revised realization and a measured duration remain open.
 
-Required treatment: derive block elimination and its inverse/congruence relation,
-justify positive definiteness of both diagonal factors, split the quadratic form,
-and split determinant/dimension normalizers to establish p(x1,x2)=p(x1|x2)p(x2).
-Use H=Sigma22, B=Sigma12 H^{-1}, S=Sigma11-B H B^T and T=[[I,-B],[0,I]]
-consistently with the owning Scope. Verify exact Murphy Book 2 edition and source
-passages; distinguish the course’s determinant completion from the source.
+The task is inference about a missing block under a supplied joint Gaussian.
+Starting from the live lecture's block notation, conditional law and residual
+interpretation, prove that the joint density equals the product of the stated
+conditional Gaussian and observed-block marginal Gaussian. Do not use the live
+residual-independence proof as a premise of this second proof.
 
-Boundaries: no Woodbury proof, second Schur orientation, information-form unit,
-new dataset/notebook, speaker notes, viewing monitoring or promised exam question.
-A proof-only recording needs no unrelated application. Each section ends with a
-retrospective summary. Use current course design/authoring conventions and the
-accepted live deck as visual precedent. The 20–30-minute scope estimate is a
-provisional planning range, not measured human timing or an approved duration.
+Use $H=\Sigma_{22}$, $B=\Sigma_{12}H^{-1}$,
+$S=\Sigma_{11}-BHB^T$ and
+$T=\begin{pmatrix}I&-B\\0&I\end{pmatrix}$ consistently with Scope. Preserve
+positive-definiteness justifications, reversible block elimination, inverse
+congruence, residual/observed quadratic separation, determinant and dimension
+factors, integration to identify the marginal, and division to identify the
+conditional. The coefficient before an exponential is part of the density;
+proving only the exponential identity is incomplete. The nonsingular Gaussian
+model is the validity regime, not a claim that the model fits every task.
 
-Produce one coherent proposed route and a standalone recording deck through the
-existing Section Design → Organization → Design → Authoring stages. Coordinator
-may settle routine provisional choices and test feasibility; consequential
-changes stay visible for final instructor review.
+After the title, use an orientation with **From the lecture** and **To prove here**
+alongside key starting conditions. Name the joint quadratic and explain what its
+residual and observed contributions mean before the block calculations. Explain
+the choice $BH=\Sigma_{12}$ and why the observed block must be invertible, then
+justify that inverse. Keep the destination visible and put the operation and
+reason near each algebraic step. Replace “Prepared live,” “proof obligation” and
+unexplained “normalizer” with direct mathematical language. Investigate tight
+vertical formula spacing as a recurring production issue; readability must not
+depend on compressing explanations or shrinking formulas.
 
-## L01-RECORDING-CONTRACT — ready for instructor review
+The revised [Section Design](section_design.md) assigns the one-section contract;
+[Organization](slide_organization.md) assigns the provisional continuous sequence.
+[The derivation](math_derivation.md) remains the complete checking source,
+including exact source records and course-completion attribution. Design and
+Authoring must realize the same revised argument and inspect actual renders.
+Agreement among specialists does not grant instructor approval.
 
-**Question:** accept the concrete two-section proof route in the [provisional handout](slide_deck.pdf) for the separate recording, subject to a timed rehearsal? Its proof allocation and required/examinable status are already accepted; this question concerns the completed detailed realization.
+No Woodbury proof, second Schur orientation, information-form unit, new
+dataset/notebook, speaker notes or additional application. The live residual/loss
+proofs and notebook remain unchanged. The recording has no notebook handoff,
+viewing monitoring or promised exam question. The earlier **20–30-minute range is
+unmeasured**; no fixed slide count or duration is required.
 
-**Recommendation:** retain this route: first justify block elimination, positive definiteness and quadratic separation; then prove determinant/dimension normalization and identify marginal/conditional laws by integration and division. This supplies the full proof without relying on the live independence argument. The [derivation](math_derivation.md) gives a connected reading version, while [Section Design](section_design.md) and [Organization](slide_organization.md) make the teaching sequence explicit.
+## L01-RECORDING-CONTRACT — revised presentation pending review
 
-If the proposed extent is too long after rehearsal, ask for a specific tighter presentation preserving those proof obligations. Merely removing the normalizer or law-identification steps would leave the promised density proof incomplete. A different proof route or reduced treatment returns to Scope rather than being silently implemented. The 20–30-minute planning range is unmeasured; slide count does not establish it.
+Owner: instructor/coordinator. Review whether the concrete revised explanation is
+understandable and suitable for recording, followed by timed rehearsal. The
+mathematical allocation and examinable content do not need to be reapproved.
+Review the regenerated [deck](slide_deck.pdf) against the revised planning
+artifacts once Design/Authoring checks are complete; a successful compile or an
+earlier review of a different realization does not settle this review.
 
-Owner: instructor/coordinator. Priority: L01 delivery next week. Final capture depends on this acceptance and rehearsal. Independent live-deck checks and notebook release preparation can proceed separately. No video, publication, full Scope approval or viewing-monitoring requirement is implied by the draft.
+If rehearsal reveals excessive duration, request a tighter explanation preserving
+the complete proof before considering a Scope change. Do not remove the density
+coefficient or integration/division steps merely to meet an estimate. Capture and
+publication remain dependent on final acceptance and rehearsal; independent live
+deck checks and notebook preparation can proceed separately.

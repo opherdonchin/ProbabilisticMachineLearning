@@ -3,403 +3,413 @@
 #set page(paper: "a4", margin: (x: 12mm, y: 8mm))
 #set text(size: 8.8pt)
 #set par(leading: 0.52em)
+#set document(title: "L01-R01 — Gaussian conditional density: revised design")
 
-#set document(title: "Quadratic separation — provisional slide design")
-
-// PROVISIONAL BUILD: instructor-authorized unattended package, 2026-10-17.
-// Organization SHA256: 05beb9d595435ecfbb71240251491d801d3e7c55a488e5090c2940654e2d753f.
-// Not instructor approval, production validation, or a measured recording duration.
-// Provisional revision: R1.1/R2.1 mapped to title/subtitle section dividers after actual Authoring backpressure; no new mathematics or slide count/order changed.
-// Fixed sequence: P0, R1.1–R1.11, R2.1–R2.8. No speaker notes.
-// Covariance convention: cal(N)_k(v;m,C), with C a covariance, not a scale.
+// Instructor-directed revision, 2026-10-17. Reviewable proposal, not acceptance.
+// One recording section; no section divider or section-summary slides.
+// The instructor's recording rule explicitly overrides the general summary rule.
+// Sequence: P0–P17 in the revised slide_organization.md. No speaker notes.
+// Separate rows below are semantic groups; production calibrates generous spacing.
+#let rows(..items) = stack(spacing: 0.7em, ..items.pos())
 
 #section-design-notes(
-  title: [Recording design contract — PROVISIONAL],
-  purpose: [Explain the exact normalized conditional law for a missing block under a supplied joint Gaussian. This separate proof supplements the prepared live residual argument.],
-  entry: [Live block notation, Gaussian density and centered-residual interpretation; prior matrix algebra, positive definiteness, determinants and integration. The live independence proof is never a premise here.],
-  endpoint: [Prove the normalized equality and identify its factors by integration and a positive-density ratio.],
-  arc: [P0 introduces the recording; R1 proves valid elimination and quadratic separation; R2 completes normalization and identifies the probability laws. Twenty slides in the supplied order.],
-  anchors: [Use $H=Sigma_22$, $B=Sigma_12 H^(-1)$, $S=Sigma_11-B H B^T$, $u=x_2-mu_2$, $r=x_1-mu_1-B u$. Matrices retain their exact order.],
-  summary-brief: [Each section closes with its established objects and retrospective takeaways. R2.8 closes the recording.],
-  continuity: [Inspected live handout 48: dominant conditional formula with adjacent mean proof, intrinsic reasons and separate lower key points. Handout 52: conditional/residual objects retain explicit centering maps. Carry forward this hierarchy; new algebra receives normal proof emphasis, recalled items stay subordinate.],
-  constraints: [All slide titles/count/order are provisional upstream commitments preserved here. No timing claim. No new dataset, notebook, live-deck edit or alternate proof. Final acceptance and rehearsal remain instructor/coordinator matters. Source: Murphy Book 2 (2023), online Dec. 10, 2025, §2.3.1.5, printed pp. 25–27; elimination, SPD and explicit normalization completion are course constructions. See math_derivation.md for exact provenance.],
+  title: [L01-R01 — one continuous density proof],
+  purpose: [Prove the conditional density used in the lecture from the supplied joint Gaussian density.],
+  entry: [Block Gaussian notation, conditional mean/covariance and centered residual from the lecture; matrix algebra, strict positive definiteness, determinants, density normalization. The lecture's residual-independence proof is not a premise of this argument.],
+  endpoint: [$ p(x_1|x_2)=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S) $, identified by integrating and dividing a proved normalized joint-density product.],
+  arc: [Orientation → identify the exponential and its coefficient → choose and justify the residual coordinates → eliminate the two covariance cross blocks → prove positivity and the inverse identity → calculate the two quadratic terms → split the exponential, determinant and dimension factors → integrate and divide → interpret observation dependence.],
+  anchors: rows(
+    [$ H=Sigma_22, quad B H=Sigma_12 $],
+    [$ u=x_2-mu_2, quad r=x_1-mu_1-B u $],
+    [$ Q=(x-mu)^T Sigma^(-1)(x-mu) $],
+    [The map $T$ subtracts the predicted deviation. $D=T Sigma T^T$ is block diagonal in the residual/observed coordinates. $C$ is the coefficient before the density's exponential.],
+  ),
+  summary-brief: [No summary slide: explicit instructor recording convention. P17 interprets the established mean and covariance as its own teaching move.],
+  continuity: [Inspected rendered L01 handout p.48: conditional formula beside a labeled mean proof; the zero-covariance step retains its joint-Gaussian warrant. Inspected squared-loss proof source: carried-forward expansion, local operation “Take conditional expectation”, separately labeled cross-term and residual energy, interpretation in a lower key-point slot. Here, preserve operations and warrants beside equations and give useful meaning in every reveal state.],
+  constraints: [All 18 units require production rebuild. Object kinds describe semantics: they do not require bordered production cards around every proof step. Prefer plain mathematical regions with nearby operation labels; reserve borders for a genuine orientation/comparison or key-point role. In production use math-rows only for standalone equations, never prose containing inline mathematics; prose must keep its inline symbols within the sentence. Pass raw interpretation content to content-block key-points, which already supplies its wrapper. P0 preserves the instructor's L01-R01 number and exact subtitle. No notebook or live-proof relocation. Keep full SPD, inverse, quadratic, determinant/dimension and integral/ratio arguments. No unexplained “normalizer”, “proof obligation”, or “Prepared live”. Formula rows require generous vertical separation, including recall cards; do not pack them through markup line breaks or shrink them to preserve a count. Timing remains unmeasured. Exact source record: math_derivation.md, Murphy Book 2 (2023), online December 10, 2025, §2.3.1.5, pp.25–27; explicit elimination/SPD/normalization completion is course construction.],
 )
 
 #slide-design(
-  title: [Quadratic separation of a Gaussian], section: [P0 · Recording title],
-  teaching-move: [Locate this separate density proof after the prepared live Gaussian-conditioning argument.],
-  cards: (card([A complete density proof of Gaussian conditioning.], label: "subtitle"),),
-  key-points: (key-points([Under a supplied joint Gaussian, why is the missing-block conditional exactly normalized?], label: "task"),),
-  layout: layout-stack(items: ("subtitle",), key-points: "task", dominant: "subtitle"),
-  reveal: reveal-static(("subtitle", "task")),
-  constraints: [A recording title, without a new result or practical-competence claim.],
-)
-
-#section-design-notes(
-  title: [R1 — Block elimination separates the joint quadratic],
-  purpose: [Derive a reversible covariance elimination and use its inverse congruence to separate the quadratic.],
-  entry: [The supplied joint covariance is symmetric positive definite. The Gaussian density and live residual interpretation are available; the desired conditional is not a proof premise.],
-  endpoint: [$ (x-mu)^T Sigma^(-1)(x-mu)=r^T S^(-1)r+u^T H^(-1)u $. Every inverse has been justified; normalized factorization is still unproved.],
-  arc: [Density obligations → observed-block positivity → reversible elimination → two block products → residual positivity → inverse order → residual coordinates → split quadratic.],
-  anchors: [$T=mat(I,-B;0,I)$; $D=T Sigma T^T=mat(S,0;0,H)$. Identity/zero blocks match $d_1,d_2$. Transposes and inverse order remain explicit.],
-  summary-brief: [Select congruence, block positivity and the quadratic split. Omit the intermediate inverse display from the recap because it already received its own derivation.],
-  continuity: [Recall cards cite actual live or earlier recording objects. Block cancellations and SPD/inverse arguments are newly taught proof objects. Local labels identify operations; interpretation occupies a separate key-point slot.],
-  constraints: [R1.3 and R1.10 are relatively dense; maintain readable normal mathematics and all warrants. Authoring may rebalance subordinate context, but must return any requested title/count/order change.],
-)
-
-#slide-design(
-  title: [Block elimination separates the joint quadratic], section: [R1.1],
-  teaching-move: [Introduce the section purpose through its title and subtitle.],
-  cards: (card([Proving the algebra behind Gaussian conditioning], label: "subtitle"),),
+  title: [Quadratic separation of a Gaussian], section: [P0 · L01-R01],
+  teaching-move: [Identify the recording and its concrete purpose.],
+  cards: (card([A proof of the formula for the conditional density of a Gaussian], label: "subtitle"),),
   layout: layout-stack(items: ("subtitle",), dominant: "subtitle"),
   reveal: reveal-static(("subtitle",)),
-  rationale: [Production backpressure resolved provisionally: The former opening question and key point repeated the section objective and introduced no mathematical object. The exact title/subtitle preserves the section opening within its existing slide.],
-  constraints: [Render this unit as the course section divider. The subtitle object is section metadata, not an extra content card or additional slide. Full title as above; subtitle: Proving the algebra behind Gaussian conditioning; abbreviated footer: Quadratic separation. No theorem answer or new argument is introduced here.],
+  constraints: [Production title metadata number is L01-R01. Exact subtitle as written. No section title follows this slide.],
 )
 
 #slide-design(
-  title: [The joint density sets two proof obligations], section: [R1.2],
-  teaching-move: [Recall the complete joint density and distinguish exponent from normalizer.],
+  title: [From the lecture to this proof], section: [P1],
+  teaching-move: [Recall the supplied model on the left, state the density result to justify on the right, and orient the proof.],
   cards: (
-    recall-card([$ X=mat(X_1;X_2), quad mu=mat(mu_1;mu_2), quad Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22)=Sigma^T succ 0 $\
-$ X_i,mu_i in RR^(d_i), quad Sigma_(i j) in RR^(d_i times d_j), quad d=d_1+d_2, quad d_i >= 1 $], label: "model", title: [Supplied block Gaussian], from: [Prepared live: Gaussian blocks and density]),
-    card([$ p(x_1,x_2)=cal(N)_(d)(x;mu,Sigma) $\
-$ = underbrace((2 pi)^(-d/2)(det Sigma)^(-1/2), "normalizer") exp(-1/2 underbrace((x-mu)^T Sigma^(-1)(x-mu), "quadratic")) $], label: "density"),
+    recall-card(rows(
+      [$ X=mat(X_1;X_2) tilde cal(N)_(d)(mu,Sigma) $],
+      [$ mu=mat(mu_1;mu_2), quad Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22) $],
+      [$ Sigma=Sigma^T succ 0, quad d=d_1+d_2 $],
+    ), label: "lecture", title: [From the lecture], from: [L01: Gaussian blocks, conditioning and centered residual]),
+    card(rows(
+      [$ p(x_1|x_2)=cal(N)_(d_1)(x_1;m(x_2),S) $],
+      [The mean $m(x_2)$ and covariance $S$ obtained in the lecture.],
+      [Derive this complete density from $p(x_1,x_2)$.],
+    ), label: "goal", title: [To prove here]),
   ),
-  key-points: (key-points([Separating the quadratic is one obligation. The normalizer must split as well.], label: "kp"),),
-  layout: layout-stack(items: ("model", "density", ), key-points: "kp", dominant: "density"),
-  reveal: reveal-cumulative(initial: ("model", ), then: (
-    reveal-step(("density", "kp", ), purpose: [Inspect the two load-bearing parts of the same density.], emphasize: false),
+  key-points: (key-points(rows(
+    [Fix the observed value $x_2$; the density describes the missing block $X_1$.],
+    [We will account for the exponential and its coefficient, then identify the conditional by integration and division.],
+  ), label: "kp"),),
+  layout: layout-side(left: "lecture", right: "goal", key-points: "kp", dominant: "goal"),
+  reveal: reveal-static(("lecture", "goal", "kp")),
+  constraints: [Two orientation columns, then a distinct key-point region visible from the start. Each formula is a separate generously spaced row, especially in the supplied-model recall. $X_i,mu_i$ have dimension $d_i>=1$; covariance blocks match. Recalled conditional is a destination, never a proof premise.],
+)
+
+#slide-design(
+  title: [The density contains an exponential and a coefficient], section: [P2],
+  teaching-move: [Identify the exact quadratic and coefficient to transform, and explain what their transformations must achieve.],
+  cards: (
+    card([$ p(x_1,x_2)=C exp(-1/2 Q) $], label: "density", title: [Joint Gaussian density]),
+    card(rows(
+      [$ Q=(x-mu)^T Sigma^(-1)(x-mu) $],
+      [Target: residual contribution + observed-deviation contribution.],
+      [Residual: $x_1-m(x_2)$; observed deviation: $x_2-mu_2$.],
+    ), label: "quadratic", title: [The quadratic in the exponent]),
+    card(rows(
+      [$ C=(2pi)^(-d/2)(det Sigma)^(-1/2) $],
+      [Target: coefficient for the residual density × coefficient for the observed-block density.],
+    ), label: "coefficient", title: [The factor before the exponential]),
+  ),
+  key-points: (key-points([Writing the exponential as a product will not establish the full density product until its coefficient also matches.], label: "kp"),),
+  layout: design-layout([Joint-density equation above two adjacent targets: quadratic on the left, coefficient on the right. Distinct lower key-point slot.]),
+  reveal: reveal-cumulative(initial: ("density", "quadratic", "kp"), then: (
+    reveal-step(("coefficient",), purpose: [Identify the second part of the same density that must match.], emphasize: true),
   )),
-  constraints: [Use covariance-parameterized Gaussian notation throughout; do not introduce target conditional as an established identity.],
+  constraints: [“Residual” means deviation of $x_1$ from its observation-dependent conditional mean; “observed deviation” means $x_2-mu_2$. These labels precede the coordinate definitions on P4. Do not call either a “normalizer” or an “obligation”.],
 )
 
 #slide-design(
-  title: [Positive definiteness makes the observed block invertible], section: [R1.3],
-  teaching-move: [Prove observed-block positivity, then define the elimination coefficients.],
+  title: [Choose B to remove the cross covariance], section: [P3],
+  teaching-move: [Give the inverse a purpose: solve the cross-block cancellation equation, proving that the observed-block covariance permits its solution.],
   cards: (
-    card([$ H:=Sigma_22, quad z in RR^(d_2) backslash {0} $\
-$ z^T H z=mat(0;z)^T Sigma mat(0;z)>0 quad => quad H=H^T succ 0 $], label: "positive", title: [Nonzero observed-block test]),
-    card([$ B:=Sigma_12 H^(-1) in RR^(d_1 times d_2), quad S:=Sigma_11-B H B^T=S^T $], label: "definitions", title: [Now the inverse exists]),
-    card([$ B H=Sigma_12, quad H B^T=Sigma_21 $\
-$ S=Sigma_11-Sigma_12 H^(-1)Sigma_21 $], label: "identities"),
+    card(rows(
+      [$ H:=Sigma_22 $],
+      [$ Sigma_12-B H=0 quad <=> quad B H=Sigma_12 $],
+    ), label: "target", title: [Subtract B times the observed deviation: cancel the cross block]),
+    card(rows(
+      [$ z in RR^(d_2) backslash {0} $],
+      [$ z^T H z=mat(0;z)^T Sigma mat(0;z)>0 $],
+      [$ H=H^T succ 0 quad => quad H^(-1) " exists" $],
+    ), label: "positive", title: [Joint strict positivity applies to observed-block vectors]),
+    card([$ B=Sigma_12 H^(-1), quad H B^T=Sigma_21 $], label: "solution", title: [Solve the cancellation equation; transpose it]),
   ),
-  key-points: (key-points([$S$ is the live residual covariance (the Schur complement of $H$). Its strict positivity still needs proof here.], label: "kp"),),
-  layout: layout-stack(items: ("positive", "definitions", "identities", ), key-points: "kp", dominant: "identities"),
-  reveal: reveal-cumulative(initial: ("positive", ), then: (
-    reveal-step(("definitions", ), purpose: [Define B and S only after proving H invertible.], emphasize: true),
-    reveal-step(("identities", "kp", ), purpose: [Use symmetry of H inverse and Sigma21=Sigma12 transpose.], emphasize: false),
+  key-points: (
+    key-points([Cancel the covariance cross blocks so its inverse acts separately on residual and observed coordinates. This will give the two terms in $Q$.], label: "meaning"),
+    key-points([Strict positivity makes this choice well defined. It is the coefficient already used for the conditional mean in the lecture.], label: "result"),
+  ),
+  layout: design-layout([Cancellation target first, then adjacent proof regions: positivity test on the left, solved coefficient on the right. The two regions share a baseline and sufficient space for the full test-vector calculation. Plain equations and local operation labels, without a separate bordered card for every substep. Meaning accompanies the opening; result accompanies the solution in the distinct key-point slot.]),
+  reveal: reveal-cumulative(initial: ("target", "meaning"), then: (
+    reveal-step(("positive",), purpose: [Justify the inverse needed to solve this equation.], emphasize: true),
+    reveal-step(("solution", "result"), purpose: [Right-multiply by the justified inverse; use symmetry of H inverse and Sigma21=Sigma12 transpose.], emphasize: true),
   )),
-  constraints: [Intrinsic implication and symmetry warrant stay with the proof. Do not display S inverse yet.],
+  constraints: [The cancellation target is displayed before the positivity calculation. $B$ has size $d_1 times d_2$. Do not introduce $S$ or its inverse here.],
 )
 
 #slide-design(
-  title: [The elimination matrix has an explicit inverse], section: [R1.4],
-  teaching-move: [Verify reversibility by multiplication rather than importing a block-inverse lemma.],
+  title: [Subtracting the predicted deviation produces the residual], section: [P4],
+  teaching-move: [Make the coordinate change intelligible before using it to transform the covariance.],
   cards: (
-    card([$ T:=mat(I_(d_1),-B;0,I_(d_2)), quad U:=mat(I_(d_1),B;0,I_(d_2)) $], label: "matrices"),
-    card([$ T U=mat(I_(d_1),B-B;0,I_(d_2))=I_d $\
-$ U T=mat(I_(d_1),-B+B;0,I_(d_2))=I_d quad => quad T^(-1)=U $], label: "products", title: [Multiply in both orders]),
+    card(rows(
+      [$ u:=x_2-mu_2 $],
+      [$ m(x_2):=mu_1+B u, quad r:=x_1-m(x_2) $],
+    ), label: "coordinates", title: [Observed deviation and centered residual]),
+    card(rows(
+      [$ T:=mat(I_(d_1),-B;0,I_(d_2)) $],
+      [$ T(x-mu)=mat(I,-B;0,I)mat(x_1-mu_1;u)=mat(r;u) $],
+    ), label: "map", title: [Apply the subtraction while retaining the observed deviation]),
+    card([$ Q = r^T S^(-1)r + u^T H^(-1)u $], label: "target", title: [To show: the residual and observed contributions]),
   ),
-  key-points: (key-points([Block elimination is reversible; no covariance or independence argument was used.], label: "kp"),),
-  layout: layout-stack(items: ("matrices", "products", ), key-points: "kp", dominant: "products"),
-  reveal: reveal-cumulative(initial: ("matrices", ), then: (
-    reveal-step(("products", "kp", ), purpose: [Check the off-diagonal cancellation in both orders.], emphasize: true),
+  key-points: (key-points([The first new coordinate is error around the predicted mean; the second is the observed deviation. These are the two contributions sought in the exponent.], label: "kp"),),
+  layout: layout-stack(items: ("coordinates", "map", "target"), key-points: "kp", dominant: "map"),
+  reveal: reveal-cumulative(initial: ("coordinates", "kp"), then: (
+    reveal-step(("map", "target"), purpose: [Represent the meaningful subtraction as a block matrix operation and write the exact quadratic target.], emphasize: true),
   )),
-  constraints: [After this slide I and 0 may omit subscripts when block dimensions are fixed.],
+  constraints: [Use the names residual and observed deviation adjacent to their definitions. Identity and zero block dimensions follow d1,d2 and may subsequently omit subscripts. No independence claim. $S$ in the target denotes the residual covariance recalled on P1; its formula is obtained on P6 and its positivity is proved on P8. The target is not a premise.],
 )
 
 #slide-design(
-  title: [Left elimination removes the upper covariance block], section: [R1.5],
-  teaching-move: [Work the first block multiplication, including its upper-right cancellation.],
+  title: [The coordinate change is reversible], section: [P5],
+  teaching-move: [Verify the inverse of this specific coordinate change and explain why retaining the observation loses no information.],
   cards: (
-    recall-card([$ B H=Sigma_12, quad H B^T=Sigma_21, quad S=Sigma_11-B H B^T $], label: "recall", from: [R1.3]),
-    card([$ T Sigma=mat(I,-B;0,I) mat(Sigma_11,B H;H B^T,H) $\
-$ =mat(Sigma_11-B H B^T,B H-B H;H B^T,H) $], label: "multiplication", title: [Left multiplication]),
-    card([$ T Sigma=mat(S,0;H B^T,H) $], label: "result"),
+    recall-card([$ T=mat(I,-B;0,I), quad T(x-mu)=mat(r;u) $], label: "recall", from: [P4: residual coordinates]),
+    card([$ U:=mat(I,B;0,I), quad U mat(r;u)=mat(r+B u;u)=x-mu $], label: "undo", title: [Add the predicted deviation back]),
+    card(rows(
+      [$ T U=mat(I,B-B;0,I)=I $],
+      [$ U T=mat(I,-B+B;0,I)=I quad => quad T^(-1)=U $],
+    ), label: "check", title: [Check both matrix products]),
   ),
-  key-points: (key-points([The upper cross block vanishes. This single multiplication is not yet the covariance congruence.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "multiplication", "result", ), key-points: "kp", dominant: "result"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("multiplication", ), purpose: [Show all four product blocks; newly calculated cancellation gets entry emphasis.], emphasize: true),
-    reveal-step(("result", "kp", ), purpose: [Identify S without suppressing the remaining lower cross block.], emphasize: false),
+  key-points: (key-points([The residual together with the observation determines the original centered vector. This invertibility will preserve strict positivity and let us recover the inverse covariance.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "undo", "check"), key-points: "kp", dominant: "undo"),
+  reveal: reveal-cumulative(initial: ("recall", "undo", "kp"), then: (
+    reveal-step(("check",), purpose: [Verify that adding back the predicted deviation is the two-sided inverse.], emphasize: true),
   )),
-  constraints: [Final complete state preserves multiplication and result; no independence language.],
 )
 
 #slide-design(
-  title: [Right elimination completes the covariance congruence], section: [R1.6],
-  teaching-move: [Carry the preceding product forward and cancel its lower cross block.],
+  title: [Subtract the observed rows to cancel the upper-right block], section: [P6],
+  teaching-move: [Work the first elimination and identify the remaining first-block covariance expression.],
   cards: (
-    recall-card([$ T Sigma=mat(S,0;H B^T,H), quad T^T=mat(I,0;-B^T,I) $], label: "recall", from: [R1.5 and transpose of R1.4]),
-    card([$ T Sigma T^T=mat(S,0;H B^T,H) mat(I,0;-B^T,I) $\
-$ =mat(S,0;H B^T-H B^T,H) $], label: "product", title: [Right multiplication]),
-    card([$ D:=T Sigma T^T=mat(S,0;0,H) $], label: "diagonal"),
+    recall-card([$ Sigma=mat(Sigma_11,B H;H B^T,H), quad T=mat(I,-B;0,I) $], label: "recall", from: [P3: B H=Sigma12; P4: T]),
+    card(rows(
+      [$ T Sigma=mat(I,-B;0,I)mat(Sigma_11,B H;H B^T,H) $],
+      [$ =mat(Sigma_11-B H B^T,B H-B H;H B^T,H) $],
+    ), label: "multiply", title: [First block row minus B times the second]),
+    card(rows(
+      [$ S:=Sigma_11-B H B^T=Sigma_11-Sigma_12 H^(-1)Sigma_21 $],
+      [$ T Sigma=mat(S,0;H B^T,H) $],
+    ), label: "result", title: [Name the remaining first block]),
   ),
-  key-points: (key-points([The two multiplications form a congruence: $T Sigma T^T$. They do not form a similarity transformation.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "product", "diagonal", ), key-points: "kp", dominant: "diagonal"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("product", ), purpose: [Students can compare the inherited lower block with its cancellation.], emphasize: true),
-    reveal-step(("diagonal", "kp", ), purpose: [Name the diagonal covariance object D.], emphasize: false),
+  key-points: (key-points([The chosen $B$ cancels the upper-right block exactly. The lower-left block remains because only the row operation has been applied.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "multiply", "result"), key-points: "kp", dominant: "multiply"),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("multiply",), purpose: [Work the targeted cross-block cancellation without hiding the other blocks.], emphasize: true),
+    reveal-step(("result",), purpose: [Recognize the Schur-complement expression obtained in the lecture.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("diagonal", reason: [Central covariance anchor for the retrospective.]),
-  ),
+  constraints: [S is defined here by the actual product; its strict positivity is not yet established. Keep all four product blocks visible long enough to check.],
 )
 
 #slide-design(
-  title: [Invertible congruence proves the residual covariance positive definite], section: [R1.7],
-  teaching-move: [Prove D positive definite, then restrict its quadratic to the first block.],
+  title: [The matching column operation cancels the lower-left block], section: [P7],
+  teaching-move: [Finish the two-sided covariance transformation and exhibit the separate residual/observed covariance blocks.],
   cards: (
-    recall-card([$ D=T Sigma T^T=mat(S,0;0,H), quad T " invertible", quad Sigma succ 0 $], label: "recall", from: [R1.4 and R1.6]),
-    card([$ w != 0 quad => quad T^T w != 0 $\
-$ w^T D w=(T^T w)^T Sigma(T^T w)>0 quad => quad D succ 0 $], label: "congruence", title: [Every nonzero test vector]),
-    card([$ a in RR^(d_1) backslash {0}, quad w=mat(a;0) $\
-$ a^T S a=w^T D w>0 quad => quad S succ 0 $], label: "restriction", title: [Test the first block]),
+    recall-card([$ T Sigma=mat(S,0;H B^T,H), quad T^T=mat(I,0;-B^T,I) $], label: "recall", from: [P6 and transpose of T]),
+    card(rows(
+      [$ T Sigma T^T=mat(S,0;H B^T,H)mat(I,0;-B^T,I) $],
+      [$ =mat(S,0;H B^T-H B^T,H) $],
+    ), label: "multiply", title: [Apply the same coordinate change to covariance columns]),
+    card([$ D:=T Sigma T^T=mat(S,0;0,H) $], label: "diagonal", title: [Residual block S; observed block H]),
   ),
-  key-points: (key-points([Both $S$ and $H$ have inverses and positive determinants. This follows from strict joint positivity.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "congruence", "restriction", ), key-points: "kp", dominant: "restriction"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("congruence", ), purpose: [Invertibility prevents a nonzero vector from becoming zero.], emphasize: true),
-    reveal-step(("restriction", "kp", ), purpose: [The first diagonal block inherits strict positivity.], emphasize: true),
+  key-points: (key-points([The row and column operations together give the covariance in the residual/observation coordinates. Its off-diagonal blocks are zero; its inverse will produce the two quadratic terms.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "multiply", "diagonal"), key-points: "kp", dominant: "diagonal"),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("multiply",), purpose: [Show exactly where the remaining cross block cancels.], emphasize: true),
+    reveal-step(("diagonal",), purpose: [Name the block diagonal result used in the exponent and determinant calculations.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("restriction", reason: [Explains why the residual inverse and normalizer are valid.]),
-  ),
+  constraints: [This is a congruence TΣT transpose. No similarity-transformation or independence detour; the proof uses the displayed matrix identity.],
 )
 
 #slide-design(
-  title: [Inverting the congruence fixes the order of the factors], section: [R1.8],
-  teaching-move: [Derive the inverse identity in its exact matrix order.],
+  title: [The remaining residual block is positive definite], section: [P8],
+  teaching-move: [Justify S as a valid nonsingular covariance and justify all subsequent inverse and square-root operations.],
   cards: (
-    recall-card([$ D=T Sigma T^T=mat(S,0;0,H) $], label: "recall", from: [R1.6; inverses justified in R1.7]),
-    card([$ D^(-1)=T^(-T) Sigma^(-1) T^(-1), quad T^(-T):=(T^(-1))^T $], label: "invert", title: [Invert the product]),
-    card([$ T^T D^(-1)T=Sigma^(-1) $\
-$ Sigma^(-1)=T^T mat(S^(-1),0;0,H^(-1))T $], label: "isolate", title: [Multiply on the left by T transpose and on the right by T]),
+    recall-card([$ D=T Sigma T^T=mat(S,0;0,H), quad Sigma succ 0, quad T " invertible" $], label: "recall", from: [P5 and P7]),
+    card(rows(
+      [$ w != 0 quad => quad T^T w != 0 $],
+      [$ w^T D w=(T^T w)^T Sigma(T^T w)>0 $],
+    ), label: "positiveD", title: [Invertibility keeps a nonzero test vector nonzero]),
+    card(rows(
+      [$ a in RR^(d_1) backslash {0}, quad w=mat(a;0) $],
+      [$ a^T S a=w^T D w>0 quad => quad S=S^T succ 0 $],
+    ), label: "positiveS", title: [Restrict the test to the residual block]),
   ),
-  key-points: (key-points([The factors do not commute. The order follows from undoing the congruence.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "invert", "isolate", ), key-points: "kp", dominant: "isolate"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("invert", ), purpose: [Reverse the factor order when inverting.], emphasize: true),
-    reveal-step(("isolate", "kp", ), purpose: [Cancel only adjacent inverse pairs.], emphasize: true),
+  key-points: (key-points([The supplied joint strict positivity survives the reversible coordinate change. Both $S$ and $H$ therefore have inverses and positive determinants, as the Gaussian density requires.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "positiveD", "positiveS"), key-points: "kp", dominant: "positiveS"),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("positiveD",), purpose: [Apply joint strict positivity to the transformed test vector.], emphasize: true),
+    reveal-step(("positiveS",), purpose: [A vector supported on the first block isolates S.], emphasize: true),
   )),
-  constraints: [Preserve covariance congruence alongside inverse proof. Expanded block inverse is checking material only.],
 )
 
 #slide-design(
-  title: [Elimination turns the centered vector into a residual and an observation], section: [R1.9],
-  teaching-move: [Work the coordinate transformation and identify both blocks.],
+  title: [Invert the covariance identity to reach the exponent], section: [P9],
+  teaching-move: [Connect the transformed covariance to the inverse covariance actually appearing in Q, with exact operation order.],
   cards: (
-    card([$ u:=x_2-mu_2, quad r:=x_1-mu_1-B u $], label: "coordinates", title: [Centered coordinates]),
-    card([$ T(x-mu)=mat(I,-B;0,I)mat(x_1-mu_1;u) $\
-$ =mat(x_1-mu_1-B u;u)=mat(r;u) $], label: "transform"),
+    recall-card(rows(
+      [$ Q=(x-mu)^T Sigma^(-1)(x-mu) $],
+      [$ D=T Sigma T^T=mat(S,0;0,H) $],
+    ), label: "recall", from: [P2: exponent; P7–P8: valid block covariance]),
+    card(rows(
+      [$ D^(-1)=T^(-T) Sigma^(-1) T^(-1) $],
+      [$ T^(-T):=(T^(-1))^T $],
+    ), label: "invert", title: [Invert the product: reverse its factors]),
+    card(rows(
+      [$ T^T D^(-1)T=Sigma^(-1) $],
+      [$ Sigma^(-1)=T^T mat(S^(-1),0;0,H^(-1))T $],
+    ), label: "isolate", title: [Multiply on the left by T transpose and on the right by T]),
   ),
-  key-points: (key-points([$r$ is the centered residual. Its coordinates contain $x_2$; the original first block is still $x_1$.], label: "kp"),),
-  layout: layout-stack(items: ("coordinates", "transform", ), key-points: "kp", dominant: "transform"),
-  reveal: reveal-cumulative(initial: ("coordinates", ), then: (
-    reveal-step(("transform", "kp", ), purpose: [Elimination subtracts the predicted deviation while retaining the observation.], emphasize: true),
+  key-points: (key-points([We need the inverse covariance in the exponent. This identity places $T$ next to each centered vector, so the residual coordinates can be substituted directly.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "invert", "isolate"), key-points: "kp", dominant: "isolate"),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("invert",), purpose: [Use the already justified inverses; do not commute factors.], emphasize: true),
+    reveal-step(("isolate",), purpose: [Cancel adjacent inverse pairs to obtain the expression needed in Q.], emphasize: true),
   )),
-  constraints: [No independence statement is needed for this coordinate identity.],
+  constraints: [Keep operation labels next to their equalities. This is algebraic inverse notation; no numerical inverse algorithm is introduced.],
 )
 
 #slide-design(
-  title: [The joint quadratic is the sum of two block quadratics], section: [R1.10],
-  teaching-move: [Substitute the proved inverse and transformed vector into the quadratic.],
+  title: [The joint quadratic becomes a residual term plus an observed term], section: [P10],
+  teaching-move: [Perform the promised quadratic split with explicit substitutions and labeled final terms.],
   cards: (
-    recall-card([$ Sigma^(-1)=T^T D^(-1)T, quad T(x-mu)=mat(r;u) $\
-$ D^(-1)=mat(S^(-1),0;0,H^(-1)) $], label: "recall", from: [R1.8 and R1.9]),
-    card([$ (x-mu)^T Sigma^(-1)(x-mu)=[T(x-mu)]^T D^(-1)[T(x-mu)] $\
-$ =mat(r;u)^T mat(S^(-1),0;0,H^(-1)) mat(r;u) $], label: "substitute", title: [Substitute without changing factor order]),
-    card([$ (x-mu)^T Sigma^(-1)(x-mu)=r^T S^(-1)r+u^T H^(-1)u $], label: "split"),
+    recall-card([$ Sigma^(-1)=T^T D^(-1)T, quad T(x-mu)=mat(r;u) $], label: "recall", from: [P4 and P9]),
+    card(rows(
+      [$ Q=(x-mu)^T Sigma^(-1)(x-mu)=[T(x-mu)]^T D^(-1)[T(x-mu)] $],
+      [$ =mat(r;u)^T mat(S^(-1),0;0,H^(-1))mat(r;u) $],
+    ), label: "substitute", title: [Substitute the inverse; then the residual coordinates]),
+    card([$ Q=underbrace(r^T S^(-1)r,"residual term")+underbrace(u^T H^(-1)u,"observed term") $], label: "split", title: [Multiply the diagonal blocks]),
   ),
-  key-points: (key-points([The exponent separates exactly. A normalized density equality has not yet been proved.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "substitute", "split", ), key-points: "kp", dominant: "split"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("substitute", ), purpose: [Read the substitution as one whole equality, then the block product.], emphasize: true),
-    reveal-step(("split", "kp", ), purpose: [Diagonal inverse gives the sum of two quadratic forms.], emphasize: true),
+  key-points: (key-points([At fixed $x_2$, $u$ is fixed and $r=x_1-m(x_2)$ varies with $x_1$. The exponent now has precisely a residual contribution and an observed-deviation contribution.], label: "kp"),),
+  layout: design-layout([Subordinate recall strip keeps both anchors together. Below it, one wide plain proof region contains the whole inverse-substitution equality, the diagonal block multiplication, and the labeled final split as generously separated rows. Keep local operation labels adjacent, with no per-row bordered wrappers. Interpretation is a separate lower region.]),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("substitute",), purpose: [Each T acts on the centered vector beside it; retain the whole equality.], emphasize: true),
+    reveal-step(("split",), purpose: [The zero off-diagonal inverse blocks remove mixed terms.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("split", reason: [Section endpoint: split quadratic in residual/observed coordinates.]),
-  ),
-  constraints: [The inverse notation is algebra, not a recommendation to form numerical inverses. Keep the first equality syntactically whole.],
+  constraints: [Keep the first equality whole and use labels adjacent to the two final terms. Do not yet identify a normalized conditional from the exponent alone.],
 )
 
 #slide-design(
-  title: [Retrospective: elimination separates the quadratic], section: [R1.11],
-  teaching-move: [Retell the established algebraic argument, ending the section retrospectively.],
+  title: [A sum in the exponent becomes a product], section: [P11],
+  teaching-move: [Show exactly how the quadratic split transforms the joint density and identify the remaining coefficient calculation.],
   cards: (
-    section-summary-visual([$ T Sigma T^T=mat(S,0;0,H), quad H succ 0, quad S succ 0 $\
-$ (x-mu)^T Sigma^(-1)(x-mu)=r^T S^(-1)r+u^T H^(-1)u $\
-$ u=x_2-mu_2, quad r=x_1-mu_1-B u $], label: "summary"),
+    recall-card([$ Q=r^T S^(-1)r+u^T H^(-1)u $], label: "recall", from: [P10]),
+    card(rows(
+      [$ exp(-1/2 Q)=exp(-1/2 r^T S^(-1)r) exp(-1/2 u^T H^(-1)u) $],
+      [$ p(x_1,x_2)=C exp(-1/2 r^T S^(-1)r) exp(-1/2 u^T H^(-1)u) $],
+    ), label: "product", title: [Use exp(a+b)=exp(a)exp(b)]),
+    card([$ C=(2pi)^(-d/2)(det Sigma)^(-1/2) $], label: "coefficient", title: [The coefficient is still the joint-density coefficient]),
   ),
-  key-points: (section-summary-takeaways([Reversible elimination yields valid residual and observed covariance blocks. The inverse congruence separates their quadratic contributions.], label: "kp"),),
-  layout: layout-summary(visual: "summary", takeaways: "kp"),
-  reveal: reveal-static(("summary", "kp", )),
-  rationale: [Select congruence + positivity + final quadratic; the intermediate inverse formula is deliberately omitted to keep the recap recognizable and readable.],
-  constraints: [Retrospective end: no next-section teaser, question or handoff.],
-)
-
-#section-design-notes(
-  title: [R2 — Normalizers identify the conditional and marginal densities],
-  purpose: [Complete the normalized density equality and identify the factors without importing the target law.],
-  entry: [R1 proved the quadratic split and $H,S succ 0$. The determinant and dimension factors in the joint density remain to be separated.],
-  endpoint: [$ p(x_1,x_2)=p(x_1|x_2)p(x_2) $ with the two Gaussian laws established by integration and division.],
-  arc: [Unit-determinant elimination → determinant split → dimension split → full Gaussian factors → integrate → divide → interpret dependence.],
-  anchors: [Retain $r,u,S,H,B$ and $D=T Sigma T^T$. Introduce $g_(1)(x_1;x_2)$ and $g_(2)(x_2)$ as normalized mathematical factors before assigning probability-law names.],
-  summary-brief: [Select normalized product, its parameter labels and the integration/ratio identification. The takeaway recalls that quadratic, determinant and dimension factors all split; do not repeat every algebraic display.],
-  continuity: [R2.1 receives R1's quadratic split. Normalizers remain next to their matching exponent/dimension. Prose explaining what the factorization establishes stays in the key-point slot.],
-  constraints: [R2.4 full factors and R2.5 integral are load-bearing. Do not replace equality with proportionality or remove normalizers to fit. Production may choose stack versus adjacent factor regions if semantic pairing and readability survive; count/order repair returns to Organization.],
-)
-
-#slide-design(
-  title: [Normalizers identify the conditional and marginal densities], section: [R2.1],
-  teaching-move: [Receive the established exponent split through the section subtitle and frame normalization as the remaining proof job.],
-  cards: (card([From separated exponents to probability laws], label: "subtitle"),),
-  layout: layout-stack(items: ("subtitle",), dominant: "subtitle"),
-  reveal: reveal-static(("subtitle",)),
-  rationale: [Production backpressure resolved provisionally: The former quadratic/SPD recall repeats R1.7, R1.10 and the immediately preceding R1.11 retrospective; no new mathematical claim is omitted. The exact title/subtitle preserves the section opening within its existing slide.],
-  constraints: [Render this unit as the course section divider. The subtitle object is section metadata, not an extra content card or additional slide. Full title as above; subtitle: From separated exponents to probability laws; abbreviated footer: Normalized factorization. No theorem answer or new argument is introduced here.],
-)
-
-#slide-design(
-  title: [Unit-determinant elimination splits the covariance determinant], section: [R2.2],
-  teaching-move: [Use the established congruence and block triangular determinant.],
-  cards: (
-    recall-card([$ T=mat(I,-B;0,I), quad D=T Sigma T^T=mat(S,0;0,H) $], label: "recall", from: [R1.4 and R1.6]),
-    card([$ det T=det I_(d_1) det I_(d_2)=1 $], label: "unit", title: [Block triangular T]),
-    card([$ det D=(det T)(det Sigma)(det T^T)=det Sigma $\
-$ det Sigma=det S det H, quad det Sigma,det S,det H>0 $], label: "determinants", title: [Take determinants of the congruence]),
-  ),
-  key-points: (key-points([Elimination changes the covariance blocks while preserving this determinant. Positivity licenses positive square roots.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "unit", "determinants", ), key-points: "kp", dominant: "determinants"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("unit", ), purpose: [The identity diagonal blocks make the determinant one.], emphasize: true),
-    reveal-step(("determinants", "kp", ), purpose: [Combine multiplicativity with the block diagonal determinant.], emphasize: true),
+  key-points: (key-points([The two exponentials have the required shapes. To make them two complete Gaussian densities, $C$ must supply the coefficient belonging to each dimension and covariance.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "product", "coefficient"), key-points: "kp", dominant: "product"),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("product", "coefficient"), purpose: [Apply the elementary exponential identity while visibly retaining C.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("determinants", reason: [The determinant obligation is discharged.]),
-  ),
 )
 
 #slide-design(
-  title: [The dimensions split the remaining Gaussian normalizer], section: [R2.3],
-  teaching-move: [Keep determinant and dimension factors visible in the same exact identity.],
+  title: [The same elimination gives the determinant product], section: [P12],
+  teaching-move: [Use the same block transformation to calculate the determinant appearing in the remaining coefficient.],
   cards: (
-    recall-card([$ d=d_1+d_2, quad det Sigma=det S det H, quad S,H succ 0 $], label: "recall", from: [R1.2, R1.7 and R2.2]),
-    card([$ (2 pi)^(-d/2)(det Sigma)^(-1/2) $\
-$ =(2 pi)^(-(d_1+d_2)/2)(det S det H)^(-1/2) $], label: "substitution", title: [Substitute both identities]),
-    card([$ (2 pi)^(-d/2)(det Sigma)^(-1/2) $\
-$ =[(2 pi)^(-d_1/2)(det S)^(-1/2)] [(2 pi)^(-d_2/2)(det H)^(-1/2)] $], label: "split", title: [Separate positive factors]),
+    recall-card([$ D=T Sigma T^T=mat(S,0;0,H), quad T=mat(I,-B;0,I) $], label: "recall", from: [P4 and P7]),
+    card(rows(
+      [$ det T=det I_(d_1) det I_(d_2)=1 $],
+      [$ det D=det T det Sigma det T^T=det Sigma $],
+    ), label: "triangular", title: [T is block triangular; determinants multiply]),
+    card([$ det D=det S det H quad => quad det Sigma=det S det H $], label: "product", title: [D is block diagonal]),
   ),
-  key-points: (key-points([Each block receives its own determinant factor and its own dimension factor.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "substitution", "split", ), key-points: "kp", dominant: "split"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("substitution", ), purpose: [Replace d and determinant Sigma before splitting.], emphasize: true),
-    reveal-step(("split", "kp", ), purpose: [Pair dimension d1 with S and dimension d2 with H.], emphasize: true),
+  key-points: (key-points([The coefficient contains $(det Sigma)^(-1/2)$. This identity replaces it by the determinant factors for the residual and observed blocks.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "triangular", "product"), key-points: "kp", dominant: "product"),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("triangular",), purpose: [Unit determinant means the elimination does not change det Sigma.], emphasize: true),
+    reveal-step(("product",), purpose: [Read the determinant of the block diagonal result.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("split", reason: [Normalizers split exactly, including 2 pi powers.]),
-  ),
-  constraints: [The final equality may occupy two lines at its equals sign. Keep each bracketed block normalizer intact; do not use a proportionality symbol.],
+  constraints: [All determinants are positive by the already proved strict positivity. This is the coefficient calculation promised on P2/P11, not an isolated matrix lemma.],
 )
 
 #slide-design(
-  title: [The full density equals two normalized Gaussian factors], section: [R2.4],
-  teaching-move: [Associate each full normalizer with its quadratic, then show the exact product.],
+  title: [The factors before the exponentials split too], section: [P13],
+  teaching-move: [Account for both determinant and dimension factors in the full coefficient.],
   cards: (
-    recall-card([$ u=x_2-mu_2, quad r=x_1-(mu_1+B u), quad S,H succ 0 $], label: "recall", from: [R1.3, R1.7 and R1.9]),
-    card([$ g_(1)(x_1;x_2):=(2 pi)^(-d_1/2)(det S)^(-1/2) exp(-1/2 r^T S^(-1)r) $\
-$ =cal(N)_(d_1)(x_1;mu_1+B u,S) $], label: "factor1", title: [First normalized factor]),
-    card([$ g_(2)(x_2):=(2 pi)^(-d_2/2)(det H)^(-1/2) exp(-1/2 u^T H^(-1)u) $\
-$ =cal(N)_(d_2)(x_2;mu_2,H) $], label: "factor2", title: [Second normalized factor]),
-    card([$ p(x_1,x_2)=g_(1)(x_1;x_2) g_(2)(x_2) $], label: "product"),
+    recall-card([$ d=d_1+d_2, quad det Sigma=det S det H, quad S,H succ 0 $], label: "recall", from: [P1, P8 and P12]),
+    card(rows(
+      [$ (2pi)^(-d/2)=(2pi)^(-d_1/2)(2pi)^(-d_2/2) $],
+      [$ (det Sigma)^(-1/2)=(det S)^(-1/2)(det H)^(-1/2) $],
+    ), label: "split", title: [Add the dimensions; use positive determinant square roots]),
+    card(rows(
+      [$ C=C_1 C_2 $],
+      [$ C_1:=(2pi)^(-d_1/2)(det S)^(-1/2) $],
+      [$ C_2:=(2pi)^(-d_2/2)(det H)^(-1/2) $],
+    ), label: "coefficients", title: [Group each covariance with its matching dimension]),
   ),
-  key-points: (key-points([For fixed $x_2$, $g_1$ is a Gaussian density in $x_1$. The factor names do not yet identify the marginal and conditional.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "factor1", "factor2", "product", ), key-points: "kp", dominant: "product"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("factor1", ), purpose: [Pair the d1 normalizer and residual quadratic.], emphasize: true),
-    reveal-step(("factor2", ), purpose: [Pair the d2 normalizer and observed quadratic; first factor persists.], emphasize: true),
-    reveal-step(("product", "kp", ), purpose: [Combine R1.10 exponent split and R2.3 normalizer split.], emphasize: false),
+  key-points: (key-points([The residual exponential receives $C_1$, the coefficient for dimension $d_1$ and covariance $S$. The observed exponential receives $C_2$, for dimension $d_2$ and covariance $H$.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "split", "coefficients"), key-points: "kp", dominant: "coefficients"),
+  reveal: reveal-cumulative(initial: ("recall", "kp"), then: (
+    reveal-step(("split",), purpose: [Expose both pieces of the coefficient; positivity justifies the square-root identity.], emphasize: true),
+    reveal-step(("coefficients",), purpose: [Pair dimension and covariance before reassembling densities.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("product", reason: [Exact normalized factorization before probability-law identification.]),
-  ),
-  constraints: [Keep both full normalized factors, parameter labels and subordinate residual definitions. Never replace equality by proportionality or name the probability laws before R2.5–R2.6.],
 )
 
 #slide-design(
-  title: [Integrating the first factor identifies the marginal], section: [R2.5],
-  teaching-move: [Use normalization in x1 for fixed x2, then integrate the joint product.],
+  title: [Reassemble the complete Gaussian densities], section: [P14],
+  teaching-move: [Pair each coefficient with its exponential and establish exact normalized factorization before naming probability laws.],
   cards: (
-    recall-card([$ p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2), quad g_(1)(x_1;x_2)=cal(N)_(d_1)(x_1;mu_1+B u,S) $], label: "recall", from: [R2.4]),
-    card([$ S succ 0, quad m:=mu_1+B(x_2-mu_2) " is fixed" $\
-$ integral_(RR^(d_1)) g_(1)(x_1;x_2) dif x_1=integral_(RR^(d_1)) cal(N)_(d_1)(x_1;m,S) dif x_1=1 $], label: "unitintegral", title: [Fix x2; integrate in x1]),
-    card([$ p(x_2)&=integral_(RR^(d_1))p(x_1,x_2) dif x_1 \
-&=g_(2)(x_2) integral_(RR^(d_1)) g_(1)(x_1;x_2) dif x_1 \
-&=g_(2)(x_2)=cal(N)_(d_2)(x_2;mu_2,H) $], label: "marginal", title: [Marginalize]),
+    card(rows(
+      [$ g_(1)(x_1;x_2):=C_1 exp(-1/2 r^T S^(-1)r) $],
+      [$ =cal(N)_(d_1)(x_1;m(x_2),S) $],
+      [$ m(x_2)=mu_1+B(x_2-mu_2), quad r=x_1-m(x_2) $],
+    ), label: "factor1", title: [Gaussian density in x1 for fixed x2]),
+    card(rows(
+      [$ g_(2)(x_2):=C_2 exp(-1/2 u^T H^(-1)u) $],
+      [$ =cal(N)_(d_2)(x_2;mu_2,H), quad u=x_2-mu_2 $],
+    ), label: "factor2", title: [Gaussian density in the observed block]),
+    card([$ p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2) $], label: "product", title: [The exponential and coefficient products both match]),
   ),
-  key-points: (key-points([Normalization identifies $g_2$ as the marginal; no conditional formula was assumed.], label: "kp"),),
-  layout: layout-stack(items: ("recall", "unitintegral", "marginal", ), key-points: "kp", dominant: "marginal"),
-  reveal: reveal-cumulative(initial: ("recall", ), then: (
-    reveal-step(("unitintegral", ), purpose: [The fixed observation translates the mean but does not change the Gaussian integral.], emphasize: true),
-    reveal-step(("marginal", "kp", ), purpose: [The second factor is constant with respect to x1.], emphasize: true),
+  key-points: (key-points([These are complete Gaussian densities because their coefficients and positive definite covariances match their dimensions. Integration and division will identify which factor is the marginal and which is the conditional.], label: "kp"),),
+  layout: design-layout([Adjacent Gaussian-factor regions, each with its own coefficient/exponent pairing, on a common baseline. First factor in x1 on the left; observed-block factor on the right. Product equality below both. No extra bordered wrapper around every formula. Keep lower interpretation separate and keep its prose in normal paragraphs. C1 and C2 may be expanded instead of abbreviated if readable; their definitions from P13 must remain available.]),
+  reveal: reveal-cumulative(initial: ("factor1", "kp"), then: (
+    reveal-step(("factor2",), purpose: [Match the observed-block coefficient and exponential.], emphasize: true),
+    reveal-step(("product",), purpose: [Combine P11 exponential equality with P13 coefficient equality.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("marginal", reason: [Integration supplies the first probability-law identity.]),
-  ),
-  constraints: [Gaussian normalization is prior mathematics; no new Jacobian/determinant proof is required. Keep the integration domain, variable, fixed-x2 condition and SPD warrant visible.],
+  constraints: [No proportionality sign. Retain x2 dependence in g1. The two factors are not yet named conditional/marginal. If C1/C2 are expanded, retain matching d1,S versus d2,H.],
 )
 
 #slide-design(
-  title: [Dividing by the positive marginal identifies the conditional], section: [R2.6],
-  teaching-move: [Establish positivity and identify the conditional using the density ratio.],
+  title: [Integrate over x1 to identify the marginal], section: [P15],
+  teaching-move: [Use Gaussian normalization in the missing block to identify g2 as the observed marginal.],
   cards: (
-    card([$ p(x_2)=g_(2)(x_2)=cal(N)_(d_2)(x_2;mu_2,H)>0 quad (x_2 in RR^(d_2)) $], label: "positive", title: [Every observation has positive marginal density]),
-    card([$ p(x_1|x_2)&:=frac(p(x_1,x_2),p(x_2)) \
-&=frac(g_(1)(x_1;x_2)g_(2)(x_2),g_(2)(x_2))=g_(1)(x_1;x_2) \
-&=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S) $], label: "ratio", title: [Density ratio]),
-    card([$ p(x_1,x_2)=p(x_1|x_2)p(x_2) $], label: "identity"),
+    recall-card([$ p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2) $], label: "recall", from: [P14]),
+    card(rows(
+      [$ x_2 " fixed", quad m(x_2) " fixed", quad S succ 0 $],
+      [$ integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1=1 $],
+    ), label: "normalization", title: [Integrate the Gaussian density in x1]),
+    card(rows(
+      [$ p(x_2)=integral_(RR^(d_1))p(x_1,x_2) dif x_1 $],
+      [$ =g_(2)(x_2) integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1=g_(2)(x_2) $],
+      [$ p(x_2)=cal(N)_(d_2)(x_2;mu_2,H) $],
+    ), label: "marginal", title: [g2 is constant with respect to x1]),
   ),
-  key-points: (key-points([The positive-density ratio gives a conditional-density version for every $x_2$. Its normalization was already proved.], label: "kp"),),
-  layout: layout-stack(items: ("positive", "ratio", "identity", ), key-points: "kp", dominant: "identity"),
-  reveal: reveal-cumulative(initial: ("positive", ), then: (
-    reveal-step(("ratio", ), purpose: [Divide by the marginal identified in R2.5.], emphasize: true),
-    reveal-step(("identity", "kp", ), purpose: [Name the normalized factors only after the integral and ratio.], emphasize: false),
+  key-points: (key-points([For each fixed observation, the first factor integrates to one. Marginalizing the joint therefore leaves exactly the second factor.], label: "kp"),),
+  layout: layout-stack(items: ("recall", "normalization", "marginal"), key-points: "kp", dominant: "marginal"),
+  reveal: reveal-cumulative(initial: ("recall", "normalization", "kp"), then: (
+    reveal-step(("marginal",), purpose: [Apply the marginal-density definition and move the x1-constant factor outside the integral.], emphasize: true),
   )),
-  summary-candidates: (
-    summary-visual-candidate("identity", reason: [Final normalized probability-law identity.]),
-  ),
-  constraints: [Do not interpret a continuous singleton as a positive-probability event or claim uniqueness of conditional versions at null events.],
+  constraints: [Keep the domain, integration variable and fixed observation visible. Normalization of a Gaussian density is prior knowledge; no Jacobian proof is needed.],
 )
 
 #slide-design(
-  title: [The conditional mean retains the observed-block dependence], section: [R2.7],
-  teaching-move: [Interpret the law and distinguish original blocks from residual coordinates.],
+  title: [Divide by the marginal to obtain the conditional density], section: [P16],
+  teaching-move: [Use the now-identified strictly positive marginal to obtain the conditional-density formula.],
   cards: (
-    recall-card([$ p(x_1|x_2)=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S) $], label: "law", from: [R2.6]),
-    card([$ mu_(1|2)(x_2)=mu_1+B(x_2-mu_2), quad Sigma_(1|2)=S $\
-$ r=x_1-mu_(1|2)(x_2) $], label: "parameters"),
+    recall-card([$ p(x_2)=g_(2)(x_2)=cal(N)_(d_2)(x_2;mu_2,H)>0 $], label: "positive", from: [P15; H strictly positive definite]),
+    card(rows(
+      [$ p(x_1|x_2)=frac(p(x_1,x_2),p(x_2)) $],
+      [$ =frac(g_(1)(x_1;x_2)g_(2)(x_2),g_(2)(x_2))=g_(1)(x_1;x_2) $],
+    ), label: "divide", title: [Use the conditional-density ratio; cancel the positive factor]),
+    card([$ p(x_1|x_2)=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S) $], label: "law", title: [The Gaussian conditional density]),
   ),
-  key-points: (key-points([The mean is affine in $x_2$ and can depend on the observation; the covariance does not. A separated residual quadratic does not assert that $X_1$ and $X_2$ are independent.This exact density proof assumes a joint Gaussian with $Sigma succ 0$; it does not establish adequacy of the supplied model.], label: "kp"),),
-  layout: layout-stack(items: ("law", "parameters", ), key-points: "kp", dominant: "parameters"),
-  reveal: reveal-cumulative(initial: ("law", ), then: (
-    reveal-step(("parameters", "kp", ), purpose: [The x2 dependence remains in the first Gaussian factor through its mean.], emphasize: false),
+  key-points: (key-points([The factor identified by division is already normalized in $x_1$. This establishes the complete conditional density for every observed value $x_2$.], label: "kp"),),
+  layout: layout-stack(items: ("positive", "divide", "law"), key-points: "kp", dominant: "law"),
+  reveal: reveal-cumulative(initial: ("positive", "kp"), then: (
+    reveal-step(("divide",), purpose: [Identify the first factor from the joint and the independently established marginal.], emphasize: true),
+    reveal-step(("law",), purpose: [Write the resulting law with the proved parameters.], emphasize: true),
   )),
-  constraints: [No singular-Gaussian extension or new algorithm. The wording includes $B=0$ and directions in the kernel of $B$.],
+  constraints: [Positivity is a density statement, not positive probability of a continuous singleton. This defines a conditional-density version everywhere; do not assert uniqueness at null events.],
 )
 
 #slide-design(
-  title: [Retrospective: normalization completes Gaussian conditioning], section: [R2.8],
-  teaching-move: [Close the recording with the normalized factors and their noncircular identification.],
+  title: [The observation can shift the conditional mean], section: [P17],
+  teaching-move: [Interpret where observation dependence resides in the proved law, distinguishing original blocks from residual coordinates.],
   cards: (
-    section-summary-visual([$ p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2) $\
-$ g_1=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S), quad g_2=cal(N)_(d_2)(x_2;mu_2,H) $\
-$ integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1=1 quad => quad p(x_2)=g_(2)(x_2) $\
-$ frac(p(x_1,x_2),p(x_2))=g_(1)(x_1;x_2)=p(x_1|x_2) $], label: "summary"),
+    recall-card([$ p(x_1|x_2)=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S) $], label: "law", from: [P16]),
+    card(rows(
+      [$ m(x_2)=mu_1+B(x_2-mu_2) $],
+      [$ m(x_2+Delta)-m(x_2)=B Delta $],
+      [$ Sigma_(1|2)=S=Sigma_11-Sigma_12 H^(-1)Sigma_21 $],
+    ), label: "dependence", title: [A changed observation shifts the mean; the covariance stays S]),
   ),
-  key-points: (section-summary-takeaways([The quadratic, determinant and dimension factors all split. Integration then division identify the Gaussian marginal and conditional.], label: "kp"),),
-  layout: layout-summary(visual: "summary", takeaways: "kp"),
-  reveal: reveal-static(("summary", "kp", )),
-  rationale: [Select normalized product and identification from R2.4–R2.6. The normalizer identities are recalled in the takeaway, not duplicated as another dense proof. Dependence interpretation already has its own preceding slide.],
-  constraints: [Final recording slide. Retrospective only; no new claim, task, assignment, handoff or forward question.],
+  key-points: (key-points(rows(
+    [The mean can change with $x_2$ through $B$; $S$ does not depend on the observed value.],
+    [The residual $r=x_1-m(x_2)$ uses the observation. Writing its quadratic separately does not make the original $X_1$ and $X_2$ independent.],
+    [The result is exact for the supplied Gaussian model with $Sigma succ 0$; it does not test that model against data.],
+  ), label: "kp"),),
+  layout: layout-stack(items: ("law", "dependence"), key-points: "kp", dominant: "dependence"),
+  reveal: reveal-cumulative(initial: ("law", "kp"), then: (
+    reveal-step(("dependence",), purpose: [Vary the observation in the proved mean formula while holding model parameters fixed.], emphasize: true),
+  )),
+  constraints: [Final slide is interpretation, not a disguised section summary. “Can change” includes B=0 and directions in its kernel. Delta has dimension d2. No new algorithm, singular extension, notebook handoff, or rehearsal claim.],
 )

@@ -1,227 +1,405 @@
-// PROVISIONAL standalone recording deck — instructor-authorized build.
-// Lowering of slide_design.typ; no speaker notes. Timing and final acceptance
-// remain open. Shared mathematical content follows the approved provisional
-// design; geometry and reveal mechanics are production choices.
+// L01-R01 — one continuous proof recording. No section-divider or
+// section-summary slides. No speaker notes.
 #import "../../../course.typ": *
 
 #let lecture = (
-  number: 1,
+  number: "L01-R01",
+  kind: "recording",
   title: [Quadratic separation of a Gaussian],
   short-title: [Gaussian conditioning proof],
-  subtitle: [A complete density proof of Gaussian conditioning],
+  subtitle: [A proof of the formula for the conditional density of a Gaussian],
 )
 
 #show: course-theme.with(info: lecture)
 #show: touying-set-config.with(config-common(handout: true))
 
-#let reveal(n, emphasis: false, body) = if emphasis { step(n, body) } else { uncover(str(n) + "-", body) }
-
-#let teaching(object, points, width: 92%, key-state: none) = if key-state == none {
-  content-block(object-width: width, object: object, key-points: points)
-} else {
-  stack(
-    spacing: 0.9em,
-    align(center, block(width: width)[#object]),
-    uncover(str(key-state) + "-", key-points(points)),
-  )
-}
-
-#let math-lines(..rows) = stack(spacing: 0em, ..rows.pos().map(row => block[#v(0.9em) #align(center)[#row] #v(0.9em)]))
-
-#let math-card(body) = card[
-  #set par(leading: 1.6em)
-  #align(center)[#body]
-]
-
-#section-metadata(short-title: [Quadratic separation], subtitle: [Proving the algebra behind Gaussian conditioning])
 #title-slide()
 
-= Block elimination separates the joint quadratic
-
-== The joint density sets two proof obligations
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [Prepared live: Gaussian blocks and density], label: [Supplied model])[$X=mat(X_1;X_2), quad mu=mat(mu_1;mu_2), quad Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22)=Sigma^T succ 0$\
-$X_i,mu_i in RR^(d_i), quad Sigma_(i j) in RR^(d_i times d_j), quad d=d_1+d_2, quad d_i>=1$],
-    reveal(2, emphasis: false)[#math-card(math-lines([$p(x_1,x_2)=cal(N)_(d)(x;mu,Sigma)$], [$=(2pi)^(-d/2)(det Sigma)^(-1/2) exp(-1/2 (x-mu)^T Sigma^(-1)(x-mu))$]))],
-  ),
-  [Separating the quadratic is one obligation. The normalizer must split as well.],
-  key-state: 2,
-)
-
-== Positive definiteness makes the observed block invertible
-#teaching(
-  stack(spacing: sp("s"),
-    math-card(math-lines([$H:=Sigma_22, quad z in RR^(d_2) backslash {0}$], [$z^T H z=mat(0;z)^T Sigma mat(0;z)>0 quad => quad H=H^T succ 0$])),
-    reveal(2, emphasis: true)[#math-card([$B:=Sigma_12 H^(-1), quad S:=Sigma_11-B H B^T=S^T$])],
-    reveal(3, emphasis: false)[#math-card(math-lines([$B H=Sigma_12, quad H B^T=Sigma_21$], [$S=Sigma_11-Sigma_12 H^(-1)Sigma_21$]))],
-  ),
-  [$S$ is the live residual covariance (the Schur complement of $H$). Its strict positivity still needs proof here.],
-  key-state: 3,
-)
-
-== The elimination matrix has an explicit inverse
-#teaching(
-  stack(spacing: sp("m"),
-    math-card([$T:=mat(I_(d_1),-B;0,I_(d_2)), quad U:=mat(I_(d_1),B;0,I_(d_2))$]),
-    reveal(2, emphasis: true)[#math-card(math-lines([$T U=mat(I_(d_1),B-B;0,I_(d_2))=I_d$], [$U T=mat(I_(d_1),-B+B;0,I_(d_2))=I_d quad => quad T^(-1)=U$]))],
-  ),
-  [Block elimination is reversible; no covariance or independence argument was used.],
-  key-state: 2,
-)
-
-== Left elimination removes the upper covariance block
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R1.3])[$B H=Sigma_12, quad H B^T=Sigma_21, quad S=Sigma_11-B H B^T$],
-    reveal(2, emphasis: true)[#math-card(math-lines([$T Sigma=mat(I,-B;0,I) mat(Sigma_11,B H;H B^T,H)$], [$=mat(Sigma_11-B H B^T,B H-B H;H B^T,H)$]))],
-    reveal(3, emphasis: false)[#math-card([$T Sigma=mat(S,0;H B^T,H)$])],
-  ),
-  [The upper cross block vanishes. This single multiplication is not yet the covariance congruence.],
-  key-state: 3,
-)
-
-== Right elimination completes the covariance congruence
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R1.5 and transpose of R1.4])[$T Sigma=mat(S,0;H B^T,H), quad T^T=mat(I,0;-B^T,I)$],
-    reveal(2, emphasis: true)[#math-card(math-lines([$T Sigma T^T=mat(S,0;H B^T,H) mat(I,0;-B^T,I)$], [$=mat(S,0;H B^T-H B^T,H)$]))],
-    reveal(3, emphasis: false)[#math-card([$D:=T Sigma T^T=mat(S,0;0,H)$])],
-  ),
-  [The two multiplications form a congruence: $T Sigma T^T$. They do not form a similarity transformation.],
-  key-state: 3,
-)
-
-== Invertible congruence proves the residual covariance positive definite
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R1.4 and R1.6])[$D=T Sigma T^T=mat(S,0;0,H), quad T " invertible", quad Sigma succ 0$],
-    reveal(2, emphasis: true)[#math-card(math-lines([$w!=0 quad => quad T^T w!=0$], [$w^T D w=(T^T w)^T Sigma(T^T w)>0 quad => quad D succ 0$]))],
-    reveal(3, emphasis: true)[#math-card(math-lines([$a in RR^(d_1) backslash {0}, quad w=mat(a;0)$], [$a^T S a=w^T D w>0 quad => quad S succ 0$]))],
-  ),
-  [Both $S$ and $H$ have inverses and positive determinants. This follows from strict joint positivity.],
-  key-state: 3,
-)
-
-== Inverting the congruence fixes the order of the factors
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R1.6; inverses justified in R1.7])[$D=T Sigma T^T=mat(S,0;0,H)$],
-    reveal(2, emphasis: true)[#math-card([$D^(-1)=T^(-T) Sigma^(-1) T^(-1), quad T^(-T):=(T^(-1))^T$])],
-    reveal(3, emphasis: true)[#math-card(math-lines([$T^T D^(-1)T=Sigma^(-1)$], [$Sigma^(-1)=T^T mat(S^(-1),0;0,H^(-1))T$]))],
-  ),
-  [The factors do not commute. The order follows from undoing the congruence.],
-  key-state: 3,
-)
-
-== Elimination turns the centered vector into a residual and an observation
-#teaching(
-  stack(spacing: sp("s"),
-    math-card([$u:=x_2-mu_2, quad r:=x_1-mu_1-B u$]),
-    reveal(2, emphasis: true)[#math-card(math-lines([$T(x-mu)=mat(I,-B;0,I)mat(x_1-mu_1;u)$], [$=mat(x_1-mu_1-B u;u)=mat(r;u)$]))],
-  ),
-  [$r$ is the centered residual. Its coordinates contain $x_2$; the original first block is still $x_1$.],
-  key-state: 2,
-)
-
-== The joint quadratic is the sum of two block quadratics
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R1.8 and R1.9])[$Sigma^(-1)=T^T D^(-1)T, quad T(x-mu)=mat(r;u)$\
-$D^(-1)=mat(S^(-1),0;0,H^(-1))$],
-    reveal(2, emphasis: true)[#math-card(math-lines([$ (x-mu)^T Sigma^(-1)(x-mu)=[T(x-mu)]^T D^(-1)[T(x-mu)]$], [$=mat(r;u)^T mat(S^(-1),0;0,H^(-1)) mat(r;u)$]))],
-    reveal(3, emphasis: true)[#math-card([$(x-mu)^T Sigma^(-1)(x-mu)=r^T S^(-1)r+u^T H^(-1)u$])],
-  ),
-  [The exponent separates exactly. A normalized density equality has not yet been proved.],
-  key-state: 3,
-)
-
-== Retrospective: elimination separates the quadratic
+== From the lecture to this proof
 #content-block(
-  object-width: 94%,
-  object: section-summary-visual([$T Sigma T^T=mat(S,0;0,H), quad H succ 0, quad S succ 0$\
-$(x-mu)^T Sigma^(-1)(x-mu)=r^T S^(-1)r+u^T H^(-1)u$\
-$u=x_2-mu_2, quad r=x_1-mu_1-B u$]),
-  key-points: section-summary-takeaways([Reversible elimination yields valid residual and observed covariance blocks. The inverse congruence separates their quadratic contributions.]),
-)
-
-#section-metadata(short-title: [Normalized factorization], subtitle: [From separated exponents to probability laws])
-= Normalizers identify the conditional and marginal densities
-
-== Unit-determinant elimination splits the covariance determinant
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R1.4 and R1.6])[$T=mat(I,-B;0,I), quad D=T Sigma T^T=mat(S,0;0,H)$],
-    reveal(2, emphasis: true)[#math-card([$det T=det I_(d_1) det I_(d_2)=1$])],
-    reveal(3, emphasis: true)[#math-card(math-lines([$det D=(det T)(det Sigma)(det T^T)=det Sigma$], [$det Sigma=det S det H, quad det Sigma,det S,det H>0$]))],
+  object: twocol(
+    recall-card(
+      from: [L01: Gaussian blocks, conditioning and centered residual],
+      label: [From the lecture],
+      math-rows(
+        gap: 1em,
+        [$X=mat(X_1;X_2) tilde cal(N)_(d)(mu,Sigma)$],
+        [$mu=mat(mu_1;mu_2), quad Sigma=mat(Sigma_11,Sigma_12;Sigma_21,Sigma_22)$],
+        [$Sigma=Sigma^T succ 0, quad d=d_1+d_2$],
+      ),
+    ),
+    bordered-card(
+      title: [To prove here],
+      [#stack(
+        spacing: sp("m"),
+        math-rows(gap: 1em, [$p(x_1|x_2)=cal(N)_(d_1)(x_1;m(x_2),S)$]),
+        [The conditional mean $m(x_2)$ and covariance $S$ obtained in the lecture.],
+        [Derive this complete density from the supplied joint density $p(x_1,x_2)$.],
+      )],
+    ),
+    columns: cols("equal"),
+    gutter: sp("xl"),
   ),
-  [Elimination changes the covariance blocks while preserving this determinant. Positivity licenses positive square roots.],
-  key-state: 3,
-)
-
-== The dimensions split the remaining Gaussian normalizer
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R1.2, R1.7 and R2.2])[$d=d_1+d_2, quad det Sigma=det S det H, quad S,H succ 0$],
-    reveal(2, emphasis: true)[#math-card(math-lines([$(2pi)^(-d/2)(det Sigma)^(-1/2)$], [$=(2pi)^(-(d_1+d_2)/2)(det S det H)^(-1/2)$]))],
-    reveal(3, emphasis: true)[#math-card(math-lines([$(2pi)^(-d/2)(det Sigma)^(-1/2)$], [$=[(2pi)^(-d_1/2)(det S)^(-1/2)] [(2pi)^(-d_2/2)(det H)^(-1/2)]$]))],
+  key-points: stack(
+    spacing: sp("m"),
+    [Fix the observed value $x_2$; the density describes the missing block $X_1$.],
+    [We account for the exponential and its coefficient, then identify the conditional by integration and division.],
   ),
-  [Each block receives its own determinant factor and its own dimension factor.],
-  key-state: 3,
 )
 
-== The full density equals two normalized Gaussian factors
-#teaching(
-  stack(spacing: sp("m"),
-    recall-card(from: [R1.3, R1.7 and R1.9])[$u=x_2-mu_2, quad r=x_1-(mu_1+B u), quad S,H succ 0$],
-    reveal(2, emphasis: true)[#math-card(math-lines([$g_(1)(x_1;x_2):=(2pi)^(-d_1/2)(det S)^(-1/2) exp(-1/2 r^T S^(-1)r)$], [$=cal(N)_(d_1)(x_1;mu_1+B u,S)$]))],
-    reveal(3, emphasis: true)[#math-card(math-lines([$g_(2)(x_2):=(2pi)^(-d_2/2)(det H)^(-1/2) exp(-1/2 u^T H^(-1)u)$], [$=cal(N)_(d_2)(x_2;mu_2,H)$]))],
-    reveal(4, emphasis: false)[#math-card([$p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2)$])],
-  ),
-  [For fixed $x_2$, $g_1$ is a Gaussian density in $x_1$. The factor names do not yet identify the marginal and conditional.],
-  width: 96%,
-  key-state: 4,
-)
-
-== Integrating the first factor identifies the marginal
-#teaching(
-  stack(spacing: sp("xs"),
-    recall-card(from: [R2.4])[$p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2), quad g_(1)(x_1;x_2)=cal(N)_(d_1)(x_1;mu_1+B u,S)$],
-    reveal(2, emphasis: true)[#math-card(math-lines([$S succ 0, quad m:=mu_1+B(x_2-mu_2) " is fixed"$], [$integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1=integral_(RR^(d_1))cal(N)_(d_1)(x_1;m,S) dif x_1=1$]))],
-    reveal(3, emphasis: true)[#math-card(math-lines([$p(x_2)&=integral_(RR^(d_1))p(x_1,x_2) dif x_1$], [$&=g_(2)(x_2) integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1$], [$&=g_(2)(x_2)=cal(N)_(d_2)(x_2;mu_2,H)$]))],
-  ),
-  [Normalization identifies $g_2$ as the marginal; no conditional formula was assumed.],
-  width: 96%,
-  key-state: 3,
-)
-
-== Dividing by the positive marginal identifies the conditional
-#teaching(
-  stack(spacing: sp("s"),
-    math-card([$p(x_2)=g_(2)(x_2)=cal(N)_(d_2)(x_2;mu_2,H)>0 quad (x_2 in RR^(d_2))$]),
-    reveal(2, emphasis: true)[#math-card(math-lines([$p(x_1|x_2)&:=frac(p(x_1,x_2),p(x_2))$], [$&=frac(g_(1)(x_1;x_2)g_(2)(x_2),g_(2)(x_2))=g_(1)(x_1;x_2)$], [$&=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S)$]))],
-    reveal(3, emphasis: false)[#math-card([$p(x_1,x_2)=p(x_1|x_2)p(x_2)$])],
-  ),
-  [The positive-density ratio gives a conditional-density version for every $x_2$. Its normalization was already proved.],
-  key-state: 3,
-)
-
-== The conditional mean retains the observed-block dependence
-#teaching(
-  stack(spacing: sp("s"),
-    recall-card(from: [R2.6])[$p(x_1|x_2)=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S)$],
-    reveal(2, emphasis: false)[#math-card(math-lines([$mu_(1|2)(x_2)=mu_1+B(x_2-mu_2), quad Sigma_(1|2)=S$], [$r=x_1-mu_(1|2)(x_2)$]))],
-  ),
-  [The mean is affine in $x_2$ and can depend on the observation; the covariance does not. A separated residual quadratic does not assert independence. This exact density proof assumes a joint Gaussian with $Sigma succ 0$; it does not establish adequacy of the supplied model.],
-  key-state: 2,
-)
-
-== Retrospective: normalization completes Gaussian conditioning
+== The density contains an exponential and a coefficient
 #content-block(
-  object-width: 96%,
-  object: section-summary-visual([$p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2)$\
-$g_1=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S), quad g_2=cal(N)_(d_2)(x_2;mu_2,H)$\
-$integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1=1 quad => quad p(x_2)=g_(2)(x_2)$\
-$frac(p(x_1,x_2),p(x_2))=g_(1)(x_1;x_2)=p(x_1|x_2)$]),
-  key-points: section-summary-takeaways([The quadratic, determinant and dimension factors all split. Integration then division identify the Gaussian marginal and conditional.]),
+  object: stack(
+    spacing: sp("l"),
+    math-rows(gap: 1em, [$p(x_1,x_2)=C exp(-1/2 Q)$]),
+    twocol(
+      stack(
+        spacing: sp("m"),
+        text(size: fs("m"), weight: "semibold")[The quadratic in the exponent],
+        math-rows(gap: 1em, [$Q=(x-mu)^T Sigma^(-1)(x-mu)$]),
+        [Target: a residual contribution plus an observed-deviation contribution.],
+        [Residual: $x_1-m(x_2)$. Observed deviation: $x_2-mu_2$.],
+      ),
+      step(2, stack(
+        spacing: sp("m"),
+        text(size: fs("m"), weight: "semibold")[The coefficient before the exponential],
+        math-rows(
+          gap: 1em,
+          [$C=(2pi)^(-d/2)(det Sigma)^(-1/2)$],
+          [$d=d_1+d_2$],
+        ),
+        [Target: the coefficient for the residual density times that for the observed-block density.],
+      )),
+      columns: cols("equal"),
+      gutter: sp("l"),
+    ),
+  ),
+  key-points: [Writing the exponential as a product will not establish a full density product until the coefficient also matches.],
+)
+
+== Choose B to remove the cross covariance
+#content-block(
+  object: stack(
+    spacing: sp("m"),
+    [Subtract $B$ times the observed block so the cross covariance cancels:],
+    math-rows(
+      gap: 1em,
+      [$H:=Sigma_22$],
+      [$Sigma_12-B H=0 quad <=> quad B H=Sigma_12$],
+    ),
+    twocol(
+      step(2, stack(
+        spacing: sp("m"),
+        text(size: fs("m"), weight: "semibold")[Why the inverse of $H$ exists],
+        [Take any nonzero vector $z$ for the observed block:],
+        math-rows(
+          gap: 1em,
+          [$z in RR^(d_2) backslash {0}$],
+          [$z^T H z=mat(0;z)^T Sigma mat(0;z)>0$],
+          [$H=H^T succ 0 quad => quad H^(-1) " exists"$],
+        ),
+      )),
+      step(3, stack(
+        spacing: sp("m"),
+        text(size: fs("m"), weight: "semibold")[Solve the cancellation equation],
+        math-rows(
+          gap: 1em,
+          [$B=Sigma_12 H^(-1) in RR^(d_1 times d_2)$],
+          [$B H=Sigma_12, quad H B^T=Sigma_21$],
+        ),
+      )),
+      columns: cols("left"),
+      gutter: sp("l"),
+    ),
+  ),
+  key-points: [Canceling the cross blocks makes the inverse act separately on residual and observed coordinates. This is what will give the two terms in $Q$.],
+)
+
+== Subtracting the predicted deviation produces the residual
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    math-rows(
+      gap: 0.8em,
+      [$u:=x_2-mu_2$],
+      [$m(x_2):=mu_1+B u, quad r:=x_1-m(x_2)$],
+    ),
+    step(2, stack(
+      spacing: sp("l"),
+      math-rows(
+        gap: 0.8em,
+        [$T:=mat(I_(d_1),-B;0,I_(d_2))$],
+        [$T(x-mu)=mat(I,-B;0,I)mat(x_1-mu_1;u)=mat(r;u)$],
+      ),
+      [Target from the lecture — to prove here:],
+      math-rows(gap: 1em, [$Q=r^T S^(-1)r+u^T H^(-1)u$]),
+    )),
+  ),
+  key-points: [Here $r$ is the error around the predicted mean and $u$ is the observed deviation. The target uses the residual covariance $S$ from the lecture; it will be derived here.],
+)
+
+== The coordinate change is reversible
+#content-block(
+  object: stack(
+    spacing: sp("m"),
+    [The map sent $(x_1-mu_1,u)$ to $(r,u)$; add the predicted deviation back:],
+    math-rows(gap: 0.8em, [$U:=mat(I,B;0,I), quad U mat(r;u)=mat(r+B u;u)=x-mu$]),
+    step(2, math-rows(
+      gap: 0.8em,
+      [$T U=mat(I,B-B;0,I)=I$],
+      [$U T=mat(I,-B+B;0,I)=I quad => quad T^(-1)=U$],
+    )),
+  ),
+  key-points: [The residual and observation together determine the original centered vector. Invertibility will preserve strict positivity and let us recover the inverse covariance.],
+)
+
+== Subtract the observed rows to cancel the upper-right block
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [Using $B H=Sigma_12$, multiply by $T$ on the left:],
+    math-rows(
+      gap: 0.8em,
+      [$Sigma=mat(Sigma_11,B H;H B^T,H), quad T=mat(I,-B;0,I)$],
+    ),
+    step(2, math-rows(
+      gap: 0.8em,
+      [$T Sigma=mat(I,-B;0,I)mat(Sigma_11,B H;H B^T,H)$],
+      [$B H-B H=0$],
+    )),
+    step(3, stack(
+      spacing: sp("m"),
+      math-rows(
+        gap: 0.8em,
+        [$S:=Sigma_11-B H B^T, quad T Sigma=mat(S,0;H B^T,H)$],
+      ),
+    )),
+  ),
+  key-points: [The chosen $B$ cancels the upper-right block exactly. The lower-left block remains because only the row operation has been applied.],
+)
+
+== The matching column operation cancels the lower-left block
+#content-block(
+  object: stack(
+    spacing: sp("m"),
+    [Carry the preceding product forward and multiply by $T^T$ on the right:],
+    math-rows(
+      gap: 0.8em,
+      [$T Sigma=mat(S,0;H B^T,H), quad T^T=mat(I,0;-B^T,I)$],
+    ),
+    step(2, math-rows(
+      gap: 0.8em,
+      [$T Sigma T^T=mat(S,0;H B^T,H)mat(I,0;-B^T,I)$],
+      [$=mat(S,0;H B^T-H B^T,H)$],
+    )),
+    step(3, math-rows(gap: 0.8em, [$D:=T Sigma T^T=mat(S,0;0,H)$])),
+  ),
+  key-points: [The row and column operations together give the covariance in residual and observation coordinates. Its off-diagonal blocks are zero; its inverse will produce the two quadratic terms.],
+)
+
+== The remaining residual block is positive definite
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [The covariance congruence uses an invertible $T$ and a supplied $Sigma succ 0$:],
+    math-rows(gap: 1em, [$D=T Sigma T^T=mat(S,0;0,H)$]),
+    step(2, math-rows(
+      gap: 1em,
+      [$w!=0 quad => quad T^T w!=0$],
+      [$w^T D w=(T^T w)^T Sigma(T^T w)>0$],
+    )),
+    step(3, math-rows(
+      gap: 1em,
+      [$a in RR^(d_1) backslash {0}, quad w=mat(a;0)$],
+      [$a^T S a=w^T D w>0 quad => quad S=S^T succ 0$],
+    )),
+  ),
+  key-points: [The supplied joint strict positivity survives the reversible coordinate change. Both $S$ and $H$ therefore have inverses and positive determinants, as the Gaussian density requires.],
+)
+
+== Invert the covariance identity to reach the exponent
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [The density uses $Sigma^(-1)$, while elimination established an identity for $Sigma$:],
+    math-rows(gap: 1em, [$D=T Sigma T^T, quad D=mat(S,0;0,H)$]),
+    step(2, math-rows(
+      gap: 1em,
+      [$D^(-1)=T^(-T) Sigma^(-1) T^(-1)$],
+      [$T^(-T):=(T^(-1))^T$],
+    )),
+    step(3, math-rows(
+      gap: 1em,
+      [$T^T D^(-1)T=Sigma^(-1)$],
+      [$Sigma^(-1)=T^T mat(S^(-1),0;0,H^(-1))T$],
+    )),
+  ),
+  key-points: [Invert the product in reverse order, then multiply on the left by $T^T$ and on the right by $T$. Do not reorder the factors. This gives the inverse covariance needed in $Q$.],
+)
+
+== The joint quadratic becomes a residual term plus an observed term
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [From the covariance congruence and residual coordinates:],
+    math-rows(gap: 1em, [$Sigma^(-1)=T^T D^(-1)T, quad T(x-mu)=mat(r;u)$]),
+    step(2, stack(
+      spacing: sp("m"),
+      [Substitute into the quadratic $Q$ from the joint density:],
+      math-rows(
+        gap: 1em,
+        [$Q=(x-mu)^T Sigma^(-1)(x-mu)=[T(x-mu)]^T D^(-1)[T(x-mu)]$],
+        [$=mat(r;u)^T mat(S^(-1),0;0,H^(-1))mat(r;u)$],
+      ),
+    )),
+    step(3, math-rows(
+      gap: 1em,
+      [$Q=underbrace(r^T S^(-1)r,"residual term")+underbrace(u^T H^(-1)u,"observed term")$],
+    )),
+  ),
+  key-points: [At fixed $x_2$, $u$ is fixed while $r=x_1-m(x_2)$ varies with $x_1$. The zero off-diagonal blocks remove the mixed term.],
+)
+
+== A sum in the exponent becomes a product
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [Use the proved quadratic split in $exp(-Q/2)$:],
+    math-rows(gap: 1em, [$Q=r^T S^(-1)r+u^T H^(-1)u$]),
+    [Use $exp(a+b)=exp(a)exp(b)$ with the quadratic split:],
+    step(2, math-rows(
+      gap: 1em,
+      [$exp(-1/2 Q)=exp(-1/2 r^T S^(-1)r) exp(-1/2 u^T H^(-1)u)$],
+      [$p(x_1,x_2)=C exp(-1/2 r^T S^(-1)r) exp(-1/2 u^T H^(-1)u)$],
+    )),
+    step(2, math-rows(gap: 1em, [$C=(2pi)^(-d/2)(det Sigma)^(-1/2)$])),
+  ),
+  key-points: [The two exponentials have the required shapes. To make two complete Gaussian densities, $C$ must supply the coefficient for each dimension and covariance.],
+)
+
+== The same elimination gives the determinant product
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [Reuse the same covariance congruence; $T$ is block triangular with identity diagonal blocks:],
+    math-rows(gap: 1em, [$D=T Sigma T^T=mat(S,0;0,H), quad det T=det I_(d_1) det I_(d_2)=1$]),
+    step(2, math-rows(
+      gap: 1em,
+      [$det D=det T det Sigma det T^T=det Sigma$],
+      [$det D=det S det H quad => quad det Sigma=det S det H$],
+    )),
+  ),
+  key-points: [The coefficient $C$ contains $(det Sigma)^(-1/2)$. This identity replaces it by determinant factors for the residual and observed blocks.],
+)
+
+== The factors before the exponentials split too
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [The dimensions and covariance determinants both split; $S$ and $H$ are positive definite:],
+    math-rows(
+      gap: 1em,
+      [$d=d_1+d_2, quad det Sigma=det S det H$],
+      [$(2pi)^(-d/2)=(2pi)^(-d_1/2)(2pi)^(-d_2/2)$],
+      [$(det Sigma)^(-1/2)=(det S)^(-1/2)(det H)^(-1/2)$],
+    ),
+    step(2, math-rows(
+      gap: 1em,
+      [$C=C_1 C_2$],
+      [$C_1:=(2pi)^(-d_1/2)(det S)^(-1/2)$],
+      [$C_2:=(2pi)^(-d_2/2)(det H)^(-1/2)$],
+    )),
+  ),
+  key-points: [The residual exponential receives $C_1$, for dimension $d_1$ and covariance $S$. The observed exponential receives $C_2$, for dimension $d_2$ and covariance $H$.],
+)
+
+== Reassemble the complete Gaussian densities
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    twocol(
+      stack(
+        spacing: sp("m"),
+        text(size: fs("m"), weight: "semibold")[Gaussian density in $x_1$ for fixed $x_2$],
+        math-rows(
+          gap: 1em,
+          [$g_(1)(x_1;x_2):=C_1 exp(-1/2 r^T S^(-1)r)$],
+          [$=cal(N)_(d_1)(x_1;m(x_2),S)$],
+          [$m(x_2)=mu_1+B u, quad r=x_1-m(x_2)$],
+        ),
+      ),
+      step(2, stack(
+        spacing: sp("m"),
+        text(size: fs("m"), weight: "semibold")[Gaussian density in the observed block],
+        math-rows(
+          gap: 1em,
+          [$g_(2)(x_2):=C_2 exp(-1/2 u^T H^(-1)u)$],
+          [$=cal(N)_(d_2)(x_2;mu_2,H), quad u=x_2-mu_2$],
+        ),
+      )),
+      columns: cols("equal"),
+      gutter: sp("l"),
+    ),
+    step(3, math-rows(gap: 1em, [$p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2)$])),
+  ),
+  key-points: [Each coefficient and positive definite covariance matches its dimension. Integration and division will identify which factor is the marginal and which is the conditional.],
+)
+
+== Integrate over x1 to identify the marginal
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [Carry the product forward. For fixed $x_2$, $m(x_2)$ is fixed and $S succ 0$:],
+    math-rows(
+      gap: 1em,
+      [$p(x_1,x_2)=g_(1)(x_1;x_2)g_(2)(x_2)$],
+      [$integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1=1$],
+    ),
+    step(2, math-rows(
+      gap: 0.9em,
+      [$p(x_2)=integral_(RR^(d_1))p(x_1,x_2) dif x_1$],
+      [$=g_(2)(x_2) integral_(RR^(d_1))g_(1)(x_1;x_2) dif x_1=g_(2)(x_2)$],
+      [$p(x_2)=cal(N)_(d_2)(x_2;mu_2,H)$],
+    )),
+  ),
+  key-points: [For each fixed observation, the first factor integrates to one. Marginalizing the joint therefore leaves exactly the second factor.],
+)
+
+== Divide by the marginal to obtain the conditional density
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [The marginal is positive for every observed value:],
+    math-rows(gap: 1em, [$p(x_2)=g_(2)(x_2)=cal(N)_(d_2)(x_2;mu_2,H)>0$]),
+    step(2, math-rows(
+      gap: 0.9em,
+      [$p(x_1|x_2)=frac(p(x_1,x_2),p(x_2))$],
+      [$=frac(g_(1)(x_1;x_2)g_(2)(x_2),g_(2)(x_2))=g_(1)(x_1;x_2)$],
+    )),
+    step(3, math-rows(
+      gap: 1em,
+      [$p(x_1|x_2)=cal(N)_(d_1)(x_1;mu_1+B(x_2-mu_2),S)$],
+    )),
+  ),
+  key-points: [The factor identified by division is already normalized in $x_1$. This establishes the complete conditional density for every observed value $x_2$.],
+)
+
+== The observation can shift the conditional mean
+#content-block(
+  object: stack(
+    spacing: sp("l"),
+    [From the proved conditional density:],
+    math-rows(gap: 1em, [$m(x_2)=mu_1+B(x_2-mu_2), quad Sigma_(1|2)=S$]),
+    step(2, math-rows(
+      gap: 1em,
+      [$m(x_2+Delta)-m(x_2)=B Delta$],
+      [$S=Sigma_11-Sigma_12 H^(-1)Sigma_21$],
+    )),
+  ),
+  key-points: stack(
+    spacing: sp("m"),
+    [The mean can change with $x_2$ through $B$; $S$ does not depend on the observed value.],
+    [The residual $r=x_1-m(x_2)$ uses the observation. Its quadratic being separate does not make the original $X_1$ and $X_2$ independent.],
+    [The result is exact for the supplied joint Gaussian with $Sigma succ 0$; it does not test that model against data.],
+  ),
 )

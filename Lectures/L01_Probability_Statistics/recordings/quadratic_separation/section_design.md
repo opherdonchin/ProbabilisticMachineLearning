@@ -1,192 +1,141 @@
-# Quadratic separation recording — provisional section design
+# L01-R01 — provisional section design
 
-**Mode/status:** Section Design `build`; complete provisional contract for the
-instructor-authorized unattended package of 2026-10-17. Neither instructor
-approval of these sections nor downstream validation is claimed. The separate
-proof allocation and required/examinable status are accepted; detailed structure,
-duration and final recording acceptance remain open. The coordinator owns review
-and instructor decisions. Organization may develop this provisional route under
-the same bounded authorization.
+**Mode/status:** Section Design `revision`, responding to the instructor's
+2026-10-17 review. The instructor explicitly requires recordings to have exactly
+one section and no section-heading or section-summary slides. That instruction
+overrides the general lecture-section bookend rule for this recording. The
+separate proof allocation and required/examinable content remain accepted. This
+revised realization is provisional; final acceptance and measured duration are
+not claimed.
 
-## Global frame
+## One section: prove the Gaussian conditional density from the joint density
 
-**Trajectory and endpoint.** An invertible block elimination converts the joint
-covariance into diagonal residual/observed blocks; the same congruence separates
-the joint quadratic; determinants and dimensions complete the normalized density
-identity
-
-$$
-\mathcal N(x;\mu,\Sigma)
-=\mathcal N(x_1;\mu_1+B(x_2-\mu_2),S)\,
- \mathcal N(x_2;\mu_2,H).
-$$
-
-The learning problem remains inference about a missing block under a supplied
-joint Gaussian. This recording proves why the conditional law used live is an
-exact normalized distribution under that model. It introduces no new inference
-algorithm, fitting problem or practical-competence claim.
-
-**Entry state.** After the live Gaussian-conditioning material, students can
-partition means/covariances, use the multivariate Gaussian density, distinguish
-conditional and marginal queries, and interpret the independent centered residual
-and its Schur-complement covariance. Matrix multiplication, transposition,
-inversion, positive definiteness, determinants and the ordinary density
-normalization integral are prior mathematics. The recording briefly recalls
-the notation; its proof does not use the live independence argument to establish
-the desired factorization.
-
-**Fixed notation.** Let $x_i,\mu_i\in\mathbb R^{d_i}$, $d=d_1+d_2$,
-$\Sigma=\Sigma^T\succ0$, $\Sigma_{21}=\Sigma_{12}^T$,
-$H=\Sigma_{22}$, $B=\Sigma_{12}H^{-1}$,
-$S=\Sigma_{11}-BHB^T$, $u=x_2-\mu_2$ and
-$r=x_1-\mu_1-Bu$. Identity/zero blocks always have the matching dimensions.
-
-**Extent and delivery.** Entirely a separate recording: **20–30 minutes is an
-unmeasured provisional planning range**, not an approved duration or slide count.
-The provisional allocation below reserves explicit time for normalization rather
-than treating exponent separation as the endpoint. Rehearsal and downstream
-organization must test the estimate. Proof content is required/examinable;
-viewing is not tracked, evaluated or monitored, and no exam question is promised.
-The live residual proof and notebook stand independently of viewing this recording.
-
-**Boundaries and handoff.** No Woodbury proof, second Schur orientation,
-information-form unit, new dataset/notebook, speaker notes or additional empirical
-application. This is a proof supplement, with no notebook task handoff. The live
-results already supply the notebook prerequisites. The mathematically complete
-[derivation](math_derivation.md) is checking material for downstream explanation,
-not a prescribed slide sequence. Organization owns titles, order and granularity
-within each contract; Design owns the visible explanation.
-
-**Sources and precedent.** The exact source versions and hashes are recorded in
-`math_derivation.md`. Primary reading is Murphy, *Probabilistic Machine Learning:
-Advanced Topics* (2023), online version December 10, 2025, §2.3.1.5 “Derivation:
-moment form,” printed pp. 25–27 (PDF pp. 59–61), especially Eqs. 2.89, 2.91 and
-2.94–2.103. §2.3.1.3, printed p. 24/PDF p. 58, Eqs. 2.75–2.78 supplies the
-block law and destination. The live source/handout pp. 46–54 supplies entry-state
-and notation precedent, including the already displayed quadratic identity.
-These are prepared materials, not evidence of actual prior delivery.
-
-## Section R1 — Block elimination separates the joint quadratic
-
-**Status and single job.** Provisional. Establish how removing the linearly
-predicted block yields a valid covariance congruence and, consequently, a split
-quadratic form. This is the load-bearing algebraic argument.
-
-**Entry/transition in.** Recall the supplied joint law and live residual notation.
-Students know the conditional result; the new obligation is to prove the density's
-quadratic separation through matrix elimination rather than residual independence.
-
-**Assigned mathematics and treatment.** **Derive/prove**:
+**Purpose and endpoint.** Under a supplied joint Gaussian model, determine the
+law of a missing block after observing another block. Prove why the conditional
+formula already established in the live lecture is exactly a normalized density:
 
 $$
-T=\begin{pmatrix}I&-B\\0&I\end{pmatrix},\qquad
-T^{-1}=\begin{pmatrix}I&B\\0&I\end{pmatrix},\qquad
-T\Sigma T^T=\begin{pmatrix}S&0\\0&H\end{pmatrix}.
+p(x_1\mid x_2)=\mathcal N_{d_1}(x_1;\mu_1+B(x_2-\mu_2),S).
 $$
 
-Justify $H\succ0$ before defining $H^{-1}$, then $S\succ0$ by congruence
-(or the equivalent nonzero-vector quadratic argument). **Derive/prove**
+The continuous argument establishes the complete joint-density identity
 
 $$
-\Sigma^{-1}=T^T\begin{pmatrix}S^{-1}&0\\0&H^{-1}\end{pmatrix}T,
-\qquad
-(x-\mu)^T\Sigma^{-1}(x-\mu)=r^TS^{-1}r+u^TH^{-1}u.
+\mathcal N_d(x;\mu,\Sigma)
+=\mathcal N_{d_1}(x_1;\mu_1+B(x_2-\mu_2),S)
+ \mathcal N_{d_2}(x_2;\mu_2,H).
 $$
 
-The symbolic block multiplication is the worked calculation: its job is to show
-exactly why both off-diagonal blocks vanish and why the inverse identity uses
-$T^T$ on the left and $T$ on the right. Do not assume the block-inverse formula
-as a memorized prerequisite. **Interpret** $S$ as the same residual covariance
-established live; do not repeat the independence proof. Inverses express identities,
-not a recommendation to form inverses in notebook code.
+The exponential terms and the coefficients before them must both agree.
+Integration identifies the marginal; division then identifies the conditional.
+No fitting algorithm, dataset, or new practical-competence claim is added.
 
-**Source allocation.** Murphy Book 2 §2.3.1.5, Eq. 2.89 and Eq. 2.91,
-printed p. 26/PDF p. 60, support the relevant block-inverse orientation and
-Schur complement; Eqs. 2.94–2.98 give the inverse/exponent factorization.
-The explicit $T\Sigma T^T$ construction and positive-definiteness justification
-are the course's fully justified route to that identity. Do not attribute these
-as separately displayed Murphy proofs.
+**Entry state.** Students can partition Gaussian means and covariances, use the
+multivariate Gaussian density, distinguish conditional and marginal queries,
+and interpret the centered residual and its Schur-complement covariance from
+the live lecture. Matrix multiplication, transposition, inversion, positive
+definiteness, determinants and ordinary density normalization are available.
+These are the prepared live lecture's entry commitments, not evidence that class
+delivery has occurred. Recall the live result as the destination; do not use
+residual independence to prove that result again.
 
-**Endpoint/carry-forward.** Students can justify every inverse and reproduce the
-elimination-to-quadratic argument. They have the two Gaussian-shaped exponent
-terms, but have not yet proved normalized equality. Remaining obligation:
-determinant and $(2\pi)$ factors and identification of the marginal/conditional.
-Notebook prerequisites are unchanged.
-
-**Boundary and extent.** No general matrix inversion lemma or alternate
-orientation. Provisionally 12–18 minutes; 8–12 minutes remain for R2. If this
-algebra exhausts the recording budget, report timing pressure to the coordinator
-rather than dropping normalization or silently changing proof depth.
-
-**Final retrospective teaching move.** Invertible block elimination gives positive
-definite residual and observed covariance blocks; its inverse congruence expresses
-the joint quadratic as the sum of the residual quadratic and the observed-block
-quadratic.
-
-## Section R2 — Normalizers identify the conditional and marginal densities
-
-**Status and single job.** Provisional. Establish why the separated expression is
-the product of two normalized Gaussian densities, not merely a proportional
-factorization of kernels.
-
-**Entry/transition in.** Begin from R1's proved quadratic split and valid SPD
-blocks. The joint density also has a determinant and a dimension-dependent
-normalizer, which must be accounted for to establish the full probability law.
-
-**Assigned mathematics and treatment.** **Derive/prove** $\det T=1$ and
+**Notation and conditions.** Let $x_i,\mu_i\in\mathbb R^{d_i}$,
+$d=d_1+d_2$, $\Sigma=\Sigma^T\succ0$ and
+$\Sigma_{21}=\Sigma_{12}^T$. Write
 
 $$
-\det\Sigma=\det S\det H,\qquad
-(2\pi)^{-d/2}(\det\Sigma)^{-1/2}
-=\big[(2\pi)^{-d_1/2}(\det S)^{-1/2}\big]
- \big[(2\pi)^{-d_2/2}(\det H)^{-1/2}\big].
+H=\Sigma_{22},\qquad B=\Sigma_{12}H^{-1},\qquad
+S=\Sigma_{11}-BHB^T,
 $$
 
-Combine these with the quadratic split to obtain the Gaussian density equality
-in the global endpoint. **Work/justify** the density identification: for fixed
-$x_2$, the first factor integrates to one over $x_1$, so integrating the product
-gives $p(x_2)=\mathcal N(x_2;\mu_2,H)$. This marginal is strictly positive,
-and dividing the joint by it gives
-$p(x_1\mid x_2)=\mathcal N(x_1;\mu_1+Bu,S)$. This final check avoids using the
-target conditional law as an assumption of its own proof. **Interpret** the
-dependence: the conditional mean is affine in $x_2$ and can depend on the observation; the conditional covariance
-does not. The two original blocks are generally dependent despite the separated
-residual quadratic.
+$$
+u=x_2-\mu_2,\qquad r=x_1-\mu_1-Bu,\qquad
+T=\begin{pmatrix}I&-B\\0&I\end{pmatrix}.
+$$
 
-**Source allocation/provenance.** Murphy Book 2 §2.3.1.5 Eqs. 2.100–2.103,
-printed pp. 26–27/PDF pp. 60–61, states the factorization and its parameters.
-The explicit determinant/dimension completion and normalization-integral check
-are the course's completion, verified in `math_derivation.md`; Murphy's displayed
-proportionality-to-factorization passage does not separately show those steps.
-No source error in the selected moment-form identity was found.
+Here $u$ is the observed deviation and $r$ is the error after subtracting the
+predicted deviation $Bu$. Gaussianity and strict positive definiteness are
+essential to this ordinary-density argument. Singular Gaussian measures are
+outside its scope. Identity and zero blocks have matching dimensions.
 
-**Endpoint/carry-forward.** Students can prove normalized factorization and explain
-why exponent separation alone leaves a proof obligation. All recording obligations
-are discharged. No new live/notebook prerequisite or additional assignment is
-created.
+**Assigned mathematics and depth.** Preserve the complete proof at
+**derive/prove** depth. These dependencies belong to one section, not to
+proposed subsection boundaries:
 
-**Boundary and extent.** No new numerical example is required; the proof's two
-normalized factors are the worked objects. Provisionally 8–12 minutes, yielding
-20–30 minutes overall. No additional proof family or application follows.
+- Motivate $B$ by the cancellation equation $BH=\Sigma_{12}$. Prove
+  $H\succ0$ by testing the joint quadratic on $(0,z)^T$ before using
+  $H^{-1}$ in the new derivation. Explain why the observed covariance must
+  be inverted and why doing so is legal.
+- Show that $T$ takes centered observations to $(r,u)^T$. Verify
+  $T^{-1}=\begin{pmatrix}I&B\\0&I\end{pmatrix}$ by multiplication.
+  The change removes the predicted deviation and can be undone.
+- Work both block multiplications in
+  $T\Sigma T^T=D=\operatorname{diag}(S,H)$, displaying each off-diagonal
+  cancellation. Identify the resulting $S$ with the residual covariance
+  from the live lecture. Prove $D\succ0$ by invertible congruence and
+  infer $S\succ0$.
+- Derive $\Sigma^{-1}=T^TD^{-1}T$ with the correct multiplication order.
+  Use $T(x-\mu)=(r,u)^T$ to prove
+  $Q:=(x-\mu)^T\Sigma^{-1}(x-\mu)=r^TS^{-1}r+u^TH^{-1}u$.
+  Explain how this gives a product of exponential terms and why that
+  product alone is insufficient to prove the density equality.
+- Derive $\det T=1$ and $\det\Sigma=\det S\det H$ from the same covariance
+  identity. Combine this with $d=d_1+d_2$ to split the coefficient
+  $(2\pi)^{-d/2}(\det\Sigma)^{-1/2}$ into the two Gaussian coefficients.
+- Assemble $p(x_1,x_2)=g_1(x_1;x_2)g_2(x_2)$ with full normalized
+  Gaussian factors. For fixed $x_2$, integrate $g_1$ over $x_1$ to identify
+  $p(x_2)=g_2(x_2)$; use $g_2(x_2)>0$ and division to identify
+  $p(x_1\mid x_2)=g_1(x_1;x_2)$.
 
-**Final retrospective teaching move.** Determinant and dimension factors split
-with the quadratic, giving the normalized joint density as its Gaussian
-conditional times its Gaussian marginal; normalization establishes which factor
-is each law.
+**Interpret** why the conditional mean can change with $x_2$ while its covariance
+does not. The original blocks can be dependent: the residual $r$ itself contains
+$x_2$. Finish with this direct interpretation of the proved law, without adding
+a summary slide or a future-looking handoff.
 
-## Whole-route check and open decisions
+**Explanation constraints.** Begin after the title with an orientation separating
+**From the lecture** from **To prove here**, alongside the starting conditions.
+Make the supplied density and intended density identity visible before the
+elimination calculation. Define the joint quadratic and explain its residual and
+observed terms before using their names as shorthand. Each transformation needs
+its local operation and reason nearby. Avoid “Prepared live,” “proof obligation,”
+and unexplained “normalizer.” Do not substitute a formula stack for what an
+operation accomplishes. Allow sufficient vertical space for formula groups;
+resolve density downstream without shrinking mathematics or deleting reasons.
+Organization owns granularity; Design owns the visible explanation.
 
-The forward construction leaves one explicit obligation after R1 and resolves it
-in R2. Both sections have a single intellectual job and retrospective closure.
-Positive definiteness precedes inverse/determinant use; no conditional law is
-assumed to prove itself. The route fits the assigned recording boundary without
-changing the live lecture or notebook.
+**Worked objects and sources.** Required calculations are the symbolic block
+products, inverse relation, density coefficient and integral/ratio. A new numeric
+example is not required. Murphy, *Probabilistic Machine Learning: Advanced Topics*
+(2023), online version December 10, 2025, §2.3.1.3 “Marginals and conditionals of
+an MVN,” printed p. 24/PDF p. 58, supplies the destination; §2.3.1.5 “Derivation:
+moment form,” printed pp. 25–27/PDF pp. 59–61, especially Eqs. 2.89, 2.91 and
+2.94–2.103, supports the inverse/exponent route. Explicit elimination, SPD proof,
+determinant/dimension calculation and integral identification are course
+completions, not separately displayed Murphy derivations. Exact source records
+remain in [math_derivation.md](math_derivation.md). This revision checked the
+dependency structure against that derivation; it did not repeat PDF inspection.
 
-There is no identified blocking mathematical or source issue. **Scope/coordinator
-advisory:** the two-section structure and its 12–18 / 8–12-minute allocation are
-provisional, and the detailed recording contract has not received final instructor
-acceptance. Continue the authorized provisional downstream build, preserve full
-normalization depth, and return substantial timing or responsibility pressure to
-the owning stage. Author checking is complete here; independent mathematical
-review and actual downstream organization remain pending. Feasibility does not
-constitute instructor approval or validated Section Design.
+**Extent, boundaries and carry-forward.** The earlier 20–30-minute range is an
+unmeasured planning estimate. There is no fixed slide count, internal time split,
+or approved duration. Preserve the full proof while making its meaning legible;
+return measured timing pressure to the coordinator rather than dropping the
+coefficient calculation or density identification. No Woodbury proof, second
+Schur orientation, information-form unit, speaker notes, new notebook or additional
+application. The live residual/loss proofs and notebook remain unchanged and
+independent of viewing this recording. Viewing is not monitored; no exam question
+is promised. No notebook handoff is required.
+
+## Revision checks and remaining decisions
+
+The single responsibility is proving the conditional density from the joint
+density. Each inverse is justified before use in this new proof; orientation's
+recollection of the live law is explicitly a destination, not a premise of this
+argument. The coefficient, integration and ratio remain essential work. The final
+interpretation is a teaching move, not a replacement section summary.
+
+The instructor's one-section/no-bookend convention is settled. The detailed
+presentation, actual rendered readability and duration require downstream checks
+and instructor review. No self-approval or independent review of this revision is
+claimed. Inputs inspected: the three recording planning artifacts and
+`math_derivation.md` at dispatched base `ea3c267` on
+`lecture/l01-delivery-readiness`, plus the instructor's current review.

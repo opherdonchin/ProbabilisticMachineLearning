@@ -224,6 +224,27 @@ classroom readability.
 A component expected to scale with ambient text should express its internal
 geometry in `em` where practical. Fixed-point hairline strokes are fine.
 
+### Separate formula rows
+
+Use `math-rows([$...$], [$...$])` for independent displayed rows in proof and
+recall objects. It reserves the full display-equation height of each row and
+inserts a default `sp("l")` (0.8em) gap between rows. It accepts `gap:` and
+`alignment:` when the mathematical relationship calls for a different layout.
+Each argument must be a single equation, `[$...$]`; use ordinary paragraphs or
+`stack` for prose containing inline math. The helper rejects prose rows so that
+an inline variable cannot accidentally become a separate display inside a
+sentence.
+Prefer at least the default clearance; do not tighten rows to force a slide to
+fit. A single aligned display derivation can still be one object, with explicit
+row spacing chosen for its tallest terms and inspected at full size.
+
+Do not join independent inline equations with forced line breaks. Tall inline
+matrices can protrude beyond their line boxes; increasing prose paragraph
+leading or adding weak `v(...)` at block edges is not a reliable substitute for
+formula layout. Inspect matrices, fractions, limits and attachments, including
+the gap between a recall label and its first formula. A successful compile does
+not establish comfortable spacing.
+
 ## 7. Figures, schemas, and provenance
 
 ### Figures
@@ -431,7 +452,15 @@ the approved design.
 
 Do not write speaker notes during lecture development.
 
-Each section's last visible teaching slide must be its retrospective summary; do not append an exit teaser, bridge, or question pointing to the next section. If connective context is indispensable, place it at the beginning of the receiving section.
+Recordings are one continuous section with no section-heading or section-summary
+slides. After the recording title comes the approved orientation slide; the
+recording closes on the mathematical conclusion or its interpretation. Set
+`kind: "recording"` and a string identifier such as `number: "L01-R01"` in
+the course metadata. This labels the deck as a recording and disables automatic
+section dividers. Use level-2 headings for its teaching slides. Live lecture
+metadata uses string identifiers such as `number: "L01"`.
+
+Each live lecture section's last visible teaching slide must be its retrospective summary; do not append an exit teaser, bridge, or question pointing to the next section. If connective context is indispensable, place it at the beginning of the receiving section.
 
 ## 14. Evidence and abstraction policy
 

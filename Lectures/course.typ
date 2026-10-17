@@ -132,7 +132,7 @@
       #stack(
         spacing: 0.45em,
 
-        [Lecture #self.store.lecture-number — #self.store.lecture-short-title],
+        [#self.store.delivery-label #self.store.lecture-number — #self.store.lecture-short-title],
 
         {
           set text(size: 22pt, fill: palette.dark, weight: "medium")
@@ -201,6 +201,7 @@
 
 #let course-theme(info: (:), body) = {
   let lecture-subtitle = info.at("subtitle", default: none)
+  let recording = info.at("kind", default: "lecture") == "recording"
 
   show: ruled-page-theme.with(
     aspect-ratio: "16-9",
@@ -211,12 +212,13 @@
     config-common(
       breakable: false,
       slide-fn: _course-slide,
-      new-section-slide-fn: _course-section-slide,
+      new-section-slide-fn: if recording { none } else { _course-section-slide },
     ),
 
     config-store(
       lecture-number: info.number,
       lecture-short-title: info.short-title,
+      delivery-label: if recording { [Recording] } else { [Lecture] },
     ),
 
     config-info(
@@ -259,7 +261,7 @@
             weight: "bold",
             fill: palette.dark,
           )[
-            Lecture #self.store.lecture-number\
+            #self.store.delivery-label #self.store.lecture-number\
             #self.info.title
           ],
 
@@ -305,6 +307,24 @@
   xl: 1.1em,
 )
 #let sp(size) = _spacing.at(size)
+
+// Independent mathematical rows need a gap between their actual boxes. Paragraph
+// leading only affects lines in one paragraph, and weak v() padding at a block's
+// edges can disappear. Use this for displayed formulas in proofs and recall
+// boxes, rather than joining separate inline equations with a forced line break.
+#let math-rows(gap: sp("l"), alignment: center, ..rows) = stack(
+  spacing: gap,
+  ..rows.pos().map(row => {
+    assert(
+      row.func() == math.equation,
+      message: "math-rows expects one equation per row, written [$...$]. Use stack for prose with inline math.",
+    )
+    block(width: 100%)[
+      #set block(above: 0pt, below: 0pt)
+      #align(alignment, math.equation(block: true, row.body))
+    ]
+  }),
+)
 
 #let _font-sizes = (
   xxs: 0.58em,

@@ -5,7 +5,7 @@
 #import "figures/linear_gaussian_graph.typ": linear_gaussian_graph
 
 #let lecture = (
-  number: 1,
+  number: "L01",
   title: [Probability and Bayesian Statistics],
   short-title: [Probability & Statistics],
   subtitle: [From Bayesian statistics to probabilistic machine learning],

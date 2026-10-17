@@ -18,6 +18,17 @@ Production authoring is governed separately by
 
 ## 1. Inputs to slide design
 
+### Recording format
+
+Recordings use one continuous section with no section-heading or section-summary
+slides (instructor decision, 2026-10-17). Follow the recording title with an
+orientation comparing **From the lecture** and **To prove here**, or equally
+specific headings. Use the key-point region for important initial assumptions
+and distinctions. The last slide completes or interprets the mathematics; do
+not append a recap or disguise one as a new slide. The summary conventions below
+apply to live lecture sections. Lecture identifiers are `L01`, `L02`, etc.;
+linked recording identifiers are `L01-R01`, `L01-R02`, etc.
+
 Slide Design receives decisions from several sources. They have different
 authority and should not be collapsed into one undifferentiated brief.
 
@@ -190,6 +201,17 @@ already-established key point rather than inventing a new formulation.
 
 ### Mathematical content should be exact before authoring
 
+**Instructor clarification (2026-10-17):** a student must be able to identify
+what is being proved and why the current calculation helps prove it. Name the
+actual mathematical expression before referring to it: for example, display
+the quadratic in the Gaussian exponent and show the two desired terms before
+asking how to separate it. Explain a preparatory inverse or substitution at the
+point it is introduced. Labels such as “proof obligation” describe an author's
+process rather than supply a student explanation. Define mathematical terms
+such as “normalizing constant” by pointing to the factor and its role when first
+needed. Keep that guidance beside the relevant operation, not only in a key
+point revealed after the algebra.
+
 Design should use real equations, notation, limits, and labels whenever they are
 known. Do not defer substantive mathematical choices to production simply
 because the design document is not the final deck.
@@ -312,6 +334,13 @@ Typst grid code unless the instructor explicitly asks to blur the
 design/authoring boundary.
 
 ### Density is a design problem before it is a font-size problem
+
+Separate displayed formula rows require generous vertical clearance, including
+inside subordinate recall objects. Tall matrices, fractions and attachments
+must be read as separate objects rather than nearly touching lines. Plan room
+for their full heights and an explicit gap; ordinary prose leading is not a
+formula-spacing standard. If this exposes overload, reorganize the explanation
+rather than tightening the formulas.
 
 Do not solve an overloaded slide by assuming production can shrink it.
 

@@ -130,44 +130,51 @@
     }
   ],
   "recording_upstream": {
-    "recording_brief.md": "73d00c177d321f7d9d32ef406d4060dcd98ad892893c44ef743962fb6c2d739f",
-    "section_design.md": "d717d3a60af70212c1f74fefa33ff331a541e807ac8138e45d3b68ab826d7c4a",
-    "math_derivation.md": "346dcd2a3905b39b2810be5188c4327242fefeecc5b75b728c16cad460eeaa7d",
-    "slide_organization.md": "05beb9d595435ecfbb71240251491d801d3e7c55a488e5090c2940654e2d753f",
-    "slide_design.typ": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
-    "slide_design.pdf": "1d8c40436193a7ff21f1fc708484ee4b5f1681b3dfacc33466ee82fb3e40b22b"
+    "recording_brief.md": "9d618272ab59ba5144848d7f2c7cd6cfddf5bf0d38777d88dfd029686dd6fc0c",
+    "section_design.md": "99b5ab52586d81ba8320658dbee45f1ae495858c08e81c9638af2960c0769b5e",
+    "math_derivation.md": "a5a1bf33e914862b92b07fd311cb9e9828dca753593b85a09cd7007eb4757a13",
+    "slide_organization.md": "9aa2d9317ef9a45d1d4d9436ada0be1893baf106a9572b78dbd7fac32207e1c8",
+    "slide_design.typ": "8ae54b1e7b387ff1c16b4559cc0487ddfb33dabd8c1b07705d9046d690c1b61a",
+    "slide_design.pdf": "242450914e6de8a841bbc2af204b3640205fc1df2a21bceea74444064334a13d"
   },
   "outputs": {
-    "Lectures/L01_Probability_Statistics/slide_deck.typ": "be9df1cfeb21dbd86d2c459ad31667f553d966bdb6b4d72b96b675a0e0c13dd5",
-    "Lectures/L01_Probability_Statistics/slide_deck.pdf": "fc6a97b5dbcbb15027a29b62a996ab722d99678caacccfa7824da1ac0d8aeb13",
-    "build/slide-review/L01_Probability_Statistics/delivery/slide_deck_presentation.pdf": "ae056c522d45cfe099fb92bc0c02e08ce7eaaa3b8469172e7574f3693a87b4cc",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/recording_brief.md": "f82f5edbc6cc400db8b0558fb0e57da17c9f9c66a5f5377d1fd40243678aaad5",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/section_design.md": "e6f7567c2336ec53a3d91e9554bae23051f10b6effeb7532076bc94f457032bc",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/math_derivation.md": "a5a1bf33e914862b92b07fd311cb9e9828dca753593b85a09cd7007eb4757a13",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_organization.md": "211ce35033ab8ac021e08be5dc9adb89cc966208ea25f185c120117f608c99c4",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.typ": "b5bda3fee7e459c6ff3d0fdfb29300d9ba75b291c95ba3f4cddf68813cacf7a4",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.pdf": "1d8c40436193a7ff21f1fc708484ee4b5f1681b3dfacc33466ee82fb3e40b22b",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ": "2c90505066df61f8ebcb2ffc78a9a30828896747a19862b2bd3c2f865828cd4d",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.pdf": "ce86c4a1ce3e4829d8918df71c2b89215cdcc8256bc4d310066d6f012ce11f51",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/slide_deck_presentation.pdf": "7cfd937d9f0c33345b20e211803ff6da3777211a55ff4e8177bea3a548007205",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/authoring_report.md": "d41f4fec3ec8f26868425511f761c40536789f673048086a421440fe0fe3573b",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-05.jpg": "13035639238f8384a4933ed236ba2f9191059f587969b1df030ad7a9c5028a9f",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-04.jpg": "ba9cab28b0060e0eb3d38360450530b258c5c5d5957450f859559eff86489df7",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-03.jpg": "eb407ae77ce9f651f3d493f75b4abdfc0aa427e92cc3a977fc5c6a586fb80ffb",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-02.jpg": "adea9b5902dd8f7bade2ffb6ebf38adc9b6db995f559d2b3853c70771b489b0c",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-01.jpg": "b9bee899582bc9ad71259166560eaddc9f59b4fef5bd89278bbc4cc38bd0bd06",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-06.jpg": "a1330b1cab378e8ae63ae12cbd7af2e8a4d7590f4d4f4b56fbd89a81ca4671ee",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-05.jpg": "dec44e22a5117b07b6312e160cc62e2e7c7648a690cae59b57e835694142d0b1",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-04.jpg": "854179e3aff077f1083f1ce5fe87e697ce37bd5822037f440d5b5ef0aa539c45",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-03.jpg": "0a833e4e5df0af8a08d3700861332513b04f99d2c2fee8c70305e14413ee7b6b",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-02.jpg": "f2be47cb63f232b888176661ee6f8c3936b1f626ce4b3833aecafa7ed391a19c",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-01.jpg": "d36334fbd5eeead98e3a96ffb19b073ea1f5a47919dd9ae37dbddc9ff4e13d7a",
-    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/render_report.json": "70304d0e4e5eaf362a24768ef943aa580dbda6ceef01a094efd82378ef656791",
-    "Lectures/L01_Probability_Statistics/lecture_scope.md": "e5d7d7fc090183b568fb1553aee3e1a25c7d6556b3881273b53de1a631f5a5f4",
-    "Lectures/course.typ": "c9140eb4c1ea0a3528f4671f0016d6817c2efb810884296953947e4f309f56ea",
-    "Lectures/design.typ": "1298eaf0bc8eec50e9ad7dcdda3a0d6811890b25d7315033176194bfb50c214c",
+    "AGENTS.md": "002470b71de400b48ef607c38049e5bce1b3af896131a6555b16e0d5feb7b634",
     "InClass/Solutions/lecture1_missing_data.ipynb": "2af949f2e4198a31a654af474bcda52ab45a901cc8a77c59e8f6f6c67ce6998a",
     "InClass/lecture1_missing_data.ipynb": "b593f6d4452a2748da3f61e02d91b84a3f64b27ac1051bf7307fdd03d649f0af",
+    "Lectures/L01_Probability_Statistics/NEXT_SESSION.md": "e9202faacee1f4b19f13db2553ac9cd7036af575ba37dc083a064c2e36f2f0d2",
+    "Lectures/L01_Probability_Statistics/development_state.md": "d0efe2a0e33a987977125e481fa34c52e105f17478c47df267241f9e2b40466a",
+    "Lectures/L01_Probability_Statistics/lecture_scope.md": "68e1af75b1109c876b32cb0ffdc968a8d642a06ad14efbbbe041319d2e82b727",
+    "Lectures/L01_Probability_Statistics/reconciliation/delivery_finalization/formula_spacing.md": "2ff3bda80d0c7ebc986fb54321ae9a333445fa080b7f7f8d20c92ec3fae6fcd5",
+    "Lectures/L01_Probability_Statistics/reconciliation/delivery_finalization/recording_sequence_review/checks.json": "8eca87a5130c119fe025cf44d474ed50e4ee965558e87964694df53b68c28e87",
+    "Lectures/L01_Probability_Statistics/reconciliation/delivery_finalization/recording_sequence_review/report.md": "e4928aa2ee4873164bb6702859ee523754b25b32a69ecfbb219d4451ae7d6900",
+    "Lectures/L01_Probability_Statistics/reconciliation/delivery_finalization/recording_sequence_review/review_checks.py": "87137fc491e376f1d49410d412447e8225ec529f67bb02e55b8c56762abde925",
+    "Lectures/L01_Probability_Statistics/reconciliation/delivery_finalization/recording_sequence_review/title-order.json": "0e644c994593a882dbb802c0942c7caad5a8cb088d60510a063d937f232ac172",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/math_derivation.md": "a5a1bf33e914862b92b07fd311cb9e9828dca753593b85a09cd7007eb4757a13",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/authoring_report.md": "77a7ae8f7421ec0b1c737b52bb8e7f0d170d84a54c59a67d2a48f2ce12f7ba56",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-01.jpg": "2753af5ff04c5b74a723d8ab572136fe97860b079b9cdbe49eda0a87a48c22b5",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/pdf-states-02.jpg": "1a4a2a25af830771ed2b387361144f37e5d73b344719f63bb9a1529ec1896e2d",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-01.jpg": "e33bf52ebd4750b693ac2e3f7575b6e936a086b12ef1a6ef80bc0ba678722338",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-02.jpg": "9ed2d91e3e42dcd69828d5ca2ef1c9834ef5b43df876f26087a1dc340d01161d",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-03.jpg": "94291e31a910318ff4aa2ac4e7016778814acb14db860dfa3736f8fd05bb777b",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-04.jpg": "a16141e775fbe95dfd92b78e083dd84d7f40de1826014bac07fd72eb08a88ebd",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/presentation-05.jpg": "5f7304d3798e08f5804a2d1970a7541f753b9c2b6cc472394b073a17a1bd76c7",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/render_report.json": "5b924b018a66e1cc11cb471a39af2753949be8d25194e21ce3fee4c5158833ed",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/slide_deck_presentation.pdf": "8e2519dee6676aefc7ea308b6377840649e9f7ad8a53cccd4e24ef8e370b92fb",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/recording_brief.md": "9d618272ab59ba5144848d7f2c7cd6cfddf5bf0d38777d88dfd029686dd6fc0c",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/section_design.md": "99b5ab52586d81ba8320658dbee45f1ae495858c08e81c9638af2960c0769b5e",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.pdf": "decf5b79dcdc4d9b6d24ae4238b9c706b756d907fc810bf1bd340732a9a99628",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ": "d6fb9b38baea584c09c493ad8d8b6c8af3585029f6f52764330653fe9c0ffa81",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.pdf": "242450914e6de8a841bbc2af204b3640205fc1df2a21bceea74444064334a13d",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.typ": "8ae54b1e7b387ff1c16b4559cc0487ddfb33dabd8c1b07705d9046d690c1b61a",
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_organization.md": "9aa2d9317ef9a45d1d4d9436ada0be1893baf106a9572b78dbd7fac32207e1c8",
+    "Lectures/L01_Probability_Statistics/slide_deck.pdf": "ad0c203f917e180d77f6b99f237ad0a385587b849a1a4548964cc40d5b4ea4cc",
+    "Lectures/L01_Probability_Statistics/slide_deck.typ": "162eba489877ae8dfd5f8f6e6af296dbc5068b05fccc8a8629e81f40cdb14d9e",
+    "Lectures/L02_Exponential_Families/slide_deck.typ": "b936d01306adfb7c6d08bac270cba30201b15b44eb52a81b8441ce7766922f14",
+    "Lectures/course.typ": "1c185cfd788b1ebcd018589d95824ccb065887f44103a3b84cc27a9aab1535bd",
+    "Lectures/design.typ": "1298eaf0bc8eec50e9ad7dcdda3a0d6811890b25d7315033176194bfb50c214c",
+    "Lectures/slide_authoring_conventions.md": "6ca3cbc5f7c7d6254a78eb3987a192645d588d88ba037d114d5bb20aec5754c7",
+    "Lectures/slide_design_conventions.md": "6fdb074db8a11269a6896a4741139829a751d98abed5411659e9a1e71ceb46b8",
+    "build/slide-review/L01_Probability_Statistics/delivery/slide_deck_presentation.pdf": "ff08b47c93315bf043dfd65107ed2be06f1f46452a0c592d16dee4709cc56010",
     "pyproject.toml": "4d30119e98b29817c0300f2c4f7bd213c45416cf8074338e384a0b33e540d207",
     "uv.lock": "639806e74f1c359e971ac67dda772d86d4d4a1d85c4ac7898fdc77110feb382a"
   },
@@ -190,7 +197,38 @@
     "changed_presentation_states": 19,
     "all_70_final_state_handout_matches": true,
     "accepted_loss_context_pixel_identical": true,
-    "timing_measured": false
+    "timing_measured": false,
+    "numbering": {
+      "source_sha256": "162eba489877ae8dfd5f8f6e6af296dbc5068b05fccc8a8629e81f40cdb14d9e",
+      "course_sha256": "1c185cfd788b1ebcd018589d95824ccb065887f44103a3b84cc27a9aab1535bd",
+      "warnings": [],
+      "comparisons": {
+        "handout": {
+          "pages": 70,
+          "body_differences_below_header_excluding_title": []
+        },
+        "presentation": {
+          "pages": 164,
+          "body_differences_below_header_excluding_title": []
+        }
+      },
+      "handout_sha256": "ad0c203f917e180d77f6b99f237ad0a385587b849a1a4548964cc40d5b4ea4cc",
+      "presentation_sha256": "ff08b47c93315bf043dfd65107ed2be06f1f46452a0c592d16dee4709cc56010",
+      "title_header_labels": "Lecture L01 on title and all ordinary handout/presentation pages; section dividers have no lecture label",
+      "baseline": "Git HEAD handout; HEAD presentation source recompiled with current course layer (new recording and math-row helpers unused)",
+      "comparison_region": "y >= 55pt, including all ordinary slide body (top margin 60pt) and footer; title page excluded"
+    },
+    "L02_numbering": {
+      "handout": {
+        "pages": 7,
+        "warnings": []
+      },
+      "presentation": {
+        "pages": 18,
+        "warnings": []
+      }
+    },
+    "audit_provenance": "Original independent audit/repair review remains bound to its snapshots; current numbering-only change preserves all slide body/footer pixels below y=55pt in 70 handouts and 164 presentation states."
   },
   "notebook_validation": {
     "clean_local_run": "pass,23 code cells,3 plots,zero errors",
@@ -200,20 +238,48 @@
     "hosted_colab": "not run",
     "candidate_manifest": "build/l01-release/manifest.json"
   },
-  "recording_design_backpressure": "Resolved provisionally by root and Design: R1.1/R2.1 plain course section dividers with exact subtitles; repeated objectives/previously proved recall omitted from divider specification, preserving new mathematics and20-unit order. Actual production multiline overlap repaired at normal-size mathematics; independent final render review passes.",
-  "completion": "Three authorized workstreams complete. All write reservations closed. No publication, merge, instructor final recording/whole-Scope approval or teaching delivered.",
+  "recording_design_backpressure": "Resolved: formula-only display rows with explicit gaps; prose stays in paragraphs/stacks; remove nested key-point wrappers and per-step box padding; use adjacent proof/solution and density-factor regions. Full proof remains, no extra slides needed; all current renders checked.",
+  "completion": "Original unattended work and instructor-directed recording revision complete. All specialist write reservations closed. No publication, merge, final instructor recording/whole-Scope acceptance, measured duration or teaching delivered.",
   "prototype_history_commit": "2860518",
   "recording_validation": {
-    "handout_pages": 20,
-    "presentation_states": 47,
-    "within_slide_transitions": 27,
+    "handout_pages": 18,
+    "presentation_states": 42,
+    "within_slide_transitions": 24,
     "compiler_font_overflow_warnings": 0,
-    "intentional_final_emphasis_pixel_notices": 8,
-    "independent_mathematical_review": "pass",
-    "independent_final_rendered_review": "pass all20 handouts,all47 states,all27 transitions",
-    "instructor_acceptance": "pending final detailed recording contract",
-    "duration": "20\u201330 minutes provisional,unmeasured",
+    "intentional_final_emphasis_pixel_notices": 16,
+    "all_handouts_and_reveals_visually_inspected": true,
+    "all_final_states_match_handout_content": true,
+    "adjacent_state_content_losses": 0,
+    "internal_math_and_sequence_review": "pass; report in recording_sequence_review/report.md",
+    "review_provenance": "Separate from Design/production; reviewer authored Section/Organization and knew instructor/coordinator concerns; not blind independent review.",
+    "source_provenance_review": "Earlier independent Murphy/proof review retained for unchanged math_derivation.md; new review checked current displayed proof without reopening book PDFs.",
+    "structure": "One continuous section, title plus orientation plus mathematical development; no section-heading or summary slides.",
+    "instructor_acceptance": "exposition reopened after further instructor criticism; technical reviews do not settle it",
+    "duration": "20–30 minutes planning estimate, unmeasured",
     "video": "not captured",
-    "shared_course_inputs_identical_across_worktrees": true
+    "course_sha256": "1c185cfd788b1ebcd018589d95824ccb065887f44103a3b84cc27a9aab1535bd"
+  },
+  "revision_base_commit": "ea3c2670f71ba4c3c2c251810a0d902d9a0189aa",
+  "revision_authorization": {
+    "provenance": "Instructor review in current discussion, 2026-10-17",
+    "request": "Revise everything on the basis of the comments for a recording that is easier to follow.",
+    "format": "One continuous section per recording; no section-heading or summary slides; From the lecture / To prove here orientation; generous formula spacing.",
+    "boundary": "Full required proof and live/notebook boundaries preserved; no final recording acceptance, timing measurement, publication or merge."
+  },
+  "assignment_scope": "The assignments array records the completed original unattended batch. Current instructor-directed revision ownership is recorded separately below; no assignment is active.",
+  "revision_ownership": {
+    "Section_Organization_brief": "/root/recording_sequence; complete; also separate user-seeded production review; authored no Design/production",
+    "Design": "/root/recording_design; complete",
+    "production_validation": "/root/recording_author; complete",
+    "shared_API_conventions_numbering_integration": "/root; complete"
+  },
+  "exposition_trial": {
+    "status": "complete; fresh reviewer endorsed both cases and supplied no conceptual repair",
+    "record": "../exposition_trial/trial.md",
+    "blind_before_freeze": true,
+    "canonical_artifacts_changed": false,
+    "new_skill_or_review_stage": false,
+    "candidate_built": false,
+    "further_reviewer_commissioned": false
   }
 }

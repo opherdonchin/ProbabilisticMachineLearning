@@ -1,143 +1,348 @@
-# Quadratic separation recording — provisional slide organization
+# L01-R01 — provisional slide organization
 
-**Mode/status:** Slide-Level Organization `build`, complete provisional draft under the instructor-authorized unattended package of 2026-10-17. This is a teaching-sequence contract for downstream provisional Design, not instructor approval or a validated duration. The coordinator owns review and acceptance. Only this artifact is owned by this stage.
+**Mode/status:** Slide-Level Organization `revision`, following the instructor's
+2026-10-17 review and revised one-section contract in `section_design.md`.
+The instructor requires exactly one section per recording, with no section-heading
+or section-summary slides. The sequence below applies that explicit exception to
+the ordinary lecture-section bookends. It is authorized provisional revision,
+not final instructor acceptance or evidence of a measured duration.
 
-The recording supplements the live inference problem: determine the law of a missing block under a supplied joint Gaussian. It proves the normalized density identity behind the conditional law already used live. It adds no fitting algorithm, dataset, notebook, practical-competence claim or viewing requirement. Gaussianity and a strictly positive definite joint covariance are the validity regime. Students bring block notation, the Gaussian density, the live residual interpretation, matrix algebra, positive definiteness, determinants and integration. The proof recalls those objects but does not invoke the live residual-independence argument.
+**Purpose and entry.** Prove the Gaussian conditional density from the supplied
+joint Gaussian density, without relying on the live residual-independence proof.
+Students bring block notation, the live conditional formula and residual
+interpretation, Gaussian densities, matrix algebra, positive definiteness,
+determinants and integration. The regime is Gaussian with strictly positive
+definite covariance. No new fitting algorithm, dataset, notebook, or application
+is introduced; the live residual/loss proofs remain unchanged.
 
-**Proposed count:** 20 slides: one recording title, 11 in R1, and 8 in R2. Both section counts include their title and retrospective summary. There is no separate closing slide or activity handoff. Counts follow distinct teaching moves; they do not validate the unmeasured provisional 20–30-minute planning range or the upstream provisional section allocations. Final section summary also closes the recording.
+**Provisional granularity:** 18 slides: one recording title, one orientation,
+and sixteen connected mathematical moves, all within the recording's one section.
+This is a proposal arising from the argument, not a fixed count or time allowance.
+The earlier 20–30-minute range remains unmeasured. There are no internal section
+titles, section-summary slides, separate closing slide or notebook handoff.
 
-## 1. Recording and section organization
+## 1. Continuous teaching sequence
 
-### Recording title — outside the section counts
+### P0. Quadratic separation of a Gaussian
 
-**P0. Quadratic separation of a Gaussian**  
-**Subtitle:** A complete density proof of Gaussian conditioning.  
-**Intention / goal:** Locate this separate proof supplement after the live Gaussian-conditioning argument. Frame the task as explaining why the conditional density is exactly normalized under the supplied model; do not claim a new algorithm or empirical result.
+**Recording number:** L01-R01.
+**Subtitle:** A proof of the formula for the conditional density of a Gaussian.
+**Intention:** Identify this proof supplement to the live Gaussian-conditioning
+lecture. Preserve the instructor's chosen number and subtitle.
 
-### R1 — Block elimination separates the joint quadratic (11 slides)
+### P1. From the lecture to this proof
 
-**R1.1. Block elimination separates the joint quadratic**  
-**Section title metadata:** Full title as above; subtitle: *Proving the algebra behind Gaussian conditioning*; abbreviated footer title: *Quadratic separation*.  
-**Intention / goal:** Frame the section's question: how can matrix elimination turn the joint quadratic into residual and observed-block terms? This opening identifies the proof's job without supplying its answer.
+**Intention:** Orient the viewer before introducing new algebra. **From the
+lecture** recalls the supplied block Gaussian. **To prove here** states the
+complete conditional-density target
+$p(x_1\mid x_2)=\mathcal N_{d_1}(x_1;m(x_2),S)$, recalling the familiar
+mean/covariance from the lecture, and explains that the recording derives it
+from the joint density. Key starting conditions are Gaussianity,
+$\Sigma\succ0$, and holding the observed $x_2$ fixed when considering the
+conditional density. State that the route factors the joint density before
+integrating and dividing; the orientation need not reproduce every formula
+that the recording will prove.
 
-**R1.2. The joint density sets two proof obligations**  
-**Intention / goal:** Recall the supplied block Gaussian, dimensions $d_1,d_2$, $d=d_1+d_2$, and $\Sigma=\Sigma^T\succ0$. Recall the complete density $\mathcal N_d(x;\mu,\Sigma)$, distinguishing its quadratic exponent from its determinant/dimension normalizer. Establish that separating the exponent alone will not prove normalized factorization. The desired conditional is a destination, not an assumed identity.  
-**Design note:** Retain this distinction as context when the quadratic is separated and when R2 opens; no derivation of the Gaussian density is required.
+**Design note:** Use the requested side-by-side orientation and clear key points.
+Separate recalling the live result from using a result as a premise. The target
+is known from the live proof, but is to be established afresh here. Do not stack
+all block definitions and the full exponential formula in the “Supplied model”
+box. Their mathematical role is developed below with adequate vertical spacing.
 
-**R1.3. Positive definiteness makes the observed block invertible**  
-**Intention / goal:** Set $H=\Sigma_{22}$ and prove $z^THz=(0,z)^T\Sigma(0,z)>0$ for nonzero $z$. Only then define $B=\Sigma_{12}H^{-1}$ and $S=\Sigma_{11}-BHB^T$, with $B\in\mathbb R^{d_1\times d_2}$. Establish $BH=\Sigma_{12}$ and $HB^T=\Sigma_{21}$; identify $S$ as the same symmetric residual covariance from the live argument, with its strict positivity still to be proved here.  
-**Design note:** Treat the definitions as the consequence of the invertibility proof; do not write an unjustified $S^{-1}$ yet.
+### P2. The density contains an exponential and a coefficient
 
-**R1.4. The elimination matrix has an explicit inverse**  
-**Intention / goal:** Define $T=\begin{pmatrix}I&-B\\0&I\end{pmatrix}$ and verify $T^{-1}=\begin{pmatrix}I&B\\0&I\end{pmatrix}$ by multiplication. Students should see why elimination is reversible, rather than assume a block-inverse lemma. Identity and zero blocks have dimensions determined by $d_1,d_2$.
+**Intention:** Identify exactly what must be accounted for in the complete
+joint density:
 
-**R1.5. Left elimination removes the upper covariance block**  
-**Intention / goal:** Rewrite $\Sigma=\begin{pmatrix}\Sigma_{11}&BH\\HB^T&H\end{pmatrix}$ and work the multiplication $T\Sigma=\begin{pmatrix}S&0\\HB^T&H\end{pmatrix}$. Show explicitly that the upper-right block is $BH-BH$, and that the upper-left is $S$. This first multiplication is not yet a covariance congruence.  
-**Design note:** Keep the definitions of $B,S$ available during this calculation.
-
-**R1.6. Right elimination completes the covariance congruence**  
-**Intention / goal:** Multiply the preceding result by $T^T=\begin{pmatrix}I&0\\-B^T&I\end{pmatrix}$ to obtain $D:=T\Sigma T^T=\operatorname{diag}(S,H)$. Show the lower-left cancellation $HB^T-HB^T$ explicitly. The pair of multiplications establishes a congruence, not a similarity transformation.  
-**Design note:** Carry the previous product forward so students can check the second cancellation rather than reconstruct the whole calculation.
-
-**R1.7. Invertible congruence proves the residual covariance positive definite**  
-**Intention / goal:** For $w\ne0$, use $T^Tw\ne0$ to prove $w^TDw=(T^Tw)^T\Sigma(T^Tw)>0$. Test $w=(a,0)^T$ to conclude $S\succ0$. Together with $H\succ0$, this justifies both inverse blocks and their positive determinants. It supplies a proof independent of any residual-independence claim.
-
-**R1.8. Inverting the congruence fixes the order of the factors**  
-**Intention / goal:** Derive $D^{-1}=T^{-T}\Sigma^{-1}T^{-1}$ and then $\Sigma^{-1}=T^TD^{-1}T$, where $D^{-1}=\operatorname{diag}(S^{-1},H^{-1})$. Explain the left multiplication by $T^T$ and right multiplication by $T$; no factors commute. Students can reconstruct the inverse identity from the proved congruence instead of memorizing the expanded block inverse.  
-**Design note:** Preserve the covariance congruence alongside the inverse relation. The fully expanded partitioned inverse in the checking derivation is not a separate required slide or additional formula to memorize.
-
-**R1.9. Elimination turns the centered vector into a residual and an observation**  
-**Intention / goal:** Define $u=x_2-\mu_2$ and $r=x_1-\mu_1-Bu$, then work $T(x-\mu)=(r,u)^T$. Connect $r$ with the familiar centered residual without appealing to its independence. This prepares the substitution into the quadratic, while preserving the distinction between the original blocks and the residual coordinates.
-
-**R1.10. The joint quadratic is the sum of two block quadratics**  
-**Intention / goal:** Substitute the inverse congruence and transformed vector to prove
 $$
-(x-\mu)^T\Sigma^{-1}(x-\mu)
-=[T(x-\mu)]^TD^{-1}[T(x-\mu)]
-=r^TS^{-1}r+u^TH^{-1}u.
+p(x_1,x_2)=C\exp(-Q/2),\qquad
+Q=(x-\mu)^T\Sigma^{-1}(x-\mu),
 $$
-State directly that exponent separation is proved, while normalized density equality has not yet been proved. Matrix inverses here express algebraic identities, not instructions to compute inverses in the notebook.  
-**Design note:** Keep the transformed vector and diagonal inverse available; the final equality must be read as a consequence of them.
 
-**R1.11. Retrospective: elimination separates the quadratic**  
-**Intention / goal:** Consolidate the section's established argument: reversible elimination yields SPD residual/observed blocks, and inverse congruence gives the quadratic split. End retrospectively, without a teaser or handoff.  
-**Candidate summary objects for Design to select:**
-
-- $T\Sigma T^T=\operatorname{diag}(S,H)$ from R1.6: recall what the two cancellations accomplished.
-- $H\succ0$ and $S\succ0$ from R1.3/R1.7: recall why the inverse blocks exist.
-- $\Sigma^{-1}=T^T\operatorname{diag}(S^{-1},H^{-1})T$ from R1.8: recall the correct inverse order.
-- The quadratic split from R1.10 with $r=x_1-\mu_1-Bu$: recall the result and which coordinates it uses.
-
-These are nominations, not a requirement to fit all four objects on the summary.
-
-### R2 — Normalizers identify the conditional and marginal densities (8 slides)
-
-**R2.1. Normalizers identify the conditional and marginal densities**  
-**Section title metadata:** Full title as above; subtitle: *From separated exponents to probability laws*; abbreviated footer title: *Normalized factorization*.  
-**Intention / goal:** Receive R1's proved quadratic split and SPD blocks, and frame the remaining question: how do the determinant, dimensions and integration establish the full density identity? Do not present the answer on the title slide.
-
-**R2.2. Unit-determinant elimination splits the covariance determinant**  
-**Intention / goal:** Use the block triangular $T$ to prove $\det T=1$. Taking determinants of $D=T\Sigma T^T$ then gives $\det\Sigma=\det D=\det S\det H$. Recall strict positivity before taking square roots. This is the determinant obligation, distinct from the exponent calculation.  
-**Design note:** Reuse the established congruence rather than introduce a new determinant lemma or orientation.
-
-**R2.3. The dimensions split the remaining Gaussian normalizer**  
-**Intention / goal:** Combine $d=d_1+d_2$ with the determinant identity to derive
 $$
-(2\pi)^{-d/2}(\det\Sigma)^{-1/2}
-=\big[(2\pi)^{-d_1/2}(\det S)^{-1/2}\big]
- \big[(2\pi)^{-d_2/2}(\det H)^{-1/2}\big].
+C=(2\pi)^{-d/2}(\det\Sigma)^{-1/2},\qquad d=d_1+d_2.
 $$
-Students should account for both determinant and dimension factors, rather than infer normalization from Gaussian-shaped exponentials.
 
-**R2.4. The full density equals two normalized Gaussian factors**  
-**Intention / goal:** Combine R1.10 and R2.3 to establish $p(x_1,x_2)=g_1(x_1;x_2)g_2(x_2)$, with $g_1=\mathcal N_{d_1}(x_1;\mu_1+Bu,S)$ and $g_2=\mathcal N_{d_2}(x_2;\mu_2,H)$. Each normalizer must be associated with the matching quadratic and dimension. For each fixed $x_2$, the first factor is a Gaussian density in $x_1$. Do not label the factors as conditional and marginal by assumption.  
-**Design note:** Keep the dependence of $g_1$ on $x_2$ explicit; use a full equality, never merely proportionality.
+Explain that the desired conditional density describes error around the predicted
+value of $x_1$, while the marginal describes the observed deviation of $x_2$.
+The exponent must become the sum of those two contributions; the coefficient
+must become the product of their Gaussian coefficients. This compares the
+starting density to the concrete destination on P1, rather than announcing
+unexplained tasks. Do not call $C$ an unexplained “normalizer.”
 
-**R2.5. Integrating the first factor identifies the marginal**  
-**Intention / goal:** For fixed $x_2$, justify $\int_{\mathbb R^{d_1}}g_1(x_1;x_2)\,dx_1=1$ because $S\succ0$ and its mean is a fixed translation. Work $p(x_2)=g_2(x_2)\int g_1\,dx_1=g_2(x_2)$. This identifies the marginal by normalization, without importing the target marginal/conditional formula as a premise.
+**Design note:** Keep definitions of $C,Q$ adjacent to their actual roles in the
+density. The meanings are destinations here; the equalities are proved later.
 
-**R2.6. Dividing by the positive marginal identifies the conditional**  
-**Intention / goal:** Establish $g_2(x_2)>0$ for all $x_2$ and use the density ratio to obtain
+### P3. Choose B to remove the cross covariance
+
+**Intention:** Explain the first required move before displaying inverse
+formulas. Subtracting $B$ times the observed block cancels its cross covariance
+when $\Sigma_{12}-BH=0$, with $H=\Sigma_{22}$. Solving this equation requires
+an invertible $H$. Explain why cancellation helps the density proof: a block
+diagonal covariance has a block diagonal inverse, so its residual and observed
+coordinates contribute separate terms to the quadratic in the exponent. This is
+the intended route, with its actual matrix identity still to be proved.
+Prove, for $z\ne0$,
+
+$$
+z^THz=\begin{pmatrix}0\\z\end{pmatrix}^{T}
+\Sigma\begin{pmatrix}0\\z\end{pmatrix}>0,
+$$
+
+then define $B=\Sigma_{12}H^{-1}$. Thus $BH=\Sigma_{12}$ and,
+by symmetry, $HB^T=\Sigma_{21}$. Students should see why the observed block's
+inverse is needed, as well as why that inverse exists.
+
+**Design note:** Put cancellation motive, SPD justification and resulting
+choice in their logical order; do not present them as an unrelated formula list.
+No $S^{-1}$ is needed in the new derivation yet.
+
+### P4. Subtracting the predicted deviation produces the residual
+
+**Intention:** Give the impending matrix elimination an interpretable object:
+$u=x_2-\mu_2$ is the observed deviation and $r=x_1-\mu_1-Bu$ is the centered
+residual. Work the coordinate action
+
+$$
+T=\begin{pmatrix}I&-B\\0&I\end{pmatrix},\qquad
+T(x-\mu)=\begin{pmatrix}r\\u\end{pmatrix}.
+$$
+
+The change keeps $u$ and subtracts its predicted contribution from the first
+block. It is chosen to reach the residual/observed contributions described on
+P2; it is not a matrix trick with an unstated purpose.
+
+### P5. The coordinate change is reversible
+
+**Intention:** Verify
+$T^{-1}=\begin{pmatrix}I&B\\0&I\end{pmatrix}$ by multiplication with $T$.
+Adding $Bu$ back recovers the original centered first block. Reversibility
+preserves the full information and will justify both the strict-positivity and
+inverse-congruence steps. Do not assume a general block-inverse lemma.
+
+### P6. Subtract the observed rows to cancel the upper-right block
+
+**Intention:** Work the first covariance multiplication with the cancellation
+choice from P3 visible:
+
+$$
+\Sigma=\begin{pmatrix}\Sigma_{11}&BH\\HB^T&H\end{pmatrix},
+\qquad
+T\Sigma=
+\begin{pmatrix}\Sigma_{11}-BHB^T&BH-BH\\HB^T&H\end{pmatrix}.
+$$
+
+Explain the operation as subtracting $B$ times the observed block row from the
+first block row. Name the resulting upper-left block
+$S=\Sigma_{11}-BHB^T=\Sigma_{11}-\Sigma_{12}H^{-1}\Sigma_{21}$,
+identifying the familiar residual covariance. This removes the upper-right
+block; one multiplication has not yet completed the covariance transformation
+of both coordinates.
+
+### P7. The matching column operation cancels the lower-left block
+
+**Intention:** Carry the previous product forward and multiply by
+$T^T=\begin{pmatrix}I&0\\-B^T&I\end{pmatrix}$. Show
+$HB^T-HB^T=0$, retaining the upper-left block $S$ from P6. The result is
+
+$$
+D:=T\Sigma T^T=\begin{pmatrix}S&0\\0&H\end{pmatrix}.
+$$
+
+Explain that the same coordinate change acts on covariance rows and columns.
+It has isolated the residual covariance $S$ and observed covariance $H$.
+This is the familiar residual covariance from the lecture, derived here directly.
+
+### P8. The remaining residual block is positive definite
+
+**Intention:** Justify using $S$ as a nonsingular Gaussian covariance and later
+inverting it. Since $T$ is invertible, $T^Tw\ne0$ for $w\ne0$, hence
+
+$$
+w^TDw=(T^Tw)^T\Sigma(T^Tw)>0.
+$$
+
+Taking $w=(a,0)^T$ with $a\ne0$ gives $a^TSa>0$. This proves $S\succ0$;
+$H\succ0$ was proved on P3. Their inverses and positive determinant square
+roots are therefore valid. No independence argument is invoked.
+
+### P9. Invert the covariance identity to reach the exponent
+
+**Intention:** The original density uses $\Sigma^{-1}$, whereas elimination
+has so far given a statement about $\Sigma$. Derive the needed bridge:
+
+$$
+D=T\Sigma T^T
+\ \Longrightarrow\ D^{-1}=T^{-T}\Sigma^{-1}T^{-1}
+\ \Longrightarrow\ \Sigma^{-1}=T^TD^{-1}T,
+$$
+
+with $D^{-1}=\operatorname{diag}(S^{-1},H^{-1})$. State the local operations:
+invert the product in reverse order, then multiply by $T^T$ on the left and
+$T$ on the right. Do not commute factors. The expanded partitioned inverse
+remains checking material, not an additional formula to memorize.
+
+### P10. The joint quadratic becomes a residual term plus an observed term
+
+**Intention:** Substitute the proved inverse relation and the coordinate action
+from P4 into the explicitly named quadratic from P2:
+
+$$
+\begin{aligned}
+Q&=[T(x-\mu)]^TD^{-1}[T(x-\mu)]\\
+ &=\begin{pmatrix}r\\u\end{pmatrix}^{T}
+ \begin{pmatrix}S^{-1}&0\\0&H^{-1}\end{pmatrix}
+ \begin{pmatrix}r\\u\end{pmatrix}\\
+ &=r^TS^{-1}r+u^TH^{-1}u.
+\end{aligned}
+$$
+
+Identify the first contribution as the squared residual measured by $S^{-1}$;
+the second measures the observed deviation using $H^{-1}$. Block diagonal form
+removes the cross term. This is what “quadratic separation” means here.
+
+### P11. A sum in the exponent becomes a product
+
+**Intention:** Apply $\exp(a+b)=\exp(a)\exp(b)$ to the result on P10:
+
+$$
+\exp(-Q/2)=\exp(-r^TS^{-1}r/2)\exp(-u^TH^{-1}u/2).
+$$
+
+The exponential shapes now match the two intended Gaussian densities, but neither
+exponential alone is the complete normalized density. The joint coefficient $C$
+from P2 must still be assigned to the two factors. State this limitation directly
+next to the resulting product, rather than silently claiming the conditional law.
+
+### P12. The same elimination gives the determinant product
+
+**Intention:** Reuse the already proved $D=T\Sigma T^T$ instead of introducing
+another matrix lemma. $T$ is block triangular with identity diagonal blocks,
+so $\det T=1$. Determinant multiplication gives
+
+$$
+\det D=(\det T)^2\det\Sigma=\det\Sigma,
+\qquad \det D=\det S\det H.
+$$
+
+Therefore $\det\Sigma=\det S\det H$. Identify this as the part of the
+coefficient split controlled by covariance, with determinants positive by P8/P3.
+
+### P13. The factors before the exponentials split too
+
+**Intention:** Account for the entire coefficient, including the dimension term:
+
+$$
+\begin{aligned}
+C&=(2\pi)^{-(d_1+d_2)/2}(\det S\det H)^{-1/2}\\
+ &=\big[(2\pi)^{-d_1/2}(\det S)^{-1/2}\big]
+   \big[(2\pi)^{-d_2/2}(\det H)^{-1/2}\big].
+\end{aligned}
+$$
+
+Use $d=d_1+d_2$, the determinant result and positive square roots. Identify
+which coefficient belongs to the $d_1$-dimensional residual density and which
+to the $d_2$-dimensional observed density. This completes the missing equality
+from P11; it is not a second meaning of “separating the quadratic.”
+
+### P14. Reassemble the complete Gaussian densities
+
+**Intention:** Pair each coefficient from P13 with its matching exponential
+from P11 to establish the full pointwise equality
+
+$$
+p(x_1,x_2)=g_1(x_1;x_2)g_2(x_2),
+$$
+
+$$
+g_1(x_1;x_2)=\mathcal N_{d_1}(x_1;\mu_1+Bu,S),\qquad
+ g_2(x_2)=\mathcal N_{d_2}(x_2;\mu_2,H).
+$$
+
+Make the parameter identification $r=x_1-(\mu_1+Bu)$ visible. For fixed $x_2$,
+$g_1$ is a normalized Gaussian in $x_1$; it may depend on $x_2$. The algebra now
+gives normalized factors; the following integral establishes which is the
+marginal rather than assuming their probability-law identities.
+
+### P15. Integrate over x1 to identify the marginal
+
+**Intention:** Hold $x_2$ fixed and use the full normalized Gaussian $g_1$,
+with $S\succ0$, to show $\int g_1(x_1;x_2)\,dx_1=1$. Work
+
+$$
+p(x_2)=\int p(x_1,x_2)\,dx_1
+=g_2(x_2)\int g_1(x_1;x_2)\,dx_1=g_2(x_2).
+$$
+
+Explain why $g_2$ is constant with respect to the integration variable and why
+the observation-dependent mean is only a fixed translation for this integral.
+The factor has now been identified as the marginal by calculation.
+
+### P16. Divide by the marginal to obtain the conditional density
+
+**Intention:** Since the Gaussian marginal is positive for every $x_2$, the
+conditional-density ratio yields
+
 $$
 p(x_1\mid x_2)=\frac{p(x_1,x_2)}{p(x_2)}
-=g_1(x_1;x_2)=\mathcal N_{d_1}(x_1;\mu_1+B(x_2-\mu_2),S).
+=g_1(x_1;x_2)
+=\mathcal N_{d_1}(x_1;\mu_1+B(x_2-\mu_2),S).
 $$
-Conclude the normalized identity $p(x_1,x_2)=p(x_1\mid x_2)p(x_2)$. The positive-density ratio supplies a conditional-density version defined for every $x_2$; no conditioning on a positive-probability singleton or uniqueness assertion at null events is needed.
 
-**R2.7. The conditional mean retains the observed-block dependence**  
-**Intention / goal:** Interpret the established law: its mean $\mu_1+B(x_2-\mu_2)$ is affine in the observation and can vary with it, while its covariance $S$ does not. Explain why the separated residual quadratic does not assert independence of $X_1$ and $X_2$: the first density factor can depend on $x_2$ through its mean. State the exact Gaussian/SPD validity regime and that a density proof does not establish adequacy of the supplied model. Do not develop singular-Gaussian or alternative-proof extensions.
+Show the cancellation and connect the result to the destination on P1. This
+finishes the density proof independently of the live covariance-to-independence
+argument. The ratio supplies a conditional-density version for every $x_2$;
+do not describe conditioning on a continuous singleton as division by its mass.
 
-**R2.8. Retrospective: normalization completes Gaussian conditioning**  
-**Intention / goal:** Close the section and recording with the established result: the exponent, determinant and dimension factors all split; integrating then dividing identifies the Gaussian marginal and conditional without circularity. No new claim, assignment, notebook handoff or forward question.  
-**Candidate summary objects for Design to select:**
+### P17. The observation can shift the conditional mean
 
-- $\det\Sigma=\det S\det H$ from R2.2 and the dimension split from R2.3: recall what completes the normalizer.
-- $p(x_1,x_2)=g_1g_2$, with named Gaussian parameters, from R2.4: recall the exact normalized equality.
-- $\int g_1\,dx_1=1\Rightarrow p(x_2)=g_2$ and $p(x_1\mid x_2)=g_1$ from R2.5/R2.6: recall how the factors acquire their probabilistic identities.
-- The observation-dependent mean and constant covariance from R2.7: recall what the result says about dependence.
+**Intention:** Interpret the newly proved law. Its mean
+$\mu_1+B(x_2-\mu_2)$ can vary with $x_2$, whereas its covariance $S$ does not.
+The original blocks need not be independent: the first factor contains $x_2$
+inside its shifted mean, even though the residual and observed contributions
+to $Q$ have separated. This resolves the possible misreading of the product
+identity. End on this ordinary mathematical conclusion, without a recap panel,
+section-summary slide, new assignment or future-looking handoff.
 
-Design chooses a small coherent subset rather than compressing every proof step into the recap.
+## 2. Checks, open issues and downstream handoff
 
-## 2. Open issues, assumptions and sequence check
+The title sequence describes one continuous proof. Orientation supplies the
+known destination; P2 identifies the complete starting density; P3–P4 explain
+what the elimination must accomplish before P6–P7 carry it out. The inverse order
+is derived rather than memorized. SPD precedes inverse/determinant use in the new
+proof; recollection of the established live result is labeled as recollection.
+No residual-independence claim or assumed conditional formula proves itself.
+Both dimensions and determinants are included; integration and division remain
+explicit, separately meaningful operations.
 
-The entry state and two-section responsibility split are inherited provisionally from Section Design. The sequence preserves every required derive/prove obligation. It introduces $H^{-1}$ only after $H\succ0$, $S^{-1}$ only after $S\succ0$, positive square roots only after SPD, and probabilistic factor names only after integration/division. Neither residual independence nor an assumed conditional formula is used to prove the target identity. Transposes, dimensions and matrix order were checked against the complete supplied derivation. The expanded inverse is checking material, not an omitted assigned proof.
+The sequence and opening distribution were negotiated with Slide Design during
+this revision. Design may request the smallest teaching-move split if actual
+capacity evidence requires it; eighteen slides are not a frozen constraint.
+Keep operation reasons, object meanings, target links and comfortable vertical
+formula spacing in the visible explanation. Authoring must inspect actual
+complete/reveal states. Implementation fit, independent mathematical checking,
+classroom effectiveness and instructor approval are distinct claims.
 
-The distinct teaching moves justify separating the two covariance multiplications, inverse-order derivation, coordinate transformation and quadratic substitution. R2 gives full normalizers, integral and ratio their own moves rather than compressing them into a last-minute assertion. Titles alone recover the proof route; each summary nominates only earlier objects and ends its section. There is no required new numeric exercise: the worked objects are the symbolic block products and normalized densities assigned upstream.
+**Timing advisory, coordinator/Scope owner.** The 20–30-minute estimate remains
+unmeasured. Readable explanation and then rehearsal must test it. Preserve the
+complete proof if the initial estimate proves optimistic; substantial duration
+or treatment changes return to the coordinator/instructor.
 
-**Timing uncertainty — Scope/coordinator advisory, inherited rather than a discovered contradiction.** Twenty slides do not establish a 20–30-minute recording. The largest pause/reconstruction demand lies in R1.5–R1.10; R2.2–R2.6 is load-bearing and cannot be dropped to meet a duration target. Provisional treatment retains the full proof and the upstream estimate as unmeasured. The smallest next action is readable downstream design followed by rehearsal; if duration conflicts, return the allocation or range to its owner rather than silently reducing proof depth. No new upstream repair is required on current organizational evidence.
+**Source limit.** Internal algebra and dependency order were checked against
+`math_derivation.md`. Its exact verified Murphy source records and course-completion
+attribution remain authoritative checking evidence. This revision did not repeat
+PDF source inspection. The previous realization's reviews do not establish that
+this revised presentation has been reviewed or approved.
 
-**Source attribution constraint.** The source-verified mathematical route and exact source records are in `math_derivation.md`. Murphy Book 2, *Advanced Topics* (2023), online version December 10, 2025, §2.3.1.5 “Derivation: moment form,” printed pp. 25–27 / PDF pp. 59–61, supports the relevant inverse/exponent/factorization route. The explicit congruence, SPD proof, normalizer completion and integral identification are course completions; do not label these as separately displayed Murphy proofs. This stage checked internal sequencing and algebra against the supplied derivation; it did not repeat the upstream PDF provenance inspection or obtain independent mathematical review.
+## 3. Decisions and inspected inputs
 
-No final visual layout, reveals, assets, Typst, speaker notes or notebook content is specified here. Provisional Design may split an overloaded visible argument through Organization; it must preserve the proof obligations and retrospective endings.
+No new change in proof depth, mathematical endpoint, live/recorded allocation or
+notebook work is requested. The explicit instructor change to a single section
+without bookend slides is incorporated. Final detailed presentation and duration
+remain for instructor/coordinator review after downstream checks.
 
-## 3. Upstream change requests and inspected versions
-
-**No new substantive upstream change is requested.** Final instructor acceptance of the detailed recording route and extent remains open through the coordinator. No self-approval is claimed. The timing uncertainty above stays advisory until design/rehearsal supplies evidence.
-
-Worktree `/tmp/pml-l01-recording`; dispatched base `196e5e5`. SHA-256 values identify the exact uncommitted upstream inputs inspected for this build:
-
-| Input in this recording directory | SHA-256 |
-|---|---|
-| `recording_brief.md` | `73d00c177d321f7d9d32ef406d4060dcd98ad892893c44ef743962fb6c2d739f` |
-| `section_design.md` | `d717d3a60af70212c1f74fefa33ff331a541e807ac8138e45d3b68ab826d7c4a` |
-| `math_derivation.md` | `346dcd2a3905b39b2810be5188c4327242fefeecc5b75b728c16cad460eeaa7d` |
+Inputs: existing `recording_brief.md`, `section_design.md`, `slide_organization.md`
+and complete `math_derivation.md` at dispatched base `ea3c267` on
+`lecture/l01-delivery-readiness`, the instructor's current comments, and the
+same-turn revised one-section contract. Exact earlier source inspection records
+remain in the derivation rather than being rewritten as new review evidence.

@@ -1,0 +1,1421 @@
+LECTURE HANDOUT PAGE 1
+Lecture L01
+Probability and Bayesian Statistics
+From Bayesian statistics to probabilistic machine learning
+Probabilistic Machine Learning 2027-1
+2026-10-17
+
+
+LECTURE HANDOUT PAGE 2
+Section 1
+A familiar modeling language
+
+
+LECTURE HANDOUT PAGE 3
+Lecture L01 — Probability & Statistics
+The Beta-Binomial model
+Observed
+the coin tosses 𝑦1, …, 𝑦𝑁
+Unknown
+the coin bias 𝜃
+𝜃∼Beta(𝛼, 𝛽)
+𝑦𝑖∼Bernoulli(𝜃),
+𝑖= 1, …, 𝑁
+Code heads as 𝑦𝑖= 1 and tails as 𝑦𝑖= 0
+𝑁1 = ∑𝑁
+𝑖=1 𝑦𝑖,
+𝑁0 = 𝑁−𝑁1
+• A statistical model has data and unknown parameters
+• How could observed data (𝑦) have been generated.
+• What does it tell us about the parameters (𝜃)
+• 𝑁1 and 𝑁0 count heads and tails in the observed sample
+1. A familiar modeling language
+Slide 3/70
+
+
+LECTURE HANDOUT PAGE 4
+Lecture L01 — Probability & Statistics
+Models are built out of distributions
+𝜃∼Beta(𝛼, 𝛽)
+𝑦𝑖∼Bernoulli(𝜃)
+𝑖= 1, …, 𝑁
+• Beta for continuous variables on 
+[0, 1].
+• Given 𝜃: independent Bernoulli 
+tosses; Binomial for the count 𝑁1.
+• Distributions are parameterized 
+families
+1. A familiar modeling language
+Slide 4/70
+
+
+LECTURE HANDOUT PAGE 5
+Lecture L01 — Probability & Statistics
+Models can be drawn as graphs
+𝜃∼Beta(𝛼, 𝛽)
+𝑦𝑖∼Bernoulli(𝜃)
+𝛼, 𝛽
+𝜃
+𝑦𝑖
+𝑖
+• Nodes represent quantities.
+‣ Shading marks observed data.
+• Arrows encode conditional 
+dependence.
+‣ We will not use Kruschke 
+diagrams
+In this course, graphs will allow us to factor complex problems into smaller, more tractable problems
+1. A familiar modeling language
+Slide 5/70
+
+
+LECTURE HANDOUT PAGE 6
+Lecture L01 — Probability & Statistics
+Bayes’ rule combines prior and likelihood
+Carried forward
+Earlier in this section: Beta–Bernoulli 
+model
+Model
+𝜃∼Beta(𝛼, 𝛽)
+𝑦𝑖∼Bernoulli(𝜃)
+Bayes’ rule
+𝑝(𝜃| 𝑦) = 𝑝(𝑦| 𝜃)𝑝(𝜃)
+𝑝(𝑦)
+∝𝑝(𝑦| 𝜃)𝑝(𝜃)
+• Bayes’ rule combines prior and likelihood into a posterior
+‣ Prior: 𝑝(𝜃); Likelihood: 𝑝(𝑦| 𝜃); Posterior: 𝑝(𝜃| 𝑦)
+• We explored the posterior of 𝜃, treating 𝑝(𝑦) as a normalizing constant
+1. A familiar modeling language
+Slide 6/70
+
+
+LECTURE HANDOUT PAGE 7
+Lecture L01 — Probability & Statistics
+Conjugacy permits simple calculations
+Carried forward
+Earlier in this section: model and Bayes’ 
+rule
+Model
+𝜃∼Beta(𝛼, 𝛽)
+𝑦𝑖∼Bernoulli(𝜃)
+Bayes rule
+𝑝(𝜃| 𝑦) ∝𝑝(𝑦| 𝜃)𝑝(𝜃)
+Applying Bayes’ rule to our model
+Prior
+𝑝(𝜃) = Beta(𝛼, 𝛽)
+Likelihood
+𝑝(𝑦| 𝜃) ∝𝜃𝑁1(1 −𝜃)𝑁0
+Posterior
+𝑝(𝜃| 𝑦) = Beta(𝛼+ 𝑁1, 𝛽+ 𝑁0)
+Conjugacy
+The prior and likelihood are conjugate when the posterior belongs to the same distribution family as the 
+prior.
+1. A familiar modeling language
+Slide 7/70
+
+
+LECTURE HANDOUT PAGE 8
+Lecture L01 — Probability & Statistics
+The posterior is a distribution representing uncertainty
+Bayesian updating for the familiar coin model
+• The prior and the posterior are both probability distributions
+• Posterior width represents remaining uncertainty
+• In this example, the posterior is narrower than the prior
+1. A familiar modeling language
+Slide 8/70
+
+
+LECTURE HANDOUT PAGE 9
+Lecture L01 — Probability & Statistics
+Summary: A familiar modeling language
+TAKE HOME
+• A statistical model has data and unknown parameters
+• Bayes’ rule combines prior and likelihood into a posterior
+• Posterior width represents remaining uncertainty
+1. A familiar modeling language
+Slide 9/70
+
+
+LECTURE HANDOUT PAGE 10
+Section 2
+From statistics to machine-learning problems
+Same probabilistic language, different organizing questions
+
+
+LECTURE HANDOUT PAGE 11
+Lecture L01 — Probability & Statistics
+Statistics focuses on the unknown parameters
+𝑝(𝜃| 𝐷) = 𝑝(𝐷| 𝜃)𝑝(𝜃)
+𝑝(𝐷)
+• Get data → build a model → apply Bayes’ rule → interpret 𝜃
+‣ For many scientific questions, that posterior is the answer
+• Statistics arose from an interest in the underlying parameters in nature
+2. From statistics to machine learning
+Slide 11/70
+
+
+LECTURE HANDOUT PAGE 12
+Lecture L01 — Probability & Statistics
+Machine learning grew out of computer science
+𝑥
+input
+→
+𝑓
+Function
+→
+𝑦
+output
+• A computational task is an input/output contract
+‣ Produce a function 𝑓 that maps input 𝑥 to output 𝑦
+• Implementation is secondary to the requirement
+• Multiple implementations may be possible
+• Machine learning developed in this context
+2. From statistics to machine learning
+Slide 12/70
+
+
+LECTURE HANDOUT PAGE 13
+Lecture L01 — Probability & Statistics
+Early machine learning grew out of classification problems
+Fisher (1936), Fig. 1, The Use of Multiple Measurements in Taxonomic 
+Problems
+Rosenblatt (1958), Fig. 1, The Perceptron
+• Fisher’s discriminant and Rosenblatt’s perceptron share an interface
+‣ complex input → class or response
+• Machine learning asks how data can produce the required function 𝑓
+2. From statistics to machine learning
+Slide 13/70
+
+
+LECTURE HANDOUT PAGE 14
+Lecture L01 — Probability & Statistics
+Machine learning defined
+Tom M. Mitchell, Machine 
+Learning (1997), cover
+A computer program is said to learn from experience 𝐸 with respect to some 
+class of tasks 𝑇 and performance measure 𝑃, if its performance at tasks in 𝑇, as 
+measured by 𝑃, improves with experience 𝐸.
+Training
+𝑓𝑇: E
+→
+𝑓𝐴
+𝐸: Experience
+Task
+𝑓𝐴: In
+→
+Out
+𝑓𝐴: Task function
+Evaluation
+𝑓𝑃: (In, Out)
+→
+P
+𝑃: Performance
+• Machine learning is a mapping from (𝐸, 𝑓𝑃) →𝑓𝑇→𝑓𝐴
+‣ That maximizes 𝑓𝐴 performance according to 𝑃
+2. From statistics to machine learning
+Slide 14/70
+
+
+LECTURE HANDOUT PAGE 15
+Lecture L01 — Probability & Statistics
+Supervised experience supports prediction
+Experience: paired examples
+𝑓𝑇: E
+→
+𝑓𝐴
+𝑓𝑇: 𝐷= {(𝑥𝑖, 𝑦𝑖)}𝑁
+𝑖=1
+→
+𝑓𝐷
+paired examples → learned predictor
+Task: prediction
+𝑓𝐴: In
+→
+Out
+𝑓𝐷: 𝑥∗
+→
+𝑦̂∗
+new input → predicted output
+• Experience is a training set 𝐷= {(𝑥𝑛, 𝑦𝑛)}
+‣ 𝑥: called feature, covariate, or predictor
+‣ 𝑦: called label, target, or response
+• Task is to produce a predictor 𝑓𝐷 that maps new 𝑥∗ to correct 𝑦∗
+• Performance is measured by a loss, introduced shortly
+2. From statistics to machine learning
+Slide 15/70
+
+
+LECTURE HANDOUT PAGE 16
+Lecture L01 — Probability & Statistics
+Classification: Iris flowers
+Setosa
+Versicolor
+Virginica
+Murphy (2025), Book 1, Fig. 1.1
+Table 1.1: subset of the Iris design matrix
+index
+sl
+sw
+pl
+pw
+label
+0
+5.1
+3.5
+1.4
+0.2
+Setosa
+1
+4.9
+3.0
+1.4
+0.2
+Setosa
+dots
+dots dots dots dots
+dots
+50
+7.0
+3.2
+4.7
+1.4
+Versicolor
+dots
+dots dots dots dots
+dots
+149
+5.9
+3.0
+5.1
+1.8
+Virginica
+sl: sepal length; sw: sepal width; pl: petal length; pw: petal width
+Murphy (2025), Book 1, Table 1.1
+• Classification: 𝑦∈{1, …, 𝐶}
+‣ The classes are unordered and mutually exclusive
+• For the Iris dataset
+‣ 𝑦∈{Setosa, Versicolor, Virginica}
+‣ 𝑥∈ℝ4
+2. From statistics to machine learning
+Slide 16/70
+
+
+LECTURE HANDOUT PAGE 17
+Lecture L01 — Probability & Statistics
+Exploratory data analysis
+Murphy (2025), Book 1, Fig. 1.3; generated by iris_plot.ipynb
+• Training set
+‣ 150 labeled examples
+‣ 50 in each class
+• Pair plots shows every pair of features
+‣ Diagonal shows marginal distributions
+• Always inspect data before modeling
+‣ Structure
+‣ Outliers
+‣ Missing values
+2. From statistics to machine learning
+Slide 17/70
+
+
+LECTURE HANDOUT PAGE 18
+Lecture L01 — Probability & Statistics
+Performance: empirical risk minimization
+𝐿(𝑥, 𝑦; 𝜃) = ℓ(𝑦, 𝑓(𝑥; 𝜃))
+𝐿(𝜃) = 1
+𝑁∑
+𝑁
+𝑛=1
+𝐿(𝑥𝑛, 𝑦𝑛; 𝜃)
+𝜃̂ = arg min
+𝜃
+𝐿(𝜃)
+Given samples 𝐷= {𝑥1, …, 𝑥𝑁} from 𝑝(𝑋), where 𝑋∈ℝ, the empirical distribution is 𝑝̂𝑁(𝑥) = 1
+𝑁∑𝑁
+𝑛=1 𝛿𝑥𝑛(𝑥).
+• The loss function: the cost of predicting 𝑓(𝑥; 𝜃) when the true label is 𝑦
+• The empirical risk: loss evaluated on the training set
+• Empirical risk minimization: minimizing the empirical loss
+2. From statistics to machine learning
+Slide 18/70
+
+
+LECTURE HANDOUT PAGE 19
+Lecture L01 — Probability & Statistics
+A loss function
+𝐿(𝑥, 𝑦; 𝜃) = ℓ(𝑦, 𝑓(𝑥; 𝜃))
+ℓ(𝑦, 𝑓(𝑥; 𝜃)) = ℓ01(𝑦, 𝑦̂) = 𝕀(𝑦≠𝑦̂)
+𝕀(𝑒) = {1 if 𝑒 is true
+0 if 𝑒 is false
+• A loss function assigns a cost to a prediction when the true label is known
+• The zero-one loss is one for a misclassification and zero for a correct classification
+• 𝕀(𝑒) is an indicator function: it evaluates whether condition 𝑒 holds
+2. From statistics to machine learning
+Slide 19/70
+
+
+LECTURE HANDOUT PAGE 20
+Lecture L01 — Probability & Statistics
+A probabilistic perspective
+𝑝(𝑥| 𝑦= 𝑐, 𝜃)
+𝑝(𝑦= 𝑐| 𝑥, 𝜃) ∝𝑝(𝑥| 𝑦= 𝑐, 𝜃)𝑝(𝑦= 𝑐)
+𝑦̂ = arg max
+𝑐∈𝒴︀𝑝(𝑦= 𝑐| 𝑥; 𝜃)
+• The exploratory data analysis suggests:
+‣ Features in each class have similar distributions
+‣ Different classes have different distributions
+• Bayes’ rule converts those ingredients to posterior class probabilities
+• A possible classifier: choose the class with maximum a posteriori probability
+2. From statistics to machine learning
+Slide 20/70
+
+
+LECTURE HANDOUT PAGE 21
+Lecture L01 — Probability & Statistics
+Task, experience, and performance
+Task
+What must the learned system do?
+𝑥∈ℝ4 →𝑦̂ ∈𝒴︀
+four measurements → species
+Experience
+What data, feedback, or interaction is available?
+𝐷= {(𝑥𝑛, 𝑦𝑛)}𝑁
+𝑛=1
+150 labeled flowers
+Performance
+How is success evaluated?
+𝐿(𝜃) = 1
+𝑁∑
+𝑁
+𝑛=1
+𝕀(𝑦𝑛≠𝑓(𝑥𝑛; 𝜃))
+zero-one loss / misclassification rate
+• A learning problem is defined by three ingredients: task, experience, and performance
+‣ Task: predict the Iris species from four sepal and petal measurements
+• Experience: 150 labeled flowers, with 50 examples from each species
+• Performance: mean zero-one loss, the training misclassification rate
+2. From statistics to machine learning
+Slide 21/70
+
+
+LECTURE HANDOUT PAGE 22
+Lecture L01 — Probability & Statistics
+Summary: From statistics to machine learning
+Training
+𝑓𝑇: E →𝑓𝐴
+𝐸: experience
+Task
+𝑓𝐴: In →Out
+𝑓𝐴: learned function
+Evaluation
+𝑓𝑃: (In, Out) →𝑃
+𝑃: performance
+TAKE HOME
+• Machine learning asks how data can produce the required function 𝑓
+• A learning problem is defined by three ingredients: task, experience, and 
+performance
+2. From statistics to machine learning
+Slide 22/70
+
+
+LECTURE HANDOUT PAGE 23
+Section 3
+Classes of machine learning problems
+Experience regimes, task classes, and performance criteria
+
+
+LECTURE HANDOUT PAGE 24
+Lecture L01 — Probability & Statistics
+Experience taxonomy
+Supervised
+𝐷= {(𝑥𝑛, 𝑦𝑛)}
+Unsupervised
+𝐷= {𝑥𝑛}
+Self-supervised
+𝐷= {𝑥𝑛, 𝑓(𝑥𝑛)} or {𝑓(𝑥𝑛), 𝑥𝑛}
+Reinforcement / interaction
+decision : 𝑥(𝑡) →𝑎(𝑡)
+action : (𝑥(𝑡), 𝑎(𝑡)) →𝑥(𝑡+ 1)
+reward : 𝑥(𝑡+ 1) →𝑟(𝑡+ 1)
+Experience describes what the learner gets to observe
+3. ML taxonomies
+Slide 24/70
+
+
+LECTURE HANDOUT PAGE 25
+Lecture L01 — Probability & Statistics
+Task taxonomy
+Prediction
+Task: {(𝑥𝑛, 𝑦𝑛)} →𝑦̂ = 𝑓𝐷(𝑥∗)
+Performance: 𝑓𝑃(𝑦∗, 𝑦̂)
+Generation
+Task: {𝑥𝑛} →({𝑐}, 𝑝𝐷(𝑥| 𝑐)) →𝑥∗∼𝑝𝐷(𝑥| 𝑐)
+Performance: 𝑓𝑃(𝑝(𝑥| 𝑐), 𝑥∗)
+Discovery
+Task: {𝑥𝑛} →({𝑧}, 𝑓𝐷(𝑥)) →𝑧̂ = 𝑓𝐷(𝑥∗)
+Performance: 𝑓𝑃(𝑧̂, 𝑥∗)
+Action
+Task: 𝐷→𝑎𝑡∼𝜋𝐷(⋅| 𝑥𝑡)
+(𝑥𝑡, 𝑎𝑡)
+→
+environment (𝑥𝑡+1, 𝑟𝑡+1)
+Performance: 𝑓𝑃({𝑟𝑡})
+Task describes what the learned system must do.
+Prediction
+Map inputs to outputs
+Generation
+Produce new examples
+Discovery
+Find a representation of the data
+Action
+Choose actions to achieve desired outcomes
+3. ML taxonomies
+Slide 25/70
+
+
+LECTURE HANDOUT PAGE 26
+Lecture L01 — Probability & Statistics
+There are many combinations of experience and task
+Experience
+Prediction
+Generation
+Discovery
+Action
+Supervised
+Classification
+—
+—
+Imitation 
+learning
+Unsupervised
+—
+Density 
+modeling
+Clustering / 
+PCA
+—
+Self-supervised
+Next-token 
+prediction
+Language 
+generation
+Representation 
+learning
+—
+Reinforcement / 
+interaction
+—
+—
+—
+Policy learning
+• Not every type of experience supports every task.
+• Common pairings do exist.
+3. ML taxonomies
+Slide 26/70
+
+
+LECTURE HANDOUT PAGE 27
+Lecture L01 — Probability & Statistics
+Summary: Two taxonomies, three ingredients
+Experience: what the learner 
+observes
+Supervised
+𝐷= {(𝑥𝑛, 𝑦𝑛)}
+Unsupervised
+𝐷= {𝑥𝑛}
+Self-supervised
+𝑥𝑛, 𝑓(𝑥𝑛)
+Interaction
+𝑥𝑡→𝑎𝑡→𝑟𝑡+1
+Task: what the system must do
+Prediction
+𝑥∗→𝑦̂∗
+Generation
+𝑥∗∼𝑝𝐷(𝑥|𝑐)
+Discovery
+𝑥∗→𝑧̂∗
+Action
+𝑥𝑡→𝑎𝑡
+TAKE HOME
+• Experience describes what the learner gets to observe
+• Task describes what the learned system must do
+• Not every type of experience supports every task; common pairings do exist
+3. ML taxonomies
+Slide 27/70
+
+
+LECTURE HANDOUT PAGE 28
+Section 4
+From datasets to learning problems
+The same dataset can pose different learning problems
+
+
+LECTURE HANDOUT PAGE 29
+Lecture L01 — Probability & Statistics
+Popular datasets
+Iris
+AGE
+Since 1936 – about 90 years
+TASKS
+species prediction; clustering; visualization
+MNIST
+AGE
+Since 1998 – about 28 years
+TASKS
+digit classification; representation learning; generation
+CIFAR-10
+AGE
+Since 2009 – about 17 years
+TASKS
+object classification; robustness; generation
+IMDB movie reviews
+AGE
+Since 2011 – about 15 years
+TASKS
+sentiment classification; text representation
+Murphy (2025), Book 1, Figs. 1.1, 1.12a, 1.13b, and Table 1.3
+• Machine learning uses common datasets for practice and example problems
+• The same dataset can support different learning tasks
+• Datasets support benchmarks that make comparisons easy
+4. Problem examples
+Slide 29/70
+
+
+LECTURE HANDOUT PAGE 30
+Lecture L01 — Probability & Statistics
+MNIST: the same taxonomy, one dataset
+𝑥𝑛∈{0, …, 255}28×28,
+𝑦𝑛∈
+{0, …, 9}
+Murphy (2025), Book 1, Fig. 1.12a
+Prediction
+𝑦̂ = 𝑓𝐷(𝑥∗)
+Discovery
+𝑧̂ = 𝑓𝐷(𝑥∗)
+Generation
+𝑥∗∼𝑝𝐷(𝑥| 𝑐)
+4. Problem examples
+Slide 30/70
+
+
+LECTURE HANDOUT PAGE 31
+Lecture L01 — Probability & Statistics
+CIFAR-10: higher-dimensional inputs, the same questions
+𝑥𝑛∈ℝ32×32×3,
+𝑦𝑛∈
+{1, …, 10}
+Murphy (2025), Book 1, Fig. 1.13b
+Prediction
+𝑦̂ = 𝑓𝐷(𝑥∗)
+𝐷train
+𝐿(𝜃; 𝐷train)
+→
+𝐷test
+𝐿(𝜃; 𝐷test)
+4. Problem examples
+Slide 31/70
+
+
+LECTURE HANDOUT PAGE 32
+Lecture L01 — Probability & Statistics
+IMDB reviews: text as sequence data
+𝑥𝑛= (𝑤1, …, 𝑤𝑇),
+𝑦𝑛∈{pos, neg}
+Murphy (2025), Book 1, Table 1.3
+Prediction
+𝑦̂ = 𝑓𝐷(𝑥∗)
+Discovery
+𝑧̂ = 𝑓𝐷(𝑥∗)
+Generation
+𝑤𝑡∼𝑝𝐷(𝑤𝑡| 𝑤<𝑡)
+4. Problem examples
+Slide 32/70
+
+
+LECTURE HANDOUT PAGE 33
+Lecture L01 — Probability & Statistics
+Learning problems become probabilistic queries
+Prediction
+Task: {(𝑥𝑛, 𝑦𝑛)} →𝑦̂ = 𝑓𝐷(𝑥∗)
+Performance: 𝑓𝑃(𝑦∗, 𝑦̂)
+Generation
+Task: {𝑥𝑛} →({𝑐}, 𝑝𝐷(𝑥| 𝑐)) →𝑥∗∼𝑝𝐷(𝑥| 𝑐)
+Performance: 𝑓𝑃(𝑝(𝑥| 𝑐), 𝑥∗)
+Discovery
+Task: {𝑥𝑛} →({𝑧}, 𝑓𝐷(𝑥)) →𝑧̂ = 𝑓𝐷(𝑥∗)
+Performance: 𝑓𝑃(𝑧̂, 𝑥∗)
+Action
+Task: 𝐷→𝑎𝑡∼𝜋𝐷(⋅| 𝑥𝑡)
+(𝑥𝑡, 𝑎𝑡)
+→
+environment (𝑥𝑡+1, 𝑟𝑡+1)
+Performance: 𝑓𝑃({𝑟𝑡})
+• A learning problem is specified by the variables available and the query we want 
+answered
+• Performances are expectations over future cases: 𝑓𝑃= 𝐸[⋅]
+• Probabilistic notation gives a common language for expressing those queries
+4. Problem examples
+Slide 33/70
+
+
+LECTURE HANDOUT PAGE 34
+Lecture L01 — Probability & Statistics
+Summary: From datasets to learning problems
+Common practice datasets
+Iris
+MNIST
+CIFAR-10
+IMDB
+One dataset, different tasks
+Prediction
+𝑦̂ = 𝑓𝐷(𝑥∗)
+Discovery
+𝑧̂ = 𝑓𝐷(𝑥∗)
+Generation
+𝑥∗∼𝑝𝐷(𝑥|𝑐)
+TAKE HOME
+• Machine learning uses common datasets for practice and example problems
+• The same dataset can support different learning tasks
+• A learning problem is specified by the variables available and the query we 
+want answered
+• Probabilistic notation gives a common language for expressing those queries
+4. Problem examples
+Slide 34/70
+
+
+LECTURE HANDOUT PAGE 35
+Lecture L01 — Probability & Statistics
+Summary: Probability for machine learning
+Joint distribution: 𝑝𝐷(𝑥obs, 𝑧, 𝑦∗)
+Summarize
+𝐸[𝑔(𝑋)] = ∫𝑔(𝑥)𝑝(𝑥) d𝑥
+Marginalize
+𝑝(𝑥) = ∫𝑝(𝑥, 𝑦) d𝑦
+Condition
+𝑝(𝑥|𝑦) = 𝑝(𝑥,𝑦)
+𝑝(𝑦)
+TAKE HOME
+• The task determines which quantity we need from the joint distribution
+• A small set of recurring operations—summarize, marginalize, condition—
+answers many of those questions
+• Integrals are a central tool for answering these queries
+4. Problem examples
+Slide 35/70
+
+
+LECTURE HANDOUT PAGE 36
+Section 5
+Joint Gaussian distributions and geometry
+Describe and transform joint uncertainty with a mean and covariance
+
+
+LECTURE HANDOUT PAGE 37
+Lecture L01 — Probability & Statistics
+Gaussians: a concrete example
+One variable
+𝒩︀(𝑥| 𝜇, 𝜎2) =
+exp(−(𝑥−𝜇)2
+2𝜎2 )
+√
+2𝜋𝜎2
+𝐷 coordinates
+𝒩︀(𝒙| 𝜇, Σ) = exp(−1
+2(𝒙−𝜇)𝑇Σ−1(𝒙−𝜇))
+(2𝜋)
+𝐷
+2 |Σ|
+1
+2
+Murphy, Book 2 §2.3.1.1, Eq. 2.71; scalar case: 𝐷= 1
+• One variable: mean 𝜇 and positive variance 𝜎2 > 0
+• Mean 𝜇∈ℝ𝐷; these densities and inverse formulas assume covariance Σ ∈ℝ𝐷×𝐷 with 
+Σ ≻0
+• Gaussian means, marginals, and conditionals have closed forms
+5. Gaussian geometry
+Slide 37/70
+
+
+LECTURE HANDOUT PAGE 38
+Lecture L01 — Probability & Statistics
+The three operations in multivariate Gaussian systems
+One joint Gaussian: 𝑝(𝒙) = 𝒩︀(𝒙| 𝜇, Σ)
+Summarize
+−2
+0
+2
+x 1
+−2
+0
+2
+x 2
+μ
+Σ
+Center and spread
+𝜇= ∫𝒙𝑝(𝒙) d𝒙
+Marginalize
+−2
+0
+2
+x 2
+−2
+0
+2
+x 1
+p x 
+( 
+) 
+1
+𝑝(𝑥1) = ∫𝑝(𝑥1, 𝑥2) d𝑥2
+Condition
+−2
+0
+2
+x 2
+x 
+a 
+2 =
+−2
+0
+2
+x 1
+p x 
+a 
+( 
+∣ 
+) 
+1
+p x 
+( 
+) 
+1
+𝑝(𝑥1 | 𝑥2 = 𝑎) =
+𝑝(𝑥1, 𝑎)
+∫𝑝(𝑢, 𝑎) d𝑢
+Course figures generated by gaussian_geometry_figures.ipynb
+• Summarize: describe the center and spread with 𝜇 and Σ
+• Marginalize: integrate over the coordinate we ignore
+• Condition: fix an observed coordinate and normalize the slice
+5. Gaussian geometry
+Slide 38/70
+
+
+LECTURE HANDOUT PAGE 39
+Lecture L01 — Probability & Statistics
+Covariance summarizes joint variation
+For a vector 𝒙 with mean 𝜇= 𝐸[𝒙]
+Σ𝑖𝑗= Cov[𝑋𝑖, 𝑋𝑗]
+= 𝐸[(𝑋𝑖−𝜇𝑖)(𝑋𝑗−𝜇𝑗)]
+Σ = 𝐸[(𝒙−𝜇)(𝒙−𝜇)𝑇]
+= 𝐸[𝒙𝒙𝑇] −𝜇𝜇𝑇
+For three coordinates
+Σ =
+[
+𝑉[𝑋1]
+Cov[𝑋2, 𝑋1]
+Cov[𝑋3, 𝑋1]
+Cov[𝑋1, 𝑋2]
+𝑉[𝑋2]
+Cov[𝑋3, 𝑋2]
+Cov[𝑋1, 𝑋3]
+Cov[𝑋2, 𝑋3]
+𝑉[𝑋3]
+]
+Murphy, Book 1 §3.1.1, Eqs. 3.1–3.4
+• Positive / negative covariance: deviations tend to have the same / opposite signs
+• Diagonal entries are variances; off-diagonal entries are covariances
+• Zero covariance does not imply independence
+5. Gaussian geometry
+Slide 39/70
+
+
+LECTURE HANDOUT PAGE 40
+Lecture L01 — Probability & Statistics
+Correlation separates direction from units
+𝜌𝑖𝑗=
+Cov[𝑋𝑖,𝑋𝑗]
+𝜎𝑖𝜎𝑗
+,
+−1 ≤𝜌𝑖𝑗≤1
+Σ = [
+𝜎2
+1
+𝜌12𝜎1𝜎2
+𝜌13𝜎1𝜎3
+𝜌12𝜎1𝜎2
+𝜎2
+2
+𝜌23𝜎2𝜎3
+𝜌13𝜎1𝜎3
+𝜌23𝜎2𝜎3
+𝜎2
+3
+]
+Murphy, Book 1 §3.1.2, Eq. 3.7; Book 2 §2.3.1.1, Eq. 2.73
+• 𝜌𝑖𝑗 describes the direction and strength of linear association
+• 𝜎1, 𝜎2, 𝜎3 set the coordinate scales
+5. Gaussian geometry
+Slide 40/70
+
+
+LECTURE HANDOUT PAGE 41
+Lecture L01 — Probability & Statistics
+Affine maps carry Gaussian means and covariances
+𝒚= 𝐴𝒙+ 𝑏
+𝐸[𝒚] = 𝐴𝜇+ 𝑏
+Cov[𝒚] = 𝐴Σ𝐴𝑇
+Covariance proof
+Center: 𝒅= 𝒙−𝜇
+𝒚= 𝐴(𝒅+ 𝜇) + 𝑏
+= 𝐴𝒅+ (𝐴𝜇+ 𝑏)
+𝒚−𝐸[𝒚] = 𝐴𝒅
+Cov[𝒚] = 𝐸[(𝐴𝒅)(𝐴𝒅)𝑇]
+= 𝐴𝐸[𝒅𝒅𝑇]𝐴𝑇
+= 𝐴Σ𝐴𝑇
+Murphy, Book 1 §3.1.1, Eq. 3.5
+• Gaussianity is preserved; a shift changes only the mean
+• A linear map changes the scale, orientation, and dimension of variation
+5. Gaussian geometry
+Slide 41/70
+
+
+LECTURE HANDOUT PAGE 42
+Lecture L01 — Probability & Statistics
+Mahalanobis distance uses the cloud’s own scale
+𝑑Σ(𝒙, 𝜇)2 = (𝒙−𝜇)𝑇Σ−1(𝒙−𝜇)
+Σ = 𝜎2𝐼𝐷
+→
+𝑑2
+Σ = ‖𝒙−𝜇‖2
+𝜎2
+Murphy, Book 2 §2.3.1.1, Eq. 2.72
+• Equal Mahalanobis distances trace equal-density contours
+• With spherical covariance, it becomes squared Euclidean distance in standard-deviation 
+units
+5. Gaussian geometry
+Slide 42/70
+
+
+LECTURE HANDOUT PAGE 43
+Lecture L01 — Probability & Statistics
+Covariance controls the contour shape
+−3
+0
+3
+x 1
+−3
+0
+3
+x 2
+Full covariance
+−3
+0
+3
+x 1
+−3
+0
+3
+x 2
+Diagonal covariance
+−3
+0
+3
+x 1
+−3
+0
+3
+x 2
+Spherical covariance
+Course rendering of Murphy, Book 2, Fig. 2.8
+• A full covariance can rotate the principal axes
+• Diagonal covariance removes linear correlation in these coordinates
+• Spherical covariance assigns the same variance in every direction
+5. Gaussian geometry
+Slide 43/70
+
+
+LECTURE HANDOUT PAGE 44
+Lecture L01 — Probability & Statistics
+Summary: Joint Gaussian geometry
+−3
+0
+3
+x 1
+−3
+0
+3
+x 2
+Full covariance
+−3
+0
+3
+x 1
+−3
+0
+3
+x 2
+Diagonal covariance
+−3
+0
+3
+x 1
+−3
+0
+3
+x 2
+Spherical covariance
+Affine map
+𝒚= 𝐴𝒙+ 𝑏
+𝐸[𝒚] = 𝐴𝜇+ 𝑏
+Cov[𝒚] = 𝐴Σ𝐴𝑇
+TAKE HOME
+• Mean vector 𝜇 locates the cloud; covariance Σ sets its shape
+• A linear map changes the scale, orientation, and dimension of variation
+5. Gaussian geometry
+Slide 44/70
+
+
+LECTURE HANDOUT PAGE 45
+Section 6
+Marginals and conditionals of a Gaussian
+Ignore coordinates or use observations to update uncertainty
+
+
+LECTURE HANDOUT PAGE 46
+Lecture L01 — Probability & Statistics
+Partition the variables and their parameters together
+𝒙= (𝑥1
+𝑥2),
+𝜇= (𝜇1
+𝜇2)
+Σ = (Σ11
+Σ21
+Σ12
+Σ22),
+Σ21 = Σ𝑇
+12
+Murphy, Book 2 §2.3.1.3, Eq. 2.75
+• 𝑥1 and 𝑥2 can each be vectors
+• The diagonal blocks describe within-group variation
+• The cross blocks describe variation between groups
+6. Marginals and conditionals
+Slide 46/70
+
+
+LECTURE HANDOUT PAGE 47
+Lecture L01 — Probability & Statistics
+Marginalization keeps the matching blocks
+𝒙∼𝒩︀(𝜇, Σ)
+𝑝(𝑥1) = ∫𝑝(𝑥1, 𝑥2) d𝑥2
+= 𝒩︀(𝑥1 | 𝜇1, Σ11)
+𝑝(𝑥2) = 𝒩︀(𝑥2 | 𝜇2, Σ22)
+Marginal proof
+Select 𝑥1: 𝑃= [𝐼0],
+𝑥1 = 𝑃𝒙
+By the affine rule:
+𝑥1 ∼𝒩︀(𝑃𝜇, 𝑃Σ𝑃𝑇)
+𝑃𝜇= 𝜇1
+𝑃Σ𝑃𝑇= [𝐼0][Σ11
+Σ21
+Σ12
+Σ22
+][𝐼
+0]
+= Σ11
+Murphy, Book 2 §2.3.1.3, Eqs. 2.76–2.77; affine rule: Book 1 §3.1.1, Eq. 3.5
+• Marginalizing 𝑥2 integrates over all its possible values
+• Cross-covariance affects conditioning, not the marginal of 𝑥1
+6. Marginals and conditionals
+Slide 47/70
+
+
+LECTURE HANDOUT PAGE 48
+Lecture L01 — Probability & Statistics
+Conditioning shifts the mean by an observed deviation
+𝑝(𝑥1 | 𝑥2) = 𝒩︀(𝑥1 | 𝜇1|2, Σ1|2)
+𝜇1|2 = 𝜇1 + Σ12Σ−1
+22 (𝑥2 −𝜇2)
+Mean proof
+𝐵= Σ12Σ−1
+22
+𝑟= 𝑥1 −𝜇1|2 = 𝑥1 −𝜇1 −𝐵(𝑥2 −𝜇2)
+𝐸[𝑟] = 0,
+Cov[𝑟, 𝑥2] = Σ12 −𝐵Σ22
+= 0
+(𝑟, 𝑥2) is jointly Gaussian:
+zero cross-covariance gives independence
+𝐸[𝑟| 𝑥2] = 𝐸[𝑟] = 0
+𝐸[𝑥1 | 𝑥2] = 𝜇1|2
+Murphy, Book 2 §2.3.1.3, Eq. 2.78; proof uses affine Gaussian closure
+• Conditioning shifts the mean according to the observed deviation 𝑥2 −𝜇2, cross-
+covariance, and observed variance
+6. Marginals and conditionals
+Slide 48/70
+
+
+LECTURE HANDOUT PAGE 49
+Lecture L01 — Probability & Statistics
+Conditioning removes explained covariance
+Σ1|2 = Σ11 −Σ12Σ−1
+22 Σ21
+Σ2|1 = Σ22 −Σ21Σ−1
+11 Σ12
+Covariance proof
+𝐵= Σ12Σ−1
+22
+𝑟= 𝑥1 −𝜇1|2
+From the mean proof: 𝑟 and 𝑥2 are independent
+Given 𝑥2, the mean 𝜇1|2 is constant
+Σ1|2 = Cov[𝑥1 | 𝑥2] = Cov[𝑟]
+Σ11 = 𝐵Σ22𝐵𝑇+ Cov[𝑟]
+Σ1|2 = Σ11 −𝐵Σ22𝐵𝑇
+= Σ11 −Σ12Σ−1
+22 Σ21
+Murphy, Book 2 §2.3.1.3, Eqs. 2.78–2.79; proof reuses the independent residual
+• Conditioning cannot increase variance in any direction
+• In a Gaussian, this covariance depends on which variables are observed, not their values
+6. Marginals and conditionals
+Slide 49/70
+
+
+LECTURE HANDOUT PAGE 50
+Lecture L01 — Probability & Statistics
+The bivariate formula gives intuition
+𝑥1, 𝑥2 ∈ℝ
+(𝑋1 | 𝑋2 = 𝑥2) ∼𝒩︀(𝜇1|2, 𝜎2
+1|2)
+𝜇1|2 = 𝜇1 + 𝜌𝜎1
+𝜎2(𝑥2 −𝜇2)
+𝜎1|2 = 𝜎1√1 −𝜌2
+Murphy, Book 1 §3.2.4; Book 2 §2.3.1.3
+• Positive 𝜌 moves the estimate in the observed direction
+• 𝜌= 0 leaves both mean and variance unchanged
+• Larger |𝜌| leaves less conditional variance
+6. Marginals and conditionals
+Slide 50/70
+
+
+LECTURE HANDOUT PAGE 51
+Lecture L01 — Probability & Statistics
+One observed coordinate can change both the estimate and its uncertainty
+Supplied joint model
+(𝑋1
+𝑋2) ∼𝒩︀(𝜇= (0
+0), Σ = ( 1
+0.8
+0.8
+1 ))
+Recorded: 𝑋2 = 1.5; missing: 𝑋1
+𝑋2 = 1.5 recorded
+(𝑋1 | 𝑋2 = 1.5) ∼𝒩︀(0.8(1.5), 1 −0.82) = 𝒩︀(1.2, 0.36)
+𝑋2 unobserved
+𝑋1 ∼𝒩︀(0, 1)
+Course-constructed example; Gaussian conditioning: Murphy, Book 2 §2.3.1.3, Eq. 2.78
+• With 𝑋2 unobserved, marginalize it to obtain 𝑝(𝑋1).
+• Both calculations use supplied 𝜇, Σ; neither fits them.
+• Compared with the marginal, conditioning raises the mean to 1.2 and reduces the 
+variance to 0.36.
+6. Marginals and conditionals
+Slide 51/70
+
+
+LECTURE HANDOUT PAGE 52
+Lecture L01 — Probability & Statistics
+The Schur complement is the residual covariance
+Conditional Gaussian
+𝜇1|2 = 𝜇1 + Σ12Σ−1
+22 (𝑥2 −𝜇2)
+𝑆= Σ1|2 = Σ11 −Σ12Σ−1
+22 Σ21
+(𝑥1 | 𝑥2) ∼𝒩︀(𝜇1|2, 𝑆)
+Centered residual
+𝑟= 𝑥1 −𝜇1|2
+𝑟∼𝒩︀(0, 𝑆)
+The residual 𝑟 is independent of 𝑥2
+Remove the part predicted by 𝑥2:
+Cov[( 𝑟
+𝑥2
+)] = (𝑆
+0
+0
+Σ22
+)
+Murphy, Book 2 §2.3.1.5, Eqs. 2.91, 2.102–2.103
+• 𝑆 measures the uncertainty left after subtracting the conditional mean
+• Block elimination leaves 𝑆: the Schur complement of Σ22 in Σ
+6. Marginals and conditionals
+Slide 52/70
+
+
+LECTURE HANDOUT PAGE 53
+Lecture L01 — Probability & Statistics
+The joint quadratic separates into conditional and marginal parts
+𝑝(𝑥1, 𝑥2) = 𝑝(𝑥1 | 𝑥2)𝑝(𝑥2)
+(𝒙−𝜇)𝑇Σ−1(𝒙−𝜇)
+= 𝑟𝑇𝑆−1𝑟+ (𝑥2 −𝜇2)𝑇Σ−1
+22 (𝑥2 −𝜇2)
+Murphy, Book 2 §2.3.1.5, Eqs. 2.94–2.103
+• The first quadratic describes 𝑥1 after seeing 𝑥2
+• The second describes the marginal distribution of 𝑥2
+6. Marginals and conditionals
+Slide 53/70
+
+
+LECTURE HANDOUT PAGE 54
+Lecture L01 — Probability & Statistics
+Summary: Marginals and conditionals of a Gaussian
+Marginalize
+𝑝(𝑥1) = ∫𝑝(𝑥1, 𝑥2) d𝑥2
+𝑥1 ∼𝒩︀(𝜇1, Σ11)
+Condition
+𝑝(𝑥1|𝑥2) = 𝒩︀(𝑥1|𝜇1|2, Σ1|2)
+𝜇1|2 = 𝜇1 + Σ12Σ−1
+22 (𝑥2 −𝜇2)
+Σ1|2 = Σ11 −Σ12Σ−1
+22 Σ21
+TAKE HOME
+• Marginalizing 𝑥2 integrates over all its possible values
+• Conditioning shifts the mean according to the observed deviation, cross-
+covariance, and observed variance
+• Conditioning cannot increase variance in any direction
+6. Marginals and conditionals
+Slide 54/70
+
+
+LECTURE HANDOUT PAGE 55
+Section 7
+Linear Gaussian systems
+Inference from noisy linear measurements
+
+
+LECTURE HANDOUT PAGE 56
+Lecture L01 — Probability & Statistics
+A linear Gaussian system is a model of state and measurement
+𝑧
+𝑦
+Latent state
+Observed
+A prior and a measurement law
+𝑧∼𝒩︀(𝜇𝑧, Σ𝑧)
+𝑦| 𝑧∼𝒩︀(𝑊𝑧+ 𝑏, Ω)
+𝑝(𝑧, 𝑦) = 𝑝(𝑧)𝑝(𝑦| 𝑧)
+𝑦= 𝑊𝑧+ 𝑏+ 𝜀,
+𝜀∼𝒩︀(0, Ω)
+Noise 𝜀 is independent of the state 𝑧.
+Murphy, Book 2 §2.3.2, Eqs. 2.118–2.119
+• This model specifies how an unknown state generates a noisy measurement
+• The prior and noise covariances satisfy Σ𝑧≻0, Ω ≻0
+• Here the parameters 𝜇𝑧, Σ𝑧, 𝑊, 𝑏, Ω are given
+7. Linear Gaussian systems
+Slide 56/70
+
+
+LECTURE HANDOUT PAGE 57
+Lecture L01 — Probability & Statistics
+One linear Gaussian system supports different questions
+𝑧∼𝒩︀(𝜇𝑧, Σ𝑧),
+𝑦| 𝑧∼𝒩︀(𝑊𝑧+ 𝑏, Ω)
+Condition
+𝑝(𝑧| 𝑦) = 𝑝(𝑦| 𝑧)𝑝(𝑧)
+𝑝(𝑦)
+Summarize
+𝐸[𝑔(𝑧) | 𝑦] =
+∫𝑔(𝑧)𝑝(𝑧| 𝑦) d𝑧
+Marginalize
+𝑝(𝑦) = ∫𝑝(𝑦| 𝑧)𝑝(𝑧) d𝑧
+Murphy, Book 2 §2.3.2
+• Conditioning asks what we can learn from an observed measurement
+‣ What is the distribution of the hidden state after seeing a measurement?
+• Summarizing turns a distribution into a quantity
+‣ What is our estimate of the hidden state?
+• Marginalization averages over an unknown variable to predict another
+‣ What is the distribution of a measurement before it is observed?
+7. Linear Gaussian systems
+Slide 57/70
+
+
+LECTURE HANDOUT PAGE 58
+Lecture L01 — Probability & Statistics
+A linear Gaussian model defines a joint Gaussian
+Linear Gaussian model
+𝑧∼𝒩︀(𝜇𝑧, Σ𝑧)
+𝑦= 𝑊𝑧+ 𝑏+ 𝜀
+𝜀∼𝒩︀(0, Ω)
+𝜀 is independent of 𝑧
+Affine Gaussian rules
+𝑢= 𝐴𝑥+ 𝑐
+𝐸[𝑢] = 𝐴𝐸[𝑥] + 𝑐
+Cov[𝑢] = 𝐴Cov[𝑥]𝐴𝑇
+Joint Gaussian
+(𝑧
+𝑦) ∼𝒩︀((
+𝜇𝑧
+𝜇𝑦), (
+Σ𝑧𝑧
+Σ𝑦𝑧
+Σ𝑧𝑦
+Σ𝑦𝑦))
+𝜇𝑦= 𝑊𝜇𝑧+ 𝑏,
+Σ𝑧𝑧= Σ𝑧
+Σ𝑧𝑦= Σ𝑧𝑊𝑇= Σ𝑇
+𝑦𝑧
+Σ𝑦𝑦= 𝑊Σ𝑧𝑊𝑇+ Ω
+Murphy, Book 2 §2.3.2.1, Eq. 2.120
+• The model plus affine-Gaussian rules determine the full joint distribution
+• Once 𝑝(𝑧, 𝑦) is known, the Gaussian marginal and conditioning rules apply directly
+7. Linear Gaussian systems
+Slide 58/70
+
+
+LECTURE HANDOUT PAGE 59
+Lecture L01 — Probability & Statistics
+Bayes’ rule for Gaussians
+Model and joint Gaussian
+(𝑧
+𝑦) ∼𝒩︀((𝜇𝑧
+𝜇𝑦), (Σ𝑧𝑧
+Σ𝑦𝑧
+Σ𝑧𝑦
+Σ𝑦𝑦
+))
+𝜇𝑦= 𝑊𝜇𝑧+ 𝑏,
+Σ𝑧𝑧= Σ𝑧
+Σ𝑧𝑦= Σ𝑧𝑊𝑇= Σ𝑇
+𝑦𝑧
+Σ𝑦𝑦= 𝑊Σ𝑧𝑊𝑇+ Ω
+Gaussian conditioning rule
+𝜇1|2 = 𝜇1 + Σ12Σ−1
+22 (𝑥2 −𝜇2)
+Σ1|2 = Σ11 −Σ12Σ−1
+22 Σ21
+Apply: 𝑥1 = 𝑧, 𝑥2 = 𝑦
+𝑝(𝑧| 𝑦) = 𝒩︀(𝑧| 𝜇𝑧|𝑦, Σ𝑧|𝑦)
+𝜇𝑧|𝑦= 𝜇𝑧+ Σ𝑧𝑦Σ−1
+𝑦𝑦(𝑦−𝜇𝑦)
+Σ𝑧|𝑦= Σ𝑧𝑧−Σ𝑧𝑦Σ−1
+𝑦𝑦Σ𝑦𝑧
+Murphy, Book 2 §2.3.2.2, Eq. 2.121
+• Apply the Gaussian conditioning rule to the joint blocks
+• The mean responds to observed minus predicted measurement
+• The covariance subtracts the uncertainty explained by the measurement
+7. Linear Gaussian systems
+Slide 59/70
+
+
+LECTURE HANDOUT PAGE 60
+Lecture L01 — Probability & Statistics
+Bayes’ rule as an update formula
+Carried forward
+Earlier: Gaussian conditioning
+𝜇𝑧|𝑦= 𝜇𝑧+ Σ𝑧𝑦Σ−1
+𝑦𝑦(𝑦−𝜇𝑦)
+𝜇𝑦= 𝑊𝜇𝑧+ 𝑏
+Σ𝑧𝑦= Σ𝑧𝑊𝑇
+Σ𝑦𝑦= 𝑊Σ𝑧𝑊𝑇+ Ω
+Define the gain
+𝐾= Σ𝑧𝑦Σ−1
+𝑦𝑦
+𝜇𝑧|𝑦= 𝜇𝑧+ 𝐾(𝑦−𝜇𝑦)
+Murphy, Book 2 §2.3.2.2, Eqs. 2.122–2.124
+• 𝐾 is the gain: it converts a measurement discrepancy into a state correction
+• Posterior estimate = prior estimate + gain × prediction error
+7. Linear Gaussian systems
+Slide 60/70
+
+
+LECTURE HANDOUT PAGE 61
+Lecture L01 — Probability & Statistics
+The scalar Gaussian update
+Carried forward
+Earlier: Gaussian update 
+formula
+𝜇𝑧|𝑦= 𝜇𝑧+ 𝐾(𝑦−𝜇𝑦)
+𝐾= Σ𝑧𝑦Σ−1
+𝑦𝑦
+Scalar specialization
+𝑦, 𝑧∈ℝ,
+𝑊= 1,
+𝑏= 0
+Σ𝑧= 𝜎2
+𝑧,
+Ω = 𝜎2
+𝜀
+𝑧∼𝒩︀(𝜇𝑧, 𝜎2
+𝑧)
+𝑦= 𝑧+ 𝜀,
+𝜀∼𝒩︀(0, 𝜎2
+𝜀)
+𝜀 is independent of 𝑧
+Predicted mean
+𝜇𝑦= 𝐸[𝑧+ 𝜀] = 𝜇𝑧
+Cross-covariance
+Σ𝑧𝑦= Cov[𝑧, 𝑧+ 𝜀] = 𝜎2
+𝑧
+Measurement variance
+Σ𝑦𝑦= Var[𝑧+ 𝜀] = 𝜎2
+𝑧+ 𝜎2
+𝜀
+𝐾=
+𝜎2
+𝑧
+𝜎2𝑧+𝜎2𝜀
+→
+𝜇𝑧|𝑦= 𝜇𝑧+ 𝐾(𝑦−𝜇𝑧)
+Murphy, Book 2 §2.3.2.2; scalar specialization of Eqs. 2.121–2.123
+• The scalar gain is prior state variance divided by total measurement variance
+7. Linear Gaussian systems
+Slide 61/70
+
+
+LECTURE HANDOUT PAGE 62
+Lecture L01 — Probability & Statistics
+The update is weighted by relative uncertainty
+𝜇𝑧|𝑦= 𝜇𝑧+ 𝐾(𝑦−𝜇𝑧),
+𝐾=
+𝜎2
+𝑧
+𝜎2𝑧+𝜎2𝜀
+◆ = posterior mean 𝜇𝑧|𝑦
+Precise measurement
+𝜎2
+𝜀≪𝜎2
+𝑧
+𝐾≈1
+𝜇𝑧 ●───── ◆ ─● 𝑦
+Trust the measurement
+Equal uncertainty
+𝜎2
+𝜀= 𝜎2
+𝑧
+𝐾= 1
+2
+𝜇𝑧 ●─── ◆ ───● 𝑦
+Split the difference
+Noisy measurement
+𝜎2
+𝜀≫𝜎2
+𝑧
+𝐾≈0
+𝜇𝑧 ●─ ◆ ─────● 𝑦
+Trust the prior
+Scalar interpretation of Murphy, Book 2 §2.3.2.2
+• 𝐾 is the fraction of the prediction error used in the correction
+• More measurement noise gives smaller 𝐾; more prior uncertainty gives larger 𝐾
+7. Linear Gaussian systems
+Slide 62/70
+
+
+LECTURE HANDOUT PAGE 63
+Lecture L01 — Probability & Statistics
+Inference often combines conditioning and summarizing
+Observed
+𝑦
+→
+Condition
+𝑝(𝑧| 𝑦) = 𝒩︀(𝑧| 𝜇𝑧|𝑦, Σ𝑧|𝑦) →
+Summarize
+𝑧̂ = 𝐸[𝑧| 𝑦] = 𝜇𝑧|𝑦
+Murphy, Book 2 §2.3.2.2–2.3.2.3
+𝐸[𝑧| 𝑦] = ∫𝑧𝑝(𝑧| 𝑦) d𝑧
+• Conditioning preserves the whole posterior distribution and its uncertainty
+• Summarizing extracts a quantity from that posterior; for a Gaussian the mean is 𝜇𝑧|𝑦
+7. Linear Gaussian systems
+Slide 63/70

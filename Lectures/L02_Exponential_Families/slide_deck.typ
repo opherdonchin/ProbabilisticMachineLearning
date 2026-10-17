@@ -4,7 +4,7 @@
 #import "../course.typ": *
 
 #let lecture = (
-  number: 2,
+  number: "L02",
   title: [Exponential Families],
   short-title: [Exponential Families],
   subtitle: [Common coordinates for probability models],

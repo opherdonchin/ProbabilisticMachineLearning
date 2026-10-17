@@ -1,0 +1,392 @@
+{
+  "hashes": {
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.typ": "d6fb9b38baea584c09c493ad8d8b6c8af3585029f6f52764330653fe9c0ffa81",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_design.typ": "8ae54b1e7b387ff1c16b4559cc0487ddfb33dabd8c1b07705d9046d690c1b61a",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_organization.md": "c9a185a65cb9bd05794e6b33a604407713def3ca3668b958faaab3c02eb69412",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/section_design.md": "99b5ab52586d81ba8320658dbee45f1ae495858c08e81c9638af2960c0769b5e",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/recording_brief.md": "9d618272ab59ba5144848d7f2c7cd6cfddf5bf0d38777d88dfd029686dd6fc0c",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Lectures/L01_Probability_Statistics/recordings/quadratic_separation/math_derivation.md": "a5a1bf33e914862b92b07fd311cb9e9828dca753593b85a09cd7007eb4757a13",
+    "build/slide-review/quadratic_separation/slide_deck/handout.pdf": "decf5b79dcdc4d9b6d24ae4238b9c706b756d907fc810bf1bd340732a9a99628",
+    "build/slide-review/quadratic_separation/slide_deck/presentation.pdf": "8e2519dee6676aefc7ea308b6377840649e9f7ad8a53cccd4e24ef8e370b92fb",
+    "/home/opher/Repositories/ProbabilisticMachineLearning/Lectures/course.typ": "1c185cfd788b1ebcd018589d95824ccb065887f44103a3b84cc27a9aab1535bd"
+  },
+  "handout_pages": 18,
+  "presentation_pages": 42,
+  "expected_state_counts": [
+    1,
+    1,
+    2,
+    3,
+    2,
+    2,
+    3,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2,
+    2,
+    3,
+    2,
+    3,
+    2
+  ],
+  "checks": [
+    {
+      "slide": "P0",
+      "handout_page": 1,
+      "states": [
+        {
+          "presentation_page": 1,
+          "words": 24,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P1",
+      "handout_page": 2,
+      "states": [
+        {
+          "presentation_page": 2,
+          "words": 147,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P2",
+      "handout_page": 3,
+      "states": [
+        {
+          "presentation_page": 3,
+          "words": 83,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 4,
+          "words": 119,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P3",
+      "handout_page": 4,
+      "states": [
+        {
+          "presentation_page": 5,
+          "words": 63,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 6,
+          "words": 110,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 7,
+          "words": 136,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P4",
+      "handout_page": 5,
+      "states": [
+        {
+          "presentation_page": 8,
+          "words": 66,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 9,
+          "words": 119,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P5",
+      "handout_page": 6,
+      "states": [
+        {
+          "presentation_page": 10,
+          "words": 70,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 11,
+          "words": 93,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P6",
+      "handout_page": 7,
+      "states": [
+        {
+          "presentation_page": 12,
+          "words": 63,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 13,
+          "words": 83,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 14,
+          "words": 100,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P7",
+      "handout_page": 8,
+      "states": [
+        {
+          "presentation_page": 15,
+          "words": 73,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 16,
+          "words": 100,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 17,
+          "words": 112,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P8",
+      "handout_page": 9,
+      "states": [
+        {
+          "presentation_page": 18,
+          "words": 63,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 19,
+          "words": 83,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 20,
+          "words": 110,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P9",
+      "handout_page": 10,
+      "states": [
+        {
+          "presentation_page": 21,
+          "words": 73,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 22,
+          "words": 89,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 23,
+          "words": 109,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P10",
+      "handout_page": 11,
+      "states": [
+        {
+          "presentation_page": 24,
+          "words": 72,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 25,
+          "words": 120,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 26,
+          "words": 138,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P11",
+      "handout_page": 12,
+      "states": [
+        {
+          "presentation_page": 27,
+          "words": 71,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 28,
+          "words": 126,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P12",
+      "handout_page": 13,
+      "states": [
+        {
+          "presentation_page": 29,
+          "words": 74,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 30,
+          "words": 102,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P13",
+      "handout_page": 14,
+      "states": [
+        {
+          "presentation_page": 31,
+          "words": 95,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 32,
+          "words": 127,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P14",
+      "handout_page": 15,
+      "states": [
+        {
+          "presentation_page": 33,
+          "words": 90,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 34,
+          "words": 130,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 35,
+          "words": 149,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P15",
+      "handout_page": 16,
+      "states": [
+        {
+          "presentation_page": 36,
+          "words": 84,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 37,
+          "words": 138,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P16",
+      "handout_page": 17,
+      "states": [
+        {
+          "presentation_page": 38,
+          "words": 70,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 39,
+          "words": 112,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 40,
+          "words": 134,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    },
+    {
+      "slide": "P17",
+      "handout_page": 18,
+      "states": [
+        {
+          "presentation_page": 41,
+          "words": 101,
+          "unexpected_vs_final": {}
+        },
+        {
+          "presentation_page": 42,
+          "words": 122,
+          "unexpected_vs_final": {}
+        }
+      ],
+      "handout_missing_in_final": {},
+      "final_extra_vs_handout": {}
+    }
+  ],
+  "adjacent_state_losses": []
+}

@@ -1,0 +1,14 @@
+{
+  "frozen_before_review": true,
+  "known_concerns_B": [
+    "dimension-subscript Gaussian notation absent from lecture",
+    "conditional m and S formulas omitted in orientation",
+    "positive-definiteness symbol used but not defined in lecture",
+    "compact Q/C form precedes full joint density; framing anticipates later factorization",
+    "no demonstrated connection from inverse-covariance quadratic to covariance cancellation",
+    "set-difference notation adds avoidable notation change",
+    "insufficient differentiation of mathematical roles in later equation displays"
+  ],
+  "assessment": "Seek independently evidenced overlap, novel sound findings, and fair assessment of accepted A. Do not require exact reproduction of instructor wording or zero criticisms of accepted work. Keep reviewer claims distinct from coordinator/user judgments.",
+  "limits": "One reviewer, two different tasks and sequence lengths; not a controlled causal comparison or student-learning validation."
+}

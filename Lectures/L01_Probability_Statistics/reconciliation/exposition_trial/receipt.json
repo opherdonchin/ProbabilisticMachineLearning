@@ -1,0 +1,25 @@
+{
+  "frozen_first_read_hashes": {
+    "report.md": "4b2d2d552368411b71d7653058b7e00746a6a06ad710eb13946ac30d3b9cb5d8",
+    "exposure.md": "c551aa427b254a02013cd6b2eeee55a9f9a7c4f1df31cc7bef661584be05eb7d"
+  },
+  "reviewer": "/root/fresh_exposition_read",
+  "chat_inheritance": "none",
+  "no_followup_context_before_freeze": true,
+  "post_freeze_reprompting": false,
+  "retained_inputs": {
+    "README.txt": "6d10091a1691e34b4c4bcb8b213d1fdf7119452dea4df06886655e1d5433bb37",
+    "A/handout.pdf": "2eea1df025d0c1e0a938a8529f0da565a5c9f6f15d52d8b6dfbd6fb1f26a4acf",
+    "A/presentation.pdf": "f8d5c56dc04086779b9b3a08b45b80387dde0bcfa43fbd9dd0a445a4d2c8230c",
+    "B/handout.pdf": "a27d7c6c388c5b805e176daa8639eadb7f5104d8f08d4444effad15171948227",
+    "B/presentation.pdf": "edc92de13e64cb1de607c74182b4540ed6877ce38df415c0098bd5a17fd3324f",
+    "context/selected_prior_slides.pdf": "da43230e49b8ac909de681ba035e0477218cb237c0c1ff4c673f1491c78a902e",
+    "context/all_prior_text.txt": "1378099b59271a4dd5c891c61eb2fc120dfced979ca068d547d77a3a940012f5"
+  },
+  "canonical_inputs_unchanged": {
+    "Lectures/L01_Probability_Statistics/slide_deck.pdf": true,
+    "build/slide-review/L01_Probability_Statistics/delivery/slide_deck_presentation.pdf": true,
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/slide_deck.pdf": true,
+    "Lectures/L01_Probability_Statistics/recordings/quadratic_separation/production_validation/slide_deck_presentation.pdf": true
+  }
+}
